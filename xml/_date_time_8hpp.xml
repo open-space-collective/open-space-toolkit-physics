@@ -1,0 +1,1425 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_date_time_8hpp" kind="file" language="C++">
+    <compoundname>DateTime.hpp</compoundname>
+    <includes local="no">OpenSpaceToolkit/Core/Type/Integer.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/Real.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
+    <includes refid="_date_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Date.hpp</includes>
+    <includes refid="_time_2_time_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Time.hpp</includes>
+    <includedby refid="_instant_8hpp" local="no">include/OpenSpaceToolkit/Physics/Time/Instant.hpp</includedby>
+    <includedby refid="_time_8hpp" local="no">include/OpenSpaceToolkit/Physics/Time.hpp</includedby>
+    <includedby refid="_c_i_r_f_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp</includedby>
+    <includedby refid="_i_t_r_f_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp</includedby>
+    <includedby refid="_m_o_d_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp</includedby>
+    <includedby refid="_t_e_m_e_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp</includedby>
+    <includedby refid="_t_i_r_f_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</includedby>
+    <includedby refid="_data_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Manager.cpp</includedby>
+    <includedby refid="_manifest_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Manifest.cpp</includedby>
+    <includedby refid="_data_2_utility_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Utility.cpp</includedby>
+    <includedby refid="_environment_2_atmospheric_2_earth_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp</includedby>
+    <includedby refid="_date_time_8cpp" local="no">src/OpenSpaceToolkit/Physics/Time/DateTime.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
+        <link refid="_date_time_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="2">
+        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+      </node>
+      <node id="5">
+        <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
+        <link refid="_date_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
+        <link refid="_time_2_time_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="53">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp</label>
+        <link refid="_c_i_r_f_8cpp"/>
+      </node>
+      <node id="19">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp</label>
+        <link refid="_exponential_8cpp"/>
+      </node>
+      <node id="114">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp</label>
+        <link refid="_spherical_8cpp"/>
+      </node>
+      <node id="103">
+        <label>src/OpenSpaceToolkit/Physics/Data/Utility.cpp</label>
+        <link refid="_data_2_utility_8cpp"/>
+      </node>
+      <node id="46">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Object.cpp</label>
+        <link refid="_object_8cpp"/>
+      </node>
+      <node id="70">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp</label>
+        <link refid="_i_t_r_f_8hpp"/>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp</label>
+        <link refid="_gravitational_2_model_8hpp"/>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris.cpp</label>
+        <link refid="_ephemeris_8cpp"/>
+      </node>
+      <node id="106">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</label>
+        <link refid="_c_s_s_i_space_weather_8cpp"/>
+      </node>
+      <node id="81">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp</label>
+        <link refid="_provider_8hpp"/>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</label>
+        <link refid="_ephemeris_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="107">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</label>
+        <link refid="_kernel_8hpp"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp</label>
+        <link refid="_finals2000_a_8hpp"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+      </node>
+      <node id="113">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp</label>
+        <link refid="_spherical_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp</label>
+        <link refid="_a_e_r_8hpp"/>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8hpp"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp</label>
+        <link refid="_t_e_m_e_8cpp"/>
+      </node>
+      <node id="112">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp</label>
+        <link refid="_gravitational_2_moon_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp</label>
+        <link refid="_bulletin_a_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp</label>
+        <link refid="_coordinate_2_frame_2_manager_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.cpp</label>
+        <link refid="_object_2_celestial_2_sun_8cpp"/>
+      </node>
+      <node id="110">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp</label>
+        <link refid="_environment_2_gravitational_2_earth_2_manager_8hpp"/>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp</label>
+        <link refid="_atmospheric_2_earth_8cpp"/>
+      </node>
+      <node id="63">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp</label>
+        <link refid="_i_t_r_f_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/OpenSpaceToolkit/Physics/Environment.cpp</label>
+        <link refid="_environment_8cpp"/>
+      </node>
+      <node id="89">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp</label>
+        <link refid="_transform_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</label>
+        <link refid="_t_i_r_f_8cpp"/>
+      </node>
+      <node id="74">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp</label>
+        <link refid="_m_o_d_8cpp"/>
+      </node>
+      <node id="88">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp</label>
+        <link refid="_atmospheric_2_model_8cpp"/>
+      </node>
+      <node id="48">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp</label>
+        <link refid="_axes_8cpp"/>
+      </node>
+      <node id="38">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp</label>
+        <link refid="_s_p_i_c_e_8cpp"/>
+      </node>
+      <node id="95">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp</label>
+        <link refid="_environment_2_atmospheric_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="117">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp</label>
+        <link refid="_dipole_8hpp"/>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="124">
+        <label>include/OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
+        <link refid="_interval_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Object.hpp</label>
+        <link refid="_object_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp</label>
+        <link refid="_atmospheric_2_earth_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp</label>
+        <link refid="_nadir_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp</label>
+        <link refid="_j2000_8cpp"/>
+      </node>
+      <node id="92">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp</label>
+        <link refid="_transform_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp</label>
+        <link refid="_object_2_celestial_2_sun_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp</label>
+        <link refid="_object_2_celestial_2_moon_8cpp"/>
+      </node>
+      <node id="54">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp</label>
+        <link refid="_dynamic_8hpp"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
+        <link refid="_object_2_celestial_2_earth_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp</label>
+        <link refid="_analytical_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp</label>
+        <link refid="_position_8cpp"/>
+      </node>
+      <node id="39">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp</label>
+        <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp</label>
+        <link refid="_environment_2_gravitational_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="32">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
+        <link refid="_celestial_8cpp"/>
+      </node>
+      <node id="56">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp</label>
+        <link refid="_g_c_r_f_8hpp"/>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp</label>
+        <link refid="_velocity_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
+        <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
+      </node>
+      <node id="125">
+        <label>include/OpenSpaceToolkit/Physics/Time.hpp</label>
+        <link refid="_time_8hpp"/>
+      </node>
+      <node id="120">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp</label>
+        <link refid="_magnetic_2_earth_8hpp"/>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp</label>
+        <link refid="_environment_2_atmospheric_2_earth_2_manager_8hpp"/>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
+        <link refid="_date_time_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp</label>
+        <link refid="_eclipse_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
+        <link refid="_instant_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp</label>
+        <link refid="_i_c_r_f_8hpp"/>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/OpenSpaceToolkit/Physics/Environment.hpp</label>
+        <link refid="_environment_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="129">
+        <label>src/OpenSpaceToolkit/Physics/Time/DateTime.cpp</label>
+        <link refid="_date_time_8cpp"/>
+      </node>
+      <node id="119">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp</label>
+        <link refid="_magnetic_2_earth_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
+        <link refid="_gravitational_2_earth_8cpp"/>
+      </node>
+      <node id="91">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp</label>
+        <link refid="_coordinate_2_frame_2_utility_8cpp"/>
+      </node>
+      <node id="52">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp</label>
+        <link refid="_c_i_r_f_8hpp"/>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="121">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp</label>
+        <link refid="_environment_2_magnetic_2_earth_2_manager_8hpp"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="119" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp</label>
+        <link refid="_t_i_r_f_8hpp"/>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp</label>
+        <link refid="_c_s_s_i_space_weather_8hpp"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp</label>
+        <link refid="_coordinate_2_frame_2_manager_8cpp"/>
+      </node>
+      <node id="60">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp</label>
+        <link refid="_bulletin_a_8hpp"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.cpp</label>
+        <link refid="_dipole_8cpp"/>
+      </node>
+      <node id="71">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp</label>
+        <link refid="_j2000_8hpp"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.hpp</label>
+        <link refid="_coordinate_2_frame_2_utility_8hpp"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp</label>
+        <link refid="_a_e_r_8cpp"/>
+      </node>
+      <node id="44">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</label>
+        <link refid="_geometry_8hpp"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/OpenSpaceToolkit/Physics/Data/Direction.cpp</label>
+        <link refid="_direction_8cpp"/>
+      </node>
+      <node id="115">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp</label>
+        <link refid="_gravitational_2_sun_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>src/OpenSpaceToolkit/Physics/Data/Manifest.cpp</label>
+        <link refid="_manifest_8cpp"/>
+      </node>
+      <node id="83">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp</label>
+        <link refid="_position_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8cpp"/>
+      </node>
+      <node id="82">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp</label>
+        <link refid="_provider_8cpp"/>
+      </node>
+      <node id="108">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp</label>
+        <link refid="_kernel_8cpp"/>
+      </node>
+      <node id="123">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.cpp</label>
+        <link refid="_magnetic_2_model_8cpp"/>
+      </node>
+      <node id="87">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp</label>
+        <link refid="_exponential_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="128">
+        <label>src/OpenSpaceToolkit/Physics/Time/Instant.cpp</label>
+        <link refid="_instant_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/OpenSpaceToolkit/Physics/Data/Vector.hpp</label>
+        <link refid="_vector_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>include/OpenSpaceToolkit/Physics/Data/Utility.hpp</label>
+        <link refid="_data_2_utility_8hpp"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp</label>
+        <link refid="_velocity_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp</label>
+        <link refid="_bulletin_b_8hpp"/>
+      </node>
+      <node id="27">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp</label>
+        <link refid="_gravitational_2_sun_8cpp"/>
+      </node>
+      <node id="97">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp</label>
+        <link refid="_environment_2_magnetic_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="122">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp</label>
+        <link refid="_magnetic_2_model_8hpp"/>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+      </node>
+      <node id="126">
+        <label>src/OpenSpaceToolkit/Physics/Time/Interval.cpp</label>
+        <link refid="_interval_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp</label>
+        <link refid="_frame_8cpp"/>
+      </node>
+      <node id="59">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp</label>
+        <link refid="_i_c_r_f_8cpp"/>
+      </node>
+      <node id="55">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp</label>
+        <link refid="_dynamic_8cpp"/>
+      </node>
+      <node id="57">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.cpp</label>
+        <link refid="_g_c_r_f_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp</label>
+        <link refid="_object_2_celestial_2_earth_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp</label>
+        <link refid="_geometry_8cpp"/>
+      </node>
+      <node id="86">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp</label>
+        <link refid="_atmospheric_2_model_8hpp"/>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>src/OpenSpaceToolkit/Physics/Time/Duration.cpp</label>
+        <link refid="_duration_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp</label>
+        <link refid="_nadir_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
+        <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
+      </node>
+      <node id="116">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp</label>
+        <link refid="_gravitational_2_model_8cpp"/>
+      </node>
+      <node id="100">
+        <label>include/OpenSpaceToolkit/Physics/Data/Scalar.hpp</label>
+        <link refid="_scalar_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="94">
+        <label>src/OpenSpaceToolkit/Physics/Data/Manager.cpp</label>
+        <link refid="_data_2_manager_8cpp"/>
+      </node>
+      <node id="79">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp</label>
+        <link refid="_t_o_d_8hpp"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.cpp</label>
+        <link refid="_analytical_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp</label>
+        <link refid="_eclipse_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>include/OpenSpaceToolkit/Physics/Data/Manifest.hpp</label>
+        <link refid="_manifest_8hpp"/>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp</label>
+        <link refid="_static_8hpp"/>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="76">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp</label>
+        <link refid="_static_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</label>
+        <link refid="_frame_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp</label>
+        <link refid="_s_p_i_c_e_8hpp"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp</label>
+        <link refid="_engine_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="109">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp</label>
+        <link refid="_gravitational_2_earth_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>src/OpenSpaceToolkit/Physics/Data/Scalar.cpp</label>
+        <link refid="_scalar_8cpp"/>
+      </node>
+      <node id="77">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp</label>
+        <link refid="_t_e_m_e_8hpp"/>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</label>
+        <link refid="_finals2000_a_8cpp"/>
+      </node>
+      <node id="93">
+        <label>include/OpenSpaceToolkit/Physics/Data/Manager.hpp</label>
+        <link refid="_data_2_manager_8hpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp</label>
+        <link refid="_n_r_l_m_s_i_s_e00_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp</label>
+        <link refid="_gravitational_2_moon_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp</label>
+        <link refid="_axes_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp</label>
+        <link refid="_engine_8cpp"/>
+      </node>
+      <node id="73">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp</label>
+        <link refid="_m_o_d_8hpp"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp</label>
+        <link refid="_celestial_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/OpenSpaceToolkit/Physics/Data/Vector.cpp</label>
+        <link refid="_vector_8cpp"/>
+      </node>
+      <node id="80">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp</label>
+        <link refid="_t_o_d_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp</label>
+        <link refid="_object_2_celestial_2_moon_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/OpenSpaceToolkit/Physics/Data/Direction.hpp</label>
+        <link refid="_direction_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classostk_1_1physics_1_1time_1_1_date_time" prot="public">ostk::physics::time::DateTime</innerclass>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics">ostk::physics</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1time">ostk::physics::time</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_date_time_8hpp_1a29cf77aa34816fadd42d28e0076972d2" prot="public" static="no">
+        <name>DEFAULT_HOUR</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="25" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_date_time_8hpp_1a54870f99937ade8acd8a74e2162f6291" prot="public" static="no">
+        <name>DEFAULT_MINUTE</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="26" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_date_time_8hpp_1a6ac0fc9f50c93ddbea90f7ee16876c0a" prot="public" static="no">
+        <name>DEFAULT_SECOND</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="27" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_date_time_8hpp_1ac04ce019c94f46b059ce2c38a461b09c" prot="public" static="no">
+        <name>DEFAULT_MILLISECOND</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="28" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_date_time_8hpp_1ab098709ee4b926644c1c68216add901b" prot="public" static="no">
+        <name>DEFAULT_MICROSECOND</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="29" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_date_time_8hpp_1a68609a8be8c5d286f17625e24a2e149a" prot="public" static="no">
+        <name>DEFAULT_NANOSECOND</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="30" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Time_DateTime__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Time_DateTime__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_date_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Date.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_time_2_time_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Time.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">time</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">ostk::physics::time::Date</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">ostk::physics::time::Time</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="_date_time_8hpp_1a29cf77aa34816fadd42d28e0076972d2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_HOUR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="_date_time_8hpp_1a54870f99937ade8acd8a74e2162f6291" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_MINUTE<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="_date_time_8hpp_1a6ac0fc9f50c93ddbea90f7ee16876c0a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_SECOND<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="_date_time_8hpp_1ac04ce019c94f46b059ce2c38a461b09c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_MILLISECOND<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="_date_time_8hpp_1ab098709ee4b926644c1c68216add901b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_MICROSECOND<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="_date_time_8hpp_1a68609a8be8c5d286f17625e24a2e149a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_NANOSECOND<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classostk_1_1physics_1_1time_1_1_date_time" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092" kindref="member">Format</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092aeb6d8ae6f20283755b339c0dc273988b" kindref="member">Standard</ref>,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092a35b6786739efcdc5a74ab1dca29d3b6b" kindref="member">ISO8601</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092a9c3581080a26f47bbe0746a2d9b7cf2c" kindref="member">STK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a974b5a7581ae7461ccf0e6ab85e42633" kindref="member">DateTime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref>&amp;<sp/>aDate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>&amp;<sp/>aTime);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a974b5a7581ae7461ccf0e6ab85e42633" kindref="member">DateTime</ref>(</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint16<sp/>aYear,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint8<sp/>aMonth,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint8<sp/>aDay,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint8<sp/>anHour<sp/>=<sp/><ref refid="_date_time_8hpp_1a29cf77aa34816fadd42d28e0076972d2" kindref="member">DEFAULT_HOUR</ref>,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint8<sp/>aMinute<sp/>=<sp/><ref refid="_date_time_8hpp_1a54870f99937ade8acd8a74e2162f6291" kindref="member">DEFAULT_MINUTE</ref>,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint8<sp/>aSecond<sp/>=<sp/><ref refid="_date_time_8hpp_1a6ac0fc9f50c93ddbea90f7ee16876c0a" kindref="member">DEFAULT_SECOND</ref>,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint16<sp/>aMillisecond<sp/>=<sp/><ref refid="_date_time_8hpp_1ac04ce019c94f46b059ce2c38a461b09c" kindref="member">DEFAULT_MILLISECOND</ref>,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint16<sp/>aMicrosecond<sp/>=<sp/><ref refid="_date_time_8hpp_1ab098709ee4b926644c1c68216add901b" kindref="member">DEFAULT_MICROSECOND</ref>,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Uint16<sp/>aNanosecond<sp/>=<sp/><ref refid="_date_time_8hpp_1a68609a8be8c5d286f17625e24a2e149a" kindref="member">DEFAULT_NANOSECOND</ref></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a8ffda673aa698ebe33cd4c4d4a041ef6" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref>&amp;<sp/>aDateTime)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1ae96358ed48be6bb4325d3f3408a8ab5c" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref>&amp;<sp/>aDateTime)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1afd7a10118810d4133db2044ddbb7e001" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref>&amp;<sp/>aDateTime);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a2fd2deab390516483e1757c45ae81282" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a27b1ada0ea5f28fe6dcd131cdd4e2a5c" kindref="member">accessDate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a263c05ca06cee6b535e3da6783184bee" kindref="member">accessTime</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1aafd979e2eb7095ee7bc8bb3e9a1b52ae" kindref="member">getDate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1ae1460f38a9e41c5c7e42874de571d9f9" kindref="member">getTime</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a067835c455394e18072d654455ac89cb" kindref="member">getJulianDate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a8f2ca8f9d2a8e1828c8f92827e1803ca" kindref="member">getModifiedJulianDate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a693b5b08de1352b5c6120290629bcb26" kindref="member">toString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092" kindref="member">DateTime::Format</ref>&amp;<sp/>aFormat<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092aeb6d8ae6f20283755b339c0dc273988b" kindref="member">DateTime::Format::Standard</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a9ca19b137678a1c4a97df8c96a1f3f80" kindref="member">Undefined</ref>();</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a819a122626c39c4cc99429f5ae9fa749" kindref="member">J2000</ref>();</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a034452967c2b5a89368d33a61dec2606" kindref="member">GPSEpoch</ref>();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a3f3b2cb5f50eb5fe0df9840c2563f8f7" kindref="member">UnixEpoch</ref>();</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a21b33a253f185060eb898f6d7d760706" kindref="member">ModifiedJulianDateEpoch</ref>();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a12ae2e3669cf32a915079228979d67ae" kindref="member">JulianDate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aJulianDate);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a9584452e9ad5f915c5a540a070910556" kindref="member">ModifiedJulianDate</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aModifiedJulianDate);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a63137170ace92a8525af219e03cba573" kindref="member">Parse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092" kindref="member">DateTime::Format</ref>&amp;<sp/>aFormat<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">DateTime::Format::Undefined</ref>);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref><sp/>date_;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref><sp/>time_;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Real<sp/>ModifiedJulianDateFromJulianDate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aJulianDate);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Real<sp/>JulianDateFromModifiedJulianDate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aModifiedJulianDate);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp"/>
+  </compounddef>
+</doxygen>

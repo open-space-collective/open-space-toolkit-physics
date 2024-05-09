@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1unit" kind="namespace" language="C++">
+    <compoundname>ostk::physics::unit</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_angle" prot="public">ostk::physics::unit::Angle</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_derived" prot="public">ostk::physics::unit::Derived</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_electric_current" prot="public">ostk::physics::unit::ElectricCurrent</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_length" prot="public">ostk::physics::unit::Length</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_mass" prot="public">ostk::physics::unit::Mass</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_time" prot="public">ostk::physics::unit::Time</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_unit" prot="public">ostk::physics::unit::Unit</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1a25eedbb3c04cba9ba508ca9789309480" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
+        <definition>Angle ostk::physics::unit::operator*</definition>
+        <argsstring>(const Real &amp;aReal, const Angle &amp;anAngle)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aReal</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
+          <declname>anAngle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" line="243" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="243" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1ae5e8961decf597dc788a8cbee7298e85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::unit::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Angle &amp;anAngle)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
+          <declname>anAngle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" line="320" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="320" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1a650087cf6c492c0fb65afd908950a2ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::unit::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Derived &amp;aDerivedUnit)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <declname>aDerivedUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" line="579" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="579" bodyend="589"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1aa46427c9881272f66d3eebf3d54176a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::unit::operator*</definition>
+        <argsstring>(const Real &amp;aReal, const Length &amp;aLength)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aReal</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>aLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" line="199" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="199" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1a33d11f86c7134e7fbe6227368b2da2bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::unit::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Length &amp;aLength)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>aLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" line="234" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="234" bodyend="244"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="20" column="1"/>
+  </compounddef>
+</doxygen>

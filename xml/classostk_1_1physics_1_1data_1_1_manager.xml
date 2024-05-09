@@ -1,0 +1,623 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1data_1_1_manager" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::data::Manager</compoundname>
+    <includes refid="_data_2_manager_8hpp" local="no">Manager.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" prot="protected" static="no" mutable="no">
+        <type>URL</type>
+        <definition>URL ostk::physics::data::Manager::remoteUrl_</definition>
+        <argsstring></argsstring>
+        <name>remoteUrl_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="142" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" prot="protected" static="no" mutable="yes">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref></type>
+        <definition>Manifest ostk::physics::data::Manager::manifest_</definition>
+        <argsstring></argsstring>
+        <name>manifest_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="144" column="22" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manager_1a4543175e18e52d6392269411915044c5" prot="protected" static="no" mutable="no">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::data::Manager::manifestRepository_</definition>
+        <argsstring></argsstring>
+        <name>manifestRepository_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="146" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manager_1af5387037d982df7c678b12570f734312" prot="protected" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::data::Manager::manifestRepositoryLockTimeout_</definition>
+        <argsstring></argsstring>
+        <name>manifestRepositoryLockTimeout_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="147" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manager_1a5157c32f85d3b6479c638d992f5d1e77" prot="protected" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex ostk::physics::data::Manager::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="149" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ab898ae11749b5b14734b94b7c1ffbb4c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+        <definition>Manager &amp; ostk::physics::data::Manager::Get</definition>
+        <argsstring>()</argsstring>
+        <name>Get</name>
+        <briefdescription>
+<para>Get manager singleton. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to manager </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="53" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="45" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>URL</type>
+        <definition>URL ostk::physics::data::Manager::DefaultRemoteUrl</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultRemoteUrl</name>
+        <briefdescription>
+<para>Get the default remote URL for data fetching. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Default remote URL </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="83" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="418" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ac8d24a9fa535223bf82dffbaf85f13d3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::data::Manager::DefaultManifestRepository</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultManifestRepository</name>
+        <briefdescription>
+<para>Get the default manifest repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Default manifest repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="101" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="375" bodyend="390"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a83ab8533b086420ea0e1c4f074150d9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
+        <definition>const Instant ostk::physics::data::Manager::getLastUpdateTimestampFor</definition>
+        <argsstring>(const String &amp;aDataName)</argsstring>
+        <name>getLastUpdateTimestampFor</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aDataName</declname>
+        </param>
+        <briefdescription>
+<para>Check if there are updates for data of a certain name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDataName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the data to query. This is the key for the data entry in the manifest file.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Instant indicating when the data was last updated on the remote, according to the manifest record. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="65" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="52" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ab1b10729b3001f9ff6a54b5286e975f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const URL</type>
+        <definition>const URL ostk::physics::data::Manager::getRemoteUrl</definition>
+        <argsstring>() const</argsstring>
+        <name>getRemoteUrl</name>
+        <briefdescription>
+<para>Get the remote URL. This points to the base URL for the OSTk input data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Remote URL </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="71" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a9bac185cf88d061e72c4ccb9f788584e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::setRemoteUrl</definition>
+        <argsstring>(const URL &amp;aRemoteUrl)</argsstring>
+        <name>setRemoteUrl</name>
+        <param>
+          <type>const URL &amp;</type>
+          <declname>aRemoteUrl</declname>
+        </param>
+        <briefdescription>
+<para>Set the remote URL. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Remote URL </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="77" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="66" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a45b5fd7544dbca212759813719ff1119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Directory</type>
+        <definition>const Directory ostk::physics::data::Manager::getManifestRepository</definition>
+        <argsstring>() const</argsstring>
+        <name>getManifestRepository</name>
+        <briefdescription>
+<para>Get the manifest repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="89" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a6e8f17a86e4c75934ef65657f634b016" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::setManifestRepository</definition>
+        <argsstring>(const Directory &amp;aManifestRepository)</argsstring>
+        <name>setManifestRepository</name>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aManifestRepository</declname>
+        </param>
+        <briefdescription>
+<para>Set the manifest repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aManifestRepository</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> repository </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="95" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="81" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a5906207482cf7feb7582e95495cee76a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; URL &gt;</type>
+        <definition>Array&lt; URL &gt; ostk::physics::data::Manager::getRemoteDataUrls</definition>
+        <argsstring>(const String &amp;aDataName) const</argsstring>
+        <name>getRemoteDataUrls</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aDataName</declname>
+        </param>
+        <briefdescription>
+<para>Get the remote data URL for a given data name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDataName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the data. i.e. the key for the data entry in the manifest </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Array of URLs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="108" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="91" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a2810947fb2c42ebd8096dd5ac8a1971f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; URL &gt;</type>
+        <definition>Array&lt; URL &gt; ostk::physics::data::Manager::findRemoteDataUrls</definition>
+        <argsstring>(const String &amp;aDataNameRegex) const</argsstring>
+        <name>findRemoteDataUrls</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aDataNameRegex</declname>
+        </param>
+        <briefdescription>
+<para>Find remote URLs of data matching regular expression string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDataNameRegex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A regular expression string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Array of URLs </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="115" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="99" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a7eede6a7696007449e80ef935e3535fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref></type>
+        <definition>const Manifest ostk::physics::data::Manager::getManifest</definition>
+        <argsstring>() const</argsstring>
+        <name>getManifest</name>
+        <briefdescription>
+<para>Get a copy of the current manifest file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> file </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="121" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ad0b4a0867fd62d83a026b0a7318c3585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::loadManifest</definition>
+        <argsstring>(const Manifest &amp;aManifest)</argsstring>
+        <name>loadManifest</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> &amp;</type>
+          <declname>aManifest</declname>
+        </param>
+        <briefdescription>
+<para>Load a new manifest file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aManifest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> file to load </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="112" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ab414941611d56f96a99dc10e8c007887" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Manager::manifestFileExists</definition>
+        <argsstring>() const</argsstring>
+        <name>manifestFileExists</name>
+        <briefdescription>
+<para>Return true if a manifest file already exists in the directory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if manifest file exists </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="133" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="166" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ac3b200a17a62cd55401266715fee4800" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Reset the manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                    Unload the manifest file and forget manifest age. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="139" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="124" bodyend="133"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a907c7c11c7cf2610aedbb581b5a0246e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::data::Manager::Manager</definition>
+        <argsstring>()</argsstring>
+        <name>Manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="151" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="135" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a01435f6afe1ed4293aa038dd1f814873" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::setup_</definition>
+        <argsstring>()</argsstring>
+        <name>setup_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="153" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="154" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a88f6ff812498f2eb7da1b2ebbdf8355c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>File</type>
+        <definition>File ostk::physics::data::Manager::fetchLatestManifestFile_</definition>
+        <argsstring>() const</argsstring>
+        <name>fetchLatestManifestFile_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="156" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="225" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::checkManifestAgeAndUpdate_</definition>
+        <argsstring>() const</argsstring>
+        <name>checkManifestAgeAndUpdate_</name>
+        <briefdescription>
+<para>Check the age of the manifest to determine if it should be updated before querying it for other data files. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                    We fetch the manifest file from the remote if:
+                    - It does not exist locally
+                    - We are past the next predicted update for the manifest based on its own &quot;manifest&quot;
+                    entry. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="166" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="176" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a4f78aff80d2037f4de16eea4a5d46f36" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::loadManifest_</definition>
+        <argsstring>(const Manifest &amp;aManifest) const</argsstring>
+        <name>loadManifest_</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> &amp;</type>
+          <declname>aManifest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="168" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="220" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a2ce226a11b3943cb3da78fdd93c4b6bf" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Manager::isManifestRepositoryLocked_</definition>
+        <argsstring>() const</argsstring>
+        <name>isManifestRepositoryLocked_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="170" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a31c3182d23a0ce5cd36458a65d77eada" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::data::Manager::getManifestRepositoryLockFile_</definition>
+        <argsstring>() const</argsstring>
+        <name>getManifestRepositoryLockFile_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="171" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a7cef4a2ee4c553f25a4f6b4f94808b76" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::lockManifestRepository_</definition>
+        <argsstring>(const Duration &amp;aTimeout) const</argsstring>
+        <name>lockManifestRepository_</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
+          <declname>aTimeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="172" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="323" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1ad78085c85df5b3085cd588b1ccaa69d2" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::data::Manager::unlockManifestRepository_</definition>
+        <argsstring>() const</argsstring>
+        <name>unlockManifestRepository_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="173" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="363" bodyend="373"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a3b5e93e567f5cedc16f05a85ed2b34f5" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::data::Manager::DefaultManifestRepositoryLockTimeout_</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultManifestRepositoryLockTimeout_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="175" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="392" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1af684c12b3a4ab9b1bcb7debc87a8fc31" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::data::Manager::DataRefreshRate_</definition>
+        <argsstring>()</argsstring>
+        <name>DataRefreshRate_</name>
+        <briefdescription>
+<para>Determines how often OSTk should do non-critical IO to freshen its data. We limit this by limiting how frequently the manifest file is updated. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Frequency in hours. Default is 24. Overriden by the OSTK_PHYSICS_DATA_REFRESH_RATE environment variable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="184" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="406" bodyend="416"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>OSTk Data manager base class (thread-safe) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        The base manager defines methods for tracking and checking the manifest file. 
+</verbatim> </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>ostk::physics::data::Manifest</label>
+        <link refid="classostk_1_1physics_1_1data_1_1_manifest"/>
+      </node>
+      <node id="6">
+        <label>ostk::physics::time::Duration</label>
+        <link refid="classostk_1_1physics_1_1time_1_1_duration"/>
+      </node>
+      <node id="4">
+        <label>std::mutex</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::data::Manager</label>
+        <link refid="classostk_1_1physics_1_1data_1_1_manager"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>manifest_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>remoteUrl_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mutex_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>manifestRepository_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>manifestRepositoryLockTimeout_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Directory</label>
+      </node>
+      <node id="3">
+        <label>URL</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="46" bodyend="185"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>checkManifestAgeAndUpdate_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1af684c12b3a4ab9b1bcb7debc87a8fc31" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>DataRefreshRate_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ac8d24a9fa535223bf82dffbaf85f13d3" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>DefaultManifestRepository</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a3b5e93e567f5cedc16f05a85ed2b34f5" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>DefaultManifestRepositoryLockTimeout_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>DefaultRemoteUrl</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a88f6ff812498f2eb7da1b2ebbdf8355c" prot="protected" virt="virtual"><scope>ostk::physics::data::Manager</scope><name>fetchLatestManifestFile_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a2810947fb2c42ebd8096dd5ac8a1971f" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>findRemoteDataUrls</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ab898ae11749b5b14734b94b7c1ffbb4c" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>Get</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a83ab8533b086420ea0e1c4f074150d9c" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>getLastUpdateTimestampFor</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a7eede6a7696007449e80ef935e3535fc" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>getManifest</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a45b5fd7544dbca212759813719ff1119" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>getManifestRepository</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a31c3182d23a0ce5cd36458a65d77eada" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>getManifestRepositoryLockFile_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a5906207482cf7feb7582e95495cee76a" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>getRemoteDataUrls</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ab1b10729b3001f9ff6a54b5286e975f2" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>getRemoteUrl</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a2ce226a11b3943cb3da78fdd93c4b6bf" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>isManifestRepositoryLocked_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ad0b4a0867fd62d83a026b0a7318c3585" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>loadManifest</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a4f78aff80d2037f4de16eea4a5d46f36" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>loadManifest_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a7cef4a2ee4c553f25a4f6b4f94808b76" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>lockManifestRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a907c7c11c7cf2610aedbb581b5a0246e" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>manifest_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ab414941611d56f96a99dc10e8c007887" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>manifestFileExists</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a4543175e18e52d6392269411915044c5" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>manifestRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1af5387037d982df7c678b12570f734312" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>manifestRepositoryLockTimeout_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a5157c32f85d3b6479c638d992f5d1e77" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>mutex_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>remoteUrl_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ac3b200a17a62cd55401266715fee4800" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>reset</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a6e8f17a86e4c75934ef65657f634b016" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>setManifestRepository</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a9bac185cf88d061e72c4ccb9f788584e" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>setRemoteUrl</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1a01435f6afe1ed4293aa038dd1f814873" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>setup_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manager_1ad78085c85df5b3085cd588b1ccaa69d2" prot="protected" virt="non-virtual"><scope>ostk::physics::data::Manager</scope><name>unlockManifestRepository_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

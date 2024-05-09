@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::gravitational::Model::Parameters</compoundname>
+    <includes refid="_gravitational_2_model_8hpp" local="no">Model.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a81743b4a6c96cda7ed9ac301e4c7232f" prot="public" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
+        <definition>Derived ostk::physics::environment::gravitational::Model::Parameters::gravitationalParameter_</definition>
+        <argsstring></argsstring>
+        <name>gravitationalParameter_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="93" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a3ae586e6682117ddec1c997d6079cad3" prot="public" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::environment::gravitational::Model::Parameters::equatorialRadius_</definition>
+        <argsstring></argsstring>
+        <name>equatorialRadius_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="94" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a4233436ab768a991d225e4d297262aec" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::gravitational::Model::Parameters::flattening_</definition>
+        <argsstring></argsstring>
+        <name>flattening_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="95" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a1a672d1648cad03c07206f8a8f30bc81" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::gravitational::Model::Parameters::C20_</definition>
+        <argsstring></argsstring>
+        <name>C20_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="96" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a8d8c7aa55c0a63c53419e3e0e5db3d98" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::gravitational::Model::Parameters::C40_</definition>
+        <argsstring></argsstring>
+        <name>C40_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="97" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a1c1542d64ab9772d446ee872461c9b64" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::gravitational::Model::Parameters::J2_</definition>
+        <argsstring></argsstring>
+        <name>J2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="98" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a31302156aaac7c6971b1fe9e5894ccfd" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::gravitational::Model::Parameters::J4_</definition>
+        <argsstring></argsstring>
+        <name>J4_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="99" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1aca2864e4765759426e6f7996a0da9010" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::gravitational::Model::Parameters::Parameters</definition>
+        <argsstring>(const Derived &amp;aGravitationalParameter, const Length &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aC20, const Real &amp;aC40)</argsstring>
+        <name>Parameters</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <declname>aGravitationalParameter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>anEquatorialRadius</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aFlattening</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aC20</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aC40</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="51" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="17" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a3d830259ac209e96bfe191ff740ea4db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::gravitational::Model::Parameters::operator==</definition>
+        <argsstring>(const Parameters &amp;aParameterSet) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref> &amp;</type>
+          <declname>aParameterSet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="64" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="53" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a86c7c1687d6900ec95457341bf57212e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::gravitational::Model::Parameters::operator!=</definition>
+        <argsstring>(const Parameters &amp;aParameterSet) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref> &amp;</type>
+          <declname>aParameterSet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="71" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a009dc0a6e1a70bc33b0b84681956afda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::gravitational::Model::Parameters::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="85" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="45" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1aef4e5bed7f24814bae4cc88b57479d0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Parameters &amp;aParameterSet)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref> &amp;</type>
+          <declname>aParameterSet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="79" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="72" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a0b378bc06c633c0f1e42b058860702dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
+        <definition>Model::Parameters ostk::physics::environment::gravitational::Model::Parameters::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="91" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="34" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>Real</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::gravitational::Model::Parameters</label>
+        <link refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>gravitationalParameter_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>J2_</edgelabel>
+          <edgelabel>flattening_</edgelabel>
+          <edgelabel>C20_</edgelabel>
+          <edgelabel>J4_</edgelabel>
+          <edgelabel>C40_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>equatorialRadius_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ostk::physics::unit::Length</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_length"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::unit::Derived</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_derived"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="41" bodyend="100"/>
+    <listofallmembers>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a1a672d1648cad03c07206f8a8f30bc81" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>C20_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a8d8c7aa55c0a63c53419e3e0e5db3d98" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>C40_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a3ae586e6682117ddec1c997d6079cad3" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>equatorialRadius_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a4233436ab768a991d225e4d297262aec" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>flattening_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a81743b4a6c96cda7ed9ac301e4c7232f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>gravitationalParameter_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a009dc0a6e1a70bc33b0b84681956afda" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>isDefined</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a1c1542d64ab9772d446ee872461c9b64" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>J2_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a31302156aaac7c6971b1fe9e5894ccfd" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>J4_</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a86c7c1687d6900ec95457341bf57212e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>operator!=</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1aef4e5bed7f24814bae4cc88b57479d0b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>operator&lt;&lt;</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a3d830259ac209e96bfe191ff740ea4db" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>operator==</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1aca2864e4765759426e6f7996a0da9010" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>Parameters</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a0b378bc06c633c0f1e42b058860702dd" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model::Parameters</scope><name>Undefined</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

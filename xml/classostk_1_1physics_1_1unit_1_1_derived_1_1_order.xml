@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::unit::Derived::Order</compoundname>
+    <includes refid="_derived_8hpp" local="no">Derived.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a5de2fe0d2c07e6cc6a6369b447a0192c" prot="private" static="no" mutable="no">
+        <type>Int16</type>
+        <definition>Int16 ostk::physics::unit::Derived::Order::numerator_</definition>
+        <argsstring></argsstring>
+        <name>numerator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="68" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a3e60e820e7b101c50f63aac9c9d0d9e7" prot="private" static="no" mutable="no">
+        <type>Int16</type>
+        <definition>Int16 ostk::physics::unit::Derived::Order::denominator_</definition>
+        <argsstring></argsstring>
+        <name>denominator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="69" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6035f6a47e4a0f1f70cc0c9f02e883e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::unit::Derived::Order::Order</definition>
+        <argsstring>(Int16 aNumerator)</argsstring>
+        <name>Order</name>
+        <param>
+          <type>Int16</type>
+          <declname>aNumerator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="41" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1adb45584799eb8bc10365879cd5c276a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::unit::Derived::Order::Order</definition>
+        <argsstring>(Int16 aNumerator, Int16 aDenominator)</argsstring>
+        <name>Order</name>
+        <param>
+          <type>Int16</type>
+          <declname>aNumerator</declname>
+        </param>
+        <param>
+          <type>Int16</type>
+          <declname>aDenominator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="43" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="23" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1ad41d1f0b527f6689b9d786c366910119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::Order::operator==</definition>
+        <argsstring>(const Order &amp;anOrder) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref> &amp;</type>
+          <declname>anOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="45" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1ad4c2a3f05a4015116b1514488fe4aed6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::Order::operator!=</definition>
+        <argsstring>(const Order &amp;anOrder) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref> &amp;</type>
+          <declname>anOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="47" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a940ee7884cbfa43bd3e48dae41144eef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::Order::isZero</definition>
+        <argsstring>() const</argsstring>
+        <name>isZero</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="49" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a149f90ab9ac2aab0c5878bfd67072219" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::Order::isUnity</definition>
+        <argsstring>() const</argsstring>
+        <name>isUnity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="51" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1aa40d7b7666551f2c52c53e4d6e805e77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Int16</type>
+        <definition>Int16 ostk::physics::unit::Derived::Order::getNumerator</definition>
+        <argsstring>() const</argsstring>
+        <name>getNumerator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="53" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a57dcb6a98e301f9cc9dd0b95f373fef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Int16</type>
+        <definition>Int16 ostk::physics::unit::Derived::Order::getDenominator</definition>
+        <argsstring>() const</argsstring>
+        <name>getDenominator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="55" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a063fbf1ee971431ac882fb8fea43a293" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::unit::Derived::Order::getValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="57" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="63" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6cc6fdfbd1fc3d43703471be84686cc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::Derived::Order::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="59" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="70" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6b351ccb0b60d27f325ee8ab380526ea" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
+        <definition>Derived::Order ostk::physics::unit::Derived::Order::Zero</definition>
+        <argsstring>()</argsstring>
+        <name>Zero</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="61" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a5db56df4a1414962337f811062cb4262" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
+        <definition>Derived::Order ostk::physics::unit::Derived::Order::One</definition>
+        <argsstring>()</argsstring>
+        <name>One</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="63" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a299b1161b786384ec64b0659a66b4574" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
+        <definition>Derived::Order ostk::physics::unit::Derived::Order::Two</definition>
+        <argsstring>()</argsstring>
+        <name>Two</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="65" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SI unit order. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="38" bodyend="70"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a3e60e820e7b101c50f63aac9c9d0d9e7" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>denominator_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a57dcb6a98e301f9cc9dd0b95f373fef5" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>getDenominator</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1aa40d7b7666551f2c52c53e4d6e805e77" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>getNumerator</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a063fbf1ee971431ac882fb8fea43a293" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a149f90ab9ac2aab0c5878bfd67072219" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>isUnity</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a940ee7884cbfa43bd3e48dae41144eef" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>isZero</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a5de2fe0d2c07e6cc6a6369b447a0192c" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>numerator_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a5db56df4a1414962337f811062cb4262" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>One</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1ad4c2a3f05a4015116b1514488fe4aed6" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1ad41d1f0b527f6689b9d786c366910119" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6035f6a47e4a0f1f70cc0c9f02e883e2" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>Order</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1adb45584799eb8bc10365879cd5c276a3" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>Order</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6cc6fdfbd1fc3d43703471be84686cc7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a299b1161b786384ec64b0659a66b4574" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>Two</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6b351ccb0b60d27f325ee8ab380526ea" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>Zero</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

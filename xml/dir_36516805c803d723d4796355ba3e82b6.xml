@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_36516805c803d723d4796355ba3e82b6" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth</compoundname>
+    <innerfile refid="_environment_2_gravitational_2_earth_2_manager_8hpp">Manager.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_ddb8162b7097943b20af81b23e842747" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Time</compoundname>
+    <innerfile refid="_date_8hpp">Date.hpp</innerfile>
+    <innerfile refid="_date_time_8hpp">DateTime.hpp</innerfile>
+    <innerfile refid="_duration_8hpp">Duration.hpp</innerfile>
+    <innerfile refid="_instant_8hpp">Instant.hpp</innerfile>
+    <innerfile refid="_interval_8hpp">Interval.hpp</innerfile>
+    <innerfile refid="_scale_8hpp">Scale.hpp</innerfile>
+    <innerfile refid="_time_2_time_8hpp">Time.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Time/"/>
+  </compounddef>
+</doxygen>

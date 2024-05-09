@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ostk::physics::environment::gravitational::Moon::Impl</compoundname>
+    <derivedcompoundref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_spherical_impl" prot="public" virt="non-virtual">ostk::physics::environment::gravitational::Moon::SphericalImpl</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a342f5943fc1b0962f5f0fe2f559cef4c" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a09ec881799f85fdef3547ef443d57c27" kindref="member">Moon::Type</ref></type>
+        <definition>Moon::Type ostk::physics::environment::gravitational::Moon::Impl::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="39" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a465db8c32a96ead2abb734ad79bf2462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::gravitational::Moon::Impl::Impl</definition>
+        <argsstring>(const Moon::Type &amp;aType)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a09ec881799f85fdef3547ef443d57c27" kindref="member">Moon::Type</ref> &amp;</type>
+          <declname>aType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="28" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="42" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a2cb7bc7161cbc1c8a2e5acddb710fe1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::gravitational::Moon::Impl::~Impl</definition>
+        <argsstring>()=0</argsstring>
+        <name>~Impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="30" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a92c20fcfeaa3a478cdf4d8ebf3838c96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Impl *</type>
+        <definition>virtual Impl* ostk::physics::environment::gravitational::Moon::Impl::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="32" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1acee8730b1cf70f04249fdb57f89bdca5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a09ec881799f85fdef3547ef443d57c27" kindref="member">Moon::Type</ref></type>
+        <definition>Moon::Type ostk::physics::environment::gravitational::Moon::Impl::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="34" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a06804aa1b1a65f714519f3dea582f621" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Vector3d</type>
+        <definition>virtual Vector3d ostk::physics::environment::gravitational::Moon::Impl::getFieldValueAt</definition>
+        <argsstring>(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const =0</argsstring>
+        <name>getFieldValueAt</name>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="36" column="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::environment::gravitational::Moon::SphericalImpl</label>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::gravitational::Moon::Impl</label>
+      </node>
+    </inheritancegraph>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" line="26" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="25" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a92c20fcfeaa3a478cdf4d8ebf3838c96" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Moon::Impl</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a06804aa1b1a65f714519f3dea582f621" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Moon::Impl</scope><name>getFieldValueAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1acee8730b1cf70f04249fdb57f89bdca5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Moon::Impl</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a465db8c32a96ead2abb734ad79bf2462" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Moon::Impl</scope><name>Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a342f5943fc1b0962f5f0fe2f559cef4c" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Moon::Impl</scope><name>type_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1_1_impl_1a2cb7bc7161cbc1c8a2e5acddb710fe1d" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Moon::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

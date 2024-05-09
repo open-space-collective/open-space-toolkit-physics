@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::J2000</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" prot="public" virt="non-virtual">ostk::physics::coordinate::frame::Provider</basecompoundref>
+    <includes refid="_j2000_8hpp" local="no">J2000.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1aa00aa2d6ab252a416f141cf483af956b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref></type>
+        <definition>iau::Theory ostk::physics::coordinate::frame::provider::J2000::theory_</definition>
+        <argsstring></argsstring>
+        <name>theory_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="53" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a260024838b03cb2549cf86e5d14489f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::J2000::J2000</definition>
+        <argsstring>(const iau::Theory &amp;aTheory)</argsstring>
+        <name>J2000</name>
+        <param>
+          <type>const <ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref> &amp;</type>
+          <declname>aTheory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a6c85108136e07d7a693db059e7063fad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::J2000::~J2000</definition>
+        <argsstring>() override</argsstring>
+        <name>~J2000</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="40" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a2cde9742d70f5cb6e0754d5b3ed479b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000" kindref="compound">J2000</ref> *</type>
+        <definition>J2000 * ostk::physics::coordinate::frame::provider::J2000::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="42" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a14472546281e5dcc3088366fa8e14bc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::J2000::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="44" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1af7dbeabda62b14e653ef853129e62c17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref></type>
+        <definition>iau::Theory ostk::physics::coordinate::frame::provider::J2000::getTheory</definition>
+        <argsstring>() const</argsstring>
+        <name>getTheory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="46" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1ad6666ef64a7cd2a6b77f0f05ecd298eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
+        <definition>Instant ostk::physics::coordinate::frame::provider::J2000::getEpoch</definition>
+        <argsstring>() const</argsstring>
+        <name>getEpoch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="48" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1ac670582a8388ff87644de6d0cace7bd2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::frame::provider::J2000::getTransformAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const override</argsstring>
+        <name>getTransformAt</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e">getTransformAt</reimplements>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="50" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="50" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000" kindref="compound">J2000</ref> frame provider. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        Defined with the Earth&apos;s Mean Equator and Mean Equinox (MEME) at 12:00 Terrestrial Time
+                        on 1 January 2000. Also known as EME2000.
+</verbatim></para>
+<para><ulink url="https://en.wikipedia.org/wiki/Earth-centered_inertial">https://en.wikipedia.org/wiki/Earth-centered_inertial</ulink> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::J2000</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::J2000</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" bodystart="35" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a2cde9742d70f5cb6e0754d5b3ed479b3" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1ad6666ef64a7cd2a6b77f0f05ecd298eb" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>getEpoch</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1af7dbeabda62b14e653ef853129e62c17" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>getTheory</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1ac670582a8388ff87644de6d0cace7bd2" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>getTransformAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a14472546281e5dcc3088366fa8e14bc9" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a260024838b03cb2549cf86e5d14489f0" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>J2000</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>Provider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1aa00aa2d6ab252a416f141cf483af956b" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>theory_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a6c85108136e07d7a693db059e7063fad" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>~J2000</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::J2000</scope><name>~Provider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

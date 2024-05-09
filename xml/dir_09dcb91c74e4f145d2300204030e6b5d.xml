@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_09dcb91c74e4f145d2300204030e6b5d" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Data/Provider</compoundname>
+    <innerfile refid="_nadir_8cpp">Nadir.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Data/Provider/"/>
+  </compounddef>
+</doxygen>

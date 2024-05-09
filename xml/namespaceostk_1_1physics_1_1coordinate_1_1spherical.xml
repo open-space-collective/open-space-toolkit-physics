@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1spherical" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::spherical</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" prot="public">ostk::physics::coordinate::spherical::AER</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" prot="public">ostk::physics::coordinate::spherical::LLA</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1a9b118274b62f916c02f797cd035cfa58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::spherical::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const AER &amp;anAER)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref> &amp;</type>
+          <declname>anAER</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" line="54" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="54" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1adb2817eba4761059a0ad3fefa5bd8db3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::spherical::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const LLA &amp;aLLA)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
+          <declname>aLLA</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" line="54" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="54" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="19" column="1"/>
+  </compounddef>
+</doxygen>

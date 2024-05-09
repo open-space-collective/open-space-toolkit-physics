@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1_ephemeris" prot="public">ostk::physics::environment::Ephemeris</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1_object" prot="public">ostk::physics::environment::Object</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric">ostk::physics::environment::atmospheric</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1ephemeris">ostk::physics::environment::ephemeris</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1gravitational">ostk::physics::environment::gravitational</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1magnetic">ostk::physics::environment::magnetic</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1object">ostk::physics::environment::object</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1utilities">ostk::physics::environment::utilities</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1a69273eaf01eaf510b7f09c8af73ac207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::environment::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Object &amp;anObject)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &amp;</type>
+          <declname>anObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Object.cpp" line="46" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object.cpp" bodystart="46" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="22" column="1"/>
+  </compounddef>
+</doxygen>

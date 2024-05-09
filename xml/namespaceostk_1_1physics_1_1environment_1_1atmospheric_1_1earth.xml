@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::atmospheric::earth</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" prot="public">ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential" prot="public">ostk::physics::environment::atmospheric::earth::Exponential</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" prot="public">ostk::physics::environment::atmospheric::earth::Manager</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" prot="public">ostk::physics::environment::atmospheric::earth::NRLMSISE00</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a11b134d6cacf0cd73d99fc8668c58def" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">ostk::physics::environment::atmospheric::Earth</ref></type>
+        <definition>using ostk::physics::environment::atmospheric::earth::EarthAtmosphericModel = typedef ostk::physics::environment::atmospheric::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthAtmosphericModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a77c309be4719e60864cfe80dc511d3e1" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref></type>
+        <definition>typedef ostk::physics::environment::gravitational::Earth ostk::physics::environment::atmospheric::earth::EarthGravitationalModel</definition>
+        <argsstring></argsstring>
+        <name>EarthGravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a842341ed14cd8a424805de86e30350a1" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">ostk::physics::environment::object::celestial::Earth</ref></type>
+        <definition>using ostk::physics::environment::atmospheric::earth::EarthCelestialBody = typedef ostk::physics::environment::object::celestial::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthCelestialBody</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" line="22" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a4e603bd4478a36f9ba98e33af0a1c892" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
+        <definition>using ostk::physics::environment::atmospheric::earth::ManifestManager = typedef ostk::physics::data::Manager</definition>
+        <argsstring></argsstring>
+        <name>ManifestManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="54" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1abb6a5f6ac10e54fe888f12083e110dc7" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">ostk::physics::environment::object::celestial::Earth</ref></type>
+        <definition>using ostk::physics::environment::atmospheric::earth::EarthCelestial = typedef ostk::physics::environment::object::celestial::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthCelestial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" line="51" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a9c56677f2149cbb14960d37d8b5bd848" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::environment::atmospheric::earth::CSSICSSISpaceWeatherFileName</definition>
+        <argsstring></argsstring>
+        <name>CSSICSSISpaceWeatherFileName</name>
+        <initializer>= &quot;SW-Last5Years.csv&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="56" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1aa9294decc08248cc49207831d5dc3faf" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::environment::atmospheric::earth::CSSISpaceWeatherManifestName</definition>
+        <argsstring></argsstring>
+        <name>CSSISpaceWeatherManifestName</name>
+        <initializer>= &quot;space-weather-CSSI&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="57" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a6278334fad443af51f946c823cb579ee" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::environment::atmospheric::earth::temporaryDirectoryName</definition>
+        <argsstring></argsstring>
+        <name>temporaryDirectoryName</name>
+        <initializer>= &quot;tmp&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="59" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a682b70a4b287bff40d9efacdb5ef3fc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::environment::atmospheric::earth::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const CSSISpaceWeather &amp;aCSSISpaceWeather)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref> &amp;</type>
+          <declname>aCSSISpaceWeather</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" line="42" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="42" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="26" column="1"/>
+  </compounddef>
+</doxygen>

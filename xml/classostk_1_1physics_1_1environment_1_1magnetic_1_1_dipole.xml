@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::magnetic::Dipole</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model" prot="public" virt="non-virtual">ostk::physics::environment::magnetic::Model</basecompoundref>
+    <includes refid="_dipole_8hpp" local="no">Dipole.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a20c38de921013a990e9a630793356093" prot="private" static="no" mutable="no">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::environment::magnetic::Dipole::magneticMoment_SI_</definition>
+        <argsstring></argsstring>
+        <name>magneticMoment_SI_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" line="64" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a974e9a8c1062516d6c872b96d5573779" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::magnetic::Dipole::Dipole</definition>
+        <argsstring>(const Vector3d &amp;aMagneticMoment)</argsstring>
+        <name>Dipole</name>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aMagneticMoment</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMagneticMoment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A magnetic moment [A⋅m2] </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" line="41" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.cpp" bodystart="22" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1ad4255ff1007a339c9f0bdbda321c0ab2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole" kindref="compound">Dipole</ref> *</type>
+        <definition>Dipole * ostk::physics::environment::magnetic::Dipole::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1af357908c151a7809bbbc8fc676bd07b6">clone</reimplements>
+        <briefdescription>
+<para>Clone the dipole magnetic model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to dipole magnetic model </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" line="47" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.cpp" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a0e8ec00a64950ad684929591c5c6bcb4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::magnetic::Dipole::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1ad272cd7b1f326266c03f996a239a1c6e">isDefined</reimplements>
+        <briefdescription>
+<para>Check if the dipole magnetic model is defined. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the dipole magnetic model is defined </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" line="53" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.cpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1ae2c65e41445c91b3efec455fb5077ab1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::environment::magnetic::Dipole::getFieldValueAt</definition>
+        <argsstring>(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const override</argsstring>
+        <name>getFieldValueAt</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1abf0510f9be2c196ea3c0586d02979b0f">getFieldValueAt</reimplements>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get the magnetic field value at a given position and instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A position, expressed in the magnetic object frame [m] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Magnetic field value, expressed in the magnetic object frame [T] </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" line="61" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.cpp" bodystart="42" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Magnetic dipole model. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/Magnetic_dipole">https://en.wikipedia.org/wiki/Magnetic_dipole</ulink> <ulink url="https://en.wikipedia.org/wiki/Magnetic_moment">https://en.wikipedia.org/wiki/Magnetic_moment</ulink> <ulink url="https://en.wikipedia.org/wiki/Vacuum_permeability">https://en.wikipedia.org/wiki/Vacuum_permeability</ulink> <ulink url="https://en.wikipedia.org/wiki/Dipole_model_of_the_Earth">https://en.wikipedia.org/wiki/Dipole_model_of_the_Earth</ulink>%27s_magnetic_field </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::environment::magnetic::Dipole</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::magnetic::Model</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::environment::magnetic::Dipole</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::magnetic::Model</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" line="35" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp" bodystart="34" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1ad4255ff1007a339c9f0bdbda321c0ab2" prot="public" virt="virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a974e9a8c1062516d6c872b96d5573779" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>Dipole</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1ae2c65e41445c91b3efec455fb5077ab1" prot="public" virt="virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>getFieldValueAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a0e8ec00a64950ad684929591c5c6bcb4" prot="public" virt="virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a20c38de921013a990e9a630793356093" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>magneticMoment_SI_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1a50d6421402d4f67aa9c45e9be5f27d30" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>Model</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1a6fe1b73447dc65989d31db636fa73953" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::magnetic::Dipole</scope><name>~Model</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

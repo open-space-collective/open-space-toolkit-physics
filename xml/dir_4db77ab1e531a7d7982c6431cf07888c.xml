@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_4db77ab1e531a7d7982c6431cf07888c" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS</compoundname>
+    <innerfile refid="_bulletin_a_8cpp">BulletinA.cpp</innerfile>
+    <innerfile refid="_finals2000_a_8cpp">Finals2000A.cpp</innerfile>
+    <innerfile refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8cpp">Manager.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/"/>
+  </compounddef>
+</doxygen>

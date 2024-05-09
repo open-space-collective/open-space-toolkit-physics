@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ostk::physics::environment::atmospheric::Earth::Impl</compoundname>
+    <derivedcompoundref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_exponential_impl" prot="public" virt="non-virtual">ostk::physics::environment::atmospheric::Earth::ExponentialImpl</derivedcompoundref>
+    <derivedcompoundref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl" prot="public" virt="non-virtual">ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a9eaf51318f5a3964ba0603bc4d4e9b3e" prot="protected" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt;const Frame&gt; ostk::physics::environment::atmospheric::Earth::Impl::earthFrameSPtr_</definition>
+        <argsstring></argsstring>
+        <name>earthFrameSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="51" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a47389db0b74336542d12327e51ba60ca" prot="protected" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::environment::atmospheric::Earth::Impl::earthRadius_</definition>
+        <argsstring></argsstring>
+        <name>earthRadius_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="52" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a02b2ceed63db6029735efdf1b2936c37" prot="protected" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::Earth::Impl::earthFlattening_</definition>
+        <argsstring></argsstring>
+        <name>earthFlattening_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="53" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a92fdeb7eca87efedd2bd0f255f4c5732" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1df841508cb5d989c11b033f49365c2f" kindref="member">Earth::Type</ref></type>
+        <definition>Earth::Type ostk::physics::environment::atmospheric::Earth::Impl::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="56" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a46fb04bc2139ef297f84858c09f8dc58" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a95c47e34028290fd5644025b4e5b735c" kindref="member">Earth::InputDataType</ref></type>
+        <definition>Earth::InputDataType ostk::physics::environment::atmospheric::Earth::Impl::inputDataType_</definition>
+        <argsstring></argsstring>
+        <name>inputDataType_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="57" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1acb7309990aba2074cb00d6be72d1df46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::atmospheric::Earth::Impl::Impl</definition>
+        <argsstring>(const Earth::Type &amp;aType, const Earth::InputDataType &amp;anInputDataType, const Shared&lt; const Frame &gt; &amp;anEarthFrameSPtr, const Length &amp;anEarthRadius, const Real &amp;anEarthFlattening)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1df841508cb5d989c11b033f49365c2f" kindref="member">Earth::Type</ref> &amp;</type>
+          <declname>aType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a95c47e34028290fd5644025b4e5b735c" kindref="member">Earth::InputDataType</ref> &amp;</type>
+          <declname>anInputDataType</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>anEarthFrameSPtr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>anEarthRadius</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>anEarthFlattening</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="30" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="60" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1ac5956fa195313dc9d62f8af4eaf07c90" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::atmospheric::Earth::Impl::~Impl</definition>
+        <argsstring>()=0</argsstring>
+        <name>~Impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="38" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a0b9cd3a67cd6abb4c67c2d80c8e95eb4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Impl *</type>
+        <definition>virtual Impl* ostk::physics::environment::atmospheric::Earth::Impl::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="40" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a3da8dd6a784672b71258c2a47bb9db88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1df841508cb5d989c11b033f49365c2f" kindref="member">Earth::Type</ref></type>
+        <definition>Earth::Type ostk::physics::environment::atmospheric::Earth::Impl::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="42" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1ac75ff2f75a4649246d57b1c1df013410" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a95c47e34028290fd5644025b4e5b735c" kindref="member">Earth::InputDataType</ref></type>
+        <definition>Earth::InputDataType ostk::physics::environment::atmospheric::Earth::Impl::getInputDataType</definition>
+        <argsstring>() const</argsstring>
+        <name>getInputDataType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="44" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a6c4782dff545d6f144aeaf31b6600ed2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Real</type>
+        <definition>virtual Real ostk::physics::environment::atmospheric::Earth::Impl::getDensityAt</definition>
+        <argsstring>(const LLA &amp;aLLA, const Instant &amp;anInstant) const =0</argsstring>
+        <name>getDensityAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
+          <declname>aLLA</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="46" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a0d6d4c19156845c9abcf1ee65d083ba0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Real</type>
+        <definition>virtual Real ostk::physics::environment::atmospheric::Earth::Impl::getDensityAt</definition>
+        <argsstring>(const Position &amp;aPosition, const Instant &amp;anInstant) const =0</argsstring>
+        <name>getDensityAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="48" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::environment::atmospheric::Earth::ExponentialImpl</label>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</label>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::atmospheric::Earth::Impl</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Real</label>
+      </node>
+      <node id="3">
+        <label>ostk::physics::unit::Length</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_length"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Shared&lt; const ostk::physics::coordinate::Frame &gt;</label>
+      </node>
+      <node id="4">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::atmospheric::Earth::Impl</label>
+        <childnode refid="2" relation="usage">
+          <edgelabel>earthFlattening_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>earthRadius_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>earthFrameSPtr_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="28" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="27" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a0b9cd3a67cd6abb4c67c2d80c8e95eb4" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a02b2ceed63db6029735efdf1b2936c37" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>earthFlattening_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a9eaf51318f5a3964ba0603bc4d4e9b3e" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>earthFrameSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a47389db0b74336542d12327e51ba60ca" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>earthRadius_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a6c4782dff545d6f144aeaf31b6600ed2" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>getDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a0d6d4c19156845c9abcf1ee65d083ba0" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>getDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1ac75ff2f75a4649246d57b1c1df013410" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>getInputDataType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a3da8dd6a784672b71258c2a47bb9db88" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1acb7309990aba2074cb00d6be72d1df46" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a46fb04bc2139ef297f84858c09f8dc58" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>inputDataType_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a92fdeb7eca87efedd2bd0f255f4c5732" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>type_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1ac5956fa195313dc9d62f8af4eaf07c90" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Earth::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

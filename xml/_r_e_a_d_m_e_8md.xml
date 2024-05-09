@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Open<sp/>Space<sp/>Toolkit<sp/>▸<sp/>Physics</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![Build<sp/>and<sp/>Test](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml/badge.svg?branch=main)](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml)</highlight></codeline>
+<codeline><highlight class="normal">[![Release](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/release.yml/badge.svg)](https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/release.yml)</highlight></codeline>
+<codeline><highlight class="normal">[![Code<sp/>Coverage](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics/branch/main/graph/badge.svg)](https://codecov.io/gh/open-space-collective/open-space-toolkit-physics)</highlight></codeline>
+<codeline><highlight class="normal">[![Documentation](https://img.shields.io/readthedocs/pip/stable.svg)](https://open-space-collective.github.io/open-space-toolkit-physics)</highlight></codeline>
+<codeline><highlight class="normal">[![GitHub<sp/>version](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics.svg)](https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics)</highlight></codeline>
+<codeline><highlight class="normal">[![PyPI<sp/>version](https://badge.fury.io/py/open-space-toolkit-physics.svg)](https://badge.fury.io/py/open-space-toolkit-physics)</highlight></codeline>
+<codeline><highlight class="normal">[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Physical<sp/>units,<sp/>time,<sp/>reference<sp/>frames,<sp/>environment<sp/>modeling.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;img<sp/>src=&quot;./docs/assets/gravitational-anomaly.png&quot;<sp/>height=&quot;500px&quot;<sp/>width=&quot;auto&quot;&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*Gravitational<sp/>field<sp/>anomaly<sp/>between<sp/>EGM96<sp/>and<sp/>WGS84<sp/>models.*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Getting<sp/>Started</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Want<sp/>to<sp/>get<sp/>started?<sp/>This<sp/>is<sp/>the<sp/>simplest<sp/>and<sp/>quickest<sp/>way:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/main?urlpath=lab/tree/notebooks)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*Nothing<sp/>to<sp/>download<sp/>or<sp/>install!<sp/>This<sp/>will<sp/>automatically<sp/>start<sp/>a<sp/>[JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)<sp/>environment<sp/>in<sp/>your<sp/>browser<sp/>with<sp/>Open<sp/>Space<sp/>Toolkit<sp/>libraries<sp/>and<sp/>example<sp/>notebooks<sp/>ready<sp/>to<sp/>use.*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Alternatives</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Docker<sp/>Images</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[Docker](https://www.docker.com/)<sp/>must<sp/>be<sp/>installed<sp/>on<sp/>your<sp/>system.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>iPython</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>command<sp/>will<sp/>start<sp/>an<sp/>[iPython](https://ipython.org/)<sp/>shell<sp/>within<sp/>a<sp/>container<sp/>where<sp/>the<sp/>OSTk<sp/>components<sp/>are<sp/>already<sp/>installed:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>run<sp/>-it<sp/>openspacecollective/open-space-toolkit-physics-python</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Once<sp/>the<sp/>shell<sp/>is<sp/>up<sp/>and<sp/>running,<sp/>playing<sp/>with<sp/>it<sp/>is<sp/>easy:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```py</highlight></codeline>
+<codeline><highlight class="normal">from<sp/>ostk.physics<sp/>import<sp/>Environment<sp/>#<sp/>Environment<sp/>modeling<sp/>class</highlight></codeline>
+<codeline><highlight class="normal">from<sp/>ostk.physics.time<sp/>import<sp/>Instant<sp/>#<sp/>Instant<sp/>class</highlight></codeline>
+<codeline><highlight class="normal">from<sp/>ostk.physics.coordinate<sp/>import<sp/>Frame<sp/>#<sp/>Reference<sp/>frame<sp/>class</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default()<sp/>#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">moon<sp/>=<sp/>environment.access_object_with_name(&apos;Moon&apos;)<sp/>#<sp/>Access<sp/>Moon</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">environment.set_instant(Instant.now())<sp/>#<sp/>Set<sp/>environment<sp/>to<sp/>present<sp/>time</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">moon.get_position_in(Frame.ITRF())<sp/>#<sp/>Position<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
+<codeline><highlight class="normal">moon.get_axes_in(Frame.ITRF())<sp/>#<sp/>Axes<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">By<sp/>default,<sp/>OSTk<sp/>fetches<sp/>the<sp/>ephemeris<sp/>from<sp/>JPL,<sp/>Earth<sp/>Orientation<sp/>Parameters<sp/>(EOP)<sp/>and<sp/>leap<sp/>second<sp/>count<sp/>from<sp/>IERS.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">As<sp/>a<sp/>result,<sp/>when<sp/>running<sp/>OSTk<sp/>for<sp/>the<sp/>first<sp/>time,<sp/>it<sp/>may<sp/>take<sp/>a<sp/>minute<sp/>to<sp/>fetch<sp/>all<sp/>the<sp/>necessary<sp/>data.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*Tip:<sp/>Use<sp/>tab<sp/>for<sp/>auto-completion!*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>JupyterLab</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>command<sp/>will<sp/>start<sp/>a<sp/>[JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)<sp/>server<sp/>within<sp/>a<sp/>container<sp/>where<sp/>the<sp/>OSTk<sp/>components<sp/>are<sp/>already<sp/>installed:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">docker<sp/>run<sp/>--publish=8888:8888<sp/>openspacecollective/open-space-toolkit-physics-jupyter</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Once<sp/>the<sp/>container<sp/>is<sp/>running,<sp/>access<sp/>[http://localhost:8888/lab](http://localhost:8888/lab)<sp/>and<sp/>create<sp/>a<sp/>Python<sp/>3<sp/>Notebook.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Installation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>C++</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>binary<sp/>packages<sp/>are<sp/>hosted<sp/>using<sp/>[GitHub<sp/>Releases](https://github.com/open-space-collective/open-space-toolkit-physics/releases):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Runtime<sp/>libraries:<sp/>`open-space-toolkit-physics-X.Y.Z-1.x86_64-runtime`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>C++<sp/>headers:<sp/>`open-space-toolkit-physics-X.Y.Z-1.x86_64-devel`</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Python<sp/>bindings:<sp/>`open-space-toolkit-physics-X.Y.Z-1.x86_64-python`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Debian<sp/>/<sp/>Ubuntu</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">After<sp/>downloading<sp/>the<sp/>relevant<sp/>`.deb`<sp/>binary<sp/>packages,<sp/>install:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">apt<sp/>install<sp/>open-space-toolkit-physics-*.deb</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Python</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Install<sp/>from<sp/>[PyPI](https://pypi.org/project/open-space-toolkit-physics/):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">pip<sp/>install<sp/>open-space-toolkit-physics</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Documentation<sp/>is<sp/>available<sp/>here:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[C++](https://open-space-collective.github.io/open-space-toolkit-physics)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Python](./bindings/python/docs)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;details&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;summary&gt;Structure&lt;/summary&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;p&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>library<sp/>exhibits<sp/>the<sp/>following<sp/>structure:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```txt</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Unit</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Length</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Mass</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Time</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Temperature</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Electric<sp/>Current</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Luminous<sp/>Intensity</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>Derived</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Angle</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Solid<sp/>Angle</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Frequency</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Force</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Pressure</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Area</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Volume</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>└──<sp/>Information</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Time</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Scale<sp/>(UTC,<sp/>TT,<sp/>TAI,<sp/>UT1,<sp/>TCG,<sp/>TCB,<sp/>TDB,<sp/>GMST,<sp/>GPST,<sp/>GST,<sp/>GLST,<sp/>BDT,<sp/>QZSST,<sp/>IRNSST)</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Instant</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Duration</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Interval</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Date</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Time</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>DateTime</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Coordinate</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Transform</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>Frame<sp/>(ECI,<sp/>ECEF,<sp/>NED,<sp/>LVLHGD,<sp/>LVLHGDGT,<sp/>...)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Geographic</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Position</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Area</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Volume</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Coordinate<sp/>Reference<sp/>System<sp/>(CRS)</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>Universal<sp/>Transverse<sp/>Mercator<sp/>(UTM)</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>Environment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Constant</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Object</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>Celestial</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Ephemeris</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Analytical</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Tabulated</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>SPICE<sp/>(JPL)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Gravity</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Barycentric</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Earth<sp/>Gravitational<sp/>Model<sp/>1996<sp/>(EGM96)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>Earth<sp/>Gravitational<sp/>Model<sp/>2008<sp/>(EGM2008)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Atmospheric</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Exponential</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>NRLMSISE00</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>└──<sp/>Magnetic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Dipole</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>World<sp/>Magnetic<sp/>Model<sp/>2010<sp/>(WMM2010)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>World<sp/>Magnetic<sp/>Model<sp/>2015<sp/>(WMM2015)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Enhanced<sp/>Magnetic<sp/>Model<sp/>2010<sp/>(EMM2010)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Enhanced<sp/>Magnetic<sp/>Model<sp/>2015<sp/>(EMM2015)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>International<sp/>Geomagnetic<sp/>Reference<sp/>Field<sp/>11<sp/>(IGRF11)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>└──<sp/>International<sp/>Geomagnetic<sp/>Reference<sp/>Field<sp/>12<sp/>(IGRF12)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;/p&gt;</highlight></codeline>
+<codeline><highlight class="normal">&lt;/details&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Data<sp/>Management</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">OSTk<sp/>Physics<sp/>uses<sp/>input<sp/>data<sp/>from<sp/>various<sp/>sources<sp/>to<sp/>determine<sp/>the<sp/>state<sp/>of<sp/>the<sp/>space<sp/>environment<sp/>at<sp/>any<sp/>given<sp/>time.<sp/>The<sp/>following<sp/>input<sp/>data<sp/>is<sp/>used:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>IERS<sp/>Reference<sp/>Frame<sp/>Data</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>CSSI<sp/>Solar<sp/>Flux/Space<sp/>Weather<sp/>Data</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Gravitational<sp/>Survey<sp/>Data</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Magnetic<sp/>Survey<sp/>Data</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>SPICE<sp/>Kernels</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">None<sp/>of<sp/>these<sp/>files<sp/>are<sp/>shipped<sp/>with<sp/>the<sp/>source<sp/>code<sp/>of<sp/>this<sp/>library.<sp/>OSTk<sp/>Physics<sp/>has<sp/>the<sp/>capability<sp/>to<sp/>fetch<sp/>the<sp/>required<sp/>files<sp/>at<sp/>runtime<sp/>if<sp/>they<sp/>are<sp/>not<sp/>present<sp/>or<sp/>if<sp/>they<sp/>are<sp/>outdated.<sp/>This<sp/>is<sp/>done<sp/>using<sp/>file<sp/>Manager<sp/>classes<sp/>(see<sp/>any<sp/>file<sp/>named<sp/>`Manager.hpp`).<sp/>Data<sp/>for<sp/>any<sp/>use-case<sp/>is<sp/>queried<sp/>through<sp/>the<sp/>Manager<sp/>class<sp/>rather<sp/>than<sp/>directly,<sp/>which<sp/>allows<sp/>the<sp/>Manager<sp/>to<sp/>handle<sp/>file<sp/>loading<sp/>and<sp/>fetching.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>would<sp/>like<sp/>to<sp/>seed<sp/>the<sp/>ostk<sp/>data<sp/>generation<sp/>so<sp/>that<sp/>you<sp/>already<sp/>have<sp/>an<sp/>initial<sp/>copy<sp/>of<sp/>all<sp/>the<sp/>data<sp/>files<sp/>(to<sp/>avoid<sp/>a<sp/>large<sp/>initial<sp/>fetch<sp/>at<sp/>runtime),<sp/>then<sp/>we<sp/>recommend<sp/>running<sp/>the<sp/>following<sp/>commands<sp/>to<sp/>set<sp/>up<sp/>your<sp/>environment.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Set<sp/>the<sp/>environment<sp/>variable<sp/>for<sp/>OSTk<sp/>Data<sp/>location</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>OSTK_DATA_LOCAL_CACHE=/path/to/preferred/data/storage/dir</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=$OSTK_DATA_LOCAL_CACHE/data</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Clone<sp/>OSTk<sp/>data<sp/>repo<sp/>into<sp/>that<sp/>dir</highlight></codeline>
+<codeline><highlight class="normal">RUN<sp/>git<sp/>clone<sp/>--branch<sp/>v1<sp/>--single-branch<sp/>--depth=1<sp/>https://github.com/open-space-collective/open-space-toolkit-data.git<sp/>$OSTK_DATA_LOCAL_CACHE<sp/>&amp;&amp;<sp/>chmod<sp/>-R<sp/>g+w<sp/>$OSTK_DATA_LOCAL_CACHE</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>users<sp/>that<sp/>are<sp/>installing<sp/>OSTk<sp/>into<sp/>docker<sp/>images,<sp/>here<sp/>is<sp/>what<sp/>we<sp/>recommend<sp/>you<sp/>add<sp/>to<sp/>your<sp/>dockerfiles.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">ARG<sp/>OSTK_DATA_LOCAL_CACHE=&quot;/var/cache/open-space-toolkit-data&quot;</highlight></codeline>
+<codeline><highlight class="normal">ENV<sp/>OSTK_DATA_LOCAL_CACHE=&quot;${OSTK_DATA_LOCAL_CACHE}&quot;</highlight></codeline>
+<codeline><highlight class="normal">ENV<sp/>OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;${OSTK_DATA_LOCAL_CACHE}/data&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">RUN<sp/>git<sp/>clone<sp/>--branch<sp/>v1<sp/>--single-branch<sp/>--depth=1<sp/>https://github.com/open-space-collective/open-space-toolkit-data.git<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>&amp;&amp;<sp/>chmod<sp/>-R<sp/>g+w<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Add<sp/>the<sp/>line<sp/>below<sp/>if<sp/>the<sp/>container&apos;s<sp/>user<sp/>will<sp/>not<sp/>be<sp/>root</highlight></codeline>
+<codeline><highlight class="normal">RUN<sp/>chown<sp/>-R<sp/>${USER_UID}:${USER_GID}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>have<sp/>a<sp/>multi-stage<sp/>dockerfile,<sp/>then<sp/>you<sp/>can<sp/>easily<sp/>just<sp/>copy<sp/>the<sp/>ostk-data<sp/>repo<sp/>install<sp/>from<sp/>one<sp/>build<sp/>stage<sp/>(in<sp/>the<sp/>example<sp/>below<sp/>that&apos;s<sp/>`build-env`)<sp/>to<sp/>the<sp/>next,<sp/>so<sp/>that<sp/>you<sp/>don&apos;t<sp/>have<sp/>to<sp/>reinstall<sp/>it<sp/>on<sp/>every<sp/>build<sp/>stage.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>If<sp/>you<sp/>are<sp/>copying<sp/>to<sp/>an<sp/>image<sp/>where<sp/>the<sp/>user<sp/>is<sp/>currently<sp/>root</highlight></codeline>
+<codeline><highlight class="normal">COPY<sp/>--from=build-env<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Or<sp/>if<sp/>you<sp/>are<sp/>copying<sp/>to<sp/>an<sp/>image<sp/>where<sp/>the<sp/>user<sp/>is<sp/>not<sp/>currently<sp/>root</highlight></codeline>
+<codeline><highlight class="normal">COPY<sp/>--from=build-env<sp/>--chown=${USER_UID}:${USER_GID}<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>table<sp/>shows<sp/>the<sp/>availabe<sp/>data<sp/>source<sp/>settings<sp/>with<sp/>the<sp/>different<sp/>environment<sp/>variables<sp/>you<sp/>can<sp/>set:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Environment<sp/>Variable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/>Value<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>--------------------------------------------------------------------------------------<sp/>|<sp/>--------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_DATA_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data`<sp/>[Bulk<sp/>setting.<sp/>Overridden<sp/>by<sp/>specific<sp/>repository<sp/>settings<sp/>below.]<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`Automatic`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data/coordinate/frame/provider/iers`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`<sp/><sp/>|<sp/>`60`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`Automatic`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data/environment/ephemeris/spice`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`Automatic`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data/environment/gravitational/earth`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`<sp/>|<sp/>`60`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`Automatic`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data/environment/magnetic/earth`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`60`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`Automatic`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data/environment/atmospheric/earth`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`<sp/><sp/><sp/>|<sp/>`60`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_DATA_REMOTE_URL`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`./.open-space-toolkit/physics/data/`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`60`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Tutorials</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tutorials<sp/>are<sp/>available<sp/>here:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[C++](./tutorials/cpp)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Python](./tutorials/python)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Setup</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Development<sp/>Environment</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Using<sp/>[Docker](https://www.docker.com)<sp/>for<sp/>development<sp/>is<sp/>recommended,<sp/>to<sp/>simplify<sp/>the<sp/>installation<sp/>of<sp/>the<sp/>necessary<sp/>build<sp/>tools<sp/>and<sp/>dependencies.</highlight></codeline>
+<codeline><highlight class="normal">Instructions<sp/>on<sp/>how<sp/>to<sp/>install<sp/>Docker<sp/>are<sp/>available<sp/>[here](https://docs.docker.com/install/).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>start<sp/>the<sp/>development<sp/>environment:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>dev</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>will:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Build<sp/>the<sp/>`openspacecollective/open-space-toolkit-physics-development`<sp/>Docker<sp/>image.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Create<sp/>a<sp/>development<sp/>environment<sp/>container<sp/>with<sp/>local<sp/>source<sp/>files<sp/>and<sp/>helper<sp/>scripts<sp/>mounted.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Start<sp/>a<sp/>`bash`<sp/>shell<sp/>from<sp/>the<sp/>`./build`<sp/>working<sp/>directory.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>installing<sp/>Docker<sp/>is<sp/>not<sp/>an<sp/>option,<sp/>you<sp/>can<sp/>manually<sp/>install<sp/>the<sp/>development<sp/>tools<sp/>(GCC,<sp/>CMake)<sp/>and<sp/>all<sp/>required<sp/>dependencies,</highlight></codeline>
+<codeline><highlight class="normal">by<sp/>following<sp/>a<sp/>procedure<sp/>similar<sp/>to<sp/>the<sp/>one<sp/>described<sp/>in<sp/>the<sp/>[Development<sp/>Dockerfile](./docker/development/Dockerfile).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">From<sp/>the<sp/>`./build`<sp/>directory:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*Tip:<sp/>The<sp/>`ostk-build`<sp/>command<sp/>simplifies<sp/>building<sp/>from<sp/>within<sp/>the<sp/>development<sp/>environment.*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Test</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>start<sp/>a<sp/>container<sp/>to<sp/>build<sp/>and<sp/>run<sp/>the<sp/>tests:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>test</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Or<sp/>to<sp/>run<sp/>them<sp/>manually:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">./bin/open-space-toolkit-physics.test</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*Tip:<sp/>The<sp/>`ostk-test`<sp/>command<sp/>simplifies<sp/>running<sp/>tests<sp/>from<sp/>within<sp/>the<sp/>development<sp/>environment.*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Version<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>License<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Link<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/>|<sp/>--------------<sp/>|<sp/>-------------------------------------------------------<sp/>|<sp/>---------------------------------------------------------------------------------------------------------------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Pybind11<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`2.10.1`<sp/><sp/><sp/><sp/><sp/>|<sp/>BSD-3-Clause<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[github.com/pybind/pybind11](https://github.com/pybind/pybind11)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>{fmt}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`5.2.0`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>BSD-2-Clause<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[github.com/fmtlib/fmt](https://github.com/fmtlib/fmt)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ordered-map<sp/><sp/><sp/>|<sp/>`0.6.0`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>MIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[github.com/Tessil/ordered-map](https://github.com/Tessil/ordered-map)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Eigen<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`3.3.7`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>MPL2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>IAU<sp/>SOFA<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`2018-01-30`<sp/>|<sp/>[SOFA<sp/>Software<sp/>License](http://www.iausofa.org/tandc.html)<sp/>|<sp/>[www.iausofa.org](http://www.iausofa.org)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>SPICE<sp/>Toolkit<sp/>|<sp/>`N0067`<sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[NAIF](https://naif.jpl.nasa.gov/naif/rules.html)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[naif.jpl.nasa.gov/naif/toolkit.html](https://naif.jpl.nasa.gov/naif/toolkit.html)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>GeographicLib<sp/>|<sp/>`1.52`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>MIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[geographiclib.sourceforge.io](https://geographiclib.sourceforge.io)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Core<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`main`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Apache<sp/>License<sp/>2.0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[github.com/open-space-collective/open-space-toolkit-core](https://github.com/open-space-collective/open-space-toolkit-core)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>I/O<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>`main`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Apache<sp/>License<sp/>2.0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[github.com/open-space-collective/open-space-toolkit-io](https://github.com/open-space-collective/open-space-toolkit-io)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>Mathematics<sp/><sp/><sp/>|<sp/>`main`<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Apache<sp/>License<sp/>2.0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>[github.com/open-space-collective/open-space-toolkit-mathematics](https://github.com/open-space-collective/open-space-toolkit-mathematics)<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contribution</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Contributions<sp/>are<sp/>more<sp/>than<sp/>welcome!</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>read<sp/>our<sp/>[contributing<sp/>guide](CONTRIBUTING.md)<sp/>to<sp/>learn<sp/>about<sp/>our<sp/>development<sp/>process,<sp/>how<sp/>to<sp/>propose<sp/>fixes<sp/>and<sp/>improvements,<sp/>and<sp/>how<sp/>to<sp/>build<sp/>and<sp/>test<sp/>the<sp/>code.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Special<sp/>Thanks</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![Loft<sp/>Orbital](https://github.com/open-space-collective/open-space-toolkit/blob/main/assets/thanks/loft_orbital.png)](https://www.loftorbital.com/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>License</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Apache<sp/>License<sp/>2.0</highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

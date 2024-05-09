@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::object::Celestial::ModelBase</compoundname>
+    <includes refid="_celestial_8hpp" local="no">Celestial.hpp</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a41a6807c63b7b5dcd7486694f7aad4b9" prot="public" static="yes" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
+        <definition>Derived ostk::physics::environment::object::Celestial::ModelBase::GravitationalParameter</definition>
+        <argsstring></argsstring>
+        <name>GravitationalParameter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="87" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1afeb2be19b177523828b98e46d037c232" prot="public" static="yes" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::environment::object::Celestial::ModelBase::EquatorialRadius</definition>
+        <argsstring></argsstring>
+        <name>EquatorialRadius</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="88" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a2e56a722eea22b96fee861bb4bb3a687" prot="public" static="yes" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::object::Celestial::ModelBase::Flattening</definition>
+        <argsstring></argsstring>
+        <name>Flattening</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="89" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1ac5922933409fe4a700ed856dc20717ed" prot="public" static="yes" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::object::Celestial::ModelBase::C20</definition>
+        <argsstring></argsstring>
+        <name>C20</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="90" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1ac90e191a445b7ea34d24b7bacd435108" prot="public" static="yes" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::object::Celestial::ModelBase::C40</definition>
+        <argsstring></argsstring>
+        <name>C40</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="91" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a486f7bc3ce07317e45e203ce95099b80" prot="public" static="yes" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::object::Celestial::ModelBase::J2</definition>
+        <argsstring></argsstring>
+        <name>J2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="92" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a4c1cb71f053e8d0c516412b62dd6ceb8" prot="public" static="yes" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::object::Celestial::ModelBase::J4</definition>
+        <argsstring></argsstring>
+        <name>J4</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="93" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>Real</label>
+      </node>
+      <node id="5">
+        <label>ostk::physics::unit::Length</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_length"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::unit::Derived</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_derived"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::object::Celestial::ModelBase</label>
+        <link refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>GravitationalParameter</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>Flattening</edgelabel>
+          <edgelabel>J2</edgelabel>
+          <edgelabel>J4</edgelabel>
+          <edgelabel>C40</edgelabel>
+          <edgelabel>C20</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>EquatorialRadius</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="86" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="85" bodyend="94"/>
+    <listofallmembers>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1ac5922933409fe4a700ed856dc20717ed" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>C20</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1ac90e191a445b7ea34d24b7bacd435108" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>C40</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1afeb2be19b177523828b98e46d037c232" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>EquatorialRadius</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a2e56a722eea22b96fee861bb4bb3a687" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>Flattening</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a41a6807c63b7b5dcd7486694f7aad4b9" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>GravitationalParameter</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a486f7bc3ce07317e45e203ce95099b80" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>J2</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1object_1_1_celestial_1_1_model_base_1a4c1cb71f053e8d0c516412b62dd6ceb8" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial::ModelBase</scope><name>J4</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

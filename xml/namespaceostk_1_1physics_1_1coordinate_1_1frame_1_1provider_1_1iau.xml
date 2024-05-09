@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame::provider::iau</compoundname>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Theory</name>
+        <enumvalue id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cfa60f3efd7d208a933f2b423155cd9ebb1" prot="public">
+          <name>IAU_2000A</name>
+          <briefdescription>
+<para>IAU 2000A theory. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cfadcf2f11e50df1fa8ddcd825264902a0b" prot="public">
+          <name>IAU_2000B</name>
+          <briefdescription>
+<para>IAU 2000B theory. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cfac0c7a91b74ed3a57a62b3df44c714ec5" prot="public">
+          <name>IAU_2006</name>
+          <briefdescription>
+<para>IAU 2006 theory. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>IAU theory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                        The IAU 2000A precession-nutation theory relates the International Celestial Reference
+                        Frame to the International Terrestrial Reference Frame and has been effective since
+                        January 2003. In 2006, the IAU moved to adopt a more dynamically consistent precession
+                        model to complement the IAU 2000A nutation theory.
+</verbatim></para>
+<para><ulink url="https://www.researchgate.net/publication/289753602_The_IAU_2000A_and_IAU_2006_precession-nutation_theories_and_their_implementation">https://www.researchgate.net/publication/289753602_The_IAU_2000A_and_IAU_2006_precession-nutation_theories_and_their_implementation</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp" bodystart="33" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1afdcf68019cd82f64c3b8661cfb2c15f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::coordinate::frame::provider::iau::StringFromTheory</definition>
+        <argsstring>(const Theory &amp;aTheory)</argsstring>
+        <name>StringFromTheory</name>
+        <param>
+          <type>const <ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">Theory</ref> &amp;</type>
+          <declname>aTheory</declname>
+        </param>
+        <briefdescription>
+<para>Parse a theory representation to its corresponding string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">String<sp/>string<sp/>=<sp/>StringFromTheory(Theory::IAU_2000A)<sp/>;<sp/>//<sp/>&quot;IAU<sp/>2000A&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aTheory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.cpp" line="20" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.cpp" bodystart="20" bodyend="39" declfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp" declline="51" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a2528b1f9bf80989e64fbc353d5cca8b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">Theory</ref></type>
+        <definition>Theory ostk::physics::coordinate::frame::provider::iau::TheoryFromString</definition>
+        <argsstring>(const String &amp;aString)</argsstring>
+        <name>TheoryFromString</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aString</declname>
+        </param>
+        <briefdescription>
+<para>Parse a string representation to its corresponding theory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Theory<sp/>theory<sp/>=<sp/>TheoryFromString(&quot;IAU<sp/>2000A&quot;)<sp/>;<sp/>//<sp/>Theory::IAU_2000A</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Theory </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.cpp" line="41" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.cpp" bodystart="41" bodyend="57" declfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp" declline="62" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp" line="19" column="1"/>
+  </compounddef>
+</doxygen>

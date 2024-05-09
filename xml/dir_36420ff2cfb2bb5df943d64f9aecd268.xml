@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_36420ff2cfb2bb5df943d64f9aecd268" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Data</compoundname>
+    <innerdir refid="dir_09dcb91c74e4f145d2300204030e6b5d">src/OpenSpaceToolkit/Physics/Data/Provider</innerdir>
+    <innerfile refid="_direction_8cpp">Direction.cpp</innerfile>
+    <innerfile refid="_data_2_manager_8cpp">Manager.cpp</innerfile>
+    <innerfile refid="_manifest_8cpp">Manifest.cpp</innerfile>
+    <innerfile refid="_scalar_8cpp">Scalar.cpp</innerfile>
+    <innerfile refid="_data_2_utility_8cpp">Utility.cpp</innerfile>
+    <innerfile refid="_vector_8cpp">Vector.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Data/"/>
+  </compounddef>
+</doxygen>

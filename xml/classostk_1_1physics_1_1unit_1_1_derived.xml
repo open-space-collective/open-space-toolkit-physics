@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1unit_1_1_derived" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::unit::Derived</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1unit_1_1_unit" prot="public" virt="non-virtual">ostk::physics::unit::Unit</basecompoundref>
+    <includes refid="_derived_8hpp" local="no">Derived.hpp</includes>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" prot="public">ostk::physics::unit::Derived::Order</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" prot="public">ostk::physics::unit::Derived::Unit</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1a0a769472e29501aacf9b0ff164889cdf" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref></type>
+        <definition>Derived::Unit ostk::physics::unit::Derived::unit_</definition>
+        <argsstring></argsstring>
+        <name>unit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="221" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1ade153ca028022bc0669d39a554752d7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::unit::Derived::Derived</definition>
+        <argsstring>(const Real &amp;aValue, const Derived::Unit &amp;aUnit)</argsstring>
+        <name>Derived</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aValue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting></programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="194" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="553" bodyend="557"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a9f6a512e1f97f4910876af64fa0bea03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> *</type>
+        <definition>Derived * ostk::physics::unit::Derived::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="196" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="559" bodyend="562"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1accabc0c2a4a8e86dc8452ccc6ace6684" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::operator==</definition>
+        <argsstring>(const Derived &amp;aDerivedUnit) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <declname>aDerivedUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="198" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="564" bodyend="572"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1ade2796cfeb32c5f89d2c247315f8ce6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::operator!=</definition>
+        <argsstring>(const Derived &amp;aDerivedUnit) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <declname>aDerivedUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="200" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="574" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a3d569e23bed90199f71aa36dee95feac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::Derived::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="204" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="591" bodyend="594"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a45cf40c80c18ee35fa485442a622ae7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref></type>
+        <definition>Derived::Unit ostk::physics::unit::Derived::getUnit</definition>
+        <argsstring>() const</argsstring>
+        <name>getUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="206" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="596" bodyend="599"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1aacd800679032faedc19efbc30688380d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::unit::Derived::in</definition>
+        <argsstring>(const Derived::Unit &amp;aUnit) const</argsstring>
+        <name>in</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="208" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="601" bodyend="621"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a1907d0e8f647d160dfb7c1c3b436189b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::Derived::toString</definition>
+        <argsstring>(const Integer &amp;aPrecision=Integer::Undefined()) const override</argsstring>
+        <name>toString</name>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46">toString</reimplements>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aPrecision</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="210" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="623" bodyend="631"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1unit_1_1_derived_1a033deb6664987f4b2f86f5abeb18da81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Derived &amp;aDerivedUnit)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <declname>aDerivedUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="202" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="579" bodyend="589"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1aa925be07eea75b35f5dfe2c2c79fe285" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
+        <definition>Derived ostk::physics::unit::Derived::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="212" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="633" bodyend="636"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a9ff458815691940b0c3c0b9ab79782ef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
+        <definition>static Derived ostk::physics::unit::Derived::Parse</definition>
+        <argsstring>(const String &amp;aString)</argsstring>
+        <name>Parse</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="214" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1acc5c5a598e57d3f5b07e660ff0a65feb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::Derived::StringFromUnit</definition>
+        <argsstring>(const Derived::Unit &amp;aUnit)</argsstring>
+        <name>StringFromUnit</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="216" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="643" bodyend="646"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a8c41484e6965af069f1bcc822adeab7d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::Derived::SymbolFromUnit</definition>
+        <argsstring>(const Derived::Unit &amp;aUnit)</argsstring>
+        <name>SymbolFromUnit</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="218" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="648" bodyend="651"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a0699f35653624dddb03d115dde0e2c79" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::unit::Derived::SIRatio</definition>
+        <argsstring>(const Derived::Unit &amp;aUnit)</argsstring>
+        <name>SIRatio</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="223" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="653" bodyend="690"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> unit. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/SI_derived_unit">https://en.wikipedia.org/wiki/SI_derived_unit</ulink> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::unit::Derived</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_derived"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::unit::Derived</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_derived"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="33" bodyend="224"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>accessValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>accessValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a9f6a512e1f97f4910876af64fa0bea03" prot="public" virt="virtual"><scope>ostk::physics::unit::Derived</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1ade153ca028022bc0669d39a554752d7b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>Derived</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a45cf40c80c18ee35fa485442a622ae7e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>getUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1aacd800679032faedc19efbc30688380d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>in</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a3d569e23bed90199f71aa36dee95feac" prot="public" virt="virtual"><scope>ostk::physics::unit::Derived</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>isZero</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1ade2796cfeb32c5f89d2c247315f8ce6a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Derived</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a033deb6664987f4b2f86f5abeb18da81" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1accabc0c2a4a8e86dc8452ccc6ace6684" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Derived</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a9ff458815691940b0c3c0b9ab79782ef" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>Parse</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" prot="protected" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>ParseString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>setValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a0699f35653624dddb03d115dde0e2c79" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>SIRatio</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1acc5c5a598e57d3f5b07e660ff0a65feb" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>StringFromUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a8c41484e6965af069f1bcc822adeab7d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>SymbolFromUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a1907d0e8f647d160dfb7c1c3b436189b" prot="public" virt="virtual"><scope>ostk::physics::unit::Derived</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>Type</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1aa925be07eea75b35f5dfe2c2c79fe285" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>Unit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1a0a769472e29501aacf9b0ff164889cdf" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>unit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" prot="public" virt="pure-virtual"><scope>ostk::physics::unit::Derived</scope><name>~Unit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

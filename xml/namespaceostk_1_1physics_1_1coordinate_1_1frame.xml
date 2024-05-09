@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager" prot="public">ostk::physics::coordinate::frame::Manager</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" prot="public">ostk::physics::coordinate::frame::Provider</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider">ostk::physics::coordinate::frame::provider</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1utilities">ostk::physics::coordinate::frame::utilities</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="23" column="1"/>
+  </compounddef>
+</doxygen>

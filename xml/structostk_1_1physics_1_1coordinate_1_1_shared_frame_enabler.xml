@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1coordinate_1_1_shared_frame_enabler" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::SharedFrameEnabler</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1coordinate_1_1_frame" prot="public" virt="non-virtual">ostk::physics::coordinate::Frame</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structostk_1_1physics_1_1coordinate_1_1_shared_frame_enabler_1aef78f5a95953a6a9428c138a54345681" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::SharedFrameEnabler::SharedFrameEnabler</definition>
+        <argsstring>(const String &amp;aName, bool isQuasiInertial, const Shared&lt; const Frame &gt; &amp;aParentFrame, const Shared&lt; const Provider &gt; &amp;aProvider)</argsstring>
+        <name>SharedFrameEnabler</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isQuasiInertial</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aParentFrame</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> &gt; &amp;</type>
+          <declname>aProvider</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" line="31" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="31" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::Frame</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1_frame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; Frame &gt;</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::SharedFrameEnabler</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::Frame</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1_frame"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; Frame &gt;</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::SharedFrameEnabler</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" line="30" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="29" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a528c7a0a4d3865e7ec8ed6b9206db048" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>accessAncestor</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a78f819f7ff52455ee5d777e7e5f7a628" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>accessParent</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aebe43abfbc695e4525a6ce555efb8e1e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>accessProvider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a62a327c79a63c1e37e0c03e898f6a659" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>CIRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a8a5377ae80e105e25fcf02f962d8a7b1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>Construct</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aef50269b905c817822b4a3c408254f6d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>Destruct</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1addab52f706b90aa77a2216d8ee70e4b9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>Exists</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a541f9a11d5974f8cd2a7febfc23ff6d5" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>Frame</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a2e9b0288ca637decc0044002d37228b7" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>Frame</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aaace842508e32abcdd4f72b6a49a585c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>GCRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a5b040d9c46d1d703ac05fdc9ecec7d65" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>getAxesIn</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a662afbc043e07289ce2c09089be89c68" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>getName</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a122c106fc566efee01ec59166e6e8155" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>getOriginIn</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1ac3850c70b64b4c52bb99c6af4a5999f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>getTransformTo</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a518306611b6408eab15601d4fd059e16" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>getVelocityIn</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a0a7a8cd8c6d94ba4c84b12d24fb88716" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>hasParent</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a07dde81d8b842123c82e5795898a0e67" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aa60fe227b08abe78f46ea596b344093d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>isQuasiInertial</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a31b8e721d6893ef80c3eea7eca9cda87" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>ITRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a328ddfc4e3eccdef0c265c10daa80f05" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>J2000</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a1c4f603f202def9b3bc633bb79319403" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>MOD</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a6afa45530718b2a5ffc89e1ba25748ff" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a31a0447363f92f28e41eed7998d68e21" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a92ff07865288bb1e1850dde4c2e921ec" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>operator==</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1_shared_frame_enabler_1aef78f5a95953a6a9428c138a54345681" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>SharedFrameEnabler</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a907ea2e7bdc77591ddf045cf53c2fdd7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>TEME</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1ad744b398442309c7e582c86c7da57d09" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>TEMEOfEpoch</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a93d0969a86279f30312532b3ab95c682" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>TIRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1af0ec32b49ae0535fbccb9694679900cd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>TOD</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1afd6b8ee942800a471732b418256e8232" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1af2b41128e2557144a2e6846b4b786df0" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>WithName</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a5016cdac1bee789fa36df740cb548d10" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::SharedFrameEnabler</scope><name>~Frame</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

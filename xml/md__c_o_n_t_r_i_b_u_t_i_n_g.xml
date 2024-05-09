@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__c_o_n_t_r_i_b_u_t_i_n_g" kind="page">
+    <compoundname>md_CONTRIBUTING</compoundname>
+    <title>Contributing</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>For the contributing guide, please consult the <ref refid="_c_o_n_t_r_i_b_u_t_i_n_g_8md" kindref="compound">CONTRIBUTING.md</ref> in the <ulink url="https://github.com/open-space-collective/open-space-toolkit">open-space-toolkit</ulink> base repo <ulink url="https://github.com/open-space-collective/open-space-toolkit/blob/main/CONTRIBUTING.md">here</ulink>. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

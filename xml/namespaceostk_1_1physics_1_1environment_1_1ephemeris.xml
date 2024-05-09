@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1ephemeris" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::ephemeris</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical" prot="public">ostk::physics::environment::ephemeris::Analytical</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" prot="public">ostk::physics::environment::ephemeris::SPICE</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice">ostk::physics::environment::ephemeris::spice</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp" line="19" column="1"/>
+  </compounddef>
+</doxygen>

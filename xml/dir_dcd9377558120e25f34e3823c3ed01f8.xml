@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_dcd9377558120e25f34e3823c3ed01f8" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU</compoundname>
+    <innerfile refid="_theory_8hpp">Theory.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/"/>
+  </compounddef>
+</doxygen>

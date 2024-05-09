@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1data_1_1utilities" kind="namespace" language="C++">
+    <compoundname>ostk::physics::data::utilities</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1_1utilities_1a55cdcb45899299775b23464df3963fb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
+        <definition>Instant ostk::physics::data::utilities::getFileModifiedInstant</definition>
+        <argsstring>(const File &amp;aFile)</argsstring>
+        <name>getFileModifiedInstant</name>
+        <param>
+          <type>const File &amp;</type>
+          <declname>aFile</declname>
+        </param>
+        <briefdescription>
+<para>Get the instant at which a file was last modified. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" line="22" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" bodystart="22" bodyend="57" declfile="include/OpenSpaceToolkit/Physics/Data/Utility.hpp" declline="25" declcolumn="9"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Utility.hpp" line="17" column="1"/>
+  </compounddef>
+</doxygen>

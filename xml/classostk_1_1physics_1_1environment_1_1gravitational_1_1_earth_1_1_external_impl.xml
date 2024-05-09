@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::gravitational::Earth::ExternalImpl</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ostk::physics::environment::gravitational::Earth::Impl</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a813e46434863a15d8aa331992b8db63a" prot="private" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::environment::gravitational::Earth::ExternalImpl::gravityModelDegree_</definition>
+        <argsstring></argsstring>
+        <name>gravityModelDegree_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="200" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a372b20e233a679ac54ff5ca883d77f64" prot="private" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::environment::gravitational::Earth::ExternalImpl::gravityModelOrder_</definition>
+        <argsstring></argsstring>
+        <name>gravityModelOrder_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="201" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a71a858845cb89f520e8021af1a96a470" prot="private" static="no" mutable="no">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::gravitational::Earth::ExternalImpl::dataDirectory_</definition>
+        <argsstring></argsstring>
+        <name>dataDirectory_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="202" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1afaa293479557c2168dce391f68b7c812" prot="private" static="no" mutable="no">
+        <type>Unique&lt; GravityModel &gt;</type>
+        <definition>Unique&lt;GravityModel&gt; ostk::physics::environment::gravitational::Earth::ExternalImpl::gravityModelUPtr_</definition>
+        <argsstring></argsstring>
+        <name>gravityModelUPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="203" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a0c181b1f5f52923ab0b484e29e62c993" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::gravitational::Earth::ExternalImpl::ExternalImpl</definition>
+        <argsstring>(const Earth::Type &amp;aType, const Directory &amp;aDataDirectory, const Integer &amp;aGravityModelDegree, const Integer &amp;aGravityModelOrder)</argsstring>
+        <name>ExternalImpl</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref> &amp;</type>
+          <declname>aType</declname>
+        </param>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDataDirectory</declname>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="178" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="213" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1af80d82e10ed2c8d51571f320eae962f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::gravitational::Earth::ExternalImpl::ExternalImpl</definition>
+        <argsstring>(const ExternalImpl &amp;anExternalImpl)</argsstring>
+        <name>ExternalImpl</name>
+        <param>
+          <type>const ExternalImpl &amp;</type>
+          <declname>anExternalImpl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="185" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="231" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a9fac0d042454cd7c829c65040ba1caae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::gravitational::Earth::ExternalImpl::~ExternalImpl</definition>
+        <argsstring>()</argsstring>
+        <name>~ExternalImpl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="187" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="245" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1aaa9869e6844c4bed646b036f52c51fd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>ExternalImpl *</type>
+        <definition>Earth::ExternalImpl * ostk::physics::environment::gravitational::Earth::ExternalImpl::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="189" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="247" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1ad6ebdcf2b06b8ff248726089d96c6117" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::environment::gravitational::Earth::ExternalImpl::getDegree</definition>
+        <argsstring>() const override</argsstring>
+        <name>getDegree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="191" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="252" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a0bdb8afe075c9bb3f4eb599723ceab7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::environment::gravitational::Earth::ExternalImpl::getOrder</definition>
+        <argsstring>() const override</argsstring>
+        <name>getOrder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="193" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="257" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1af5687dfb7418353e3360a7c93e66348a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::gravitational::Earth::ExternalImpl::getDataDirectory</definition>
+        <argsstring>() const</argsstring>
+        <name>getDataDirectory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="195" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="262" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1afdf5513cabfaa78a7fb9904002634236" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::environment::gravitational::Earth::ExternalImpl::getFieldValueAt</definition>
+        <argsstring>(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const override</argsstring>
+        <name>getFieldValueAt</name>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="197" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="267" bodyend="278"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a4229e73d5ef1ec295dfb885e06e96cbd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Unique&lt; GravityModel &gt;</type>
+        <definition>Unique&lt; GravityModel &gt; ostk::physics::environment::gravitational::Earth::ExternalImpl::GravityModelFromType</definition>
+        <argsstring>(const Earth::Type &amp;aType, const Directory &amp;aDataDirectory, const Integer &amp;aGravityModelDegree, const Integer &amp;aGravityModelOrder)</argsstring>
+        <name>GravityModelFromType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref> &amp;</type>
+          <declname>aType</declname>
+        </param>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDataDirectory</declname>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="205" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="280" bodyend="399"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::environment::gravitational::Earth::ExternalImpl</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::gravitational::Earth::Impl</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::environment::gravitational::Earth::ExternalImpl</label>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::gravitational::Earth::Impl</label>
+      </node>
+    </collaborationgraph>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="176" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="175" bodyend="211"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1aaa9869e6844c4bed646b036f52c51fd8" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a71a858845cb89f520e8021af1a96a470" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>dataDirectory_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a0c181b1f5f52923ab0b484e29e62c993" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>ExternalImpl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1af80d82e10ed2c8d51571f320eae962f4" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>ExternalImpl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1af5687dfb7418353e3360a7c93e66348a" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>getDataDirectory</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1ad6ebdcf2b06b8ff248726089d96c6117" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>getDegree</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1afdf5513cabfaa78a7fb9904002634236" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>getFieldValueAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a0bdb8afe075c9bb3f4eb599723ceab7e" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>getOrder</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_impl_1a813cdcd5f518ed4d1d41695534857297" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a813e46434863a15d8aa331992b8db63a" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>gravityModelDegree_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a4229e73d5ef1ec295dfb885e06e96cbd" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>GravityModelFromType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a372b20e233a679ac54ff5ca883d77f64" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>gravityModelOrder_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1afaa293479557c2168dce391f68b7c812" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>gravityModelUPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_impl_1a10f5d174bda04fd9ce1f85dd2f2dffbb" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_external_impl_1a9fac0d042454cd7c829c65040ba1caae" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>~ExternalImpl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_impl_1a88cb2e7997b7202dc0716c6a14fb6ce9" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Earth::ExternalImpl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

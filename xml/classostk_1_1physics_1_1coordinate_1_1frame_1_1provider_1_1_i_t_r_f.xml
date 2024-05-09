@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::ITRF</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" prot="public" virt="non-virtual">ostk::physics::coordinate::frame::Provider</basecompoundref>
+    <includes refid="_i_t_r_f_8hpp" local="no">ITRF.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1a099f01337e8c7ce2d91b8838d085bd13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::ITRF::ITRF</definition>
+        <argsstring>()</argsstring>
+        <name>ITRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1acf07bd82abf37df4ae4581d7594b1d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::ITRF::~ITRF</definition>
+        <argsstring>() override</argsstring>
+        <name>~ITRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" line="34" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1acb1c3f7659934152da9e42c4473445ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f" kindref="compound">ITRF</ref> *</type>
+        <definition>ITRF * ostk::physics::coordinate::frame::provider::ITRF::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" line="36" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1afa8933f23b07290d80acadf9540f7921" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::ITRF::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" line="38" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1a125054ae8a4a00733e21c67dbfc715b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::frame::provider::ITRF::getTransformAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const override</argsstring>
+        <name>getTransformAt</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e">getTransformAt</reimplements>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" line="40" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp" bodystart="48" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>International Terrestrial Reference System (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f" kindref="compound">ITRF</ref>) provider. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/International_Terrestrial_Reference_System">https://en.wikipedia.org/wiki/International_Terrestrial_Reference_System</ulink> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::ITRF</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::ITRF</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp" bodystart="29" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1acb1c3f7659934152da9e42c4473445ef" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1a125054ae8a4a00733e21c67dbfc715b3" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>getTransformAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1afa8933f23b07290d80acadf9540f7921" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1a099f01337e8c7ce2d91b8838d085bd13" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>ITRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>Provider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1acf07bd82abf37df4ae4581d7594b1d0f" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>~ITRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::ITRF</scope><name>~Provider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

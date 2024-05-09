@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::ephemeris::spice::Manager</compoundname>
+    <includes refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp" local="no">Manager.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1afb04711c0f9387056a7d566aa3a2dd79" prot="private" static="no" mutable="no">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::ephemeris::spice::Manager::localRepository_</definition>
+        <argsstring></argsstring>
+        <name>localRepository_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="126" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a4f0f1f03e1274acd4e93e30e97b4be92" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex ostk::physics::environment::ephemeris::spice::Manager::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="128" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1afd21f51e4956d1593c0e46c21f93eac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::ephemeris::spice::Manager::Manager</definition>
+        <argsstring>(const Manager &amp;aSpiceManager)=delete</argsstring>
+        <name>Manager</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+          <declname>aSpiceManager</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="66" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1af754bb82a9a83b08ff6460b5b283378b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+        <definition>Manager&amp; ostk::physics::environment::ephemeris::spice::Manager::operator=</definition>
+        <argsstring>(const Manager &amp;aSpiceManager)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+          <declname>aSpiceManager</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="70" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a38d855c72dfd51a7288ce8f0a26f5a00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::ephemeris::spice::Manager::getLocalRepository</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocalRepository</name>
+        <briefdescription>
+<para>Get local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Local repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="82" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="47" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a58baf7448d1988698d56c09c54de595c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::ephemeris::spice::Manager::setLocalRepository</definition>
+        <argsstring>(const Directory &amp;aDirectory)</argsstring>
+        <name>setLocalRepository</name>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDirectory</declname>
+        </param>
+        <briefdescription>
+<para>Set local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDirectory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A repository directory </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="88" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="54" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a92233c4750cb5414bf60874b08436ba8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::ephemeris::spice::Manager::fetchKernel</definition>
+        <argsstring>(const Kernel &amp;aKernel) const</argsstring>
+        <name>fetchKernel</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> &amp;</type>
+          <declname>aKernel</declname>
+        </param>
+        <briefdescription>
+<para>Fetch kernel from remote. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aKernel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A kernel </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="84" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> &gt;</type>
+        <definition>Array&lt; Kernel &gt; ostk::physics::environment::ephemeris::spice::Manager::fetchMatchingKernels</definition>
+        <argsstring>(const String &amp;aRegexString) const</argsstring>
+        <name>fetchMatchingKernels</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aRegexString</declname>
+        </param>
+        <briefdescription>
+<para>Fetch kernels matching regular expression. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aRegexString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A regular expression string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An array of kernels </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="109" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="143" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref></type>
+        <definition>Kernel ostk::physics::environment::ephemeris::spice::Manager::findKernel</definition>
+        <argsstring>(const String &amp;aRegexString) const</argsstring>
+        <name>findKernel</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aRegexString</declname>
+        </param>
+        <briefdescription>
+<para>Find kernels matching regular expression. Search locally first, then remotely. Always return the first found. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aRegexString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A regular expression </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An array of kernels </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="117" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="197" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::ephemeris::spice::Manager::refresh</definition>
+        <argsstring>()</argsstring>
+        <name>refresh</name>
+        <briefdescription>
+<para>Refresh manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                This will re-fetch a new index. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="123" column="10"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+        <definition>Manager &amp; ostk::physics::environment::ephemeris::spice::Manager::Get</definition>
+        <argsstring>()</argsstring>
+        <name>Get</name>
+        <briefdescription>
+<para>Get manager singleton. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to manager </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="76" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a97f9b88e6e8f3574a8b34e83a0cb2061" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::ephemeris::spice::Manager::DefaultLocalRepository</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultLocalRepository</name>
+        <briefdescription>
+<para>Get default local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY
+</verbatim></para>
+<para><simplesect kind="return"><para>Default local repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="96" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="66" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a1afababb0380dac14ae55ea5ad4f295e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::ephemeris::spice::Manager::Manager</definition>
+        <argsstring>()</argsstring>
+        <name>Manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="130" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="234" bodyend="237"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> Toolkit kernel manager. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        Fetches and manages necessary SPICE kernels.
+
+                        The following environment variables can be defined:
+
+                        - &quot;OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY&quot; will override
+                        &quot;DefaultLocalRepository&quot; 
+</verbatim> </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="62" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="61" bodyend="131"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a97f9b88e6e8f3574a8b34e83a0cb2061" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>DefaultLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a92233c4750cb5414bf60874b08436ba8" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>fetchKernel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>fetchMatchingKernels</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>findKernel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>Get</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a38d855c72dfd51a7288ce8f0a26f5a00" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>getLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1afb04711c0f9387056a7d566aa3a2dd79" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>localRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1afd21f51e4956d1593c0e46c21f93eac7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a1afababb0380dac14ae55ea5ad4f295e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a4f0f1f03e1274acd4e93e30e97b4be92" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>mutex_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1af754bb82a9a83b08ff6460b5b283378b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>refresh</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a58baf7448d1988698d56c09c54de595c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>setLocalRepository</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

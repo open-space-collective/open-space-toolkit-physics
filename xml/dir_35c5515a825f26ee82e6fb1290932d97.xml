@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_35c5515a825f26ee82e6fb1290932d97" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Environment/Magnetic</compoundname>
+    <innerdir refid="dir_5154fb4e642ceee6c04680dd1424fb18">src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth</innerdir>
+    <innerfile refid="_dipole_8cpp">Dipole.cpp</innerfile>
+    <innerfile refid="_magnetic_2_earth_8cpp">Earth.cpp</innerfile>
+    <innerfile refid="_magnetic_2_model_8cpp">Model.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/"/>
+  </compounddef>
+</doxygen>

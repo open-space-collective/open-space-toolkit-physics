@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_949af57ef66b1ac2fa8b99078272a067" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Coordinate</compoundname>
+    <innerdir refid="dir_cf52c95dcf6c4f1546a9c4ffe5ca19c5">include/OpenSpaceToolkit/Physics/Coordinate/Frame</innerdir>
+    <innerdir refid="dir_1771e4c5a33965da4ce9c57e41b5bf93">include/OpenSpaceToolkit/Physics/Coordinate/Spherical</innerdir>
+    <innerfile refid="_axes_8hpp">Axes.hpp</innerfile>
+    <innerfile refid="_frame_8hpp">Frame.hpp</innerfile>
+    <innerfile refid="_position_8hpp">Position.hpp</innerfile>
+    <innerfile refid="_transform_8hpp">Transform.hpp</innerfile>
+    <innerfile refid="_velocity_8hpp">Velocity.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/"/>
+  </compounddef>
+</doxygen>

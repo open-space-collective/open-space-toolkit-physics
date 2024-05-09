@@ -1,0 +1,798 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::Manager</compoundname>
+    <includes refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8hpp" local="no">Manager.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Mode</name>
+        <enumvalue id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1cae1ba155a9f2e8c3be94020eef32a0301" prot="public">
+          <name>Manual</name>
+          <briefdescription>
+<para>Manually load and unload bulletins. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1ca086247a9b57fde6eefee2a0c4752242d" prot="public">
+          <name>Automatic</name>
+          <briefdescription>
+<para>Automatically fetch, load and unload bulletins (from remote repositories) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="67" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="66" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a588bc77402cadb28c8c1c1e98856c648" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" kindref="member">Manager::Mode</ref></type>
+        <definition>Manager::Mode ostk::physics::coordinate::frame::provider::iers::Manager::mode_</definition>
+        <argsstring></argsstring>
+        <name>mode_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="211" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac74aacc77b2fb45c0cc9fe8280058d85" prot="private" static="no" mutable="no">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::coordinate::frame::provider::iers::Manager::localRepository_</definition>
+        <argsstring></argsstring>
+        <name>localRepository_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="213" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aaeecaa8caa16c0cecfe29ada647960aa" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::coordinate::frame::provider::iers::Manager::localRepositoryLockTimeout_</definition>
+        <argsstring></argsstring>
+        <name>localRepositoryLockTimeout_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="214" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3456bc0b130cca1b88ae741cc5d731cf" prot="private" static="no" mutable="yes">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref></type>
+        <definition>BulletinA ostk::physics::coordinate::frame::provider::iers::Manager::bulletinA_</definition>
+        <argsstring></argsstring>
+        <name>bulletinA_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="216" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a972172eb4b3e0c4a907e7a451bf8f0ad" prot="private" static="no" mutable="yes">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref></type>
+        <definition>Finals2000A ostk::physics::coordinate::frame::provider::iers::Manager::finals2000A_</definition>
+        <argsstring></argsstring>
+        <name>finals2000A_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="217" column="25" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a73ae2dbae6f74725cf79a7b2e38ca184" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex ostk::physics::coordinate::frame::provider::iers::Manager::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="219" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1abfb7c08fc00007765ea162a214d217ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" kindref="member">Manager::Mode</ref></type>
+        <definition>Manager::Mode ostk::physics::coordinate::frame::provider::iers::Manager::getMode</definition>
+        <argsstring>() const</argsstring>
+        <name>getMode</name>
+        <briefdescription>
+<para>Get manager mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager" kindref="compound">Manager</ref> mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="78" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a2223f299fc2836d288886e86426acabf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::coordinate::frame::provider::iers::Manager::getLocalRepository</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocalRepository</name>
+        <briefdescription>
+<para>Get local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Local repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="84" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="64" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af22d92d6ea8c761e42b8cfc742529678" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::coordinate::frame::provider::iers::Manager::getBulletinADirectory</definition>
+        <argsstring>() const</argsstring>
+        <name>getBulletinADirectory</name>
+        <briefdescription>
+<para>Get Bulletin A directory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Bulletin A directory </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="90" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a0e387e9fd9fcc289de8a67c46ec82265" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::coordinate::frame::provider::iers::Manager::getFinals2000ADirectory</definition>
+        <argsstring>() const</argsstring>
+        <name>getFinals2000ADirectory</name>
+        <briefdescription>
+<para>Get Finals 2000A directory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Finals 2000A directory </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="96" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae4354d467590b5618ead4e803e27f1c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref></type>
+        <definition>BulletinA ostk::physics::coordinate::frame::provider::iers::Manager::getBulletinA</definition>
+        <argsstring>() const</argsstring>
+        <name>getBulletinA</name>
+        <briefdescription>
+<para>Get Bulletin A. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Bulletin A </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="102" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="81" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae1438b267761499c6855ac0b67499a25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref></type>
+        <definition>Finals2000A ostk::physics::coordinate::frame::provider::iers::Manager::getFinals2000A</definition>
+        <argsstring>() const</argsstring>
+        <name>getFinals2000A</name>
+        <briefdescription>
+<para>Get Finals 2000A. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Finals 2000A </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="108" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="95" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a8a716d1e249c474cf386da943a661baa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2d</type>
+        <definition>Vector2d ostk::physics::coordinate::frame::provider::iers::Manager::getPolarMotionAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getPolarMotionAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get polar motion at instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>[asec] Polar motion </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="115" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="109" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af81e4efc8bdb557554d0a84d8c1655eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Manager::getUt1MinusUtcAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getUt1MinusUtcAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get UT1 - UTC at instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>[sec] UT1 - UTC </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="122" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="162" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1acd6418c53bdb544a4a408cccee54c60a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Manager::getLodAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getLodAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get length of day at instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>[ms] Length of day </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="129" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="208" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a341b2536e8170cb120cf9906a80de2fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::setMode</definition>
+        <argsstring>(const Manager::Mode &amp;aMode)</argsstring>
+        <name>setMode</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" kindref="member">Manager::Mode</ref> &amp;</type>
+          <declname>aMode</declname>
+        </param>
+        <briefdescription>
+<para>Set manager mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A manager mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="135" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="229" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1acf4b8061fe5a9f493af5ff36bad6b947" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::setLocalRepository</definition>
+        <argsstring>(const Directory &amp;aDirectory)</argsstring>
+        <name>setLocalRepository</name>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDirectory</declname>
+        </param>
+        <briefdescription>
+<para>Set local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDirectory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A repository directory </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="236" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a5fb58ac83d89062bf7b34155f5233e0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::loadBulletinA</definition>
+        <argsstring>(const BulletinA &amp;aBulletinA)</argsstring>
+        <name>loadBulletinA</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> &amp;</type>
+          <declname>aBulletinA</declname>
+        </param>
+        <briefdescription>
+<para>Load Bulletin A. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aBulletinA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Bulletin A </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="253" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aeff64ac91ccf7322a07e6b3935b981d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::loadFinals2000A</definition>
+        <argsstring>(const Finals2000A &amp;aFinals2000A)</argsstring>
+        <name>loadFinals2000A</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> &amp;</type>
+          <declname>aFinals2000A</declname>
+        </param>
+        <briefdescription>
+<para>Load Finals 2000A. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFinals2000A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Finals 2000A </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="153" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="265" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1abd848b225cc7a48dee3d563b490431a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::coordinate::frame::provider::iers::Manager::fetchLatestBulletinA</definition>
+        <argsstring>() const</argsstring>
+        <name>fetchLatestBulletinA</name>
+        <briefdescription>
+<para>Fetch latest Bulletin A file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Latest Bulletin A file </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="159" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="277" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab0f1f99ea683d9b609c4683854d1eff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::coordinate::frame::provider::iers::Manager::fetchLatestFinals2000A</definition>
+        <argsstring>() const</argsstring>
+        <name>fetchLatestFinals2000A</name>
+        <briefdescription>
+<para>Fetch latest Finals 2000A file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Latest Finals 2000A file </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="165" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="284" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4d2797de02f1de4a66f949f8224bf8ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Reset manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Unload all bulletins. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="171" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="291" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae6d52b7df4fb9d6db61950df0d0884ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::clearLocalRepository</definition>
+        <argsstring>()</argsstring>
+        <name>clearLocalRepository</name>
+        <briefdescription>
+<para>Clear local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Delete all files in local repository. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="177" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="299" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a30a914792b5ef7b95fe410809ef88d7f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+        <definition>Manager &amp; ostk::physics::coordinate::frame::provider::iers::Manager::Get</definition>
+        <argsstring>()</argsstring>
+        <name>Get</name>
+        <briefdescription>
+<para>Get manager singleton. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to manager </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="183" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="306" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6e0ac15b9b2a7388462c702ce5214338" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" kindref="member">Manager::Mode</ref></type>
+        <definition>Manager::Mode ostk::physics::coordinate::frame::provider::iers::Manager::DefaultMode</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultMode</name>
+        <briefdescription>
+<para>Get default manager mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE
+</verbatim></para>
+<para><simplesect kind="return"><para>Default manager mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="191" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="313" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa25cc003596f17b9a15bcaa1d84dfdb7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::coordinate::frame::provider::iers::Manager::DefaultLocalRepository</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultLocalRepository</name>
+        <briefdescription>
+<para>Get default local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY
+</verbatim></para>
+<para><simplesect kind="return"><para>Default local repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="199" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="336" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ad7fb72c8a7b513f0ad156863b8350a57" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::coordinate::frame::provider::iers::Manager::DefaultLocalRepositoryLockTimeout</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultLocalRepositoryLockTimeout</name>
+        <briefdescription>
+<para>Get default local repository lock timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Overriden by:
+                OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+</verbatim></para>
+<para><simplesect kind="return"><para>Default local repository lock timeout </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="208" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="356" bodyend="368"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa3002aa64f54fd941ef08c1ac8698f88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::iers::Manager::Manager</definition>
+        <argsstring>(const Manager::Mode &amp;aMode=Manager::DefaultMode())</argsstring>
+        <name>Manager</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" kindref="member">Manager::Mode</ref> &amp;</type>
+          <declname>aMode</declname>
+          <defval><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6e0ac15b9b2a7388462c702ce5214338" kindref="member">Manager::DefaultMode</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="221" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="370" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa05c0a46aa4db730317584dba03683e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::setup_</definition>
+        <argsstring>()</argsstring>
+        <name>setup_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="223" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="380" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a0bbfc8e1bafda1b81073e240e66151d0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::iers::Manager::isLocalRepositoryLocked_</definition>
+        <argsstring>() const</argsstring>
+        <name>isLocalRepositoryLocked_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="225" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="398" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4b6f09c2ff8329ca8f401765c3d6a1f0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::coordinate::frame::provider::iers::Manager::getLocalRepositoryLockFile_</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocalRepositoryLockFile_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="226" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="403" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab1655ace68ed8bf012a9c1cdae5a0770" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::lockLocalRepository_</definition>
+        <argsstring>(const Duration &amp;aTimeout) const</argsstring>
+        <name>lockLocalRepository_</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
+          <declname>aTimeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="227" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="408" bodyend="446"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af82c8540135877141584bc42cb850c13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::unlockLocalRepository_</definition>
+        <argsstring>() const</argsstring>
+        <name>unlockLocalRepository_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="228" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="448" bodyend="458"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae2849d6fca09f174258ad5e14652c1b6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::loadBulletinA_</definition>
+        <argsstring>(const BulletinA &amp;aBulletinA) const</argsstring>
+        <name>loadBulletinA_</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> &amp;</type>
+          <declname>aBulletinA</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="232" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="460" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a77709a47bc6998d1b87cbca116b39367" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::loadFinals2000A_</definition>
+        <argsstring>(const Finals2000A &amp;aFinals2000A) const</argsstring>
+        <name>loadFinals2000A_</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> &amp;</type>
+          <declname>aFinals2000A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="233" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="465" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6c52cf62790b09e4d033aa0f13e46a6e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> *</type>
+        <definition>const BulletinA * ostk::physics::coordinate::frame::provider::iers::Manager::accessBulletinA_</definition>
+        <argsstring>() const</argsstring>
+        <name>accessBulletinA_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="235" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="470" bodyend="522"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac73ff55040eaaf9ece767af8752b1f38" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> *</type>
+        <definition>const Finals2000A * ostk::physics::coordinate::frame::provider::iers::Manager::accessFinals2000A_</definition>
+        <argsstring>() const</argsstring>
+        <name>accessFinals2000A_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="236" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="524" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a59924e50a12708368ad3a3d93f6caef9" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::coordinate::frame::provider::iers::Manager::fetchLatestBulletinA_</definition>
+        <argsstring>() const</argsstring>
+        <name>fetchLatestBulletinA_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="238" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="579" bodyend="681"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a877e273e6701d5c22942ea3602a36912" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::coordinate::frame::provider::iers::Manager::fetchLatestFinals2000A_</definition>
+        <argsstring>() const</argsstring>
+        <name>fetchLatestFinals2000A_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="239" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="683" bodyend="788"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>IERS bulletins manager (thread-safe) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        The following environment variables can be defined:
+
+                        - &quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE&quot; will override
+                        &quot;DefaultMode&quot;
+                        - &quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY&quot; will override
+                        &quot;DefaultLocalRepository&quot;
+                        - &quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT&quot;
+                        will override &quot;DefaultLocalRepositoryLockTimeout&quot;
+</verbatim></para>
+<para><ulink url="https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html">https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html</ulink> </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="63" bodyend="240"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6c52cf62790b09e4d033aa0f13e46a6e" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>accessBulletinA_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac73ff55040eaaf9ece767af8752b1f38" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>accessFinals2000A_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3456bc0b130cca1b88ae741cc5d731cf" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>bulletinA_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae6d52b7df4fb9d6db61950df0d0884ff" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>clearLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa25cc003596f17b9a15bcaa1d84dfdb7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>DefaultLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ad7fb72c8a7b513f0ad156863b8350a57" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>DefaultLocalRepositoryLockTimeout</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6e0ac15b9b2a7388462c702ce5214338" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>DefaultMode</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1abd848b225cc7a48dee3d563b490431a3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>fetchLatestBulletinA</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a59924e50a12708368ad3a3d93f6caef9" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>fetchLatestBulletinA_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab0f1f99ea683d9b609c4683854d1eff8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>fetchLatestFinals2000A</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a877e273e6701d5c22942ea3602a36912" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>fetchLatestFinals2000A_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a972172eb4b3e0c4a907e7a451bf8f0ad" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>finals2000A_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a30a914792b5ef7b95fe410809ef88d7f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>Get</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae4354d467590b5618ead4e803e27f1c5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getBulletinA</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af22d92d6ea8c761e42b8cfc742529678" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getBulletinADirectory</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae1438b267761499c6855ac0b67499a25" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getFinals2000A</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a0e387e9fd9fcc289de8a67c46ec82265" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getFinals2000ADirectory</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a2223f299fc2836d288886e86426acabf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4b6f09c2ff8329ca8f401765c3d6a1f0" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getLocalRepositoryLockFile_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1acd6418c53bdb544a4a408cccee54c60a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getLodAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1abfb7c08fc00007765ea162a214d217ad" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getMode</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a8a716d1e249c474cf386da943a661baa" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getPolarMotionAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af81e4efc8bdb557554d0a84d8c1655eb" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>getUt1MinusUtcAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a0bbfc8e1bafda1b81073e240e66151d0" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>isLocalRepositoryLocked_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a5fb58ac83d89062bf7b34155f5233e0b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>loadBulletinA</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae2849d6fca09f174258ad5e14652c1b6" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>loadBulletinA_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aeff64ac91ccf7322a07e6b3935b981d7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>loadFinals2000A</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a77709a47bc6998d1b87cbca116b39367" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>loadFinals2000A_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac74aacc77b2fb45c0cc9fe8280058d85" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>localRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aaeecaa8caa16c0cecfe29ada647960aa" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>localRepositoryLockTimeout_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab1655ace68ed8bf012a9c1cdae5a0770" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>lockLocalRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa3002aa64f54fd941ef08c1ac8698f88" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>Mode</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a588bc77402cadb28c8c1c1e98856c648" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>mode_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a73ae2dbae6f74725cf79a7b2e38ca184" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>mutex_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4d2797de02f1de4a66f949f8224bf8ae" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>reset</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1acf4b8061fe5a9f493af5ff36bad6b947" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>setLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a341b2536e8170cb120cf9906a80de2fd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>setMode</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa05c0a46aa4db730317584dba03683e0" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>setup_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af82c8540135877141584bc42cb850c13" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>unlockLocalRepository_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

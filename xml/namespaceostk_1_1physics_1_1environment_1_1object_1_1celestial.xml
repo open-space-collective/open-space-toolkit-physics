@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::object::celestial</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" prot="public">ostk::physics::environment::object::celestial::Earth</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" prot="public">ostk::physics::environment::object::celestial::Moon</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_sun" prot="public">ostk::physics::environment::object::celestial::Sun</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1af782c25eafe767e0865804b058d2dcc6" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref></type>
+        <definition>using ostk::physics::environment::object::celestial::EarthGravitationalModel = typedef ostk::physics::environment::gravitational::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthGravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a696114cfd73f299553767f17778388e6" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">ostk::physics::environment::magnetic::Earth</ref></type>
+        <definition>using ostk::physics::environment::object::celestial::EarthMagneticModel = typedef ostk::physics::environment::magnetic::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthMagneticModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a78c1b6b67cca28d0d08df57d57657342" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">ostk::physics::environment::atmospheric::Earth</ref></type>
+        <definition>using ostk::physics::environment::object::celestial::EarthAtmosphericModel = typedef ostk::physics::environment::atmospheric::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthAtmosphericModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a0ae1ad54d134af3957fba2b2acc14135" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">ostk::physics::environment::gravitational::Moon</ref></type>
+        <definition>using ostk::physics::environment::object::celestial::MoonGravitationalModel = typedef ostk::physics::environment::gravitational::Moon</definition>
+        <argsstring></argsstring>
+        <name>MoonGravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a034f58168b62bf6e6bf3e7b65dcb0bd5" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">ostk::physics::environment::gravitational::Sun</ref></type>
+        <definition>using ostk::physics::environment::object::celestial::SunGravitationalModel = typedef ostk::physics::environment::gravitational::Sun</definition>
+        <argsstring></argsstring>
+        <name>SunGravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="30" column="1"/>
+  </compounddef>
+</doxygen>

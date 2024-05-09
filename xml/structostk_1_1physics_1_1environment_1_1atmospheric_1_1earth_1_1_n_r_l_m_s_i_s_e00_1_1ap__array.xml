@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array" kind="struct" language="C++" prot="protected">
+    <compoundname>ostk::physics::environment::atmospheric::earth::NRLMSISE00::ap_array</compoundname>
+    <includes refid="_n_r_l_m_s_i_s_e00_8hpp" local="no">NRLMSISE00.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array_1ad536aa04d3b492706adbebedea3790f0" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::ap_array::a[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="128" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="127" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="126" bodyend="129"/>
+    <listofallmembers>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array_1ad536aa04d3b492706adbebedea3790f0" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::ap_array</scope><name>a</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1utilities" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame::utilities</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1utilities_1a2f6b8e4cc0f25ef12bd3718d1fb3936d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::frame::utilities::NorthEastDownTransformAt</definition>
+        <argsstring>(const LLA &amp;aLLA, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <name>NorthEastDownTransformAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
+          <declname>aLLA</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>anEllipsoidEquatorialRadius</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>anEllipsoidFlattening</declname>
+        </param>
+        <briefdescription>
+<para>North-East-Down (NED) frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/North_east_down">https://en.wikipedia.org/wiki/North_east_down</ulink> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp" line="21" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp" bodystart="21" bodyend="71" declfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.hpp" declline="33" declcolumn="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.hpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_4f8f13e43d68c8aa0911cda61d74fbbf" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Environment/Ephemeris</compoundname>
+    <innerdir refid="dir_bfc619cb52e0fb5b6c71567ddd2e62f7">src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE</innerdir>
+    <innerfile refid="_analytical_8cpp">Analytical.cpp</innerfile>
+    <innerfile refid="_s_p_i_c_e_8cpp">SPICE.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/"/>
+  </compounddef>
+</doxygen>

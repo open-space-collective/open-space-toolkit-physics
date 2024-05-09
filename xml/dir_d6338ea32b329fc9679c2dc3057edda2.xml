@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_d6338ea32b329fc9679c2dc3057edda2" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Coordinate/Frame</compoundname>
+    <innerdir refid="dir_fe3373493bd457d68e8bb146907b74e5">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider</innerdir>
+    <innerfile refid="_coordinate_2_frame_2_manager_8cpp">Manager.cpp</innerfile>
+    <innerfile refid="_provider_8cpp">Provider.cpp</innerfile>
+    <innerfile refid="_coordinate_2_frame_2_utility_8cpp">Utility.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/"/>
+  </compounddef>
+</doxygen>

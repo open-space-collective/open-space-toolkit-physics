@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ostk::physics::environment::atmospheric::Model</compoundname>
+    <derivedcompoundref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" prot="public" virt="non-virtual">ostk::physics::environment::atmospheric::Earth</derivedcompoundref>
+    <includes refid="_atmospheric_2_model_8hpp" local="no">Model.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ad47700055f55caa9b74be5e2ea2468d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::atmospheric::Model::Model</definition>
+        <argsstring>()</argsstring>
+        <name>Model</name>
+        <briefdescription>
+<para>Constructor (default) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a06f6f87b472a1e5bcae7c43c38cfcd66" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::atmospheric::Model::~Model</definition>
+        <argsstring>()=0</argsstring>
+        <name>~Model</name>
+        <briefdescription>
+<para>Destructor (pure virtual) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="36" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a7e4acfd959afea71c12aeba665a66c17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model" kindref="compound">Model</ref> *</type>
+        <definition>virtual Model* ostk::physics::environment::atmospheric::Model::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a9be90efb873e548b1e6ffb2533c0e79c">clone</reimplementedby>
+        <briefdescription>
+<para>Clone the atmospheric model (pure virtual) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to atmospheric model </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="42" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ac79efc08d6bae1464944174ef1c26b98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ostk::physics::environment::atmospheric::Model::isDefined</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isDefined</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1d16a61abd21e39d8d2eaec3f07ba4a9">isDefined</reimplementedby>
+        <briefdescription>
+<para>Check if the atmospheric model is defined (pure virtual) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the atmospheric model is defined </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="48" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a981d47a2368daf1b9d81c63e17db7d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Real</type>
+        <definition>virtual Real ostk::physics::environment::atmospheric::Model::getDensityAt</definition>
+        <argsstring>(const Position &amp;aPosition, const Instant &amp;anInstant) const =0</argsstring>
+        <name>getDensityAt</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1af07312f16bc60d0bae6368daf08ed978">getDensityAt</reimplementedby>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get the atmospheric density value at a given position and instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Atmospheric density value [kg.m^-3] </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="56" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Atmospheric model (interface) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::environment::atmospheric::Earth</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::atmospheric::Model</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" bodystart="27" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a7e4acfd959afea71c12aeba665a66c17" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a981d47a2368daf1b9d81c63e17db7d09" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>getDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ac79efc08d6bae1464944174ef1c26b98" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ad47700055f55caa9b74be5e2ea2468d1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>Model</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a06f6f87b472a1e5bcae7c43c38cfcd66" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>~Model</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1object" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::object</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" prot="public">ostk::physics::environment::object::Celestial</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry" prot="public">ostk::physics::environment::object::Geometry</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial">ostk::physics::environment::object::celestial</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1ac06894f4b93290f4caf18760a770323f" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model" kindref="compound">ostk::physics::environment::gravitational::Model</ref></type>
+        <definition>using ostk::physics::environment::object::GravitationalModel = typedef ostk::physics::environment::gravitational::Model</definition>
+        <argsstring></argsstring>
+        <name>GravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="57" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1a1d67b80ef0221d026628123f2cdf14d8" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model" kindref="compound">ostk::physics::environment::magnetic::Model</ref></type>
+        <definition>using ostk::physics::environment::object::MagneticModel = typedef ostk::physics::environment::magnetic::Model</definition>
+        <argsstring></argsstring>
+        <name>MagneticModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="58" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1object_1a401a65695b0175405ca6cf49eda40b36" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model" kindref="compound">ostk::physics::environment::atmospheric::Model</ref></type>
+        <definition>using ostk::physics::environment::object::AtmosphericModel = typedef ostk::physics::environment::atmospheric::Model</definition>
+        <argsstring></argsstring>
+        <name>AtmosphericModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="59" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1object_1a92fa292bfff35ac0ec2f7edf236ec68a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::environment::object::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Geometry &amp;aGeometry)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry" kindref="compound">Geometry</ref> &amp;</type>
+          <declname>aGeometry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aGeometry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A geometry </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" line="78" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="78" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="28" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::spherical::AER</compoundname>
+    <includes refid="_a_e_r_8hpp" local="no">AER.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a945fa6e2ad9ec546e1f6f388b8e32b36" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
+        <definition>Angle ostk::physics::coordinate::spherical::AER::azimuth_</definition>
+        <argsstring></argsstring>
+        <name>azimuth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="73" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a384dfdb7afdee834b662479ea442caac" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
+        <definition>Angle ostk::physics::coordinate::spherical::AER::elevation_</definition>
+        <argsstring></argsstring>
+        <name>elevation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="74" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1afe41e5c59eebf4accc7ff4beb45af0c6" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::coordinate::spherical::AER::range_</definition>
+        <argsstring></argsstring>
+        <name>range_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="75" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a9c6deb11f1bba6bf361df929d1f59c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::spherical::AER::AER</definition>
+        <argsstring>(const Angle &amp;anAzimuth, const Angle &amp;anElevation, const Length &amp;aRange)</argsstring>
+        <name>AER</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
+          <declname>anAzimuth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
+          <declname>anElevation</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>aRange</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="36" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="18" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a7ffc6312cb7158e6be1ac8bdefc45fa6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::spherical::AER::operator==</definition>
+        <argsstring>(const AER &amp;anAER) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref> &amp;</type>
+          <declname>anAER</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="38" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="39" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a8d6fc86720e62a71db3abfe86ec17f94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::spherical::AER::operator!=</definition>
+        <argsstring>(const AER &amp;anAER) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref> &amp;</type>
+          <declname>anAER</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="40" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1afcd8d114b8bea712b25fbe6cb3ce58d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::spherical::AER::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="44" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1afaf63c6d3a1b0bef5abf91de0f0046cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
+        <definition>Angle ostk::physics::coordinate::spherical::AER::getAzimuth</definition>
+        <argsstring>() const</argsstring>
+        <name>getAzimuth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="46" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="75" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a5939769972f4002d07b2b72f6ad7856d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
+        <definition>Angle ostk::physics::coordinate::spherical::AER::getElevation</definition>
+        <argsstring>() const</argsstring>
+        <name>getElevation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="48" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="85" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a68dfaa31e3a62d03e3172bfdda443f80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::coordinate::spherical::AER::getRange</definition>
+        <argsstring>() const</argsstring>
+        <name>getRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="50" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="95" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ad7d43eb2598f2e3a307225399c05df2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::coordinate::spherical::AER::toVector</definition>
+        <argsstring>() const</argsstring>
+        <name>toVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="52" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="105" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1adddc1b37451d298015dc69dc345eb462" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::coordinate::spherical::AER::toCartesian</definition>
+        <argsstring>() const</argsstring>
+        <name>toCartesian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="54" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a78266cc83319d0cb299c656953365134" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::coordinate::spherical::AER::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="56" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="125" bodyend="133"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ac5514fc65bf0bd3f4f5870b246cff3ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const AER &amp;anAER)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref> &amp;</type>
+          <declname>anAER</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="42" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="54" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a4e5fb8fb286602b4b812c45f514678c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref></type>
+        <definition>AER ostk::physics::coordinate::spherical::AER::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="58" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="135" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ad71aa6d8c514cbc637f2ead2321e1add" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref></type>
+        <definition>AER ostk::physics::coordinate::spherical::AER::Vector</definition>
+        <argsstring>(const Vector3d &amp;aVector)</argsstring>
+        <name>Vector</name>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aVector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="60" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="140" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ab556fc983bba782532c4ac2dbcd03055" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref></type>
+        <definition>AER ostk::physics::coordinate::spherical::AER::FromPositionToPosition</definition>
+        <argsstring>(const Position &amp;aFromPosition, const Position &amp;aToPosition, const bool isZNegative=DEFAULT_IS_Z_NEGATIVE)</argsstring>
+        <name>FromPositionToPosition</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aFromPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aToPosition</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>isZNegative</declname>
+          <defval><ref refid="_a_e_r_8hpp_1ad8664c02b311aafcd585591322188845" kindref="member">DEFAULT_IS_Z_NEGATIVE</ref></defval>
+        </param>
+        <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref> from the relative position between two positions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFromPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A FROM position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aToPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A TO position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>isZNegative If true, elevation is measured positive toward the -Z axis </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="68" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp" bodystart="150" bodyend="185"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Azimuth - Elevation - Range (<ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" kindref="compound">AER</ref>) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" bodystart="33" bodyend="76"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a9c6deb11f1bba6bf361df929d1f59c7b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>AER</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a945fa6e2ad9ec546e1f6f388b8e32b36" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>azimuth_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a384dfdb7afdee834b662479ea442caac" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>elevation_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ab556fc983bba782532c4ac2dbcd03055" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>FromPositionToPosition</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1afaf63c6d3a1b0bef5abf91de0f0046cf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>getAzimuth</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a5939769972f4002d07b2b72f6ad7856d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>getElevation</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a68dfaa31e3a62d03e3172bfdda443f80" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>getRange</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1afcd8d114b8bea712b25fbe6cb3ce58d3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a8d6fc86720e62a71db3abfe86ec17f94" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ac5514fc65bf0bd3f4f5870b246cff3ad" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a7ffc6312cb7158e6be1ac8bdefc45fa6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1afe41e5c59eebf4accc7ff4beb45af0c6" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>range_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1adddc1b37451d298015dc69dc345eb462" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>toCartesian</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a78266cc83319d0cb299c656953365134" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ad7d43eb2598f2e3a307225399c05df2d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>toVector</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1a4e5fb8fb286602b4b812c45f514678c1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r_1ad71aa6d8c514cbc637f2ead2321e1add" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::AER</scope><name>Vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

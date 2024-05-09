@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_0e7965b2b476672f7ca6f083374df19a" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Environment/Atmospheric</compoundname>
+    <innerdir refid="dir_dfd9e8be2f231903b824ba81b305b08e">include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth</innerdir>
+    <innerfile refid="_atmospheric_2_earth_8hpp">Earth.hpp</innerfile>
+    <innerfile refid="_atmospheric_2_model_8hpp">Model.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/"/>
+  </compounddef>
+</doxygen>

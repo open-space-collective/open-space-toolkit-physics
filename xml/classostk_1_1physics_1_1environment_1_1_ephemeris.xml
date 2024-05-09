@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1_ephemeris" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ostk::physics::environment::Ephemeris</compoundname>
+    <derivedcompoundref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical" prot="public" virt="non-virtual">ostk::physics::environment::ephemeris::Analytical</derivedcompoundref>
+    <derivedcompoundref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" prot="public" virt="non-virtual">ostk::physics::environment::ephemeris::SPICE</derivedcompoundref>
+    <includes refid="_ephemeris_8hpp" local="no">Ephemeris.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1adca036598a400a752ad05a574b6ce515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::Ephemeris::Ephemeris</definition>
+        <argsstring>()</argsstring>
+        <name>Ephemeris</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="30" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris.cpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1aca1678bb452dcd9d989ab9d326d2d430" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::Ephemeris::~Ephemeris</definition>
+        <argsstring>()=0</argsstring>
+        <name>~Ephemeris</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="32" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris.cpp" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1abe95fecc4079240c1acf319afc1d4c54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> *</type>
+        <definition>virtual Ephemeris* ostk::physics::environment::Ephemeris::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical_1a596ab1d0c1602c8a4fdccc5c9bb26d59">clone</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a23ae202b2d93bab8724ef64283f3b803">clone</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="34" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1a1b1722954d5794996c1c3de88c27a90d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ostk::physics::environment::Ephemeris::isDefined</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isDefined</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical_1ad77bc0d850afe8a97842b64debb882c6">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a4b3e2fbd554ed026c092a4350c984380">isDefined</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="36" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1aba61e3f69e9c699881b7660d20748078" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>virtual Shared&lt;const Frame&gt; ostk::physics::environment::Ephemeris::accessFrame</definition>
+        <argsstring>() const =0</argsstring>
+        <name>accessFrame</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical_1aba34347b58af9844c5194b2c4ff2b600">accessFrame</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a20ac67ae6289a4678663e3313a494bff">accessFrame</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="38" column="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ulink url="https://en.wikipedia.org/wiki/Fundamental_ephemeris">https://en.wikipedia.org/wiki/Fundamental_ephemeris</ulink> </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::environment::ephemeris::Analytical</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ostk::physics::environment::ephemeris::SPICE</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::Ephemeris</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1_ephemeris"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" bodystart="27" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aba61e3f69e9c699881b7660d20748078" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>accessFrame</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1abe95fecc4079240c1acf319afc1d4c54" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1adca036598a400a752ad05a574b6ce515" prot="public" virt="non-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>Ephemeris</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1a1b1722954d5794996c1c3de88c27a90d" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aca1678bb452dcd9d989ab9d326d2d430" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>~Ephemeris</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

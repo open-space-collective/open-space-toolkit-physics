@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_e60e8120a9a03a1f4dd4211babf7077b" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Environment/Gravitational</compoundname>
+    <innerdir refid="dir_36516805c803d723d4796355ba3e82b6">include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth</innerdir>
+    <innerfile refid="_gravitational_2_earth_8hpp">Earth.hpp</innerfile>
+    <innerfile refid="_gravitational_2_model_8hpp">Model.hpp</innerfile>
+    <innerfile refid="_gravitational_2_moon_8hpp">Moon.hpp</innerfile>
+    <innerfile refid="_spherical_8hpp">Spherical.hpp</innerfile>
+    <innerfile refid="_gravitational_2_sun_8hpp">Sun.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/"/>
+  </compounddef>
+</doxygen>

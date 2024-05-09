@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::magnetic::earth</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" prot="public">ostk::physics::environment::magnetic::earth::Manager</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1aa5edfbbbb546cd7f4fb0e546d98c6e68" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">ostk::physics::environment::magnetic::Earth</ref></type>
+        <definition>using ostk::physics::environment::magnetic::earth::EarthMagneticModel = typedef ostk::physics::environment::magnetic::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthMagneticModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1a952db0fe1db1d1c4608b3172fc2326b4" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
+        <definition>using ostk::physics::environment::magnetic::earth::ManifestManager = typedef ostk::physics::data::Manager</definition>
+        <argsstring></argsstring>
+        <name>ManifestManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" line="32" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="35" column="1"/>
+  </compounddef>
+</doxygen>

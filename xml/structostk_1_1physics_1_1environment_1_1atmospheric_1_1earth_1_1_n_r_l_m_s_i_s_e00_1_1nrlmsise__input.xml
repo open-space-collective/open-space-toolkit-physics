@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input" kind="struct" language="C++" prot="protected">
+    <compoundname>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</compoundname>
+    <includes refid="_n_r_l_m_s_i_s_e00_8hpp" local="no">NRLMSISE00.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ac04ab88acbb007426b238e2ed2b7538f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::year</definition>
+        <argsstring></argsstring>
+        <name>year</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="133" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a0bbe4b27415296d5f05156858bb5629f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::doy</definition>
+        <argsstring></argsstring>
+        <name>doy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="134" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a21a05f1953895ff255d2e6383af2be2c" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::sec</definition>
+        <argsstring></argsstring>
+        <name>sec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="135" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a37b54d883b0050a5d7a56a8848a1a6bd" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::alt</definition>
+        <argsstring></argsstring>
+        <name>alt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="136" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a9bab20123287c599ac1fefc7b935932a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::g_lat</definition>
+        <argsstring></argsstring>
+        <name>g_lat</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="137" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a922988922328d04eed6cee08492db52a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::g_long</definition>
+        <argsstring></argsstring>
+        <name>g_long</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="138" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a083f5448b04610a7b32c592bfe959397" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::lst</definition>
+        <argsstring></argsstring>
+        <name>lst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="139" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ace5d7a43f007775e8a1952c9c965e490" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::f107A</definition>
+        <argsstring></argsstring>
+        <name>f107A</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="140" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a5477011ba0149198afd451048d8168db" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::f107</definition>
+        <argsstring></argsstring>
+        <name>f107</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="141" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ac07c6ffa81d0172cee502fc098110b64" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::ap</definition>
+        <argsstring></argsstring>
+        <name>ap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="142" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ad5c701a600589787d6621285d172c3e0" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array" kindref="compound">ap_array</ref> *</type>
+        <definition>struct ap_array* ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input::ap_a</definition>
+        <argsstring></argsstring>
+        <name>ap_a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="143" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>ostk::physics::environment::atmospheric::earth::NRLMSISE00::ap_array</label>
+        <link refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</label>
+        <link refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ap_a</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="132" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="131" bodyend="144"/>
+    <listofallmembers>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a37b54d883b0050a5d7a56a8848a1a6bd" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>alt</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ac07c6ffa81d0172cee502fc098110b64" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>ap</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ad5c701a600589787d6621285d172c3e0" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>ap_a</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a0bbe4b27415296d5f05156858bb5629f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>doy</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a5477011ba0149198afd451048d8168db" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>f107</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ace5d7a43f007775e8a1952c9c965e490" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>f107A</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a9bab20123287c599ac1fefc7b935932a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>g_lat</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a922988922328d04eed6cee08492db52a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>g_long</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a083f5448b04610a7b32c592bfe959397" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>lst</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a21a05f1953895ff255d2e6383af2be2c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>sec</name></member>
+      <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ac04ab88acbb007426b238e2ed2b7538f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>year</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

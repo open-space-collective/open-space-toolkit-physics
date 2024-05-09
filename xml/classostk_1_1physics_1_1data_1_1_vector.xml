@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1data_1_1_vector" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::data::Vector</compoundname>
+    <derivedcompoundref refid="classostk_1_1physics_1_1data_1_1_direction" prot="public" virt="non-virtual">ostk::physics::data::Direction</derivedcompoundref>
+    <includes refid="_vector_8hpp" local="no">Vector.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_vector_1a6386546874c3abc232da832332242cbe" prot="private" static="no" mutable="no">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::data::Vector::value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="61" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_vector_1a8304c55068612923f1b7dd67df594dcd" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
+        <definition>Unit ostk::physics::data::Vector::unit_</definition>
+        <argsstring></argsstring>
+        <name>unit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="62" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_vector_1a36aa3433991e297c17fd521115a86e68" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt;const Frame&gt; ostk::physics::data::Vector::frameSPtr_</definition>
+        <argsstring></argsstring>
+        <name>frameSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="63" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a513244719d0a6b4a37537ed5c9bb2c27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::data::Vector::Vector</definition>
+        <argsstring>(const Vector3d &amp;aValue, const Unit &amp;aUnit, const Shared&lt; const Frame &gt; &amp;aFrameSPtr)</argsstring>
+        <name>Vector</name>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aValue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrameSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="36" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="15" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a4be0fe51a56b19eb4c7252436944b382" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Vector::operator==</definition>
+        <argsstring>(const Vector &amp;aVector) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>aVector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="38" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="22" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a732642a94770c1486537368c44a0d434" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Vector::operator!=</definition>
+        <argsstring>(const Vector &amp;aVector) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>aVector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="40" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1aa5fee0fe657ba4b33e835ed4df37d0e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Vector::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="44" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a33bd2c79920db43a8335918da8d5e79b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::data::Vector::getValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="46" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="60" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a467f0ab9ff5d9e83c6e3ce64ebfb8c95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
+        <definition>Unit ostk::physics::data::Vector::getUnit</definition>
+        <argsstring>() const</argsstring>
+        <name>getUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="48" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a39b99207e2617954be6629916d327fb6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::data::Vector::getFrame</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="50" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1a0ea065eeb3ccb829951c81c206eefd76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref></type>
+        <definition>Vector ostk::physics::data::Vector::inUnit</definition>
+        <argsstring>(const Unit &amp;aUnit) const</argsstring>
+        <name>inUnit</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="52" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="75" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1af297f2ff4ae6d6e52aba683c6c78ab94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref></type>
+        <definition>Vector ostk::physics::data::Vector::inFrame</definition>
+        <argsstring>(const Shared&lt; const Frame &gt; &amp;aFrameSPtr, const Instant &amp;anInstant) const</argsstring>
+        <name>inFrame</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrameSPtr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="54" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="85" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1ac1475f98235658dfad18dba4474f3ee1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::data::Vector::toString</definition>
+        <argsstring>(const Integer &amp;aPrecision=6) const</argsstring>
+        <name>toString</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aPrecision</declname>
+          <defval>6</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="56" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="95" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1data_1_1_vector_1a2f1253dbad20965d2209456421eabf71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Vector &amp;aVector)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>aVector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="42" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="37" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_vector_1afb204c378708fdd162844a348da32db7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref></type>
+        <definition>Vector ostk::physics::data::Vector::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="58" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="105" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref> quantity. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::data::Vector</label>
+        <link refid="classostk_1_1physics_1_1data_1_1_vector"/>
+      </node>
+      <node id="2">
+        <label>ostk::physics::data::Direction</label>
+        <link refid="classostk_1_1physics_1_1data_1_1_direction"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Vector.hpp" bodystart="33" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a36aa3433991e297c17fd521115a86e68" prot="private" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>frameSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a39b99207e2617954be6629916d327fb6" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>getFrame</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a467f0ab9ff5d9e83c6e3ce64ebfb8c95" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>getUnit</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a33bd2c79920db43a8335918da8d5e79b" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1af297f2ff4ae6d6e52aba683c6c78ab94" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>inFrame</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a0ea065eeb3ccb829951c81c206eefd76" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>inUnit</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1aa5fee0fe657ba4b33e835ed4df37d0e1" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a732642a94770c1486537368c44a0d434" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a2f1253dbad20965d2209456421eabf71" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a4be0fe51a56b19eb4c7252436944b382" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1ac1475f98235658dfad18dba4474f3ee1" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1afb204c378708fdd162844a348da32db7" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a8304c55068612923f1b7dd67df594dcd" prot="private" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>unit_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a6386546874c3abc232da832332242cbe" prot="private" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>value_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_vector_1a513244719d0a6b4a37537ed5c9bb2c27" prot="public" virt="non-virtual"><scope>ostk::physics::data::Vector</scope><name>Vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

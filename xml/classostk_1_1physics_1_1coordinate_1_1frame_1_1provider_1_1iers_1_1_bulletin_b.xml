@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::BulletinB</compoundname>
+    <includes refid="_bulletin_b_8hpp" local="no">BulletinB.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a83a6fff5ced2e3e92cbfe77cca0da4f0" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date ostk::physics::coordinate::frame::provider::iers::BulletinB::releaseDate_</definition>
+        <argsstring></argsstring>
+        <name>releaseDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="92" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a36d9e78a5de0361186ca1cb63ab6f1ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const BulletinB &amp;aBulletinB)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b" kindref="compound">BulletinB</ref> &amp;</type>
+          <declname>aBulletinB</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="70" column="12"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a01db4d24c669be0a9057fb46d10cce49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::iers::BulletinB::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+<para>true if defined </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if defined. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="76" column="10"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a7e971869048d738941543a68340d0cc9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b" kindref="compound">BulletinB</ref></type>
+        <definition>static BulletinB ostk::physics::coordinate::frame::provider::iers::BulletinB::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+<para>Undefined factory function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Undefined Bulletin B object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="82" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1ac3938e01a38787b0cb98f231b6be5cc1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b" kindref="compound">BulletinB</ref></type>
+        <definition>static BulletinB ostk::physics::coordinate::frame::provider::iers::BulletinB::Load</definition>
+        <argsstring>(const filesystem::File &amp;aFile)</argsstring>
+        <name>Load</name>
+        <param>
+          <type>const filesystem::File &amp;</type>
+          <declname>aFile</declname>
+        </param>
+        <briefdescription>
+<para>Load Bulletin B from file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Bulletin B object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="89" column="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a21b7ecc5c17126a495942c447dd823bb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::iers::BulletinB::BulletinB</definition>
+        <argsstring>()</argsstring>
+        <name>BulletinB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="94" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>IERS Bulletin B. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        IERS Bulletin B provides current information on the Earth’s orientation in the IERS
+                        Reference System. This includes Universal Time, coordinates of the terrestrial pole, and
+                        celestial pole offsets. IERS Bulletin B consists of 5 sections:
+
+                        Section 1:
+                        Daily final values at 0:00 UT of x, y, UT1-UTC, dX, dY, and their uncertainties. Time
+                        span: one month with final values, one month with preliminary values.
+
+                        Section 2:
+                        Daily final values at 0:00 UT of celestial pole offsets dPsi and dEps in the IAU 1980
+                        system and their uncertainties.
+
+                        Section 3:
+                        Earth angular velocity (daily estimates of LOD and OMEGA with their uncertainties).
+
+                        Section 4:
+                        Information on the time scales and announcement of occurring leap seconds.
+
+                        Section 5:
+                        Average formal precision of the individual and combined series contributing or not to
+                        the combination and their agreement with the combination.
+</verbatim></para>
+<para><ulink url="https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html">https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html</ulink> </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="68" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" bodystart="67" bodyend="95"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a21b7ecc5c17126a495942c447dd823bb" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>BulletinB</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a01db4d24c669be0a9057fb46d10cce49" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1ac3938e01a38787b0cb98f231b6be5cc1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>Load</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a36d9e78a5de0361186ca1cb63ab6f1ee" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a83a6fff5ced2e3e92cbfe77cca0da4f0" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>releaseDate_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a7e971869048d738941543a68340d0cc9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>Undefined</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

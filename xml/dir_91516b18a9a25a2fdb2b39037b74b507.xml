@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_91516b18a9a25a2fdb2b39037b74b507" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Unit/Derived</compoundname>
+    <innerfile refid="_angle_8cpp">Angle.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/"/>
+  </compounddef>
+</doxygen>

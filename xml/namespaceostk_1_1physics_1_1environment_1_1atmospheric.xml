@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1atmospheric" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::atmospheric</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" prot="public">ostk::physics::environment::atmospheric::Earth</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model" prot="public">ostk::physics::environment::atmospheric::Model</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth">ostk::physics::environment::atmospheric::earth</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1aa731f08cc59f2ad627da3dd68eeff5b0" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref></type>
+        <definition>typedef ostk::physics::environment::gravitational::Earth ostk::physics::environment::atmospheric::EarthGravitationalModel</definition>
+        <argsstring></argsstring>
+        <name>EarthGravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1a7a31e05c8688c69d84be45b666590d05" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">ostk::physics::environment::object::celestial::Earth</ref></type>
+        <definition>using ostk::physics::environment::atmospheric::EarthCelestial = typedef ostk::physics::environment::object::celestial::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthCelestial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="24" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="24" column="1"/>
+  </compounddef>
+</doxygen>

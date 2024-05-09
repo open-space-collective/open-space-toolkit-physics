@@ -1,0 +1,958 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1time_1_1_time" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::time::Time</compoundname>
+    <includes refid="_time_2_time_8hpp" local="no">Time.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Format</name>
+        <enumvalue id="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
+          <name>Undefined</name>
+          <briefdescription>
+<para>Undefined format. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951aeb6d8ae6f20283755b339c0dc273988b" prot="public">
+          <name>Standard</name>
+          <briefdescription>
+<para>Standard format (hh:mm:ss.sss.sss.sss) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951a35b6786739efcdc5a74ab1dca29d3b6b" prot="public">
+          <name>ISO8601</name>
+          <briefdescription>
+<para>ISO 8601 format (hh:mm:ss.sssssssss) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="29" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a584cf5103d26f069b42dbc56590d0494" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Time::defined_</definition>
+        <argsstring></argsstring>
+        <name>defined_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="243" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a5e3bf09ef53581e9daa8689ff5cecde9" prot="private" static="no" mutable="no">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::time::Time::hour_</definition>
+        <argsstring></argsstring>
+        <name>hour_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="245" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a5fd30b0822426db0a605e3236534b0f5" prot="private" static="no" mutable="no">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::time::Time::minute_</definition>
+        <argsstring></argsstring>
+        <name>minute_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="246" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a0998c6bb7686a17a0adab796683691cf" prot="private" static="no" mutable="no">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::time::Time::second_</definition>
+        <argsstring></argsstring>
+        <name>second_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="247" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a7e6bac6c307c4f03874cd0692e86b497" prot="private" static="no" mutable="no">
+        <type>Uint16</type>
+        <definition>Uint16 ostk::physics::time::Time::millisecond_</definition>
+        <argsstring></argsstring>
+        <name>millisecond_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="248" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a0a35b37a9d4bf77b87035e96317c5c41" prot="private" static="no" mutable="no">
+        <type>Uint16</type>
+        <definition>Uint16 ostk::physics::time::Time::microsecond_</definition>
+        <argsstring></argsstring>
+        <name>microsecond_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="249" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_time_1a72417063ee7fd03cdafff1f85bbd9e90" prot="private" static="no" mutable="no">
+        <type>Uint16</type>
+        <definition>Uint16 ostk::physics::time::Time::nanosecond_</definition>
+        <argsstring></argsstring>
+        <name>nanosecond_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="250" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a9609e75d328ed240f6fc4529e26038cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::time::Time::Time</definition>
+        <argsstring>(Uint8 anHour, Uint8 aMinute, Uint8 aSecond, Uint16 aMillisecond=0, Uint16 aMicrosecond=0, Uint16 aNanosecond=0)</argsstring>
+        <name>Time</name>
+        <param>
+          <type>Uint8</type>
+          <declname>anHour</declname>
+        </param>
+        <param>
+          <type>Uint8</type>
+          <declname>aMinute</declname>
+        </param>
+        <param>
+          <type>Uint8</type>
+          <declname>aSecond</declname>
+        </param>
+        <param>
+          <type>Uint16</type>
+          <declname>aMillisecond</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>Uint16</type>
+          <declname>aMicrosecond</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>Uint16</type>
+          <declname>aNanosecond</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/>;<sp/>//<sp/>12:34:56.000.000.000</highlight></codeline>
+<codeline><highlight class="normal">Time<sp/>time<sp/>{<sp/>12,<sp/>34,<sp/>56,<sp/>123,<sp/>456,<sp/>789<sp/>}<sp/>;<sp/>//<sp/>12:34:56.123.456.789</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anHour</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An hour count (0 - 23) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aMinute</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A minute count (0 - 59) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aSecond</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A second count (0 - 60) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aMillisecond A millisecond count (0 - 999) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aMicrosecond A microsecond count (0 - 999) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aNanosecond A nanosecond count (0 - 999) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="52" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="18" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1ad914e61c2ace9527236f88b897a0c6de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Time::operator==</definition>
+        <argsstring>(const Time &amp;aTime) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> &amp;</type>
+          <declname>aTime</declname>
+        </param>
+        <briefdescription>
+<para>Equal to operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/><sp/>==<sp/>Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/><sp/>;<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if times are equal </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="35" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a0e33fd17972bc71d52b159559f8180c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Time::operator!=</definition>
+        <argsstring>(const Time &amp;aTime) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> &amp;</type>
+          <declname>aTime</declname>
+        </param>
+        <briefdescription>
+<para>Not equal to operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/><sp/>!=<sp/>Time<sp/>{<sp/>12,<sp/>34,<sp/>57<sp/>}<sp/>;<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if times are not equal </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="81" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="47" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a25f4b6019bc558ca579aca4af8aa1ec0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Time::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+<para>Check if time is defined. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/>.isDefined()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if time is defined </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="103" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1adc56fbb417453265e6d5a448e597fd76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::time::Time::getHour</definition>
+        <argsstring>() const</argsstring>
+        <name>getHour</name>
+        <briefdescription>
+<para>Get hour (0 - 23) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Hour </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="109" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="86" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a19ccd8123a0d3e24b90bd1dc964d40ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::time::Time::getMinute</definition>
+        <argsstring>() const</argsstring>
+        <name>getMinute</name>
+        <briefdescription>
+<para>Get minute (0 - 59) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Minute </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="115" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="96" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1afe4041426b008059853110b13e2802de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::time::Time::getSecond</definition>
+        <argsstring>() const</argsstring>
+        <name>getSecond</name>
+        <briefdescription>
+<para>Get second (0 - 60) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Second </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="121" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="106" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a73308a0a9dcf7105130d1b40d2ef7d93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint16</type>
+        <definition>Uint16 ostk::physics::time::Time::getMillisecond</definition>
+        <argsstring>() const</argsstring>
+        <name>getMillisecond</name>
+        <briefdescription>
+<para>Get millisecond (0 - 999) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Millisecond </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="127" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="116" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1acb4915ca99f2065f6d777d96833337db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint16</type>
+        <definition>Uint16 ostk::physics::time::Time::getMicrosecond</definition>
+        <argsstring>() const</argsstring>
+        <name>getMicrosecond</name>
+        <briefdescription>
+<para>Get microsecond (0 - 999) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Microsecond </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="133" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="126" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1aebe3fc329d7b7b07c1f0ac04600ebc03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint16</type>
+        <definition>Uint16 ostk::physics::time::Time::getNanosecond</definition>
+        <argsstring>() const</argsstring>
+        <name>getNanosecond</name>
+        <briefdescription>
+<para>Get nanosecond (0 - 999) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Nanosecond </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="139" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="136" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1ad0c70220f4ba971306781eb92d8f2030" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::time::Time::getFloatingSeconds</definition>
+        <argsstring>() const</argsstring>
+        <name>getFloatingSeconds</name>
+        <briefdescription>
+<para>Get floating seconds (0.0 - 59.999999999) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Floating second </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="146" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a33adb26e33abdfa65581626372f430bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::time::Time::toString</definition>
+        <argsstring>(const Time::Format &amp;aFormat=Time::Format::Standard) const</argsstring>
+        <name>toString</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951" kindref="member">Time::Format</ref> &amp;</type>
+          <declname>aFormat</declname>
+          <defval><ref refid="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951aeb6d8ae6f20283755b339c0dc273988b" kindref="member">Time::Format::Standard</ref></defval>
+        </param>
+        <briefdescription>
+<para>Get string representation of time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/>.toString()<sp/>;<sp/>//<sp/>12:34:56.000.000.000</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aFormat A time format </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Serialized time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="156" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="157" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a27d456d374f5799050f3ea8aed8478ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::setHour</definition>
+        <argsstring>(Uint8 anHour)</argsstring>
+        <name>setHour</name>
+        <param>
+          <type>Uint8</type>
+          <declname>anHour</declname>
+        </param>
+        <briefdescription>
+<para>Set hour. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anHour</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An hour (0 - 23) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="162" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="234" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1aef028b25ce2ff2d216e9fdc957c6ac4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::setMinute</definition>
+        <argsstring>(Uint8 aMinute)</argsstring>
+        <name>setMinute</name>
+        <param>
+          <type>Uint8</type>
+          <declname>aMinute</declname>
+        </param>
+        <briefdescription>
+<para>Set minute. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMinute</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A minute (0 - 59) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="168" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="246" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a4f5cc2bb2a6ff653eca82e5a754fa781" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::setSecond</definition>
+        <argsstring>(Uint8 aSecond)</argsstring>
+        <name>setSecond</name>
+        <param>
+          <type>Uint8</type>
+          <declname>aSecond</declname>
+        </param>
+        <briefdescription>
+<para>Set second. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aSecond</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A second (0 - 60) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="174" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="258" bodyend="268"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a78a51113cfca7af8e14fbf519b04ad25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::setMillisecond</definition>
+        <argsstring>(Uint16 aMillisecond)</argsstring>
+        <name>setMillisecond</name>
+        <param>
+          <type>Uint16</type>
+          <declname>aMillisecond</declname>
+        </param>
+        <briefdescription>
+<para>Set millisecond. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMillisecond</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A millisecond (0 - 999) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="270" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a4e746282febe29d5412f7e871b49ac86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::setMicrosecond</definition>
+        <argsstring>(Uint16 aMicrosecond)</argsstring>
+        <name>setMicrosecond</name>
+        <param>
+          <type>Uint16</type>
+          <declname>aMicrosecond</declname>
+        </param>
+        <briefdescription>
+<para>Set microsecond. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMicrosecond</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A microsecond (0 - 999) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="186" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="282" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a35df10195d96fe03990493a52cd7d61e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::setNanosecond</definition>
+        <argsstring>(Uint16 aNanosecond)</argsstring>
+        <name>setNanosecond</name>
+        <param>
+          <type>Uint16</type>
+          <declname>aNanosecond</declname>
+        </param>
+        <briefdescription>
+<para>Set nanosecond. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aNanosecond</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A nanosecond (0 - 999) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="192" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="294" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1time_1_1_time_1a181948621d8fe0d85bdfc97af30b62fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Time &amp;aTime)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> &amp;</type>
+          <declname>aTime</declname>
+        </param>
+        <briefdescription>
+<para>Output stream operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/><sp/>;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="93" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="59" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a17c9ae2f4fa9c8a48a558fa49c511e03" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref></type>
+        <definition>Time ostk::physics::time::Time::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+<para>Constructs an undefined time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Undefined()<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">time.isDefined()<sp/>;<sp/>//<sp/>False</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Undefined time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="203" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="306" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a74042a99c99ef0f866204a4589c6a89e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref></type>
+        <definition>Time ostk::physics::time::Time::Midnight</definition>
+        <argsstring>()</argsstring>
+        <name>Midnight</name>
+        <briefdescription>
+<para>Constructs a time at midnight. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Midnight()<sp/>;<sp/>//<sp/>00:00:00.000.000.000</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Midnight time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="213" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="311" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a2d242e4f07bbf56e51eb2267773042f2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref></type>
+        <definition>Time ostk::physics::time::Time::Noon</definition>
+        <argsstring>()</argsstring>
+        <name>Noon</name>
+        <briefdescription>
+<para>Constructs a time at noon. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Noon()<sp/>;<sp/>//<sp/>12:00:00.000.000.000</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Noon time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="223" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="316" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a475b2b6200f15f20c8fab3891bbb73ac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref></type>
+        <definition>Time ostk::physics::time::Time::Parse</definition>
+        <argsstring>(const String &amp;aString, const Time::Format &amp;aFormat=Time::Format::Undefined)</argsstring>
+        <name>Parse</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aString</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951" kindref="member">Time::Format</ref> &amp;</type>
+          <declname>aFormat</declname>
+          <defval><ref refid="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Time::Format::Undefined</ref></defval>
+        </param>
+        <briefdescription>
+<para>Constructs a time from a string representation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Parse(&quot;12:34:56&quot;)<sp/>;<sp/>//<sp/>12:34:56</highlight></codeline>
+<codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Parse(&quot;12:34:56.123&quot;)<sp/>;<sp/>//<sp/>12:34:56.123</highlight></codeline>
+<codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Parse(&quot;12:34:56.123.456&quot;)<sp/>;<sp/>//<sp/>12:34:56.123.456</highlight></codeline>
+<codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Parse(&quot;12:34:56.123.456.789&quot;,<sp/>Time::Format::Standard)<sp/>;<sp/>//</highlight></codeline>
+<codeline><highlight class="normal">12:34:56.123.456.789<sp/>Time<sp/>time<sp/>=<sp/>Time::Parse(&quot;12:34:56.123456789&quot;,<sp/>Time::Format::ISO8601)<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>12:34:56.123.456.789</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">(optional)</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aFormat A time format (automatic detection if Undefined) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="240" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="321" bodyend="497"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a87aa31c71f4ae861948bf8f1771a6b88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::time::Time::Time</definition>
+        <argsstring>()</argsstring>
+        <name>Time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="252" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="499" bodyend="508"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a33965f327539e6f0169ab44b5a6fb33c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::ValidateHour</definition>
+        <argsstring>(Uint8 anHour)</argsstring>
+        <name>ValidateHour</name>
+        <param>
+          <type>Uint8</type>
+          <declname>anHour</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="254" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="510" bodyend="516"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a8058e26c5cb3cd207974fd52220b04eb" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::ValidateMinute</definition>
+        <argsstring>(Uint8 aMinute)</argsstring>
+        <name>ValidateMinute</name>
+        <param>
+          <type>Uint8</type>
+          <declname>aMinute</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="255" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="518" bodyend="524"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a07a529bb64cb6099fd839fca30e33c36" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::ValidateSecond</definition>
+        <argsstring>(Uint8 aSecond)</argsstring>
+        <name>ValidateSecond</name>
+        <param>
+          <type>Uint8</type>
+          <declname>aSecond</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="256" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="526" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1a588928c435937b651165164346000392" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::ValidateMillisecond</definition>
+        <argsstring>(Uint16 aMillisecond)</argsstring>
+        <name>ValidateMillisecond</name>
+        <param>
+          <type>Uint16</type>
+          <declname>aMillisecond</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="257" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="534" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1ad9714fee683ab0727d019813fb7cfd58" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::ValidateMicrosecond</definition>
+        <argsstring>(Uint16 aMicrosecond)</argsstring>
+        <name>ValidateMicrosecond</name>
+        <param>
+          <type>Uint16</type>
+          <declname>aMicrosecond</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="258" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="542" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_time_1afd3a4212ef93191874990a35fb1cfb4e" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::time::Time::ValidateNanosecond</definition>
+        <argsstring>(Uint16 aNanosecond)</argsstring>
+        <name>ValidateNanosecond</name>
+        <param>
+          <type>Uint16</type>
+          <declname>aNanosecond</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="259" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="550" bodyend="556"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> as hour, minute, second, millisecond, microsecond and nanosecond. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Time.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Time.hpp" bodystart="24" bodyend="260"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a584cf5103d26f069b42dbc56590d0494" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>defined_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a207e776746c45c3aaffcf7112b2bc951" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Format</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1ad0c70220f4ba971306781eb92d8f2030" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getFloatingSeconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1adc56fbb417453265e6d5a448e597fd76" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getHour</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1acb4915ca99f2065f6d777d96833337db" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getMicrosecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a73308a0a9dcf7105130d1b40d2ef7d93" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getMillisecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a19ccd8123a0d3e24b90bd1dc964d40ce" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getMinute</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1aebe3fc329d7b7b07c1f0ac04600ebc03" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getNanosecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1afe4041426b008059853110b13e2802de" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>getSecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a5e3bf09ef53581e9daa8689ff5cecde9" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>hour_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a25f4b6019bc558ca579aca4af8aa1ec0" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a0a35b37a9d4bf77b87035e96317c5c41" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>microsecond_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a74042a99c99ef0f866204a4589c6a89e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Midnight</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a7e6bac6c307c4f03874cd0692e86b497" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>millisecond_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a5fd30b0822426db0a605e3236534b0f5" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>minute_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a72417063ee7fd03cdafff1f85bbd9e90" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>nanosecond_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a2d242e4f07bbf56e51eb2267773042f2" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Noon</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a0e33fd17972bc71d52b159559f8180c8" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a181948621d8fe0d85bdfc97af30b62fb" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1ad914e61c2ace9527236f88b897a0c6de" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a475b2b6200f15f20c8fab3891bbb73ac" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Parse</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a0998c6bb7686a17a0adab796683691cf" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>second_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a27d456d374f5799050f3ea8aed8478ac" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>setHour</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a4e746282febe29d5412f7e871b49ac86" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>setMicrosecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a78a51113cfca7af8e14fbf519b04ad25" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>setMillisecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1aef028b25ce2ff2d216e9fdc957c6ac4f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>setMinute</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a35df10195d96fe03990493a52cd7d61e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>setNanosecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a4f5cc2bb2a6ff653eca82e5a754fa781" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>setSecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a9609e75d328ed240f6fc4529e26038cc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Time</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a87aa31c71f4ae861948bf8f1771a6b88" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Time</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a33adb26e33abdfa65581626372f430bd" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a17c9ae2f4fa9c8a48a558fa49c511e03" prot="public" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a33965f327539e6f0169ab44b5a6fb33c" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>ValidateHour</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1ad9714fee683ab0727d019813fb7cfd58" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>ValidateMicrosecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a588928c435937b651165164346000392" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>ValidateMillisecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a8058e26c5cb3cd207974fd52220b04eb" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>ValidateMinute</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1afd3a4212ef93191874990a35fb1cfb4e" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>ValidateNanosecond</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_time_1a07a529bb64cb6099fd839fca30e33c36" prot="private" virt="non-virtual"><scope>ostk::physics::time::Time</scope><name>ValidateSecond</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

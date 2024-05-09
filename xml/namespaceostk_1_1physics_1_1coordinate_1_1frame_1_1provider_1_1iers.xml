@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" prot="public">ostk::physics::coordinate::frame::provider::iers::BulletinA</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b" prot="public">ostk::physics::coordinate::frame::provider::iers::BulletinB</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" prot="public">ostk::physics::coordinate::frame::provider::iers::Finals2000A</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager" prot="public">ostk::physics::coordinate::frame::provider::iers::Manager</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1ad71b034b8b325ebe2dd79691086560e6" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
+        <definition>using ostk::physics::coordinate::frame::provider::iers::ManifestManager = typedef ostk::physics::data::Manager</definition>
+        <argsstring></argsstring>
+        <name>ManifestManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="47" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1a7a0096e084064ce182bbe46f271fbf35" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::coordinate::frame::provider::iers::bulletinAFileName</definition>
+        <argsstring></argsstring>
+        <name>bulletinAFileName</name>
+        <initializer>= &quot;ser7.dat&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="49" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1adbc192598c0decae2d11281c35463003" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::coordinate::frame::provider::iers::finals2000AFileName</definition>
+        <argsstring></argsstring>
+        <name>finals2000AFileName</name>
+        <initializer>= &quot;finals2000A.data&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="50" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1ab01a683ad8af6da1fd2683b6638c80a6" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::coordinate::frame::provider::iers::bulletinAManifestName</definition>
+        <argsstring></argsstring>
+        <name>bulletinAManifestName</name>
+        <initializer>= &quot;bulletin-A&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="52" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1abc6f8946a7423570af3f1e496fcc8db9" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::coordinate::frame::provider::iers::finals2000AManifestName</definition>
+        <argsstring></argsstring>
+        <name>finals2000AManifestName</name>
+        <initializer>= &quot;finals-2000A&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="53" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1afb965e784048da69d0372c40ae9458f3" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::coordinate::frame::provider::iers::temporaryDirectoryName</definition>
+        <argsstring></argsstring>
+        <name>temporaryDirectoryName</name>
+        <initializer>= &quot;tmp&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="55" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1a1a579fb06ae5e46c494a7a860c7fff31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::frame::provider::iers::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const BulletinA &amp;aBulletinA)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> &amp;</type>
+          <declname>aBulletinA</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" line="31" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="31" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1ae80eabaf618cfa1369870bd029d92c41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::frame::provider::iers::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Finals2000A &amp;aFinals2000A)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> &amp;</type>
+          <declname>aFinals2000A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" line="32" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="32" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="27" column="1"/>
+  </compounddef>
+</doxygen>

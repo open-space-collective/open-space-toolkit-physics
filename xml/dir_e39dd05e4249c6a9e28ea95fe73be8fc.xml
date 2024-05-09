@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_e39dd05e4249c6a9e28ea95fe73be8fc" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Environment</compoundname>
+    <innerdir refid="dir_0e7965b2b476672f7ca6f083374df19a">include/OpenSpaceToolkit/Physics/Environment/Atmospheric</innerdir>
+    <innerdir refid="dir_5bd41cf5de5e80dfadef1de2f1ed7873">include/OpenSpaceToolkit/Physics/Environment/Ephemeris</innerdir>
+    <innerdir refid="dir_e60e8120a9a03a1f4dd4211babf7077b">include/OpenSpaceToolkit/Physics/Environment/Gravitational</innerdir>
+    <innerdir refid="dir_ac5f08ecf762bb4cb65e8cd9674b6999">include/OpenSpaceToolkit/Physics/Environment/Magnetic</innerdir>
+    <innerdir refid="dir_72dfdeef237823fd8dc970ac6cc64dd7">include/OpenSpaceToolkit/Physics/Environment/Object</innerdir>
+    <innerdir refid="dir_187a4deb488766c7b4c7b04c4fea9622">include/OpenSpaceToolkit/Physics/Environment/Utility</innerdir>
+    <innerfile refid="_constant_8hpp">Constant.hpp</innerfile>
+    <innerfile refid="_ephemeris_8hpp">Ephemeris.hpp</innerfile>
+    <innerfile refid="_object_8hpp">Object.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/"/>
+  </compounddef>
+</doxygen>

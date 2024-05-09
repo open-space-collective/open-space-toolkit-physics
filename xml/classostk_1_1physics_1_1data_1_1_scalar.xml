@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1data_1_1_scalar" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::data::Scalar</compoundname>
+    <includes refid="_scalar_8hpp" local="no">Scalar.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_scalar_1a478bc942308816ccb1170681bb351410" prot="private" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::data::Scalar::value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="56" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_scalar_1a3a57e02beab9a304be7318e858853e21" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
+        <definition>Unit ostk::physics::data::Scalar::unit_</definition>
+        <argsstring></argsstring>
+        <name>unit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="57" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a9c81732bf949003d9a613680d183c3af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::data::Scalar::Scalar</definition>
+        <argsstring>(const Real &amp;aValue, const Unit &amp;aUnit)</argsstring>
+        <name>Scalar</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aValue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="35" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="15" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a92a4f3e75436e61c077c6d8b37198e95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Scalar::operator==</definition>
+        <argsstring>(const Scalar &amp;aScalar) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref> &amp;</type>
+          <declname>aScalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="37" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="21" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a9d1f401cb3df5a6621c1fc04d86ce423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Scalar::operator!=</definition>
+        <argsstring>(const Scalar &amp;aScalar) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref> &amp;</type>
+          <declname>aScalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="39" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a93ea853416cca1007c462ffafdd4aa95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::data::Scalar::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="43" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1ab632ef637308f3b97f0ab4ef63780e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::data::Scalar::getValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="45" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1af2bf59b6c0681b8770083006328ecdd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
+        <definition>Unit ostk::physics::data::Scalar::getUnit</definition>
+        <argsstring>() const</argsstring>
+        <name>getUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="47" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="60" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1abe53604aa68b58737d7ffbf039a018f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref></type>
+        <definition>Scalar ostk::physics::data::Scalar::inUnit</definition>
+        <argsstring>(const Unit &amp;aUnit) const</argsstring>
+        <name>inUnit</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="49" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="65" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1acc184e1d5fa8e7868fcb67e065e68b77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::data::Scalar::toString</definition>
+        <argsstring>(const Integer &amp;aPrecision=Integer::Undefined()) const</argsstring>
+        <name>toString</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aPrecision</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="51" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="75" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1data_1_1_scalar_1ac5e6ec203257e2dbec9f528ff111aa52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Scalar &amp;aScalar)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref> &amp;</type>
+          <declname>aScalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="41" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="36" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a5f261e9c75633f5fa0ac5b5d892241fe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref></type>
+        <definition>Scalar ostk::physics::data::Scalar::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="53" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="85" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref> quantity. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        A scalar quantity is a physical quantity that can be described by a single element of a
+                        number field such as a real number, often accompanied by units of measurement.
+</verbatim></para>
+<para><ulink url="https://en.wikipedia.org/wiki/Scalar_">https://en.wikipedia.org/wiki/Scalar_</ulink>(physics) </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="32" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1af2bf59b6c0681b8770083006328ecdd5" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>getUnit</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1ab632ef637308f3b97f0ab4ef63780e54" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1abe53604aa68b58737d7ffbf039a018f3" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>inUnit</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a93ea853416cca1007c462ffafdd4aa95" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a9d1f401cb3df5a6621c1fc04d86ce423" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1ac5e6ec203257e2dbec9f528ff111aa52" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a92a4f3e75436e61c077c6d8b37198e95" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a9c81732bf949003d9a613680d183c3af" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>Scalar</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1acc184e1d5fa8e7868fcb67e065e68b77" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a5f261e9c75633f5fa0ac5b5d892241fe" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a3a57e02beab9a304be7318e858853e21" prot="private" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>unit_</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_scalar_1a478bc942308816ccb1170681bb351410" prot="private" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>value_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

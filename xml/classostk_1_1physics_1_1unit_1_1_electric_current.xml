@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1unit_1_1_electric_current" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::unit::ElectricCurrent</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1unit_1_1_unit" prot="public" virt="non-virtual">ostk::physics::unit::Unit</basecompoundref>
+    <includes refid="_electric_current_8hpp" local="no">ElectricCurrent.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Unit</name>
+        <enumvalue id="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
+          <name>Undefined</name>
+          <briefdescription>
+<para>Undefined. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393a2ee3b9f6a94ce5398d1386f42f9c87ac" prot="public">
+          <name>Ampere</name>
+          <briefdescription>
+<para>Ampere (SI) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="31" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="30" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a76740e2675a96e6adbf2494f693ab48b" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref></type>
+        <definition>ElectricCurrent::Unit ostk::physics::unit::ElectricCurrent::unit_</definition>
+        <argsstring></argsstring>
+        <name>unit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="72" column="27" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a612a2c6039f14ab5b8ea144c5ee57754" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::unit::ElectricCurrent::ElectricCurrent</definition>
+        <argsstring>(const Real &amp;aValue, const ElectricCurrent::Unit &amp;aUnit)</argsstring>
+        <name>ElectricCurrent</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aValue</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>electricCurrent<sp/>{<sp/>1.0,<sp/>ElectricCurrent::Unit::Ampere<sp/>}<sp/>;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An electric current unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="47" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="15" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1afe0e42e4373ac7e053bf80bf96307db3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref> *</type>
+        <definition>ElectricCurrent * ostk::physics::unit::ElectricCurrent::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="49" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a022780771b00926143ea03a5599fea4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::unit::ElectricCurrent::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="51" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a66456793da06177132d9086c09a1e72b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref></type>
+        <definition>ElectricCurrent::Unit ostk::physics::unit::ElectricCurrent::getUnit</definition>
+        <argsstring>() const</argsstring>
+        <name>getUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="53" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ace3efcea29b6327bf47cefa20395888d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::unit::ElectricCurrent::in</definition>
+        <argsstring>(const ElectricCurrent::Unit &amp;aUnit) const</argsstring>
+        <name>in</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="36" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ad64c82310c329453c248151854e11249" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::unit::ElectricCurrent::inAmperes</definition>
+        <argsstring>() const</argsstring>
+        <name>inAmperes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a7c77014239ba31f0b64bbf8ed7771e75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::ElectricCurrent::toString</definition>
+        <argsstring>(const Integer &amp;aPrecision=Integer::Undefined()) const override</argsstring>
+        <name>toString</name>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46">toString</reimplements>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aPrecision</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="59" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="56" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1af378d9395ea30cfbdc5a74f44ad808ef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref></type>
+        <definition>ElectricCurrent ostk::physics::unit::ElectricCurrent::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="61" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ad07f184596869b31cf94f15e9fbaa687" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref></type>
+        <definition>ElectricCurrent ostk::physics::unit::ElectricCurrent::Amperes</definition>
+        <argsstring>(const Real &amp;aValue)</argsstring>
+        <name>Amperes</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="63" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ad8dd271000475039b8649357bd615177" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref></type>
+        <definition>static ElectricCurrent ostk::physics::unit::ElectricCurrent::Parse</definition>
+        <argsstring>(const String &amp;aString)</argsstring>
+        <name>Parse</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="65" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a6b0f8a5a5d2e472beaa8f21b62ec3843" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::ElectricCurrent::StringFromUnit</definition>
+        <argsstring>(const ElectricCurrent::Unit &amp;aUnit)</argsstring>
+        <name>StringFromUnit</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="67" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="81" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a7e7c3c8ad78e291694f298a11ebe2056" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::unit::ElectricCurrent::SymbolFromUnit</definition>
+        <argsstring>(const ElectricCurrent::Unit &amp;aUnit)</argsstring>
+        <name>SymbolFromUnit</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="69" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="99" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1aba08567b97d495d290557e51ab5a726a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::unit::ElectricCurrent::SIRatio</definition>
+        <argsstring>(const ElectricCurrent::Unit &amp;aUnit)</argsstring>
+        <name>SIRatio</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="74" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="114" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Electric current. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/Electric_current">https://en.wikipedia.org/wiki/Electric_current</ulink> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::unit::ElectricCurrent</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_electric_current"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::unit::ElectricCurrent</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_electric_current"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::unit::Unit</label>
+        <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="27" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>accessValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>accessValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad07f184596869b31cf94f15e9fbaa687" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>Amperes</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1afe0e42e4373ac7e053bf80bf96307db3" prot="public" virt="virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a612a2c6039f14ab5b8ea144c5ee57754" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>ElectricCurrent</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a66456793da06177132d9086c09a1e72b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>getUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ace3efcea29b6327bf47cefa20395888d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>in</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad64c82310c329453c248151854e11249" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>inAmperes</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a022780771b00926143ea03a5599fea4a" prot="public" virt="virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>isZero</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad8dd271000475039b8649357bd615177" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>Parse</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" prot="protected" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>ParseString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>setValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1aba08567b97d495d290557e51ab5a726a" prot="private" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>SIRatio</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a6b0f8a5a5d2e472beaa8f21b62ec3843" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>StringFromUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a7e7c3c8ad78e291694f298a11ebe2056" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>SymbolFromUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a7c77014239ba31f0b64bbf8ed7771e75" prot="public" virt="virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>Type</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1af378d9395ea30cfbdc5a74f44ad808ef" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>Unit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::ElectricCurrent</scope><name>Unit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a76740e2675a96e6adbf2494f693ab48b" prot="private" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>unit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" prot="public" virt="pure-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>~Unit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

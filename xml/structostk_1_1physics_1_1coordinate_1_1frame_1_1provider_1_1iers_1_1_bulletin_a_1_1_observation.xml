@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</compoundname>
+    <includes refid="_bulletin_a_8hpp" local="no">BulletinA.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1ae4f4bf6f7951f9cfdab806345b452145" prot="public" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::year</definition>
+        <argsstring></argsstring>
+        <name>year</name>
+        <briefdescription>
+<para>Year (to get true calendar year, add 1900 for MJD &lt;= 51543 or add 2000 for MJD &gt;= 51544) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="72" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a930c7f8519fbde4eb16533fbc6ce7942" prot="public" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::month</definition>
+        <argsstring></argsstring>
+        <name>month</name>
+        <briefdescription>
+<para>Month number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="73" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a5d34f06cd20e3ee87ddce6b1f091208f" prot="public" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::day</definition>
+        <argsstring></argsstring>
+        <name>day</name>
+        <briefdescription>
+<para>Day of month. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="74" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a8736230c6ff9a43195745150ab17b2bd" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::mjd</definition>
+        <argsstring></argsstring>
+        <name>mjd</name>
+        <briefdescription>
+<para>Modified Julian Day. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="76" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1ad6897ecdfa1fd2ae34a5e8a18b6d61ae" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+<para>[asec] PM-x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="78" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1aeb586b657a8f90a9047ffe0684f8b1a9" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::xError</definition>
+        <argsstring></argsstring>
+        <name>xError</name>
+        <briefdescription>
+<para>[asec] Error in PM-x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="79" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a60be874b1c2706908d51d21bc670cff1" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+<para>[asec] PM-y </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="80" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1ab25489c7c19a98c694e9e6e72d2418d6" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::yError</definition>
+        <argsstring></argsstring>
+        <name>yError</name>
+        <briefdescription>
+<para>[asec] Error in PM-y </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="81" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a8d9b8cdff0b45523d98120e1855bb7f5" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::ut1MinusUtc</definition>
+        <argsstring></argsstring>
+        <name>ut1MinusUtc</name>
+        <briefdescription>
+<para>[s] UT1-UTC </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="83" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a465e53409b4215206a4aab93bc3b6d4e" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation::ut1MinusUtcError</definition>
+        <argsstring></argsstring>
+        <name>ut1MinusUtcError</name>
+        <briefdescription>
+<para>[s] Error in UT1-UTC </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="84" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Real</label>
+      </node>
+      <node id="3">
+        <label>Integer</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</label>
+        <link refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>mjd</edgelabel>
+          <edgelabel>yError</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>xError</edgelabel>
+          <edgelabel>ut1MinusUtcError</edgelabel>
+          <edgelabel>ut1MinusUtc</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>day</edgelabel>
+          <edgelabel>month</edgelabel>
+          <edgelabel>year</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="71" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="70" bodyend="85"/>
+    <listofallmembers>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a5d34f06cd20e3ee87ddce6b1f091208f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>day</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a8736230c6ff9a43195745150ab17b2bd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>mjd</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a930c7f8519fbde4eb16533fbc6ce7942" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>month</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a8d9b8cdff0b45523d98120e1855bb7f5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>ut1MinusUtc</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a465e53409b4215206a4aab93bc3b6d4e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>ut1MinusUtcError</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1ad6897ecdfa1fd2ae34a5e8a18b6d61ae" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>x</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1aeb586b657a8f90a9047ffe0684f8b1a9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>xError</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1a60be874b1c2706908d51d21bc670cff1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>y</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1ae4f4bf6f7951f9cfdab806345b452145" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>year</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation_1ab25489c7c19a98c694e9e6e72d2418d6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</scope><name>yError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

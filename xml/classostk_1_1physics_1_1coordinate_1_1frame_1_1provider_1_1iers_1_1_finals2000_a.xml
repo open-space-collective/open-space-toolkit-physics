@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::Finals2000A</compoundname>
+    <includes refid="_finals2000_a_8hpp" local="no">Finals2000A.hpp</includes>
+    <innerclass refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" prot="public">ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1ac8972f301b50399bf211fbbac26bb555" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
+        <definition>Instant ostk::physics::coordinate::frame::provider::iers::Finals2000A::lastModifiedTimestamp_</definition>
+        <argsstring></argsstring>
+        <name>lastModifiedTimestamp_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="156" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a849e77cbca084edf1705ebefeeb4f070" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::coordinate::frame::provider::iers::Finals2000A::span_</definition>
+        <argsstring></argsstring>
+        <name>span_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="157" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a661621521c1948f8e189250d3360af42" prot="private" static="no" mutable="no">
+        <type>Map&lt; Real, <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Finals2000A::Data</ref> &gt;</type>
+        <definition>Map&lt;Real, Finals2000A::Data&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="158" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1ade92763eb1cb719a4a499af1beb72b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Finals2000A &amp;aFinals2000A)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> &amp;</type>
+          <declname>aFinals2000A</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="94" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="32" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a0dd81a8e16b0be13db5899c3792f014a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::iers::Finals2000A::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+<para>true if defined </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if defined </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a62f0e03a53a9bfb7c00fd54cab6e1cc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+        <definition>const Instant &amp; ostk::physics::coordinate::frame::provider::iers::Finals2000A::accessLastModifiedTimestamp</definition>
+        <argsstring>() const</argsstring>
+        <name>accessLastModifiedTimestamp</name>
+        <briefdescription>
+<para>Access timestamp at which the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> file was last modified. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Instant indicating when the file was last updated based on file modification time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="106" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="54" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1aedef956bbcc566bc88bf3c1b8b4b66d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::coordinate::frame::provider::iers::Finals2000A::getInterval</definition>
+        <argsstring>() const</argsstring>
+        <name>getInterval</name>
+        <briefdescription>
+<para>Get data interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Data</ref> Intervalt of Instants </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="112" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="64" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1aebb5e5b97033c5bd387e8aa2f85f417f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector2d</type>
+        <definition>Vector2d ostk::physics::coordinate::frame::provider::iers::Finals2000A::getPolarMotionAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getPolarMotionAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get polar motion at Instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Polar motion </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="119" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="74" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a39c90feec848783a0b7f907b093a5b18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::getUt1MinusUtcAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getUt1MinusUtcAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get UT1-UTC at Instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UT1-UTC </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="126" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="116" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a0eb57156c860f819ca07b39b5a18fdca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::getLodAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getLodAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get LOD (Length Of Day) at Instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>LOD </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="133" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="159" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1adcd8ceeabb80e817017b9842311d411f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Finals2000A::Data</ref></type>
+        <definition>Finals2000A::Data ostk::physics::coordinate::frame::provider::iers::Finals2000A::getDataAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>getDataAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Data</ref> reading at instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Data</ref> reading </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="140" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="199" bodyend="306"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1ae33e2372aaf1caf0dfe994c4157ca39a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref></type>
+        <definition>Finals2000A ostk::physics::coordinate::frame::provider::iers::Finals2000A::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+<para>Undefined factory function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="146" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="308" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1abb1679122ce60799d9e8c8ebdffd5fd9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref></type>
+        <definition>Finals2000A ostk::physics::coordinate::frame::provider::iers::Finals2000A::Load</definition>
+        <argsstring>(const filesystem::File &amp;aFile)</argsstring>
+        <name>Load</name>
+        <param>
+          <type>const filesystem::File &amp;</type>
+          <declname>aFile</declname>
+        </param>
+        <briefdescription>
+<para>Load <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> from file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="153" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="313" bodyend="442"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a14cbb07f1385a7c8e55a1b2cc60073d0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Finals2000A</definition>
+        <argsstring>()</argsstring>
+        <name>Finals2000A</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="160" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="444" bodyend="449"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a76f2dd1aa5d13e89d66e7f2557d64392" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Pair&lt; const <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Finals2000A::Data</ref> *, const <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Finals2000A::Data</ref> * &gt;</type>
+        <definition>Pair&lt; const Finals2000A::Data *, const Finals2000A::Data * &gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::accessDataRange</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>accessDataRange</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="162" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp" bodystart="451" bodyend="475"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Standard Rapid EOP <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kindref="compound">Data</ref> since 01. January 1992 (IAU2000) </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        This file (updated weekly) is the complete Earth orientation data set, since 1 January
+                        1992 with 1 year of predictions. The nutation series in dX and dY uses the IAU 2000A
+                        Nutation Theory.
+</verbatim></para>
+<para><ulink url="https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html">https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html</ulink> -&gt; finals.data (IAU2000) </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="57" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="56" bodyend="163"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a76f2dd1aa5d13e89d66e7f2557d64392" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>accessDataRange</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a62f0e03a53a9bfb7c00fd54cab6e1cc4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>accessLastModifiedTimestamp</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a661621521c1948f8e189250d3360af42" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>data_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a14cbb07f1385a7c8e55a1b2cc60073d0" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>Finals2000A</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1adcd8ceeabb80e817017b9842311d411f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>getDataAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1aedef956bbcc566bc88bf3c1b8b4b66d8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>getInterval</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a0eb57156c860f819ca07b39b5a18fdca" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>getLodAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1aebb5e5b97033c5bd387e8aa2f85f417f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>getPolarMotionAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a39c90feec848783a0b7f907b093a5b18" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>getUt1MinusUtcAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a0dd81a8e16b0be13db5899c3792f014a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1ac8972f301b50399bf211fbbac26bb555" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>lastModifiedTimestamp_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1abb1679122ce60799d9e8c8ebdffd5fd9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>Load</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1ade92763eb1cb719a4a499af1beb72b43" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1a849e77cbca084edf1705ebefeeb4f070" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>span_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1ae33e2372aaf1caf0dfe994c4157ca39a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A</scope><name>Undefined</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

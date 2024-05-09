@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::gravitational::earth</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" prot="public">ostk::physics::environment::gravitational::earth::Manager</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a58cd447cbdfb525cde0bf7d94440990f" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref></type>
+        <definition>using ostk::physics::environment::gravitational::earth::EarthGravitationalModel = typedef ostk::physics::environment::gravitational::Earth</definition>
+        <argsstring></argsstring>
+        <name>EarthGravitationalModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a2e13b2276c83c5afaef4e9f94beb34af" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
+        <definition>using ostk::physics::environment::gravitational::earth::ManifestManager = typedef ostk::physics::data::Manager</definition>
+        <argsstring></argsstring>
+        <name>ManifestManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" line="32" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="36" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,692 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::object::celestial::Earth</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" prot="public" virt="non-virtual">ostk::physics::environment::object::Celestial</basecompoundref>
+    <includes refid="_object_2_celestial_2_earth_8hpp" local="no">Earth.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1aec4e4ddfc37a063f3aac920403fe627a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::object::celestial::Earth::Earth</definition>
+        <argsstring>(const Derived &amp;aGravitationalParameter, const Length &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aJ2, const Real &amp;aJ4, const Shared&lt; Ephemeris &gt; &amp;anEphemeris, const Shared&lt; EarthGravitationalModel &gt; &amp;aGravitationalModel, const Shared&lt; EarthMagneticModel &gt; &amp;aMagneticModel, const Shared&lt; EarthAtmosphericModel &gt; &amp;anAtmosphericModel)</argsstring>
+        <name>Earth</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <declname>aGravitationalParameter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>anEquatorialRadius</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aFlattening</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aJ2</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aJ4</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> &gt; &amp;</type>
+          <declname>anEphemeris</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1af782c25eafe767e0865804b058d2dcc6" kindref="member">EarthGravitationalModel</ref> &gt; &amp;</type>
+          <declname>aGravitationalModel</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a696114cfd73f299553767f17778388e6" kindref="member">EarthMagneticModel</ref> &gt; &amp;</type>
+          <declname>aMagneticModel</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a78c1b6b67cca28d0d08df57d57657342" kindref="member">EarthAtmosphericModel</ref> &gt; &amp;</type>
+          <declname>anAtmosphericModel</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aGravitationalParameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational parameter for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEquatorialRadius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An equatorial radius for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aFlattening</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A flattening for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aJ2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A J2 coefficient for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aJ4</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A J4 coefficient for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEphemeris</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An ephemeris for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aGravitationalModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aMagneticModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A magnetic model for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anAtmosphericModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An atmospheric model for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="67" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="22" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a04a4cf746c8434fb47e61d5462008453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::object::celestial::Earth::Earth</definition>
+        <argsstring>(const Shared&lt; Ephemeris &gt; &amp;anEphemeris, const Shared&lt; EarthGravitationalModel &gt; &amp;aGravitationalModel=nullptr, const Shared&lt; EarthMagneticModel &gt; &amp;aMagneticModel=nullptr, const Shared&lt; EarthAtmosphericModel &gt; &amp;anAtmosphericModel=nullptr)</argsstring>
+        <name>Earth</name>
+        <param>
+          <type>const Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> &gt; &amp;</type>
+          <declname>anEphemeris</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1af782c25eafe767e0865804b058d2dcc6" kindref="member">EarthGravitationalModel</ref> &gt; &amp;</type>
+          <declname>aGravitationalModel</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a696114cfd73f299553767f17778388e6" kindref="member">EarthMagneticModel</ref> &gt; &amp;</type>
+          <declname>aMagneticModel</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a78c1b6b67cca28d0d08df57d57657342" kindref="member">EarthAtmosphericModel</ref> &gt; &amp;</type>
+          <declname>anAtmosphericModel</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEphemeris</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An ephemeris for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aGravitationalModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aMagneticModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A magnetic model for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anAtmosphericModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An atmospheric model for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="87" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="50" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a0a57b4939dd660610fa612aacc7a01c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ostk::physics::environment::object::celestial::Earth::~Earth</definition>
+        <argsstring>() override</argsstring>
+        <name>~Earth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="94" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a4ccdbfcb7d3ad42c87eaf7f1f5ca576c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> *</type>
+        <definition>Earth * ostk::physics::environment::object::celestial::Earth::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1adbbbc6c86fdec5f6d24e7b64419b885c">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="96" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="79" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ae408597832deeaa3a141dc3001e39aa8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::Default</definition>
+        <argsstring>()</argsstring>
+        <name>Default</name>
+        <briefdescription>
+<para>Default <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> model (EGM2008) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="102" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="127" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1af4e38f0dcc47b0fb8b3295a1eb21e308" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::GravitationalOnly</definition>
+        <argsstring>(const Shared&lt; EarthGravitationalModel &gt; &amp;aGravitationalModel)</argsstring>
+        <name>GravitationalOnly</name>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1af782c25eafe767e0865804b058d2dcc6" kindref="member">EarthGravitationalModel</ref> &gt; &amp;</type>
+          <declname>aGravitationalModel</declname>
+        </param>
+        <briefdescription>
+<para>Just gravity model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aGravitationalModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="109" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="84" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a50c6a03684538b04041d202e1fa25c24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::AtmosphericOnly</definition>
+        <argsstring>(const Shared&lt; EarthAtmosphericModel &gt; &amp;anAtmosphericModel)</argsstring>
+        <name>AtmosphericOnly</name>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a78c1b6b67cca28d0d08df57d57657342" kindref="member">EarthAtmosphericModel</ref> &gt; &amp;</type>
+          <declname>anAtmosphericModel</declname>
+        </param>
+        <briefdescription>
+<para>Just atmospheric model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anAtmosphericModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An atmospheric model </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="116" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="102" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ae75f36be563cd9cecec539c7b590d437" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::MagneticOnly</definition>
+        <argsstring>(const Shared&lt; EarthMagneticModel &gt; &amp;aMagneticModel)</argsstring>
+        <name>MagneticOnly</name>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a696114cfd73f299553767f17778388e6" kindref="member">EarthMagneticModel</ref> &gt; &amp;</type>
+          <declname>aMagneticModel</declname>
+        </param>
+        <briefdescription>
+<para>Just magnetic model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>`</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[in] aMagneticModel A magnetic model </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="123" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="93" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a1375db175db4fbdc50af699b28c4e18b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::FromModels</definition>
+        <argsstring>(const Shared&lt; EarthGravitationalModel &gt; &amp;aGravitationalModel, const Shared&lt; EarthMagneticModel &gt; &amp;aMagneticModel, const Shared&lt; EarthAtmosphericModel &gt; &amp;anAtmosphericModel)</argsstring>
+        <name>FromModels</name>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1af782c25eafe767e0865804b058d2dcc6" kindref="member">EarthGravitationalModel</ref> &gt; &amp;</type>
+          <declname>aGravitationalModel</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a696114cfd73f299553767f17778388e6" kindref="member">EarthMagneticModel</ref> &gt; &amp;</type>
+          <declname>aMagneticModel</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1_1celestial_1a78c1b6b67cca28d0d08df57d57657342" kindref="member">EarthAtmosphericModel</ref> &gt; &amp;</type>
+          <declname>anAtmosphericModel</declname>
+        </param>
+        <briefdescription>
+<para>Create earth from specified models. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aGravitationalModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aMagneticModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A magnetic model </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anAtmosphericModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An atmospheric model</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="133" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="111" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a10edb4ebdd46a4ae83e020c79d5866fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::EGM2008</definition>
+        <argsstring>(const Integer &amp;aGravityModelDegree=Integer::Undefined(), const Integer &amp;aGravityModelOrder=Integer::Undefined())</argsstring>
+        <name>EGM2008</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 2008 model (EGM2008) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="143" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="132" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1aa9586bbfa33e0130fbe499dd23748fe7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::WGS84_EGM96</definition>
+        <argsstring>(const Integer &amp;aGravityModelDegree=Integer::Undefined(), const Integer &amp;aGravityModelOrder=Integer::Undefined())</argsstring>
+        <name>WGS84_EGM96</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+<para>World Geodetic System 1984 (WGS84) + <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 1996 (EGM96) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                EGM96 coefficients and WGS84 shape.
+                Gravitational parameter: 398600441800000 [m^3/s^2].
+                Equatorial radius: 6378137.0 [m].
+</verbatim></para>
+<para>NIMA TR8350.2, Third Edition, 4 July 1997.</para>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="158" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="139" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a52d255251c6b6770c8bd86c9d187289a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::EGM96</definition>
+        <argsstring>(const Integer &amp;aGravityModelDegree=Integer::Undefined(), const Integer &amp;aGravityModelOrder=Integer::Undefined())</argsstring>
+        <name>EGM96</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 1996 (EGM96) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="167" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="146" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ad63a8f55e77cad0b28524fdb3ef43b2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::EGM84</definition>
+        <argsstring>(const Integer &amp;aGravityModelDegree=Integer::Undefined(), const Integer &amp;aGravityModelOrder=Integer::Undefined())</argsstring>
+        <name>EGM84</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 1984 (EGM84) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="176" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="155" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1abc5717390846fec03abe2935cccedd18" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::WGS84</definition>
+        <argsstring>(const Integer &amp;aGravityModelDegree=Integer::Undefined(), const Integer &amp;aGravityModelOrder=Integer::Undefined())</argsstring>
+        <name>WGS84</name>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelDegree</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <param>
+          <type>const Integer &amp;</type>
+          <declname>aGravityModelOrder</declname>
+          <defval>Integer::Undefined()</defval>
+        </param>
+        <briefdescription>
+<para>World Geodetic System 1984 (WGS84) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="185" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="162" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a54f2070adf8e3fd2821650382957cb2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
+        <definition>Earth ostk::physics::environment::object::celestial::Earth::Spherical</definition>
+        <argsstring>()</argsstring>
+        <name>Spherical</name>
+        <briefdescription>
+<para>Spherical model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="194" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="169" bodyend="174"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a9a5c3a9a15178e4352838e854709014c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1_object_1aa7e729b9f9530a07e119ec75ab9506e5" kindref="member">Object::Geometry</ref></type>
+        <definition>Object::Geometry ostk::physics::environment::object::celestial::Earth::Geometry</definition>
+        <argsstring>(const Length &amp;anEquatorialRadius, const Real &amp;aFlattening, const Shared&lt; const Frame &gt; &amp;aFrameSPtr)</argsstring>
+        <name>Geometry</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>anEquatorialRadius</declname>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aFlattening</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrameSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="197" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="176" bodyend="191"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::environment::object::celestial::Earth</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::object::Celestial</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ostk::physics::environment::Object</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::environment::object::celestial::Earth</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::object::Celestial</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ostk::physics::environment::Object</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" bodystart="50" bodyend="200"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a60d182194f5b3925d40878616fd12ec1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessAtmosphericModel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0e365cdf7cddbe4aa38e68e8c10665d6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessEphemeris</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a581cf2edc06dd50e3da2020af63223f1" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessFrame</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1ab306747a9a25bce149ac38e90ccf5996" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessGeometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a976be059fe64457c0aefe555e4fba427" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessGravitationalModel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a98a5fe28212b33f5b3185185afa251a6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessMagneticModel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a482a363b20f3111919b57d8b6ae4b626" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessName</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a948c09f0933c1029adb19b416cc16936" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>atmosphericModelIsDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a50c6a03684538b04041d202e1fa25c24" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>AtmosphericOnly</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abc307b5e79ebf68672c4fb34357d37c5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Celestial</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9acfc43094d2af339144f5e09fec33f0" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Celestial</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a4ccdbfcb7d3ad42c87eaf7f1f5ca576c" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ae408597832deeaa3a141dc3001e39aa8" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Default</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1aec4e4ddfc37a063f3aac920403fe627a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Earth</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a04a4cf746c8434fb47e61d5462008453" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Earth</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a10edb4ebdd46a4ae83e020c79d5866fa" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>EGM2008</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ad63a8f55e77cad0b28524fdb3ef43b2c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>EGM84</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a52d255251c6b6770c8bd86c9d187289a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>EGM96</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad46f3313eced8098e74365e77a7d16" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>FrameType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a1375db175db4fbdc50af699b28c4e18b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>FromModels</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a9a5c3a9a15178e4352838e854709014c" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Geometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1aa7e729b9f9530a07e119ec75ab9506e5" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::environment::object::Celestial::"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Geometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a6a054ba2ae57b50fa33c00ecb2c19fdc" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getAtmosphericDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abe3a06f0125fc000299e2acabafc328b" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getAxesIn</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0394a773909b012b3bf51ccc93cf2957" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getEquatorialRadius</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0ff89bef090afc044885e22ab114ec16" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getFlattening</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a5923fbf3b9d4ebb85f233cb39051471e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getFrameAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a2fbf19c615439f945094330513a15d8e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getGeometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a7e71cbc82cacb97028dfec30b4d22615" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getGeometryIn</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1af9bb0adb04d3276f56f0adba393e82c8" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getGravitationalFieldAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a3fe5abc4c6a24cfef67eb2bc76977523" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getGravitationalParameter</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a13dc27c6947635f52767f650b4f31620" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getJ2</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a3e0c4b3240fa1ccdf4b3e2c233992638" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getJ4</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a4c2818f6f577f53512d8837b16c3dc32" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getMagneticFieldAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a6b5ae91472cae78ec3a1f71f92d012cf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getName</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac10d3092a427a05f79b90caec84847bb" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getPositionIn</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1acbfbeceb563694586693e8c41cb931be" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getTerminatorGeometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac4ac447f2c9960ab25e024bb688d9505" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getTransformTo</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac422b7aad84424cf6918ce08b3d9c917" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a23f4564311c6c70dc78070723c3fbab2" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>getVelocityIn</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aacdd5f213ee4a373a5c8e2b98bef21f7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>gravitationalModelIsDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1af4e38f0dcc47b0fb8b3295a1eb21e308" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>GravitationalOnly</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a25746b47ed8da42de7fd256a72e59f56" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a1d204aa21bc1115aa56252ca8bb064ed" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>magneticModelIsDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ae75f36be563cd9cecec539c7b590d437" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>MagneticOnly</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1ad0bd314e8ecd4c649dec47c734e7b837" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Object</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1acfb94e72017a6f1d2a12771a6bcf1a3d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Object</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1abf6aec0a61fb175f13f1eb0e7d43f93e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Object</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1ac5724ddaed5079713a8a7c62daba2b9b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a54f2070adf8e3fd2821650382957cb2c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Spherical</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9ca8ec080e46d3b5a439d3522daa5e08" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>StringFromFrameType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a22adef48147472c56a7ab3b5d8140661" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Type</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ade773ad5a77a1a8e35f646b1e9bc1989" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1abc5717390846fec03abe2935cccedd18" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>WGS84</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1aa9586bbfa33e0130fbe499dd23748fe7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>WGS84_EGM96</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aed7b26bf9949f4737987f768f23a1f65" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>~Celestial</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a0a57b4939dd660610fa612aacc7a01c4" prot="public" virt="virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>~Earth</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1ab45ec0e1e0dfcadb6166079377ec3e37" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

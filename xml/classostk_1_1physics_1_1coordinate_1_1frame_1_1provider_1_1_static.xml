@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::Static</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" prot="public" virt="non-virtual">ostk::physics::coordinate::frame::Provider</basecompoundref>
+    <includes refid="_static_8hpp" local="no">Static.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1af60bc818d48e2fe1fb5296b2316fe268" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::frame::provider::Static::transform_</definition>
+        <argsstring></argsstring>
+        <name>transform_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="41" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1add1d89f1443003e26f8bad45966a4e7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::Static::Static</definition>
+        <argsstring>(const Transform &amp;aTransform)</argsstring>
+        <name>Static</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>aTransform</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="30" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a5d5b23797b9056df8ca44244a48e7078" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::Static::~Static</definition>
+        <argsstring>() override</argsstring>
+        <name>~Static</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="32" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a01e6348ccec9b8478719941c50964189" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static" kindref="compound">Static</ref> *</type>
+        <definition>Static * ostk::physics::coordinate::frame::provider::Static::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="34" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a4a0938396b83c78487689cc209dd25c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::Static::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="36" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a8d2c7bb34b47c56ca1635504d504f2cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::frame::provider::Static::getTransformAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const override</argsstring>
+        <name>getTransformAt</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e">getTransformAt</reimplements>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="38" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp" bodystart="36" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static" kindref="compound">Static</ref> provider. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::Static</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::Static</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp" bodystart="27" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a01e6348ccec9b8478719941c50964189" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a8d2c7bb34b47c56ca1635504d504f2cc" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>getTransformAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a4a0938396b83c78487689cc209dd25c2" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>Provider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1add1d89f1443003e26f8bad45966a4e7b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>Static</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1af60bc818d48e2fe1fb5296b2316fe268" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>transform_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>~Provider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static_1a5d5b23797b9056df8ca44244a48e7078" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Static</scope><name>~Static</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

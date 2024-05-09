@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_fa5ad12834b3b41d1d1fec596b2bb4c1" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Unit</compoundname>
+    <innerdir refid="dir_1413b2cf8ecc788f619a5db5560257f7">include/OpenSpaceToolkit/Physics/Unit/Derived</innerdir>
+    <innerfile refid="_derived_8hpp">Derived.hpp</innerfile>
+    <innerfile refid="_electric_current_8hpp">ElectricCurrent.hpp</innerfile>
+    <innerfile refid="_length_8hpp">Length.hpp</innerfile>
+    <innerfile refid="_mass_8hpp">Mass.hpp</innerfile>
+    <innerfile refid="_unit_2_time_8hpp">Time.hpp</innerfile>
+    <innerfile refid="_unit_2_unit_8hpp">Unit.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/"/>
+  </compounddef>
+</doxygen>

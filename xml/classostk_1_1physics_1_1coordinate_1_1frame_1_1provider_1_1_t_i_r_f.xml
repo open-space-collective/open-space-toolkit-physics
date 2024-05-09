@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::TIRF</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" prot="public" virt="non-virtual">ostk::physics::coordinate::frame::Provider</basecompoundref>
+    <includes refid="_t_i_r_f_8hpp" local="no">TIRF.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a18485f46a5f95440301a7dd509aa2aa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::TIRF::TIRF</definition>
+        <argsstring>()</argsstring>
+        <name>TIRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" line="35" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a4a29bf195b8db007fedf6d65e8f80dfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::frame::provider::TIRF::~TIRF</definition>
+        <argsstring>() override</argsstring>
+        <name>~TIRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" line="37" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a6cf784518e31c99adac70fefa7fb9118" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f" kindref="compound">TIRF</ref> *</type>
+        <definition>TIRF * ostk::physics::coordinate::frame::provider::TIRF::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" line="39" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ae8b4ed3330ad21c038a58cc3a4e409d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::frame::provider::TIRF::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" line="41" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ac5b8c45d930c729709a60d0c81b1b3a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::frame::provider::TIRF::getTransformAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const override</argsstring>
+        <name>getTransformAt</name>
+        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e">getTransformAt</reimplements>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" line="43" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp" bodystart="45" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Terrestrial Intermediate Reference <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f" kindref="compound">TIRF</ref>) provider. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        Earth rotation angle
+</verbatim></para>
+<para><ulink url="https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf">https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf</ulink>?__blob=publicationFile&amp;v=1 </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::TIRF</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ostk::physics::coordinate::frame::Provider</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::TIRF</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp" bodystart="32" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a6cf784518e31c99adac70fefa7fb9118" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ac5b8c45d930c729709a60d0c81b1b3a6" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>getTransformAt</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ae8b4ed3330ad21c038a58cc3a4e409d6" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>Provider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a18485f46a5f95440301a7dd509aa2aa5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>TIRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>~Provider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a4a29bf195b8db007fedf6d65e8f80dfd" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TIRF</scope><name>~TIRF</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

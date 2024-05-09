@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::atmospheric::earth::NRLMSISE00</compoundname>
+    <includes refid="_n_r_l_m_s_i_s_e00_8hpp" local="no">NRLMSISE00.hpp</includes>
+    <innerclass refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array" prot="protected">ostk::physics::environment::atmospheric::earth::NRLMSISE00::ap_array</innerclass>
+    <innerclass refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input" prot="protected">ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafae" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>InputDataType</name>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafaeae9eebdbef0b7b5541182b3aa450506a6" prot="public">
+          <name>ConstantFluxAndGeoMag</name>
+          <briefdescription>
+<para>Use constant values for F10.7, F10.7a and Kp <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> input parameters. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafaea1740c2aece7dbccad64b242a1a6d2911" prot="public">
+          <name>CSSISpaceWeatherFile</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Use historical and predicted values for F10.7, F10.7a and Kp <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> input parameters </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="56" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="55" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a81fc762cd5acf281252709944db1bb72" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafae" kindref="member">InputDataType</ref></type>
+        <definition>InputDataType ostk::physics::environment::atmospheric::earth::NRLMSISE00::inputDataType_</definition>
+        <argsstring></argsstring>
+        <name>inputDataType_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="191" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a97211e33105e1cb46e84ca57b9f49652" prot="private" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::f107ConstantValue_</definition>
+        <argsstring></argsstring>
+        <name>f107ConstantValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="192" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1ac0cf7d103efa0ee2b39c55b965833793" prot="private" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::f107AConstantValue_</definition>
+        <argsstring></argsstring>
+        <name>f107AConstantValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="193" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a03490856fa49af57788f9a230b719417" prot="private" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::kpConstantValue_</definition>
+        <argsstring></argsstring>
+        <name>kpConstantValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="194" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a9b5d210485571c21886a5659a7fd1f80" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt;const Frame&gt; ostk::physics::environment::atmospheric::earth::NRLMSISE00::earthFrameSPtr_</definition>
+        <argsstring></argsstring>
+        <name>earthFrameSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="195" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a21b831d0c528916f8032236335275ab7" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
+        <definition>Length ostk::physics::environment::atmospheric::earth::NRLMSISE00::earthRadius_</definition>
+        <argsstring></argsstring>
+        <name>earthRadius_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="196" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a1c51018a0ddfd069a3b93c5032dbf415" prot="private" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::earthFlattening_</definition>
+        <argsstring></argsstring>
+        <name>earthFlattening_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="197" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a454aaa11e2a54f65dc9b0ced6d202775" prot="private" static="no" mutable="no">
+        <type>Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &gt;</type>
+        <definition>Shared&lt;Celestial&gt; ostk::physics::environment::atmospheric::earth::NRLMSISE00::sunCelestialSPtr_</definition>
+        <argsstring></argsstring>
+        <name>sunCelestialSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="198" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1af8939ebdeef9916f51ff614c301ee132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::atmospheric::earth::NRLMSISE00::NRLMSISE00</definition>
+        <argsstring>(const InputDataType &amp;anInputDataType=InputDataType::CSSISpaceWeatherFile, const Real &amp;aF107ConstantValue=EarthAtmosphericModel::defaultF107ConstantValue, const Real &amp;af107aConstantValue=EarthAtmosphericModel::defaultF107AConstantValue, const Real &amp;aKpConstantValue=EarthAtmosphericModel::defaultKpConstantValue, const Shared&lt; const Frame &gt; &amp;anEarthFrameSPtr=Frame::ITRF(), const Length &amp;anEarthRadius=EarthGravitationalModel::WGS84.equatorialRadius_, const Real &amp;anEarthFlattening=EarthGravitationalModel::WGS84.flattening_, const Shared&lt; Celestial &gt; &amp;aSunCelestialSPtr=nullptr)</argsstring>
+        <name>NRLMSISE00</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafae" kindref="member">InputDataType</ref> &amp;</type>
+          <declname>anInputDataType</declname>
+          <defval><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafaea1740c2aece7dbccad64b242a1a6d2911" kindref="member">InputDataType::CSSISpaceWeatherFile</ref></defval>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aF107ConstantValue</declname>
+          <defval><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1af8775ed556616baf8422164a8fa45482" kindref="member">EarthAtmosphericModel::defaultF107ConstantValue</ref></defval>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>af107aConstantValue</declname>
+          <defval><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a9eac604602c9b7753700c538f7bfd114" kindref="member">EarthAtmosphericModel::defaultF107AConstantValue</ref></defval>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aKpConstantValue</declname>
+          <defval><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a63de2da48803d7dbe898f29f35102c74" kindref="member">EarthAtmosphericModel::defaultKpConstantValue</ref></defval>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>anEarthFrameSPtr</declname>
+          <defval><ref refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a31b8e721d6893ef80c3eea7eca9cda87" kindref="member">Frame::ITRF</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+          <declname>anEarthRadius</declname>
+          <defval>EarthGravitationalModel::WGS84.equatorialRadius_</defval>
+        </param>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>anEarthFlattening</declname>
+          <defval>EarthGravitationalModel::WGS84.flattening_</defval>
+        </param>
+        <param>
+          <type>const Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &gt; &amp;</type>
+          <declname>aSunCelestialSPtr</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="64" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="55" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7116c623396b409568be82b421eb027f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> *</type>
+        <definition>NRLMSISE00 * ostk::physics::environment::atmospheric::earth::NRLMSISE00::clone</definition>
+        <argsstring>() const</argsstring>
+        <name>clone</name>
+        <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="79" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a0a1b679056412e4b3f7b86d038f442ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::atmospheric::earth::NRLMSISE00::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+<para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model is defined. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model is defined </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="85" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1affd51790f05201cccb3fd2de52224acb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafae" kindref="member">InputDataType</ref></type>
+        <definition>NRLMSISE00::InputDataType ostk::physics::environment::atmospheric::earth::NRLMSISE00::getInputDataType</definition>
+        <argsstring>() const</argsstring>
+        <name>getInputDataType</name>
+        <briefdescription>
+<para>Get the input data source type used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> input data source type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="91" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="306" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a029295aaf70df37c8100a8f6d277dbed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::getF107ConstantValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getF107ConstantValue</name>
+        <briefdescription>
+<para>Get the constant value for F10.7 input parameter used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Constant value for F10.7 input parameter </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="98" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="311" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1aff2e159d4886117f54bc058a759b1aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::getF107AConstantValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getF107AConstantValue</name>
+        <briefdescription>
+<para>Get the constant value for F10.7a input parameter used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Constant value for F10.7a input parameter </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="316" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a2489ac1cc74bd80f6e758f5b5ed3b209" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::getKpConstantValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getKpConstantValue</name>
+        <briefdescription>
+<para>Get the constant value for Kp input parameter used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Constant value for Kp input parameter </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="112" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="321" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1ad7ec217766c1ceb0c592cab9a78d13a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::getDensityAt</definition>
+        <argsstring>(const LLA &amp;aLLA, const Instant &amp;anInstant) const</argsstring>
+        <name>getDensityAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
+          <declname>aLLA</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Get the atmospheric density value at a given position and instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLLA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A position, expressed as latitude, longitude, altitude [deg, deg, m] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Atmospheric density value [kg.m^-3] </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="121" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="326" bodyend="338"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a6fbc2f3f0db894645b6151a944fa4a1c" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::GetDensityAt</definition>
+        <argsstring>(nrlmsise_input &amp;input)</argsstring>
+        <name>GetDensityAt</name>
+        <param>
+          <type><ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input" kindref="compound">nrlmsise_input</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Get the atmospheric density value by directly provided NRLMSISE input values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">NRLMSISE</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input struct </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Atmospheric density value [kg.m^-3] </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="152" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="340" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7272f9e6f403ff92e27f44ddc5936531" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::atmospheric::earth::NRLMSISE00::convertKpToAp</definition>
+        <argsstring>(const Real &amp;aKp)</argsstring>
+        <name>convertKpToAp</name>
+        <param>
+          <type>const Real &amp;</type>
+          <declname>aKp</declname>
+        </param>
+        <briefdescription>
+<para>Convert Kp index to Ap index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aKp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Kp index </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Ap index </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="188" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="296" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a60dc2226aeca0a8b2efbc484b8e4c2fc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Unique&lt; <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array" kindref="compound">NRLMSISE00::ap_array</ref> &gt;</type>
+        <definition>Unique&lt; NRLMSISE00::ap_array &gt; ostk::physics::environment::atmospheric::earth::NRLMSISE00::computeApArray</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>computeApArray</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Fill the provided array with AP values needed for the NRLMSISE model. The output array is filled like so: </para>
+        </briefdescription>
+        <detaileddescription>
+<para>0 : daily AP [average of current day AP values] 1 : 3 hr AP index for instant 2 : 3 hr AP index for 3 hrs before instant 3 : 3 hr AP index for 6 hrs before instant 4 : 3 hr AP index for 9 hrs before instant 5 : Average of eight 3 hr AP indices from 12 to 33 hrs prior to instant 6 : Average of eight 3 hr AP indices from 36 to 57 hrs prior to instant</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to AP array struct </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="170" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="86" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a49169b5e700962a383190062800180d1" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Unique&lt; <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input" kindref="compound">NRLMSISE00::nrlmsise_input</ref> &gt;</type>
+        <definition>Unique&lt; NRLMSISE00::nrlmsise_input &gt; ostk::physics::environment::atmospheric::earth::NRLMSISE00::computeNRLMSISE00Input</definition>
+        <argsstring>(const Unique&lt; NRLMSISE00::ap_array &gt; &amp;apValues, const LLA &amp;aLLA, const Instant &amp;anInstant) const</argsstring>
+        <name>computeNRLMSISE00Input</name>
+        <param>
+          <type>const Unique&lt; <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array" kindref="compound">NRLMSISE00::ap_array</ref> &gt; &amp;</type>
+          <declname>apValues</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
+          <declname>aLLA</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Compute the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> input and populate into the given struct Optionally use provided sun position to calculate local solar time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">apValues</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to AP values struct </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aLLA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A position, expressed as latitude, longitude, altitude [deg, deg, m] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="179" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="195" bodyend="294"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="53" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="52" bodyend="199"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7116c623396b409568be82b421eb027f" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a60dc2226aeca0a8b2efbc484b8e4c2fc" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>computeApArray</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a49169b5e700962a383190062800180d1" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>computeNRLMSISE00Input</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7272f9e6f403ff92e27f44ddc5936531" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>convertKpToAp</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a1c51018a0ddfd069a3b93c5032dbf415" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>earthFlattening_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a9b5d210485571c21886a5659a7fd1f80" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>earthFrameSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a21b831d0c528916f8032236335275ab7" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>earthRadius_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1ac0cf7d103efa0ee2b39c55b965833793" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>f107AConstantValue_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a97211e33105e1cb46e84ca57b9f49652" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>f107ConstantValue_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1ad7ec217766c1ceb0c592cab9a78d13a9" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>getDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a6fbc2f3f0db894645b6151a944fa4a1c" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>GetDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1aff2e159d4886117f54bc058a759b1aa7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>getF107AConstantValue</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a029295aaf70df37c8100a8f6d277dbed" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>getF107ConstantValue</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1affd51790f05201cccb3fd2de52224acb" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>getInputDataType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a2489ac1cc74bd80f6e758f5b5ed3b209" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>getKpConstantValue</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafae" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>InputDataType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a81fc762cd5acf281252709944db1bb72" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>inputDataType_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a0a1b679056412e4b3f7b86d038f442ef" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a03490856fa49af57788f9a230b719417" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>kpConstantValue_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1af8939ebdeef9916f51ff614c301ee132" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>NRLMSISE00</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a454aaa11e2a54f65dc9b0ced6d202775" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>sunCelestialSPtr_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::ephemeris::SPICE</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" prot="public" virt="non-virtual">ostk::physics::environment::Ephemeris</basecompoundref>
+    <includes refid="_s_p_i_c_e_8hpp" local="no">SPICE.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Object</name>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
+          <name>Undefined</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5aef6572e4cd58bb39a3f4e82fc64fe9f0" prot="public">
+          <name>Sun</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a34dae487e31f37aa74633258b7774d4f" prot="public">
+          <name>Mercury</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a0bdc508a17811a3a860d32749ad44e4b" prot="public">
+          <name>Venus</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a5cdd21c97f86686cc505e02fd32a7523" prot="public">
+          <name>Earth</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5ad502a50ed945d5fca74e0105575b5b34" prot="public">
+          <name>Moon</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a671f028142280b556a85ffdd90e0a43d" prot="public">
+          <name>Mars</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a89c5c30498c2989611f9044be006197c" prot="public">
+          <name>Jupiter</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a233ea1805dab5120a0ecc49b71a48063" prot="public">
+          <name>Saturn</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5a76b840d32f33267ad812507b47e3a1b5" prot="public">
+          <name>Uranus</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5af8d3b65d8479a31ebf67cb18dd0a4641" prot="public">
+          <name>Neptune</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" bodystart="38" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ad755db59a34ab2b95bd1dcbc5e4d74e2" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5" kindref="member">SPICE::Object</ref></type>
+        <definition>SPICE::Object ostk::physics::environment::ephemeris::SPICE::object_</definition>
+        <argsstring></argsstring>
+        <name>object_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="91" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a9b7009cb994928f306e5872e435fc209" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::ephemeris::SPICE::SPICE</definition>
+        <argsstring>(const SPICE::Object &amp;anObject)</argsstring>
+        <name>SPICE</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5" kindref="member">SPICE::Object</ref> &amp;</type>
+          <declname>anObject</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp" bodystart="19" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1acd156e41317faae08e5769eae0919ad6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ostk::physics::environment::ephemeris::SPICE::~SPICE</definition>
+        <argsstring>() override</argsstring>
+        <name>~SPICE</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="63" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a23ae202b2d93bab8724ef64283f3b803" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> *</type>
+        <definition>SPICE * ostk::physics::environment::ephemeris::SPICE::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1abe95fecc4079240c1acf319afc1d4c54">clone</reimplements>
+        <briefdescription>
+<para>Clone. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="69" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a4b3e2fbd554ed026c092a4350c984380" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::ephemeris::SPICE::isDefined</definition>
+        <argsstring>() const override</argsstring>
+        <name>isDefined</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1a1b1722954d5794996c1c3de88c27a90d">isDefined</reimplements>
+        <briefdescription>
+<para>Returns true if <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> is defined. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> is defined </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="75" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a20ac67ae6289a4678663e3313a494bff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::environment::ephemeris::SPICE::accessFrame</definition>
+        <argsstring>() const override</argsstring>
+        <name>accessFrame</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aba61e3f69e9c699881b7660d20748078">accessFrame</reimplements>
+        <briefdescription>
+<para>Access frame of <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shared pointer to frame </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="81" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp" bodystart="36" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ab7146444ae24fd7234ea9ea692f70168" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::environment::ephemeris::SPICE::StringFromObject</definition>
+        <argsstring>(const SPICE::Object &amp;anObject)</argsstring>
+        <name>StringFromObject</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5" kindref="member">SPICE::Object</ref> &amp;</type>
+          <declname>anObject</declname>
+        </param>
+        <briefdescription>
+<para>Convert <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> object to string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String representation of <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="88" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp" bodystart="43" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> Toolkit ephemeris. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/Jet_Propulsion_Laboratory_Development_Ephemeris">https://en.wikipedia.org/wiki/Jet_Propulsion_Laboratory_Development_Ephemeris</ulink> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::environment::ephemeris::SPICE</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::Ephemeris</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1_ephemeris"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::environment::ephemeris::SPICE</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ostk::physics::environment::Ephemeris</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1_ephemeris"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp" bodystart="33" bodyend="92"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a20ac67ae6289a4678663e3313a494bff" prot="public" virt="virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>accessFrame</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a23ae202b2d93bab8724ef64283f3b803" prot="public" virt="virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>clone</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1adca036598a400a752ad05a574b6ce515" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>Ephemeris</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a4b3e2fbd554ed026c092a4350c984380" prot="public" virt="virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ae7f47ebd6645514917d0bfcfe67702e5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>Object</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ad755db59a34ab2b95bd1dcbc5e4d74e2" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>object_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a9b7009cb994928f306e5872e435fc209" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>SPICE</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ab7146444ae24fd7234ea9ea692f70168" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>StringFromObject</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aca1678bb452dcd9d989ab9d326d2d430" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>~Ephemeris</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1acd156e41317faae08e5769eae0919ad6" prot="public" virt="virtual"><scope>ostk::physics::environment::ephemeris::SPICE</scope><name>~SPICE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

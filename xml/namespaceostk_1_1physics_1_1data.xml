@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1data" kind="namespace" language="C++">
+    <compoundname>ostk::physics::data</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1data_1_1_direction" prot="public">ostk::physics::data::Direction</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1data_1_1_manager" prot="public">ostk::physics::data::Manager</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1data_1_1_manifest" prot="public">ostk::physics::data::Manifest</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1data_1_1_scalar" prot="public">ostk::physics::data::Scalar</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1data_1_1_vector" prot="public">ostk::physics::data::Vector</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1data_1_1provider">ostk::physics::data::provider</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1data_1_1utilities">ostk::physics::data::utilities</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::data::dataManifestFileName</definition>
+        <argsstring></argsstring>
+        <name>dataManifestFileName</name>
+        <initializer>= &quot;manifest.json&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="41" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1data_1a65d22827513124fc4e2dd80f5e30beea" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::data::temporaryDirectoryName</definition>
+        <argsstring></argsstring>
+        <name>temporaryDirectoryName</name>
+        <initializer>= &quot;tmp&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="43" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1a55120922223397f7b4b8ae23e9fd6d12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::data::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Direction &amp;aDirection)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_direction" kindref="compound">Direction</ref> &amp;</type>
+          <declname>aDirection</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" line="30" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="30" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1ab268f37c7b20729ba6fd4d2c8b2cd1b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::data::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Manifest &amp;aManifest)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref> &amp;</type>
+          <declname>aManifest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aManifest</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A manifest </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" line="26" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1a702ce7315b53edd862a42b5f2c980e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::data::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Scalar &amp;aScalar)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref> &amp;</type>
+          <declname>aScalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" line="36" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="36" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1a117b206d735caf86f42a8e3491342e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::data::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Vector &amp;aVector)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref> &amp;</type>
+          <declname>aVector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" line="37" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="37" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="16" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data" kind="struct" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</compoundname>
+    <includes refid="_finals2000_a_8hpp" local="no">Finals2000A.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a22d559d9d72388440986abc1ac0e5080" prot="public" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::year</definition>
+        <argsstring></argsstring>
+        <name>year</name>
+        <briefdescription>
+<para>Year (to get true calendar year, add 1900 for MJD &lt;= 51543 or add 2000 for MJD &gt;= 51544) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="61" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac59271a60aeb102db6fc6374bcecdfe7" prot="public" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::month</definition>
+        <argsstring></argsstring>
+        <name>month</name>
+        <briefdescription>
+<para>Month number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="62" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa76272eccc5ef74456ae13c3c9751db5" prot="public" static="no" mutable="no">
+        <type>Integer</type>
+        <definition>Integer ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::day</definition>
+        <argsstring></argsstring>
+        <name>day</name>
+        <briefdescription>
+<para>Day of month. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="63" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a93461a4e25a9ac3cc705bfeec0117262" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::mjd</definition>
+        <argsstring></argsstring>
+        <name>mjd</name>
+        <briefdescription>
+<para>Fractional Modified Julian Date (MJD UTC) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="65" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a5bc6c3a7e447bffe2913cd21b9b2dbd4" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::polarMotionflag</definition>
+        <argsstring></argsstring>
+        <name>polarMotionflag</name>
+        <briefdescription>
+<para>IERS (I) or Prediction (P) flag for Bulletin A polar motion values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="67" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a2319dbe36cb212fc5c5e86842b15442f" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::x_A</definition>
+        <argsstring></argsstring>
+        <name>x_A</name>
+        <briefdescription>
+<para>[asec] Bulletin A PM-x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="69" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a7af60116aeddd0ed5982d4703393e56d" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::xError_A</definition>
+        <argsstring></argsstring>
+        <name>xError_A</name>
+        <briefdescription>
+<para>[asec] Error in PM-x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="70" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa294eae7dc917491e733d0801787585c" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::y_A</definition>
+        <argsstring></argsstring>
+        <name>y_A</name>
+        <briefdescription>
+<para>[asec] Bulletin A PM-y </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="71" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac8a3ddc36cdb60438bf4443758ec13f1" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::yError_A</definition>
+        <argsstring></argsstring>
+        <name>yError_A</name>
+        <briefdescription>
+<para>[asec] Error in PM-y </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="72" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae887003195fdbc85a546fea6cfd45fe4" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtcFlag</definition>
+        <argsstring></argsstring>
+        <name>ut1MinusUtcFlag</name>
+        <briefdescription>
+<para>IERS (I) or Prediction (P) flag for Bulletin A UT1-UTC values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="74" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aeff5244fe5305a407fd1fa36ccd06ee9" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtc_A</definition>
+        <argsstring></argsstring>
+        <name>ut1MinusUtc_A</name>
+        <briefdescription>
+<para>[s] Bulletin A UT1-UTC </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="76" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a60de8c3f15f23b3f1c0d723f97e2bc4f" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtcError_A</definition>
+        <argsstring></argsstring>
+        <name>ut1MinusUtcError_A</name>
+        <briefdescription>
+<para>[s] Error in UT1-UTC </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="77" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8999a1e47f77878246cab56570f7d762" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::lod_A</definition>
+        <argsstring></argsstring>
+        <name>lod_A</name>
+        <briefdescription>
+<para>[ms] Bulletin A LOD (not always filled) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="78" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a02d540ebfeba42c461d6341abb7555a8" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::lodError_A</definition>
+        <argsstring></argsstring>
+        <name>lodError_A</name>
+        <briefdescription>
+<para>[ms] Error in LOD (not always filled) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="79" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af70e495d778f5ab4b4e69c8600d93043" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::nutationFlag</definition>
+        <argsstring></argsstring>
+        <name>nutationFlag</name>
+        <briefdescription>
+<para>IERS (I) or Prediction (P) flag for Bulletin A nutation values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="81" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af3e1cdf46a6916e717f46eeef20c295c" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dx_A</definition>
+        <argsstring></argsstring>
+        <name>dx_A</name>
+        <briefdescription>
+<para>[amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="83" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a1ea6efa4bc583d7451957f7b1c38919b" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dxError_A</definition>
+        <argsstring></argsstring>
+        <name>dxError_A</name>
+        <briefdescription>
+<para>[amsec] Error in dX </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="84" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ab392cbc6f42a5c4391405ae1c1c801cd" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dy_A</definition>
+        <argsstring></argsstring>
+        <name>dy_A</name>
+        <briefdescription>
+<para>[amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="85" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae881cac4e0554ae76b702a05435f9790" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dyError_A</definition>
+        <argsstring></argsstring>
+        <name>dyError_A</name>
+        <briefdescription>
+<para>[amsec] Error in dY </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="86" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a802bdac499c62d5d3400d62ea0c1e25b" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::x_B</definition>
+        <argsstring></argsstring>
+        <name>x_B</name>
+        <briefdescription>
+<para>[asec] Bulletin B PM-x </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="87" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad00110850f1857f6760915feb4ec389b" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::y_B</definition>
+        <argsstring></argsstring>
+        <name>y_B</name>
+        <briefdescription>
+<para>[asec] Bulletin B PM-y </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="88" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad9ae9053f0cb6779903803c56ff02e9c" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtc_B</definition>
+        <argsstring></argsstring>
+        <name>ut1MinusUtc_B</name>
+        <briefdescription>
+<para>[s] Bulletin B UT1-UTC </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="89" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8e0baddfb93fceea21f081ed404dbe28" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dx_B</definition>
+        <argsstring></argsstring>
+        <name>dx_B</name>
+        <briefdescription>
+<para>[amsec] Bulletin B dX wrt IAU2000A Nutation </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="90" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af40385af6c6eb70a078f4bb67d08a2f3" prot="public" static="no" mutable="no">
+        <type>Real</type>
+        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dy_B</definition>
+        <argsstring></argsstring>
+        <name>dy_B</name>
+        <briefdescription>
+<para>[amsec] Bulletin B dY wrt IAU2000A Nutation </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="91" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Real</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</label>
+        <link refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>mjd</edgelabel>
+          <edgelabel>x_A</edgelabel>
+          <edgelabel>x_B</edgelabel>
+          <edgelabel>y_A</edgelabel>
+          <edgelabel>y_B</edgelabel>
+          <edgelabel>dx_A</edgelabel>
+          <edgelabel>lodError_A</edgelabel>
+          <edgelabel>ut1MinusUtc_A</edgelabel>
+          <edgelabel>dx_B</edgelabel>
+          <edgelabel>ut1MinusUtc_B</edgelabel>
+          <edgelabel>...</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>day</edgelabel>
+          <edgelabel>month</edgelabel>
+          <edgelabel>year</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Integer</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="60" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="59" bodyend="92"/>
+    <listofallmembers>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa76272eccc5ef74456ae13c3c9751db5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>day</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af3e1cdf46a6916e717f46eeef20c295c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dx_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8e0baddfb93fceea21f081ed404dbe28" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dx_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a1ea6efa4bc583d7451957f7b1c38919b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dxError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ab392cbc6f42a5c4391405ae1c1c801cd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dy_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af40385af6c6eb70a078f4bb67d08a2f3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dy_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae881cac4e0554ae76b702a05435f9790" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dyError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8999a1e47f77878246cab56570f7d762" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>lod_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a02d540ebfeba42c461d6341abb7555a8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>lodError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a93461a4e25a9ac3cc705bfeec0117262" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>mjd</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac59271a60aeb102db6fc6374bcecdfe7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>month</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af70e495d778f5ab4b4e69c8600d93043" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>nutationFlag</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a5bc6c3a7e447bffe2913cd21b9b2dbd4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>polarMotionflag</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aeff5244fe5305a407fd1fa36ccd06ee9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtc_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad9ae9053f0cb6779903803c56ff02e9c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtc_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a60de8c3f15f23b3f1c0d723f97e2bc4f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtcError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae887003195fdbc85a546fea6cfd45fe4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtcFlag</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a2319dbe36cb212fc5c5e86842b15442f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>x_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a802bdac499c62d5d3400d62ea0c1e25b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>x_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a7af60116aeddd0ed5982d4703393e56d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>xError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa294eae7dc917491e733d0801787585c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>y_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad00110850f1857f6760915feb4ec389b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>y_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a22d559d9d72388440986abc1ac0e5080" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>year</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac8a3ddc36cdb60438bf4443758ec13f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>yError_A</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

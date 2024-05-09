@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_df9a3c3377273546db0c8425ecb2b917" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Environment/Object/Celestial</compoundname>
+    <innerfile refid="_object_2_celestial_2_earth_8hpp">Earth.hpp</innerfile>
+    <innerfile refid="_object_2_celestial_2_moon_8hpp">Moon.hpp</innerfile>
+    <innerfile refid="_object_2_celestial_2_sun_8hpp">Sun.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/"/>
+  </compounddef>
+</doxygen>

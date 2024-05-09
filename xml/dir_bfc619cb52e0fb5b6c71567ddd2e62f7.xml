@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_bfc619cb52e0fb5b6c71567ddd2e62f7" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE</compoundname>
+    <innerfile refid="_engine_8cpp">Engine.cpp</innerfile>
+    <innerfile refid="_kernel_8cpp">Kernel.cpp</innerfile>
+    <innerfile refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp">Manager.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/"/>
+  </compounddef>
+</doxygen>

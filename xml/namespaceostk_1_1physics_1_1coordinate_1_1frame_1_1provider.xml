@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame::provider</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" prot="public">ostk::physics::coordinate::frame::provider::CIRF</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" prot="public">ostk::physics::coordinate::frame::provider::Dynamic</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" prot="public">ostk::physics::coordinate::frame::provider::GCRF</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" prot="public">ostk::physics::coordinate::frame::provider::ICRF</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f" prot="public">ostk::physics::coordinate::frame::provider::ITRF</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000" prot="public">ostk::physics::coordinate::frame::provider::J2000</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" prot="public">ostk::physics::coordinate::frame::provider::MOD</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_static" prot="public">ostk::physics::coordinate::frame::provider::Static</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" prot="public">ostk::physics::coordinate::frame::provider::TEME</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f" prot="public">ostk::physics::coordinate::frame::provider::TIRF</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d" prot="public">ostk::physics::coordinate::frame::provider::TOD</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau">ostk::physics::coordinate::frame::provider::iau</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers">ostk::physics::coordinate::frame::provider::iers</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1a94a895860905b6163d211fc5e8712fcc" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager" kindref="compound">ostk::physics::coordinate::frame::provider::iers::Manager</ref></type>
+        <definition>using ostk::physics::coordinate::frame::provider::IersManager = typedef ostk::physics::coordinate::frame::provider::iers::Manager</definition>
+        <argsstring></argsstring>
+        <name>IersManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" line="30" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1afe11c00477d6b31d488a2f45f901194a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Triple&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>, <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>, <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &gt;</type>
+        <definition>Triple&lt;Angle, Angle, Angle&gt; ostk::physics::coordinate::frame::provider::computeFK5Precession</definition>
+        <argsstring>(const Instant &amp;anInstant)</argsstring>
+        <name>computeFK5Precession</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" line="30" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="30" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="19" column="1"/>
+  </compounddef>
+</doxygen>

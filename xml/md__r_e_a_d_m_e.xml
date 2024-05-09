@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__r_e_a_d_m_e" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>Open Space Toolkit ▸ Physics</title>
+    <briefdescription>
+<para>Structure </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Structure</para>
+<para><ulink url="https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/build-test.yml"><image type="html" name="badge.svg?branch=main" inline="yes"></image>
+</ulink> <ulink url="https://github.com/open-space-collective/open-space-toolkit-physics/actions/workflows/release.yml"><image type="html" name="badge.svg" inline="yes"></image>
+</ulink> <ulink url="https://codecov.io/gh/open-space-collective/open-space-toolkit-physics"><image type="html" name="badge.svg" inline="yes"></image>
+</ulink> <ulink url="https://open-space-collective.github.io/open-space-toolkit-physics"><image type="html" name="stable.svg" inline="yes"></image>
+</ulink> <ulink url="https://badge.fury.io/gh/open-space-collective%2Fopen-space-toolkit-physics"><image type="html" name="open-space-collective%2Fopen-space-toolkit-physics.svg" inline="yes"></image>
+</ulink> <ulink url="https://badge.fury.io/py/open-space-toolkit-physics"><image type="html" name="open-space-toolkit-physics.svg" inline="yes"></image>
+</ulink> <ulink url="https://opensource.org/licenses/Apache-2.0"><image type="html" name="License-Apache%202.0-blue.svg" inline="yes"></image>
+</ulink></para>
+<para>Physical units, time, reference frames, environment modeling.</para>
+<para><image type="html" name="gravitational-anomaly.png" inline="yes"></image>
+</para>
+<para><emphasis>Gravitational field anomaly between EGM96 and WGS84 models.</emphasis></para>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md1">
+<title>Getting Started</title>
+<para>Want to get started? This is the simplest and quickest way:</para>
+<para><ulink url="https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/main?urlpath=lab/tree/notebooks"><image type="html" name="badge_logo.svg" inline="yes"></image>
+</ulink></para>
+<para><emphasis>Nothing to download or install! This will automatically start a <ulink url="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</ulink> environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.</emphasis></para>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md2">
+<title>Alternatives</title>
+<sect3 id="md__r_e_a_d_m_e_1autotoc_md3">
+<title>Docker Images</title>
+<para><ulink url="https://www.docker.com/">Docker</ulink> must be installed on your system.</para>
+<sect4 id="md__r_e_a_d_m_e_1autotoc_md4">
+<title>iPython</title>
+<para>The following command will start an <ulink url="https://ipython.org/">iPython</ulink> shell within a container where the OSTk components are already installed:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">docker<sp/>run<sp/>-it<sp/>openspacecollective/open-space-toolkit-physics-python</highlight></codeline>
+</programlisting></para>
+<para>Once the shell is up and running, playing with it is easy:</para>
+<para><programlisting filename=".py"><codeline><highlight class="normal">from<sp/><ref refid="namespaceostk_1_1physics" kindref="compound">ostk.physics</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Environment<sp/></highlight><highlight class="comment">#<sp/>Environment<sp/>modeling<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time" kindref="compound">ostk.physics.time</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Instant<sp/></highlight><highlight class="comment">#<sp/>Instant<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate" kindref="compound">ostk.physics.coordinate</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Frame<sp/></highlight><highlight class="comment">#<sp/>Reference<sp/>frame<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default()<sp/></highlight><highlight class="comment">#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">moon<sp/>=<sp/>environment.access_object_with_name(</highlight><highlight class="stringliteral">&apos;Moon&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">#<sp/>Access<sp/>Moon</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">environment.set_instant(Instant.now())<sp/></highlight><highlight class="comment">#<sp/>Set<sp/>environment<sp/>to<sp/>present<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">moon.get_position_in(Frame.ITRF())<sp/></highlight><highlight class="comment">#<sp/>Position<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">moon.get_axes_in(Frame.ITRF())<sp/></highlight><highlight class="comment">#<sp/>Axes<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
+</programlisting></para>
+<para>By default, OSTk fetches the ephemeris from JPL, Earth Orientation Parameters (EOP) and leap second count from IERS.</para>
+<para>As a result, when running OSTk for the first time, it may take a minute to fetch all the necessary data.</para>
+<para><emphasis>Tip: Use tab for auto-completion!</emphasis></para>
+</sect4>
+<sect4 id="md__r_e_a_d_m_e_1autotoc_md5">
+<title>JupyterLab</title>
+<para>The following command will start a <ulink url="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</ulink> server within a container where the OSTk components are already installed:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">docker<sp/>run<sp/>--publish=8888:8888<sp/>openspacecollective/open-space-toolkit-physics-jupyter</highlight></codeline>
+</programlisting></para>
+<para>Once the container is running, access <ulink url="http://localhost:8888/lab">http://localhost:8888/lab</ulink> and create a Python 3 Notebook.</para>
+</sect4>
+</sect3>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md6">
+<title>Installation</title>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md7">
+<title>C++</title>
+<para>The binary packages are hosted using <ulink url="https://github.com/open-space-collective/open-space-toolkit-physics/releases">GitHub Releases</ulink>:</para>
+<para><itemizedlist>
+<listitem><para>Runtime libraries: <computeroutput>open-space-toolkit-physics-X.Y.Z-1.x86_64-runtime</computeroutput></para>
+</listitem><listitem><para>C++ headers: <computeroutput>open-space-toolkit-physics-X.Y.Z-1.x86_64-devel</computeroutput></para>
+</listitem><listitem><para>Python bindings: <computeroutput>open-space-toolkit-physics-X.Y.Z-1.x86_64-python</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<sect3 id="md__r_e_a_d_m_e_1autotoc_md8">
+<title>Debian / Ubuntu</title>
+<para>After downloading the relevant <computeroutput>.deb</computeroutput> binary packages, install:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">apt<sp/>install<sp/>open-space-toolkit-physics-*.deb</highlight></codeline>
+</programlisting></para>
+</sect3>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md9">
+<title>Python</title>
+<para>Install from <ulink url="https://pypi.org/project/open-space-toolkit-physics/">PyPI</ulink>:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">pip<sp/>install<sp/>open-space-toolkit-physics</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md10">
+<title>Documentation</title>
+<para>Documentation is available here:</para>
+<para><itemizedlist>
+<listitem><para><ulink url="https://open-space-collective.github.io/open-space-toolkit-physics">C++</ulink></para>
+</listitem><listitem><para><ulink url="./bindings/python/docs">Python</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para>&lt;details&gt;</para>
+<para>The library exhibits the following structure:</para>
+<para><programlisting filename=".txt"><codeline><highlight class="normal">├──<sp/>Unit</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Length</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Mass</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Time</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Temperature</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Electric<sp/>Current</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Luminous<sp/>Intensity</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>Derived</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Angle</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Solid<sp/>Angle</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Frequency</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Force</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Pressure</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Area</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Volume</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/><sp/><sp/><sp/><sp/>└──<sp/>Information</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Time</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">Scale</ref><sp/>(UTC,<sp/>TT,<sp/>TAI,<sp/>UT1,<sp/>TCG,<sp/>TCB,<sp/>TDB,<sp/>GMST,<sp/>GPST,<sp/>GST,<sp/>GLST,<sp/>BDT,<sp/>QZSST,<sp/>IRNSST)</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Instant</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Duration</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Interval</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Date</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Time</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>DateTime</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Coordinate</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Transform</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>Frame<sp/>(ECI,<sp/>ECEF,<sp/>NED,<sp/>LVLHGD,<sp/>LVLHGDGT,<sp/>...)</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>Geographic</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Position</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Area</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Volume</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>Coordinate<sp/>Reference<sp/>System<sp/>(CRS)</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>Universal<sp/>Transverse<sp/>Mercator<sp/>(UTM)</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>Environment</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Constant</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Object</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>Celestial</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Ephemeris</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Analytical</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Tabulated</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>SPICE<sp/>(JPL)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Gravity</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Barycentric</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Earth<sp/>Gravitational<sp/>Model<sp/>1996<sp/>(EGM96)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>Earth<sp/>Gravitational<sp/>Model<sp/>2008<sp/>(EGM2008)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>Atmospheric</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>Exponential</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>NRLMSISE00</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>└──<sp/>Magnetic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Dipole</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>World<sp/>Magnetic<sp/>Model<sp/>2010<sp/>(WMM2010)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>World<sp/>Magnetic<sp/>Model<sp/>2015<sp/>(WMM2015)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Enhanced<sp/>Magnetic<sp/>Model<sp/>2010<sp/>(EMM2010)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>Enhanced<sp/>Magnetic<sp/>Model<sp/>2015<sp/>(EMM2015)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>├──<sp/>International<sp/>Geomagnetic<sp/>Reference<sp/>Field<sp/>11<sp/>(IGRF11)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>└──<sp/>International<sp/>Geomagnetic<sp/>Reference<sp/>Field<sp/>12<sp/>(IGRF12)</highlight></codeline>
+</programlisting></para>
+<para>&lt;/details&gt;</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md11">
+<title>Data Management</title>
+<para>OSTk Physics uses input data from various sources to determine the state of the space environment at any given time. The following input data is used:</para>
+<para><itemizedlist>
+<listitem><para>IERS Reference Frame Data</para>
+</listitem><listitem><para>CSSI Solar Flux/Space Weather Data</para>
+</listitem><listitem><para>Gravitational Survey Data</para>
+</listitem><listitem><para>Magnetic Survey Data</para>
+</listitem><listitem><para>SPICE Kernels</para>
+</listitem></itemizedlist>
+</para>
+<para>None of these files are shipped with the source code of this library. OSTk Physics has the capability to fetch the required files at runtime if they are not present or if they are outdated. This is done using file Manager classes (see any file named <computeroutput>Manager.hpp</computeroutput>). Data for any use-case is queried through the Manager class rather than directly, which allows the Manager to handle file loading and fetching.</para>
+<para>If you would like to seed the ostk data generation so that you already have an initial copy of all the data files (to avoid a large initial fetch at runtime), then we recommend running the following commands to set up your environment. <programlisting><codeline><highlight class="normal">#<sp/>Set<sp/>the<sp/>environment<sp/>variable<sp/>for<sp/>OSTk<sp/>Data<sp/>location</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>OSTK_DATA_LOCAL_CACHE=/path/to/preferred/data/storage/dir</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=$OSTK_DATA_LOCAL_CACHE/data</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Clone<sp/>OSTk<sp/>data<sp/>repo<sp/>into<sp/>that<sp/>dir</highlight></codeline>
+<codeline><highlight class="normal">RUN<sp/>git<sp/>clone<sp/>--branch<sp/>v1<sp/>--single-branch<sp/>--depth=1<sp/>https://github.com/open-space-collective/open-space-toolkit-data.git<sp/>$OSTK_DATA_LOCAL_CACHE<sp/>&amp;&amp;<sp/>chmod<sp/>-R<sp/>g+w<sp/>$OSTK_DATA_LOCAL_CACHE</highlight></codeline>
+</programlisting></para>
+<para>For users that are installing OSTk into docker images, here is what we recommend you add to your dockerfiles. <programlisting><codeline><highlight class="normal">ARG<sp/>OSTK_DATA_LOCAL_CACHE=&quot;/var/cache/open-space-toolkit-data&quot;</highlight></codeline>
+<codeline><highlight class="normal">ENV<sp/>OSTK_DATA_LOCAL_CACHE=&quot;${OSTK_DATA_LOCAL_CACHE}&quot;</highlight></codeline>
+<codeline><highlight class="normal">ENV<sp/>OSTK_PHYSICS_DATA_LOCAL_REPOSITORY=&quot;${OSTK_DATA_LOCAL_CACHE}/data&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">RUN<sp/>git<sp/>clone<sp/>--branch<sp/>v1<sp/>--single-branch<sp/>--depth=1<sp/>https://github.com/open-space-collective/open-space-toolkit-data.git<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>&amp;&amp;<sp/>chmod<sp/>-R<sp/>g+w<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Add<sp/>the<sp/>line<sp/>below<sp/>if<sp/>the<sp/>container&apos;s<sp/>user<sp/>will<sp/>not<sp/>be<sp/>root</highlight></codeline>
+<codeline><highlight class="normal">RUN<sp/>chown<sp/>-R<sp/>${USER_UID}:${USER_GID}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+</programlisting></para>
+<para>If you have a multi-stage dockerfile, then you can easily just copy the ostk-data repo install from one build stage (in the example below that&apos;s <computeroutput>build-env</computeroutput>) to the next, so that you don&apos;t have to reinstall it on every build stage. <programlisting><codeline><highlight class="normal">#<sp/>If<sp/>you<sp/>are<sp/>copying<sp/>to<sp/>an<sp/>image<sp/>where<sp/>the<sp/>user<sp/>is<sp/>currently<sp/>root</highlight></codeline>
+<codeline><highlight class="normal">COPY<sp/>--from=build-env<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Or<sp/>if<sp/>you<sp/>are<sp/>copying<sp/>to<sp/>an<sp/>image<sp/>where<sp/>the<sp/>user<sp/>is<sp/>not<sp/>currently<sp/>root</highlight></codeline>
+<codeline><highlight class="normal">COPY<sp/>--from=build-env<sp/>--chown=${USER_UID}:${USER_GID}<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
+</programlisting></para>
+<para>The following table shows the availabe data source settings with the different environment variables you can set:</para>
+<para><table rows="19" cols="2"><row>
+<entry thead="yes"><para>Environment Variable </para>
+</entry><entry thead="yes"><para>Default Value  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data</computeroutput> [Bulk setting. Overridden by specific repository settings below.]  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>Automatic</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/coordinate/frame/provider/iers</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>Automatic</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/environment/ephemeris/spice</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>Automatic</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/environment/gravitational/earth</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>Automatic</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/environment/magnetic/earth</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>Automatic</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/environment/atmospheric/earth</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_REMOTE_URL</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput><ulink url="https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/">https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/</ulink></computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md12">
+<title>Tutorials</title>
+<para>Tutorials are available here:</para>
+<para><itemizedlist>
+<listitem><para><ulink url="./tutorials/cpp">C++</ulink></para>
+</listitem><listitem><para><ulink url="./tutorials/python">Python</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md13">
+<title>Setup</title>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md14">
+<title>Development Environment</title>
+<para>Using <ulink url="https://www.docker.com">Docker</ulink> for development is recommended, to simplify the installation of the necessary build tools and dependencies. Instructions on how to install Docker are available <ulink url="https://docs.docker.com/install/">here</ulink>.</para>
+<para>To start the development environment:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">make<sp/>dev</highlight></codeline>
+</programlisting></para>
+<para>This will:</para>
+<para><orderedlist>
+<listitem><para>Build the <computeroutput>openspacecollective/open-space-toolkit-physics-development</computeroutput> Docker image.</para>
+</listitem><listitem><para>Create a development environment container with local source files and helper scripts mounted.</para>
+</listitem><listitem><para>Start a <computeroutput>bash</computeroutput> shell from the <computeroutput>./build</computeroutput> working directory.</para>
+</listitem></orderedlist>
+</para>
+<para>If installing Docker is not an option, you can manually install the development tools (GCC, CMake) and all required dependencies, by following a procedure similar to the one described in the <ulink url="./docker/development/Dockerfile">Development Dockerfile</ulink>.</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md15">
+<title>Build</title>
+<para>From the <computeroutput>./build</computeroutput> directory:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+</programlisting></para>
+<para><emphasis>Tip: The <computeroutput>ostk-build</computeroutput> command simplifies building from within the development environment.</emphasis></para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md16">
+<title>Test</title>
+<para>To start a container to build and run the tests:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">make<sp/>test</highlight></codeline>
+</programlisting></para>
+<para>Or to run them manually:</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">./bin/open-space-toolkit-physics.test</highlight></codeline>
+</programlisting></para>
+<para><emphasis>Tip: The <computeroutput>ostk-test</computeroutput> command simplifies running tests from within the development environment.</emphasis></para>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md17">
+<title>Dependencies</title>
+<para><table rows="11" cols="4"><row>
+<entry thead="yes"><para>Name </para>
+</entry><entry thead="yes"><para>Version </para>
+</entry><entry thead="yes"><para>License </para>
+</entry><entry thead="yes"><para>Link  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Pybind11 </para>
+</entry><entry thead="no"><para><computeroutput>2.10.1</computeroutput> </para>
+</entry><entry thead="no"><para>BSD-3-Clause </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/pybind/pybind11">github.com/pybind/pybind11</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>{fmt} </para>
+</entry><entry thead="no"><para><computeroutput>5.2.0</computeroutput> </para>
+</entry><entry thead="no"><para>BSD-2-Clause </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/fmtlib/fmt">github.com/fmtlib/fmt</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ordered-map </para>
+</entry><entry thead="no"><para><computeroutput>0.6.0</computeroutput> </para>
+</entry><entry thead="no"><para>MIT </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/Tessil/ordered-map">github.com/Tessil/ordered-map</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Eigen </para>
+</entry><entry thead="no"><para><computeroutput>3.3.7</computeroutput> </para>
+</entry><entry thead="no"><para>MPL2 </para>
+</entry><entry thead="no"><para><ulink url="http://eigen.tuxfamily.org/index.php">eigen.tuxfamily.org</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>IAU SOFA </para>
+</entry><entry thead="no"><para><computeroutput>2018-01-30</computeroutput> </para>
+</entry><entry thead="no"><para><ulink url="http://www.iausofa.org/tandc.html">SOFA Software License</ulink> </para>
+</entry><entry thead="no"><para><ulink url="http://www.iausofa.org">www.iausofa.org</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>SPICE Toolkit </para>
+</entry><entry thead="no"><para><computeroutput>N0067</computeroutput> </para>
+</entry><entry thead="no"><para><ulink url="https://naif.jpl.nasa.gov/naif/rules.html">NAIF</ulink> </para>
+</entry><entry thead="no"><para><ulink url="https://naif.jpl.nasa.gov/naif/toolkit.html">naif.jpl.nasa.gov/naif/toolkit.html</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>GeographicLib </para>
+</entry><entry thead="no"><para><computeroutput>1.52</computeroutput> </para>
+</entry><entry thead="no"><para>MIT </para>
+</entry><entry thead="no"><para><ulink url="https://geographiclib.sourceforge.io">geographiclib.sourceforge.io</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Core </para>
+</entry><entry thead="no"><para><computeroutput>main</computeroutput> </para>
+</entry><entry thead="no"><para>Apache License 2.0 </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/open-space-collective/open-space-toolkit-core">github.com/open-space-collective/open-space-toolkit-core</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>I/O </para>
+</entry><entry thead="no"><para><computeroutput>main</computeroutput> </para>
+</entry><entry thead="no"><para>Apache License 2.0 </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/open-space-collective/open-space-toolkit-io">github.com/open-space-collective/open-space-toolkit-io</ulink>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para>Mathematics </para>
+</entry><entry thead="no"><para><computeroutput>main</computeroutput> </para>
+</entry><entry thead="no"><para>Apache License 2.0 </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/open-space-collective/open-space-toolkit-mathematics">github.com/open-space-collective/open-space-toolkit-mathematics</ulink>  </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md18">
+<title>Contribution</title>
+<para>Contributions are more than welcome!</para>
+<para>Please read our <ref refid="_c_o_n_t_r_i_b_u_t_i_n_g_8md" kindref="compound">contributing guide</ref> to learn about our development process, how to propose fixes and improvements, and how to build and test the code.</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md19">
+<title>Special Thanks</title>
+<para><ulink url="https://www.loftorbital.com/"><image type="html" name="loft_orbital.png" inline="yes"></image>
+</ulink></para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md20">
+<title>License</title>
+<para>Apache License 2.0 </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::magnetic::Earth::Impl</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1af151d47ed0191071b95ea2b22afc4a62" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref></type>
+        <definition>Earth::Type ostk::physics::environment::magnetic::Earth::Impl::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="58" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1ac212386c0dcb652d05f1df8d67946c5d" prot="private" static="no" mutable="no">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::magnetic::Earth::Impl::dataDirectory_</definition>
+        <argsstring></argsstring>
+        <name>dataDirectory_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="59" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a9e0a10b3a767b3196231b4d7c3f5967b" prot="private" static="no" mutable="no">
+        <type>Unique&lt; MagneticModel &gt;</type>
+        <definition>Unique&lt;MagneticModel&gt; ostk::physics::environment::magnetic::Earth::Impl::magneticModelUPtr_</definition>
+        <argsstring></argsstring>
+        <name>magneticModelUPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="61" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a047778c46bf6ace9c5da09e82b2f77da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::magnetic::Earth::Impl::Impl</definition>
+        <argsstring>(const Earth::Type &amp;aType, const Directory &amp;aDataDirectory)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref> &amp;</type>
+          <declname>aType</declname>
+        </param>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDataDirectory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="44" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="66" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a00af9adb6e3e28e3d1cdf10bd39eda9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::magnetic::Earth::Impl::Impl</definition>
+        <argsstring>(const Impl &amp;anImpl)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const Impl &amp;</type>
+          <declname>anImpl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="46" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a6f1fac166e96630332aa0dab1ded5166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::magnetic::Earth::Impl::~Impl</definition>
+        <argsstring>()</argsstring>
+        <name>~Impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a3964e8ef89ecd66477204add0caccee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref></type>
+        <definition>Earth::Type ostk::physics::environment::magnetic::Earth::Impl::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="50" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1ab65c5c919689bbab71d353666544e403" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::magnetic::Earth::Impl::getDataDirectory</definition>
+        <argsstring>() const</argsstring>
+        <name>getDataDirectory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="51" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1aacf8c6f796d544dcd62d9eadaa488430" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::magnetic::Earth::Impl::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="53" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1adadbf8769bd2399dc8c782699ac5d423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3d</type>
+        <definition>Vector3d ostk::physics::environment::magnetic::Earth::Impl::getFieldValueAt</definition>
+        <argsstring>(const Vector3d &amp;aPosition, const Instant &amp;anInstant) const</argsstring>
+        <name>getFieldValueAt</name>
+        <param>
+          <type>const Vector3d &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="55" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="97" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a3a6b12877fa428a3f05b3a2147491dcf" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Unique&lt; MagneticModel &gt;</type>
+        <definition>Unique&lt; MagneticModel &gt; ostk::physics::environment::magnetic::Earth::Impl::MagneticModelFromType</definition>
+        <argsstring>(const Earth::Type &amp;aType, const Directory &amp;aDataDirectory)</argsstring>
+        <name>MagneticModelFromType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref> &amp;</type>
+          <declname>aType</declname>
+        </param>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDataDirectory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="63" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="164" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="42" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="41" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1ac212386c0dcb652d05f1df8d67946c5d" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>dataDirectory_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1ab65c5c919689bbab71d353666544e403" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>getDataDirectory</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1adadbf8769bd2399dc8c782699ac5d423" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>getFieldValueAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a3964e8ef89ecd66477204add0caccee2" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>getType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a047778c46bf6ace9c5da09e82b2f77da" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a00af9adb6e3e28e3d1cdf10bd39eda9c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1aacf8c6f796d544dcd62d9eadaa488430" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a3a6b12877fa428a3f05b3a2147491dcf" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>MagneticModelFromType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a9e0a10b3a767b3196231b4d7c3f5967b" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>magneticModelUPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1af151d47ed0191071b95ea2b22afc4a62" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>type_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1_1_impl_1a6f1fac166e96630332aa0dab1ded5166" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

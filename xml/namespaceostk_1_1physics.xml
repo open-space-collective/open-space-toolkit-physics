@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics" kind="namespace" language="C++">
+    <compoundname>ostk::physics</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1_environment" prot="public">ostk::physics::Environment</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1_unit" prot="public">ostk::physics::Unit</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate">ostk::physics::coordinate</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1data">ostk::physics::data</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1environment">ostk::physics::environment</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1time">ostk::physics::time</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1unit">ostk::physics::unit</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1af805fccec52bc16831bb68446cb96fde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Environment &amp;anEnvironment)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &amp;</type>
+          <declname>anEnvironment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEnvironment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An environment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="62" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="62" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1a3c3e809ca069b393c79e7ad18cf0b24c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Unit &amp;aUnit)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
+          <declname>aUnit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Unit.cpp" line="80" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="80" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="15" column="1"/>
+  </compounddef>
+</doxygen>

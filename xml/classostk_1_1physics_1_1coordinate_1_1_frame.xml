@@ -1,0 +1,791 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1coordinate_1_1_frame" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::coordinate::Frame</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Frame &gt;</basecompoundref>
+    <derivedcompoundref refid="structostk_1_1physics_1_1coordinate_1_1_shared_frame_enabler" prot="public" virt="non-virtual">ostk::physics::coordinate::SharedFrameEnabler</derivedcompoundref>
+    <includes refid="_frame_8hpp" local="no">Frame.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a2cc0cfd9359a241bf441c67f5a1d215c" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String ostk::physics::coordinate::Frame::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="138" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_frame_1abf732d5d9f6ee7c6b514d9011a28ee51" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::quasiInertial_</definition>
+        <argsstring></argsstring>
+        <name>quasiInertial_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="139" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a6e9eb8204cb2d515f5f52cabd9f2fee2" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt;const Frame&gt; ostk::physics::coordinate::Frame::parentFrameSPtr_</definition>
+        <argsstring></argsstring>
+        <name>parentFrameSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="140" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a69b61d62c6a037c9d65cbf88b8b6c4d7" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> &gt;</type>
+        <definition>Shared&lt;const Provider&gt; ostk::physics::coordinate::Frame::providerSPtr_</definition>
+        <argsstring></argsstring>
+        <name>providerSPtr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="141" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a5016cdac1bee789fa36df740cb548d10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::Frame::~Frame</definition>
+        <argsstring>()</argsstring>
+        <name>~Frame</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="55" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a92ff07865288bb1e1850dde4c2e921ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::operator==</definition>
+        <argsstring>(const Frame &amp;aFrame) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="44" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a6afa45530718b2a5ffc89e1ba25748ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::operator!=</definition>
+        <argsstring>(const Frame &amp;aFrame) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="59" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a07dde81d8b842123c82e5795898a0e67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="63" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1aa60fe227b08abe78f46ea596b344093d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::isQuasiInertial</definition>
+        <argsstring>() const</argsstring>
+        <name>isQuasiInertial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="87" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a0a7a8cd8c6d94ba4c84b12d24fb88716" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::hasParent</definition>
+        <argsstring>() const</argsstring>
+        <name>hasParent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="67" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="97" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a78f819f7ff52455ee5d777e7e5f7a628" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::accessParent</definition>
+        <argsstring>() const</argsstring>
+        <name>accessParent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="69" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="107" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a528c7a0a4d3865e7ec8ed6b9206db048" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::accessAncestor</definition>
+        <argsstring>(const Uint8 anAncestorDegree) const</argsstring>
+        <name>accessAncestor</name>
+        <param>
+          <type>const Uint8</type>
+          <declname>anAncestorDegree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="71" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="122" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1aebe43abfbc695e4525a6ce555efb8e1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> &gt;</type>
+        <definition>Shared&lt; const Provider &gt; ostk::physics::coordinate::Frame::accessProvider</definition>
+        <argsstring>() const</argsstring>
+        <name>accessProvider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="73" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="151" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a662afbc043e07289ce2c09089be89c68" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::coordinate::Frame::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="75" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="161" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a122c106fc566efee01ec59166e6e8155" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
+        <definition>Position ostk::physics::coordinate::Frame::getOriginIn</definition>
+        <argsstring>(const Shared&lt; const Frame &gt; &amp;aFrame, const Instant &amp;anInstant) const</argsstring>
+        <name>getOriginIn</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="77" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="171" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a518306611b6408eab15601d4fd059e16" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
+        <definition>Velocity ostk::physics::coordinate::Frame::getVelocityIn</definition>
+        <argsstring>(const Shared&lt; const Frame &gt; &amp;aFrame, const Instant &amp;anInstant) const</argsstring>
+        <name>getVelocityIn</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="79" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="188" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a5b040d9c46d1d703ac05fdc9ecec7d65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_axes" kindref="compound">Axes</ref></type>
+        <definition>Axes ostk::physics::coordinate::Frame::getAxesIn</definition>
+        <argsstring>(const Shared&lt; const Frame &gt; &amp;aFrame, const Instant &amp;anInstant) const</argsstring>
+        <name>getAxesIn</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="81" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="207" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1ac3850c70b64b4c52bb99c6af4a5999f1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
+        <definition>Transform ostk::physics::coordinate::Frame::getTransformTo</definition>
+        <argsstring>(const Shared&lt; const Frame &gt; &amp;aFrame, const Instant &amp;anInstant) const</argsstring>
+        <name>getTransformTo</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="83" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="228" bodyend="289"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a509ac1926cfc3553748bace204e2b1cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Frame &amp;aFrame)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="61" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="64" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1afd6b8ee942800a471732b418256e8232" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="85" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="291" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1aaace842508e32abcdd4f72b6a49a585c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::GCRF</definition>
+        <argsstring>()</argsstring>
+        <name>GCRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="87" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="296" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a328ddfc4e3eccdef0c265c10daa80f05" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::J2000</definition>
+        <argsstring>(const iau::Theory &amp;aTheory)</argsstring>
+        <name>J2000</name>
+        <param>
+          <type>const <ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref> &amp;</type>
+          <declname>aTheory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="89" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="305" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a1c4f603f202def9b3bc633bb79319403" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::MOD</definition>
+        <argsstring>(const Instant &amp;anEpoch)</argsstring>
+        <name>MOD</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anEpoch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="91" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="316" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1af0ec32b49ae0535fbccb9694679900cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::TOD</definition>
+        <argsstring>(const Instant &amp;anEpoch, const iau::Theory &amp;aTheory)</argsstring>
+        <name>TOD</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anEpoch</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref> &amp;</type>
+          <declname>aTheory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="93" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="329" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a907ea2e7bdc77591ddf045cf53c2fdd7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::TEME</definition>
+        <argsstring>()</argsstring>
+        <name>TEME</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="95" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="343" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1ad744b398442309c7e582c86c7da57d09" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::TEMEOfEpoch</definition>
+        <argsstring>(const Instant &amp;anEpoch)</argsstring>
+        <name>TEMEOfEpoch</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anEpoch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="97" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="352" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a62a327c79a63c1e37e0c03e898f6a659" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::CIRF</definition>
+        <argsstring>()</argsstring>
+        <name>CIRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="99" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="365" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a93d0969a86279f30312532b3ab95c682" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::TIRF</definition>
+        <argsstring>()</argsstring>
+        <name>TIRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="101" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="374" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a31b8e721d6893ef80c3eea7eca9cda87" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::ITRF</definition>
+        <argsstring>()</argsstring>
+        <name>ITRF</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="103" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="383" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1af2b41128e2557144a2e6846b4b786df0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::WithName</definition>
+        <argsstring>(const String &amp;aName)</argsstring>
+        <name>WithName</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="105" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="392" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1addab52f706b90aa77a2216d8ee70e4b9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::coordinate::Frame::Exists</definition>
+        <argsstring>(const String &amp;aName)</argsstring>
+        <name>Exists</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="107" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="407" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a8a5377ae80e105e25fcf02f962d8a7b1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::Construct</definition>
+        <argsstring>(const String &amp;aName, bool isQuasiInertial, const Shared&lt; const Frame &gt; &amp;aParentFrame, const Shared&lt; const Provider &gt; &amp;aProvider)</argsstring>
+        <name>Construct</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isQuasiInertial</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aParentFrame</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> &gt; &amp;</type>
+          <declname>aProvider</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A frame name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">isQuasiInertialT</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True is frame is quasi-inertial </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aParentFrame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the parent frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aProvider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the transform provider </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="116" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="417" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1aef50269b905c817822b4a3c408254f6d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::Frame::Destruct</definition>
+        <argsstring>(const String &amp;aName)</argsstring>
+        <name>Destruct</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="123" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="432" bodyend="442"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a541f9a11d5974f8cd2a7febfc23ff6d5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::Frame::Frame</definition>
+        <argsstring>(const String &amp;aName, bool isQuasiInertial, const Shared&lt; const Frame &gt; &amp;aParentFrame, const Shared&lt; const Provider &gt; &amp;aProvider)</argsstring>
+        <name>Frame</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isQuasiInertial</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aParentFrame</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> &gt; &amp;</type>
+          <declname>aProvider</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="126" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="444" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a2e9b0288ca637decc0044002d37228b7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::coordinate::Frame::Frame</definition>
+        <argsstring>(const Frame &amp;aFrame)=default</argsstring>
+        <name>Frame</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="133" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a31a0447363f92f28e41eed7998d68e21" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+        <definition>Frame&amp; ostk::physics::coordinate::Frame::operator=</definition>
+        <argsstring>(const Frame &amp;aFrame)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="135" column="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a0728b745c3186b5f9f6f5e9f0a57b0b0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Uint8</type>
+        <definition>Uint8 ostk::physics::coordinate::Frame::getDepth</definition>
+        <argsstring>() const</argsstring>
+        <name>getDepth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="143" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="458" bodyend="477"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a87ac9d7b477aa7badd49f3d9c3718942" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::Emplace</definition>
+        <argsstring>(const String &amp;aName, bool isQuasiInertial, const Shared&lt; const Frame &gt; &amp;aParentFrame, const Shared&lt; const Provider &gt; &amp;aProvider)</argsstring>
+        <name>Emplace</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aName</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isQuasiInertial</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aParentFrame</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> &gt; &amp;</type>
+          <declname>aProvider</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="145" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="479" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_frame_1a683479a52ccd930923bf9a3347493f94" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Frame::FindCommonAncestor</definition>
+        <argsstring>(const Shared&lt; const Frame &gt; &amp;aFirstFrameSPtr, const Shared&lt; const Frame &gt; &amp;aSecondFrameSPtr)</argsstring>
+        <name>FindCommonAncestor</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aFirstFrameSPtr</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+          <declname>aSecondFrameSPtr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="152" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="499" bodyend="520"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Reference frame. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><ulink url="https://en.wikipedia.org/wiki/Frame_of_reference">https://en.wikipedia.org/wiki/Frame_of_reference</ulink> <simplesect kind="note"><para>Implementation heavily inspired by (the great!) <ulink url="https://www.orekit.org/static/architecture/frames.html">https://www.orekit.org/static/architecture/frames.html</ulink> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ostk::physics::coordinate::Frame</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1_frame"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Frame &gt;</label>
+      </node>
+      <node id="3">
+        <label>ostk::physics::coordinate::SharedFrameEnabler</label>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>ostk::physics::coordinate::Frame</label>
+        <link refid="classostk_1_1physics_1_1coordinate_1_1_frame"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Frame &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp" bodystart="50" bodyend="155"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a528c7a0a4d3865e7ec8ed6b9206db048" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>accessAncestor</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a78f819f7ff52455ee5d777e7e5f7a628" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>accessParent</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aebe43abfbc695e4525a6ce555efb8e1e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>accessProvider</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a62a327c79a63c1e37e0c03e898f6a659" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>CIRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a8a5377ae80e105e25fcf02f962d8a7b1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Construct</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aef50269b905c817822b4a3c408254f6d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Destruct</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a87ac9d7b477aa7badd49f3d9c3718942" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Emplace</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1addab52f706b90aa77a2216d8ee70e4b9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Exists</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a683479a52ccd930923bf9a3347493f94" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>FindCommonAncestor</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a541f9a11d5974f8cd2a7febfc23ff6d5" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Frame</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a2e9b0288ca637decc0044002d37228b7" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Frame</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aaace842508e32abcdd4f72b6a49a585c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>GCRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a5b040d9c46d1d703ac05fdc9ecec7d65" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>getAxesIn</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a0728b745c3186b5f9f6f5e9f0a57b0b0" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>getDepth</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a662afbc043e07289ce2c09089be89c68" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>getName</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a122c106fc566efee01ec59166e6e8155" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>getOriginIn</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1ac3850c70b64b4c52bb99c6af4a5999f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>getTransformTo</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a518306611b6408eab15601d4fd059e16" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>getVelocityIn</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a0a7a8cd8c6d94ba4c84b12d24fb88716" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>hasParent</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a07dde81d8b842123c82e5795898a0e67" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1aa60fe227b08abe78f46ea596b344093d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>isQuasiInertial</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a31b8e721d6893ef80c3eea7eca9cda87" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>ITRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a328ddfc4e3eccdef0c265c10daa80f05" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>J2000</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a1c4f603f202def9b3bc633bb79319403" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>MOD</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a2cc0cfd9359a241bf441c67f5a1d215c" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>name_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a6afa45530718b2a5ffc89e1ba25748ff" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a509ac1926cfc3553748bace204e2b1cc" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a31a0447363f92f28e41eed7998d68e21" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a92ff07865288bb1e1850dde4c2e921ec" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a6e9eb8204cb2d515f5f52cabd9f2fee2" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>parentFrameSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a69b61d62c6a037c9d65cbf88b8b6c4d7" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>providerSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1abf732d5d9f6ee7c6b514d9011a28ee51" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>quasiInertial_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a907ea2e7bdc77591ddf045cf53c2fdd7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>TEME</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1ad744b398442309c7e582c86c7da57d09" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>TEMEOfEpoch</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a93d0969a86279f30312532b3ab95c682" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>TIRF</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1af0ec32b49ae0535fbccb9694679900cd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>TOD</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1afd6b8ee942800a471732b418256e8232" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1af2b41128e2557144a2e6846b4b786df0" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>WithName</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_frame_1a5016cdac1bee789fa36df740cb548d10" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Frame</scope><name>~Frame</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

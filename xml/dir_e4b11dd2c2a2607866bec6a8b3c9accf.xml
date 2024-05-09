@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_e4b11dd2c2a2607866bec6a8b3c9accf" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth</compoundname>
+    <innerfile refid="_c_s_s_i_space_weather_8cpp">CSSISpaceWeather.cpp</innerfile>
+    <innerfile refid="_exponential_8cpp">Exponential.cpp</innerfile>
+    <innerfile refid="_environment_2_atmospheric_2_earth_2_manager_8cpp">Manager.cpp</innerfile>
+    <innerfile refid="_n_r_l_m_s_i_s_e00_8cpp">NRLMSISE00.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"/>
+  </compounddef>
+</doxygen>

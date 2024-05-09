@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1utilities" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::utilities</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1aa6db04adfe21fdcf232fe3e5df13c60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::environment::utilities::eclipseIntervalsAtPosition</definition>
+        <argsstring>(const Interval &amp;anAnalysisInterval, const Position &amp;aPosition, const Environment &amp;anEnvironment)</argsstring>
+        <name>eclipseIntervalsAtPosition</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+          <declname>anAnalysisInterval</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &amp;</type>
+          <declname>anEnvironment</declname>
+        </param>
+        <briefdescription>
+<para>Calculate eclipse intervals for a given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anAnalysisInterval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An analysis interval </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A position </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEnvironment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An environment </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Array of eclipse intervals for a given position </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp" line="20" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp" bodystart="20" bodyend="83" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="34" declcolumn="7"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="19" column="1"/>
+  </compounddef>
+</doxygen>

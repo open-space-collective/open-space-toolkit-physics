@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice" kind="namespace" language="C++">
+    <compoundname>ostk::physics::environment::ephemeris::spice</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine" prot="public">ostk::physics::environment::ephemeris::spice::Engine</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" prot="public">ostk::physics::environment::ephemeris::spice::Kernel</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" prot="public">ostk::physics::environment::ephemeris::spice::Manager</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a1c6427a6304b5f51596a2f98313cf0d8" prot="public" static="no">
+        <type>ostk::core::type::Index</type>
+        <definition>using ostk::physics::environment::ephemeris::spice::IndexType = typedef ostk::core::type::Index</definition>
+        <argsstring></argsstring>
+        <name>IndexType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a3c82049b861fc8226b006e78cf89b514" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
+        <definition>using ostk::physics::environment::ephemeris::spice::ManifestManager = typedef ostk::physics::data::Manager</definition>
+        <argsstring></argsstring>
+        <name>ManifestManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="50" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1aa176042525bc35250455155e24effb7f" prot="public" static="no" mutable="no">
+        <type>const String</type>
+        <definition>const String ostk::physics::environment::ephemeris::spice::temporaryDirectoryName</definition>
+        <argsstring></argsstring>
+        <name>temporaryDirectoryName</name>
+        <initializer>= &quot;tmp&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" line="38" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1abc529590d008c9c15aeaa4541539902a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ostk::physics::environment::ephemeris::spice::handleException</definition>
+        <argsstring>()</argsstring>
+        <name>handleException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" line="34" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="34" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a3e99e3fc3ede64da5cc7f3ca0f5290d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::environment::ephemeris::spice::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Engine &amp;anEngine)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
+          <declname>anEngine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEngine</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> engine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" line="56" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="56" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="36" column="1"/>
+  </compounddef>
+</doxygen>

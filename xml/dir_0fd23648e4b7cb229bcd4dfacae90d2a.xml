@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_0fd23648e4b7cb229bcd4dfacae90d2a" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth</compoundname>
+    <innerfile refid="_environment_2_magnetic_2_earth_2_manager_8hpp">Manager.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/"/>
+  </compounddef>
+</doxygen>

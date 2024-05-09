@@ -1,0 +1,466 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</compoundname>
+    <includes refid="_c_s_s_i_space_weather_8hpp" local="no">CSSISpaceWeather.hpp</includes>
+    <innerclass refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" prot="public">ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::Reading</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a827f111cf0e36f23b513a41c6f47d08f" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::lastObservationDate_</definition>
+        <argsstring></argsstring>
+        <name>lastObservationDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="187" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a80f2107898085a0318a4f4127be2dc00" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::observationInterval_</definition>
+        <argsstring></argsstring>
+        <name>observationInterval_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="189" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a19965a35fa929b4fd609bc1bae02e08f" prot="private" static="no" mutable="no">
+        <type>Map&lt; Integer, <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">CSSISpaceWeather::Reading</ref> &gt;</type>
+        <definition>Map&lt;Integer, CSSISpaceWeather::Reading&gt; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::observations_</definition>
+        <argsstring></argsstring>
+        <name>observations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="190" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a3aae72aa98b2c1cd339ae667c5567387" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::dailyPredictionInterval_</definition>
+        <argsstring></argsstring>
+        <name>dailyPredictionInterval_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="192" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1af8eb4d8e4abcc12289605c33f395d2f9" prot="private" static="no" mutable="no">
+        <type>Map&lt; Integer, <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">CSSISpaceWeather::Reading</ref> &gt;</type>
+        <definition>Map&lt;Integer, CSSISpaceWeather::Reading&gt; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::dailyPredictions_</definition>
+        <argsstring></argsstring>
+        <name>dailyPredictions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="193" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a14747dfc9a9061d18148ba06c7aa8f0a" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::monthlyPredictionInterval_</definition>
+        <argsstring></argsstring>
+        <name>monthlyPredictionInterval_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="195" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a317d5d7ae86cb9cb42e542c8a6fe7dd6" prot="private" static="no" mutable="no">
+        <type>Map&lt; Integer, <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">CSSISpaceWeather::Reading</ref> &gt;</type>
+        <definition>Map&lt;Integer, CSSISpaceWeather::Reading&gt; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::monthlyPredictions_</definition>
+        <argsstring></argsstring>
+        <name>monthlyPredictions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="196" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a14072b611af090b205237d0159fdb3da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const CSSISpaceWeather &amp;aCSSISpaceWeather)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref> &amp;</type>
+          <declname>aCSSISpaceWeather</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="98" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="42" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a8e3a26ac31c945fa4d250a7cc376b00c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::isDefined</definition>
+        <argsstring>() const</argsstring>
+        <name>isDefined</name>
+        <briefdescription>
+<para>true if defined </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if defined. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="104" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="191" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1acd88c593fdbbc0bdc400595c44a5f5de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessLastObservationDate</definition>
+        <argsstring>() const</argsstring>
+        <name>accessLastObservationDate</name>
+        <briefdescription>
+<para>Access last observation Date. File publication date is the day following the last observation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Last observation Date. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="111" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="197" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a740f1a2cb166bd6b9b28d43255981641" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+        <definition>const Interval &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessObservationInterval</definition>
+        <argsstring>() const</argsstring>
+        <name>accessObservationInterval</name>
+        <briefdescription>
+<para>Access observation Interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Observation Interval of Instants. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="117" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="207" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a4db84b0fdc4df5a185fd825ea6277a5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> &amp;</type>
+        <definition>const CSSISpaceWeather::Reading &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessObservationAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>accessObservationAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Access daily prediction Interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Daily prediction Interval of Instants. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="123" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="217" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1aa50599e98338a29a06d8d6ef80dacb0e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+        <definition>const Interval &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessDailyPredictionInterval</definition>
+        <argsstring>() const</argsstring>
+        <name>accessDailyPredictionInterval</name>
+        <briefdescription>
+<para>Access daily prediction Interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Daily prediction Interval of Instants. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="129" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="251" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a3e9b29b3f798fdc26d0a6e095e06cdb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> &amp;</type>
+        <definition>const CSSISpaceWeather::Reading &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessDailyPredictionAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>accessDailyPredictionAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Access daily prediction at Instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Daily prediction at Instant. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="135" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="261" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a87b68924e9604b722acac594d4455c6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+        <definition>const Interval &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessMonthlyPredictionInterval</definition>
+        <argsstring>() const</argsstring>
+        <name>accessMonthlyPredictionInterval</name>
+        <briefdescription>
+<para>Access monthly prediction Interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Monthly prediction Interval of Instants. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="141" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="295" bodyend="303"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1ad03cbba023a777e1a45eccb08ee26d1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> &amp;</type>
+        <definition>const CSSISpaceWeather::Reading &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessMonthlyPredictionAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>accessMonthlyPredictionAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Access monthly prediction at Instant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Monthly prediction at Instant. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="147" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="305" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a059be3a70af530a7619026816f22c6f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> &amp;</type>
+        <definition>const CSSISpaceWeather::Reading &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessReadingAt</definition>
+        <argsstring>(const Instant &amp;anInstant) const</argsstring>
+        <name>accessReadingAt</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Access reading at Instant. Look first in observations, then in daily predictions, then monthly predictions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> prediction at Instant. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="154" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="342" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1abfcf697a5a975e70d739a23c2b5a0a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> &amp;</type>
+        <definition>const CSSISpaceWeather::Reading &amp; ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::accessLastReadingWhere</definition>
+        <argsstring>(const std::function&lt; bool(const Reading &amp;)&gt; &amp;aPredicate, const Instant &amp;anInstant) const</argsstring>
+        <name>accessLastReadingWhere</name>
+        <param>
+          <type>const std::function&lt; bool(const <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> &amp;)&gt; &amp;</type>
+          <declname>aPredicate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Access last reading before anInstant where aPredicate is true. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPredicate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A predicate. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An Instant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Last <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1_1_reading" kindref="compound">Reading</ref> satisfying predicate. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="162" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="365" bodyend="425"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1aaa4284eca64b070c33430e0ad892b760" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref></type>
+        <definition>CSSISpaceWeather ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::Undefined</definition>
+        <argsstring>()</argsstring>
+        <name>Undefined</name>
+        <briefdescription>
+<para>Undefined factory function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Undefined CSSI Space Weather object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="170" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="427" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1acb523c7296301ca5e94dca1d323b3a52" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref></type>
+        <definition>CSSISpaceWeather ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::Load</definition>
+        <argsstring>(const File &amp;aFile)</argsstring>
+        <name>Load</name>
+        <param>
+          <type>const File &amp;</type>
+          <declname>aFile</declname>
+        </param>
+        <briefdescription>
+<para>Load CSSI Space Weather file in csv format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A CSSI Space Weather file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>CSSI Space Weather object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="177" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="432" bodyend="602"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1ab10d0b298c9c7bbc9c9fe65316618003" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref></type>
+        <definition>CSSISpaceWeather ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::LoadLegacy</definition>
+        <argsstring>(const File &amp;aFile)</argsstring>
+        <name>LoadLegacy</name>
+        <param>
+          <type>const File &amp;</type>
+          <declname>aFile</declname>
+        </param>
+        <briefdescription>
+<para>Load CSSI Space Weather file in legacy .txt format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A CSSI Space Weather file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>CSSI Space Weather object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="184" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="604" bodyend="877"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a20adadcb72a553227dc9e668b68c0008" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather::CSSISpaceWeather</definition>
+        <argsstring>()</argsstring>
+        <name>CSSISpaceWeather</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="198" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="879" bodyend="890"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Center for Space Weather and Innovation (CSSI) Space Weather data file. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        Consolidated data set which contains solar radiation and geomagnetic indices.
+                        Particularly contains the F10.7 solar flux index and Ap/Kp geomagnetic indices,
+                        which are commonly used to model atmospheric density.
+</verbatim></para>
+<para><ulink url="http://celestrak.org/SpaceData/SpaceWx-format.php">http://celestrak.org/SpaceData/SpaceWx-format.php</ulink> </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp" bodystart="50" bodyend="199"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a3e9b29b3f798fdc26d0a6e095e06cdb1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessDailyPredictionAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1aa50599e98338a29a06d8d6ef80dacb0e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessDailyPredictionInterval</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1acd88c593fdbbc0bdc400595c44a5f5de" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessLastObservationDate</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1abfcf697a5a975e70d739a23c2b5a0a81" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessLastReadingWhere</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1ad03cbba023a777e1a45eccb08ee26d1d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessMonthlyPredictionAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a87b68924e9604b722acac594d4455c6e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessMonthlyPredictionInterval</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a4db84b0fdc4df5a185fd825ea6277a5c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessObservationAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a740f1a2cb166bd6b9b28d43255981641" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessObservationInterval</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a059be3a70af530a7619026816f22c6f5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>accessReadingAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a20adadcb72a553227dc9e668b68c0008" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>CSSISpaceWeather</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a3aae72aa98b2c1cd339ae667c5567387" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>dailyPredictionInterval_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1af8eb4d8e4abcc12289605c33f395d2f9" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>dailyPredictions_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a8e3a26ac31c945fa4d250a7cc376b00c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a827f111cf0e36f23b513a41c6f47d08f" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>lastObservationDate_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1acb523c7296301ca5e94dca1d323b3a52" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>Load</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1ab10d0b298c9c7bbc9c9fe65316618003" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>LoadLegacy</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a14747dfc9a9061d18148ba06c7aa8f0a" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>monthlyPredictionInterval_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a317d5d7ae86cb9cb42e542c8a6fe7dd6" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>monthlyPredictions_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a80f2107898085a0318a4f4127be2dc00" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>observationInterval_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a19965a35fa929b4fd609bc1bae02e08f" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>observations_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a14072b611af090b205237d0159fdb3da" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1aaa4284eca64b070c33430e0ad892b760" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</scope><name>Undefined</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

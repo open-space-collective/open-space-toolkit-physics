@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1time_1_1_instant_1_1_count" kind="class" language="C++" prot="private">
+    <compoundname>ostk::physics::time::Instant::Count</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a71411407b58a9935187ad4d254ae6c7d" prot="public" static="no" mutable="no">
+        <type>Uint64</type>
+        <definition>Uint64 ostk::physics::time::Instant::Count::countFromEpoch_</definition>
+        <argsstring></argsstring>
+        <name>countFromEpoch_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="363" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="363" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a5296c468e411d44f8b6c7c264cb17814" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::postEpoch_</definition>
+        <argsstring></argsstring>
+        <name>postEpoch_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="364" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a262ecf1ff09cf6f74f2d5494fe42a918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::time::Instant::Count::Count</definition>
+        <argsstring>(Uint64 aNanosecondCountFromEpoch, bool isPostEpoch)</argsstring>
+        <name>Count</name>
+        <param>
+          <type>Uint64</type>
+          <declname>aNanosecondCountFromEpoch</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isPostEpoch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="366" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="950" bodyend="954"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1aff486e3256c30d6f2edee7c56cd1c83f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::operator==</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="368" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="956" bodyend="959"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1adfc6e84fd52e8f3b6a49507f24113701" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::operator!=</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="370" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="961" bodyend="964"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1acf17d3c9bb66aa86ad0e6a313a08a573" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::operator&lt;</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="372" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="966" bodyend="974"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a6d5c5316afbe314ece0984de96c1b19d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::operator&lt;=</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator&lt;=</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="374" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="976" bodyend="984"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a47afd4c04c888284d5a4b8b0cca232d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::operator&gt;</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator&gt;</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="376" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="986" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a138810ef4b7ee0d2d33cbbc55faad64f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::time::Instant::Count::operator&gt;=</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator&gt;=</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="378" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="996" bodyend="1004"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a58b535a4a7aa4da7ad5e37ac8d826ae1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Count</type>
+        <definition>Instant::Count ostk::physics::time::Instant::Count::operator+</definition>
+        <argsstring>(const Count &amp;aCount) const</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const Count &amp;</type>
+          <declname>aCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="380" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="1006" bodyend="1031"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1aee0f143e5a4fe5235c050119879ffb4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Count</type>
+        <definition>Instant::Count ostk::physics::time::Instant::Count::operator+</definition>
+        <argsstring>(Int64 aNanosecondDisplacement) const</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>Int64</type>
+          <declname>aNanosecondDisplacement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="382" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="1033" bodyend="1058"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1ad7c99c2d5a973ec989cbf25a365e43e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Count</type>
+        <definition>Instant::Count ostk::physics::time::Instant::Count::operator-</definition>
+        <argsstring>(Int64 aNanosecondDisplacement) const</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>Int64</type>
+          <declname>aNanosecondDisplacement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="384" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="1060" bodyend="1063"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a900a97eead0c2cc3b0ab90e36b2d7b06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::time::Instant::Count::toString</definition>
+        <argsstring>() const</argsstring>
+        <name>toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="386" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="1065" bodyend="1070"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Uint64</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::time::Instant::Count</label>
+        <childnode refid="2" relation="usage">
+          <edgelabel>countFromEpoch_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="361" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="360" bodyend="387"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a262ecf1ff09cf6f74f2d5494fe42a918" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>Count</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a71411407b58a9935187ad4d254ae6c7d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>countFromEpoch_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1adfc6e84fd52e8f3b6a49507f24113701" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator!=</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a58b535a4a7aa4da7ad5e37ac8d826ae1" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator+</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1aee0f143e5a4fe5235c050119879ffb4f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator+</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1ad7c99c2d5a973ec989cbf25a365e43e8" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator-</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1acf17d3c9bb66aa86ad0e6a313a08a573" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a6d5c5316afbe314ece0984de96c1b19d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator&lt;=</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1aff486e3256c30d6f2edee7c56cd1c83f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator==</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a47afd4c04c888284d5a4b8b0cca232d7" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator&gt;</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a138810ef4b7ee0d2d33cbbc55faad64f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>operator&gt;=</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a5296c468e411d44f8b6c7c264cb17814" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>postEpoch_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_instant_1_1_count_1a900a97eead0c2cc3b0ab90e36b2d7b06" prot="public" virt="non-virtual"><scope>ostk::physics::time::Instant::Count</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

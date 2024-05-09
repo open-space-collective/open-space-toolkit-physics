@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1_axes" prot="public">ostk::physics::coordinate::Axes</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1_frame" prot="public">ostk::physics::coordinate::Frame</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1_position" prot="public">ostk::physics::coordinate::Position</innerclass>
+    <innerclass refid="structostk_1_1physics_1_1coordinate_1_1_shared_frame_enabler" prot="public">ostk::physics::coordinate::SharedFrameEnabler</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1_transform" prot="public">ostk::physics::coordinate::Transform</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1coordinate_1_1_velocity" prot="public">ostk::physics::coordinate::Velocity</innerclass>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame">ostk::physics::coordinate::frame</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical">ostk::physics::coordinate::spherical</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1coordinate_1ac6781d09e3e73b10d604af3adf735bb7" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager" kindref="compound">ostk::physics::coordinate::frame::Manager</ref></type>
+        <definition>using ostk::physics::coordinate::FrameManager = typedef ostk::physics::coordinate::frame::Manager</definition>
+        <argsstring></argsstring>
+        <name>FrameManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" line="25" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1aa26685fca39614a3ea54983ebd15306b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Axes &amp;anAxes)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_axes" kindref="compound">Axes</ref> &amp;</type>
+          <declname>anAxes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" line="41" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="41" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1ae98601d62ea8ae83d32d791914e06b3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Frame &amp;aFrame)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &amp;</type>
+          <declname>aFrame</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" line="64" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="64" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1a9e9ba5f545437d45495edec82c0389b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Position &amp;aPosition)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" line="60" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="60" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1adab6f7d60b93b2a9055ba57c6a2445b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Transform &amp;aTransform)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
+          <declname>aTransform</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" line="122" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="122" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1a25a7512229ebbaafe671d0e4576c75fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::coordinate::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Velocity &amp;aVelocity)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref> &amp;</type>
+          <declname>aVelocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" line="39" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="39" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="17" column="1"/>
+  </compounddef>
+</doxygen>

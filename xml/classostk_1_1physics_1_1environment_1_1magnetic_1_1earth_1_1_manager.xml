@@ -1,0 +1,549 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::magnetic::earth::Manager</compoundname>
+    <includes refid="_environment_2_magnetic_2_earth_2_manager_8hpp" local="no">Manager.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Mode</name>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618bae1ba155a9f2e8c3be94020eef32a0301" prot="public">
+          <name>Manual</name>
+          <briefdescription>
+<para>Manually load and unload magnetic files. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618ba086247a9b57fde6eefee2a0c4752242d" prot="public">
+          <name>Automatic</name>
+          <briefdescription>
+<para>Automatically fetch magnetic files from remote repositories. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="63" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="62" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a63e592b3d5463d64a9fe86a5f288dc1a" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618b" kindref="member">Manager::Mode</ref></type>
+        <definition>Manager::Mode ostk::physics::environment::magnetic::earth::Manager::mode_</definition>
+        <argsstring></argsstring>
+        <name>mode_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="160" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a66c8ecf43a8c911f9173746021a9ddf8" prot="private" static="no" mutable="no">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::magnetic::earth::Manager::localRepository_</definition>
+        <argsstring></argsstring>
+        <name>localRepository_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="162" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a54d0c965201306e1c408af53b766cdae" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::environment::magnetic::earth::Manager::localRepositoryLockTimeout_</definition>
+        <argsstring></argsstring>
+        <name>localRepositoryLockTimeout_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="163" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a4515fd21e86e7b787daf0b71b9497b86" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex ostk::physics::environment::magnetic::earth::Manager::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="165" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f5c5b6dfbd4ff1202fee6adf0fc403b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618b" kindref="member">Manager::Mode</ref></type>
+        <definition>Manager::Mode ostk::physics::environment::magnetic::earth::Manager::getMode</definition>
+        <argsstring>() const</argsstring>
+        <name>getMode</name>
+        <briefdescription>
+<para>Get manager mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" kindref="compound">Manager</ref> mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="74" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a81c0ce2b9a15fd0ef1dcd480d0e3ee21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::magnetic::earth::Manager::setMode</definition>
+        <argsstring>(const Manager::Mode &amp;aMode)</argsstring>
+        <name>setMode</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618b" kindref="member">Manager::Mode</ref> &amp;</type>
+          <declname>aMode</declname>
+        </param>
+        <briefdescription>
+<para>Set manager mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A manager mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="80" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="41" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a92c4248dd976fec3ab048a07a7265f9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::magnetic::earth::Manager::Manager</definition>
+        <argsstring>(const Manager &amp;aManager)=delete</argsstring>
+        <name>Manager</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+          <declname>aManager</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="92" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a1f3acc969ac17edb717742281f2e761a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+        <definition>Manager&amp; ostk::physics::environment::magnetic::earth::Manager::operator=</definition>
+        <argsstring>(const Manager &amp;aManager)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+          <declname>aManager</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="96" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3bce4a4092f699ea959e672448fb317f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::magnetic::earth::Manager::hasDataFilesForType</definition>
+        <argsstring>(const EarthMagneticModel::Type &amp;aModelType) const</argsstring>
+        <name>hasDataFilesForType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">EarthMagneticModel::Type</ref> &amp;</type>
+          <declname>aModelType</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if manager has data file for the given model type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aModelType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A model type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if manager has data file for the given model type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="103" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="71" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1abf7bf9409ec239388cd358cec62096c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; File &gt;</type>
+        <definition>Array&lt; File &gt; ostk::physics::environment::magnetic::earth::Manager::localDataFilesForType</definition>
+        <argsstring>(const EarthMagneticModel::Type &amp;aModelType) const</argsstring>
+        <name>localDataFilesForType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">EarthMagneticModel::Type</ref> &amp;</type>
+          <declname>aModelType</declname>
+        </param>
+        <briefdescription>
+<para>Returns array of file objects for the given type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aModelType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A model type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Array of Files </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="110" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="83" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1aa3181b328abeb45f518f78b682f83d04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::magnetic::earth::Manager::getLocalRepository</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocalRepository</name>
+        <briefdescription>
+<para>Get local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Local repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="116" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="95" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a965f55ee2041a98c4d3cc7d8115a05cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::magnetic::earth::Manager::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Reset the manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                    Reset path and mode to default values. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="122" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="132" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a1ba624fd3d27f791f18975826242cca7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::magnetic::earth::Manager::fetchDataFilesForType</definition>
+        <argsstring>(const EarthMagneticModel::Type &amp;aModelType) const</argsstring>
+        <name>fetchDataFilesForType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">EarthMagneticModel::Type</ref> &amp;</type>
+          <declname>aModelType</declname>
+        </param>
+        <briefdescription>
+<para>Fetch data file from remote. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aModelType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A model type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="128" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="141" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a72535c0bb963e3936fa73e5d130d6889" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::magnetic::earth::Manager::setLocalRepository</definition>
+        <argsstring>(const Directory &amp;aDirectory)</argsstring>
+        <name>setLocalRepository</name>
+        <param>
+          <type>const Directory &amp;</type>
+          <declname>aDirectory</declname>
+        </param>
+        <briefdescription>
+<para>Set local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDirectory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A repository directory </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="134" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="102" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1abc0faad5803e6089d95f787c93fe1ac1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618b" kindref="member">Manager::Mode</ref></type>
+        <definition>Manager::Mode ostk::physics::environment::magnetic::earth::Manager::DefaultMode</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultMode</name>
+        <briefdescription>
+<para>Get default manager mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE
+</verbatim></para>
+<para><simplesect kind="return"><para>Default manager mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="88" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="48" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a28a3c063a2d679f800f03b6763e13c73" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
+        <definition>Manager &amp; ostk::physics::environment::magnetic::earth::Manager::Get</definition>
+        <argsstring>()</argsstring>
+        <name>Get</name>
+        <briefdescription>
+<para>Get manager singleton. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to manager </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="140" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="296" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a01541c8637c766a6c769f0b140293197" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Directory</type>
+        <definition>Directory ostk::physics::environment::magnetic::earth::Manager::DefaultLocalRepository</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultLocalRepository</name>
+        <briefdescription>
+<para>Get default local repository. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY
+</verbatim></para>
+<para><simplesect kind="return"><para>Default local repository </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="148" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="114" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a12632ba03f68706e698438203f1fd9b3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::environment::magnetic::earth::Manager::DefaultLocalRepositoryLockTimeout</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultLocalRepositoryLockTimeout</name>
+        <briefdescription>
+<para>Get default local repository lock timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                    Overriden by:
+                    OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
+</verbatim></para>
+<para><simplesect kind="return"><para>Default local repository lock timeout </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="157" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="303" bodyend="315"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a608b51a5c4e376ca9a2e23563196b406" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::magnetic::earth::Manager::Manager</definition>
+        <argsstring>()</argsstring>
+        <name>Manager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="167" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="317" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac6560e59fb8a338f7109e45b84b721ef" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; URL &gt;</type>
+        <definition>Array&lt; URL &gt; ostk::physics::environment::magnetic::earth::Manager::getDataFileUrlsForType</definition>
+        <argsstring>(const EarthMagneticModel::Type &amp;aModelType) const</argsstring>
+        <name>getDataFileUrlsForType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">EarthMagneticModel::Type</ref> &amp;</type>
+          <declname>aModelType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="169" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="328" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1aa1b3ade8d71634bdff550f4b3254d6d8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::magnetic::earth::Manager::isLocalRepositoryLocked</definition>
+        <argsstring>() const</argsstring>
+        <name>isLocalRepositoryLocked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="173" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="234" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a5fccc2a231cb1f7865687148725a5d24" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>File</type>
+        <definition>File ostk::physics::environment::magnetic::earth::Manager::getLocalRepositoryLockFile</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocalRepositoryLockFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="175" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="239" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac1ddaedaf1466a19af2bceab91438798" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::magnetic::earth::Manager::lockLocalRepository</definition>
+        <argsstring>(const Duration &amp;aTimeout)</argsstring>
+        <name>lockLocalRepository</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
+          <declname>aTimeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="177" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="244" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a5b6f476d56e6304ffa1b39332714da1d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::magnetic::earth::Manager::unlockLocalRepository</definition>
+        <argsstring>()</argsstring>
+        <name>unlockLocalRepository</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="179" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="284" bodyend="294"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a7a22372fac63552d854f42a46267fec6" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::environment::magnetic::earth::Manager::DataFileNameFromType</definition>
+        <argsstring>(const EarthMagneticModel::Type &amp;aModelType)</argsstring>
+        <name>DataFileNameFromType</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">EarthMagneticModel::Type</ref> &amp;</type>
+          <declname>aModelType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="171" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="342" bodyend="372"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> magnetic model data manager. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>                        Fetches and manages necessary magnetic model data files.
+
+                        The following environment variables can be defined:
+
+                        - &quot;OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED&quot; will override
+                        &quot;DefaultEnabled&quot;
+                        - &quot;OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY&quot; will override
+                        &quot;DefaultLocalRepository&quot; 
+</verbatim> </para>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="60" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="59" bodyend="180"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a7a22372fac63552d854f42a46267fec6" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>DataFileNameFromType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a01541c8637c766a6c769f0b140293197" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>DefaultLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a12632ba03f68706e698438203f1fd9b3" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>DefaultLocalRepositoryLockTimeout</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1abc0faad5803e6089d95f787c93fe1ac1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>DefaultMode</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a1ba624fd3d27f791f18975826242cca7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>fetchDataFilesForType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a28a3c063a2d679f800f03b6763e13c73" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>Get</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac6560e59fb8a338f7109e45b84b721ef" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>getDataFileUrlsForType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1aa3181b328abeb45f518f78b682f83d04" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>getLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a5fccc2a231cb1f7865687148725a5d24" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>getLocalRepositoryLockFile</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f5c5b6dfbd4ff1202fee6adf0fc403b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>getMode</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3bce4a4092f699ea959e672448fb317f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>hasDataFilesForType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1aa1b3ade8d71634bdff550f4b3254d6d8" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>isLocalRepositoryLocked</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1abf7bf9409ec239388cd358cec62096c2" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>localDataFilesForType</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a66c8ecf43a8c911f9173746021a9ddf8" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>localRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a54d0c965201306e1c408af53b766cdae" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>localRepositoryLockTimeout_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac1ddaedaf1466a19af2bceab91438798" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>lockLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a92c4248dd976fec3ab048a07a7265f9c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a608b51a5c4e376ca9a2e23563196b406" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a3f82587c3a0cfbddebbff92eb21b618b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>Mode</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a63e592b3d5463d64a9fe86a5f288dc1a" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>mode_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a4515fd21e86e7b787daf0b71b9497b86" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>mutex_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a1f3acc969ac17edb717742281f2e761a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a965f55ee2041a98c4d3cc7d8115a05cd" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>reset</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a72535c0bb963e3936fa73e5d130d6889" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>setLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a81c0ce2b9a15fd0ef1dcd480d0e3ee21" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>setMode</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a5b6f476d56e6304ffa1b39332714da1d" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::earth::Manager</scope><name>unlockLocalRepository</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

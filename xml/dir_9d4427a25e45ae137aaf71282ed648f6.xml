@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_9d4427a25e45ae137aaf71282ed648f6" kind="dir">
+    <compoundname>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider</compoundname>
+    <innerdir refid="dir_dcd9377558120e25f34e3823c3ed01f8">include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU</innerdir>
+    <innerdir refid="dir_5a535b1f19e2b0e70ca02837d59d0299">include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS</innerdir>
+    <innerfile refid="_c_i_r_f_8hpp">CIRF.hpp</innerfile>
+    <innerfile refid="_dynamic_8hpp">Dynamic.hpp</innerfile>
+    <innerfile refid="_g_c_r_f_8hpp">GCRF.hpp</innerfile>
+    <innerfile refid="_i_c_r_f_8hpp">ICRF.hpp</innerfile>
+    <innerfile refid="_i_t_r_f_8hpp">ITRF.hpp</innerfile>
+    <innerfile refid="_j2000_8hpp">J2000.hpp</innerfile>
+    <innerfile refid="_m_o_d_8hpp">MOD.hpp</innerfile>
+    <innerfile refid="_static_8hpp">Static.hpp</innerfile>
+    <innerfile refid="_t_e_m_e_8hpp">TEME.hpp</innerfile>
+    <innerfile refid="_t_i_r_f_8hpp">TIRF.hpp</innerfile>
+    <innerfile refid="_t_o_d_8hpp">TOD.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/"/>
+  </compounddef>
+</doxygen>
