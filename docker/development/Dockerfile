@@ -164,7 +164,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 ARG TARGETPLATFORM
 ARG OSTK_MATHEMATICS_MAJOR="3"
 
-## Force an image rebuild when new Math patch versions are detected
+## Force an image rebuild when new Math minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-mathematics/git/matching-refs/tags/${OSTK_MATHEMATICS_MAJOR} /tmp/open-space-toolkit-mathematics/versions.json
 
 RUN mkdir -p /tmp/open-space-toolkit-mathematics \
