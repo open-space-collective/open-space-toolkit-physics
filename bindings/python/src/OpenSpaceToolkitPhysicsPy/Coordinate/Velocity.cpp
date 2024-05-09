@@ -34,7 +34,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def("get_unit", &Velocity::getUnit)
         .def("in_unit", &Velocity::inUnit, arg("unit"))
         .def("in_frame", &Velocity::inFrame, arg("position"), arg("frame"), arg("instant"))
-        .def("to_string", &Velocity::toString, arg("precision") = DEFAULT_PRECISION)
+        .def("to_string", &Velocity::toString, arg_v("precision", DEFAULT_PRECISION, "Integer.undefined()"))
 
         .def_static("undefined", &Velocity::Undefined)
         .def_static("meters_per_second", &Velocity::MetersPerSecond, arg("coordinates"), arg("frame"))

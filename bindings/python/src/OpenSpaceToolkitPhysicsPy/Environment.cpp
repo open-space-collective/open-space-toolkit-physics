@@ -31,7 +31,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "intersects",
             &Environment::intersects,
             arg("geometry"),
-            arg("objects_to_ignore") = Array<Shared<const Object>>::Empty()
+            arg_v("objects_to_ignore", Array<Shared<const Object>>::Empty(), "[]")
         )
 
         .def("access_objects", &Environment::accessObjects, return_value_policy::reference)
@@ -57,7 +57,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 
     // Create "environment" python submodule
     auto environment = aModule.def_submodule("environment");
-
 
     OpenSpaceToolkitPhysicsPy_Environment_Object(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational(environment);

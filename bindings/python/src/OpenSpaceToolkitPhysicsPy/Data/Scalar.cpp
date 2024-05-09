@@ -26,7 +26,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def("get_value", &Scalar::getValue)
         .def("get_unit", &Scalar::getUnit)
         .def("in_unit", &Scalar::inUnit, arg("unit"))
-        .def("to_string", &Scalar::toString, arg("precision") = Integer::Undefined())
+        .def("to_string", &Scalar::toString, arg_v("precision", Integer::Undefined(), "Integer.undefined()"))
 
         .def_static("undefined", &Scalar::Undefined)
 
