@@ -89,9 +89,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                 arg("f107_constant_value") = Earth::defaultF107ConstantValue,
                 arg("f107_average_constant_value") = Earth::defaultF107AConstantValue,
                 arg("kp_constant_value") = Earth::defaultKpConstantValue,
-                arg("earth_frame") = Frame::ITRF(),
-                arg("earth_radius") = EarthGravityModel::WGS84.equatorialRadius_,
-                arg("earth_flattening") = EarthGravityModel::WGS84.flattening_,
+                arg_v("earth_frame", Frame::ITRF(), "Frame.ITRF()"),
+                arg_v("earth_radius", EarthGravityModel::WGS84.equatorialRadius_, "WGS84.equatorialRadius_"),
+                arg_v("earth_flattening", EarthGravityModel::WGS84.flattening_, "WGS84.flattening_"),
                 arg("sun_celestial") = nullptr,
                 R"doc(
                     Constructor.
@@ -164,7 +164,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
     // Create "earth" python submodule
     auto earth = aModule.def_submodule("earth");
-
 
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWeather(earth);
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(earth);

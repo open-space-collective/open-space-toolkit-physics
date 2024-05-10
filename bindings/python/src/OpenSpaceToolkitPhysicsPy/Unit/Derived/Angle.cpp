@@ -232,7 +232,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                     Real: The angle in revolutions.
             )doc"
         )
-        .def("to_string", &Angle::toString, arg("precision") = Integer::Undefined(),
+        .def("to_string", &Angle::toString, arg_v("precision", Integer::Undefined(), "Integer.undefined()"),
             R"doc(
                 Get the string representation of the angle.
 
