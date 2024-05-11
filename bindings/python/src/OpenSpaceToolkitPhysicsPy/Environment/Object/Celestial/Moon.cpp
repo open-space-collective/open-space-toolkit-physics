@@ -15,7 +15,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
     using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 
     {
-        class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon")
+        class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon",
+            R"doc(
+                Moon
+            )doc"
+        )
 
             .def(
                 init<const Shared<Ephemeris>&, const Shared<MoonGravitationalModel>&>(),

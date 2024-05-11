@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
 
     class_<Axes>(aModule, "Axes",
         R"doc(
-        Axes in a frame of reference.
+        Axes
 
         )doc"
     )
@@ -27,7 +27,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
             arg("z_axis"),
             arg("frame"),
             R"doc(
-            Constructs axes in a frame of reference.
+            Constructor.
 
             Args:
                 x_axis [Vector3d]: X-axis.

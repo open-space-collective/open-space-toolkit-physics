@@ -12,7 +12,18 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
     class_<Manager> manager(aModule, "Manager",
         R"doc(
-            IERS bulletins manager (thread-safe) 
+            IERS bulletins manager (thread-safe)
+
+            The following environment variables can be defined:
+
+            - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE" will override
+            "DefaultMode"
+            - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY" will override
+            "DefaultLocalRepository"
+            - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+            will override "DefaultLocalRepositoryLockTimeout"
+
+            :seealso: https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
         )doc"
     );

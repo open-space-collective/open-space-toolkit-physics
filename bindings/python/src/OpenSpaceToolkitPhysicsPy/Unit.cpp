@@ -13,69 +13,99 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
 
     using ostk::physics::Unit;
 
-    class_<Unit> unit_class(aModule, "Unit",
+    class_<Unit> unit_class(
+        aModule,
+        "Unit",
         R"doc(
-            Unit class.
+            Unit
+
+            A unit of measurement is a definite magnitude of a quantity, defined and adopted by
+            convention or by law, that is used as a standard for measurement of the same kind of
+            quantity. Any other quantity of that kind can be expressed as a multiple of the unit of
+            measurement.
+
+            :see: https://en.wikipedia.org/wiki/Unit_of_measurement
+
         )doc"
     );
 
     enum_<Unit::Type>(unit_class, "Type")
-        .value("Undefined", Unit::Type::Undefined,
+        .value(
+            "Undefined",
+            Unit::Type::Undefined,
             R"doc(
                 Undefined unit type.
             )doc"
         )
-        .value("None", Unit::Type::None,
+        .value(
+            "None",
+            Unit::Type::None,
             R"doc(
                 None unit type.
             )doc"
         )
-        .value("Length", Unit::Type::Length,
+        .value(
+            "Length",
+            Unit::Type::Length,
             R"doc(
                 Length unit type.
             )doc"
         )
-        .value("Mass", Unit::Type::Mass,
+        .value(
+            "Mass",
+            Unit::Type::Mass,
             R"doc(
                 Mass unit type.
             )doc"
         )
-        .value("Time", Unit::Type::Time,
+        .value(
+            "Time",
+            Unit::Type::Time,
             R"doc(
                 Time unit type.
             )doc"
         )
-        .value("Temperature", Unit::Type::Temperature,
+        .value(
+            "Temperature",
+            Unit::Type::Temperature,
             R"doc(
                 Temperature unit type.
             )doc"
         )
-        .value("ElectricCurrent", Unit::Type::ElectricCurrent,
+        .value(
+            "ElectricCurrent",
+            Unit::Type::ElectricCurrent,
             R"doc(
                 Electric current unit type.
             )doc"
         )
-        .value("LuminousIntensity", Unit::Type::LuminousIntensity,
+        .value(
+            "LuminousIntensity",
+            Unit::Type::LuminousIntensity,
             R"doc(
                 Luminous intensity unit type.
             )doc"
         )
-        .value("Derived", Unit::Type::Derived,
+        .value(
+            "Derived",
+            Unit::Type::Derived,
             R"doc(
                 Derived unit type.
             )doc"
         )
-        
+
         ;
-    
+
     unit_class
-    
+
         .def(self == self)
         .def(self != self)
 
         .def("__str__", &(shiftToString<Unit>))
         .def("__repr__", &(shiftToString<Unit>))
-        .def("is_defined", &Unit::isDefined, 
+        .def(
+            "is_defined",
+            &Unit::isDefined,
             R"doc(
                 Check if the unit is defined.
 
@@ -83,7 +113,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("is_none", &Unit::isNone,
+        .def(
+            "is_none",
+            &Unit::isNone,
             R"doc(
                 Check if the unit is none.
 
@@ -91,7 +123,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     bool: True if none.
             )doc"
         )
-        .def("get_type", &Unit::getType,
+        .def(
+            "get_type",
+            &Unit::getType,
             R"doc(
                 Get the unit type.
 
@@ -99,7 +133,10 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     Type: Unit type.
             )doc"
         )
-        .def("ratio_to", &Unit::ratioTo, arg("unit"),
+        .def(
+            "ratio_to",
+            &Unit::ratioTo,
+            arg("unit"),
             R"doc(
                 Get the ratio to another unit.
 
@@ -110,7 +147,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     Real: Ratio to another unit.
             )doc"
         )
-        .def("to_string", &Unit::toString,
+        .def(
+            "to_string",
+            &Unit::toString,
             R"doc(
                 Get the string representation of the unit.
 
@@ -118,7 +157,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     str: String representation.
             )doc"
         )
-        .def_static("undefined", &Unit::Undefined, 
+        .def_static(
+            "undefined",
+            &Unit::Undefined,
             R"doc(
                 Create an undefined unit.
 
@@ -126,7 +167,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     Unit: Undefined unit.
             )doc"
         )
-        .def_static("none", &Unit::None,
+        .def_static(
+            "none",
+            &Unit::None,
             R"doc(
                 Create a none unit.
 
@@ -134,7 +177,10 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     Unit: None unit.
             )doc"
         )
-        .def_static("length", &Unit::Length, arg("length_unit"),
+        .def_static(
+            "length",
+            &Unit::Length,
+            arg("length_unit"),
             R"doc(
                 Create a length unit.
 
@@ -145,7 +191,10 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     Unit: Length unit.
             )doc"
         )
-        .def_static("derived", &Unit::Derived, arg("derived_unit"),
+        .def_static(
+            "derived",
+            &Unit::Derived,
+            arg("derived_unit"),
             R"doc(
                 Create a derived unit.
 
@@ -156,7 +205,10 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     Unit: Derived unit.
             )doc"
         )
-        .def_static("string_from_type", &Unit::StringFromType, arg("type"),
+        .def_static(
+            "string_from_type",
+            &Unit::StringFromType,
+            arg("type"),
             R"doc(
                 Get the string representation of a unit type.
 

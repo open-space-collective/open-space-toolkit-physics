@@ -16,7 +16,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
 
     class_<Frame, Shared<Frame>>(aModule, "Frame",
         R"doc(
-            Reference frame.
+            Reference frame
+
+            :seealso: https://en.wikipedia.org/wiki/Frame_of_reference
+
+            :note: Implementation heavily inspired by (the great!) https://www.orekit.org/static/architecture/frames.html
 
             )doc"
         )

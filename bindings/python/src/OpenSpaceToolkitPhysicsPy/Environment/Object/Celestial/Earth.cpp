@@ -23,7 +23,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
     {
-        class_<Earth, Celestial, Shared<Earth>>(aModule, "Earth")
+        class_<Earth, Celestial, Shared<Earth>>(aModule, "Earth",
+            R"doc(
+                Earth
+            )doc"
+        )
 
             .def(
                 init<

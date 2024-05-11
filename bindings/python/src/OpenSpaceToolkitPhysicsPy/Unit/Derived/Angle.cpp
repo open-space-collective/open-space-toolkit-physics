@@ -18,10 +18,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         R"doc(
             Angle
             
-            In plane geometry, an angle is the figure formed by two rays, called the sides of the
-            angle, sharing a common endpoint, called the vertex of the angle.
-            
-            https://en.wikipedia.org/wiki/Angle
+            :seealso: https://en.wikipedia.org/wiki/Angle
             )doc"
     );
 

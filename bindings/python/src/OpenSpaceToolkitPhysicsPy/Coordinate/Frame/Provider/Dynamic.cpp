@@ -41,19 +41,40 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
              }),
             arg("generator"),
             R"doc(
-                Construct a dynamic frame provider.
+                Constructor.
 
-                Parameters:
+                Args:
                     generator: Generator function.
 
             )doc"
         )
 
-        .def("is_defined", &Dynamic::isDefined,R"doc()doc")
+        .def("is_defined", &Dynamic::isDefined,
+            R"doc(
+                Check if the Dynamic provider is defined
 
-        .def("get_transform_at", &Dynamic::getTransformAt, arg("instant"),R"doc()doc")
+                Returns:
+                    bool: True if defined
+            )doc"
+        )
 
-        .def_static("undefined", &Dynamic::Undefined,R"doc()doc")
+        .def("get_transform_at", &Dynamic::getTransformAt, arg("instant"),
+            R"doc(
+                Get the transform at a given instant.
+
+                Args:
+                    instant (Instant): An instant
+
+                Returns:
+                    Transform: Transform
+            )doc"
+        )
+
+        .def_static("undefined", &Dynamic::Undefined,
+            R"doc(
+                Get an undefined dynamic provider. 
+            )doc"
+        )
 
         ;
 }

@@ -37,7 +37,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
     using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::object::Geometry;
 
-    class_<Geometry>(aModule, "Geometry")
+    class_<Geometry>(aModule, "Geometry",
+        R"doc(
+            Geometry.
+        )doc"
+    )
 
         // Define constructors from children -> parents (to ensure that parent constructor is not always used by
         // default)

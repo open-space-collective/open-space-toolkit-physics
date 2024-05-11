@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         R"doc(
             Derived unit
 
-            https://en.wikipedia.org/wiki/SI_derived_unit
+            :seealso: https://en.wikipedia.org/wiki/SI_derived_unit
         )doc"
     );
 

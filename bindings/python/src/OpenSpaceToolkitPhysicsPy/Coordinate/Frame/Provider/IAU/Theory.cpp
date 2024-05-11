@@ -10,7 +10,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU_Theory(pybin
 
     enum_<Theory>(aModule, "Theory",
         R"doc(
-            The IAU 2000A precession-nutation theory relates the International Celestial Reference Frame to the International Terrestrial Reference Frame and has been effective since January 2003. In 2006, the IAU moved to adopt a more dynamically consistent precession model to complement the IAU 2000A nutation theory.
+            IAU theory.
+
+            The IAU 2000A precession-nutation theory relates the International Celestial Reference
+            Frame to the International Terrestrial Reference Frame and has been effective since
+            January 2003. In 2006, the IAU moved to adopt a more dynamically consistent precession
+            model to complement the IAU 2000A nutation theory.
+
+            :seealso: https://www.researchgate.net/publication/289753602_The_IAU_2000A_and_IAU_2006_precession-nutation_theories_and_their_implementation
 
         )doc"
     )

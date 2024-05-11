@@ -24,7 +24,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
     using MagneticModel = ostk::physics::environment::magnetic::Model;
     using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
 
-    class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial");
+    class_<Celestial, Shared<Celestial>, Object> celestial_class(aModule, "Celestial",
+        R"doc(
+            Celestial class
+        )doc"
+    );
 
     celestial_class
         .def(

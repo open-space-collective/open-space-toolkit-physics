@@ -15,7 +15,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(pybind11:
     using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
 
     {
-        class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun")
+        class_<Sun, Shared<Sun>, Celestial>(aModule, "Sun",
+            R"doc(
+                Sun
+            )doc"
+        )
 
             .def(
                 init<const Shared<Ephemeris>&, const Shared<SunGravitationalModel>&>(),

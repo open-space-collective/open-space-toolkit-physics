@@ -16,7 +16,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
     using ostk::physics::environment::Object;
 
     // Binding class "Object"
-    class_<Object, Shared<Object>>(aModule, "Object")
+    class_<Object, Shared<Object>>(aModule, "Object",
+        R"doc(
+            Subclassed by ostk.physics.environment.object.Celestial
+        )doc"
+    )
 
         // no init
 

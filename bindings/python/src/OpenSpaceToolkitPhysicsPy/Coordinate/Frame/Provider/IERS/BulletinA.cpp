@@ -33,6 +33,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
             4. The combination series for the celestial pole offsets.
             Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theory
             (dpsi and deps) and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
+
+            :seealso: https://datacenter.iers.org/productMetadata.php?id=6
         
         )doc"
     );
@@ -181,7 +183,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
             Load Bulletin A from a file.
 
             Parameters:
-                file (str): The file.
+                file (File): The file.
 
             Returns:
                 BulletinA: The Bulletin A object.

@@ -16,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
 
     class_<Vector>(aModule, "Vector",
         R"doc(
-            Vector.
+            Vector quantity
 
         )doc"
     )

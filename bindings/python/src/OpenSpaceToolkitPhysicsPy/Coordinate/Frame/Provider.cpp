@@ -21,9 +21,26 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module
         )doc"
     )
 
-        .def("is_defined", &Provider::isDefined,R"doc()doc")
+        .def("is_defined", &Provider::isDefined,
+            R"doc(
+                Check if the Static provider is defined
 
-        .def("get_transform_at", &Provider::getTransformAt, arg("instant"),R"doc()doc")
+                Returns:
+                    bool: True if defined
+            )doc"
+        )
+
+        .def("get_transform_at", &Provider::getTransformAt, arg("instant"),
+            R"doc(
+                Get the transform at a given instant.
+
+                Args:
+                    instant (Instant): An instant
+
+                Returns:
+                    Transform: Transform
+            )doc"
+        )
 
         ;
 
