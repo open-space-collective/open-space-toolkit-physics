@@ -14,25 +14,32 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
     using ostk::physics::data::Vector;
     using ostk::physics::coordinate::Frame;
 
-    class_<Vector>(aModule, "Vector",
+    class_<Vector>(
+        aModule,
+        "Vector",
         R"doc(
             Vector quantity
 
         )doc"
     )
 
-        .def(init<const Vector3d&, const Unit&, const Shared<const Frame>&>(), arg("value"), arg("unit"), arg("frame"),
+        .def(
+            init<const Vector3d&, const Unit&, const Shared<const Frame>&>(),
+            arg("value"),
+            arg("unit"),
+            arg("frame"),
             R"doc(
                 Construct a Vector.
 
                 Args:
-                    value (Vector3d): Value.
+                    value (np.ndarray): Value.
                     unit (Unit): Unit.
                     frame (Frame): Frame.
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
                 Equality operator.
 
@@ -43,7 +50,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                     bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
                 Inequality operator.
 
@@ -58,7 +66,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Vector>))
         .def("__repr__", &(shiftToString<Vector>))
 
-        .def("is_defined", &Vector::isDefined,
+        .def(
+            "is_defined",
+            &Vector::isDefined,
             R"doc(
                 Check if the vector is defined.
 
@@ -66,15 +76,19 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("get_value", &Vector::getValue,
+        .def(
+            "get_value",
+            &Vector::getValue,
             R"doc(
                 Get value.
 
                 Returns:
-                    Vector3d: Value.
+                    np.ndarray: Value.
             )doc"
         )
-        .def("get_unit", &Vector::getUnit,
+        .def(
+            "get_unit",
+            &Vector::getUnit,
             R"doc(
                 Get unit.
 
@@ -82,7 +96,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def("get_frame", &Vector::getFrame,
+        .def(
+            "get_frame",
+            &Vector::getFrame,
             R"doc(
                 Get frame.
 
@@ -90,7 +106,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                     Frame: Frame.
             )doc"
         )
-        .def("in_unit", &Vector::inUnit, arg("unit"),
+        .def(
+            "in_unit",
+            &Vector::inUnit,
+            arg("unit"),
             R"doc(
                 Convert to unit.
 
@@ -101,7 +120,11 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                     Vector: Vector in unit.
             )doc"
         )
-        .def("in_frame", &Vector::inFrame, arg("frame"), arg("instant"),
+        .def(
+            "in_frame",
+            &Vector::inFrame,
+            arg("frame"),
+            arg("instant"),
             R"doc(
                 Convert to frame.
 
@@ -113,7 +136,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                     Vector: Vector in frame.
             )doc"
         )
-        .def("to_string", &Vector::toString, arg("precision") = 6,
+        .def(
+            "to_string",
+            &Vector::toString,
+            arg("precision") = 6,
             R"doc(
                 Convert to (formatted) string.
 
@@ -125,7 +151,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Vector::Undefined,
+        .def_static(
+            "undefined",
+            &Vector::Undefined,
             R"doc(
                 Create an undefined vector.
 

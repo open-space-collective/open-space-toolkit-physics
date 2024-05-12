@@ -10,7 +10,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(pybind11::modu
 
     using ostk::physics::environment::magnetic::Dipole;
 
-    class_<Dipole>(aModule, "Dipole",
+    class_<Dipole>(
+        aModule,
+        "Dipole",
         R"doc(
             Magnetic dipole model.
 
@@ -21,27 +23,30 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(pybind11::modu
         )doc"
     )
 
-        .def(init<const Vector3d&>(),
+        .def(
+            init<const Vector3d&>(),
             R"doc(
                 Construct a dipole magnetic model.
 
                 Args:
-                    magnetic_moment (Vector3d): Magnetic moment [A⋅m2]
+                    magnetic_moment (np.ndarray): Magnetic moment [A⋅m2].
             )doc"
         )
 
-        .def("get_field_value_at", &Dipole::getFieldValueAt,
+        .def(
+            "get_field_value_at",
+            &Dipole::getFieldValueAt,
             R"doc(
                 Get the magnetic field value at a given position and instant.
 
                 Args:
-                    position (Vector3d): Position, expressed in the magnetic object frame [m]
-                    instant (Instant): Instant
+                    position (np.ndarray): Position, expressed in the magnetic object frame [m].
+                    instant (Instant): Instant.
 
                 Returns:
-                    Vector3d: Magnetic field value, expressed in the magnetic object frame [T]
+                    np.ndarray: Magnetic field value, expressed in the magnetic object frame [T].
             )doc"
         );
 
-        ;
+    ;
 }

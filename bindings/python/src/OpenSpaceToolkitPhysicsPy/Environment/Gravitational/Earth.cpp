@@ -129,7 +129,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                         instant (Instant): An instant.
 
                     Returns:
-                        Vector3d: Gravitational field value [m.s^-2].
+                        np.ndarray: Gravitational field value [m.s^-2].
                 )doc"
             )
 

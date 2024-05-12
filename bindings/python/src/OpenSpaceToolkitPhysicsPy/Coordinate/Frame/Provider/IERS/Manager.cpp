@@ -10,7 +10,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
     using ostk::physics::coordinate::frame::provider::iers::Manager;
 
-    class_<Manager> manager(aModule, "Manager",
+    class_<Manager> manager(
+        aModule,
+        "Manager",
         R"doc(
             IERS bulletins manager (thread-safe)
 
@@ -30,201 +32,230 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
     manager
 
-        .def("get_mode", &Manager::getMode,
+        .def(
+            "get_mode",
+            &Manager::getMode,
             R"doc(
-            Get manager mode.
+                Get manager mode.
 
-            Returns:
-                Mode: Manager mode.
-
+                Returns:
+                    Mode: Manager mode.
             )doc"
         )
-        .def("get_local_repository", &Manager::getLocalRepository,
+        .def(
+            "get_local_repository",
+            &Manager::getLocalRepository,
             R"doc(
-            Get local repository. 
+                Get local repository. 
 
-            Returns:
-                Directory: Local repository.
-
+                Returns:
+                    Directory: Local repository.
             )doc"
         )
-        .def("get_bulletin_a_directory", &Manager::getBulletinADirectory,
+        .def(
+            "get_bulletin_a_directory",
+            &Manager::getBulletinADirectory,
             R"doc(
-            Get Bulletin A directory.
+                Get Bulletin A directory.
 
-            Returns:
-                Directory: Bulletin A directory.
-
+                Returns:
+                    Directory: Bulletin A directory.
             )doc"
         )
-        .def("get_finals_2000a_directory", &Manager::getFinals2000ADirectory,
+        .def(
+            "get_finals_2000a_directory",
+            &Manager::getFinals2000ADirectory,
             R"doc(
-            Get Finals 2000A directory.
+                Get Finals 2000A directory.
 
-            Returns:
-                Directory: Finals 2000A directory.
-
+                Returns:
+                    Directory: Finals 2000A directory.
             )doc"
         )
-        .def("get_bulletin_a", &Manager::getBulletinA,
+        .def(
+            "get_bulletin_a",
+            &Manager::getBulletinA,
             R"doc(
-            Get Bulletin A.
+                Get Bulletin A.
 
-            Returns:
-                BulletinA: Bulletin A.
-
+                Returns:
+                    BulletinA: Bulletin A.
             )doc"
         )
-        .def("get_finals_2000a", &Manager::getFinals2000A,
+        .def(
+            "get_finals_2000a",
+            &Manager::getFinals2000A,
             R"doc(
-            Get Finals 2000A.
+                Get Finals 2000A.
 
-            Returns:
-                Finals2000A: Finals 2000A.
-
+                Returns:
+                    Finals2000A: Finals 2000A.
             )doc"
         )
-        .def("get_polar_motion_at", &Manager::getPolarMotionAt, arg("instant"),
+        .def(
+            "get_polar_motion_at",
+            &Manager::getPolarMotionAt,
+            arg("instant"),
             R"doc(
-            Get polar motion at instant.
+                Get polar motion at instant.
 
-            Args:
-                instant (Instant): Instant.
+                Args:
+                    instant (Instant): Instant.
 
-            Returns:
-                Vector2d: Polar motion.
-
+                Returns:
+                    np.ndarray: Polar motion.
             )doc"
         )
-        .def("get_ut1_minus_utc_at", &Manager::getUt1MinusUtcAt, arg("instant"),
+        .def(
+            "get_ut1_minus_utc_at",
+            &Manager::getUt1MinusUtcAt,
+            arg("instant"),
             R"doc(
-            Get UT1 - UTC at instant.
+                Get UT1 - UTC at instant.
 
-            Args:
-                instant (Instant): Instant.
+                Args:
+                    instant (Instant): Instant.
 
-            Returns:
-                Real: [sec] UT1 - UTC.
-
+                Returns:
+                    float: UT1 - UTC [sec].
             )doc"
         )
-        .def("get_lod_at", &Manager::getLodAt, arg("instant"),
+        .def(
+            "get_lod_at",
+            &Manager::getLodAt,
+            arg("instant"),
             R"doc(
-            Get length of day at instant.
+                Get length of day at instant.
 
-            Args:
-                instant (Instant): Instant.
+                Args:
+                    instant (Instant): Instant.
 
-            Returns:
-                Real: [ms] Length of day.
-
-            )doc"
-        )
-
-        .def("set_mode", &Manager::setMode, arg("mode"),
-            R"doc(
-            Set manager mode.
-
-            Args:
-                mode (Mode): Manager mode.
-
-            )doc"
-        )
-        .def("set_local_repository", &Manager::setLocalRepository, arg("directory"),
-            R"doc(
-            Set local repository.
-
-            Args:
-                directory (Directory): A repository directory.
-
+                Returns:
+                    float: Length of day [ms].
             )doc"
         )
 
-        .def("load_bulletin_a", &Manager::loadBulletinA, arg("bulletin_a"),
+        .def(
+            "set_mode",
+            &Manager::setMode,
+            arg("mode"),
             R"doc(
-            Load Bulletin A.
+                Set manager mode.
 
-            Returns:
-                bulletin_a (BulletinA): Bulletin A.
-
+                Args:
+                    mode (Mode): Manager mode.
             )doc"
         )
-        .def("load_finals_2000a", &Manager::loadFinals2000A, arg("finals_2000a"),
+        .def(
+            "set_local_repository",
+            &Manager::setLocalRepository,
+            arg("directory"),
             R"doc(
-            Load Finals 2000A.
+                Set local repository.
 
-            Returns:
-                finals_2000a (Finals2000A): Finals 2000A.
-
-            )doc"
-        )
-
-        .def("fetch_latest_bulletin_a", &Manager::fetchLatestBulletinA,
-            R"doc(
-            Fetch latest Bulletin A file.
-
-            Returns:
-                File: Latest Bulletin A file.
-
-            )doc"
-        )
-        .def("fetch_latest_finals_2000a", &Manager::fetchLatestFinals2000A,
-            R"doc(
-            Fetch latest Finals 2000A file.
-
-            Returns:
-                File: Latest Finals 2000A file.
-
+                Args:
+                    directory (Directory): A repository directory.
             )doc"
         )
 
-        .def("reset", &Manager::reset,
+        .def(
+            "load_bulletin_a",
+            &Manager::loadBulletinA,
+            arg("bulletin_a"),
             R"doc(
-            Reset manager.
+                Load Bulletin A.
 
+                Returns:
+                    bulletin_a (BulletinA): Bulletin A.
             )doc"
         )
-        .def("clear_local_repository", &Manager::clearLocalRepository,
+        .def(
+            "load_finals_2000a",
+            &Manager::loadFinals2000A,
+            arg("finals_2000a"),
             R"doc(
-            Clear local repository.
+                Load Finals 2000A.
 
+                Returns:
+                    finals_2000a (Finals2000A): Finals 2000A.
             )doc"
         )
 
-        .def_static("get", &Manager::Get, return_value_policy::reference,
+        .def(
+            "fetch_latest_bulletin_a",
+            &Manager::fetchLatestBulletinA,
             R"doc(
-            Get manager singleton.
+                Fetch latest Bulletin A file.
 
-            Returns:
-                Manager: Reference to manager.
-
+                Returns:
+                    File: Latest Bulletin A file.
             )doc"
         )
-        .def_static("default_mode", &Manager::DefaultMode,
+        .def(
+            "fetch_latest_finals_2000a",
+            &Manager::fetchLatestFinals2000A,
             R"doc(
-            Get default manager mode.
+                Fetch latest Finals 2000A file.
 
-            Returns:
-                Mode: Default manager mode.
-
+                Returns:
+                    File: Latest Finals 2000A file.
             )doc"
         )
-        .def_static("default_local_repository", &Manager::DefaultLocalRepository,
+
+        .def(
+            "reset",
+            &Manager::reset,
             R"doc(
-            Get default local repository.
-
-            Returns:
-                Directory: Default local repository.
-
+                Reset manager.
             )doc"
         )
-        .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout,
+        .def(
+            "clear_local_repository",
+            &Manager::clearLocalRepository,
             R"doc(
-            Get default local repository lock timeout.
+                Clear local repository.
+            )doc"
+        )
 
-            Returns:
-                Duration: Default local repository lock timeout.
+        .def_static(
+            "get",
+            &Manager::Get,
+            return_value_policy::reference,
+            R"doc(
+                Get manager singleton.
 
+                Returns:
+                    Manager: Reference to manager.
+            )doc"
+        )
+        .def_static(
+            "default_mode",
+            &Manager::DefaultMode,
+            R"doc(
+                Get default manager mode.
+
+                Returns:
+                    Mode: Default manager mode.
+            )doc"
+        )
+        .def_static(
+            "default_local_repository",
+            &Manager::DefaultLocalRepository,
+            R"doc(
+                Get default local repository.
+
+                Returns:
+                    Directory: Default local repository.
+            )doc"
+        )
+        .def_static(
+            "default_local_repository_lock_timeout",
+            &Manager::DefaultLocalRepositoryLockTimeout,
+            R"doc(
+                Get default local repository lock timeout.
+
+                Returns:
+                    Duration: Default local repository lock timeout.
             )doc"
         )
 
@@ -232,16 +263,18 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
     enum_<Manager::Mode>(manager, "Mode")
 
-        .value("Manual", Manager::Mode::Manual,
+        .value(
+            "Manual",
+            Manager::Mode::Manual,
             R"doc(
-            Manually load and unload bulletins.
-
+                Manually load and unload bulletins.
             )doc"
         )
-        .value("Automatic", Manager::Mode::Automatic,
+        .value(
+            "Automatic",
+            Manager::Mode::Automatic,
             R"doc(
-            Automatically fetch, load and unload bulletins (from remote repositories).
-
+                Automatically fetch, load and unload bulletins (from remote repositories).
             )doc"
         )
 

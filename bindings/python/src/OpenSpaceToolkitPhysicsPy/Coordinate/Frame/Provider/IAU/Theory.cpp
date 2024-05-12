@@ -8,7 +8,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU_Theory(pybin
 
     using ostk::physics::coordinate::frame::provider::iau::Theory;
 
-    enum_<Theory>(aModule, "Theory",
+    enum_<Theory>(
+        aModule,
+        "Theory",
         R"doc(
             IAU theory.
 
@@ -22,22 +24,25 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU_Theory(pybin
         )doc"
     )
 
-        .value("IAU_2000A", Theory::IAU_2000A,
+        .value(
+            "IAU_2000A",
+            Theory::IAU_2000A,
             R"doc(
                 The IAU 2000A theory.
-
             )doc"
         )
-        .value("IAU_2000B", Theory::IAU_2000B,
+        .value(
+            "IAU_2000B",
+            Theory::IAU_2000B,
             R"doc(
                 The IAU 2000B theory.
-                
             )doc"
         )
-        .value("IAU_2006", Theory::IAU_2006,
+        .value(
+            "IAU_2006",
+            Theory::IAU_2006,
             R"doc(
                 The IAU 2006 theory.
-                
             )doc"
         )
 

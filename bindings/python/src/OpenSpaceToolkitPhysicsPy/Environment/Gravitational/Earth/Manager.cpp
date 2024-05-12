@@ -8,7 +8,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
 
     using ostk::physics::environment::gravitational::earth::Manager;
 
-    class_<Manager> manager(aModule, "Manager",
+    class_<Manager> manager(
+        aModule,
+        "Manager",
         R"doc(
             Earth gravitational model data manager.
 
@@ -23,65 +25,83 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
 
     manager
 
-        .def("get_mode", &Manager::getMode,
+        .def(
+            "get_mode",
+            &Manager::getMode,
             R"doc(
                 Get mode.
 
                 Returns:
-                    Mode: Mode
+                    Mode: Mode.
             )doc"
         )
-        .def("set_mode", &Manager::setMode, arg("mode"),
+        .def(
+            "set_mode",
+            &Manager::setMode,
+            arg("mode"),
             R"doc(
                 Set mode.
 
                 Args:
-                    mode (Mode): Mode
+                    mode (Mode): Mode.
             )doc"
         )
-        .def_static("default_mode", &Manager::DefaultMode,
+        .def_static(
+            "default_mode",
+            &Manager::DefaultMode,
             R"doc(
                 Get default mode.
 
                 Returns:
-                    Mode: Default mode
+                    Mode: Default mode.
             )doc"
         )
 
-        .def("get_local_repository", &Manager::getLocalRepository,
+        .def(
+            "get_local_repository",
+            &Manager::getLocalRepository,
             R"doc(
                 Get local repository.
 
                 Returns:
-                    Path: Local repository
+                    Path: Local repository.
             )doc"
         )
-        .def("set_local_repository", &Manager::setLocalRepository, arg("directory"),
+        .def(
+            "set_local_repository",
+            &Manager::setLocalRepository,
+            arg("directory"),
             R"doc(
                 Set local repository.
 
                 Args:
-                    directory (Path): Local repository
+                    directory (Path): Local repository.
             )doc"
         )
-        .def_static("default_local_repository", &Manager::DefaultLocalRepository,
+        .def_static(
+            "default_local_repository",
+            &Manager::DefaultLocalRepository,
             R"doc(
                 Get default local repository.
 
                 Returns:
-                    Path: Default local repository
+                    Path: Default local repository.
             )doc"
         )
-        .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout,
+        .def_static(
+            "default_local_repository_lock_timeout",
+            &Manager::DefaultLocalRepositoryLockTimeout,
             R"doc(
                 Get default local repository lock timeout.
 
                 Returns:
-                    Duration: Default local repository lock timeout
+                    Duration: Default local repository lock timeout.
             )doc"
         )
 
-        .def("reset", &Manager::reset,
+        .def(
+            "reset",
+            &Manager::reset,
             R"doc(
                 Reset the manager.
 
@@ -89,43 +109,55 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
             )doc"
         )
 
-        .def("fetch_data_files_for_type", &Manager::fetchDataFilesForType, arg("model_type"),
+        .def(
+            "fetch_data_files_for_type",
+            &Manager::fetchDataFilesForType,
+            arg("model_type"),
             R"doc(
                 Fetch data file from remote.
 
                 Args:
-                    model_type (EarthGravitationalModel::Type): A model type
+                    model_type (EarthGravitationalModel::Type): A model type.
             )doc"
         )
-        .def("has_data_files_for_type", &Manager::hasDataFilesForType, arg("model_type"),
+        .def(
+            "has_data_files_for_type",
+            &Manager::hasDataFilesForType,
+            arg("model_type"),
             R"doc(
                 Returns true if manager has data file for the given model type.
 
                 Args:
-                    model_type (EarthGravitationalModel::Type): A model type
+                    model_type (EarthGravitationalModel::Type): A model type.
 
                 Returns:
-                    bool: True if manager has data file for the given model type
+                    bool: True if manager has data file for the given model type.
             )doc"
         )
-        .def("local_data_files_for_type", &Manager::localDataFilesForType, arg("model_type"),
+        .def(
+            "local_data_files_for_type",
+            &Manager::localDataFilesForType,
+            arg("model_type"),
             R"doc(
-                Returns array of file objects for the given type.
+                Returns list of file objects for the given type.
 
                 Args:
-                    model_type (EarthGravitationalModel::Type): A model type
+                    model_type (EarthGravitationalModel::Type): A model type.
 
                 Returns:
-                    Array[File]: Array of Files
+                    list[File]: list of Files.
             )doc"
         )
 
-        .def_static("get", &Manager::Get, return_value_policy::reference,
+        .def_static(
+            "get",
+            &Manager::Get,
+            return_value_policy::reference,
             R"doc(
                 Get manager singleton.
 
                 Returns:
-                    Manager: Reference to manager
+                    Manager: Reference to manager.
             )doc"
         )
 
@@ -133,12 +165,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
 
     enum_<Manager::Mode>(manager, "Mode")
 
-        .value("Manual", Manager::Mode::Manual,
+        .value(
+            "Manual",
+            Manager::Mode::Manual,
             R"doc(
                 Manual mode.
             )doc"
         )
-        .value("Automatic", Manager::Mode::Automatic,
+        .value(
+            "Automatic",
+            Manager::Mode::Automatic,
             R"doc(
                 Automatic mode.
             )doc"

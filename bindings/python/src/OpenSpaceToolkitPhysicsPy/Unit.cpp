@@ -144,7 +144,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
                     unit (Unit): Another unit.
 
                 Returns:
-                    Real: Ratio to another unit.
+                    float:Ratio to another unit.
             )doc"
         )
         .def(

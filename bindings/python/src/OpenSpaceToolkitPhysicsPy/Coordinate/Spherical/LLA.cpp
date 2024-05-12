@@ -10,7 +10,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
     using ostk::physics::unit::Angle;
     using ostk::physics::coordinate::spherical::LLA;
 
-    class_<LLA>(aModule, "LLA",
+    class_<LLA>(
+        aModule,
+        "LLA",
         R"doc(
             Geodetic Latitude - Longitude - Altitude (LLA).
 
@@ -19,7 +21,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         )doc"
     )
 
-        .def(init<const Angle&, const Angle&, const Length&>(), arg("latitude"), arg("longitude"), arg("altitude"),
+        .def(
+            init<const Angle&, const Angle&, const Length&>(),
+            arg("latitude"),
+            arg("longitude"),
+            arg("altitude"),
             R"doc(
             Construct an LLA instance.
 
@@ -30,7 +36,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
             Equality operator.
 
@@ -41,7 +48,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
             Inequality operator.
 
@@ -56,7 +64,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         .def("__str__", &(shiftToString<LLA>))
         .def("__repr__", &(shiftToString<LLA>))
 
-        .def("is_defined", &LLA::isDefined,
+        .def(
+            "is_defined",
+            &LLA::isDefined,
             R"doc(
             Check if defined.
 
@@ -65,7 +75,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc"
         )
 
-        .def("get_latitude", &LLA::getLatitude,
+        .def(
+            "get_latitude",
+            &LLA::getLatitude,
             R"doc(
             Get latitude.
 
@@ -73,7 +85,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Angle: Latitude.
             )doc"
         )
-        .def("get_longitude", &LLA::getLongitude,
+        .def(
+            "get_longitude",
+            &LLA::getLongitude,
             R"doc(
             Get longitude.
 
@@ -81,7 +95,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Angle: Longitude.
             )doc"
         )
-        .def("get_altitude", &LLA::getAltitude,
+        .def(
+            "get_altitude",
+            &LLA::getAltitude,
             R"doc(
             Get altitude.
 
@@ -184,19 +200,25 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (Real): Flattening of the ellipsoid.
 
                 Returns:
-                    Array: List of LLA coordinates.
+                    list[LLA]: List of LLA coordinates.
             )doc"
         )
 
-        .def("to_vector", &LLA::toVector,
+        .def(
+            "to_vector",
+            &LLA::toVector,
             R"doc(
             Convert to vector.
 
             Returns:
-                Vector3d: Vector.
+                np.ndarray: Vector.
             )doc"
         )
-        .def("to_cartesian", &LLA::toCartesian, arg("ellipsoid_equatorial_radius"), arg("ellipsoid_flattening"),
+        .def(
+            "to_cartesian",
+            &LLA::toCartesian,
+            arg("ellipsoid_equatorial_radius"),
+            arg("ellipsoid_flattening"),
             R"doc(
             Convert to Cartesian.
 
@@ -205,10 +227,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 ellipsoid_flattening (Real): Flattening of the ellipsoid.
 
             Returns:
-                Vector3d: Cartesian.
+                np.ndarray: Cartesian.
             )doc"
         )
-        .def("to_string", &LLA::toString,
+        .def(
+            "to_string",
+            &LLA::toString,
             R"doc(
             Convert to string.
 
@@ -217,7 +241,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc"
         )
 
-        .def_static("undefined", &LLA::Undefined,
+        .def_static(
+            "undefined",
+            &LLA::Undefined,
             R"doc(
             Undefined LLA.
 
@@ -225,12 +251,15 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 LLA: Undefined LLA.
             )doc"
         )
-        .def_static("vector", &LLA::Vector, arg("vector"),
+        .def_static(
+            "vector",
+            &LLA::Vector,
+            arg("vector"),
             R"doc(
             Construct LLA from vector.
 
             Args:
-                vector (Vector3d): Vector.
+                vector (np.ndarray): Vector.
 
             Returns:
                 LLA: LLA.
@@ -246,7 +275,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Construct LLA from Cartesian.
 
                 Args:
-                    cartesian_coordinates (Vector3d): Cartesian coordinates.
+                    cartesian_coordinates (np.ndarray): Cartesian coordinates.
                     ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
                     ellipsoid_flattening (Real): Flattening of the ellipsoid.
 
@@ -357,7 +386,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (Real): Flattening of the ellipsoid.
 
                 Returns:
-                    Array: List of LLA coordinates.
+                    list[LLA]: List of LLA coordinates.
             )doc"
         )
 

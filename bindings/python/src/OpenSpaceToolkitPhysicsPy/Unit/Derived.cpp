@@ -16,25 +16,27 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
     using ostk::physics::unit::Angle;
     using ostk::physics::unit::Derived;
 
-    class_<Derived> derived_class(aModule, "Derived",
+    class_<Derived> derived_class(
+        aModule,
+        "Derived",
         R"doc(
-            Derived unit
+            Derived unit.
 
             :seealso: https://en.wikipedia.org/wiki/SI_derived_unit
         )doc"
     );
 
     derived_class
-        .def(init<Real, Derived::Unit>(),
+        .def(
+            init<Real, Derived::Unit>(),
             R"doc(
-                Constructor
+                Constructor.
 
                 Args:
                     aValue (Real): Value
                     aUnit (Unit): Unit
             )doc"
         )
-
 
         .def(self == self)
         .def(self != self)
@@ -48,7 +50,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             }
         )
 
-        .def("is_defined", &Derived::isDefined,
+        .def(
+            "is_defined",
+            &Derived::isDefined,
             R"doc(
                 Check if the derived unit is defined.
 
@@ -57,7 +61,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def("get_unit", &Derived::getUnit,
+        .def(
+            "get_unit",
+            &Derived::getUnit,
             R"doc(
                 Get unit.
 
@@ -65,15 +71,20 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def("in_unit", &Derived::in,
+        .def(
+            "in_unit",
+            &Derived::in,
             R"doc(
                 Convert to unit.
 
                 Returns:
-                    Real: Value in unit.
+                    float: Value in unit.
             )doc"
         )
-        .def("to_string", &Derived::toString, "aPrecision"_a = Integer::Undefined(),
+        .def(
+            "to_string",
+            &Derived::toString,
+            "aPrecision"_a = Integer::Undefined(),
             R"doc(
                 Convert to string.
 
@@ -85,7 +96,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Derived::Undefined,
+        .def_static(
+            "undefined",
+            &Derived::Undefined,
             R"doc(
                 Create an undefined derived unit.
 
@@ -94,7 +107,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
         // .def_static("parse", &Derived::Parse)
-        .def_static("string_from_unit", &Derived::StringFromUnit,
+        .def_static(
+            "string_from_unit",
+            &Derived::StringFromUnit,
             R"doc(
                 Get string from unit.
 
@@ -105,7 +120,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     str: String.
             )doc"
         )
-        .def_static("symbol_from_unit", &Derived::SymbolFromUnit,
+        .def_static(
+            "symbol_from_unit",
+            &Derived::SymbolFromUnit,
             R"doc(
                 Get symbol from unit.
 
@@ -119,36 +136,42 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
 
         ;
 
-    class_<Derived::Order>(derived_class, "Order",
+    class_<Derived::Order>(
+        derived_class,
+        "Order",
         R"doc(
-            SI unit order
+            SI unit order.
 
         )doc"
     )
 
-        .def(init<int>(),
+        .def(
+            init<int>(),
             R"doc(
-                Constructor
+                Constructor.
 
                 Args:
-                    aValue (int): Value
+                    aValue (int): Value.
             )doc"
         )
 
-        .def(init<int, int>(),
+        .def(
+            init<int, int>(),
             R"doc(
-                Constructor
+                Constructor.
 
                 Args:
-                    aNumerator (int): Numerator
-                    aDenominator (int): Denominator
+                    aNumerator (int): Numerator.
+                    aDenominator (int): Denominator.
             )doc"
         )
 
         .def(self == self)
         .def(self != self)
 
-        .def("is_zero", &Derived::Order::isZero,
+        .def(
+            "is_zero",
+            &Derived::Order::isZero,
             R"doc(
                 Check if the order is zero.
 
@@ -156,7 +179,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     bool: True if zero.
             )doc"
         )
-        .def("is_unity", &Derived::Order::isUnity,
+        .def(
+            "is_unity",
+            &Derived::Order::isUnity,
             R"doc(
                 Check if the order is unity.
 
@@ -165,7 +190,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def("get_numerator", &Derived::Order::getNumerator,
+        .def(
+            "get_numerator",
+            &Derived::Order::getNumerator,
             R"doc(
                 Get numerator.
 
@@ -173,7 +200,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     int: Numerator.
             )doc"
         )
-        .def("get_denominator", &Derived::Order::getDenominator,
+        .def(
+            "get_denominator",
+            &Derived::Order::getDenominator,
             R"doc(
                 Get denominator.
 
@@ -181,7 +210,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     int: Denominator.
             )doc"
         )
-        .def("get_value", &Derived::Order::getValue,
+        .def(
+            "get_value",
+            &Derived::Order::getValue,
             R"doc(
                 Get value.
 
@@ -189,7 +220,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     float: Value.
             )doc"
         )
-        .def("to_string", &Derived::Order::toString,
+        .def(
+            "to_string",
+            &Derived::Order::toString,
             R"doc(
                 Convert to string.
 
@@ -198,7 +231,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("zero", &Derived::Order::Zero,
+        .def_static(
+            "zero",
+            &Derived::Order::Zero,
             R"doc(
                 Create a zero order.
 
@@ -206,7 +241,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Order: Order.
             )doc"
         )
-        .def_static("one", &Derived::Order::One,
+        .def_static(
+            "one",
+            &Derived::Order::One,
             R"doc(
                 Create a unity order.
 
@@ -214,7 +251,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Order: Order.
             )doc"
         )
-        .def_static("two", &Derived::Order::Two,
+        .def_static(
+            "two",
+            &Derived::Order::Two,
             R"doc(
                 Create a two order.
 
@@ -225,7 +264,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
 
         ;
 
-    class_<Derived::Unit>(derived_class, "Unit",
+    class_<Derived::Unit>(
+        derived_class,
+        "Unit",
         R"doc(
             Unit
         )doc"
@@ -257,7 +298,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         // .def("access_time_order", &Derived::Unit::accessTimeOrder, return_value_policy::reference)
         // .def("access_angle_unit", &Derived::Unit::accessAngleUnit, return_value_policy::reference)
         // .def("access_angle_order", &Derived::Unit::accessAngleOrder, return_value_policy::reference)
-        .def("to_string", &Derived::Unit::toString,
+        .def(
+            "to_string",
+            &Derived::Unit::toString,
             R"doc(
                 Convert to string.
 
@@ -265,7 +308,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     str: String representation.
             )doc"
         )
-        .def("get_symbol", &Derived::Unit::getSymbol,
+        .def(
+            "get_symbol",
+            &Derived::Unit::getSymbol,
             R"doc(
                 Get symbol.
 
@@ -275,7 +320,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         )
 
         // Static constructors for specifying actual named S.I. units
-        .def_static("square_meter", &Derived::Unit::SquareMeter,
+        .def_static(
+            "square_meter",
+            &Derived::Unit::SquareMeter,
             R"doc(
                 Create a square meter unit.
 
@@ -283,7 +330,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("cubic_meter", &Derived::Unit::CubicMeter,
+        .def_static(
+            "cubic_meter",
+            &Derived::Unit::CubicMeter,
             R"doc(
                 Create a cubic meter unit.
 
@@ -291,7 +340,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("hertz", &Derived::Unit::Hertz,
+        .def_static(
+            "hertz",
+            &Derived::Unit::Hertz,
             R"doc(
                 Create a hertz unit.
 
@@ -299,7 +350,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("watt", &Derived::Unit::Watt,
+        .def_static(
+            "watt",
+            &Derived::Unit::Watt,
             R"doc(
                 Create a watt unit.
 
@@ -307,7 +360,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("tesla", &Derived::Unit::Tesla,
+        .def_static(
+            "tesla",
+            &Derived::Unit::Tesla,
             R"doc(
                 Create a tesla unit.
 
@@ -315,7 +370,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("newton", &Derived::Unit::Newton,
+        .def_static(
+            "newton",
+            &Derived::Unit::Newton,
             R"doc(
                 Create a newton unit.
 
@@ -323,7 +380,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("kilogram_per_second", &Derived::Unit::KilogramPerSecond,
+        .def_static(
+            "kilogram_per_second",
+            &Derived::Unit::KilogramPerSecond,
             R"doc(
                 Create a kilogram per second unit.
 
@@ -333,7 +392,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         )
 
         // Static constructors for specifying derived (non-base) quantities
-        .def_static("velocity", &Derived::Unit::Velocity, arg("length"), arg("time"),
+        .def_static(
+            "velocity",
+            &Derived::Unit::Velocity,
+            arg("length"),
+            arg("time"),
             R"doc(
                 Create a velocity unit.
 
@@ -345,7 +408,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("acceleration", &Derived::Unit::Acceleration, arg("length"), arg("time"),
+        .def_static(
+            "acceleration",
+            &Derived::Unit::Acceleration,
+            arg("length"),
+            arg("time"),
             R"doc(
                 Create an acceleration unit.
 
@@ -357,7 +424,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("angular_velocity", &Derived::Unit::AngularVelocity, arg("angle"), arg("time"),
+        .def_static(
+            "angular_velocity",
+            &Derived::Unit::AngularVelocity,
+            arg("angle"),
+            arg("time"),
             R"doc(
                 Create an angular velocity unit.
 
@@ -369,7 +440,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("gravitational_parameter", &Derived::Unit::GravitationalParameter, arg("length"), arg("time"),
+        .def_static(
+            "gravitational_parameter",
+            &Derived::Unit::GravitationalParameter,
+            arg("length"),
+            arg("time"),
             R"doc(
                 Create a gravitational parameter unit.
 
@@ -381,7 +456,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("force", &Derived::Unit::Force, arg("mass"), arg("length"), arg("time"),
+        .def_static(
+            "force",
+            &Derived::Unit::Force,
+            arg("mass"),
+            arg("length"),
+            arg("time"),
             R"doc(
                 Create a force unit.
 
@@ -394,7 +474,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("mass_flow_rate", &Derived::Unit::MassFlowRate, arg("mass"), arg("time"),
+        .def_static(
+            "mass_flow_rate",
+            &Derived::Unit::MassFlowRate,
+            arg("mass"),
+            arg("time"),
             R"doc(
                 Create a mass flow rate unit.
 
@@ -406,7 +490,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def_static("mass_density", &Derived::Unit::MassDensity, arg("mass"), arg("length"),
+        .def_static(
+            "mass_density",
+            &Derived::Unit::MassDensity,
+            arg("mass"),
+            arg("length"),
             R"doc(
                 Create a mass density unit.
 
@@ -419,7 +507,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Derived::Unit::Undefined,
+        .def_static(
+            "undefined",
+            &Derived::Unit::Undefined,
             R"doc(
                 Create an undefined unit.
 

@@ -9,12 +9,14 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Direction(pybind11::module& aModule)
     using ostk::core::type::Shared;
 
     using ostk::mathematics::object::Vector3d;
-    
+
     using ostk::physics::coordinate::Frame;
     using ostk::physics::data::Direction;
     using ostk::physics::data::Vector;
 
-    class_<Direction, Vector>(aModule, "Direction",
+    class_<Direction, Vector>(
+        aModule,
+        "Direction",
         R"doc(
             Direction.
 
@@ -23,17 +25,21 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Direction(pybind11::module& aModule)
         )doc"
     )
 
-        .def(init<const Vector3d&, const Shared<const Frame>&>(), arg("value"), arg("frame"),
+        .def(
+            init<const Vector3d&, const Shared<const Frame>&>(),
+            arg("value"),
+            arg("frame"),
             R"doc(
                 Construct a Direction.
 
                 Args:
-                    Vector3d: Value
+                    np.ndarray: Value
                     Frame: Frame
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
                 Equality operator.
 
@@ -44,7 +50,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Direction(pybind11::module& aModule)
                     bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
                 Inequality operator.
 
@@ -59,7 +66,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Direction(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Direction>))
         .def("__repr__", &(shiftToString<Direction>))
 
-        .def_static("undefined", &Direction::Undefined,
+        .def_static(
+            "undefined",
+            &Direction::Undefined,
             R"doc(
                 Create an undefined direction.
 

@@ -20,7 +20,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
     using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 
-    class_<NRLMSISE00, Shared<NRLMSISE00>> nrlmsise(aModule, "NRLMSISE00",
+    class_<NRLMSISE00, Shared<NRLMSISE00>> nrlmsise(
+        aModule,
+        "NRLMSISE00",
         R"doc(
             NRLMSISE00 atmospheric model.
 
@@ -29,12 +31,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
 
     enum_<NRLMSISE00::InputDataType>(nrlmsise, "InputDataType")
 
-        .value("ConstantFluxAndGeoMag", NRLMSISE00::InputDataType::ConstantFluxAndGeoMag,
+        .value(
+            "ConstantFluxAndGeoMag",
+            NRLMSISE00::InputDataType::ConstantFluxAndGeoMag,
             R"doc(
                 Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters.
             )doc"
         )
-        .value("CSSISpaceWeatherFile", NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
+        .value(
+            "CSSISpaceWeatherFile",
+            NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             R"doc(
                 Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters.
             )doc"
@@ -62,10 +68,22 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
             arg("sun_celestial") = nullptr,
             R"doc(
                 Constructor.
+
+                Args:
+                    input_data_type (NRLMSISE00.InputDataType): Input data source type.
+                    f107_constant_value (float): F10.7 constant value.
+                    f107_average_constant_value (float): F10.7a constant value.
+                    kp_constant_value (float): Kp constant value.
+                    earth_frame (Frame): Earth frame.
+                    earth_radius (Length): Earth radius [m].
+                    earth_flattening (float): Earth flattening.
+                    sun_celestial (Celestial): Sun celestial object. Defaults to None.
             )doc"
         )
 
-        .def("is_defined", &NRLMSISE00::isDefined,
+        .def(
+            "is_defined",
+            &NRLMSISE00::isDefined,
             R"doc(
                 Check if the NRLMSISE00 atmospheric model is defined.
 
@@ -74,7 +92,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
             )doc"
         )
 
-        .def("get_input_data_type", &NRLMSISE00::getInputDataType,
+        .def(
+            "get_input_data_type",
+            &NRLMSISE00::getInputDataType,
             R"doc(
                 Get the input data source type used to construct the NRLMSISE00 atmospheric model.
 
@@ -83,7 +103,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
             )doc"
         )
 
-        .def("get_density_at", &NRLMSISE00::getDensityAt, arg("lla"), arg("instant"),
+        .def(
+            "get_density_at",
+            &NRLMSISE00::getDensityAt,
+            arg("lla"),
+            arg("instant"),
             R"doc(
                 Get the atmospheric density value at a given position and instant.
 
@@ -92,7 +116,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
                     instant (Instant): An instant.
 
                 Returns:
-                    Real: Atmospheric density value [kg.m^-3]
+                    float: Atmospheric density value [kg.m^-3].
             )doc"
         )
 

@@ -11,116 +11,141 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
     using ostk::physics::coordinate::Position;
     using ostk::physics::coordinate::spherical::AER;
 
-    class_<AER>(aModule, "AER",
+    class_<AER>(
+        aModule,
+        "AER",
         R"doc(
             Azimuth - Elevation - Range (AER).
         )doc"
     )
 
-        .def(init<const Angle&, const Angle&, const Length&>(), arg("azimuth"), arg("elevation"), arg("range"),
+        .def(
+            init<const Angle&, const Angle&, const Length&>(),
+            arg("azimuth"),
+            arg("elevation"),
+            arg("range"),
             R"doc(
-            Construct an AER instance.
+                Construct an AER instance.
 
-            Args:
-                azimuth (Angle): Azimuth.
-                elevation (Angle): Elevation.
-                range (Length): Range.
+                Args:
+                    azimuth (Angle): Azimuth.
+                    elevation (Angle): Elevation.
+                    range (Length): Range.
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
-            Equality operator.
+                Equality operator.
 
-            Args:
-                other (AER): Other AER.
+                Args:
+                    other (AER): Other AER.
 
-            Returns:
-                bool: True if equal.
+                Returns:
+                    bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
-            Inequality operator.
+                Inequality operator.
 
-            Args:
-                other (AER): Other AER.
+                Args:
+                    other (AER): Other AER.
 
-            Returns:
-                bool: True if not equal.
+                Returns:
+                    bool: True if not equal.
             )doc"
         )
 
         .def("__str__", &(shiftToString<AER>))
         .def("__repr__", &(shiftToString<AER>))
 
-        .def("is_defined", &AER::isDefined,
+        .def(
+            "is_defined",
+            &AER::isDefined,
             R"doc(
-            Check if defined.
+                Check if defined.
 
-            Returns:
-                bool: True if defined.
+                Returns:
+                    bool: True if defined.
             )doc"
         )
 
-        .def("get_azimuth", &AER::getAzimuth,
+        .def(
+            "get_azimuth",
+            &AER::getAzimuth,
             R"doc(
-            Get azimuth.
+                Get azimuth.
 
-            Returns:
-                Angle: Azimuth.
+                Returns:
+                    Angle: Azimuth.
             )doc"
         )
-        .def("get_elevation", &AER::getElevation,
+        .def(
+            "get_elevation",
+            &AER::getElevation,
             R"doc(
-            Get elevation.
+                Get elevation.
 
-            Returns:
-                Angle: Elevation.
+                Returns:
+                    Angle: Elevation.
             )doc"
         )
-        .def("get_range", &AER::getRange,
+        .def(
+            "get_range",
+            &AER::getRange,
             R"doc(
-            Get range.
+                Get range.
 
-            Returns:
-                Length: Range.
+                Returns:
+                    Length: Range.
             )doc"
         )
-        .def("to_vector", &AER::toVector,
+        .def(
+            "to_vector",
+            &AER::toVector,
             R"doc(
-            Convert to vector.
+                Convert to vector.
 
-            Returns:
-                Vector3d: Vector.
+                Returns:
+                    np.ndarray: Vector.
             )doc"
         )
-        .def("to_string", &AER::toString,
+        .def(
+            "to_string",
+            &AER::toString,
             R"doc(
-            Convert to string.
+                Convert to string.
 
-            Returns:
-                String: String representation.
+                Returns:
+                    String: String representation.
             )doc"
         )
 
-        .def_static("undefined", &AER::Undefined,
+        .def_static(
+            "undefined",
+            &AER::Undefined,
             R"doc(
-            Undefined AER.
+                Undefined AER.
 
-            Returns:
-                AER: Undefined AER.
+                Returns:
+                    AER: Undefined AER.
             )doc"
         )
-        .def_static("vector", &AER::Vector, arg("vector"),
+        .def_static(
+            "vector",
+            &AER::Vector,
+            arg("vector"),
             R"doc(
-            Construct AER from vector.
+                Construct AER from vector.
 
-            Args:
-                vector (Vector3d): Vector.
+                Args:
+                    vector (np.ndarray): Vector.
 
-            Returns:
-                AER: AER.
+                Returns:
+                    AER: AER.
             )doc"
         )
         .def_static(
@@ -130,15 +155,15 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
             arg("to_position"),
             arg("is_z_negative") = DEFAULT_IS_Z_NEGATIVE,
             R"doc(
-            Construct AER from position to position.
+                Construct AER from position to position.
 
-            Args:
-                from_position (Position): From position.
-                to_position (Position): To position.
-                is_z_negative (bool): True if Z is negative.
+                Args:
+                    from_position (Position): From position.
+                    to_position (Position): To position.
+                    is_z_negative (bool): True if Z is negative.
 
-            Returns:
-                AER: AER.
+                Returns:
+                    AER: AER.
             )doc"
         )
 

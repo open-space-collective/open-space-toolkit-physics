@@ -14,7 +14,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
     using ostk::physics::coordinate::Velocity;
     using ostk::physics::coordinate::Frame;
 
-    class_<Velocity> velocity(aModule, "Velocity",
+    class_<Velocity> velocity(
+        aModule,
+        "Velocity",
         R"doc(
             Velocity.
         )doc"
@@ -22,159 +24,199 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
 
     velocity
 
-        .def(init<Vector3d, Velocity::Unit, Shared<const Frame>&>(), arg("coordinates"), arg("unit"), arg("frame"),
+        .def(
+            init<Vector3d, Velocity::Unit, Shared<const Frame>&>(),
+            arg("coordinates"),
+            arg("unit"),
+            arg("frame"),
             R"doc(
-            Constructs a velocity.
+                Constructs a velocity.
 
-            Args:
-                coordinates (Vector3d): Coordinates.
-                unit (Unit): Unit.
-                frame (Frame): Frame of reference.
+                Args:
+                    coordinates (np.ndarray): Coordinates.
+                    unit (Unit): Unit.
+                    frame (Frame): Frame of reference.
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
-            Equality operator.
+                Equality operator.
 
-            Args:
-                other (Velocity): Other velocity.
+                Args:
+                    other (Velocity): Other velocity.
 
-            Returns:
-                bool: True if equal.
+                Returns:
+                    bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
-            Inequality operator.
+                Inequality operator.
 
-            Args:
-                other (Velocity): Other velocity.
+                Args:
+                    other (Velocity): Other velocity.
 
-            Returns:
-                bool: True if not equal.
+                Returns:
+                    bool: True if not equal.
             )doc"
         )
 
         .def("__str__", &(shiftToString<Velocity>))
         .def("__repr__", &(shiftToString<Velocity>))
 
-        .def("is_defined", &Velocity::isDefined,
+        .def(
+            "is_defined",
+            &Velocity::isDefined,
             R"doc(
-            Check if the instance is defined.
+                Check if the instance is defined.
 
-            Returns:
-                bool: True if the instance is defined.
+                Returns:
+                    bool: True if the instance is defined.
             )doc"
         )
 
-        .def("access_frame", &Velocity::accessFrame,
+        .def(
+            "access_frame",
+            &Velocity::accessFrame,
             R"doc(
-            Access the frame of reference.
+                Access the frame of reference.
 
-            Returns:
-                Frame: Frame of reference.
+                Returns:
+                    Frame: Frame of reference.
             )doc"
         )
 
-        .def("get_coordinates", &Velocity::getCoordinates,
+        .def(
+            "get_coordinates",
+            &Velocity::getCoordinates,
             R"doc(
-            Get the coordinates.
+                Get the coordinates.
 
-            Returns:
-                Vector3d: Coordinates.
+                Returns:
+                    np.ndarray: Coordinates.
             )doc"
         )
-        .def("get_unit", &Velocity::getUnit,
+        .def(
+            "get_unit",
+            &Velocity::getUnit,
             R"doc(
-            Get the unit.
+                Get the unit.
 
-            Returns:
-                Unit: Unit.
+                Returns:
+                    Unit: Unit.
             )doc"
         )
-        .def("in_unit", &Velocity::inUnit, arg("unit"),
+        .def(
+            "in_unit",
+            &Velocity::inUnit,
+            arg("unit"),
             R"doc(
-            Convert to unit.
+                Convert to unit.
 
-            Args:
-                unit (Unit): Unit.
+                Args:
+                    unit (Unit): Unit.
 
-            Returns:
-                Velocity: Velocity.
+                Returns:
+                    Velocity: Velocity.
             )doc"
         )
-        .def("in_frame", &Velocity::inFrame, arg("position"), arg("frame"), arg("instant"),
+        .def(
+            "in_frame",
+            &Velocity::inFrame,
+            arg("position"),
+            arg("frame"),
+            arg("instant"),
             R"doc(
-            Convert to frame.
+                Convert to frame.
 
-            Args:
-                position (Position): Position.
-                frame (Frame): Frame.
-                instant (Instant): Instant.
+                Args:
+                    position (Position): Position.
+                    frame (Frame): Frame.
+                    instant (Instant): Instant.
 
-            Returns:
-                Velocity: Velocity.
+                Returns:
+                    Velocity: Velocity.
             )doc"
         )
-        .def("to_string", &Velocity::toString, arg("precision") = DEFAULT_PRECISION,
+        .def(
+            "to_string",
+            &Velocity::toString,
+            arg("precision") = DEFAULT_PRECISION,
             R"doc(
-            Convert to string.
+                Convert to string.
 
-            Args:
-                precision (int): Precision.
+                Args:
+                    precision (int): Precision.
 
-            Returns:
-                String: String.
+                Returns:
+                    String: String.
             )doc"
         )
 
-        .def_static("undefined", &Velocity::Undefined,
+        .def_static(
+            "undefined",
+            &Velocity::Undefined,
             R"doc(
-            Get undefined velocity.
+                Get undefined velocity.
 
-            Returns:
-                Velocity: Undefined velocity.
+                Returns:
+                    Velocity: Undefined velocity.
             )doc"
         )
-        .def_static("meters_per_second", &Velocity::MetersPerSecond, arg("coordinates"), arg("frame"),
+        .def_static(
+            "meters_per_second",
+            &Velocity::MetersPerSecond,
+            arg("coordinates"),
+            arg("frame"),
             R"doc(
-            Create a velocity in meters per second.
+                Create a velocity in meters per second.
 
-            Args:
-                coordinates (Vector3d): Coordinates.
-                frame (Frame): Frame of reference.
+                Args:
+                    coordinates (np.ndarray): Coordinates.
+                    frame (Frame): Frame of reference.
 
-            Returns:
-                Velocity: Velocity in meters per second.
+                Returns:
+                    Velocity: Velocity in meters per second.
             )doc"
         )
-        .def_static("string_from_unit", &Velocity::StringFromUnit, arg("unit"),
+        .def_static(
+            "string_from_unit",
+            &Velocity::StringFromUnit,
+            arg("unit"),
             R"doc(
-            Create a string from unit.
+                Create a string from unit.
 
-            Args:
-                unit (Unit): Unit.
+                Args:
+                    unit (Unit): Unit.
 
-            Returns:
-                String: String.
+                Returns:
+                    String: String.
             )doc"
         )
 
         ;
 
-    enum_<Velocity::Unit>(velocity, "Unit",
-            R"doc(
-                Velocity unit.
-            )doc"
-        )
+    enum_<Velocity::Unit>(
+        velocity,
+        "Unit",
+        R"doc(
+            Velocity unit.
+        )doc"
+    )
 
-        .value("Undefined", Velocity::Unit::Undefined,
+        .value(
+            "Undefined",
+            Velocity::Unit::Undefined,
             R"doc(
                 Undefined.
             )doc"
         )
-        .value("MeterPerSecond", Velocity::Unit::MeterPerSecond,
+        .value(
+            "MeterPerSecond",
+            Velocity::Unit::MeterPerSecond,
             R"doc(
                 Meter per second.
             )doc"

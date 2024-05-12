@@ -14,7 +14,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
     using ostk::physics::time::Date;
     using ostk::physics::time::Time;
 
-    class_<DateTime> datetime_class(aModule, "DateTime",
+    class_<DateTime> datetime_class(
+        aModule,
+        "DateTime",
         R"doc(
             Date-time.
         )doc"
@@ -22,7 +24,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
 
     datetime_class
 
-        .def(init<Date, Time>(), arg("date"), arg("time"),
+        .def(
+            init<Date, Time>(),
+            arg("date"),
+            arg("time"),
             R"doc(
                 Constructor.
 
@@ -71,7 +76,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             }
         )
 
-        .def("is_defined", &DateTime::isDefined,
+        .def(
+            "is_defined",
+            &DateTime::isDefined,
             R"doc(
                 Check if the date-time is defined.
 
@@ -80,7 +87,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             )doc"
         )
 
-        .def("get_date", &DateTime::getDate,
+        .def(
+            "get_date",
+            &DateTime::getDate,
             R"doc(
                 Get date.
 
@@ -88,7 +97,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
                     Date: Date.
             )doc"
         )
-        .def("get_time", &DateTime::getTime,
+        .def(
+            "get_time",
+            &DateTime::getTime,
             R"doc(
                 Get time.
 
@@ -96,7 +107,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
                     Time: Time.
             )doc"
         )
-        .def("get_julian_date", &DateTime::getJulianDate,
+        .def(
+            "get_julian_date",
+            &DateTime::getJulianDate,
             R"doc(
                 Get Julian date.
 
@@ -104,7 +117,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
                     float: Julian date.
             )doc"
         )
-        .def("get_modified_julian_date", &DateTime::getModifiedJulianDate,
+        .def(
+            "get_modified_julian_date",
+            &DateTime::getModifiedJulianDate,
             R"doc(
                 Get Modified Julian date.
 
@@ -127,7 +142,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             }
         )
 
-        .def_static("undefined", &DateTime::Undefined,
+        .def_static(
+            "undefined",
+            &DateTime::Undefined,
             R"doc(
                 Create an undefined date-time.
 
@@ -135,7 +152,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
                     DateTime: Undefined date-time.
             )doc"
         )
-        .def_static("J2000", &DateTime::J2000,
+        .def_static(
+            "J2000",
+            &DateTime::J2000,
             R"doc(
                 J2000 epoch (2000-01-01 12:00:00.000.000.00).
 
@@ -143,51 +162,63 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
                     DateTime: J2000 date-time.
             )doc"
         )
-        .def_static("GPS_epoch", &DateTime::GPSEpoch,
+        .def_static(
+            "GPS_epoch",
+            &DateTime::GPSEpoch,
             R"doc(
-                GPS epoch (1980-01-06 00:00:00.000.000.000)
+                GPS epoch (1980-01-06 00:00:00.000.000.000).
 
                 Returns:
-                    DateTime: Date-time at GPS epoch
+                    DateTime: Date-time at GPS epoch.
             )doc"
         )
-        .def_static("unix_epoch", &DateTime::UnixEpoch,
+        .def_static(
+            "unix_epoch",
+            &DateTime::UnixEpoch,
             R"doc(
-                Unix epoch (1970-01-01 00:00:00.000.000.000)
+                Unix epoch (1970-01-01 00:00:00.000.000.000).
                 
                 Returns:
-                    DateTime: Date-time at Unix epoch
+                    DateTime: Date-time at Unix epoch.
                     
             )doc"
         )
-        .def_static("modified_julian_date_epoch", &DateTime::ModifiedJulianDateEpoch,
+        .def_static(
+            "modified_julian_date_epoch",
+            &DateTime::ModifiedJulianDateEpoch,
             R"doc(
-                Modified Julian Date epoch (1858-11-17 00:00:00.000.000.000)
+                Modified Julian Date epoch (1858-11-17 00:00:00.000.000.000).
 
                 Returns:
-                    Date-time: Date-time at Modified Julian Date epoch
+                    Date-time: Date-time at Modified Julian Date epoch.
                 )doc"
-            )
-        .def_static("julian_date", &DateTime::JulianDate, arg("julian_date"),
+        )
+        .def_static(
+            "julian_date",
+            &DateTime::JulianDate,
+            arg("julian_date"),
             R"doc(
                 Date-time from Julian Date.
 
                 Args:
-                    julian_date (float): A Julian Date
+                    julian_date (float): A Julian Date.
 
                 Returns:
-                    DateTime: Date-time
+                    DateTime: Date-time.
             )doc"
         )
-        .def_static("modified_julian_date", &DateTime::ModifiedJulianDate, arg("modified_julian_date"),
+        .def_static(
+            "modified_julian_date",
+            &DateTime::ModifiedJulianDate,
+            arg("modified_julian_date"),
             R"doc(
                 Date-time from Modified Julian Date.
 
                 Args:
-                    modified_julian_date (float): A Modified Julian Date
+                    modified_julian_date (float): A Modified Julian Date.
 
                 Returns:
-                    DateTime: Date-time
+                    DateTime: Date-time.
             )doc"
         )
 
@@ -197,24 +228,32 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
 
     enum_<DateTime::Format>(datetime_class, "Format")
 
-        .value("Undefined", DateTime::Format::Undefined,
+        .value(
+            "Undefined",
+            DateTime::Format::Undefined,
             R"doc(
                 Undefined format.
             )doc"
         )
-        .value("Standard", DateTime::Format::Standard,
+        .value(
+            "Standard",
+            DateTime::Format::Standard,
             R"doc(
-                Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss)
+                Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss).
             )doc"
         )
-        .value("ISO8601", DateTime::Format::ISO8601,
+        .value(
+            "ISO8601",
+            DateTime::Format::ISO8601,
             R"doc(
-                ISO 8601 format (YYYY-MM-DDThh:mm:ss.ssssss)
+                ISO 8601 format (YYYY-MM-DDThh:mm:ss.ssssss).
             )doc"
         )
-        .value("STK", DateTime::Format::STK,
+        .value(
+            "STK",
+            DateTime::Format::STK,
             R"doc(
-                STK format (d Mon YYYY hh:mm:ss.ssssss)
+                STK format (d Mon YYYY hh:mm:ss.ssssss).
             )doc"
         )
 

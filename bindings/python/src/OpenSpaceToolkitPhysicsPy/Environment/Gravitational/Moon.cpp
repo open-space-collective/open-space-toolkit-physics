@@ -13,7 +13,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
     using ostk::physics::environment::gravitational::Moon;
 
     {
-        class_<Moon, Shared<Moon>, Model> moon_class(aModule, "Moon",
+        class_<Moon, Shared<Moon>, Model> moon_class(
+            aModule,
+            "Moon",
             R"doc(
                 Moon gravitational model.
 
@@ -23,7 +25,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
         moon_class
 
-            .def(init<const Moon::Type&, const Directory&>(), arg("type"), arg("directory"),
+            .def(
+                init<const Moon::Type&, const Directory&>(),
+                arg("type"),
+                arg("directory"),
                 R"doc(
                     Construct a Moon gravitational model.
 
@@ -33,7 +38,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
                 )doc"
             )
 
-            .def(init<const Moon::Type&>(), arg("type"),
+            .def(
+                init<const Moon::Type&>(),
+                arg("type"),
                 R"doc(
                     Construct a Moon gravitational model.
 
@@ -42,7 +49,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
                 )doc"
             )
 
-            .def("is_defined", &Moon::isDefined,
+            .def(
+                "is_defined",
+                &Moon::isDefined,
                 R"doc(
                     Check if the Moon model is defined.
 
@@ -51,7 +60,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
                 )doc"
             )
 
-            .def("get_type", &Moon::getType,
+            .def(
+                "get_type",
+                &Moon::getType,
                 R"doc(
                     Get the Moon model type.
 
@@ -60,20 +71,26 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
                 )doc"
             )
 
-            .def("get_field_value_at", &Moon::getFieldValueAt, arg("position"), arg("instant"),
+            .def(
+                "get_field_value_at",
+                &Moon::getFieldValueAt,
+                arg("position"),
+                arg("instant"),
                 R"doc(
                     Get the gravitational field value at a position.
 
                     Args:
-                        position (Vector3d): A position.
+                        position (np.ndarray): A position.
                         instant (Instant): An instant.
 
                     Returns:
-                        Vector3d: Gravitational field value.
+                        np.ndarray: Gravitational field value.
                 )doc"
             )
 
-            .def_readonly_static("spherical", &Moon::Spherical,
+            .def_readonly_static(
+                "spherical",
+                &Moon::Spherical,
                 R"doc(
                     Spherical Moon model.
                 )doc"
@@ -83,12 +100,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
         enum_<Moon::Type>(moon_class, "Type")
 
-            .value("Undefined", Moon::Type::Undefined,
+            .value(
+                "Undefined",
+                Moon::Type::Undefined,
                 R"doc(
                     Undefined Moon model type.
                 )doc"
             )
-            .value("Spherical", Moon::Type::Spherical,
+            .value(
+                "Spherical",
+                Moon::Type::Spherical,
                 R"doc(
                     Spherical Moon model type.
                 )doc"
