@@ -161,7 +161,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def(
             "to_string",
             &Position::toString,
-            arg("precision") = DEFAULT_PRECISION,
+            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
             R"doc(
                 Create a string representation.
 

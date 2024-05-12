@@ -12,6 +12,7 @@ from ostk.physics.time import Instant
 from ostk.physics.data import Manager
 from ostk.physics.data import Manifest
 
+
 class TestManager:
     def test_get_last_update_timestamp_for_success(self, manager: Manager):
         assert isinstance(manager.get_last_update_timestamp_for("manifest"), Instant)

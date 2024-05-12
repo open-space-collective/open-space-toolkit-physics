@@ -80,8 +80,7 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
     }
 
     const File bulletinAFile_ =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA/ser7.dat")
-        );
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA/ser7.dat"));
 
     const File finals2000AFile_ = File::Path(
         Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A/finals2000A.data")

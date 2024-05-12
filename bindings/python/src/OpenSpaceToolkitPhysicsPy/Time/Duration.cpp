@@ -12,7 +12,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
     using ostk::physics::time::Duration;
 
-    class_<Duration> duration_class(aModule, "Duration",
+    class_<Duration> duration_class(
+        aModule,
+        "Duration",
         R"doc(
             Duration format.
         )doc"
@@ -20,7 +22,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
     duration_class
 
-        .def(init<int>(),
+        .def(
+            init<int>(),
             R"doc(
                 Constructor.
 
@@ -41,13 +44,14 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             }
         ))
 
-        .def(init(
-            [](const std::chrono::microseconds& aCount)
-            {
-                return new Duration(aCount.count() * 1000);
-            }
-        ),
-        R"doc(
+        .def(
+            init(
+                [](const std::chrono::microseconds& aCount)
+                {
+                    return new Duration(aCount.count() * 1000);
+                }
+            ),
+            R"doc(
             Constructor.
 
             Args:
@@ -82,7 +86,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             }
         )
 
-        .def("is_defined", &Duration::isDefined,
+        .def(
+            "is_defined",
+            &Duration::isDefined,
             R"doc(
                 Check if the duration is defined.
 
@@ -90,7 +96,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("is_zero", &Duration::isZero,
+        .def(
+            "is_zero",
+            &Duration::isZero,
             R"doc(
                 Check if the duration is zero.
 
@@ -98,7 +106,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     bool: True if zero.
             )doc"
         )
-        .def("is_positive", &Duration::isPositive,
+        .def(
+            "is_positive",
+            &Duration::isPositive,
             R"doc(
                 Check if the duration is positive.
 
@@ -106,7 +116,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     bool: True if positive.
             )doc"
         )
-        .def("is_strictly_positive", &Duration::isStrictlyPositive,
+        .def(
+            "is_strictly_positive",
+            &Duration::isStrictlyPositive,
             R"doc(
                 Check if the duration is strictly positive.
 
@@ -114,7 +126,11 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     bool: True if strictly positive.
             )doc"
         )
-        .def("is_near", &Duration::isNear, arg("duration"), arg("tolerance"),
+        .def(
+            "is_near",
+            &Duration::isNear,
+            arg("duration"),
+            arg("tolerance"),
             R"doc(
                 Check if the duration is near another duration.
 
@@ -127,7 +143,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             )doc"
         )
 
-        .def("get_nanoseconds", &Duration::getNanoseconds,
+        .def(
+            "get_nanoseconds",
+            &Duration::getNanoseconds,
             R"doc(
                 Get the nanosecond count.
 
@@ -135,7 +153,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Nanosecond count.
             )doc"
         )
-        .def("get_microseconds", &Duration::getMicroseconds,
+        .def(
+            "get_microseconds",
+            &Duration::getMicroseconds,
             R"doc(
                 Get the microsecond count.
 
@@ -143,7 +163,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Microsecond count.
             )doc"
         )
-        .def("get_milliseconds", &Duration::getMilliseconds,
+        .def(
+            "get_milliseconds",
+            &Duration::getMilliseconds,
             R"doc(
                 Get the millisecond count.
 
@@ -151,7 +173,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Millisecond count.
             )doc"
         )
-        .def("get_seconds", &Duration::getSeconds,
+        .def(
+            "get_seconds",
+            &Duration::getSeconds,
             R"doc(
                 Get the second count.
 
@@ -159,7 +183,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Second count.
             )doc"
         )
-        .def("get_minutes", &Duration::getMinutes,
+        .def(
+            "get_minutes",
+            &Duration::getMinutes,
             R"doc(
                 Get the minute count.
 
@@ -167,7 +193,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Minute count.
             )doc"
         )
-        .def("get_hours", &Duration::getHours,
+        .def(
+            "get_hours",
+            &Duration::getHours,
             R"doc(
                 Get the hour count.
 
@@ -175,7 +203,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Hour count.
             )doc"
         )
-        .def("get_days", &Duration::getDays,
+        .def(
+            "get_days",
+            &Duration::getDays,
             R"doc(
                 Get the day count.
 
@@ -183,7 +213,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Day count.
             )doc"
         )
-        .def("get_weeks", &Duration::getWeeks,
+        .def(
+            "get_weeks",
+            &Duration::getWeeks,
             R"doc(
                 Get the week count.
 
@@ -191,7 +223,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Week count.
             )doc"
         )
-        .def("in_nanoseconds", &Duration::inNanoseconds,
+        .def(
+            "in_nanoseconds",
+            &Duration::inNanoseconds,
             R"doc(
                 Get the duration in nanoseconds.
 
@@ -199,7 +233,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in nanoseconds.
             )doc"
         )
-        .def("in_microseconds", &Duration::inMicroseconds,
+        .def(
+            "in_microseconds",
+            &Duration::inMicroseconds,
             R"doc(
                 Get the duration in microseconds.
 
@@ -207,7 +243,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in microseconds.
             )doc"
         )
-        .def("in_milliseconds", &Duration::inMilliseconds,
+        .def(
+            "in_milliseconds",
+            &Duration::inMilliseconds,
             R"doc(
                 Get the duration in milliseconds.
 
@@ -215,7 +253,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in milliseconds.
             )doc"
         )
-        .def("in_seconds", &Duration::inSeconds,
+        .def(
+            "in_seconds",
+            &Duration::inSeconds,
             R"doc(
                 Get the duration in seconds.
 
@@ -223,7 +263,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in seconds.
             )doc"
         )
-        .def("in_minutes", &Duration::inMinutes,
+        .def(
+            "in_minutes",
+            &Duration::inMinutes,
             R"doc(
                 Get the duration in minutes.
 
@@ -231,7 +273,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in minutes.
             )doc"
         )
-        .def("in_hours", &Duration::inHours,
+        .def(
+            "in_hours",
+            &Duration::inHours,
             R"doc(
                 Get the duration in hours.
 
@@ -239,7 +283,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in hours.
             )doc"
         )
-        .def("in_days", &Duration::inDays,
+        .def(
+            "in_days",
+            &Duration::inDays,
             R"doc(
                 Get the duration in days.
 
@@ -247,7 +293,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in days.
             )doc"
         )
-        .def("in_weeks", &Duration::inWeeks,
+        .def(
+            "in_weeks",
+            &Duration::inWeeks,
             R"doc(
                 Get the duration in weeks.
 
@@ -255,7 +303,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in weeks.
             )doc"
         )
-        .def("in_unit", &Duration::in,
+        .def(
+            "in_unit",
+            &Duration::in,
             R"doc(
                 Get the duration in a unit.
 
@@ -263,7 +313,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     int: Duration in unit.
             )doc"
         )
-        .def("get_absolute", &Duration::getAbsolute,
+        .def(
+            "get_absolute",
+            &Duration::getAbsolute,
             R"doc(
                 Get the absolute duration.
 
@@ -293,7 +345,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             }
         )
 
-        .def_static("undefined", &Duration::Undefined,
+        .def_static(
+            "undefined",
+            &Duration::Undefined,
             R"doc(
                 Create an undefined duration.
 
@@ -301,7 +355,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Undefined duration.
             )doc"
         )
-        .def_static("zero", &Duration::Zero,
+        .def_static(
+            "zero",
+            &Duration::Zero,
             R"doc(
                 Create a zero duration.
 
@@ -309,7 +365,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Zero duration.
             )doc"
         )
-        .def_static("nanoseconds", &Duration::Nanoseconds,
+        .def_static(
+            "nanoseconds",
+            &Duration::Nanoseconds,
             R"doc(
                 Create a duration in nanoseconds.
 
@@ -317,7 +375,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in nanoseconds.
             )doc"
         )
-        .def_static("microseconds", &Duration::Microseconds,
+        .def_static(
+            "microseconds",
+            &Duration::Microseconds,
             R"doc(
                 Create a duration in microseconds.
 
@@ -325,7 +385,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in microseconds.
             )doc"
         )
-        .def_static("milliseconds", &Duration::Milliseconds,
+        .def_static(
+            "milliseconds",
+            &Duration::Milliseconds,
             R"doc(
                 Create a duration in milliseconds.
 
@@ -333,7 +395,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in milliseconds.
             )doc"
         )
-        .def_static("seconds", &Duration::Seconds,
+        .def_static(
+            "seconds",
+            &Duration::Seconds,
             R"doc(
                 Create a duration in seconds.
 
@@ -341,7 +405,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in seconds.
             )doc"
         )
-        .def_static("minutes", &Duration::Minutes,
+        .def_static(
+            "minutes",
+            &Duration::Minutes,
             R"doc(
                 Create a duration in minutes.
 
@@ -349,7 +415,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in minutes.
             )doc"
         )
-        .def_static("hours", &Duration::Hours,
+        .def_static(
+            "hours",
+            &Duration::Hours,
             R"doc(
                 Create a duration in hours.
 
@@ -357,7 +425,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in hours.
             )doc"
         )
-        .def_static("days", &Duration::Days,
+        .def_static(
+            "days",
+            &Duration::Days,
             R"doc(
                 Create a duration in days.
 
@@ -365,7 +435,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in days.
             )doc"
         )
-        .def_static("weeks", &Duration::Weeks,
+        .def_static(
+            "weeks",
+            &Duration::Weeks,
             R"doc(
                 Create a duration in weeks.
 
@@ -373,7 +445,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     Duration: Duration in weeks.
             )doc"
         )
-        .def_static("between", &Duration::Between,
+        .def_static(
+            "between",
+            &Duration::Between,
             R"doc(
                 Constructs a duration between two instants
 
@@ -388,17 +462,23 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
     enum_<Duration::Format>(duration_class, "Format")
 
-        .value("Undefined", Duration::Format::Undefined,
+        .value(
+            "Undefined",
+            Duration::Format::Undefined,
             R"doc(
                 Undefined format.
             )doc"
         )
-        .value("Standard", Duration::Format::Standard,
+        .value(
+            "Standard",
+            Duration::Format::Standard,
             R"doc(
                 Standard format (d hh:mm:ss.mmm.uuu.nnn)
             )doc"
         )
-        .value("ISO8601", Duration::Format::ISO8601,
+        .value(
+            "ISO8601",
+            Duration::Format::ISO8601,
             R"doc(
                 ISO 8601 format (PnDTnHnMnS)
             )doc"

@@ -13,7 +13,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
     using ostk::physics::time::Duration;
     using ostk::physics::time::DateTime;
 
-    class_<Instant>(aModule, "Instant",
+    class_<Instant>(
+        aModule,
+        "Instant",
         R"doc(
             Point in time.
         )doc"
@@ -75,7 +77,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             }
         )
 
-        .def("is_defined", &Instant::isDefined,
+        .def(
+            "is_defined",
+            &Instant::isDefined,
             R"doc(
                 Check if the instant is defined.
 
@@ -83,7 +87,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("is_post_epoch", &Instant::isPostEpoch,
+        .def(
+            "is_post_epoch",
+            &Instant::isPostEpoch,
             R"doc(
                 Check if the instant is post-epoch (J2000).
 
@@ -91,7 +97,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     bool: True if post-epoch.
             )doc"
         )
-        .def("is_near", &Instant::isNear,
+        .def(
+            "is_near",
+            &Instant::isNear,
             R"doc(
                 Check if instant is near another instant
 
@@ -100,7 +108,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             )doc"
         )
 
-        .def("get_date_time", &Instant::getDateTime,
+        .def(
+            "get_date_time",
+            &Instant::getDateTime,
             R"doc(
                 Get date-time.
 
@@ -108,7 +118,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     DateTime: Date-time.
             )doc"
         )
-        .def("get_julian_date", &Instant::getJulianDate,
+        .def(
+            "get_julian_date",
+            &Instant::getJulianDate,
             R"doc(
                 Get Julian date.
 
@@ -116,7 +128,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     float: Julian date.
             )doc"
         )
-        .def("get_modified_julian_date", &Instant::getModifiedJulianDate,
+        .def(
+            "get_modified_julian_date",
+            &Instant::getModifiedJulianDate,
             R"doc(
                 Get Modified Julian date.
 
@@ -124,7 +138,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     float: Modified Julian date.
             )doc"
         )
-        .def("get_leap_second_count", &Instant::getLeapSecondCount,
+        .def(
+            "get_leap_second_count",
+            &Instant::getLeapSecondCount,
             R"doc(
                 Get leap second count.
 
@@ -135,8 +151,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         .def(
             "to_string",
             overload_cast<const Scale &, const DateTime::Format &>(&Instant::toString, const_),
-            arg("scale") = DEFAULT_TIME_SCALE,
-            arg("date_time_format") = DEFAULT_DATE_TIME_FORMAT,
+            arg_v("scale", DEFAULT_TIME_SCALE, "Scale.UTC"),
+            arg_v("date_time_format", DEFAULT_DATE_TIME_FORMAT, "Format.Standard"),
             R"doc(
                 Convert to string.
 
@@ -149,7 +165,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             )doc"
         )
 
-        .def_static("undefined", &Instant::Undefined,
+        .def_static(
+            "undefined",
+            &Instant::Undefined,
             R"doc(
                 Create an undefined instant.
 
@@ -157,7 +175,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     Instant: Undefined instant.
             )doc"
         )
-        .def_static("now", &Instant::Now,
+        .def_static(
+            "now",
+            &Instant::Now,
             R"doc(
                 Get current instant.
 
@@ -165,7 +185,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     Instant: Current instant.
             )doc"
         )
-        .def_static("J2000", &Instant::J2000,
+        .def_static(
+            "J2000",
+            &Instant::J2000,
             R"doc(
                 Get J2000 instant.
 
@@ -173,7 +195,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     Instant: J2000 instant.
             )doc"
         )
-        .def_static("date_time", &Instant::DateTime,
+        .def_static(
+            "date_time",
+            &Instant::DateTime,
             R"doc(
                 Create an instant from a date-time.
 
@@ -184,7 +208,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     Instant: Instant.
             )doc"
         )
-        .def_static("julian_date", &Instant::JulianDate,
+        .def_static(
+            "julian_date",
+            &Instant::JulianDate,
             R"doc(
                 Create an instant from a Julian date.
 
@@ -195,7 +221,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     Instant: Instant.
             )doc"
         )
-        .def_static("modified_julian_date", &Instant::ModifiedJulianDate,
+        .def_static(
+            "modified_julian_date",
+            &Instant::ModifiedJulianDate,
             R"doc(
                 Create an instant from a Modified Julian date.
 

@@ -144,7 +144,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def(
             "to_string",
             &Velocity::toString,
-            arg("precision") = DEFAULT_PRECISION,
+            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
             R"doc(
                 Convert to string.
 

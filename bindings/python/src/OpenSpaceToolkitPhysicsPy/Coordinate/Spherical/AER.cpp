@@ -153,7 +153,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
             &AER::FromPositionToPosition,
             arg("from_position"),
             arg("to_position"),
-            arg("is_z_negative") = DEFAULT_IS_Z_NEGATIVE,
+            arg_v("is_z_negative", DEFAULT_IS_Z_NEGATIVE, "True"),
             R"doc(
                 Construct AER from position to position.
 

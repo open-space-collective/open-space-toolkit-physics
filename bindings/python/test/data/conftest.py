@@ -14,13 +14,16 @@ from ostk.physics.data import Manager, Manifest
 def data_directory_path() -> str:
     return f"{pathlib.Path(__file__).parent.absolute()}/data"
 
+
 @pytest.fixture
 def manifest_file(data_directory_path: str) -> File:
     return File.path(Path.parse(f"{data_directory_path}/manifest.json"))
 
+
 @pytest.fixture
 def manifest(manifest_file: File) -> Manifest:
     return Manifest.load(manifest_file)
+
 
 @pytest.fixture
 def manager() -> Manager:
@@ -29,4 +32,3 @@ def manager() -> Manager:
     yield manager
 
     manager.reset()
-

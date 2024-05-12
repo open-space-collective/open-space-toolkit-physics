@@ -83,9 +83,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
 
                     Args:
                         ephemeris (Ephemeris): Ephemeris.
-                        gravitational_model (EarthGravitationalModel): Gravitational model.
-                        magnetic_model (EarthMagneticModel): Magnetic model.
-                        atmospheric_model (EarthAtmosphericModel): Atmospheric model.
+                        gravitational_model (EarthGravitationalModel): Gravitational model. Defaults to None.
+                        magnetic_model (EarthMagneticModel): Magnetic model. Defaults to None.
+                        atmospheric_model (EarthAtmosphericModel): Atmospheric model. Defaults to None.
                 )doc"
             )
 

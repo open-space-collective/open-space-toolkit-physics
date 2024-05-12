@@ -114,7 +114,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def(
             "to_string",
             &Scalar::toString,
-            arg("precision") = Integer::Undefined(),
+            arg_v("precision", Integer::Undefined(), "Integer.Undefined()"),
             R"doc(
                 Convert to string.
 
