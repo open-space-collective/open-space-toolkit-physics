@@ -22,7 +22,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
         R"doc(
             Earth magnetic model.
 
-            :seealso: https://geographiclib.sourceforge.io/html/magnetic.html
+            :reference: https://geographiclib.sourceforge.io/html/magnetic.html
         )doc"
     );
 

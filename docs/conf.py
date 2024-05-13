@@ -172,6 +172,20 @@ intersphinx_mapping = {
     "numpy": ("https://numpy.org/doc/stable/", None),
 }
 
+
+def autodoc_process_docstring(app, what, name, obj, options, lines):
+    print(name)
+    for i in range(len(lines)):
+        lines[i] = lines[i].replace("np.", "numpy.")
+        # lines[i] = lines[i].replace("np.", "~numpy.")  # For shorter links
+        lines[i] = lines[i].replace("F.", "torch.nn.functional.")
+        lines[i] = lines[i].replace("List[", "~typing.List[")
+
+
+def setup(app):
+    app.connect("autodoc-process-docstring", autodoc_process_docstring)
+
+
 # -- Breathe configuration -------------------------------------------------
 highlight_language = "c++"
 

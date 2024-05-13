@@ -22,7 +22,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             Particularly contains the F10.7 solar flux index and Ap/Kp geomagnetic indices,
             which are commonly used to model atmospheric density.
 
-            :seealso: http://celestrak.org/SpaceData/SpaceWx-format.php
+            :reference: http://celestrak.org/SpaceData/SpaceWx-format.php
 
         )doc"
     );

@@ -22,8 +22,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         R"doc(
             Transform.
 
-            :seealso: https://en.wikipedia.org/wiki/Active_and_passive_transformation
-            :seealso: https://core.ac.uk/download/pdf/77055186.pdf
+            :reference: https://en.wikipedia.org/wiki/Active_and_passive_transformation
+            :reference: https://core.ac.uk/download/pdf/77055186.pdf
         )doc"
     );
 

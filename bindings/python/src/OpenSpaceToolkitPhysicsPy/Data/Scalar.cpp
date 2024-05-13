@@ -21,7 +21,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
             A scalar quantity is a physical quantity that can be described by a single element of a
             number field such as a real number, often accompanied by units of measurement.
 
-            :seealso: https://en.wikipedia.org/wiki/Scalar_(physics)
+            :reference: https://en.wikipedia.org/wiki/Scalar_(physics)
             
         )doc"
     )

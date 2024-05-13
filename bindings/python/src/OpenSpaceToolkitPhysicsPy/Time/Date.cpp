@@ -148,7 +148,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             R"doc(
                 J2000 epoch (2000-01-01).
 
-                .. seealso:: https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
+                .. reference:: https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
 
                 Returns:
                     Date: J2000 epoch.
@@ -160,7 +160,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             R"doc(
                 GPS epoch (1980-01-06).
 
-                .. seealso:: http://tycho.usno.navy.mil/gpstt.html
+                .. reference:: http://tycho.usno.navy.mil/gpstt.html
 
                 Returns:
                     Date: GPS epoch.
@@ -172,7 +172,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             R"doc(
                 Unix epoch (1970-01-01).
 
-                .. seealso:: https://en.wikipedia.org/wiki/Unix_time
+                .. reference:: https://en.wikipedia.org/wiki/Unix_time
 
                 Returns:
                     Date: Unix epoch.
@@ -184,7 +184,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             R"doc(
                 Modified julian dates epoch (1858-11-17).
 
-                .. seealso:: https://en.wikipedia.org/wiki/Julian_day
+                .. reference:: https://en.wikipedia.org/wiki/Julian_day
 
                 Returns:
                     Date: Modified Julian epoch.

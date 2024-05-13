@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         R"doc(
             Angle.
             
-            :seealso: https://en.wikipedia.org/wiki/Angle
+            :reference: https://en.wikipedia.org/wiki/Angle
             )doc"
     );
 

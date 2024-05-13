@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
             1992 with 1 year of predictions. The nutation series in dX and dY uses the IAU 2000A
             Nutation Theory.
 
-            :seealso: https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html -> finals.data
+            :reference: https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html -> finals.data
 
         )doc"
     );

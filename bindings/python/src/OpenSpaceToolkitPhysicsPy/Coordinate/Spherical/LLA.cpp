@@ -16,8 +16,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         R"doc(
             Geodetic Latitude - Longitude - Altitude (LLA).
 
-            :seealso: https://en.wikipedia.org/wiki/Latitude
-            :seealso: https://en.wikipedia.org/wiki/Longitude
+            :reference: https://en.wikipedia.org/wiki/Latitude
+            :reference: https://en.wikipedia.org/wiki/Longitude
         )doc"
     )
 

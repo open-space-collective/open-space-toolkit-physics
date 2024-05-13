@@ -16,10 +16,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(pybind11::modu
         R"doc(
             Magnetic dipole model.
 
-            :seealso: https://en.wikipedia.org/wiki/Magnetic_dipole
-            :seealso: https://en.wikipedia.org/wiki/Magnetic_moment
-            :seealso: https://en.wikipedia.org/wiki/Vacuum_permeability
-            :seealso: https://en.wikipedia.org/wiki/Dipole_model_of_the_Earth%27s_magnetic_field
+            :reference: https://en.wikipedia.org/wiki/Magnetic_dipole
+            :reference: https://en.wikipedia.org/wiki/Magnetic_moment
+            :reference: https://en.wikipedia.org/wiki/Vacuum_permeability
+            :reference: https://en.wikipedia.org/wiki/Dipole_model_of_the_Earth%27s_magnetic_field
         )doc"
     )
 

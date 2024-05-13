@@ -25,7 +25,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
             will override "DefaultLocalRepositoryLockTimeout"
 
-            :seealso: https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
+            :reference: https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
         )doc"
     );

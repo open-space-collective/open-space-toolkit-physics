@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT" will override "DefaultLocalRepositoryLockTimeout"
 
-            :seealso: https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
+            :reference: https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
         )doc"
     );
 

@@ -36,7 +36,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
             Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theory
             (dpsi and deps) and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
 
-            :seealso: https://datacenter.iers.org/productMetadata.php?id=6
+            :reference: https://datacenter.iers.org/productMetadata.php?id=6
         
         )doc"
     );
