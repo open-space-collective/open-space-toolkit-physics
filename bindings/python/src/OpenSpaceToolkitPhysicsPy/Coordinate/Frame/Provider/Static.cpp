@@ -12,13 +12,47 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Static(pybind11:
     using ostk::physics::coordinate::frame::Provider;
     using ostk::physics::coordinate::frame::provider::Static;
 
-    class_<Static, Shared<Static>, Provider>(aModule, "Static")
+    class_<Static, Shared<Static>, Provider>(
+        aModule,
+        "Static",
+        R"doc(
+            Static provider.
 
-        .def(init<const Transform&>())
+        )doc"
+    )
 
-        .def("is_defined", &Static::isDefined)
+        .def(
+            init<const Transform&>(),
+            R"doc(
+                Constructor.
+            )doc"
+        )
 
-        .def("get_transform_at", &Static::getTransformAt, arg("instant"))
+        .def(
+            "is_defined",
+            &Static::isDefined,
+            R"doc(
+                Check if the Static provider is defined
+
+                Returns:
+                    bool: True if defined
+            )doc"
+        )
+
+        .def(
+            "get_transform_at",
+            &Static::getTransformAt,
+            arg("instant"),
+            R"doc(
+                Get the transform at a given instant.
+
+                Args:
+                    instant (Instant): An instant
+
+                Returns:
+                    Transform: Transform
+            )doc"
+        )
 
         ;
 }

@@ -36,8 +36,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
         manager_.loadManifest(manifest_);
         managerNoIO_.loadManifest(manifest_);
 
-        manager_.setRemoteUrl(
-            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data")
+        manager_.setRemoteUrl(URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data")
         );
 
         // cache current directory environment variables

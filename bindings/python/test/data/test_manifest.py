@@ -11,6 +11,7 @@ from ostk.io import URL
 from ostk.physics.data import Manifest
 from ostk.physics.time import Instant
 
+
 class TestManifest:
     def test_is_defined_success(self, manifest: Manifest):
         assert manifest.is_defined() == True
@@ -22,7 +23,9 @@ class TestManifest:
         assert isinstance(manifest.get_last_update_timestamp_for("manifest"), Instant)
 
     def test_get_next_update_check_timestamp_for_success(self, manifest: Manifest):
-        assert isinstance(manifest.get_next_update_check_timestamp_for("manifest"), Instant)
+        assert isinstance(
+            manifest.get_next_update_check_timestamp_for("manifest"), Instant
+        )
 
     def test_get_remote_data_urls_success(self, manifest: Manifest):
         test_url: URL = URL.parse("http://test.com")

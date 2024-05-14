@@ -14,11 +14,28 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
     using ostk::physics::environment::gravitational::Model;
 
     {
-        class_<Model, Shared<Model>>(aModule, "Model").def("get_parameters", &Model::getParameters);
+        class_<Model, Shared<Model>>(
+            aModule,
+            "Model",
+            R"doc(
+                Earth Gravitational model.
+            )doc"
+        )
+
+            .def("get_parameters", &Model::getParameters)
+
+            ;
     }
 
     {
-        class_<Model::Parameters>(aModule, "GravitationalParameters")
+        class_<Model::Parameters>(
+            aModule,
+            "GravitationalParameters",
+            R"doc(
+                Gravitational model parameters.
+
+            )doc"
+        )
 
             .def(
                 init<const Derived&, const Length&, const Real&, const Real&, const Real&>(),
@@ -26,26 +43,118 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 arg("equatorial_radius"),
                 arg("flattening"),
                 arg("C20"),
-                arg("C40")
+                arg("C40"),
+                R"doc(
+                    Constructor.
+
+                    Args:
+                        gravitational_parameter (Derived): Gravitational parameter [m^3/s^2].
+                        equatorial_radius (Length): Equatorial radius [m].
+                        flattening (Real): Flattening.
+                        C20 (Real): C20.
+                        C40 (Real): C40.
+                )doc"
             )
 
-            .def(self == self)
-            .def(self != self)
+            .def(
+                self == self,
+                R"doc(
+                    Equal to operator
+                    
+                    Args:
+                        other (GravitationalParameters): Other parameters.
+
+                    Returns:
+                        bool: True if equal
+                )doc"
+            )
+            .def(
+                self != self,
+                R"doc(
+                    Not equal to operator
+                    
+                    Args:
+                        other (GravitationalParameters): Other parameters.
+
+                    Returns:
+                        bool: True if not equal
+                )doc"
+            )
 
             .def("__str__", &(shiftToString<Model::Parameters>))
             .def("__repr__", &(shiftToString<Model::Parameters>))
 
-            .def("is_defined", &Model::Parameters::isDefined)
+            .def(
+                "is_defined",
+                &Model::Parameters::isDefined,
+                R"doc(
+                    Check if the parameters are defined.
 
-            .def_readwrite("gravitational_parameter", &Model::Parameters::gravitationalParameter_)
-            .def_readwrite("equatorial_radius", &Model::Parameters::equatorialRadius_)
-            .def_readwrite("flattening", &Model::Parameters::flattening_)
-            .def_readwrite("J2", &Model::Parameters::J2_)
-            .def_readwrite("J4", &Model::Parameters::J4_)
-            .def_readwrite("C20", &Model::Parameters::C20_)
-            .def_readwrite("C40", &Model::Parameters::C40_)
+                    Returns:
+                        bool: True if defined.
+                )doc"
+            )
 
-            .def_static("undefined", &Model::Parameters::Undefined)
+            .def_readwrite(
+                "gravitational_parameter",
+                &Model::Parameters::gravitationalParameter_,
+                R"doc(
+                    Gravitational parameter [m^3/s^2].
+                )doc"
+            )
+            .def_readwrite(
+                "equatorial_radius",
+                &Model::Parameters::equatorialRadius_,
+                R"doc(
+                    Equatorial radius [m].
+                )doc"
+            )
+            .def_readwrite(
+                "flattening",
+                &Model::Parameters::flattening_,
+                R"doc(
+                    Flattening.
+                )doc"
+            )
+            .def_readwrite(
+                "J2",
+                &Model::Parameters::J2_,
+                R"doc(
+                    J2.
+                )doc"
+            )
+            .def_readwrite(
+                "J4",
+                &Model::Parameters::J4_,
+                R"doc(
+                    J4.
+                )doc"
+            )
+            .def_readwrite(
+                "C20",
+                &Model::Parameters::C20_,
+                R"doc(
+                    C20.
+                )doc"
+            )
+            .def_readwrite(
+                "C40",
+                &Model::Parameters::C40_,
+                R"doc(
+                    C40.
+                )doc"
+            )
+
+            .def_static(
+                "undefined",
+                &Model::Parameters::Undefined,
+                R"doc(
+                    Get undefined parameters.
+
+                    Returns:
+                        GravitationalParameters: Undefined parameters.
+                )doc"
+            )
 
             ;
     }

@@ -8,7 +8,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical(pybind11::module& aMo
     // Create "spherical" python submodule
     auto spherical = aModule.def_submodule("spherical");
 
-
     // Add objects to python "spherical" submodules
     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(spherical);
     OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(spherical);

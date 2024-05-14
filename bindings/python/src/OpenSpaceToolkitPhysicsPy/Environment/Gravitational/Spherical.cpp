@@ -11,13 +11,53 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind
     using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Spherical;
 
-    class_<Spherical, Model, Shared<Spherical>>(aModule, "Spherical")
+    class_<Spherical, Model, Shared<Spherical>>(
+        aModule,
+        "Spherical",
+        R"doc(
+            Spherical gravitational model.
 
-        .def(init<const Model::Parameters&>(), arg("gravitational_parameters"))
+        )doc"
+    )
 
-        .def("get_field_value_at", &Spherical::getFieldValueAt, arg("position"), arg("instant"))
+        .def(
+            init<const Model::Parameters&>(),
+            arg("gravitational_parameters"),
+            R"doc(
+                Construct a Spherical gravitational model.
 
-        .def("is_defined", &Spherical::isDefined)
+                Args:
+                    gravitational_parameters (GravitationalParameters): Gravitational model parameters.
+            )doc"
+        )
 
-        ;
+        .def(
+            "get_field_value_at",
+            &Spherical::getFieldValueAt,
+            arg("position"),
+            arg("instant"),
+            R"doc(
+                Get the gravitational field value at a given position and instant.
+
+                Args:
+                    position (np.ndarray): Position, expressed in the gravitational object frame [m].
+                    instant (Instant): Instant.
+
+                Returns:
+                    np.ndarray: Gravitational field value, expressed in the gravitational object frame [m.s-2].
+            )doc"
+        )
+
+        .def(
+            "is_defined",
+            &Spherical::isDefined,
+            R"doc(
+                Check if the Spherical gravitational model is defined.
+
+                Returns:
+                    bool: True if the Spherical gravitational model is defined.
+            )doc"
+        );
+
+    ;
 }

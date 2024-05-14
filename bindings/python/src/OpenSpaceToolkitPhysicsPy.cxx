@@ -10,10 +10,10 @@
 #include <pybind11/pybind11.h>
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Data.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Time.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Unit.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Data.cpp>
 
 PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
 {

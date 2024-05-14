@@ -13,28 +13,107 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
     using ostk::physics::environment::gravitational::Moon;
 
     {
-        class_<Moon, Shared<Moon>, Model> moon_class(aModule, "Moon");
+        class_<Moon, Shared<Moon>, Model> moon_class(
+            aModule,
+            "Moon",
+            R"doc(
+                Moon gravitational model.
+
+                The gravitational potential of the Moon for now is kept as a simple spherical model.
+            )doc"
+        );
 
         moon_class
 
-            .def(init<const Moon::Type&, const Directory&>(), arg("type"), arg("directory"))
+            .def(
+                init<const Moon::Type&, const Directory&>(),
+                arg("type"),
+                arg("directory"),
+                R"doc(
+                    Construct a Moon gravitational model.
 
-            .def(init<const Moon::Type&>(), arg("type"))
+                    Args:
+                        type (Moon.Type): Moon model type.
+                        directory (Directory): Directory containing the gravity model data files.
+                )doc"
+            )
 
-            .def("is_defined", &Moon::isDefined)
+            .def(
+                init<const Moon::Type&>(),
+                arg("type"),
+                R"doc(
+                    Construct a Moon gravitational model.
 
-            .def("get_type", &Moon::getType)
+                    Args:
+                        type (Moon.Type): Moon model type.
+                )doc"
+            )
 
-            .def("get_field_value_at", &Moon::getFieldValueAt, arg("position"), arg("instant"))
+            .def(
+                "is_defined",
+                &Moon::isDefined,
+                R"doc(
+                    Check if the Moon model is defined.
 
-            .def_readonly_static("spherical", &Moon::Spherical)
+                    Returns:
+                        bool: True if defined.
+                )doc"
+            )
+
+            .def(
+                "get_type",
+                &Moon::getType,
+                R"doc(
+                    Get the Moon model type.
+
+                    Returns:
+                        Moon.Type: Moon model type.
+                )doc"
+            )
+
+            .def(
+                "get_field_value_at",
+                &Moon::getFieldValueAt,
+                arg("position"),
+                arg("instant"),
+                R"doc(
+                    Get the gravitational field value at a position.
+
+                    Args:
+                        position (np.ndarray): A position.
+                        instant (Instant): An instant.
+
+                    Returns:
+                        np.ndarray: Gravitational field value.
+                )doc"
+            )
+
+            .def_readonly_static(
+                "spherical",
+                &Moon::Spherical,
+                R"doc(
+                    Spherical Moon model.
+                )doc"
+            )
 
             ;
 
         enum_<Moon::Type>(moon_class, "Type")
 
-            .value("Undefined", Moon::Type::Undefined)
-            .value("Spherical", Moon::Type::Spherical)
+            .value(
+                "Undefined",
+                Moon::Type::Undefined,
+                R"doc(
+                    Undefined Moon model type.
+                )doc"
+            )
+            .value(
+                "Spherical",
+                Moon::Type::Spherical,
+                R"doc(
+                    Spherical Moon model type.
+                )doc"
+            )
 
             ;
     }

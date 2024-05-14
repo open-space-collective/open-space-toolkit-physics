@@ -13,10 +13,27 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
 
     using ostk::physics::unit::ElectricCurrent;
 
-    class_<ElectricCurrent> elec_current(aModule, "ElectricCurrent");
+    class_<ElectricCurrent> elec_current(
+        aModule,
+        "ElectricCurrent",
+        R"doc(
+            Electric current.
+
+            https://en.wikipedia.org/wiki/Electric_current
+        )doc"
+    );
 
     elec_current
-        .def(init<Real, ElectricCurrent::Unit>())
+        .def(
+            init<Real, ElectricCurrent::Unit>(),
+            R"doc(
+                Constructor.
+
+                Args:
+                    aReal (Real): A real number.
+                    aUnit (ElectricCurrent.Unit): An electric current unit.
+            )doc"
+        )
 
         .def(self == self)
         .def(self != self)
@@ -47,25 +64,122 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
             }
         )
 
-        .def("is_defined", &ElectricCurrent::isDefined)
+        .def(
+            "is_defined",
+            &ElectricCurrent::isDefined,
+            R"doc(
+                Check if the electric current is defined.
 
-        .def("get_unit", &ElectricCurrent::getUnit)
-        .def("in_unit", &ElectricCurrent::in)
-        .def("in_amperes", &ElectricCurrent::inAmperes)
-        .def("to_string", &ElectricCurrent::toString, "aPrecision"_a = Integer::Undefined())
+                Returns:
+                    bool: True if defined.
+            )doc"
+        )
 
-        .def_static("undefined", &ElectricCurrent::Undefined)
-        .def_static("amperes", &ElectricCurrent::Amperes)
+        .def(
+            "get_unit",
+            &ElectricCurrent::getUnit,
+            R"doc(
+                Get the electric current unit.
+
+                Returns:
+                    ElectricCurrent.Unit: The electric current unit.
+            )doc"
+        )
+        .def(
+            "in_unit",
+            &ElectricCurrent::in,
+            R"doc(
+                Get the electric current in a given unit.
+
+                Returns:
+                    float: The electric current in the given unit.
+            )doc"
+        )
+        .def(
+            "in_amperes",
+            &ElectricCurrent::inAmperes,
+            R"doc(
+                Get the electric current in amperes.
+
+                Returns:
+                    float: The electric current in amperes.
+            )doc"
+        )
+        .def(
+            "to_string",
+            &ElectricCurrent::toString,
+            "aPrecision"_a = Integer::Undefined(),
+            R"doc(
+                Get the string representation of the electric current.
+
+                Args:
+                    aPrecision (int): A precision.
+
+                Returns:
+                    str: The string representation.
+            )doc"
+        )
+
+        .def_static(
+            "undefined",
+            &ElectricCurrent::Undefined,
+            R"doc(
+                Get an undefined electric current.
+
+                Returns:
+                    ElectricCurrent: An undefined electric current.
+            )doc"
+        )
+        .def_static(
+            "amperes",
+            &ElectricCurrent::Amperes,
+            R"doc(
+                Construct an electric current in amperes.
+
+                Returns:
+                    ElectricCurrent: An electric current in amperes.
+            )doc"
+        )
         // .def_static("parse", &ElectricCurrent::Parse)
-        .def_static("string_from_unit", &ElectricCurrent::StringFromUnit)
-        .def_static("symbol_from_unit", &ElectricCurrent::SymbolFromUnit)
+        .def_static(
+            "string_from_unit",
+            &ElectricCurrent::StringFromUnit,
+            R"doc(
+                Get the string representation of an electric current unit.
+
+                Returns:
+                    str: The string representation.
+            )doc"
+        )
+        .def_static(
+            "symbol_from_unit",
+            &ElectricCurrent::SymbolFromUnit,
+            R"doc(
+                Get the symbol of an electric current unit.
+
+                Returns:
+                    str: The symbol.
+            )doc"
+        )
 
         ;
 
     enum_<ElectricCurrent::Unit>(elec_current, "Unit")
 
-        .value("Undefined", ElectricCurrent::Unit::Undefined)
-        .value("Ampere", ElectricCurrent::Unit::Ampere)
+        .value(
+            "Undefined",
+            ElectricCurrent::Unit::Undefined,
+            R"doc(
+                Undefined.
+            )doc"
+        )
+        .value(
+            "Ampere",
+            ElectricCurrent::Unit::Ampere,
+            R"doc(
+                Ampere (SI).
+            )doc"
+        )
 
         ;
 }

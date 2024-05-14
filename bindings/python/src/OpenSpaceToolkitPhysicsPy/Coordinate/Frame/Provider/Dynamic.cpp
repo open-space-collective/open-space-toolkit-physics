@@ -15,7 +15,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
     using ostk::physics::coordinate::frame::Provider;
     using ostk::physics::coordinate::frame::provider::Dynamic;
 
-    class_<Dynamic, Shared<Dynamic>, Provider>(aModule, "Dynamic")
+    class_<Dynamic, Shared<Dynamic>, Provider>(
+        aModule,
+        "Dynamic",
+        R"doc(
+            Dynamic provider.
+
+        )doc"
+    )
 
         // Custom Constructor for Dynamic
         .def(
@@ -34,14 +41,49 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
                  // formulation
                  new (&aDynamicFrameProvider) Dynamic(generatorProxy);
              }),
-            arg("generator")
+            arg("generator"),
+            R"doc(
+                Constructor.
+
+                Args:
+                    generator: Generator function.
+
+            )doc"
         )
 
-        .def("is_defined", &Dynamic::isDefined)
+        .def(
+            "is_defined",
+            &Dynamic::isDefined,
+            R"doc(
+                Check if the Dynamic provider is defined
 
-        .def("get_transform_at", &Dynamic::getTransformAt, arg("instant"))
+                Returns:
+                    bool: True if defined
+            )doc"
+        )
 
-        .def_static("undefined", &Dynamic::Undefined)
+        .def(
+            "get_transform_at",
+            &Dynamic::getTransformAt,
+            arg("instant"),
+            R"doc(
+                Get the transform at a given instant.
+
+                Args:
+                    instant (Instant): An instant
+
+                Returns:
+                    Transform: Transform
+            )doc"
+        )
+
+        .def_static(
+            "undefined",
+            &Dynamic::Undefined,
+            R"doc(
+                Get an undefined dynamic provider. 
+            )doc"
+        )
 
         ;
 }

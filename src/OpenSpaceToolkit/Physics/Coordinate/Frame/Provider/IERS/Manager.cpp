@@ -590,7 +590,7 @@ File Manager::fetchLatestBulletinA_() const
     const Array<URL> bulletinAUrls = manifestManager.getRemoteDataUrls(bulletinAManifestName);
 
     // Only one remote file for Bulletin A
-    const URL bulletinAUrl = bulletinAUrls.accessFirst(); 
+    const URL bulletinAUrl = bulletinAUrls.accessFirst();
 
     File latestBulletinAFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -694,7 +694,7 @@ File Manager::fetchLatestFinals2000A_() const
     const Array<URL> finals2000AUrls = manifestManager.getRemoteDataUrls(finals2000AManifestName);
 
     // Only one remote file for Finals 2000 A
-    const URL finals2000AUrl = finals2000AUrls.accessFirst(); 
+    const URL finals2000AUrl = finals2000AUrls.accessFirst();
 
     File latestFinals2000AFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
@@ -726,9 +726,7 @@ File Manager::fetchLatestFinals2000A_() const
         if (!latestFinals2000AFile.exists())
         {
             throw ostk::core::error::RuntimeError(
-                "Cannot fetch Finals 2000A [{}] from [{}].",
-                latestFinals2000AFile.toString(),
-                finals2000AUrl.toString()
+                "Cannot fetch Finals 2000A [{}] from [{}].", latestFinals2000AFile.toString(), finals2000AUrl.toString()
             );
         }
         else

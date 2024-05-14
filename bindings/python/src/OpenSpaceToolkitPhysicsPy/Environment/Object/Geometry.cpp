@@ -37,7 +37,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
     using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::object::Geometry;
 
-    class_<Geometry>(aModule, "Geometry")
+    class_<Geometry>(
+        aModule,
+        "Geometry",
+        R"doc(
+            Geometry.
+        )doc"
+    )
 
         // Define constructors from children -> parents (to ensure that parent constructor is not always used by
         // default)
@@ -50,17 +56,103 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
 
-        .def("is_defined", &Geometry::isDefined)
-        .def("intersects", &Geometry::intersects)
-        .def("contains", &Geometry::contains)
+        .def(
+            "is_defined",
+            &Geometry::isDefined,
+            R"doc(
+                Check if the geometry is defined.
+
+                Returns:
+                    bool: True if defined.
+            )doc"
+        )
+        .def(
+            "intersects",
+            &Geometry::intersects,
+            R"doc(
+                Check if the geometry intersects with another geometry.
+
+                Args:
+                    aGeometry (Geometry): Another geometry.
+
+                Returns:
+                    bool: True if geometries intersect.
+            )doc"
+        )
+        .def(
+            "contains",
+            &Geometry::contains,
+            R"doc(
+                Check if the geometry contains a point.
+
+                Args:
+                    aPoint (Point): A point.
+
+                Returns:
+                    bool: True if geometry contains point.
+            )doc"
+        )
 
         // .def("access_composite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
-        .def("access_composite", &Geometry::accessComposite, return_value_policy::reference)
-        .def("access_frame", &Geometry::accessFrame)
-        .def("in_frame", &Geometry::in)
-        .def("intersection_with", &Geometry::intersectionWith)
+        .def(
+            "access_composite",
+            &Geometry::accessComposite,
+            return_value_policy::reference,
+            R"doc(
+                Access composite.
 
-        .def_static("undefined", &Geometry::Undefined)
+                Returns:
+                    Composite: Composite.
+            )doc"
+        )
+        .def(
+            "access_frame",
+            &Geometry::accessFrame,
+            R"doc(
+                Access frame.
+
+                Returns:
+                    Frame: Frame.
+            )doc"
+        )
+        .def(
+            "in_frame",
+            &Geometry::in,
+            R"doc(
+                Get geometry expressed in a given frame.
+
+                Args:
+                    aFrame (Frame): Frame.
+                    anInstant (Instant): An instant.
+
+                Returns:
+                    Geometry: Geometry expressed in a given frame.
+            )doc"
+        )
+        .def(
+            "intersection_with",
+            &Geometry::intersectionWith,
+            R"doc(
+                Compute intersection of geometry with another geometry.
+
+                Args:
+                    aGeometry (Geometry): Another geometry.
+
+                Returns:
+                    Geometry: Intersection of geometry with another geometry.
+            )doc"
+        )
+
+        .def_static(
+            "undefined",
+            &Geometry::Undefined,
+            R"doc(
+                Constructs an undefined geometry.
+
+                Returns:
+                    Geometry: Undefined geometry.
+            )doc"
+        )
 
         ;
 }

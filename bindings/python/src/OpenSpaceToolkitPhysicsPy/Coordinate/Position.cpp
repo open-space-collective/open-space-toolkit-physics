@@ -14,29 +14,191 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
     using ostk::physics::coordinate::Position;
     using ostk::physics::coordinate::Frame;
 
-    class_<Position>(aModule, "Position")
+    class_<Position>(
+        aModule,
+        "Position",
+        R"doc(
+            Position.
+        )doc"
+    )
 
-        .def(init<Vector3d, Position::Unit, Shared<const Frame>&>(), arg("coordinates"), arg("unit"), arg("frame"))
+        .def(
+            init<Vector3d, Position::Unit, Shared<const Frame>&>(),
+            arg("coordinates"),
+            arg("unit"),
+            arg("frame"),
+            R"doc(
+                Constructs a position.
 
-        .def(self == self)
-        .def(self != self)
+                Args:
+                    coordinates (np.ndarray): Coordinates.
+                    unit (Unit): Unit.
+                    frame (Frame): Frame of reference.
+            )doc"
+        )
+
+        .def(
+            self == self,
+            R"doc(
+                Equality operator.
+
+                Args:
+                    other (Position): Other position.
+
+                Returns:
+                    bool: True if equal.
+            )doc"
+        )
+        .def(
+            self != self,
+            R"doc(
+                Inequality operator.
+
+                Args:
+                    other (Position): Other position.
+
+                Returns:
+                    bool: True if not equal.
+            )doc"
+        )
 
         .def("__str__", &(shiftToString<Position>))
         .def("__repr__", &(shiftToString<Position>))
 
-        .def("is_defined", &Position::isDefined)
-        .def("is_near", &Position::isNear, arg("position"), arg("tolerance"))
+        .def(
+            "is_defined",
+            &Position::isDefined,
+            R"doc(
+                Check if the Position is defined.
 
-        .def("access_frame", &Position::accessFrame)
-        .def("get_coordinates", &Position::getCoordinates)
-        .def("get_unit", &Position::getUnit)
-        .def("in_unit", &Position::inUnit)
-        .def("in_meters", &Position::inMeters)
-        .def("in_frame", &Position::inFrame, arg("frame"), arg("instant"))
-        .def("to_string", &Position::toString, arg_v("precision", DEFAULT_PRECISION, "Integer.undefined()"))
+                Returns:
+                    bool: True if the Position is defined.
+            )doc"
+        )
+        .def(
+            "is_near",
+            &Position::isNear,
+            arg("position"),
+            arg("tolerance"),
+            R"doc(
+                Check if the Position is near another Position.
 
-        .def_static("undefined", &Position::Undefined)
-        .def_static("meters", &Position::Meters, arg("coordinates"), arg("frame"))
+                Args:
+                    position (Position): Position to compare with.
+                    tolerance (Length): Tolerance.
+
+                Returns:
+                    bool: True if the Position is near another Position.
+            )doc"
+        )
+
+        .def(
+            "access_frame",
+            &Position::accessFrame,
+            R"doc(
+                Access the frame of reference.
+
+                Returns:
+                    Frame: Frame of reference.
+            )doc"
+        )
+        .def(
+            "get_coordinates",
+            &Position::getCoordinates,
+            R"doc(
+                Get the coordinates.
+
+                Returns:
+                    np.ndarray: Coordinates.
+            )doc"
+        )
+        .def(
+            "get_unit",
+            &Position::getUnit,
+            R"doc(
+                Get the unit.
+
+                Returns:
+                    Unit: Unit.
+            )doc"
+        )
+        .def(
+            "in_unit",
+            &Position::inUnit,
+            R"doc(
+                Get the position in the unit.
+
+                Returns:
+                    Position: Position in the unit.
+            )doc"
+        )
+        .def(
+            "in_meters",
+            &Position::inMeters,
+            R"doc(
+                Get the position in meters.
+
+                Returns:
+                    Position: Position in meters.
+            )doc"
+        )
+        .def(
+            "in_frame",
+            &Position::inFrame,
+            arg("frame"),
+            arg("instant"),
+            R"doc(
+                Get the position in another frame of reference.
+
+                Args:
+                    frame (Frame): Frame of reference.
+                    instant (Instant): Instant.
+
+                Returns:
+                    Position: Position in another frame of reference.
+            )doc"
+        )
+        .def(
+            "to_string",
+            &Position::toString,
+            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
+            R"doc(
+                Create a string representation.
+
+                Args:
+                    precision (Integer): Precision.
+
+                Returns:
+                    String: String representation.
+            )doc"
+        )
+
+        .def_static(
+            "undefined",
+            &Position::Undefined,
+            R"doc(
+                Get undefined position.
+
+                Returns:
+                    Position: Undefined position.
+            )doc"
+        )
+        .def_static(
+            "meters",
+            &Position::Meters,
+            arg("coordinates"),
+            arg("frame"),
+            R"doc(
+                Create a position in meters.
+
+                Args:
+                    coordinates (np.ndarray): Coordinates.
+                    frame (Frame): Frame of reference.
+
+                Returns:
+                    Position: Position in meters.
+            )doc"
+        )
 
         ;
 }

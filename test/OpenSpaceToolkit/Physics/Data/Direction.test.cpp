@@ -40,4 +40,3 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Direction, Undefined)
         EXPECT_FALSE(Direction::Undefined().isDefined());
     }
 }
-

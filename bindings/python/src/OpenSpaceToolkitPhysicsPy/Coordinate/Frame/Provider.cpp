@@ -15,17 +15,44 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module
 
     using ostk::physics::coordinate::frame::Provider;
 
-    class_<Provider, Shared<Provider>>(aModule, "Provider")
+    class_<Provider, Shared<Provider>>(
+        aModule,
+        "Provider",
+        R"doc(
+            Frame provider.
+        )doc"
+    )
 
-        .def("is_defined", &Provider::isDefined)
+        .def(
+            "is_defined",
+            &Provider::isDefined,
+            R"doc(
+                Check if the Static provider is defined
 
-        .def("get_transform_at", &Provider::getTransformAt, arg("instant"))
+                Returns:
+                    bool: True if defined
+            )doc"
+        )
+
+        .def(
+            "get_transform_at",
+            &Provider::getTransformAt,
+            arg("instant"),
+            R"doc(
+                Get the transform at a given instant.
+
+                Args:
+                    instant (Instant): An instant
+
+                Returns:
+                    Transform: Transform
+            )doc"
+        )
 
         ;
 
     // Create "provider" python submodule
     auto provider = aModule.def_submodule("provider");
-
 
     // Add objects to python "provider" submodules
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Static(provider);

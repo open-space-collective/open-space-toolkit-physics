@@ -28,7 +28,7 @@ def scalar(value: float, unit: Unit) -> Scalar:
 class TestScalar:
     def test_constructor(self, scalar: Scalar):
         assert scalar is not None
-        
+
     def test_equals(self, scalar: Scalar):
         assert scalar == scalar
 
@@ -49,6 +49,6 @@ class TestScalar:
 
     def test_to_string(self, scalar: Scalar):
         assert scalar.to_string() is not None
-        
+
     def test_undefined(self):
         assert Scalar.undefined() is not None

@@ -23,7 +23,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
     {
-        class_<Earth, Celestial, Shared<Earth>>(aModule, "Earth")
+        class_<Earth, Celestial, Shared<Earth>>(
+            aModule,
+            "Earth",
+            R"doc(
+                Earth
+            )doc"
+        )
 
             .def(
                 init<
@@ -44,7 +50,22 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                 arg("ephemeris"),
                 arg("gravitational_model"),
                 arg("magnetic_model"),
-                arg("atmospheric_model")
+                arg("atmospheric_model"),
+                R"doc(
+                    Constructor
+
+                    Args:
+                        gravitational_parameter (Derived): Gravitational parameter [m³/s²].
+                        equatorial_radius (Length): Equatorial radius [m].
+                        flattening (Real): Flattening.
+                        J2_parameter_value (Real): J2 parameter value.
+                        J4_parameter_value (Real): J4 parameter value.
+                        ephemeris (Ephemeris): Ephemeris.
+                        gravitational_model (EarthGravitationalModel): Gravitational model.
+                        magnetic_model (EarthMagneticModel): Magnetic model.
+                        atmospheric_model (EarthAtmosphericModel): Atmospheric model.
+
+                )doc"
             )
 
             .def(
@@ -56,50 +77,188 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                 arg("ephemeris"),
                 arg("gravitational_model") = pybind11::none(),
                 arg("magnetic_model") = pybind11::none(),
-                arg("atmospheric_model") = pybind11::none()
+                arg("atmospheric_model") = pybind11::none(),
+                R"doc(
+                    Constructor
+
+                    Args:
+                        ephemeris (Ephemeris): Ephemeris.
+                        gravitational_model (EarthGravitationalModel): Gravitational model. Defaults to None.
+                        magnetic_model (EarthMagneticModel): Magnetic model. Defaults to None.
+                        atmospheric_model (EarthAtmosphericModel): Atmospheric model. Defaults to None.
+                )doc"
             )
 
             .def("__str__", &(shiftToString<Earth>))
             .def("__repr__", &(shiftToString<Earth>))
 
-            .def_static("default", &Earth::Default)
+            .def_static(
+                "default",
+                &Earth::Default,
+                R"doc(
+                    Default Earth model (EGM2008).
+
+                    Returns:
+                        Earth: Earth
+
+                )doc"
+            )
             .def_static(
                 "EGM2008",
                 &Earth::EGM2008,
                 arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()")
+                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                R"doc(
+                    Earth Gravity Model 2008 model (EGM2008).
+
+                    Args:
+                        degree (int): Degree.
+                        order (int): Order.
+
+                    Returns:
+                        Earth: Earth.
+
+                )doc"
             )
             .def_static(
                 "WGS84_EGM96",
                 &Earth::WGS84_EGM96,
                 arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()")
+                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                R"doc(
+                    World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96).
+
+                    EGM96 coefficients and WGS84 shape.
+                    Gravitational parameter: 398600441800000 [m^3/s^2].
+                    Equatorial radius: 6378137.0 [m].
+
+                    Args:
+                        degree (int): Degree.
+                        order (int): Order.
+
+                    Returns:
+                        Earth: Earth.
+
+                )doc"
             )
             .def_static(
                 "EGM96",
                 &Earth::EGM96,
                 arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()")
+                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                R"doc(
+                    Earth Gravity Model 1996 (EGM96).
+
+                    Args:
+                        degree (int): Degree.
+                        order (int): Order.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
             )
             .def_static(
                 "EGM84",
                 &Earth::EGM84,
                 arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()")
+                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                R"doc(
+                    Earth Gravity Model 1984 (EGM84).
+
+                    Args:
+                        degree (int): Degree.
+                        order (int): Order.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
             )
             .def_static(
                 "WGS84",
                 &Earth::WGS84,
                 arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()")
-            )
-            .def_static("spherical", &Earth::Spherical)
+                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                R"doc(
+                    World Geodetic System 1984 (WGS84).
 
-            .def_static("gravitational_only", &Earth::GravitationalOnly, arg("gravity_model"))
-            .def_static("magnetic_only", &Earth::MagneticOnly, arg("magnetic_model"))
-            .def_static("atmospheric_only", &Earth::AtmosphericOnly, arg("atmospheric_model"))
+                    Args:
+                        degree (int): Degree.
+                        order (int): Order.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
+            )
             .def_static(
-                "from_models", &Earth::FromModels, arg("gravity_model"), arg("magnetic_model"), arg("atmospheric_model")
+                "spherical",
+                &Earth::Spherical,
+                R"doc(
+                    Spherical model.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
+            )
+
+            .def_static(
+                "gravitational_only",
+                &Earth::GravitationalOnly,
+                arg("gravity_model"),
+                R"doc(
+                    Just gravity model.
+
+                    Args:
+                        gravity_model (EarthGravitationalModel): Gravitational model.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
+            )
+            .def_static(
+                "magnetic_only",
+                &Earth::MagneticOnly,
+                arg("magnetic_model"),
+                R"doc(
+                    Just magnetic model.
+
+                    Args:
+                        magnetic_model (EarthMagneticModel): Magnetic model.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
+            )
+            .def_static(
+                "atmospheric_only",
+                &Earth::AtmosphericOnly,
+                arg("atmospheric_model"),
+                R"doc(
+                    Just atmospheric model.
+
+                    Args:
+                        atmospheric_model (EarthAtmosphericModel): Atmospheric model.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
+            )
+            .def_static(
+                "from_models",
+                &Earth::FromModels,
+                arg("gravity_model"),
+                arg("magnetic_model"),
+                arg("atmospheric_model"),
+                R"doc(
+                    Create earth from specified models.
+
+                    Args:
+                        gravity_model (EarthGravitationalModel): Gravitational model.
+                        magnetic_model (EarthMagneticModel): Magnetic model.
+                        atmospheric_model (EarthAtmosphericModel): Atmospheric model.
+
+                    Returns:
+                        Earth: Earth.
+                )doc"
             )
 
             ;

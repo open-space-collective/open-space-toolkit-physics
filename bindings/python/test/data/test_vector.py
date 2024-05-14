@@ -38,7 +38,7 @@ def vector(value: float, unit: Unit, frame: Frame) -> Vector:
 class TestVector:
     def test_constructor(self, vector: Vector):
         assert vector is not None
-        
+
     def test_equals(self, vector: Vector):
         assert vector == vector
 
@@ -65,6 +65,6 @@ class TestVector:
 
     def test_to_string(self, vector: Vector):
         assert vector.to_string() is not None
-        
+
     def test_undefined(self):
         assert Vector.undefined() is not None
