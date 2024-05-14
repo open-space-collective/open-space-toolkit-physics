@@ -32,10 +32,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
                 Constructor.
 
             Args:
-                x_axis [Vector3d]: X-axis.
-                y_axis [Vector3d]: Y-axis.
-                z_axis [Vector3d]: Z-axis.
-                frame [Frame]: Frame of reference.
+                x_axis (np.ndarray): X-axis.
+                y_axis (np.ndarray): Y-axis.
+                z_axis (np.ndarray): Z-axis.
+                frame (Frame): Frame of reference.
 
             )doc"
         )
