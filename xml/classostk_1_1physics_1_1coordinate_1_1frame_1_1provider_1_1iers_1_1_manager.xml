@@ -733,7 +733,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="239" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="683" bodyend="788"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="239" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="683" bodyend="786"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -6,8 +6,8 @@
     <includes local="no">OpenSpaceToolkit/Core/Type/Shared.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp</includes>
     <includes refid="_atmospheric_2_earth_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp</includes>
-    <includes refid="_analytical_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp</includes>
     <includes refid="_ephemeris_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</includes>
+    <includes refid="_analytical_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp</includes>
     <includes refid="_gravitational_2_earth_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp</includes>
     <includes refid="_magnetic_2_earth_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp</includes>
     <includes refid="_object_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Object.hpp</includes>
@@ -475,9 +475,9 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
         <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -713,8 +713,8 @@
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_atmospheric_2_earth_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_analytical_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_ephemeris_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_ephemeris_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_analytical_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_gravitational_2_earth_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_magnetic_2_earth_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_object_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Object.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
