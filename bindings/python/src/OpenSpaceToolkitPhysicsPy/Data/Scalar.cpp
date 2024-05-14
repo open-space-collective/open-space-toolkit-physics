@@ -12,19 +12,24 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
     using ostk::physics::Unit;
     using ostk::physics::data::Scalar;
 
-    class_<Scalar>(aModule, "Scalar",
+    class_<Scalar>(
+        aModule,
+        "Scalar",
         R"doc(
             Scalar quantity.
 
             A scalar quantity is a physical quantity that can be described by a single element of a
             number field such as a real number, often accompanied by units of measurement.
 
-            :seealso: https://en.wikipedia.org/wiki/Scalar_(physics)
+            :reference: https://en.wikipedia.org/wiki/Scalar_(physics)
             
         )doc"
     )
 
-        .def(init<const Real&, const Unit&>(), arg("value"), arg("unit"),
+        .def(
+            init<const Real&, const Unit&>(),
+            arg("value"),
+            arg("unit"),
             R"doc(
                 Construct a Scalar.
 
@@ -34,7 +39,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
                 Equality operator.
 
@@ -45,7 +51,8 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
                     bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
                 Inequality operator.
 
@@ -60,7 +67,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Scalar>))
         .def("__repr__", &(shiftToString<Scalar>))
 
-        .def("is_defined", &Scalar::isDefined,
+        .def(
+            "is_defined",
+            &Scalar::isDefined,
             R"doc(
                 Check if the scalar is defined.
 
@@ -68,15 +77,19 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("get_value", &Scalar::getValue,
+        .def(
+            "get_value",
+            &Scalar::getValue,
             R"doc(
                 Get value.
 
                 Returns:
-                    Real: Value.
+                    float: Value.
             )doc"
         )
-        .def("get_unit", &Scalar::getUnit,
+        .def(
+            "get_unit",
+            &Scalar::getUnit,
             R"doc(
                 Get unit.
 
@@ -84,7 +97,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
                     Unit: Unit.
             )doc"
         )
-        .def("in_unit", &Scalar::inUnit, arg("unit"),
+        .def(
+            "in_unit",
+            &Scalar::inUnit,
+            arg("unit"),
             R"doc(
                 Convert to unit.
 
@@ -95,7 +111,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
                     Scalar: Scalar in the specified unit.
             )doc"
         )
-        .def("to_string", &Scalar::toString, arg("precision") = Integer::Undefined(),
+        .def(
+            "to_string",
+            &Scalar::toString,
+            arg_v("precision", Integer::Undefined(), "Integer.Undefined()"),
             R"doc(
                 Convert to string.
 
@@ -107,7 +126,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Scalar::Undefined,
+        .def_static(
+            "undefined",
+            &Scalar::Undefined,
             R"doc(
                 Create an undefined scalar.
 

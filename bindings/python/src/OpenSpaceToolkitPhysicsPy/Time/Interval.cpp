@@ -14,7 +14,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
     using ostk::physics::time::Interval;
     using ostk::physics::time::Scale;
 
-    class_<Interval> interval_class(aModule, "Interval",
+    class_<Interval> interval_class(
+        aModule,
+        "Interval",
         R"doc(
             Time interval.
         )doc"
@@ -31,9 +33,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Constructor.
 
                 Args:
-                    start_instant (Instant): Start instant
-                    end_instant (Instant): End instant
-                    type (Interval.Type): Interval type
+                    start_instant (Instant): Start instant.
+                    end_instant (Instant): End instant.
+                    type (Interval.Type): Interval type.
             )doc"
         )
 
@@ -49,20 +51,24 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             }
         )
 
-        .def("is_defined", &Interval::isDefined,
+        .def(
+            "is_defined",
+            &Interval::isDefined,
             R"doc(
                 Check if the interval is defined.
 
                 Returns:
-                    bool: True if defined
+                    bool: True if defined.
             )doc"
         )
-        .def("is_degenerate", &Interval::isDegenerate,
+        .def(
+            "is_degenerate",
+            &Interval::isDegenerate,
             R"doc(
                 Check if interval is degenerate, i.e. its lower and upper bounds are the equal.
 
                 Returns:
-                    bool: True if degenerate
+                    bool: True if degenerate.
             )doc"
         )
         .def(
@@ -76,10 +82,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Check if the interval intersects another interval.
 
                 Args:
-                    interval (Interval): Another interval
+                    interval (Interval): Another interval.
 
                 Returns:
-                    bool: True if the interval intersects another interval
+                    bool: True if the interval intersects another interval.
             )doc"
         )
         .def(
@@ -93,10 +99,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Check if the interval contains an instant.
 
                 Args:
-                    instant (Instant): An instant
+                    instant (Instant): An instant.
 
                 Returns:
-                    bool: True if the interval contains the instant
+                    bool: True if the interval contains the instant.
             )doc"
         )
         .def(
@@ -110,27 +116,31 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Check if the interval contains another interval.
 
                 Args:
-                    interval (Interval): Another interval
+                    interval (Interval): Another interval.
 
                 Returns:
-                    bool: True if the interval contains the other interval
+                    bool: True if the interval contains the other interval.
             )doc"
         )
 
-        .def("get_lower_bound", &Interval::getLowerBound,
+        .def(
+            "get_lower_bound",
+            &Interval::getLowerBound,
             R"doc(
                 Get the lower bound.
 
                 Returns:
-                    Instant: Lower bound
+                    Instant: Lower bound.
             )doc"
         )
-        .def("get_upper_bound", &Interval::getUpperBound,
+        .def(
+            "get_upper_bound",
+            &Interval::getUpperBound,
             R"doc(
                 Get the upper bound.
 
                 Returns:
-                    Instant: Upper bound
+                    Instant: Upper bound.
             )doc"
         )
         // .def("get_intersection_with", &Interval::getIntersectionWith)
@@ -138,103 +148,129 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
         // .def("generate_array_with_step", &Interval::generateArrayWithStep)
         // .def("generate_array_with_size", &Interval::generateArrayWithSize)
 
-        .def("get_start", &Interval::getStart,
+        .def(
+            "get_start",
+            &Interval::getStart,
             R"doc(
                 Get the start instant.
 
                 Returns:
-                    Instant: Start instant
+                    Instant: Start instant.
             )doc"
         )
-        .def("get_end", &Interval::getEnd,
+        .def(
+            "get_end",
+            &Interval::getEnd,
             R"doc(
                 Get the end instant.
 
                 Returns:
-                    Instant: End instant
+                    Instant: End instant.
             )doc"
         )
-        .def("get_duration", &Interval::getDuration,
+        .def(
+            "get_duration",
+            &Interval::getDuration,
             R"doc(
                 Get the duration.
 
                 Returns:
-                    Duration: Duration
+                    Duration: Duration.
             )doc"
         )
-        .def("get_center", &Interval::getCenter,
+        .def(
+            "get_center",
+            &Interval::getCenter,
             R"doc(
                 Get the center instant.
 
                 Returns:
-                    Instant: Center instant
+                    Instant: Center instant.
             )doc"
         )
-        .def("to_string", &Interval::toString, "aTimeScale"_a = Scale::UTC,
+        .def(
+            "to_string",
+            &Interval::toString,
+            "aTimeScale"_a = Scale::UTC,
             R"doc(
                 Convert the interval to a string.
 
                 Args:
-                    aTimeScale (Scale): Time scale
+                    aTimeScale (Scale): Time scale.
 
                 Returns:
-                    str: String representation of the interval
+                    str: String representation of the interval.
             )doc"
         )
-        .def("generate_grid", &Interval::generateGrid,
+        .def(
+            "generate_grid",
+            &Interval::generateGrid,
             R"doc(
                 Generate a grid of instants with a given time step.
 
                 Args:
-                    aTimeStep (Duration): Time step
+                    aTimeStep (Duration): Time step.
 
                 Returns:
-                    Array of Instant: Grid of instants
+                    List[Instant]: Grid of instants.
             )doc"
         )
 
-        .def_static("undefined", &Interval::Undefined,
+        .def_static(
+            "undefined",
+            &Interval::Undefined,
             R"doc(
                 Create an undefined interval.
 
                 Returns:
-                    Interval: Undefined interval
+                    Interval: Undefined interval.
             )doc"
         )
-        .def_static("closed", &Interval::Closed, arg("start_instant"), arg("end_instant"),
+        .def_static(
+            "closed",
+            &Interval::Closed,
+            arg("start_instant"),
+            arg("end_instant"),
             R"doc(
                 Create a closed interval.
 
                 Args:
-                    start_instant (Instant): Start instant
-                    end_instant (Instant): End instant
+                    start_instant (Instant): Start instant.
+                    end_instant (Instant): End instant.
 
                 Returns:
-                    Interval: Closed interval
+                    Interval: Closed interval.
             )doc"
         )
-        .def_static("centered", &Interval::Centered, arg("instant"), arg("duration"), arg("type"),
+        .def_static(
+            "centered",
+            &Interval::Centered,
+            arg("instant"),
+            arg("duration"),
+            arg("type"),
             R"doc(
                 Create a centered interval.
 
                 Args:
-                    instant (Instant): Central instant
-                    duration (Duration): Duration
-                    type (Interval.Type): Interval type
+                    instant (Instant): Central instant.
+                    duration (Duration): Duration.
+                    type (Interval.Type): Interval type.
 
                 Returns:
-                    Interval: Centered interval
+                    Interval: Centered interval.
             )doc"
         )
-        .def_static("parse", &Interval::Parse,
+        .def_static(
+            "parse",
+            &Interval::Parse,
             R"doc(
                 Parse an interval from a string representation.
 
                 Args:
-                    aString (str): String representation
+                    aString (str): String representation.
 
                 Returns:
-                    Interval: Interval
+                    Interval: Interval.
             )doc"
         )
 
@@ -244,27 +280,37 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
     // modules
     enum_<Interval::Type>(interval_class, "Type", pybind11::module_local())
 
-        .value("Undefined", Interval::Type::Undefined,
+        .value(
+            "Undefined",
+            Interval::Type::Undefined,
             R"doc(
                 Undefined interval type.
             )doc"
         )
-        .value("Closed", Interval::Type::Closed,
+        .value(
+            "Closed",
+            Interval::Type::Closed,
             R"doc(
                 Closed interval type.
             )doc"
         )
-        .value("Open", Interval::Type::Open,
+        .value(
+            "Open",
+            Interval::Type::Open,
             R"doc(
                 Open interval type.
             )doc"
         )
-        .value("HalfOpenLeft", Interval::Type::HalfOpenLeft,
+        .value(
+            "HalfOpenLeft",
+            Interval::Type::HalfOpenLeft,
             R"doc(
                 Half-open left interval type.
             )doc"
         )
-        .value("HalfOpenRight", Interval::Type::HalfOpenRight,
+        .value(
+            "HalfOpenRight",
+            Interval::Type::HalfOpenRight,
             R"doc(
                 Half-open right interval type.
             )doc"

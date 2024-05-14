@@ -8,7 +8,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Scale(pybind11::module& aModule)
 
     using ostk::physics::time::Scale;
 
-    enum_<Scale>(aModule, "Scale",
+    enum_<Scale>(
+        aModule,
+        "Scale",
         R"doc(
             Time scale.
 
@@ -21,77 +23,107 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Scale(pybind11::module& aModule)
         )doc"
     )
 
-        .value("Undefined", Scale::Undefined,
+        .value(
+            "Undefined",
+            Scale::Undefined,
             R"doc(
                 Undefined time.
             )doc"
         )
-        .value("UTC", Scale::UTC,
+        .value(
+            "UTC",
+            Scale::UTC,
             R"doc(
                 Coordinated Universal Time.
             )doc"
         )
-        .value("TT", Scale::TT,
+        .value(
+            "TT",
+            Scale::TT,
             R"doc(
                 Terrestial Time (a.k.a. TDT).
             )doc"
         )
-        .value("TAI", Scale::TAI,
+        .value(
+            "TAI",
+            Scale::TAI,
             R"doc(
                 International Atomic Time.
             )doc"
         )
-        .value("UT1", Scale::UT1,
+        .value(
+            "UT1",
+            Scale::UT1,
             R"doc(
                 Universal Time.
             )doc"
         )
-        .value("TCG", Scale::TCG,
+        .value(
+            "TCG",
+            Scale::TCG,
             R"doc(
                 Geocentric Coordinate Time.
             )doc"
         )
-        .value("TCB", Scale::TCB,
+        .value(
+            "TCB",
+            Scale::TCB,
             R"doc(
                 Barycentric Coordinate Time.
             )doc"
         )
-        .value("TDB", Scale::TDB,
+        .value(
+            "TDB",
+            Scale::TDB,
             R"doc(
                 Barycentric Dynamic Time.
             )doc"
         )
-        .value("GMST", Scale::GMST,
+        .value(
+            "GMST",
+            Scale::GMST,
             R"doc(
                 Greenwich Mean Sidereal Time.
             )doc"
         )
-        .value("GPST", Scale::GPST,
+        .value(
+            "GPST",
+            Scale::GPST,
             R"doc(
                 Global Positioning System (GPS) Time.
             )doc"
         )
-        .value("GST", Scale::GST,
+        .value(
+            "GST",
+            Scale::GST,
             R"doc(
                 Galileo System Time.
             )doc"
         )
-        .value("GLST", Scale::GLST,
+        .value(
+            "GLST",
+            Scale::GLST,
             R"doc(
                 GLONASS Time.
             )doc"
         )
-        .value("BDT", Scale::BDT,
+        .value(
+            "BDT",
+            Scale::BDT,
             R"doc(
                 BeiDou Time.
             )doc"
         )
-        .value("QZSST", Scale::QZSST,
+        .value(
+            "QZSST",
+            Scale::QZSST,
             R"doc(
                 Quasi-Zenith Satellite System (QZSS) Time.
             )doc"
         )
-        .value("IRNSST", Scale::IRNSST,
+        .value(
+            "IRNSST",
+            Scale::IRNSST,
             R"doc(
                 Indian Regional Navigation Satellite System (IRNSS) Time.
             )doc"

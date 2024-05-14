@@ -13,7 +13,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
     using ostk::physics::coordinate::spherical::LLA;
     using ostk::physics::environment::atmospheric::earth::Exponential;
 
-    class_<Exponential, Shared<Exponential>>(aModule, "Exponential",
+    class_<Exponential, Shared<Exponential>>(
+        aModule,
+        "Exponential",
         R"doc(
             Exponential atmospheric model.
 
@@ -22,7 +24,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
 
         .def(init<>())
 
-        .def("is_defined", &Exponential::isDefined,
+        .def(
+            "is_defined",
+            &Exponential::isDefined,
             R"doc(
                 Check if the exponential atmospheric model is defined.
 
@@ -44,7 +48,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
                     instant (Instant): An Instant.
 
                 Returns:
-                    Real: Atmospheric density value.
+                    float: Atmospheric density value.
             )doc"
         )
 

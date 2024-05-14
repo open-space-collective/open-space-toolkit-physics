@@ -37,7 +37,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
     using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::object::Geometry;
 
-    class_<Geometry>(aModule, "Geometry",
+    class_<Geometry>(
+        aModule,
+        "Geometry",
         R"doc(
             Geometry.
         )doc"
@@ -54,7 +56,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
 
-        .def("is_defined", &Geometry::isDefined,
+        .def(
+            "is_defined",
+            &Geometry::isDefined,
             R"doc(
                 Check if the geometry is defined.
 
@@ -62,23 +66,27 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
                     bool: True if defined.
             )doc"
         )
-        .def("intersects", &Geometry::intersects,
+        .def(
+            "intersects",
+            &Geometry::intersects,
             R"doc(
                 Check if the geometry intersects with another geometry.
 
                 Args:
-                    aGeometry (Geometry): Another geometry
+                    aGeometry (Geometry): Another geometry.
 
                 Returns:
                     bool: True if geometries intersect.
             )doc"
         )
-        .def("contains", &Geometry::contains,
+        .def(
+            "contains",
+            &Geometry::contains,
             R"doc(
                 Check if the geometry contains a point.
 
                 Args:
-                    aPoint (Point): A point
+                    aPoint (Point): A point.
 
                 Returns:
                     bool: True if geometry contains point.
@@ -86,7 +94,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         )
 
         // .def("access_composite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
-        .def("access_composite", &Geometry::accessComposite, return_value_policy::reference,
+        .def(
+            "access_composite",
+            &Geometry::accessComposite,
+            return_value_policy::reference,
             R"doc(
                 Access composite.
 
@@ -94,7 +105,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
                     Composite: Composite.
             )doc"
         )
-        .def("access_frame", &Geometry::accessFrame,
+        .def(
+            "access_frame",
+            &Geometry::accessFrame,
             R"doc(
                 Access frame.
 
@@ -102,31 +115,37 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
                     Frame: Frame.
             )doc"
         )
-        .def("in_frame", &Geometry::in,
+        .def(
+            "in_frame",
+            &Geometry::in,
             R"doc(
                 Get geometry expressed in a given frame.
 
                 Args:
-                    aFrame (Frame): Frame
-                    anInstant (Instant): An instant
+                    aFrame (Frame): Frame.
+                    anInstant (Instant): An instant.
 
                 Returns:
                     Geometry: Geometry expressed in a given frame.
             )doc"
         )
-        .def("intersection_with", &Geometry::intersectionWith,
+        .def(
+            "intersection_with",
+            &Geometry::intersectionWith,
             R"doc(
                 Compute intersection of geometry with another geometry.
 
                 Args:
-                    aGeometry (Geometry): Another geometry
+                    aGeometry (Geometry): Another geometry.
 
                 Returns:
                     Geometry: Intersection of geometry with another geometry.
             )doc"
         )
 
-        .def_static("undefined", &Geometry::Undefined,
+        .def_static(
+            "undefined",
+            &Geometry::Undefined,
             R"doc(
                 Constructs an undefined geometry.
 

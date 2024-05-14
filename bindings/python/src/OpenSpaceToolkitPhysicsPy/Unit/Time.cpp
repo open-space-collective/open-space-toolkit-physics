@@ -11,7 +11,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
 
     using ostk::physics::unit::Time;
 
-    class_<Time> time(aModule, "Time",
+    class_<Time> time(
+        aModule,
+        "Time",
         R"doc(
             Time.
 
@@ -19,8 +21,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         )doc"
     );
 
-    time.def(init<Real, Time::Unit>(),
-        R"doc(
+    time.def(
+            init<Real, Time::Unit>(),
+            R"doc(
             Constructor.
 
             Args:
@@ -61,7 +64,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
             }
         )
 
-        .def("is_defined", &Time::isDefined,
+        .def(
+            "is_defined",
+            &Time::isDefined,
             R"doc(
                 Check if the time is defined.
 
@@ -70,7 +75,10 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
             )doc"
         )
 
-        .def("to_string", &Time::toString, "aPrecision"_a = Integer::Undefined(),
+        .def(
+            "to_string",
+            &Time::toString,
+            "aPrecision"_a = Integer::Undefined(),
             R"doc(
                 Convert time to string.
 
@@ -82,7 +90,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Time::Undefined,
+        .def_static(
+            "undefined",
+            &Time::Undefined,
             R"doc(
                 Create an undefined time.
 
@@ -90,7 +100,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
                     Time: An undefined time.
             )doc"
         )
-        .def_static("string_from_unit", &Time::StringFromUnit,
+        .def_static(
+            "string_from_unit",
+            &Time::StringFromUnit,
             R"doc(
                 Get the string representation from a time unit.
 
@@ -101,7 +113,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
                     str: String representation.
             )doc"
         )
-        .def_static("symbol_from_unit", &Time::SymbolFromUnit,
+        .def_static(
+            "symbol_from_unit",
+            &Time::SymbolFromUnit,
             R"doc(
                 Get the symbol representation from a time unit.
 
@@ -117,47 +131,65 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
 
     enum_<Time::Unit>(time, "Unit")
 
-        .value("Undefined", Time::Unit::Undefined,
+        .value(
+            "Undefined",
+            Time::Unit::Undefined,
             R"doc(
                 Undefined time unit.
             )doc"
         )
-        .value("Nanosecond", Time::Unit::Nanosecond,
+        .value(
+            "Nanosecond",
+            Time::Unit::Nanosecond,
             R"doc(
                 Nanosecond.
             )doc"
         )
-        .value("Microsecond", Time::Unit::Microsecond,
+        .value(
+            "Microsecond",
+            Time::Unit::Microsecond,
             R"doc(
                 Microsecond.
             )doc"
         )
-        .value("Millisecond", Time::Unit::Millisecond,
+        .value(
+            "Millisecond",
+            Time::Unit::Millisecond,
             R"doc(
                 Millisecond.
             )doc"
         )
-        .value("Second", Time::Unit::Second,
+        .value(
+            "Second",
+            Time::Unit::Second,
             R"doc(
                 Second (SI).
             )doc"
         )
-        .value("Minute", Time::Unit::Minute,
+        .value(
+            "Minute",
+            Time::Unit::Minute,
             R"doc(
                 Minute.
             )doc"
         )
-        .value("Hour", Time::Unit::Hour,
+        .value(
+            "Hour",
+            Time::Unit::Hour,
             R"doc(
                 Hour.
             )doc"
         )
-        .value("Day", Time::Unit::Day,
+        .value(
+            "Day",
+            Time::Unit::Day,
             R"doc(
                 Day.
             )doc"
         )
-        .value("Week", Time::Unit::Week,
+        .value(
+            "Week",
+            Time::Unit::Week,
             R"doc(
                 Week.
             )doc"

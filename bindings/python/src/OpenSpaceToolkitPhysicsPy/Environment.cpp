@@ -34,8 +34,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
                 Constructor
 
                 Args:
-                    instant (Instant): An Instant
-                    objects (Array): Array of objects
+                    instant (Instant): An Instant.
+                    objects (list[Object]): List of objects.
             )doc"
         )
 
@@ -46,10 +46,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "is_defined",
             &Environment::isDefined,
             R"doc(
-                Check if the environment is defined
+                Check if the environment is defined,
 
                 Returns:
-                    bool: True if the environment is defined, False otherwise
+                    bool: True if the environment is defined, False otherwise,
             )doc"
         )
         .def(
@@ -57,13 +57,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             &Environment::hasObjectWithName,
             arg("name"),
             R"doc(
-                Returns true if environment contains objects with a given name
+                Returns true if environment contains objects with a given name.
 
                 Args:
-                    name (str): The name of the object
+                    name (str): The name of the object.
 
                 Returns:
-                    bool: True if environment contains objects with a given name, False otherwise
+                    bool: True if environment contains objects with a given name, False otherwise.
             )doc"
         )
         .def(
@@ -72,14 +72,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             arg("geometry"),
             arg_v("objects_to_ignore", Array<Shared<const Object>>::Empty(), "[]"),
             R"doc(
-                Returns true if a given geometry intersects any of the environment objects
+                Returns true if a given geometry intersects any of the environment objects.
 
                 Args:
-                    geometry (Geometry): The geometry to check for intersection
-                    objects_to_ignore (Array, optional): Array of objects to ignore during intersection check
+                    geometry (Geometry): The geometry to check for intersection.
+                    objects_to_ignore (list[Object], optional): List of objects to ignore during intersection check.
 
                 Returns:
-                    bool: True if the geometry intersects with any objects, False otherwise
+                    bool: True if the geometry intersects with any objects, False otherwise.
             )doc"
         )
 
@@ -88,10 +88,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             &Environment::accessObjects,
             return_value_policy::reference,
             R"doc(
-                Access objects
+                Access the objects in the environment.
 
                 Returns:
-                    Array: The array of objects
+                    list(Object): The list of objects.
             )doc"
         )
         .def(
@@ -100,13 +100,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             arg("name"),
             return_value_policy::reference,
             R"doc(
-                Access object with a given name
+                Access an object with a given name.
 
                 Args:
-                    name (str): An object name
+                    name (str): An object name.
 
                 Returns:
-                    Object: The object with the given name
+                    Object: The object with the given name.
             )doc"
         )
         .def(
@@ -115,13 +115,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             arg("name"),
             return_value_policy::reference,
             R"doc(
-                Access celestial object with a given name
+                Access celestial object with a given name.
 
                 Args:
-                    name (str): The name of the celestial object
+                    name (str): The name of the celestial object.
 
                 Returns:
-                    Object: The celestial object with the given name
+                    Object: The celestial object with the given name.
             )doc"
         )
 
@@ -129,20 +129,20 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "get_instant",
             &Environment::getInstant,
             R"doc(
-                Get instant
+                Get instant.
 
                 Returns:
-                    Instant: The instant
+                    Instant: The instant.
             )doc"
         )
         .def(
             "get_object_names",
             &Environment::getObjectNames,
             R"doc(
-                Get names of objects
+                Get names of objects.
 
                 Returns:
-                    Array: Array of objects names
+                    list(str): List of objects names.
             )doc"
         )
 
@@ -151,10 +151,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             &Environment::setInstant,
             arg("instant"),
             R"doc(
-                Set the instant of the environment
+                Set the instant of the environment.
 
                 Args:
-                    instant (Instant): The new instant of the environment
+                    instant (Instant): The new instant of the environment.
             )doc"
         )
 
@@ -163,13 +163,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             &Environment::isPositionInEclipse,
             arg("position"),
             R"doc(
-                Is position in eclipse
+                Is position in eclipse.
 
                 Args:
-                    position (Position): A position
+                    position (Position): A position.
 
                 Returns:
-                    bool: True if the position is in eclipse, False otherwise
+                    bool: True if the position is in eclipse, False otherwise.
             )doc"
         )
 
@@ -177,20 +177,20 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "undefined",
             &Environment::Undefined,
             R"doc(
-                Get an undefined Environment object
+                Get an undefined Environment object.
 
                 Returns:
-                    Environment: An undefined Environment object
+                    Environment: An undefined Environment object.
             )doc"
         )
         .def_static(
             "default",
             &Environment::Default,
             R"doc(
-                Get the default Environment object
+                Get the default Environment object.
 
                 Returns:
-                    Environment: The default Environment object
+                    Environment: The default Environment object.
             )doc"
         );
 

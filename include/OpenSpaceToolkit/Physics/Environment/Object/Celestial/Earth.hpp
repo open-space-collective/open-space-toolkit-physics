@@ -9,8 +9,8 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>

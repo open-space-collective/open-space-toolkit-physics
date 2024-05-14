@@ -15,9 +15,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
     using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 
     {
-        class_<Moon, Shared<Moon>, Celestial>(aModule, "Moon",
+        class_<Moon, Shared<Moon>, Celestial>(
+            aModule,
+            "Moon",
             R"doc(
-                Moon
+                Moon.
             )doc"
         )
 
@@ -26,31 +28,35 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
                 arg("ephemeris"),
                 arg("gravitational_model"),
                 R"doc(
-                    Constructor
+                    Constructor.
 
                     Args:
-                        ephemeris (Ephemeris): Ephemeris
-                        gravitational_model (MoonGravitationalModel): Gravitational model
+                        ephemeris (Ephemeris): Ephemeris.
+                        gravitational_model (MoonGravitationalModel): Gravitational model.
                 )doc"
             )
 
             .def("__str__", &(shiftToString<Moon>))
             .def("__repr__", &(shiftToString<Moon>))
 
-            .def_static("default", &Moon::Default,
+            .def_static(
+                "default",
+                &Moon::Default,
                 R"doc(
                     Create a default Moon.
 
                     Returns:
-                        Moon: Default Moon
+                        Moon: Default Moon.
                 )doc"
             )
-            .def_static("spherical", &Moon::Spherical,
+            .def_static(
+                "spherical",
+                &Moon::Spherical,
                 R"doc(
                     Spherical model.
 
                     Returns:
-                        Moon: Moon
+                        Moon: Moon.
                 )doc"
             )
 
@@ -60,6 +66,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
     {
         // Create "moon" python submodule
         auto moon = aModule.def_submodule("moon");
-
     }
 }

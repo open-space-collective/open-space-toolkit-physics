@@ -13,9 +13,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
     using ostk::physics::coordinate::Axes;
     using ostk::physics::coordinate::Frame;
 
-    class_<Axes>(aModule, "Axes",
+    class_<Axes>(
+        aModule,
+        "Axes",
         R"doc(
-        Axes
+            Axes.
 
         )doc"
     )
@@ -27,7 +29,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
             arg("z_axis"),
             arg("frame"),
             R"doc(
-            Constructor.
+                Constructor.
 
             Args:
                 x_axis [Vector3d]: X-axis.
@@ -38,38 +40,42 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
-            Equality operator.
+                Equality operator.
 
-            Args:
-                other (Axes): Other Axes.
+                Args:
+                    other (Axes): Other Axes.
 
-            Returns:
-                bool: True if equal.
+                Returns:
+                    bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
-            Inequality operator.
+                Inequality operator.
 
-            Args:
-                other (Axes): Other Axes.
+                Args:
+                    other (Axes): Other Axes.
 
-            Returns:
-                bool: True if not equal.
+                Returns:
+                    bool: True if not equal.
             )doc"
         )
 
         .def("__str__", &(shiftToString<Axes>))
         .def("__repr__", &(shiftToString<Axes>))
 
-        .def("is_defined", &Axes::isDefined,
+        .def(
+            "is_defined",
+            &Axes::isDefined,
             R"doc(
-            Check if defined.
+                Check if defined.
 
-            Returns:
-                bool: True if defined.
+                Returns:
+                    bool: True if defined.
             )doc"
         )
 
@@ -83,7 +89,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
                 Get the X-axis.
 
             Returns:
-                Vector3d: X-axis.
+                np.ndarray: X-axis.
             )doc"
         )
         .def(
@@ -96,7 +102,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
                 Get the Y-axis.
 
             Returns:
-                Vector3d: Y-axis.
+                np.ndarray: Y-axis.
 
             )doc"
         )
@@ -110,37 +116,45 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
                 Get the Z-axis.
 
             Returns:
-                Vector3d: Z-axis.
+                np.ndarray: Z-axis.
 
             )doc"
         )
-        .def("get_frame", &Axes::getFrame,
+        .def(
+            "get_frame",
+            &Axes::getFrame,
             R"doc(
-            Get the frame of reference.
+                Get the frame of reference.
 
-            Returns:
-                Frame: Frame of reference.
+                Returns:
+                    Frame: Frame of reference.
             )doc"
         )
-        .def("in_frame", &Axes::inFrame, arg("frame"), arg("instant"),
+        .def(
+            "in_frame",
+            &Axes::inFrame,
+            arg("frame"),
+            arg("instant"),
             R"doc(
-            Get the axes in another frame of reference.
+                Get the axes in another frame of reference.
 
-            Args:
-                frame (Frame): Frame of reference.
-                instant (Instant): Instant.
+                Args:
+                    frame (Frame): Frame of reference.
+                    instant (Instant): Instant.
 
-            Returns:
-                Axes: Axes in the other frame of reference.
+                Returns:
+                    Axes: Axes in the other frame of reference.
             )doc"
         )
 
-        .def_static("undefined", &Axes::Undefined,
+        .def_static(
+            "undefined",
+            &Axes::Undefined,
             R"doc(
-            Get undefined axes.
+                Get undefined axes.
 
-            Returns:
-                Axes: Undefined axes.
+                Returns:
+                    Axes: Undefined axes.
             )doc"
         )
 

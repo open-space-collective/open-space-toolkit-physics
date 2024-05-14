@@ -22,7 +22,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             Particularly contains the F10.7 solar flux index and Ap/Kp geomagnetic indices,
             which are commonly used to model atmospheric density.
 
-            :seealso: http://celestrak.org/SpaceData/SpaceWx-format.php
+            :reference: http://celestrak.org/SpaceData/SpaceWx-format.php
 
         )doc"
     );
@@ -365,51 +365,69 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                 Cp or Planetary Daily Character Figure. A qualitative estimate of overall level of magnetic activity for the day determined from the sum of the 8 Ap indices. Cp ranges, in steps of one-tenth, from 0 (quiet) to 2.5 (highly disturbed).
             )doc"
         )
-        .def_readonly("c9", &CSSISpaceWeather::Reading::C9,
+        .def_readonly(
+            "c9",
+            &CSSISpaceWeather::Reading::C9,
             R"doc(
                 C9. A conversion of the 0-to-2.5 range of the Cp index to one digit between 0 and 9.
             )doc"
         )
-        .def_readonly("isn", &CSSISpaceWeather::Reading::ISN,
+        .def_readonly(
+            "isn",
+            &CSSISpaceWeather::Reading::ISN,
             R"doc(
                 International Sunspot Number. Records contain the Zurich number through 1980 Dec 31 and the International Brussels number thereafter.
             )doc"
         )
-        .def_readonly("f107_obs", &CSSISpaceWeather::Reading::F107Obs,
+        .def_readonly(
+            "f107_obs",
+            &CSSISpaceWeather::Reading::F107Obs,
             R"doc(
                 Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
             )doc"
         )
-        .def_readonly("f107_adj", &CSSISpaceWeather::Reading::F107Adj,
+        .def_readonly(
+            "f107_adj",
+            &CSSISpaceWeather::Reading::F107Adj,
             R"doc(
                 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
             )doc"
         )
-        .def_readonly("f107_data_type", &CSSISpaceWeather::Reading::F107DataType,
+        .def_readonly(
+            "f107_data_type",
+            &CSSISpaceWeather::Reading::F107DataType,
             R"doc(
                 Flux Qualifier.
-                OBS: Observed flux measurement
-                INT: CelesTrak linear interpolation of missing data
-                PRD: 45-Day predicted flux
-                PRM: Monthly predicted flux
+                - OBS: Observed flux measurement.
+                - INT: CelesTrak linear interpolation of missing data.
+                - PRD: 45-Day predicted flux.
+                - PRM: Monthly predicted flux.
             )doc"
         )
-        .def_readonly("f107_obs_center_81", &CSSISpaceWeather::Reading::F107ObsCenter81,
+        .def_readonly(
+            "f107_obs_center_81",
+            &CSSISpaceWeather::Reading::F107ObsCenter81,
             R"doc(
                 Centered 81-day arithmetic average of F107 (observed).
             )doc"
         )
-        .def_readonly("f107_obs_last_81", &CSSISpaceWeather::Reading::F107ObsLast81,
+        .def_readonly(
+            "f107_obs_last_81",
+            &CSSISpaceWeather::Reading::F107ObsLast81,
             R"doc(
                 Last 81-day arithmetic average of F107 (observed).
             )doc"
         )
-        .def_readonly("f107_adj_center_81", &CSSISpaceWeather::Reading::F107AdjCenter81,
+        .def_readonly(
+            "f107_adj_center_81",
+            &CSSISpaceWeather::Reading::F107AdjCenter81,
             R"doc(
                 Centered 81-day arithmetic average of F10.7 (adjusted).
             )doc"
         )
-        .def_readonly("f107_adj_last_81", &CSSISpaceWeather::Reading::F107AdjLast81,
+        .def_readonly(
+            "f107_adj_last_81",
+            &CSSISpaceWeather::Reading::F107AdjLast81,
             R"doc(
                 Last 81-day arithmetic average of F10.7 (adjusted).
             )doc"

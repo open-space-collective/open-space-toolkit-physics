@@ -8,7 +8,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
 
     using ostk::physics::data::Manager;
 
-    class_<Manager> manager(aModule, "Manager",
+    class_<Manager> manager(
+        aModule,
+        "Manager",
         R"doc(
             OSTk Data manager base class (thread-safe).
 
@@ -17,8 +19,11 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
     );
 
     manager
-    
-        .def("get_last_update_timestamp_for", &Manager::getLastUpdateTimestampFor, arg("data_name"),
+
+        .def(
+            "get_last_update_timestamp_for",
+            &Manager::getLastUpdateTimestampFor,
+            arg("data_name"),
             R"doc(
                 Check if there are updates for data of a certain name. 
 
@@ -29,7 +34,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     Instant: Instant indicating when the data was last updated on the remote, according to the manifest record. 
             )doc"
         )
-        .def("get_remote_url", &Manager::getRemoteUrl,
+        .def(
+            "get_remote_url",
+            &Manager::getRemoteUrl,
             R"doc(
                 Get the remote URL. This points to the base URL for the OSTk input data. 
 
@@ -37,7 +44,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     URL: Remote URL.
             )doc"
         )
-        .def("get_manifest_repository", &Manager::getManifestRepository,
+        .def(
+            "get_manifest_repository",
+            &Manager::getManifestRepository,
             R"doc(
                 Get the manifest repository. 
 
@@ -45,7 +54,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     Directory: Manifest repository.
             )doc"
         )
-        .def("get_remote_data_urls", &Manager::getRemoteDataUrls, arg("data_name"),
+        .def(
+            "get_remote_data_urls",
+            &Manager::getRemoteDataUrls,
+            arg("data_name"),
             R"doc(
                 Get the remote data URL for a given data name.
 
@@ -53,10 +65,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     data_name (String): Name of the data. i.e. the key for the data entry in the manifest 
 
                 Returns:
-                    Array of URL: Array of URLs.
+                    List[URL]: List of URLs.
             )doc"
         )
-        .def("get_manifest", &Manager::getManifest,
+        .def(
+            "get_manifest",
+            &Manager::getManifest,
             R"doc(
                 Get a copy of the current manifest file.
 
@@ -65,7 +79,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
             )doc"
         )
 
-        .def("set_remote_url", &Manager::setRemoteUrl, arg("remote_url"),
+        .def(
+            "set_remote_url",
+            &Manager::setRemoteUrl,
+            arg("remote_url"),
             R"doc(
                 Set the remote URL. 
 
@@ -73,7 +90,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     remote_url (Directory): Remote URL.
             )doc"
         )
-        .def("set_manifest_repository", &Manager::setManifestRepository, arg("directory"),
+        .def(
+            "set_manifest_repository",
+            &Manager::setManifestRepository,
+            arg("directory"),
             R"doc(
                 Set the manifest repository. 
 
@@ -82,7 +102,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
             )doc"
         )
 
-        .def("find_remote_data_urls", &Manager::findRemoteDataUrls, arg("data_name_regex_pattern"),
+        .def(
+            "find_remote_data_urls",
+            &Manager::findRemoteDataUrls,
+            arg("data_name_regex_pattern"),
             R"doc(
                 Find remote URLs of data matching regular expression string. 
 
@@ -90,10 +113,13 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     data_name_regex_pattern (String): A regular expression string
 
                 Returns:
-                    Array of URL: Array of URLs.
+                    List[URL]: List of URLs.
             )doc"
         )
-        .def("load_manifest", &Manager::loadManifest, arg("manifest"),
+        .def(
+            "load_manifest",
+            &Manager::loadManifest,
+            arg("manifest"),
             R"doc(
                 Load a new manifest file.
 
@@ -101,7 +127,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     manifest (Manifest): Manifest.
             )doc"
         )
-        .def("manifest_file_exists", &Manager::manifestFileExists,
+        .def(
+            "manifest_file_exists",
+            &Manager::manifestFileExists,
             R"doc(
                 Return true if a manifest file already exists in the directory. 
 
@@ -109,7 +137,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     bool: True if the manifest file exists.
             )doc"
         )
-        .def("reset", &Manager::reset,
+        .def(
+            "reset",
+            &Manager::reset,
             R"doc(
                 Reset the manager.
 
@@ -117,7 +147,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("get", &Manager::Get, return_value_policy::reference,
+        .def_static(
+            "get",
+            &Manager::Get,
+            return_value_policy::reference,
             R"doc(
                 Get manager singleton.
 
@@ -125,7 +158,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     Manager: Manager instance.
             )doc"
         )
-        .def_static("default_remote_url", &Manager::DefaultRemoteUrl,
+        .def_static(
+            "default_remote_url",
+            &Manager::DefaultRemoteUrl,
             R"doc(
                 Get the default remote URL for data fetching. 
 
@@ -133,7 +168,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                     URL: Default remote URL.
             )doc"
         )
-        .def_static("default_manifest_repository", &Manager::DefaultManifestRepository,
+        .def_static(
+            "default_manifest_repository",
+            &Manager::DefaultManifestRepository,
             R"doc(
                 Get the default manifest repository. 
 

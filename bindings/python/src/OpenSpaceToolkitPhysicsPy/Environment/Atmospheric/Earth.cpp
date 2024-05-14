@@ -28,7 +28,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
     using ostk::physics::coordinate::Frame;
 
     {
-        class_<Earth, Shared<Earth>> earth_class(aModule, "Earth",
+        class_<Earth, Shared<Earth>> earth_class(
+            aModule,
+            "Earth",
             R"doc(
                 Earth atmospheric model.
 
@@ -37,17 +39,23 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
         enum_<Earth::Type>(earth_class, "Type")
 
-            .value("Undefined", Earth::Type::Undefined,
+            .value(
+                "Undefined",
+                Earth::Type::Undefined,
                 R"doc(
                     Undefined.
                 )doc"
             )
-            .value("Exponential", Earth::Type::Exponential,
+            .value(
+                "Exponential",
+                Earth::Type::Exponential,
                 R"doc(
                     Exponential atmospheric density model, valid up to 1000 km.
                 )doc"
             )
-            .value("NRLMSISE00", Earth::Type::NRLMSISE00,
+            .value(
+                "NRLMSISE00",
+                Earth::Type::NRLMSISE00,
                 R"doc(
                     Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000.
                 )doc"
@@ -55,17 +63,23 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
         enum_<Earth::InputDataType>(earth_class, "InputDataType")
 
-            .value("Undefined", Earth::InputDataType::Undefined,
+            .value(
+                "Undefined",
+                Earth::InputDataType::Undefined,
                 R"doc(
                     Undefined.
                 )doc"
             )
-            .value("ConstantFluxAndGeoMag", Earth::InputDataType::ConstantFluxAndGeoMag,
+            .value(
+                "ConstantFluxAndGeoMag",
+                Earth::InputDataType::ConstantFluxAndGeoMag,
                 R"doc(
                     Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters.
                 )doc"
             )
-            .value("CSSISpaceWeatherFile", Earth::InputDataType::CSSISpaceWeatherFile,
+            .value(
+                "CSSISpaceWeatherFile",
+                Earth::InputDataType::CSSISpaceWeatherFile,
                 R"doc(
                     Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters from CSSI.
                 )doc"
@@ -95,28 +109,48 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                 arg("sun_celestial") = nullptr,
                 R"doc(
                     Constructor.
+
+                Args:
+                    type (Earth.Type): Earth atmospheric model type.
+                    input_data_type (Earth.InputDataType): Earth atmospheric model input data type.
+                    f107_constant_value (Real): F10.7 constant value.
+                    f107_average_constant_value (Real): F10.7a constant value.
+                    kp_constant_value (Real): Kp constant value.
+                    earth_frame (Frame): Earth frame.
+                    earth_radius (Length): Earth radius [m].
+                    earth_flattening (Real): Earth flattening.
+                    sun_celestial (Celestial): Sun celestial object.
+
+                Returns:
+                    Earth: Earth atmospheric model.
                 )doc"
             )
 
-            .def("get_type", &Earth::getType,
+            .def(
+                "get_type",
+                &Earth::getType,
                 R"doc(
                     Get the Earth atmospheric model type.
 
                     Returns:
-                        Earth atmospheric model type.
+                        Earth.Type: Earth atmospheric model type.
                 )doc"
             )
 
-            .def("get_input_data_type", &Earth::getInputDataType,
+            .def(
+                "get_input_data_type",
+                &Earth::getInputDataType,
                 R"doc(
                     Get the Earth atmospheric model input data type.
 
                     Returns:
-                        Earth atmospheric model input data type.
+                        Earth.InputDataType: Earth atmospheric model input data type.
                 )doc"
             )
 
-            .def("is_defined", &Earth::isDefined,
+            .def(
+                "is_defined",
+                &Earth::isDefined,
                 R"doc(
                     Check if the Earth atmospheric model is defined.
 
@@ -138,7 +172,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                         instant (Instant): An instant.
 
                     Returns:
-                        Real: Atmospheric density value [kg.m^-3].
+                        float: Atmospheric density value [kg.m^-3].
                 )doc"
             )
 
@@ -155,7 +189,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                         instant (Instant): An instant.
 
                     Returns:
-                        Real: Atmospheric density value [kg.m^-3].
+                        float: Atmospheric density value [kg.m^-3].
                 )doc"
             )
 

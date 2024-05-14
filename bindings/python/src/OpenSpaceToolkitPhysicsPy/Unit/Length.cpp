@@ -13,7 +13,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 
     using ostk::physics::unit::Length;
 
-    class_<Length> length(aModule, "Length",
+    class_<Length> length(
+        aModule,
+        "Length",
         R"doc(
             Length.
 
@@ -22,7 +24,8 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
     );
 
     length
-        .def(init<Real, Length::Unit>(),
+        .def(
+            init<Real, Length::Unit>(),
             R"doc(
                 Constructor.
 
@@ -91,7 +94,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             }
         )
 
-        .def("is_defined", &Length::isDefined,
+        .def(
+            "is_defined",
+            &Length::isDefined,
             R"doc(
                 Check if the length is defined.
 
@@ -99,7 +104,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("is_zero", &Length::isZero,
+        .def(
+            "is_zero",
+            &Length::isZero,
             R"doc(
                 Check if the length is zero.
 
@@ -108,7 +115,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def("get_unit", &Length::getUnit,
+        .def(
+            "get_unit",
+            &Length::getUnit,
             R"doc(
                 Get the length unit.
 
@@ -116,31 +125,40 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length.Unit: The length unit.
             )doc"
         )
-        .def("in_unit", &Length::in,
+        .def(
+            "in_unit",
+            &Length::in,
             R"doc(
                 Get the length in a given unit.
 
                 Returns:
-                    Real: The length in the given unit.
+                    float: The length in the given unit.
             )doc"
         )
-        .def("in_meters", &Length::inMeters,
+        .def(
+            "in_meters",
+            &Length::inMeters,
             R"doc(
                 Get the length in meters.
 
                 Returns:
-                    Real: The length in meters.
+                    float: The length in meters.
             )doc"
         )
-        .def("in_kilometers", &Length::inKilometers,
+        .def(
+            "in_kilometers",
+            &Length::inKilometers,
             R"doc(
                 Get the length in kilometers.
 
                 Returns:
-                    Real: The length in kilometers.
+                    float: The length in kilometers.
             )doc"
         )
-        .def("to_string", &Length::toString, "aPrecision"_a = Integer::Undefined(),
+        .def(
+            "to_string",
+            &Length::toString,
+            "aPrecision"_a = Integer::Undefined(),
             R"doc(
                 Get the string representation of the length.
 
@@ -152,7 +170,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Length::Undefined,
+        .def_static(
+            "undefined",
+            &Length::Undefined,
             R"doc(
                 Get an undefined length.
 
@@ -160,7 +180,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length: An undefined length.
             )doc"
         )
-        .def_static("millimeters", &Length::Millimeters,
+        .def_static(
+            "millimeters",
+            &Length::Millimeters,
             R"doc(
                 Construct a length in millimeters.
 
@@ -168,7 +190,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length: A length in millimeters.
             )doc"
         )
-        .def_static("meters", &Length::Meters,
+        .def_static(
+            "meters",
+            &Length::Meters,
             R"doc(
                 Construct a length in meters.
 
@@ -176,7 +200,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length: A length in meters.
             )doc"
         )
-        .def_static("kilometers", &Length::Kilometers,
+        .def_static(
+            "kilometers",
+            &Length::Kilometers,
             R"doc(
                 Construct a length in kilometers.
 
@@ -184,7 +210,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length: A length in kilometers.
             )doc"
         )
-        .def_static("parse", &Length::Parse,
+        .def_static(
+            "parse",
+            &Length::Parse,
             R"doc(
                 Parse a string and construct a length.
 
@@ -195,7 +223,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length: A length.
             )doc"
         )
-        .def_static("string_from_unit", &Length::StringFromUnit,
+        .def_static(
+            "string_from_unit",
+            &Length::StringFromUnit,
             R"doc(
                 Get the string representation of a length unit.
 
@@ -203,7 +233,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     str: The string representation.
             )doc"
         )
-        .def_static("symbol_from_unit", &Length::SymbolFromUnit,
+        .def_static(
+            "symbol_from_unit",
+            &Length::SymbolFromUnit,
             R"doc(
                 Get the symbol of a length unit.
 
@@ -216,32 +248,44 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 
     enum_<Length::Unit>(length, "Unit")
 
-        .value("Undefined", Length::Unit::Undefined,
+        .value(
+            "Undefined",
+            Length::Unit::Undefined,
             R"doc(
                 Undefined length unit.
             )doc"
         )
-        .value("Meter", Length::Unit::Meter,
+        .value(
+            "Meter",
+            Length::Unit::Meter,
             R"doc(
                 Meter (SI).
             )doc"
         )
-        .value("Foot", Length::Unit::Foot,
+        .value(
+            "Foot",
+            Length::Unit::Foot,
             R"doc(
                 Foot.
             )doc"
         )
-        .value("TerrestrialMile", Length::Unit::TerrestrialMile,
+        .value(
+            "TerrestrialMile",
+            Length::Unit::TerrestrialMile,
             R"doc(
                 Terrestrial mile.
             )doc"
         )
-        .value("NauticalMile", Length::Unit::NauticalMile,
+        .value(
+            "NauticalMile",
+            Length::Unit::NauticalMile,
             R"doc(
                 Nautical mile.
             )doc"
         )
-        .value("AstronomicalUnit", Length::Unit::AstronomicalUnit,
+        .value(
+            "AstronomicalUnit",
+            Length::Unit::AstronomicalUnit,
             R"doc(
                 Astronomical Unit.
             )doc"
@@ -253,7 +297,8 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 
     class_<Interval<Length>>(aModule, "Interval")
 
-        .def(init<const Length&, const Length&, const Interval<Length>::Type&>(),
+        .def(
+            init<const Length&, const Length&, const Interval<Length>::Type&>(),
             R"doc(
                 Constructor.
 
@@ -267,7 +312,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
         .def(self == self)
         .def(self != self)
 
-        .def("is_defined", &Interval<Length>::isDefined,
+        .def(
+            "is_defined",
+            &Interval<Length>::isDefined,
             R"doc(
                 Check if the interval is defined.
 
@@ -275,7 +322,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     bool: True if defined.
             )doc"
         )
-        .def("is_degenerate", &Interval<Length>::isDegenerate,
+        .def(
+            "is_degenerate",
+            &Interval<Length>::isDegenerate,
             R"doc(
                 Check if the interval is degenerate.
 
@@ -283,7 +332,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     bool: True if degenerate.
             )doc"
         )
-        .def("intersects", &Interval<Length>::intersects,
+        .def(
+            "intersects",
+            &Interval<Length>::intersects,
             R"doc(
                 Check if the interval intersects another interval.
 
@@ -324,7 +375,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def("get_lower_bound", &Interval<Length>::getLowerBound,
+        .def(
+            "get_lower_bound",
+            &Interval<Length>::getLowerBound,
             R"doc(
                 Get the lower bound.
 
@@ -332,7 +385,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Length: The lower bound.
             )doc"
         )
-        .def("get_upper_bound", &Interval<Length>::getUpperBound,
+        .def(
+            "get_upper_bound",
+            &Interval<Length>::getUpperBound,
             R"doc(
                 Get the upper bound.
 
@@ -341,7 +396,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static("undefined", &Interval<Length>::Undefined,
+        .def_static(
+            "undefined",
+            &Interval<Length>::Undefined,
             R"doc(
                 Get an undefined interval.
 
@@ -349,7 +406,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
                     Interval: An undefined interval.
             )doc"
         )
-        .def_static("closed", &Interval<Length>::Closed,
+        .def_static(
+            "closed",
+            &Interval<Length>::Closed,
             R"doc(
                 Construct a closed interval.
 

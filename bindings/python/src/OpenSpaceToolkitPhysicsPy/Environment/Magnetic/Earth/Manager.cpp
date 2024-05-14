@@ -8,7 +8,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
 
     using ostk::physics::environment::magnetic::earth::Manager;
 
-    class_<Manager> manager(aModule, "Manager",
+    class_<Manager> manager(
+        aModule,
+        "Manager",
         R"doc(
             Earth magnetic model data manager
 
@@ -23,7 +25,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
 
     manager
 
-        .def("get_mode", &Manager::getMode,
+        .def(
+            "get_mode",
+            &Manager::getMode,
             R"doc(
                 Get manager mode
 
@@ -31,7 +35,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     Manager.Mode: Manager mode
             )doc"
         )
-        .def("set_mode", &Manager::setMode, arg("mode"),
+        .def(
+            "set_mode",
+            &Manager::setMode,
+            arg("mode"),
             R"doc(
                 Set manager mode
 
@@ -39,7 +46,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     mode (Manager.Mode): Manager mode
             )doc"
         )
-        .def_static("default_mode", &Manager::DefaultMode,
+        .def_static(
+            "default_mode",
+            &Manager::DefaultMode,
             R"doc(
                 Get default manager mode
 
@@ -48,7 +57,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
             )doc"
         )
 
-        .def("get_local_repository", &Manager::getLocalRepository,
+        .def(
+            "get_local_repository",
+            &Manager::getLocalRepository,
             R"doc(
                 Get local repository
 
@@ -56,7 +67,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     Directory: Local repository
             )doc"
         )
-        .def("set_local_repository", &Manager::setLocalRepository, arg("directory"),
+        .def(
+            "set_local_repository",
+            &Manager::setLocalRepository,
+            arg("directory"),
             R"doc(
                 Set local repository
 
@@ -64,7 +78,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     directory (Directory): Local repository
             )doc"
         )
-        .def_static("default_local_repository", &Manager::DefaultLocalRepository,
+        .def_static(
+            "default_local_repository",
+            &Manager::DefaultLocalRepository,
             R"doc(
                 Get default local repository
 
@@ -72,7 +88,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     Directory: Default local repository
             )doc"
         )
-        .def_static("default_local_repository_lock_timeout", &Manager::DefaultLocalRepositoryLockTimeout,
+        .def_static(
+            "default_local_repository_lock_timeout",
+            &Manager::DefaultLocalRepositoryLockTimeout,
             R"doc(
                 Get default local repository lock timeout
 
@@ -81,7 +99,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
             )doc"
         )
 
-        .def("reset", &Manager::reset,
+        .def(
+            "reset",
+            &Manager::reset,
             R"doc(
                 Reset the manager
 
@@ -89,7 +109,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
             )doc"
         )
 
-        .def("fetch_data_files_for_type", &Manager::fetchDataFilesForType, arg("model_type"),
+        .def(
+            "fetch_data_files_for_type",
+            &Manager::fetchDataFilesForType,
+            arg("model_type"),
             R"doc(
                 Fetch data file from remote
 
@@ -97,7 +120,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     model_type (EarthMagneticModel.Type): Model type
             )doc"
         )
-        .def("has_data_files_for_type", &Manager::hasDataFilesForType, arg("model_type"),
+        .def(
+            "has_data_files_for_type",
+            &Manager::hasDataFilesForType,
+            arg("model_type"),
             R"doc(
                 Check if data files are available for the given type
 
@@ -108,7 +134,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     bool: True if data files are available for the given type
             )doc"
         )
-        .def("local_data_files_for_type", &Manager::localDataFilesForType, arg("model_type"),
+        .def(
+            "local_data_files_for_type",
+            &Manager::localDataFilesForType,
+            arg("model_type"),
             R"doc(
                 Get local data files for the given type
 
@@ -116,11 +145,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
                     model_type (EarthMagneticModel.Type): Model type
 
                 Returns:
-                    Array[File]: Local data files
+                    list[File]: Local data files
             )doc"
         )
 
-        .def_static("get", &Manager::Get, return_value_policy::reference,
+        .def_static(
+            "get",
+            &Manager::Get,
+            return_value_policy::reference,
             R"doc(
                 Get manager singleton
 
@@ -133,14 +165,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
 
     enum_<Manager::Mode>(manager, "Mode")
 
-        .value("Manual", Manager::Mode::Manual,
+        .value(
+            "Manual",
+            Manager::Mode::Manual,
             R"doc(
                 Manual mode
 
                 Manually load and unload magnetic files
             )doc"
         )
-        .value("Automatic", Manager::Mode::Automatic,
+        .value(
+            "Automatic",
+            Manager::Mode::Automatic,
             R"doc(
                 Automatic mode
 

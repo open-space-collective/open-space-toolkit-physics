@@ -121,9 +121,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, DefaultLoca
 
         setenv(fullDataVarName_, "/tmp", true);
 
-        EXPECT_EQ(
-            Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/ephemeris/spice"))
-        );
+        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/ephemeris/spice")));
     }
 
     {

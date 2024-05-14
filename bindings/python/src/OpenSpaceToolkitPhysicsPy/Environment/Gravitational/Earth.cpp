@@ -25,8 +25,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
                 The gravitational potential is expanded as sum of spherical harmonics.
 
-                :seealso: https://en.wikipedia.org/wiki/Spherical_harmonics
-                :seealso: https://geographiclib.sourceforge.io/html/gravity.html
+                :reference: https://en.wikipedia.org/wiki/Spherical_harmonics
+                :reference: https://geographiclib.sourceforge.io/html/gravity.html
             )doc"
         );
 
@@ -129,7 +129,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                         instant (Instant): An instant.
 
                     Returns:
-                        Vector3d: Gravitational field value [m.s^-2].
+                        np.ndarray: Gravitational field value [m.s^-2].
                 )doc"
             )
 

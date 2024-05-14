@@ -7,7 +7,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(pybind11::module& 
     // Create "atmospheric" python submodule
     auto atmospheric = aModule.def_submodule("atmospheric");
 
-
     // Add objects to python "atmospheric" submodules
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(atmospheric);
 }

@@ -16,12 +16,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
     using ostk::physics::coordinate::Transform;
 
-    class_<Transform> transform_class(aModule, "Transform",
+    class_<Transform> transform_class(
+        aModule,
+        "Transform",
         R"doc(
             Transform.
 
-            :seealso: https://en.wikipedia.org/wiki/Active_and_passive_transformation
-            :seealso: https://core.ac.uk/download/pdf/77055186.pdf
+            :reference: https://en.wikipedia.org/wiki/Active_and_passive_transformation
+            :reference: https://core.ac.uk/download/pdf/77055186.pdf
         )doc"
     );
 
@@ -40,214 +42,263 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
                 Args:
                     instant (Instant): Instant.
-                    translation (Vector3d): Translation.
-                    velocity (Vector3d): Velocity.
+                    translation (np.ndarray): Translation.
+                    velocity (np.ndarray): Velocity.
                     orientation (Quaternion): Orientation.
-                    angular_velocity (Vector3d): Angular velocity.
+                    angular_velocity (np.ndarray): Angular velocity.
                     type (Type): Type.
             )doc"
         )
 
-        .def(self == self,
+        .def(
+            self == self,
             R"doc(
-            Equality operator.
+                Equality operator.
 
-            Args:
-                other (Transform): Other transform.
+                Args:
+                    other (Transform): Other transform.
 
-            Returns:
-                bool: True if equal.
+                Returns:
+                    bool: True if equal.
             )doc"
         )
-        .def(self != self,
+        .def(
+            self != self,
             R"doc(
-            Inequality operator.
+                Inequality operator.
 
-            Args:
-                other (Transform): Other transform.
+                Args:
+                    other (Transform): Other transform.
 
-            Returns:
-                bool: True if not equal.
-            )doc"
-        )
-
-        .def(self * self,
-            R"doc(
-            Multiplication operator.
-
-            Args:
-                other (Transform): Other transform.
-
-            Returns:
-                Transform: Composition.
+                Returns:
+                    bool: True if not equal.
             )doc"
         )
 
-        .def(self *= self,
+        .def(
+            self * self,
             R"doc(
-            Multiplication assignment operator.
+                Multiplication operator.
 
-            Args:
-                other (Transform): Other transform.
+                Args:
+                    other (Transform): Other transform.
 
-            Returns:
-                Transform: Composition.
+                Returns:
+                    Transform: Composition.
+            )doc"
+        )
+
+        .def(
+            self *= self,
+            R"doc(
+                Multiplication assignment operator.
+
+                Args:
+                    other (Transform): Other transform.
+
+                Returns:
+                    Transform: Composition.
             )doc"
         )
 
         .def("__str__", &(shiftToString<Transform>))
         .def("__repr__", &(shiftToString<Transform>))
 
-        .def("is_defined", &Transform::isDefined,
+        .def(
+            "is_defined",
+            &Transform::isDefined,
             R"doc(
-            Check if the transform is defined.
+                Check if the transform is defined.
 
-            Returns:
-                bool: True if the transform is defined.
+                Returns:
+                    bool: True if the transform is defined.
             )doc"
         )
-        .def("is_identity", &Transform::isIdentity,
+        .def(
+            "is_identity",
+            &Transform::isIdentity,
             R"doc(
-            Check if the transform is the identity.
+                Check if the transform is the identity.
 
-            Returns:
-                bool: True if the transform is the identity.
-            )doc"
-        )
-
-        .def("access_instant", &Transform::accessInstant, return_value_policy::reference,
-            R"doc(
-            Access the instant.
-
-            Returns:
-                Instant: Instant.
-            )doc"
-        )
-        .def("access_translation", &Transform::accessTranslation, return_value_policy::reference,
-            R"doc(
-            Access the translation.
-
-            Returns:
-                Vector3d: Translation.
-            )doc"
-        )
-        .def("access_velocity", &Transform::accessVelocity, return_value_policy::reference,
-            R"doc(
-            Access the velocity.
-
-            Returns:
-                Vector3d: Velocity.
-            )doc"
-        )
-        .def("access_orientation", &Transform::accessOrientation, return_value_policy::reference,
-            R"doc(
-            Access the orientation.
-
-            Returns:
-                Quaternion: Orientation.
-            )doc"
-        )
-        .def("access_angular_velocity", &Transform::accessAngularVelocity, return_value_policy::reference,
-            R"doc(
-            Access the angular velocity.
-
-            Returns:
-                Vector3d: Angular velocity.
+                Returns:
+                    bool: True if the transform is the identity.
             )doc"
         )
 
-        .def("get_instant", &Transform::getInstant,
+        .def(
+            "access_instant",
+            &Transform::accessInstant,
+            return_value_policy::reference,
             R"doc(
-            Get the instant.
+                Access the instant.
 
-            Returns:
-                Instant: Instant.
+                Returns:
+                    Instant: Instant.
             )doc"
         )
-        .def("get_translation", &Transform::getTranslation,
+        .def(
+            "access_translation",
+            &Transform::accessTranslation,
+            return_value_policy::reference,
             R"doc(
-            Get the translation.
+                Access the translation.
 
-            Returns:
-                Vector3d: Translation.
+                Returns:
+                    np.ndarray: Translation.
             )doc"
         )
-        .def("get_velocity", &Transform::getVelocity,
+        .def(
+            "access_velocity",
+            &Transform::accessVelocity,
+            return_value_policy::reference,
             R"doc(
-            Get the velocity.
+                Access the velocity.
 
-            Returns:
-                Vector3d: Velocity.
+                Returns:
+                    np.ndarray: Velocity.
             )doc"
         )
-        .def("get_orientation", &Transform::getOrientation,
+        .def(
+            "access_orientation",
+            &Transform::accessOrientation,
+            return_value_policy::reference,
             R"doc(
-            Get the orientation.
+                Access the orientation.
 
-            Returns:
-                Quaternion: Orientation.
+                Returns:
+                    Quaternion: Orientation.
             )doc"
         )
-        .def("get_angular_velocity", &Transform::getAngularVelocity,
+        .def(
+            "access_angular_velocity",
+            &Transform::accessAngularVelocity,
+            return_value_policy::reference,
             R"doc(
-            Get the angular velocity.
+                Access the angular velocity.
 
-            Returns:
-                Vector3d: Angular velocity.
-            )doc"
-        )
-        .def("get_inverse", &Transform::getInverse,
-            R"doc(
-            Get the inverse.
-
-            Returns:
-                Transform: Inverse.
-            )doc"
-        )
-        .def("apply_to_position", &Transform::applyToPosition, arg("position"),
-            R"doc(
-            Apply the transform to a position.
-
-            Args:
-                position (Position): Position.
-
-            Returns:
-                Vector3d: Transformed position.
-            )doc"
-        )
-        .def("apply_to_velocity", &Transform::applyToVelocity, arg("position"), arg("velocity"),
-            R"doc(
-            Apply the transform to a velocity.
-
-            Args:
-                position (Position): Position.
-                velocity (Velocity): Velocity.
-
-            Returns:
-                Vector3d: Transformed velocity.
-            )doc"
-        )
-        .def("apply_to_vector", &Transform::applyToVector, arg("vector"),
-            R"doc(
-            Apply the transform to a vector.
-
-            Args:
-                vector (Vector3d): Vector.
-
-            Returns:
-                Vector3d: Transformed vector.
+                Returns:
+                    np.ndarray: Angular velocity.
             )doc"
         )
 
-        .def_static("undefined", &Transform::Undefined,
+        .def(
+            "get_instant",
+            &Transform::getInstant,
             R"doc(
-            Get undefined transform.
+                Get the instant.
 
-            Returns:
-                Transform: Undefined transform.
+                Returns:
+                    Instant: Instant.
             )doc"
         )
-        .def_static("identity", &Transform::Identity,
+        .def(
+            "get_translation",
+            &Transform::getTranslation,
+            R"doc(
+                Get the translation.
+
+                Returns:
+                    np.ndarray: Translation.
+            )doc"
+        )
+        .def(
+            "get_velocity",
+            &Transform::getVelocity,
+            R"doc(
+                Get the velocity.
+
+                Returns:
+                    np.ndarray: Velocity.
+            )doc"
+        )
+        .def(
+            "get_orientation",
+            &Transform::getOrientation,
+            R"doc(
+                Get the orientation.
+
+                Returns:
+                    Quaternion: Orientation.
+            )doc"
+        )
+        .def(
+            "get_angular_velocity",
+            &Transform::getAngularVelocity,
+            R"doc(
+                Get the angular velocity.
+
+                Returns:
+                    np.ndarray: Angular velocity.
+            )doc"
+        )
+        .def(
+            "get_inverse",
+            &Transform::getInverse,
+            R"doc(
+                Get the inverse.
+
+                Returns:
+                    Transform: Inverse.
+            )doc"
+        )
+        .def(
+            "apply_to_position",
+            &Transform::applyToPosition,
+            arg("position"),
+            R"doc(
+                Apply the transform to a position.
+
+                Args:
+                    position (Position): Position.
+
+                Returns:
+                    np.ndarray: Transformed position.
+            )doc"
+        )
+        .def(
+            "apply_to_velocity",
+            &Transform::applyToVelocity,
+            arg("position"),
+            arg("velocity"),
+            R"doc(
+                Apply the transform to a velocity.
+
+                Args:
+                    position (Position): Position.
+                    velocity (Velocity): Velocity.
+
+                Returns:
+                    np.ndarray: Transformed velocity.
+            )doc"
+        )
+        .def(
+            "apply_to_vector",
+            &Transform::applyToVector,
+            arg("vector"),
+            R"doc(
+                Apply the transform to a vector.
+
+                Args:
+                    vector (np.ndarray): Vector.
+
+                Returns:
+                    np.ndarray: Transformed vector.
+            )doc"
+        )
+
+        .def_static(
+            "undefined",
+            &Transform::Undefined,
+            R"doc(
+                Get undefined transform.
+
+                Returns:
+                    Transform: Undefined transform.
+            )doc"
+        )
+        .def_static(
+            "identity",
+            &Transform::Identity,
             R"doc(
                 Get identity transform.
 
@@ -269,10 +320,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
                 Args:
                     instant (Instant): Instant.
-                    translation (Vector3d): Translation.
-                    velocity (Vector3d): Velocity.
+                    translation (np.ndarray): Translation.
+                    velocity (np.ndarray): Velocity.
                     orientation (Quaternion): Orientation.
-                    angular_velocity (Vector3d): Angular velocity.
+                    angular_velocity (np.ndarray): Angular velocity.
 
                 Returns:
                     Transform: Active transform.
@@ -292,10 +343,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
                 Args:
                     instant (Instant): Instant.
-                    translation (Vector3d): Translation.
-                    velocity (Vector3d): Velocity.
+                    translation (np.ndarray): Translation.
+                    velocity (np.ndarray): Velocity.
                     orientation (Quaternion): Orientation.
-                    angular_velocity (Vector3d): Angular velocity.
+                    angular_velocity (np.ndarray): Angular velocity.
 
                 Returns:
                     Transform: Passive transform.
@@ -304,23 +355,31 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
         ;
 
-    enum_<Transform::Type>(transform_class, "Type",
-            R"doc(
-                Transform type.
-            )doc"
-        )
+    enum_<Transform::Type>(
+        transform_class,
+        "Type",
+        R"doc(
+            Transform type.
+        )doc"
+    )
 
-        .value("Undefined", Transform::Type::Undefined,
+        .value(
+            "Undefined",
+            Transform::Type::Undefined,
             R"doc(
                 Undefined type.
             )doc"
         )
-        .value("Active", Transform::Type::Active,
+        .value(
+            "Active",
+            Transform::Type::Active,
             R"doc(
                 Active type.
             )doc"
         )
-        .value("Passive", Transform::Type::Passive,
+        .value(
+            "Passive",
+            Transform::Type::Passive,
             R"doc(
                 Passive type.
             )doc"
