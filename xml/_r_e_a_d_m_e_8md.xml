@@ -106,10 +106,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Documentation</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">Documentation<sp/>is<sp/>available<sp/>here:</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">-<sp/>[C++](https://open-space-collective.github.io/open-space-toolkit-physics)</highlight></codeline>
-<codeline><highlight class="normal">-<sp/>[Python](./bindings/python/docs)</highlight></codeline>
+<codeline><highlight class="normal">Documentation<sp/>is<sp/>available<sp/>[here](https://open-space-collective.github.io/open-space-toolkit-physics/):</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">&lt;details&gt;</highlight></codeline>
 <codeline><highlight class="normal">&lt;summary&gt;Structure&lt;/summary&gt;</highlight></codeline>

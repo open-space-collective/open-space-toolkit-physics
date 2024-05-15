@@ -91,12 +91,7 @@
 </sect1>
 <sect1 id="md__r_e_a_d_m_e_1autotoc_md10">
 <title>Documentation</title>
-<para>Documentation is available here:</para>
-<para><itemizedlist>
-<listitem><para><ulink url="https://open-space-collective.github.io/open-space-toolkit-physics">C++</ulink></para>
-</listitem><listitem><para><ulink url="./bindings/python/docs">Python</ulink></para>
-</listitem></itemizedlist>
-</para>
+<para>Documentation is available <ulink url="https://open-space-collective.github.io/open-space-toolkit-physics/">here</ulink>:</para>
 <para>&lt;details&gt;</para>
 <para>The library exhibits the following structure:</para>
 <para><programlisting filename=".txt"><codeline><highlight class="normal">├──<sp/>Unit</highlight></codeline>
