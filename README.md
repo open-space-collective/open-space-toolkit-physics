@@ -97,10 +97,7 @@ pip install open-space-toolkit-physics
 
 ## Documentation
 
-Documentation is available here:
-
-- [C++](https://open-space-collective.github.io/open-space-toolkit-physics)
-- [Python](./bindings/python/docs)
+Documentation is available [here](https://open-space-collective.github.io/open-space-toolkit-physics/):
 
 <details>
 <summary>Structure</summary>
