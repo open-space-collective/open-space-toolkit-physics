@@ -22,6 +22,20 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
     duration_class
 
+        .def(
+            init(
+                [](const std::chrono::microseconds& aCount)
+                {
+                    return new Duration(aCount.count() * 1000);
+                }
+            ),
+            R"doc(
+                Constructor.
+                Args:
+                    count (int): A nanosecond count.
+            )doc"
+        )
+
         .def(self == self)
         .def(self != self)
 
