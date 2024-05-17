@@ -249,7 +249,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             "parse",
             &Instant::Parse,
             arg("string"),
-            arg_v("scale", DEFAULT_TIME_SCALE, "Scale.UTC"),
+            arg("scale"),
             arg_v("date_time_format", DEFAULT_DATE_TIME_FORMAT, "Format.Standard"),
 
             R"doc(
