@@ -16,6 +16,7 @@ ostk.physics.time.Instant
    .. autosummary::
       :nosignatures:
    
+      ~Instant.GPS_epoch
       ~Instant.J2000
       ~Instant.date_time
       ~Instant.get_date_time
@@ -28,6 +29,7 @@ ostk.physics.time.Instant
       ~Instant.julian_date
       ~Instant.modified_julian_date
       ~Instant.now
+      ~Instant.parse
       ~Instant.to_string
       ~Instant.undefined
    

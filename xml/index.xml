@@ -810,9 +810,11 @@
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1a0c95c97e9aa17863aecf8c9ebc821c0b" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kind="function"><name>Now</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1a3f84d0c2d0b140326d3b172b54e3ffff" kind="function"><name>J2000</name></member>
+    <member refid="classostk_1_1physics_1_1time_1_1_instant_1aa1fb260db41fbf1e96f0fe9f9f494139" kind="function"><name>GPSEpoch</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1afd5725574a02389b80fad4baff313c8a" kind="function"><name>DateTime</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1a8826d68093086f8b203a5be940ef34fb" kind="function"><name>JulianDate</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1af515c6d0547e40a337efb865a71c2558" kind="function"><name>ModifiedJulianDate</name></member>
+    <member refid="classostk_1_1physics_1_1time_1_1_instant_1a0d3cede504554df010a362932b85b2df" kind="function"><name>Parse</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1a0286aea82e0aa37a31a3d1c27687c387" kind="function"><name>Instant</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1a06a4a7f22f3edf9c0fef4eb032fda53f" kind="function"><name>inScale</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_instant_1a8ddcd2265cb2e7b80228715193139828" kind="function"><name>ConvertCountScale</name></member>
