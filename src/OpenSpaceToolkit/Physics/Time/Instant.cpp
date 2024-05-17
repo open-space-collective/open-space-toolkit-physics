@@ -413,6 +413,11 @@ Instant Instant::J2000()
     return Instant({0, true}, Scale::TT);
 }
 
+Instant Instant::GPSEpoch()
+{
+    return Instant::DateTime(time::DateTime(1980, 1, 6), Scale::UTC);
+}
+
 Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeScale)
 {
     using ostk::core::type::Int32;
@@ -540,6 +545,11 @@ Instant Instant::ModifiedJulianDate(const Real& aModifiedJulianDate, const Scale
     }
 
     return Instant::DateTime(DateTime::ModifiedJulianDate(aModifiedJulianDate), aTimeScale);
+}
+
+Instant Instant::Parse(const String& aString, const Scale& aTimeScale, const DateTime::Format& aFormat)
+{
+    return Instant::DateTime(DateTime::Parse(aString, aFormat), aTimeScale);
 }
 
 Instant::Instant(const Instant::Count& aCount, const Scale& aTimeScale)

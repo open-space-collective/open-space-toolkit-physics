@@ -196,6 +196,16 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             )doc"
         )
         .def_static(
+            "GPS_epoch",
+            &Instant::GPSEpoch,
+            R"doc(
+                Get the GPS epoch instant.
+
+                Returns:
+                    Instant: GPS epoch instant.
+            )doc"
+        )
+        .def_static(
             "date_time",
             &Instant::DateTime,
             R"doc(
@@ -229,6 +239,27 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
 
                 Args:
                     modified_julian_date (float): Modified Julian date.
+
+                Returns:
+                    Instant: Instant.
+            )doc"
+        )
+
+        .def_static(
+            "parse",
+            &Instant::Parse,
+            arg("string"),
+            arg_v("scale", DEFAULT_TIME_SCALE, "Scale.UTC"),
+            arg_v("date_time_format", DEFAULT_DATE_TIME_FORMAT, "Format.Standard"),
+
+            R"doc(
+                Create an instant from a string representation.
+
+                Args:
+                    string (str): String representation.
+                    scale (Time.Scale): Time scale.
+                    date_time_format (DateTime.Format): Date-time format.
+
 
                 Returns:
                     Instant: Instant.
