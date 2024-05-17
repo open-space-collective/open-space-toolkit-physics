@@ -23,28 +23,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
     duration_class
 
         .def(
-            init<int>(),
-            R"doc(
-                Constructor.
-
-            )doc"
-        )
-
-        .def(init(
-            [](const float& aCount)
-            {
-                return new Duration(aCount);
-            }
-        ))
-
-        .def(init(
-            [](const double& aCount)
-            {
-                return new Duration(aCount);
-            }
-        ))
-
-        .def(
             init(
                 [](const std::chrono::microseconds& aCount)
                 {
@@ -52,11 +30,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 }
             ),
             R"doc(
-            Constructor.
-
-            Args:
-                count (int): A nanosecond count.
-        )doc"
+                Constructor.
+                Args:
+                    count (int): A nanosecond count.
+            )doc"
         )
 
         .def(self == self)
