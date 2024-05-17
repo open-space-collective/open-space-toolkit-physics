@@ -21,6 +21,10 @@ def test_instant_J2000():
     assert Instant.J2000() is not None
 
 
+def test_instant_GPS_epock():
+    assert Instant.GPS_epoch() is not None
+
+
 def test_instant_datetime():
     assert (
         Instant.date_time(DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0), Scale.UTC) is not None
@@ -35,6 +39,18 @@ def test_instant_julian_date():
 
 def test_instant_modified_julian_date():
     assert Instant.modified_julian_date(58119.0, Scale.UTC) is not None
+
+
+def test_instant_parse():
+    assert Instant.parse("2024-01-01 00:01:02.000", Scale.UTC) is not None
+    assert (
+        Instant.parse("2024-01-01 00:01:02.000", Scale.UTC, DateTime.Format.Standard)
+        is not None
+    )
+    assert (
+        Instant.parse("2024-01-01T00:01:02.000", Scale.UTC, DateTime.Format.ISO8601)
+        is not None
+    )
 
 
 def test_instant_operators():

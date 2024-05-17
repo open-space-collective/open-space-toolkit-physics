@@ -314,6 +314,15 @@ class Instant
 
     static Instant J2000();
 
+    /// @brief              Constructs instant at GPS epoch
+    ///
+    ///                     The GPS epoch is equivalent to:
+    ///                     - January 6, 1980, 00:00:00 UTC (Coordinated Universal Time).
+    ///
+    /// @return             Instant at GPSEpoch epoch
+
+    static Instant GPSEpoch();
+
     /// @brief              Constructs instant from date-time
     ///
     /// @code
@@ -355,6 +364,22 @@ class Instant
     /// @return             Instant
 
     static Instant ModifiedJulianDate(const Real& aModifiedJulianDate, const Scale& aTimeScale);
+
+    /// @brief              Constructs an Instant from a string representation and Scale.
+    ///
+    /// @code
+    ///                     Instant instant = Instant::Parse("2018-01-02 12:34:56.123.456.789", Scale::UTC) ; //
+    ///                     2018-01-02
+    /// @endcode
+    ///
+    /// @param              [in] aString A string
+    /// @param              [in] aTimeScale A time scale
+    /// @param              [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @return             Instant
+
+    static Instant Parse(
+        const String& aString, const Scale& aTimeScale, const DateTime::Format& aFormat = DateTime::Format::Undefined
+    );
 
    private:
     class Count

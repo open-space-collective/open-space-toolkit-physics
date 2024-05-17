@@ -1700,6 +1700,21 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, J2000)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Instant, GPSEpoch)
+{
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+
+    {
+        EXPECT_NO_THROW(Instant::GPSEpoch());
+        EXPECT_TRUE(Instant::GPSEpoch().isDefined());
+
+        EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), Instant::GPSEpoch().getDateTime(Scale::GPST));
+        EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), Instant::GPSEpoch().getDateTime(Scale::UTC));
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 {
     using ostk::physics::time::Scale;
@@ -1817,6 +1832,308 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
         }
 
         EXPECT_ANY_THROW(Instant::ModifiedJulianDate(0.0, Scale::Undefined));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
+{
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+
+    // Undefined (automatic format detection)
+
+    {
+        // Standard
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02 12:34:56.123.456.789", Scale::UTC).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02T12:34:56.123456789+0000", Scale::UTC).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02 12:34:56.123.456.789+0000", Scale::UTC).getDateTime(Scale::UTC)
+        );
+
+        // ISO8601
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02T12:34:56.123456789Z", Scale::UTC).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02 12:34:56.123.456.789Z", Scale::UTC).getDateTime(Scale::UTC)
+        );
+
+        // STK
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2 Jan 2018 12:34:56.123456789", Scale::UTC).getDateTime(Scale::UTC)
+        );
+    }
+
+    // Standard
+
+    {
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56),
+            Instant::Parse("2018-01-02 12:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 100),
+            Instant::Parse("2018-01-02 12:34:56.1", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 120),
+            Instant::Parse("2018-01-02 12:34:56.12", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123),
+            Instant::Parse("2018-01-02 12:34:56.123", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 400),
+            Instant::Parse("2018-01-02 12:34:56.123.4", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 450),
+            Instant::Parse("2018-01-02 12:34:56.123.45", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456),
+            Instant::Parse("2018-01-02 12:34:56.123.456", Scale::UTC, DateTime::Format::Standard)
+                .getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 700),
+            Instant::Parse("2018-01-02 12:34:56.123.456.7", Scale::UTC, DateTime::Format::Standard)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 780),
+            Instant::Parse("2018-01-02 12:34:56.123.456.78", Scale::UTC, DateTime::Format::Standard)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02 12:34:56.123.456.789", Scale::UTC, DateTime::Format::Standard)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02 12:34:56.123.456.789+0000", Scale::UTC, DateTime::Format::Standard)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02 12:34:56.123.456.789Z", Scale::UTC, DateTime::Format::Standard)
+                .getDateTime(Scale::UTC)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(
+            Instant::Parse("1400-01-01 00:00:00", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("9999-12-31 23:59:59", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(Instant::Parse("", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("abc", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02 01", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 1:34", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 1:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 12:3:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 12:34:5", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-00-01 24:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-13-01 24:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-00 24:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-32 24:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 24:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 12:60:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 12:34:61", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 12:34:61.", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("2018-01-02 -12:34:56", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("1399-12-31 23:59:59", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+        EXPECT_ANY_THROW(
+            Instant::Parse("10000-01-01 00:00:00", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
+    }
+
+    // ISO 8601
+
+    {
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56),
+            Instant::Parse("2018-01-02T12:34:56", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 100),
+            Instant::Parse("2018-01-02T12:34:56.1", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 120),
+            Instant::Parse("2018-01-02T12:34:56.12", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123),
+            Instant::Parse("2018-01-02T12:34:56.123", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 400),
+            Instant::Parse("2018-01-02T12:34:56.1234", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 450),
+            Instant::Parse("2018-01-02T12:34:56.12345", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456),
+            Instant::Parse("2018-01-02T12:34:56.123456", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 700),
+            Instant::Parse("2018-01-02T12:34:56.1234567", Scale::UTC, DateTime::Format::ISO8601).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 780),
+            Instant::Parse("2018-01-02T12:34:56.12345678", Scale::UTC, DateTime::Format::ISO8601)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, DateTime::Format::ISO8601)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02T12:34:56.123456789+0000", Scale::UTC, DateTime::Format::ISO8601)
+                .getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2018-01-02T12:34:56.123456789Z", Scale::UTC, DateTime::Format::ISO8601)
+                .getDateTime(Scale::UTC)
+        );
+    }
+
+    // STK
+
+    {
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56),
+            Instant::Parse("2 Jan 2018 12:34:56", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 100),
+            Instant::Parse("2 Jan 2018 12:34:56.1", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 120),
+            Instant::Parse("2 Jan 2018 12:34:56.12", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123),
+            Instant::Parse("2 Jan 2018 12:34:56.123", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 400),
+            Instant::Parse("2 Jan 2018 12:34:56.1234", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 450),
+            Instant::Parse("2 Jan 2018 12:34:56.12345", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456),
+            Instant::Parse("2 Jan 2018 12:34:56.123456", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 700),
+            Instant::Parse("2 Jan 2018 12:34:56.1234567", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 780),
+            Instant::Parse("2 Jan 2018 12:34:56.12345678", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+        EXPECT_EQ(
+            DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789),
+            Instant::Parse("2 Jan 2018 12:34:56.123456789", Scale::UTC, DateTime::Format::STK).getDateTime(Scale::UTC)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Instant::Parse("", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("abc", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T01", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T1:34", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T1:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:3:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:5", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-00-01T24:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-13-01T24:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-00T24:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-32T24:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T24:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:60:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:61", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:61.", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T-12:34:56", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("1399-12-31T23:59:59", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("10000-01-01T00:00:00", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:56.123.456", Scale::UTC).getDateTime(Scale::UTC));
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:56.123.456.789", Scale::UTC).getDateTime(Scale::UTC));
     }
 }
 
