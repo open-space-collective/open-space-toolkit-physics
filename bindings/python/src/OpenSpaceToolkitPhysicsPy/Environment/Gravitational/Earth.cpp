@@ -74,6 +74,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             )
 
             .def(
+                init<const Earth::Type&, const Integer&, const Integer&>(),
+                arg("type"),
+                arg("gravitational_model_degree"),
+                arg("gravitational_model_order"),
+                R"doc(
+                    Construct an Earth gravitational model.
+
+                    Args:
+                        type (Earth.Type): Earth model type.
+                        gravitational_model_degree (int): Degree of the gravitational model.
+                        gravitational_model_order (int): Order of the gravitational model.
+                )doc"
+            )
+
+            .def(
                 "is_defined",
                 &Earth::isDefined,
                 R"doc(

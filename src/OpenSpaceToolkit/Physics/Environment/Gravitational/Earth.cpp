@@ -409,6 +409,11 @@ Earth::Earth(
 {
 }
 
+Earth::Earth(const Earth::Type& aType, const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
+    : Earth(aType, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder)
+{
+}
+
 Earth::Earth(const Earth& anEarthGravitationalModel)
     : Model(anEarthGravitationalModel),
       implUPtr_(
