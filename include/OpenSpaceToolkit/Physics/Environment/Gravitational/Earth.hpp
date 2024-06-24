@@ -62,7 +62,7 @@ class Earth : public Model
         EGM2008       ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
     };
 
-    /// @brief              Constructor with max degree and order variables
+    /// @brief              Constructor with directory specification and max degree and order variables
     ///
     /// @param              [in] aType A gravitational model type
     /// @param              [in] (optional) aDataDirectory A gravitational model data directory
@@ -75,6 +75,14 @@ class Earth : public Model
         const Integer& aGravityModelDegree = Integer::Undefined(),
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
+
+    /// @brief              Constructor with max degree and order variables
+    ///
+    /// @param              [in] aType A gravitational model type
+    /// @param              [in] aGravityModelDegree A gravitational model degree
+    /// @param              [in] aGravityModelOrder A gravitational model order
+
+    Earth(const Earth::Type& aType, const Integer& aGravityModelDegree, const Integer& aGravityModelOrder);
 
     /// @brief              Copy constructor
     ///

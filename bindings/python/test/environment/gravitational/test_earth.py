@@ -55,6 +55,14 @@ class TestEarth:
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
         assert isinstance(earth_gravitational_model, GravitationalModel)
 
+    def test_constructor_success_without_directory_with_degree_and_order(self):
+        earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.EGM2008, 2, 2
+        )
+
+        assert isinstance(earth_gravitational_model, EarthGravitationalModel)
+        assert isinstance(earth_gravitational_model, GravitationalModel)
+
     def test_get_type_success(self, earth_gravitational_model: EarthGravitationalModel):
         assert (
             earth_gravitational_model.get_type() == EarthGravitationalModel.Type.EGM2008

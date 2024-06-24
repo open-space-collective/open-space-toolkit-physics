@@ -156,6 +156,27 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
             EarthGravitationalModel::Type::EGM2008, Directory::Path(Path::Parse("/does/not/exist"))
         ));
     }
+
+    // Test succinct constructor without directory
+
+    {
+        EarthGravitationalModelManager::Get().setLocalRepository(
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+        );
+
+        EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
+
+        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, 3000, 3000)
+        );
+
+        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, 3000, 3000));
+        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM84, 3000, 3000));
+        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, 3000, 3000));
+        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008, 3000, 3000));
+
+        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
+        ));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
