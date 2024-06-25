@@ -517,6 +517,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a75d21e693bb671527098207bc9e4f3ae" kind="variable"><name>gravityConstant</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a28127113b6373660499b3f2c1f800e60" kind="variable"><name>implUPtr_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a65816e63e9212691bb689d01bffb6755" kind="function"><name>Earth</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a2243f0148e76e465394e70c2551e50fd" kind="function"><name>Earth</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a821f98411c65f59e6a297c6bcc3de291" kind="function"><name>Earth</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1accc913e0c0a5c7c8348c13217c5de4f3" kind="function"><name>operator=</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a0bd1037605f6fb37fb6babc7bb8ae745" kind="function"><name>~Earth</name></member>
