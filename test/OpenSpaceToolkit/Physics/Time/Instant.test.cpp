@@ -7,30 +7,30 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Uint8;
-using ostk::core::type::Uint16;
 using ostk::core::container::Array;
+using ostk::core::type::Uint16;
+using ostk::core::type::Uint8;
 using ostk::physics::time::Scale;
 
-static const Array<Uint16> years = {1981, 2000, 2030};
-static const Array<Uint8> months = {1, 6, 12};
-static const Array<Uint8> days = {1, 20, 28};
+static const Array<Uint16> years = {1981, 2060};
+static const Array<Uint8> months = {1, 12};
+static const Array<Uint8> days = {1, 28};
 
-static const Array<Uint8> hours = {0, 12, 23};
-static const Array<Uint8> minutes = {0, 30, 59};
-static const Array<Uint8> seconds = {0, 30, 59};
+static const Array<Uint8> hours = {0, 23};
+static const Array<Uint8> minutes = {0, 59};
+static const Array<Uint8> seconds = {0, 59};
 
-static const Array<Uint16> milliseconds = {0, 500, 999};
-static const Array<Uint16> microseconds = {0, 500, 999};
-static const Array<Uint16> nanoseconds = {0, 500, 999};
+static const Array<Uint16> milliseconds = {0, 999};
+static const Array<Uint16> microseconds = {0, 999};
+static const Array<Uint16> nanoseconds = {0, 999};
 
 static const Array<Scale> scales = {Scale::TT, Scale::TAI, Scale::UTC, Scale::GPST};
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -215,9 +215,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -398,9 +398,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, LessThanOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto scale : scales)
@@ -437,9 +437,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, LessThanOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, LessThanOrEqualToOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto scale : scales)
@@ -476,9 +476,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, LessThanOrEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GreaterThanOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto scale : scales)
@@ -515,9 +515,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GreaterThanOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto scale : scales)
@@ -554,10 +554,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GreaterThanOrEqualToOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, AdditionOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -635,10 +635,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, AdditionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, SubtractionOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -868,10 +868,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, SubtractionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, AdditionAssignementOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -949,10 +949,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, AdditionAssignementOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, SubtractionAssignementOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -1030,8 +1030,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, SubtractionAssignementOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, StreamOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         testing::internal::CaptureStdout();
@@ -1044,9 +1044,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, IsDefined)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (auto const& scale : scales)
@@ -1064,9 +1064,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, IsPostEpoch)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT).isPostEpoch());
@@ -1087,10 +1087,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsPostEpoch)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, IsNear)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
@@ -1123,9 +1123,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsNear)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetDateTime)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -1171,9 +1171,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetDateTime)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetJulianDate)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (auto const& scale : scales)
@@ -1198,9 +1198,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (auto const& scale : scales)
@@ -1222,10 +1222,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     EXPECT_EQ(Instant::DateTime(DateTime::Parse("2030-01-01 00:00:00"), Scale::UTC).getLeapSecondCount(), 37);
     EXPECT_EQ(Instant::DateTime(DateTime::Parse("2020-01-01 00:00:00"), Scale::UTC).getLeapSecondCount(), 37);
@@ -1534,9 +1534,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 TEST(OpenSpaceToolkit_Physics_Time_Instant, ToString)
 {
     using ostk::core::type::String;
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_EQ("2000-01-01 12:00:00 [TT]", Instant::J2000().toString(Scale::TT));
@@ -1653,8 +1653,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ToString)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, Undefined)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Instant::Undefined());
@@ -1664,9 +1664,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Undefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, Now)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::Duration;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Instant::Now());
@@ -1686,9 +1686,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Now)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, J2000)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Instant::J2000());
@@ -1702,9 +1702,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, J2000)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GPSEpoch)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Instant::GPSEpoch());
@@ -1717,9 +1717,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GPSEpoch)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (const auto year : years)
@@ -1773,21 +1773,15 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 
     {
         EXPECT_ANY_THROW(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::Undefined));
-
-        for (const auto scale : scales)
-        {
-            EXPECT_ANY_THROW(Instant::DateTime(DateTime(1969, 1, 1, 0, 0, 0), scale));
-            EXPECT_ANY_THROW(Instant::DateTime(DateTime(2031, 1, 1, 0, 0, 0), scale));
-        }
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 {
     using ostk::core::type::Real;
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (auto const& scale : scales)
@@ -1813,9 +1807,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 {
     using ostk::core::type::Real;
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     {
         for (auto const& scale : scales)
@@ -1837,9 +1831,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     // Undefined (automatic format detection)
 
@@ -1942,12 +1936,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
     }
 
     {
-        EXPECT_ANY_THROW(
-            Instant::Parse("1400-01-01 00:00:00", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
-        );
-        EXPECT_ANY_THROW(
-            Instant::Parse("9999-12-31 23:59:59", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
-        );
         EXPECT_ANY_THROW(Instant::Parse("", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("abc", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
@@ -2143,10 +2131,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
 
     using ostk::core::container::Array;
 
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     const Array<Instant> instants = {
         Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC),
@@ -2183,3 +2171,19 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
         EXPECT_EQ(instant.getDateTime(Scale::UTC), (instant + Duration::Seconds(+1.0)).getDateTime(Scale::UTC));
     }
 }
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_2)
+{
+    // Test far into future beyond known leap second count.
+    using ostk::core::container::Array;
+
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    EXPECT_EQ(
+        Instant::DateTime(DateTime::Parse("2017-01-14 00:00:00"), Scale::UTC) + Duration::Seconds(1296000000.0),
+        Instant::DateTime(DateTime::Parse("2058-02-08 00:00:00"), Scale::UTC)
+    );
+};

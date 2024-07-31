@@ -432,10 +432,10 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
         throw ostk::core::error::runtime::Wrong("Scale");
     }
 
-    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2030))
+    if ((aDateTime.accessDate().getYear() < 1970))
     {
         throw ostk::core::error::RuntimeError(
-            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030
+            "DateTime year {} less than 1970 is not supported.", aDateTime.accessDate().getYear()
         );
     }
 
