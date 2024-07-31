@@ -50,7 +50,9 @@ static void handleException()
     reset_c();
     clpool_c();
 
-    throw ostk::core::error::RuntimeError("SPICE exception: [{}] [{}].", shortMessage, longMessage);
+    throw ostk::core::error::RuntimeError(
+        "SPICE exception: [{}] [{}].", std::string(shortMessage), std::string(longMessage)
+    );
 }
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Engine& anEngine)
@@ -259,10 +261,10 @@ bool Engine::isKernelLoaded_(const Kernel& aKernel) const
 Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant)
     const
 {
-    using ostk::mathematics::object::Vector3d;
-    using ostk::mathematics::object::Matrix3d;
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Matrix3d;
+    using ostk::mathematics::object::Vector3d;
 
     using ostk::physics::time::Scale;
 
@@ -495,14 +497,14 @@ void Engine::unloadKernel_(const Kernel& aKernel)
 
 void Engine::updateEarthKernelCache()
 {
-    using ostk::core::type::Uint8;
-    using ostk::core::type::Uint16;
     using ostk::core::type::Integer;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Uint8;
 
-    using ostk::physics::time::Scale;
     using ostk::physics::time::Date;
-    using ostk::physics::time::Time;
     using ostk::physics::time::DateTime;
+    using ostk::physics::time::Scale;
+    using ostk::physics::time::Time;
 
     earthKernelCache_.clear();
     earthKernelCacheIndex_ = 0;

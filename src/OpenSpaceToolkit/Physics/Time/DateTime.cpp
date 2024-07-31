@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>

@@ -317,6 +317,8 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
         }
     }
 
+    std::cout << "dataPath: " << dataPath << std::endl;
+
     const Integer gravityModelDegree = aGravityModelDegree.isDefined() ? aGravityModelDegree : Integer(-1);
     const Integer gravityModelOrder = aGravityModelOrder.isDefined() ? aGravityModelOrder : Integer(-1);
 
