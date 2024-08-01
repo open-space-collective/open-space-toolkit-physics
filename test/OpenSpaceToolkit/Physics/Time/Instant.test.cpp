@@ -1773,6 +1773,11 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 
     {
         EXPECT_ANY_THROW(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::Undefined));
+
+        for (const auto scale : scales)
+        {
+            EXPECT_ANY_THROW(Instant::DateTime(DateTime(1969, 1, 1, 0, 0, 0), scale));
+        }
     }
 }
 
@@ -1936,6 +1941,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
     }
 
     {
+        EXPECT_ANY_THROW(
+            Instant::Parse("1400-01-01 00:00:00", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        );
         EXPECT_ANY_THROW(Instant::Parse("", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("abc", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
