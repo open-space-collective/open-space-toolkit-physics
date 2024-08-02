@@ -433,10 +433,10 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
     }
 
     // Limit the year based on the max number of nanoseconds we can store with a UInt64
-    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2500))
+    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2554))
     {
         throw ostk::core::error::RuntimeError(
-            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2500
+            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2554
         );
     }
 
