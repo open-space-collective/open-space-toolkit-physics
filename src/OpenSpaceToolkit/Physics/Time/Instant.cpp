@@ -432,6 +432,13 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
         throw ostk::core::error::runtime::Wrong("Scale");
     }
 
+    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2030))
+    {
+        throw ostk::core::error::RuntimeError(
+            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030
+        );
+    }
+
     // auto getTimePointString =
     // [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
     // {

@@ -174,6 +174,10 @@ intersphinx_mapping = {
         "https://open-space-collective.github.io/open-space-toolkit-core/_build/html/",
         None,
     ),
+    "ostk.io": (
+        "https://open-space-collective.github.io/open-space-toolkit-io/_build/html/",
+        None,
+    ),
     "ostk.mathematics": (
         "https://open-space-collective.github.io/open-space-toolkit-mathematics/_build/html/",
         None,
