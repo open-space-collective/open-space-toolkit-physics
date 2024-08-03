@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" line="59" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="59" bodyend="89"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" line="61" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="61" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a8622f39865ce8d6d88d9628bae351198" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>

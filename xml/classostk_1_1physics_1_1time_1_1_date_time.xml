@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="17" bodyend="21"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="19" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a85caea4e89f9d0436df65f1368f95738" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="80" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="23" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="80" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="25" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a8ffda673aa698ebe33cd4c4d4a041ef6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="39" bodyend="47"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1ae96358ed48be6bb4325d3f3408a8ab5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -320,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="114" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="49" bodyend="57"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="114" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="51" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a2fd2deab390516483e1757c45ae81282" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -339,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="136" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="91" bodyend="94"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="136" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="93" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a27b1ada0ea5f28fe6dcd131cdd4e2a5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> &amp;</type>
@@ -356,7 +356,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="142" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="96" bodyend="104"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="142" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="98" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a263c05ca06cee6b535e3da6783184bee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> &amp;</type>
@@ -373,7 +373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="148" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="126" bodyend="134"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="148" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="128" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1aafd979e2eb7095ee7bc8bb3e9a1b52ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
@@ -390,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="154" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="116" bodyend="124"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="154" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="118" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1ae1460f38a9e41c5c7e42874de571d9f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref></type>
@@ -407,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="160" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="106" bodyend="114"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="160" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="108" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a067835c455394e18072d654455ac89cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -426,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="170" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="136" bodyend="166"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="170" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="138" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a8f2ca8f9d2a8e1828c8f92827e1803ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -445,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="168" bodyend="176"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="170" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a693b5b08de1352b5c6120290629bcb26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -472,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="193" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="178" bodyend="202"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="193" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="180" bodyend="204"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -518,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="126" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="59" bodyend="89"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="126" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="61" bodyend="91"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -540,7 +540,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="204" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="204" bodyend="207"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="204" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="206" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a819a122626c39c4cc99429f5ae9fa749" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -558,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="212" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="209" bodyend="212"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="212" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a034452967c2b5a89368d33a61dec2606" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -576,7 +576,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="220" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="214" bodyend="217"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="220" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="216" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a3f3b2cb5f50eb5fe0df9840c2563f8f7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -594,7 +594,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="228" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="219" bodyend="222"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="228" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="221" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a21b33a253f185060eb898f6d7d760706" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -612,7 +612,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="236" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="224" bodyend="227"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="236" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="226" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a12ae2e3669cf32a915079228979d67ae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -634,7 +634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="245" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="229" bodyend="378"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="245" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="231" bodyend="380"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a9584452e9ad5f915c5a540a070910556" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -656,7 +656,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="254" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="380" bodyend="393"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="254" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="382" bodyend="395"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a63137170ace92a8525af219e03cba573" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">DateTime</ref></type>
@@ -701,7 +701,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="266" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="395" bodyend="493"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="266" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="397" bodyend="495"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -720,7 +720,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="272" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="495" bodyend="498"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="272" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="497" bodyend="500"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_time_1a319a5da1b30f2e569298e01da74d7109" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -737,7 +737,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="274" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="500" bodyend="503"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/DateTime.hpp" line="274" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="502" bodyend="505"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
