@@ -172,7 +172,7 @@ void Manager::fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) 
 
     try
     {
-        for (const auto url : remoteUrls)
+        for (const auto& url : remoteUrls)
         {
             remoteDataUrl = url;
 

@@ -170,6 +170,18 @@ man_pages = [
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
+    "ostk.core": (
+        "https://open-space-collective.github.io/open-space-toolkit-core/_build/html/",
+        None,
+    ),
+    "ostk.io": (
+        "https://open-space-collective.github.io/open-space-toolkit-io/_build/html/",
+        None,
+    ),
+    "ostk.mathematics": (
+        "https://open-space-collective.github.io/open-space-toolkit-mathematics/_build/html/",
+        None,
+    ),
 }
 
 

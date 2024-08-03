@@ -15,12 +15,12 @@ namespace physics
 {
 namespace data
 {
-using ostk::core::container::Object;
 using ostk::core::container::Dictionary;
+using ostk::core::container::Object;
 
 using ostk::physics::data::utilities::getFileModifiedInstant;
-using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest)
@@ -72,7 +72,7 @@ Array<URL> Manifest::getRemoteDataUrls(const URL& aBaseUrl, const String& aDataN
             const Array<Object> filenames =
                 filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.accessArray();
 
-            for (const auto filename : filenames)
+            for (const auto& filename : filenames)
             {
                 const URL url =
                     aBaseUrl + "/" + dictionaryIt.accessValue()["path"].accessString() + "/" + filename.accessString();
@@ -99,7 +99,7 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aData
             const Array<Object> filenames =
                 filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.accessArray();
 
-            for (const auto filename : filenames)
+            for (const auto& filename : filenames)
             {
                 const URL url =
                     aBaseUrl + "/" + dictionaryIt.accessValue()["path"].accessString() + "/" + filename.accessString();
