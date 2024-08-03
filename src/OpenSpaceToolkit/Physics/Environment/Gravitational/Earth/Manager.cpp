@@ -144,7 +144,7 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
 
     try
     {
-        for (const auto url : remoteUrls)
+        for (const auto& url : remoteUrls)
         {
             remoteDataUrl = url;
 
