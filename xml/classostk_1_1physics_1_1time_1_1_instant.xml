@@ -805,7 +805,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="337" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="421" bodyend="518"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="337" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="421" bodyend="502"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a8826d68093086f8b203a5be940ef34fb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -833,7 +833,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="351" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="520" bodyend="533"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="351" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="504" bodyend="517"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1af515c6d0547e40a337efb865a71c2558" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -862,7 +862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="366" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="535" bodyend="548"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="366" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="519" bodyend="532"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a0d3cede504554df010a362932b85b2df" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -920,7 +920,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="380" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="550" bodyend="553"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="380" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="534" bodyend="537"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -943,7 +943,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="417" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="555" bodyend="559"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="417" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="539" bodyend="543"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a06a4a7f22f3edf9c0fef4eb032fda53f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -960,7 +960,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="419" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="561" bodyend="564"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="419" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="545" bodyend="548"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -987,7 +987,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="421" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="566" bodyend="694"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="421" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="550" bodyend="678"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a0cd7650fbf7047587d0e7827715d48e5" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1004,7 +1004,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="425" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="696" bodyend="699"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="425" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="680" bodyend="683"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a096f256ad914f5cd04d2a02e779845d8" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1021,7 +1021,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="427" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="701" bodyend="704"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="427" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="685" bodyend="688"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1abc3e3061167797c270cb9c9d68ab4aa9" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1038,7 +1038,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="429" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="706" bodyend="709"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="429" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="690" bodyend="693"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a4dedbd7670ba3c89c173c8df412f312d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1055,7 +1055,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="431" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="711" bodyend="714"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="431" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="695" bodyend="698"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acfed140f8597a04ffc5a65a9ef29d4cd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1072,7 +1072,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="433" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="716" bodyend="719"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="433" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="700" bodyend="703"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a76915db988ab68438685266291f1cf07" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1089,7 +1089,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="435" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="721" bodyend="724"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="435" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="705" bodyend="708"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1aeb7a95b7a2ed8b22aef90f2e6e60992c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1106,7 +1106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="437" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="726" bodyend="729"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="437" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="710" bodyend="713"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1ae478cbfc3bcbe425027e878c3d047f5f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1123,7 +1123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="439" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="731" bodyend="734"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="439" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="715" bodyend="718"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acfe4d11e901f97f44d18020e9f6cbbd0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1140,7 +1140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="441" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="736" bodyend="836"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="441" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="720" bodyend="820"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acaa941ef4df4715cc03fdf1bbb911bde" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1157,7 +1157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="443" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="838" bodyend="940"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="443" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="822" bodyend="924"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1adac5dedf407dcb8e44acf0f73bbe5ef5" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1174,7 +1174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="445" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="942" bodyend="949"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="445" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="926" bodyend="933"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1ada74d6e6167d7a7a4f90105fa71ea291" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1191,7 +1191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="447" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="951" bodyend="958"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="447" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="935" bodyend="942"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
