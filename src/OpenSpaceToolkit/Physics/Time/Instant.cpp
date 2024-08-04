@@ -432,26 +432,13 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
         throw ostk::core::error::runtime::Wrong("Scale");
     }
 
-    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2030))
+    // Limit the year based on the max number of nanoseconds we can store with a UInt64
+    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2554))
     {
         throw ostk::core::error::RuntimeError(
-            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2030
+            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2554
         );
     }
-
-    // auto getTimePointString =
-    // [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
-    // {
-
-    //     const std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
-
-    //     std::stringstream stringStream ;
-
-    //     stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
-
-    //     return stringStream.str() ;
-
-    // } ;
 
     // Epoch
 
@@ -504,9 +491,6 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
                           aDateTime.accessTime().getMicrosecond() * 1000 - aDateTime.accessTime().getNanosecond();
         postEpoch = false;
     }
-
-    // const Int64 nanosecondCount = nanoseconds.count() + aDateTime.accessTime().getMillisecond() * 1000000 +
-    // aDateTime.accessTime().getMicrosecond() * 1000 + aDateTime.accessTime().getNanosecond() ;
 
     // Output
 

@@ -1777,7 +1777,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
         for (const auto scale : scales)
         {
             EXPECT_ANY_THROW(Instant::DateTime(DateTime(1969, 1, 1, 0, 0, 0), scale));
-            EXPECT_ANY_THROW(Instant::DateTime(DateTime(2031, 1, 1, 0, 0, 0), scale));
+            EXPECT_ANY_THROW(Instant::DateTime(DateTime(2555, 1, 1, 0, 0, 0), scale));
         }
     }
 }
