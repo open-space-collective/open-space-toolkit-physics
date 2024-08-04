@@ -105,7 +105,7 @@ Axes Axes::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInsta
 {
     using ostk::physics::coordinate::Transform;
 
-    if ((aFrameSPtr == nullptr) && (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
