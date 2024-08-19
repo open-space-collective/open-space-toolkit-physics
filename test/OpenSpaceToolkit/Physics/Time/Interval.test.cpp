@@ -334,7 +334,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, ToString)
     }
 
     {
-        EXPECT_ANY_THROW(Interval::Undefined().toString(Scale::TT));
+        EXPECT_EQ(
+            "Undefined",
+            Interval::Undefined().toString(Scale::TT)
+        );
     }
 }
 
