@@ -338,7 +338,7 @@ String Instant::toString(const Scale& aTimeScale, const DateTime::Format& aDateT
 {
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Instant");
+        return String("Undefined");
     }
 
     if ((aDateTimeFormat == DateTime::Format::ISO8601) && (aTimeScale == Scale::UTC))

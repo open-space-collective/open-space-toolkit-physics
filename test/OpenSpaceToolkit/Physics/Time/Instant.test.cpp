@@ -1642,7 +1642,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ToString)
     {
         for (auto const& scale : scales)
         {
-            EXPECT_ANY_THROW(Instant::Undefined().toString(scale));
+            EXPECT_EQ(
+                "Undefined",
+                Instant::Undefined().toString(scale)
+            );
         }
     }
 

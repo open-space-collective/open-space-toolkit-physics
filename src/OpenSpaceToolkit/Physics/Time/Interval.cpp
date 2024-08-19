@@ -104,7 +104,7 @@ String Interval::toString(const Scale& aTimeScale) const
 
     if (!this->isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Interval");
+        return String("Undefined");
     }
 
     switch (this->getType())
