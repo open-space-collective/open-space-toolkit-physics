@@ -6,10 +6,10 @@
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Constructor)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Interval(
@@ -64,7 +64,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Constructor)
         ));
         EXPECT_NO_THROW(Interval(
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
             Interval::Type::Undefined
         ));
     }
@@ -80,10 +80,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, StreamOperator)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         testing::internal::CaptureStdout();
@@ -103,10 +103,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, IsDefined)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_TRUE(Interval(
@@ -117,7 +117,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, IsDefined)
                         .isDefined());
         EXPECT_TRUE(Interval(
                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
                         Interval::Type::Open
         )
                         .isDefined());
@@ -161,10 +161,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, IsDefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessStart)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -183,10 +183,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessStart)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessEnd)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -205,10 +205,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessEnd)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -227,10 +227,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetEnd)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -249,11 +249,11 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetEnd)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetDuration)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -272,10 +272,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetDuration)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetCenter)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -306,10 +306,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetCenter)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, ToString)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
@@ -334,21 +334,18 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, ToString)
     }
 
     {
-        EXPECT_EQ(
-            "Undefined",
-            Interval::Undefined().toString(Scale::TT)
-        );
+        EXPECT_EQ("Undefined", Interval::Undefined().toString(Scale::TT));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
 {
     using ostk::core::container::Array;
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     // Positive step
 
@@ -573,11 +570,11 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Undefined)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Closed)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Interval::Closed(
@@ -606,11 +603,11 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Closed)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Centered)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
     using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Interval::Centered(
@@ -689,10 +686,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Centered)
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Parse)
 {
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Interval;
+    using ostk::physics::time::Scale;
 
     {
         EXPECT_NO_THROW(Interval::Parse("[2018-01-01 00:00:00 - 2018-01-02 00:00:00] [TT]"));
