@@ -182,17 +182,13 @@ class TestInterval:
 
     def test_interval_is_degenerate(self, interval: Interval):
         assert interval.is_degenerate() is False
-        assert Interval(Instant.J2000(), Instant.J2000()).is_degenerate()
-
-    def test_interval_is_degenerate(self, interval: Interval):
-        assert interval.is_degenerate() is False
         assert Interval.closed(Instant.J2000(), Instant.J2000()).is_degenerate()
-        assert Interval(
-            Instant.J2000(), Instant.J2000(), Interval.Type.Open
-        ).is_degenerate()
-        assert Interval.centered(
-            Instant.J2000(), Duration.minutes(0.0), Interval.Type.Open
-        ).is_degenerate()
+
+        with pytest.raises(Exception):
+            Interval(Instant.J2000(), Instant.J2000(), Interval.Type.Open).is_degenerate()
+            Interval.centered(
+                Instant.J2000(), Duration.minutes(0.0), Interval.Type.Open
+            ).is_degenerate()
 
     def test_interval_intersects(
         self,
