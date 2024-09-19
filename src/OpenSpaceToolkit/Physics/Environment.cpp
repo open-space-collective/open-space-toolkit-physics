@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <mutex>
+#include <shared_mutex>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>

@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment__
 #define __OpenSpaceToolkit_Physics_Environment__
 
-#include <shared_mutex>
-
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
