@@ -47,7 +47,7 @@ class Environment
     /// @param              [in] anInstant An instant. Defaults to J2000 epoch.
 
     Environment(
-        const Shared<Object>& aCentralBody,
+        const Shared<Celestial>& aCentralCelestialObject,
         const Array<Shared<Object>>& anObjectArray,
         const Instant& anInstant = Instant::J2000()
     );
@@ -90,7 +90,7 @@ class Environment
     ///
     /// @return             True if environment has central celestial
 
-    bool hasCentralCelestial() const;
+    bool hasCentralCelestialObject() const;
 
     /// @brief              Returns true if a given geometry intersects any of the environment objects
     ///
@@ -127,7 +127,7 @@ class Environment
     ///
     /// @return             Shared pointer to central celestial
 
-    Shared<const Celestial> accessCentralCelestial() const;
+    Shared<const Celestial> accessCentralCelestialObject() const;
 
     /// @brief              Get instant
     ///
@@ -203,7 +203,7 @@ class Environment
     ///
     /// @return             Shared pointer to the singleton instance
 
-    static Shared<Environment> AccessInstance();
+    static Shared<Environment> AccessGlobalInstance();
 
     /// @brief              Set the singleton instance of the environment
     ///
