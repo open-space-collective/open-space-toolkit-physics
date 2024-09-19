@@ -51,6 +51,11 @@ class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
         this->lla_ = LLA(latitude_, longitude_, altitude_);
     }
 
+    void TearDown() override
+    {
+        Environment::ResetGlobalInstance();
+    }
+
     const Angle latitude_ = Angle::Degrees(10.0);
     const Angle longitude_ = Angle::Degrees(20.0);
     const Length altitude_ = Length::Meters(30.0);
@@ -246,9 +251,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Sp
     }
 
     {
-        Environment::SetInstance(std::make_shared<Environment>(Environment::Default()));
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(llaNorthPole.calculateDistanceTo(llaSouthPole), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
         EXPECT_NO_THROW(llaNorthPole.calculateDistanceTo(llaSouthPole));
     }
 }
@@ -299,6 +308,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calcluateAzimuthTo_WGS
         EXPECT_NEAR(azimuths.first.inDegrees(), -108.0281189033601, 1e-12);
         EXPECT_NEAR(azimuths.second.inDegrees(), -146.58082723289277, 1e-12);
     }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(llaNorthPole.calculateAzimuthTo(llaSouthPole), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(llaNorthPole.calculateAzimuthTo(llaSouthPole));
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateTo_WGS84)
@@ -343,6 +363,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateT
 
         EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(23.21714909968633));
         EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(-30.281783237740761));
+    }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(llaNorthPole.calculateIntermediateTo(llaSouthPole, 0.5), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(llaNorthPole.calculateIntermediateTo(llaSouthPole, 0.5));
     }
 }
 
@@ -399,6 +430,18 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateForward_WGS84
         EXPECT_NEAR(llaExpected.getLatitude().inDegrees(), llaCalculated.getLatitude().inDegrees(), 1e-13);
         EXPECT_NEAR(llaExpected.getLongitude().inDegrees(), llaCalculated.getLongitude().inDegrees(), 1e-13);
     }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const Angle azimuth = Angle::Degrees(-108.0281189033601);
+        const Length distance = Length::Meters(11419275.689591393);
+
+        EXPECT_THROW(llaNorthPole.calculateForward(azimuth, distance), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(llaNorthPole.calculateForward(azimuth, distance));
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WGS84)
@@ -429,6 +472,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WG
             EXPECT_NEAR(lla.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
             EXPECT_NEAR(lla.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
         }
+    }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(llaNorthPole.calculateLinspaceTo(llaSouthPole, 4), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(llaNorthPole.calculateLinspaceTo(llaSouthPole, 4));
     }
 }
 
@@ -523,6 +577,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
     {
         EXPECT_ANY_THROW(LLA::Undefined().toCartesian(Length::Undefined(), Real::Undefined()));
+    }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        EXPECT_THROW(llaNorthPole.toCartesian(), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(llaNorthPole.toCartesian());
     }
 }
 
@@ -652,6 +715,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
     {
         EXPECT_ANY_THROW(LLA::Cartesian(Vector3d::Undefined(), Length::Undefined(), Real::Undefined()));
     }
+
+    {
+        const Vector3d vector = {-1249620.147251007846, -6829112.599242427386, 11977.670754862545};
+
+        EXPECT_THROW(LLA::Cartesian(vector), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(LLA::Cartesian(vector));
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_Spherical)
@@ -713,6 +786,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_Spheri
 
         EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
         EXPECT_EQ(distanceSemiPolesOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+    }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(LLA::DistanceBetween(llaNorthPole, llaSouthPole), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(LLA::DistanceBetween(llaNorthPole, llaSouthPole));
     }
 }
 
@@ -840,6 +924,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, AzimuthBetween_WGS84)
         EXPECT_NEAR(azimuths.first.inDegrees(), -108.0281189033601, 1e-12);
         EXPECT_NEAR(azimuths.second.inDegrees(), -146.58082723289277, 1e-12);
     }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(LLA::AzimuthBetween(llaNorthPole, llaSouthPole), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(LLA::AzimuthBetween(llaNorthPole, llaSouthPole));
+    }
 }
 
 // values compared against pyproj
@@ -885,6 +980,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateBetween_WG
 
         EXPECT_EQ(llaIntermediate.getLatitude(), Angle::Degrees(23.21714909968633));
         EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(-30.281783237740761));
+    }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+        EXPECT_THROW(LLA::IntermediateBetween(llaNorthPole, llaSouthPole, 0.5), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(LLA::IntermediateBetween(llaNorthPole, llaSouthPole, 0.5));
     }
 }
 
@@ -942,6 +1048,18 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Forward_WGS84)
         EXPECT_NEAR(llaExpected.getLatitude().inDegrees(), llaCalculated.getLatitude().inDegrees(), 1e-13);
         EXPECT_NEAR(llaExpected.getLongitude().inDegrees(), llaCalculated.getLongitude().inDegrees(), 1e-13);
     }
+
+    {
+        const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+        const Angle azimuth = Angle::Degrees(-108.0281189033601);
+        const Length distance = Length::Meters(11419275.689591393);
+
+        EXPECT_THROW(LLA::Forward(llaNorthPole, azimuth, distance), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(LLA::Forward(llaNorthPole, azimuth, distance));
+    }
 }
 
 // values compared against pyproj
@@ -973,5 +1091,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Linspace_WGS84)
             EXPECT_NEAR(lla.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
             EXPECT_NEAR(lla.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
         }
+    }
+
+    {
+        const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(0.0));
+
+        EXPECT_THROW(LLA::Linspace(lla1, lla2, 4), ostk::core::error::RuntimeError);
+
+        Environment::Default(true);
+
+        EXPECT_NO_THROW(LLA::Linspace(lla1, lla2, 4));
     }
 }

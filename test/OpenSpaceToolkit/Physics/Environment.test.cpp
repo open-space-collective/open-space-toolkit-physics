@@ -87,11 +87,11 @@ class OpenSpaceToolkit_Physics_Environment : public ::testing::Test
 
     void TearDown() override
     {
-        Environment::SetInstance(nullptr);
+        Environment::ResetGlobalInstance();
     }
 
     const Instant instant_ = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
-    const Array<Shared<Object>> objects_ = {std::make_shared<Earth>(Earth::Default())};
+    const Array<Shared<const Object>> objects_ = {std::make_shared<Earth>(Earth::Default())};
     Environment environment_ = Environment::Undefined();
 };
 
@@ -102,14 +102,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Constructor)
     }
 
     {
-        const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::EGM2008(2190, 2160))};
+        const Array<Shared<const Object>> objects = {std::make_shared<Earth>(Earth::EGM2008(2190, 2160))};
 
         EXPECT_NO_THROW(Environment environment(instant_, objects););
     }
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::EGM2008(2190, 2160));
-        const Array<Shared<Object>> objects = {earthSPtr};
+        const Array<Shared<const Object>> objects = {earthSPtr};
 
         {
             EXPECT_NO_THROW(Environment(earthSPtr, objects, instant_));
@@ -148,16 +148,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, HasObjectWithName)
 TEST_F(OpenSpaceToolkit_Physics_Environment, HasCentralCelestial)
 {
     {
-        EXPECT_FALSE(environment_.hasCentralCelestial());
+        EXPECT_FALSE(environment_.hasCentralCelestialObject());
     }
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::Default());
-        const Array<Shared<Object>> objects = {earthSPtr};
+        const Array<Shared<const Object>> objects = {earthSPtr};
 
         Environment environment = Environment(earthSPtr, objects);
 
-        EXPECT_TRUE(environment.hasCentralCelestial());
+        EXPECT_TRUE(environment.hasCentralCelestialObject());
     }
 }
 
@@ -244,19 +244,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
 TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCentralCelestial)
 {
     {
-        EXPECT_THROW(Environment::Undefined().accessCentralCelestial(), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(Environment::Undefined().accessCentralCelestialObject(), ostk::core::error::runtime::Undefined);
     }
 
     {
-        EXPECT_THROW(environment_.accessCentralCelestial(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(environment_.accessCentralCelestialObject(), ostk::core::error::RuntimeError);
     }
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::Default());
-        const Array<Shared<Object>> objects = {earthSPtr};
+        const Array<Shared<const Object>> objects = {earthSPtr};
 
         const Environment environment = {earthSPtr, objects};
-        EXPECT_NO_THROW(environment.accessCentralCelestial());
+        EXPECT_NO_THROW(environment.accessCentralCelestialObject());
     }
 }
 
@@ -356,39 +356,24 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Default)
     }
 
     {
-        EXPECT_THROW(Environment::AccessInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
         EXPECT_NO_THROW(Environment::Default(true));
-        EXPECT_NO_THROW(Environment::AccessInstance());
+        EXPECT_NO_THROW(Environment::AccessGlobalInstance());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessInstance)
+TEST_F(OpenSpaceToolkit_Physics_Environment, AccessGlobalInstance)
 {
     {
-        EXPECT_THROW(Environment::AccessInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
     }
 
     {
-        const Shared<Environment> environmentSPtr = std::make_shared<Environment>(Environment::Default());
-        Environment::SetInstance(environmentSPtr);
+        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
 
-        EXPECT_EQ(environmentSPtr, Environment::AccessInstance());
-    }
-}
+        const Environment environment = Environment::Default(true);
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, SetInstance)
-{
-    {
-        EXPECT_THROW(Environment::AccessInstance(), ostk::core::error::RuntimeError);
-    }
-
-    {
-        EXPECT_THROW(Environment::AccessInstance(), ostk::core::error::RuntimeError);
-
-        const Shared<Environment> environmentSPtr = std::make_shared<Environment>(Environment::Default());
-        Environment::SetInstance(environmentSPtr);
-
-        EXPECT_EQ(environmentSPtr, Environment::AccessInstance());
+        EXPECT_TRUE(Environment::AccessGlobalInstance()->isDefined());
     }
 }
 
@@ -398,7 +383,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
     const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC);
     const Duration step = Duration::Minutes(1.0);
 
-    const Array<Shared<Object>> objects = {
+    const Array<Shared<const Object>> objects = {
         std::make_shared<Earth>(Earth::Default()), std::make_shared<Moon>(Moon::Default())
     };
 
@@ -460,7 +445,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
 
     const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
 
-    const Array<Shared<Object>> objects = {std::make_shared<Earth>(Earth::Default())};
+    const Array<Shared<const Object>> objects = {std::make_shared<Earth>(Earth::Default())};
 
     Environment environment = {startInstant, objects};
 

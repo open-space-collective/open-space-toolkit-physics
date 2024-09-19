@@ -38,18 +38,25 @@ class Environment
     ///
     /// @param              [in] anInstant An instant
     /// @param              [in] An array of shared pointers to objects
-
-    Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray);
-
-    /// @brief              Constructor
-    /// @param              [in] aCentralBody A central body
-    /// @param              [in] anObjectArray An array of shared pointers to objects
-    /// @param              [in] anInstant An instant. Defaults to J2000 epoch.
+    /// @param              [in] setGlobalInstance True if the global environment instance should be set
 
     Environment(
-        const Shared<Celestial>& aCentralCelestialObject,
-        const Array<Shared<Object>>& anObjectArray,
-        const Instant& anInstant = Instant::J2000()
+        const Instant& anInstant,
+        const Array<Shared<const Object>>& anObjectArray,
+        const bool& setGlobalInstance = false
+    );
+
+    /// @brief              Constructor
+    /// @param              [in] aCentralCelestialObject A central body
+    /// @param              [in] anObjectArray An array of shared pointers to objects
+    /// @param              [in] anInstant An instant. Defaults to J2000 epoch.
+    /// @param              [in] setGlobalInstance True if the global environment instance should be set
+
+    Environment(
+        const Shared<const Object>& aCentralCelestialObject,
+        const Array<Shared<const Object>>& anObjectArray,
+        const Instant& anInstant = Instant::J2000(),
+        const bool& setGlobalInstance = false
     );
 
     /// @brief              Copy constructor
@@ -141,10 +148,6 @@ class Environment
 
     Array<String> getObjectNames() const;
 
-    /// @brief              Get central body
-    ///
-    /// @return             Shared pointer to central body
-
     /// @brief              Set instant
     ///
     /// @param              [in] anInstant An instant
@@ -199,25 +202,26 @@ class Environment
 
     static Environment Default(const bool& setGlobalInstance = false);
 
+    /// @brief              Reset the singleton instance of the environment to null
+
+    static void ResetGlobalInstance();
+
     /// @brief              Get the singleton instance of the environment
     ///
     /// @return             Shared pointer to the singleton instance
 
     static Shared<Environment> AccessGlobalInstance();
 
+   private:
+    Instant instant_;
+    Array<Shared<const Object>> objects_;
+    Shared<const Object> centralCelestialObject_;
+
     /// @brief              Set the singleton instance of the environment
     ///
     /// @param              [in] instance Shared pointer to the new singleton instance
 
-    static void SetInstance(const Shared<Environment>& instance);
-
-   private:
-    Instant instant_;
-    Array<Shared<const Object>> objects_;
-    Shared<const Object> centralCelestial_;
-
-    static std::shared_mutex mutex_;
-    static Shared<Environment> instance_;
+    static void SetGlobalInstance(const Shared<Environment>& anInstance);
 };
 
 }  // namespace physics

@@ -105,6 +105,8 @@ class LLA
     LLA onSurface() const;
 
     /// @brief                  Calculate the distance between this LLA coordinate and another LLA coordinate
+    /// @brief                  Calculate the distance between this LLA coordinate and another LLA coordinate. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aLLA A LLA coordinate
     /// @param                  [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
@@ -112,17 +114,13 @@ class LLA
     /// @return                 Distance between the two LLA coordinates
 
     Length calculateDistanceTo(
-        const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+        const LLA& aLLA,
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief                  Calculate the distance between this LLA coordinate and another LLA coordinate
-    ///
-    /// @param                  [in] aLLA A LLA coordinate
-    /// @return
-
-    Length calculateDistanceTo(const LLA& aLLA) const;
-
-    /// @brief                  Calculate the azimuth angles between this LLA coordinate and another LLA coordinate
+    /// @brief                  Calculate the azimuth angles between this LLA coordinate and another LLA coordinate.
+    /// Will use the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aLLA A LLA coordinate
     /// @param                  [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
@@ -131,10 +129,13 @@ class LLA
     /// from the other LLA coordinate to this LLA coordinate.
 
     Pair<Angle, Angle> calculateAzimuthTo(
-        const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+        const LLA& aLLA,
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief                  Calculate a point between this LLA coordinate and another LLA coordinate
+    /// @brief                  Calculate a point between this LLA coordinate and another LLA coordinate. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aLLA A LLA coordinate
     /// @param                  [in] aRatio A ratio
@@ -145,11 +146,12 @@ class LLA
     LLA calculateIntermediateTo(
         const LLA& aLLA,
         const Real& aRatio,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief                  Propagate this LLA coordinate in provided direction and distance
+    /// @brief                  Propagate this LLA coordinate in provided direction and distance. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aDirection An azimuth angle
     /// @param                  [in] aDistance A distance
@@ -160,11 +162,12 @@ class LLA
     LLA calculateForward(
         const Angle& aDirection,
         const Length& aDistance,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief                  Generate LLAs between this LLA coordinate and another LLA coordinate at a given interval
+    /// @brief                  Generate LLAs between this LLA coordinate and another LLA coordinate at a given
+    /// interval. Will use the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aLLA A LLA coordinate
     /// @param                  [in] aNumberOfPoints A number of points
@@ -174,10 +177,13 @@ class LLA
     Array<LLA> calculateLinspaceTo(
         const LLA& aLLA,
         const Size& aNumberOfPoints,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
+    /// @brief                  Converts the LLA (Latitude, Longitude, Altitude) object to a 3D vector.
+    ///
+    /// @return                 3D vector representation of the LLA object.
     Vector3d toVector() const;
 
     /// @brief                  Convert LLA coordinates to a 2D point
@@ -192,21 +198,46 @@ class LLA
 
     Point3d toPoint3d() const;
 
-    Vector3d toCartesian(const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening) const;
+    /// @brief                  Converts the LLA (Latitude, Longitude, Altitude) object to Cartesian coordinates.
+    ///
+    /// @param                  [in] anEllipsoidEquatorialRadius Equatorial radius of the ellipsoid
+    /// @param                  [in] anEllipsoidFlattening Flattening of the ellipsoid
+    /// @return                 3D vector representing the Cartesian coordinates.
+    Vector3d toCartesian(
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
+    ) const;
 
+    /// @brief                  Converts the LLA (Latitude, Longitude, Altitude) object to a string representation.
+    ///
+    /// @return                 String representation of the LLA object.
     String toString() const;
 
+    /// @brief                  Constructs an undefined LLA (Latitude, Longitude, Altitude) object.
+    ///
+    /// @return                 Undefined LLA object.
     static LLA Undefined();
 
+    /// @brief                  Constructs an LLA (Latitude, Longitude, Altitude) object from a 3D vector.
+    ///
+    /// @param                  [in] aVector 3D vector representing the LLA coordinates.
+    /// @return                  LLA object constructed from the 3D vector.
     static LLA Vector(const Vector3d& aVector);
 
+    /// @brief                  Constructs an LLA (Latitude, Longitude, Altitude) object from Cartesian coordinates.
+    ///
+    /// @param                  [in] aCartesianCoordinateSet 3D vector representing the Cartesian coordinates.
+    /// @param                  [in] anEllipsoidEquatorialRadius Equatorial radius of the ellipsoid (optional).
+    /// @param                  [in] anEllipsoidFlattening Flattening of the ellipsoid (optional).
+    /// @return                  LLA object constructed from the Cartesian coordinates.
     static LLA Cartesian(
         const Vector3d& aCartesianCoordinateSet,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief                  Calculate the distance between two LLA coordinates
+    /// @brief                  Calculate the distance between two LLA coordinates. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aFirstLLA A first LLA coordinate
     /// @param                  [in] aSecondLLA A second LLA coordinate
@@ -217,11 +248,12 @@ class LLA
     static Length DistanceBetween(
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief                  Calculate the azimuth angles between two LLA coordinates
+    /// @brief                  Calculate the azimuth angles between two LLA coordinates. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aFirstLLA A first LLA coordinate
     /// @param                  [in] aSecondLLA A second LLA coordinate
@@ -232,11 +264,12 @@ class LLA
     static Pair<Angle, Angle> AzimuthBetween(
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief                  Calculate a point between two LLA coordinates
+    /// @brief                  Calculate a point between two LLA coordinates. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aFirstLLA A first LLA coordinate
     /// @param                  [in] aSecondLLA A second LLA coordinate
@@ -249,11 +282,12 @@ class LLA
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         const Real& aRatio,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief                  Propagate LLA coordinates in provided direction and distance
+    /// @brief                  Propagate LLA coordinates in provided direction and distance. Will use
+    /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aLLA A LLA coordinate
     /// @param                  [in] aDirection An azimuth angle
@@ -266,11 +300,12 @@ class LLA
         const LLA& aLLA,
         const Angle& aDirection,
         const Length& aDistance,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief                  Generate equidistant LLAs between two LLA coordinates for the specified number of points
+    /// @brief                  Generate equidistant LLAs between two LLA coordinates for the specified number of
+    /// points. Will use the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @param                  [in] aFirstLLA A first LLA coordinate
     /// @param                  [in] aSecondLLA A second LLA coordinate
@@ -283,8 +318,8 @@ class LLA
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         const Size& aNumberOfPoints,
-        const Length& anEllipsoidEquatorialRadius,
-        const Real& anEllipsoidFlattening
+        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
    private:

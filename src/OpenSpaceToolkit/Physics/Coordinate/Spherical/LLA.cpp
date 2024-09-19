@@ -119,35 +119,51 @@ Length LLA::calculateDistanceTo(
     const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
 ) const
 {
-    return LLA::DistanceBetween(*this, aLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
-}
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
-Length LLA::calculateDistanceTo(const LLA& aLLA) const
-{
-    if (!Environment::AccessInstance()->hasCentralCelestial())
-    {
-        throw ostk::core::error::runtime::Undefined("Central celestial");
-    }
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
-    return this->calculateDistanceTo(
-        aLLA,
-        Environment::AccessInstance()->accessCentralCelestial()->getEquatorialRadius(),
-        Environment::AccessInstance()->accessCentralCelestial()->getFlattening()
-    );
+    return LLA::DistanceBetween(*this, aLLA, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 Pair<Angle, Angle> LLA::calculateAzimuthTo(
     const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
 ) const
 {
-    return LLA::AzimuthBetween(*this, aLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
+    return LLA::AzimuthBetween(*this, aLLA, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 LLA LLA::calculateIntermediateTo(
     const LLA& aLLA, const Real& aRatio, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
 ) const
 {
-    return LLA::IntermediateBetween(*this, aLLA, aRatio, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
+    return LLA::IntermediateBetween(*this, aLLA, aRatio, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 LLA LLA::calculateForward(
@@ -157,7 +173,17 @@ LLA LLA::calculateForward(
     const Real& anEllipsoidFlattening
 ) const
 {
-    return LLA::Forward(*this, aDirection, aDistance, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
+    return LLA::Forward(*this, aDirection, aDistance, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 Array<LLA> LLA::calculateLinspaceTo(
@@ -167,7 +193,17 @@ Array<LLA> LLA::calculateLinspaceTo(
     const Real& anEllipsoidFlattening
 ) const
 {
-    return LLA::Linspace(*this, aLLA, aNumberOfPoints, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
+    return LLA::Linspace(*this, aLLA, aNumberOfPoints, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 Vector3d LLA::toVector() const
@@ -202,20 +238,20 @@ Point3d LLA::toPoint3d() const
 
 Vector3d LLA::toCartesian(const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening) const
 {
-    if (!anEllipsoidEquatorialRadius.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Ellipsoid equatorial radius");
-    }
-
-    if (!anEllipsoidFlattening.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Ellipsoid flattening");
-    }
-
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("LLA");
     }
+
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     const double latitude_rad = latitude_.inRadians();
     const double longitude_rad = longitude_.inRadians();
@@ -224,8 +260,8 @@ Vector3d LLA::toCartesian(const Length& anEllipsoidEquatorialRadius, const Real&
     double cartesianArray[3];
 
     const int result = iauGd2gce(
-        anEllipsoidEquatorialRadius.inMeters(),
-        anEllipsoidFlattening,
+        ellipsoidEquatorialRadius.inMeters(),
+        ellipsoidFlattening,
         longitude_rad,
         latitude_rad,
         altitude_m,
@@ -276,23 +312,23 @@ LLA LLA::Cartesian(
         throw ostk::core::error::runtime::Undefined("Cartesian coordinates");
     }
 
-    if (!anEllipsoidEquatorialRadius.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Ellipsoid equatorial radius");
-    }
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
-    if (!anEllipsoidFlattening.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Ellipsoid flattening");
-    }
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     double latitude_rad;
     double longitude_rad;
     double altitude_m;
 
     const int result = iauGc2gde(
-        anEllipsoidEquatorialRadius.inMeters(),
-        anEllipsoidFlattening,
+        ellipsoidEquatorialRadius.inMeters(),
+        ellipsoidFlattening,
         Vector3d(aCartesianCoordinateSet).data(),
         &longitude_rad,
         &latitude_rad,
@@ -318,8 +354,18 @@ Length LLA::DistanceBetween(
     const Real& anEllipsoidFlattening
 )
 {
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
     const GeographicLib::Geodesic& geodesic =
-        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+        GeographicLib::Geodesic(ellipsoidEquatorialRadius.inMeters(), ellipsoidFlattening);
 
     GeographicLib::Math::real distance_m;
     geodesic.Inverse(
@@ -340,8 +386,18 @@ Pair<Angle, Angle> LLA::AzimuthBetween(
     const Real& anEllipsoidFlattening
 )
 {
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
     const GeographicLib::Geodesic& geodesic =
-        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+        GeographicLib::Geodesic(ellipsoidEquatorialRadius.inMeters(), ellipsoidFlattening);
 
     GeographicLib::Math::real azimuth1_deg;
     GeographicLib::Math::real azimuth2_deg;
@@ -365,8 +421,18 @@ LLA LLA::IntermediateBetween(
     const Real& anEllipsoidFlattening
 )
 {
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
     const GeographicLib::Geodesic& geodesic =
-        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+        GeographicLib::Geodesic(ellipsoidEquatorialRadius.inMeters(), ellipsoidFlattening);
 
     const GeographicLib::GeodesicLine& geodesicLine = geodesic.InverseLine(
         aFirstLLA.getLatitude().inDegrees(),
@@ -378,7 +444,7 @@ LLA LLA::IntermediateBetween(
     GeographicLib::Math::real latitude_deg;
     GeographicLib::Math::real longitude_deg;
 
-    const Length distance = DistanceBetween(aFirstLLA, aSecondLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+    const Length distance = DistanceBetween(aFirstLLA, aSecondLLA, ellipsoidEquatorialRadius, ellipsoidFlattening);
 
     geodesicLine.Position(distance.inMeters() * aRatio, latitude_deg, longitude_deg);
 
@@ -393,8 +459,18 @@ LLA LLA::Forward(
     const Real& anEllipsoidFlattening
 )
 {
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
     const GeographicLib::Geodesic& geodesic =
-        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+        GeographicLib::Geodesic(ellipsoidEquatorialRadius.inMeters(), ellipsoidFlattening);
 
     GeographicLib::Math::real latitude_deg;
     GeographicLib::Math::real longitude_deg;
@@ -419,11 +495,21 @@ Array<LLA> LLA::Linspace(
     const Real& anEllipsoidFlattening
 )
 {
+    const Length ellipsoidEquatorialRadius =
+        anEllipsoidEquatorialRadius.isDefined()
+            ? anEllipsoidEquatorialRadius
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
+
+    const Real ellipsoidFlattening =
+        anEllipsoidFlattening.isDefined()
+            ? anEllipsoidFlattening
+            : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
+
     Array<LLA> intermediateLLAs = Array<LLA>::Empty();
     intermediateLLAs.reserve(aNumberOfPoints);
 
     const GeographicLib::Geodesic& geodesic =
-        GeographicLib::Geodesic(anEllipsoidEquatorialRadius.inMeters(), anEllipsoidFlattening);
+        GeographicLib::Geodesic(ellipsoidEquatorialRadius.inMeters(), ellipsoidFlattening);
 
     const GeographicLib::GeodesicLine& geodesicLine = geodesic.InverseLine(
         aFirstLLA.getLatitude().inDegrees(),

@@ -6,9 +6,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 {
     using namespace pybind11;
 
-    using ostk::physics::unit::Length;
-    using ostk::physics::unit::Angle;
+    using ostk::core::type::Real;
+
     using ostk::physics::coordinate::spherical::LLA;
+    using ostk::physics::unit::Angle;
+    using ostk::physics::unit::Length;
 
     class_<LLA>(
         aModule,
@@ -110,10 +112,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             "calculate_distance_to",
             &LLA::calculateDistanceTo,
             arg("lla"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Calculate the distance between this LLA coordinate and another LLA coordinate.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla (LLA): Another LLA coordinate.
@@ -128,10 +131,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             "calculate_azimuth_to",
             &LLA::calculateAzimuthTo,
             arg("lla"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Calculate the azimuth angles between this LLA coordinate and another LLA coordinate.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla (LLA): Another LLA coordinate.
@@ -148,10 +152,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::calculateIntermediateTo,
             arg("lla"),
             arg("ratio"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Calculate a point between this LLA coordinate and another LLA coordinate.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla (LLA): Another LLA coordinate.
@@ -168,10 +173,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::calculateForward,
             arg("azimuth"),
             arg("distance"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Propagate this LLA coordinate in provided direction and distance.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     azimuth (Angle): Azimuth.
@@ -188,10 +194,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::calculateLinspaceTo,
             arg("lla"),
             arg("number_of_points"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Generate LLAs between this LLA coordinate and another LLA coordinate at a given interval.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla (LLA): Another LLA coordinate.
@@ -217,10 +224,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         .def(
             "to_cartesian",
             &LLA::toCartesian,
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
             Convert to Cartesian.
+            If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
             Args:
                 ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
@@ -269,10 +277,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             "cartesian",
             &LLA::Cartesian,
             arg("cartesian_coordinates"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Construct LLA from Cartesian.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     cartesian_coordinates (np.ndarray): Cartesian coordinates.
@@ -288,10 +297,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::DistanceBetween,
             arg("lla_1"),
             arg("lla_2"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Calculate the distance between two LLA coordinates.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla_1 (LLA): First LLA coordinate.
@@ -308,10 +318,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::AzimuthBetween,
             arg("lla_1"),
             arg("lla_2"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Calculate the azimuth angles between two LLA coordinates.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla_1 (LLA): First LLA coordinate.
@@ -329,10 +340,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg("ratio"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Calculate a point between two LLA coordinates.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla_1 (LLA): First LLA coordinate.
@@ -351,10 +363,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla"),
             arg("azimuth"),
             arg("distance"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Propagate an LLA coordinate in provided direction and distance.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla (LLA): LLA coordinate.
@@ -373,10 +386,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg("number_of_points"),
-            arg("ellipsoid_equatorial_radius"),
-            arg("ellipsoid_flattening"),
+            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
+            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()"),
             R"doc(
                 Generate LLAs between two LLA coordinates at a given interval.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
                     lla_1 (LLA): First LLA coordinate.
