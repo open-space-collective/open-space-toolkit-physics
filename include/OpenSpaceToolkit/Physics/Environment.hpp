@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment__
 #define __OpenSpaceToolkit_Physics_Environment__
 
+#include <shared_mutex>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -17,15 +19,15 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::type::Unique;
+using ostk::core::container::Array;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
-using ostk::core::container::Array;
+using ostk::core::type::Unique;
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Position;
 using ostk::physics::environment::Object;
 using ostk::physics::environment::object::Celestial;
+using ostk::physics::time::Instant;
 
 /// @brief                      Environment modeling
 
@@ -38,6 +40,17 @@ class Environment
     /// @param              [in] An array of shared pointers to objects
 
     Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray);
+
+    /// @brief              Constructor
+    /// @param              [in] aCentralBody A central body
+    /// @param              [in] anObjectArray An array of shared pointers to objects
+    /// @param              [in] anInstant An instant. Defaults to J2000 epoch.
+
+    Environment(
+        const Shared<Object>& aCentralBody,
+        const Array<Shared<Object>>& anObjectArray,
+        const Instant& anInstant = Instant::J2000()
+    );
 
     /// @brief              Copy constructor
     ///
@@ -73,6 +86,12 @@ class Environment
 
     bool hasObjectWithName(const String& aName) const;
 
+    /// @brief              Has central celestial
+    ///
+    /// @return             True if environment has central celestial
+
+    bool hasCentralCelestial() const;
+
     /// @brief              Returns true if a given geometry intersects any of the environment objects
     ///
     /// @param              [in] aGeometry A geometry
@@ -104,6 +123,12 @@ class Environment
 
     Shared<const Celestial> accessCelestialObjectWithName(const String& aName) const;
 
+    /// @brief              Access central celestial
+    ///
+    /// @return             Shared pointer to central celestial
+
+    Shared<const Celestial> accessCentralCelestial() const;
+
     /// @brief              Get instant
     ///
     /// @return             Instant
@@ -115,6 +140,10 @@ class Environment
     /// @return             Array of objects names
 
     Array<String> getObjectNames() const;
+
+    /// @brief              Get central body
+    ///
+    /// @return             Shared pointer to central body
 
     /// @brief              Set instant
     ///
@@ -161,16 +190,34 @@ class Environment
     ///                     Contains Earth, Sun and Moon, with SPICE-based ephemeris.
     ///
     /// @code
-    ///                     Environment environment = Environment::Default() ;
+    ///                     Environment environment = Environment::Default();
     /// @endcode
+    /// @param              [in] setGlobalInstance True if the global environment instance should be set with the
+    /// default
     ///
     /// @return             Undefined environment
 
-    static Environment Default();
+    static Environment Default(const bool& setGlobalInstance = false);
+
+    /// @brief              Get the singleton instance of the environment
+    ///
+    /// @return             Shared pointer to the singleton instance
+
+    static Shared<Environment> AccessInstance();
+
+    /// @brief              Set the singleton instance of the environment
+    ///
+    /// @param              [in] instance Shared pointer to the new singleton instance
+
+    static void SetInstance(const Shared<Environment>& instance);
 
    private:
     Instant instant_;
     Array<Shared<const Object>> objects_;
+    Shared<const Object> centralCelestial_;
+
+    static std::shared_mutex mutex_;
+    static Shared<Environment> instance_;
 };
 
 }  // namespace physics
