@@ -45,19 +45,57 @@ using ostk::physics::unit::Length;
 class LLA
 {
    public:
+    /// @brief Constructs an LLA (Latitude, Longitude, Altitude) object.
+    ///
+    /// @param aLatitude Latitude angle.
+    /// @param aLongitude Longitude angle.
+    /// @param anAltitude Altitude length.
+
     LLA(const Angle& aLatitude, const Angle& aLongitude, const Length& anAltitude);
+
+    /// @brief Equality operator.
+    ///
+    /// @param aLLA Another LLA object to compare with.
+    /// @return True if both LLA objects are equal.
 
     bool operator==(const LLA& aLLA) const;
 
+    /// @brief Inequality operator.
+    ///
+    /// @param aLLA Another LLA object to compare with.
+    /// @return True if both LLA objects are not equal.
+
     bool operator!=(const LLA& aLLA) const;
+
+    /// @brief Output stream operator.
+    ///
+    /// @param anOutputStream Output stream.
+    /// @param aLLA LLA object to output.
+    /// @return Reference to the output stream.
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const LLA& aLLA);
 
+    /// @brief Checks if the LLA object is defined.
+    ///
+    /// @return True if the LLA object is defined.
+
     bool isDefined() const;
+
+    /// @brief Gets the latitude angle.
+    ///
+    /// @return Latitude angle.
 
     Angle getLatitude() const;
 
+    /// @brief Gets the longitude angle.
+    ///
+    /// @return Longitude angle.
+
     Angle getLongitude() const;
+
+    /// @brief Gets the altitude length.
+    ///
+    /// @return Altitude length.
 
     Length getAltitude() const;
 
@@ -76,6 +114,13 @@ class LLA
     Length calculateDistanceTo(
         const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
     ) const;
+
+    /// @brief                  Calculate the distance between this LLA coordinate and another LLA coordinate
+    ///
+    /// @param                  [in] aLLA A LLA coordinate
+    /// @return
+
+    Length calculateDistanceTo(const LLA& aLLA) const;
 
     /// @brief                  Calculate the azimuth angles between this LLA coordinate and another LLA coordinate
     ///

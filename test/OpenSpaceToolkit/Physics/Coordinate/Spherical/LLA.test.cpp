@@ -10,6 +10,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
@@ -33,6 +34,7 @@ using Point3d = ostk::mathematics::geometry::d3::object::Point;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::Environment;
 using ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
@@ -180,63 +182,74 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, OnSurface)
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Spherical)
 {
-    const Earth sphericalEarth = Earth::Spherical();
-
-    const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
-    const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
-
-    const double pi = 3.14159265358979323846;
-
     {
-        const Length distance =
-            lla_.calculateDistanceTo(lla_, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
+        const Earth sphericalEarth = Earth::Spherical();
 
-        EXPECT_EQ(distance.inMeters(), 0.0);
+        const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
+        const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
+
+        const double pi = 3.14159265358979323846;
+
+        {
+            const Length distance =
+                lla_.calculateDistanceTo(lla_, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
+
+            EXPECT_EQ(distance.inMeters(), 0.0);
+        }
+
+        {
+            const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+            const LLA llaEquatorial90 = LLA(Angle::Degrees(0.0), Angle::Degrees(90.0), Length::Meters(1.0));
+
+            const Length distanceQuarterEquatorialOneDirection = llaEquatorial0.calculateDistanceTo(
+                llaEquatorial90, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+            );
+            const Length distanceQuarterEquatorialOtherDirection = llaEquatorial90.calculateDistanceTo(
+                llaEquatorial0, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+            );
+
+            EXPECT_EQ(distanceQuarterEquatorialOneDirection, distanceQuarterEquatorialOtherDirection);
+            EXPECT_EQ(
+                distanceQuarterEquatorialOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters() / 2.0
+            );
+        }
+
+        {
+            const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
+            const LLA llaEquatorial180 = LLA(Angle::Degrees(0.0), Angle::Degrees(180.0), Length::Meters(1.0));
+
+            const Length distanceSemiEquatorialOneDirection = llaEquatorial0.calculateDistanceTo(
+                llaEquatorial180, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+            );
+            const Length distanceSemiEquatorialOtherDirection = llaEquatorial180.calculateDistanceTo(
+                llaEquatorial0, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+            );
+
+            EXPECT_EQ(distanceSemiEquatorialOneDirection, distanceSemiEquatorialOtherDirection);
+            EXPECT_EQ(distanceSemiEquatorialOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+        }
+
+        {
+            const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+            const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
+
+            const Length distanceSemiPolesOneDirection = llaNorthPole.calculateDistanceTo(
+                llaSouthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+            );
+            const Length distanceSemiPolesOtherDirection = llaSouthPole.calculateDistanceTo(
+                llaNorthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening
+            );
+
+            EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
+            EXPECT_EQ(distanceSemiPolesOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+        }
     }
 
     {
-        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
-        const LLA llaEquatorial90 = LLA(Angle::Degrees(0.0), Angle::Degrees(90.0), Length::Meters(1.0));
-
-        const Length distanceQuarterEquatorialOneDirection = llaEquatorial0.calculateDistanceTo(
-            llaEquatorial90, sphericalEarthEquatorialRadius, sphericalEarthFlattening
-        );
-        const Length distanceQuarterEquatorialOtherDirection = llaEquatorial90.calculateDistanceTo(
-            llaEquatorial0, sphericalEarthEquatorialRadius, sphericalEarthFlattening
-        );
-
-        EXPECT_EQ(distanceQuarterEquatorialOneDirection, distanceQuarterEquatorialOtherDirection);
-        EXPECT_EQ(
-            distanceQuarterEquatorialOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters() / 2.0
-        );
-    }
-
-    {
-        const LLA llaEquatorial0 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(1.0));
-        const LLA llaEquatorial180 = LLA(Angle::Degrees(0.0), Angle::Degrees(180.0), Length::Meters(1.0));
-
-        const Length distanceSemiEquatorialOneDirection = llaEquatorial0.calculateDistanceTo(
-            llaEquatorial180, sphericalEarthEquatorialRadius, sphericalEarthFlattening
-        );
-        const Length distanceSemiEquatorialOtherDirection = llaEquatorial180.calculateDistanceTo(
-            llaEquatorial0, sphericalEarthEquatorialRadius, sphericalEarthFlattening
-        );
-
-        EXPECT_EQ(distanceSemiEquatorialOneDirection, distanceSemiEquatorialOtherDirection);
-        EXPECT_EQ(distanceSemiEquatorialOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
-    }
-
-    {
+        Environment::SetInstance(std::make_shared<Environment>(Environment::Default()));
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
-
-        const Length distanceSemiPolesOneDirection =
-            llaNorthPole.calculateDistanceTo(llaSouthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
-        const Length distanceSemiPolesOtherDirection =
-            llaSouthPole.calculateDistanceTo(llaNorthPole, sphericalEarthEquatorialRadius, sphericalEarthFlattening);
-
-        EXPECT_EQ(distanceSemiPolesOneDirection, distanceSemiPolesOtherDirection);
-        EXPECT_EQ(distanceSemiPolesOneDirection.inMeters(), pi * sphericalEarthEquatorialRadius.inMeters());
+        EXPECT_NO_THROW(llaNorthPole.calculateDistanceTo(llaSouthPole));
     }
 }
 

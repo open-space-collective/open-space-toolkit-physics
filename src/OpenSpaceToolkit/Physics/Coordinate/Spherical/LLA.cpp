@@ -7,6 +7,7 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
 
 // Include sofa last to avoid type errors in underlying Eigen lib
 #include <sofa/sofa.h>
@@ -19,6 +20,8 @@ namespace coordinate
 {
 namespace spherical
 {
+
+using ostk::physics::Environment;
 
 LLA::LLA(const Angle& aLatitude, const Angle& aLongitude, const Length& anAltitude)
     : latitude_(aLatitude),
@@ -117,6 +120,20 @@ Length LLA::calculateDistanceTo(
 ) const
 {
     return LLA::DistanceBetween(*this, aLLA, anEllipsoidEquatorialRadius, anEllipsoidFlattening);
+}
+
+Length LLA::calculateDistanceTo(const LLA& aLLA) const
+{
+    if (!Environment::AccessInstance()->hasCentralCelestial())
+    {
+        throw ostk::core::error::runtime::Undefined("Central celestial");
+    }
+
+    return this->calculateDistanceTo(
+        aLLA,
+        Environment::AccessInstance()->accessCentralCelestial()->getEquatorialRadius(),
+        Environment::AccessInstance()->accessCentralCelestial()->getFlattening()
+    );
 }
 
 Pair<Angle, Angle> LLA::calculateAzimuthTo(
