@@ -166,6 +166,26 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             )doc"
         )
         .def(
+            "get_total_floating_seconds",
+            &Time::getTotalFloatingSeconds,
+            R"doc(
+                Get total floating seconds.
+
+                Returns:
+                    float: Total floating seconds.
+            )doc"
+        )
+        .def(
+            "get_total_floating_hours",
+            &Time::getTotalFloatingHours,
+            R"doc(
+                Get total floating hours.
+
+                Returns:
+                    float: Total floating hours.
+            )doc"
+        )
+        .def(
             "to_string",
             &Time::toString,
             R"doc(

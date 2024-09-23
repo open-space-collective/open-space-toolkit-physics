@@ -144,6 +144,26 @@ class Time
 
     Real getFloatingSeconds() const;
 
+    /// @brief              Get the total floating seconds
+    ///
+    /// @code
+    ///                     Time { 12, 34, 56, 32 } .getTotalFloatingSeconds() ; // 45296.302
+    /// @endcode
+    /// @return             Total floating seconds
+
+    Real getTotalFloatingSeconds() const;
+
+    /// @brief              Get the total floating hours
+    ///
+    /// @code
+    ///                     Time { 12, 34, 56, 32 } .getTotalFloatingHours() ; // 12.748974
+    /// @endcode
+    /// @return             Total floating hours
+
+    Real getTotalFloatingHours() const;
+
+    /// @brief
+
     /// @brief              Get string representation of time
     ///
     /// @code

@@ -154,6 +154,26 @@ Real Time::getFloatingSeconds() const
            (static_cast<double>(microsecond_) / 1e6) + (static_cast<double>(nanosecond_) / 1e9);
 }
 
+Real Time::getTotalFloatingSeconds() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Time");
+    }
+
+    return static_cast<double>(hour_) * 3600.0 + static_cast<double>(minute_) * 60.0 + this->getFloatingSeconds();
+}
+
+Real Time::getTotalFloatingHours() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Time");
+    }
+
+    return this->getTotalFloatingSeconds() / 3600.0;
+}
+
 String Time::toString(const Time::Format& aFormat) const
 {
     if (!this->isDefined())

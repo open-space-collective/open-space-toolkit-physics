@@ -63,6 +63,12 @@ class TestTime:
     def test_get_floating_seconds(self, time: Time) -> None:
         assert time.get_floating_seconds() is not None
 
+    def test_get_total_floating_seconds(self, time: Time) -> None:
+        assert time.get_total_floating_seconds() is not None
+
+    def test_get_total_floating_hours(self, time: Time) -> None:
+        assert time.get_total_floating_hours() is not None
+
     def test_to_string(self, time: Time) -> None:
         assert time.to_string() is not None
         assert time.to_string(Time.Format.Standard) is not None

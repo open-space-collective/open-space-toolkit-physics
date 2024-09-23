@@ -181,6 +181,38 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetFloatingSeconds)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Time, GetTotalFloatingSeconds)
+{
+    {
+        EXPECT_NEAR(6.0, Time(0, 0, 6, 0, 0, 0).getTotalFloatingSeconds(), 1e-15);
+        EXPECT_NEAR(14706.0, Time(4, 5, 6, 0, 0, 0).getTotalFloatingSeconds(), 1e-15);
+
+        EXPECT_NEAR(14706.001002003, Time(4, 5, 6, 1, 2, 3).getTotalFloatingSeconds(), 1e-15);
+        EXPECT_NEAR(14706.100200300, Time(4, 5, 6, 100, 200, 300).getTotalFloatingSeconds(), 1e-15);
+        EXPECT_NEAR(14706.999999999, Time(4, 5, 6, 999, 999, 999).getTotalFloatingSeconds(), 1e-15);
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Undefined().getTotalFloatingSeconds());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Time, GetTotalFloatingHours)
+{
+    {
+        EXPECT_NEAR(0.0016666666666666668, Time(0, 0, 6, 0, 0, 0).getTotalFloatingHours(), 1e-15);
+        EXPECT_NEAR(4.085, Time(4, 5, 6, 0, 0, 0).getTotalFloatingHours(), 1e-15);
+
+        EXPECT_NEAR(4.085000278334166, Time(4, 5, 6, 1, 2, 3).getTotalFloatingHours(), 1e-15);
+        EXPECT_NEAR(4.0850278334166665, Time(4, 5, 6, 100, 200, 300).getTotalFloatingHours(), 1e-15);
+        EXPECT_NEAR(4.0852777777775, Time(4, 5, 6, 999, 999, 999).getTotalFloatingHours(), 1e-15);
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Undefined().getTotalFloatingHours());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Time, ToString)
 {
     {
