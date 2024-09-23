@@ -496,6 +496,33 @@ Time Time::Parse(const String& aString, const Time::Format& aFormat)
     return Time::Undefined();
 }
 
+Time Time::Hours(const Real& aReal)
+{
+    return Time::Seconds(aReal * 3600.0);
+}
+
+Time Time::Seconds(const Real& aReal)
+{
+    const Uint8 hour_Int = static_cast<Uint8>(aReal / 3600.0);
+
+    const Real minute = (aReal - Real::Integer(hour_Int) * 3600.0) / 60.0;
+    const Uint8 minute_Int = static_cast<Uint8>(minute);
+
+    const Real second = aReal - Real::Integer(hour_Int) * 3600.0 - Real::Integer(minute_Int) * 60.0;
+    const Uint8 second_Int = static_cast<Uint8>(second);
+
+    const Real millisecond = (second - Real::Integer(second_Int)) * 1e3;
+    const Uint16 millisecond_Int = static_cast<Uint16>(millisecond);
+
+    const Real microsecond = (millisecond - Real::Integer(millisecond_Int)) * 1e3;
+    const Uint16 microsecond_Int = static_cast<Uint16>(microsecond);
+
+    const Real nanosecond = (microsecond - Real::Integer(microsecond_Int)) * 1e3;
+    const Uint16 nanosecond_Int = static_cast<Uint16>(nanosecond);
+
+    return Time(hour_Int, minute_Int, second_Int, millisecond_Int, microsecond_Int, nanosecond_Int);
+}
+
 Time::Time()
     : defined_(false),
       hour_(0),

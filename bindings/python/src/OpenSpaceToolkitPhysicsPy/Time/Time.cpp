@@ -18,6 +18,32 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
         )doc"
     );
 
+    enum_<Time::Format>(time_class, "Format")
+
+        .value(
+            "Undefined",
+            Time::Format::Undefined,
+            R"doc(
+                Undefined time format.
+            )doc"
+        )
+        .value(
+            "Standard",
+            Time::Format::Standard,
+            R"doc(
+                Standard time format.
+            )doc"
+        )
+        .value(
+            "ISO8601",
+            Time::Format::ISO8601,
+            R"doc(
+                ISO 8601 time format.
+            )doc"
+        )
+
+        ;
+
     time_class
         .def(
             init<int, int, int, int, int, int>(),
@@ -269,34 +295,50 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
                     Time: Time at noon.
             )doc"
         )
+        .def_static(
+            "parse",
+            &Time::Parse,
+            R"doc(
+                Create a time from a string representation.
+
+                Args:
+                    a_string (str): A string.
+                    a_format (Time.Format, optional): A time format (automatic detection if Undefined).
+
+                Returns:
+                    Time: Time.
+            )doc",
+            arg("string"),
+            arg("format") = Time::Format::Undefined
+        )
+        .def_static(
+            "hours",
+            &Time::Hours,
+            R"doc(
+                Create a time from a real number of hours.
+
+                Args:
+                    a_real (float): A real number of hours.
+
+                Returns:
+                    Time: Time.
+            )doc",
+            arg("value")
+        )
+        .def_static(
+            "seconds",
+            &Time::Seconds,
+            R"doc(
+                Create a time from a real number of seconds.
+
+                Args:
+                    a_real (float): A real number of seconds.
+
+                Returns:
+                    Time: Time.
+            )doc",
+            arg("value")
+        )
 
         ;
-
-    enum_<Time::Format>(time_class, "Format")
-
-        .value(
-            "Undefined",
-            Time::Format::Undefined,
-            R"doc(
-                Undefined time format.
-            )doc"
-        )
-        .value(
-            "Standard",
-            Time::Format::Standard,
-            R"doc(
-                Standard time format.
-            )doc"
-        )
-        .value(
-            "ISO8601",
-            Time::Format::ISO8601,
-            R"doc(
-                ISO 8601 time format.
-            )doc"
-        )
-
-        ;
-
-    time_class.def_static("parse", &Time::Parse, "aString"_a, "aFormat"_a = Time::Format::Undefined);
 }

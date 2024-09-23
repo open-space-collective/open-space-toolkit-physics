@@ -14,10 +14,10 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Uint8;
-using ostk::core::type::Uint16;
 using ostk::core::type::Real;
 using ostk::core::type::String;
+using ostk::core::type::Uint16;
+using ostk::core::type::Uint8;
 
 /// @brief                      Time as hour, minute, second, millisecond, microsecond and nanosecond
 
@@ -238,6 +238,28 @@ class Time
     /// @return             Time
 
     static Time Parse(const String& aString, const Time::Format& aFormat = Time::Format::Undefined);
+
+    /// @brief            Constructs a time from a real number of hours
+    ///
+    /// @code
+    ///                   Time time = Time::Hours(12.567) ; // 12:34:01.199.999.999
+    /// @endcode
+    ///
+    /// @param            [in] aReal A real number of hours
+    /// @return           Time
+
+    static Time Hours(const Real& aReal);
+
+    /// @brief            Constructs a time from a real number of seconds
+    ///
+    /// @code
+    ///                   Time time = Time::Seconds(12.567) ; // 12:34:01.199.999.999
+    /// @endcode
+    ///
+    /// @param            [in] aReal A real number of seconds
+    /// @return           Time
+
+    static Time Seconds(const Real& aReal);
 
    private:
     bool defined_;
