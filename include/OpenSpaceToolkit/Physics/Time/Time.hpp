@@ -259,7 +259,7 @@ class Time
 
     static Time Parse(const String& aString, const Time::Format& aFormat = Time::Format::Undefined);
 
-    /// @brief            Constructs a time from a real number of hours
+    /// @brief            Constructs a time from a decimal number of hours
     ///
     /// @code
     ///                   Time time = Time::Hours(12.567) ; // 12:34:01.199.999.999
@@ -270,7 +270,7 @@ class Time
 
     static Time Hours(const Real& aReal);
 
-    /// @brief            Constructs a time from a real number of seconds
+    /// @brief            Constructs a time from a decimal number of seconds
     ///
     /// @code
     ///                   Time time = Time::Seconds(12.567) ; // 12:34:01.199.999.999
