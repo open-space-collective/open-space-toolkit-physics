@@ -23,10 +23,14 @@ ostk.physics.time.Time
       ~Time.get_minute
       ~Time.get_nanosecond
       ~Time.get_second
+      ~Time.get_total_floating_hours
+      ~Time.get_total_floating_seconds
+      ~Time.hours
       ~Time.is_defined
       ~Time.midnight
       ~Time.noon
       ~Time.parse
+      ~Time.seconds
       ~Time.set_hour
       ~Time.set_microsecond
       ~Time.set_millisecond

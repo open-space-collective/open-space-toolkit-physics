@@ -4,6 +4,34 @@
     <compoundname>ostk::physics::coordinate::spherical</compoundname>
     <innerclass refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_a_e_r" prot="public">ostk::physics::coordinate::spherical::AER</innerclass>
     <innerclass refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" prot="public">ostk::physics::coordinate::spherical::LLA</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1ae12fe74b2d79a60e1309b081f95434e6" prot="public" static="no">
+        <type>ostk::mathematics::geometry::d2::object::Point</type>
+        <definition>using ostk::physics::coordinate::spherical::Point2d = typedef ostk::mathematics::geometry::d2::object::Point</definition>
+        <argsstring></argsstring>
+        <name>Point2d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" prot="public" static="no">
+        <type>ostk::mathematics::geometry::d3::object::Point</type>
+        <definition>using ostk::physics::coordinate::spherical::Point3d = typedef ostk::mathematics::geometry::d3::object::Point</definition>
+        <argsstring></argsstring>
+        <name>Point3d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1a9b118274b62f916c02f797cd035cfa58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>

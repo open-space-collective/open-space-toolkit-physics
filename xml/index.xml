@@ -953,12 +953,15 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" kind="function"><name>getLatitude</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" kind="function"><name>getLongitude</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" kind="function"><name>getAltitude</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a24db275c7f3a88a5010a4e6fcfad1a90" kind="function"><name>onSurface</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afee067fe35ef4ac8e8cad93a83dbc0e6" kind="function"><name>calculateDistanceTo</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a44454a090d3fe39956980da6866975a5" kind="function"><name>calculateAzimuthTo</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa1cab20ca346a5ca0d8122c35f0fe735" kind="function"><name>calculateIntermediateTo</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9f8c265d11cdd1ead088e3cbbdfcbf8" kind="function"><name>calculateForward</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa21b85a92cfd363d5c95292153d45502" kind="function"><name>calculateLinspaceTo</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a159e5a055130460266b25593a0b451f2" kind="function"><name>toVector</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a994b42c2303c17b92c25b697c8d9d9b5" kind="function"><name>toPoint2d</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a22cf0f3e37e61226b5ad75977068a72a" kind="function"><name>toPoint3d</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afc34ed446bb707f7fd50701008443673" kind="function"><name>toCartesian</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ada54a509f340056ceb39399fe06d6d98" kind="function"><name>toString</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4e052cf41d11b11c943ad32cd4c25ba8" kind="friend"><name>operator&lt;&lt;</name></member>
@@ -1620,6 +1623,8 @@
     <member refid="classostk_1_1physics_1_1time_1_1_time_1acb4915ca99f2065f6d777d96833337db" kind="function"><name>getMicrosecond</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1aebe3fc329d7b7b07c1f0ac04600ebc03" kind="function"><name>getNanosecond</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1ad0c70220f4ba971306781eb92d8f2030" kind="function"><name>getFloatingSeconds</name></member>
+    <member refid="classostk_1_1physics_1_1time_1_1_time_1a6083a218fa45a37e89b1e79ede74bc01" kind="function"><name>getTotalFloatingSeconds</name></member>
+    <member refid="classostk_1_1physics_1_1time_1_1_time_1a901b64e642dbdc7b00eef54b38851770" kind="function"><name>getTotalFloatingHours</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a33adb26e33abdfa65581626372f430bd" kind="function"><name>toString</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a27d456d374f5799050f3ea8aed8478ac" kind="function"><name>setHour</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1aef028b25ce2ff2d216e9fdc957c6ac4f" kind="function"><name>setMinute</name></member>
@@ -1632,6 +1637,8 @@
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a74042a99c99ef0f866204a4589c6a89e" kind="function"><name>Midnight</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a2d242e4f07bbf56e51eb2267773042f2" kind="function"><name>Noon</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a475b2b6200f15f20c8fab3891bbb73ac" kind="function"><name>Parse</name></member>
+    <member refid="classostk_1_1physics_1_1time_1_1_time_1a4a7ba1a2911304c4ed09157daa87e442" kind="function"><name>Hours</name></member>
+    <member refid="classostk_1_1physics_1_1time_1_1_time_1a63c86a8d9cfc22eb8728107364ebc85f" kind="function"><name>Seconds</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a87aa31c71f4ae861948bf8f1771a6b88" kind="function"><name>Time</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a33965f327539e6f0169ab44b5a6fb33c" kind="function"><name>ValidateHour</name></member>
     <member refid="classostk_1_1physics_1_1time_1_1_time_1a8058e26c5cb3cd207974fd52220b04eb" kind="function"><name>ValidateMinute</name></member>
@@ -1882,6 +1889,8 @@
     <member refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1utilities_1a2f6b8e4cc0f25ef12bd3718d1fb3936d" kind="function"><name>NorthEastDownTransformAt</name></member>
   </compound>
   <compound refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical" kind="namespace"><name>ostk::physics::coordinate::spherical</name>
+    <member refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1ae12fe74b2d79a60e1309b081f95434e6" kind="typedef"><name>Point2d</name></member>
+    <member refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" kind="typedef"><name>Point3d</name></member>
     <member refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1a9b118274b62f916c02f797cd035cfa58" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1adb2817eba4761059a0ad3fefa5bd8db3" kind="function"><name>operator&lt;&lt;</name></member>
   </compound>

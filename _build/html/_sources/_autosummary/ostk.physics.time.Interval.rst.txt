@@ -31,6 +31,7 @@ ostk.physics.time.Interval
       ~Interval.is_defined
       ~Interval.is_degenerate
       ~Interval.parse
+      ~Interval.to_datetime_span
       ~Interval.to_string
       ~Interval.undefined
    
