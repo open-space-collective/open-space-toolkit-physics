@@ -191,12 +191,12 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
         .def(
             "to_string",
             &Interval::toString,
-            "aTimeScale"_a = Scale::UTC,
+            arg("time_scale") = Scale::UTC,
             R"doc(
                 Convert the interval to a string.
 
                 Args:
-                    aTimeScale (Scale): Time scale.
+                    time_scale (Scale): Time scale.
 
                 Returns:
                     str: String representation of the interval.
@@ -214,6 +214,23 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Returns:
                     List[Instant]: Grid of instants.
             )doc"
+        )
+        .def(
+            "to_datetime_span",
+            [](const Interval& anInterval, const Scale& aScale) -> std::tuple<DateTime, DateTime>
+            {
+                return {anInterval.getStart().getDateTime(aScale), anInterval.getEnd().getDateTime(aScale)};
+            },
+            R"doc(
+                Get the datetime span.
+
+                Args:
+                    scale (Scale): Time scale. Defaults to UTC.
+
+                Returns:
+                    Tuple[datetime, datetime]: Datetime span.
+            )doc",
+            arg("scale") = Scale::UTC
         )
 
         .def_static(

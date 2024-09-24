@@ -10,10 +10,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
 
     using ostk::core::type::Shared;
 
-    using ostk::physics::time::Instant;
-    using ostk::physics::coordinate::Transform;
     using ostk::physics::coordinate::frame::Provider;
     using ostk::physics::coordinate::frame::provider::Dynamic;
+    using ostk::physics::coordinate::Transform;
+    using ostk::physics::time::Instant;
 
     class_<Dynamic, Shared<Dynamic>, Provider>(
         aModule,

@@ -14,6 +14,16 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
 
     using ostk::physics::unit::Angle;
 
+    // Extend the mathematics module constructor
+    module math_module = module::import("ostk.mathematics.geometry");
+
+    // Get the Mathematics Angle class
+    class_<ostk::mathematics::geometry::Angle> math_angle =
+        math_module.attr("Angle").cast<class_<ostk::mathematics::geometry::Angle>>();
+
+    // Add a new constructor to the Mathematics Angle class
+    math_angle.def(init<const ostk::physics::unit::Angle&>());
+
     class_<Angle> angle(
         aModule,
         "Angle",
@@ -27,7 +37,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
     // Define constructor
     angle
         .def(
-            init<Real, Angle::Unit>(),
+            init<const Real&, const Angle::Unit&>(),
             arg("value"),
             arg("unit"),
             R"doc(
@@ -36,6 +46,16 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                 Args:
                     value (Real): A value.
                     unit (Unit): An angle unit.
+            )doc"
+        )
+        .def(
+            init<const ostk::mathematics::geometry::Angle&>(),
+            arg("angle"),
+            R"doc(
+                Constructor.
+
+                Args:
+                    angle (Angle): An angle.
             )doc"
         )
 

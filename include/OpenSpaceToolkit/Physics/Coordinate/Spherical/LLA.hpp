@@ -9,6 +9,9 @@
 #include <OpenSpaceToolkit/Core/Type/Size.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/2D/Object/Point.hpp>
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp>
+
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
@@ -21,16 +24,18 @@ namespace coordinate
 namespace spherical
 {
 
-using ostk::core::type::Real;
-using ostk::core::type::String;
-using ostk::core::type::Size;
-using ostk::core::container::Pair;
 using ostk::core::container::Array;
+using ostk::core::container::Pair;
+using ostk::core::type::Real;
+using ostk::core::type::Size;
+using ostk::core::type::String;
 
+using Point2d = ostk::mathematics::geometry::d2::object::Point;
+using Point3d = ostk::mathematics::geometry::d3::object::Point;
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::unit::Length;
 using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 
 /// @brief                      Geodetic Latitude - Longitude - Altitude (LLA)
 ///
@@ -55,6 +60,11 @@ class LLA
     Angle getLongitude() const;
 
     Length getAltitude() const;
+
+    /// @brief Returns an LLA object representing the position on the surface.
+    /// @return An LLA object on the surface.
+
+    LLA onSurface() const;
 
     /// @brief                  Calculate the distance between this LLA coordinate and another LLA coordinate
     ///
@@ -124,6 +134,18 @@ class LLA
     ) const;
 
     Vector3d toVector() const;
+
+    /// @brief                  Convert LLA coordinates to a 2D point
+    ///
+    /// @return                 2D point (Longitude, Latitude)
+
+    Point2d toPoint2d() const;
+
+    /// @brief                  Convert LLA coordinates to a 3D point
+    ///
+    /// @return                 3D point (Longitude, Latitude, Altitude)
+
+    Point3d toPoint3d() const;
 
     Vector3d toCartesian(const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening) const;
 

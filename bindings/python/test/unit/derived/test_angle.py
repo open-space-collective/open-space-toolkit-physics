@@ -18,7 +18,7 @@ def test_angle_conversion():
 
     assert angle_physics is not None
     assert angle_mathematics is not None
-    # assert angle_physics == angle_mathematics
+    assert angle_physics == angle_mathematics
 
 
 def test_angle_unit():

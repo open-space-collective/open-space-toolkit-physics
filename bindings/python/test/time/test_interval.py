@@ -2,6 +2,8 @@
 
 import pytest
 
+from datetime import datetime
+
 from ostk.core.type import String
 
 from ostk.physics.time import Scale
@@ -259,3 +261,9 @@ class TestInterval:
         assert isinstance(grid, list)
         assert isinstance(grid[0], Instant)
         assert len(grid) == 61
+
+    def test_to_datetime_span(self, interval: Interval):
+        assert interval.to_datetime_span() is not None
+        assert isinstance(interval.to_datetime_span(), tuple)
+        assert isinstance(interval.to_datetime_span()[0], datetime)
+        assert isinstance(interval.to_datetime_span()[1], datetime)

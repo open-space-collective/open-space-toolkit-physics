@@ -102,6 +102,16 @@ Length LLA::getAltitude() const
     return altitude_;
 }
 
+LLA LLA::onSurface() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("LLA");
+    }
+
+    return {latitude_, longitude_, Length::Meters(0.0)};
+}
+
 Length LLA::calculateDistanceTo(
     const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
 ) const
@@ -151,6 +161,26 @@ Vector3d LLA::toVector() const
     }
 
     return {latitude_.inDegrees(), longitude_.inDegrees(), altitude_.inMeters()};
+}
+
+Point2d LLA::toPoint2d() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("LLA");
+    }
+
+    return {longitude_.inDegrees(), latitude_.inDegrees()};
+}
+
+Point3d LLA::toPoint3d() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("LLA");
+    }
+
+    return {longitude_.inDegrees(), latitude_.inDegrees(), altitude_.inMeters()};
 }
 
 Vector3d LLA::toCartesian(const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening) const
