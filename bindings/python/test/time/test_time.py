@@ -1,170 +1,114 @@
 # Apache License 2.0
 
 import pytest
-
 from ostk.core.type import String
-
 from ostk.physics.time import Time
 
 
-def test_time_constructors():
-    assert Time(0, 0, 0) is not None
+@pytest.fixture
+def time() -> Time:
+    return Time(0, 0, 0)
 
 
-def test_time_undefined():
-    assert Time.undefined() is not None
+class TestTime:
+    def test_constructors(self, time: Time) -> None:
+        assert time is not None
 
+    @pytest.mark.parametrize(
+        "time_string, format",
+        [
+            ("00:00:00", None),
+            ("00:00:00", Time.Format.Standard),
+            ("00:00:00", Time.Format.ISO8601),
+            (String("00:00:00"), None),
+            (String("00:00:00"), Time.Format.Standard),
+            (String("00:00:00"), Time.Format.ISO8601),
+        ],
+    )
+    def test_parse(self, time_string, format) -> None:
+        if format is None:
+            time = Time.parse(time_string)
+        else:
+            time = Time.parse(time_string, format)
 
-def test_time_midnight():
-    assert Time.midnight() is not None
+        assert time is not None
+        assert isinstance(time, Time)
+        assert time.is_defined()
 
+    def test_operators(self, time: Time) -> None:
+        assert (time == time) is not None
+        assert (time != time) is not None
 
-def test_time_noon():
-    assert Time.noon() is not None
+    def test_is_defined(self, time: Time) -> None:
+        assert time.is_defined() is not None
 
+    def test_get_hour(self, time: Time) -> None:
+        assert time.get_hour() is not None
 
-def test_time_parse():
-    ## Using python strings
+    def test_get_minute(self, time: Time) -> None:
+        assert time.get_minute() is not None
 
-    # Testing with default format argument (Time::Format::Undefined)
-    time: Time = Time.parse("00:00:00")
+    def test_get_second(self, time: Time) -> None:
+        assert time.get_second() is not None
 
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined()
+    def test_get_millisecond(self, time: Time) -> None:
+        assert time.get_millisecond() is not None
 
-    # Testing with Time.Format.Standard
-    time: Time = Time.parse("00:00:00", Time.Format.Standard)
+    def test_get_microsecond(self, time: Time) -> None:
+        assert time.get_microsecond() is not None
 
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined()
+    def test_get_nanosecond(self, time: Time) -> None:
+        assert time.get_nanosecond() is not None
 
-    # Testing with Time.Format.ISO8601
-    time: Time = Time.parse("00:00:00", Time.Format.ISO8601)
+    def test_get_floating_seconds(self, time: Time) -> None:
+        assert time.get_floating_seconds() is not None
 
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined()
+    def test_get_total_floating_seconds(self, time: Time) -> None:
+        assert time.get_total_floating_seconds() is not None
 
-    ## Using String class
+    def test_get_total_floating_hours(self, time: Time) -> None:
+        assert time.get_total_floating_hours() is not None
 
-    # Testing with default format argument (Time::Format::Undefined)
-    time: Time = Time.parse(String("00:00:00"))
+    def test_to_string(self, time: Time) -> None:
+        assert time.to_string() is not None
+        assert time.to_string(Time.Format.Standard) is not None
+        assert time.to_string(Time.Format.ISO8601) is not None
 
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined()
+    def test_set_hour(self, time: Time) -> None:
+        time.set_hour(1)
+        assert time.get_hour() == 1
 
-    # Testing with Time.Format.Standard
-    time: Time = Time.parse(String("00:00:00"), Time.Format.Standard)
+    def test_set_minute(self, time: Time) -> None:
+        time.set_minute(1)
+        assert time.get_minute() == 1
 
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined()
+    def test_set_second(self, time: Time) -> None:
+        time.set_second(1)
+        assert time.get_second() == 1
 
-    # Testing with Time.Format.ISO8601
-    time: Time = Time.parse(String("00:00:00"), Time.Format.ISO8601)
+    def test_set_millisecond(self, time: Time) -> None:
+        time.set_millisecond(1)
+        assert time.get_millisecond() == 1
 
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined()
+    def test_set_microsecond(self, time: Time) -> None:
+        time.set_microsecond(1)
+        assert time.get_microsecond() == 1
 
+    def test_set_nanosecond(self, time: Time) -> None:
+        time.set_nanosecond(1)
+        assert time.get_nanosecond() == 1
 
-def test_time_operators():
-    time = Time(0, 0, 0)
+    def test_undefined(self) -> None:
+        assert Time.undefined() is not None
 
-    assert (time == time) is not None
-    assert (time != time) is not None
+    def test_midnight(self) -> None:
+        assert Time.midnight() is not None
 
+    def test_noon(self) -> None:
+        assert Time.noon() is not None
 
-def test_time_is_defined():
-    time = Time(0, 0, 0)
+    def test_hours(self) -> None:
+        assert Time.hours(12.0345) is not None
 
-    assert time.is_defined() is not None
-
-
-def test_time_get_hour():
-    time = Time(0, 0, 0)
-
-    assert time.get_hour() is not None
-
-
-def test_time_get_minute():
-    time = Time(0, 0, 0)
-
-    assert time.get_minute() is not None
-
-
-def test_time_get_second():
-    time = Time(0, 0, 0)
-
-    assert time.get_second() is not None
-
-
-def test_time_get_millisecond():
-    time = Time(0, 0, 0)
-
-    assert time.get_millisecond() is not None
-
-
-def test_time_get_microsecond():
-    time = Time(0, 0, 0)
-
-    assert time.get_microsecond() is not None
-
-
-def test_time_get_nanosecond():
-    time = Time(0, 0, 0)
-
-    assert time.get_nanosecond() is not None
-
-
-def test_time_get_floating_seconds():
-    time = Time(0, 0, 0)
-
-    assert time.get_floating_seconds() is not None
-
-
-def test_time_to_string():
-    time = Time(0, 0, 0)
-
-    assert time.to_string() is not None
-    assert time.to_string(Time.Format.Standard) is not None
-    assert time.to_string(Time.Format.ISO8601) is not None
-
-
-def test_time_set_hour():
-    time = Time(0, 0, 0)
-
-    time.set_hour(1)
-
-
-def test_time_set_minute():
-    time = Time(0, 0, 0)
-
-    time.set_minute(1)
-
-
-def test_time_set_second():
-    time = Time(0, 0, 0)
-
-    time.set_second(1)
-
-
-def test_time_set_millisecond():
-    time = Time(0, 0, 0)
-
-    time.set_millisecond(1)
-
-
-def test_time_set_microsecond():
-    time = Time(0, 0, 0)
-
-    time.set_microsecond(1)
-
-
-def test_time_set_nanosecond():
-    time = Time(0, 0, 0)
-
-    time.set_nanosecond(1)
+    def test_seconds(self) -> None:
+        assert Time.seconds(1238.0345) is not None

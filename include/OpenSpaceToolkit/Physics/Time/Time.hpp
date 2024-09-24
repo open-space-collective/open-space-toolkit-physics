@@ -14,10 +14,10 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Uint8;
-using ostk::core::type::Uint16;
 using ostk::core::type::Real;
 using ostk::core::type::String;
+using ostk::core::type::Uint16;
+using ostk::core::type::Uint8;
 
 /// @brief                      Time as hour, minute, second, millisecond, microsecond and nanosecond
 
@@ -144,6 +144,26 @@ class Time
 
     Real getFloatingSeconds() const;
 
+    /// @brief              Get the total floating seconds
+    ///
+    /// @code
+    ///                     Time { 12, 34, 56, 32 } .getTotalFloatingSeconds() ; // 45296.302
+    /// @endcode
+    /// @return             Total floating seconds
+
+    Real getTotalFloatingSeconds() const;
+
+    /// @brief              Get the total floating hours
+    ///
+    /// @code
+    ///                     Time { 12, 34, 56, 32 } .getTotalFloatingHours() ; // 12.748974
+    /// @endcode
+    /// @return             Total floating hours
+
+    Real getTotalFloatingHours() const;
+
+    /// @brief
+
     /// @brief              Get string representation of time
     ///
     /// @code
@@ -238,6 +258,28 @@ class Time
     /// @return             Time
 
     static Time Parse(const String& aString, const Time::Format& aFormat = Time::Format::Undefined);
+
+    /// @brief            Constructs a time from a decimal number of hours
+    ///
+    /// @code
+    ///                   Time time = Time::Hours(12.567) ; // 12:34:01.199.999.999
+    /// @endcode
+    ///
+    /// @param            [in] aReal A real number of hours
+    /// @return           Time
+
+    static Time Hours(const Real& aReal);
+
+    /// @brief            Constructs a time from a decimal number of seconds
+    ///
+    /// @code
+    ///                   Time time = Time::Seconds(12.567) ; // 12:34:01.199.999.999
+    /// @endcode
+    ///
+    /// @param            [in] aReal A real number of seconds
+    /// @return           Time
+
+    static Time Seconds(const Real& aReal);
 
    private:
     bool defined_;

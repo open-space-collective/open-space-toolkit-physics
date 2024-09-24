@@ -154,6 +154,26 @@ Real Time::getFloatingSeconds() const
            (static_cast<double>(microsecond_) / 1e6) + (static_cast<double>(nanosecond_) / 1e9);
 }
 
+Real Time::getTotalFloatingSeconds() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Time");
+    }
+
+    return static_cast<double>(hour_) * 3600.0 + static_cast<double>(minute_) * 60.0 + this->getFloatingSeconds();
+}
+
+Real Time::getTotalFloatingHours() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Time");
+    }
+
+    return this->getTotalFloatingSeconds() / 3600.0;
+}
+
 String Time::toString(const Time::Format& aFormat) const
 {
     if (!this->isDefined())
@@ -494,6 +514,33 @@ Time Time::Parse(const String& aString, const Time::Format& aFormat)
     }
 
     return Time::Undefined();
+}
+
+Time Time::Hours(const Real& aReal)
+{
+    return Time::Seconds(aReal * 3600.0);
+}
+
+Time Time::Seconds(const Real& aReal)
+{
+    const Uint8 hour_Int = static_cast<Uint8>(aReal / 3600.0);
+
+    const Real minute = (aReal - Real::Integer(hour_Int) * 3600.0) / 60.0;
+    const Uint8 minute_Int = static_cast<Uint8>(minute);
+
+    const Real second = aReal - Real::Integer(hour_Int) * 3600.0 - Real::Integer(minute_Int) * 60.0;
+    const Uint8 second_Int = static_cast<Uint8>(second);
+
+    const Real millisecond = (second - Real::Integer(second_Int)) * 1e3;
+    const Uint16 millisecond_Int = static_cast<Uint16>(millisecond);
+
+    const Real microsecond = (millisecond - Real::Integer(millisecond_Int)) * 1e3;
+    const Uint16 microsecond_Int = static_cast<Uint16>(microsecond);
+
+    const Real nanosecond = (microsecond - Real::Integer(microsecond_Int)) * 1e3;
+    const Uint16 nanosecond_Int = static_cast<Uint16>(nanosecond);
+
+    return Time(hour_Int, minute_Int, second_Int, millisecond_Int, microsecond_Int, nanosecond_Int);
 }
 
 Time::Time()
