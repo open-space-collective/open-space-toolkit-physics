@@ -15,28 +15,30 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Shared;
-using ostk::core::type::Real;
-using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Pair;
 using ostk::core::container::Array;
-using ostk::core::container::Table;
 using ostk::core::container::iterator::Zip;
-using ostk::core::filesystem::Path;
+using ostk::core::container::Pair;
+using ostk::core::container::Table;
+using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
+using ostk::core::type::Real;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
+using Point2d = ostk::mathematics::geometry::d2::object::Point;
+using Point3d = ostk::mathematics::geometry::d3::object::Point;
 
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Angle;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
-using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
@@ -159,6 +161,20 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
 
     {
         EXPECT_ANY_THROW(LLA::Undefined().getAltitude());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, OnSurface)
+{
+    {
+        const LLA lla = lla_.onSurface();
+        EXPECT_EQ(lla.getLatitude(), lla_.getLatitude());
+        EXPECT_EQ(lla.getLongitude(), lla_.getLongitude());
+        EXPECT_EQ(lla.getAltitude(), Length::Meters(0.0));
+    }
+
+    {
+        EXPECT_ANY_THROW(LLA::Undefined().onSurface());
     }
 }
 
@@ -411,6 +427,28 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
 
     {
         EXPECT_ANY_THROW(LLA::Undefined().toVector());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint2d)
+{
+    {
+        EXPECT_EQ(Point2d(longitude_.inDegrees(), latitude_.inDegrees()), lla_.toPoint2d());
+    }
+
+    {
+        EXPECT_ANY_THROW(LLA::Undefined().toPoint2d());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint3d)
+{
+    {
+        EXPECT_EQ(Point3d(longitude_.inDegrees(), latitude_.inDegrees(), altitude_.inMeters()), lla_.toPoint3d());
+    }
+
+    {
+        EXPECT_ANY_THROW(LLA::Undefined().toPoint3d());
     }
 }
 
