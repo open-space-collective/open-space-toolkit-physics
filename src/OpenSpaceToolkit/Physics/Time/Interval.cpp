@@ -279,8 +279,10 @@ Interval Interval::Parse(const String& aString)
     if (boost::regex_match(
             aString,
             match,
-            boost::regex("^([\\[\\]])([\\d]{4}-[\\d]{2}-[\\d]{2} [\\d]{2}:[\\d]{2}:[\\d]{2}) - "
-                         "([\\d]{4}-[\\d]{2}-[\\d]{2} [\\d]{2}:[\\d]{2}:[\\d]{2})([\\[\\]]) \\[([\\w]+)\\]$")
+            boost::regex(
+                "(\\[|\\])(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3}\\.\\d{3}\\.\\d{3})?) - "
+                "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3}\\.\\d{3}\\.\\d{3})?)(\\[|\\]) \\[([A-Z]+)\\]"
+            )
         ))
     {
         const String openingBracket = String(match[1]);
@@ -292,9 +294,9 @@ Interval Interval::Parse(const String& aString)
         const Scale timeScale = ScaleFromString(timeScaleString);
 
         const Instant startInstant =
-            Instant::DateTime(DateTime::Parse(startInstantString, DateTime::Format::Standard), timeScale);
+            Instant::DateTime(DateTime::Parse(startInstantString, DateTime::Format::Undefined), timeScale);
         const Instant endInstant =
-            Instant::DateTime(DateTime::Parse(endInstantString, DateTime::Format::Standard), timeScale);
+            Instant::DateTime(DateTime::Parse(endInstantString, DateTime::Format::Undefined), timeScale);
 
         Interval::Type type = Interval::Type::Undefined;
 

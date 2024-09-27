@@ -666,6 +666,22 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Parse)
             ),
             Interval::Parse("[2018-01-01 00:00:00 - 2018-01-02 00:00:00[ [TT]")
         );
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0, 123, 456, 789), Scale::UTC),
+                Interval::Type::HalfOpenRight
+            ),
+            Interval::Parse("[2018-01-01 00:00:00.000.000.000 - 2018-01-02 00:00:00.123.456.789[ [UTC]")
+        );
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0, 123, 456, 789), Scale::UTC),
+                Interval::Type::HalfOpenRight
+            ),
+            Interval::Parse("[2018-01-01 00:00:00 - 2018-01-02 00:00:00.123.456.789[ [UTC]")
+        );
     }
 
     {
