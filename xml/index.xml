@@ -1737,6 +1737,11 @@
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a655586dbfcb105a8da7dc0e998652a9d" kind="function"><name>Tesla</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a155761ac780f2698579da020855d70e2" kind="function"><name>Newton</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a2ed355b790b72d0f6ce3b907bfdc8e95" kind="function"><name>KilogramPerSecond</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1eab513944968d24232df8ebd47a54f4" kind="function"><name>MeterPerSecond</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aa9eaba6fb3c13fc1d7cad629153e9a66" kind="function"><name>MeterPerSecondSquared</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0758901dd940bca805f34667e1c8bc1e" kind="function"><name>MeterCubedPerSecondSquared</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aee7b955dfe7cee445e2e9438e2f89ebf" kind="function"><name>RadianPerSecond</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a47eb1693534335d3e4bcfc844dc5a020" kind="function"><name>RevolutionPerDay</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1acd0d55df21a3519bd18fb3ea6c0013f7" kind="function"><name>Velocity</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9b811d943ab76c063351e3f172b154dc" kind="function"><name>Acceleration</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a14c51a8d1a728fc93d32b5092b9dd79e" kind="function"><name>AngularVelocity</name></member>

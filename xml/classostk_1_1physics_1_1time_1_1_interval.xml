@@ -320,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="94" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="268" bodyend="330"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="94" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="268" bodyend="332"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
