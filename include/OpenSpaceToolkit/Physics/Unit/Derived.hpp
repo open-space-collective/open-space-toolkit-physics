@@ -119,7 +119,7 @@ class Derived : public Unit
 
         String getSymbol() const;
 
-        // Static constructors for specifying actual named S.I. units
+        // Static constructors for specifying actual named units
 
         static Unit SquareMeter();
 
@@ -134,6 +134,16 @@ class Derived : public Unit
         static Unit Newton();
 
         static Unit KilogramPerSecond();
+
+        static Unit MeterPerSecond();
+
+        static Unit MeterPerSecondSquared();
+
+        static Unit MeterCubedPerSecondSquared();
+
+        static Unit RadianPerSecond();
+
+        static Unit RevolutionPerDay();
 
         // Static constructors for specifying derived (non-base) quantities
 

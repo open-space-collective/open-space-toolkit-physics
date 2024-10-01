@@ -44,6 +44,42 @@ class TestDerived:
         assert derived_unit is not None
         assert isinstance(derived_unit, Derived.Unit)
 
+    def test_kilogram_per_second(self):
+        derived_unit: Derived.Unit = Derived.Unit.kilogram_per_second()
+
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+
+    def test_meter_per_second(self):
+        derived_unit: Derived.Unit = Derived.Unit.meter_per_second()
+
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+
+    def test_meter_per_second_squared(self):
+        derived_unit: Derived.Unit = Derived.Unit.meter_per_second_squared()
+
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+
+    def test_meter_cubed_per_second_squared(self):
+        derived_unit: Derived.Unit = Derived.Unit.meter_cubed_per_second_squared()
+
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+
+    def test_radian_per_second(self):
+        derived_unit: Derived.Unit = Derived.Unit.radian_per_second()
+
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+
+    def test_revolution_per_day(self):
+        derived_unit: Derived.Unit = Derived.Unit.revolution_per_day()
+
+        assert derived_unit is not None
+        assert isinstance(derived_unit, Derived.Unit)
+
     def test_derived_velocity(self):
         derived_unit: Derived.Unit = Derived.Unit.velocity(
             Length.Unit.Meter, Time.Unit.Second

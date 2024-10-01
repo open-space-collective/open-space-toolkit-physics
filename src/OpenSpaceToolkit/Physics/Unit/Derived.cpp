@@ -415,6 +415,86 @@ Derived::Unit Derived::Unit::KilogramPerSecond()
     };
 }
 
+Derived::Unit Derived::Unit::MeterPerSecond()
+{
+    return {
+        Length::Unit::Meter,
+        {1},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Second,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}
+    };
+}
+
+Derived::Unit Derived::Unit::MeterPerSecondSquared()
+{
+    return {
+        Length::Unit::Meter,
+        {1},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Second,
+        {-2},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}
+    };
+}
+
+Derived::Unit Derived::Unit::MeterCubedPerSecondSquared()
+{
+    return {
+        Length::Unit::Meter,
+        {3},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Second,
+        {-2},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Undefined,
+        {0}
+    };
+}
+
+Derived::Unit Derived::Unit::RadianPerSecond()
+{
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Second,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Radian,
+        {1}
+    };
+}
+
+Derived::Unit Derived::Unit::RevolutionPerDay()
+{
+    return {
+        Length::Unit::Undefined,
+        {0},
+        Mass::Unit::Undefined,
+        {0},
+        Time::Unit::Day,
+        {-1},
+        ElectricCurrent::Unit::Undefined,
+        {0},
+        Angle::Unit::Revolution,
+        {1}
+    };
+}
+
 Derived::Unit Derived::Unit::Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
     return {
