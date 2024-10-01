@@ -9,12 +9,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
 
+    using ostk::physics::unit::Angle;
+    using ostk::physics::unit::Derived;
+    using ostk::physics::unit::ElectricCurrent;
     using ostk::physics::unit::Length;
     using ostk::physics::unit::Mass;
     using ostk::physics::unit::Time;
-    using ostk::physics::unit::ElectricCurrent;
-    using ostk::physics::unit::Angle;
-    using ostk::physics::unit::Derived;
 
     class_<Derived> derived_class(
         aModule,
@@ -385,6 +385,56 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             &Derived::Unit::KilogramPerSecond,
             R"doc(
                 Create a kilogram per second unit.
+
+                Returns:
+                    Unit: Unit.
+            )doc"
+        )
+        .def_static(
+            "meter_per_second",
+            &Derived::Unit::MeterPerSecond,
+            R"doc(
+                Create a meter per second unit.
+
+                Returns:
+                    Unit: Unit.
+            )doc"
+        )
+        .def_static(
+            "meter_per_second_squared",
+            &Derived::Unit::MeterPerSecondSquared,
+            R"doc(
+                Create a meter per second squared unit.
+
+                Returns:
+                    Unit: Unit.
+            )doc"
+        )
+        .def_static(
+            "meter_cubed_per_second_squared",
+            &Derived::Unit::MeterCubedPerSecondSquared,
+            R"doc(
+                Create a meter cubed per second squared unit.
+
+                Returns:
+                    Unit: Unit.
+            )doc"
+        )
+        .def_static(
+            "radian_per_second",
+            &Derived::Unit::RadianPerSecond,
+            R"doc(
+                Create a radian per second unit.
+
+                Returns:
+                    Unit: Unit.
+            )doc"
+        )
+        .def_static(
+            "revolution_per_day",
+            &Derived::Unit::RevolutionPerDay,
+            R"doc(
+                Create a revolution per day unit.
 
                 Returns:
                     Unit: Unit.

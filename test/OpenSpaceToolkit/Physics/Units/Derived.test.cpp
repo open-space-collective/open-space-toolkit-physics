@@ -8,12 +8,12 @@
 
 using ostk::core::type::Real;
 
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::ElectricCurrent;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Mass;
 using ostk::physics::unit::Time;
-using ostk::physics::unit::ElectricCurrent;
-using ostk::physics::unit::Angle;
-using ostk::physics::unit::Derived;
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
 {
@@ -1007,6 +1007,126 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, KilogramPerSecond)
             {0},
             Angle::Unit::Undefined,
             {0}
+        };
+
+        EXPECT_EQ(expectedDerivedUnit, derivedUnit);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MeterPerSecond)
+{
+    {
+        const Derived::Unit derivedUnit = Derived::Unit::MeterPerSecond();
+
+        EXPECT_TRUE(derivedUnit.isDefined());
+
+        const Derived::Unit expectedDerivedUnit = {
+            Length::Unit::Meter,
+            {1},
+            Mass::Unit::Undefined,
+            {0},
+            Time::Unit::Second,
+            {-1},
+            ElectricCurrent::Unit::Undefined,
+            {0},
+            Angle::Unit::Undefined,
+            {0}
+        };
+
+        EXPECT_EQ(expectedDerivedUnit, derivedUnit);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MeterPerSecondSquared)
+{
+    {
+        const Derived::Unit derivedUnit = Derived::Unit::MeterPerSecondSquared();
+
+        EXPECT_TRUE(derivedUnit.isDefined());
+
+        const Derived::Unit expectedDerivedUnit = {
+            Length::Unit::Meter,
+            {1},
+            Mass::Unit::Undefined,
+            {0},
+            Time::Unit::Second,
+            {-2},
+            ElectricCurrent::Unit::Undefined,
+            {0},
+            Angle::Unit::Undefined,
+            {0}
+        };
+
+        EXPECT_EQ(expectedDerivedUnit, derivedUnit);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MeterCubedPerSecondSquared)
+{
+    {
+        const Derived::Unit derivedUnit = Derived::Unit::MeterCubedPerSecondSquared();
+
+        EXPECT_TRUE(derivedUnit.isDefined());
+
+        const Derived::Unit expectedDerivedUnit = {
+            Length::Unit::Meter,
+            {3},
+            Mass::Unit::Undefined,
+            {0},
+            Time::Unit::Second,
+            {-2},
+            ElectricCurrent::Unit::Undefined,
+            {0},
+            Angle::Unit::Undefined,
+            {0}
+        };
+
+        EXPECT_EQ(expectedDerivedUnit, derivedUnit);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, RadianPerSecond)
+{
+    {
+        const Derived::Unit derivedUnit = Derived::Unit::RadianPerSecond();
+
+        EXPECT_TRUE(derivedUnit.isDefined());
+
+        const Derived::Unit expectedDerivedUnit = {
+            Length::Unit::Undefined,
+            {0},
+            Mass::Unit::Undefined,
+            {0},
+            Time::Unit::Second,
+            {-1},
+            ElectricCurrent::Unit::Undefined,
+            {0},
+            Angle::Unit::Radian,
+            {1}
+        };
+
+        EXPECT_EQ(expectedDerivedUnit, derivedUnit);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, RevolutionPerDay)
+{
+    {
+        const Derived::Unit derivedUnit = Derived::Unit::RevolutionPerDay();
+
+        EXPECT_TRUE(derivedUnit.isDefined());
+
+        const Derived::Unit expectedDerivedUnit = {
+            Length::Unit::Undefined,
+            {0},
+            Mass::Unit::Undefined,
+            {0},
+            Time::Unit::Day,
+            {-1},
+            ElectricCurrent::Unit::Undefined,
+            {0},
+            Angle::Unit::Revolution,
+            {1}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
