@@ -192,9 +192,17 @@ Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aTyp
             {
                 Manager::Get().fetchDataFilesForType(aType);
             }
-
-            dataPath = Manager::Get().getLocalRepository().getPath().toString();
         }
+
+        if (Manager::Get().getMode() == Manager::Mode::Manual)
+        {
+            if (!Manager::Get().hasDataFilesForType(aType))
+            {
+                throw ostk::core::error::RuntimeError("Cannot load Earth magnetic model, data files are missing.");
+            }
+        }
+
+        dataPath = Manager::Get().getLocalRepository().getPath().toString();
     }
 
     switch (aType)

@@ -38,8 +38,8 @@ namespace provider
 namespace iers
 {
 
-using ostk::core::type::String;
 using ostk::core::filesystem::Path;
+using ostk::core::type::String;
 
 using ostk::io::ip::tcp::http::Client;
 using ostk::io::URL;
@@ -514,11 +514,25 @@ const BulletinA* Manager::accessBulletinA_() const
         return &bulletinA_;
     }
 
-    // No bulletin A found and unable to fetch
-
+    if (mode_ == Manager::Mode::Manual)
     {
-        return nullptr;
+        if (!this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
+        {
+            return nullptr;
+        }
+
+        const File localBulletinAFile =
+            File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
+
+        const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
+
+        this->loadBulletinA_(bulletinA);
+
+        return &bulletinA_;
     }
+
+    // No bulletin A found and unable to fetch
+    return nullptr;
 }
 
 const Finals2000A* Manager::accessFinals2000A_() const
@@ -569,11 +583,25 @@ const Finals2000A* Manager::accessFinals2000A_() const
         return &finals2000A_;
     }
 
-    // No finals 2000A found and unable to fetch
-
+    if (mode_ == Manager::Mode::Manual)
     {
-        return nullptr;
+        if (!this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
+        {
+            return nullptr;
+        }
+
+        const File localFinals2000AFile =
+            File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
+
+        const Finals2000A finals2000A = Finals2000A::Load(localFinals2000AFile);
+
+        this->loadFinals2000A_(finals2000A);
+
+        return &finals2000A_;
     }
+
+    // No finals 2000A found and unable to fetch
+    return nullptr;
 }
 
 File Manager::fetchLatestBulletinA_() const
