@@ -309,13 +309,16 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
         switch (Manager::Get().getMode())
         {
             case Manager::Mode::Automatic:
+            {
                 if (!Manager::Get().hasDataFilesForType(aType))
                 {
                     Manager::Get().fetchDataFilesForType(aType);
                 }
                 break;
+            }
 
             case Manager::Mode::Manual:
+            {
                 if (!Manager::Get().hasDataFilesForType(aType))
                 {
                     throw ostk::core::error::RuntimeError(
@@ -323,9 +326,12 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
                     );
                 }
                 break;
+            }
 
             default:
-                throw ostk::core::error::RuntimeError("Unknown Manager mode.");
+            {
+                throw ostk::core::error::runtime::Wrong("Manager mode.");
+            }
         }
 
         dataPath = Manager::Get().getLocalRepository().getPath().toString();

@@ -424,48 +424,50 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
     }
 
     // Try loading or fetching latest Space Weather file
-    if (mode_ == Manager::Mode::Automatic)
+    switch (mode_)
     {
-        const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile();
-
-        if (latestCSSISpaceWeatherFile.isDefined())
+        case Manager::Mode::Automatic:
         {
-            const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(latestCSSISpaceWeatherFile);
-            const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather);
+            const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile();
+
+            if (!latestCSSISpaceWeatherFile.isDefined())
+            {
+                throw ostk::core::error::RuntimeError(
+                    "Failed to load or fetch latest CSSI Space Weather file at {}.",
+                    latestCSSISpaceWeatherFile.getPath().toString());
+            }
+
+            const_cast<Manager *>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(latestCSSISpaceWeatherFile));
 
             return &CSSISpaceWeather_;
         }
 
-        throw ostk::core::error::RuntimeError(
-            "Failed to load or fetch latest CSSI Space Weather file at {}.",
-            latestCSSISpaceWeatherFile.getPath().toString()
-        );
-    }
+        case Manager::Mode::Manual:
+        {
+            if (!this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
+            {
+                throw ostk::core::error::RuntimeError("No CSSI Space Weather data loaded and manager set to Manual mode.");
+            }
 
-    if (mode_ == Manager::Mode::Manual)
-    {
-        if (!this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
+            const File localCSSISpaceWeatherFile =
+                File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
+
+            if (!localCSSISpaceWeatherFile.isDefined())
+            {
+                throw ostk::core::error::RuntimeError(
+                    "Failed to load latest CSSI Space Weather file at {}.", localCSSISpaceWeatherFile.getPath().toString());
+            }
+
+            const_cast<Manager *>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(localCSSISpaceWeatherFile));
+
+            return &CSSISpaceWeather_;
+        }
+
+        default:
         {
             throw ostk::core::error::RuntimeError("No CSSI Space Weather data loaded and manager set to Manual mode.");
         }
-
-        const File localCSSISpaceWeatherFile =
-            File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
-
-        if (!localCSSISpaceWeatherFile.isDefined())
-        {
-            throw ostk::core::error::RuntimeError(
-                "Failed to load latest CSSI Space Weather file at {}.", localCSSISpaceWeatherFile.getPath().toString()
-            );
-        }
-
-        const CSSISpaceWeather CSSISpaceWeather = CSSISpaceWeather::Load(localCSSISpaceWeatherFile);
-        const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather);
-
-        return &CSSISpaceWeather_;
     }
-
-    throw ostk::core::error::RuntimeError("No CSSI Space Weather data loaded and manager set to Manual mode.");
 }
 
 File Manager::getLocalRepositoryLockFile() const
