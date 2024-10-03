@@ -359,7 +359,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="236" bodyend="251"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="236" bodyend="248"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a5fb58ac83d89062bf7b34155f5233e0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -387,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="253" bodyend="263"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="250" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aeff64ac91ccf7322a07e6b3935b981d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -415,7 +415,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="153" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="265" bodyend="275"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="153" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="262" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1abd848b225cc7a48dee3d563b490431a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="159" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="277" bodyend="282"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="159" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="274" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab0f1f99ea683d9b609c4683854d1eff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -449,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="165" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="284" bodyend="289"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="165" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="281" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4d2797de02f1de4a66f949f8224bf8ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -465,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="171" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="291" bodyend="297"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="171" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="288" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae6d52b7df4fb9d6db61950df0d0884ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -481,7 +481,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="177" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="299" bodyend="304"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="177" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="296" bodyend="301"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -500,7 +500,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="183" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="306" bodyend="311"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="183" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="303" bodyend="308"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6e0ac15b9b2a7388462c702ce5214338" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a3a9b8a465b2cc96a76a2b299b3a75f1c" kindref="member">Manager::Mode</ref></type>
@@ -519,7 +519,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="191" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="313" bodyend="334"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="191" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="310" bodyend="331"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa25cc003596f17b9a15bcaa1d84dfdb7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Directory</type>
@@ -538,7 +538,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="199" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="336" bodyend="354"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="199" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="333" bodyend="351"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ad7fb72c8a7b513f0ad156863b8350a57" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -558,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="208" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="356" bodyend="368"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="208" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="353" bodyend="365"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -578,7 +578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="221" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="370" bodyend="378"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="221" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="367" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aa05c0a46aa4db730317584dba03683e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -591,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="223" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="380" bodyend="396"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="223" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="377" bodyend="393"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a0bbfc8e1bafda1b81073e240e66151d0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -604,7 +604,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="225" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="398" bodyend="401"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="225" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="395" bodyend="398"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4b6f09c2ff8329ca8f401765c3d6a1f0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -617,7 +617,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="226" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="403" bodyend="406"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="226" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="400" bodyend="403"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab1655ace68ed8bf012a9c1cdae5a0770" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -634,7 +634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="227" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="408" bodyend="446"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="227" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="405" bodyend="443"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af82c8540135877141584bc42cb850c13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -647,7 +647,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="228" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="448" bodyend="458"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="228" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="445" bodyend="455"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae2849d6fca09f174258ad5e14652c1b6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -664,7 +664,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="232" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="460" bodyend="463"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="232" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="457" bodyend="460"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a77709a47bc6998d1b87cbca116b39367" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -681,7 +681,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="233" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="465" bodyend="468"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="233" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="462" bodyend="465"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6c52cf62790b09e4d033aa0f13e46a6e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> *</type>
@@ -694,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="235" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="470" bodyend="522"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="235" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="467" bodyend="538"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac73ff55040eaaf9ece767af8752b1f38" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> *</type>
@@ -707,7 +707,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="236" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="524" bodyend="577"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="236" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="540" bodyend="611"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a59924e50a12708368ad3a3d93f6caef9" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -720,7 +720,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="238" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="579" bodyend="681"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="238" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="613" bodyend="715"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a877e273e6701d5c22942ea3602a36912" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -733,7 +733,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="239" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="683" bodyend="786"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="239" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="717" bodyend="820"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

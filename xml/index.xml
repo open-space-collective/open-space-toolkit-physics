@@ -1000,6 +1000,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac6560e59fb8a338f7109e45b84b721ef" kind="function"><name>getDataFileUrlsForType</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1aa1b3ade8d71634bdff550f4b3254d6d8" kind="function"><name>isLocalRepositoryLocked</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a5fccc2a231cb1f7865687148725a5d24" kind="function"><name>getLocalRepositoryLockFile</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac7b30b11a86c4a2fe77dd7ebc2035f44" kind="function"><name>setup</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ac1ddaedaf1466a19af2bceab91438798" kind="function"><name>lockLocalRepository</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a5b6f476d56e6304ffa1b39332714da1d" kind="function"><name>unlockLocalRepository</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a7a22372fac63552d854f42a46267fec6" kind="function"><name>DataFileNameFromType</name></member>
@@ -1062,6 +1063,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" kind="function"><name>Get</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a97f9b88e6e8f3574a8b34e83a0cb2061" kind="function"><name>DefaultLocalRepository</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a1afababb0380dac14ae55ea5ad4f295e" kind="function"><name>Manager</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1adec3666ebb1b57f0e71a9b5beb45a02b" kind="function"><name>setup</name></member>
   </compound>
   <compound refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager" kind="class"><name>ostk::physics::coordinate::frame::Manager</name>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" kind="variable"><name>frameMap_</name></member>
@@ -1143,7 +1145,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a120627adcbf709047cae9c7cf4374e8d" kind="function"><name>isLocalRepositoryLocked</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1ae6ab5975ecadbc2cfde9e04111ac857c" kind="function"><name>getLocalRepositoryLockFile</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a86fed2b5b92ab36f57a6e7461de9b745" kind="function"><name>accessCSSISpaceWeatherAt</name></member>
-    <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a669f23cb5e3cbb05392a0facf339ce17" kind="function"><name>getLatestCSSICSSISpaceWeatherFile</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a39fe54e58d97d81818c84dc1c3236d5f" kind="function"><name>getLatestCSSISpaceWeatherFile</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1ad13dd538d6d8455ca0503f28eb74a57f" kind="function"><name>setup</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a488314d838aecc6ae55d0922934eac0c" kind="function"><name>loadCSSISpaceWeather_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a23f1e684b31a21fd0cc7d3eeecdad577" kind="function"><name>fetchLatestCSSISpaceWeather_</name></member>
@@ -1176,6 +1178,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5564a80ec2630b94d86d01991996ed7f" kind="function"><name>getDataFileUrlsForType</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adf45be94698c83de8c88e8bf5d5fe030" kind="function"><name>isLocalRepositoryLocked</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa1c0d95d80dd9370c45d8cb052fa9504" kind="function"><name>getLocalRepositoryLockFile</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ad6eb240d2d1b1126d2f73f7caae775b0" kind="function"><name>setup</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a96594cba87ec7308c2b341f38d07266e" kind="function"><name>lockLocalRepository</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac212508e39e11133443db5cd669486d3" kind="function"><name>unlockLocalRepository</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8d4aa3029fbb0a3e4b6c036361a51aa1" kind="function"><name>DataFileNameFromType</name></member>
@@ -1926,7 +1929,7 @@
     <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a842341ed14cd8a424805de86e30350a1" kind="typedef"><name>EarthCelestialBody</name></member>
     <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a4e603bd4478a36f9ba98e33af0a1c892" kind="typedef"><name>ManifestManager</name></member>
     <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1abb6a5f6ac10e54fe888f12083e110dc7" kind="typedef"><name>EarthCelestial</name></member>
-    <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a9c56677f2149cbb14960d37d8b5bd848" kind="variable"><name>CSSICSSISpaceWeatherFileName</name></member>
+    <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a1484ec6564a2ab2f9dc850fe463ee593" kind="variable"><name>CSSISpaceWeatherFileName</name></member>
     <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1aa9294decc08248cc49207831d5dc3faf" kind="variable"><name>CSSISpaceWeatherManifestName</name></member>
     <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a6278334fad443af51f946c823cb579ee" kind="variable"><name>temporaryDirectoryName</name></member>
     <member refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a682b70a4b287bff40d9efacdb5ef3fc0" kind="function"><name>operator&lt;&lt;</name></member>

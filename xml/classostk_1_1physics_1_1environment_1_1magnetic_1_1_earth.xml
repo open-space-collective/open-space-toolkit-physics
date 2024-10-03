@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="67" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="230" bodyend="234"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="67" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="238" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a0d12c37ce2e12e778a01d5c79dcfd355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="73" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="236" bodyend="243"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="73" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="244" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ad7ce781762b59980fb255b3b2a3f6aca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> &amp;</type>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="80" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="245" bodyend="257"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="80" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="253" bodyend="265"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a980e325b00a1dc56103d18c3199d0e33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -216,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="84" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="259" bodyend="259"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="84" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="267" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ac4b57f94304595595fc3eebb0dd0d050" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> *</type>
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="90" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="261" bodyend="264"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="90" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="269" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a3a5080990cbd2b4204c59f10cd58271d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="96" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="266" bodyend="274"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="96" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="274" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a20952c06c726e4f89f2f8184653ea74e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref></type>
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="102" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="276" bodyend="279"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="102" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="284" bodyend="287"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a2f39ff75c4a674b6720b27c2c6a0b930" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -312,7 +312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="110" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="281" bodyend="284"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="110" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="289" bodyend="292"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

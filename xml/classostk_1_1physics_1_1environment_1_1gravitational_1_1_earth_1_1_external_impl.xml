@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="205" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="280" bodyend="399"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="205" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="280" bodyend="413"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

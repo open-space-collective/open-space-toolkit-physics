@@ -74,11 +74,11 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a9c56677f2149cbb14960d37d8b5bd848" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a1484ec6564a2ab2f9dc850fe463ee593" prot="public" static="no" mutable="no">
         <type>const String</type>
-        <definition>const String ostk::physics::environment::atmospheric::earth::CSSICSSISpaceWeatherFileName</definition>
+        <definition>const String ostk::physics::environment::atmospheric::earth::CSSISpaceWeatherFileName</definition>
         <argsstring></argsstring>
-        <name>CSSICSSISpaceWeatherFileName</name>
+        <name>CSSISpaceWeatherFileName</name>
         <initializer>= &quot;SW-Last5Years.csv&quot;</initializer>
         <briefdescription>
         </briefdescription>
