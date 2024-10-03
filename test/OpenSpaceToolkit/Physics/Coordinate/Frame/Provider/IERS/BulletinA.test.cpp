@@ -4,16 +4,16 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 
-using ostk::physics::time::Date;
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
-using ostk::physics::time::Interval;
-using ostk::physics::time::Duration;
 using ostk::physics::coordinate::frame::provider::iers::BulletinA;
+using ostk::physics::time::Date;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Interval;
+using ostk::physics::time::Scale;
 
 class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA : public ::testing::Test
 {
@@ -21,7 +21,7 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA : public
     void SetUp() override
     {
         const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA/ser7.dat")
+            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
         );
         this->bulletinA_ = BulletinA::Load(file);
     }
