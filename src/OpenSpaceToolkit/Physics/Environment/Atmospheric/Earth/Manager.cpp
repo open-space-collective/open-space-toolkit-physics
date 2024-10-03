@@ -285,10 +285,7 @@ void Manager::setLocalRepository(const Directory& aDirectory)
 
     localRepository_ = aDirectory;
 
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
+    this->setup();
 }
 
 void Manager::loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)

@@ -32,8 +32,8 @@ namespace spice
 
 using ostk::core::type::String;
 
-using ostk::io::URL;
 using ostk::io::ip::tcp::http::Client;
+using ostk::io::URL;
 
 const String temporaryDirectoryName = "tmp";
 
@@ -61,6 +61,8 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     const std::lock_guard<std::mutex> lock {mutex_};
 
     localRepository_ = aDirectory;
+
+    setup();
 }
 
 Directory Manager::DefaultLocalRepository()
@@ -234,6 +236,14 @@ Kernel Manager::findKernel(const String& aRegexString) const
 Manager::Manager()
     : localRepository_(Manager::DefaultLocalRepository())
 {
+}
+
+void Manager::setup()
+{
+    if (!localRepository_.exists())
+    {
+        localRepository_.create();
+    }
 }
 
 }  // namespace spice

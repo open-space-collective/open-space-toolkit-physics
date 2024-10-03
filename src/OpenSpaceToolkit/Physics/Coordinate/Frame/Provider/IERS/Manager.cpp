@@ -244,10 +244,7 @@ void Manager::setLocalRepository(const Directory& aDirectory)
 
     localRepository_ = aDirectory;
 
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
+    setup_();
 }
 
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
@@ -476,59 +473,64 @@ const BulletinA* Manager::accessBulletinA_() const
     }
 
     // If set to automatic, try to load or fetch the latest file
-    if (mode_ == Manager::Mode::Automatic)
+    switch (mode_)
     {
-        // Try from file
-        File localBulletinAFile = File::Undefined();
-
-        if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
+        case Manager::Mode::Automatic:
         {
-            localBulletinAFile = File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
+            // Try from file
+            File localBulletinAFile = File::Undefined();
 
-            // if the file exists locally, load and check timestamp against remote
-            const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
-
-            ManifestManager& manifestManager = ManifestManager::Get();
-
-            // When the file was last updated on the remote (this may trigger a manifest fetch)
-            const Instant bulletinARemoteUpdateTimestamp =
-                manifestManager.getLastUpdateTimestampFor(bulletinAManifestName);
-
-            // When the file was last updated locally
-            const Instant bulletinALocalUpdateTimestamp = bulletinA.accessLastModifiedTimestamp();
-
-            if (bulletinARemoteUpdateTimestamp > bulletinALocalUpdateTimestamp)
+            if (this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
             {
-                // if the remote file is newer, fetch it
+                localBulletinAFile =
+                    File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
+
+                // if the file exists locally, load and check timestamp against remote
+                const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
+
+                ManifestManager& manifestManager = ManifestManager::Get();
+
+                // When the file was last updated on the remote (this may trigger a manifest fetch)
+                const Instant bulletinARemoteUpdateTimestamp =
+                    manifestManager.getLastUpdateTimestampFor(bulletinAManifestName);
+
+                // When the file was last updated locally
+                const Instant bulletinALocalUpdateTimestamp = bulletinA.accessLastModifiedTimestamp();
+
+                if (bulletinARemoteUpdateTimestamp > bulletinALocalUpdateTimestamp)
+                {
+                    // if the remote file is newer, fetch it
+                    localBulletinAFile = this->fetchLatestBulletinA_();
+                }
+            }
+            else
+            {
+                // if it doesn't exist, fetch latest from remote
                 localBulletinAFile = this->fetchLatestBulletinA_();
             }
+
+            this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
+
+            return &bulletinA_;
         }
-        else
+        case Manager::Mode::Manual:
         {
-            // if it doesn't exist, fetch latest from remote
-            localBulletinAFile = this->fetchLatestBulletinA_();
+            if (!this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
+            {
+                return nullptr;
+            }
+
+            const File localBulletinAFile =
+                File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
+
+            const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
+
+            this->loadBulletinA_(bulletinA);
+
+            return &bulletinA_;
         }
-
-        this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
-
-        return &bulletinA_;
-    }
-
-    if (mode_ == Manager::Mode::Manual)
-    {
-        if (!this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
-        {
+        default:
             return nullptr;
-        }
-
-        const File localBulletinAFile =
-            File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
-
-        const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
-
-        this->loadBulletinA_(bulletinA);
-
-        return &bulletinA_;
     }
 
     // No bulletin A found and unable to fetch
@@ -544,60 +546,66 @@ const Finals2000A* Manager::accessFinals2000A_() const
     }
 
     // If set to automatic, try to load or fetch the latest file
-    if (mode_ == Manager::Mode::Automatic)
+    switch (mode_)
     {
-        // Try from file
-        File localFinals2000AFile = File::Undefined();
-
-        if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
+        case Manager::Mode::Automatic:
         {
-            localFinals2000AFile =
-                File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
+            // Try from file
+            File localFinals2000AFile = File::Undefined();
 
-            // if the file exists locally, load and check timestamp against remote
-            const Finals2000A finals2000A = Finals2000A::Load(localFinals2000AFile);
-
-            ManifestManager& manifestManager = ManifestManager::Get();
-
-            // When the file was last updated on the remote (this may trigger a manifest fetch)
-            const Instant finals2000ARemoteUpdateTimestamp =
-                manifestManager.getLastUpdateTimestampFor(finals2000AManifestName);
-
-            // When the file was last updated locally
-            const Instant finals2000ALocalUpdateTimestamp = finals2000A.accessLastModifiedTimestamp();
-
-            if (finals2000ARemoteUpdateTimestamp > finals2000ALocalUpdateTimestamp)
+            if (this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
             {
-                // if the remote file is newer, fetch it
+                localFinals2000AFile =
+                    File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
+
+                // if the file exists locally, load and check timestamp against remote
+                const Finals2000A finals2000A = Finals2000A::Load(localFinals2000AFile);
+
+                ManifestManager& manifestManager = ManifestManager::Get();
+
+                // When the file was last updated on the remote (this may trigger a manifest fetch)
+                const Instant finals2000ARemoteUpdateTimestamp =
+                    manifestManager.getLastUpdateTimestampFor(finals2000AManifestName);
+
+                // When the file was last updated locally
+                const Instant finals2000ALocalUpdateTimestamp = finals2000A.accessLastModifiedTimestamp();
+
+                if (finals2000ARemoteUpdateTimestamp > finals2000ALocalUpdateTimestamp)
+                {
+                    // if the remote file is newer, fetch it
+                    localFinals2000AFile = this->fetchLatestFinals2000A_();
+                }
+            }
+            else
+            {
+                // if it doesn't exist, fetch latest from remote
                 localFinals2000AFile = this->fetchLatestFinals2000A_();
             }
+
+            this->loadFinals2000A_(Finals2000A::Load(localFinals2000AFile));
+
+            return &finals2000A_;
         }
-        else
+        case Manager::Mode::Manual:
         {
-            // if it doesn't exist, fetch latest from remote
-            localFinals2000AFile = this->fetchLatestFinals2000A_();
+            if (!this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
+            {
+                std::cout << "no file found " << this->getFinals2000ADirectory().getPath().toString()
+                          << " WITH NAME: " << finals2000AFileName << std::endl;
+                return nullptr;
+            }
+
+            const File localFinals2000AFile =
+                File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
+
+            const Finals2000A finals2000A = Finals2000A::Load(localFinals2000AFile);
+
+            this->loadFinals2000A_(finals2000A);
+
+            return &finals2000A_;
         }
-
-        this->loadFinals2000A_(Finals2000A::Load(localFinals2000AFile));
-
-        return &finals2000A_;
-    }
-
-    if (mode_ == Manager::Mode::Manual)
-    {
-        if (!this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
-        {
+        default:
             return nullptr;
-        }
-
-        const File localFinals2000AFile =
-            File::Path(this->getFinals2000ADirectory().getPath() + Path::Parse(finals2000AFileName));
-
-        const Finals2000A finals2000A = Finals2000A::Load(localFinals2000AFile);
-
-        this->loadFinals2000A_(finals2000A);
-
-        return &finals2000A_;
     }
 
     // No finals 2000A found and unable to fetch

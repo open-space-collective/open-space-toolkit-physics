@@ -34,11 +34,11 @@ namespace magnetic
 namespace earth
 {
 
-using ostk::core::type::String;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
-using ostk::core::filesystem::Directory;
 using ostk::core::container::Array;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
+using ostk::core::type::String;
 
 using ostk::io::URL;
 
@@ -173,6 +173,8 @@ class Manager
     bool isLocalRepositoryLocked() const;
 
     File getLocalRepositoryLockFile() const;
+
+    void setup();
 
     void lockLocalRepository(const Duration& aTimeout);
 

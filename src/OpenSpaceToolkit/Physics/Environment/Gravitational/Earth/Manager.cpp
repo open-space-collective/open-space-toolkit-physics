@@ -79,6 +79,8 @@ void Manager::setLocalRepository(const Directory& aDirectory)
     const std::lock_guard<std::mutex> lock {mutex_};
 
     localRepository_ = aDirectory;
+
+    this->setup();
 }
 
 Directory Manager::DefaultLocalRepository()
@@ -220,6 +222,14 @@ File Manager::getLocalRepositoryLockFile() const
     return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
 }
 
+void Manager::setup()
+{
+    if (!localRepository_.exists())
+    {
+        localRepository_.create();
+    }
+}
+
 void Manager::lockLocalRepository(const Duration& aTimeout)
 {
     std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
@@ -321,10 +331,7 @@ Manager::Manager()
       localRepository_(Manager::DefaultLocalRepository()),
       localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout())
 {
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
+    this->setup();
 }
 
 Array<URL> Manager::getDataFileUrlsForType(const EarthGravitationalModel::Type& aModelType) const

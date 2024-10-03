@@ -13,24 +13,24 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
-using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::Duration;
-using ostk::physics::time::DateTime;
-using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::environment::ephemeris::spice::Engine;
+using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::environment::ephemeris::spice::Manager;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::testing::Test
 {
@@ -141,7 +141,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel
     manager_.setLocalRepository(Directory::Path(
         Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") + Path::Parse("FetchKernelTest/")
     ));
-    manager_.getLocalRepository().create();
 
     {
         File kernelFile = File::Path(manager_.getLocalRepository().getPath() + Path::Parse("latest_leapseconds.tls"));

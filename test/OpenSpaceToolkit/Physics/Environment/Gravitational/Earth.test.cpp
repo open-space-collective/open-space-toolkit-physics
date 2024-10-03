@@ -14,13 +14,13 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::Path;
+using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::type::Integer;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::Directory;
 
 using ostk::mathematics::object::Vector3d;
 
@@ -30,8 +30,8 @@ using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::Unit;
-using ostk::physics::unit::Length;
 using ostk::physics::unit::Derived;
+using ostk::physics::unit::Length;
 using ostk::physics::unit::Time;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthGravitationalModelManager = ostk::physics::environment::gravitational::earth::Manager;
@@ -343,6 +343,56 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
 
         EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
         ));
+    }
+
+    {
+        {
+            EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Manual);
+
+            Directory directory =
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/fake/")
+                );
+            EarthGravitationalModelManager::Get().setLocalRepository(directory);
+
+            EXPECT_THROW(
+                EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).getType(), ostk::core::error::RuntimeError
+            );
+            directory.remove();
+        }
+
+        {
+            const Directory directory =
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"));
+            EarthGravitationalModelManager::Get().setLocalRepository(directory);
+
+            EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Manual);
+
+            EXPECT_EQ(
+                EarthGravitationalModel::Type::Spherical,
+                EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).getType()
+            );
+            EXPECT_EQ(
+                EarthGravitationalModel::Type::WGS84,
+                EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).getType()
+            );
+            EXPECT_EQ(
+                EarthGravitationalModel::Type::EGM84,
+                EarthGravitationalModel(EarthGravitationalModel::Type::EGM84).getType()
+            );
+            EXPECT_EQ(
+                EarthGravitationalModel::Type::EGM96,
+                EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).getType()
+            );
+            EXPECT_EQ(
+                EarthGravitationalModel::Type::EGM2008,
+                EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getType()
+            );
+
+            EarthGravitationalModelManager::Get().setLocalRepository(
+                EarthGravitationalModelManager::DefaultLocalRepository()
+            );
+            EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
+        }
     }
 }
 

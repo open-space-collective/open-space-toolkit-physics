@@ -13,18 +13,18 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::Directory;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 using EarthMagneticModelManager = ostk::physics::environment::magnetic::earth::Manager;
 
@@ -132,6 +132,51 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
         EXPECT_EQ(EarthMagneticModel::Type::WMM2015, EarthMagneticModel(EarthMagneticModel::Type::WMM2015).getType());
 
         EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
+    }
+
+    {
+        {
+            EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Manual);
+
+            Directory directory =
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/fake/"));
+            EarthMagneticModelManager::Get().setLocalRepository(directory);
+
+            EXPECT_THROW(
+                EarthMagneticModel(EarthMagneticModel::Type::EMM2015).getType(), ostk::core::error::RuntimeError
+            );
+            directory.remove();
+        }
+
+        {
+            const Directory directory =
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"));
+            EarthMagneticModelManager::Get().setLocalRepository(directory);
+
+            EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Manual);
+
+            EXPECT_EQ(EarthMagneticModel::Type::Dipole, EarthMagneticModel(EarthMagneticModel::Type::Dipole).getType());
+            EXPECT_EQ(
+                EarthMagneticModel::Type::EMM2010, EarthMagneticModel(EarthMagneticModel::Type::EMM2010).getType()
+            );
+            EXPECT_EQ(
+                EarthMagneticModel::Type::EMM2015, EarthMagneticModel(EarthMagneticModel::Type::EMM2015).getType()
+            );
+            EXPECT_EQ(
+                EarthMagneticModel::Type::EMM2017, EarthMagneticModel(EarthMagneticModel::Type::EMM2017).getType()
+            );
+            EXPECT_EQ(EarthMagneticModel::Type::IGRF11, EarthMagneticModel(EarthMagneticModel::Type::IGRF11).getType());
+            EXPECT_EQ(EarthMagneticModel::Type::IGRF12, EarthMagneticModel(EarthMagneticModel::Type::IGRF12).getType());
+            EXPECT_EQ(
+                EarthMagneticModel::Type::WMM2010, EarthMagneticModel(EarthMagneticModel::Type::WMM2010).getType()
+            );
+            EXPECT_EQ(
+                EarthMagneticModel::Type::WMM2015, EarthMagneticModel(EarthMagneticModel::Type::WMM2015).getType()
+            );
+
+            EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
+            EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
+        }
     }
 }
 
