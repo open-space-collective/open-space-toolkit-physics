@@ -254,6 +254,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
                     Environment: The global environment instance.
             )doc"
         )
+        .def_static(
+            "has_global_instance",
+            &Environment::HasGlobalInstance,
+            R"doc(
+                Check if the global environment instance is set.
+
+                Returns:
+                    bool: True if the global environment instance is set, False otherwise.
+            )doc"
+        )
 
         ;
 

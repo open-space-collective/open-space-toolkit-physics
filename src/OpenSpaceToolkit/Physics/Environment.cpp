@@ -400,5 +400,11 @@ void Environment::SetGlobalInstance(const Shared<Environment>& anInstance)
     instance = anInstance;
 }
 
+bool Environment::HasGlobalInstance()
+{
+    std::shared_lock<std::shared_mutex> lock(mutex);
+    return instance != nullptr;
+}
+
 }  // namespace physics
 }  // namespace ostk

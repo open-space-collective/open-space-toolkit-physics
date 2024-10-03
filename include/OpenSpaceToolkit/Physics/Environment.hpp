@@ -210,6 +210,12 @@ class Environment
 
     static Shared<Environment> AccessGlobalInstance();
 
+    /// @brief              Checks if the global instance is set
+    ///
+    /// @return             True if the global instance is set
+
+    static bool HasGlobalInstance();
+
    private:
     Instant instant_;
     Array<Shared<const Object>> objects_;

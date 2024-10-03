@@ -86,5 +86,12 @@ class TestEnvironment:
 
         assert Environment.access_global_instance() is not None
 
+    def test_has_global_instance(self):
+        assert Environment.has_global_instance() is False
+
+        Environment.default(set_global_instance=True)
+
+        assert Environment.has_global_instance() is True
+
     def teardown_method(self, method):
         Environment.reset_global_instance()

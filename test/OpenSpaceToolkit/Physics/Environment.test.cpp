@@ -99,17 +99,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Constructor)
 {
     {
         EXPECT_NO_THROW(Environment environment(instant_, objects_););
-    }
 
-    {
-        const Array<Shared<const Object>> objects = {std::make_shared<Earth>(Earth::EGM2008(2190, 2160))};
-
-        EXPECT_NO_THROW(Environment environment(instant_, objects););
+        EXPECT_NO_THROW(Environment environment(instant_, objects_, true););
+        Environment::ResetGlobalInstance();
     }
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::EGM2008(2190, 2160));
         const Array<Shared<const Object>> objects = {earthSPtr};
+
+        {
+            EXPECT_NO_THROW(Environment(earthSPtr, objects, instant_, true));
+            Environment::ResetGlobalInstance();
+        }
 
         {
             EXPECT_NO_THROW(Environment(earthSPtr, objects, instant_));
@@ -118,6 +120,21 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Constructor)
         {
             EXPECT_NO_THROW(Environment(earthSPtr, objects));
         }
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment, StreamOperator)
+{
+    {
+        testing::internal::CaptureStdout();
+
+        EXPECT_NO_THROW(std::cout << environment_ << std::endl);
+
+        EXPECT_NO_THROW(std::cout << Environment::Undefined() << std::endl);
+
+        EXPECT_NO_THROW(std::cout << Environment::Default() << std::endl);
+
+        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
 
@@ -362,6 +379,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Default)
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment, ResetGlobalInstance)
+{
+    {
+        EXPECT_NO_THROW(Environment::ResetGlobalInstance());
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment, AccessGlobalInstance)
 {
     {
@@ -374,6 +398,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessGlobalInstance)
         const Environment environment = Environment::Default(true);
 
         EXPECT_TRUE(Environment::AccessGlobalInstance()->isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment, HasGlobalInstance)
+{
+    {
+        EXPECT_FALSE(Environment::HasGlobalInstance());
+    }
+
+    {
+        const Environment environment = Environment::Default(true);
+
+        EXPECT_TRUE(Environment::HasGlobalInstance());
     }
 }
 
