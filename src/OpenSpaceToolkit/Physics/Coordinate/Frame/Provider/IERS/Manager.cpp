@@ -590,8 +590,6 @@ const Finals2000A* Manager::accessFinals2000A_() const
         {
             if (!this->getFinals2000ADirectory().containsFileWithName(finals2000AFileName))
             {
-                std::cout << "no file found " << this->getFinals2000ADirectory().getPath().toString()
-                          << " WITH NAME: " << finals2000AFileName << std::endl;
                 return nullptr;
             }
 
