@@ -513,6 +513,7 @@ const BulletinA* Manager::accessBulletinA_() const
 
             return &bulletinA_;
         }
+
         case Manager::Mode::Manual:
         {
             if (!this->getBulletinADirectory().containsFileWithName(bulletinAFileName))
@@ -523,12 +524,11 @@ const BulletinA* Manager::accessBulletinA_() const
             const File localBulletinAFile =
                 File::Path(this->getBulletinADirectory().getPath() + Path::Parse(bulletinAFileName));
 
-            const BulletinA bulletinA = BulletinA::Load(localBulletinAFile);
-
-            this->loadBulletinA_(bulletinA);
+            this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
 
             return &bulletinA_;
         }
+
         default:
             return nullptr;
     }
