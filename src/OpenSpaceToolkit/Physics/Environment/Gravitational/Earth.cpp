@@ -306,15 +306,29 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
     }
     else
     {
-        if (Manager::Get().getMode() == Manager::Mode::Automatic)
+        switch (Manager::Get().getMode())
         {
-            if (!Manager::Get().hasDataFilesForType(aType))
-            {
-                Manager::Get().fetchDataFilesForType(aType);
-            }
+            case Manager::Mode::Automatic:
+                if (!Manager::Get().hasDataFilesForType(aType))
+                {
+                    Manager::Get().fetchDataFilesForType(aType);
+                }
+                break;
 
-            dataPath = Manager::Get().getLocalRepository().getPath().toString();
+            case Manager::Mode::Manual:
+                if (!Manager::Get().hasDataFilesForType(aType))
+                {
+                    throw ostk::core::error::RuntimeError(
+                        "Cannot load Earth gravitational model, data files are missing."
+                    );
+                }
+                break;
+
+            default:
+                throw ostk::core::error::RuntimeError("Unknown Manager mode.");
         }
+
+        dataPath = Manager::Get().getLocalRepository().getPath().toString();
     }
 
     const Integer gravityModelDegree = aGravityModelDegree.isDefined() ? aGravityModelDegree : Integer(-1);

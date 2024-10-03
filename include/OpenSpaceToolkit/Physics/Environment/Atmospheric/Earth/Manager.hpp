@@ -34,18 +34,18 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::core::type::Index;
-using ostk::core::type::Real;
 using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
+using ostk::core::type::Index;
+using ostk::core::type::Real;
 
 using ostk::io::URL;
 
 using ostk::mathematics::object::Vector2d;
 
-using ostk::physics::time::Instant;
-using ostk::physics::time::Duration;
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
 
 /// @brief                      CSSI space weather manager (thread-safe)
 ///
@@ -224,7 +224,7 @@ class Manager
 
     const CSSISpaceWeather* accessCSSISpaceWeatherAt(const Instant& anInstant) const;
 
-    File getLatestCSSICSSISpaceWeatherFile() const;
+    File getLatestCSSISpaceWeatherFile() const;
 
     void setup();
 

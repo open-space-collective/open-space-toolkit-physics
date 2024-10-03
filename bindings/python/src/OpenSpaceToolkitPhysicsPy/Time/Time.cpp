@@ -322,8 +322,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
                 Create a time from a string representation.
 
                 Args:
-                    a_string (str): A string.
-                    a_format (Time.Format, optional): A time format (automatic detection if Undefined).
+                    string (str): A string.
+                    format (Time.Format, optional): A time format (automatic detection if Undefined).
 
                 Returns:
                     Time: Time.
@@ -338,7 +338,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
                 Create a time from a real number of hours.
 
                 Args:
-                    a_real (float): A real number of hours.
+                    value (float): A real number of hours.
 
                 Returns:
                     Time: Time.
@@ -352,7 +352,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
                 Create a time from a real number of seconds.
 
                 Args:
-                    a_real (float): A real number of seconds.
+                    value (float): A real number of seconds.
 
                 Returns:
                     Time: Time.

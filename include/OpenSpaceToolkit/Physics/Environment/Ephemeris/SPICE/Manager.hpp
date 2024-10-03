@@ -35,17 +35,17 @@ namespace ephemeris
 namespace spice
 {
 
+using ostk::core::container::Array;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
-using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
-using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 
-using ostk::physics::time::Instant;
 using ostk::physics::environment::ephemeris::spice::Kernel;
+using ostk::physics::time::Instant;
 
 using ManifestManager = ostk::physics::data::Manager;
 
@@ -128,6 +128,8 @@ class Manager
     mutable std::mutex mutex_;
 
     Manager();
+
+    void setup();
 };
 
 }  // namespace spice
