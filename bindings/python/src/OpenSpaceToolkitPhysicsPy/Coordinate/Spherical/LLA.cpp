@@ -109,6 +109,17 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         )
 
         .def(
+            "on_surface",
+            &LLA::onSurface,
+            R"doc(
+                Get LLA on surface (Altitude is 0.0).
+
+                Returns:
+                    LLA: LLA on surface.
+            )doc"
+        )
+
+        .def(
             "calculate_distance_to",
             &LLA::calculateDistanceTo,
             R"doc(
