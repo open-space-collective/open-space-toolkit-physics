@@ -26,16 +26,9 @@ Environment::Environment(
     const Instant& anInstant, const Array<Shared<const Object>>& anObjectArray, const bool& setGlobalInstance
 )
     : instant_(anInstant),
-      objects_(Array<Shared<const Object>>::Empty()),
+      objects_(anObjectArray),
       centralCelestialObject_(nullptr)
 {
-    objects_.reserve(anObjectArray.getSize());
-
-    for (const auto& objectSPtr : anObjectArray)
-    {
-        objects_.add(Shared<const Object>(objectSPtr->clone()));
-    }
-
     if (setGlobalInstance)
     {
         Environment::SetGlobalInstance(std::make_shared<Environment>(*this));
@@ -50,61 +43,20 @@ Environment::Environment(
 )
     : instant_(anInstant),
       objects_(Array<Shared<const Object>>::Empty()),
-      centralCelestialObject_(nullptr)
+      centralCelestialObject_(aCentralCelestialObject)
 {
     objects_.reserve(anObjectArray.getSize() + 1);
 
-    const Shared<const Object> centralCelestialObject = Shared<const Object>(aCentralCelestialObject->clone());
-    centralCelestialObject_ = centralCelestialObject;
-
-    objects_.add(centralCelestialObject);
+    objects_.add(centralCelestialObject_);
     for (const auto& objectSPtr : anObjectArray)
     {
-        objects_.add(Shared<const Object>(objectSPtr->clone()));
+        objects_.add(objectSPtr);
     }
 
     if (setGlobalInstance)
     {
         Environment::SetGlobalInstance(std::make_shared<Environment>(*this));
     }
-}
-
-Environment::Environment(const Environment& anEnvironment)
-    : instant_(anEnvironment.instant_),
-      objects_(Array<Shared<const Object>>::Empty()),
-      centralCelestialObject_(nullptr)
-{
-    objects_.reserve(anEnvironment.objects_.getSize());
-
-    for (const auto& objectSPtr : anEnvironment.objects_)
-    {
-        objects_.add(Shared<const Object>(objectSPtr->clone()));
-    }
-
-    centralCelestialObject_ =
-        anEnvironment.hasCentralCelestialObject() ? anEnvironment.centralCelestialObject_ : nullptr;
-}
-
-Environment& Environment::operator=(const Environment& anEnvironment)
-{
-    if (this != &anEnvironment)
-    {
-        instant_ = anEnvironment.instant_;
-
-        objects_.clear();
-
-        objects_.reserve(anEnvironment.objects_.getSize());
-
-        for (const auto& objectSPtr : anEnvironment.objects_)
-        {
-            objects_.add(Shared<const Object>(objectSPtr->clone()));
-        }
-
-        centralCelestialObject_ =
-            anEnvironment.hasCentralCelestialObject() ? anEnvironment.centralCelestialObject_ : nullptr;
-    }
-
-    return *this;
 }
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvironment)
