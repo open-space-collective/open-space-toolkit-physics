@@ -417,7 +417,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp</label>
         <link refid="_exponential_8cpp"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object.cpp</label>
         <link refid="_object_8cpp"/>
       </node>
@@ -446,7 +446,7 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -485,7 +485,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
         <link refid="_object_2_celestial_2_earth_8cpp"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
         <link refid="_celestial_8cpp"/>
       </node>
@@ -500,12 +500,18 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="6">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
         <link refid="_gravitational_2_earth_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp</label>
+        <link refid="_l_l_a_8cpp"/>
       </node>
       <node id="13">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp</label>
@@ -570,7 +576,7 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="246" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="246" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="326" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="326" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a380cebe69f005935fa25a89305d310e9" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="247" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="247" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="327" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="327" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a9c316b7ba21b96955acb0782caa18f42" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="248" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="248" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="328" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="328" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,12 +63,39 @@
           <declname>anAltitude</declname>
         </param>
         <briefdescription>
+<para>Constructs an <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aLatitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Latitude angle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aLongitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Longitude angle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>anAltitude</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Altitude length. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="23" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="54" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="26" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a39564dba884c4acfb8292d41945a45b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -80,12 +107,25 @@
           <declname>aLLA</declname>
         </param>
         <briefdescription>
+<para>Equality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aLLA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object to compare with. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if both <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> objects are equal. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="50" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="39" bodyend="47"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="61" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="42" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ae6e65f7922698de2a639af5e9e6c16ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -97,12 +137,25 @@
           <declname>aLLA</declname>
         </param>
         <briefdescription>
+<para>Inequality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aLLA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object to compare with. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if both <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> objects are not equal. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="52" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="49" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="68" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3b97daf7b2d9f033b9bfd71c34c048fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -110,12 +163,16 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Checks if the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object is defined. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="56" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="70" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -123,12 +180,16 @@
         <argsstring>() const</argsstring>
         <name>getLatitude</name>
         <briefdescription>
+<para>Gets the latitude angle. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Latitude angle. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="58" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="75" bodyend="83"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="88" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="78" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -136,12 +197,16 @@
         <argsstring>() const</argsstring>
         <name>getLongitude</name>
         <briefdescription>
+<para>Gets the longitude angle. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Longitude angle. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="60" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="85" bodyend="93"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="94" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="88" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -149,12 +214,16 @@
         <argsstring>() const</argsstring>
         <name>getAltitude</name>
         <briefdescription>
+<para>Gets the altitude length. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Altitude length. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="62" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="95" bodyend="103"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="100" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="98" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a24db275c7f3a88a5010a4e6fcfad1a90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -171,12 +240,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="67" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="105" bodyend="113"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="105" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="108" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afee067fe35ef4ac8e8cad93a83dbc0e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a25a2b5f8b7fc5a5b40f6c26adf499baa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
         <definition>Length ostk::physics::coordinate::spherical::LLA::calculateDistanceTo</definition>
-        <argsstring>(const LLA &amp;aLLA, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening) const</argsstring>
+        <argsstring>(const LLA &amp;aLLA, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined()) const</argsstring>
         <name>calculateDistanceTo</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -185,15 +254,18 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
 <para>Calculate the distance between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate. </para>
         </briefdescription>
         <detaileddescription>
+<para>Calculate the distance between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate. Will use the central celestial from the global environment if no ellipsoid parameters are provided.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aLLA</parametername>
@@ -225,12 +297,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="76" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="115" bodyend="120"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="116" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="118" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a44454a090d3fe39956980da6866975a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a70ed319a10e81d5847a55d46c1d049ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Pair&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>, <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &gt;</type>
         <definition>Pair&lt; Angle, Angle &gt; ostk::physics::coordinate::spherical::LLA::calculateAzimuthTo</definition>
-        <argsstring>(const LLA &amp;aLLA, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening) const</argsstring>
+        <argsstring>(const LLA &amp;aLLA, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined()) const</argsstring>
         <name>calculateAzimuthTo</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -239,13 +311,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Calculate the azimuth angles between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate. </para>
+<para>Calculate the azimuth angles between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -279,12 +353,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="88" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="122" bodyend="127"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="135" bodyend="150"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa1cab20ca346a5ca0d8122c35f0fe735" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4844916605bf30cb52efee1e1fffadda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
         <definition>LLA ostk::physics::coordinate::spherical::LLA::calculateIntermediateTo</definition>
-        <argsstring>(const LLA &amp;aLLA, const Real &amp;aRatio, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening) const</argsstring>
+        <argsstring>(const LLA &amp;aLLA, const Real &amp;aRatio, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined()) const</argsstring>
         <name>calculateIntermediateTo</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -297,13 +371,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Calculate a point between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate. </para>
+<para>Calculate a point between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -345,12 +421,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="100" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="129" bodyend="134"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="146" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="152" bodyend="167"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9f8c265d11cdd1ead088e3cbbdfcbf8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a06527dfa96030ce7d317a7d34ad3bb38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
         <definition>LLA ostk::physics::coordinate::spherical::LLA::calculateForward</definition>
-        <argsstring>(const Angle &amp;aDirection, const Length &amp;aDistance, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening) const</argsstring>
+        <argsstring>(const Angle &amp;aDirection, const Length &amp;aDistance, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined()) const</argsstring>
         <name>calculateForward</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
@@ -363,13 +439,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Propagate this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate in provided direction and distance. </para>
+<para>Propagate this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate in provided direction and distance. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -411,12 +489,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="115" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="136" bodyend="144"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="162" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="169" bodyend="187"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa21b85a92cfd363d5c95292153d45502" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa3062657acd4220f3206a35f32a3087c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &gt;</type>
         <definition>Array&lt; LLA &gt; ostk::physics::coordinate::spherical::LLA::calculateLinspaceTo</definition>
-        <argsstring>(const LLA &amp;aLLA, const Size &amp;aNumberOfPoints, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening) const</argsstring>
+        <argsstring>(const LLA &amp;aLLA, const Size &amp;aNumberOfPoints, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined()) const</argsstring>
         <name>calculateLinspaceTo</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -429,13 +507,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Generate LLAs between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate at a given interval. </para>
+<para>Generate LLAs between this <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate and another <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinate at a given interval. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -475,7 +555,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="129" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="146" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="177" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="189" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a159e5a055130460266b25593a0b451f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -483,12 +563,16 @@
         <argsstring>() const</argsstring>
         <name>toVector</name>
         <briefdescription>
+<para>Converts the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object to a 3D vector. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>3D vector representation of the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="136" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="156" bodyend="164"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="187" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="209" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a994b42c2303c17b92c25b697c8d9d9b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1ae12fe74b2d79a60e1309b081f95434e6" kindref="member">Point2d</ref></type>
@@ -505,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="142" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="166" bodyend="174"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="193" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="219" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a22cf0f3e37e61226b5ad75977068a72a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" kindref="member">Point3d</ref></type>
@@ -522,28 +606,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="148" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="176" bodyend="184"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="199" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="229" bodyend="237"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afc34ed446bb707f7fd50701008443673" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab7cb924cb9d4eb5521c63d69d063218a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
         <definition>Vector3d ostk::physics::coordinate::spherical::LLA::toCartesian</definition>
-        <argsstring>(const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening) const</argsstring>
+        <argsstring>(const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined()) const</argsstring>
         <name>toCartesian</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Converts the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object to Cartesian coordinates. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anEllipsoidEquatorialRadius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Equatorial radius of the ellipsoid </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEllipsoidFlattening</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flattening of the ellipsoid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>3D vector representing the Cartesian coordinates. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="150" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="186" bodyend="224"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="206" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="239" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ada54a509f340056ceb39399fe06d6d98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -551,12 +658,16 @@
         <argsstring>() const</argsstring>
         <name>toString</name>
         <briefdescription>
+<para>Converts the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object to a string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>String representation of the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="152" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="226" bodyend="234"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="214" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="279" bodyend="287"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -574,12 +685,33 @@
           <declname>aLLA</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output stream. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aLLA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object to output. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to the output stream. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="54" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="54" bodyend="68"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="76" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="57" bodyend="71"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -589,12 +721,16 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Constructs an undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="154" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="236" bodyend="239"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="219" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="289" bodyend="292"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9049663b5a8bb87ed5edd332ea0532f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -606,17 +742,30 @@
           <declname>aVector</declname>
         </param>
         <briefdescription>
+<para>Constructs an <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object from a 3D vector. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aVector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>3D vector representing the <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object constructed from the 3D vector. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="156" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="241" bodyend="249"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="225" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="294" bodyend="302"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3e4efbd3c09ea89f6373db83a9e44ccb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a50361a32c25714545d70d6f87e128e3d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
         <definition>LLA ostk::physics::coordinate::spherical::LLA::Cartesian</definition>
-        <argsstring>(const Vector3d &amp;aCartesianCoordinateSet, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <argsstring>(const Vector3d &amp;aCartesianCoordinateSet, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined())</argsstring>
         <name>Cartesian</name>
         <param>
           <type>const Vector3d &amp;</type>
@@ -625,23 +774,54 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Constructs an <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> (Latitude, Longitude, Altitude) object from Cartesian coordinates. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aCartesianCoordinateSet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>3D vector representing the Cartesian coordinates. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEllipsoidEquatorialRadius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Equatorial radius of the ellipsoid (optional). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEllipsoidFlattening</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flattening of the ellipsoid (optional). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> object constructed from the Cartesian coordinates. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="158" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="251" bodyend="295"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="233" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="304" bodyend="348"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a494ec7ee5336000cb103db5712f153c3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1af53b9463657656afeb1de5c49336ce38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
         <definition>Length ostk::physics::coordinate::spherical::LLA::DistanceBetween</definition>
-        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined())</argsstring>
         <name>DistanceBetween</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -654,13 +834,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Calculate the distance between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. </para>
+<para>Calculate the distance between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -702,12 +884,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="172" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="297" bodyend="317"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="248" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="350" bodyend="380"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a09b499a7505c1d0ccb185ce1b1abb30e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a73ccc6f8b6249b35260cdf560f627871" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Pair&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>, <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &gt;</type>
         <definition>Pair&lt; Angle, Angle &gt; ostk::physics::coordinate::spherical::LLA::AzimuthBetween</definition>
-        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined())</argsstring>
         <name>AzimuthBetween</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -720,13 +902,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Calculate the azimuth angles between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. </para>
+<para>Calculate the azimuth angles between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -768,12 +952,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="187" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="319" bodyend="341"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="264" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="382" bodyend="414"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a57979f893afe713f306b153ceef5efd9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab6cc2914a0465b4b27dfc010e7cf1c76" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
         <definition>LLA ostk::physics::coordinate::spherical::LLA::IntermediateBetween</definition>
-        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Real &amp;aRatio, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Real &amp;aRatio, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined())</argsstring>
         <name>IntermediateBetween</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -790,13 +974,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Calculate a point between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. </para>
+<para>Calculate a point between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -846,12 +1032,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="203" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="343" bodyend="369"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="281" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="416" bodyend="452"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ac683f6ca4ee4c683d554d9a4681e7691" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a32ab0781c0343741ee8de9ddfbe09dab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
         <definition>LLA ostk::physics::coordinate::spherical::LLA::Forward</definition>
-        <argsstring>(const LLA &amp;aLLA, const Angle &amp;aDirection, const Length &amp;aDistance, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <argsstring>(const LLA &amp;aLLA, const Angle &amp;aDirection, const Length &amp;aDistance, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined())</argsstring>
         <name>Forward</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -868,13 +1054,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Propagate <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates in provided direction and distance. </para>
+<para>Propagate <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates in provided direction and distance. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -924,12 +1112,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="220" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="371" bodyend="395"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="299" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="454" bodyend="488"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a5c1da37243ebaa3b3157fd6e0ceda814" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a65a76522cf67320ba409fffe38871328" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &gt;</type>
         <definition>Array&lt; LLA &gt; ostk::physics::coordinate::spherical::LLA::Linspace</definition>
-        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Size &amp;aNumberOfPoints, const Length &amp;anEllipsoidEquatorialRadius, const Real &amp;anEllipsoidFlattening)</argsstring>
+        <argsstring>(const LLA &amp;aFirstLLA, const LLA &amp;aSecondLLA, const Size &amp;aNumberOfPoints, const Length &amp;anEllipsoidEquatorialRadius=Length::Undefined(), const Real &amp;anEllipsoidFlattening=Real::Undefined())</argsstring>
         <name>Linspace</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &amp;</type>
@@ -946,13 +1134,15 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
           <declname>anEllipsoidEquatorialRadius</declname>
+          <defval><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>()</defval>
         </param>
         <param>
           <type>const Real &amp;</type>
           <declname>anEllipsoidFlattening</declname>
+          <defval>Real::Undefined()</defval>
         </param>
         <briefdescription>
-<para>Generate equidistant LLAs between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates for the specified number of points. </para>
+<para>Generate equidistant LLAs between two <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> coordinates for the specified number of points. Will use the central celestial from the global environment if no ellipsoid parameters are provided. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1002,7 +1192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="237" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="397" bodyend="428"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="317" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="490" bodyend="531"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1011,32 +1201,32 @@
     <detaileddescription>
 <para><ulink url="https://en.wikipedia.org/wiki/Latitude">https://en.wikipedia.org/wiki/Latitude</ulink> <ulink url="https://en.wikipedia.org/wiki/Longitude">https://en.wikipedia.org/wiki/Longitude</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="45" bodyend="249"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="45" bodyend="329"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a9c316b7ba21b96955acb0782caa18f42" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>altitude_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a09b499a7505c1d0ccb185ce1b1abb30e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>AzimuthBetween</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a44454a090d3fe39956980da6866975a5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateAzimuthTo</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afee067fe35ef4ac8e8cad93a83dbc0e6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateDistanceTo</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9f8c265d11cdd1ead088e3cbbdfcbf8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateForward</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa1cab20ca346a5ca0d8122c35f0fe735" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateIntermediateTo</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa21b85a92cfd363d5c95292153d45502" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateLinspaceTo</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3e4efbd3c09ea89f6373db83a9e44ccb" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Cartesian</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a494ec7ee5336000cb103db5712f153c3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>DistanceBetween</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ac683f6ca4ee4c683d554d9a4681e7691" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Forward</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a73ccc6f8b6249b35260cdf560f627871" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>AzimuthBetween</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a70ed319a10e81d5847a55d46c1d049ea" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateAzimuthTo</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a25a2b5f8b7fc5a5b40f6c26adf499baa" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateDistanceTo</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a06527dfa96030ce7d317a7d34ad3bb38" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateForward</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4844916605bf30cb52efee1e1fffadda" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateIntermediateTo</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa3062657acd4220f3206a35f32a3087c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>calculateLinspaceTo</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a50361a32c25714545d70d6f87e128e3d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Cartesian</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1af53b9463657656afeb1de5c49336ce38" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>DistanceBetween</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a32ab0781c0343741ee8de9ddfbe09dab" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Forward</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>getAltitude</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>getLatitude</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>getLongitude</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a57979f893afe713f306b153ceef5efd9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>IntermediateBetween</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab6cc2914a0465b4b27dfc010e7cf1c76" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>IntermediateBetween</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3b97daf7b2d9f033b9bfd71c34c048fa" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1af6ce374d0a1bebf11b2878dc1aeadf69" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>latitude_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a5c1da37243ebaa3b3157fd6e0ceda814" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Linspace</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a65a76522cf67320ba409fffe38871328" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Linspace</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a29cbe2117eeed4357206b9abd04cefa9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>LLA</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a380cebe69f005935fa25a89305d310e9" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>longitude_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a24db275c7f3a88a5010a4e6fcfad1a90" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>onSurface</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ae6e65f7922698de2a639af5e9e6c16ad" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4e052cf41d11b11c943ad32cd4c25ba8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a39564dba884c4acfb8292d41945a45b3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>operator==</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afc34ed446bb707f7fd50701008443673" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>toCartesian</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab7cb924cb9d4eb5521c63d69d063218a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>toCartesian</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a994b42c2303c17b92c25b697c8d9d9b5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>toPoint2d</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a22cf0f3e37e61226b5ad75977068a72a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>toPoint3d</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ada54a509f340056ceb39399fe06d6d98" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>toString</name></member>

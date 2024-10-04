@@ -52,14 +52,14 @@
 <codeline><highlight class="normal">from<sp/>ostk.physics.time<sp/>import<sp/>Instant<sp/>#<sp/>Instant<sp/>class</highlight></codeline>
 <codeline><highlight class="normal">from<sp/>ostk.physics.coordinate<sp/>import<sp/>Frame<sp/>#<sp/>Reference<sp/>frame<sp/>class</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default()<sp/>#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment</highlight></codeline>
+<codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default(set_global=True)<sp/>#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment,<sp/>and<sp/>set<sp/>it<sp/>as<sp/>the<sp/>global<sp/>environment</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">moon<sp/>=<sp/>environment.access_object_with_name(&apos;Moon&apos;)<sp/>#<sp/>Access<sp/>Moon</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">environment.set_instant(Instant.now())<sp/>#<sp/>Set<sp/>environment<sp/>to<sp/>present<sp/>time</highlight></codeline>
+<codeline><highlight class="normal">instant<sp/>=<sp/>Instant.now()</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">moon.get_position_in(Frame.ITRF())<sp/>#<sp/>Position<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
-<codeline><highlight class="normal">moon.get_axes_in(Frame.ITRF())<sp/>#<sp/>Axes<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
+<codeline><highlight class="normal">moon.get_position_in(Frame.ITRF(),<sp/>instant)<sp/>#<sp/>Position<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
+<codeline><highlight class="normal">moon.get_axes_in(Frame.ITRF(),<sp/>instant)<sp/>#<sp/>Axes<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
 <codeline><highlight class="normal">```</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">By<sp/>default,<sp/>OSTk<sp/>fetches<sp/>the<sp/>ephemeris<sp/>from<sp/>JPL,<sp/>Earth<sp/>Orientation<sp/>Parameters<sp/>(EOP)<sp/>and<sp/>leap<sp/>second<sp/>count<sp/>from<sp/>IERS.</highlight></codeline>

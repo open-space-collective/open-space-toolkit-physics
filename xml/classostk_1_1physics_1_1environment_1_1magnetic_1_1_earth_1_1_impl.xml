@@ -176,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="63" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="164" bodyend="236"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" line="63" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="164" bodyend="246"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

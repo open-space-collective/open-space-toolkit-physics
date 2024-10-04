@@ -41,14 +41,14 @@
 <codeline><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time" kindref="compound">ostk.physics.time</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Instant<sp/></highlight><highlight class="comment">#<sp/>Instant<sp/>class</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">from</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate" kindref="compound">ostk.physics.coordinate</ref><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>Frame<sp/></highlight><highlight class="comment">#<sp/>Reference<sp/>frame<sp/>class</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default()<sp/></highlight><highlight class="comment">#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default(set_global=</highlight><highlight class="keyword">True</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment,<sp/>and<sp/>set<sp/>it<sp/>as<sp/>the<sp/>global<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">moon<sp/>=<sp/>environment.access_object_with_name(</highlight><highlight class="stringliteral">&apos;Moon&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">#<sp/>Access<sp/>Moon</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">environment.set_instant(Instant.now())<sp/></highlight><highlight class="comment">#<sp/>Set<sp/>environment<sp/>to<sp/>present<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">instant<sp/>=<sp/>Instant.now()</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">moon.get_position_in(Frame.ITRF())<sp/></highlight><highlight class="comment">#<sp/>Position<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">moon.get_axes_in(Frame.ITRF())<sp/></highlight><highlight class="comment">#<sp/>Axes<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
+<codeline><highlight class="normal">moon.get_position_in(Frame.ITRF(),<sp/>instant)<sp/></highlight><highlight class="comment">#<sp/>Position<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">moon.get_axes_in(Frame.ITRF(),<sp/>instant)<sp/></highlight><highlight class="comment">#<sp/>Axes<sp/>of<sp/>the<sp/>Moon<sp/>in<sp/>ITRF</highlight></codeline>
 </programlisting></para>
 <para>By default, OSTk fetches the ephemeris from JPL, Earth Orientation Parameters (EOP) and leap second count from IERS.</para>
 <para>As a result, when running OSTk for the first time, it may take a minute to fetch all the necessary data.</para>

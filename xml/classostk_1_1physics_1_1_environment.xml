@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="172" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="172" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="220" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1_environment_1a071c4dc3b6a81302279464b954d70cdd" prot="private" static="no" mutable="no">
         <type>Array&lt; Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt; &gt;</type>
@@ -28,22 +28,40 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="173" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="173" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="221" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1_environment_1a149113884598532bd3f7775008c72f81" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt;</type>
+        <definition>Shared&lt;const Object&gt; ostk::physics::Environment::centralCelestialObject_</definition>
+        <argsstring></argsstring>
+        <name>centralCelestialObject_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="222" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="222" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a9c721c6c5eba3608b2225922ab498c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a6e305f5d49ea34ed7e37459086c727f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::Environment::Environment</definition>
-        <argsstring>(const Instant &amp;anInstant, const Array&lt; Shared&lt; Object &gt;&gt; &amp;anObjectArray)</argsstring>
+        <argsstring>(const Instant &amp;anInstant, const Array&lt; Shared&lt; const Object &gt;&gt; &amp;anObjectArray, const bool &amp;setGlobalInstance=false)</argsstring>
         <name>Environment</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
           <declname>anInstant</declname>
         </param>
         <param>
-          <type>const Array&lt; Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt;&gt; &amp;</type>
+          <type>const Array&lt; Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt;&gt; &amp;</type>
           <declname>anObjectArray</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>setGlobalInstance</declname>
+          <defval>false</defval>
         </param>
         <briefdescription>
 <para>Constructor. </para>
@@ -65,12 +83,86 @@
 <para>array of shared pointers to objects </para>
 </parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">setGlobalInstance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True if the global environment instance should be set </para>
+</parameterdescription>
+</parameteritem>
 </parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="19" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="41" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="25" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1af55853ce0d679a89f36c335719854784" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::Environment::Environment</definition>
+        <argsstring>(const Shared&lt; const Object &gt; &amp;aCentralCelestialObject, const Array&lt; Shared&lt; const Object &gt;&gt; &amp;anObjectArray, const Instant &amp;anInstant=Instant::J2000(), const bool &amp;setGlobalInstance=false)</argsstring>
+        <name>Environment</name>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt; &amp;</type>
+          <declname>aCentralCelestialObject</declname>
+        </param>
+        <param>
+          <type>const Array&lt; Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt;&gt; &amp;</type>
+          <declname>anObjectArray</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+          <defval><ref refid="classostk_1_1physics_1_1time_1_1_instant_1a3f84d0c2d0b140326d3b172b54e3ffff" kindref="member">Instant::J2000</ref>()</defval>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>setGlobalInstance</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aCentralCelestialObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A central body </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anObjectArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of shared pointers to objects </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant. Defaults to J2000 epoch. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">setGlobalInstance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True if the global environment instance should be set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="53" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="45" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1ae2fa360cd4bd59f8af1b6c7874be3e2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -98,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="46" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="31" bodyend="41"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="64" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="72" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1ac0ddef2496b987f9780df94c9ec49990" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &amp;</type>
@@ -128,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="53" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="43" bodyend="60"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="71" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="88" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1ac597f4d54313d272bc24f62a9f2c0f5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -145,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="67" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="81" bodyend="84"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="85" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="136" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1af83819fdcd1586e185ce21e92ce574ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -175,7 +267,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="74" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="86" bodyend="107"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="92" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="141" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a443a17fa0d23109c0918b3d57b67c4a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::Environment::hasCentralCelestialObject</definition>
+        <argsstring>() const</argsstring>
+        <name>hasCentralCelestialObject</name>
+        <briefdescription>
+<para>Has central celestial. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if environment has central celestial </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="98" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="164" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a9a720fa8e7f4b2a30721280a0081716c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -218,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="109" bodyend="135"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="106" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="169" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a1dde23abaa5abd815eef4d4fbd5355ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt; &gt;</type>
@@ -235,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="91" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="137" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="115" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="197" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a4e616b93d403fffa2ed69bedad6b8b99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_object" kindref="compound">Object</ref> &gt;</type>
@@ -265,7 +374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="98" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="156" bodyend="179"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="122" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="216" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a3430014a088dfa3cb52840431d0e0fe8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &gt;</type>
@@ -295,7 +404,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="105" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="181" bodyend="194"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="129" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="241" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a53e23718f3a816378c0f72f53cb491e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &gt;</type>
+        <definition>Shared&lt; const Celestial &gt; ostk::physics::Environment::accessCentralCelestialObject</definition>
+        <argsstring>() const</argsstring>
+        <name>accessCentralCelestialObject</name>
+        <briefdescription>
+<para>Access central celestial. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shared pointer to central celestial </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="135" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="256" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a13c55249f309570bb9559191435c4a39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -312,7 +438,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="111" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="196" bodyend="204"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="141" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="271" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1aaa1e5f8c43b809d9b0d91ecf58c549b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; String &gt;</type>
@@ -329,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="117" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="206" bodyend="223"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="147" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="281" bodyend="298"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1aeb00f7751b4c1435ddc584da7b3b22e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -357,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="123" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="225" bodyend="238"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="153" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="300" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a7c668cd8540a678442ea81d99f4410ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -387,7 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="130" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="240" bodyend="272"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="160" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="315" bodyend="347"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -431,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="61" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="62" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="79" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="110" bodyend="134"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -477,28 +603,119 @@ Constructs an undefined environment</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="157" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="274" bodyend="277"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="187" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="349" bodyend="352"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1af713ff358f251bedc1c837e3efac59a4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1aed930ee9cfbea432470ae77137d7acde" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref></type>
         <definition>Environment ostk::physics::Environment::Default</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(const bool &amp;setGlobalInstance=false)</argsstring>
         <name>Default</name>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>setGlobalInstance</declname>
+          <defval>false</defval>
+        </param>
         <briefdescription>
 <para>Constructs a default environment. </para>
         </briefdescription>
         <detaileddescription>
 <para><verbatim>                Contains Earth, Sun and Moon, with SPICE-based ephemeris.
 </verbatim></para>
-<para><programlisting><codeline><highlight class="normal">Environment<sp/>environment<sp/>=<sp/>Environment::Default()<sp/>;</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined environment </para>
+<para><programlisting><codeline><highlight class="normal">Environment<sp/>environment<sp/>=<sp/>Environment::Default();</highlight></codeline>
+</programlisting> <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">setGlobalInstance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True if the global environment instance should be set with the default</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Undefined environment </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="169" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="279" bodyend="294"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="201" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="354" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1ac0923de09ec10dd8260e5795de1a0a59" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::Environment::ResetGlobalInstance</definition>
+        <argsstring>()</argsstring>
+        <name>ResetGlobalInstance</name>
+        <briefdescription>
+<para>Reset the singleton instance of the environment to null. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="205" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="379" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1af7ffd3a2fc9578a67e5179ad5d1b555a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Shared&lt; <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &gt;</type>
+        <definition>Shared&lt; Environment &gt; ostk::physics::Environment::AccessGlobalInstance</definition>
+        <argsstring>()</argsstring>
+        <name>AccessGlobalInstance</name>
+        <briefdescription>
+<para>Get the singleton instance of the environment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Shared pointer to the singleton instance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="211" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="385" bodyend="395"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1ac8f62fbb55b620f5401e9c96ec6d459b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::Environment::HasGlobalInstance</definition>
+        <argsstring>()</argsstring>
+        <name>HasGlobalInstance</name>
+        <briefdescription>
+<para>Checks if the global instance is set. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the global instance is set </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="217" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="403" bodyend="407"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1_environment_1a042a6bfbec071ee0fe0beba942e69b13" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::Environment::SetGlobalInstance</definition>
+        <argsstring>(const Shared&lt; Environment &gt; &amp;anInstance)</argsstring>
+        <name>SetGlobalInstance</name>
+        <param>
+          <type>const Shared&lt; <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &gt; &amp;</type>
+          <declname>anInstance</declname>
+        </param>
+        <briefdescription>
+<para>Set the singleton instance of the environment. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">instance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Shared pointer to the new singleton instance </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="228" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="397" bodyend="401"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -506,16 +723,22 @@ Constructs an undefined environment</para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="32" bodyend="174"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment.hpp" bodystart="32" bodyend="229"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1_environment_1a3430014a088dfa3cb52840431d0e0fe8" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>accessCelestialObjectWithName</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1a53e23718f3a816378c0f72f53cb491e5" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>accessCentralCelestialObject</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1af7ffd3a2fc9578a67e5179ad5d1b555a" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>AccessGlobalInstance</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a1dde23abaa5abd815eef4d4fbd5355ed" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>accessObjects</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a4e616b93d403fffa2ed69bedad6b8b99" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>accessObjectWithName</name></member>
-      <member refid="classostk_1_1physics_1_1_environment_1af713ff358f251bedc1c837e3efac59a4" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Default</name></member>
-      <member refid="classostk_1_1physics_1_1_environment_1a9c721c6c5eba3608b2225922ab498c95" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Environment</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1a149113884598532bd3f7775008c72f81" prot="private" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>centralCelestialObject_</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1aed930ee9cfbea432470ae77137d7acde" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Default</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1a6e305f5d49ea34ed7e37459086c727f8" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Environment</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1af55853ce0d679a89f36c335719854784" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Environment</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1ae2fa360cd4bd59f8af1b6c7874be3e2c" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Environment</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a13c55249f309570bb9559191435c4a39" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>getInstant</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1aaa1e5f8c43b809d9b0d91ecf58c549b5" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>getObjectNames</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1a443a17fa0d23109c0918b3d57b67c4a5" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>hasCentralCelestialObject</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1ac8f62fbb55b620f5401e9c96ec6d459b" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>HasGlobalInstance</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1af83819fdcd1586e185ce21e92ce574ed" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>hasObjectWithName</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a4bb957c2f0141946aeef523afa190148" prot="private" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>instant_</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a9a720fa8e7f4b2a30721280a0081716c" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>intersects</name></member>
@@ -524,6 +747,8 @@ Constructs an undefined environment</para>
       <member refid="classostk_1_1physics_1_1_environment_1a071c4dc3b6a81302279464b954d70cdd" prot="private" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>objects_</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a7bc4b39898452fbe5ce3a8de75ad2596" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1ac0ddef2496b987f9780df94c9ec49990" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1ac0923de09ec10dd8260e5795de1a0a59" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>ResetGlobalInstance</name></member>
+      <member refid="classostk_1_1physics_1_1_environment_1a042a6bfbec071ee0fe0beba942e69b13" prot="private" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>SetGlobalInstance</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1aeb00f7751b4c1435ddc584da7b3b22e7" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>setInstant</name></member>
       <member refid="classostk_1_1physics_1_1_environment_1a0a6b08b9a19de02e9eeacdb0fcc0c588" prot="public" virt="non-virtual"><scope>ostk::physics::Environment</scope><name>Undefined</name></member>
     </listofallmembers>

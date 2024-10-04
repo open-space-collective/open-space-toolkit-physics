@@ -433,7 +433,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
         <link refid="_object_2_celestial_2_earth_8cpp"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
         <link refid="_celestial_8cpp"/>
       </node>
@@ -448,12 +448,18 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="13">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
         <link refid="_gravitational_2_earth_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp</label>
+        <link refid="_l_l_a_8cpp"/>
       </node>
       <node id="5">
         <label>src/OpenSpaceToolkit/Physics/Data/Direction.cpp</label>
@@ -466,7 +472,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -532,12 +538,12 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>src/OpenSpaceToolkit/Physics/Data/Vector.cpp</label>
         <link refid="_vector_8cpp"/>
       </node>

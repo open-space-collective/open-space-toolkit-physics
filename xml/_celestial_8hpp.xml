@@ -610,7 +610,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
         <link refid="_object_2_celestial_2_earth_8cpp"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
         <link refid="_celestial_8cpp"/>
       </node>
@@ -625,12 +625,18 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
         <link refid="_gravitational_2_earth_8cpp"/>
+      </node>
+      <node id="22">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp</label>
+        <link refid="_l_l_a_8cpp"/>
       </node>
       <node id="17">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp</label>
@@ -695,7 +701,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>

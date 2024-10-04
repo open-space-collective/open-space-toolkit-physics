@@ -118,20 +118,20 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp</label>
         <link refid="_exponential_8cpp"/>
       </node>
-      <node id="47">
+      <node id="48">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object.cpp</label>
         <link refid="_object_8cpp"/>
       </node>
-      <node id="44">
+      <node id="45">
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris.cpp</label>
         <link refid="_ephemeris_8cpp"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</label>
         <link refid="_ephemeris_8hpp"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -141,13 +141,13 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="53">
+      <node id="54">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp</label>
         <link refid="_a_e_r_8hpp"/>
-        <childnode refid="51" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -177,7 +177,7 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -185,24 +185,24 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="58">
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp</label>
         <link refid="_atmospheric_2_model_8cpp"/>
       </node>
-      <node id="49">
+      <node id="50">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp</label>
         <link refid="_axes_8cpp"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.cpp</label>
         <link refid="_s_p_i_c_e_8cpp"/>
       </node>
-      <node id="46">
+      <node id="47">
         <label>include/OpenSpaceToolkit/Physics/Environment/Object.hpp</label>
         <link refid="_object_8hpp"/>
         <childnode refid="20" relation="include">
@@ -215,7 +215,7 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
@@ -254,35 +254,35 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
         <link refid="_object_2_celestial_2_earth_8cpp"/>
       </node>
-      <node id="35">
+      <node id="36">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp</label>
         <link refid="_analytical_8hpp"/>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp</label>
         <link refid="_position_8cpp"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp</label>
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
         <link refid="_celestial_8cpp"/>
       </node>
-      <node id="52">
+      <node id="53">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp</label>
         <link refid="_velocity_8cpp"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
       </node>
@@ -296,6 +296,8 @@
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -312,7 +314,7 @@
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp</label>
         <link refid="_coordinate_2_frame_2_manager_8cpp"/>
       </node>
-      <node id="58">
+      <node id="34">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp</label>
         <link refid="_l_l_a_8cpp"/>
       </node>
@@ -324,16 +326,16 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="51">
+      <node id="52">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.cpp</label>
         <link refid="_a_e_r_8cpp"/>
       </node>
-      <node id="45">
+      <node id="46">
         <label>include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</label>
         <link refid="_geometry_8hpp"/>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -345,28 +347,28 @@
         <link refid="_position_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
         <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="57">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp</label>
         <link refid="_exponential_8hpp"/>
         <childnode refid="21" relation="include">
@@ -381,17 +383,17 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="55">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp</label>
         <link refid="_velocity_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="53" relation="include">
         </childnode>
       </node>
       <node id="29">
@@ -418,14 +420,14 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="49">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp</label>
         <link refid="_geometry_8cpp"/>
       </node>
-      <node id="55">
+      <node id="56">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp</label>
         <link refid="_atmospheric_2_model_8hpp"/>
-        <childnode refid="56" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -433,7 +435,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="57" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -444,7 +446,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
         <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
       </node>
-      <node id="36">
+      <node id="37">
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.cpp</label>
         <link refid="_analytical_8cpp"/>
       </node>
@@ -463,31 +465,31 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -502,26 +504,26 @@
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="43">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp</label>
         <link refid="_s_p_i_c_e_8hpp"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp</label>
         <link refid="_engine_8hpp"/>
-        <childnode refid="38" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -536,7 +538,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp</label>
         <link refid="_gravitational_2_moon_8cpp"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp</label>
         <link refid="_engine_8cpp"/>
       </node>
@@ -562,7 +564,7 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>src/OpenSpaceToolkit/Physics/Data/Vector.cpp</label>
         <link refid="_vector_8cpp"/>
       </node>
@@ -637,136 +639,151 @@
 <codeline lineno="45" refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></highlight></codeline>
 <codeline lineno="46"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a29cbe2117eeed4357206b9abd04cefa9" kindref="member">LLA</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aLatitude,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aLongitude,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anAltitude);</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a39564dba884c4acfb8292d41945a45b3" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ae6e65f7922698de2a639af5e9e6c16ad" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4e052cf41d11b11c943ad32cd4c25ba8" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a29cbe2117eeed4357206b9abd04cefa9" kindref="member">LLA</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aLatitude,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aLongitude,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anAltitude);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3b97daf7b2d9f033b9bfd71c34c048fa" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" kindref="member">getLatitude</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" kindref="member">getLongitude</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" kindref="member">getAltitude</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a24db275c7f3a88a5010a4e6fcfad1a90" kindref="member">onSurface</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a39564dba884c4acfb8292d41945a45b3" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ae6e65f7922698de2a639af5e9e6c16ad" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afee067fe35ef4ac8e8cad93a83dbc0e6" kindref="member">calculateDistanceTo</ref>(</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4e052cf41d11b11c943ad32cd4c25ba8" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3b97daf7b2d9f033b9bfd71c34c048fa" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>Pair&lt;Angle,<sp/>Angle&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a44454a090d3fe39956980da6866975a5" kindref="member">calculateAzimuthTo</ref>(</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" kindref="member">getLatitude</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" kindref="member">getLongitude</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa1cab20ca346a5ca0d8122c35f0fe735" kindref="member">calculateIntermediateTo</ref>(</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aRatio,</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" kindref="member">getAltitude</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a24db275c7f3a88a5010a4e6fcfad1a90" kindref="member">onSurface</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9f8c265d11cdd1ead088e3cbbdfcbf8" kindref="member">calculateForward</ref>(</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aDirection,</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>aDistance,</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a25a2b5f8b7fc5a5b40f6c26adf499baa" kindref="member">calculateDistanceTo</ref>(</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;LLA&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa21b85a92cfd363d5c95292153d45502" kindref="member">calculateLinspaceTo</ref>(</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size&amp;<sp/>aNumberOfPoints,</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a159e5a055130460266b25593a0b451f2" kindref="member">toVector</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1ae12fe74b2d79a60e1309b081f95434e6" kindref="member">Point2d</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a994b42c2303c17b92c25b697c8d9d9b5" kindref="member">toPoint2d</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" kindref="member">Point3d</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a22cf0f3e37e61226b5ad75977068a72a" kindref="member">toPoint3d</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1afc34ed446bb707f7fd50701008443673" kindref="member">toCartesian</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ada54a509f340056ceb39399fe06d6d98" kindref="member">toString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1adeda2b8529d110d66dfd9e42e80d7a42" kindref="member">Undefined</ref>();</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9049663b5a8bb87ed5edd332ea0532f" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aVector);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3e4efbd3c09ea89f6373db83a9e44ccb" kindref="member">Cartesian</ref>(</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aCartesianCoordinateSet,</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a494ec7ee5336000cb103db5712f153c3" kindref="member">DistanceBetween</ref>(</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Pair&lt;Angle,<sp/>Angle&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a09b499a7505c1d0ccb185ce1b1abb30e" kindref="member">AzimuthBetween</ref>(</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a57979f893afe713f306b153ceef5efd9" kindref="member">IntermediateBetween</ref>(</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aRatio,</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>Pair&lt;Angle,<sp/>Angle&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a70ed319a10e81d5847a55d46c1d049ea" kindref="member">calculateAzimuthTo</ref>(</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4844916605bf30cb52efee1e1fffadda" kindref="member">calculateIntermediateTo</ref>(</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aRatio,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a06527dfa96030ce7d317a7d34ad3bb38" kindref="member">calculateForward</ref>(</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aDirection,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>aDistance,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;LLA&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa3062657acd4220f3206a35f32a3087c" kindref="member">calculateLinspaceTo</ref>(</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size&amp;<sp/>aNumberOfPoints,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a159e5a055130460266b25593a0b451f2" kindref="member">toVector</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1ae12fe74b2d79a60e1309b081f95434e6" kindref="member">Point2d</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a994b42c2303c17b92c25b697c8d9d9b5" kindref="member">toPoint2d</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" kindref="member">Point3d</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a22cf0f3e37e61226b5ad75977068a72a" kindref="member">toPoint3d</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab7cb924cb9d4eb5521c63d69d063218a" kindref="member">toCartesian</ref>(</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ac683f6ca4ee4c683d554d9a4681e7691" kindref="member">Forward</ref>(</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aDirection,</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>aDistance,</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Array&lt;LLA&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a5c1da37243ebaa3b3157fd6e0ceda814" kindref="member">Linspace</ref>(</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size&amp;<sp/>aNumberOfPoints,</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius,</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/>latitude_;</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/>longitude_;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/>altitude_;</highlight></codeline>
-<codeline lineno="249"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>spherical</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="252"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="253"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="254"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="255"><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ada54a509f340056ceb39399fe06d6d98" kindref="member">toString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1adeda2b8529d110d66dfd9e42e80d7a42" kindref="member">Undefined</ref>();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9049663b5a8bb87ed5edd332ea0532f" kindref="member">Vector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aVector);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a50361a32c25714545d70d6f87e128e3d" kindref="member">Cartesian</ref>(</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aCartesianCoordinateSet,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1af53b9463657656afeb1de5c49336ce38" kindref="member">DistanceBetween</ref>(</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Pair&lt;Angle,<sp/>Angle&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a73ccc6f8b6249b35260cdf560f627871" kindref="member">AzimuthBetween</ref>(</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab6cc2914a0465b4b27dfc010e7cf1c76" kindref="member">IntermediateBetween</ref>(</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aRatio,</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a32ab0781c0343741ee8de9ddfbe09dab" kindref="member">Forward</ref>(</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aLLA,</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>&amp;<sp/>aDirection,</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>aDistance,</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Array&lt;LLA&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a65a76522cf67320ba409fffe38871328" kindref="member">Linspace</ref>(</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aFirstLLA,</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref>&amp;<sp/>aSecondLLA,</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Size&amp;<sp/>aNumberOfPoints,</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref>&amp;<sp/>anEllipsoidEquatorialRadius<sp/>=<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length_1ac5a46dde84b4941ce4a6f83cbb11e22d" kindref="member">Length::Undefined</ref>(),</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>anEllipsoidFlattening<sp/>=<sp/>Real::Undefined()</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/>latitude_;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref><sp/>longitude_;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref><sp/>altitude_;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>spherical</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp"/>
   </compounddef>
