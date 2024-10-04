@@ -17,15 +17,15 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::type::Unique;
+using ostk::core::container::Array;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
-using ostk::core::container::Array;
+using ostk::core::type::Unique;
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Position;
 using ostk::physics::environment::Object;
 using ostk::physics::environment::object::Celestial;
+using ostk::physics::time::Instant;
 
 /// @brief                      Environment modeling
 
@@ -36,8 +36,26 @@ class Environment
     ///
     /// @param              [in] anInstant An instant
     /// @param              [in] An array of shared pointers to objects
+    /// @param              [in] setGlobalInstance True if the global environment instance should be set
 
-    Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray);
+    Environment(
+        const Instant& anInstant,
+        const Array<Shared<const Object>>& anObjectArray,
+        const bool& setGlobalInstance = false
+    );
+
+    /// @brief              Constructor
+    /// @param              [in] aCentralCelestialObject A central body
+    /// @param              [in] anObjectArray An array of shared pointers to objects
+    /// @param              [in] anInstant An instant. Defaults to J2000 epoch.
+    /// @param              [in] setGlobalInstance True if the global environment instance should be set
+
+    Environment(
+        const Shared<const Object>& aCentralCelestialObject,
+        const Array<Shared<const Object>>& anObjectArray,
+        const Instant& anInstant = Instant::J2000(),
+        const bool& setGlobalInstance = false
+    );
 
     /// @brief              Copy constructor
     ///
@@ -73,6 +91,12 @@ class Environment
 
     bool hasObjectWithName(const String& aName) const;
 
+    /// @brief              Has central celestial
+    ///
+    /// @return             True if environment has central celestial
+
+    bool hasCentralCelestialObject() const;
+
     /// @brief              Returns true if a given geometry intersects any of the environment objects
     ///
     /// @param              [in] aGeometry A geometry
@@ -103,6 +127,12 @@ class Environment
     /// @return             Reference to shared pointer to celestial object
 
     Shared<const Celestial> accessCelestialObjectWithName(const String& aName) const;
+
+    /// @brief              Access central celestial
+    ///
+    /// @return             Shared pointer to central celestial
+
+    Shared<const Celestial> accessCentralCelestialObject() const;
 
     /// @brief              Get instant
     ///
@@ -161,16 +191,41 @@ class Environment
     ///                     Contains Earth, Sun and Moon, with SPICE-based ephemeris.
     ///
     /// @code
-    ///                     Environment environment = Environment::Default() ;
+    ///                     Environment environment = Environment::Default();
     /// @endcode
+    /// @param              [in] setGlobalInstance True if the global environment instance should be set with the
+    /// default
     ///
     /// @return             Undefined environment
 
-    static Environment Default();
+    static Environment Default(const bool& setGlobalInstance = false);
+
+    /// @brief              Reset the singleton instance of the environment to null
+
+    static void ResetGlobalInstance();
+
+    /// @brief              Get the singleton instance of the environment
+    ///
+    /// @return             Shared pointer to the singleton instance
+
+    static Shared<Environment> AccessGlobalInstance();
+
+    /// @brief              Checks if the global instance is set
+    ///
+    /// @return             True if the global instance is set
+
+    static bool HasGlobalInstance();
 
    private:
     Instant instant_;
     Array<Shared<const Object>> objects_;
+    Shared<const Object> centralCelestialObject_;
+
+    /// @brief              Set the singleton instance of the environment
+    ///
+    /// @param              [in] instance Shared pointer to the new singleton instance
+
+    static void SetGlobalInstance(const Shared<Environment>& anInstance);
 };
 
 }  // namespace physics

@@ -1,17 +1,19 @@
 # Apache License 2.0
 
-from re import S
 import pytest
 import numpy as np
 
 from ostk.core.type import String
 
+from ostk.physics import Environment
 from ostk.physics.unit import Angle, Length
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 
 Spherical = EarthGravitationalModel.spherical
 WGS84_EGM96 = EarthGravitationalModel.WGS84_EGM96
+
+ENVIRONMENT = Environment.default(True)  # set global environment
 
 
 @pytest.fixture
@@ -192,6 +194,8 @@ class TestLLA:
             == Spherical.equatorial_radius.in_meters() * np.pi
         )
 
+        assert lla_south_pole.calculate_distance_to(lla_north_pole) is not None
+
     def test_calculate_azimuth_to(
         self,
         lla_point_equator_1: LLA,
@@ -208,6 +212,8 @@ class TestLLA:
         assert isinstance(azimuths[0], Angle)
         assert isinstance(azimuths[1], Angle)
 
+        assert lla_point_equator_1.calculate_azimuth_to(lla_point_equator_2) is not None
+
     def test_calculate_intermediate_to(
         self,
         lla_point_equator_1: LLA,
@@ -222,6 +228,11 @@ class TestLLA:
         assert lla_intermediate is not None
         assert isinstance(lla_intermediate, LLA)
 
+        assert (
+            lla_point_equator_1.calculate_intermediate_to(lla_point_equator_2, 0.3)
+            is not None
+        )
+
     def test_calculate_forward(
         self,
         lla: LLA,
@@ -234,6 +245,10 @@ class TestLLA:
         )
         assert lla_forward is not None
         assert isinstance(lla_forward, LLA)
+
+        assert (
+            lla.calculate_forward(Angle.degrees(0.0), Length.meters(5000.0)) is not None
+        )
 
     def test_calculate_linspace_to(
         self,
@@ -250,7 +265,12 @@ class TestLLA:
         assert llas is not None
         assert len(llas) == n_points
 
-    def test_conversion_vector(
+        assert (
+            lla_point_equator_1.calculate_linspace_to(lla_point_equator_2, n_points)
+            is not None
+        )
+
+    def test_to_vector(
         self,
         latitude_deg: float,
         longitude_deg: float,
@@ -263,12 +283,14 @@ class TestLLA:
         assert vector[1] == longitude_deg
         assert vector[2] == altitude_deg
 
-    def test_conversion_cartesian(
+    def test_to_cartesian(
         self,
         lla: LLA,
     ):
-        cartesian: np.ndarray = LLA.to_cartesian(lla, Length(3.0, Length.Unit.Meter), 3.0)
+        cartesian: np.ndarray = LLA.to_cartesian(lla, Length.meters(3.0), 3.0)
         assert cartesian is not None
+
+        assert LLA.to_cartesian(lla) is not None
 
     def test_conversion_string(
         self,

@@ -1,5 +1,8 @@
 /// Apache License 2.0
 
+#include <mutex>
+#include <shared_mutex>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -16,9 +19,15 @@ namespace ostk
 namespace physics
 {
 
-Environment::Environment(const Instant& anInstant, const Array<Shared<Object>>& anObjectArray)
+static std::shared_mutex mutex;
+Shared<Environment> instance = nullptr;
+
+Environment::Environment(
+    const Instant& anInstant, const Array<Shared<const Object>>& anObjectArray, const bool& setGlobalInstance
+)
     : instant_(anInstant),
-      objects_(Array<Shared<const Object>>::Empty())
+      objects_(Array<Shared<const Object>>::Empty()),
+      centralCelestialObject_(nullptr)
 {
     objects_.reserve(anObjectArray.getSize());
 
@@ -26,11 +35,44 @@ Environment::Environment(const Instant& anInstant, const Array<Shared<Object>>& 
     {
         objects_.add(Shared<const Object>(objectSPtr->clone()));
     }
+
+    if (setGlobalInstance)
+    {
+        Environment::SetGlobalInstance(std::make_shared<Environment>(*this));
+    }
+}
+
+Environment::Environment(
+    const Shared<const Object>& aCentralCelestialObject,
+    const Array<Shared<const Object>>& anObjectArray,
+    const Instant& anInstant,
+    const bool& setGlobalInstance
+)
+    : instant_(anInstant),
+      objects_(Array<Shared<const Object>>::Empty()),
+      centralCelestialObject_(nullptr)
+{
+    objects_.reserve(anObjectArray.getSize() + 1);
+
+    const Shared<const Object> centralCelestialObject = Shared<const Object>(aCentralCelestialObject->clone());
+    centralCelestialObject_ = centralCelestialObject;
+
+    objects_.add(centralCelestialObject);
+    for (const auto& objectSPtr : anObjectArray)
+    {
+        objects_.add(Shared<const Object>(objectSPtr->clone()));
+    }
+
+    if (setGlobalInstance)
+    {
+        Environment::SetGlobalInstance(std::make_shared<Environment>(*this));
+    }
 }
 
 Environment::Environment(const Environment& anEnvironment)
     : instant_(anEnvironment.instant_),
-      objects_(Array<Shared<const Object>>::Empty())
+      objects_(Array<Shared<const Object>>::Empty()),
+      centralCelestialObject_(nullptr)
 {
     objects_.reserve(anEnvironment.objects_.getSize());
 
@@ -38,6 +80,9 @@ Environment::Environment(const Environment& anEnvironment)
     {
         objects_.add(Shared<const Object>(objectSPtr->clone()));
     }
+
+    centralCelestialObject_ =
+        anEnvironment.hasCentralCelestialObject() ? anEnvironment.centralCelestialObject_ : nullptr;
 }
 
 Environment& Environment::operator=(const Environment& anEnvironment)
@@ -52,8 +97,11 @@ Environment& Environment::operator=(const Environment& anEnvironment)
 
         for (const auto& objectSPtr : anEnvironment.objects_)
         {
-            objects_.add(Shared<Object>(objectSPtr->clone()));
+            objects_.add(Shared<const Object>(objectSPtr->clone()));
         }
+
+        centralCelestialObject_ =
+            anEnvironment.hasCentralCelestialObject() ? anEnvironment.centralCelestialObject_ : nullptr;
     }
 
     return *this;
@@ -71,6 +119,13 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvi
     for (const auto& objectSPtr : anEnvironment.objects_)
     {
         ostk::core::utils::Print::Line(anOutputStream) << (*objectSPtr);
+    }
+
+    if (anEnvironment.hasCentralCelestialObject())
+    {
+        ostk::core::utils::Print::Line(anOutputStream) << "Central celestial object:";
+
+        ostk::core::utils::Print::Line(anOutputStream) << (*anEnvironment.centralCelestialObject_);
     }
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -104,6 +159,11 @@ bool Environment::hasObjectWithName(const String& aName) const
     }
 
     return false;
+}
+
+bool Environment::hasCentralCelestialObject() const
+{
+    return centralCelestialObject_ != nullptr;
 }
 
 bool Environment::intersects(
@@ -193,6 +253,21 @@ Shared<const Celestial> Environment::accessCelestialObjectWithName(const String&
     return nullptr;
 }
 
+Shared<const Celestial> Environment::accessCentralCelestialObject() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Environment");
+    }
+
+    if (centralCelestialObject_ == nullptr)
+    {
+        throw ostk::core::error::RuntimeError("No central celestial object.");
+    }
+
+    return std::static_pointer_cast<const Celestial>(centralCelestialObject_);
+}
+
 Instant Environment::getInstant() const
 {
     if (!this->isDefined())
@@ -273,24 +348,62 @@ bool Environment::isPositionInEclipse(const Position& aPosition) const
 
 Environment Environment::Undefined()
 {
-    return {Instant::Undefined(), Array<Shared<Object>>::Empty()};
+    return {Instant::Undefined(), Array<Shared<const Object>>::Empty()};
 }
 
-Environment Environment::Default()
+Environment Environment::Default(const bool& setGlobalInstance)
 {
     using ostk::physics::environment::object::celestial::Earth;
-    using ostk::physics::environment::object::celestial::Sun;
     using ostk::physics::environment::object::celestial::Moon;
+    using ostk::physics::environment::object::celestial::Sun;
 
-    const Instant instant = Instant::J2000();
+    const Shared<const Object> earth = std::make_shared<Earth>(Earth::Default());
+    const Shared<const Object> sun = std::make_shared<Sun>(Sun::Default());
+    const Shared<const Object> moon = std::make_shared<Moon>(Moon::Default());
 
-    const Array<Shared<Object>> objects = {
-        std::make_shared<Earth>(Earth::Default()),
-        std::make_shared<Sun>(Sun::Default()),
-        std::make_shared<Moon>(Moon::Default())
+    const Array<Shared<const Object>> objects = {
+        sun,
+        moon,
     };
 
-    return {instant, objects};
+    const Environment environment = {earth, objects};
+
+    if (setGlobalInstance)
+    {
+        Environment::SetGlobalInstance(std::make_shared<Environment>(environment));
+    }
+
+    return environment;
+}
+
+void Environment::ResetGlobalInstance()
+{
+    std::unique_lock<std::shared_mutex> lock(mutex);
+    instance = nullptr;
+}
+
+Shared<Environment> Environment::AccessGlobalInstance()
+{
+    std::shared_lock<std::shared_mutex> lock(mutex);
+
+    if (instance == nullptr)
+    {
+        throw ostk::core::error::RuntimeError("Environment instance is not set.");
+    }
+
+    return instance;
+}
+
+void Environment::SetGlobalInstance(const Shared<Environment>& anInstance)
+{
+    std::unique_lock<std::shared_mutex> lock(mutex);
+    instance = anInstance;
+}
+
+bool Environment::HasGlobalInstance()
+{
+    std::shared_lock<std::shared_mutex> lock(mutex);
+    return instance != nullptr;
 }
 
 }  // namespace physics

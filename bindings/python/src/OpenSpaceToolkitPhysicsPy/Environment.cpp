@@ -11,14 +11,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Shared;
     using ostk::core::container::Array;
+    using ostk::core::type::Shared;
 
-    using ostk::physics::time::Instant;
     using ostk::physics::Environment;
     using ostk::physics::environment::Object;
+    using ostk::physics::time::Instant;
 
-    class_<Environment>(
+    class_<Environment, Shared<Environment>>(
         aModule,
         "Environment",
         R"doc(
@@ -27,15 +27,33 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
     )
 
         .def(
-            init<const Instant&, const Array<Shared<Object>>&>(),
+            init<const Instant&, const Array<Shared<const Object>>&, const bool&>(),
             arg("instant"),
             arg("objects"),
+            arg("set_global_instance") = false,
             R"doc(
                 Constructor
 
                 Args:
                     instant (Instant): An Instant.
                     objects (list[Object]): List of objects.
+                    set_global_instance (bool, optional): True if the global environment instance should be set. Defaults to False.
+            )doc"
+        )
+        .def(
+            init<const Shared<const Object>&, const Array<Shared<const Object>>&, const Instant&, const bool&>(),
+            arg("central_celestial_object"),
+            arg("objects"),
+            arg("instant") = Instant::J2000(),
+            arg("set_global_instance") = false,
+            R"doc(
+                Constructor
+
+                Args:
+                    central_celestial_object (Object): A central celestial object.
+                    objects (list[Object]): List of objects.
+                    instant (Instant, optional): An Instant. Default is J2000 epoch.
+                    set_global_instance (bool, optional): True if the global environment instance should be set. Defaults to False.
             )doc"
         )
 
@@ -64,6 +82,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 
                 Returns:
                     bool: True if environment contains objects with a given name, False otherwise.
+            )doc"
+        )
+        .def(
+            "has_central_celestial_object",
+            &Environment::hasCentralCelestialObject,
+            R"doc(
+                Returns true if the environment has a central celestial object.
+
+                Returns:
+                    bool: True if the environment has a central celestial object, False otherwise.
             )doc"
         )
         .def(
@@ -121,7 +149,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
                     name (str): The name of the celestial object.
 
                 Returns:
-                    Object: The celestial object with the given name.
+                    Celestial: The celestial object with the given name.
+            )doc"
+        )
+        .def(
+            "access_central_celestial_object",
+            &Environment::accessCentralCelestialObject,
+            return_value_policy::reference,
+            R"doc(
+                Access the central celestial object.
+
+                Returns:
+                    Celestial: The central celestial object.
             )doc"
         )
 
@@ -189,10 +228,44 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             R"doc(
                 Get the default Environment object.
 
+                Args:
+                    (set_global_instance): True if the global environment instance should be set.
+
                 Returns:
                     Environment: The default Environment object.
+            )doc",
+            arg("set_global_instance") = false
+        )
+        .def_static(
+            "reset_global_instance",
+            &Environment::ResetGlobalInstance,
+            R"doc(
+                Reset the global environment instance.
             )doc"
-        );
+        )
+        .def_static(
+            "access_global_instance",
+            &Environment::AccessGlobalInstance,
+            return_value_policy::reference,
+            R"doc(
+                Access the global environment instance.
+
+                Returns:
+                    Environment: The global environment instance.
+            )doc"
+        )
+        .def_static(
+            "has_global_instance",
+            &Environment::HasGlobalInstance,
+            R"doc(
+                Check if the global environment instance is set.
+
+                Returns:
+                    bool: True if the global environment instance is set, False otherwise.
+            )doc"
+        )
+
+        ;
 
     // Create "environment" python submodule
     auto environment = aModule.def_submodule("environment");

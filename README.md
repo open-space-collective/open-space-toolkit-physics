@@ -43,14 +43,14 @@ from ostk.physics import Environment # Environment modeling class
 from ostk.physics.time import Instant # Instant class
 from ostk.physics.coordinate import Frame # Reference frame class
 
-environment = Environment.default() # Bootstrap a default environment
+environment = Environment.default(set_global=True) # Bootstrap a default environment, and set it as the global environment
 
 moon = environment.access_object_with_name('Moon') # Access Moon
 
-environment.set_instant(Instant.now()) # Set environment to present time
+instant = Instant.now()
 
-moon.get_position_in(Frame.ITRF()) # Position of the Moon in ITRF
-moon.get_axes_in(Frame.ITRF()) # Axes of the Moon in ITRF
+moon.get_position_in(Frame.ITRF(), instant) # Position of the Moon in ITRF
+moon.get_axes_in(Frame.ITRF(), instant) # Axes of the Moon in ITRF
 ```
 
 By default, OSTk fetches the ephemeris from JPL, Earth Orientation Parameters (EOP) and leap second count from IERS.
