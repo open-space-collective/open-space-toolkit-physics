@@ -57,19 +57,6 @@ class Environment
         const bool& setGlobalInstance = false
     );
 
-    /// @brief              Copy constructor
-    ///
-    /// @param              [in] anEnvironment An environment
-
-    Environment(const Environment& anEnvironment);
-
-    /// @brief              Copy assignment operator
-    ///
-    /// @param              [in] anEnvironment An environment
-    /// @return             Reference to environment
-
-    Environment& operator=(const Environment& anEnvironment);
-
     /// @brief              Output stream operator
     ///
     /// @param              [in] anOutputStream An output stream
