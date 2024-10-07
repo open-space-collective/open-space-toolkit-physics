@@ -171,6 +171,12 @@ class TestLLA:
         assert lla.get_longitude() == longitude
         assert lla.get_altitude() == altitude
 
+    def test_on_surface(
+        self,
+        lla: LLA,
+    ):
+        assert lla.on_surface() is not None
+
     def test_calculate_distance_to(
         self,
         lla_north_pole: LLA,
