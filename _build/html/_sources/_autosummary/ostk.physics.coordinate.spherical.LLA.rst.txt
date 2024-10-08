@@ -31,6 +31,7 @@ ostk.physics.coordinate.spherical.LLA
       ~LLA.intermediate_between
       ~LLA.is_defined
       ~LLA.linspace
+      ~LLA.on_surface
       ~LLA.to_cartesian
       ~LLA.to_string
       ~LLA.to_vector
