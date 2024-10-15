@@ -14,15 +14,13 @@
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
 #include <experimental/filesystem>
 
-#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/data/environment/gravitational/earth"
-
-#define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk
 {
@@ -45,6 +43,7 @@ using ostk::io::URL;
 
 using ostk::physics::time::Duration;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using BaseManager = ostk::physics::Manager;
 
 /// @brief                      Earth gravitational model data manager
 ///
@@ -57,45 +56,9 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 ///                             - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY" will override
 ///                             "DefaultLocalRepository"
 
-class Manager
+class Manager : public BaseManager
 {
    public:
-    enum class Mode
-    {
-
-        Manual,    ///< Manually load and unload gravity files
-        Automatic  ///< Automatically fetch gravity files from remote repositories
-
-    };
-
-    /// @brief                  Get manager mode
-    ///
-    /// @return                 Manager mode
-
-    Manager::Mode getMode() const;
-
-    /// @brief                  Set manager mode
-    ///
-    /// @param                  [in] aMode A manager mode
-
-    void setMode(const Manager::Mode& aMode);
-
-    /// @brief                  Get default manager mode
-    ///
-    ///                         Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE
-    ///
-    /// @return                 Default manager mode
-
-    static Manager::Mode DefaultMode();
-
-    /// @brief                  Copy constructor (deleted)
-
-    Manager(const Manager& aManager) = delete;
-
-    /// @brief                  Copy assignment operator (deleted)
-
-    Manager& operator=(const Manager& aManager) = delete;
-
     /// @brief                  Returns true if manager has data file for the given model type
     ///
     /// @param                  [in] aModelType A model type
@@ -110,29 +73,11 @@ class Manager
 
     Array<File> localDataFilesForType(const EarthGravitationalModel::Type& aModelType) const;
 
-    /// @brief                  Get local repository
-    ///
-    /// @return                 Local repository
-
-    Directory getLocalRepository() const;
-
-    /// @brief                  Reset the manager.
-    ///
-    ///                         Reset path and mode to default values.
-
-    void reset();
-
     /// @brief                  Fetch data file from remote
     ///
     /// @param                  [in] aModelType A model type
 
     void fetchDataFilesForType(const EarthGravitationalModel::Type& aModelType) const;
-
-    /// @brief                  Set local repository
-    ///
-    /// @param                  [in] aDirectory A repository directory
-
-    void setLocalRepository(const Directory& aDirectory);
 
     /// @brief                  Get manager singleton
     ///
@@ -140,46 +85,12 @@ class Manager
 
     static Manager& Get();
 
-    /// @brief                  Get default local repository
-    ///
-    ///                         Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY
-    ///
-    /// @return                 Default local repository
-
-    static Directory DefaultLocalRepository();
-
-    /// @brief                  Get default local repository lock timeout
-    ///
-    ///                         Overriden by:
-    ///                         OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
-    ///
-    /// @return                 Default local repository lock timeout
-
-    static Duration DefaultLocalRepositoryLockTimeout();
-
    private:
-    Manager::Mode mode_;
-
-    Directory localRepository_;
-    Duration localRepositoryLockTimeout_;
-
-    mutable std::mutex mutex_;
-
     Manager();
 
-    Array<URL> getDataFileUrlsForType(const EarthGravitationalModel::Type& aModelType) const;
+    Array<URL> getDataFileUrlsForType_(const EarthGravitationalModel::Type& aModelType) const;
 
-    static String DataFileNameFromType(const EarthGravitationalModel::Type& aModelType);
-
-    bool isLocalRepositoryLocked() const;
-
-    File getLocalRepositoryLockFile() const;
-
-    void setup();
-
-    void lockLocalRepository(const Duration& aTimeout);
-
-    void unlockLocalRepository();
+    static String DataFileNameFromType_(const EarthGravitationalModel::Type& aModelType);
 };
 
 }  // namespace earth
