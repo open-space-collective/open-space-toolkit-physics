@@ -17,6 +17,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -48,6 +49,7 @@ using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::time::Instant;
 
 using ManifestManager = ostk::physics::data::Manager;
+using BaseManager = ostk::physics::Manager;
 
 /// @brief                      SPICE Toolkit kernel manager
 ///
@@ -58,43 +60,9 @@ using ManifestManager = ostk::physics::data::Manager;
 ///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY" will override
 ///                             "DefaultLocalRepository"
 
-class Manager
+class Manager : public BaseManager
 {
    public:
-    /// @brief              Copy constructor (deleted)
-
-    Manager(const Manager& aSpiceManager) = delete;
-
-    /// @brief              Copy assignment operator (deleted)
-
-    Manager& operator=(const Manager& aSpiceManager) = delete;
-
-    /// @brief              Get manager singleton
-    ///
-    /// @return             Reference to manager
-
-    static Manager& Get();
-
-    /// @brief              Get local repository
-    ///
-    /// @return             Local repository
-
-    Directory getLocalRepository() const;
-
-    /// @brief              Set local repository
-    ///
-    /// @param              [in] aDirectory A repository directory
-
-    void setLocalRepository(const Directory& aDirectory);
-
-    /// @brief              Get default local repository
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY
-    ///
-    /// @return             Default local repository
-
-    static Directory DefaultLocalRepository();
-
     /// @brief              Fetch kernel from remote
     ///
     /// @param              [in] aKernel A kernel
@@ -122,14 +90,14 @@ class Manager
 
     void refresh();
 
+    /// @brief              Get manager singleton
+    ///
+    /// @return             Reference to manager
+
+    static Manager& Get();
+
    private:
-    Directory localRepository_;
-
-    mutable std::mutex mutex_;
-
     Manager();
-
-    void setup();
 };
 
 }  // namespace spice

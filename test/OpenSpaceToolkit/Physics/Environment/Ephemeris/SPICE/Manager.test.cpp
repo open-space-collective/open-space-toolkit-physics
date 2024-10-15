@@ -77,64 +77,6 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
     char* fullDataPath_;
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, GetLocalRepository)
-{
-    {
-        EXPECT_EQ("SPICE", manager_.getLocalRepository().getName());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, SetLocalRepository)
-{
-    {
-        EXPECT_EQ("SPICE", manager_.getLocalRepository().getName());
-
-        manager_.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
-
-        EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
-
-        manager_.setLocalRepository(
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/environment/ephemeris/spice"))
-        );
-
-        EXPECT_EQ("spice", manager_.getLocalRepository().getName());
-
-        EXPECT_THROW(manager_.setLocalRepository(Directory::Undefined()), ostk::core::error::runtime::Undefined);
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, DefaultLocalRepository)
-{
-    {
-        unsetenv(localRepositoryVarName_);
-        unsetenv(fullDataVarName_);
-
-        EXPECT_EQ(
-            Manager::DefaultLocalRepository(),
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/ephemeris/spice"))
-        );
-    }
-
-    {
-        unsetenv(localRepositoryVarName_);
-        unsetenv(fullDataVarName_);
-
-        setenv(fullDataVarName_, "/tmp", true);
-
-        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/ephemeris/spice")));
-    }
-
-    {
-        unsetenv(localRepositoryVarName_);
-        unsetenv(fullDataVarName_);
-
-        setenv(fullDataVarName_, "/tmp", true);
-        setenv(localRepositoryVarName_, "/local_override", true);
-
-        EXPECT_EQ(Manager::DefaultLocalRepository(), Directory::Path(Path::Parse("/local_override")));
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel)
 {
     // make subdir for test

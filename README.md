@@ -221,6 +221,7 @@ The following table shows the availabe data source settings with the different e
 | `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`  | `60`                                                                                                   |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE`                               | `Automatic`                                                                                            |
 | `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY`                  | `./.open-space-toolkit/physics/data/environment/ephemeris/spice`                                       |
+| `OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`     | `60`                                                                                                   |
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE`                          | `Automatic`                                                                                            |
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY`              | `./.open-space-toolkit/physics/data/environment/gravitational/earth`                                   |
 | `OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT` | `60`                                                                                                   |

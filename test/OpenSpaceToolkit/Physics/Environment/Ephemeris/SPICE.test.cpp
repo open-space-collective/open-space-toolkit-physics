@@ -296,7 +296,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 
         EXPECT_TRUE(sunPosition.isDefined());
 
-        Manager::Get().setLocalRepository(Manager::DefaultLocalRepository());
+        Manager::Get().reset();
 
         Engine::Get().setMode(Engine::DefaultMode());
 
