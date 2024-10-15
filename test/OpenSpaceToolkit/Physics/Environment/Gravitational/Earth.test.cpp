@@ -51,8 +51,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM96));
         EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(EarthGravitationalModel::Type::EGM2008));
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 
     // Test correct model order and degree combinations
@@ -80,8 +79,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
             EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 2190, 2160
         ));
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 
     // Test incorrect model order and degree combinations
@@ -110,8 +108,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
             EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 3000, 3000
         ));
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 
     {
@@ -174,8 +171,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, 3000, 3000));
         EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008, 3000, 3000));
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 }
 
@@ -341,8 +337,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
             EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getType()
         );
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 
     {
@@ -388,9 +383,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
                 EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008).getType()
             );
 
-            EarthGravitationalModelManager::Get().setLocalRepository(
-                EarthGravitationalModelManager::DefaultLocalRepository()
-            );
+            EarthGravitationalModelManager::Get().reset();
             EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
         }
     }
@@ -445,7 +438,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
         EXPECT_EQ(earthGravitationalModel.getOrder(), order);
     }
 
-    EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository());
+    EarthGravitationalModelManager::Get().reset();
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNoTruncation)
@@ -585,8 +578,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
             );
         }
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 }
 
@@ -713,8 +705,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
             );
         }
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 }
 
@@ -787,7 +778,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
             );
         }
 
-        EarthGravitationalModelManager::Get().setLocalRepository(EarthGravitationalModelManager::DefaultLocalRepository(
-        ));
+        EarthGravitationalModelManager::Get().reset();
     }
 }
