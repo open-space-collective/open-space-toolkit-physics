@@ -14,13 +14,12 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/data/coordinate/frame/provider/iers"
-#define OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk
 {
@@ -46,6 +45,7 @@ using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 using ostk::physics::coordinate::frame::provider::iers::Finals2000A;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
+using BaseManager = ostk::physics::Manager;
 
 /// @brief                      IERS bulletins manager (thread-safe)
 ///
@@ -60,29 +60,9 @@ using ostk::physics::time::Instant;
 ///
 /// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 
-class Manager
+class Manager : public BaseManager
 {
    public:
-    enum class Mode
-    {
-
-        Manual,    ///< Manually load and unload bulletins
-        Automatic  ///< Automatically fetch, load and unload bulletins (from remote repositories)
-
-    };
-
-    /// @brief              Get manager mode
-    ///
-    /// @return             Manager mode
-
-    Manager::Mode getMode() const;
-
-    /// @brief              Get local repository
-    ///
-    /// @return             Local repository
-
-    Directory getLocalRepository() const;
-
     /// @brief              Get Bulletin A directory
     ///
     /// @return             Bulletin A directory
@@ -128,18 +108,6 @@ class Manager
 
     Real getLodAt(const Instant& anInstant) const;
 
-    /// @brief              Set manager mode
-    ///
-    /// @param              [in] aMode A manager mode
-
-    void setMode(const Manager::Mode& aMode);
-
-    /// @brief              Set local repository
-    ///
-    /// @param              [in] aDirectory A repository directory
-
-    void setLocalRepository(const Directory& aDirectory);
-
     /// @brief              Load Bulletin A
     ///
     /// @param              [in] aBulletinA A Bulletin A
@@ -168,7 +136,7 @@ class Manager
     ///
     ///                     Unload all bulletins.
 
-    void reset();
+    virtual void reset();
 
     /// @brief              Clear local repository
     ///
@@ -182,50 +150,13 @@ class Manager
 
     static Manager& Get();
 
-    /// @brief              Get default manager mode
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE
-    ///
-    /// @return             Default manager mode
-
-    static Manager::Mode DefaultMode();
-
-    /// @brief              Get default local repository
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY
-    ///
-    /// @return             Default local repository
-
-    static Directory DefaultLocalRepository();
-
-    /// @brief              Get default local repository lock timeout
-    ///
-    ///                     Overriden by:
-    ///                     OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
-    ///
-    /// @return             Default local repository lock timeout
-
-    static Duration DefaultLocalRepositoryLockTimeout();
-
    private:
-    Manager::Mode mode_;
-
-    Directory localRepository_;
-    Duration localRepositoryLockTimeout_;
-
     mutable BulletinA bulletinA_;
     mutable Finals2000A finals2000A_;
 
-    mutable std::mutex mutex_;
+    Manager();
 
-    Manager(const Manager::Mode& aMode = Manager::DefaultMode());
-
-    void setup_();
-
-    bool isLocalRepositoryLocked_() const;
-    File getLocalRepositoryLockFile_() const;
-    void lockLocalRepository_(const Duration& aTimeout) const;
-    void unlockLocalRepository_() const;
+    virtual void setup_() override;
 
     // const private methods that modify mutable members
     // none of these are mutex-protected, but are called exclusively by methods that are
