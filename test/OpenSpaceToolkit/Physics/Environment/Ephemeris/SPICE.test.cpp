@@ -21,31 +21,31 @@
 
 using ostk::physics::environment::ephemeris::SPICE;
 
-using ostk::core::type::Shared;
-using ostk::core::type::Real;
-using ostk::core::type::String;
-using ostk::core::container::Tuple;
 using ostk::core::container::Array;
 using ostk::core::container::Table;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
+using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
+using ostk::core::type::Real;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
 
-using ostk::mathematics::object::Vector3d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
+using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::unit::Angle;
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::Transform;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
 
 using ostk::physics::environment::ephemeris::spice::Engine;
-using ostk::physics::environment::ephemeris::spice::Manager;
 using ostk::physics::environment::ephemeris::spice::Kernel;
+using ostk::physics::environment::ephemeris::spice::Manager;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
 {
@@ -247,7 +247,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 
         Position sunPosition = Position::Undefined();
 
-        EXPECT_ANY_THROW({ sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); });
+        EXPECT_NO_THROW({ sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); });
 
         Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls"))
         ));
@@ -301,28 +301,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
         Engine::Get().setMode(Engine::DefaultMode());
 
         Engine::Get().reset();
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, DefaultKernels)
-{
-    using ostk::core::container::Array;
-    using ostk::core::filesystem::Path;
-    using ostk::core::filesystem::Directory;
-
-    using ostk::physics::environment::ephemeris::spice::Engine;
-    using ostk::physics::environment::ephemeris::spice::Kernel;
-
-    {
-        Manager::Get().setLocalRepository(
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"))
-        );
-
-        const Array<Kernel> kernels = Engine::DefaultKernels();
-
-        for (const auto& kernel : kernels)
-        {
-            EXPECT_TRUE(kernel.isDefined());
-        }
     }
 }

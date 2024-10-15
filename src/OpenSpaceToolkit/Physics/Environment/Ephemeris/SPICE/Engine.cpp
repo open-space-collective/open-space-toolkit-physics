@@ -351,20 +351,11 @@ void Engine::setup()
 
     errdev_c("SET", 4096, (SpiceChar*)"NULL");
 
-    if (mode_ == Engine::Mode::Automatic)
+    // Load default kernels
+
+    for (const auto& kernel : Engine::DefaultKernels())
     {
-        Directory kernelDirectory = Manager::Get().getLocalRepository();
-        if (!kernelDirectory.exists())
-        {
-            kernelDirectory.create();
-        }
-
-        // Load default kernels
-
-        for (const auto& kernel : Engine::DefaultKernels())
-        {
-            this->loadKernel_(kernel);
-        }
+        this->loadKernel_(kernel);
     }
 }
 
@@ -436,15 +427,15 @@ void Engine::loadKernel_(const Kernel& aKernel)
         return;
     }
 
-    const File kernelFile = aKernel.getFile();
+    File kernelFile = aKernel.getFile();
 
     if (!kernelFile.exists())
     {
         if (mode_ == Engine::Mode::Automatic)
         {
-            // Fetch kernel
-
             Manager::Get().fetchKernel(aKernel);
+            const Path filePath = Manager::Get().getLocalRepository().getPath() + Path::Parse(aKernel.getName());
+            kernelFile = File::Path(filePath);
         }
         else
         {
