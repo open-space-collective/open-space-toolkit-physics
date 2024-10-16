@@ -38,6 +38,7 @@ namespace provider
 namespace iers
 {
 
+using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::Path;
 using ostk::core::type::String;
 
@@ -53,20 +54,6 @@ const String bulletinAManifestName = "bulletin-A";
 const String finals2000AManifestName = "finals-2000A";
 
 const String temporaryDirectoryName = "tmp";
-
-Manager::Mode Manager::getMode() const
-{
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    return mode_;
-}
-
-Directory Manager::getLocalRepository() const
-{
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    return localRepository_;
-}
 
 Directory Manager::getBulletinADirectory() const
 {
@@ -226,27 +213,6 @@ Real Manager::getLodAt(const Instant& anInstant) const
     return Real::Undefined();
 }
 
-void Manager::setMode(const Manager::Mode& aMode)
-{
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    mode_ = aMode;
-}
-
-void Manager::setLocalRepository(const Directory& aDirectory)
-{
-    if (!aDirectory.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Directory");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    localRepository_ = aDirectory;
-
-    setup_();
-}
-
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
 {
     if (!aBulletinA.isDefined())
@@ -287,7 +253,7 @@ File Manager::fetchLatestFinals2000A() const
 
 void Manager::reset()
 {
-    std::lock_guard<std::mutex> lock {mutex_};
+    BaseManager::reset();
 
     bulletinA_ = BulletinA::Undefined();
     finals2000A_ = Finals2000A::Undefined();
@@ -307,67 +273,14 @@ Manager& Manager::Get()
     return manager;
 }
 
-Manager::Mode Manager::DefaultMode()
-{
-    static const Manager::Mode defaultMode = OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE;
-
-    if (const char* modeString = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE"))
-    {
-        if (strcmp(modeString, "Manual") == 0)
-        {
-            return Manager::Mode::Manual;
-        }
-        else if (strcmp(modeString, "Automatic") == 0)
-        {
-            return Manager::Mode::Automatic;
-        }
-        else
-        {
-            throw ostk::core::error::runtime::Wrong("Mode", modeString);
-        }
-    }
-
-    return defaultMode;
-}
-
-Directory Manager::DefaultLocalRepository()
-{
-    using ostk::core::filesystem::Path;
-
-    static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY));
-
-    if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(localRepositoryPath));
-    }
-    else if (const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(dataPath) + Path::Parse("coordinate/frame/provider/iers"));
-    }
-
-    return defaultLocalRepository;
-}
-
-Duration Manager::DefaultLocalRepositoryLockTimeout()
-{
-    static const Duration defaultLocalRepositoryLockTimeout =
-        Duration::Seconds(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT);
-
-    if (const char* localRepositoryLockTimeoutString =
-            std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
-    {
-        return Duration::Parse(localRepositoryLockTimeoutString);
-    }
-
-    return defaultLocalRepositoryLockTimeout;
-}
-
-Manager::Manager(const Manager::Mode& aMode)
-    : mode_(aMode),
-      localRepository_(Manager::DefaultLocalRepository()),
-      localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
+Manager::Manager()
+    : BaseManager(
+          "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE",
+          Directory::Path(Path::Parse(OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY)),
+          "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY",
+          Path::Parse("coordinate/frame/provider/iers"),
+          "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+      ),
       bulletinA_(BulletinA::Undefined()),
       finals2000A_(Finals2000A::Undefined())
 {
@@ -376,10 +289,7 @@ Manager::Manager(const Manager::Mode& aMode)
 
 void Manager::setup_()
 {
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
+    BaseManager::setup_();
 
     if (!this->getBulletinADirectory().exists())
     {
@@ -390,68 +300,6 @@ void Manager::setup_()
     {
         this->getFinals2000ADirectory().create();
     }
-}
-
-bool Manager::isLocalRepositoryLocked_() const
-{
-    return this->getLocalRepositoryLockFile_().exists();
-}
-
-File Manager::getLocalRepositoryLockFile_() const
-{
-    return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
-}
-
-void Manager::lockLocalRepository_(const Duration& aTimeout) const
-{
-    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    const auto tryLock = [](File& aLockFile) -> bool
-    {
-        if (!aLockFile.exists())  // [TBM] Should use system-wide semaphore instead (race condition can still occur)
-        {
-            try
-            {
-                aLockFile.create();
-
-                return true;
-            }
-            catch (...)
-            {
-                // Do nothing
-            }
-
-            return false;
-        }
-
-        return false;
-    };
-
-    const Instant timeoutInstant = Instant::Now() + aTimeout;
-
-    File lockFile = this->getLocalRepositoryLockFile_();
-
-    while (!tryLock(lockFile))
-    {
-        if (Instant::Now() >= timeoutInstant)
-        {
-            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.");
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-}
-
-void Manager::unlockLocalRepository_() const
-{
-    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    if (!this->isLocalRepositoryLocked_())
-    {
-        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
-    }
-
-    this->getLocalRepositoryLockFile_().remove();
 }
 
 void Manager::loadBulletinA_(const BulletinA& aBulletinA) const

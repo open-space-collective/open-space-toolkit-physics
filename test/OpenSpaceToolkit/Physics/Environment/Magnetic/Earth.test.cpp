@@ -46,7 +46,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
         EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2010));
         EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(EarthMagneticModel::Type::WMM2015));
 
-        EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
+        EarthMagneticModelManager::Get().reset();
     }
 
     {
@@ -131,7 +131,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
         EXPECT_EQ(EarthMagneticModel::Type::WMM2010, EarthMagneticModel(EarthMagneticModel::Type::WMM2010).getType());
         EXPECT_EQ(EarthMagneticModel::Type::WMM2015, EarthMagneticModel(EarthMagneticModel::Type::WMM2015).getType());
 
-        EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
+        EarthMagneticModelManager::Get().reset();
     }
 
     {
@@ -174,7 +174,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
                 EarthMagneticModel::Type::WMM2015, EarthMagneticModel(EarthMagneticModel::Type::WMM2015).getType()
             );
 
-            EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
+            EarthMagneticModelManager::Get().reset();
             EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
         }
     }
@@ -399,6 +399,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
             );
         }
 
-        EarthMagneticModelManager::Get().setLocalRepository(EarthMagneticModelManager::DefaultLocalRepository());
+        EarthMagneticModelManager::Get().reset();
     }
 }
