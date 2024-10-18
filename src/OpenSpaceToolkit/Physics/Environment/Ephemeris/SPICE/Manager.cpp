@@ -236,6 +236,7 @@ Kernel Manager::findKernel(const String& aRegexString) const
 Manager::Manager()
     : localRepository_(Manager::DefaultLocalRepository())
 {
+    setup();
 }
 
 void Manager::setup()
