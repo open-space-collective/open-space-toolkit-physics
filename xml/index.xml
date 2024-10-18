@@ -588,8 +588,6 @@
     <member refid="classostk_1_1physics_1_1_environment_1a149113884598532bd3f7775008c72f81" kind="variable"><name>centralCelestialObject_</name></member>
     <member refid="classostk_1_1physics_1_1_environment_1a6e305f5d49ea34ed7e37459086c727f8" kind="function"><name>Environment</name></member>
     <member refid="classostk_1_1physics_1_1_environment_1af55853ce0d679a89f36c335719854784" kind="function"><name>Environment</name></member>
-    <member refid="classostk_1_1physics_1_1_environment_1ae2fa360cd4bd59f8af1b6c7874be3e2c" kind="function"><name>Environment</name></member>
-    <member refid="classostk_1_1physics_1_1_environment_1ac0ddef2496b987f9780df94c9ec49990" kind="function"><name>operator=</name></member>
     <member refid="classostk_1_1physics_1_1_environment_1ac597f4d54313d272bc24f62a9f2c0f5c" kind="function"><name>isDefined</name></member>
     <member refid="classostk_1_1physics_1_1_environment_1af83819fdcd1586e185ce21e92ce574ed" kind="function"><name>hasObjectWithName</name></member>
     <member refid="classostk_1_1physics_1_1_environment_1a443a17fa0d23109c0918b3d57b67c4a5" kind="function"><name>hasCentralCelestialObject</name></member>

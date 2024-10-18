@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="110" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="110" bodyend="134"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="62" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="62" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1a3c3e809ca069b393c79e7ad18cf0b24c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
