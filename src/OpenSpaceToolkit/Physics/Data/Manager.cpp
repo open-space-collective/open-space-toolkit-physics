@@ -28,15 +28,14 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::String;
 using ostk::core::filesystem::Path;
 using ostk::core::type::String;
 
 using ostk::io::ip::tcp::http::Client;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 const String dataManifestFileName = "manifest.json";
 

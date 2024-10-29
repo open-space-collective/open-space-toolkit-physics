@@ -24,8 +24,8 @@ namespace provider
 
 using ostk::core::container::Triple;
 
-using ostk::physics::unit::Angle;
 using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
 
 Triple<Angle, Angle, Angle> computeFK5Precession(const Instant& anInstant)
 {
@@ -75,11 +75,11 @@ Instant MOD::getEpoch() const
 
 Transform MOD::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::mathematics::object::Vector2d;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Vector2d;
 
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
+    using ostk::physics::time::Scale;
     using ostk::physics::unit::Angle;
 
     if (!anInstant.isDefined())

@@ -166,12 +166,12 @@ Geometry Geometry::in(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
 {
     using ostk::core::type::String;
 
-    using ostk::mathematics::object::Vector3d;
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::Transformation;
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
-    using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
+    using ostk::mathematics::object::Vector3d;
 
     using ostk::physics::coordinate::Transform;
 
@@ -213,18 +213,18 @@ Geometry Geometry::in(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
 
 Geometry Geometry::intersectionWith(const Geometry& aGeometry) const
 {
+    using ostk::mathematics::geometry::d3::Intersection;
+    using ostk::mathematics::geometry::d3::object::Ellipsoid;
+    using ostk::mathematics::geometry::d3::object::Line;
+    using ostk::mathematics::geometry::d3::object::LineString;
+    using ostk::mathematics::geometry::d3::object::Plane;
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::object::PointSet;
-    using ostk::mathematics::geometry::d3::object::Line;
+    using ostk::mathematics::geometry::d3::object::Polygon;
+    using ostk::mathematics::geometry::d3::object::Pyramid;
     using ostk::mathematics::geometry::d3::object::Ray;
     using ostk::mathematics::geometry::d3::object::Segment;
-    using ostk::mathematics::geometry::d3::object::LineString;
-    using ostk::mathematics::geometry::d3::object::Polygon;
-    using ostk::mathematics::geometry::d3::object::Plane;
     using ostk::mathematics::geometry::d3::object::Sphere;
-    using ostk::mathematics::geometry::d3::object::Ellipsoid;
-    using ostk::mathematics::geometry::d3::object::Pyramid;
-    using ostk::mathematics::geometry::d3::Intersection;
 
     if (!aGeometry.isDefined())
     {

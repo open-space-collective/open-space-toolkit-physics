@@ -15,27 +15,27 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Shared;
-using ostk::core::type::Real;
-using ostk::core::type::String;
-using ostk::core::container::Tuple;
 using ostk::core::container::Array;
 using ostk::core::container::Table;
-using ostk::core::filesystem::Path;
+using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
+using ostk::core::type::Real;
+using ostk::core::type::Shared;
+using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Angle;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::AER;
 using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test

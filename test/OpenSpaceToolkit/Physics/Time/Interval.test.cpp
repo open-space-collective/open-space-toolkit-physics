@@ -272,6 +272,50 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetCenter)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Interval, GetIntersectionWith)
+{
+    {
+        const Interval interval1 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT)
+        );
+
+        const Interval interval2 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 5), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT)
+        );
+
+        const Interval intersectionInterval = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 5), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT)
+        );
+
+        EXPECT_EQ(intersectionInterval, interval1.getIntersectionWith(interval2));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, GetUnionWith)
+{
+    {
+        const Interval interval1 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT)
+        );
+
+        const Interval interval2 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 5), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT)
+        );
+
+        const Interval unionInterval = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT)
+        );
+
+        EXPECT_EQ(unionInterval, interval1.getUnionWith(interval2));
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Interval, ToString)
 {
     {
@@ -549,6 +593,87 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Closed)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Interval, Open)
+{
+    {
+        EXPECT_NO_THROW(Interval::Open(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT),
+                Interval::Type::Open
+            ),
+            Interval::Open(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+            )
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Interval::Open(Instant::Undefined(), Instant::Undefined()));
+        EXPECT_ANY_THROW(Interval::Open(Instant::J2000(), Instant::Undefined()));
+        EXPECT_ANY_THROW(Interval::Open(Instant::Undefined(), Instant::J2000()));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenLeft)
+{
+    {
+        EXPECT_NO_THROW(Interval::HalfOpenLeft(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT),
+                Interval::Type::HalfOpenLeft
+            ),
+            Interval::HalfOpenLeft(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+            )
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Interval::HalfOpenLeft(Instant::Undefined(), Instant::Undefined()));
+        EXPECT_ANY_THROW(Interval::HalfOpenLeft(Instant::J2000(), Instant::Undefined()));
+        EXPECT_ANY_THROW(Interval::HalfOpenLeft(Instant::Undefined(), Instant::J2000()));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenRight)
+{
+    {
+        EXPECT_NO_THROW(Interval::HalfOpenRight(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
+        EXPECT_EQ(
+            Interval(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT),
+                Interval::Type::HalfOpenRight
+            ),
+            Interval::HalfOpenRight(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+            )
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Interval::HalfOpenRight(Instant::Undefined(), Instant::Undefined()));
+        EXPECT_ANY_THROW(Interval::HalfOpenRight(Instant::J2000(), Instant::Undefined()));
+        EXPECT_ANY_THROW(Interval::HalfOpenRight(Instant::Undefined(), Instant::J2000()));
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Centered)
 {
     {
@@ -691,5 +816,218 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Parse)
         EXPECT_ANY_THROW(Interval::Parse("[2018-01-01 00:00:00 - 2018-01-01 00:00:00]"));
         EXPECT_ANY_THROW(Interval::Parse("/2018-01-01 00:00:00 - 2018-01-01 00:00:00/ [TT]"));
         EXPECT_ANY_THROW(Interval::Parse("[2018-01-01 00:00:00 - 2018-01-01 00:00:00] []"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, Clip)
+{
+    {
+        const Array<Interval> array = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            )
+        };
+
+        const Array<Interval> expectedArray = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 35), Scale::TT)
+            )
+        };
+
+        EXPECT_EQ(
+            expectedArray,
+            Interval::Clip(
+                array,
+                Interval::Closed(
+                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT),
+                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 35), Scale::TT)
+                )
+            )
+        );
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, Sort)
+{
+    {
+        const Array<Interval> array = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            )
+        };
+
+        const Array<Interval> expectedArray = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            )
+        };
+
+        EXPECT_EQ(expectedArray, Interval::Sort(array));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, Merge)
+{
+    {
+        const Array<Interval> array = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 45), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            )
+        };
+
+        const Array<Interval> expectedArray = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 45), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT)
+            )
+        };
+
+        EXPECT_EQ(expectedArray, Interval::Merge(array));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, GetGaps)
+{
+    {
+        const Array<Interval> array = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 55), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            )
+        };
+
+        const Array<Interval> expectedArray = {
+            Interval::Open(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT)
+            ),
+            Interval::Open(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT)
+            )
+        };
+
+        EXPECT_EQ(expectedArray, Interval::GetGaps(array));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, LogicalOr)
+{
+    {
+        const Array<Interval> array1 = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            )
+        };
+
+        const Array<Interval> array2 = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 55), Scale::TT)
+            )
+        };
+
+        const Array<Interval> expectedArray = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 55), Scale::TT)
+            )
+        };
+
+        EXPECT_EQ(expectedArray, Interval::LogicalOr(array1, array2));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, LogicalAnd)
+{
+    {
+        const Array<Interval> array1 = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            )
+        };
+
+        const Array<Interval> array2 = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 35), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 50), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 55), Scale::TT)
+            )
+        };
+
+        const Array<Interval> expectedArray = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 15), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 35), Scale::TT)
+            )
+        };
+
+        EXPECT_EQ(expectedArray, Interval::LogicalAnd(array1, array2));
     }
 }

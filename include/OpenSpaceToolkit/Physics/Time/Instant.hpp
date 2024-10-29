@@ -20,11 +20,11 @@ namespace time
 {
 
 using ostk::core::type::Int64;
-using ostk::core::type::Uint64;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::physics::time::Scale;
+using ostk::core::type::Uint64;
 using ostk::physics::time::Duration;
+using ostk::physics::time::Scale;
 
 #define DEFAULT_TIME_SCALE Scale::UTC
 #define DEFAULT_DATE_TIME_FORMAT DateTime::Format::Standard

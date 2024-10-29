@@ -22,15 +22,15 @@ namespace coordinate
 
 #define DEFAULT_PRECISION Integer::Undefined()
 
-using ostk::core::type::Shared;
 using ostk::core::type::Integer;
+using ostk::core::type::Shared;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::unit::Derived;
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Position;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Derived;
 
 class Frame;
 

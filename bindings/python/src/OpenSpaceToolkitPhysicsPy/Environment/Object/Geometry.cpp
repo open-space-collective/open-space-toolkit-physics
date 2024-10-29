@@ -18,21 +18,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
 {
     using namespace pybind11;
 
-    using ostk::core::type::Unique;
     using ostk::core::type::Shared;
+    using ostk::core::type::Unique;
 
+    using ostk::mathematics::geometry::d3::object::Composite;
+    using ostk::mathematics::geometry::d3::object::Ellipsoid;
+    using ostk::mathematics::geometry::d3::object::Line;
+    using ostk::mathematics::geometry::d3::object::LineString;
+    using ostk::mathematics::geometry::d3::object::Plane;
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::object::PointSet;
-    using ostk::mathematics::geometry::d3::object::Line;
+    using ostk::mathematics::geometry::d3::object::Polygon;
+    using ostk::mathematics::geometry::d3::object::Pyramid;
     using ostk::mathematics::geometry::d3::object::Ray;
     using ostk::mathematics::geometry::d3::object::Segment;
-    using ostk::mathematics::geometry::d3::object::LineString;
-    using ostk::mathematics::geometry::d3::object::Polygon;
-    using ostk::mathematics::geometry::d3::object::Plane;
     using ostk::mathematics::geometry::d3::object::Sphere;
-    using ostk::mathematics::geometry::d3::object::Ellipsoid;
-    using ostk::mathematics::geometry::d3::object::Pyramid;
-    using ostk::mathematics::geometry::d3::object::Composite;
 
     using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::object::Geometry;

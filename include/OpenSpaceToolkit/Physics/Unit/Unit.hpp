@@ -15,10 +15,10 @@ namespace physics
 namespace unit
 {
 
+using ostk::core::container::Pair;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Pair;
 
 /// @brief                      Unit
 ///

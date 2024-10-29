@@ -18,28 +18,28 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Table;
+using ostk::core::container::Tuple;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Index;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
-using ostk::core::container::Table;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::Duration;
-using ostk::physics::time::Interval;
-using ostk::physics::time::DateTime;
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Angle;
-using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::environment::utilities::eclipseIntervalsAtPosition;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Interval;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPosition)

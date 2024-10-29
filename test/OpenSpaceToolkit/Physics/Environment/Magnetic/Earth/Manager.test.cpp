@@ -11,22 +11,22 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
-using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::Duration;
-using ostk::physics::time::DateTime;
 using ostk::physics::environment::magnetic::earth::Manager;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 

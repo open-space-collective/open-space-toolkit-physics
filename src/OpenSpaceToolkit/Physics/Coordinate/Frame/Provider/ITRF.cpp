@@ -47,11 +47,11 @@ bool ITRF::isDefined() const
 
 Transform ITRF::getTransformAt(const Instant& anInstant) const
 {
-    using ostk::mathematics::object::Vector2d;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Vector2d;
 
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
+    using ostk::physics::time::Scale;
 
     if (!anInstant.isDefined())
     {

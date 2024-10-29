@@ -35,25 +35,25 @@ namespace environment
 namespace object
 {
 
-using ostk::core::type::Shared;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::time::Instant;
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Mass;
-using ostk::physics::unit::Derived;
-using ostk::physics::data::Scalar;
-using ostk::physics::data::Vector;
-using ostk::physics::coordinate::Position;
-using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::coordinate::Axes;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::coordinate::Transform;
-using ostk::physics::environment::Object;
+using ostk::physics::data::Scalar;
+using ostk::physics::data::Vector;
 using ostk::physics::environment::Ephemeris;
+using ostk::physics::environment::Object;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Mass;
 using GravitationalModel = ostk::physics::environment::gravitational::Model;
 using MagneticModel = ostk::physics::environment::magnetic::Model;
 using AtmosphericModel = ostk::physics::environment::atmospheric::Model;

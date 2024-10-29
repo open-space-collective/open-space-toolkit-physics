@@ -28,18 +28,18 @@ namespace coordinate
 
 namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
-using ostk::core::type::Uint8;
-using ostk::core::type::Shared;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::type::String;
+using ostk::core::type::Uint8;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::coordinate::Position;
-using ostk::physics::coordinate::Velocity;
 using ostk::physics::coordinate::Axes;
-using ostk::physics::coordinate::Transform;
 using ostk::physics::coordinate::frame::Provider;
+using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::Transform;
+using ostk::physics::coordinate::Velocity;
 
 /// @brief                      Reference frame
 ///

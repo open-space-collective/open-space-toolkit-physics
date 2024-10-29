@@ -8,10 +8,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
 
     using ostk::core::type::String;
 
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
     using ostk::physics::time::DateTime;
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
 
     class_<Instant>(
         aModule,

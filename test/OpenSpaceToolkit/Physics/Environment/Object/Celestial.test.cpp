@@ -36,33 +36,33 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Shared;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::Unit;
-using ostk::physics::unit::Angle;
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Time;
-using ostk::physics::unit::Mass;
-using ostk::physics::unit::Derived;
-using ostk::physics::data::Vector;
-using ostk::physics::data::Scalar;
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::environment::object::Celestial;
+using ostk::physics::data::Scalar;
+using ostk::physics::data::Vector;
 using ostk::physics::environment::Ephemeris;
 using ostk::physics::environment::ephemeris::Analytical;
+using ostk::physics::environment::object::Celestial;
+using ostk::physics::time::Instant;
+using ostk::physics::Unit;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::Length;
+using ostk::physics::unit::Mass;
+using ostk::physics::unit::Time;
 using GravitationalModel = ostk::physics::environment::gravitational::Model;
 using MagneticModel = ostk::physics::environment::magnetic::Model;
 using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
+using ostk::physics::environment::atmospheric::earth::Exponential;
 using ostk::physics::environment::gravitational::Spherical;
 using ostk::physics::environment::magnetic::Dipole;
-using ostk::physics::environment::atmospheric::earth::Exponential;
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;

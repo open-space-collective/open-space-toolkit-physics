@@ -11,12 +11,12 @@ using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector3d;
 
+using ostk::physics::environment::gravitational::Model;
+using ostk::physics::environment::gravitational::Spherical;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Derived;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Time;
-using ostk::physics::unit::Derived;
-using ostk::physics::time::Instant;
-using ostk::physics::environment::gravitational::Spherical;
-using ostk::physics::environment::gravitational::Model;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
 {

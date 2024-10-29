@@ -15,9 +15,9 @@ namespace utilities
 
 using ostk::core::filesystem::File;
 
+using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
-using ostk::physics::time::DateTime;
 
 Instant getFileModifiedInstant(const File& aFile)
 {

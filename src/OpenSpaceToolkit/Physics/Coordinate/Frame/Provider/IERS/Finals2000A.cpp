@@ -312,16 +312,16 @@ Finals2000A Finals2000A::Undefined()
 
 Finals2000A Finals2000A::Load(const filesystem::File& aFile)
 {
+    using ostk::core::container::Array;
     using ostk::core::type::Index;
-    using ostk::core::type::Uint8;
-    using ostk::core::type::Uint16;
     using ostk::core::type::Real;
     using ostk::core::type::String;
-    using ostk::core::container::Array;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Uint8;
 
+    using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
 
     if (!aFile.isDefined())
     {

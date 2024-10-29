@@ -13,9 +13,9 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Uint8;
-using ostk::core::type::Uint16;
 using ostk::core::type::String;
+using ostk::core::type::Uint16;
+using ostk::core::type::Uint8;
 
 /// @brief                      Date as year, month and day
 

@@ -45,8 +45,8 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
+    using ostk::physics::time::Scale;
 
     if (!anInstant.isDefined())
     {

@@ -14,10 +14,10 @@ namespace environment
 namespace gravitational
 {
 
+using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Mass;
 using ostk::physics::unit::Time;
-using ostk::physics::unit::Angle;
 
 Spherical::Spherical(const Model::Parameters& aParameterSet)
     : Model(aParameterSet),

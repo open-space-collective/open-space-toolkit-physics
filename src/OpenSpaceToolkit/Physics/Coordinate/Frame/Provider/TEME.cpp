@@ -49,11 +49,11 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
     // https://celestrak.com/publications/AIAA/2006-6753/faq.php
     // http://www.dtic.mil/dtic/tr/fulltext/u2/a637370.pdf p.18
 
-    using ostk::mathematics::object::Vector2d;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
+    using ostk::mathematics::object::Vector2d;
 
-    using ostk::physics::time::Scale;
     using ostk::physics::time::DateTime;
+    using ostk::physics::time::Scale;
     using ostk::physics::unit::Angle;
 
     if (!anInstant.isDefined())

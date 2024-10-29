@@ -28,14 +28,14 @@ namespace iers
 
 namespace filesystem = ostk::core::filesystem;
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
-using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
 /// @brief                      IERS Bulletin A

@@ -21,15 +21,15 @@ namespace environment
 namespace gravitational
 {
 
-using ostk::core::type::Unique;
+using ostk::core::filesystem::Directory;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
-using ostk::core::filesystem::Directory;
+using ostk::core::type::Unique;
 
 using ostk::io::URL;
 
-using ostk::physics::time::Instant;
 using ostk::physics::environment::gravitational::Model;
+using ostk::physics::time::Instant;
 
 /// @brief                      Earth gravitational model
 ///

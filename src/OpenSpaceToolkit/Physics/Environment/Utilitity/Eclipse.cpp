@@ -25,9 +25,9 @@ Array<Interval> eclipseIntervalsAtPosition(
 
     using ostk::mathematics::geometry::d3::object::Segment;
 
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Duration;
     using ostk::physics::environment::Object;
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
 
     if (!anAnalysisInterval.isDefined())
     {

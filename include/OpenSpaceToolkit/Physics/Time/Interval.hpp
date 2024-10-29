@@ -20,12 +20,12 @@ namespace physics
 namespace time
 {
 
+using ostk::core::container::Array;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Array;
 
-using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 /// @brief                      Interval
 
@@ -62,6 +62,10 @@ class Interval : public mathematics::object::Interval<Instant>
 
     Instant getCenter() const;
 
+    Interval getIntersectionWith(const Interval& anInterval) const;
+
+    Interval getUnionWith(const Interval& anInterval) const;
+
     String toString(const Scale& aTimeScale = Scale::UTC) const;
 
     Array<Instant> generateGrid(const Duration& aTimeStep) const;
@@ -78,8 +82,60 @@ class Interval : public mathematics::object::Interval<Instant>
 
     static Interval Closed(const Instant& aLowerBound, const Instant& anUpperBound);
 
+    /// @brief              Constructs an open interval
+    ///
+    /// @code
+    ///                     Interval interval = Interval::Open(Instant::J2000(), Instant::Now()) ; // (J2000, Now)
+    /// @endcode
+    ///
+    /// @return             Open interval
+
+    static Interval Open(const Instant& aLowerBound, const Instant& anUpperBound);
+
+    /// @brief              Constructs an half-open left interval
+    ///
+    /// @code
+    ///                     Interval interval = Interval::HalfOpenLeft(Instant::J2000(), Instant::Now()) ; // (J2000,
+    ///                     Now]
+    /// @endcode
+    ///
+    /// @return             Half-open left interval
+
+    static Interval HalfOpenLeft(const Instant& aLowerBound, const Instant& anUpperBound);
+
+    /// @brief              Constructs an half-open right interval
+    ///
+    /// @code
+    ///                     Interval interval = Interval::HalfOpenRight(Instant::J2000(), Instant::Now()) ; // [J2000,
+    ///                     Now)
+    /// @endcode
+    ///
+    /// @return             Half-open right interval
+
+    static Interval HalfOpenRight(const Instant& aLowerBound, const Instant& anUpperBound);
+
     static Interval Centered(
         const Instant& aCentralInstant, const Duration& aDuration, const Interval::Type& anIntervalType
+    );
+
+    static Array<Interval> Clip(const Array<Interval>& anIntervalArray, const Interval& anInterval);
+
+    static Array<Interval> Sort(
+        const Array<Interval>& anIntervalArray, const bool& byLowerBound = true, const bool& ascending = true
+    );
+
+    static Array<Interval> Merge(const Array<Interval>& anIntervalArray);
+
+    static Array<Interval> GetGaps(
+        const Array<Interval>& anIntervalArray, const Interval& anInterval = Interval::Undefined()
+    );
+
+    static Array<Interval> LogicalOr(
+        const Array<Interval>& anIntervalArray, const Array<Interval>& anotherIntervalArray
+    );
+
+    static Array<Interval> LogicalAnd(
+        const Array<Interval>& anIntervalArray, const Array<Interval>& anotherIntervalArray
     );
 
     /// @brief              Constructs an interval from a string representation
@@ -92,6 +148,12 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @return             Interval
 
     static Interval Parse(const String& aString);
+
+   private:
+    static mathematics::object::Interval<Instant> ToBase(const Interval& derived);
+    static Interval FromBase(const mathematics::object::Interval<Instant>& base);
+    static Array<mathematics::object::Interval<Instant>> ToBaseArray(const Array<Interval>& derivedArray);
+    static Array<Interval> FromBaseArray(const Array<mathematics::object::Interval<Instant>>& baseArray);
 };
 
 }  // namespace time

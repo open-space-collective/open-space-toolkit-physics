@@ -29,23 +29,23 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Shared;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 
-using ostk::mathematics::geometry::d3::object::Point;
+using ostk::mathematics::geometry::d3::object::Composite;
 using ostk::mathematics::geometry::d3::object::LineString;
+using ostk::mathematics::geometry::d3::object::Point;
 using ostk::mathematics::geometry::d3::object::Polygon;
 using ostk::mathematics::geometry::d3::object::Pyramid;
-using ostk::mathematics::geometry::d3::object::Composite;
 
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Angle;
-using ostk::physics::time::Instant;
-using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::Environment;
-using ostk::physics::environment::object::Geometry;
 using ostk::physics::environment::object::Celestial;
+using ostk::physics::environment::object::Geometry;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 
 class OpenSpaceToolkit_Physics_Environment_Object_Geometry : public ::testing::Test
 {

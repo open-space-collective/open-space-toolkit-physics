@@ -22,9 +22,9 @@ namespace ephemeris
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::Ephemeris;
+using ostk::physics::time::Instant;
 
 /// @brief                      SPICE Toolkit ephemeris
 ///
