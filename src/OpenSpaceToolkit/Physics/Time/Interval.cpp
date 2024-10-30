@@ -259,43 +259,45 @@ Interval Interval::Centered(
 
 Array<Interval> Interval::Clip(const Array<Interval>& anIntervalArray, const Interval& anInterval)
 {
-    return FromBaseArray(mathematics::object::Interval<Instant>::Clip(ToBaseArray(anIntervalArray), ToBase(anInterval))
-    );
+    const auto& baseClip = mathematics::object::Interval<Instant>::Clip(ToBaseArray(anIntervalArray), anInterval);
+    return FromBaseArray(baseClip);
 }
 
 Array<Interval> Interval::Sort(const Array<Interval>& anIntervalArray, const bool& byLowerBound, const bool& ascending)
 {
-    return FromBaseArray(
-        mathematics::object::Interval<Instant>::Sort(ToBaseArray(anIntervalArray), byLowerBound, ascending)
-    );
+    const auto& baseSort =
+        mathematics::object::Interval<Instant>::Sort(ToBaseArray(anIntervalArray), byLowerBound, ascending);
+    return FromBaseArray(baseSort);
 }
 
 Array<Interval> Interval::Merge(const Array<Interval>& anIntervalArray)
 {
-    return FromBaseArray(mathematics::object::Interval<Instant>::Merge(ToBaseArray(anIntervalArray)));
+    const auto& baseMerge = mathematics::object::Interval<Instant>::Merge(ToBaseArray(anIntervalArray));
+    return FromBaseArray(baseMerge);
 }
 
 Array<Interval> Interval::GetGaps(const Array<Interval>& anIntervalArray, const Interval& anInterval)
 {
-    return FromBaseArray(
-        mathematics::object::Interval<Instant>::GetGaps(ToBaseArray(anIntervalArray), ToBase(anInterval))
-    );
+    const auto& baseGetGaps = mathematics::object::Interval<Instant>::GetGaps(ToBaseArray(anIntervalArray), anInterval);
+    return FromBaseArray(baseGetGaps);
 }
 
 Array<Interval> Interval::LogicalOr(const Array<Interval>& anIntervalArray, const Array<Interval>& anotherIntervalArray)
 {
-    return FromBaseArray(mathematics::object::Interval<Instant>::LogicalOr(
+    const auto& baseLogicalOr = mathematics::object::Interval<Instant>::LogicalOr(
         ToBaseArray(anIntervalArray), ToBaseArray(anotherIntervalArray)
-    ));
+    );
+    return FromBaseArray(baseLogicalOr);
 }
 
 Array<Interval> Interval::LogicalAnd(
     const Array<Interval>& anIntervalArray, const Array<Interval>& anotherIntervalArray
 )
 {
-    return FromBaseArray(mathematics::object::Interval<Instant>::LogicalAnd(
+    const auto& baseLogicalAnd = mathematics::object::Interval<Instant>::LogicalAnd(
         ToBaseArray(anIntervalArray), ToBaseArray(anotherIntervalArray)
-    ));
+    );
+    return FromBaseArray(baseLogicalAnd);
 }
 
 Interval Interval::Parse(const String& aString)
@@ -366,34 +368,22 @@ Interval Interval::Parse(const String& aString)
 
 mathematics::object::Interval<Instant> Interval::ToBase(const Interval& derived)
 {
-    return static_cast<const mathematics::object::Interval<Instant>&>(derived);
+    return reinterpret_cast<const mathematics::object::Interval<Instant>&>(derived);
 }
 
 Interval Interval::FromBase(const mathematics::object::Interval<Instant>& base)
 {
-    return static_cast<const Interval&>(base);
+    return reinterpret_cast<const Interval&>(base);
 }
 
 Array<mathematics::object::Interval<Instant>> Interval::ToBaseArray(const Array<Interval>& derivedArray)
 {
-    Array<mathematics::object::Interval<Instant>> baseArray;
-    baseArray.reserve(derivedArray.size());
-    for (const auto& interval : derivedArray)
-    {
-        baseArray.push_back(ToBase(interval));
-    }
-    return baseArray;
+    return reinterpret_cast<const Array<mathematics::object::Interval<Instant>>&>(derivedArray);
 }
 
 Array<Interval> Interval::FromBaseArray(const Array<mathematics::object::Interval<Instant>>& baseArray)
 {
-    Array<Interval> derivedArray;
-    derivedArray.reserve(baseArray.size());
-    for (const auto& interval : baseArray)
-    {
-        derivedArray.push_back(FromBase(interval));
-    }
-    return derivedArray;
+    return reinterpret_cast<const Array<Interval>&>(baseArray);
 }
 
 }  // namespace time

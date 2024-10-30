@@ -123,6 +123,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
 
+        // TBR: Remove these methods, use getStart and getEnd instead
         .def(
             "get_lower_bound",
             &Interval::getLowerBound,
@@ -354,6 +355,12 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             R"doc(
                 Creates a clipped list of intervals.
 
+                ```
+                intervals = [[1, 3], [5, 7], [9, 11]]
+                interval = [4, 10]
+                output = [[5, 7], [9, 10]]
+                ```
+
                 Args:
                     intervals (list[Interval]): A list of intervals.
                     interval (Interval): The clipping interval.
@@ -366,8 +373,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             "sort",
             &Interval::Sort,
             arg("intervals"),
-            arg_v("by_lower_bound", true),
-            arg_v("ascending", true),
+            arg("by_lower_bound") = true,
+            arg("ascending") = true,
             R"doc(
                 Creates a sorted list of intervals.
 
@@ -387,6 +394,11 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             R"doc(
                 Creates a merged list of intervals.
 
+                ```
+                intervals = [[1, 3], [2, 4], [5, 7]]
+                output = [[1, 4], [5, 7]]
+                ```
+
                 Args:
                     intervals (list[Interval]): A list of intervals.
                     
@@ -398,13 +410,19 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             "get_gaps",
             &Interval::GetGaps,
             arg("intervals"),
-            arg_v("interval", Interval::Undefined()),
+            arg_v("interval", Interval::Undefined(), "Interval::Undefined()"),
             R"doc(
                 Creates a list of intervals gaps.
 
+                ```
+                intervals = [[1, 3], [5, 7], [9, 11]]
+                interval = [0, 12]
+                output = [[0, 1], [3, 5], [7, 9], [11, 12]]
+                ```
+
                 Args:
                     intervals (list[Interval]): A list of intervals.
-                    interval (Interval): The clipping interval. Defaults to Undefined.
+                    interval (Interval): The analysis interval. Used to compute gaps for the first and last interval. Defaults to Undefined.
 
                 Returns:
                     Interval: Intervals gaps.
@@ -417,6 +435,12 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             arg("intervals_2"),
             R"doc(
                 Creates a list of intervals by a logical-or conjunction.
+
+                ```
+                intervals_1 = [[-1, 1], [2, 4]]
+                intervals_2 = [[0.5, 1.5], [3, 5], [7, 8]]
+                output = [[-1, 1.5], [2, 5], [7, 8]]
+                ```
 
                 Args:
                     intervals_1 (list[Interval]): A list of intervals.
@@ -433,6 +457,12 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             arg("intervals_2"),
             R"doc(
                 Creates a list of intervals by a logical-and conjunction.
+
+                ```
+                intervals_1 = [[-1, 1], [2, 4]]
+                intervals_2 = [[0.5, 1.5], [3, 5], [7, 8]]
+                output = [[0.5, 1], [2, 4]]
+                ```
 
                 Args:
                     intervals_1 (list[Interval]): A list of intervals.
