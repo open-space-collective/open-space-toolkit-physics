@@ -22,15 +22,15 @@ namespace environment
 namespace magnetic
 {
 
-using ostk::core::type::Unique;
-using ostk::core::type::Real;
 using ostk::core::filesystem::Directory;
+using ostk::core::type::Real;
+using ostk::core::type::Unique;
 
 using ostk::io::URL;
 
-using ostk::physics::unit::Derived;
-using ostk::physics::time::Instant;
 using ostk::physics::environment::magnetic::Model;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Derived;
 
 /// @brief                      Earth magnetic model
 ///

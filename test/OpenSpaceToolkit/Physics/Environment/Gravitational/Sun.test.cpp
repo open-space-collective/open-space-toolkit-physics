@@ -12,12 +12,12 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
+using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::Directory;
 
 using ostk::mathematics::object::Vector3d;
 

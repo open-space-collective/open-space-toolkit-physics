@@ -35,17 +35,17 @@ namespace provider
 namespace iers
 {
 
-using ostk::core::type::Index;
-using ostk::core::type::Real;
 using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
+using ostk::core::type::Index;
+using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector2d;
 
-using ostk::physics::time::Instant;
-using ostk::physics::time::Duration;
 using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 using ostk::physics::coordinate::frame::provider::iers::Finals2000A;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
 
 /// @brief                      IERS bulletins manager (thread-safe)
 ///

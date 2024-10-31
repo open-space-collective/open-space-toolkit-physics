@@ -31,17 +31,17 @@ namespace iers
 
 namespace filesystem = ostk::core::filesystem;
 
+using ostk::core::container::Map;
+using ostk::core::container::Pair;
+using ostk::core::filesystem::File;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
-using ostk::core::container::Pair;
-using ostk::core::container::Map;
-using ostk::core::filesystem::File;
 
 using ostk::mathematics::object::Vector2d;
 
 using ostk::physics::time::Date;
-using ostk::physics::time::Instant;
 using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
 /// @brief                      Standard Rapid EOP Data since 01. January 1992 (IAU2000)

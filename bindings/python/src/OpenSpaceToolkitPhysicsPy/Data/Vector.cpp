@@ -10,9 +10,9 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
 
     using ostk::mathematics::object::Vector3d;
 
-    using ostk::physics::Unit;
-    using ostk::physics::data::Vector;
     using ostk::physics::coordinate::Frame;
+    using ostk::physics::data::Vector;
+    using ostk::physics::Unit;
 
     class_<Vector>(
         aModule,

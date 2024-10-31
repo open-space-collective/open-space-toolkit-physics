@@ -25,16 +25,16 @@ namespace atmospheric
 namespace earth
 {
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
 
-using ostk::physics::time::Instant;
-using ostk::physics::unit::Length;
 using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::environment::atmospheric::Model;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Length;
 
 /// @brief                      Exponential atmospheric model
 

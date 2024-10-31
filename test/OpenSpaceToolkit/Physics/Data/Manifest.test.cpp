@@ -10,15 +10,15 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
 using ostk::core::container::Array;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 
 using ostk::io::URL;
 
 using ostk::physics::time::DateTime;
-using ostk::physics::time::Scale;
 using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 using ostk::physics::data::Manifest;
 

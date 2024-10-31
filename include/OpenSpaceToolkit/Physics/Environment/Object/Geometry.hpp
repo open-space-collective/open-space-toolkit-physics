@@ -22,13 +22,13 @@ namespace environment
 namespace object
 {
 
-using ostk::core::type::Unique;
 using ostk::core::type::Shared;
+using ostk::core::type::Unique;
 
 using ostk::mathematics::geometry::d3::object::Composite;
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::time::Instant;
 
 class Geometry
 {

@@ -20,9 +20,9 @@ namespace magnetic
 
 using ostk::core::type::Real;
 
-using ostk::physics::unit::Derived;
-using ostk::physics::time::Instant;
 using ostk::physics::environment::magnetic::Model;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Derived;
 
 /// @brief						Magnetic dipole model
 ///

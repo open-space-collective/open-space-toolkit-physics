@@ -15,8 +15,8 @@ namespace coordinate
 namespace frame
 {
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Transform;
+using ostk::physics::time::Instant;
 
 /// @brief                      Frame provider
 

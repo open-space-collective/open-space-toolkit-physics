@@ -24,9 +24,9 @@ using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
 
+using ostk::physics::coordinate::Position;
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
-using ostk::physics::coordinate::Position;
 
 /// @brief                      Azimuth - Elevation - Range (AER)
 

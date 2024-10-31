@@ -12,15 +12,15 @@
 
 using ostk::core::type::Real;
 
-using ostk::mathematics::object::Vector3d;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
+using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::unit::Angle;
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
 using ostk::physics::coordinate::Transform;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
 
 class OpenSpaceToolkit_Physics_Coordinate_Transform : public ::testing::Test
 {

@@ -22,9 +22,9 @@ namespace utilities
 
 using ostk::core::type::Real;
 
-using ostk::physics::unit::Length;
 using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::coordinate::Transform;
+using ostk::physics::unit::Length;
 
 /// @brief                      North-East-Down (NED) frame
 ///

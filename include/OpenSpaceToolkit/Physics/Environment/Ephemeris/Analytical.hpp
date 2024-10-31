@@ -20,9 +20,9 @@ namespace ephemeris
 
 using ostk::core::type::Shared;
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::Ephemeris;
+using ostk::physics::time::Instant;
 
 class Analytical : public Ephemeris
 {

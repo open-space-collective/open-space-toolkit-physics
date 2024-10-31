@@ -6,11 +6,11 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Integer;
+    using ostk::core::type::Real;
 
-    using ostk::physics::Unit;
     using ostk::physics::data::Scalar;
+    using ostk::physics::Unit;
 
     class_<Scalar>(
         aModule,

@@ -20,9 +20,9 @@ namespace gravitational
 
 using ostk::core::type::Real;
 
-using ostk::physics::unit::Derived;
-using ostk::physics::time::Instant;
 using ostk::physics::environment::gravitational::Model;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Derived;
 
 /// @brief                      Spherical gravitational model
 

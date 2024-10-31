@@ -7,8 +7,8 @@
 using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
-using ostk::physics::time::Time;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Time;
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, Constructor)
 {

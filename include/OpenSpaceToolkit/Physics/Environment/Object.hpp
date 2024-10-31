@@ -24,16 +24,16 @@ namespace physics
 namespace environment
 {
 
-using ostk::core::type::Unique;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
+using ostk::core::type::Unique;
 
-using ostk::physics::time::Instant;
-using ostk::physics::coordinate::Position;
-using ostk::physics::coordinate::Velocity;
 using ostk::physics::coordinate::Axes;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::Transform;
+using ostk::physics::coordinate::Velocity;
+using ostk::physics::time::Instant;
 
 class Object
 {

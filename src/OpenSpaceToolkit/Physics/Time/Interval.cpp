@@ -98,6 +98,16 @@ Instant Interval::getCenter() const
     return this->accessLowerBound() + this->getDuration() / 2.0;
 }
 
+Interval Interval::getIntersectionWith(const Interval& anInterval) const
+{
+    return Interval::FromBase(Interval::ToBase(*this).getIntersectionWith(Interval::ToBase(anInterval)));
+}
+
+Interval Interval::getUnionWith(const Interval& anInterval) const
+{
+    return Interval::FromBase(Interval::ToBase(*this).getUnionWith(Interval::ToBase(anInterval)));
+}
+
 String Interval::toString(const Scale& aTimeScale) const
 {
     using ostk::physics::time::DateTime;
@@ -153,69 +163,6 @@ String Interval::toString(const Scale& aTimeScale) const
 Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 {
     return this->generateArrayWithStep(aTimeStep);
-
-    // using ostk::core::type::Index ;
-    // using ostk::core::type::Size ;
-
-    // if (!this->isDefined())
-    // {
-    //     throw ostk::core::error::runtime::Undefined("Interval") ;
-    // }
-
-    // if (!aTimeStep.isDefined())
-    // {
-    //     throw ostk::core::error::runtime::Undefined("Time step") ;
-    // }
-
-    // if (aTimeStep.isZero())
-    // {
-    //     throw ostk::core::error::RuntimeError("Time step is zero.") ;
-    // }
-
-    // Array<Instant> grid = Array<Instant>::Empty() ;
-
-    // if (aTimeStep.isPositive())
-    // {
-
-    //     Instant instant = this->accessLowerBound() ;
-
-    //     while (instant <= this->accessUpperBound())
-    //     {
-
-    //         grid.add(instant) ;
-
-    //         instant += aTimeStep ;
-
-    //     }
-
-    //     if (grid.accessLast() < this->accessUpperBound())
-    //     {
-    //         grid.add(this->accessUpperBound()) ;
-    //     }
-
-    // }
-    // else
-    // {
-
-    //     Instant instant = this->accessUpperBound() ;
-
-    //     while (instant >= this->accessLowerBound())
-    //     {
-
-    //         grid.add(instant) ;
-
-    //         instant += aTimeStep ;
-
-    //     }
-
-    //     if (grid.accessLast() > this->accessLowerBound())
-    //     {
-    //         grid.add(this->accessLowerBound()) ;
-    //     }
-
-    // }
-
-    // return grid ;
 }
 
 Interval Interval::Undefined()
@@ -236,6 +183,51 @@ Interval Interval::Closed(const Instant& aLowerBound, const Instant& anUpperBoun
     }
 
     return Interval(aLowerBound, anUpperBound, Interval::Type::Closed);
+}
+
+Interval Interval::Open(const Instant& aLowerBound, const Instant& anUpperBound)
+{
+    if (!aLowerBound.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Lower bound");
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Upper bound");
+    }
+
+    return Interval(aLowerBound, anUpperBound, Interval::Type::Open);
+}
+
+Interval Interval::HalfOpenLeft(const Instant& aLowerBound, const Instant& anUpperBound)
+{
+    if (!aLowerBound.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Lower bound");
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Upper bound");
+    }
+
+    return Interval(aLowerBound, anUpperBound, Interval::Type::HalfOpenLeft);
+}
+
+Interval Interval::HalfOpenRight(const Instant& aLowerBound, const Instant& anUpperBound)
+{
+    if (!aLowerBound.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Lower bound");
+    }
+
+    if (!anUpperBound.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Upper bound");
+    }
+
+    return Interval(aLowerBound, anUpperBound, Interval::Type::HalfOpenRight);
 }
 
 Interval Interval::Centered(
@@ -263,6 +255,49 @@ Interval Interval::Centered(
     }
 
     return Interval((aCentralInstant - aDuration / 2.0), (aCentralInstant + aDuration / 2.0), anIntervalType);
+}
+
+Array<Interval> Interval::Clip(const Array<Interval>& anIntervalArray, const Interval& anInterval)
+{
+    const auto& baseClip = mathematics::object::Interval<Instant>::Clip(ToBaseArray(anIntervalArray), anInterval);
+    return FromBaseArray(baseClip);
+}
+
+Array<Interval> Interval::Sort(const Array<Interval>& anIntervalArray, const bool& byLowerBound, const bool& ascending)
+{
+    const auto& baseSort =
+        mathematics::object::Interval<Instant>::Sort(ToBaseArray(anIntervalArray), byLowerBound, ascending);
+    return FromBaseArray(baseSort);
+}
+
+Array<Interval> Interval::Merge(const Array<Interval>& anIntervalArray)
+{
+    const auto& baseMerge = mathematics::object::Interval<Instant>::Merge(ToBaseArray(anIntervalArray));
+    return FromBaseArray(baseMerge);
+}
+
+Array<Interval> Interval::GetGaps(const Array<Interval>& anIntervalArray, const Interval& anInterval)
+{
+    const auto& baseGetGaps = mathematics::object::Interval<Instant>::GetGaps(ToBaseArray(anIntervalArray), anInterval);
+    return FromBaseArray(baseGetGaps);
+}
+
+Array<Interval> Interval::LogicalOr(const Array<Interval>& anIntervalArray, const Array<Interval>& anotherIntervalArray)
+{
+    const auto& baseLogicalOr = mathematics::object::Interval<Instant>::LogicalOr(
+        ToBaseArray(anIntervalArray), ToBaseArray(anotherIntervalArray)
+    );
+    return FromBaseArray(baseLogicalOr);
+}
+
+Array<Interval> Interval::LogicalAnd(
+    const Array<Interval>& anIntervalArray, const Array<Interval>& anotherIntervalArray
+)
+{
+    const auto& baseLogicalAnd = mathematics::object::Interval<Instant>::LogicalAnd(
+        ToBaseArray(anIntervalArray), ToBaseArray(anotherIntervalArray)
+    );
+    return FromBaseArray(baseLogicalAnd);
 }
 
 Interval Interval::Parse(const String& aString)
@@ -329,6 +364,26 @@ Interval Interval::Parse(const String& aString)
     }
 
     return Interval::Undefined();
+}
+
+mathematics::object::Interval<Instant> Interval::ToBase(const Interval& derived)
+{
+    return reinterpret_cast<const mathematics::object::Interval<Instant>&>(derived);
+}
+
+Interval Interval::FromBase(const mathematics::object::Interval<Instant>& base)
+{
+    return reinterpret_cast<const Interval&>(base);
+}
+
+Array<mathematics::object::Interval<Instant>> Interval::ToBaseArray(const Array<Interval>& derivedArray)
+{
+    return reinterpret_cast<const Array<mathematics::object::Interval<Instant>>&>(derivedArray);
+}
+
+Array<Interval> Interval::FromBaseArray(const Array<mathematics::object::Interval<Instant>>& baseArray)
+{
+    return reinterpret_cast<const Array<Interval>&>(baseArray);
 }
 
 }  // namespace time

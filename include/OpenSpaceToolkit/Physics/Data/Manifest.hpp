@@ -21,11 +21,11 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::String;
 using ostk::core::container::Array;
+using ostk::core::container::Dictionary;
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::container::Dictionary;
+using ostk::core::type::String;
 
 using ostk::io::URL;
 

@@ -26,18 +26,18 @@ namespace atmospheric
 namespace earth
 {
 
-using ostk::core::type::Index;
-using ostk::core::type::Uint8;
-using ostk::core::type::Uint16;
-using ostk::core::type::Size;
-using ostk::core::type::Real;
-using ostk::core::type::String;
-using ostk::core::utils::Print;
 using ostk::core::container::Table;
+using ostk::core::type::Index;
+using ostk::core::type::Real;
+using ostk::core::type::Size;
+using ostk::core::type::String;
+using ostk::core::type::Uint16;
+using ostk::core::type::Uint8;
+using ostk::core::utils::Print;
 
+using ostk::physics::time::DateTime;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
-using ostk::physics::time::DateTime;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
@@ -604,14 +604,14 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 {
     using ostk::core::type::Index;
-    using ostk::core::type::Uint8;
-    using ostk::core::type::Uint16;
     using ostk::core::type::Real;
     using ostk::core::type::String;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Uint8;
 
+    using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;
-    using ostk::physics::time::DateTime;
 
     if (!aFile.isDefined())
     {

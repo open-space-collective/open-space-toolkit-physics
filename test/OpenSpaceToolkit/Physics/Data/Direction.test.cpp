@@ -9,8 +9,8 @@ using ostk::core::type::Shared;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::data::Direction;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::data::Direction;
 
 class OpenSpaceToolkit_Physics_Data_Direction : public ::testing::Test
 {

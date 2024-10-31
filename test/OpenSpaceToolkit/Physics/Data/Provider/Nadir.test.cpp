@@ -6,12 +6,12 @@
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::Frame;
-using ostk::physics::Environment;
-using ostk::physics::environment::object::Celestial;
+using ostk::physics::coordinate::Position;
 using ostk::physics::data::Direction;
 using ostk::physics::data::provider::Nadir;
+using ostk::physics::Environment;
+using ostk::physics::environment::object::Celestial;
 
 TEST(OpenSpaceToolkit_Physics_Data_Provider_Nadir, Nadir)
 {

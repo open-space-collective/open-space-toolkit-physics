@@ -92,6 +92,16 @@ def instant_3() -> Interval:
     return Instant.J2000() + Duration.minutes(3.0)
 
 
+def build_interval(
+    offset_1: float, offset_2: float, type: Interval.Type = Interval.Type.Closed
+) -> Interval:
+    return Interval(
+        Instant.J2000() + Duration.seconds(offset_1),
+        Instant.J2000() + Duration.seconds(offset_2),
+        type,
+    )
+
+
 class TestInterval:
     def test_interval_constructor(self):
         interval: Interval = Interval(
@@ -114,6 +124,15 @@ class TestInterval:
 
     def test_interval_constructor_closed(self):
         assert (
+            Interval(
+                Instant.J2000(),
+                Instant.J2000() + Duration.minutes(1.0),
+                Interval.Type.Closed,
+            )
+            is not None
+        )
+
+        assert (
             Interval.closed(Instant.J2000(), Instant.J2000() + Duration.minutes(1.0))
             is not None
         )
@@ -128,6 +147,11 @@ class TestInterval:
             is not None
         )
 
+        assert (
+            Interval.open(Instant.J2000(), Instant.J2000() + Duration.minutes(1.0))
+            is not None
+        )
+
     def test_interval_constructor_half_open_left(self):
         assert (
             Interval(
@@ -138,12 +162,26 @@ class TestInterval:
             is not None
         )
 
+        assert (
+            Interval.half_open_left(
+                Instant.J2000(), Instant.J2000() + Duration.minutes(1.0)
+            )
+            is not None
+        )
+
     def test_interval_constructor_half_open_right(self):
         assert (
             Interval(
                 Instant.J2000(),
                 Instant.J2000() + Duration.minutes(1.0),
                 Interval.Type.HalfOpenRight,
+            )
+            is not None
+        )
+
+        assert (
+            Interval.half_open_right(
+                Instant.J2000(), Instant.J2000() + Duration.minutes(1.0)
             )
             is not None
         )
@@ -267,3 +305,128 @@ class TestInterval:
         assert isinstance(interval.to_datetime_span(), tuple)
         assert isinstance(interval.to_datetime_span()[0], datetime)
         assert isinstance(interval.to_datetime_span()[1], datetime)
+
+    def test_get_intersection_with(self):
+        intersection: Interval = build_interval(0.0, 10.0).get_intersection_with(
+            build_interval(5.0, 15.0)
+        )
+        assert isinstance(intersection, Interval)
+        assert intersection.is_defined()
+
+        intersection: Interval = build_interval(0.0, 10.0).get_intersection_with(
+            build_interval(20.0, 30.0)
+        )
+        assert isinstance(intersection, Interval)
+        assert not intersection.is_defined()
+
+    def test_get_union_with(self):
+        union: Interval = build_interval(0.0, 10.0).get_union_with(
+            build_interval(5.0, 15.0)
+        )
+        assert isinstance(union, Interval)
+        assert union.is_defined()
+
+        union: Interval = build_interval(0.0, 10.0).get_union_with(
+            build_interval(20.0, 30.0)
+        )
+        assert isinstance(union, Interval)
+        assert not union.is_defined()
+
+    def test_clip(self):
+        intervals: list[Interval] = [
+            build_interval(0.0, 10.0),
+            build_interval(20.0, 30.0),
+        ]
+
+        expected: list[Interval] = [
+            build_interval(5.0, 10.0),
+            build_interval(20.0, 25.0),
+        ]
+
+        assert Interval.clip(intervals, build_interval(5.0, 25.0)) == expected
+
+    def test_sort(self):
+        intervals: list[Interval] = [
+            build_interval(20.0, 30.0),
+            build_interval(0.0, 10.0),
+        ]
+
+        expected: list[Interval] = [
+            build_interval(0.0, 10.0),
+            build_interval(20.0, 30.0),
+        ]
+
+        assert Interval.sort(intervals) == expected
+
+    def test_merge(self):
+        intervals: list[Interval] = [
+            build_interval(20.0, 30.0),
+            build_interval(5.0, 15.0),
+            build_interval(0.0, 10.0),
+        ]
+
+        expected: list[Interval] = [
+            build_interval(0.0, 15.0),
+            build_interval(20.0, 30.0),
+        ]
+
+        assert Interval.merge(intervals) == expected
+
+    def test_get_gaps(self):
+        intervals: list[Interval] = [
+            build_interval(5.0, 10.0),
+            build_interval(20.0, 30.0),
+        ]
+
+        expected: list[Interval] = [
+            build_interval(10.0, 20.0, Interval.Type.Open),
+        ]
+
+        assert Interval.get_gaps(intervals) == expected
+
+        expected = [
+            build_interval(0.0, 5.0, Interval.Type.Open),
+            build_interval(10.0, 20.0, Interval.Type.Open),
+            build_interval(30.0, 35.0, Interval.Type.Open),
+        ]
+
+        assert (
+            Interval.get_gaps(intervals, build_interval(0.0, 35.0, Interval.Type.Open))
+            == expected
+        )
+
+    def test_logical_or(self):
+        intervals_1: list[Interval] = [
+            build_interval(0.0, 10.0),
+            build_interval(20.0, 30.0),
+        ]
+
+        intervals_2: list[Interval] = [
+            build_interval(5.0, 25.0),
+            build_interval(40.0, 50.0),
+        ]
+
+        expected: list[Interval] = [
+            build_interval(0.0, 30.0),
+            build_interval(40.0, 50.0),
+        ]
+
+        assert Interval.logical_or(intervals_1, intervals_2) == expected
+
+    def test_logical_and(self):
+        intervals_1: list[Interval] = [
+            build_interval(0.0, 10.0),
+            build_interval(20.0, 30.0),
+        ]
+
+        intervals_2: list[Interval] = [
+            build_interval(5.0, 25.0),
+            build_interval(40.0, 50.0),
+        ]
+
+        expected: list[Interval] = [
+            build_interval(5.0, 10.0),
+            build_interval(20.0, 25.0),
+        ]
+
+        assert Interval.logical_and(intervals_1, intervals_2) == expected

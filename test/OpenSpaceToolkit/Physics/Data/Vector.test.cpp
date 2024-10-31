@@ -9,11 +9,11 @@ using ostk::core::type::Shared;
 
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::data::Vector;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::data::Vector;
+using ostk::physics::time::Instant;
 using ostk::physics::Unit;
 using ostk::physics::unit::Length;
-using ostk::physics::time::Instant;
 
 class OpenSpaceToolkit_Physics_Data_Vector : public ::testing::Test
 {

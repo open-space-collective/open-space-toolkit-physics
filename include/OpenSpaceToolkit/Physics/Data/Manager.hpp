@@ -35,9 +35,9 @@ using ostk::core::filesystem::Directory;
 
 using ostk::io::URL;
 
-using ostk::physics::time::Instant;
-using ostk::physics::time::Duration;
 using ostk::physics::data::Manifest;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
 
 /// @brief                      OSTk Data manager base class (thread-safe)
 ///

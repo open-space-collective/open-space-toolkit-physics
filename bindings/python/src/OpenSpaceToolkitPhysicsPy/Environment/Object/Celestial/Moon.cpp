@@ -8,10 +8,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
 
     using ostk::core::type::Shared;
 
-    using ostk::physics::time::Instant;
     using ostk::physics::environment::Ephemeris;
     using ostk::physics::environment::object::Celestial;
     using ostk::physics::environment::object::celestial::Moon;
+    using ostk::physics::time::Instant;
     using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 
     {

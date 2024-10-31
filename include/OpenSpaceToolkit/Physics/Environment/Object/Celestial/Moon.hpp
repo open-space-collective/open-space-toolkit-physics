@@ -26,16 +26,16 @@ namespace object
 namespace celestial
 {
 
-using ostk::core::type::Shared;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 
 using ostk::mathematics::geometry::d3::object::Ellipsoid;
 
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Derived;
 using ostk::physics::environment::Ephemeris;
 using ostk::physics::environment::Object;
 using ostk::physics::environment::object::Celestial;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::Length;
 using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 
 class Moon : public Celestial

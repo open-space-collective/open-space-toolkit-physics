@@ -123,6 +123,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
 
+        // TBR: Remove these methods, use getStart and getEnd instead
         .def(
             "get_lower_bound",
             &Interval::getLowerBound,
@@ -143,11 +144,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     Instant: Upper bound.
             )doc"
         )
-        // .def("get_intersection_with", &Interval::getIntersectionWith)
-        // .def("get_union_with", &Interval::geteUnionWith)
-        // .def("generate_array_with_step", &Interval::generateArrayWithStep)
-        // .def("generate_array_with_size", &Interval::generateArrayWithSize)
-
         .def(
             "get_start",
             &Interval::getStart,
@@ -186,6 +182,32 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Returns:
                     Instant: Center instant.
+            )doc"
+        )
+        .def(
+            "get_intersection_with",
+            &Interval::getIntersectionWith,
+            R"doc(
+                Get the intersection with another interval.
+
+                Args:
+                    interval (Interval): Another interval.
+
+                Returns:
+                    Interval: Intersection interval (Undefined if there is no intersection).
+            )doc"
+        )
+        .def(
+            "get_union_with",
+            &Interval::getUnionWith,
+            R"doc(
+                Get the union with another interval.
+
+                Args:
+                    interval (Interval): Another interval.
+
+                Returns:
+                    Interval: Union interval (Undefined if there is no single-interval union).
             )doc"
         )
         .def(
@@ -260,6 +282,54 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
         .def_static(
+            "open",
+            &Interval::Open,
+            arg("start_instant"),
+            arg("end_instant"),
+            R"doc(
+                Create a open interval.
+
+                Args:
+                    start_instant (Instant): Start instant.
+                    end_instant (Instant): End instant.
+
+                Returns:
+                    Interval: Open interval.
+            )doc"
+        )
+        .def_static(
+            "half_open_left",
+            &Interval::HalfOpenLeft,
+            arg("start_instant"),
+            arg("end_instant"),
+            R"doc(
+                Create a half-open left interval.
+
+                Args:
+                    start_instant (Instant): Start instant.
+                    end_instant (Instant): End instant.
+
+                Returns:
+                    Interval: Half-open left interval.
+            )doc"
+        )
+        .def_static(
+            "half_open_right",
+            &Interval::HalfOpenRight,
+            arg("start_instant"),
+            arg("end_instant"),
+            R"doc(
+                Create a half-open right interval.
+
+                Args:
+                    start_instant (Instant): Start instant.
+                    end_instant (Instant): End instant.
+
+                Returns:
+                    Interval: Half-open right interval.
+            )doc"
+        )
+        .def_static(
             "centered",
             &Interval::Centered,
             arg("instant"),
@@ -275,6 +345,131 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Returns:
                     Interval: Centered interval.
+            )doc"
+        )
+        .def_static(
+            "clip",
+            &Interval::Clip,
+            arg("intervals"),
+            arg("interval"),
+            R"doc(
+                Creates a clipped list of intervals.
+
+                ```
+                intervals = [[1, 3], [5, 7], [9, 11]]
+                interval = [4, 10]
+                output = [[5, 7], [9, 10]]
+                ```
+
+                Args:
+                    intervals (list[Interval]): A list of intervals.
+                    interval (Interval): The clipping interval.
+
+                Returns:
+                    Interval: Clipped intervals.
+            )doc"
+        )
+        .def_static(
+            "sort",
+            &Interval::Sort,
+            arg("intervals"),
+            arg("by_lower_bound") = true,
+            arg("ascending") = true,
+            R"doc(
+                Creates a sorted list of intervals.
+
+                Args:
+                    intervals (list[Interval]): A list of intervals.
+                    by_lower_bound (bool): Use lower bound for sorting. Defaults to True.
+                    ascending (bool): Sort in ascending order. Defaults to True.
+
+                Returns:
+                    Interval: Sorted intervals.
+            )doc"
+        )
+        .def_static(
+            "merge",
+            &Interval::Merge,
+            arg("intervals"),
+            R"doc(
+                Creates a merged list of intervals.
+
+                ```
+                intervals = [[1, 3], [2, 4], [5, 7]]
+                output = [[1, 4], [5, 7]]
+                ```
+
+                Args:
+                    intervals (list[Interval]): A list of intervals.
+
+                Returns:
+                    Interval: Merged intervals.
+            )doc"
+        )
+        .def_static(
+            "get_gaps",
+            &Interval::GetGaps,
+            arg("intervals"),
+            arg_v("interval", Interval::Undefined(), "Interval::Undefined()"),
+            R"doc(
+                Creates a list of intervals gaps.
+
+                ```
+                intervals = [[1, 3], [5, 7], [9, 11]]
+                interval = [0, 12]
+                output = [[0, 1], [3, 5], [7, 9], [11, 12]]
+                ```
+
+                Args:
+                    intervals (list[Interval]): A list of intervals.
+                    interval (Interval): The analysis interval. Used to compute gaps for the first and last interval. Defaults to Undefined.
+
+                Returns:
+                    Interval: Intervals gaps.
+            )doc"
+        )
+        .def_static(
+            "logical_or",
+            &Interval::LogicalOr,
+            arg("intervals_1"),
+            arg("intervals_2"),
+            R"doc(
+                Creates a list of intervals by a logical-or conjunction.
+
+                ```
+                intervals_1 = [[-1, 1], [2, 4]]
+                intervals_2 = [[0.5, 1.5], [3, 5], [7, 8]]
+                output = [[-1, 1.5], [2, 5], [7, 8]]
+                ```
+
+                Args:
+                    intervals_1 (list[Interval]): A list of intervals.
+                    intervals_2 (list[Interval]): Another list of intervals.
+
+                Returns:
+                    Interval: Logical-or intervals.
+            )doc"
+        )
+        .def_static(
+            "logical_and",
+            &Interval::LogicalAnd,
+            arg("intervals_1"),
+            arg("intervals_2"),
+            R"doc(
+                Creates a list of intervals by a logical-and conjunction.
+
+                ```
+                intervals_1 = [[-1, 1], [2, 4]]
+                intervals_2 = [[0.5, 1.5], [3, 5], [7, 8]]
+                output = [[0.5, 1], [3, 4]]
+                ```
+
+                Args:
+                    intervals_1 (list[Interval]): A list of intervals.
+                    intervals_2 (list[Interval]): Another list of intervals.
+
+                Returns:
+                    Interval: Logical-and intervals.
             )doc"
         )
         .def_static(

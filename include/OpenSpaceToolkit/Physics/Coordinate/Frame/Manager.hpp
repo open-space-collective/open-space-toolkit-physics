@@ -22,13 +22,13 @@ namespace coordinate
 namespace frame
 {
 
+using ostk::core::container::Map;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
-using ostk::core::container::Map;
 
-using ostk::physics::time::Instant;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Transform;
+using ostk::physics::time::Instant;
 
 /// @brief                      Reference frame manager (thread-safe)
 

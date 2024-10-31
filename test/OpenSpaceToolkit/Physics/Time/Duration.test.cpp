@@ -9,10 +9,10 @@
 using ostk::core::type::Real;
 
 using ostk::core::type::Int64;
-using ostk::physics::time::Duration;
-using ostk::physics::time::Scale;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 using ostk::physics::unit::Time;
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Constructor)

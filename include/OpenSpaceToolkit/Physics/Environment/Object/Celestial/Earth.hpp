@@ -29,20 +29,20 @@ namespace object
 namespace celestial
 {
 
+using ostk::core::filesystem::Directory;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
-using ostk::core::type::String;
 using ostk::core::type::Shared;
-using ostk::core::filesystem::Directory;
+using ostk::core::type::String;
 
 using ostk::mathematics::geometry::d3::object::Ellipsoid;
 
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Derived;
 using ostk::physics::environment::Ephemeris;
+using ostk::physics::environment::ephemeris::Analytical;
 using ostk::physics::environment::Object;
 using ostk::physics::environment::object::Celestial;
-using ostk::physics::environment::ephemeris::Analytical;
+using ostk::physics::unit::Derived;
+using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;

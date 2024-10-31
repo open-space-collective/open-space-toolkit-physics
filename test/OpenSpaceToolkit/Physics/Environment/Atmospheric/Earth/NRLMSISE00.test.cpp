@@ -26,29 +26,29 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::String;
-using ostk::core::type::Real;
-using ostk::core::type::Integer;
-using ostk::core::type::Shared;
-using ostk::core::type::Index;
-using ostk::core::type::Size;
-using ostk::core::type::Unique;
-using ostk::core::container::Table;
 using ostk::core::container::Array;
+using ostk::core::container::Table;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
+using ostk::core::type::Index;
+using ostk::core::type::Integer;
+using ostk::core::type::Real;
+using ostk::core::type::Shared;
+using ostk::core::type::Size;
+using ostk::core::type::String;
+using ostk::core::type::Unique;
 
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Angle;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
-using ostk::physics::time::Scale;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::object::celestial::Sun;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
@@ -82,12 +82,12 @@ class NRLMSISE00Public : public NRLMSISE00
     {
     }
 
-    using NRLMSISE00::convertKpToAp;
+    using NRLMSISE00::ap_array;
     using NRLMSISE00::computeApArray;
     using NRLMSISE00::computeNRLMSISE00Input;
-    using NRLMSISE00::nrlmsise_input;
-    using NRLMSISE00::ap_array;
+    using NRLMSISE00::convertKpToAp;
     using NRLMSISE00::GetDensityAt;
+    using NRLMSISE00::nrlmsise_input;
 };
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)

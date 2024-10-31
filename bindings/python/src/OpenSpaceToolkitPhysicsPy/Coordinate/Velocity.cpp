@@ -11,8 +11,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
 
     using ostk::mathematics::object::Vector3d;
 
-    using ostk::physics::coordinate::Velocity;
     using ostk::physics::coordinate::Frame;
+    using ostk::physics::coordinate::Velocity;
 
     class_<Velocity> velocity(
         aModule,

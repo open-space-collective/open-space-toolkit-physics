@@ -17,20 +17,20 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
 using ostk::core::error::RuntimeError;
 using ostk::core::type::Real;
 using ostk::core::type::String;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
 
-using ostk::physics::unit::Length;
-using ostk::physics::unit::Angle;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
-using ostk::physics::time::Scale;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::coordinate::Frame;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::unit::Angle;
+using ostk::physics::unit::Length;
 
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::environment::object::celestial::Sun;

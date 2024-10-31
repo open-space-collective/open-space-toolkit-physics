@@ -8,10 +8,10 @@ namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_TOD, NoCaching)
 {

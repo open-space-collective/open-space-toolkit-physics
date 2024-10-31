@@ -30,20 +30,20 @@ namespace atmospheric
 namespace earth
 {
 
+using ostk::core::container::Array;
+using ostk::core::container::Tuple;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::type::String;
 using ostk::core::type::Unique;
-using ostk::core::type::Shared;
-using ostk::core::container::Tuple;
-using ostk::core::container::Array;
 
+using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::environment::atmospheric::Model;
+using ostk::physics::environment::object::Celestial;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
-using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::coordinate::Frame;
-using ostk::physics::environment::object::Celestial;
-using ostk::physics::environment::atmospheric::Model;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 

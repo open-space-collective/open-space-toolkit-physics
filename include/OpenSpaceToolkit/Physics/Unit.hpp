@@ -19,9 +19,9 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::type::Unique;
 using ostk::core::type::Real;
 using ostk::core::type::String;
+using ostk::core::type::Unique;
 
 /// @brief                      Unit
 ///

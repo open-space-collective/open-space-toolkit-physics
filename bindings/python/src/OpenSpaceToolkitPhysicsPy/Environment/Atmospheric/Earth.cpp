@@ -14,18 +14,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 {
     using namespace pybind11;
 
-    using ostk::core::type::Shared;
     using ostk::core::type::Real;
+    using ostk::core::type::Shared;
 
     using ostk::physics::environment::atmospheric::Earth;
     using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
 
-    using ostk::physics::environment::object::Celestial;
-    using ostk::physics::unit::Length;
-    using ostk::physics::time::Instant;
+    using ostk::physics::coordinate::Frame;
     using ostk::physics::coordinate::Position;
     using ostk::physics::coordinate::spherical::LLA;
-    using ostk::physics::coordinate::Frame;
+    using ostk::physics::environment::object::Celestial;
+    using ostk::physics::time::Instant;
+    using ostk::physics::unit::Length;
 
     {
         class_<Earth, Shared<Earth>> earth_class(

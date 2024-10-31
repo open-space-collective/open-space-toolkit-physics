@@ -11,8 +11,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
 
     using ostk::mathematics::object::Vector3d;
 
-    using ostk::physics::coordinate::Position;
     using ostk::physics::coordinate::Frame;
+    using ostk::physics::coordinate::Position;
 
     class_<Position>(
         aModule,

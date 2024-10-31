@@ -37,19 +37,19 @@ namespace spice
 
 using ostk::core::type::Shared;
 using IndexType = ostk::core::type::Index;
-using ostk::core::type::String;
-using ostk::core::container::Pair;
 using ostk::core::container::Array;
-using ostk::core::filesystem::Path;
-using ostk::core::filesystem::File;
+using ostk::core::container::Pair;
 using ostk::core::filesystem::Directory;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
+using ostk::core::type::String;
 
-using ostk::physics::time::Instant;
-using ostk::physics::time::Interval;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Transform;
 using ostk::physics::environment::ephemeris::SPICE;
 using ostk::physics::environment::ephemeris::spice::Kernel;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Interval;
 
 /// @brief                      SPICE Toolkit engine
 ///

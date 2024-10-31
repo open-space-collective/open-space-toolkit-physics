@@ -21,8 +21,8 @@ namespace utilities
 using ostk::core::container::Array;
 
 using ostk::physics::coordinate::Position;
-using ostk::physics::time::Interval;
 using ostk::physics::Environment;
+using ostk::physics::time::Interval;
 
 /// @brief                      Calculate eclipse intervals for a given position
 ///

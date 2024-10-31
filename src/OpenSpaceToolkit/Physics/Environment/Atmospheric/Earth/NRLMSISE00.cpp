@@ -35,17 +35,17 @@ namespace atmospheric
 namespace earth
 {
 
+using ostk::core::container::Array;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::Size;
 using ostk::core::type::Unique;
-using ostk::core::container::Array;
 
 using ostk::physics::coordinate::Frame;
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
 using ostk::physics::time::Date;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
 
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;

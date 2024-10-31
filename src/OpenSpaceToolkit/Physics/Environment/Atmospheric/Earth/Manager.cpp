@@ -434,10 +434,11 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
             {
                 throw ostk::core::error::RuntimeError(
                     "Failed to load or fetch latest CSSI Space Weather file at {}.",
-                    latestCSSISpaceWeatherFile.getPath().toString());
+                    latestCSSISpaceWeatherFile.getPath().toString()
+                );
             }
 
-            const_cast<Manager *>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(latestCSSISpaceWeatherFile));
+            const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(latestCSSISpaceWeatherFile));
 
             return &CSSISpaceWeather_;
         }
@@ -446,7 +447,9 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
         {
             if (!this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
             {
-                throw ostk::core::error::RuntimeError("No CSSI Space Weather data loaded and manager set to Manual mode.");
+                throw ostk::core::error::RuntimeError(
+                    "No CSSI Space Weather data loaded and manager set to Manual mode."
+                );
             }
 
             const File localCSSISpaceWeatherFile =
@@ -455,10 +458,12 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
             if (!localCSSISpaceWeatherFile.isDefined())
             {
                 throw ostk::core::error::RuntimeError(
-                    "Failed to load latest CSSI Space Weather file at {}.", localCSSISpaceWeatherFile.getPath().toString());
+                    "Failed to load latest CSSI Space Weather file at {}.",
+                    localCSSISpaceWeatherFile.getPath().toString()
+                );
             }
 
-            const_cast<Manager *>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(localCSSISpaceWeatherFile));
+            const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(localCSSISpaceWeatherFile));
 
             return &CSSISpaceWeather_;
         }

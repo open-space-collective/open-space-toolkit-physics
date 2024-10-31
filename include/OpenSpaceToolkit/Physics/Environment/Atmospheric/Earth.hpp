@@ -25,18 +25,18 @@ namespace environment
 namespace atmospheric
 {
 
-using ostk::core::type::Unique;
+using ostk::core::filesystem::Directory;
 using ostk::core::type::Real;
 using ostk::core::type::Shared;
-using ostk::core::filesystem::Directory;
+using ostk::core::type::Unique;
 
-using ostk::physics::time::Instant;
-using ostk::physics::unit::Length;
+using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
-using ostk::physics::coordinate::Frame;
-using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::atmospheric::Model;
+using ostk::physics::environment::object::Celestial;
+using ostk::physics::time::Instant;
+using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
 /// @brief                      Earth atmospheric model

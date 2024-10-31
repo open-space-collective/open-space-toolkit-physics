@@ -4,16 +4,16 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::filesystem::Path;
 using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 
-using ostk::physics::time::Date;
-using ostk::physics::time::Scale;
-using ostk::physics::time::Instant;
-using ostk::physics::time::DateTime;
-using ostk::physics::time::Interval;
-using ostk::physics::time::Duration;
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
+using ostk::physics::time::Date;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Interval;
+using ostk::physics::time::Scale;
 
 class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather : public ::testing::Test
 {
