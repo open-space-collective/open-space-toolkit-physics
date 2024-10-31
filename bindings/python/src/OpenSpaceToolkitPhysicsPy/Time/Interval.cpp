@@ -192,7 +192,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Args:
                     interval (Interval): Another interval.
-                
+
                 Returns:
                     Interval: Intersection interval (Undefined if there is no intersection).
             )doc"
@@ -205,7 +205,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Args:
                     interval (Interval): Another interval.
-                
+
                 Returns:
                     Interval: Union interval (Undefined if there is no single-interval union).
             )doc"
@@ -401,7 +401,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Args:
                     intervals (list[Interval]): A list of intervals.
-                    
+
                 Returns:
                     Interval: Merged intervals.
             )doc"
@@ -461,7 +461,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 ```
                 intervals_1 = [[-1, 1], [2, 4]]
                 intervals_2 = [[0.5, 1.5], [3, 5], [7, 8]]
-                output = [[0.5, 1], [2, 4]]
+                output = [[0.5, 1], [3, 4]]
                 ```
 
                 Args:
