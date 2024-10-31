@@ -20,8 +20,8 @@ class TestManager:
     def test_get_remote_url_success(self, manager: Manager):
         assert isinstance(manager.get_remote_url(), URL)
 
-    def test_get_manifest_repository_success(self, manager: Manager):
-        assert isinstance(manager.get_manifest_repository(), Directory)
+    def test_get_local_repository_success(self, manager: Manager):
+        assert isinstance(manager.get_local_repository(), Directory)
 
     def test_get_remote_data_urls_success(self, manager: Manager):
         assert isinstance(manager.get_remote_data_urls("data_name"), list)
@@ -33,10 +33,10 @@ class TestManager:
         manager.set_remote_url(URL.parse("http://example.com"))
         assert manager.get_remote_url() == URL.parse("http://example.com")
 
-    def test_set_manifest_repository_success(self, manager: Manager):
+    def test_set_local_repository_success(self, manager: Manager):
         directory = Directory.path(Path.parse("./test_directory"))
-        manager.set_manifest_repository(directory)
-        assert manager.get_manifest_repository() == directory
+        manager.set_local_repository(directory)
+        assert manager.get_local_repository() == directory
 
     def test_find_remote_data_urls_success(self, manager: Manager):
         assert isinstance(manager.find_remote_data_urls(".*"), list)
@@ -60,6 +60,3 @@ class TestManager:
 
     def test_default_remote_url_success(self, manager: Manager):
         assert isinstance(manager.default_remote_url(), URL)
-
-    def test_default_manifest_repository_success(self, manager: Manager):
-        assert isinstance(manager.default_manifest_repository(), Directory)

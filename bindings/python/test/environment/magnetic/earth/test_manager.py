@@ -2,13 +2,8 @@
 
 import pytest
 
-import os
-
 from ostk.core.filesystem import Path, Directory, PermissionSet
 
-from ostk.io import URL
-
-from ostk.physics.time import Duration
 from ostk.physics.environment.magnetic import Earth as EarthMagneticModel
 from ostk.physics.environment.magnetic.earth import (
     Manager as EarthMagneticModelManager,
@@ -18,8 +13,6 @@ from ostk.physics.environment.magnetic.earth import (
 @pytest.fixture
 def manager() -> EarthMagneticModelManager:
     manager = EarthMagneticModelManager.get()
-
-    manager.set_local_repository(EarthMagneticModelManager.default_local_repository())
 
     yield manager
 
@@ -69,16 +62,3 @@ class TestManager:
             manager.get_local_repository().to_string()
             == "./.open-space-toolkit/physics/environment/magnetic/earth2"
         )
-
-    def test_default_local_repository_success(self, manager: EarthMagneticModelManager):
-        assert isinstance(EarthMagneticModelManager.default_local_repository(), Directory)
-        assert len(str(manager.default_local_repository().to_string())) > 0
-
-    def test_default_mode_success(self, manager: EarthMagneticModelManager):
-        assert manager.default_mode() == EarthMagneticModelManager.Mode.Automatic
-
-    def test_default_local_repository_lock_timeout_success(
-        self, manager: EarthMagneticModelManager
-    ):
-        assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
-        assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0

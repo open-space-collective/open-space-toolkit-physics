@@ -1,14 +1,16 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(pybind11::module& aModule)
 {
     using namespace pybind11;
 
     using ostk::physics::environment::gravitational::earth::Manager;
+    using BaseManager = ostk::physics::Manager;
 
-    class_<Manager> manager(
+    class_<Manager, BaseManager> manager(
         aModule,
         "Manager",
         R"doc(
@@ -24,90 +26,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
     );
 
     manager
-
-        .def(
-            "get_mode",
-            &Manager::getMode,
-            R"doc(
-                Get mode.
-
-                Returns:
-                    Mode: Mode.
-            )doc"
-        )
-        .def(
-            "set_mode",
-            &Manager::setMode,
-            arg("mode"),
-            R"doc(
-                Set mode.
-
-                Args:
-                    mode (Mode): Mode.
-            )doc"
-        )
-        .def_static(
-            "default_mode",
-            &Manager::DefaultMode,
-            R"doc(
-                Get default mode.
-
-                Returns:
-                    Mode: Default mode.
-            )doc"
-        )
-
-        .def(
-            "get_local_repository",
-            &Manager::getLocalRepository,
-            R"doc(
-                Get local repository.
-
-                Returns:
-                    Path: Local repository.
-            )doc"
-        )
-        .def(
-            "set_local_repository",
-            &Manager::setLocalRepository,
-            arg("directory"),
-            R"doc(
-                Set local repository.
-
-                Args:
-                    directory (Path): Local repository.
-            )doc"
-        )
-        .def_static(
-            "default_local_repository",
-            &Manager::DefaultLocalRepository,
-            R"doc(
-                Get default local repository.
-
-                Returns:
-                    Path: Default local repository.
-            )doc"
-        )
-        .def_static(
-            "default_local_repository_lock_timeout",
-            &Manager::DefaultLocalRepositoryLockTimeout,
-            R"doc(
-                Get default local repository lock timeout.
-
-                Returns:
-                    Duration: Default local repository lock timeout.
-            )doc"
-        )
-
-        .def(
-            "reset",
-            &Manager::reset,
-            R"doc(
-                Reset the manager.
-
-                Reset path and mode to default values.
-            )doc"
-        )
 
         .def(
             "fetch_data_files_for_type",
@@ -158,25 +76,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth_Manager(py
 
                 Returns:
                     Manager: Reference to manager.
-            )doc"
-        )
-
-        ;
-
-    enum_<Manager::Mode>(manager, "Mode")
-
-        .value(
-            "Manual",
-            Manager::Mode::Manual,
-            R"doc(
-                Manual mode.
-            )doc"
-        )
-        .value(
-            "Automatic",
-            Manager::Mode::Automatic,
-            R"doc(
-                Automatic mode.
             )doc"
         )
 

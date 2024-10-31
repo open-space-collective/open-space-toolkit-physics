@@ -2,6 +2,8 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
 
+#include <OpenSpaceToolkit/Physics/Manager.cpp>
+
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pybind11::module& aModule)
 {
     using namespace pybind11;
@@ -9,8 +11,9 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
     using ostk::core::type::Shared;
 
     using ostk::physics::coordinate::frame::provider::iers::Manager;
+    using BaseManager = ostk::physics::Manager;
 
-    class_<Manager> manager(
+    class_<Manager, BaseManager> manager(
         aModule,
         "Manager",
         R"doc(
@@ -32,26 +35,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
     manager
 
-        .def(
-            "get_mode",
-            &Manager::getMode,
-            R"doc(
-                Get manager mode.
-
-                Returns:
-                    Mode: Manager mode.
-            )doc"
-        )
-        .def(
-            "get_local_repository",
-            &Manager::getLocalRepository,
-            R"doc(
-                Get local repository. 
-
-                Returns:
-                    Directory: Local repository.
-            )doc"
-        )
         .def(
             "get_bulletin_a_directory",
             &Manager::getBulletinADirectory,
@@ -136,29 +119,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
         )
 
         .def(
-            "set_mode",
-            &Manager::setMode,
-            arg("mode"),
-            R"doc(
-                Set manager mode.
-
-                Args:
-                    mode (Mode): Manager mode.
-            )doc"
-        )
-        .def(
-            "set_local_repository",
-            &Manager::setLocalRepository,
-            arg("directory"),
-            R"doc(
-                Set local repository.
-
-                Args:
-                    directory (Directory): A repository directory.
-            )doc"
-        )
-
-        .def(
             "load_bulletin_a",
             &Manager::loadBulletinA,
             arg("bulletin_a"),
@@ -202,21 +162,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
             )doc"
         )
 
-        .def(
-            "reset",
-            &Manager::reset,
-            R"doc(
-                Reset manager.
-            )doc"
-        )
-        .def(
-            "clear_local_repository",
-            &Manager::clearLocalRepository,
-            R"doc(
-                Clear local repository.
-            )doc"
-        )
-
         .def_static(
             "get",
             &Manager::Get,
@@ -226,55 +171,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
 
                 Returns:
                     Manager: Reference to manager.
-            )doc"
-        )
-        .def_static(
-            "default_mode",
-            &Manager::DefaultMode,
-            R"doc(
-                Get default manager mode.
-
-                Returns:
-                    Mode: Default manager mode.
-            )doc"
-        )
-        .def_static(
-            "default_local_repository",
-            &Manager::DefaultLocalRepository,
-            R"doc(
-                Get default local repository.
-
-                Returns:
-                    Directory: Default local repository.
-            )doc"
-        )
-        .def_static(
-            "default_local_repository_lock_timeout",
-            &Manager::DefaultLocalRepositoryLockTimeout,
-            R"doc(
-                Get default local repository lock timeout.
-
-                Returns:
-                    Duration: Default local repository lock timeout.
-            )doc"
-        )
-
-        ;
-
-    enum_<Manager::Mode>(manager, "Mode")
-
-        .value(
-            "Manual",
-            Manager::Mode::Manual,
-            R"doc(
-                Manually load and unload bulletins.
-            )doc"
-        )
-        .value(
-            "Automatic",
-            Manager::Mode::Automatic,
-            R"doc(
-                Automatically fetch, load and unload bulletins (from remote repositories).
             )doc"
         )
 

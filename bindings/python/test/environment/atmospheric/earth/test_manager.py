@@ -4,13 +4,10 @@ import pytest
 
 from datetime import datetime
 import pathlib
-import os
 
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
 from ostk.core.filesystem import Directory
-
-from ostk.io import URL
 
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
@@ -174,14 +171,3 @@ class TestManager:
 
     def test_get_success(self):
         assert isinstance(Manager.get(), Manager)
-
-    def test_default_mode_success(self, manager: Manager):
-        assert manager.default_mode() == Manager.Mode.Automatic
-
-    def test_default_local_repository_success(self, manager: Manager):
-        assert isinstance(manager.default_local_repository(), Directory)
-        assert len(str(manager.default_local_repository().to_string())) > 0
-
-    def test_default_local_repository_lock_timeout_success(self, manager: Manager):
-        assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
-        assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0

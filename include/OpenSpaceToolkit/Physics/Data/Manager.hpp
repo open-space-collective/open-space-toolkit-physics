@@ -142,8 +142,6 @@ class Manager : public BaseManager
 
     void loadManifest_(const Manifest& aManifest) const;
 
-    static Duration DefaultManifestRepositoryLockTimeout_();
-
     /// @brief                  Determines how often OSTk should do non-critical IO to freshen its data.
     /// We limit this by limiting how frequently the manifest file is updated.
     ///

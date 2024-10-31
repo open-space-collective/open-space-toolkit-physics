@@ -12,6 +12,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Manager.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Time.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Unit.cpp>
 
@@ -31,6 +32,7 @@ PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
 #endif
 
     // Add python submodules to OpenSpaceToolkitPhysicsPy
+    OpenSpaceToolkitPhysicsPy_Manager(m);
     OpenSpaceToolkitPhysicsPy_Unit(m);
     OpenSpaceToolkitPhysicsPy_Time(m);
     OpenSpaceToolkitPhysicsPy_Coordinate(m);
