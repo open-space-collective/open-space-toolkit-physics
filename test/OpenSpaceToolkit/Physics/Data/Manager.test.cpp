@@ -111,6 +111,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
         // manifest exists but is old
         {
             EXPECT_TRUE(managerNoIO_.getManifest().isDefined());
+            const Manifest manifest = managerNoIO_.getManifest();
+            std::cout << manifest << std::endl;
 
             Directory tempDirectory =
                 Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/Test"));
