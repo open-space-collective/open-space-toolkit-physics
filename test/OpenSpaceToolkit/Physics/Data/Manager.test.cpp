@@ -113,6 +113,8 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
             EXPECT_TRUE(managerNoIO_.getManifest().isDefined());
             const Manifest manifest = managerNoIO_.getManifest();
             std::cout << manifest << std::endl;
+            std::cout << "last modified: " << manifest.getLastModifiedTimestamp() << std::endl;
+            std::cout << "manifest next update: " << manifest.getNextUpdateCheckTimestampFor("manifest") << std::endl;
 
             Directory tempDirectory =
                 Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/Test"));
