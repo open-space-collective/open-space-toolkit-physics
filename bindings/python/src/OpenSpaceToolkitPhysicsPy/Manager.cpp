@@ -14,7 +14,12 @@ inline void OpenSpaceToolkitPhysicsPy_Manager(pybind11::module& aModule)
         R"doc(
             Manager
 
-            Abstract Base Manager class. 
+            Abstract base class for managing physics-related resources.
+
+            This class serves as the foundation for specialized managers like
+            IERS, Data, Atmospheric, Gravitational, and Magnetic managers.
+            It provides common functionality for mode management and local
+            repository handling.
         )doc"
     );
 

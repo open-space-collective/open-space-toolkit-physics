@@ -56,6 +56,10 @@ class Manager
 
     Manager& operator=(Manager&&) = delete;
 
+    /// @brief                  Destructor
+
+    virtual ~Manager() = default;
+
     /// @brief              Get manager mode
     ///
     /// @return             Manager mode
