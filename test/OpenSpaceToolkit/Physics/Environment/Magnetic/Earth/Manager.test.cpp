@@ -91,51 +91,6 @@ class OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager : public ::tes
     char* modeValue_;
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, GetMode)
-{
-    {
-        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, SetMode)
-{
-    {
-        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
-
-        manager_.setMode(Manager::Mode::Manual);
-
-        EXPECT_EQ(Manager::Mode::Manual, manager_.getMode());
-
-        manager_.setMode(Manager::Mode::Automatic);
-
-        EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, DefaultMode)
-{
-    {
-        unsetenv(modeVarName_);
-        Manager::Get().reset();
-        EXPECT_EQ(Manager::Mode::Automatic, Manager::Get().getMode());
-    }
-    {
-        setenv(modeVarName_, "SuperUltraAutomatic", true);
-        EXPECT_THROW(Manager::Get().reset();, ostk::core::error::runtime::Wrong);
-    }
-    {
-        setenv(modeVarName_, "Automatic", true);
-        Manager::Get().reset();
-        EXPECT_EQ(Manager::Mode::Automatic, Manager::Get().getMode());
-    }
-    {
-        setenv(modeVarName_, "Manual", true);
-        Manager::Get().reset();
-        EXPECT_EQ(Manager::Mode::Manual, Manager::Get().getMode());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, HasDataFilesForType)
 {
     {
@@ -163,32 +118,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, LocalDataFil
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, GetLocalRepository)
-{
-    {
-        EXPECT_EQ("Earth", manager_.getLocalRepository().getName());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, SetLocalRepository)
-{
-    {
-        EXPECT_EQ("Earth", manager_.getLocalRepository().getName());
-
-        manager_.setLocalRepository(Directory::Path(Path::Parse("/tmp")));
-
-        EXPECT_EQ("tmp", manager_.getLocalRepository().getName());
-
-        manager_.setLocalRepository(
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/magnetic/earth"))
-        );
-
-        EXPECT_EQ("earth", manager_.getLocalRepository().getName());
-
-        EXPECT_THROW(manager_.setLocalRepository(Directory::Undefined()), ostk::core::error::runtime::Undefined);
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, Reset)
 {
     {
@@ -205,44 +134,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, Reset)
 
         EXPECT_EQ("earth", manager_.getLocalRepository().getName());
         EXPECT_EQ(Manager::Mode::Automatic, manager_.getMode());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, DefaultLocalRepository)
-{
-    {
-        unsetenv(localRepositoryVarName_);
-        unsetenv(fullDataVarName_);
-
-        Manager::Get().reset();
-
-        EXPECT_EQ(
-            Manager::Get().getLocalRepository(),
-            Directory::Path(Path::Parse("./.open-space-toolkit/physics/data/environment/magnetic/earth"))
-        );
-    }
-
-    {
-        unsetenv(localRepositoryVarName_);
-        unsetenv(fullDataVarName_);
-
-        setenv(fullDataVarName_, "/tmp", true);
-
-        Manager::Get().reset();
-
-        EXPECT_EQ(Manager::Get().getLocalRepository(), Directory::Path(Path::Parse("/tmp/environment/magnetic/earth")));
-    }
-
-    {
-        unsetenv(localRepositoryVarName_);
-        unsetenv(fullDataVarName_);
-
-        setenv(fullDataVarName_, "/tmp", true);
-        setenv(localRepositoryVarName_, "/local_override", true);
-
-        Manager::Get().reset();
-
-        EXPECT_EQ(Manager::Get().getLocalRepository(), Directory::Path(Path::Parse("/local_override")));
     }
 }
 

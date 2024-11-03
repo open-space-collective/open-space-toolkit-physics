@@ -110,7 +110,7 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
             // Check that Gravity Data File size is not zero
 
             std::uintmax_t gravityDataFileSize =
-                std::experimental::filesystem::file_size(std::string(gravityDataFile.getPath().toString()));
+                std::filesystem::file_size(std::string(gravityDataFile.getPath().toString()));
 
             if (gravityDataFileSize == 0)
             {

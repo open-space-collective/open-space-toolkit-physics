@@ -19,8 +19,6 @@
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#include <experimental/filesystem>
-
 namespace ostk
 {
 namespace physics
@@ -249,7 +247,7 @@ File Manager::fetchLatestManifestFile_() const
             // Check that file size is not zero
 
             std::uintmax_t latestDataManifestFileSize =
-                std::experimental::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));
+                std::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));
 
             if (latestDataManifestFileSize == 0)
             {

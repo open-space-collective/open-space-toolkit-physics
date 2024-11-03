@@ -17,8 +17,6 @@
 #include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
-#include <experimental/filesystem>
-
 #define OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/data/environment/gravitational/earth"
 

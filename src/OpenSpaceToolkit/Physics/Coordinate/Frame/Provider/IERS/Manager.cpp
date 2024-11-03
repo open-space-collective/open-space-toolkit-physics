@@ -23,8 +23,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
-#include <experimental/filesystem>
-
 namespace ostk
 {
 namespace physics
@@ -507,7 +505,7 @@ File Manager::fetchLatestBulletinA_() const
         // Check that Bulletin A File size is not zero
 
         std::uintmax_t latestBulletinAFileSize =
-            std::experimental::filesystem::file_size(std::string(latestBulletinAFile.getPath().toString()));
+            std::filesystem::file_size(std::string(latestBulletinAFile.getPath().toString()));
 
         if (latestBulletinAFileSize == 0)
         {
@@ -616,7 +614,7 @@ File Manager::fetchLatestFinals2000A_() const
             // Check that file size is not zero
 
             std::uintmax_t latestFinals2000AFileSize =
-                std::experimental::filesystem::file_size(std::string(latestFinals2000AFile.getPath().toString()));
+                std::filesystem::file_size(std::string(latestFinals2000AFile.getPath().toString()));
 
             if (latestFinals2000AFileSize == 0)
             {

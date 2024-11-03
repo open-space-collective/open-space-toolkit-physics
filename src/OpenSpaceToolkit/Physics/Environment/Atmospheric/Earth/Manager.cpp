@@ -23,8 +23,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
-#include <experimental/filesystem>
-
 namespace ostk
 {
 namespace physics
@@ -460,7 +458,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // Check that CSSI Space Weather File size is not zero
 
         std::uintmax_t latestCSSISpaceWeatherFileSize =
-            std::experimental::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
+            std::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
 
         if (latestCSSISpaceWeatherFileSize == 0)
         {

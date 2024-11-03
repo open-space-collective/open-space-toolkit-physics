@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include <numeric>
 #include <thread>
@@ -18,8 +19,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
-
-#include <experimental/filesystem>
 
 namespace ostk
 {

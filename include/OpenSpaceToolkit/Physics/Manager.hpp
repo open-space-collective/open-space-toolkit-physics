@@ -3,6 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Manager__
 #define __OpenSpaceToolkit_Physics_Manager__
 
+#include <filesystem>
 #include <mutex>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
@@ -46,6 +47,14 @@ class Manager
     /// @brief                  Copy assignment operator (deleted)
 
     Manager& operator=(const Manager& aManager) = delete;
+
+    /// @brief                  move constructor (deleted)
+
+    Manager(Manager&&) = delete;
+
+    /// @brief                  move assignment operator (deleted)
+
+    Manager& operator=(Manager&&) = delete;
 
     /// @brief              Get manager mode
     ///

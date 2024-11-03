@@ -108,7 +108,7 @@ void Manager::fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) 
             // Check that Magnetic Data File size is not zero
 
             std::uintmax_t magneticDataFileSize =
-                std::experimental::filesystem::file_size(std::string(magneticDataFile.getPath().toString()));
+                std::filesystem::file_size(std::string(magneticDataFile.getPath().toString()));
 
             if (magneticDataFileSize == 0)
             {
