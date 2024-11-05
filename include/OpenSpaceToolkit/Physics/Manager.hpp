@@ -60,45 +60,41 @@ class Manager
 
     virtual ~Manager() = default;
 
-    /// @brief              Get manager mode
+    /// @brief                  Get manager mode
     ///
-    /// @return             Manager mode
+    /// @return                 Manager mode
 
     Manager::Mode getMode() const;
 
-    /// @brief              Get local repository
+    /// @brief                  Get local repository
     ///
-    /// @return             Local repository
+    /// @return                 Local repository
 
     Directory getLocalRepository() const;
 
-    /// @brief              Get local repository timeout
+    /// @brief                  Get local repository timeout, the maximum time to lock the local repository
     ///
-    /// @return             Local repository timeout
+    /// @return                 Local repository timeout
 
     Duration getLocalRepositoryLockTimeout() const;
 
-    /// @brief              Set manager mode
+    /// @brief                  Set manager mode
     ///
-    /// @param              [in] aMode A manager mode
+    /// @param                  [in] aMode A manager mode
 
     void setMode(const Manager::Mode& aMode);
 
-    /// @brief              Set local repository
+    /// @brief                  Set local repository
     ///
-    /// @param              [in] aDirectory A repository directory
+    /// @param                  [in] aDirectory A repository directory
 
     void setLocalRepository(const Directory& aDirectory);
 
-    /// @brief                  Reset the manager.
-    ///
-    ///                         Unload the manifest file and forget manifest age.
+    /// @brief                  Reset the manager to it's default state
 
     virtual void reset();
 
-    /// @brief              Clear local repository
-    ///
-    ///                     Delete all files in local repository.
+    /// @brief                  Clear local repository, removing all files.
 
     void clearLocalRepository();
 
