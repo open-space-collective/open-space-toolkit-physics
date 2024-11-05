@@ -2,11 +2,7 @@
 
 import pytest
 
-import os
-
 from ostk.core.filesystem import Path, Directory, PermissionSet
-
-from ostk.io import URL
 
 from ostk.physics.time import Duration
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
@@ -18,10 +14,6 @@ from ostk.physics.environment.gravitational.earth import (
 @pytest.fixture
 def manager() -> EarthGravitationalModelManager:
     manager = EarthGravitationalModelManager.get()
-
-    manager.set_local_repository(
-        EarthGravitationalModelManager.default_local_repository()
-    )
 
     yield manager
 
@@ -82,20 +74,3 @@ class TestManager:
             manager.get_local_repository().to_string()
             == "./.open-space-toolkit/physics/environment/gravitational/earth2"
         )
-
-    def test_default_local_repository_success(
-        self, manager: EarthGravitationalModelManager
-    ):
-        assert isinstance(
-            EarthGravitationalModelManager.default_local_repository(), Directory
-        )
-        assert len(str(manager.default_local_repository().to_string())) > 0
-
-    def test_default_mode_success(self, manager: EarthGravitationalModelManager):
-        assert manager.default_mode() == EarthGravitationalModelManager.Mode.Automatic
-
-    def test_default_local_repository_lock_timeout_success(
-        self, manager: EarthGravitationalModelManager
-    ):
-        assert isinstance(manager.default_local_repository_lock_timeout(), Duration)
-        assert manager.default_local_repository_lock_timeout().in_seconds() == 60.0

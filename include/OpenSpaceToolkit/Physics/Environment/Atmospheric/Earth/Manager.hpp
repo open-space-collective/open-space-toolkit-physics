@@ -15,13 +15,12 @@
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE Manager::Mode::Automatic
 #define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY \
     "./.open-space-toolkit/physics/data/environment/atmospheric/earth"
-#define OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 namespace ostk
 {
@@ -46,6 +45,7 @@ using ostk::mathematics::object::Vector2d;
 using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
+using BaseManager = ostk::physics::Manager;
 
 /// @brief                      CSSI space weather manager (thread-safe)
 ///
@@ -61,29 +61,9 @@ using ostk::physics::time::Instant;
 ///
 /// @ref                        https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
 
-class Manager
+class Manager : public BaseManager
 {
    public:
-    enum class Mode
-    {
-
-        Manual,    ///< Manually load and unload space weather files
-        Automatic  ///< Automatically fetch, load and unload space weather files (from remote repositories)
-
-    };
-
-    /// @brief                  Get manager mode
-    ///
-    /// @return                 Manager mode
-
-    Manager::Mode getMode() const;
-
-    /// @brief                  Get local repository
-    ///
-    /// @return                 Local repository
-
-    Directory getLocalRepository() const;
-
     /// @brief                  Get CSSI Space Weather directory
     ///
     /// @return                 CSSI Space Weather directory
@@ -139,18 +119,6 @@ class Manager
 
     Real getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
 
-    /// @brief                  Set manager mode
-    ///
-    /// @param                  [in] aMode A manager mode
-
-    void setMode(const Manager::Mode& aMode);
-
-    /// @brief                  Set local repository
-    ///
-    /// @param                  [in] aDirectory A repository directory
-
-    void setLocalRepository(const Directory& aDirectory);
-
     /// @brief                  Load CSSI Space Weather
     ///
     /// @param                  [in] aCSSISpaceWeather A CSSI Space Weather
@@ -167,13 +135,7 @@ class Manager
     ///
     ///                         Unload all space weather files and clear cache.
 
-    void reset();
-
-    /// @brief                  Clear local repository
-    ///
-    ///                         Delete all files in local repository.
-
-    void clearLocalRepository();
+    virtual void reset() override;
 
     /// @brief                  Get manager singleton
     ///
@@ -181,60 +143,20 @@ class Manager
 
     static Manager& Get();
 
-    /// @brief                  Get default manager mode
-    ///
-    ///                         Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE
-    ///
-    /// @return                 Default manager mode
-
-    static Manager::Mode DefaultMode();
-
-    /// @brief                  Get default local repository
-    ///
-    ///                         Overriden by: OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY
-    ///
-    /// @return                 Default local repository
-
-    static Directory DefaultLocalRepository();
-
-    /// @brief                  Get default local repository lock timeout
-    ///
-    ///                         Overriden by:
-    ///                         OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
-    ///
-    /// @return                 Default local repository lock timeout
-
-    static Duration DefaultLocalRepositoryLockTimeout();
-
    private:
-    Manager::Mode mode_;
-
-    Directory localRepository_;
-    Duration localRepositoryLockTimeout_;
-
     CSSISpaceWeather CSSISpaceWeather_;
 
-    mutable std::mutex mutex_;
+    Manager();
 
-    Manager(const Manager::Mode& aMode = Manager::DefaultMode());
+    const CSSISpaceWeather* accessCSSISpaceWeatherAt_(const Instant& anInstant) const;
 
-    bool isLocalRepositoryLocked() const;
+    File getLatestCSSISpaceWeatherFile_() const;
 
-    File getLocalRepositoryLockFile() const;
-
-    const CSSISpaceWeather* accessCSSISpaceWeatherAt(const Instant& anInstant) const;
-
-    File getLatestCSSISpaceWeatherFile() const;
-
-    void setup();
+    virtual void setup_() override;
 
     void loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather);
 
     File fetchLatestCSSISpaceWeather_();
-
-    void lockLocalRepository(const Duration& aTimeout);
-
-    void unlockLocalRepository();
 };
 
 }  // namespace earth

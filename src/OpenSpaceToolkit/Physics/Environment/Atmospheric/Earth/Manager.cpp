@@ -23,8 +23,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
-#include <experimental/filesystem>
-
 namespace ostk
 {
 namespace physics
@@ -58,20 +56,6 @@ const String CSSISpaceWeatherManifestName = "space-weather-CSSI";
 
 const String temporaryDirectoryName = "tmp";
 
-Manager::Mode Manager::getMode() const
-{
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    return mode_;
-}
-
-Directory Manager::getLocalRepository() const
-{
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    return localRepository_;
-}
-
 Directory Manager::getCSSISpaceWeatherDirectory() const
 {
     return Directory::Path(localRepository_.getPath() + Path::Parse("CSSISpaceWeather"));
@@ -88,7 +72,7 @@ CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
     if (CSSISpaceWeatherPtr != nullptr)
     {
@@ -101,7 +85,7 @@ CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
 Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
     static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
     {
@@ -145,7 +129,7 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
     static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
     {
@@ -189,7 +173,7 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
     static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> Integer
     {
@@ -216,7 +200,7 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
 Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
     static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> Real
     {
@@ -243,7 +227,7 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
 Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
-    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt(anInstant);
+    const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
     static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> Real
     {
@@ -267,27 +251,6 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
     }
 }
 
-void Manager::setMode(const Manager::Mode& aMode)
-{
-    std::lock_guard<std::mutex> lock {mutex_};
-
-    mode_ = aMode;
-}
-
-void Manager::setLocalRepository(const Directory& aDirectory)
-{
-    if (!aDirectory.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Directory");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    localRepository_ = aDirectory;
-
-    this->setup();
-}
-
 void Manager::loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)
 {
     if (!aCSSISpaceWeather.isDefined())
@@ -309,20 +272,9 @@ File Manager::fetchLatestCSSISpaceWeather()
 
 void Manager::reset()
 {
-    std::lock_guard<std::mutex> lock {mutex_};
+    BaseManager::reset();
 
     CSSISpaceWeather_ = CSSISpaceWeather::Undefined();
-
-    localRepository_ = DefaultLocalRepository();
-    localRepositoryLockTimeout_ = DefaultLocalRepositoryLockTimeout();
-    mode_ = DefaultMode();
-}
-
-void Manager::clearLocalRepository()
-{
-    localRepository_.remove();
-
-    this->setup();
 }
 
 Manager& Manager::Get()
@@ -332,76 +284,20 @@ Manager& Manager::Get()
     return manager;
 }
 
-Manager::Mode Manager::DefaultMode()
-{
-    static const Manager::Mode defaultMode = OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE;
-
-    if (const char* modeString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE"))
-    {
-        if (strcmp(modeString, "Manual") == 0)
-        {
-            return Manager::Mode::Manual;
-        }
-        else if (strcmp(modeString, "Automatic") == 0)
-        {
-            return Manager::Mode::Automatic;
-        }
-        else
-        {
-            throw ostk::core::error::runtime::Wrong("Mode", modeString);
-        }
-    }
-
-    return defaultMode;
-}
-
-Directory Manager::DefaultLocalRepository()
-{
-    static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY));
-
-    if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(localRepositoryPath));
-    }
-    else if (const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(dataPath) + Path::Parse("environment/atmospheric/earth"));
-    }
-
-    return defaultLocalRepository;
-}
-
-Duration Manager::DefaultLocalRepositoryLockTimeout()
-{
-    static const Duration defaultLocalRepositoryLockTimeout =
-        Duration::Seconds(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT);
-
-    if (const char* localRepositoryLockTimeoutString =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"))
-    {
-        return Duration::Parse(localRepositoryLockTimeoutString);
-    }
-
-    return defaultLocalRepositoryLockTimeout;
-}
-
-Manager::Manager(const Manager::Mode& aMode)
-    : mode_(aMode),
-      localRepository_(Manager::DefaultLocalRepository()),
-      localRepositoryLockTimeout_(Manager::DefaultLocalRepositoryLockTimeout()),
+Manager::Manager()
+    : BaseManager(
+          "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE",
+          Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY)),
+          "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY",
+          Path::Parse("environment/atmospheric/earth"),
+          "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+      ),
       CSSISpaceWeather_(CSSISpaceWeather::Undefined())
 {
-    this->setup();
+    this->setup_();
 }
 
-bool Manager::isLocalRepositoryLocked() const
-{
-    return this->getLocalRepositoryLockFile().exists();
-}
-
-const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInstant) const
+const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -428,7 +324,7 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
     {
         case Manager::Mode::Automatic:
         {
-            const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile();
+            const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile_();
 
             if (!latestCSSISpaceWeatherFile.isDefined())
             {
@@ -475,12 +371,7 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt(const Instant& anInsta
     }
 }
 
-File Manager::getLocalRepositoryLockFile() const
-{
-    return File::Path(localRepository_.getPath() + Path::Parse(".lock"));
-}
-
-File Manager::getLatestCSSISpaceWeatherFile() const
+File Manager::getLatestCSSISpaceWeatherFile_() const
 {
     // Parse CSSI Space Weather Directories, e.g.,
     // `.open-space-toolkit/physics/environment/atmospheric/earth/CSSI-Space-Weather/2022-05-19/`, and find the
@@ -494,12 +385,9 @@ File Manager::getLatestCSSISpaceWeatherFile() const
     return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
 }
 
-void Manager::setup()
+void Manager::setup_()
 {
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
+    BaseManager::setup_();
 
     if (!this->getCSSISpaceWeatherDirectory().exists())
     {
@@ -527,7 +415,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
     Directory temporaryDirectory =
         Directory::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(temporaryDirectoryName));
 
-    this->lockLocalRepository(localRepositoryLockTimeout_);
+    this->lockLocalRepository_(localRepositoryLockTimeout_);
 
     const Array<URL> CSSISpaceWeatherUrls = manifestManager.getRemoteDataUrls(CSSISpaceWeatherManifestName);
 
@@ -570,7 +458,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // Check that CSSI Space Weather File size is not zero
 
         std::uintmax_t latestCSSISpaceWeatherFileSize =
-            std::experimental::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
+            std::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
 
         if (latestCSSISpaceWeatherFileSize == 0)
         {
@@ -588,7 +476,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         temporaryDirectory.remove();
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         std::cout << String::Format(
                          "CSSI Space Weather [{}] has been successfully fetched from [{}].",
@@ -617,64 +505,12 @@ File Manager::fetchLatestCSSISpaceWeather_()
             temporaryDirectory.remove();
         }
 
-        this->unlockLocalRepository();
+        this->unlockLocalRepository_();
 
         throw;
     }
 
     return latestCSSISpaceWeatherFile;
-}
-
-void Manager::lockLocalRepository(const Duration& aTimeout)
-{
-    std::cout << String::Format("Locking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    const auto tryLock = [](File& aLockFile) -> bool
-    {
-        if (!aLockFile.exists())  // [TBM] Should use system-wide semaphore instead (race condition can still occur)
-        {
-            try
-            {
-                aLockFile.create();
-
-                return true;
-            }
-            catch (...)
-            {
-                // Do nothing
-            }
-
-            return false;
-        }
-
-        return false;
-    };
-
-    const Instant timeoutInstant = Instant::Now() + aTimeout;
-
-    File lockFile = this->getLocalRepositoryLockFile();
-
-    while (!tryLock(lockFile))
-    {
-        if (Instant::Now() >= timeoutInstant)
-        {
-            throw ostk::core::error::RuntimeError("Cannot lock local repository: timeout reached.");
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-}
-
-void Manager::unlockLocalRepository()
-{
-    std::cout << String::Format("Unlocking local repository [{}]...", localRepository_.toString()) << std::endl;
-
-    if (!this->isLocalRepositoryLocked())
-    {
-        throw ostk::core::error::RuntimeError("Cannot unlock local repository: lock file does not exist.");
-    }
-
-    this->getLocalRepositoryLockFile().remove();
 }
 
 }  // namespace earth

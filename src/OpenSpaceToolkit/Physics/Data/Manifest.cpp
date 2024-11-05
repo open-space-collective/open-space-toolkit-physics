@@ -27,6 +27,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest
 {
     ostk::core::utils::Print::Header(anOutputStream, "Manifest");
 
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "Last Modified Timestamp: " << aManifest.lastModifiedTimestamp_.toString();
     ostk::core::utils::Print::Line(anOutputStream) << aManifest.dictionary_;
 
     ostk::core::utils::Print::Footer(anOutputStream);

@@ -17,8 +17,6 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
 
-#include <experimental/filesystem>
-
 namespace ostk
 {
 namespace physics
@@ -123,7 +121,7 @@ void Manager::fetchKernel(const Kernel& aKernel) const
     // Check that file size is not zero
 
     std::uintmax_t fetchedKernelFileSize =
-        std::experimental::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString()));
+        std::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString()));
 
     if (fetchedKernelFileSize == 0)
     {
@@ -167,7 +165,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
             // Check that file size is not zero
 
             std::uintmax_t fetchedKernelFileSize =
-                std::experimental::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString()));
+                std::filesystem::file_size(std::string(fetchedKernelFile.getPath().toString()));
 
             if (fetchedKernelFileSize == 0)
             {

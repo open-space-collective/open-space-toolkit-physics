@@ -1,14 +1,16 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
 {
     using namespace pybind11;
 
     using ostk::physics::data::Manager;
+    using BaseManager = ostk::physics::Manager;
 
-    class_<Manager> manager(
+    class_<Manager, BaseManager> manager(
         aModule,
         "Manager",
         R"doc(
@@ -45,16 +47,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
             )doc"
         )
         .def(
-            "get_manifest_repository",
-            &Manager::getManifestRepository,
-            R"doc(
-                Get the manifest repository. 
-
-                Returns:
-                    Directory: Manifest repository.
-            )doc"
-        )
-        .def(
             "get_remote_data_urls",
             &Manager::getRemoteDataUrls,
             arg("data_name"),
@@ -88,17 +80,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
 
                 Args:
                     remote_url (Directory): Remote URL.
-            )doc"
-        )
-        .def(
-            "set_manifest_repository",
-            &Manager::setManifestRepository,
-            arg("directory"),
-            R"doc(
-                Set the manifest repository. 
-
-                Args:
-                    directory (Directory): Manifest repository.
             )doc"
         )
 
@@ -166,16 +147,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
 
                 Returns:
                     URL: Default remote URL.
-            )doc"
-        )
-        .def_static(
-            "default_manifest_repository",
-            &Manager::DefaultManifestRepository,
-            R"doc(
-                Get the default manifest repository. 
-
-                Returns:
-                    Directory: Default manifest repository.
             )doc"
         )
 

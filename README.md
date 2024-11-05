@@ -231,6 +231,7 @@ The following table shows the availabe data source settings with the different e
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY`                | `./.open-space-toolkit/physics/data/environment/atmospheric/earth`                                     |
 | `OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT`   | `60`                                                                                                   |
 | `OSTK_PHYSICS_DATA_REMOTE_URL`                                                       | `https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/`                        |
+| `OSTK_PHYSICS_DATA_MANIFEST_MANAGER_MODE`                                            | `Automatic`                                                                                            |
 | `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`                                        | `./.open-space-toolkit/physics/data/`                                                                  |
 | `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`                           | `60`                                                                                                   |
 

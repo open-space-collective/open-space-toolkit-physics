@@ -10,6 +10,7 @@
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
@@ -17,8 +18,6 @@
 #define OSTK_PHYSICS_DATA_REMOTE_URL "https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/"
 
 #define OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY "./.open-space-toolkit/physics/data/"
-
-#define OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT 60
 
 // Maximum frequency at which OSTk tries to freshen its data
 // Note: necessary data fetches still occur (i.e. if a data file is missing)
@@ -38,20 +37,15 @@ using ostk::io::URL;
 using ostk::physics::data::Manifest;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
+using BaseManager = ostk::physics::Manager;
 
 /// @brief                      OSTk Data manager base class (thread-safe)
 ///
 ///                             The base manager defines methods for tracking and checking the manifest file.
 
-class Manager
+class Manager : public BaseManager
 {
    public:
-    /// @brief                  Get manager singleton
-    ///
-    /// @return                 Reference to manager
-
-    static Manager& Get();
-
     /// @brief                  Check if there are updates for data of a certain name.
     ///
     /// @param                  [in] aDataName name of the data to query. This is the key for the data entry in the
@@ -75,30 +69,6 @@ class Manager
     /// @return                 Remote URL
 
     void setRemoteUrl(const URL& aRemoteUrl);
-
-    /// @brief                  Get the default remote URL for data fetching.
-    ///
-    /// @return                 Default remote URL
-
-    static URL DefaultRemoteUrl();
-
-    /// @brief                  Get the manifest repository.
-    ///
-    /// @return                 Manifest repository
-
-    const Directory getManifestRepository() const;
-
-    /// @brief                  Set the manifest repository.
-    ///
-    /// @param                  [in] aManifestRepository Manifest repository
-
-    void setManifestRepository(const Directory& aManifestRepository);
-
-    /// @brief                  Get the default manifest repository.
-    ///
-    /// @return                 Default manifest repository
-
-    static Directory DefaultManifestRepository();
 
     /// @brief                  Get the remote data URL for a given data name.
     ///
@@ -136,21 +106,26 @@ class Manager
     ///
     ///                         Unload the manifest file and forget manifest age.
 
-    void reset();
+    virtual void reset() override;
+
+    /// @brief                  Get manager singleton
+    ///
+    /// @return                 Reference to manager
+
+    static Manager& Get();
+
+    /// @brief                  Get the default remote URL for data fetching.
+    ///
+    /// @return                 Default remote URL
+
+    static URL DefaultRemoteUrl();
 
    protected:
     URL remoteUrl_;
 
     mutable Manifest manifest_;
 
-    Directory manifestRepository_;
-    Duration manifestRepositoryLockTimeout_;
-
-    mutable std::mutex mutex_;
-
     Manager();
-
-    void setup_();
 
     // virtual so we can mock in testing
     virtual File fetchLatestManifestFile_() const;
@@ -166,13 +141,6 @@ class Manager
     void checkManifestAgeAndUpdate_() const;
 
     void loadManifest_(const Manifest& aManifest) const;
-
-    bool isManifestRepositoryLocked_() const;
-    File getManifestRepositoryLockFile_() const;
-    void lockManifestRepository_(const Duration& aTimeout) const;
-    void unlockManifestRepository_() const;
-
-    static Duration DefaultManifestRepositoryLockTimeout_();
 
     /// @brief                  Determines how often OSTk should do non-critical IO to freshen its data.
     /// We limit this by limiting how frequently the manifest file is updated.
