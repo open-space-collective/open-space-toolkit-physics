@@ -9,6 +9,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 using ostk::core::container::Array;
@@ -21,6 +22,7 @@ using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::ephemeris::SPICE;
 using ostk::physics::environment::ephemeris::spice::Engine;
 using ostk::physics::environment::ephemeris::spice::Kernel;
+using ostk::physics::environment::ephemeris::spice::Manager;
 using ostk::physics::time::Instant;
 
 class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::testing::Test
@@ -28,12 +30,14 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::tes
    protected:
     Engine& engine_;
     Kernel kernel_;
+    Manager& manager_;
 
     OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine()
         : engine_(Engine::Get()),
           kernel_(Kernel::File(
               File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/de430.bsp"))
-          ))
+          )),
+          manager_(Manager::Get())
     {
     }
 
@@ -45,7 +49,7 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::tes
     void TearDown() override
     {
         engine_.unloadKernel(kernel_);
-        engine_.setMode(Engine::Mode::Automatic);
+        manager_.setMode(Manager::Mode::Automatic);
     }
 };
 
@@ -59,21 +63,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, IsKernelLoad
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, IsKernelLoaded_Manual)
 {
-    engine_.setMode(Engine::Mode::Manual);
-
+    manager_.setMode(Manager::Mode::Manual);
     EXPECT_TRUE(engine_.isKernelLoaded(kernel_));
 
     engine_.unloadKernel(kernel_);
     EXPECT_FALSE(engine_.isKernelLoaded(kernel_));
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetMode)
-{
-    engine_.setMode(Engine::Mode::Automatic);
-    EXPECT_EQ(engine_.getMode(), Engine::Mode::Automatic);
-
-    engine_.setMode(Engine::Mode::Manual);
-    EXPECT_EQ(engine_.getMode(), Engine::Mode::Manual);
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
@@ -86,7 +80,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
     }
 
     {
-        engine_.setMode(Engine::Mode::Manual);
+        manager_.setMode(Manager::Mode::Manual);
         engine_.reset();
 
         Shared<const Frame> frame = engine_.getFrameOf(SPICE::Object::Earth);
@@ -114,7 +108,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, LoadKernel)
 
         // manual
         {
-            engine_.setMode(Engine::Mode::Manual);
+            manager_.setMode(Manager::Mode::Manual);
             engine_.reset();
 
             EXPECT_ANY_THROW(engine_.loadKernel(newKernel));
@@ -136,11 +130,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, Reset)
 
     engine_.reset();
     EXPECT_FALSE(engine_.isKernelLoaded(kernel_));
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, DefaultMode)
-{
-    EXPECT_NO_THROW(Engine::DefaultMode());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, DefaultKernels)

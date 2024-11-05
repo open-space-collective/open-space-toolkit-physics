@@ -118,13 +118,6 @@ bool Engine::isKernelLoaded(const Kernel& aKernel) const
     return this->isKernelLoaded_(aKernel);
 }
 
-Engine::Mode Engine::getMode() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    return mode_;
-}
-
 Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
 {
     using DynamicProvider = ostk::physics::coordinate::frame::provider::Dynamic;
@@ -146,13 +139,6 @@ Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
     );
 
     return Frame::Construct(frameName, false, Frame::GCRF(), transformProviderSPtr);
-}
-
-void Engine::setMode(const Engine::Mode& aMode)
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    mode_ = aMode;
 }
 
 void Engine::loadKernel(const Kernel& aKernel)
@@ -203,29 +189,6 @@ Engine& Engine::Get()
     return engine;
 }
 
-Engine::Mode Engine::DefaultMode()
-{
-    static const Engine::Mode defaultMode = OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE;
-
-    if (const char* modeString = std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE"))
-    {
-        if (strcmp(modeString, "Manual") == 0)
-        {
-            return Engine::Mode::Manual;
-        }
-        else if (strcmp(modeString, "Automatic") == 0)
-        {
-            return Engine::Mode::Automatic;
-        }
-        else
-        {
-            throw ostk::core::error::runtime::Wrong("Mode", modeString);
-        }
-    }
-
-    return defaultMode;
-}
-
 Array<Kernel> Engine::DefaultKernels()
 {
     // Use regex to pull Earth body shape and orientation kernels, as the file name can be updated.
@@ -245,9 +208,8 @@ Array<Kernel> Engine::DefaultKernels()
     return defaultKernels;
 }
 
-Engine::Engine(const Engine::Mode& aMode)
-    : mode_(aMode),
-      earthKernelCache_(Array<Pair<Interval, const Kernel*>>::Empty()),
+Engine::Engine()
+    : earthKernelCache_(Array<Pair<Interval, const Kernel*>>::Empty()),
       earthKernelCacheIndex_(0)
 {
     this->setup();
@@ -361,7 +323,7 @@ void Engine::setup()
 
 void Engine::manageKernels(const String& aSpiceIdentifier, const Instant& anInstant) const
 {
-    if (mode_ == Engine::Mode::Automatic)
+    if (Manager::Get().getMode() == Manager::Mode::Automatic)
     {
         // Load kernel (if necessary)
 
@@ -431,7 +393,7 @@ void Engine::loadKernel_(const Kernel& aKernel)
 
     if (!kernelFile.exists())
     {
-        if (mode_ == Engine::Mode::Automatic)
+        if (Manager::Get().getMode() == Manager::Mode::Automatic)
         {
             Manager::Get().fetchKernel(aKernel);
             const Path filePath = Manager::Get().getLocalRepository().getPath() + Path::Parse(aKernel.getName());

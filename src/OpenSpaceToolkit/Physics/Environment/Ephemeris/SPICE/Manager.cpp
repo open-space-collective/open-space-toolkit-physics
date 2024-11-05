@@ -33,52 +33,11 @@ using ostk::core::type::String;
 using ostk::io::ip::tcp::http::Client;
 using ostk::io::URL;
 
-const String temporaryDirectoryName = "tmp";
-
 Manager& Manager::Get()
 {
     static Manager manager;
 
     return manager;
-}
-
-Directory Manager::getLocalRepository() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    return localRepository_;
-}
-
-void Manager::setLocalRepository(const Directory& aDirectory)
-{
-    if (!aDirectory.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Directory");
-    }
-
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    localRepository_ = aDirectory;
-
-    setup();
-}
-
-Directory Manager::DefaultLocalRepository()
-{
-    static const Directory defaultLocalRepository =
-        Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY));
-
-    if (const char* localRepositoryPath =
-            std::getenv("OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(localRepositoryPath));
-    }
-    else if (const char* dataPath = std::getenv("OSTK_PHYSICS_DATA_LOCAL_REPOSITORY"))
-    {
-        return Directory::Path(Path::Parse(dataPath) + Path::Parse("environment/ephemeris/spice"));
-    }
-
-    return defaultLocalRepository;
 }
 
 void Manager::fetchKernel(const Kernel& aKernel) const
@@ -232,17 +191,15 @@ Kernel Manager::findKernel(const String& aRegexString) const
 }
 
 Manager::Manager()
-    : localRepository_(Manager::DefaultLocalRepository())
+    : BaseManager(
+          "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE",
+          Directory::Path(Path::Parse(OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY)),
+          "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY",
+          Path::Parse("environment/ephemeris/spice"),
+          "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+      )
 {
-    setup();
-}
-
-void Manager::setup()
-{
-    if (!localRepository_.exists())
-    {
-        localRepository_.create();
-    }
+    setup_();
 }
 
 }  // namespace spice
