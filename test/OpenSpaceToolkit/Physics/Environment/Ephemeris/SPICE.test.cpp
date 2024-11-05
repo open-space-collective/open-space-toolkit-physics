@@ -47,14 +47,33 @@ using ostk::physics::environment::ephemeris::spice::Engine;
 using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::environment::ephemeris::spice::Manager;
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
+class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE : public ::testing::Test
+{
+   protected:
+    Engine& engine_;
+    Manager& manager_;
+
+    OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE()
+        : engine_(Engine::Get()),
+          manager_(Manager::Get())
+    {
+    }
+
+    void TearDown() override
+    {
+        engine_.reset();
+        manager_.setMode(Manager::Mode::Automatic);
+    }
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
 {
     {
         EXPECT_NO_THROW(SPICE spice {SPICE::Object::Earth});
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, IsDefined)
 {
     {
         const SPICE spice = {SPICE::Object::Earth};
@@ -63,7 +82,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
 {
     {
         const Directory spiceLocalRepository =
@@ -127,13 +146,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
             const Real angularVelocityTolerance_radPerSec = std::get<5>(referenceScenario);
             const Array<Kernel> kernels = std::get<6>(referenceScenario);
 
-            Engine::Get().setMode(Engine::Mode::Manual);
+            manager_.setMode(Manager::Mode::Manual);
 
-            Engine::Get().reset();
+            engine_.reset();
 
             for (const auto& kernel : kernels)
             {
-                Engine::Get().loadKernel(kernel);
+                engine_.loadKernel(kernel);
             }
 
             const SPICE spice = {object};
@@ -205,15 +224,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
                            (w_OBJECT_GCRF_in_OBJECT - w_OBJECT_GCRF_in_OBJECT_reference).norm()
                        );
             }
-
-            Engine::Get().setMode(Engine::DefaultMode());
-
-            Engine::Get().reset();
         }
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, StringFromObject)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, StringFromObject)
 {
     {
         EXPECT_EQ("Sun", SPICE::StringFromObject(SPICE::Object::Sun));
@@ -229,15 +244,15 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, StringFromObject)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 {
     {
         const Directory spiceLocalRepository =
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"));
 
-        Engine::Get().setMode(Engine::Mode::Manual);
+        manager_.setMode(Manager::Mode::Manual);
 
-        Engine::Get().reset();
+        engine_.reset();
 
         const SPICE spice = {SPICE::Object::Sun};
 
@@ -249,11 +264,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 
         EXPECT_NO_THROW({ sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); });
 
-        Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls"))
-        ));
-        Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de430.bsp"))));
-        Engine::Get().loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./pck00010.tpc"))
-        ));
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls"))));
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de430.bsp"))));
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./pck00010.tpc"))));
 
         EXPECT_NO_THROW(
 
@@ -262,23 +275,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
         );
 
         EXPECT_TRUE(sunPosition.isDefined());
-
-        Engine::Get().setMode(Engine::DefaultMode());
-
-        Engine::Get().reset();
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 {
     {
         Manager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"))
         );
 
-        Engine::Get().setMode(Engine::Mode::Automatic);
-
-        Engine::Get().reset();
+        engine_.reset();
 
         const SPICE spice = {SPICE::Object::Sun};
 
@@ -295,11 +302,5 @@ TEST(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
         );
 
         EXPECT_TRUE(sunPosition.isDefined());
-
-        Manager::Get().reset();
-
-        Engine::Get().setMode(Engine::DefaultMode());
-
-        Engine::Get().reset();
     }
 }

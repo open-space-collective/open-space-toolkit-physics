@@ -44,6 +44,7 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
         // cache current directory environment variables
         localRepositoryPath = std::getenv(localRepositoryVarName_);
         fullDataPath_ = std::getenv(fullDataVarName_);
+        modeValue_ = std::getenv(modeVarName_);
     }
 
     virtual void TearDown()
@@ -66,15 +67,29 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
         {
             unsetenv(localRepositoryVarName_);
         }
+
+        if (modeValue_)
+        {
+            setenv(modeVarName_, modeValue_, true);
+        }
+        else
+        {
+            unsetenv(modeVarName_);
+        }
+
+        // reset repository so other test suites do not use the test data
+        manager_.reset();
     }
 
     Manager& manager_ = Manager::Get();
 
     const char* localRepositoryVarName_ = "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY";
     const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
+    const char* modeVarName_ = "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE";
 
     char* localRepositoryPath;
     char* fullDataPath_;
+    char* modeValue_;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel)

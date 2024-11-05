@@ -22,8 +22,6 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
-#define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE Engine::Mode::Automatic
-
 namespace ostk
 {
 namespace physics
@@ -52,24 +50,10 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
 /// @brief                      SPICE Toolkit engine
-///
-///                             The following environment variables can be defined:
-///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE" will override "DefaultMode"
 
 class Engine
 {
    public:
-    /// @brief              Engine mode
-
-    enum class Mode
-    {
-
-        Manual,    ///< Manually load and unload kernels
-        Automatic  ///< Automatically fetch, load and unload kernels (from remote repositories)
-
-    };
-
     /// @brief              Copy constructor (deleted)
 
     Engine(const Engine& aSpiceEngine) = delete;
@@ -77,6 +61,14 @@ class Engine
     /// @brief              Copy assignment operator (deleted)
 
     Engine& operator=(const Engine& aSpiceEngine) = delete;
+
+    /// @brief                  move constructor (deleted)
+
+    Engine(Engine&&) = delete;
+
+    /// @brief                  move assignment operator (deleted)
+
+    Engine& operator=(Engine&&) = delete;
 
     /// @brief              Output stream operator
     ///
@@ -97,27 +89,6 @@ class Engine
     ///                     Unload all kernels and clear cache.
 
     void reset();
-
-    /// @brief              Get engine mode
-    ///
-    /// @return             Engine mode
-
-    Engine::Mode getMode() const;
-
-    /// @brief              Set engine mode
-    ///
-    /// @param              [in] aMode An engine mode
-    /// @return             Engine mode
-
-    void setMode(const Engine::Mode& aMode);
-
-    /// @brief              Get default engine mode
-    ///
-    ///                     Overriden by: OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_ENGINE_MODE
-    ///
-    /// @return             Default engine mode
-
-    static Engine::Mode DefaultMode();
 
     /// @brief              Get frame of SPICE object
     ///
@@ -152,8 +123,6 @@ class Engine
     static Array<Kernel> DefaultKernels();
 
    private:
-    Engine::Mode mode_;
-
     std::unordered_set<Kernel> kernelSet_;
 
     Array<Pair<Interval, const Kernel*>> earthKernelCache_;
@@ -161,7 +130,7 @@ class Engine
 
     mutable std::mutex mutex_;
 
-    Engine(const Engine::Mode& aMode = Engine::DefaultMode());
+    Engine();
 
     bool isKernelLoaded_(const Kernel& aKernel) const;
 

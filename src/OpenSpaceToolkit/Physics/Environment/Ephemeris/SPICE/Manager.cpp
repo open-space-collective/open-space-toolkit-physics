@@ -199,7 +199,7 @@ Manager::Manager()
           "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
       )
 {
-    setup();
+    setup_();
 }
 
 }  // namespace spice
