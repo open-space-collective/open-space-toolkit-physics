@@ -307,6 +307,10 @@
         <childnode refid="48" relation="include">
         </childnode>
       </node>
+      <node id="126">
+        <label>src/OpenSpaceToolkit/Physics/Manager.cpp</label>
+        <link refid="_manager_8cpp"/>
+      </node>
       <node id="66">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</label>
         <link refid="_t_i_r_f_8cpp"/>
@@ -339,7 +343,7 @@
         <childnode refid="120" relation="include">
         </childnode>
       </node>
-      <node id="125">
+      <node id="127">
         <label>include/OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
         <link refid="_interval_8hpp"/>
         <childnode refid="61" relation="include">
@@ -354,9 +358,9 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="126" relation="include">
+        <childnode refid="128" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="129" relation="include">
         </childnode>
       </node>
       <node id="46">
@@ -471,7 +475,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
       </node>
-      <node id="126">
+      <node id="128">
         <label>include/OpenSpaceToolkit/Physics/Time.hpp</label>
         <link refid="_time_8hpp"/>
       </node>
@@ -498,7 +502,7 @@
         <link refid="_date_time_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="126" relation="include">
+        <childnode refid="128" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -518,7 +522,7 @@
         </childnode>
         <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="130" relation="include">
+        <childnode refid="132" relation="include">
         </childnode>
       </node>
       <node id="31">
@@ -630,7 +634,9 @@
         </childnode>
         <childnode refid="125" relation="include">
         </childnode>
-        <childnode refid="126" relation="include">
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
@@ -638,9 +644,11 @@
         </childnode>
         <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="128" relation="include">
+        <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="129" relation="include">
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
         </childnode>
       </node>
       <node id="59">
@@ -661,7 +669,7 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="130">
+      <node id="132">
         <label>src/OpenSpaceToolkit/Physics/Time/DateTime.cpp</label>
         <link refid="_date_time_8cpp"/>
       </node>
@@ -825,7 +833,7 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="129">
+      <node id="131">
         <label>src/OpenSpaceToolkit/Physics/Time/Instant.cpp</label>
         <link refid="_instant_8cpp"/>
       </node>
@@ -873,6 +881,24 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp</label>
         <link refid="_environment_2_magnetic_2_earth_2_manager_8cpp"/>
       </node>
+      <node id="125">
+        <label>include/OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
       <node id="123">
         <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp</label>
         <link refid="_magnetic_2_model_8hpp"/>
@@ -885,7 +911,7 @@
         <childnode refid="124" relation="include">
         </childnode>
       </node>
-      <node id="127">
+      <node id="129">
         <label>src/OpenSpaceToolkit/Physics/Time/Interval.cpp</label>
         <link refid="_interval_8cpp"/>
       </node>
@@ -939,7 +965,7 @@
         <childnode refid="89" relation="include">
         </childnode>
       </node>
-      <node id="128">
+      <node id="130">
         <label>src/OpenSpaceToolkit/Physics/Time/Duration.cpp</label>
         <link refid="_duration_8cpp"/>
       </node>

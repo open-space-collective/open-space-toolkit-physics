@@ -10,8 +10,8 @@
     <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
     <includes local="no">OpenSpaceToolkit/IO/URL.hpp</includes>
     <includes refid="_gravitational_2_earth_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp</includes>
+    <includes refid="_manager_8hpp" local="no">OpenSpaceToolkit/Physics/Manager.hpp</includes>
     <includes refid="_duration_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Duration.hpp</includes>
-    <includes local="no">experimental/filesystem</includes>
     <includedby refid="_environment_2_gravitational_2_earth_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp</includedby>
     <includedby refid="_gravitational_2_earth_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</includedby>
     <incdepgraph>
@@ -34,6 +34,9 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+      </node>
+      <node id="31">
+        <label>filesystem</label>
       </node>
       <node id="23">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
@@ -60,9 +63,9 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
         <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="29">
@@ -199,6 +202,22 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
+      <node id="30">
+        <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
       <node id="27">
         <label>OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp</label>
         <link refid="_electric_current_8hpp"/>
@@ -274,9 +293,6 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="30">
-        <label>experimental/filesystem</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
@@ -303,9 +319,9 @@
     <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1gravitational">ostk::physics::environment::gravitational</innernamespace>
     <innernamespace refid="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth">ostk::physics::environment::gravitational::earth</innernamespace>
       <sectiondef kind="define">
-      <memberdef kind="define" id="_environment_2_gravitational_2_earth_2_manager_8hpp_1acb99d4a1a2c880246d47b28c5788632d" prot="public" static="no">
-        <name>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE</name>
-        <initializer>Manager::Mode::Automatic</initializer>
+      <memberdef kind="define" id="_environment_2_gravitational_2_earth_2_manager_8hpp_1a3e91bfc068af91ffee46c1f24805fcc6" prot="public" static="no">
+        <name>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY</name>
+        <initializer>&quot;./.open-space-toolkit/physics/data/environment/gravitational/earth&quot;</initializer>
         <briefdescription>
 <para>Apache License 2.0. </para>
         </briefdescription>
@@ -313,29 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="21" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="21" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="_environment_2_gravitational_2_earth_2_manager_8hpp_1a3e91bfc068af91ffee46c1f24805fcc6" prot="public" static="no">
-        <name>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY</name>
-        <initializer>&quot;./.open-space-toolkit/physics/data/environment/gravitational/earth&quot;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="22" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="22" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="_environment_2_gravitational_2_earth_2_manager_8hpp_1a1eafbc80c81ac08cb0f5883fbd2192fd" prot="public" static="no">
-        <name>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</name>
-        <initializer>60</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="25" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="25" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="20" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -358,124 +352,66 @@
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/URL.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_gravitational_2_earth_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_duration_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Duration.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;experimental/filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21" refid="_environment_2_gravitational_2_earth_2_manager_8hpp_1acb99d4a1a2c880246d47b28c5788632d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE<sp/>Manager::Mode::Automatic</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22" refid="_environment_2_gravitational_2_earth_2_manager_8hpp_1a3e91bfc068af91ffee46c1f24805fcc6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY<sp/>\</highlight></codeline>
-<codeline lineno="23"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;./.open-space-toolkit/physics/data/environment/gravitational/earth&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="_environment_2_gravitational_2_earth_2_manager_8hpp_1a1eafbc80c81ac08cb0f5883fbd2192fd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT<sp/>60</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_duration_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Duration.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="_environment_2_gravitational_2_earth_2_manager_8hpp_1a3e91bfc068af91ffee46c1f24805fcc6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY<sp/>\</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;./.open-space-toolkit/physics/data/environment/gravitational/earth&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">environment</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="29" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gravitational</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">environment</highlight></codeline>
+<codeline lineno="31" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">earth</highlight></codeline>
 <codeline lineno="32"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="33" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gravitational</highlight></codeline>
-<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="35" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">earth</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::File;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::File;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
+<codeline lineno="43" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a58cd447cbdfb525cde0bf7d94440990f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">EarthGravitationalModel</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref>;</highlight></codeline>
+<codeline lineno="44" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a9fecbf1f817505812085c1a15a2e9b4c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref>;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
-<codeline lineno="47" refid="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a58cd447cbdfb525cde0bf7d94440990f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">EarthGravitationalModel</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref>;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref></highlight></codeline>
-<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="63" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Mode</ref></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbbae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manual</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbba086247a9b57fde6eefee2a0c4752242d" kindref="member">Automatic</ref><sp/><sp/></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa4d100f163a5efca86fb560989b98349" kindref="member">getMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1acee5e4e119cfef63bcbfca3178e5be7a" kindref="member">setMode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref>&amp;<sp/>aMode);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adaee07fd7256d2c28be24403c4287d84" kindref="member">hasDataFilesForType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;File&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5858796db9f601ec05e42e2e91508df7" kindref="member">localDataFilesForType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac52e42436593b14c37f92c453bd2af54" kindref="member">fetchDataFilesForType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8665dccf68085ce30fb0afcd8d6c71a3" kindref="member">Get</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>();</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a47983a5721337035b21affcb28c0b108" kindref="member">DefaultMode</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/>getDataFileUrlsForType_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/>aManager)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa95b426416d708cf4f769697d02d7d7d" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/>aManager)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adaee07fd7256d2c28be24403c4287d84" kindref="member">hasDataFilesForType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;File&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5858796db9f601ec05e42e2e91508df7" kindref="member">localDataFilesForType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aec5c97d1dc02e1f019c3a77f827d7da7" kindref="member">getLocalRepository</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1afad3d8756063287d421596a9dc0c2c55" kindref="member">reset</ref>();</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac52e42436593b14c37f92c453bd2af54" kindref="member">fetchDataFilesForType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aaca1ee2d3cd65105ba5fb4bfb2987589" kindref="member">setLocalRepository</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDirectory);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8665dccf68085ce30fb0afcd8d6c71a3" kindref="member">Get</ref>();</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1affbe1673e70ab9ad31e22982483f2fce" kindref="member">DefaultLocalRepository</ref>();</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4f249b84c19b80b918866e61490f856c" kindref="member">DefaultLocalRepositoryLockTimeout</ref>();</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref><sp/>mode_;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/>localRepository_;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/>localRepositoryLockTimeout_;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::mutex<sp/>mutex_;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref>();</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/>getDataFileUrlsForType(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/>DataFileNameFromType(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isLocalRepositoryLocked()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>getLocalRepositoryLockFile()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup();</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>lockLocalRepository(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref>&amp;<sp/>aTimeout);</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>unlockLocalRepository();</highlight></codeline>
-<codeline lineno="183"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>earth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gravitational</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/>DataFileNameFromType_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref>&amp;<sp/>aModelType);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>earth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gravitational</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp"/>
   </compounddef>

@@ -6,6 +6,7 @@
     <includes local="no">OpenSpaceToolkit/Core/FileSystem/Directory.hpp</includes>
     <includes local="no">OpenSpaceToolkit/IO/URL.hpp</includes>
     <includes refid="_manifest_8hpp" local="no">OpenSpaceToolkit/Physics/Data/Manifest.hpp</includes>
+    <includes refid="_manager_8hpp" local="no">OpenSpaceToolkit/Physics/Manager.hpp</includes>
     <includes refid="_duration_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Duration.hpp</includes>
     <includes refid="_instant_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Instant.hpp</includes>
     <includedby refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp</includedby>
@@ -23,6 +24,9 @@
       </node>
       <node id="14">
         <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
+      </node>
+      <node id="24">
+        <label>filesystem</label>
       </node>
       <node id="11">
         <label>OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</label>
@@ -134,6 +138,22 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
+      <node id="23">
+        <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>mutex</label>
       </node>
@@ -180,6 +200,8 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -256,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="17" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="17" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="18" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="_data_2_manager_8hpp_1ad273d3073788fa11cab095fe9bfc2d7b" prot="public" static="no">
         <name>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY</name>
@@ -267,18 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="19" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="19" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="_data_2_manager_8hpp_1ae41f7fc31049c4bcab1a6027b474182d" prot="public" static="no">
-        <name>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT</name>
-        <initializer>60</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="21" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="21" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="20" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="_data_2_manager_8hpp_1a6d48dfffd34597e0fa3a4db30041f190" prot="public" static="no">
         <name>OSTK_PHYSICS_DATA_REFRESH_RATE_H</name>
@@ -289,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="25" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="25" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="24" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -308,119 +319,96 @@
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/URL.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manifest_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Data/Manifest.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_duration_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Duration.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Base<sp/>remote<sp/>URL<sp/>for<sp/>OSTk<sp/>data<sp/>files</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17" refid="_data_2_manager_8hpp_1a7ea7ed9b9bcd4678a315244af96578c7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_REMOTE_URL<sp/>&quot;https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="_data_2_manager_8hpp_1ad273d3073788fa11cab095fe9bfc2d7b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY<sp/>&quot;./.open-space-toolkit/physics/data/&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21" refid="_data_2_manager_8hpp_1ae41f7fc31049c4bcab1a6027b474182d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT<sp/>60</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maximum<sp/>frequency<sp/>at<sp/>which<sp/>OSTk<sp/>tries<sp/>to<sp/>freshen<sp/>its<sp/>data</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note:<sp/>necessary<sp/>data<sp/>fetches<sp/>still<sp/>occur<sp/>(i.e.<sp/>if<sp/>a<sp/>data<sp/>file<sp/>is<sp/>missing)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="_data_2_manager_8hpp_1a6d48dfffd34597e0fa3a4db30041f190" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_REFRESH_RATE_H<sp/>24</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
-<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">data</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">ostk::physics::data::Manifest</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_duration_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Duration.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Base<sp/>remote<sp/>URL<sp/>for<sp/>OSTk<sp/>data<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="_data_2_manager_8hpp_1a7ea7ed9b9bcd4678a315244af96578c7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_REMOTE_URL<sp/>&quot;https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="_data_2_manager_8hpp_1ad273d3073788fa11cab095fe9bfc2d7b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY<sp/>&quot;./.open-space-toolkit/physics/data/&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Maximum<sp/>frequency<sp/>at<sp/>which<sp/>OSTk<sp/>tries<sp/>to<sp/>freshen<sp/>its<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note:<sp/>necessary<sp/>data<sp/>fetches<sp/>still<sp/>occur<sp/>(i.e.<sp/>if<sp/>a<sp/>data<sp/>file<sp/>is<sp/>missing)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="_data_2_manager_8hpp_1a6d48dfffd34597e0fa3a4db30041f190" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_DATA_REFRESH_RATE_H<sp/>24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">data</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">ostk::physics::data::Manifest</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="40" refid="namespaceostk_1_1physics_1_1data_1a72bb86bc8df8938c96720477e82b012b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref>;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46" refid="classostk_1_1physics_1_1data_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">Manager</ref></highlight></codeline>
+<codeline lineno="46" refid="classostk_1_1physics_1_1data_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">Manager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref></highlight></codeline>
 <codeline lineno="47"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab898ae11749b5b14734b94b7c1ffbb4c" kindref="member">Get</ref>();</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a83ab8533b086420ea0e1c4f074150d9c" kindref="member">getLastUpdateTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a83ab8533b086420ea0e1c4f074150d9c" kindref="member">getLastUpdateTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab1b10729b3001f9ff6a54b5286e975f2" kindref="member">getRemoteUrl</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab1b10729b3001f9ff6a54b5286e975f2" kindref="member">getRemoteUrl</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a9bac185cf88d061e72c4ccb9f788584e" kindref="member">setRemoteUrl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aRemoteUrl);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a9bac185cf88d061e72c4ccb9f788584e" kindref="member">setRemoteUrl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aRemoteUrl);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" kindref="member">DefaultRemoteUrl</ref>();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a5906207482cf7feb7582e95495cee76a" kindref="member">getRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a45b5fd7544dbca212759813719ff1119" kindref="member">getManifestRepository</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a2810947fb2c42ebd8096dd5ac8a1971f" kindref="member">findRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataNameRegex)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a6e8f17a86e4c75934ef65657f634b016" kindref="member">setManifestRepository</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aManifestRepository);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a7eede6a7696007449e80ef935e3535fc" kindref="member">getManifest</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ac8d24a9fa535223bf82dffbaf85f13d3" kindref="member">DefaultManifestRepository</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ad0b4a0867fd62d83a026b0a7318c3585" kindref="member">loadManifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>&amp;<sp/>aManifest);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a5906207482cf7feb7582e95495cee76a" kindref="member">getRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab414941611d56f96a99dc10e8c007887" kindref="member">manifestFileExists</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a8540b257af3c0a64d09d6dd91a259b78" kindref="member">reset</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a2810947fb2c42ebd8096dd5ac8a1971f" kindref="member">findRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataNameRegex)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab898ae11749b5b14734b94b7c1ffbb4c" kindref="member">Get</ref>();</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a7eede6a7696007449e80ef935e3535fc" kindref="member">getManifest</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" kindref="member">DefaultRemoteUrl</ref>();</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ad0b4a0867fd62d83a026b0a7318c3585" kindref="member">loadManifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>&amp;<sp/>aManifest);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="124" refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a907c7c11c7cf2610aedbb581b5a0246e" kindref="member">Manager</ref>();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>virtual<sp/>so<sp/>we<sp/>can<sp/>mock<sp/>in<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>File<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a88f6ff812498f2eb7da1b2ebbdf8355c" kindref="member">fetchLatestManifestFile_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab414941611d56f96a99dc10e8c007887" kindref="member">manifestFileExists</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ac3b200a17a62cd55401266715fee4800" kindref="member">reset</ref>();</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="142" refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144" refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref>;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146" refid="classostk_1_1physics_1_1data_1_1_manager_1a4543175e18e52d6392269411915044c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4543175e18e52d6392269411915044c5" kindref="member">manifestRepository_</ref>;</highlight></codeline>
-<codeline lineno="147" refid="classostk_1_1physics_1_1data_1_1_manager_1af5387037d982df7c678b12570f734312" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1af5387037d982df7c678b12570f734312" kindref="member">manifestRepositoryLockTimeout_</ref>;</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149" refid="classostk_1_1physics_1_1data_1_1_manager_1a5157c32f85d3b6479c638d992f5d1e77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::mutex<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a5157c32f85d3b6479c638d992f5d1e77" kindref="member">mutex_</ref>;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a907c7c11c7cf2610aedbb581b5a0246e" kindref="member">Manager</ref>();</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a01435f6afe1ed4293aa038dd1f814873" kindref="member">setup_</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4f78aff80d2037f4de16eea4a5d46f36" kindref="member">loadManifest_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>&amp;<sp/>aManifest)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1af684c12b3a4ab9b1bcb7debc87a8fc31" kindref="member">DataRefreshRate_</ref>();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>virtual<sp/>so<sp/>we<sp/>can<sp/>mock<sp/>in<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>File<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a88f6ff812498f2eb7da1b2ebbdf8355c" kindref="member">fetchLatestManifestFile_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4f78aff80d2037f4de16eea4a5d46f36" kindref="member">loadManifest_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>&amp;<sp/>aManifest)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a2ce226a11b3943cb3da78fdd93c4b6bf" kindref="member">isManifestRepositoryLocked_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a31c3182d23a0ce5cd36458a65d77eada" kindref="member">getManifestRepositoryLockFile_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a7cef4a2ee4c553f25a4f6b4f94808b76" kindref="member">lockManifestRepository_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref>&amp;<sp/>aTimeout)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ad78085c85df5b3085cd588b1ccaa69d2" kindref="member">unlockManifestRepository_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a3b5e93e567f5cedc16f05a85ed2b34f5" kindref="member">DefaultManifestRepositoryLockTimeout_</ref>();</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1af684c12b3a4ab9b1bcb7debc87a8fc31" kindref="member">DataRefreshRate_</ref>();</highlight></codeline>
-<codeline lineno="185"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>data</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp"/>
   </compounddef>

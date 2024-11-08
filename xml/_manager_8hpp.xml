@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_manager_8hpp" kind="file" language="C++">
+    <compoundname>Manager.hpp</compoundname>
+    <includes local="no">filesystem</includes>
+    <includes local="no">mutex</includes>
+    <includes local="no">OpenSpaceToolkit/Core/FileSystem/Directory.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
+    <includes refid="_duration_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Duration.hpp</includes>
+    <includes refid="_instant_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Instant.hpp</includes>
+    <includedby refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp</includedby>
+    <includedby refid="_data_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Data/Manager.hpp</includedby>
+    <includedby refid="_environment_2_atmospheric_2_earth_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp</includedby>
+    <includedby refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp</includedby>
+    <includedby refid="_environment_2_gravitational_2_earth_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp</includedby>
+    <includedby refid="_environment_2_magnetic_2_earth_2_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp</includedby>
+    <includedby refid="_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Manager.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>OpenSpaceToolkit/Core/FileSystem/Directory.hpp</label>
+      </node>
+      <node id="8">
+        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
+      </node>
+      <node id="2">
+        <label>filesystem</label>
+      </node>
+      <node id="16">
+        <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
+        <link refid="_scale_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
+        <link refid="_duration_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
+        <link refid="_unit_2_time_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
+        <link refid="_date_time_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
+        <link refid="_instant_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="5">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="7">
+        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+      </node>
+      <node id="14">
+        <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
+        <link refid="_date_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>mutex</label>
+      </node>
+      <node id="15">
+        <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
+        <link refid="_time_2_time_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp</label>
+        <link refid="_t_e_m_e_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp</label>
+        <link refid="_environment_2_gravitational_2_earth_2_manager_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp</label>
+        <link refid="_i_t_r_f_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/OpenSpaceToolkit/Physics/Manager.cpp</label>
+        <link refid="_manager_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</label>
+        <link refid="_t_i_r_f_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp</label>
+        <link refid="_environment_2_atmospheric_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp</label>
+        <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp</label>
+        <link refid="_environment_2_gravitational_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
+        <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp</label>
+        <link refid="_environment_2_atmospheric_2_earth_2_manager_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp</label>
+        <link refid="_magnetic_2_earth_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
+        <link refid="_gravitational_2_earth_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp</label>
+        <link refid="_environment_2_magnetic_2_earth_2_manager_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp</label>
+        <link refid="_environment_2_magnetic_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
+        <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/OpenSpaceToolkit/Physics/Data/Manager.cpp</label>
+        <link refid="_data_2_manager_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/OpenSpaceToolkit/Physics/Data/Manager.hpp</label>
+        <link refid="_data_2_manager_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp</label>
+        <link refid="_engine_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classostk_1_1physics_1_1_manager" prot="public">ostk::physics::Manager</innerclass>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics">ostk::physics</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Manager__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Manager__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_duration_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Duration.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::File;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classostk_1_1physics_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35" refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Mode</ref></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manual</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Automatic</ref><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" kindref="member">Manager</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/>aManager)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1_manager_1ada7527cacea9ba3511b17fce95dd0834" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/>aManager)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" kindref="member">Manager</ref>(<ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1_manager_1ada7527cacea9ba3511b17fce95dd0834" kindref="member">operator=</ref>(<ref refid="classostk_1_1physics_1_1_manager" kindref="compound">Manager</ref>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1abb4f82babc71b354d5babe2a734097b0" kindref="member">~Manager</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae6316f9bcc2669a1ee1e305bfd8b298d" kindref="member">getMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1_manager_1a749a7ddaac37a145de0644de53cfefad" kindref="member">getLocalRepository</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1a0469c4ea61710d505b78113ea75f2f12" kindref="member">getLocalRepositoryLockTimeout</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1aec2b97acf4a1d22b95b5a978a52c4356" kindref="member">setMode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref>&amp;<sp/>aMode);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ac5a18a4272b5d26ff78e32cba7c08baf" kindref="member">setLocalRepository</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDirectory);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" kindref="member">clearLocalRepository</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102" refid="classostk_1_1physics_1_1_manager_1afa47d75b3b27b94fc78ce3c63819eab0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1_manager_1afa47d75b3b27b94fc78ce3c63819eab0" kindref="member">managerModeEnvironmentVariableName_</ref>;</highlight></codeline>
+<codeline lineno="103" refid="classostk_1_1physics_1_1_manager_1ae9329eabf4e2e9ec43cad76fe5babc62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae9329eabf4e2e9ec43cad76fe5babc62" kindref="member">defaultLocalRepositoryDirectory_</ref>;</highlight></codeline>
+<codeline lineno="104" refid="classostk_1_1physics_1_1_manager_1a3e88d490a547191aef7233aa88dda5b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1_manager_1a3e88d490a547191aef7233aa88dda5b5" kindref="member">localRepositoryEnvironmentVariableName_</ref>;</highlight></codeline>
+<codeline lineno="105" refid="classostk_1_1physics_1_1_manager_1a9ebdbad49af6c361d075468bf44599e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Path<sp/><ref refid="classostk_1_1physics_1_1_manager_1a9ebdbad49af6c361d075468bf44599e7" kindref="member">localRepositoryPath_</ref>;</highlight></codeline>
+<codeline lineno="106" refid="classostk_1_1physics_1_1_manager_1abbc22afc61d4e808aa3ddc1eed07ca01" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1_manager_1abbc22afc61d4e808aa3ddc1eed07ca01" kindref="member">localRepositoryLockTimeoutEnvironmentVariableName_</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref>;</highlight></codeline>
+<codeline lineno="109" refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>;</highlight></codeline>
+<codeline lineno="110" refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" kindref="member">localRepositoryLockTimeout_</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::mutex<sp/><ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" kindref="member">Manager</ref>(</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aManagerModeEnvironmentVariableName,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDefaultLocalRepositoryDirectory,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryEnvironmentVariableName,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path&amp;<sp/>aLocalRepositoryPath,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryLockTimeoutEnvironmentVariableName</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189" kindref="member">setup_</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a292574e204c1d15cded3308390448ecd" kindref="member">isLocalRepositoryLocked_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/><ref refid="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" kindref="member">getLocalRepositoryLockFile_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a22d38ed9801bbc20ebedef0529567664" kindref="member">lockLocalRepository_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref>&amp;<sp/>aTimeout)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" kindref="member">unlockLocalRepository_</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae19fdd045a4f38eb4642ff7d31791604" kindref="member">DefaultLocalRepository_</ref>(</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDefaultLocalRepositoryDirectory,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryEnvironmentVariableName,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path&amp;<sp/>aLocalRepositoryPath</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1a777da8855f64d5f1ae27329240fcc7cf" kindref="member">DefaultMode_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aManagerModeEnvironmentVariableName);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1a089690a144ffcc2bcfc5989ef028fe17" kindref="member">DefaultLocalRepositoryLockTimeout_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryLockTimeoutEnvironmentVariableName</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/OpenSpaceToolkit/Physics/Manager.hpp"/>
+  </compounddef>
+</doxygen>

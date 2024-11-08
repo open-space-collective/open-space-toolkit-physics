@@ -16,19 +16,22 @@ ostk.physics.data.Manager
    .. autosummary::
       :nosignatures:
    
-      ~Manager.default_manifest_repository
+      ~Manager.clear_local_repository
       ~Manager.default_remote_url
       ~Manager.find_remote_data_urls
       ~Manager.get
       ~Manager.get_last_update_timestamp_for
+      ~Manager.get_local_repository
+      ~Manager.get_local_repository_lock_timeout
       ~Manager.get_manifest
-      ~Manager.get_manifest_repository
+      ~Manager.get_mode
       ~Manager.get_remote_data_urls
       ~Manager.get_remote_url
       ~Manager.load_manifest
       ~Manager.manifest_file_exists
       ~Manager.reset
-      ~Manager.set_manifest_repository
+      ~Manager.set_local_repository
+      ~Manager.set_mode
       ~Manager.set_remote_url
    
    

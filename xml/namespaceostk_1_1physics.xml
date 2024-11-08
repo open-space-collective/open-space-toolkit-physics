@@ -3,6 +3,7 @@
   <compounddef id="namespaceostk_1_1physics" kind="namespace" language="C++">
     <compoundname>ostk::physics</compoundname>
     <innerclass refid="classostk_1_1physics_1_1_environment" prot="public">ostk::physics::Environment</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1_manager" prot="public">ostk::physics::Manager</innerclass>
     <innerclass refid="classostk_1_1physics_1_1_unit" prot="public">ostk::physics::Unit</innerclass>
     <innernamespace refid="namespaceostk_1_1physics_1_1coordinate">ostk::physics::coordinate</innernamespace>
     <innernamespace refid="namespaceostk_1_1physics_1_1data">ostk::physics::data</innernamespace>

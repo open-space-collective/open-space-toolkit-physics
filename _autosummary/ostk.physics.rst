@@ -21,6 +21,7 @@
       :nosignatures:
    
       Environment
+      Manager
       Unit
    
    

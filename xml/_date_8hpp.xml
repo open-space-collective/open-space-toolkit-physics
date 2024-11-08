@@ -12,6 +12,7 @@
     <includedby refid="_time_8hpp" local="no">include/OpenSpaceToolkit/Physics/Time.hpp</includedby>
     <includedby refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp</includedby>
     <includedby refid="_environment_2_atmospheric_2_earth_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp</includedby>
+    <includedby refid="_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Manager.cpp</includedby>
     <includedby refid="_date_8cpp" local="no">src/OpenSpaceToolkit/Physics/Time/Date.cpp</includedby>
     <incdepgraph>
       <node id="3">
@@ -274,6 +275,10 @@
         <childnode refid="63" relation="include">
         </childnode>
       </node>
+      <node id="127">
+        <label>src/OpenSpaceToolkit/Physics/Manager.cpp</label>
+        <link refid="_manager_8cpp"/>
+      </node>
       <node id="7">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</label>
         <link refid="_t_i_r_f_8cpp"/>
@@ -306,7 +311,7 @@
         <childnode refid="121" relation="include">
         </childnode>
       </node>
-      <node id="126">
+      <node id="128">
         <label>include/OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
         <link refid="_interval_8hpp"/>
         <childnode refid="2" relation="include">
@@ -321,9 +326,9 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="129" relation="include">
         </childnode>
-        <childnode refid="128" relation="include">
+        <childnode refid="130" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -438,7 +443,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
       </node>
-      <node id="127">
+      <node id="129">
         <label>include/OpenSpaceToolkit/Physics/Time.hpp</label>
         <link refid="_time_8hpp"/>
       </node>
@@ -457,7 +462,7 @@
         <link refid="_date_time_8hpp"/>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="129" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -477,7 +482,7 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="131" relation="include">
+        <childnode refid="133" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -597,7 +602,9 @@
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -605,9 +612,11 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="129" relation="include">
+        <childnode refid="127" relation="include">
         </childnode>
-        <childnode refid="130" relation="include">
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
         </childnode>
       </node>
       <node id="74">
@@ -628,7 +637,7 @@
         <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="131">
+      <node id="133">
         <label>src/OpenSpaceToolkit/Physics/Time/DateTime.cpp</label>
         <link refid="_date_time_8cpp"/>
       </node>
@@ -792,7 +801,7 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="130">
+      <node id="132">
         <label>src/OpenSpaceToolkit/Physics/Time/Instant.cpp</label>
         <link refid="_instant_8cpp"/>
       </node>
@@ -849,18 +858,38 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="129" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="132" relation="include">
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
         </childnode>
       </node>
       <node id="102">
         <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp</label>
         <link refid="_environment_2_magnetic_2_earth_2_manager_8cpp"/>
+      </node>
+      <node id="126">
+        <label>include/OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
       </node>
       <node id="124">
         <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp</label>
@@ -874,7 +903,7 @@
         <childnode refid="125" relation="include">
         </childnode>
       </node>
-      <node id="128">
+      <node id="130">
         <label>src/OpenSpaceToolkit/Physics/Time/Interval.cpp</label>
         <link refid="_interval_8cpp"/>
       </node>
@@ -928,7 +957,7 @@
         <childnode refid="94" relation="include">
         </childnode>
       </node>
-      <node id="129">
+      <node id="131">
         <label>src/OpenSpaceToolkit/Physics/Time/Duration.cpp</label>
         <link refid="_duration_8cpp"/>
       </node>
@@ -986,7 +1015,7 @@
         <childnode refid="104" relation="include">
         </childnode>
       </node>
-      <node id="132">
+      <node id="134">
         <label>src/OpenSpaceToolkit/Physics/Time/Date.cpp</label>
         <link refid="_date_8cpp"/>
       </node>
@@ -1232,9 +1261,9 @@
 <codeline lineno="13" refid="namespaceostk_1_1physics_1_1time" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">time</highlight></codeline>
 <codeline lineno="14"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Uint8;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Uint16;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Uint8;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22" refid="classostk_1_1physics_1_1time_1_1_date" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></highlight></codeline>

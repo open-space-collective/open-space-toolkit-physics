@@ -17,9 +17,6 @@ ostk.physics.coordinate.frame.provider.iers.Manager
       :nosignatures:
    
       ~Manager.clear_local_repository
-      ~Manager.default_local_repository
-      ~Manager.default_local_repository_lock_timeout
-      ~Manager.default_mode
       ~Manager.fetch_latest_bulletin_a
       ~Manager.fetch_latest_finals_2000a
       ~Manager.get
@@ -28,6 +25,7 @@ ostk.physics.coordinate.frame.provider.iers.Manager
       ~Manager.get_finals_2000a
       ~Manager.get_finals_2000a_directory
       ~Manager.get_local_repository
+      ~Manager.get_local_repository_lock_timeout
       ~Manager.get_lod_at
       ~Manager.get_mode
       ~Manager.get_polar_motion_at

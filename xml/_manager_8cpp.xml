@@ -1,0 +1,462 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_manager_8cpp" kind="file" language="C++">
+    <compoundname>Manager.cpp</compoundname>
+    <includes local="no">chrono</includes>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">numeric</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Container/Map.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Error.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/FileSystem/Path.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/Integer.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Utility.hpp</includes>
+    <includes refid="_manager_8hpp" local="no">OpenSpaceToolkit/Physics/Manager.hpp</includes>
+    <includes refid="_date_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Date.hpp</includes>
+    <includes refid="_instant_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Instant.hpp</includes>
+    <includes refid="_scale_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Scale.hpp</includes>
+    <includes refid="_time_2_time_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Time.hpp</includes>
+    <incdepgraph>
+      <node id="16">
+        <label>OpenSpaceToolkit/Core/FileSystem/Directory.hpp</label>
+      </node>
+      <node id="18">
+        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
+      </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="26">
+        <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
+        <link refid="_scale_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/OpenSpaceToolkit/Physics/Manager.cpp</label>
+        <link refid="_manager_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>numeric</label>
+      </node>
+      <node id="17">
+        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
+        <link refid="_duration_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
+      </node>
+      <node id="19">
+        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
+        <link refid="_unit_2_time_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>fstream</label>
+      </node>
+      <node id="23">
+        <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
+        <link refid="_date_time_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
+        <link refid="_instant_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Core/Utility.hpp</label>
+      </node>
+      <node id="21">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="10">
+        <label>OpenSpaceToolkit/Core/FileSystem/Path.hpp</label>
+      </node>
+      <node id="9">
+        <label>OpenSpaceToolkit/Core/Error.hpp</label>
+      </node>
+      <node id="12">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="11">
+        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+      </node>
+      <node id="3">
+        <label>cstdlib</label>
+      </node>
+      <node id="24">
+        <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
+        <link refid="_date_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>mutex</label>
+      </node>
+      <node id="2">
+        <label>chrono</label>
+      </node>
+      <node id="7">
+        <label>thread</label>
+      </node>
+      <node id="25">
+        <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
+        <link refid="_time_2_time_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics">ostk::physics</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;numeric&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Map.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Error.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Utility.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_date_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Date.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_scale_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Scale.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_time_2_time_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Time.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae6316f9bcc2669a1ee1e305bfd8b298d" kindref="member">Manager::getMode</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="32"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">Directory<sp/><ref refid="classostk_1_1physics_1_1_manager_1a749a7ddaac37a145de0644de53cfefad" kindref="member">Manager::getLocalRepository</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="39"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">Duration<sp/><ref refid="classostk_1_1physics_1_1_manager_1a0469c4ea61710d505b78113ea75f2f12" kindref="member">Manager::getLocalRepositoryLockTimeout</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="46"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" kindref="member">localRepositoryLockTimeout_</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1aec2b97acf4a1d22b95b5a978a52c4356" kindref="member">Manager::setMode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref>&amp;<sp/>aMode)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>=<sp/>aMode;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ac5a18a4272b5d26ff78e32cba7c08baf" kindref="member">Manager::setLocalRepository</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDirectory)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!aDirectory.isDefined())</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;Directory&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref><sp/>=<sp/>aDirectory;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189" kindref="member">setup_</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" kindref="member">Manager::reset</ref>()</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager_1a777da8855f64d5f1ae27329240fcc7cf" kindref="member">Manager::DefaultMode_</ref>(<ref refid="classostk_1_1physics_1_1_manager_1afa47d75b3b27b94fc78ce3c63819eab0" kindref="member">managerModeEnvironmentVariableName_</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae19fdd045a4f38eb4642ff7d31791604" kindref="member">Manager::DefaultLocalRepository_</ref>(</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae9329eabf4e2e9ec43cad76fe5babc62" kindref="member">defaultLocalRepositoryDirectory_</ref>,<sp/><ref refid="classostk_1_1physics_1_1_manager_1a3e88d490a547191aef7233aa88dda5b5" kindref="member">localRepositoryEnvironmentVariableName_</ref>,<sp/><ref refid="classostk_1_1physics_1_1_manager_1a9ebdbad49af6c361d075468bf44599e7" kindref="member">localRepositoryPath_</ref></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" kindref="member">localRepositoryLockTimeout_</ref><sp/>=</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a089690a144ffcc2bcfc5989ef028fe17" kindref="member">Manager::DefaultLocalRepositoryLockTimeout_</ref>(<ref refid="classostk_1_1physics_1_1_manager_1abbc22afc61d4e808aa3ddc1eed07ca01" kindref="member">localRepositoryLockTimeoutEnvironmentVariableName_</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" kindref="member">Manager::clearLocalRepository</ref>()</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.remove();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189" kindref="member">setup_</ref>();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" kindref="member">Manager::Manager</ref>(</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aManagerModeEnvironmentVariableName,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDefaultLocalRepositoryDirectory,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryEnvironmentVariableName,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path&amp;<sp/>aLocalRepositoryPath,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryLockTimeoutEnvironmentVariableName</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>managerModeEnvironmentVariableName_(aManagerModeEnvironmentVariableName),</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>defaultLocalRepositoryDirectory_(aDefaultLocalRepositoryDirectory),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>localRepositoryEnvironmentVariableName_(aLocalRepositoryEnvironmentVariableName),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>localRepositoryPath_(aLocalRepositoryPath),</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>localRepositoryLockTimeoutEnvironmentVariableName_(aLocalRepositoryLockTimeoutEnvironmentVariableName),</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mode_(Manager::Mode::Automatic),</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>localRepository_(Directory::<ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>()),</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>localRepositoryLockTimeout_(Duration::<ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>())</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>reset();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>setup_();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189" kindref="member">Manager::setup_</ref>()</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.exists())</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.create();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a292574e204c1d15cded3308390448ecd" kindref="member">Manager::isLocalRepositoryLocked_</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="119"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" kindref="member">getLocalRepositoryLockFile_</ref>().exists();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal">File<sp/><ref refid="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" kindref="member">Manager::getLocalRepositoryLockFile_</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="124"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>File::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(</highlight><highlight class="stringliteral">&quot;.lock&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a22d38ed9801bbc20ebedef0529567664" kindref="member">Manager::lockLocalRepository_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Duration&amp;<sp/>aTimeout)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="129"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>String::Format(</highlight><highlight class="stringliteral">&quot;Locking<sp/>local<sp/>repository<sp/>[{}]...&quot;</highlight><highlight class="normal">,<sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.toString())<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>tryLock<sp/>=<sp/>[](File&amp;<sp/>aLockFile)<sp/>-&gt;<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!aLockFile.exists())<sp/><sp/></highlight><highlight class="comment">//<sp/>[TBM]<sp/>Should<sp/>use<sp/>system-wide<sp/>semaphore<sp/>instead<sp/>(race<sp/>condition<sp/>can<sp/>still<sp/>occur)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aLockFile.create();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Do<sp/>nothing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant<sp/>timeoutInstant<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kindref="member">Instant::Now</ref>()<sp/>+<sp/>aTimeout;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>lockFile<sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" kindref="member">getLocalRepositoryLockFile_</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!tryLock(lockFile))</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kindref="member">Instant::Now</ref>()<sp/>&gt;=<sp/>timeoutInstant)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>lock<sp/>local<sp/>repository:<sp/>timeout<sp/>reached.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::this_thread::sleep_for(std::chrono::seconds(1));</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" kindref="member">Manager::unlockLocalRepository_</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="169"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>String::Format(</highlight><highlight class="stringliteral">&quot;Unlocking<sp/>local<sp/>repository<sp/>[{}]...&quot;</highlight><highlight class="normal">,<sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.toString())<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classostk_1_1physics_1_1_manager_1a292574e204c1d15cded3308390448ecd" kindref="member">isLocalRepositoryLocked_</ref>())</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>unlock<sp/>local<sp/>repository:<sp/>lock<sp/>file<sp/>does<sp/>not<sp/>exist.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" kindref="member">getLocalRepositoryLockFile_</ref>().remove();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">Directory<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae19fdd045a4f38eb4642ff7d31791604" kindref="member">Manager::DefaultLocalRepository_</ref>(</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDefaultLocalRepositoryDirectory,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryEnvironmentVariableName,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Path&amp;<sp/>aLocalRepositoryPath</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>localRepositoryPath<sp/>=<sp/>std::getenv(aLocalRepositoryEnvironmentVariableName.c_str()))</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Directory::Path(Path::Parse(localRepositoryPath));</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>dataPath<sp/>=<sp/>std::getenv(</highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_LOCAL_REPOSITORY&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Directory::Path(Path::Parse(dataPath)<sp/>+<sp/>aLocalRepositoryPath);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>aDefaultLocalRepositoryDirectory;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref><sp/><ref refid="classostk_1_1physics_1_1_manager_1a777da8855f64d5f1ae27329240fcc7cf" kindref="member">Manager::DefaultMode_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aManagerModeEnvironmentVariableName)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref><sp/>defaultMode<sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Mode::Automatic</ref>;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>modeString<sp/>=<sp/>std::getenv(aManagerModeEnvironmentVariableName.c_str()))</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(modeString,<sp/></highlight><highlight class="stringliteral">&quot;Manual&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(modeString,<sp/></highlight><highlight class="stringliteral">&quot;Automatic&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Manager::Mode::Automatic</ref>;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Wrong(</highlight><highlight class="stringliteral">&quot;Mode&quot;</highlight><highlight class="normal">,<sp/>modeString);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultMode;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">Duration<sp/><ref refid="classostk_1_1physics_1_1_manager_1a089690a144ffcc2bcfc5989ef028fe17" kindref="member">Manager::DefaultLocalRepositoryLockTimeout_</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aLocalRepositoryLockTimeoutEnvironmentVariableName)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Duration<sp/>defaultLocalRepositoryLockTimeout<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration_1ad973fa34fcc308fdcc8d50c3ee694764" kindref="member">Duration::Seconds</ref>(60.0);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>localRepositoryLockTimeoutString<sp/>=</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::getenv(aLocalRepositoryLockTimeoutEnvironmentVariableName.c_str()))</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration_1afe4136976a7c4e5c2ec00c0aa5583b18" kindref="member">Duration::Parse</ref>(localRepositoryLockTimeoutString);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultLocalRepositoryLockTimeout;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/OpenSpaceToolkit/Physics/Manager.cpp"/>
+  </compounddef>
+</doxygen>

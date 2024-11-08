@@ -7,6 +7,19 @@
     <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" prot="public">ostk::physics::environment::atmospheric::earth::Manager</innerclass>
     <innerclass refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" prot="public">ostk::physics::environment::atmospheric::earth::NRLMSISE00</innerclass>
       <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1aba8bd835dfc1472a9fdd9622f0ef4c00" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref></type>
+        <definition>using ostk::physics::environment::atmospheric::earth::BaseManager = typedef ostk::physics::Manager</definition>
+        <argsstring></argsstring>
+        <name>BaseManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a11b134d6cacf0cd73d99fc8668c58def" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">ostk::physics::environment::atmospheric::Earth</ref></type>
         <definition>using ostk::physics::environment::atmospheric::earth::EarthAtmosphericModel = typedef ostk::physics::environment::atmospheric::Earth</definition>
@@ -57,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="54" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="54" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="52" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1abb6a5f6ac10e54fe888f12083e110dc7" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">ostk::physics::environment::object::celestial::Earth</ref></type>
@@ -86,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="56" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="56" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="54" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1aa9294decc08248cc49207831d5dc3faf" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -100,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="57" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="57" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="55" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a6278334fad443af51f946c823cb579ee" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -114,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="59" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="59" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" line="57" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">

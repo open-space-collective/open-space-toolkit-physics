@@ -80,12 +80,16 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Check if the interval is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if defined. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="51" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="36" bodyend="39"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="54" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="36" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1abd9702e2a12cb6d6e3e4f51c210d0af1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
@@ -93,12 +97,16 @@
         <argsstring>() const</argsstring>
         <name>accessStart</name>
         <briefdescription>
+<para>Access the start instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Start instant. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="53" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="41" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="59" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a1a047369c0aac66fc28e0cb09870f1d2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
@@ -106,12 +114,16 @@
         <argsstring>() const</argsstring>
         <name>accessEnd</name>
         <briefdescription>
+<para>Access the end instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>End instant. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="55" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="51" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="64" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="51" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ab3580768bc1def986b5e55659e7d6274" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -119,12 +131,16 @@
         <argsstring>() const</argsstring>
         <name>getStart</name>
         <briefdescription>
+<para>Get the start instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Start instant. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="57" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="61" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="69" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="61" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a3a1fe4fdb656d7b38ddfcefac6c620ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -132,12 +148,16 @@
         <argsstring>() const</argsstring>
         <name>getEnd</name>
         <briefdescription>
+<para>Get the end instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>End instant. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="59" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="71" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="74" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="71" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ae31a3fab2f4fa2f4881df6e62b8b3aeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -145,12 +165,16 @@
         <argsstring>() const</argsstring>
         <name>getDuration</name>
         <briefdescription>
+<para>Get the duration. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref>. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="61" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="81" bodyend="89"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="79" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="81" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ab0abf8d0aaf5bb6181ddda58de5fe9a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -158,12 +182,76 @@
         <argsstring>() const</argsstring>
         <name>getCenter</name>
         <briefdescription>
+<para>Get the center instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Center instant. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="63" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="91" bodyend="99"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="84" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="91" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a3a95d0ef94c64756a3270590d57cfe12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::time::Interval::getIntersectionWith</definition>
+        <argsstring>(const Interval &amp;anInterval) const</argsstring>
+        <name>getIntersectionWith</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+          <declname>anInterval</declname>
+        </param>
+        <briefdescription>
+<para>Get the intersection with another interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInterval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another interval. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Intersection interval (Undefined if there is no intersection). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="90" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ad7787d7934fa3f9a0a5bfec16971805a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::time::Interval::getUnionWith</definition>
+        <argsstring>(const Interval &amp;anInterval) const</argsstring>
+        <name>getUnionWith</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+          <declname>anInterval</declname>
+        </param>
+        <briefdescription>
+<para>Get the union with another interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInterval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another interval. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Union interval (Undefined if there is no single-interval union). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="96" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="106" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a23ff5318aa1847ac42dc347ef509fa5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -176,12 +264,25 @@
           <defval><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7a9234324ddf6b4176b57d803a925b7961" kindref="member">Scale::UTC</ref></defval>
         </param>
         <briefdescription>
+<para>Convert the interval to a string. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aTimeScale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> scale. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String representation of the interval. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="65" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="101" bodyend="151"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="102" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="111" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ae50bd06e26fbee080424f7d202c6cdfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt;</type>
@@ -193,12 +294,25 @@
           <declname>aTimeStep</declname>
         </param>
         <briefdescription>
+<para>Generate a grid of instants with a given time step. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aTimeStep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref> step. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Grid of instants. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="67" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="153" bodyend="219"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="108" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="163" bodyend="166"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -231,12 +345,16 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Create an undefined interval. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Undefined interval. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="69" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="221" bodyend="224"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="113" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="168" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1aa8d39973df40ac95b27cc460e86e3aa7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
@@ -257,13 +375,164 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::Closed(Instant::J2000(),<sp/>Instant::Now())<sp/>;<sp/>//<sp/>[J2000,<sp/>Now]</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Closed interval </para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLowerBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start instant. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anUpperBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End instant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Closed interval. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="79" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="226" bodyend="239"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="124" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="173" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a80b80d30899299826dcd5b674bebcfbd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::time::Interval::Open</definition>
+        <argsstring>(const Instant &amp;aLowerBound, const Instant &amp;anUpperBound)</argsstring>
+        <name>Open</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>aLowerBound</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anUpperBound</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an open interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::Open(Instant::J2000(),<sp/>Instant::Now())<sp/>;<sp/>//<sp/>(J2000,<sp/>Now)</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLowerBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start instant. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anUpperBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End instant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Open interval. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="135" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="188" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ab99a8088c54a33f5d10876e499bb482c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::time::Interval::HalfOpenLeft</definition>
+        <argsstring>(const Instant &amp;aLowerBound, const Instant &amp;anUpperBound)</argsstring>
+        <name>HalfOpenLeft</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>aLowerBound</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anUpperBound</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an half-open left interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::HalfOpenLeft(Instant::J2000(),<sp/>Instant::Now())<sp/>;<sp/>//<sp/>(J2000,</highlight></codeline>
+<codeline><highlight class="normal">Now]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLowerBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start instant. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anUpperBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End instant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Half-open left interval. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="147" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="203" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1acb2f11e8143eb995e8e07e26da390c0b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::time::Interval::HalfOpenRight</definition>
+        <argsstring>(const Instant &amp;aLowerBound, const Instant &amp;anUpperBound)</argsstring>
+        <name>HalfOpenRight</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>aLowerBound</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anUpperBound</declname>
+        </param>
+        <briefdescription>
+<para>Constructs an half-open right interval. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::HalfOpenRight(Instant::J2000(),<sp/>Instant::Now())<sp/>;<sp/>//<sp/>[J2000,</highlight></codeline>
+<codeline><highlight class="normal">Now)</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLowerBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Start instant. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anUpperBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>End instant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Half-open right interval. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="159" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="218" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1aad7763c91cd880c3a90127d1b147a0fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
@@ -283,12 +552,329 @@
           <declname>anIntervalType</declname>
         </param>
         <briefdescription>
+<para>Create a centered interval. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::Centered(Instant::J2000(),<sp/>Duration::Seconds(1.0),</highlight></codeline>
+<codeline><highlight class="normal">Interval::Type::Closed)<sp/>;<sp/>//<sp/>[1999-12-31<sp/>23:59:59.500.000.000,<sp/>2000-01-01</highlight></codeline>
+<codeline><highlight class="normal">00:00:00.500.000.000]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aCentralInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Central instant. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aDuration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> type. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Centered interval. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="81" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="241" bodyend="266"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="173" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="233" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1af212f01e45ee23fa3c6b8e0777d3bbcc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::Clip</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;anIntervalArray, const Interval &amp;anInterval)</argsstring>
+        <name>Clip</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anIntervalArray</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+          <declname>anInterval</declname>
+        </param>
+        <briefdescription>
+<para>Creates a clipped list of intervals. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>intervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2000(),<sp/>Instant::2001()),</highlight></codeline>
+<codeline><highlight class="normal">Interval::Closed(Instant::2002(),<sp/>Instant::2004())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::Closed(Instant::2001(),<sp/>Instant::2003())<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>clippedIntervals<sp/>=<sp/>Interval::Clip(intervals,<sp/>interval)<sp/>;<sp/>//<sp/>{<sp/>[2001,</highlight></codeline>
+<codeline><highlight class="normal">2001],<sp/>[2002,<sp/>2003]<sp/>}</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInterval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The clipping interval. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Clipped intervals. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="190" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="260" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ac5e2bad0c8cbe7c1b7b654ea70207d03" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::Sort</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;anIntervalArray, const bool &amp;byLowerBound=true, const bool &amp;ascending=true)</argsstring>
+        <name>Sort</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anIntervalArray</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>byLowerBound</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>ascending</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Creates a sorted list of intervals. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">byLowerBound</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Use lower bound for sorting. Defaults to True. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ascending</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sort in ascending order. Defaults to True. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sorted intervals. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="198" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="266" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a1163648c8fc10f6be7bd01af7f6f5b81" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::Merge</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;anIntervalArray)</argsstring>
+        <name>Merge</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anIntervalArray</declname>
+        </param>
+        <briefdescription>
+<para>Creates a merged list of intervals. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>intervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2000(),<sp/>Instant::2002()),</highlight></codeline>
+<codeline><highlight class="normal">Interval::Closed(Instant::2001(),<sp/>Instant::2003())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>mergedIntervals<sp/>=<sp/>Interval::Merge(intervals)<sp/>;<sp/>//<sp/>{<sp/>[2000,<sp/>2003]<sp/>}</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Merged intervals. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="212" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="273" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1abfc119cf382c49136f88deea8207e1a3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::GetGaps</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;anIntervalArray, const Interval &amp;anInterval=Interval::Undefined())</argsstring>
+        <name>GetGaps</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anIntervalArray</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+          <declname>anInterval</declname>
+          <defval><ref refid="classostk_1_1physics_1_1time_1_1_interval_1a59ab818046b079fa047a739886d72747" kindref="member">Interval::Undefined</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a list of intervals gaps. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>intervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2000(),<sp/>Instant::2001()),</highlight></codeline>
+<codeline><highlight class="normal">Interval::Closed(Instant::2002(),<sp/>Instant::2004())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::Closed(Instant::1999(),<sp/>Instant::2005())<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>gaps<sp/>=<sp/>Interval::GetGaps(intervals)<sp/>;<sp/>//<sp/>{<sp/>[2001,<sp/>2002]<sp/>}</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInterval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The analysis interval. Used to compute gaps for the first and last interval. Defaults to Undefined. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Intervals gaps. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="227" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="279" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1ae282c41dfd69717f969eb309406f1b1e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::LogicalOr</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;anIntervalArray, const Array&lt; Interval &gt; &amp;anotherIntervalArray)</argsstring>
+        <name>LogicalOr</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anIntervalArray</declname>
+        </param>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anotherIntervalArray</declname>
+        </param>
+        <briefdescription>
+<para>Creates a list of intervals by a logical-or conjunction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>intervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2000(),<sp/>Instant::2002()),</highlight></codeline>
+<codeline><highlight class="normal">Interval::Closed(Instant::2001(),<sp/>Instant::2004()),<sp/><sp/>Interval::Closed(Instant::2006(),</highlight></codeline>
+<codeline><highlight class="normal">Instant::2007())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>anotherIntervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2001(),<sp/>Instant::2003())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>logicalOrIntervals<sp/>=<sp/>Interval::LogicalOr(intervals,<sp/>anotherIntervals)<sp/>;<sp/>//</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>[2000,<sp/>2004],<sp/>[2006,<sp/>2007]<sp/>}</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anotherIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Logical-or intervals. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="245" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="285" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a6c0b4dfc9768154373fc3e87aa8caef6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::LogicalAnd</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;anIntervalArray, const Array&lt; Interval &gt; &amp;anotherIntervalArray)</argsstring>
+        <name>LogicalAnd</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anIntervalArray</declname>
+        </param>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>anotherIntervalArray</declname>
+        </param>
+        <briefdescription>
+<para>Creates a list of intervals by a logical-and conjunction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>intervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2000(),<sp/>Instant::2002()),</highlight></codeline>
+<codeline><highlight class="normal">Interval::Closed(Instant::2001(),<sp/>Instant::2004()),<sp/><sp/>Interval::Closed(Instant::2006(),</highlight></codeline>
+<codeline><highlight class="normal">Instant::2007())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>anotherIntervals<sp/>=<sp/>{<sp/>Interval::Closed(Instant::2001(),<sp/>Instant::2003())<sp/>}<sp/>;</highlight></codeline>
+<codeline><highlight class="normal">Array&lt;Interval&gt;<sp/>logicalAndIntervals<sp/>=<sp/>Interval::LogicalAnd(intervals,<sp/>anotherIntervals)<sp/>;<sp/>//</highlight></codeline>
+<codeline><highlight class="normal">{<sp/>[2001,<sp/>2002],<sp/>[2001,<sp/>2003]<sp/>}</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anotherIntervalArray</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Another list of intervals. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Logical-and intervals. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="263" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="293" bodyend="301"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a7905daf5c50e500e5450d56040dc57f4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
@@ -300,27 +886,97 @@
           <declname>aString</declname>
         </param>
         <briefdescription>
-<para>Constructs an interval from a string representation. </para>
+<para>Parse an interval from a string representation. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">...</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>Interval::Parse(&quot;[2000-01-01<sp/>12:00:00,<sp/>2000-01-01<sp/>12:00:01]&quot;)<sp/>;</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aString</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A string </para>
+<para>String representation. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> </para>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref>. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="94" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="268" bodyend="332"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="276" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="303" bodyend="367"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1abf60ba350cd0d011d6fd0070f58f2a86" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>mathematics::object::Interval&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt;</type>
+        <definition>mathematics::object::Interval&lt; Instant &gt; ostk::physics::time::Interval::ToBase</definition>
+        <argsstring>(const Interval &amp;derived)</argsstring>
+        <name>ToBase</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
+          <declname>derived</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="279" column="42" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="369" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a072210ddd562d50f2378647904552bfa" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::time::Interval::FromBase</definition>
+        <argsstring>(const mathematics::object::Interval&lt; Instant &gt; &amp;base)</argsstring>
+        <name>FromBase</name>
+        <param>
+          <type>const mathematics::object::Interval&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt; &amp;</type>
+          <declname>base</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="280" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="374" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a3260b3f6a40ea5f4c2d0cbabf4b3360d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; mathematics::object::Interval&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt; &gt;</type>
+        <definition>Array&lt; mathematics::object::Interval&lt; Instant &gt; &gt; ostk::physics::time::Interval::ToBaseArray</definition>
+        <argsstring>(const Array&lt; Interval &gt; &amp;derivedArray)</argsstring>
+        <name>ToBaseArray</name>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+          <declname>derivedArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="281" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="379" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_interval_1a9ba4565bfea76adf5be93278b084b96b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>Array&lt; Interval &gt; ostk::physics::time::Interval::FromBaseArray</definition>
+        <argsstring>(const Array&lt; mathematics::object::Interval&lt; Instant &gt;&gt; &amp;baseArray)</argsstring>
+        <name>FromBaseArray</name>
+        <param>
+          <type>const Array&lt; mathematics::object::Interval&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt;&gt; &amp;</type>
+          <declname>baseArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="282" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="384" bodyend="387"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -350,21 +1006,36 @@
         <label>mathematics::object::Interval&lt; Instant &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" bodystart="32" bodyend="95"/>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Interval.hpp" bodystart="32" bodyend="283"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a1a047369c0aac66fc28e0cb09870f1d2" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>accessEnd</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1abd9702e2a12cb6d6e3e4f51c210d0af1" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>accessStart</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1aad7763c91cd880c3a90127d1b147a0fa" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Centered</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1af212f01e45ee23fa3c6b8e0777d3bbcc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Clip</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1aa8d39973df40ac95b27cc460e86e3aa7" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Closed</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a072210ddd562d50f2378647904552bfa" prot="private" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>FromBase</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a9ba4565bfea76adf5be93278b084b96b" prot="private" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>FromBaseArray</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1ae50bd06e26fbee080424f7d202c6cdfc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>generateGrid</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1ab0abf8d0aaf5bb6181ddda58de5fe9a2" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>getCenter</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1ae31a3fab2f4fa2f4881df6e62b8b3aeb" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>getDuration</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a3a1fe4fdb656d7b38ddfcefac6c620ab" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>getEnd</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1abfc119cf382c49136f88deea8207e1a3" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>GetGaps</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a3a95d0ef94c64756a3270590d57cfe12" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>getIntersectionWith</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1ab3580768bc1def986b5e55659e7d6274" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>getStart</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1ad7787d7934fa3f9a0a5bfec16971805a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>getUnionWith</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1ab99a8088c54a33f5d10876e499bb482c" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>HalfOpenLeft</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1acb2f11e8143eb995e8e07e26da390c0b" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>HalfOpenRight</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a62d60b1eb3c7c782d7c45e8b9c153b34" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Interval</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1aa0ed88bea385d6afddaecc3423dd87d1" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a6c0b4dfc9768154373fc3e87aa8caef6" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>LogicalAnd</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1ae282c41dfd69717f969eb309406f1b1e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>LogicalOr</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a1163648c8fc10f6be7bd01af7f6f5b81" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Merge</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a80b80d30899299826dcd5b674bebcfbd" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Open</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a4671ce6746f99155561a1bdfade9749a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a7905daf5c50e500e5450d56040dc57f4" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Parse</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1ac5e2bad0c8cbe7c1b7b654ea70207d03" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Sort</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1abf60ba350cd0d011d6fd0070f58f2a86" prot="private" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>ToBase</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_interval_1a3260b3f6a40ea5f4c2d0cbabf4b3360d" prot="private" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>ToBaseArray</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a23ff5318aa1847ac42dc347ef509fa5a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>toString</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1aa170710f2be4e2c2af6fdee5b6d8def3" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Type</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_interval_1a59ab818046b079fa047a739886d72747" prot="public" virt="non-virtual"><scope>ostk::physics::time::Interval</scope><name>Undefined</name></member>

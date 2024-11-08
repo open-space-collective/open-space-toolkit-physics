@@ -13,6 +13,7 @@
     <includes refid="_frame_8hpp" local="no">OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</includes>
     <includes refid="_transform_8hpp" local="no">OpenSpaceToolkit/Physics/Coordinate/Transform.hpp</includes>
     <includes refid="_data_2_manager_8hpp" local="no">OpenSpaceToolkit/Physics/Data/Manager.hpp</includes>
+    <includes refid="_manager_8hpp" local="no">OpenSpaceToolkit/Physics/Manager.hpp</includes>
     <includes refid="_s_p_i_c_e_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp</includes>
     <includes refid="_kernel_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</includes>
     <includes refid="_instant_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Instant.hpp</includes>
@@ -39,7 +40,7 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="49">
         <label>OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp</label>
         <link refid="_ephemeris_8hpp"/>
         <childnode refid="7" relation="include">
@@ -50,6 +51,9 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+      </node>
+      <node id="47">
+        <label>filesystem</label>
       </node>
       <node id="45">
         <label>OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</label>
@@ -174,6 +178,8 @@
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -319,6 +325,22 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="46">
+        <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
       <node id="39">
         <label>OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp</label>
         <link refid="_electric_current_8hpp"/>
@@ -422,7 +444,7 @@
         <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="48">
         <label>OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp</label>
         <link refid="_s_p_i_c_e_8hpp"/>
         <childnode refid="7" relation="include">
@@ -431,7 +453,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -456,6 +478,8 @@
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -511,7 +535,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="24" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="24" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="25" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -537,89 +561,70 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_frame_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_transform_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Coordinate/Transform.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_data_2_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Data/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_s_p_i_c_e_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_kernel_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp_1ae00890be718b8db72efc052a69906b2b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY<sp/>\</highlight></codeline>
-<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;./.open-space-toolkit/physics/data/environment/ephemeris/spice&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
-<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">environment</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">ephemeris</highlight></codeline>
-<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">spice</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::File;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Shared;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">ostk::physics::environment::ephemeris::spice::Kernel</ref>;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a3c82049b861fc8226b006e78cf89b514" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ManifestManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref>;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref></highlight></codeline>
-<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/>aSpiceManager)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_s_p_i_c_e_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_kernel_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8hpp_1ae00890be718b8db72efc052a69906b2b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY<sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;./.open-space-toolkit/physics/data/environment/ephemeris/spice&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">environment</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">ephemeris</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">spice</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::File;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Shared;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">ostk::physics::environment::ephemeris::spice::Kernel</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a3c82049b861fc8226b006e78cf89b514" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ManifestManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref>;</highlight></codeline>
+<codeline lineno="52" refid="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a71318e4bc78a172e3a5f44ec8cae8354" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1af754bb82a9a83b08ff6460b5b283378b" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/>aSpiceManager)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a92233c4750cb5414bf60874b08436ba8" kindref="member">fetchKernel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref>&amp;<sp/>aKernel)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" kindref="member">Get</ref>();</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a38d855c72dfd51a7288ce8f0a26f5a00" kindref="member">getLocalRepository</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a58baf7448d1988698d56c09c54de595c" kindref="member">setLocalRepository</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDirectory);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a97f9b88e6e8f3574a8b34e83a0cb2061" kindref="member">DefaultLocalRepository</ref>();</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a92233c4750cb5414bf60874b08436ba8" kindref="member">fetchKernel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref>&amp;<sp/>aKernel)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;Kernel&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" kindref="member">fetchMatchingKernels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aRegexString)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" kindref="member">findKernel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aRegexString)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" kindref="member">refresh</ref>();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" kindref="member">Get</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>spice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ephemeris</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;Kernel&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" kindref="member">fetchMatchingKernels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aRegexString)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" kindref="member">findKernel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aRegexString)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" kindref="member">refresh</ref>();</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/>localRepository_;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/>std::mutex<sp/>mutex_;</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager" kindref="compound">Manager</ref>();</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup();</highlight></codeline>
-<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>spice</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ephemeris</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp"/>
   </compounddef>

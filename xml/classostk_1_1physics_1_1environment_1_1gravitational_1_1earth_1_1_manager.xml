@@ -2,172 +2,9 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kind="class" language="C++" prot="public">
     <compoundname>ostk::physics::environment::gravitational::earth::Manager</compoundname>
+    <basecompoundref refid="classostk_1_1physics_1_1_manager" prot="public" virt="non-virtual">ostk::physics::Manager</basecompoundref>
     <includes refid="_environment_2_gravitational_2_earth_2_manager_8hpp" local="no">Manager.hpp</includes>
-      <sectiondef kind="public-type">
-      <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" prot="public" static="no" strong="yes">
-        <type></type>
-        <name>Mode</name>
-        <enumvalue id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbbae1ba155a9f2e8c3be94020eef32a0301" prot="public">
-          <name>Manual</name>
-          <briefdescription>
-<para>Manually load and unload gravity files. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbba086247a9b57fde6eefee2a0c4752242d" prot="public">
-          <name>Automatic</name>
-          <briefdescription>
-<para>Automatically fetch gravity files from remote repositories. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="63" bodyend="69"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a49f8cac4e9fc8581f6c50b0514c1ce9f" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref></type>
-        <definition>Manager::Mode ostk::physics::environment::gravitational::earth::Manager::mode_</definition>
-        <argsstring></argsstring>
-        <name>mode_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="161" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="161" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a97e0d56965792aee7ee7ce0218febd56" prot="private" static="no" mutable="no">
-        <type>Directory</type>
-        <definition>Directory ostk::physics::environment::gravitational::earth::Manager::localRepository_</definition>
-        <argsstring></argsstring>
-        <name>localRepository_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="163" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="163" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1af595d2a1242c957a58b3ae28dc8fca7e" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
-        <definition>Duration ostk::physics::environment::gravitational::earth::Manager::localRepositoryLockTimeout_</definition>
-        <argsstring></argsstring>
-        <name>localRepositoryLockTimeout_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="164" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="164" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5684b47bd8f3fa13a4372f9be535e7b1" prot="private" static="no" mutable="yes">
-        <type>std::mutex</type>
-        <definition>std::mutex ostk::physics::environment::gravitational::earth::Manager::mutex_</definition>
-        <argsstring></argsstring>
-        <name>mutex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="166" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="166" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa4d100f163a5efca86fb560989b98349" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref></type>
-        <definition>Manager::Mode ostk::physics::environment::gravitational::earth::Manager::getMode</definition>
-        <argsstring>() const</argsstring>
-        <name>getMode</name>
-        <briefdescription>
-<para>Get manager mode. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref> mode </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="75" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="34" bodyend="39"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1acee5e4e119cfef63bcbfca3178e5be7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::gravitational::earth::Manager::setMode</definition>
-        <argsstring>(const Manager::Mode &amp;aMode)</argsstring>
-        <name>setMode</name>
-        <param>
-          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref> &amp;</type>
-          <declname>aMode</declname>
-        </param>
-        <briefdescription>
-<para>Set manager mode. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">aMode</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A manager mode </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="81" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="208" bodyend="213"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac8ea6e08db0342132a14d071bd3f0107" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>ostk::physics::environment::gravitational::earth::Manager::Manager</definition>
-        <argsstring>(const Manager &amp;aManager)=delete</argsstring>
-        <name>Manager</name>
-        <param>
-          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
-          <declname>aManager</declname>
-        </param>
-        <briefdescription>
-<para>Copy constructor (deleted) </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="93" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa95b426416d708cf4f769697d02d7d7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
-        <definition>Manager&amp; ostk::physics::environment::gravitational::earth::Manager::operator=</definition>
-        <argsstring>(const Manager &amp;aManager)=delete</argsstring>
-        <name>operator=</name>
-        <param>
-          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
-          <declname>aManager</declname>
-        </param>
-        <briefdescription>
-<para>Copy assignment operator (deleted) </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="97" column="13"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adaee07fd7256d2c28be24403c4287d84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool ostk::physics::environment::gravitational::earth::Manager::hasDataFilesForType</definition>
@@ -196,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="104" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="41" bodyend="51"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="34" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5858796db9f601ec05e42e2e91508df7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; File &gt;</type>
@@ -226,40 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="111" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="53" bodyend="63"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aec5c97d1dc02e1f019c3a77f827d7da7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Directory</type>
-        <definition>Directory ostk::physics::environment::gravitational::earth::Manager::getLocalRepository</definition>
-        <argsstring>() const</argsstring>
-        <name>getLocalRepository</name>
-        <briefdescription>
-<para>Get local repository. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>Local repository </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="117" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="65" bodyend="70"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1afad3d8756063287d421596a9dc0c2c55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::gravitational::earth::Manager::reset</definition>
-        <argsstring>()</argsstring>
-        <name>reset</name>
-        <briefdescription>
-<para>Reset the manager. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><verbatim>                    Reset path and mode to default values. 
-</verbatim> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="123" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="104" bodyend="111"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="72" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="46" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac52e42436593b14c37f92c453bd2af54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -287,57 +91,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="129" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="113" bodyend="206"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aaca1ee2d3cd65105ba5fb4bfb2987589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::gravitational::earth::Manager::setLocalRepository</definition>
-        <argsstring>(const Directory &amp;aDirectory)</argsstring>
-        <name>setLocalRepository</name>
-        <param>
-          <type>const Directory &amp;</type>
-          <declname>aDirectory</declname>
-        </param>
-        <briefdescription>
-<para>Set local repository. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">aDirectory</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A repository directory </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="135" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="72" bodyend="84"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="78" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="58" bodyend="151"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a47983a5721337035b21affcb28c0b108" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" kindref="member">Manager::Mode</ref></type>
-        <definition>Manager::Mode ostk::physics::environment::gravitational::earth::Manager::DefaultMode</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultMode</name>
-        <briefdescription>
-<para>Get default manager mode. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><verbatim>                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE
-</verbatim></para>
-<para><simplesect kind="return"><para>Default manager mode </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="89" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="292" bodyend="313"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8665dccf68085ce30fb0afcd8d6c71a3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
         <definition>Manager &amp; ostk::physics::environment::gravitational::earth::Manager::Get</definition>
@@ -353,46 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="141" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="285" bodyend="290"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1affbe1673e70ab9ad31e22982483f2fce" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Directory</type>
-        <definition>Directory ostk::physics::environment::gravitational::earth::Manager::DefaultLocalRepository</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultLocalRepository</name>
-        <briefdescription>
-<para>Get default local repository. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><verbatim>                    Overriden by: OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY
-</verbatim></para>
-<para><simplesect kind="return"><para>Default local repository </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="149" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="86" bodyend="102"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4f249b84c19b80b918866e61490f856c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
-        <definition>Duration ostk::physics::environment::gravitational::earth::Manager::DefaultLocalRepositoryLockTimeout</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultLocalRepositoryLockTimeout</name>
-        <briefdescription>
-<para>Get default local repository lock timeout. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><verbatim>                    Overriden by:
-                    OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT
-</verbatim></para>
-<para><simplesect kind="return"><para>Default local repository lock timeout </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="158" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="315" bodyend="327"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="84" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="153" bodyend="158"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -407,13 +125,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="168" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="329" bodyend="335"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="87" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="160" bodyend="169"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5564a80ec2630b94d86d01991996ed7f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a89bc29551f91e63439ff988eeb4dcb13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
-        <definition>Array&lt; URL &gt; ostk::physics::environment::gravitational::earth::Manager::getDataFileUrlsForType</definition>
+        <definition>Array&lt; URL &gt; ostk::physics::environment::gravitational::earth::Manager::getDataFileUrlsForType_</definition>
         <argsstring>(const EarthGravitationalModel::Type &amp;aModelType) const</argsstring>
-        <name>getDataFileUrlsForType</name>
+        <name>getDataFileUrlsForType_</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref> &amp;</type>
           <declname>aModelType</declname>
@@ -424,84 +142,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="170" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="337" bodyend="349"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adf45be94698c83de8c88e8bf5d5fe030" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::environment::gravitational::earth::Manager::isLocalRepositoryLocked</definition>
-        <argsstring>() const</argsstring>
-        <name>isLocalRepositoryLocked</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="174" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="215" bodyend="218"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa1c0d95d80dd9370c45d8cb052fa9504" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>File</type>
-        <definition>File ostk::physics::environment::gravitational::earth::Manager::getLocalRepositoryLockFile</definition>
-        <argsstring>() const</argsstring>
-        <name>getLocalRepositoryLockFile</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="176" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="220" bodyend="223"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ad6eb240d2d1b1126d2f73f7caae775b0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::gravitational::earth::Manager::setup</definition>
-        <argsstring>()</argsstring>
-        <name>setup</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="178" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="225" bodyend="231"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a96594cba87ec7308c2b341f38d07266e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::gravitational::earth::Manager::lockLocalRepository</definition>
-        <argsstring>(const Duration &amp;aTimeout)</argsstring>
-        <name>lockLocalRepository</name>
-        <param>
-          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
-          <declname>aTimeout</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="233" bodyend="271"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac212508e39e11133443db5cd669486d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::gravitational::earth::Manager::unlockLocalRepository</definition>
-        <argsstring>()</argsstring>
-        <name>unlockLocalRepository</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="182" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="273" bodyend="283"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="89" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="171" bodyend="183"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8d4aa3029fbb0a3e4b6c036361a51aa1" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a536e4814746d1c8442faa6e5e1ea651e" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
-        <definition>String ostk::physics::environment::gravitational::earth::Manager::DataFileNameFromType</definition>
+        <definition>String ostk::physics::environment::gravitational::earth::Manager::DataFileNameFromType_</definition>
         <argsstring>(const EarthGravitationalModel::Type &amp;aModelType)</argsstring>
-        <name>DataFileNameFromType</name>
+        <name>DataFileNameFromType_</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">EarthGravitationalModel::Type</ref> &amp;</type>
           <declname>aModelType</declname>
@@ -512,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="172" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="351" bodyend="373"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="91" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="185" bodyend="207"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -529,35 +178,104 @@
                         &quot;DefaultLocalRepository&quot; 
 </verbatim> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="61" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="60" bodyend="183"/>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseManager</label>
+        <link refid="classostk_1_1physics_1_1_manager"/>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::gravitational::earth::Manager</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseManager</label>
+        <link refid="classostk_1_1physics_1_1_manager"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>localRepositoryPath_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mutex_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>managerModeEnvironmentVariableName_</edgelabel>
+          <edgelabel>localRepositoryLockTimeoutEnvironmentVariableName_</edgelabel>
+          <edgelabel>localRepositoryEnvironmentVariableName_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>defaultLocalRepositoryDirectory_</edgelabel>
+          <edgelabel>localRepository_</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>localRepositoryLockTimeout_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>String</label>
+      </node>
+      <node id="3">
+        <label>Path</label>
+      </node>
+      <node id="7">
+        <label>ostk::physics::time::Duration</label>
+        <link refid="classostk_1_1physics_1_1time_1_1_duration"/>
+      </node>
+      <node id="4">
+        <label>std::mutex</label>
+      </node>
+      <node id="1">
+        <label>ostk::physics::environment::gravitational::earth::Manager</label>
+        <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Directory</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="58" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="57" bodyend="92"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8d4aa3029fbb0a3e4b6c036361a51aa1" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DataFileNameFromType</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1affbe1673e70ab9ad31e22982483f2fce" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DefaultLocalRepository</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4f249b84c19b80b918866e61490f856c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DefaultLocalRepositoryLockTimeout</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a47983a5721337035b21affcb28c0b108" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DefaultMode</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>clearLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a536e4814746d1c8442faa6e5e1ea651e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DataFileNameFromType_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1ae19fdd045a4f38eb4642ff7d31791604" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DefaultLocalRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1ae9329eabf4e2e9ec43cad76fe5babc62" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>defaultLocalRepositoryDirectory_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a089690a144ffcc2bcfc5989ef028fe17" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DefaultLocalRepositoryLockTimeout_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a777da8855f64d5f1ae27329240fcc7cf" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DefaultMode_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac52e42436593b14c37f92c453bd2af54" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>fetchDataFilesForType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a8665dccf68085ce30fb0afcd8d6c71a3" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Get</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5564a80ec2630b94d86d01991996ed7f" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getDataFileUrlsForType</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aec5c97d1dc02e1f019c3a77f827d7da7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getLocalRepository</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa1c0d95d80dd9370c45d8cb052fa9504" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getLocalRepositoryLockFile</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa4d100f163a5efca86fb560989b98349" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getMode</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a89bc29551f91e63439ff988eeb4dcb13" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getDataFileUrlsForType_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a749a7ddaac37a145de0644de53cfefad" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getLocalRepositoryLockFile_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a0469c4ea61710d505b78113ea75f2f12" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getLocalRepositoryLockTimeout</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1ae6316f9bcc2669a1ee1e305bfd8b298d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>getMode</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adaee07fd7256d2c28be24403c4287d84" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>hasDataFilesForType</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1adf45be94698c83de8c88e8bf5d5fe030" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>isLocalRepositoryLocked</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a292574e204c1d15cded3308390448ecd" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>isLocalRepositoryLocked_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5858796db9f601ec05e42e2e91508df7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localDataFilesForType</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a97e0d56965792aee7ee7ce0218febd56" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepository_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1af595d2a1242c957a58b3ae28dc8fca7e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepositoryLockTimeout_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a96594cba87ec7308c2b341f38d07266e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>lockLocalRepository</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac8ea6e08db0342132a14d071bd3f0107" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a3e88d490a547191aef7233aa88dda5b5" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepositoryEnvironmentVariableName_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepositoryLockTimeout_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1abbc22afc61d4e808aa3ddc1eed07ca01" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepositoryLockTimeoutEnvironmentVariableName_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a9ebdbad49af6c361d075468bf44599e7" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>localRepositoryPath_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a22d38ed9801bbc20ebedef0529567664" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>lockLocalRepository_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a6639606603342acc514fe9020809d5f6" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Manager</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a4144ef3897b43a0ce1710fed7b63afbb" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Mode</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a49f8cac4e9fc8581f6c50b0514c1ce9f" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>mode_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5684b47bd8f3fa13a4372f9be535e7b1" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>mutex_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aa95b426416d708cf4f769697d02d7d7d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>operator=</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1afad3d8756063287d421596a9dc0c2c55" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>reset</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1aaca1ee2d3cd65105ba5fb4bfb2987589" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>setLocalRepository</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1acee5e4e119cfef63bcbfca3178e5be7a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>setMode</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ad6eb240d2d1b1126d2f73f7caae775b0" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>setup</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac212508e39e11133443db5cd669486d3" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>unlockLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::Manager::"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1aeb97e2e4851b4d4d423a6cf7bc68ab3f" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::Manager::"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a7bba4a85f2b2c9cca1a73a2bd14f6145" prot="protected" virt="non-virtual" ambiguityscope="ostk::physics::Manager::"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Manager</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1afa47d75b3b27b94fc78ce3c63819eab0" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>managerModeEnvironmentVariableName_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>Mode</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>mode_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>mutex_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1ada7527cacea9ba3511b17fce95dd0834" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a6c4b4e0304dc55e101034f9a7830091a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>operator=</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>reset</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1ac5a18a4272b5d26ff78e32cba7c08baf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>setLocalRepository</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1aec2b97acf4a1d22b95b5a978a52c4356" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>setMode</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189" prot="protected" virt="virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>setup_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>unlockLocalRepository_</name></member>
+      <member refid="classostk_1_1physics_1_1_manager_1abb4f82babc71b354d5babe2a734097b0" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>~Manager</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

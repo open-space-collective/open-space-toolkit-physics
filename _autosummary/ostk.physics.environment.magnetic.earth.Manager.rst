@@ -16,12 +16,11 @@ ostk.physics.environment.magnetic.earth.Manager
    .. autosummary::
       :nosignatures:
    
-      ~Manager.default_local_repository
-      ~Manager.default_local_repository_lock_timeout
-      ~Manager.default_mode
+      ~Manager.clear_local_repository
       ~Manager.fetch_data_files_for_type
       ~Manager.get
       ~Manager.get_local_repository
+      ~Manager.get_local_repository_lock_timeout
       ~Manager.get_mode
       ~Manager.has_data_files_for_type
       ~Manager.local_data_files_for_type

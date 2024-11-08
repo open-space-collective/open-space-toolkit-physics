@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="45" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="35"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="45" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="37"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="51" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="37" bodyend="40"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="51" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1ae48a7367e7c0af23b626726a60b9ba03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="57" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="42" bodyend="45"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="57" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="64" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="47" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="64" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="49" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1ad0cb18f62d58be9e11b3b03947dd85a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="71" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="54" bodyend="60"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="71" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="56" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="79" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="62" bodyend="85"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="79" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="64" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="87" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="87" bodyend="117"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="87" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="89" bodyend="119"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="93" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="119" bodyend="122"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="93" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="121" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a478db942042993efd3dccbb36fd811a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref></type>
@@ -301,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="100" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="124" bodyend="137"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="100" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="126" bodyend="139"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="106" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="139" bodyend="143"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="106" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="141" bodyend="145"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -9,6 +9,21 @@
     <innerclass refid="classostk_1_1physics_1_1data_1_1_vector" prot="public">ostk::physics::data::Vector</innerclass>
     <innernamespace refid="namespaceostk_1_1physics_1_1data_1_1provider">ostk::physics::data::provider</innernamespace>
     <innernamespace refid="namespaceostk_1_1physics_1_1data_1_1utilities">ostk::physics::data::utilities</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1data_1a72bb86bc8df8938c96720477e82b012b" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref></type>
+        <definition>using ostk::physics::data::BaseManager = typedef ostk::physics::Manager</definition>
+        <argsstring></argsstring>
+        <name>BaseManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="var">
       <memberdef kind="variable" id="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -22,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="41" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="41" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="38" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceostk_1_1physics_1_1data_1a65d22827513124fc4e2dd80f5e30beea" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -36,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="43" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="43" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="40" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -100,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" line="26" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="35"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" line="26" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1a702ce7315b53edd862a42b5f2c980e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>

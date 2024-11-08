@@ -17,9 +17,6 @@ ostk.physics.environment.atmospheric.earth.Manager
       :nosignatures:
    
       ~Manager.clear_local_repository
-      ~Manager.default_local_repository
-      ~Manager.default_local_repository_lock_timeout
-      ~Manager.default_mode
       ~Manager.fetch_latest_cssi_space_weather
       ~Manager.get
       ~Manager.get_ap_3_hour_solar_indices_at
@@ -31,6 +28,7 @@ ostk.physics.environment.atmospheric.earth.Manager
       ~Manager.get_kp_3_hour_solar_indices_at
       ~Manager.get_loaded_cssi_space_weather
       ~Manager.get_local_repository
+      ~Manager.get_local_repository_lock_timeout
       ~Manager.get_mode
       ~Manager.load_cssi_space_weather
       ~Manager.reset

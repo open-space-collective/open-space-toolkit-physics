@@ -191,7 +191,7 @@
 <codeline><highlight class="normal">COPY<sp/>--from=build-env<sp/>--chown=${USER_UID}:${USER_GID}<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
 </programlisting></para>
 <para>The following table shows the availabe data source settings with the different environment variables you can set:</para>
-<para><table rows="19" cols="2"><row>
+<para><table rows="21" cols="2"><row>
 <entry thead="yes"><para>Environment Variable </para>
 </entry><entry thead="yes"><para>Default Value  </para>
 </entry></row>
@@ -218,6 +218,10 @@
 <row>
 <entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY</computeroutput> </para>
 </entry><entry thead="no"><para><computeroutput>./.open-space-toolkit/physics/data/environment/ephemeris/spice</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
 </entry></row>
 <row>
 <entry thead="no"><para><computeroutput>OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE</computeroutput> </para>
@@ -258,6 +262,10 @@
 <row>
 <entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_REMOTE_URL</computeroutput> </para>
 </entry><entry thead="no"><para><computeroutput><ulink url="https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/">https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/</ulink></computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_MANIFEST_MANAGER_MODE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>Automatic</computeroutput>  </para>
 </entry></row>
 <row>
 <entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY</computeroutput> </para>

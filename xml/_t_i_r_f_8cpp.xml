@@ -20,13 +20,16 @@
       <node id="4">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp</label>
       </node>
-      <node id="30">
+      <node id="32">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp</label>
         <link refid="_provider_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+      </node>
+      <node id="30">
+        <label>filesystem</label>
       </node>
       <node id="28">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp</label>
@@ -71,12 +74,14 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="34">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</label>
       </node>
       <node id="25">
@@ -85,14 +90,14 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="33">
         <label>OpenSpaceToolkit/Physics/Coordinate/Transform.hpp</label>
         <link refid="_transform_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -110,13 +115,13 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -214,12 +219,12 @@
       <node id="3">
         <label>OpenSpaceToolkit/Core/Utility.hpp</label>
       </node>
-      <node id="29">
+      <node id="31">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp</label>
         <link refid="_t_i_r_f_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -250,7 +255,7 @@
       <node id="21">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
-      <node id="33">
+      <node id="35">
         <label>sofa/sofa.h</label>
       </node>
       <node id="2">
@@ -268,6 +273,22 @@
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -379,8 +400,8 @@
 <codeline lineno="46"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!anInstant.isDefined())</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>

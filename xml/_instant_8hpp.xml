@@ -59,11 +59,13 @@
     <includedby refid="_geometry_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</includedby>
     <includedby refid="_object_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object.hpp</includedby>
     <includedby refid="_environment_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment.hpp</includedby>
+    <includedby refid="_manager_8hpp" local="no">include/OpenSpaceToolkit/Physics/Manager.hpp</includedby>
     <includedby refid="_interval_8hpp" local="no">include/OpenSpaceToolkit/Physics/Time/Interval.hpp</includedby>
     <includedby refid="_time_8hpp" local="no">include/OpenSpaceToolkit/Physics/Time.hpp</includedby>
     <includedby refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp</includedby>
     <includedby refid="_data_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Manager.cpp</includedby>
     <includedby refid="_environment_2_atmospheric_2_earth_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp</includedby>
+    <includedby refid="_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Manager.cpp</includedby>
     <includedby refid="_duration_8cpp" local="no">src/OpenSpaceToolkit/Physics/Time/Duration.cpp</includedby>
     <includedby refid="_instant_8cpp" local="no">src/OpenSpaceToolkit/Physics/Time/Instant.cpp</includedby>
     <incdepgraph>
@@ -417,6 +419,10 @@
         <childnode refid="47" relation="include">
         </childnode>
       </node>
+      <node id="125">
+        <label>src/OpenSpaceToolkit/Physics/Manager.cpp</label>
+        <link refid="_manager_8cpp"/>
+      </node>
       <node id="65">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</label>
         <link refid="_t_i_r_f_8cpp"/>
@@ -449,7 +455,7 @@
         <childnode refid="119" relation="include">
         </childnode>
       </node>
-      <node id="124">
+      <node id="126">
         <label>include/OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
         <link refid="_interval_8hpp"/>
         <childnode refid="60" relation="include">
@@ -464,9 +470,9 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="125" relation="include">
+        <childnode refid="127" relation="include">
         </childnode>
-        <childnode refid="126" relation="include">
+        <childnode refid="128" relation="include">
         </childnode>
       </node>
       <node id="45">
@@ -581,7 +587,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
       </node>
-      <node id="125">
+      <node id="127">
         <label>include/OpenSpaceToolkit/Physics/Time.hpp</label>
         <link refid="_time_8hpp"/>
       </node>
@@ -712,7 +718,9 @@
         </childnode>
         <childnode refid="124" relation="include">
         </childnode>
-        <childnode refid="125" relation="include">
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
@@ -720,9 +728,11 @@
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
-        <childnode refid="128" relation="include">
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
         </childnode>
       </node>
       <node id="58">
@@ -903,7 +913,7 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="128">
+      <node id="130">
         <label>src/OpenSpaceToolkit/Physics/Time/Instant.cpp</label>
         <link refid="_instant_8cpp"/>
       </node>
@@ -951,6 +961,24 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp</label>
         <link refid="_environment_2_magnetic_2_earth_2_manager_8cpp"/>
       </node>
+      <node id="124">
+        <label>include/OpenSpaceToolkit/Physics/Manager.hpp</label>
+        <link refid="_manager_8hpp"/>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+      </node>
       <node id="122">
         <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp</label>
         <link refid="_magnetic_2_model_8hpp"/>
@@ -963,7 +991,7 @@
         <childnode refid="123" relation="include">
         </childnode>
       </node>
-      <node id="126">
+      <node id="128">
         <label>src/OpenSpaceToolkit/Physics/Time/Interval.cpp</label>
         <link refid="_interval_8cpp"/>
       </node>
@@ -1017,7 +1045,7 @@
         <childnode refid="88" relation="include">
         </childnode>
       </node>
-      <node id="127">
+      <node id="129">
         <label>src/OpenSpaceToolkit/Physics/Time/Duration.cpp</label>
         <link refid="_duration_8cpp"/>
       </node>
@@ -1349,11 +1377,11 @@
 <codeline lineno="20"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Int64;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Uint64;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Uint64;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29" refid="_instant_8hpp_1a83fe97f5695ec6cbf25b55bb0cf31a6e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_TIME_SCALE<sp/>Scale::UTC</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30" refid="_instant_8hpp_1a29e15915855da5a5ac528ed12373dda4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_DATE_TIME_FORMAT<sp/>DateTime::Format::Standard</highlight><highlight class="normal"></highlight></codeline>

@@ -15,7 +15,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="46" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="43" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1a7a983c4eb2d27d709fd6df96ea41324d" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref></type>
+        <definition>using ostk::physics::environment::magnetic::earth::BaseManager = typedef ostk::physics::Manager</definition>
+        <argsstring></argsstring>
+        <name>BaseManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="44" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1a952db0fe1db1d1c4608b3172fc2326b4" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
@@ -35,6 +48,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="35" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="32" column="1"/>
   </compounddef>
 </doxygen>

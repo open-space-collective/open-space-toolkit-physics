@@ -15,7 +15,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="47" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="43" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a9fecbf1f817505812085c1a15a2e9b4c" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref></type>
+        <definition>using ostk::physics::environment::gravitational::earth::BaseManager = typedef ostk::physics::Manager</definition>
+        <argsstring></argsstring>
+        <name>BaseManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="44" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1a2e13b2276c83c5afaef4e9f94beb34af" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
@@ -35,6 +48,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="36" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="32" column="1"/>
   </compounddef>
 </doxygen>

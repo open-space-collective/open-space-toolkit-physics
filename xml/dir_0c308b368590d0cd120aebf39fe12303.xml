@@ -8,6 +8,7 @@
     <innerdir refid="dir_bd5c028933fd8d333588baa1e2691ef2">src/OpenSpaceToolkit/Physics/Time</innerdir>
     <innerdir refid="dir_9989b21731d259df213b08bc83e254f5">src/OpenSpaceToolkit/Physics/Unit</innerdir>
     <innerfile refid="_environment_8cpp">Environment.cpp</innerfile>
+    <innerfile refid="_manager_8cpp">Manager.cpp</innerfile>
     <innerfile refid="_unit_8cpp">Unit.cpp</innerfile>
     <briefdescription>
     </briefdescription>

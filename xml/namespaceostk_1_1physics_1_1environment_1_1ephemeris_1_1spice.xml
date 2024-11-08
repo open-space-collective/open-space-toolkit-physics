@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="39" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a3c82049b861fc8226b006e78cf89b514" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
@@ -30,23 +30,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="50" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="50" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1aa176042525bc35250455155e24effb7f" prot="public" static="no" mutable="no">
-        <type>const String</type>
-        <definition>const String ostk::physics::environment::ephemeris::spice::temporaryDirectoryName</definition>
+      <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a71318e4bc78a172e3a5f44ec8cae8354" prot="public" static="no">
+        <type><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref></type>
+        <definition>using ostk::physics::environment::ephemeris::spice::BaseManager = typedef ostk::physics::Manager</definition>
         <argsstring></argsstring>
-        <name>temporaryDirectoryName</name>
-        <initializer>= &quot;tmp&quot;</initializer>
+        <name>BaseManager</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" line="38" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="38" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="52" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -109,6 +106,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="36" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="34" column="1"/>
   </compounddef>
 </doxygen>
