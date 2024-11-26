@@ -16,6 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Provider_Nadir(pybind11::module& aMod
             Nadir.
 
             Compute the nadir direction from a given position.
+            The instant of the position is inferred from the environment.
 
             Args:
                 position (Position): Position.
