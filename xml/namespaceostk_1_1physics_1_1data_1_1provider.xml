@@ -21,12 +21,41 @@
           <declname>anEnvironment</declname>
         </param>
         <briefdescription>
+<para>Nadir direction. Instant is inferred from the <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref>. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A position. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>aCelestialObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A celestial object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>anEnvironment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An environment. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1data_1_1_direction" kindref="compound">Direction</ref>. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" line="18" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" bodystart="18" bodyend="49" declfile="include/OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp" declline="25" declcolumn="11"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" line="18" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" bodystart="18" bodyend="49" declfile="include/OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp" declline="30" declcolumn="11"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
