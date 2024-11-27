@@ -22,6 +22,11 @@ using ostk::physics::data::Direction;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::Celestial;
 
+/// @brief Nadir direction. Instant is inferred from the Environment.
+/// @param aPosition A position.
+/// @param aCelestialObject A celestial object.
+/// @param anEnvironment An environment.
+/// @return Direction.
 Direction Nadir(const Position& aPosition, const Celestial& aCelestialObject, const Environment& anEnvironment);
 
 }  // namespace provider
