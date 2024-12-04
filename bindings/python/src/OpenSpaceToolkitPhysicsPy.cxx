@@ -36,6 +36,6 @@ PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
     OpenSpaceToolkitPhysicsPy_Unit(m);
     OpenSpaceToolkitPhysicsPy_Time(m);
     OpenSpaceToolkitPhysicsPy_Coordinate(m);
-    OpenSpaceToolkitPhysicsPy_Data(m);
     OpenSpaceToolkitPhysicsPy_Environment(m);
+    OpenSpaceToolkitPhysicsPy_Data(m);
 }
