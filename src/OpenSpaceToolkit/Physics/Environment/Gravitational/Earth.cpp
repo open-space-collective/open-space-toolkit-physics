@@ -34,7 +34,7 @@ const Model::Parameters Earth::EGM2008 = {
     {398600441500000.0, GravitationalParameterSIUnit},
     Length::Meters(6378137.0),
     1.0 / 298.257223563,
-    -4.84165143790815e-04,
+    -4.84169317366974e-04,
     9.57161207093473e-07,
     5.39965866638991e-07,
 };
