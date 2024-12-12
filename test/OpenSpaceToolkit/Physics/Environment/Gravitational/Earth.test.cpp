@@ -785,3 +785,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
         EarthGravitationalModelManager::Get().reset();
     }
 }
+
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, StreamOperator)
+{
+    {
+        testing::internal::CaptureStdout();
+
+        EXPECT_NO_THROW(std::cout << EarthGravitationalModel::EGM2008 << std::endl);
+
+        EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
+    }
+}
