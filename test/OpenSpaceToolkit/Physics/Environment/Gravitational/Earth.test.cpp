@@ -288,8 +288,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.841653717360e-04);
+        EXPECT_GT(1e-15, parameters.C30_ - 9.57254173792e-07);
         EXPECT_GT(1e-15, parameters.C40_ - 5.398738637890e-07);
         EXPECT_GT(1e-15, parameters.J2_ - 0.0010826266835531513);
+        EXPECT_GT(1e-15, parameters.J3_ - 2.5326564853322355e-06);
         EXPECT_GT(1e-15, parameters.J4_ - -1.619621591367e-06);
     }
 
@@ -301,8 +303,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Parameters)
         EXPECT_GT(1e-15, parameters.equatorialRadius_.inMeters() - 6378137.0);
         EXPECT_GT(1e-15, parameters.flattening_ - 1.0 / 298.257223563);
         EXPECT_GT(1e-15, parameters.C20_ - -4.84165143790815e-04);
+        EXPECT_GT(1e-15, parameters.C30_ - 9.57161207093473e-07);
         EXPECT_GT(1e-15, parameters.C40_ - 5.39965866638991e-07);
         EXPECT_GT(1e-15, parameters.J2_ - 0.0010826261738522227);
+        EXPECT_GT(1e-15, parameters.J3_ - 2.53241051856772e-06);
         EXPECT_GT(1e-15, parameters.J4_ - -1.6198975999169731e-06);
     }
 }
