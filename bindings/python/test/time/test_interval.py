@@ -2,7 +2,7 @@
 
 import pytest
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from ostk.core.type import String
 
@@ -281,6 +281,7 @@ class TestInterval:
     def test_interval_get_properties(self, interval: Interval):
         assert interval.get_start() == Instant.J2000()
         assert interval.get_end() == Instant.J2000() + Duration.minutes(1.0)
+        assert interval.get_type() == Interval.Type.Closed
         assert interval.get_duration() == Duration.minutes(1.0)
         assert interval.get_lower_bound() == interval.get_start()
         assert interval.get_upper_bound() == interval.get_end()
@@ -305,6 +306,51 @@ class TestInterval:
         assert isinstance(interval.to_datetime_span(), tuple)
         assert isinstance(interval.to_datetime_span()[0], datetime)
         assert isinstance(interval.to_datetime_span()[1], datetime)
+
+    def test_from_datetime_span(self):
+        first_datetime_without_tz: datetime = datetime(2000, 1, 1, 0, 0, 0, 0)
+        second_datetime_without_tz: datetime = datetime(2000, 1, 1, 0, 1, 0, 0)
+        first_datetime_with_tz: datetime = first_datetime_without_tz.replace(
+            tzinfo=timezone.utc
+        )
+        second_datetime_with_tz: datetime = second_datetime_without_tz.replace(
+            tzinfo=timezone.utc
+        )
+
+        interval: Interval = Interval.datetime_span(
+            datetime_span=(first_datetime_without_tz, second_datetime_without_tz),
+            type=Interval.Type.Open,
+            first_datetime_scale=Scale.TAI,
+            second_datetime_scale=Scale.TAI,
+        )
+
+        assert interval is not None
+        assert isinstance(interval, Interval)
+        assert interval.get_start().get_date_time(Scale.TAI) == first_datetime_without_tz
+        assert interval.get_start().get_date_time(Scale.UTC) != first_datetime_without_tz
+        assert interval.get_end().get_date_time(Scale.TAI) == second_datetime_without_tz
+        assert interval.get_end().get_date_time(Scale.UTC) != second_datetime_without_tz
+        assert interval.get_type() == Interval.Type.Open
+
+        interval_default_args: Interval = Interval.datetime_span(
+            datetime_span=(first_datetime_with_tz, second_datetime_with_tz),
+        )
+
+        assert interval_default_args is not None
+        assert isinstance(interval_default_args, Interval)
+        assert (
+            interval_default_args.get_start()
+            .get_date_time(Scale.UTC)
+            .replace(tzinfo=timezone.utc)
+            == first_datetime_with_tz
+        )
+        assert (
+            interval_default_args.get_end()
+            .get_date_time(Scale.UTC)
+            .replace(tzinfo=timezone.utc)
+            == second_datetime_with_tz
+        )
+        assert interval_default_args.get_type() == Interval.Type.Closed
 
     def test_get_intersection_with(self):
         intersection: Interval = build_interval(0.0, 10.0).get_intersection_with(

@@ -38,6 +38,11 @@ bool Interval::isDefined() const
     return mathematics::object::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
 }
 
+// Interval::Type Interval::getType() const
+// {
+//     return Interval::Type::Undefined;
+// }
+
 const Instant& Interval::accessStart() const
 {
     if (!this->isDefined())

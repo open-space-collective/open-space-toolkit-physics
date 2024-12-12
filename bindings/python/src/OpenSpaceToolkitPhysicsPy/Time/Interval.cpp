@@ -123,6 +123,16 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
 
+        .def(
+            "get_type",
+            &Interval::getType,
+            R"doc(
+                Get the interval type.
+
+                Returns:
+                    Interval.Type: Interval type.
+            )doc"
+        )
         // TBR: Remove these methods, use getStart and getEnd instead
         .def(
             "get_lower_bound",
@@ -255,6 +265,36 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             arg("scale") = Scale::UTC
         )
 
+        .def_static(
+            "datetime_span",
+            [](const std::tuple<DateTime, DateTime>& aDateTimeSpan,
+               const Interval::Type& anIntervalType,
+               const Scale& aFirstDateTimeScale,
+               const Scale& aSecondDateTimeScale) -> Interval
+            {
+                return {
+                    Instant::DateTime(std::get<0>(aDateTimeSpan), aFirstDateTimeScale),
+                    Instant::DateTime(std::get<1>(aDateTimeSpan), aSecondDateTimeScale),
+                    anIntervalType
+                };
+            },
+            arg("datetime_span"),
+            arg_v("type", Interval::Type::Closed, "Interval.Type.Closed"),
+            arg_v("first_datetime_scale", Scale::UTC, "Scale.UTC"),
+            arg_v("second_datetime_scale", Scale::UTC, "Scale.UTC"),
+            R"doc(
+                Create an interval from a datetime span.
+
+                Args:
+                    datetime_span (Tuple[datetime, datetime]): Datetime span.
+                    type (Interval.Type): Interval type. Defaults to Closed.
+                    first_datetime_scale (Scale): First datetime scale. Defaults to UTC.
+                    second_datetime_scale (Scale): Second datetime scale. Defaults to UTC.
+
+                Returns:
+                    Interval: Interval.
+            )doc"
+        )
         .def_static(
             "undefined",
             &Interval::Undefined,
