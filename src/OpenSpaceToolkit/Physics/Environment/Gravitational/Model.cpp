@@ -14,6 +14,7 @@ namespace environment
 namespace gravitational
 {
 
+// TBM: make C30 term mandatory
 Model::Parameters::Parameters(
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
