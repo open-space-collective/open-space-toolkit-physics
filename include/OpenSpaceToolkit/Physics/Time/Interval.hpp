@@ -53,12 +53,6 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @return             True if defined.
     bool isDefined() const;
 
-    // /// @brief              Get interval type
-    // ///
-    // /// @return             Interval type
-
-    // Interval::Type getType() const;
-
     /// @brief              Access the start instant.
     ///
     /// @return             Start instant.

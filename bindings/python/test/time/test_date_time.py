@@ -1,7 +1,5 @@
 # Apache License 2.0
 
-from typing import cast
-
 from datetime import datetime, timedelta
 
 from ostk.core.type import String
