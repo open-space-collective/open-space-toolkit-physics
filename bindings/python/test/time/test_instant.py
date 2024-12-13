@@ -1,6 +1,7 @@
 # Apache License 2.0
 
-import datetime
+from datetime import datetime
+
 import pytest
 
 from ostk.physics.time import Scale
@@ -26,11 +27,15 @@ def test_instant_GPS_epock():
 
 
 def test_instant_datetime():
-    assert (
-        Instant.date_time(DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0), Scale.UTC) is not None
+    instant_from_ostk_datetime: Instant = Instant.date_time(
+        DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0), Scale.UTC
     )
+    assert instant_from_ostk_datetime is not None
+    assert isinstance(instant_from_ostk_datetime, Instant)
 
-    assert Instant.date_time(datetime.datetime.now(), Scale.UTC)
+    instant_from_python_datetime: Instant = Instant.date_time(datetime.now(), Scale.UTC)
+    assert instant_from_python_datetime is not None
+    assert isinstance(instant_from_python_datetime, Instant)
 
 
 def test_instant_julian_date():
@@ -86,7 +91,9 @@ def test_instant_is_near():
 
 
 def test_instant_get_date_time():
-    assert Instant.J2000().get_date_time(Scale.UTC) is not None
+    datetime_from_instant: DateTime = Instant.J2000().get_date_time(Scale.UTC)
+    assert datetime_from_instant is not None
+    assert isinstance(datetime_from_instant, datetime)
 
 
 def test_instant_get_julian_date():
