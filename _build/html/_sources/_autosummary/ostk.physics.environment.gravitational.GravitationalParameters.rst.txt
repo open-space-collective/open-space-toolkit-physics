@@ -28,8 +28,10 @@ ostk.physics.environment.gravitational.GravitationalParameters
    .. autosummary::
    
       ~GravitationalParameters.C20
+      ~GravitationalParameters.C30
       ~GravitationalParameters.C40
       ~GravitationalParameters.J2
+      ~GravitationalParameters.J3
       ~GravitationalParameters.J4
       ~GravitationalParameters.equatorial_radius
       ~GravitationalParameters.flattening
