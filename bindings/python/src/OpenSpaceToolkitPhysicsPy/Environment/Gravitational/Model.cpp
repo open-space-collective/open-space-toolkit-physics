@@ -57,6 +57,27 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
             )
 
             .def(
+                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Real&>(),
+                arg("gravitational_parameter"),
+                arg("equatorial_radius"),
+                arg("flattening"),
+                arg("C20"),
+                arg("C30"),
+                arg("C40"),
+                R"doc(
+                    Constructor.
+
+                    Args:
+                        gravitational_parameter (Derived): Gravitational parameter [m^3/s^2].
+                        equatorial_radius (Length): Equatorial radius [m].
+                        flattening (Real): Flattening.
+                        C20 (Real): C20.
+                        C30 (Real): C30.
+                        C40 (Real): C40.
+                )doc"
+            )
+
+            .def(
                 self == self,
                 R"doc(
                     Equal to operator
@@ -124,6 +145,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 )doc"
             )
             .def_readwrite(
+                "J3",
+                &Model::Parameters::J3_,
+                R"doc(
+                    J3.
+                )doc"
+            )
+            .def_readwrite(
                 "J4",
                 &Model::Parameters::J4_,
                 R"doc(
@@ -135,6 +163,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 &Model::Parameters::C20_,
                 R"doc(
                     C20.
+                )doc"
+            )
+            .def_readwrite(
+                "C30",
+                &Model::Parameters::C30_,
+                R"doc(
+                    C30.
                 )doc"
             )
             .def_readwrite(

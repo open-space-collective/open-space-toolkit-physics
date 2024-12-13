@@ -56,6 +56,24 @@ class Model
             const Real& aC40
         );
 
+        // @brief              Constructor
+
+        // @param              [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
+        // @param              [in] anEquatorialRadius An equatorial radius [m]
+        // @param              [in] aFlattening A flattening
+        // @param              [in] aC20 C20
+        // @param              [in] aC30 C30
+        // @param              [in] aC40 C40
+
+        Parameters(
+            const Derived& aGravitationalParameter,
+            const Length& anEquatorialRadius,
+            const Real& aFlattening,
+            const Real& aC20,
+            const Real& aC30,
+            const Real& aC40
+        );
+
         // @brief              Equal to operator
         //
         // @param              [in] aParameterSet A parameter set
@@ -94,8 +112,10 @@ class Model
         Length equatorialRadius_;
         Real flattening_;
         Real C20_;
+        Real C30_;
         Real C40_;
         Real J2_;
+        Real J3_;
         Real J4_;
     };
 

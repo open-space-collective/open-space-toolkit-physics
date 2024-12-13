@@ -14,6 +14,7 @@ namespace environment
 namespace gravitational
 {
 
+// TBM: make C30 term mandatory
 Model::Parameters::Parameters(
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
@@ -25,8 +26,30 @@ Model::Parameters::Parameters(
       equatorialRadius_(anEquatorialRadius),
       flattening_(aFlattening),
       C20_(aC20),
+      C30_(0.0),
       C40_(aC40),
       J2_(aC20.isDefined() ? -aC20 * std::sqrt(5.0) : Real::Undefined()),
+      J3_(0.0),
+      J4_(aC40.isDefined() ? -aC40 * std::sqrt(9.0) : Real::Undefined())
+{
+}
+
+Model::Parameters::Parameters(
+    const Derived& aGravitationalParameter,
+    const Length& anEquatorialRadius,
+    const Real& aFlattening,
+    const Real& aC20,
+    const Real& aC30,
+    const Real& aC40
+)
+    : gravitationalParameter_(aGravitationalParameter),
+      equatorialRadius_(anEquatorialRadius),
+      flattening_(aFlattening),
+      C20_(aC20),
+      C30_(aC30),
+      C40_(aC40),
+      J2_(aC20.isDefined() ? -aC20 * std::sqrt(5.0) : Real::Undefined()),
+      J3_(aC30.isDefined() ? -aC30 * std::sqrt(7.0) : Real::Undefined()),
       J4_(aC40.isDefined() ? -aC40 * std::sqrt(9.0) : Real::Undefined())
 {
 }
@@ -39,6 +62,7 @@ Model::Parameters Model::Parameters::Undefined()
         Real::Undefined(),
         Real::Undefined(),
         Real::Undefined(),
+        Real::Undefined(),
     };
 }
 
@@ -46,7 +70,8 @@ bool Model::Parameters::isDefined() const
 {
     return (
         gravitationalParameter_.isDefined() && equatorialRadius_.isDefined() && flattening_.isDefined() &&
-        J2_.isDefined() && J4_.isDefined() && C20_.isDefined() && C40_.isDefined()
+        J2_.isDefined() && J3_.isDefined() && J4_.isDefined() && C20_.isDefined() && C30_.isDefined() &&
+        C40_.isDefined()
     );
 }
 
@@ -60,7 +85,7 @@ bool Model::Parameters::operator==(const Model::Parameters& aParameterSet) const
     return (
         (gravitationalParameter_ == aParameterSet.gravitationalParameter_) &&
         (equatorialRadius_ == aParameterSet.equatorialRadius_) && (flattening_ == aParameterSet.flattening_) &&
-        (J2_ == aParameterSet.J2_) && J4_ == (aParameterSet.J4_)
+        (J2_ == aParameterSet.J2_) && (J3_ == aParameterSet.J3_) && (J4_ == aParameterSet.J4_)
     );
 }
 
@@ -86,9 +111,13 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Line(anOutputStream)
         << "C20:" << (aParameterSet.C20_.isDefined() ? aParameterSet.C20_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
+        << "C30:" << (aParameterSet.C30_.isDefined() ? aParameterSet.C30_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream)
         << "C40:" << (aParameterSet.C40_.isDefined() ? aParameterSet.C40_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "J2:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream)
+        << "J3:" << (aParameterSet.J3_.isDefined() ? aParameterSet.J3_.toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "J4:" << (aParameterSet.J4_.isDefined() ? aParameterSet.J4_.toString() : "Undefined");
 
