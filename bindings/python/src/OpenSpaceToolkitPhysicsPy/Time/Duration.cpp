@@ -207,7 +207,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in nanoseconds.
 
                 Returns:
-                    int: Duration in nanoseconds.
+                    float: Duration in nanoseconds.
             )doc"
         )
         .def(
@@ -217,7 +217,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in microseconds.
 
                 Returns:
-                    int: Duration in microseconds.
+                    float: Duration in microseconds.
             )doc"
         )
         .def(
@@ -227,7 +227,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in milliseconds.
 
                 Returns:
-                    int: Duration in milliseconds.
+                    float: Duration in milliseconds.
             )doc"
         )
         .def(
@@ -237,7 +237,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in seconds.
 
                 Returns:
-                    int: Duration in seconds.
+                    float: Duration in seconds.
             )doc"
         )
         .def(
@@ -247,7 +247,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in minutes.
 
                 Returns:
-                    int: Duration in minutes.
+                    float: Duration in minutes.
             )doc"
         )
         .def(
@@ -257,7 +257,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in hours.
 
                 Returns:
-                    int: Duration in hours.
+                    float: Duration in hours.
             )doc"
         )
         .def(
@@ -267,7 +267,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in days.
 
                 Returns:
-                    int: Duration in days.
+                    float: Duration in days.
             )doc"
         )
         .def(
@@ -277,7 +277,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in weeks.
 
                 Returns:
-                    int: Duration in weeks.
+                    float: Duration in weeks.
             )doc"
         )
         .def(
@@ -287,7 +287,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 Get the duration in a unit.
 
                 Returns:
-                    int: Duration in unit.
+                    float: Duration in unit.
             )doc"
         )
         .def(
