@@ -28,7 +28,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             arg("unit"),
             arg("frame"),
             R"doc(
-                Constructs a position.
+                Constructs a Position.
 
                 Args:
                     coordinates (np.ndarray): Coordinates.
@@ -43,7 +43,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
                 Equality operator.
 
                 Args:
-                    other (Position): Other position.
+                    other (Position): Other Position.
 
                 Returns:
                     bool: True if equal.
@@ -55,7 +55,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
                 Inequality operator.
 
                 Args:
-                    other (Position): Other position.
+                    other (Position): Other Position.
 
                 Returns:
                     bool: True if not equal.
@@ -126,7 +126,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             "in_unit",
             &Position::inUnit,
             R"doc(
-                Get the position in the unit.
+                Get the Position in the unit.
 
                 Returns:
                     Position: Position in the unit.
@@ -136,7 +136,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             "in_meters",
             &Position::inMeters,
             R"doc(
-                Get the position in meters.
+                Get the Position in meters.
 
                 Returns:
                     Position: Position in meters.
@@ -148,7 +148,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             arg("frame"),
             arg("instant"),
             R"doc(
-                Get the position in another frame of reference.
+                Get the Position in another frame of reference.
 
                 Args:
                     frame (Frame): Frame of reference.
@@ -177,10 +177,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             "undefined",
             &Position::Undefined,
             R"doc(
-                Get undefined position.
+                Get undefined Position.
 
                 Returns:
-                    Position: Undefined position.
+                    Position: Undefined Position.
             )doc"
         )
         .def_static(
@@ -189,7 +189,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             arg("coordinates"),
             arg("frame"),
             R"doc(
-                Create a position in meters.
+                Create a Position in meters.
 
                 Args:
                     coordinates (np.ndarray): Coordinates.
@@ -205,7 +205,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             arg("lla"),
             arg("celestial") = nullptr,
             R"doc(
-                Create a position from LLA.
+                Create a Position from LLA.
 
                 Args:
                     lla (LLA): LLA.
