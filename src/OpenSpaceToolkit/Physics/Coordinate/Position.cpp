@@ -7,6 +7,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
 
 namespace ostk
 {
@@ -214,6 +217,29 @@ Position Position::Undefined()
 Position Position::Meters(const Vector3d& aCoordinateSet, const Shared<const Frame>& aFrameSPtr)
 {
     return {aCoordinateSet, Position::Unit::Meter, aFrameSPtr};
+}
+
+Position Position::FromLLA(
+    const spherical::LLA& aLLA, const Shared<const environment::object::Celestial>& aCelestialSPtr
+)
+{
+    if (!aLLA.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("LLA");
+    }
+
+    Shared<const environment::object::Celestial> celestialSPtr =
+        aCelestialSPtr == nullptr ? ostk::physics::Environment::AccessGlobalInstance()->accessCentralCelestialObject()
+                                  : aCelestialSPtr;
+
+    if (celestialSPtr == nullptr || !celestialSPtr->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial");
+    }
+
+    return Position::Meters(
+        aLLA.toCartesian(celestialSPtr->getEquatorialRadius(), celestialSPtr->getFlattening()), Frame::ITRF()
+    );
 }
 
 }  // namespace coordinate
