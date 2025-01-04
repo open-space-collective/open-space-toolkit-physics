@@ -486,6 +486,39 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WG
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, FromPosition) 
+{
+    const Earth WGS84Earth = Earth::WGS84();
+    const auto earthSPtr = std::make_shared<Earth>(WGS84Earth);
+    const auto frameSPtr = Frame::ITRF();
+
+    {
+        // Test conversion from Position to LLA and back
+        const LLA originalLLA = {Angle::Degrees(45.0), Angle::Degrees(120.0), Length::Kilometers(1000.0)};
+        const Position position = Position::FromLLA(originalLLA, earthSPtr);
+        const LLA convertedLLA = LLA::FromPosition(position, earthSPtr);
+
+        EXPECT_NEAR(convertedLLA.getLatitude().inDegrees(), originalLLA.getLatitude().inDegrees(), 1e-10);
+        EXPECT_NEAR(convertedLLA.getLongitude().inDegrees(), originalLLA.getLongitude().inDegrees(), 1e-10);
+        EXPECT_NEAR(convertedLLA.getAltitude().inMeters(), originalLLA.getAltitude().inMeters(), 1e-6);
+    }
+
+    {
+        // Test with undefined Position
+        EXPECT_THROW(LLA::FromPosition(Position::Undefined()), ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        // Test with null celestial object and no global environment
+        const Position position = Position::Meters({1.0, 1.0, 1.0}, frameSPtr);
+        EXPECT_THROW(LLA::FromPosition(position, nullptr), ostk::core::error::runtime::Undefined);
+
+        // Test with global environment
+        Environment::Default(true);
+        EXPECT_NO_THROW(LLA::FromPosition(position));
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
 {
     {
