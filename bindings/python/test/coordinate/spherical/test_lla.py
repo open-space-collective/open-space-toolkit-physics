@@ -8,7 +8,9 @@ from ostk.core.type import String
 from ostk.physics import Environment
 from ostk.physics.unit import Angle, Length
 from ostk.physics.coordinate.spherical import LLA
+from ostk.physics.coordinate import Frame, Position
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
+from ostk.physics.environment.object.celestial import Earth
 
 Spherical = EarthGravitationalModel.spherical
 WGS84_EGM96 = EarthGravitationalModel.WGS84_EGM96
