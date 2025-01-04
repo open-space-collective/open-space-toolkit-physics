@@ -322,6 +322,17 @@ class LLA
         const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
+    /// @brief                  Constructs an LLA from a Position. If a celestial object is not provided, the
+    /// central body from the global environment instance will be used if it's available.
+    ///
+    /// @param                  [in] aPosition A Position
+    /// @param                  [in] aCelestialSPtr A shared pointer to a celestial object
+    /// @return                 LLA
+    static LLA FromPosition(
+        const Position& aPosition,
+        const Shared<const environment::object::Celestial>& aCelestialSPtr = nullptr
+    );
+
    private:
     Angle latitude_;
     Angle longitude_;
