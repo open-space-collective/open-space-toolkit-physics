@@ -6,6 +6,7 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/Size.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -19,14 +20,27 @@ namespace ostk
 {
 namespace physics
 {
+
+namespace environment
+{
+namespace object
+{
+class Celestial;
+}
+}  // namespace environment
+
 namespace coordinate
 {
+
+class Position;
+
 namespace spherical
 {
 
 using ostk::core::container::Array;
 using ostk::core::container::Pair;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::type::Size;
 using ostk::core::type::String;
 
@@ -329,8 +343,7 @@ class LLA
     /// @param                  [in] aCelestialSPtr A shared pointer to a celestial object
     /// @return                 LLA
     static LLA FromPosition(
-        const Position& aPosition,
-        const Shared<const environment::object::Celestial>& aCelestialSPtr = nullptr
+        const Position& aPosition, const Shared<const environment::object::Celestial>& aCelestialSPtr = nullptr
     );
 
    private:

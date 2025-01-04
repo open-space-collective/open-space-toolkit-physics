@@ -146,28 +146,6 @@ class TestLLA:
         lla: LLA = LLA.cartesian([1.0, 1.0, 1.0], Length(1.0, Length.Unit.Meter), 0.001)
         assert lla is not None
 
-    def test_from_position(self):
-        # Test with Earth as celestial object
-        earth = Earth.WGS84()
-        frame = Frame.ITRF()
-        position = Position.meters([6378137.0, 0.0, 0.0], frame)  # Point on equator
-        
-        lla = LLA.from_position(position, earth)
-        assert lla is not None
-        assert abs(lla.get_latitude().in_degrees()) < 1e-10  # Should be on equator
-        assert abs(lla.get_longitude().in_degrees()) < 1e-10  # Should be at prime meridian
-        assert abs(lla.get_altitude().in_meters()) < 1e-6  # Should be near surface
-
-        # Test with undefined position
-        with pytest.raises(RuntimeError):
-            LLA.from_position(Position.undefined())
-
-        # Test with global environment
-        Environment.set_global_frame(frame)
-        Environment.set_global_celestial_object(earth)
-        lla = LLA.from_position(position)
-        assert lla is not None
-
     def test_comparator(
         self,
         lla_point_equator_1: LLA,
@@ -512,3 +490,25 @@ class TestLLA:
         )
         assert llas is not None
         assert len(llas) == n_points
+
+    def test_from_position(self):
+        earth = Earth.WGS84()
+        frame = Frame.ITRF()
+        position = Position.meters([6378137.0, 0.0, 0.0], frame)  # Point on equator
+
+        lla = LLA.from_position(position, earth)
+        assert lla is not None
+        assert abs(float(lla.get_latitude().in_degrees())) < 1e-10  # Should be on equator
+
+        assert (
+            abs(float(lla.get_longitude().in_degrees())) < 1e-10
+        )  # Should be at prime meridian
+        assert abs(float(lla.get_altitude().in_meters())) < 1e-6  # Should be near surface
+
+        # Test with undefined position
+        with pytest.raises(RuntimeError):
+            LLA.from_position(Position.undefined())
+
+        # Test with global environment
+        lla = LLA.from_position(position)
+        assert lla is not None

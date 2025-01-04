@@ -538,17 +538,17 @@ LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment:
         throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    const auto celestialObjectSPtr = aCelestialSPtr != nullptr
-                                       ? aCelestialSPtr
-                                       : Environment::AccessGlobalInstance()->accessCentralCelestialObject();
+    const auto celestialSPtr = aCelestialSPtr != nullptr
+                                 ? aCelestialSPtr
+                                 : Environment::AccessGlobalInstance()->accessCentralCelestialObject();
 
-    if (celestialObjectSPtr == nullptr)
+    if (celestialSPtr == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Celestial object");
     }
 
-    const Length equatorialRadius = celestialObjectSPtr->getEquatorialRadius();
-    const Real flattening = celestialObjectSPtr->getFlattening();
+    const Length equatorialRadius = celestialSPtr->getEquatorialRadius();
+    const Real flattening = celestialSPtr->getFlattening();
 
     return LLA::Cartesian(aPosition.inMeters().getCoordinates(), equatorialRadius, flattening);
 }

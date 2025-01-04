@@ -414,6 +414,22 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
             arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
         )
+        .def_static(
+            "from_position",
+            &LLA::FromPosition,
+            R"doc(
+                Construct LLA from position.
+
+                Args:
+                    position (Position): Position.
+                    celestial (Celestial): Celestial object. Defaults to None, in which case, values from the global Environment central celestial are used. 
+
+                Returns:
+                    LLA: LLA.
+            )doc",
+            arg("position"),
+            arg_v("celestial", nullptr, "None")
+        )
 
         ;
 }
