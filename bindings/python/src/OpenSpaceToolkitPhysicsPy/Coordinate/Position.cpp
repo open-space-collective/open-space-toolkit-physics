@@ -199,6 +199,22 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
                     Position: Position in meters.
             )doc"
         )
+        .def_static(
+            "from_lla",
+            &Position::FromLLA,
+            arg("lla"),
+            arg("celestial") = nullptr,
+            R"doc(
+                Create a position from LLA.
+
+                Args:
+                    lla (LLA): LLA.
+                    celestial_object (Celestial): Celestial object. Defaults to None. If None, the central body from the global environment instance will be used if it's available.
+
+                Returns:
+                    Position: Position.
+            )doc"
+        )
 
         ;
 }

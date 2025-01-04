@@ -4,203 +4,198 @@ import pytest
 import numpy as np
 
 from ostk.core.type import String
-import ostk.physics as physics
 
-Scale = physics.time.Scale
-DateTime = physics.time.DateTime
-Instant = physics.time.Instant
-Frame = physics.coordinate.Frame
-Position = physics.coordinate.Position
-Unit = physics.unit.Length.Unit
+from ostk.physics import Environment
+from ostk.physics.coordinate import Frame
+from ostk.physics.coordinate import Position
+from ostk.physics.coordinate.spherical import LLA
+from ostk.physics.time import Instant
+from ostk.physics.time import Scale
+from ostk.physics.time import DateTime
+from ostk.physics.unit import Length
 
 
-def test_coordinate_position_constructors():
-    # Construct arbitrary frame
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
+@pytest.fixture
+def unit() -> Length.Unit:
+    return Length.Unit.Meter
 
-    # Construction with python lists
-    vector = [1000.0, 0.0, 0.0]
 
-    position: Position = Position(vector, unit, frame)
+@pytest.fixture
+def frame() -> Frame:
+    return Frame.GCRF()
 
-    assert position is not None
-    assert isinstance(position, Position)
-    assert position.is_defined()
 
-    # Construction with python tuples
-    vector = (1000.0, 0.0, 0.0)
+@pytest.fixture
+def earth():
+    return Environment.default().access_celestial_object_with_name("Earth")
 
-    position: Position = Position(vector, unit, frame)
 
-    assert position is not None
-    assert isinstance(position, Position)
-    assert position.is_defined()
+@pytest.fixture
+def lla() -> LLA:
+    return LLA.vector([0.0, 0.0, 0.0])
 
-    # Construction with python numpy arrays
-    vector = np.array((1000.0, 0.0, 0.0))
 
-    position: Position = Position(vector, unit, frame)
+class TestPosition:
 
-    assert position is not None
-    assert isinstance(position, Position)
-    assert position.is_defined()
+    def test_constructors(self, unit: Length.Unit, frame: Frame):
+        # Construction with python lists
+        vector = [1000.0, 0.0, 0.0]
 
-    # Construction with meters static constructor
-    position: Position = Position.meters(vector, frame)
+        position: Position = Position(vector, unit, frame)
 
-    assert position is not None
-    assert isinstance(position, Position)
-    assert position.is_defined()
+        assert position is not None
+        assert isinstance(position, Position)
+        assert position.is_defined()
 
-    # Construction with undefined static constructor
-    position: Position = Position.undefined()
+        # Construction with python tuples
+        vector = (1000.0, 0.0, 0.0)
 
-    assert position is not None
-    assert isinstance(position, Position)
-    assert position.is_defined() is False
+        position: Position = Position(vector, unit, frame)
 
+        assert position is not None
+        assert isinstance(position, Position)
+        assert position.is_defined()
 
-def test_coordinate_position_comparators():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector_1 = [1000.0, 0.0, 0.0]
-    vector_2 = [-450.3, 234.9, -23.0]
+        # Construction with python numpy arrays
+        vector = np.array((1000.0, 0.0, 0.0))
 
-    position_1: Position = Position(vector_1, unit, frame)
-    position_2: Position = Position(vector_2, unit, frame)
+        position: Position = Position(vector, unit, frame)
 
-    assert position_1 == position_1
-    assert position_2 == position_2
-    assert position_1 != position_2
+        assert position is not None
+        assert isinstance(position, Position)
+        assert position.is_defined()
 
+        # Construction with meters static constructor
+        position: Position = Position.meters(vector, frame)
 
-def test_coordinate_position_is_defined():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
-    position: Position = Position(vector, unit, frame)
+        assert position is not None
+        assert isinstance(position, Position)
+        assert position.is_defined()
 
-    assert position.is_defined()
-    assert Position.undefined().is_defined() is False
+        # Construction with undefined static constructor
+        position: Position = Position.undefined()
 
+        assert position is not None
+        assert isinstance(position, Position)
+        assert position.is_defined() is False
 
-@pytest.mark.skip
-def test_coordinate_position_is_near():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
+    def test_comparators(self, unit: Length.Unit, frame: Frame):
+        vector_1 = [1000.0, 0.0, 0.0]
+        vector_2 = [-450.3, 234.9, -23.0]
 
-    vector_1 = [1000.0, 0.0, 0.0]
-    vector_2 = [1000.00001, 0.0001, 0.0]
+        position_1: Position = Position(vector_1, unit, frame)
+        position_2: Position = Position(vector_2, unit, frame)
 
-    position_1: Position = Position(vector_1, unit, frame)
-    position_2: Position = Position(vector_2, unit, frame)
+        assert position_1 == position_1
+        assert position_2 == position_2
+        assert position_1 != position_2
 
-    assert position_1.is_near(position_2, Unit.Meter)
-    assert position_2.is_near(position_1, Unit.Meter)
+    def test_is_defined(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
+        position: Position = Position(vector, unit, frame)
 
+        assert position.is_defined()
+        assert Position.undefined().is_defined() is False
 
-def test_coordinate_position_access_frame():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+    @pytest.mark.skip
+    def test_is_near(self, unit: Length.Unit, frame: Frame):
 
-    position: Position = Position(vector, unit, frame)
+        vector_1 = [1000.0, 0.0, 0.0]
+        vector_2 = [1000.00001, 0.0001, 0.0]
 
-    ans_frame = position.access_frame()
+        position_1: Position = Position(vector_1, unit, frame)
+        position_2: Position = Position(vector_2, unit, frame)
 
-    assert ans_frame is not None
-    assert isinstance(ans_frame, Frame)
-    assert ans_frame == frame
+        assert position_1.is_near(position_2, Length.Unit.Meter)
+        assert position_2.is_near(position_1, Length.Unit.Meter)
 
+    def test_access_frame(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
-def test_coordinate_position_get_coordinates():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+        position: Position = Position(vector, unit, frame)
 
-    position: Position = Position(vector, unit, frame)
+        ans_frame = position.access_frame()
 
-    coordinates = position.get_coordinates()
+        assert ans_frame is not None
+        assert isinstance(ans_frame, Frame)
+        assert ans_frame == frame
 
-    assert coordinates is not None
-    assert isinstance(coordinates, np.ndarray)
-    assert np.array_equal(coordinates, vector)
+    def test_get_coordinates(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
+        position: Position = Position(vector, unit, frame)
 
-def test_coordinate_position_get_unit():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+        coordinates = position.get_coordinates()
 
-    position: Position = Position(vector, unit, frame)
+        assert coordinates is not None
+        assert isinstance(coordinates, np.ndarray)
+        assert np.array_equal(coordinates, vector)
 
-    ans_unit = position.get_unit()
+    def test_get_unit(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
-    assert ans_unit is not None
-    assert isinstance(ans_unit, Unit)
-    assert ans_unit == unit
+        position: Position = Position(vector, unit, frame)
 
+        ans_unit = position.get_unit()
 
-def test_coordinate_position_in_unit():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+        assert ans_unit is not None
+        assert isinstance(ans_unit, Length.Unit)
+        assert ans_unit == unit
 
-    position: Position = Position(vector, unit, frame)
+    def test_in_unit(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
-    new_position: Position = position.in_unit(Unit.Meter)
+        position: Position = Position(vector, unit, frame)
 
-    assert new_position is not None
-    assert isinstance(new_position, Position)
-    assert new_position == position
+        new_position: Position = position.in_unit(Length.Unit.Meter)
 
-    new_position: Position = position.in_unit(Unit.TerrestrialMile)
+        assert new_position is not None
+        assert isinstance(new_position, Position)
+        assert new_position == position
 
-    assert new_position is not None
-    assert isinstance(new_position, Position)
-    # assert new_position == position
+        new_position: Position = position.in_unit(Length.Unit.TerrestrialMile)
 
+        assert new_position is not None
+        assert isinstance(new_position, Position)
+        # assert new_position == position
 
-def test_coordinate_position_in_meters():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+    def test_in_meters(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
-    position: Position = Position(vector, unit, frame)
+        position: Position = Position(vector, unit, frame)
 
-    new_position: Position = position.in_meters()
+        new_position: Position = position.in_meters()
 
-    assert new_position is not None
-    assert isinstance(new_position, Position)
-    assert new_position == position
+        assert new_position is not None
+        assert isinstance(new_position, Position)
+        assert new_position == position
 
+    def test_in_frame(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
-def test_coordinate_position_in_frame():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+        instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
 
-    instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
+        position: Position = Position(vector, unit, frame)
 
-    position: Position = Position(vector, unit, frame)
+        new_position: Position = position.in_frame(frame, instant)
 
-    new_position: Position = position.in_frame(frame, instant)
+        assert new_position is not None
+        assert isinstance(new_position, Position)
+        assert new_position == position
 
-    assert new_position is not None
-    assert isinstance(new_position, Position)
-    assert new_position == position
+    def test_to_string(self, unit: Length.Unit, frame: Frame):
+        vector = [1000.0, 0.0, 0.0]
 
+        position: Position = Position(vector, unit, frame)
 
-def test_coordinate_position_to_string():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.Meter
-    vector = [1000.0, 0.0, 0.0]
+        string: String = position.to_string()
 
-    position: Position = Position(vector, unit, frame)
+        assert string is not None
+        assert isinstance(string, String)
+        assert string == "[1000.0, 0.0, 0.0] [m] @ GCRF"
 
-    string: String = position.to_string()
+    def test_from_lla(self, lla: LLA, earth):
+        assert Position.from_lla(lla, earth) is not None
 
-    assert string is not None
-    assert isinstance(string, String)
-    assert string == "[1000.0, 0.0, 0.0] [m] @ GCRF"
+        Environment.default(True)
+        assert Position.from_lla(lla) is not None
