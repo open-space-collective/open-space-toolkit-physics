@@ -8,7 +8,9 @@ from ostk.core.type import String
 from ostk.physics import Environment
 from ostk.physics.unit import Angle, Length
 from ostk.physics.coordinate.spherical import LLA
+from ostk.physics.coordinate import Frame, Position
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
+from ostk.physics.environment.object.celestial import Earth
 
 Spherical = EarthGravitationalModel.spherical
 WGS84_EGM96 = EarthGravitationalModel.WGS84_EGM96
@@ -488,3 +490,25 @@ class TestLLA:
         )
         assert llas is not None
         assert len(llas) == n_points
+
+    def test_from_position(self):
+        earth = Earth.WGS84()
+        frame = Frame.ITRF()
+        position = Position.meters([6378137.0, 0.0, 0.0], frame)  # Point on equator
+
+        lla = LLA.from_position(position, earth)
+        assert lla is not None
+        assert abs(float(lla.get_latitude().in_degrees())) < 1e-10  # Should be on equator
+
+        assert (
+            abs(float(lla.get_longitude().in_degrees())) < 1e-10
+        )  # Should be at prime meridian
+        assert abs(float(lla.get_altitude().in_meters())) < 1e-6  # Should be near surface
+
+        # Test with undefined position
+        with pytest.raises(RuntimeError):
+            LLA.from_position(Position.undefined())
+
+        # Test with global environment
+        lla = LLA.from_position(position)
+        assert lla is not None

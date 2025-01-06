@@ -10,7 +10,6 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp>
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
@@ -18,6 +17,14 @@ namespace ostk
 {
 namespace physics
 {
+namespace environment
+{
+namespace object
+{
+class Celestial;
+}
+}  // namespace environment
+
 namespace coordinate
 {
 
@@ -34,6 +41,11 @@ using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
 
 class Frame;
+
+namespace spherical
+{
+class LLA;
+}
 
 /// @brief                      Position
 
@@ -150,6 +162,16 @@ class Position
     /// @param                  [in] aFrameSPtr A shared pointer to a frame
     /// @return                 Position in meters
     static Position Meters(const Vector3d& aCoordinateSet, const Shared<const Frame>& aFrameSPtr);
+
+    /// @brief                  Constructs a position from an LLA coordinate. If a celestial object is not provided, the
+    /// central body from the global environment instance will be used if it's available.
+    ///
+    /// @param                  [in] aLLA A LLA coordinate
+    /// @param                  [in] aCelestialSPtr A shared pointer to a celestial object
+    /// @return                 Position
+    static Position FromLLA(
+        const spherical::LLA& aLLA, const Shared<const environment::object::Celestial>& aCelestialSPtr = nullptr
+    );
 
    private:
     Vector3d coordinates_;

@@ -6,6 +6,7 @@
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
+#include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 
@@ -528,6 +529,28 @@ Array<LLA> LLA::Linspace(
     }
 
     return intermediateLLAs;
+}
+
+LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment::object::Celestial>& aCelestialSPtr)
+{
+    if (!aPosition.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Position");
+    }
+
+    const auto celestialSPtr = aCelestialSPtr != nullptr
+                                 ? aCelestialSPtr
+                                 : Environment::AccessGlobalInstance()->accessCentralCelestialObject();
+
+    if (celestialSPtr == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Celestial object");
+    }
+
+    const Length equatorialRadius = celestialSPtr->getEquatorialRadius();
+    const Real flattening = celestialSPtr->getFlattening();
+
+    return LLA::Cartesian(aPosition.inMeters().getCoordinates(), equatorialRadius, flattening);
 }
 
 }  // namespace spherical

@@ -2,6 +2,8 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
+#include <OpenSpaceToolkit/Physics/Environment.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 
 #include <Global.test.hpp>
 
@@ -12,6 +14,9 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
+using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::Environment;
+using ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::unit::Length;
 
 class OpenSpaceToolkit_Physics_Coordinate_Position : public ::testing::Test
@@ -247,5 +252,34 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Meters)
         const Position position = Position::Meters({0.0, 0.0, 0.0}, gcrfSPtr);
 
         EXPECT_TRUE(Position(position).isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, FromLLA)
+{
+    const Shared<const Earth> earthSPtr = std::make_shared<const Earth>(Earth::Default());
+
+    const LLA lla = LLA::Vector({0.0, 0.0, 0.0});
+
+    {
+        EXPECT_THROW(Position::FromLLA(LLA::Undefined(), earthSPtr), ostk::core::error::runtime::Undefined);
+    }
+
+    {
+        EXPECT_THROW(Position::FromLLA(lla), ostk::core::error::RuntimeError);
+    }
+
+    {
+        const Position position = Position::FromLLA(lla, earthSPtr);
+        EXPECT_VECTORS_ALMOST_EQUAL(position.accessCoordinates(), Vector3d(6378137.0, 0.0, 0.0), 1e-8);
+    }
+
+    {
+        Environment::Default(true);
+
+        const Position position = Position::FromLLA(lla);
+        EXPECT_VECTORS_ALMOST_EQUAL(position.accessCoordinates(), Vector3d(6378137.0, 0.0, 0.0), 1e-8);
+
+        Environment::ResetGlobalInstance();
     }
 }
