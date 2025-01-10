@@ -8,6 +8,14 @@ FROM openspacecollective/open-space-toolkit-base-development:${BASE_IMAGE_VERSIO
 
 LABEL maintainer="lucas@loftorbital.com"
 
+# Test
+
+RUN echo "TARGETPLATFORM: ${TARGETPLATFORM}" \
+    && export PACKAGE_PLATFORM=$(if [ "${TARGETPLATFORM}" = "linux/amd64" ]; then echo "PC_Linux_GCC_64bit"; elif [ "${TARGETPLATFORM}" = "linux/arm64" ]; then echo "MacM1_OSX_clang_64bit"; else echo "Unknown platform" && exit 1; fi;) \
+    && echo "PACKAGE_PLATFORM: ${PACKAGE_PLATFORM}" \
+    && wget --quiet http://naif.jpl.nasa.gov/pub/naif/toolkit/C/${PACKAGE_PLATFORM}/packages/cspice.tar.Z \
+    && ls -lh cspice.tar.Z
+    
 # Dependencies
 
 ## Zip, jq, and git-lfs
