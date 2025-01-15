@@ -335,9 +335,9 @@ ELSE ()
     MESSAGE (SEND_ERROR "[GeographicLib] not found.")
 ENDIF ()
 
-### Open Space Toolkit ▸ Core [4.x.y]
+### Open Space Toolkit ▸ Core [5.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "4" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" "5" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
