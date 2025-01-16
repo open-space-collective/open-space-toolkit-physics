@@ -989,6 +989,7 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab6cc2914a0465b4b27dfc010e7cf1c76" kind="function"><name>IntermediateBetween</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a32ab0781c0343741ee8de9ddfbe09dab" kind="function"><name>Forward</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a65a76522cf67320ba409fffe38871328" kind="function"><name>Linspace</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a0fe5fdbc58570d9ffed15142b216e7db" kind="function"><name>FromPosition</name></member>
   </compound>
   <compound refid="classostk_1_1physics_1_1_manager" kind="class"><name>ostk::physics::Manager</name>
     <member refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kind="enum"><name>Mode</name></member>
@@ -1373,6 +1374,7 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1aab9f362c268370239ccad2c8a6d0eaee" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a812f2395e29959391550c5cf769f000d" kind="function"><name>Undefined</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a9671911ae7c0b7fb6c2d04dab123f850" kind="function"><name>Meters</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a85d13a94ded517e69e67dbad79936531" kind="function"><name>FromLLA</name></member>
   </compound>
   <compound refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" kind="struct"><name>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</name>
     <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1afea5b9d24af56ac64e2327b64fd4ac09" kind="variable"><name>year</name></member>

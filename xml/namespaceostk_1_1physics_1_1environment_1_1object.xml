@@ -93,6 +93,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="28" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="23" column="1"/>
   </compounddef>
 </doxygen>

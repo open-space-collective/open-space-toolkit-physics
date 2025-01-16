@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="326" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="326" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="350" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="350" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a380cebe69f005935fa25a89305d310e9" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="327" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="327" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="351" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="351" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a9c316b7ba21b96955acb0782caa18f42" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="328" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="328" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="352" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="352" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="54" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="26" bodyend="40"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="68" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="27" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a39564dba884c4acfb8292d41945a45b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="61" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="42" bodyend="50"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="75" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="43" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ae6e65f7922698de2a639af5e9e6c16ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -155,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="68" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="52" bodyend="55"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a3b97daf7b2d9f033b9bfd71c34c048fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="73" bodyend="76"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="96" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -189,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="88" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="78" bodyend="86"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="102" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="79" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="94" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="88" bodyend="96"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="108" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="89" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -223,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="100" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="98" bodyend="106"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="114" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="99" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a24db275c7f3a88a5010a4e6fcfad1a90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="105" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="108" bodyend="116"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="119" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="109" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a25a2b5f8b7fc5a5b40f6c26adf499baa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -297,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="116" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="118" bodyend="133"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="130" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="119" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a70ed319a10e81d5847a55d46c1d049ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Pair&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>, <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &gt;</type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="135" bodyend="150"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="136" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a4844916605bf30cb52efee1e1fffadda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -421,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="146" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="152" bodyend="167"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="160" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="153" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a06527dfa96030ce7d317a7d34ad3bb38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -489,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="162" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="169" bodyend="187"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="176" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="170" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa3062657acd4220f3206a35f32a3087c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &gt;</type>
@@ -555,7 +555,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="177" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="189" bodyend="207"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="191" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="190" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a159e5a055130460266b25593a0b451f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -572,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="187" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="209" bodyend="217"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="201" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="210" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a994b42c2303c17b92c25b697c8d9d9b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1ae12fe74b2d79a60e1309b081f95434e6" kindref="member">Point2d</ref></type>
@@ -589,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="193" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="219" bodyend="227"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="207" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="220" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a22cf0f3e37e61226b5ad75977068a72a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" kindref="member">Point3d</ref></type>
@@ -606,7 +606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="199" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="229" bodyend="237"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="213" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="230" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab7cb924cb9d4eb5521c63d69d063218a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -650,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="206" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="239" bodyend="277"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="220" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="240" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ada54a509f340056ceb39399fe06d6d98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -667,7 +667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="214" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="279" bodyend="287"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="228" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="280" bodyend="288"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -711,7 +711,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="76" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="57" bodyend="71"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="90" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="58" bodyend="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -730,7 +730,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="219" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="289" bodyend="292"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="233" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="290" bodyend="293"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab9049663b5a8bb87ed5edd332ea0532f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -760,7 +760,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="225" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="294" bodyend="302"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="239" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="295" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a50361a32c25714545d70d6f87e128e3d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -816,7 +816,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="233" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="304" bodyend="348"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="247" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="305" bodyend="349"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1af53b9463657656afeb1de5c49336ce38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -884,7 +884,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="248" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="350" bodyend="380"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="262" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="351" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a73ccc6f8b6249b35260cdf560f627871" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Pair&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref>, <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &gt;</type>
@@ -952,7 +952,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="264" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="382" bodyend="414"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="278" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="383" bodyend="415"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1ab6cc2914a0465b4b27dfc010e7cf1c76" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -1032,7 +1032,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="281" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="416" bodyend="452"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="295" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="417" bodyend="453"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a32ab0781c0343741ee8de9ddfbe09dab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
@@ -1112,7 +1112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="299" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="454" bodyend="488"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="313" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="455" bodyend="489"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a65a76522cf67320ba409fffe38871328" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> &gt;</type>
@@ -1192,7 +1192,50 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="317" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="490" bodyend="531"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="331" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="491" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a0fe5fdbc58570d9ffed15142b216e7db" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref></type>
+        <definition>LLA ostk::physics::coordinate::spherical::LLA::FromPosition</definition>
+        <argsstring>(const Position &amp;aPosition, const Shared&lt; const environment::object::Celestial &gt; &amp;aCelestialSPtr=nullptr)</argsstring>
+        <name>FromPosition</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">environment::object::Celestial</ref> &gt; &amp;</type>
+          <declname>aCelestialSPtr</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructs an <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> from a <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref>. If a celestial object is not provided, the central body from the global environment instance will be used if it&apos;s available. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aCelestialSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to a celestial object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">LLA</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="345" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="534" bodyend="554"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1201,7 +1244,7 @@
     <detaileddescription>
 <para><ulink url="https://en.wikipedia.org/wiki/Latitude">https://en.wikipedia.org/wiki/Latitude</ulink> <ulink url="https://en.wikipedia.org/wiki/Longitude">https://en.wikipedia.org/wiki/Longitude</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="45" bodyend="329"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="60" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="59" bodyend="353"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a9c316b7ba21b96955acb0782caa18f42" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>altitude_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a73ccc6f8b6249b35260cdf560f627871" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>AzimuthBetween</name></member>
@@ -1213,6 +1256,7 @@
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a50361a32c25714545d70d6f87e128e3d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Cartesian</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1af53b9463657656afeb1de5c49336ce38" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>DistanceBetween</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a32ab0781c0343741ee8de9ddfbe09dab" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>Forward</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a0fe5fdbc58570d9ffed15142b216e7db" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>FromPosition</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1aa4c8192ed931bf0fca66b40bd4f37df6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>getAltitude</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a207f588e18177a10cc41819ef5f8baf8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>getLatitude</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a_1a1a7964c3294aa0b1153f23e39e41cdc9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::spherical::LLA</scope><name>getLongitude</name></member>

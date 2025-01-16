@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="43" column="26" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="43" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="55" column="26" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="155" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="155" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="177" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_position_1ae7eaf9ab93c3c91c3357d731e3c2c6f4" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Position::Unit</ref></type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="156" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="156" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="178" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_position_1a1d16f35132a7273320aeca18f330eb16" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="157" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="157" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="179" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="50" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="18" bodyend="23"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="62" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="21" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a313898877037bccc7afce0e1e4136300" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="25" bodyend="30"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="71" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="28" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a677792dd43e7a9bef593c0076a7ea22f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="65" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="32" bodyend="42"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="77" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="35" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a759130af5b38ec31a2e0dd54c336e95b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="71" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="44" bodyend="53"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="83" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="47" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1ac275b6e0bdc32b0e8df866d08f0aa2b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="77" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="55" bodyend="58"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="89" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a35939e71ec770f9675459f2d5fd8596a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="89" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="79" bodyend="83"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="101" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="82" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a3d53efe62f7b652f226b5182fb015ba3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="96" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="85" bodyend="117"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="108" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="88" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1acf0148b4eb086045f7e16e7af143415e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -304,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="101" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="119" bodyend="127"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="113" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="122" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1ab62b80d4e1befd4eefe548907ca0ddae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="106" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="129" bodyend="137"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="118" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="132" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a9c23ca6bd49f0031b3d3474e24ee7d90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -338,7 +338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="111" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="139" bodyend="147"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="123" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="142" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1abb6b511b8421d783d0d817468fab1c83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Position::Unit</ref></type>
@@ -355,7 +355,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="116" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="149" bodyend="157"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="128" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="152" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a3ede15f48643e1c5734d87941635de32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
@@ -385,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="122" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="159" bodyend="172"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="134" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="162" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1ac080f1d9ac598cfbb1526c84921104b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
@@ -402,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="127" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="174" bodyend="177"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="139" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="177" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a9834525a2ecc21f36a5a1c6d4d0403bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
@@ -444,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="134" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="179" bodyend="192"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="146" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="182" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1ad4941acb14558e3b3b6a060e85df6f6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -475,7 +475,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="140" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="194" bodyend="207"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="152" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="197" bodyend="210"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -519,7 +519,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="84" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="60" bodyend="77"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="96" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="63" bodyend="80"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -538,7 +538,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="145" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="209" bodyend="212"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="157" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="212" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a9671911ae7c0b7fb6c2d04dab123f850" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
@@ -580,7 +580,50 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="152" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="214" bodyend="217"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="164" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="217" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_position_1a85d13a94ded517e69e67dbad79936531" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
+        <definition>Position ostk::physics::coordinate::Position::FromLLA</definition>
+        <argsstring>(const spherical::LLA &amp;aLLA, const Shared&lt; const environment::object::Celestial &gt; &amp;aCelestialSPtr=nullptr)</argsstring>
+        <name>FromLLA</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1spherical_1_1_l_l_a" kindref="compound">spherical::LLA</ref> &amp;</type>
+          <declname>aLLA</declname>
+        </param>
+        <param>
+          <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">environment::object::Celestial</ref> &gt; &amp;</type>
+          <declname>aCelestialSPtr</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructs a position from an LLA coordinate. If a celestial object is not provided, the central body from the global environment instance will be used if it&apos;s available. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLLA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A LLA coordinate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aCelestialSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to a celestial object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="172" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="222" bodyend="243"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -588,12 +631,13 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="41" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="40" bodyend="158"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="53" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" bodystart="52" bodyend="180"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1acf0148b4eb086045f7e16e7af143415e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>accessCoordinates</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1ab62b80d4e1befd4eefe548907ca0ddae" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>accessFrame</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a533c76a359c34787b3941dbe7784b226" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>coordinates_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a1d16f35132a7273320aeca18f330eb16" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>frameSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a85d13a94ded517e69e67dbad79936531" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>FromLLA</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a9c23ca6bd49f0031b3d3474e24ee7d90" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>getCoordinates</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1abb6b511b8421d783d0d817468fab1c83" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>getUnit</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_position_1a9834525a2ecc21f36a5a1c6d4d0403bf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Position</scope><name>inFrame</name></member>

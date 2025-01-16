@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" line="60" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="60" bodyend="77"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" line="63" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="63" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1adab6f7d60b93b2a9055ba57c6a2445b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>

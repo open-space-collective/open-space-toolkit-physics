@@ -25,6 +25,7 @@ ostk.physics.coordinate.spherical.LLA
       ~LLA.cartesian
       ~LLA.distance_between
       ~LLA.forward
+      ~LLA.from_position
       ~LLA.get_altitude
       ~LLA.get_latitude
       ~LLA.get_longitude

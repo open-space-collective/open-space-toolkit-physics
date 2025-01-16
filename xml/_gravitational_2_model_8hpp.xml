@@ -235,7 +235,7 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -312,11 +312,15 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
         <link refid="_object_2_celestial_2_earth_8cpp"/>
       </node>
+      <node id="30">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp</label>
+        <link refid="_position_8cpp"/>
+      </node>
       <node id="13">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp</label>
         <link refid="_environment_2_gravitational_2_earth_2_manager_8cpp"/>
       </node>
-      <node id="31">
+      <node id="32">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
         <link refid="_celestial_8cpp"/>
       </node>
@@ -333,6 +337,8 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
@@ -340,7 +346,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
         <link refid="_gravitational_2_earth_8cpp"/>
       </node>
-      <node id="30">
+      <node id="31">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp</label>
         <link refid="_l_l_a_8cpp"/>
       </node>
@@ -380,7 +386,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
         <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
       </node>
-      <node id="32">
+      <node id="33">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp</label>
         <link refid="_gravitational_2_model_8cpp"/>
       </node>
@@ -433,7 +439,9 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>

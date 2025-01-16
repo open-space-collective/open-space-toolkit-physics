@@ -285,7 +285,11 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp</label>
         <link refid="_object_2_celestial_2_earth_8cpp"/>
       </node>
-      <node id="24">
+      <node id="23">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp</label>
+        <link refid="_position_8cpp"/>
+      </node>
+      <node id="25">
         <label>src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</label>
         <link refid="_celestial_8cpp"/>
       </node>
@@ -302,6 +306,8 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
@@ -309,7 +315,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</label>
         <link refid="_gravitational_2_earth_8cpp"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp</label>
         <link refid="_l_l_a_8cpp"/>
       </node>
@@ -346,7 +352,7 @@
         <link refid="_scalar_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="21">
@@ -355,7 +361,7 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>src/OpenSpaceToolkit/Physics/Data/Scalar.cpp</label>
         <link refid="_scalar_8cpp"/>
       </node>
@@ -388,7 +394,9 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>

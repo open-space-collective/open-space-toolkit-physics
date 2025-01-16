@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="33" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1coordinate_1_1spherical_1accdc9e8d506c2404c5764fa65c9708f1" prot="public" static="no">
         <type>ostk::mathematics::geometry::d3::object::Point</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="34" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -93,13 +93,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" line="57" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="57" bodyend="71"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" line="58" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="58" bodyend="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp" line="19" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="46" column="1"/>
   </compounddef>
 </doxygen>

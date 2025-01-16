@@ -17,6 +17,7 @@ ostk.physics.coordinate.Position
       :nosignatures:
    
       ~Position.access_frame
+      ~Position.from_lla
       ~Position.get_coordinates
       ~Position.get_unit
       ~Position.in_frame
