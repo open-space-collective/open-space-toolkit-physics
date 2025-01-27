@@ -272,17 +272,19 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         )doc"
     )
 
-        .def(init<
-             const Length::Unit&,
-             const Derived::Order&,
-             const Mass::Unit&,
-             const Derived::Order&,
-             const Time::Unit&,
-             const Derived::Order&,
-             const ElectricCurrent::Unit&,
-             const Derived::Order&,
-             const Angle::Unit&,
-             const Derived::Order&>())
+        .def(
+            init<
+                const Length::Unit&,
+                const Derived::Order&,
+                const Mass::Unit&,
+                const Derived::Order&,
+                const Time::Unit&,
+                const Derived::Order&,
+                const ElectricCurrent::Unit&,
+                const Derived::Order&,
+                const Angle::Unit&,
+                const Derived::Order&>()
+        )
 
         .def(self == self)
         .def(self != self)

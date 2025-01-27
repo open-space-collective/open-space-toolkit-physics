@@ -17,9 +17,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
-#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
+#include <OpenSpaceToolkit/Physics/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 #define OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY \

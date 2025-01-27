@@ -36,7 +36,8 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
         manager_.loadManifest(manifest_);
         managerNoIO_.loadManifest(manifest_);
 
-        manager_.setRemoteUrl(URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data")
+        manager_.setRemoteUrl(
+            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data")
         );
 
         // cache current directory environment variables
@@ -219,13 +220,17 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, FindRemoteDataUrls)
 
         EXPECT_EQ(
             urls[0],
-            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/environment/"
-                       "gravitational/earth/egm2008.egm")
+            URL::Parse(
+                "https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/environment/"
+                "gravitational/earth/egm2008.egm"
+            )
         );
         EXPECT_EQ(
             urls[1],
-            URL::Parse("https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/environment/"
-                       "gravitational/earth/egm2008.egm.cof")
+            URL::Parse(
+                "https://github.com/open-space-collective/open-space-toolkit-data/raw/v1/data/environment/"
+                "gravitational/earth/egm2008.egm.cof"
+            )
         );
     }
 }

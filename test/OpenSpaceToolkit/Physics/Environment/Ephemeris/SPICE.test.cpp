@@ -90,46 +90,57 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
 
         const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios = {
             {SPICE::Object::Earth,
-             File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Earth.csv"
-             )),
+             File::Path(
+                 Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Earth.csv"
+                 )
+             ),
              0.0,
              0.0,
              0.03,
              1e-10,
              {Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
+              Kernel::File(
+                  File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
               ),  // System body shape and orientation constants
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_000101_181204_180912.bpc")))}
-            },
+              Kernel::File(
+                  File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_000101_181204_180912.bpc"))
+              )}},
             {SPICE::Object::Sun,
-             File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Sun.csv"
-             )),
+             File::Path(
+                 Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Sun.csv"
+                 )
+             ),
              100.0,
              1e-5,
              0.0,
              1e-12,
              {
-                 Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))
+                 Kernel::File(
+                     File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))
                  ),                                                                                    // Leap seconds
                  Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
-                 Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
+                 Kernel::File(
+                     File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
                  )  // System body shape and orientation constants
              }},
             {SPICE::Object::Moon,
-             File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Moon.csv"
-             )),
+             File::Path(
+                 Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Moon.csv"
+                 )
+             ),
              10.0,
              1e-5,
              1.0,
              1e-11,
              {Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
+              Kernel::File(
+                  File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
               ),  // System body shape and orientation constants
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_assoc_me.tf"))),
