@@ -107,7 +107,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, LocalDa
         Array<String> expectedFiles = {
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm"))
                 .toString(),
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm.cof")
+            File::Path(
+                Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/egm2008.egm.cof")
             )
                 .toString()
         };

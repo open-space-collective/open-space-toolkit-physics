@@ -407,9 +407,8 @@ struct EigenTensorToPython
             shape[i_dimension] = static_cast<npy_intp>(tensor.dimension(i_dimension));
         }
 
-        PyArrayObject* python_array = (PyArrayObject*)PyArray_SimpleNew(
-            num_dimensions, shape, NumpyEquivalentType<typename TensorType::Scalar>::type_code
-        );
+        PyArrayObject* python_array = (PyArrayObject*
+        )PyArray_SimpleNew(num_dimensions, shape, NumpyEquivalentType<typename TensorType::Scalar>::type_code);
 
         copy_tensor(
             tensor.data(),

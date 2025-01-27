@@ -39,14 +39,20 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
 {
     {
         const Array<Triple<File, Angle, Real>> referenceScenarios = {
-            {File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_A/Scenario ITRF_TEME.csv"
-             )),
+            {File::Path(
+                 Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_A/Scenario "
+                     "ITRF_TEME.csv"
+                 )
+             ),
              Angle::Arcseconds(1.0),
              1e-9},
-            {File::Path(Path::Parse(
-                 "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_B/Scenario ITRF_TEME.csv"
-             )),
+            {File::Path(
+                 Path::Parse(
+                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_B/Scenario "
+                     "ITRF_TEME.csv"
+                 )
+             ),
              Angle::Arcseconds(20.0),
              1e-9}
         };

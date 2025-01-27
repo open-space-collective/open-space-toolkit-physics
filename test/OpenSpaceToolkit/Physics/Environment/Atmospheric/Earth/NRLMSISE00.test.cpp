@@ -212,9 +212,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
     /*
      * This test is to confirm that we compute the same AP solar index values as Orekit when not at 3hour marks.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitCSSIParameters3HourMarksShifted.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitCSSIParameters3HourMarksShifted.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -315,9 +318,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
     /*
      * This test is to confirm that we compute the same Flux values as Orekit when not at 3hour marks.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitCSSIParameters3HourMarksShifted.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitCSSIParameters3HourMarksShifted.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -354,9 +360,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
      * 1. There are know difference in how Orekit computes AP values at exact 3 hour marks
      * 2. The orekit data was generated using their default UT1 time scale, rather than UTC
      */
-    const File referenceDataFile = File::Path(Path::Parse(
-        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/OreKitNRLMSISE500km3HourMarks.csv"
-    ));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISE500km3HourMarks.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -412,9 +421,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
      * 2. There may be some differences due to the difference in the IERS convention used in frame transformations. They
      * use IERS 2010, we use IERS 2003.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISE500km3HourMarksShifted.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISE500km3HourMarksShifted.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -476,9 +488,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
      * 3. There may be some differences due to the difference in the IERS convention used in frame transformations. They
      * use IERS 2010, we use IERS 2003.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISE500km3HourMarksShifted.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISE500km3HourMarksShifted.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -543,9 +558,12 @@ TEST(
      * 2. There may be some differences due to the difference in the IERS convention used in frame transformations. They
      * use IERS 2010, we use IERS 2003.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISESweep3HourMarksShifted.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISESweep3HourMarksShifted.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -607,16 +625,22 @@ TEST(
      * Orekit AND uses the legacy space weather input file in OSTk. The known differences:
      * 1. The orekit data was generated using their default UT1 time scale, rather than UTC
      */
-    const File spaceWeatherFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "SpaceWeather-All-v1.2.txt"));
+    const File spaceWeatherFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "SpaceWeather-All-v1.2.txt"
+        )
+    );
 
     Manager::Get().reset();
     Manager::Get().loadCSSISpaceWeather(CSSISpaceWeather::LoadLegacy(spaceWeatherFile));
 
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISESweep3HourMarksShiftedIERS2003.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISESweep3HourMarksShiftedIERS2003.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -671,9 +695,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
      * This test checks the density generated by OSTk when using the actual inputs that Orekit generates for itself. It
      * was exported using some shenanigans in orekit_tooling. See `GenerateNRLMSISEDensityTestDataWithInputs`
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISEInputsAndDensity.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISEInputsAndDensity.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -736,9 +763,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
      *
      * The default UT1 was used in Orekit, rather than UTC, so the `sec` and `lst` values are known not to match.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISEInputsAndDensity.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISEInputsAndDensity.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -820,9 +850,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
      * This test shows that differences in `sec` and `lst` values comes from the UT1/UTC difference. So unlike the
      * previous test, those inputs match here.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISEInputsAndDensityUTC.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISEInputsAndDensityUTC.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();
@@ -901,9 +934,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
      * This test compares the computed density when we theoretically have identical inputs as Orekit. It uses the same
      * comparison file as the previous test, which shows that the inputs are nearly identical.
      */
-    const File referenceDataFile =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
-                               "OreKitNRLMSISEInputsAndDensityUTC.csv"));
+    const File referenceDataFile = File::Path(
+        Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+            "OreKitNRLMSISEInputsAndDensityUTC.csv"
+        )
+    );
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
     Size rowCount = referenceData.getRowCount();

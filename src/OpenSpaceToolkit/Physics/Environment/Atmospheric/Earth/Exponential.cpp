@@ -105,9 +105,12 @@ Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
 
     if (!bandIndex.isDefined())
     {
-        throw ostk::core::error::RuntimeError(String::Format(
-            "Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.toString()
-        ));
+        throw ostk::core::error::RuntimeError(
+            String::Format(
+                "Exponential density model is not valid for altitudes above 1000 km. Altitude = {}",
+                anAltitude.toString()
+            )
+        );
     }
 
     // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.

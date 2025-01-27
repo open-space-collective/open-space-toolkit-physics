@@ -34,9 +34,11 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::tes
 
     OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine()
         : engine_(Engine::Get()),
-          kernel_(Kernel::File(
-              File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/de430.bsp"))
-          )),
+          kernel_(
+              Kernel::File(
+                  File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/de430.bsp"))
+              )
+          ),
           manager_(Manager::Get())
     {
     }

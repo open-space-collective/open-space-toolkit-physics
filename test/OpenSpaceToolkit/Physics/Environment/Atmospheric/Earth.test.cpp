@@ -44,9 +44,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
-        ));
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
+            )
+        );
     }
 
     {
@@ -54,43 +56,53 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
-        ));
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
+            )
+        );
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
-            150.0,
-            150.0,
-            3.0
-        ));
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::NRLMSISE00,
+                EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
+                150.0,
+                150.0,
+                3.0
+            )
+        );
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
-            150.0,
-            150.0,
-            3.0,
-            Frame::ITRF()
-        ));
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::NRLMSISE00,
+                EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
+                150.0,
+                150.0,
+                3.0,
+                Frame::ITRF()
+            )
+        );
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
-        ));
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
+            )
+        );
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
-        ));
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::NRLMSISE00,
+                EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
+            )
+        );
     }
 }
 
@@ -99,15 +111,19 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
     {
         const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Exponential};
 
-        EXPECT_NO_THROW(const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone();
-                        delete earthAtmosphericModelPtr;);
+        EXPECT_NO_THROW(
+            const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone();
+            delete earthAtmosphericModelPtr;
+        );
     }
 
     {
         const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::NRLMSISE00};
 
-        EXPECT_NO_THROW(const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone();
-                        delete earthAtmosphericModelPtr;);
+        EXPECT_NO_THROW(
+            const EarthAtmosphericModel* earthAtmosphericModelPtr = earthAtmosphericModel.clone();
+            delete earthAtmosphericModelPtr;
+        );
     }
 }
 

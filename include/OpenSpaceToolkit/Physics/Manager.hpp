@@ -134,7 +134,8 @@ class Manager
 
     static Manager::Mode DefaultMode_(const String& aManagerModeEnvironmentVariableName);
 
-    static Duration DefaultLocalRepositoryLockTimeout_(const String& aLocalRepositoryLockTimeoutEnvironmentVariableName
+    static Duration DefaultLocalRepositoryLockTimeout_(
+        const String& aLocalRepositoryLockTimeoutEnvironmentVariableName
     );
 };
 

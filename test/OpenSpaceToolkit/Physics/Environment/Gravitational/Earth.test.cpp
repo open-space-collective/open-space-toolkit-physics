@@ -66,18 +66,26 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EXPECT_NO_THROW(
             std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, Directory::Undefined())
         );
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 20, 0
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 180, 180
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 360, 360
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 2190, 2160
-        ));
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 20, 0
+            )
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 180, 180
+            )
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 360, 360
+            )
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 2190, 2160
+            )
+        );
 
         EarthGravitationalModelManager::Get().reset();
     }
@@ -91,67 +99,97 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::Spherical, Directory::Undefined(), 3000, 3000
-        ));
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::Spherical, Directory::Undefined(), 3000, 3000
+            )
+        );
 
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 3000, 3000
-        ));
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 3000, 3000
+            )
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 3000, 3000
+            )
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 3000, 3000
+            )
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(
+                EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 3000, 3000
+            )
+        );
 
         EarthGravitationalModelManager::Get().reset();
     }
 
     {
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::Spherical,
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
-        ));
+        EXPECT_NO_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::Spherical,
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+            )
+        );
 
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::WGS84,
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
-        ));
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::EGM84,
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
-        ));
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::EGM96,
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
-        ));
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::EGM2008,
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
-        ));
+        EXPECT_NO_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::WGS84,
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+            )
+        );
+        EXPECT_NO_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::EGM84,
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+            )
+        );
+        EXPECT_NO_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::EGM96,
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+            )
+        );
+        EXPECT_NO_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::EGM2008,
+                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+            )
+        );
     }
 
     {
-        EXPECT_NO_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::Spherical, Directory::Path(Path::Parse("/does/not/exist"))
-        ));
+        EXPECT_NO_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::Spherical, Directory::Path(Path::Parse("/does/not/exist"))
+            )
+        );
 
-        EXPECT_ANY_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::WGS84, Directory::Path(Path::Parse("/does/not/exist"))
-        ));
-        EXPECT_ANY_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::EGM84, Directory::Path(Path::Parse("/does/not/exist"))
-        ));
-        EXPECT_ANY_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::EGM96, Directory::Path(Path::Parse("/does/not/exist"))
-        ));
-        EXPECT_ANY_THROW(EarthGravitationalModel earthGravitationalModel(
-            EarthGravitationalModel::Type::EGM2008, Directory::Path(Path::Parse("/does/not/exist"))
-        ));
+        EXPECT_ANY_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::WGS84, Directory::Path(Path::Parse("/does/not/exist"))
+            )
+        );
+        EXPECT_ANY_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::EGM84, Directory::Path(Path::Parse("/does/not/exist"))
+            )
+        );
+        EXPECT_ANY_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::EGM96, Directory::Path(Path::Parse("/does/not/exist"))
+            )
+        );
+        EXPECT_ANY_THROW(
+            EarthGravitationalModel earthGravitationalModel(
+                EarthGravitationalModel::Type::EGM2008, Directory::Path(Path::Parse("/does/not/exist"))
+            )
+        );
     }
 
     // Test succinct constructor without directory
@@ -163,7 +201,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
 
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, 3000, 3000)
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, 3000, 3000)
         );
 
         EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, 3000, 3000));
@@ -350,9 +389,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetType)
         {
             EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Manual);
 
-            Directory directory =
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/fake/")
-                );
+            Directory directory = Directory::Path(
+                Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/fake/")
+            );
             EarthGravitationalModelManager::Get().setLocalRepository(directory);
 
             EXPECT_THROW(

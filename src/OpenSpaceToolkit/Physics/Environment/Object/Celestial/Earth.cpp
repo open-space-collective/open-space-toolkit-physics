@@ -131,39 +131,49 @@ Earth Earth::Default()
 
 Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
 {
-    return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
-    ));
+    return Earth::GravitationalOnly(
+        std::make_shared<EarthGravitationalModel>(
+            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        )
+    );
 }
 
 Earth Earth::WGS84_EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
 {
-    return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::WGS84_EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
-    ));
+    return Earth::GravitationalOnly(
+        std::make_shared<EarthGravitationalModel>(
+            EarthGravitationalModel::Type::WGS84_EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        )
+    );
 }
 
 Earth Earth::EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
 {
     const Shared<const Frame> earthFrameSPtr = Frame::ITRF();
 
-    return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
-    ));
+    return Earth::GravitationalOnly(
+        std::make_shared<EarthGravitationalModel>(
+            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        )
+    );
 }
 
 Earth Earth::EGM84(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
 {
-    return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::EGM84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
-    ));
+    return Earth::GravitationalOnly(
+        std::make_shared<EarthGravitationalModel>(
+            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        )
+    );
 }
 
 Earth Earth::WGS84(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
 {
-    return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::WGS84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
-    ));
+    return Earth::GravitationalOnly(
+        std::make_shared<EarthGravitationalModel>(
+            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        )
+    );
 }
 
 Earth Earth::Spherical()

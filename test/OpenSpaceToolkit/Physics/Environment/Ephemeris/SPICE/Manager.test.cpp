@@ -95,9 +95,12 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel)
 {
     // make subdir for test
-    manager_.setLocalRepository(Directory::Path(
-        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") + Path::Parse("FetchKernelTest/")
-    ));
+    manager_.setLocalRepository(
+        Directory::Path(
+            Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") +
+            Path::Parse("FetchKernelTest/")
+        )
+    );
 
     {
         File kernelFile = File::Path(manager_.getLocalRepository().getPath() + Path::Parse("latest_leapseconds.tls"));
@@ -120,10 +123,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchKernel
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchMatchingKernels)
 {
     // make subdir for test
-    manager_.setLocalRepository(Directory::Path(
-        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") +
-        Path::Parse("FetchMatchingKernelsTest/")
-    ));
+    manager_.setLocalRepository(
+        Directory::Path(
+            Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") +
+            Path::Parse("FetchMatchingKernelsTest/")
+        )
+    );
     if (manager_.getLocalRepository().exists())
     {
         manager_.getLocalRepository().remove();
@@ -147,9 +152,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FetchMatchi
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 {
     // make subdir for test
-    manager_.setLocalRepository(Directory::Path(
-        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") + Path::Parse("FindKernelTest/")
-    ));
+    manager_.setLocalRepository(
+        Directory::Path(
+            Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") +
+            Path::Parse("FindKernelTest/")
+        )
+    );
     if (manager_.getLocalRepository().exists())
     {
         manager_.getLocalRepository().remove();

@@ -220,8 +220,9 @@ bool Engine::isKernelLoaded_(const Kernel& aKernel) const
     return kernelSet_.find(aKernel) != kernelSet_.end();
 }
 
-Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant)
-    const
+Transform Engine::getTransformAt(
+    const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant
+) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
