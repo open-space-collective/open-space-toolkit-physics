@@ -38,10 +38,10 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
             )doc"
         )
         .value(
-            "Dimensionless",
-            Unit::Type::Dimensionless,
+            "None_",
+            Unit::Type::None,
             R"doc(
-                Dimensionless unit type.
+                None unit type.
             )doc"
         )
         .value(
