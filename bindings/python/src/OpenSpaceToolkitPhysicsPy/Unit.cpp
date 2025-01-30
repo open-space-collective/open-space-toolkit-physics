@@ -38,7 +38,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
             )doc"
         )
         .value(
-            "None",
+            "NoneType",
             Unit::Type::None,
             R"doc(
                 None unit type.
