@@ -8,7 +8,6 @@ from ostk.core.filesystem import File
 
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
-
 from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
@@ -38,7 +37,7 @@ class TestCSSISpaceWeather:
         )
 
     def test_access_observation_at_success(self, cssi_space_weather: CSSISpaceWeather):
-        observation: Observation = cssi_space_weather.access_observation_at(
+        observation: CSSISpaceWeather.Reading = cssi_space_weather.access_observation_at(
             Instant.date_time(datetime(2023, 6, 19, 0, 0, 0), Scale.UTC)
         )
 
@@ -58,8 +57,10 @@ class TestCSSISpaceWeather:
     def test_access_daily_prediction_at_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        prediction: Reading = cssi_space_weather.access_daily_prediction_at(
-            Instant.date_time(datetime(2023, 8, 3, 0, 0, 0), Scale.UTC)
+        prediction: CSSISpaceWeather.Reading = (
+            cssi_space_weather.access_daily_prediction_at(
+                Instant.date_time(datetime(2023, 8, 3, 0, 0, 0), Scale.UTC)
+            )
         )
 
         assert prediction.date.to_string() == "2023-08-03"
@@ -78,8 +79,10 @@ class TestCSSISpaceWeather:
     def test_access_monthly_prediction_at_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        prediction: Reading = cssi_space_weather.access_monthly_prediction_at(
-            Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC)
+        prediction: CSSISpaceWeather.Reading = (
+            cssi_space_weather.access_monthly_prediction_at(
+                Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC)
+            )
         )
 
         assert prediction.date.to_string() == "2029-01-01"
@@ -87,7 +90,7 @@ class TestCSSISpaceWeather:
         assert prediction.f107_obs_center_81 == pytest.approx(83.6)
 
     def test_access_reading_at_success(self, cssi_space_weather: CSSISpaceWeather):
-        reading: Reading = cssi_space_weather.access_reading_at(
+        reading: CSSISpaceWeather.Reading = cssi_space_weather.access_reading_at(
             Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC)
         )
 
@@ -99,7 +102,7 @@ class TestCSSISpaceWeather:
     def test_access_last_reading_where_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
-        reading: Reading = cssi_space_weather.access_last_reading_where(
+        reading: CSSISpaceWeather.Reading = cssi_space_weather.access_last_reading_where(
             lambda reading: reading.f107_data_type == "PRD",
             Instant.date_time(datetime(2023, 12, 1, 0, 0, 0), Scale.UTC),
         )

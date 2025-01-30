@@ -6,11 +6,8 @@ import pathlib
 
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
-
-import ostk.physics as physics
-
-BulletinA = physics.coordinate.frame.provider.iers.BulletinA
-Finals2000A = physics.coordinate.frame.provider.iers.Finals2000A
+from ostk.physics.coordinate.frame.provider.iers import BulletinA
+from ostk.physics.coordinate.frame.provider.iers import Finals2000A
 
 
 @pytest.fixture
