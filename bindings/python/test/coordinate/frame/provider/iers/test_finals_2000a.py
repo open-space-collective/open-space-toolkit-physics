@@ -6,10 +6,7 @@ from ostk.core.filesystem import File
 
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
-
-import ostk.physics as physics
-
-Finals2000A = physics.coordinate.frame.provider.iers.Finals2000A
+from ostk.physics.coordinate.frame.provider.iers import Finals2000A
 
 
 class TestFinals2000A:

@@ -6,10 +6,7 @@ from ostk.core.filesystem import File
 
 from ostk.physics.time import Scale
 from ostk.physics.time import Instant
-
-import ostk.physics as physics
-
-BulletinA = physics.coordinate.frame.provider.iers.BulletinA
+from ostk.physics.coordinate.frame.provider.iers import BulletinA
 
 
 class TestBulletinA:
