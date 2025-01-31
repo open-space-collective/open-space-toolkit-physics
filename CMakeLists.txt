@@ -236,7 +236,7 @@ ENDFOREACH ()
 
 ## Dependencies
 
-### Boost [1.87.0]
+### Boost [1.82.0]
 
 IF (BUILD_WITH_BOOST_STATIC)
     SET (Boost_USE_STATIC_LIBS ON)
@@ -248,7 +248,7 @@ SET (Boost_USE_MULTITHREADED ON)
 
 IF (BUILD_WITH_BOOST_STACKTRACE)
 
-    FIND_PACKAGE ("Boost" "1.87" REQUIRED COMPONENTS "date_time" "regex" "filesystem")
+    FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS "date_time" "regex" "filesystem")
 
     ## Stacktrace definitions
     # Detect system architecture
@@ -266,7 +266,7 @@ IF (BUILD_WITH_BOOST_STACKTRACE)
     ADD_DEFINITIONS(-DBOOST_STACKTRACE_USE_BACKTRACE)
     ADD_DEFINITIONS(-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
 ELSE()
-    FIND_PACKAGE ("Boost" "1.87" REQUIRED COMPONENTS "date_time" "regex" "filesystem" "stacktrace_basic")
+    FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS "date_time" "regex" "filesystem" "stacktrace_basic")
 ENDIF()
 
 IF (NOT Boost_FOUND)
