@@ -28,7 +28,7 @@ class Date
     {
 
         Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (YYYY:MM:DD)
+        Standard,   ///< Standard format (YYYY-MM-DD)
         STK         ///< STK format (d Mon YYYY)
 
     };

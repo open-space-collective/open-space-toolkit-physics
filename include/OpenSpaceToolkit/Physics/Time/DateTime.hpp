@@ -40,8 +40,8 @@ class DateTime
     {
 
         Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss)
-        ISO8601,    ///< ISO 8601 format (YYYY:MM:DDThh:mm:ss.sssssssss)
+        Standard,   ///< Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss)
+        ISO8601,    ///< ISO 8601 format (YYYY-MM-DDThh:mm:ss.sssssssss)
         STK         ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
 
     };

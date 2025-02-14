@@ -239,7 +239,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             "Standard",
             DateTime::Format::Standard,
             R"doc(
-                Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss).
+                Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss).
             )doc"
         )
         .value(
