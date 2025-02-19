@@ -198,7 +198,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
         // check that it fetches one that is not there, earth_200101_[0-9]*_predict\\.bpc
         File expectedKernelFile =
             File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_200101_990827_predict.bpc"));
-        
+
         EXPECT_FALSE(expectedKernelFile.exists());
 
         Kernel fetchedKernel = manager_.findKernel("earth_200101_[0-9]*_predict\\.bpc");
