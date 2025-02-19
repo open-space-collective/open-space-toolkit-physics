@@ -158,6 +158,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
             Path::Parse("FindKernelTest/")
         )
     );
+
     if (manager_.getLocalRepository().exists())
     {
         manager_.getLocalRepository().remove();
@@ -191,6 +192,18 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
         EXPECT_EQ(
             expectedKernelFile.getPath().getNormalizedPath(), foundKernel.getFile().getPath().getNormalizedPath()
         );
+    }
+
+    {
+        // check that it fetches one that is not there, earth_200101_[0-9]*_predict\\.bpc
+        File expectedKernelFile =
+            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_200101_990827_predict.bpc"));
+        
+        EXPECT_FALSE(expectedKernelFile.exists());
+
+        Kernel fetchedKernel = manager_.findKernel("earth_200101_[0-9]*_predict\\.bpc");
+        EXPECT_TRUE(fetchedKernel.isDefined());
+        EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
 
     manager_.getLocalRepository().remove();
