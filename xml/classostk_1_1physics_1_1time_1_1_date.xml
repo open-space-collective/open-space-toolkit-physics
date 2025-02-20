@@ -18,7 +18,7 @@
         <enumvalue id="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b" prot="public">
           <name>Standard</name>
           <briefdescription>
-<para>Standard format (YYYY:MM:DD) </para>
+<para>Standard format (YYYY-MM-DD) </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>

@@ -18,7 +18,7 @@
         <enumvalue id="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092aeb6d8ae6f20283755b339c0dc273988b" prot="public">
           <name>Standard</name>
           <briefdescription>
-<para>Standard format (YYYY:MM:DD hh:mm:ss.sss.sss.sss) </para>
+<para>Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss) </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -26,7 +26,7 @@
         <enumvalue id="classostk_1_1physics_1_1time_1_1_date_time_1a1d21d982b18bf56ed684fcf1cd97e092a35b6786739efcdc5a74ab1dca29d3b6b" prot="public">
           <name>ISO8601</name>
           <briefdescription>
-<para>ISO 8601 format (YYYY:MM:DDThh:mm:ss.sssssssss) </para>
+<para>ISO 8601 format (YYYY-MM-DDThh:mm:ss.sssssssss) </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
