@@ -191,7 +191,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Get the intersection with another interval.
 
                 Args:
-                    interval (Interval): Another interval.
+                    (Interval): Another interval.
 
                 Returns:
                     Interval: Intersection interval (Undefined if there is no intersection).
@@ -204,7 +204,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Get the union with another interval.
 
                 Args:
-                    interval (Interval): Another interval.
+                    (Interval): Another interval.
 
                 Returns:
                     Interval: Union interval (Undefined if there is no single-interval union).
@@ -231,10 +231,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Generate a grid of instants with a given time step.
 
                 Args:
-                    aTimeStep (Duration): Time step.
+                    (Duration): Time step.
 
                 Returns:
-                    List[Instant]: Grid of instants.
+                    list[Instant]: Grid of instants.
             )doc"
         )
         .def(
@@ -250,7 +250,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     scale (Scale): Time scale. Defaults to UTC.
 
                 Returns:
-                    Tuple[datetime, datetime]: Datetime span.
+                    tuple[datetime, datetime]: Datetime span.
             )doc",
             arg("scale") = Scale::UTC
         )
@@ -366,7 +366,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     interval (Interval): The clipping interval.
 
                 Returns:
-                    Interval: Clipped intervals.
+                    list[Interval]: Clipped intervals.
             )doc"
         )
         .def_static(
@@ -384,7 +384,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     ascending (bool): Sort in ascending order. Defaults to True.
 
                 Returns:
-                    Interval: Sorted intervals.
+                    list[Interval]: Sorted intervals.
             )doc"
         )
         .def_static(
@@ -403,7 +403,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     intervals (list[Interval]): A list of intervals.
 
                 Returns:
-                    Interval: Merged intervals.
+                    list[Interval]: Merged intervals.
             )doc"
         )
         .def_static(
@@ -425,7 +425,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     interval (Interval): The analysis interval. Used to compute gaps for the first and last interval. Defaults to Undefined.
 
                 Returns:
-                    Interval: Intervals gaps.
+                    list[Interval]: Intervals gaps.
             )doc"
         )
         .def_static(
@@ -447,7 +447,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     intervals_2 (list[Interval]): Another list of intervals.
 
                 Returns:
-                    Interval: Logical-or intervals.
+                    list[Interval]: Logical-or intervals.
             )doc"
         )
         .def_static(
@@ -469,7 +469,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     intervals_2 (list[Interval]): Another list of intervals.
 
                 Returns:
-                    Interval: Logical-and intervals.
+                    list[Interval]: Logical-and intervals.
             )doc"
         )
         .def_static(
@@ -479,7 +479,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 Parse an interval from a string representation.
 
                 Args:
-                    aString (str): String representation.
+                    (str): String representation.
 
                 Returns:
                     Interval: Interval.
