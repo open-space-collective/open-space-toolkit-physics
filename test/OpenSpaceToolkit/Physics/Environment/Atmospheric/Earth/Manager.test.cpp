@@ -79,11 +79,9 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager : public ::
         manager_.reset();
     }
 
-    const File spaceWeatherFile_ = File::Path(
-        Path::Parse(
-            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather/SW-Last5Years.test.csv"
-        )
-    );
+    const File spaceWeatherFile_ = File::Path(Path::Parse(
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather/SW-Last5Years.test.csv"
+    ));
 
     CSSISpaceWeather spaceWeather_ = CSSISpaceWeather::Undefined();
 
@@ -156,12 +154,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3Hou
     {
         // Test data extrapolation
 
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
         const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
@@ -213,12 +208,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3Hou
     {
         // Test data extrapolation
 
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
         const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
@@ -270,12 +262,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDail
     {
         // Test data extrapolation
 
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
         const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
@@ -329,12 +318,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
     {
         // Test data extrapolation
 
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
         const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
@@ -388,12 +374,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
     {
         // Test data extrapolation
 
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
 
         const CSSISpaceWeather spaceWeatherMissingData = CSSISpaceWeather::Load(file);
 
@@ -413,12 +396,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSISpaceWeather)
 {
     {
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 

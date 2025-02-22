@@ -172,11 +172,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
     }
 
     {
-        EXPECT_ANY_THROW(
-            BulletinA::Undefined().getObservationAt(
-                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-            )
-        );
+        EXPECT_ANY_THROW(BulletinA::Undefined().getObservationAt(
+            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
+        ));
     }
 }
 
@@ -213,11 +211,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
     }
 
     {
-        EXPECT_ANY_THROW(
-            BulletinA::Undefined().getPredictionAt(
-                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-            )
-        );
+        EXPECT_ANY_THROW(BulletinA::Undefined().getPredictionAt(
+            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
+        ));
     }
 }
 

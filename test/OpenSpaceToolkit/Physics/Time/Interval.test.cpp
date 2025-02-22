@@ -569,12 +569,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Undefined)
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Closed)
 {
     {
-        EXPECT_NO_THROW(
-            Interval::Closed(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
-            )
-        );
+        EXPECT_NO_THROW(Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
         EXPECT_EQ(
             Interval(
                 Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
@@ -598,12 +596,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Closed)
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Open)
 {
     {
-        EXPECT_NO_THROW(
-            Interval::Open(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
-            )
-        );
+        EXPECT_NO_THROW(Interval::Open(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
         EXPECT_EQ(
             Interval(
                 Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
@@ -627,12 +623,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Open)
 TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenLeft)
 {
     {
-        EXPECT_NO_THROW(
-            Interval::HalfOpenLeft(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
-            )
-        );
+        EXPECT_NO_THROW(Interval::HalfOpenLeft(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
         EXPECT_EQ(
             Interval(
                 Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
@@ -656,12 +650,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenLeft)
 TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenRight)
 {
     {
-        EXPECT_NO_THROW(
-            Interval::HalfOpenRight(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
-            )
-        );
+        EXPECT_NO_THROW(Interval::HalfOpenRight(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
+        ));
         EXPECT_EQ(
             Interval(
                 Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
@@ -685,34 +677,22 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenRight)
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Centered)
 {
     {
-        EXPECT_NO_THROW(
-            Interval::Centered(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Duration::Minutes(2.0),
-                Interval::Type::Closed
-            )
-        );
-        EXPECT_NO_THROW(
-            Interval::Centered(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Duration::Minutes(2.0),
-                Interval::Type::Open
-            )
-        );
-        EXPECT_NO_THROW(
-            Interval::Centered(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Duration::Minutes(2.0),
-                Interval::Type::HalfOpenLeft
-            )
-        );
-        EXPECT_NO_THROW(
-            Interval::Centered(
-                Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
-                Duration::Minutes(2.0),
-                Interval::Type::HalfOpenRight
-            )
-        );
+        EXPECT_NO_THROW(Interval::Centered(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT), Duration::Minutes(2.0), Interval::Type::Closed
+        ));
+        EXPECT_NO_THROW(Interval::Centered(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT), Duration::Minutes(2.0), Interval::Type::Open
+        ));
+        EXPECT_NO_THROW(Interval::Centered(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Duration::Minutes(2.0),
+            Interval::Type::HalfOpenLeft
+        ));
+        EXPECT_NO_THROW(Interval::Centered(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
+            Duration::Minutes(2.0),
+            Interval::Type::HalfOpenRight
+        ));
 
         EXPECT_EQ(
             Interval(

@@ -1093,18 +1093,12 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsNear)
     using ostk::physics::time::Scale;
 
     {
-        EXPECT_TRUE(
-            Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
-                .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(0.0))
-        );
-        EXPECT_TRUE(
-            Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT)
-                .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0))
-        );
-        EXPECT_TRUE(
-            Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
-                .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT), Duration::Seconds(1.0))
-        );
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
+                        .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(0.0)));
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT)
+                        .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0)));
+        EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
+                        .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 1), Scale::TT), Duration::Seconds(1.0)));
     }
 
     {
@@ -1113,14 +1107,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsNear)
     }
 
     {
-        EXPECT_FALSE(
-            Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT)
-                .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0))
-        );
-        EXPECT_FALSE(
-            Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
-                .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT), Duration::Seconds(1.0))
-        );
+        EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT)
+                         .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0)));
+        EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
+                         .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT), Duration::Seconds(1.0)));
     }
 
     {
@@ -1963,8 +1953,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
         EXPECT_ANY_THROW(Instant::Parse("2018", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018-01", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018-01-02", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC));
-        EXPECT_ANY_THROW(
-            Instant::Parse("2018-01-02 01", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
+        EXPECT_ANY_THROW(Instant::Parse("2018-01-02 01", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)
         );
         EXPECT_ANY_THROW(
             Instant::Parse("2018-01-02 1:34", Scale::UTC, DateTime::Format::Standard).getDateTime(Scale::UTC)

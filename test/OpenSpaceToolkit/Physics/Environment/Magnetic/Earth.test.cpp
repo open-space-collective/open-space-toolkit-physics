@@ -50,98 +50,66 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::Dipole,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::EMM2010,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::EMM2015,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::EMM2017,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::IGRF11,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::IGRF12,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::WMM2010,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::WMM2015,
-                Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-            )
-        );
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::Dipole,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::EMM2010,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::EMM2015,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::EMM2017,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::IGRF11,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::IGRF12,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::WMM2010,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::WMM2015,
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
+        ));
     }
 
     {
-        EXPECT_NO_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::Dipole, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
+        EXPECT_NO_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::Dipole, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
 
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::EMM2010, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::EMM2015, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::EMM2017, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::IGRF11, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::IGRF12, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::WMM2010, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
-        EXPECT_ANY_THROW(
-            EarthMagneticModel earthMagneticModel(
-                EarthMagneticModel::Type::WMM2015, Directory::Path(Path::Parse("/does/not/exist"))
-            )
-        );
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::EMM2010, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::EMM2015, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::EMM2017, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::IGRF11, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::IGRF12, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::WMM2010, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
+        EXPECT_ANY_THROW(EarthMagneticModel earthMagneticModel(
+            EarthMagneticModel::Type::WMM2015, Directory::Path(Path::Parse("/does/not/exist"))
+        ));
     }
 }
 

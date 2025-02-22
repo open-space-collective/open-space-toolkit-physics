@@ -18,7 +18,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate(pybind11::module& aModule)
     OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(coordinate);
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame(coordinate);
     OpenSpaceToolkitPhysicsPy_Coordinate_Transform(coordinate);
-    OpenSpaceToolkitPhysicsPy_Coordinate_Axes(
-        coordinate
+    OpenSpaceToolkitPhysicsPy_Coordinate_Axes(coordinate
     );  // Cannot be binded without Frame.cpp (class forward declared)
 }

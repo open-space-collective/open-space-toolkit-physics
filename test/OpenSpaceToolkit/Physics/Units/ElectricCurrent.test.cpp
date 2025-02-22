@@ -37,8 +37,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Clone)
 
         const ElectricCurrent electricCurrent = {value, unit};
 
-        EXPECT_NO_THROW(
-            const ElectricCurrent* electricCurrentPtr = electricCurrent.clone(); delete electricCurrentPtr;
+        EXPECT_NO_THROW(const ElectricCurrent* electricCurrentPtr = electricCurrent.clone(); delete electricCurrentPtr;
         );
     }
 }

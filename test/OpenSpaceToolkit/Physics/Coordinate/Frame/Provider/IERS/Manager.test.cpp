@@ -85,9 +85,9 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         manager_.reset();
     }
 
-    const File bulletinAFile_ = File::Path(
-        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
-    );
+    const File bulletinAFile_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
+        );
 
     const File finals2000AFile_ = File::Path(
         Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/finals2000A.data")
@@ -252,26 +252,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 {
     {
         const Array<Tuple<File, Real>> referenceScenarios = {
-            {File::Path(
-                 Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
-                     "GetPolarMotionAt/Pole Wander 1.csv"
-                 )
-             ),
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
+                                    "GetPolarMotionAt/Pole Wander 1.csv")),
              1e-8},
-            {File::Path(
-                 Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
-                     "GetPolarMotionAt/Pole Wander 2.csv"
-                 )
-             ),
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
+                                    "GetPolarMotionAt/Pole Wander 2.csv")),
              1e-8},
-            {File::Path(
-                 Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
-                     "GetPolarMotionAt/Pole Wander 3.csv"
-                 )
-             ),
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
+                                    "GetPolarMotionAt/Pole Wander 3.csv")),
              1e-8}
         };
 
@@ -344,19 +332,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
     {
         const Array<Tuple<File, Real>> referenceScenarios = {
-            {File::Path(
-                 Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
-                     "GetUt1MinusUtcAt/DUT1 1.csv"
-                 )
-             ),
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
+                                    "GetUt1MinusUtcAt/DUT1 1.csv")),
              1e-4},
-            {File::Path(
-                 Path::Parse(
-                     "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
-                     "GetUt1MinusUtcAt/DUT1 2.csv"
-                 )
-             ),
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
+                                    "GetUt1MinusUtcAt/DUT1 2.csv")),
              1e-4},
             // {
             // File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/GetUt1MinusUtcAt/DUT1
@@ -453,11 +433,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadBull
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadFinals2000A)
 {
     {
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/finals2000A.data"
-            )
-        );
+        const File file = File::Path(Path::Parse(
+            "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/finals2000A.data"
+        ));
 
         const Finals2000A finals2000a = Finals2000A::Load(file);
 
@@ -527,9 +505,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, ClearLocalRepository)
 {
     {
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/Temp")
-        );
+        Directory directory =
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/Temp"
+            ));
         manager_.setLocalRepository(directory);
         manager_.clearLocalRepository();
 

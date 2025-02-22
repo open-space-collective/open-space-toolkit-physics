@@ -20,12 +20,9 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather : 
    protected:
     void SetUp() override
     {
-        const File file = File::Path(
-            Path::Parse(
-                "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                "CSSISpaceWeather/SW-Last5Years.test.csv"
-            )
-        );
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
         this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
     }
 
@@ -86,9 +83,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessObservationAt)
 {
     {
-        const CSSISpaceWeather::Reading firstObservation = CSSISpaceWeather_.accessObservationAt(
-            Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC)
-        );
+        const CSSISpaceWeather::Reading firstObservation =
+            CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC)
+            );
 
         EXPECT_EQ(Date::Parse("2018-01-01", Date::Format::Standard), firstObservation.date);
 
@@ -122,8 +119,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     {
         // access reading outside of interval
         EXPECT_THROW(
-            CSSISpaceWeather_.accessObservationAt(
-                Instant::DateTime(DateTime::Parse("2000-01-01 00:00:00"), Scale::UTC)
+            CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2000-01-01 00:00:00"), Scale::UTC)
             ),
             ostk::core::error::RuntimeError
         );
@@ -132,8 +128,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     {
         // access reading inside of interval, but with no data present
         EXPECT_THROW(
-            CSSISpaceWeather_.accessObservationAt(
-                Instant::DateTime(DateTime::Parse("2019-01-01 00:00:00"), Scale::UTC)
+            CSSISpaceWeather_.accessObservationAt(Instant::DateTime(DateTime::Parse("2019-01-01 00:00:00"), Scale::UTC)
             ),
             ostk::core::error::RuntimeError
         );
@@ -342,12 +337,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastReadingWhere)
 {
-    const File file = File::Path(
-        Path::Parse(
-            "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-            "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"
-        )
-    );
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
     this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
 
     {
@@ -496,12 +488,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
     {
         CSSISpaceWeather legacySpaceWeather = CSSISpaceWeather::LoadLegacy(
-            File::Path(
-                Path::Parse(
-                    "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                    "NRLMSISE00/SpaceWeather-All-v1.2.txt"
-                )
-            )
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "NRLMSISE00/SpaceWeather-All-v1.2.txt"))
         );
 
         EXPECT_TRUE(legacySpaceWeather.isDefined());

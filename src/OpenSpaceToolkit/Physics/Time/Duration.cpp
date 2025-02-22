@@ -753,11 +753,9 @@ Duration Duration::Parse(const String& aString, const Duration::Format& aFormat)
             if (boost::regex_match(
                     aString,
                     match,
-                    boost::regex(
-                        "^([-])?(?:([0-9]+) "
-                        ")?(?:([0-9]{2}):)?(?:([0-9]{2}):)?([0-9]{2})(?:\\.([0-9]{3}))?(?:\\.([0-9]{3}))?(?:"
-                        "\\.([0-9]{3}))?$"
-                    )
+                    boost::regex("^([-])?(?:([0-9]+) "
+                                 ")?(?:([0-9]{2}):)?(?:([0-9]{2}):)?([0-9]{2})(?:\\.([0-9]{3}))?(?:\\.([0-9]{3}))?(?:"
+                                 "\\.([0-9]{3}))?$")
                 ))
             {
                 try
@@ -806,10 +804,8 @@ Duration Duration::Parse(const String& aString, const Duration::Format& aFormat)
             if (boost::regex_match(
                     aString,
                     match,
-                    boost::regex(
-                        "^([-])?P(?:([0-9]+)D)?(?:T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:(?:([0-9]+)(?:\\.([0-9]{1,9}"
-                        "))?)S)?)?$"
-                    )
+                    boost::regex("^([-])?P(?:([0-9]+)D)?(?:T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:(?:([0-9]+)(?:\\.([0-9]{1,9}"
+                                 "))?)S)?)?$")
                 ))  // Does not support [M]onth and [Y]ear groups, allow [H]our, [M]inute and [S]econd carry over
             {
                 try
