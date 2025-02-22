@@ -224,19 +224,17 @@ Earth::Earth(
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : Model(),
-      implUPtr_(
-          Earth::ImplFromType(
-              aType,
-              anInputDataType,
-              aF107ConstantValue,
-              aF107AConstantValue,
-              aKpConstantValue,
-              anEarthFrameSPtr,
-              anEarthRadius,
-              anEarthFlattening,
-              aSunCelestialSPtr
-          )
-      )
+      implUPtr_(Earth::ImplFromType(
+          aType,
+          anInputDataType,
+          aF107ConstantValue,
+          aF107AConstantValue,
+          aKpConstantValue,
+          anEarthFrameSPtr,
+          anEarthRadius,
+          anEarthFlattening,
+          aSunCelestialSPtr
+      ))
 {
 }
 

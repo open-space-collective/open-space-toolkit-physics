@@ -236,14 +236,12 @@ Earth::ExternalImpl::ExternalImpl(const Earth::ExternalImpl& anExternalImpl)
       gravityModelDegree_(anExternalImpl.getDegree()),
       gravityModelOrder_(anExternalImpl.getOrder()),
       dataDirectory_(anExternalImpl.getDataDirectory()),
-      gravityModelUPtr_(
-          Earth::ExternalImpl::GravityModelFromType(
-              anExternalImpl.getType(),
-              anExternalImpl.getDataDirectory(),
-              anExternalImpl.getDegree(),
-              anExternalImpl.getOrder()
-          )
-      )
+      gravityModelUPtr_(Earth::ExternalImpl::GravityModelFromType(
+          anExternalImpl.getType(),
+          anExternalImpl.getDataDirectory(),
+          anExternalImpl.getDegree(),
+          anExternalImpl.getOrder()
+      ))
 {
 }
 

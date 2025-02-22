@@ -118,9 +118,8 @@ Velocity Velocity::inUnit(const Velocity::Unit& aUnit) const
     return {coordinates_ * conversionFactor, aUnit, frameSPtr_};
 }
 
-Velocity Velocity::inFrame(
-    const Position& aPosition, const Shared<const Frame>& aFrameSPtr, const Instant& anInstant
-) const
+Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>& aFrameSPtr, const Instant& anInstant)
+    const
 {
     if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
     {

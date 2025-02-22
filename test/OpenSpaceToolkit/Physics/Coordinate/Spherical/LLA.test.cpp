@@ -523,8 +523,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 {
     {
         const Array<Tuple<File, Length>> referenceScenarios = {
-            {File::Path(
-                 Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")
+            {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA/ToCartesian/LLA 1.csv")
              ),
              Length::Meters(1.0)}
         };
