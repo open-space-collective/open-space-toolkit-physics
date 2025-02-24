@@ -126,7 +126,7 @@ Earth Earth::FromModels(
 
 Earth Earth::Default()
 {
-    return Earth::EGM2008();
+    return Earth::EGM96(20, 20);
 }
 
 Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
@@ -145,8 +145,6 @@ Earth Earth::WGS84_EGM96(const Integer& aGravityModelDegree, const Integer& aGra
 
 Earth Earth::EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
 {
-    const Shared<const Frame> earthFrameSPtr = Frame::ITRF();
-
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
         EarthGravitationalModel::Type::EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
     ));
