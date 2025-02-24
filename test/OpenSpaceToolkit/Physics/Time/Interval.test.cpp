@@ -186,6 +186,27 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessEnd)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Interval, GetType)
+{
+    {
+        const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
+        const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT);
+
+        EXPECT_EQ(Interval::Type::Closed, Interval(startInstant, endInstant, Interval::Type::Closed).getType());
+        EXPECT_EQ(Interval::Type::Open, Interval(startInstant, endInstant, Interval::Type::Open).getType());
+        EXPECT_EQ(
+            Interval::Type::HalfOpenLeft, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getType()
+        );
+        EXPECT_EQ(
+            Interval::Type::HalfOpenRight, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getType()
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Interval::Undefined().getType());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
 {
     {

@@ -63,6 +63,11 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @return             End instant.
     const Instant& accessEnd() const;
 
+    /// @brief              Get the interval type.
+    ///
+    /// @return             Interval type.
+    Interval::Type getType() const;
+
     /// @brief              Get the start instant.
     ///
     /// @return             Start instant.

@@ -279,6 +279,7 @@ class TestInterval:
         )
 
     def test_interval_get_properties(self, interval: Interval):
+        assert isinstance(interval.get_type(), Interval.Type)
         assert interval.get_start() == Instant.J2000()
         assert interval.get_end() == Instant.J2000() + Duration.minutes(1.0)
         assert interval.get_duration() == Duration.minutes(1.0)
