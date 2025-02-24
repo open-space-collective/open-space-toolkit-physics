@@ -126,7 +126,7 @@ Earth Earth::FromModels(
 
 Earth Earth::Default()
 {
-    return Earth::EGM96(20, 20);
+    return Earth::EGM2008(20, 20);
 }
 
 Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
