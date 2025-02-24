@@ -58,6 +58,16 @@ const Instant& Interval::accessEnd() const
     return this->accessUpperBound();
 }
 
+Interval::Type Interval::getType() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Interval");
+    }
+
+    return this->getType();
+}
+
 Instant Interval::getStart() const
 {
     if (!this->isDefined())
