@@ -65,7 +65,7 @@ Interval::Type Interval::getType() const
         throw ostk::core::error::runtime::Undefined("Interval");
     }
 
-    return this->getType();
+    return mathematics::object::Interval<Instant>::getType();
 }
 
 Instant Interval::getStart() const
