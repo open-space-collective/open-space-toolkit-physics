@@ -126,6 +126,25 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     return anOutputStream;
 }
 
+Length Model::Parameters::computeGeocentricRadiusAt(const Angle& aLatitude) const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Parameters");
+    }
+
+    const Real polarRadius = equatorialRadius_.inMeters() * (1.0 - flattening_);
+
+    const Real cosLatitude = std::cos(aLatitude);
+    const Real sinLatitude = std::sin(aLatitude);
+
+    return Length::Meters(std::sqrt(
+        (equatorialRadius_ * equatorialRadius_ * cosLatitude * cosLatitude +
+         polarRadius * polarRadius * sinLatitude * sinLatitude) /
+        (equatorialRadius_ * cosLatitude * cosLatitude + polarRadius * sinLatitude * sinLatitude)
+    ));
+}
+
 Model::Model(const Parameters& aSetOfParameters)
     : parameters_(aSetOfParameters)
 {
