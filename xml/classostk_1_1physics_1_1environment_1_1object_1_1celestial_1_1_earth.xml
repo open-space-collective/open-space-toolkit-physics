@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="143" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="132" bodyend="139"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="143" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="132" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1aa9586bbfa33e0130fbe499dd23748fe7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -459,7 +459,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="158" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="141" bodyend="148"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="158" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="139" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a52d255251c6b6770c8bd86c9d187289a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -486,7 +486,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="167" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="150" bodyend="159"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="167" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="146" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ad63a8f55e77cad0b28524fdb3ef43b2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -513,7 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="176" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="161" bodyend="168"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="176" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="153" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1abc5717390846fec03abe2935cccedd18" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -540,7 +540,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="185" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="170" bodyend="177"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="185" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="160" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a54f2070adf8e3fd2821650382957cb2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -557,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="194" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="179" bodyend="184"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="194" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="167" bodyend="172"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -584,7 +584,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="197" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="186" bodyend="201"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="197" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="174" bodyend="189"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

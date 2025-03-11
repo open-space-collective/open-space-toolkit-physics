@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="69" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="54" bodyend="119"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="69" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="54" bodyend="116"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

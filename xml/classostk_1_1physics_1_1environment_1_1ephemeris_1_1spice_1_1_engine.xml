@@ -395,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="137" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="223" bodyend="303"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="137" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="223" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1dabd1678e908b44a3fc24f387225bae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -408,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="139" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="305" bodyend="323"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="139" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="304" bodyend="322"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ae4f18db25eeb80e250514c67ecb5b2d5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -429,7 +429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="325" bodyend="384"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="324" bodyend="383"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0fcd56c33521f07c666fcaf83d32f7a0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -446,7 +446,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="143" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="386" bodyend="423"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="143" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="385" bodyend="422"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab9081ab213e081afc468c10415122165" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -463,7 +463,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="425" bodyend="450"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="424" bodyend="449"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a9d6823c20367a6b8af9aecd3a849a3f3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -476,7 +476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="452" bodyend="494"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="451" bodyend="493"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -495,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="149" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="496" bodyend="514"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="149" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="495" bodyend="513"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5b3a7f61a3a64fbc5fce18f6450aa51c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -512,7 +512,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="151" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="516" bodyend="537"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="151" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="515" bodyend="536"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

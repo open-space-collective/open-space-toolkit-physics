@@ -236,7 +236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="70" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="121" bodyend="141"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="70" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="121" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a07e9c679e6f1a4602bc69d296291d2b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="72" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="143" bodyend="156"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="72" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="142" bodyend="155"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="74" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="158" bodyend="161"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="74" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="157" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a175b53534c1c6038dda85be4ffb5b323" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
@@ -313,7 +313,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="76" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="163" bodyend="166"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="76" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="162" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -330,7 +330,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="78" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="168" bodyend="184"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="78" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="167" bodyend="183"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -349,7 +349,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="85" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="186" bodyend="205"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="85" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="185" bodyend="204"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

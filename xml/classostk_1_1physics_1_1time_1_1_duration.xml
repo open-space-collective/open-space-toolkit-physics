@@ -1596,7 +1596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="640" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="730" bodyend="912"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="640" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="730" bodyend="908"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1611,7 +1611,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="646" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="914" bodyend="918"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="646" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="910" bodyend="914"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
