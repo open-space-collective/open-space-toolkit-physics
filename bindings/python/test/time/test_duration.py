@@ -10,6 +10,10 @@ from ostk.physics.time import Duration
 
 
 class TestDuration:
+    def test_constructor_success_duration(self):
+        duration: Duration = Duration.seconds(123.0)
+        assert Duration(duration) == duration
+
     def test_constructor_success_timedelta(self):
         assert Duration(timedelta(days=123)).in_days() == 123.0
         assert Duration(timedelta(hours=123)).in_hours() == 123.0
