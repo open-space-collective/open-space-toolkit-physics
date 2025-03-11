@@ -35,6 +35,16 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                     count (int): A nanosecond count.
             )doc"
         )
+        .def(
+            init<const Duration&>(),
+            arg("duration"),
+            R"doc(
+                Copy constructor.
+
+                Args:
+                    duration (Duration): The Duration.
+            )doc"
+        )
 
         .def(self == self)
         .def(self != self)
