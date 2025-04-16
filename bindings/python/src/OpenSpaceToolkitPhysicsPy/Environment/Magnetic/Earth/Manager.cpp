@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth_Manager(pybind1
 
             The following environment variables can be defined:
 
-            - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_ENABLED" will override "DefaultEnabled"
+            - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE" will override "DefaultMode"
             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
         )doc"
     );
