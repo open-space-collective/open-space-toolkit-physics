@@ -1128,6 +1128,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, FromPosition)
     }
 
     {
+        // Test with Position in a different frame
+        const Position position = Position::Meters({0.0, 0.0, 0.0}, Frame::GCRF());
+        EXPECT_THROW(LLA::FromPosition(position, earthSPtr), ostk::core::error::RuntimeError);
+    }
+
+    {
         // Test with null celestial object and no global environment
         const Position position = Position::Meters({0.0, 0.0, 0.0}, frameSPtr);
         EXPECT_THROW(LLA::FromPosition(position, nullptr), ostk::core::error::RuntimeError);

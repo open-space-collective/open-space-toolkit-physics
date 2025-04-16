@@ -538,6 +538,11 @@ LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment:
         throw ostk::core::error::runtime::Undefined("Position");
     }
 
+    if (aPosition.getFrame() != Frame::ITRF())
+    {
+        throw ostk::core::error::RuntimeError("Cannot convert Position to LLA from frame [{}], must be in ITRF.", aPosition.getFrame().getName());
+    }
+
     const auto celestialSPtr = aCelestialSPtr != nullptr
                                  ? aCelestialSPtr
                                  : Environment::AccessGlobalInstance()->accessCentralCelestialObject();
