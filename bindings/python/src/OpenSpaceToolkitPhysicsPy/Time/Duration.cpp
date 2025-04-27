@@ -58,6 +58,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
         .def(self - self)
         .def(self * double())
         .def(self / double())
+        .def(double() * self)
 
         .def(self += self)
         .def(self -= self)
