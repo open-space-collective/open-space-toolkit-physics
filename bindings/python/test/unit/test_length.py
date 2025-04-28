@@ -107,6 +107,7 @@ def test_unit_length_operators():
     sum_length: Length = length_1 + length_2
     diff_length: Length = length_1 - length_2
     mul_length: Length = length_1 * 2.0
+    mul_length_2: Length = 2.0 * length_1
     div_length: Length = length_1 / 2.0
 
     assert sum_length is not None
@@ -123,6 +124,11 @@ def test_unit_length_operators():
     assert isinstance(mul_length, Length)
     assert mul_length.is_defined()
     assert mul_length == Length(8.0, Unit.Meter)
+
+    assert mul_length_2 is not None
+    assert isinstance(mul_length_2, Length)
+    assert mul_length_2.is_defined()
+    assert mul_length_2 == Length(8.0, Unit.Meter)
 
     assert div_length is not None
     assert isinstance(div_length, Length)
