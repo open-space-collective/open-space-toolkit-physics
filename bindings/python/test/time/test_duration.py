@@ -43,6 +43,7 @@ class TestDuration:
         assert (duration_A + duration_B) is not None
         assert (duration_A - duration_B) is not None
 
+        assert (2.0 * duration_A) is not None
         assert (duration_A * 2.0) is not None
         assert (duration_A / 2.0) is not None
 

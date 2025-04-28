@@ -45,45 +45,17 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 
         .def(self + self)
         .def(self - self)
+        .def(self * double())
+        .def(self / double())
+        .def(double() * self)
 
         .def(self += self)
         .def(self -= self)
+        .def(self *= double())
+        .def(self /= double())
 
         .def(+self)
         .def(-self)
-
-        .def(
-            "__mul__",
-            [](const Length& aLength, Real aReal)
-            {
-                return aLength * aReal;
-            },
-            is_operator()
-        )
-        .def(
-            "__truediv__",
-            [](const Length& aLength, Real aReal)
-            {
-                return aLength / aReal;
-            },
-            is_operator()
-        )
-        .def(
-            "__imul__",
-            [](const Length& aLength, Real aReal)
-            {
-                return aLength * aReal;
-            },
-            is_operator()
-        )
-        .def(
-            "__itruediv__",
-            [](const Length& aLength, Real aReal)
-            {
-                return aLength / aReal;
-            },
-            is_operator()
-        )
 
         .def("__str__", &(shiftToString<Length>))
         .def(
