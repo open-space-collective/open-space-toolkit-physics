@@ -335,6 +335,38 @@ Vector3d Transform::applyToVelocity(const Vector3d& aPosition, const Vector3d& a
     return orientation_ * (aVelocity + velocity_) - angularVelocity_.cross(orientation_ * (aPosition + translation_));
 }
 
+Vector3d Transform::applyToAcceleration(
+    const Vector3d& aPosition, const Vector3d& aVelocity, Vector3d& anAcceleration
+) const
+{
+    if (!aPosition.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Position");
+    }
+
+    if (!aVelocity.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Velocity");
+    }
+
+    if (!anAcceleration.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Acceleration");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Transform");
+    }
+
+    // TBI: Insert the equation here
+    // Mention that we are neglecting the Euler acceleration since we are assuming a constant angular velocity
+
+    return orientation_ * anAcceleration -
+           angularVelocity_.cross(angularVelocity_.cross(orientation_ * (aPosition + translation_))) -
+           2.0 * angularVelocity_.cross(orientation_ * (aVelocity + velocity_));
+}
+
 Vector3d Transform::applyToVector(const Vector3d& aVector) const
 {
     if (!aVector.isDefined())

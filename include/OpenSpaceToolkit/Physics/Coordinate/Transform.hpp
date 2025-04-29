@@ -94,6 +94,8 @@ class Transform
 
     Vector3d applyToVelocity(const Vector3d& aPosition, const Vector3d& aVelocity) const;
 
+    Vector3d applyToAcceleration(const Vector3d& aPosition, const Vector3d& aVelocity, Vector3d& anAcceleration) const;
+
     Vector3d applyToVector(const Vector3d& aVector) const;
 
     static Transform Undefined();
