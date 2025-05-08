@@ -143,11 +143,10 @@ Length Model::Parameters::computeGeocentricRadiusAt(const Angle& aLatitude) cons
     const Real polarRadiusSquared = polarRadius_Meters * polarRadius_Meters;
     const Real equatorialRadiusSquared = equatorialRadius_Meters * equatorialRadius_Meters;
 
-    const Real numerator = 
-        std::pow((equatorialRadiusSquared * cosLatitude), 2) +
-        std::pow((polarRadiusSquared * sinLatitude), 2);
-    const Real denominator =        std::pow((equatorialRadius_Meters * cosLatitude), 2) +
-        std::pow((polarRadius_Meters * sinLatitude), 2);
+    const Real numerator =
+        std::pow((equatorialRadiusSquared * cosLatitude), 2) + std::pow((polarRadiusSquared * sinLatitude), 2);
+    const Real denominator =
+        std::pow((equatorialRadius_Meters * cosLatitude), 2) + std::pow((polarRadius_Meters * sinLatitude), 2);
 
     return Length::Meters(std::sqrt(numerator / denominator));
 }

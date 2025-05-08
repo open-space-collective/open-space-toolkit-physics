@@ -9,9 +9,8 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
-#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
-
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 namespace ostk
 {
@@ -27,10 +26,10 @@ using ostk::core::type::Real;
 using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
+using ostk::physics::unit::Angle;
 using ostk::physics::unit::Derived;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Time;
-using ostk::physics::unit::Angle;
 
 /// @brief                      Gravitational model (interface)
 
