@@ -116,6 +116,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 )doc"
             )
 
+            .def(
+                "compute_geocentric_radius_at",
+                &Model::Parameters::computeGeocentricRadiusAt,
+                arg("latitude"),
+                R"doc(
+                    Compute geocentric radius of ellipsoid at a given latitude.
+
+                    Args:
+                        latitude (Angle): A latitude.
+
+                    Returns:
+                        Length: Geocentric radius of ellipsoid at a given latitude.
+                )doc"
+            )
+
             .def_readwrite(
                 "gravitational_parameter",
                 &Model::Parameters::gravitationalParameter_,

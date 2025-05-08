@@ -133,16 +133,23 @@ Length Model::Parameters::computeGeocentricRadiusAt(const Angle& aLatitude) cons
         throw ostk::core::error::runtime::Undefined("Parameters");
     }
 
-    const Real polarRadius = equatorialRadius_.inMeters() * (1.0 - flattening_);
+    const Real equatorialRadius_Meters = equatorialRadius_.inMeters();
+    const Real polarRadius_Meters = equatorialRadius_Meters * (1.0 - flattening_);
 
-    const Real cosLatitude = std::cos(aLatitude);
-    const Real sinLatitude = std::sin(aLatitude);
+    const Real latitude_Radians = aLatitude.inRadians();
+    const Real cosLatitude = std::cos(latitude_Radians);
+    const Real sinLatitude = std::sin(latitude_Radians);
 
-    return Length::Meters(std::sqrt(
-        (equatorialRadius_ * equatorialRadius_ * cosLatitude * cosLatitude +
-         polarRadius * polarRadius * sinLatitude * sinLatitude) /
-        (equatorialRadius_ * cosLatitude * cosLatitude + polarRadius * sinLatitude * sinLatitude)
-    ));
+    const Real polarRadiusSquared = polarRadius_Meters * polarRadius_Meters;
+    const Real equatorialRadiusSquared = equatorialRadius_Meters * equatorialRadius_Meters;
+
+    const Real numerator = 
+        std::pow((equatorialRadiusSquared * cosLatitude), 2) +
+        std::pow((polarRadiusSquared * sinLatitude), 2);
+    const Real denominator =        std::pow((equatorialRadius_Meters * cosLatitude), 2) +
+        std::pow((polarRadius_Meters * sinLatitude), 2);
+
+    return Length::Meters(std::sqrt(numerator / denominator));
 }
 
 Model::Model(const Parameters& aSetOfParameters)

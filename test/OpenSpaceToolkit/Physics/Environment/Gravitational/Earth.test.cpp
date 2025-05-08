@@ -798,3 +798,89 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, StreamOperator)
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
+
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ComputeGeocentricRadiusAt)
+{
+    using ostk::physics::unit::Angle;
+    
+    // Test different Earth models
+    const Array<EarthGravitationalModel::Type> modelTypes = {
+        EarthGravitationalModel::Type::Spherical,
+        EarthGravitationalModel::Type::WGS84,
+        EarthGravitationalModel::Type::EGM96,
+        EarthGravitationalModel::Type::EGM2008
+    };
+    
+    for (const auto& modelType : modelTypes)
+    {
+        const EarthGravitationalModel::Parameters parameters = EarthGravitationalModel::ParametersFromType(modelType);
+        
+        // Test at equator
+        {
+            const Angle latitude = Angle::Degrees(0.0);
+            const Length radius = parameters.computeGeocentricRadiusAt(latitude);
+            
+            // At equator, radius should equal equatorial radius
+            EXPECT_NEAR(radius.inMeters(), parameters.equatorialRadius_.inMeters(), 1e-10) ;
+        }
+        
+        // Test at poles
+        {
+            const Angle latitude = Angle::Degrees(90.0);
+            const Length radius = parameters.computeGeocentricRadiusAt(latitude);
+            
+            // At poles, for non-spherical models, radius should be less than equatorial radius
+            if (modelType != EarthGravitationalModel::Type::Spherical)
+            {
+                const Real polarRadius = parameters.equatorialRadius_.inMeters() * (1.0 - parameters.flattening_);
+                EXPECT_NEAR(radius.inMeters(), polarRadius, 1e-10);
+            }
+        }
+        
+        // Test at 45 degrees latitude
+        {
+            const Angle latitude = Angle::Degrees(45.0);
+            const Length radius = parameters.computeGeocentricRadiusAt(latitude);
+            
+            // At 45 degrees, radius should be between equatorial and polar radius
+            if (modelType != EarthGravitationalModel::Type::Spherical)
+            {
+                const Real polarRadius = parameters.equatorialRadius_.inMeters() * (1.0 - parameters.flattening_);
+                EXPECT_GT(radius.inMeters(), polarRadius);
+                EXPECT_LT(radius.inMeters(), parameters.equatorialRadius_.inMeters());
+            }
+        }
+    }
+    
+    // Test undefined parameters
+    {
+        const EarthGravitationalModel::Parameters undefinedParameters = EarthGravitationalModel::Parameters::Undefined();
+        const Angle latitude = Angle::Degrees(45.0);
+        
+        EXPECT_THROW(undefinedParameters.computeGeocentricRadiusAt(latitude), ostk::core::error::runtime::Undefined);
+    }
+    
+    // Test specific values for WGS84
+    {
+        const EarthGravitationalModel::Parameters wgs84Parameters = EarthGravitationalModel::WGS84;
+        
+        // Test values at specific latitudes - computed using reference implementation
+        // Reference values from https://planetcalc.com/7721/
+        const Array<Tuple<Real, Real>> testCases = {
+            {0.0, 6378137.0}, // Equator
+            {45.0, 6367489.5}, // 45 degrees (approximate value)
+            {90.0, 6356752.3}, // North pole (approximate value)
+        };
+        
+        for (const auto& testCase : testCases)
+        {
+            const Angle latitude = Angle::Degrees(std::get<0>(testCase));
+            const Real expectedRadius = std::get<1>(testCase);
+            const Length radius = wgs84Parameters.computeGeocentricRadiusAt(latitude);
+            
+            // Using larger tolerance due to approximation in test values
+            EXPECT_NEAR(radius.inMeters(), expectedRadius, 1e-1) 
+                << "Latitude: " << latitude.inDegrees() << " degrees";
+        }
+    }
+}
