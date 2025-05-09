@@ -1348,6 +1348,7 @@
     <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a3d830259ac209e96bfe191ff740ea4db" kind="function"><name>operator==</name></member>
     <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a86c7c1687d6900ec95457341bf57212e" kind="function"><name>operator!=</name></member>
     <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a009dc0a6e1a70bc33b0b84681956afda" kind="function"><name>isDefined</name></member>
+    <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a883dd7f2bed96c7cd45261cd5b87f18f" kind="function"><name>computeGeocentricRadiusAt</name></member>
     <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1aef4e5bed7f24814bae4cc88b57479d0b" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters_1a0b378bc06c633c0f1e42b058860702dd" kind="function"><name>Undefined</name></member>
   </compound>

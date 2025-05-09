@@ -16,6 +16,7 @@ ostk.physics.environment.gravitational.GravitationalParameters
    .. autosummary::
       :nosignatures:
    
+      ~GravitationalParameters.compute_geocentric_radius_at
       ~GravitationalParameters.is_defined
       ~GravitationalParameters.undefined
    

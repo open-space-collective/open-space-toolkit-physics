@@ -1235,7 +1235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="345" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="534" bodyend="554"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp" line="345" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.cpp" bodystart="534" bodyend="561"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
