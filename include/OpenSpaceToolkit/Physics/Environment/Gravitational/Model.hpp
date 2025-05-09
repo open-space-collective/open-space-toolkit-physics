@@ -9,6 +9,7 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 namespace ostk
@@ -25,6 +26,7 @@ using ostk::core::type::Real;
 using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
+using ostk::physics::unit::Angle;
 using ostk::physics::unit::Derived;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Time;
@@ -107,6 +109,13 @@ class Model
         // @return             An undefined parameter set
 
         static Parameters Undefined();
+
+        // @brief              Compute geocentric radius of ellipsoid at a given latitude
+        //
+        // @param              [in] aLatitude A latitude
+        // @return             Geocentric radius of ellipsoid at a given latitude
+
+        Length computeGeocentricRadiusAt(const Angle& aLatitude) const;
 
         Derived gravitationalParameter_;
         Length equatorialRadius_;
