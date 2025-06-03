@@ -1070,6 +1070,7 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a877e273e6701d5c22942ea3602a36912" kind="function"><name>fetchLatestFinals2000A_</name></member>
   </compound>
   <compound refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager" kind="class"><name>ostk::physics::coordinate::frame::Manager</name>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7b4c60568b23d4f374638df91e94b9e0" kind="variable"><name>maxTransformCacheSize_</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" kind="variable"><name>frameMap_</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a8a72adc24738214445c553a78295ca3d" kind="variable"><name>transformCache_</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a33ddf1a08b6a8a2d85d752c0ba7ae754" kind="variable"><name>mutex_</name></member>
@@ -1077,12 +1078,12 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ad1bf0d565112eac93b3fce6639629341" kind="function"><name>operator=</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7963c97f063b5cdd276f3ffd375ef8e4" kind="function"><name>hasFrameWithName</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aac7fb7d84fa6cb1d41019c4e5d0d617f" kind="function"><name>accessFrameWithName</name></member>
-    <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1adacba700f8840d7489f12385c801d311" kind="function"><name>accessCachedTransform</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a0f5bd33bc74842d47f58cfcd675860ee" kind="function"><name>accessCachedTransform</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a402814124348fc9217912a83dd29dda6" kind="function"><name>addFrame</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1b87264403a57572eb08f590bc6a85e6" kind="function"><name>removeFrameWithName</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aad244181e43540dcb967652f92f99d62" kind="function"><name>addCachedTransform</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a96bac91e86c805cbab50135642b010cf" kind="function"><name>Get</name></member>
-    <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aca2dc7ff166bad0868912b393d659d18" kind="function"><name>Manager</name></member>
+    <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ab78680548ad919be7520b2ee4e1dd12b" kind="function"><name>Manager</name></member>
   </compound>
   <compound refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kind="class"><name>ostk::physics::environment::atmospheric::earth::Manager</name>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1ac0cf44081437d97f75d7bb842c70ce8f" kind="variable"><name>CSSISpaceWeather_</name></member>

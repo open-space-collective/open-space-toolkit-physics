@@ -623,7 +623,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="172" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="222" bodyend="243"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Position.hpp" line="172" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="222" bodyend="244"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

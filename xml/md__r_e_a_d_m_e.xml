@@ -191,7 +191,7 @@
 <codeline><highlight class="normal">COPY<sp/>--from=build-env<sp/>--chown=${USER_UID}:${USER_GID}<sp/>${OSTK_DATA_LOCAL_CACHE}<sp/>${OSTK_DATA_LOCAL_CACHE}</highlight></codeline>
 </programlisting></para>
 <para>The following table shows the availabe data source settings with the different environment variables you can set:</para>
-<para><table rows="21" cols="2"><row>
+<para><table rows="22" cols="2"><row>
 <entry thead="yes"><para>Environment Variable </para>
 </entry><entry thead="yes"><para>Default Value  </para>
 </entry></row>
@@ -274,6 +274,10 @@
 <row>
 <entry thead="no"><para><computeroutput>OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT</computeroutput> </para>
 </entry><entry thead="no"><para><computeroutput>60</computeroutput>  </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>OSTK_PHYSICS_FRAME_MANAGER_MAX_TRANSFORM_CACHE_SIZE</computeroutput> </para>
+</entry><entry thead="no"><para><computeroutput>1000</computeroutput>  </para>
 </entry></row>
 </table>
 </para>
