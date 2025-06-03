@@ -238,7 +238,8 @@ Position Position::FromLLA(
     }
 
     return Position::Meters(
-        aLLA.toCartesian(celestialSPtr->getEquatorialRadius(), celestialSPtr->getFlattening()), Frame::ITRF()
+        aLLA.toCartesian(celestialSPtr->getEquatorialRadius(), celestialSPtr->getFlattening()),
+        celestialSPtr->accessFrame()
     );
 }
 

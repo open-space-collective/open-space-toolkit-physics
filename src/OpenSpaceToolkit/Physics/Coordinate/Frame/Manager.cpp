@@ -37,7 +37,7 @@ Shared<const Frame> Manager::accessFrameWithName(const String& aFrameName) const
     return nullptr;
 }
 
-const Transform* Manager::accessCachedTransform(
+const Transform Manager::accessCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
 ) const
 {
@@ -55,12 +55,12 @@ const Transform* Manager::accessCachedTransform(
 
             if (transformCacheInstantIt != transformCacheToFrameIt->second.end())
             {
-                return &(transformCacheInstantIt->second);
+                return (transformCacheInstantIt->second);
             }
         }
     }
 
-    return nullptr;
+    return Transform::Undefined();
 }
 
 void Manager::addFrame(const Shared<const Frame>& aFrameSPtr)
@@ -126,6 +126,13 @@ void Manager::addCachedTransform(
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
+    if (transformCache_.size() >= maxTransformCacheSize_)
+    {
+        // TODO: Implement LRU or FIFO eviction strategy
+        // For now, clear oldest entries
+        transformCache_.clear();
+    }
+
     const auto transformCacheFromFrameIt = transformCache_.insert({aFromFrameSPtr.get(), {}}).first;
     const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({aToFrameSPtr.get(), {}}).first;
     const auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({anInstant, aTransform}).first;
@@ -135,9 +142,36 @@ void Manager::addCachedTransform(
 
 Manager& Manager::Get()
 {
-    static Manager manager;
+    static Size maxTransformCacheSize = []()
+    {
+        const char* maxTransformCacheSizeEnv = std::getenv("OSTK_PHYSICS_FRAME_MANAGER_MAX_TRANSFORM_CACHE_SIZE");
+
+        Size value = 1000;
+
+        if (maxTransformCacheSizeEnv != nullptr)
+        {
+            try
+            {
+                value = std::stoul(maxTransformCacheSizeEnv);
+            }
+            catch (const std::exception& e)
+            {
+                throw ostk::core::error::RuntimeError(
+                    "Invalid value for OSTK_PHYSICS_FRAME_MANAGER_MAX_TRANSFORM_CACHE_SIZE: {}", e.what()
+                );
+            }
+        }
+        return value;
+    }();
+
+    static Manager manager {maxTransformCacheSize};
 
     return manager;
+}
+
+Manager::Manager(const Size& aMaxTransformCacheSize)
+    : maxTransformCacheSize_(aMaxTransformCacheSize)
+{
 }
 
 }  // namespace frame

@@ -24,6 +24,7 @@ namespace frame
 
 using ostk::core::container::Map;
 using ostk::core::type::Shared;
+using ostk::core::type::Size;
 using ostk::core::type::String;
 
 using ostk::physics::coordinate::Frame;
@@ -43,7 +44,7 @@ class Manager
 
     Shared<const Frame> accessFrameWithName(const String& aFrameName) const;
 
-    const Transform* accessCachedTransform(
+    const Transform accessCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
     ) const;
 
@@ -61,13 +62,14 @@ class Manager
     static Manager& Get();
 
    private:
+    Size maxTransformCacheSize_;
     Map<String, Shared<const Frame>> frameMap_;
 
     Map<const Frame*, Map<const Frame*, Map<Instant, Transform>>> transformCache_;
 
     mutable std::mutex mutex_;
 
-    Manager() = default;
+    Manager(const Size& aMaxTransformCacheSize);
 };
 
 }  // namespace frame

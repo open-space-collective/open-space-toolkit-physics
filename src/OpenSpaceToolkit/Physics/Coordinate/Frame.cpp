@@ -244,9 +244,11 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     const Shared<const Frame> thisSPtr = this->shared_from_this();
 
-    if (auto transformPtr = FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant))
+    const Transform transform = FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant);
+
+    if (transform.isDefined())
     {
-        return *transformPtr;
+        return transform;
     }
 
     // Find common ancestor
