@@ -126,8 +126,10 @@ void Manager::addCachedTransform(
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    if (transformCache_.size() > maxTransformCacheSize_)
+    if (transformCache_.size() >= maxTransformCacheSize_)
     {
+        // TODO: Implement LRU or FIFO eviction strategy
+        // For now, clear oldest entries
         transformCache_.clear();
     }
 
@@ -167,8 +169,8 @@ Manager& Manager::Get()
     return manager;
 }
 
-Manager::Manager(const Size& maxTransformCacheSize)
-    : maxTransformCacheSize_(maxTransformCacheSize)
+Manager::Manager(const Size& aMaxTransformCacheSize)
+    : maxTransformCacheSize_(aMaxTransformCacheSize)
 {
 }
 

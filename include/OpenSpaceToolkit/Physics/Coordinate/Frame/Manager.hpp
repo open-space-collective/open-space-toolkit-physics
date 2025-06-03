@@ -69,7 +69,7 @@ class Manager
 
     mutable std::mutex mutex_;
 
-    Manager(const Size& maxTransformCacheSize_);
+    Manager(const Size& aMaxTransformCacheSize);
 };
 
 }  // namespace frame
