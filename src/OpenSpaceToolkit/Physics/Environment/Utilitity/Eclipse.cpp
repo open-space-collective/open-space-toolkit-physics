@@ -184,9 +184,15 @@ Real montenbruckGillShadowFunction(
     auto computeApparentAngularRadius = [](const Celestial& celestialObject,
                                            const Vector3d& objectToCelestialObjectPositionCoordinates) -> Real
     {
-        return std::asin(
-            celestialObject.getEquatorialRadius().inMeters() / objectToCelestialObjectPositionCoordinates.norm()
-        );
+        const Real equatorialRadius = celestialObject.getEquatorialRadius().inMeters();
+        const Real distance = objectToCelestialObjectPositionCoordinates.norm();
+
+        if (distance <= equatorialRadius)
+        {
+            return M_PI / 2.0;
+        }
+
+        return std::asin(equatorialRadius / distance);
     };
 
     // Apparent angular radius of the occulted celestial object

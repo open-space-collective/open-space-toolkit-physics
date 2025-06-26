@@ -201,11 +201,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "is_position_in_eclipse",
             &Environment::isPositionInEclipse,
             arg("position"),
+            arg("include_penumbra") = false,
             R"doc(
                 Is position in eclipse.
 
                 Args:
                     position (Position): A position.
+                    include_penumbra (bool, optional): Whether to include penumbra in eclipse calculation. Defaults to True.
 
                 Returns:
                     bool: True if the position is in eclipse, False otherwise.
