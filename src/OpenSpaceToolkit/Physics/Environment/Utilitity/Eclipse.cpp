@@ -261,7 +261,7 @@ Array<Interval> eclipseIntervalsAtPosition(
     {
         environment.setInstant(instant);
 
-        const bool inEclipse = environment.isPositionInEclipse(aPosition);
+        const bool inEclipse = environment.isPositionInEclipse(aPosition, false);
 
         if (inEclipse && (!eclipseStartInstant.isDefined()))
         {
