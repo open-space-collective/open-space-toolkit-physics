@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp>
 
 namespace ostk
 {
@@ -264,13 +265,11 @@ void Environment::setInstant(const Instant& anInstant)
     instant_ = anInstant;
 }
 
-bool Environment::isPositionInEclipse(const Position& aPosition) const
+bool Environment::isPositionInEclipse(const Position& aPosition, const bool& includePenumbra) const
 {
-    using ostk::mathematics::geometry::d3::object::Point;
-    using ostk::mathematics::geometry::d3::object::Segment;
-
-    using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::Object;
+    using ostk::physics::environment::object::Celestial;
+    using ostk::physics::environment::utilities::montenbruckGillShadowFunction;
 
     if (!aPosition.isDefined())
     {
@@ -284,18 +283,36 @@ bool Environment::isPositionInEclipse(const Position& aPosition) const
 
     const Instant instant = this->getInstant();
 
-    const Shared<const Frame> gcrfSPtr = Frame::GCRF();
+    const Shared<const Celestial> sunSPtr = this->accessCelestialObjectWithName("Sun");
 
-    const Shared<const Object> sunSPtr = this->accessObjectWithName("Sun");
+    for (const auto& objectSPtr : objects_)
+    {
+        if (objectSPtr->getName() != "Sun")
+        {
+            const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
+            if (celestialSPtr != nullptr)
+            {
+                const Real shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
 
-    const Segment sunToObjectSegment_GCRF = {
-        Point::Vector(aPosition.inFrame(gcrfSPtr, instant).getCoordinates()),
-        Point::Vector(sunSPtr->getPositionIn(gcrfSPtr, instant).getCoordinates()),
-    };
+                if (includePenumbra)
+                {
+                    if (shadowValue < 1.0)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (shadowValue == 0.0)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
 
-    const Object::Geometry sunToObjectGeometry = {sunToObjectSegment_GCRF, gcrfSPtr};
-
-    return this->intersects(sunToObjectGeometry, {sunSPtr});
+    return false;
 }
 
 Environment Environment::Undefined()

@@ -142,9 +142,11 @@ class Environment
     /// @brief              Is position in eclipse
     ///
     /// @param              [in] aPosition A position
+    /// @param              [in] includePenumbra (optional) Whether to include penumbra in eclipse calculation. Defaults
+    /// to true.
     /// @return             True if the position is in eclipse
 
-    bool isPositionInEclipse(const Position& aPosition) const;
+    bool isPositionInEclipse(const Position& aPosition, const bool& includePenumbra = true) const;
 
     /// @brief              Get gravitational field at position
     ///
