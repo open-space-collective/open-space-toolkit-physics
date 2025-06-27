@@ -68,14 +68,18 @@ class TestEnvironment:
 
     def test_is_position_in_eclipse(self, environment: Environment):
         environment.set_instant(
-            Instant.date_time(DateTime(2018, 1, 1, 0, 0, 0), Scale.UTC)
+            Instant.date_time(DateTime(2026, 1, 1, 0, 31, 18, 381, 233, 978), Scale.UTC)
         )
 
-        assert environment.is_position_in_eclipse(
-            Position.meters(
-                [7000e3, 0.0, 0.0],
-                Frame.ITRF(),
-            )
+        position = Position.meters(
+            [3754515.113065, 9268420.375974, 0.0],
+            Frame.GCRF(),
+        )
+
+        assert environment.is_position_in_eclipse(position) is True
+        assert environment.is_position_in_eclipse(position, include_penumbra=True) is True
+        assert (
+            environment.is_position_in_eclipse(position, include_penumbra=False) is False
         )
 
     def test_access_global_instance(self):
