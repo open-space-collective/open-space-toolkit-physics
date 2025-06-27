@@ -319,8 +319,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
                          Instant::DateTime(DateTime(2018, 1, 1, 18, 2, 30, 998), Scale::UTC),
                          Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                      )},
-                    Duration::Seconds(10.0),
-                    Duration::Seconds(10.0),
+                    Duration::Seconds(30.0),
+                    Duration::Seconds(30.0),
                 },
 
                 // Target 2
@@ -348,8 +348,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
                          Instant::DateTime(DateTime(2018, 1, 1, 19, 38, 31, 80), Scale::UTC),
                          Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                      )},
-                    Duration::Seconds(10.0),
-                    Duration::Seconds(10.0),
+                    Duration::Seconds(30.0),
+                    Duration::Seconds(30.0),
                 },
 
                 // Target 3
@@ -367,8 +367,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
                         Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                     )},
-                    Duration::Seconds(10.0),
-                    Duration::Seconds(10.0),
+                    Duration::Seconds(30.0),
+                    Duration::Seconds(30.0),
                 },
 
                 // Target 4
@@ -380,8 +380,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
                     LLA(Angle::Degrees(-90.0), Angle::Degrees(0.0), Length::Kilometers(0.0)),
                     {},
                     {},
-                    Duration::Seconds(10.0),
-                    Duration::Seconds(10.0),
+                    Duration::Seconds(30.0),
+                    Duration::Seconds(30.0),
                 },
 
                 // Target 5
@@ -411,8 +411,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
                             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
                         ),
                     },
-                    Duration::Seconds(10.0),
-                    Duration::Seconds(15.0),
+                    Duration::Seconds(30.0),
+                    Duration::Seconds(30.0),
                 }
             };
 
