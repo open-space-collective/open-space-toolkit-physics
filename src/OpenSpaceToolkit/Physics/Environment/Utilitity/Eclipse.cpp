@@ -108,18 +108,14 @@ Duration Eclipse::getDuration(const bool& includePenumbras) const
         }
     }
 
-    if (intervalsToConsider.isEmpty())
-    {
-        return Duration::Zero();
-    }
+    Duration duration = Duration::Zero();
 
-    Real totalSeconds = 0.0;
     for (const auto& interval : intervalsToConsider)
     {
-        totalSeconds += interval.getDuration().inSeconds();
+        duration += interval.getDuration();
     }
 
-    return Duration::Seconds(totalSeconds);
+    return duration;
 }
 
 Interval Eclipse::getInterval(const bool& includePenumbras) const
