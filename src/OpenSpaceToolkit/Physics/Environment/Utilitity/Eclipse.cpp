@@ -224,7 +224,11 @@ Real montenbruckGillShadowFunction(
 }
 
 Array<Interval> eclipseIntervalsAtPosition(
-    const Interval& anAnalysisInterval, const Position& aPosition, const Environment& anEnvironment
+    const Interval& anAnalysisInterval,
+    const Position& aPosition,
+    const Environment& anEnvironment,
+    const bool& includePenumbra,
+    const Duration& timeStep
 )
 {
     using ostk::mathematics::geometry::d3::object::Segment;
@@ -250,8 +254,6 @@ Array<Interval> eclipseIntervalsAtPosition(
 
     Environment environment = anEnvironment;
 
-    const Duration timeStep = Duration::Minutes(1.0);  // [TBM] Param
-
     Array<Interval> eclipseIntervals = Array<Interval>::Empty();
 
     Instant eclipseStartInstant = Instant::Undefined();
@@ -261,7 +263,7 @@ Array<Interval> eclipseIntervalsAtPosition(
     {
         environment.setInstant(instant);
 
-        const bool inEclipse = environment.isPositionInEclipse(aPosition, false);
+        const bool inEclipse = environment.isPositionInEclipse(aPosition, includePenumbra);
 
         if (inEclipse && (!eclipseStartInstant.isDefined()))
         {

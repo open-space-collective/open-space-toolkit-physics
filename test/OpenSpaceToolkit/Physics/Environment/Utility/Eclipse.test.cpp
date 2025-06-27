@@ -2,6 +2,7 @@
 
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -288,65 +289,141 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
     using ostk::physics::time::Interval;
 
     {
-        const Array<Tuple<Interval, LLA, File, Duration>> referenceScenarios = {
-            {
-                Interval::Closed(
-                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                    Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
-                ),
-                LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(10.0)),  // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
-                                       "EclipseIntervalsAtPosition/Target_1 Eclipse.csv")),
-                Duration::Minutes(2.0)  // [TBM] Should improve precision
-            },
-            {
-                Interval::Closed(
-                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                    Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
-                ),
-                LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
-                                       "EclipseIntervalsAtPosition/Target_2 Eclipse.csv")),
-                Duration::Minutes(2.0)  // [TBM] Should improve precision
-            },
-            {
-                Interval::Closed(
-                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                    Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
-                ),
-                LLA(Angle::Degrees(+90.0), Angle::Degrees(0.0), Length::Meters(10.0)),  // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
-                                       "EclipseIntervalsAtPosition/Target_3 Eclipse.csv")),
-                Duration::Minutes(2.0)  // [TBM] Should improve precision
-            },
-            {
-                Interval::Closed(
-                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                    Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
-                ),
-                LLA(Angle::Degrees(-90.0), Angle::Degrees(0.0), Length::Meters(10.0)),  // [TBM] Should be 0 [m]
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
-                                       "EclipseIntervalsAtPosition/Target_4 Eclipse.csv")),
-                Duration::Minutes(2.0)  // [TBM] Should improve precision
-            },
-            {
-                Interval::Closed(
-                    Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
-                    Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
-                ),
-                LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(5000.0)),
-                File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/"
-                                       "EclipseIntervalsAtPosition/Target_5 Eclipse.csv")),
-                Duration::Minutes(2.0)  // [TBM] Should improve precision
-            }
-        };
+        // Scenarios obtained from STK (see directory
+        // test/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse/EclipseIntervalsAtPosition)
+        const Array<std::tuple<Interval, LLA, Array<Interval>, Array<Interval>, Duration, Duration>>
+            referenceScenarios = {
+
+                // Target 1
+                {
+                    Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    ),
+                    LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(0.0)),
+                    {
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 1, 6, 2, 18, 211), Scale::UTC)
+                        ),
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 18, 4, 52, 262), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                        ),
+                    },
+                    {Interval::Closed(
+                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                         Instant::DateTime(DateTime(2018, 1, 1, 6, 4, 39, 519), Scale::UTC)
+                     ),
+                     Interval::Closed(
+                         Instant::DateTime(DateTime(2018, 1, 1, 18, 2, 30, 998), Scale::UTC),
+                         Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                     )},
+                    Duration::Seconds(10.0),
+                    Duration::Seconds(10.0),
+                },
+
+                // Target 2
+                {
+                    Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    ),
+                    LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
+                    {
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 1, 4, 26, 13, 544), Scale::UTC)
+                        ),
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 19, 40, 54, 466), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                        ),
+                    },
+                    {Interval::Closed(
+                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                         Instant::DateTime(DateTime(2018, 1, 1, 4, 28, 37, 012), Scale::UTC)
+                     ),
+                     Interval::Closed(
+                         Instant::DateTime(DateTime(2018, 1, 1, 19, 38, 31, 80), Scale::UTC),
+                         Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                     )},
+                    Duration::Seconds(10.0),
+                    Duration::Seconds(10.0),
+                },
+
+                // Target 3
+                {
+                    Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    ),
+                    LLA(Angle::Degrees(+90.0), Angle::Degrees(0.0), Length::Kilometers(0.0)),
+                    {Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    )},
+                    {Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    )},
+                    Duration::Seconds(10.0),
+                    Duration::Seconds(10.0),
+                },
+
+                // Target 4
+                {
+                    Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    ),
+                    LLA(Angle::Degrees(-90.0), Angle::Degrees(0.0), Length::Kilometers(0.0)),
+                    {},
+                    {},
+                    Duration::Seconds(10.0),
+                    Duration::Seconds(10.0),
+                },
+
+                // Target 5
+                {
+                    Interval::Closed(
+                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                    ),
+                    LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(5000.0)),
+                    {
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 1, 1, 45, 9, 118), Scale::UTC)
+                        ),
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 22, 21, 45, 807), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                        ),
+                    },
+                    {
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 1, 1, 48, 11, 252), Scale::UTC)
+                        ),
+                        Interval::Closed(
+                            Instant::DateTime(DateTime(2018, 1, 1, 22, 18, 44, 257), Scale::UTC),
+                            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC)
+                        ),
+                    },
+                    Duration::Seconds(10.0),
+                    Duration::Seconds(15.0),
+                }
+            };
 
         for (const auto& referenceScenario : referenceScenarios)
         {
             const Interval analysisInterval = std::get<0>(referenceScenario);
             const LLA lla = std::get<1>(referenceScenario);
-            const File referenceDataFile = std::get<2>(referenceScenario);
-            const Duration durationTolerance = std::get<3>(referenceScenario);
+            const Array<Interval> expectedIntervalsUmbra = std::get<2>(referenceScenario);
+            const Array<Interval> expectedIntervalsWithPenumbra = std::get<3>(referenceScenario);
+            const Duration timeStep = std::get<4>(referenceScenario);
+            const Duration tolerance = std::get<5>(referenceScenario);
 
             const Position position_ITRF = Position::Meters(
                 lla.toCartesian(
@@ -356,37 +433,56 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPos
             );
             const Environment environment = Environment::Default();
 
-            const Array<Interval> eclipseIntervals =
-                eclipseIntervalsAtPosition(analysisInterval, position_ITRF, environment);
+            const Array<Interval> computedIntervalsUmbra =
+                eclipseIntervalsAtPosition(analysisInterval, position_ITRF, environment, false, timeStep);
 
-            const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
+            EXPECT_EQ(expectedIntervalsUmbra.getSize(), computedIntervalsUmbra.getSize());
 
-            Index eclipseIntervalIndex = 0;
-
-            for (const auto& referenceDataRow : referenceData)
+            for (Index index = 0; index < expectedIntervalsUmbra.getSize(); index++)
             {
-                const Instant startInstant_reference = Instant::DateTime(
-                    DateTime::Parse(referenceDataRow["Start Time (UTCG)"].accessString()), Scale::UTC
-                );
-                const Instant endInstant_reference =
-                    Instant::DateTime(DateTime::Parse(referenceDataRow["Stop Time (UTCG)"].accessString()), Scale::UTC);
-                const String currentCondition = referenceDataRow["Current Condition"].accessString();
+                const Interval& expectedIntervalUmbra = expectedIntervalsUmbra.at(index);
+                const Interval& computedIntervalUmbra = computedIntervalsUmbra.at(index);
 
-                if (currentCondition == "Umbra")
-                {
-                    const Interval& eclipseInterval = eclipseIntervals.at(eclipseIntervalIndex);
+                EXPECT_TRUE(computedIntervalUmbra.getStart().isNear(expectedIntervalUmbra.getStart(), tolerance))
+                    << String::Format(
+                           "{} ~ {}",
+                           computedIntervalUmbra.getStart().toString(),
+                           expectedIntervalUmbra.getStart().toString()
+                       );
+                EXPECT_TRUE(computedIntervalUmbra.getEnd().isNear(expectedIntervalUmbra.getEnd(), tolerance))
+                    << String::Format(
+                           "{} ~ {}",
+                           computedIntervalUmbra.getEnd().toString(),
+                           expectedIntervalUmbra.getEnd().toString()
+                       );
+            }
 
-                    EXPECT_TRUE(eclipseInterval.getStart().isNear(startInstant_reference, durationTolerance))
-                        << String::Format(
-                               "{} ~ {}", eclipseInterval.getStart().toString(), startInstant_reference.toString()
-                           );
-                    EXPECT_TRUE(eclipseInterval.getEnd().isNear(endInstant_reference, durationTolerance))
-                        << String::Format(
-                               "{} ~ {}", eclipseInterval.getEnd().toString(), endInstant_reference.toString()
-                           );
+            const Array<Interval> computedIntervalsWithPenumbra =
+                eclipseIntervalsAtPosition(analysisInterval, position_ITRF, environment, true, timeStep);
 
-                    eclipseIntervalIndex++;
-                }
+            EXPECT_EQ(expectedIntervalsWithPenumbra.getSize(), computedIntervalsWithPenumbra.getSize());
+
+            for (Index index = 0; index < expectedIntervalsWithPenumbra.getSize(); index++)
+            {
+                const Interval& expectedIntervalWithPenumbra = expectedIntervalsWithPenumbra.at(index);
+                const Interval& computedIntervalWithPenumbra = computedIntervalsWithPenumbra.at(index);
+
+                EXPECT_TRUE(
+                    computedIntervalWithPenumbra.getStart().isNear(expectedIntervalWithPenumbra.getStart(), tolerance)
+                )
+                    << String::Format(
+                           "{} ~ {}",
+                           computedIntervalWithPenumbra.getStart().toString(),
+                           expectedIntervalWithPenumbra.getStart().toString()
+                       );
+                EXPECT_TRUE(
+                    computedIntervalWithPenumbra.getEnd().isNear(expectedIntervalWithPenumbra.getEnd(), tolerance)
+                )
+                    << String::Format(
+                           "{} ~ {}",
+                           computedIntervalWithPenumbra.getEnd().toString(),
+                           expectedIntervalWithPenumbra.getEnd().toString()
+                       );
             }
         }
     }
@@ -405,38 +501,47 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
 
     // Test cases with timestamps obtained using Orekit v12.2.1 EclipseDetector
     const Array<Tuple<Instant, Vector3d, Interval<Real>>> testCases = {
+
         // Before penumbra
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:30:58.893704395"), Scale::UTC),
          Vector3d(3868261.294497, 9221526.693422, 0.0),
          Interval<Real>::Closed(1.0, 1.0)},
+
         // Penumbra start
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:31:08.893704395"), Scale::UTC),
          Vector3d(3809964.652101, 9245764.941298, 0.0),
          Interval<Real>::Closed(1.0 - tolerance, 1.0)},
+
         // Mid point between penumbra start and umbra start
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:31:18.381233978"), Scale::UTC),
          Vector3d(3754515.113065, 9268420.375974, 0.0),
          Interval<Real>::Closed(0.5 - tolerance, 0.5 + tolerance)},
+
         // Umbra start
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:31:27.868763562"), Scale::UTC),
          Vector3d(3698930.865026, 9290743.267132, 0.0),
          Interval<Real>::Closed(0.0, tolerance)},
+
         // Mid point between umbra start and umbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:46:36.017335289"), Scale::UTC),
          Vector3d(-1932406.121736, 9811513.980048, 0.0),
          Interval<Real>::Closed(0.0, 0.0)},
+
         // Umbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:01:44.165907016"), Scale::UTC),
          Vector3d(-6945698.597771, 7194252.635884, 0.0),
          Interval<Real>::Closed(0.0, tolerance)},
+
         // Mid point between umbra end and penumbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:01:53.653358409"), Scale::UTC),
          Vector3d(-6988666.481775, 7152519.892074, 0.0),
          Interval<Real>::Closed(0.5 - tolerance, 0.5 + tolerance)},
+
         // Penumbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:02:03.140809803"), Scale::UTC),
          Vector3d(-7031383.622142, 7110530.525795, 0.0),
          Interval<Real>::Closed(1.0 - tolerance, 1.0)},
+
         // After penumbra
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:02:13.140809803"), Scale::UTC),
          Vector3d(-7076135.389139, 7065996.600238, 0.0),

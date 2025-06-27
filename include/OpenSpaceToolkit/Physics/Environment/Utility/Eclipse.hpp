@@ -124,10 +124,17 @@ class Eclipse
 /// @param                      [in] anAnalysisInterval An analysis interval
 /// @param                      [in] aPosition A position
 /// @param                      [in] anEnvironment An environment
+/// @param                      [in] includePenumbra Whether to include penumbra phases. Defaults to true
+/// @param                      [in] timeStep The time step for analysis, the lower the more accuraty the result will
+/// be. Defaults to one minute
 /// @return                     Array of eclipse intervals for a given position
 
 Array<Interval> eclipseIntervalsAtPosition(
-    const Interval& anAnalysisInterval, const Position& aPosition, const Environment& anEnvironment
+    const Interval& anAnalysisInterval,
+    const Position& aPosition,
+    const Environment& anEnvironment,
+    const bool& includePenumbra = true,
+    const Duration& timeStep = Duration::Minutes(1.0)
 );
 
 /// @brief                      Montenbruck-Gill shadow function

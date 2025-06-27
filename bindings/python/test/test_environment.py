@@ -68,7 +68,7 @@ class TestEnvironment:
 
     def test_is_position_in_eclipse(self, environment: Environment):
         environment.set_instant(
-            Instant.date_time(DateTime(2026, 1, 1, 0, 31, 18.381233978), Scale.UTC)
+            Instant.date_time(DateTime(2026, 1, 1, 0, 31, 18, 381, 233, 978), Scale.UTC)
         )
 
         position = Position.meters(
