@@ -190,7 +190,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             R"doc(
                 Get the type of the interval.
 
-                Returns: 
+                Returns:
                     Interval.Type: The type of the interval.
             )doc"
         )
