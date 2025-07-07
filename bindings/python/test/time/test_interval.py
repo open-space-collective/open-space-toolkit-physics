@@ -285,6 +285,7 @@ class TestInterval:
         assert interval.get_lower_bound() == interval.get_start()
         assert interval.get_upper_bound() == interval.get_end()
         assert interval.get_center() == Instant.J2000() + Duration.minutes(0.5)
+        assert interval.get_type() == Interval.Type.Closed
 
     def test_interval_to_string(self, interval: Interval):
         assert interval.to_string() is not None

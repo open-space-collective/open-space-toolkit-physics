@@ -185,6 +185,16 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
         .def(
+            "get_type",
+            &Interval::getType,
+            R"doc(
+                Get the type of the interval.
+
+                Returns: 
+                    Interval.Type: The type of the interval.
+            )doc"
+        )
+        .def(
             "get_intersection_with",
             &Interval::getIntersectionWith,
             R"doc(
