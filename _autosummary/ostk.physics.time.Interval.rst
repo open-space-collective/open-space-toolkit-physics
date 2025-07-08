@@ -29,6 +29,7 @@ ostk.physics.time.Interval
       ~Interval.get_intersection_with
       ~Interval.get_lower_bound
       ~Interval.get_start
+      ~Interval.get_type
       ~Interval.get_union_with
       ~Interval.get_upper_bound
       ~Interval.half_open_left
