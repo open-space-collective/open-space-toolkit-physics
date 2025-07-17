@@ -45,7 +45,7 @@ bool TEME::isDefined() const
 
 Transform TEME::getTransformAt(const Instant& anInstant) const
 {
-    // https://geodesy.geology.ohio-state.edu/course/refpapers/AIAA4025.pdf
+    // https://www.researchgate.net/publication/269062993_Coordinate_frames_of_the_US_Space_Object_Catalogs
     // https://celestrak.com/publications/AIAA/2006-6753/faq.php
     // http://www.dtic.mil/dtic/tr/fulltext/u2/a637370.pdf p.18
 
