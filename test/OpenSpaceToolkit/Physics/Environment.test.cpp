@@ -321,32 +321,43 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, SetInstant)
 TEST_F(OpenSpaceToolkit_Physics_Environment, IsPositionInEclipse)
 {
     {
-        const Position position = Position::Meters({7000e3, 0.0, 0.0}, Frame::ITRF());
-
         Environment environment = Environment::Default();
 
         {
+            // Umbra
             const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
 
             environment.setInstant(instant);
+            const Position position = Position::Meters({7000e3, 0.0, 0.0}, Frame::ITRF());
 
             EXPECT_TRUE(environment.isPositionInEclipse(position));
+            EXPECT_TRUE(environment.isPositionInEclipse(position, true));
+            EXPECT_TRUE(environment.isPositionInEclipse(position, false));
         }
 
         {
+            // Illuminated
             const Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 12, 0, 0), Scale::UTC);
 
             environment.setInstant(instant);
 
+            const Position position = Position::Meters({7000e3, 0.0, 0.0}, Frame::ITRF());
+
             EXPECT_FALSE(environment.isPositionInEclipse(position));
+            EXPECT_FALSE(environment.isPositionInEclipse(position, true));
+            EXPECT_FALSE(environment.isPositionInEclipse(position, false));
         }
 
         {
-            const Instant instant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC);
+            // Penumbra (obtained using Orekit v12.2.1 EclipseDetector)
+            const Instant instant = Instant::DateTime(DateTime(2026, 1, 1, 0, 31, 18.381233978), Scale::UTC);
 
             environment.setInstant(instant);
+            const Position position = Position::Meters({3754515.113065, 9268420.375974, 0.0}, Frame::GCRF());
 
             EXPECT_TRUE(environment.isPositionInEclipse(position));
+            EXPECT_TRUE(environment.isPositionInEclipse(position, true));
+            EXPECT_FALSE(environment.isPositionInEclipse(position, false));
         }
     }
 }

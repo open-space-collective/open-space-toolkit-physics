@@ -6,6 +6,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Utility.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
 {
@@ -201,11 +202,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "is_position_in_eclipse",
             &Environment::isPositionInEclipse,
             arg("position"),
+            arg("include_penumbra") = true,
             R"doc(
                 Is position in eclipse.
 
                 Args:
                     position (Position): A position.
+                    include_penumbra (bool, optional): Whether to include penumbra in eclipse calculation. Defaults to True.
 
                 Returns:
                     bool: True if the position is in eclipse, False otherwise.
@@ -274,4 +277,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(environment);
+    OpenSpaceToolkitPhysicsPy_Environment_Utility(environment);
 }

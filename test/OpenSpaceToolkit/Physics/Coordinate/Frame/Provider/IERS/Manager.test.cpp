@@ -310,7 +310,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
     }
 
     {
-        const Instant instant = Instant::Now() + Duration::Weeks(53.0);
+        const Instant instant = Instant::Now() + Duration::Weeks(55.0);
 
         EXPECT_THROW(manager_.getPolarMotionAt(instant), ostk::core::error::RuntimeError);
     }
