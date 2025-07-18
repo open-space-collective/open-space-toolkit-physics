@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse" kind="class" language="C++" prot="public">
+    <compoundname>ostk::physics::environment::utilities::Eclipse</compoundname>
+    <includes refid="_eclipse_8hpp" local="no">Eclipse.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1abc6b8c271459c47afac8a68cf45bc9fd" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref></type>
+        <definition>Celestial ostk::physics::environment::utilities::Eclipse::occultedCelestialObject_</definition>
+        <argsstring></argsstring>
+        <name>occultedCelestialObject_</name>
+        <briefdescription>
+<para>The occulted celestial object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="155" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1ae6fcd691360f677759e6d6904aed4665" prot="private" static="no" mutable="no">
+        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref></type>
+        <definition>Celestial ostk::physics::environment::utilities::Eclipse::occultingCelestialObject_</definition>
+        <argsstring></argsstring>
+        <name>occultingCelestialObject_</name>
+        <briefdescription>
+<para>The occulting celestial object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="156" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1afa633403c0f49532b37ac972b4a27e51" prot="private" static="no" mutable="no">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase" kindref="compound">EclipsePhase</ref> &gt;</type>
+        <definition>Array&lt;EclipsePhase&gt; ostk::physics::environment::utilities::Eclipse::phases_</definition>
+        <argsstring></argsstring>
+        <name>phases_</name>
+        <briefdescription>
+<para>The phases of the eclipse. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="157" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1abdd3119b5d7c452ed91521758736807e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ostk::physics::environment::utilities::Eclipse::Eclipse</definition>
+        <argsstring>(const Celestial &amp;anOccultedCelestialObject, const Celestial &amp;anOccultingCelestialObject, const Array&lt; EclipsePhase &gt; &amp;somePhases)</argsstring>
+        <name>Eclipse</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &amp;</type>
+          <declname>anOccultedCelestialObject</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &amp;</type>
+          <declname>anOccultingCelestialObject</declname>
+        </param>
+        <param>
+          <type>const Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase" kindref="compound">EclipsePhase</ref> &gt; &amp;</type>
+          <declname>somePhases</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOccultedCelestialObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The occulted celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anOccultingCelestialObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The occulting celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">somePhases</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The phases of the eclipse</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ostk::core::error::RuntimeError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the phases are not contiguous </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="110" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="86" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1a869e09a32ccfaa3c69d4b58b6a58e7a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &amp;</type>
+        <definition>const Celestial &amp; ostk::physics::environment::utilities::Eclipse::accessOccultedCelestialObject</definition>
+        <argsstring>() const</argsstring>
+        <name>accessOccultedCelestialObject</name>
+        <briefdescription>
+<para>Access the occulted celestial object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The occulted celestial object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="119" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="120" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1adb2906bccb18a71dd359708d435e875d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &amp;</type>
+        <definition>const Celestial &amp; ostk::physics::environment::utilities::Eclipse::accessOccultingCelestialObject</definition>
+        <argsstring>() const</argsstring>
+        <name>accessOccultingCelestialObject</name>
+        <briefdescription>
+<para>Access the occulting celestial object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The occulting celestial object </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="124" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="125" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1ad2b24e550a54271a3c44d34b62b93b07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase" kindref="compound">EclipsePhase</ref> &gt; &amp;</type>
+        <definition>const Array&lt; EclipsePhase &gt; &amp; ostk::physics::environment::utilities::Eclipse::getPhases</definition>
+        <argsstring>() const</argsstring>
+        <name>getPhases</name>
+        <briefdescription>
+<para>Get the phases of the eclipse. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The phases of the eclipse </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="129" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="130" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1ae0a1f7eeaecd3b0b209f84784693dc51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::environment::utilities::Eclipse::getDuration</definition>
+        <argsstring>(const bool &amp;includePenumbra=true) const</argsstring>
+        <name>getDuration</name>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>includePenumbra</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Get the duration of the eclipse. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">includePenumbra</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to include the penumbra phases. Defaults to true </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The duration of the eclipse </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="135" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="135" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1a810daab84ae40819c4503acee1891e6b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
+        <definition>Interval ostk::physics::environment::utilities::Eclipse::getInterval</definition>
+        <argsstring>(const bool &amp;includePenumbra=true) const</argsstring>
+        <name>getInterval</name>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>includePenumbra</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Get the interval of the eclipse. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">includePenumbra</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to include the penumbra phases. Defaults to true </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The interval of the eclipse. Returns <ref refid="classostk_1_1physics_1_1time_1_1_interval_1a59ab818046b079fa047a739886d72747" kindref="member">Interval::Undefined()</ref> if there are no umbra phases and penumbras are not included</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ostk::core::error::RuntimeError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If there are multiple umbra phases and penumbras are not included </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="145" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="157" bodyend="186"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1adaf3a76c52ecbcdace306f8f9d4572d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Eclipse &amp;anEclipse)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse" kindref="compound">Eclipse</ref> &amp;</type>
+          <declname>anEclipse</declname>
+        </param>
+        <briefdescription>
+<para>Output stream operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEclipse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An eclipse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="152" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="188" bodyend="211"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse" kindref="compound">Eclipse</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="101" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="100" bodyend="158"/>
+    <listofallmembers>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1a869e09a32ccfaa3c69d4b58b6a58e7a6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>accessOccultedCelestialObject</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1adb2906bccb18a71dd359708d435e875d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>accessOccultingCelestialObject</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1abdd3119b5d7c452ed91521758736807e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>Eclipse</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1ae0a1f7eeaecd3b0b209f84784693dc51" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>getDuration</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1a810daab84ae40819c4503acee1891e6b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>getInterval</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1ad2b24e550a54271a3c44d34b62b93b07" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>getPhases</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1abc6b8c271459c47afac8a68cf45bc9fd" prot="private" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>occultedCelestialObject_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1ae6fcd691360f677759e6d6904aed4665" prot="private" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>occultingCelestialObject_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1adaf3a76c52ecbcdace306f8f9d4572d7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_1afa633403c0f49532b37ac972b4a27e51" prot="private" virt="non-virtual"><scope>ostk::physics::environment::utilities::Eclipse</scope><name>phases_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

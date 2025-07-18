@@ -7,7 +7,7 @@
     <innerdir refid="dir_f842c76a6355cdfe6ed7d578bbd25c13">src/OpenSpaceToolkit/Physics/Environment/Gravitational</innerdir>
     <innerdir refid="dir_35c5515a825f26ee82e6fb1290932d97">src/OpenSpaceToolkit/Physics/Environment/Magnetic</innerdir>
     <innerdir refid="dir_c96736b1f71606b04a269d3a193c0e8d">src/OpenSpaceToolkit/Physics/Environment/Object</innerdir>
-    <innerdir refid="dir_966f17f2777f6083be9551ad39ceafcc">src/OpenSpaceToolkit/Physics/Environment/Utilitity</innerdir>
+    <innerdir refid="dir_f12f5997485c5d7cb24a6d2f37b99692">src/OpenSpaceToolkit/Physics/Environment/Utility</innerdir>
     <innerfile refid="_ephemeris_8cpp">Ephemeris.cpp</innerfile>
     <innerfile refid="_object_8cpp">Object.cpp</innerfile>
     <briefdescription>

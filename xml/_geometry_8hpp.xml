@@ -373,11 +373,11 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -423,15 +423,11 @@
         <link refid="_celestial_8cpp"/>
       </node>
       <node id="23">
-        <label>src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp</label>
-        <link refid="_eclipse_8cpp"/>
-      </node>
-      <node id="21">
         <label>include/OpenSpaceToolkit/Physics/Environment.hpp</label>
         <link refid="_environment_8hpp"/>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -488,11 +484,17 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
         <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
       </node>
-      <node id="22">
+      <node id="21">
         <label>include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp</label>
         <link refid="_eclipse_8hpp"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp</label>
+        <link refid="_eclipse_8cpp"/>
       </node>
       <node id="19">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp</label>
@@ -522,6 +524,8 @@
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>

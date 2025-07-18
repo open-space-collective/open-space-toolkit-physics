@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="22" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="22" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="23" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceostk_1_1physics_1a3a0295c1873badc5c7c4ca3de7e5b509" prot="public" static="no" mutable="no">
         <type>Shared&lt; <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &gt;</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="23" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="23" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="24" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="62" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="62" bodyend="86"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment.cpp" line="63" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment.cpp" bodystart="63" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1a3c3e809ca069b393c79e7ad18cf0b24c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>

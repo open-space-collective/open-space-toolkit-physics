@@ -203,15 +203,11 @@
         </childnode>
       </node>
       <node id="28">
-        <label>src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp</label>
-        <link refid="_eclipse_8cpp"/>
-      </node>
-      <node id="26">
         <label>include/OpenSpaceToolkit/Physics/Environment.hpp</label>
         <link refid="_environment_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -292,11 +288,17 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
         <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
       </node>
-      <node id="27">
+      <node id="26">
         <label>include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp</label>
         <link refid="_eclipse_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp</label>
+        <link refid="_eclipse_8cpp"/>
       </node>
       <node id="18">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp</label>
@@ -326,6 +328,8 @@
         <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>

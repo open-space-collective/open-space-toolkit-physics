@@ -310,11 +310,11 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -384,15 +384,11 @@
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
       </node>
       <node id="29">
-        <label>src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp</label>
-        <link refid="_eclipse_8cpp"/>
-      </node>
-      <node id="27">
         <label>include/OpenSpaceToolkit/Physics/Environment.hpp</label>
         <link refid="_environment_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -489,10 +485,12 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.cpp</label>
         <link refid="_analytical_8cpp"/>
       </node>
-      <node id="28">
+      <node id="27">
         <label>include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp</label>
         <link refid="_eclipse_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -565,6 +563,10 @@
         <childnode refid="38" relation="include">
         </childnode>
       </node>
+      <node id="28">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp</label>
+        <link refid="_eclipse_8cpp"/>
+      </node>
       <node id="12">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp</label>
         <link refid="_n_r_l_m_s_i_s_e00_8hpp"/>
@@ -597,6 +599,8 @@
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>

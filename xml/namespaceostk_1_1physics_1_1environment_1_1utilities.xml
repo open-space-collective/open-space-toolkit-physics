@@ -2,11 +2,13 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="namespaceostk_1_1physics_1_1environment_1_1utilities" kind="namespace" language="C++">
     <compoundname>ostk::physics::environment::utilities</compoundname>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse" prot="public">ostk::physics::environment::utilities::Eclipse</innerclass>
+    <innerclass refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase" prot="public">ostk::physics::environment::utilities::EclipsePhase</innerclass>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1aa6db04adfe21fdcf232fe3e5df13c60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a99c62c13adaeb70e53d8040b2e9d7bcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
         <definition>Array&lt; Interval &gt; ostk::physics::environment::utilities::eclipseIntervalsAtPosition</definition>
-        <argsstring>(const Interval &amp;anAnalysisInterval, const Position &amp;aPosition, const Environment &amp;anEnvironment)</argsstring>
+        <argsstring>(const Interval &amp;anAnalysisInterval, const Position &amp;aPosition, const Environment &amp;anEnvironment, const bool &amp;includePenumbra=true, const Duration &amp;timeStep=Duration::Minutes(1.0))</argsstring>
         <name>eclipseIntervalsAtPosition</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
@@ -19,6 +21,16 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1_environment" kindref="compound">Environment</ref> &amp;</type>
           <declname>anEnvironment</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>includePenumbra</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
+          <declname>timeStep</declname>
+          <defval><ref refid="classostk_1_1physics_1_1time_1_1_duration_1a1cd2884c6bb89071780c7dffcba9b49f" kindref="member">Duration::Minutes</ref>(1.0)</defval>
         </param>
         <briefdescription>
 <para>Calculate eclipse intervals for a given position. </para>
@@ -48,6 +60,22 @@
 <para>An environment </para>
 </parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">includePenumbra</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to include penumbra phases. Defaults to true </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">timeStep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The time step for analysis, the lower the more accuraty the result will be. Defaults to one minute </para>
+</parameterdescription>
+</parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>Array of eclipse intervals for a given position </para>
 </simplesect>
@@ -55,13 +83,162 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp" line="20" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp" bodystart="20" bodyend="83" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="34" declcolumn="7"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="279" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="279" bodyend="336" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="170" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a0c6f49417c8e75a8c8fca9600d3de05f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Real</type>
+        <definition>Real ostk::physics::environment::utilities::montenbruckGillShadowFunction</definition>
+        <argsstring>(const Instant &amp;anInstant, const Position &amp;aPosition, const Celestial &amp;anOccultedCelestialObject, const Celestial &amp;anOccultingCelestialObject)</argsstring>
+        <name>montenbruckGillShadowFunction</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref> &amp;</type>
+          <declname>aPosition</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &amp;</type>
+          <declname>anOccultedCelestialObject</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &amp;</type>
+          <declname>anOccultingCelestialObject</declname>
+        </param>
+        <briefdescription>
+<para>Montenbruck-Gill shadow function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Reference: Montenbruck and Gill, Satellite Orbits: Models, Methods, and Applications, 4th edition, Springer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The instant at which the shadow function is evaluated </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aPosition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The position for which the shadow function is evaluated </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anOccultedCelestialObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The occulted celestial object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anOccultingCelestialObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The occulting celestial object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the shadow function (0.0 for umbra, 1.0 for fully illuminated, and between 0.0 and 1.0 for penumbra) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="213" column="6" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="213" bodyend="277" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="189" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a68d27cee80121e47c4d49d4d09978242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::environment::utilities::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const EclipsePhase &amp;anEclipsePhase)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase" kindref="compound">EclipsePhase</ref> &amp;</type>
+          <declname>anEclipsePhase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEclipsePhase</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An eclipse phase </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="59" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a71db0650e019c200eea9c7511c7f8118" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; ostk::physics::environment::utilities::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;anOutputStream, const Eclipse &amp;anEclipse)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>anOutputStream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse" kindref="compound">Eclipse</ref> &amp;</type>
+          <declname>anEclipse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anEclipse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An eclipse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The output stream </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="188" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="188" bodyend="211"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="19" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="26" column="1"/>
   </compounddef>
 </doxygen>

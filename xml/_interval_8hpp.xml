@@ -184,6 +184,10 @@
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.cpp</label>
         <link refid="_i_t_r_f_8cpp"/>
       </node>
+      <node id="22">
+        <label>src/OpenSpaceToolkit/Physics/Environment.cpp</label>
+        <link refid="_environment_8cpp"/>
+      </node>
       <node id="7">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.cpp</label>
         <link refid="_t_i_r_f_8cpp"/>
@@ -211,12 +215,12 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/OpenSpaceToolkit/Physics/Time.hpp</label>
         <link refid="_time_8hpp"/>
       </node>
@@ -227,10 +231,6 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-      </node>
-      <node id="21">
-        <label>src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp</label>
-        <link refid="_eclipse_8cpp"/>
       </node>
       <node id="12">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp</label>
@@ -258,7 +258,7 @@
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp</label>
         <link refid="_bulletin_b_8hpp"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>src/OpenSpaceToolkit/Physics/Time/Interval.cpp</label>
         <link refid="_interval_8cpp"/>
       </node>
@@ -271,6 +271,8 @@
         <link refid="_eclipse_8hpp"/>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
       </node>
       <node id="17">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp</label>
@@ -279,6 +281,10 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+      </node>
+      <node id="21">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp</label>
+        <link refid="_eclipse_8cpp"/>
       </node>
       <node id="11">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</label>

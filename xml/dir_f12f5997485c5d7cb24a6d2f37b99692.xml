@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
-  <compounddef id="dir_966f17f2777f6083be9551ad39ceafcc" kind="dir">
-    <compoundname>src/OpenSpaceToolkit/Physics/Environment/Utilitity</compoundname>
+  <compounddef id="dir_f12f5997485c5d7cb24a6d2f37b99692" kind="dir">
+    <compoundname>src/OpenSpaceToolkit/Physics/Environment/Utility</compoundname>
     <innerfile refid="_eclipse_8cpp">Eclipse.cpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/OpenSpaceToolkit/Physics/Environment/Utilitity/"/>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/"/>
   </compounddef>
 </doxygen>

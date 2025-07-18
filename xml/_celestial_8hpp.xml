@@ -28,6 +28,7 @@
     <includedby refid="_object_2_celestial_2_earth_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp</includedby>
     <includedby refid="_object_2_celestial_2_moon_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp</includedby>
     <includedby refid="_object_2_celestial_2_sun_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp</includedby>
+    <includedby refid="_eclipse_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp</includedby>
     <includedby refid="_environment_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment.hpp</includedby>
     <includedby refid="_position_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp</includedby>
     <includedby refid="_celestial_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp</includedby>
@@ -622,15 +623,11 @@
         <link refid="_celestial_8cpp"/>
       </node>
       <node id="21">
-        <label>src/OpenSpaceToolkit/Physics/Environment/Utilitity/Eclipse.cpp</label>
-        <link refid="_eclipse_8cpp"/>
-      </node>
-      <node id="19">
         <label>include/OpenSpaceToolkit/Physics/Environment.hpp</label>
         <link refid="_environment_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -675,11 +672,17 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</label>
         <link refid="_n_r_l_m_s_i_s_e00_8cpp"/>
       </node>
-      <node id="20">
+      <node id="19">
         <label>include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp</label>
         <link refid="_eclipse_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp</label>
+        <link refid="_eclipse_8cpp"/>
       </node>
       <node id="4">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp</label>
@@ -709,6 +712,8 @@
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
