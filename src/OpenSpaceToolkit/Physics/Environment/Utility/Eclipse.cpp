@@ -234,7 +234,7 @@ Real montenbruckGillShadowFunction(
         occultingPositionInFrame.inMeters().getCoordinates() - objectPositionCoordinates;
 
     // Edge case: when we are well inside the occulting celestial object, consider it fully in shadow.
-    // This avoids numerical issues when computing the aparent angular separation (c) and we are too close to the
+    // This avoids numerical issues when computing the apparent angular separation (c) and we are too close to the
     // occulting celestial body center.
     if (objectToOccultingPositionCoordinates.norm() < 0.5 * anOccultingCelestialObject.getEquatorialRadius().inMeters())
     {
@@ -242,7 +242,7 @@ Real montenbruckGillShadowFunction(
     }
 
     // Edge case: when we are well inside the occulted celestial object, consider it fully illuminated.
-    // This avoids numerical issues when computing the aparent angular separation (c) and we are too close to the
+    // This avoids numerical issues when computing the apparent angular separation (c) and we are too close to the
     // occulted celestial body center.
     if (objectToOccultedPositionCoordinates.norm() < 0.5 * anOccultedCelestialObject.getEquatorialRadius().inMeters())
     {
