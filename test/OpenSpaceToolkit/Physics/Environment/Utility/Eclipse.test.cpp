@@ -657,6 +657,26 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
         // After penumbra
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:02:13.140809803"), Scale::UTC),
          Vector3d(-7076135.389139, 7065996.600238, 0.0),
+         Interval<Real>::Closed(1.0, 1.0)},
+
+        // Inside the Earth
+        {Instant::DateTime(DateTime::Parse("2026-01-01T00:30:58.893704395"), Scale::UTC),
+         Vector3d(3868261.294497e-6, 9221526.693422e-6, 0.0),
+         Interval<Real>::Closed(0.0, 0.0)},
+
+        // At the Earth's center
+        {Instant::DateTime(DateTime::Parse("2026-01-01T00:00:00.000000000"), Scale::UTC),
+         Vector3d(0.0, 0.0, 0.0),
+         Interval<Real>::Closed(0.0, 0.0)},
+
+        // Inside the Sun
+        {Instant::J2000(),
+         sun->getPositionIn(Frame::GCRF(), Instant::J2000()).inMeters().getCoordinates() + Vector3d(1.0, 1.0, 1.0),
+         Interval<Real>::Closed(1.0, 1.0)},
+
+        // At the Sun's Center
+        {Instant::J2000(),
+         sun->getPositionIn(Frame::GCRF(), Instant::J2000()).inMeters().getCoordinates(),
          Interval<Real>::Closed(1.0, 1.0)}
     };
 
@@ -671,8 +691,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
         const Real shadowValue = montenbruckGillShadowFunction(instant, position, *sun, *earth);
 
         EXPECT_TRUE(expectedShadowValueBoundaries.contains(shadowValue)) << String::Format(
-            "Shadow value {} is not within expected boundaries [{}, {}]",
+            "Shadow value {} for coordinates {} is not within expected boundaries [{}, {}]",
             shadowValue,
+            coordinates.toString(),
             expectedShadowValueBoundaries.getLowerBound(),
             expectedShadowValueBoundaries.getUpperBound()
         );

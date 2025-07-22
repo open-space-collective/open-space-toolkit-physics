@@ -192,7 +192,7 @@ class TestEclipseUtilityFunctions:
     ):
         shadow_function_value_in_eclipse: float = montenbruck_gill_shadow_function(
             instant=Instant.date_time(DateTime(2025, 1, 1, 0, 0, 0), Scale.UTC),
-            position=Position.meters([1000.0, 0.0, 0.0], Frame.ITRF()),
+            position=Position.meters([1000.0e4, 0.0, 0.0], Frame.ITRF()),
             occulted_celestial_object=sun,
             occulting_celestial_object=earth,
         )
@@ -201,7 +201,7 @@ class TestEclipseUtilityFunctions:
 
         shadow_function_value_in_sunlight: float = montenbruck_gill_shadow_function(
             instant=Instant.date_time(DateTime(2025, 1, 1, 12, 0, 0), Scale.UTC),
-            position=Position.meters([1000.0, 0.0, 0.0], Frame.ITRF()),
+            position=Position.meters([1000.0e4, 0.0, 0.0], Frame.ITRF()),
             occulted_celestial_object=sun,
             occulting_celestial_object=earth,
         )

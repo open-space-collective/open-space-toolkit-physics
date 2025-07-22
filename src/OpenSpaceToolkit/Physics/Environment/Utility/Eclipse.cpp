@@ -233,6 +233,22 @@ Real montenbruckGillShadowFunction(
     const Vector3d objectToOccultingPositionCoordinates =
         occultingPositionInFrame.inMeters().getCoordinates() - objectPositionCoordinates;
 
+    // Edge case: when we are well inside the occulting celestial object, consider it fully in shadow.
+    // This avoids numerical issues when computing the apparent angular separation (c) and we are too close to the
+    // occulting celestial body center.
+    if (objectToOccultingPositionCoordinates.norm() < 0.5 * anOccultingCelestialObject.getEquatorialRadius().inMeters())
+    {
+        return 0.0;
+    }
+
+    // Edge case: when we are well inside the occulted celestial object, consider it fully illuminated.
+    // This avoids numerical issues when computing the apparent angular separation (c) and we are too close to the
+    // occulted celestial body center.
+    if (objectToOccultedPositionCoordinates.norm() < 0.5 * anOccultedCelestialObject.getEquatorialRadius().inMeters())
+    {
+        return 1.0;
+    }
+
     // Helper function to compute apparent angular radius
     auto computeApparentAngularRadius = [](const Celestial& celestialObject,
                                            const Vector3d& objectToCelestialObjectPositionCoordinates) -> Real
