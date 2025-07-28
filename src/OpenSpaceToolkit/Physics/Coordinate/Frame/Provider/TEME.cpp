@@ -45,9 +45,13 @@ bool TEME::isDefined() const
 
 Transform TEME::getTransformAt(const Instant& anInstant) const
 {
-    // https://geodesy.geology.ohio-state.edu/course/refpapers/AIAA4025.pdf
-    // https://celestrak.com/publications/AIAA/2006-6753/faq.php
-    // http://www.dtic.mil/dtic/tr/fulltext/u2/a637370.pdf p.18
+    // Seago, J., & Vallado, D. A. (2000, August). Coordinate frames of the U.S. Space Object Catalogs (AIAA Paper
+    // No. 2000‑4025). Presented at the Astrodynamics Specialist Conference. https://doi.org/10.2514/6.2000-4025
+    // Vallado, D. A., Crawford, P., Hujsak, R., & Kelso, T. S. (2006, August 21–24). Revisiting Spacetrack Report #3
+    // (AIAA Paper No. 2006-6753). In AIAA/AAS Astrodynamics Specialist Conference, Keystone, CO. Retrieved from
+    // https://celestrak.org/publications/AIAA/2006-6753/faq.php U.S. Department of Defense. (2013). Space education and
+    // training for astrodynamics applications: Report A637370 (p. 18). Defense Technical Information Center. Retrieved
+    // from http://www.dtic.mil/dtic/tr/fulltext/u2/a637370.pdf
 
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
     using ostk::mathematics::object::Vector2d;
