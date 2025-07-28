@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="42" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="46" bodyend="136"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="42" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="46" bodyend="140"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

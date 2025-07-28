@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="279" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="279" bodyend="336" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="170" declcolumn="7"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="295" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="295" bodyend="352" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="170" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a0c6f49417c8e75a8c8fca9600d3de05f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="213" column="6" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="213" bodyend="277" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="189" declcolumn="6"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="213" column="6" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="213" bodyend="293" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="189" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a68d27cee80121e47c4d49d4d09978242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
