@@ -30,6 +30,8 @@ Environment::Environment(
       objects_(anObjectArray),
       centralCelestialObject_(nullptr)
 {
+    this->validateCelestialObjects();
+
     if (setGlobalInstance)
     {
         Environment::SetGlobalInstance(std::make_shared<Environment>(*this));
@@ -53,6 +55,8 @@ Environment::Environment(
     {
         objects_.add(objectSPtr);
     }
+
+    this->validateCelestialObjects();
 
     if (setGlobalInstance)
     {
@@ -366,6 +370,29 @@ bool Environment::HasGlobalInstance()
 {
     std::shared_lock<std::shared_mutex> lock(mutex);
     return instance != nullptr;
+}
+
+void Environment::validateCelestialObjects()
+{
+    Array<String> celestialNames = Array<String>::Empty();
+
+    for (const auto& objectSPtr : objects_)
+    {
+        const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
+
+        // Only check for duplicates amongst Celestial Objects. Non-Celestial Objects aren't checked.
+        if (celestialSPtr != nullptr)
+        {
+            const String& name = celestialSPtr->accessName();
+
+            if (celestialNames.contains(name))
+            {
+                throw ostk::core::error::RuntimeError("Duplicate Celestial Object with name [{}] detected.", name);
+            }
+
+            celestialNames.add(name);
+        }
+    }
 }
 
 }  // namespace physics
