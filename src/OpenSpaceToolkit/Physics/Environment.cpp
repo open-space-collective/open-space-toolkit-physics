@@ -208,7 +208,7 @@ Shared<const Celestial> Environment::accessCentralCelestialObject() const
     {
         return centralCelestialObjectSPtr;
     }
-    
+
     throw ostk::core::error::RuntimeError("No central celestial object.");
 
     return nullptr;
