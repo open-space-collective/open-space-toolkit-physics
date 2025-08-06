@@ -206,7 +206,7 @@ Shared<const Celestial> Environment::accessCentralCelestialObject() const
 
     if (const auto centralCelestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(centralCelestialObject_))
     {
-        return celestialObjectSPtr;
+        return centralCelestialObjectSPtr;
     }
     
     throw ostk::core::error::RuntimeError("No central celestial object.");
