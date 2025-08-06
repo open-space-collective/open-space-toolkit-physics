@@ -154,16 +154,7 @@ Array<Shared<const Object>> Environment::accessObjects() const
         throw ostk::core::error::runtime::Undefined("Environment");
     }
 
-    Array<Shared<const Object>> objects = Array<Shared<const Object>>::Empty();
-
-    objects.reserve(objects_.getSize());
-
-    for (const auto& objectSPtr : objects_)
-    {
-        objects.add(objectSPtr);
-    }
-
-    return objects;
+    return objects_;
 }
 
 Shared<const Object> Environment::accessObjectWithName(const String& aName) const
@@ -213,12 +204,14 @@ Shared<const Celestial> Environment::accessCentralCelestialObject() const
         throw ostk::core::error::runtime::Undefined("Environment");
     }
 
-    if (centralCelestialObject_ == nullptr)
+    if (const auto centralCelestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(centralCelestialObject_))
     {
-        throw ostk::core::error::RuntimeError("No central celestial object.");
+        return celestialObjectSPtr;
     }
+    
+    throw ostk::core::error::RuntimeError("No central celestial object.");
 
-    return std::static_pointer_cast<const Celestial>(centralCelestialObject_);
+    return nullptr;
 }
 
 Instant Environment::getInstant() const
