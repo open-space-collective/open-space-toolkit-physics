@@ -90,6 +90,14 @@ class Geometry
 
     bool isDefined() const;
 
+    /// @brief              Print geometry to output stream
+    ///
+    /// @param              [in] anOutputStream An output stream
+    /// @param              [in] displayDecorators Whether to display decorators
+    /// @return             void
+
+    void print(std::ostream& anOutputStream, bool displayDecorators = true) const;
+
     /// @brief              Check if geometry intersects another geometry
     ///
     /// @param              [in] aGeometry A geometry
