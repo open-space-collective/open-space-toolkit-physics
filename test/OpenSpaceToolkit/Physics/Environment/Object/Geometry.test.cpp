@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <sstream>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -31,6 +33,7 @@
 
 using ostk::core::type::Real;
 using ostk::core::type::Shared;
+using ostk::core::type::String;
 
 using ostk::mathematics::geometry::d3::object::Composite;
 using ostk::mathematics::geometry::d3::object::LineString;
@@ -121,6 +124,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, StreamOperator)
         EXPECT_NO_THROW(std::cout << geometry_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Print)
+{
+    {
+        testing::internal::CaptureStdout();
+
+        EXPECT_NO_THROW(geometry_.print(std::cout, true));
+        EXPECT_NO_THROW(geometry_.print(std::cout, false));
+
+        const String capturedStdout = testing::internal::GetCapturedStdout();
+        EXPECT_FALSE(capturedStdout.empty());
     }
 }
 

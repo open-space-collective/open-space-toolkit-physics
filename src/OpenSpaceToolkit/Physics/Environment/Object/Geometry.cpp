@@ -77,20 +77,23 @@ bool Geometry::operator!=(const Geometry& aGeometry) const
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry)
 {
-    ostk::core::utils::Print::Header(anOutputStream, "Geometry");
+    aGeometry.print(anOutputStream, true);
+
+    return anOutputStream;
+}
+
+void Geometry::print(std::ostream& anOutputStream, bool displayDecorators) const
+{
+    displayDecorators ? ostk::core::utils::Print::Header(anOutputStream, "Geometry") : void();
 
     ostk::core::utils::Print::Line(anOutputStream) << "Objects:";
 
-    aGeometry.composite_.print(anOutputStream, false);
+    composite_.print(anOutputStream, false);
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Frame:"
-        << (((aGeometry.frameSPtr_ != nullptr) && aGeometry.frameSPtr_->isDefined()) ? aGeometry.frameSPtr_->getName()
-                                                                                     : "Undefined");
+        << "Frame:" << (((frameSPtr_ != nullptr) && frameSPtr_->isDefined()) ? frameSPtr_->getName() : "Undefined");
 
-    ostk::core::utils::Print::Footer(anOutputStream);
-
-    return anOutputStream;
+    displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void();
 }
 
 bool Geometry::isDefined() const
