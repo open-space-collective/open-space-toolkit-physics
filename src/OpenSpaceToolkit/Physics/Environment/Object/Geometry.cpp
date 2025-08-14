@@ -91,8 +91,7 @@ void Geometry::print(std::ostream& anOutputStream, bool displayDecorators) const
     composite_.print(anOutputStream, false);
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Frame:"
-        << (((frameSPtr_ != nullptr) && frameSPtr_->isDefined()) ? frameSPtr_->getName() : "Undefined");
+        << "Frame:" << (((frameSPtr_ != nullptr) && frameSPtr_->isDefined()) ? frameSPtr_->getName() : "Undefined");
 
     displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void();
 }
