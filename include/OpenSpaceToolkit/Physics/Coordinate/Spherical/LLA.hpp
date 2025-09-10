@@ -195,10 +195,10 @@ class LLA
         const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief                  Converts the LLA (Latitude, Longitude, Altitude) object to a 3D vector.
+    /// @brief                  Converts the LLA (Latitude, Longitude, Altitude) object to coordinates in the same order.
     ///
-    /// @return                 3D vector representation of the LLA object.
-    Vector3d toVector() const;
+    /// @return                 Coordinates of the LLA object.
+    Vector3d toCoordinates() const;
 
     /// @brief                  Convert LLA coordinates to a 2D point
     ///
@@ -232,11 +232,11 @@ class LLA
     /// @return                 Undefined LLA object.
     static LLA Undefined();
 
-    /// @brief                  Constructs an LLA (Latitude, Longitude, Altitude) object from a 3D vector.
+    /// @brief                  Constructs an LLA (Latitude, Longitude, Altitude) object from coordinates in the same order.
     ///
-    /// @param                  [in] aVector 3D vector representing the LLA coordinates.
+    /// @param                  [in] aCoordinates representing the LLA coordinates in (Latitude, Longitude, Altitude) order.
     /// @return                  LLA object constructed from the 3D vector.
-    static LLA Vector(const Vector3d& aVector);
+    static LLA Coordinates(const Vector3d& aCoordinates);
 
     /// @brief                  Constructs an LLA (Latitude, Longitude, Altitude) object from Cartesian coordinates.
     ///
