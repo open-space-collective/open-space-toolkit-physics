@@ -72,13 +72,12 @@ RUN mkdir /tmp/eigen \
 
 ## IAU SOFA
 
-ARG IAU_SOFA_RELEASE="2018_0130_C"
-ARG IAU_SOFA_VERSION="20180130"
+ARG IAU_SOFA_VERSION="20231011"
 
 RUN mkdir -p /tmp/sofa \
     && cd /tmp/sofa \
-    && wget --quiet http://www.iausofa.org/${IAU_SOFA_RELEASE}/sofa_c-${IAU_SOFA_VERSION}.tar.gz \
-    && tar -zxf sofa_c-${IAU_SOFA_VERSION}.tar.gz \
+    && wget --quiet http://www.iausofa.org/s/sofa_c-${IAU_SOFA_VERSION}tar.gz \
+    && tar -zxf sofa_c-${IAU_SOFA_VERSION}tar.gz \
     && cd sofa/${IAU_SOFA_VERSION}/c/src/ \
     && pattern="CFLAGF = -c -pedantic -Wall -W -O" \
     && target="CFLAGF = -c -pedantic -Wall -W -O -fpic" \
