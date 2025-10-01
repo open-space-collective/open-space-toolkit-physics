@@ -11,6 +11,8 @@
 #include <sofa/sofa.h>
 
 #define DAS2R (4.848136811095359935899141e-6)
+#define DJM0 (2400000.5)  // MJD zero point: Julian Date of Modified Julian Date zero
+#define DJM00 (51544.5)   // MJD of J2000.0
 
 namespace ostk
 {
