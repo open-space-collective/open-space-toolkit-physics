@@ -1,5 +1,8 @@
 /// Apache License 2.0
 
+#include <fstream>
+#include <sstream>
+
 #include <gmock/gmock.h>
 
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
@@ -10,10 +13,12 @@ using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
+using ostk::core::type::String;
 
 using ostk::io::URL;
 
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 
@@ -174,6 +179,146 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor_Skipped)
 
         tempDirectory.remove();
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, ManifestRefreshWhenPastNextUpdateCheckTime)
+{
+    // Create a test manifest with next_update_check in the past
+    const String testManifestContent = R"({
+        "manifest": {
+            "path": "",
+            "filenames": "manifest.json",
+            "last_update": "2023-11-01T22:05:43.789048",
+            "next_update_check": "2023-11-01T22:05:43.789093",
+            "check_frequency": "6 hours"
+        },
+        "test-data": {
+            "path": "test/path",
+            "filenames": "test.dat",
+            "last_update": "2023-08-04T12:02:17.028701",
+            "next_update_check": "2023-08-05T12:02:17.029315",
+            "check_frequency": "1 day",
+            "remote_sources": []
+        }
+    })";
+
+    // Write test manifest to temporary location
+    Directory tempDir = Directory::Path(Path::Parse("/tmp/ostk-test-manifest-refresh"));
+    if (tempDir.exists())
+    {
+        tempDir.remove();
+    }
+    tempDir.create();
+
+    File testManifestFile = File::Path(tempDir.getPath() + Path::Parse("manifest.json"));
+    testManifestFile.create();
+    {
+        std::ofstream file(testManifestFile.getPath().toString());
+        file << testManifestContent;
+    }
+
+    // Set up test manager with this manifest
+    TestManager manager;
+    manager.setLocalRepository(tempDir);
+    manager.setMode(Manager::Mode::Manual);  // Use Manual to avoid actual fetches
+
+    // Force load the old manifest
+    manager.loadManifest(Manifest::Load(testManifestFile));
+
+    // In Manual mode, accessing data with stale manifest should throw
+    EXPECT_THROW(
+        {
+            try
+            {
+                manager.getLastUpdateTimestampFor("test-data");
+            }
+            catch (const ostk::core::error::RuntimeError& e)
+            {
+                EXPECT_THAT(e.getMessage(), testing::HasSubstr("Manifest file is old"));
+                throw;
+            }
+        },
+        ostk::core::error::RuntimeError
+    );
+
+    // Cleanup
+    tempDir.remove();
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, ManifestRefreshWhenAgeExceedsRefreshRate)
+{
+    // Create a test manifest with next_update_check in the future (so first condition is false)
+    // but last_update far in the past (so second condition is true)
+    const Instant futureTime = Instant::Now() + Duration::Days(7.0);
+    const Instant oldUpdateTime = Instant::Now() - Duration::Days(30.0);  // 30 days old
+
+    // Build test manifest content with dynamic timestamps
+    std::stringstream manifestStream;
+    manifestStream << R"({
+        "manifest": {
+            "path": "",
+            "filenames": "manifest.json",
+            "last_update": ")"
+                   << oldUpdateTime.toString(Scale::UTC) << R"(",
+            "next_update_check": ")"
+                   << futureTime.toString(Scale::UTC) << R"(",
+            "check_frequency": "6 hours"
+        },
+        "test-data": {
+            "path": "test/path",
+            "filenames": "test.dat",
+            "last_update": ")"
+                   << oldUpdateTime.toString(Scale::UTC) << R"(",
+            "next_update_check": ")"
+                   << futureTime.toString(Scale::UTC) << R"(",
+            "check_frequency": "1 day",
+            "remote_sources": []
+        }
+    })";
+    const String testManifestContent = manifestStream.str();
+
+    // Write test manifest to temporary location
+    Directory tempDir = Directory::Path(Path::Parse("/tmp/ostk-test-manifest-age"));
+    if (tempDir.exists())
+    {
+        tempDir.remove();
+    }
+    tempDir.create();
+
+    File testManifestFile = File::Path(tempDir.getPath() + Path::Parse("manifest.json"));
+    testManifestFile.create();
+    {
+        std::ofstream file(testManifestFile.getPath().toString());
+        file << testManifestContent;
+    }
+
+    // Set up test manager with this manifest
+    TestManager manager;
+    manager.setLocalRepository(tempDir);
+    manager.setMode(Manager::Mode::Manual);  // Use Manual to avoid actual fetches
+
+    // Force load the old manifest
+    manager.loadManifest(Manifest::Load(testManifestFile));
+
+    // In Manual mode with manifest older than DataRefreshRate_() (24 hours), should throw
+    // This validates the "manifestAge > DataRefreshRate_()" condition works independently
+    EXPECT_THROW(
+        {
+            try
+            {
+                manager.getLastUpdateTimestampFor("test-data");
+            }
+            catch (const ostk::core::error::RuntimeError& e)
+            {
+                EXPECT_THAT(e.getMessage(), testing::HasSubstr("Manifest file is old"));
+                throw;
+            }
+        },
+        ostk::core::error::RuntimeError
+    );
+
+    // Cleanup
+    tempDir.remove();
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetRemoteUrl)

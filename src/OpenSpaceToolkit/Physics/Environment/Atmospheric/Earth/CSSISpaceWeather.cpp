@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
+#include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 namespace ostk
@@ -38,6 +39,8 @@ using ostk::core::utils::Print;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
+
+using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
@@ -202,6 +205,16 @@ const Date& CSSISpaceWeather::accessLastObservationDate() const
     }
 
     return lastObservationDate_;
+}
+
+const Instant& CSSISpaceWeather::accessLastModifiedTimestamp() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    return lastModifiedTimestamp_;
 }
 
 const Interval& CSSISpaceWeather::accessObservationInterval() const
@@ -544,6 +557,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     if (!spaceWeather.observations_.empty())
     {
         spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
+        spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
         const Instant observationStartInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
@@ -691,6 +705,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             readingObserved = false;
 
             spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
+            spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
             const Instant observationStartInstant =
                 Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
@@ -878,6 +893,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 
 CSSISpaceWeather::CSSISpaceWeather()
     : lastObservationDate_(Date::Undefined()),
+      lastModifiedTimestamp_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),
       observations_(Map<Integer, CSSISpaceWeather::Reading>()),
 
