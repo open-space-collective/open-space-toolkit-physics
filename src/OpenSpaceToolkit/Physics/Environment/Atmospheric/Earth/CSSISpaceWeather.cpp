@@ -455,6 +455,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     }
 
     CSSISpaceWeather spaceWeather;
+    spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
     Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
@@ -557,7 +558,6 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     if (!spaceWeather.observations_.empty())
     {
         spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
-        spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
         const Instant observationStartInstant =
             Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
@@ -639,6 +639,8 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 
     CSSISpaceWeather spaceWeather;
 
+    spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+
     std::ifstream fileStream {aFile.getPath().toString()};
 
     bool readingObserved = false;
@@ -705,7 +707,6 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             readingObserved = false;
 
             spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
-            spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
             const Instant observationStartInstant =
                 Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
