@@ -521,3 +521,29 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         );
     }
 }
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastModifiedTimestamp)
+{
+    {
+        // Test with valid CSV file
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather/"
+                                   "SW-Last5Years.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        EXPECT_TRUE(spaceWeather.isDefined());
+
+        const Instant timestamp = spaceWeather.accessLastModifiedTimestamp();
+
+        EXPECT_TRUE(timestamp.isDefined());
+        EXPECT_NO_THROW(timestamp.toString());
+    }
+
+    {
+        // Test with undefined CSSISpaceWeather
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Undefined();
+
+        EXPECT_THROW({ spaceWeather.accessLastModifiedTimestamp(); }, ostk::core::error::runtime::Undefined);
+    }
+}

@@ -373,16 +373,35 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
 
 File Manager::getLatestCSSISpaceWeatherFile_() const
 {
-    // Parse CSSI Space Weather Directories, e.g.,
-    // `.open-space-toolkit/physics/environment/atmospheric/earth/CSSI-Space-Weather/2022-05-19/`, and find the
-    // latest one.
-
-    if (this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
+    // Check if local file exists
+    if (!this->getCSSISpaceWeatherDirectory().containsFileWithName(CSSISpaceWeatherFileName))
     {
-        return File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
+        // No local file exists, fetch from remote
+        return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
     }
 
-    return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
+    const File localCSSISpaceWeatherFile =
+        File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
+
+    // Load local file to access its timestamp
+    const CSSISpaceWeather localSpaceWeather = CSSISpaceWeather::Load(localCSSISpaceWeatherFile);
+
+    // Get the Data Manager instance to query manifest
+    ManifestManager& manifestManager = ManifestManager::Get();
+
+    // Query when the remote file was last updated (this may trigger a manifest fetch)
+    const Instant remoteUpdateTimestamp = manifestManager.getLastUpdateTimestampFor(CSSISpaceWeatherManifestName);
+
+    // Get when the local file was last modified
+    const Instant localUpdateTimestamp = localSpaceWeather.accessLastModifiedTimestamp();
+
+    // If remote is newer, fetch it
+    if (remoteUpdateTimestamp > localUpdateTimestamp)
+    {
+        return const_cast<Manager*>(this)->fetchLatestCSSISpaceWeather_();
+    }
+
+    return localCSSISpaceWeatherFile;
 }
 
 void Manager::setup_()
