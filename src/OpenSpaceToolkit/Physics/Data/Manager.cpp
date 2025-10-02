@@ -178,10 +178,10 @@ void Manager::checkManifestAgeAndUpdate_() const
         }
     }
 
-    const Duration manifestAge = Instant::Now() - manifest_.getLastModifiedTimestamp();
+    const Duration manifestAge = Instant::Now() - manifest_.getLastUpdateTimestampFor("manifest");
 
     // If current time is past next update check time or manifest is old enough, fetch a new one and load it.
-    if (Instant::Now() > nextUpdateCheckTimestamp || manifestAge > DataRefreshRate_())
+    if (Instant::Now() > nextUpdateCheckTimestamp && manifestAge > DataRefreshRate_())
     {
         if (mode_ == Manager::Mode::Manual)
         {
