@@ -220,6 +220,7 @@
   </compound>
   <compound refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kind="class"><name>ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</name>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a827f111cf0e36f23b513a41c6f47d08f" kind="variable"><name>lastObservationDate_</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1ade4950f22a14eb025e80f1782e28242c" kind="variable"><name>lastModifiedTimestamp_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a80f2107898085a0318a4f4127be2dc00" kind="variable"><name>observationInterval_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a19965a35fa929b4fd609bc1bae02e08f" kind="variable"><name>observations_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a3aae72aa98b2c1cd339ae667c5567387" kind="variable"><name>dailyPredictionInterval_</name></member>
@@ -229,6 +230,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a14072b611af090b205237d0159fdb3da" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a8e3a26ac31c945fa4d250a7cc376b00c" kind="function"><name>isDefined</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1acd88c593fdbbc0bdc400595c44a5f5de" kind="function"><name>accessLastObservationDate</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1af41e1c6c21558da15b53aa9c055efb93" kind="function"><name>accessLastModifiedTimestamp</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a740f1a2cb166bd6b9b28d43255981641" kind="function"><name>accessObservationInterval</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1a4db84b0fdc4df5a185fd825ea6277a5c" kind="function"><name>accessObservationAt</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather_1aa50599e98338a29a06d8d6ef80dacb0e" kind="function"><name>accessDailyPredictionInterval</name></member>
@@ -743,6 +745,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a62aebadfb6eef5f277600ebc4cbbd0d4" kind="function"><name>operator==</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a34d7f1124c04bce81faed05f3fc1bf3b" kind="function"><name>operator!=</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1af025cb0f2f977b2a0992757b5010baf2" kind="function"><name>isDefined</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ae76624f3044e3fe7de49b23872e9233f" kind="function"><name>print</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ae3f3a8011bf9307c33aed351dac6e492" kind="function"><name>intersects</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a4ec4b3a8c04f3bcdde6f86eaef66e2a2" kind="function"><name>contains</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a141e163344ff038ccb22974a40d7fe23" kind="function"><name>accessComposite</name></member>
@@ -2243,6 +2246,8 @@
   </compound>
   <compound refid="_j2000_8cpp" kind="file"><name>J2000.cpp</name>
     <member refid="_j2000_8cpp_1aaf777442176e851f4e522f4cf60d73d7" kind="define"><name>DAS2R</name></member>
+    <member refid="_j2000_8cpp_1a30492e7d9255653d1c8f53eef95666b8" kind="define"><name>DJM0</name></member>
+    <member refid="_j2000_8cpp_1a5d2ec1cbddd63a57d0c549a29ffc52a2" kind="define"><name>DJM00</name></member>
   </compound>
   <compound refid="_m_o_d_8cpp" kind="file"><name>MOD.cpp</name>
   </compound>

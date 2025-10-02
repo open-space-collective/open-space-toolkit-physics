@@ -224,7 +224,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris.cpp</label>
         <link refid="_ephemeris_8cpp"/>
       </node>
-      <node id="106">
+      <node id="104">
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</label>
         <link refid="_c_s_s_i_space_weather_8cpp"/>
       </node>
@@ -465,7 +465,7 @@
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="104" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -602,7 +602,7 @@
         <childnode refid="119" relation="include">
         </childnode>
       </node>
-      <node id="105">
+      <node id="106">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp</label>
         <link refid="_environment_2_atmospheric_2_earth_2_manager_8hpp"/>
         <childnode refid="95" relation="include">
@@ -665,11 +665,11 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="104" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
         <childnode refid="87" relation="include">
         </childnode>
-        <childnode refid="105" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -790,12 +790,12 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="104">
+      <node id="105">
         <label>include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp</label>
         <link refid="_c_s_s_i_space_weather_8hpp"/>
-        <childnode refid="105" relation="include">
-        </childnode>
         <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -941,6 +941,8 @@
         </childnode>
         <childnode refid="103" relation="include">
         </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
       </node>
       <node id="85">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp</label>
@@ -971,7 +973,7 @@
         </childnode>
         <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="105" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>

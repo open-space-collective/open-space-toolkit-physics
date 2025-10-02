@@ -8,6 +8,7 @@
     <includedby refid="_finals2000_a_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</includedby>
     <includedby refid="_manifest_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Manifest.cpp</includedby>
     <includedby refid="_data_2_utility_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Utility.cpp</includedby>
+    <includedby refid="_c_s_s_i_space_weather_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</includedby>
     <incdepgraph>
       <node id="5">
         <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
@@ -130,6 +131,10 @@
         <label>src/OpenSpaceToolkit/Physics/Data/Utility.cpp</label>
         <link refid="_data_2_utility_8cpp"/>
       </node>
+      <node id="6">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</label>
+        <link refid="_c_s_s_i_space_weather_8cpp"/>
+      </node>
       <node id="2">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp</label>
         <link refid="_bulletin_a_8cpp"/>
@@ -148,6 +153,8 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="3">

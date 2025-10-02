@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="28" bodyend="31"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="30" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a6c85108136e07d7a693db059e7063fad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="40" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="33" bodyend="33"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="40" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a2cde9742d70f5cb6e0754d5b3ed479b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000" kindref="compound">J2000</ref> *</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="42" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="35" bodyend="38"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="42" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="37" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a14472546281e5dcc3088366fa8e14bc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="44" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="40" bodyend="43"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="44" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="42" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1af7dbeabda62b14e653ef853129e62c17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="46" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="45" bodyend="48"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="46" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1ad6666ef64a7cd2a6b77f0f05ecd298eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="50" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="50" bodyend="113"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp" line="50" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp" bodystart="52" bodyend="115"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
