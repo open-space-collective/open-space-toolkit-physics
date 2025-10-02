@@ -110,6 +110,12 @@ class CSSISpaceWeather
 
     const Date& accessLastObservationDate() const;
 
+    /// @brief                  Access timestamp at which the CSSISpaceWeather file was last modified
+    ///
+    /// @return                 Instant indicating when the file was last updated based on file modification time
+
+    const Instant& accessLastModifiedTimestamp() const;
+
     /// @brief                  Access observation Interval.
     ///
     /// @return                 Observation Interval of Instants.
@@ -185,6 +191,7 @@ class CSSISpaceWeather
 
    private:
     Date lastObservationDate_;
+    Instant lastModifiedTimestamp_;
 
     Interval observationInterval_;
     Map<Integer, CSSISpaceWeather::Reading> observations_;

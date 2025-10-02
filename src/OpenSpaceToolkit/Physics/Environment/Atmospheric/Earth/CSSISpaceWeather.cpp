@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
+#include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 namespace ostk
@@ -38,6 +39,8 @@ using ostk::core::utils::Print;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
+
+using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
@@ -202,6 +205,16 @@ const Date& CSSISpaceWeather::accessLastObservationDate() const
     }
 
     return lastObservationDate_;
+}
+
+const Instant& CSSISpaceWeather::accessLastModifiedTimestamp() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    return lastModifiedTimestamp_;
 }
 
 const Interval& CSSISpaceWeather::accessObservationInterval() const
@@ -442,6 +455,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     }
 
     CSSISpaceWeather spaceWeather;
+    spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
     Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
@@ -624,6 +638,8 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
     }
 
     CSSISpaceWeather spaceWeather;
+
+    spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
     std::ifstream fileStream {aFile.getPath().toString()};
 
@@ -878,6 +894,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 
 CSSISpaceWeather::CSSISpaceWeather()
     : lastObservationDate_(Date::Undefined()),
+      lastModifiedTimestamp_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),
       observations_(Map<Integer, CSSISpaceWeather::Reading>()),
 
