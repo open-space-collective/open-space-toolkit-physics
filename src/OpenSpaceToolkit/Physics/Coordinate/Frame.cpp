@@ -420,12 +420,20 @@ Shared<const Frame> Frame::Construct(
     const String& aName,
     bool isQuasiInertial,
     const Shared<const Frame>& aParentFrame,
-    const Shared<const Provider>& aProvider
+    const Shared<const Provider>& aProvider,
+    bool overwrite
 )
 {
     if (FrameManager::Get().hasFrameWithName(aName))
     {
-        throw ostk::core::error::RuntimeError("Frame with name [{}] already exist.", aName);
+        if (overwrite)
+        {
+            FrameManager::Get().removeFrameWithName(aName);
+        }
+        else
+        {
+            throw ostk::core::error::RuntimeError("Frame with name [{}] already exist.", aName);
+        }
     }
 
     return Frame::Emplace(aName, isQuasiInertial, aParentFrame, aProvider);
