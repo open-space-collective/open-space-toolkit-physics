@@ -109,10 +109,10 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief              Constructor
     ///
     /// @param              [in] aName A frame name
-    /// @param              [in] isQuasiInertialT True is frame is quasi-inertial
+    /// @param              [in] isQuasiInertial True is frame is quasi-inertial
     /// @param              [in] aParentFrame A shared pointer to the parent frame
     /// @param              [in] aProvider A shared pointer to the transform provider
-    /// @param              [in] overwrite True to overwrite existing frame with same name
+    /// @param              [in] overwrite True to overwrite existing frame with same name (default: False)
 
     static Shared<const Frame> Construct(
         const String& aName,

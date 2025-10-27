@@ -432,7 +432,7 @@ Shared<const Frame> Frame::Construct(
         }
         else
         {
-            throw ostk::core::error::RuntimeError("Frame with name [{}] already exist.", aName);
+            throw ostk::core::error::RuntimeError("Frame with name [{}] already exists.", aName);
         }
     }
 
