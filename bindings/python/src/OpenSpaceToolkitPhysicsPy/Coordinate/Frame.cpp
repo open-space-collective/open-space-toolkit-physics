@@ -348,7 +348,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             arg("is_quasi_inertial"),
             arg("parent_frame"),
             arg("provider"),
-            arg_v("overwrite", false, "false")
+            arg_v("overwrite", false, "false"),
             R"doc(
                 Construct a frame.
 
