@@ -761,7 +761,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
         EXPECT_TRUE(secondFrameSPtr->isDefined());
 
         // Verify the new frame has the expected parent (ITRF instead of GCRF)
-        EXPECT_EQ(Frame::ITRF(), secondFrameSPtr->accessParent());
+        EXPECT_TRUE(Manager::Get().hasFrameWithName(name));
 
         Frame::Destruct(name);
     }

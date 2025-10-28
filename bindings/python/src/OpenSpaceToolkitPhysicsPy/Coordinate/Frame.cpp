@@ -348,7 +348,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             arg("is_quasi_inertial"),
             arg("parent_frame"),
             arg("provider"),
-            arg("overwrite") = false,
+            arg_v("overwrite", false, "false")
             R"doc(
                 Construct a frame.
 
@@ -357,7 +357,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
                     is_quasi_inertial (bool): True if quasi-inertial.
                     parent_frame (Frame): Parent frame.
                     provider (Provider): Provider.
-                    overwrite (bool): True to overwrite existing frame with same name (default: False).
+                    overwrite (bool): True to overwrite existing frame with same name. Defaults to False.
 
                 Returns:
                     Frame: Frame.
