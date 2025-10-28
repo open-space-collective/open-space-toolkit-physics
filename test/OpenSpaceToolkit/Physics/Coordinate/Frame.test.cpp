@@ -4,6 +4,7 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
@@ -22,6 +23,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::coordinate::Axes;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::frame::Manager;
 using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::frame::provider::Static;
 using ostk::physics::coordinate::Position;
