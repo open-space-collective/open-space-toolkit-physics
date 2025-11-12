@@ -195,11 +195,11 @@ Array<Kernel> Engine::DefaultKernels()
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("latest_leapseconds.tls"),             // Leap seconds
-        Manager::Get().findKernel("de430.bsp"),                          // Ephemeris
-        Manager::Get().findKernel("pck[0-9]*\\.tpc"),                    // System body shape and orientation constants
-        Manager::Get().findKernel("earth_assoc_itrf93.tf"),              // Associates Earth to the ITRF93 frame
-        Manager::Get().findKernel("earth_.*_predict\\.bpc"),             // Earth orientation
+        Manager::Get().findKernel("latest_leapseconds.tls"),  // Leap seconds
+        Manager::Get().findKernel("de430.bsp"),               // Ephemeris
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),         // System body shape and orientation constants
+        Manager::Get().findKernel("earth_assoc_itrf93.tf"),   // Associates Earth to the ITRF93 frame
+        Manager::Get().findKernel("earth_.*_predict\\.bpc"),  // Earth orientation
         Manager::Get().findKernel("moon_080317.tf"),
         Manager::Get().findKernel("moon_assoc_me.tf"),
         Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")
