@@ -153,7 +153,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
     return matchingKernels;
 }
 
-Kernel Manager::findKernel(const String& aRegexString) const
+Array<Path> Manager::findKernelPaths(const String& aRegexString) const
 {
     using iterator = std::filesystem::directory_iterator;
 
@@ -173,6 +173,13 @@ Kernel Manager::findKernel(const String& aRegexString) const
             kernelPaths.add(Path::Parse(iter->path().string()));
         }
     }
+
+    return kernelPaths;
+}
+
+Kernel Manager::findKernel(const String& aRegexString) const
+{
+    const Array<Path> kernelPaths = findKernelPaths(aRegexString);
 
     // If none found, fall back to fetching from remote
     if (kernelPaths.isEmpty())
