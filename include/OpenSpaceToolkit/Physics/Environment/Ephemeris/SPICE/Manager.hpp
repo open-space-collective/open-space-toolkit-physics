@@ -76,6 +76,13 @@ class Manager : public BaseManager
 
     Array<Kernel> fetchMatchingKernels(const String& aRegexString) const;
 
+    /// @brief              Find kernel paths matching regular expression in local repository.
+    ///
+    /// @param              [in] aRegexString A regular expression
+    /// @return             An array of kernel paths
+
+    Array<Path> findKernelPaths(const String& aRegexString) const;
+
     /// @brief              Find kernels matching regular expression. Search locally first, then remotely.
     ///                     Always return the first found.
     ///
