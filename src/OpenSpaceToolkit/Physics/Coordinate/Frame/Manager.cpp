@@ -126,15 +126,17 @@ void Manager::addCachedTransform(
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    if (transformCache_.size() >= maxTransformCacheSize_)
-    {
-        // TODO: Implement LRU or FIFO eviction strategy
-        // For now, clear oldest entries
-        transformCache_.clear();
-    }
-
     const auto transformCacheFromFrameIt = transformCache_.insert({aFromFrameSPtr.get(), {}}).first;
     const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({aToFrameSPtr.get(), {}}).first;
+
+    // Check size for this specific frame pair
+    if (transformCacheToFrameIt->second.size() >= maxTransformCacheSize_)
+    {
+        // Clear instants for this frame pair only
+        // TBI: Improve caching strategy, perhaps LRU.
+        transformCacheToFrameIt->second.clear();
+    }
+
     const auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({anInstant, aTransform}).first;
 
     (void)transformCacheToInstantIt;
