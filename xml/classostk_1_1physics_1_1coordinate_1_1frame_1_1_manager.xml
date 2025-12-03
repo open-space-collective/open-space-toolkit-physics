@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="120" bodyend="141"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="120" bodyend="143"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="62" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="143" bodyend="170"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="62" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="145" bodyend="172"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="72" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="172" bodyend="175"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="72" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="174" bodyend="177"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
