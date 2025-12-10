@@ -140,6 +140,21 @@ void Manager::addCachedTransform(
     const auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({anInstant, aTransform}).first;
 
     (void)transformCacheToInstantIt;
+
+    // Eagerly cache the reverse transform (toFrame -> fromFrame -> instant)
+    const auto reverseTransformCacheToFrameIt = transformCache_.insert({aToFrameSPtr.get(), {}}).first;
+    const auto reverseTransformCacheFromFrameIt =
+        reverseTransformCacheToFrameIt->second.insert({aFromFrameSPtr.get(), {}}).first;
+
+    // Check size for this specific frame pair
+    if (reverseTransformCacheFromFrameIt->second.size() >= maxTransformCacheSize_)
+    {
+        // Clear instants for this frame pair only
+        // TBI: Improve caching strategy, perhaps LRU.
+        reverseTransformCacheFromFrameIt->second.clear();
+    }
+
+    reverseTransformCacheFromFrameIt->second.insert({anInstant, aTransform.getInverse()}).first;
 }
 
 Manager& Manager::Get()
