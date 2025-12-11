@@ -6,11 +6,18 @@
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
+
+#include <Global.test.hpp>
 
 using ostk::core::container::Array;
 using ostk::core::filesystem::File;
@@ -18,12 +25,18 @@ using ostk::core::filesystem::Path;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
+using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
+using ostk::mathematics::object::Vector3d;
+
 using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::ephemeris::SPICE;
 using ostk::physics::environment::ephemeris::spice::Engine;
 using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::environment::ephemeris::spice::Manager;
+using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
+using ostk::physics::time::Duration;
 
 class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::testing::Test
 {
@@ -72,11 +85,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, IsKernelLoad
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
 {
+    using ostk::physics::time::Duration;
     {
         Shared<const Frame> frame = engine_.getFrameOf(SPICE::Object::Earth);
 
         EXPECT_TRUE(frame != nullptr);
         EXPECT_EQ(frame->getName(), "Earth (SPICE)");
+
+        std::cout << frame->getTransformTo(Frame::GCRF(), Instant::J2000() + Duration::Seconds(5039.23234)) << std::endl;
     }
 
     {

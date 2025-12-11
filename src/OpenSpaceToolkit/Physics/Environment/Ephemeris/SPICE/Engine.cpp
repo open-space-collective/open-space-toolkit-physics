@@ -8,8 +8,6 @@
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
-#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
-
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
@@ -19,6 +17,16 @@ extern "C"
 #include "cspice/SpiceUsr.h"
 #include "cspice/SpiceZfc.h"
 }
+
+using ostk::core::type::String;
+
+using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+using ostk::mathematics::object::Matrix3d;
+using ostk::mathematics::object::Vector3d;
+
+using ostk::physics::time::Scale;
+
+static const String earthHighPrecisionKernel = "earth_latest_high_prec.bpc";
 
 namespace ostk
 {
@@ -131,6 +139,10 @@ Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
         return frameSPtr;
     }
 
+    // Load required kernels
+
+    this->manageKernels(objectIdentifier);
+
     const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>(
         [objectIdentifier, spiceFrameName](const Instant& anInstant) -> Transform
         {
@@ -169,9 +181,6 @@ void Engine::reset()
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    earthKernelCache_.clear();
-    earthKernelCacheIndex_ = 0;
-
     kernelSet_.clear();
 
     // Unload all kernels, clear the kernel pool, and re-initialize the subsystem
@@ -195,11 +204,11 @@ Array<Kernel> Engine::DefaultKernels()
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("latest_leapseconds.tls"),  // Leap seconds
-        Manager::Get().findKernel("de430.bsp"),               // Ephemeris
-        Manager::Get().findKernel("pck[0-9]*\\.tpc"),         // System body shape and orientation constants
-        Manager::Get().findKernel("earth_assoc_itrf93.tf"),   // Associates Earth to the ITRF93 frame
-        Manager::Get().findKernel("earth_.*_predict\\.bpc"),  // Earth orientation
+        Manager::Get().findKernel("latest_leapseconds.tls"),              // Leap seconds
+        Manager::Get().findKernel("de430.bsp"),                           // Ephemeris
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),                     // System body shape and orientation constants
+        Manager::Get().findKernel("earth_assoc_itrf93.tf"),               // Associates Earth to the ITRF93 frame
+        Manager::Get().findKernel(earthHighPrecisionKernel),              // Earth orientation (high precision)
         Manager::Get().findKernel("moon_080317.tf"),
         Manager::Get().findKernel("moon_assoc_me.tf"),
         Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")
@@ -209,8 +218,6 @@ Array<Kernel> Engine::DefaultKernels()
 }
 
 Engine::Engine()
-    : earthKernelCache_(Array<Pair<Interval, const Kernel*>>::Empty()),
-      earthKernelCacheIndex_(0)
 {
     this->setup();
 }
@@ -220,20 +227,21 @@ bool Engine::isKernelLoaded_(const Kernel& aKernel) const
     return kernelSet_.find(aKernel) != kernelSet_.end();
 }
 
+bool Engine::isKernelLoaded_(const String& aRegexString) const
+{
+    for (const auto& kernel : kernelSet_)
+    {
+        if (std::regex_match(kernel.getName(), std::regex(aRegexString)))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant)
     const
 {
-    using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
-    using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
-    using ostk::mathematics::object::Matrix3d;
-    using ostk::mathematics::object::Vector3d;
-
-    using ostk::physics::time::Scale;
-
-    // Load required kernels
-
-    this->manageKernels(aSpiceIdentifier, anInstant);
-
     // Time
 
     const SpiceDouble ephemerisTime = unitim_c(anInstant.getJulianDate(Scale::TT), "JDTDB", "ET");
@@ -321,62 +329,41 @@ void Engine::setup()
     }
 }
 
-void Engine::manageKernels(const String& aSpiceIdentifier, const Instant& anInstant) const
+void Engine::manageKernels(const String& aSpiceIdentifier) const
 {
     if (Manager::Get().getMode() == Manager::Mode::Automatic)
     {
-        // Load kernel (if necessary)
-
         if (aSpiceIdentifier == "399")  // Earth
         {
-            bool earthKernelFound = false;
-
-            if (!earthKernelCache_.isEmpty())
+            if (!isKernelLoaded_(earthHighPrecisionKernel))
             {
-                if (earthKernelCache_.at(earthKernelCacheIndex_).first.contains(anInstant))
+                const Array<Kernel> earthKernels =
+                    Manager::Get().fetchMatchingKernels(earthHighPrecisionKernel);
+                if (!earthKernels.isEmpty())
                 {
-                    earthKernelFound = true;
+                    const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()
+                    );  // Should only be one
                 }
                 else
                 {
-                    for (earthKernelCacheIndex_ = 0; earthKernelCacheIndex_ < earthKernelCache_.getSize();
-                         ++earthKernelCacheIndex_)
-                    {
-                        if (earthKernelCache_.at(earthKernelCacheIndex_).first.contains(anInstant))
-                        {
-                            earthKernelFound = true;
-
-                            break;
-                        }
-                    }
+                    throw ostk::core::error::RuntimeError("Cannot fetch BPC Earth kernel.");
                 }
             }
-
-            if (!earthKernelFound)
+        }
+        else
+        {
+            if (!isKernelLoaded_("de[0-9]+\\.bsp"))
             {
-                const std::function<void(const bool)> loadEarthKernel = [&](const bool isFirstTime) -> void
+                const Array<Kernel> planetaryKernels =
+                    Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
+                if (!planetaryKernels.isEmpty())
                 {
-                    (void)isFirstTime;
-
-                    // List available Earth kernels
-
-                    const Array<Kernel> earthKernels =
-                        Manager::Get().fetchMatchingKernels("^earth_000101_[\\d]{6}_[\\d]{6}.bpc$");
-
-                    if (!earthKernels.isEmpty())
-                    {
-                        const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()
-                        );  // [TBM] The first kernel is not necessarily the correct one
-                    }
-                    else
-                    {
-                        throw ostk::core::error::RuntimeError(
-                            "Cannot fetch BPC Earth kernel at [{}].", anInstant.toString()
-                        );
-                    }
-                };
-
-                loadEarthKernel(true);
+                    const_cast<Engine*>(this)->loadKernel_(planetaryKernels.accessFirst());
+                }
+                else
+                {
+                    throw ostk::core::error::RuntimeError("Cannot fetch DE kernel.");
+                }
             }
         }
     }
@@ -417,8 +404,6 @@ void Engine::loadKernel_(const Kernel& aKernel)
     }
 
     kernelSet_.insert(aKernel);
-
-    this->updateEarthKernelCache();
 }
 
 void Engine::unloadKernel_(const Kernel& aKernel)
@@ -443,53 +428,6 @@ void Engine::unloadKernel_(const Kernel& aKernel)
 
     kernelSet_.erase(aKernel);
 
-    // Reset cache
-
-    this->updateEarthKernelCache();
-}
-
-void Engine::updateEarthKernelCache()
-{
-    using ostk::core::type::Integer;
-    using ostk::core::type::Uint16;
-    using ostk::core::type::Uint8;
-
-    using ostk::physics::time::Date;
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Scale;
-    using ostk::physics::time::Time;
-
-    earthKernelCache_.clear();
-    earthKernelCacheIndex_ = 0;
-
-    for (const auto& kernel : kernelSet_)
-    {
-        if (kernel.getType() == Kernel::Type::BPCK)
-        {
-            if (kernel.getName().getHead(13) == "earth_000101_")
-            {
-                // earth_000101_190103_181012.bpc
-
-                static const Instant startInstant = Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC);
-
-                const String endDateString = kernel.getName().getSubstring(20, 6);
-
-                const Integer endYear = Integer::Parse(endDateString.getSubstring(0, 2));
-                const Integer endMonth = Integer::Parse(endDateString.getSubstring(2, 2));
-                const Integer endDay = Integer::Parse(endDateString.getSubstring(4, 2));
-
-                const Date endDate = {
-                    static_cast<Uint16>(2000 + endYear), static_cast<Uint8>(endMonth), static_cast<Uint8>(endDay)
-                };
-
-                const Instant endInstant = Instant::DateTime(DateTime(endDate, Time::Midnight()), Scale::UTC);
-
-                const Interval interval = Interval::Closed(startInstant, endInstant);
-
-                earthKernelCache_.add({interval, &kernel});
-            }
-        }
-    }
 }
 
 String Engine::SpiceIdentifierFromSpiceObject(const SPICE::Object& aSpiceObject)
