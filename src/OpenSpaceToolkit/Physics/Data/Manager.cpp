@@ -206,7 +206,18 @@ File Manager::fetchLatestManifestFile_() const
 
     this->lockLocalRepository_(localRepositoryLockTimeout_);
 
-    const URL latestDataManifestUrl = Manager::DefaultRemoteUrl() + dataManifestFileName;
+    String remoteUrlString = Manager::DefaultRemoteUrl().toString();
+
+    if (remoteUrlString.getLast() == '/')
+    {
+        remoteUrlString = remoteUrlString + dataManifestFileName;
+    }
+    else
+    {
+        remoteUrlString = remoteUrlString + "/" + dataManifestFileName;
+    }
+
+    const URL latestDataManifestUrl = URL::Parse(remoteUrlString);
 
     File latestDataManifestFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
