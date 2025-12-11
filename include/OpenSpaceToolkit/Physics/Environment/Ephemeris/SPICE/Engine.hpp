@@ -15,6 +15,8 @@
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp>
@@ -41,6 +43,8 @@ using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
 using ostk::core::type::String;
+
+using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Transform;
@@ -125,26 +129,23 @@ class Engine
    private:
     std::unordered_set<Kernel> kernelSet_;
 
-    Array<Pair<Interval, const Kernel*>> earthKernelCache_;
-    mutable IndexType earthKernelCacheIndex_;
-
     mutable std::mutex mutex_;
 
     Engine();
 
     bool isKernelLoaded_(const Kernel& aKernel) const;
 
+    bool isKernelLoaded_(const String& aRegexString) const;
+
     Transform getTransformAt(const String& aSpiceIdentifier, const String& aFrameName, const Instant& anInstant) const;
 
     void setup();
 
-    void manageKernels(const String& aSpiceIdentifier, const Instant& anInstant) const;
+    void manageKernels(const String& aSpiceIdentifier) const;
 
     void loadKernel_(const Kernel& aKernel);
 
     void unloadKernel_(const Kernel& aKernel);
-
-    void updateEarthKernelCache();
 
     static String SpiceIdentifierFromSpiceObject(const SPICE::Object& aSpiceObject);
 
