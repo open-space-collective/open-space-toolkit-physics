@@ -206,7 +206,7 @@ File Manager::fetchLatestManifestFile_() const
 
     this->lockLocalRepository_(localRepositoryLockTimeout_);
 
-    const URL latestDataManifestUrl = URL::Parse(OSTK_PHYSICS_DATA_REMOTE_URL) + dataManifestFileName;
+    const URL latestDataManifestUrl = Manager::DefaultRemoteUrl() + dataManifestFileName;
 
     File latestDataManifestFile = File::Undefined();
     Directory destinationDirectory = Directory::Undefined();
