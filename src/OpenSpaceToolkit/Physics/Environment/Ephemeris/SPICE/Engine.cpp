@@ -26,7 +26,9 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Scale;
 
-static const String earthHighPrecisionKernel = "earth_latest_high_prec.bpc";
+static const String earthLatestHighPrecisionKernel = "earth_latest_high_prec.bpc";
+static const String earthHighPrecisionKernel = "earth_000101_[0-9]{6}_[0-9]{6}.bpc";
+static const String earthPredictedLowPrecisionKernel = "earth_[0-9]{4}_[0-9]{6}_[0-9]{4}_predict.bpc";
 
 namespace ostk
 {
@@ -139,8 +141,6 @@ Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
         return frameSPtr;
     }
 
-    // Load required kernels
-
     this->manageKernels(objectIdentifier);
 
     const Shared<const DynamicProvider> transformProviderSPtr = std::make_shared<const DynamicProvider>(
@@ -208,7 +208,7 @@ Array<Kernel> Engine::DefaultKernels()
         Manager::Get().findKernel("de430.bsp"),               // Ephemeris
         Manager::Get().findKernel("pck[0-9]*\\.tpc"),         // System body shape and orientation constants
         Manager::Get().findKernel("earth_assoc_itrf93.tf"),   // Associates Earth to the ITRF93 frame
-        Manager::Get().findKernel(earthHighPrecisionKernel),  // Earth orientation (high precision)
+        Manager::Get().findKernel(earthLatestHighPrecisionKernel),  // Earth orientation (high precision)
         Manager::Get().findKernel("moon_080317.tf"),
         Manager::Get().findKernel("moon_assoc_me.tf"),
         Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")
@@ -335,9 +335,10 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
     {
         if (aSpiceIdentifier == "399")  // Earth
         {
-            if (!isKernelLoaded_(earthHighPrecisionKernel))
+            // if none of the earth kernels are loaded, fetch the latest high precision kernel
+            if (!isKernelLoaded_(earthLatestHighPrecisionKernel) && !isKernelLoaded_(earthHighPrecisionKernel) && !isKernelLoaded_(earthPredictedLowPrecisionKernel))
             {
-                const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthHighPrecisionKernel);
+                const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthLatestHighPrecisionKernel);
                 if (!earthKernels.isEmpty())
                 {
                     const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst());  // Should only be one
