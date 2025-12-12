@@ -3,6 +3,7 @@
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric.cpp>
+#include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
@@ -274,6 +275,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
     auto environment = aModule.def_submodule("environment");
 
     OpenSpaceToolkitPhysicsPy_Environment_Object(environment);
+    OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Gravitational(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Magnetic(environment);
     OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(environment);

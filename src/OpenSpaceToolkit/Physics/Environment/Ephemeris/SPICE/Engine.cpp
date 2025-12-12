@@ -204,11 +204,11 @@ Array<Kernel> Engine::DefaultKernels()
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("latest_leapseconds.tls"),              // Leap seconds
-        Manager::Get().findKernel("de430.bsp"),                           // Ephemeris
-        Manager::Get().findKernel("pck[0-9]*\\.tpc"),                     // System body shape and orientation constants
-        Manager::Get().findKernel("earth_assoc_itrf93.tf"),               // Associates Earth to the ITRF93 frame
-        Manager::Get().findKernel(earthHighPrecisionKernel),              // Earth orientation (high precision)
+        Manager::Get().findKernel("latest_leapseconds.tls"),  // Leap seconds
+        Manager::Get().findKernel("de430.bsp"),               // Ephemeris
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),         // System body shape and orientation constants
+        Manager::Get().findKernel("earth_assoc_itrf93.tf"),   // Associates Earth to the ITRF93 frame
+        Manager::Get().findKernel(earthHighPrecisionKernel),  // Earth orientation (high precision)
         Manager::Get().findKernel("moon_080317.tf"),
         Manager::Get().findKernel("moon_assoc_me.tf"),
         Manager::Get().findKernel("moon_pa_de421_1900-2050.bpc")
@@ -337,12 +337,10 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
         {
             if (!isKernelLoaded_(earthHighPrecisionKernel))
             {
-                const Array<Kernel> earthKernels =
-                    Manager::Get().fetchMatchingKernels(earthHighPrecisionKernel);
+                const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthHighPrecisionKernel);
                 if (!earthKernels.isEmpty())
                 {
-                    const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst()
-                    );  // Should only be one
+                    const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst());  // Should only be one
                 }
                 else
                 {
@@ -354,8 +352,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
         {
             if (!isKernelLoaded_("de[0-9]+\\.bsp"))
             {
-                const Array<Kernel> planetaryKernels =
-                    Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
+                const Array<Kernel> planetaryKernels = Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
                 if (!planetaryKernels.isEmpty())
                 {
                     const_cast<Engine*>(this)->loadKernel_(planetaryKernels.accessFirst());
@@ -427,7 +424,6 @@ void Engine::unloadKernel_(const Kernel& aKernel)
     }
 
     kernelSet_.erase(aKernel);
-
 }
 
 String Engine::SpiceIdentifierFromSpiceObject(const SPICE::Object& aSpiceObject)
