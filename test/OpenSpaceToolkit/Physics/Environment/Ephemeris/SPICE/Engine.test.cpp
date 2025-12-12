@@ -34,9 +34,9 @@ using ostk::physics::environment::ephemeris::spice::Engine;
 using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::environment::ephemeris::spice::Manager;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
-using ostk::physics::time::Duration;
 
 class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::testing::Test
 {
@@ -91,8 +91,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
 
         EXPECT_TRUE(frame != nullptr);
         EXPECT_EQ(frame->getName(), "Earth (SPICE)");
-
-        std::cout << frame->getTransformTo(Frame::GCRF(), Instant::J2000() + Duration::Seconds(5039.23234)) << std::endl;
     }
 
     {
