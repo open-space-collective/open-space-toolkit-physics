@@ -34,24 +34,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind1
         )doc"
     )
 
-        .def(
-            "__str__",
-            [](const Engine& anEngine)
-            {
-                std::ostringstream stream;
-                stream << anEngine;
-                return stream.str();
-            }
-        )
-        .def(
-            "__repr__",
-            [](const Engine& anEngine)
-            {
-                std::ostringstream stream;
-                stream << anEngine;
-                return stream.str();
-            }
-        )
+        .def("__str__", &(shiftToString<Engine>))
+        .def("__repr__", &(shiftToString<Engine>))
 
         .def(
             "reset",
