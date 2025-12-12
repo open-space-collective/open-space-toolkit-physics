@@ -10,7 +10,6 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
-#include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 using ostk::core::container::Array;
 using ostk::core::filesystem::File;
@@ -23,7 +22,6 @@ using ostk::physics::environment::ephemeris::SPICE;
 using ostk::physics::environment::ephemeris::spice::Engine;
 using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::environment::ephemeris::spice::Manager;
-using ostk::physics::time::Instant;
 
 class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::testing::Test
 {
