@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="115" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="313" bodyend="318"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="115" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="324" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>URL</type>
@@ -274,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="121" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="320" bodyend="330"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="121" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="331" bodyend="341"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -302,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="131" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="203" bodyend="299"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="131" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="203" bodyend="310"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -357,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="152" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="301" bodyend="311"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="152" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="312" bodyend="322"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
