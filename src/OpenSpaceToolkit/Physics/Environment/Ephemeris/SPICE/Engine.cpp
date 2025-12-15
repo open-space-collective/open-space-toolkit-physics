@@ -358,7 +358,10 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
                 const Array<Kernel> planetaryKernels = Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
                 if (!planetaryKernels.isEmpty())
                 {
-                    const_cast<Engine*>(this)->loadKernel(planetaryKernels.accessFirst());
+                    for (const auto& kernel : planetaryKernels)
+                    {
+                        const_cast<Engine*>(this)->loadKernel(kernel);
+                    }
                 }
                 else
                 {
