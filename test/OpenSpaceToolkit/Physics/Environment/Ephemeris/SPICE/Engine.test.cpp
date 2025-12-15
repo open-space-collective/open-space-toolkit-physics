@@ -97,7 +97,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, LoadKernel)
 
     {
         engine_.reset();
-        const Kernel newKernel = Kernel::File(File::Path(Path::Parse("de430.bsp")));
+        const Kernel newKernel = Kernel::File(File::Path(Path::Parse("earth_assoc_itrf93.tf")));
 
         // automatic
         {

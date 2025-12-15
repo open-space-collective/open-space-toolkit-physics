@@ -27,9 +27,9 @@ using ostk::mathematics::object::Vector3d;
 using ostk::physics::time::Scale;
 
 // Reference: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/aareadme.txt
-static const String earthLatestHighPrecisionKernel = "earth_latest_high_prec.bpc";
-static const String earthHighPrecisionKernel = "earth_000101_[0-9]{6}_[0-9]{6}.bpc";
-static const String earthPredictedLowPrecisionKernel = "earth_[0-9]{4}_[0-9]{6}_[0-9]{4}_predict.bpc";
+static const String earthLatestHighPrecisionKernel = "earth_latest_high_prec\\.bpc";
+static const String earthHighPrecisionKernel = "earth_000101_[0-9]{6}_[0-9]{6}\\.bpc";
+static const String earthPredictedLowPrecisionKernel = "earth_[0-9]{4}_[0-9]{6}_[0-9]{4}_predict\\.bpc";
 
 namespace ostk
 {
@@ -343,7 +343,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
                 const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthLatestHighPrecisionKernel);
                 if (!earthKernels.isEmpty())
                 {
-                    const_cast<Engine*>(this)->loadKernel_(earthKernels.accessFirst());  // Should only be one
+                    const_cast<Engine*>(this)->loadKernel(earthKernels.accessFirst());  // Should only be one
                 }
                 else
                 {
@@ -358,7 +358,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
                 const Array<Kernel> planetaryKernels = Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
                 if (!planetaryKernels.isEmpty())
                 {
-                    const_cast<Engine*>(this)->loadKernel_(planetaryKernels.accessFirst());
+                    const_cast<Engine*>(this)->loadKernel(planetaryKernels.accessFirst());
                 }
                 else
                 {
