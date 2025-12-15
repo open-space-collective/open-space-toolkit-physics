@@ -163,10 +163,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        Kernel kernel = Kernel(Kernel::Type::LSK, expectedKernelFile);
+        const Kernel kernel = Kernel(Kernel::Type::LSK, expectedKernelFile);
 
         // kernel file doesn't exist, so it should fetch
-        Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
+        const Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
         EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
@@ -178,7 +178,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         EXPECT_TRUE(expectedKernelFile.exists());
 
-        Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
+        const Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
 
         EXPECT_TRUE(foundKernel.isDefined());
         EXPECT_EQ(
@@ -187,13 +187,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
     }
 
     {
-        // check that it fetches one that is not there, earth_000101_[\\d]{6}_[\\d]{6}.bpc
+        // check that it fetches one that is not there
         File expectedKernelFile =
-            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_000101_260305_251207.bpc"));
+            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_assoc_itrf93.tf"));
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        Kernel fetchedKernel = manager_.findKernel("earth_000101_[\\d]{6}_[\\d]{6}.bpc");
+        const Kernel fetchedKernel = manager_.findKernel("earth_assoc_itrf93.tf");
         EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
@@ -221,6 +221,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("de430.bsp")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00010.tpc")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00011.tpc")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_latest_high_prec.bpc")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_assoc_itrf93.tf")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_080317.tf")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_assoc_me.tf")).create();
