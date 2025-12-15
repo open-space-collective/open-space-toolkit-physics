@@ -46,7 +46,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(pybind11::modu
         .value("Undefined", SPICE::Object::Undefined, "Undefined")
         .value("Sun", SPICE::Object::Sun, "Sun")
         .value("Mercury", SPICE::Object::Mercury, "Mercury")
+        .value("Venus", SPICE::Object::Venus, "Venus")
         .value("Earth", SPICE::Object::Earth, "Earth")
+        .value("Moon", SPICE::Object::Moon, "Moon")
         .value("Mars", SPICE::Object::Mars, "Mars")
         .value("Jupiter", SPICE::Object::Jupiter, "Jupiter")
         .value("Saturn", SPICE::Object::Saturn, "Saturn")
@@ -63,27 +65,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(pybind11::modu
 
                 Args:
                     object (SPICE.Object): The SPICE object for this ephemeris.
-            )doc"
-        )
-
-        .def(
-            "is_defined",
-            &SPICE::isDefined,
-            R"doc(
-                Check if the SPICE ephemeris is defined.
-
-                Returns:
-                    bool: True if the ephemeris is defined, False otherwise.
-            )doc"
-        )
-        .def(
-            "access_frame",
-            &SPICE::accessFrame,
-            R"doc(
-                Access the reference frame of the SPICE object.
-
-                Returns:
-                    Frame: The reference frame.
             )doc"
         )
 

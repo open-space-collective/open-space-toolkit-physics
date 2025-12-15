@@ -26,6 +26,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Scale;
 
+// Reference: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/aareadme.txt
 static const String earthLatestHighPrecisionKernel = "earth_latest_high_prec.bpc";
 static const String earthHighPrecisionKernel = "earth_000101_[0-9]{6}_[0-9]{6}.bpc";
 static const String earthPredictedLowPrecisionKernel = "earth_[0-9]{4}_[0-9]{6}_[0-9]{4}_predict.bpc";
@@ -204,10 +205,10 @@ Array<Kernel> Engine::DefaultKernels()
 
     static const Array<Kernel> defaultKernels = {
 
-        Manager::Get().findKernel("latest_leapseconds.tls"),  // Leap seconds
-        Manager::Get().findKernel("de430.bsp"),               // Ephemeris
-        Manager::Get().findKernel("pck[0-9]*\\.tpc"),         // System body shape and orientation constants
-        Manager::Get().findKernel("earth_assoc_itrf93.tf"),   // Associates Earth to the ITRF93 frame
+        Manager::Get().findKernel("latest_leapseconds.tls"),        // Leap seconds
+        Manager::Get().findKernel("de430.bsp"),                     // Ephemeris
+        Manager::Get().findKernel("pck[0-9]*\\.tpc"),               // System body shape and orientation constants
+        Manager::Get().findKernel("earth_assoc_itrf93.tf"),         // Associates Earth to the ITRF93 frame
         Manager::Get().findKernel(earthLatestHighPrecisionKernel),  // Earth orientation (high precision)
         Manager::Get().findKernel("moon_080317.tf"),
         Manager::Get().findKernel("moon_assoc_me.tf"),
@@ -336,7 +337,8 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
         if (aSpiceIdentifier == "399")  // Earth
         {
             // if none of the earth kernels are loaded, fetch the latest high precision kernel
-            if (!isKernelLoaded_(earthLatestHighPrecisionKernel) && !isKernelLoaded_(earthHighPrecisionKernel) && !isKernelLoaded_(earthPredictedLowPrecisionKernel))
+            if (!isKernelLoaded_(earthLatestHighPrecisionKernel) && !isKernelLoaded_(earthHighPrecisionKernel) &&
+                !isKernelLoaded_(earthPredictedLowPrecisionKernel))
             {
                 const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthLatestHighPrecisionKernel);
                 if (!earthKernels.isEmpty())

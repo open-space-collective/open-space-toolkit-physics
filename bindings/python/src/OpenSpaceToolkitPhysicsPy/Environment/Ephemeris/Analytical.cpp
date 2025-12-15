@@ -44,26 +44,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_Analytical(pybind11:
             )doc"
         )
 
-        .def(
-            "is_defined",
-            &Analytical::isDefined,
-            R"doc(
-                Check if the analytical ephemeris is defined.
-
-                Returns:
-                    bool: True if the ephemeris is defined, False otherwise.
-            )doc"
-        )
-        .def(
-            "access_frame",
-            &Analytical::accessFrame,
-            R"doc(
-                Access the reference frame associated with this ephemeris.
-
-                Returns:
-                    Frame: The reference frame.
-            )doc"
-        )
-
         ;
 }

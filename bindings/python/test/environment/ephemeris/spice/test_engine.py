@@ -27,7 +27,6 @@ class TestEngine:
         assert engine is not None
 
     def test_reset_success(self, engine: Engine):
-        # Should not raise an exception
         engine.reset()
 
     def test_get_frame_of_success(self, engine: Engine):

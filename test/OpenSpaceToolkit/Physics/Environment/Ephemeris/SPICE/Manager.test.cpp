@@ -272,7 +272,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
     }
 
     {
-        // Test regex pattern: earth_latest_high_prec.bpc (should match multiple files)
+        // Test regex pattern: earth_latest_high_prec.bpc
         Array<Path> paths = manager_.findKernelPaths("earth_latest_high_prec.bpc");
         EXPECT_GE(paths.getSize(), 1);
         EXPECT_TRUE(paths.accessFirst().toString().find("earth_latest_high_prec.bpc") != String::npos);
