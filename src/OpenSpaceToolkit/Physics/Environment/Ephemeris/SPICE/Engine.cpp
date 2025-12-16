@@ -351,6 +351,8 @@ void Engine::setup()
 
 void Engine::manageKernels(const String& aSpiceIdentifier) const
 {
+    const std::lock_guard<std::mutex> lock {mutex_};
+
     if (Manager::Get().getMode() == Manager::Mode::Automatic)
     {
         if (aSpiceIdentifier == "399")  // Earth
