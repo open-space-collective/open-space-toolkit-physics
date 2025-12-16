@@ -42,7 +42,7 @@ class TestEarth:
     )
     def test_construct_with_ephemeris(
         self,
-        ephemeris: Union[Analytical | SPICE],
+        ephemeris: Union[Analytical, SPICE],
         earth_gravitational_model: EarthGravitationalModel,
         earth_atmospheric_model: EarthAtmosphericModel,
         earth_magnetic_model: EarthMagneticModel,

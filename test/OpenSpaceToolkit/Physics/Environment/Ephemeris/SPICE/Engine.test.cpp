@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <regex>
-
 #include <gtest/gtest.h>
 
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
@@ -111,6 +109,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
 
         EXPECT_EQ(engine_.getKernels().getSize(), 1);
         EXPECT_EQ(engine_.getKernels().accessFirst().getName(), "earth_latest_high_prec.bpc");
+
+        Frame::Destruct("Earth (SPICE)");
     }
 }
 
