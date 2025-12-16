@@ -90,7 +90,7 @@ class Engine
 
     /// @brief              Reset engine
     ///
-    ///                     Unload all kernels and clear cache.
+    ///                     Unload all kernels, clears cache and re-sets up the engine.
 
     void reset();
 
@@ -100,6 +100,12 @@ class Engine
     /// @return             Frame of SPICE object
 
     Shared<const Frame> getFrameOf(const SPICE::Object& aSpiceObject) const;
+
+    /// @brief              Get kernels
+    ///
+    /// @return             Kernels
+
+    Array<Kernel> getKernels() const;
 
     /// @brief              Returns true if kernel is loaded
     ///
@@ -119,6 +125,12 @@ class Engine
     /// @param              [in] aKernel
 
     void unloadKernel(const Kernel& aKernel);
+
+    /// @brief              Unload all kernels
+    ///
+    ///                     Unloads all kernels and clears the cache.
+
+    void unloadAllKernels();
 
     /// @brief              Get default kernels
     ///

@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <regex>
+
 #include <gtest/gtest.h>
 
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
@@ -75,6 +77,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
 
         EXPECT_TRUE(frame != nullptr);
         EXPECT_EQ(frame->getName(), "Earth (SPICE)");
+
+        Frame::Destruct("Earth (SPICE)");
     }
 
     {
@@ -85,7 +89,35 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
 
         EXPECT_TRUE(frame != nullptr);
         EXPECT_EQ(frame->getName(), "Earth (SPICE)");
+
+        Frame::Destruct("Earth (SPICE)");
     }
+
+    // Test automatic kernel management
+    {
+        manager_.setMode(Manager::Mode::Automatic);
+        engine_.reset();
+
+        const Array<Kernel> kernelsBefore = engine_.getKernels();
+
+        engine_.unloadAllKernels();
+
+        // When no Earth kernels are loaded
+        // Call getFrameOf for Earth - should trigger automatic kernel fetching
+        Shared<const Frame> earthFrame = engine_.getFrameOf(SPICE::Object::Earth);
+
+        EXPECT_TRUE(earthFrame != nullptr);
+        EXPECT_EQ(earthFrame->getName(), "Earth (SPICE)");
+
+        EXPECT_EQ(engine_.getKernels().getSize(), 1);
+        EXPECT_EQ(engine_.getKernels().accessFirst().getName(), "earth_latest_high_prec.bpc");
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetKernels)
+{
+    const Array<Kernel> kernels = engine_.getKernels();
+    EXPECT_TRUE(kernels.contains(kernel_));
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, LoadKernel)
@@ -119,6 +151,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, UnloadKernel
     EXPECT_TRUE(engine_.isKernelLoaded(kernel_));
 
     EXPECT_NO_THROW(engine_.unloadKernel(kernel_));
+    EXPECT_FALSE(engine_.isKernelLoaded(kernel_));
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, UnloadAllKernels)
+{
+    EXPECT_TRUE(engine_.isKernelLoaded(kernel_));
+
+    EXPECT_NO_THROW(engine_.unloadAllKernels());
     EXPECT_FALSE(engine_.isKernelLoaded(kernel_));
 }
 

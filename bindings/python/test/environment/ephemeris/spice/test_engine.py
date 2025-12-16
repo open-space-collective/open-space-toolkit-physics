@@ -34,6 +34,11 @@ class TestEngine:
 
         assert frame is not None
 
+    def test_get_kernels_success(self, engine: Engine):
+        kernels = engine.get_kernels()
+
+        assert kernels is not None
+
     def test_is_kernel_loaded_success(self, engine: Engine):
         assert not engine.is_kernel_loaded(
             Kernel.file(
@@ -42,6 +47,21 @@ class TestEngine:
                 ),
             )
         )
+
+    def test_unload_kernel_success(self, engine: Engine):
+        kernels = engine.get_kernels()
+        engine.unload_kernel(kernels[0])
+
+    def test_load_kernel_success(self, engine: Engine):
+        kernel = engine.get_kernels()[0]
+        engine.unload_kernel(kernel)
+
+        assert not engine.is_kernel_loaded(kernel)
+        engine.load_kernel(kernel)
+        assert engine.is_kernel_loaded(kernel)
+
+    def unload_all_kernels_success(self, engine: Engine):
+        engine.unload_all_kernels()
 
     def test_default_kernels_success(self):
         kernels = Engine.default_kernels()

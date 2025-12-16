@@ -154,6 +154,13 @@ Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
     return Frame::Construct(frameName, false, Frame::GCRF(), transformProviderSPtr);
 }
 
+Array<Kernel> Engine::getKernels() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    return Array<Kernel>(kernelSet_.begin(), kernelSet_.end());
+}
+
 void Engine::loadKernel(const Kernel& aKernel)
 {
     if (!aKernel.isDefined())
@@ -176,6 +183,18 @@ void Engine::unloadKernel(const Kernel& aKernel)
     const std::lock_guard<std::mutex> lock {mutex_};
 
     this->unloadKernel_(aKernel);
+}
+
+void Engine::unloadAllKernels()
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    const std::unordered_set<Kernel> kernelSet = kernelSet_;
+
+    for (const auto& kernel : kernelSet)
+    {
+        this->unloadKernel_(kernel);
+    }
 }
 
 void Engine::reset()

@@ -1,5 +1,7 @@
 # Apache License 2.0
 
+from typing import Union
+
 import pytest
 
 from ostk.core.filesystem import Directory
@@ -40,7 +42,7 @@ class TestEarth:
     )
     def test_construct_with_ephemeris(
         self,
-        ephemeris: Analytical | SPICE,
+        ephemeris: Union[Analytical | SPICE],
         earth_gravitational_model: EarthGravitationalModel,
         earth_atmospheric_model: EarthAtmosphericModel,
         earth_magnetic_model: EarthMagneticModel,

@@ -61,6 +61,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind1
             )doc"
         )
         .def(
+            "get_kernels",
+            &Engine::getKernels,
+            R"doc(
+                Get a list of the loaded kernels.
+
+                Returns:
+                    list[Kernel]: The kernels.
+            )doc"
+        )
+        .def(
             "is_kernel_loaded",
             &Engine::isKernelLoaded,
             arg("kernel"),
@@ -94,6 +104,15 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind1
 
                 Args:
                     kernel (Kernel): The kernel to unload.
+            )doc"
+        )
+        .def(
+            "unload_all_kernels",
+            &Engine::unloadAllKernels,
+            R"doc(
+                Unload all kernels.
+
+                Unloads all kernels and clears the cache.
             )doc"
         )
 
