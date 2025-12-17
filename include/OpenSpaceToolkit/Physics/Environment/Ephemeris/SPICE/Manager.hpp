@@ -91,12 +91,6 @@ class Manager : public BaseManager
 
     Kernel findKernel(const String& aRegexString) const;
 
-    /// @brief              Refresh manager
-    ///
-    ///                     This will re-fetch a new index.
-
-    void refresh();
-
     /// @brief              Get manager singleton
     ///
     /// @return             Reference to manager

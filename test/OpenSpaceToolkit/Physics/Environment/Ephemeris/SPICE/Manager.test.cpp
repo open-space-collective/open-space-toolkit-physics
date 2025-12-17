@@ -163,10 +163,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        Kernel kernel = Kernel(Kernel::Type::LSK, expectedKernelFile);
+        const Kernel kernel = Kernel(Kernel::Type::LSK, expectedKernelFile);
 
         // kernel file doesn't exist, so it should fetch
-        Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
+        const Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
         EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
@@ -178,7 +178,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         EXPECT_TRUE(expectedKernelFile.exists());
 
-        Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
+        const Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
 
         EXPECT_TRUE(foundKernel.isDefined());
         EXPECT_EQ(
@@ -187,13 +187,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
     }
 
     {
-        // check that it fetches one that is not there, earth_200101_[0-9]*_predict\\.bpc
+        // check that it fetches one that is not there
         File expectedKernelFile =
-            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_200101_990827_predict.bpc"));
+            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_assoc_itrf93.tf"));
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        Kernel fetchedKernel = manager_.findKernel("earth_200101_[0-9]*_predict\\.bpc");
+        const Kernel fetchedKernel = manager_.findKernel("earth_assoc_itrf93.tf");
         EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
@@ -221,10 +221,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("de430.bsp")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00010.tpc")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00011.tpc")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_latest_high_prec.bpc")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_assoc_itrf93.tf")).create();
-        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_200101_990827_predict.bpc")).create();
-        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_2025_250826_2125_predict.bpc"))
-            .create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_080317.tf")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_assoc_me.tf")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")).create();
@@ -275,24 +273,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
     }
 
     {
-        // Test regex pattern: earth_.*_predict\\.bpc (should match multiple files)
-        Array<Path> paths = manager_.findKernelPaths("earth_.*_predict\\.bpc");
-        EXPECT_GE(paths.getSize(), 2);
-        bool foundEarth200101 = false;
-        bool foundEarth200102 = false;
-        for (const auto& path : paths)
-        {
-            if (path.toString().find("earth_200101_990827_predict.bpc") != String::npos)
-            {
-                foundEarth200101 = true;
-            }
-            if (path.toString().find("earth_2025_250826_2125_predict.bpc") != String::npos)
-            {
-                foundEarth200102 = true;
-            }
-        }
-        EXPECT_TRUE(foundEarth200101);
-        EXPECT_TRUE(foundEarth200102);
+        // Test regex pattern: earth_latest_high_prec.bpc
+        Array<Path> paths = manager_.findKernelPaths("earth_latest_high_prec.bpc");
+        EXPECT_GE(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("earth_latest_high_prec.bpc") != String::npos);
     }
 
     {

@@ -1,22 +1,61 @@
 # Apache License 2.0
 
+from typing import Union
+
 import pytest
 
 from ostk.core.filesystem import Directory
 
+from ostk.physics.coordinate import Frame
+from ostk.physics.environment.ephemeris import Analytical
+from ostk.physics.environment.ephemeris import SPICE
 from ostk.physics.environment.object.celestial import Earth
-
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.magnetic import Earth as EarthMagneticModel
 
 
 @pytest.fixture
-def earth():
+def earth() -> Earth:
     return Earth.default()
 
 
+@pytest.fixture
+def earth_gravitational_model() -> EarthGravitationalModel:
+    return EarthGravitationalModel(EarthGravitationalModel.Type.EGM96, 10, 10)
+
+
+@pytest.fixture
+def earth_atmospheric_model() -> EarthAtmosphericModel:
+    return EarthAtmosphericModel(EarthAtmosphericModel.Type.Exponential)
+
+
+@pytest.fixture
+def earth_magnetic_model() -> EarthMagneticModel:
+    return EarthMagneticModel(EarthMagneticModel.Type.Undefined)
+
+
 class TestEarth:
+    @pytest.mark.parametrize(
+        "ephemeris",
+        [Analytical(Frame.ITRF()), SPICE(SPICE.Object.Earth)],
+    )
+    def test_construct_with_ephemeris(
+        self,
+        ephemeris: Union[Analytical, SPICE],
+        earth_gravitational_model: EarthGravitationalModel,
+        earth_atmospheric_model: EarthAtmosphericModel,
+        earth_magnetic_model: EarthMagneticModel,
+    ):
+        earth = Earth(
+            ephemeris=ephemeris,
+            gravitational_model=earth_gravitational_model,
+            atmospheric_model=earth_atmospheric_model,
+            magnetic_model=earth_magnetic_model,
+        )
+
+        assert earth is not None
+
     def test_properties(self, earth):
         assert earth.get_gravitational_parameter() is not None
         assert earth.get_equatorial_radius() is not None
