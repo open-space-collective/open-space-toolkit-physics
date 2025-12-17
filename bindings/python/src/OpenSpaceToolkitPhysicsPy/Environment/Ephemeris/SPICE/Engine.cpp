@@ -8,6 +8,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind1
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
+    using ostk::core::type::String;
 
     using ostk::physics::coordinate::Frame;
     using ostk::physics::environment::ephemeris::SPICE;
@@ -72,13 +73,27 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind1
         )
         .def(
             "is_kernel_loaded",
-            &Engine::isKernelLoaded,
+            overload_cast<const Kernel&>(&Engine::isKernelLoaded, const_),
             arg("kernel"),
             R"doc(
-                Check if a kernel is loaded.
+                Check if the provided kernel is loaded.
 
                 Args:
                     kernel (Kernel): The kernel to check.
+
+                Returns:
+                    bool: True if the kernel is loaded, False otherwise.
+            )doc"
+        )
+        .def(
+            "is_kernel_loaded",
+            overload_cast<const String&>(&Engine::isKernelLoaded, const_),
+            arg("pattern"),
+            R"doc(
+                Check if a kernel matching the provided pattern is loaded.
+
+                Args:
+                    pattern (str): The regex pattern to check.
 
                 Returns:
                     bool: True if the kernel is loaded, False otherwise.

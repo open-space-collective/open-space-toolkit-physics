@@ -129,6 +129,13 @@ bool Engine::isKernelLoaded(const Kernel& aKernel) const
     return this->isKernelLoaded_(aKernel);
 }
 
+bool Engine::isKernelLoaded(const String& aRegexString) const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    return this->isKernelLoaded_(aRegexString);
+}
+
 Shared<const Frame> Engine::getFrameOf(const SPICE::Object& aSpiceObject) const
 {
     using DynamicProvider = ostk::physics::coordinate::frame::provider::Dynamic;
@@ -351,15 +358,13 @@ void Engine::setup()
 
 void Engine::manageKernels(const String& aSpiceIdentifier) const
 {
-    const std::lock_guard<std::mutex> lock {mutex_};
-
     if (Manager::Get().getMode() == Manager::Mode::Automatic)
     {
         if (aSpiceIdentifier == "399")  // Earth
         {
             // if none of the earth kernels are loaded, fetch the latest high precision kernel
-            if (!isKernelLoaded_(earthLatestHighPrecisionKernel) && !isKernelLoaded_(earthHighPrecisionKernel) &&
-                !isKernelLoaded_(earthPredictedLowPrecisionKernel))
+            if (!isKernelLoaded(earthLatestHighPrecisionKernel) && !isKernelLoaded(earthHighPrecisionKernel) &&
+                !isKernelLoaded(earthPredictedLowPrecisionKernel))
             {
                 const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthLatestHighPrecisionKernel);
                 if (!earthKernels.isEmpty())
@@ -374,7 +379,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
         }
         else
         {
-            if (!isKernelLoaded_("de[0-9]+\\.bsp"))
+            if (!isKernelLoaded("de[0-9]+\\.bsp"))
             {
                 const Array<Kernel> planetaryKernels = Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
                 if (!planetaryKernels.isEmpty())

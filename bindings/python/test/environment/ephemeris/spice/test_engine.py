@@ -48,6 +48,8 @@ class TestEngine:
             )
         )
 
+        assert engine.is_kernel_loaded("de430.bsp")
+
     def test_unload_kernel_success(self, engine: Engine):
         kernels = engine.get_kernels()
         engine.unload_kernel(kernels[0])

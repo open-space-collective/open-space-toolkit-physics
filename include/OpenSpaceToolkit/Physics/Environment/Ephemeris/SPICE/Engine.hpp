@@ -114,6 +114,13 @@ class Engine
 
     bool isKernelLoaded(const Kernel& aKernel) const;
 
+    /// @brief              Returns true if kernel is loaded
+    ///
+    /// @param              [in] aRegexString A regex string
+    /// @return             True if kernel is loaded
+
+    bool isKernelLoaded(const String& aRegexString) const;
+
     /// @brief              Load kernel
     ///
     /// @param              [in] aKernel A kernel

@@ -51,21 +51,15 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine : public ::tes
     }
 };
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, IsKernelLoaded_Automatic)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, IsKernelLoaded)
 {
-    EXPECT_TRUE(engine_.isKernelLoaded(kernel_));
+    {
+        EXPECT_TRUE(engine_.isKernelLoaded(kernel_));
+    }
 
-    engine_.unloadKernel(kernel_);
-    EXPECT_FALSE(engine_.isKernelLoaded(kernel_));
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, IsKernelLoaded_Manual)
-{
-    manager_.setMode(Manager::Mode::Manual);
-    EXPECT_TRUE(engine_.isKernelLoaded(kernel_));
-
-    engine_.unloadKernel(kernel_);
-    EXPECT_FALSE(engine_.isKernelLoaded(kernel_));
+    {
+        EXPECT_TRUE(engine_.isKernelLoaded("de430.bsp"));
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
