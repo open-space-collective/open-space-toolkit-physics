@@ -123,22 +123,6 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="92" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="180" bodyend="198"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::ephemeris::spice::Manager::refresh</definition>
-        <argsstring>()</argsstring>
-        <name>refresh</name>
-        <briefdescription>
-<para>Refresh manager. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><verbatim>                This will re-fetch a new index. 
-</verbatim> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="98" column="10"/>
-      </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -156,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="104" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="36" bodyend="41"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="98" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="36" bodyend="41"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -171,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="107" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="200" bodyend="210"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="101" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="200" bodyend="210"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -244,7 +228,7 @@
         <label>Directory</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="63" bodyend="108"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="63" bodyend="102"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>clearLocalRepository</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1ae19fdd045a4f38eb4642ff7d31791604" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>DefaultLocalRepository_</name></member>
@@ -277,7 +261,6 @@
       <member refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>mutex_</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1ada7527cacea9ba3511b17fce95dd0834" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1a6c4b4e0304dc55e101034f9a7830091a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>operator=</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>refresh</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" prot="public" virt="virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>reset</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1ac5a18a4272b5d26ff78e32cba7c08baf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>setLocalRepository</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1aec2b97acf4a1d22b95b5a978a52c4356" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>setMode</name></member>

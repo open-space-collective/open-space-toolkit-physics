@@ -15,33 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="126" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="126" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0a71ccbfc29e969f589f39f2c5e5e732" prot="private" static="no" mutable="no">
-        <type>Array&lt; Pair&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref>, const <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> * &gt; &gt;</type>
-        <definition>Array&lt;Pair&lt;Interval, const Kernel*&gt; &gt; ostk::physics::environment::ephemeris::spice::Engine::earthKernelCache_</definition>
-        <argsstring></argsstring>
-        <name>earthKernelCache_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="128" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="128" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab839d933b6a4558cc4db001f6a267571" prot="private" static="no" mutable="yes">
-        <type><ref refid="namespaceostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1a1c6427a6304b5f51596a2f98313cf0d8" kindref="member">IndexType</ref></type>
-        <definition>IndexType ostk::physics::environment::ephemeris::spice::Engine::earthKernelCacheIndex_</definition>
-        <argsstring></argsstring>
-        <name>earthKernelCacheIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="129" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="129" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="149" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1aa8858a87aa7cec66a61af0780099e9bf" prot="private" static="no" mutable="yes">
         <type>std::mutex</type>
@@ -54,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="131" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="131" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="151" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="59" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="63" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1343c62aee413f640c39c90bfbdae469" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
@@ -92,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="63" column="12"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="67" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1d4faf3b65fdf769550474c0ab73359c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -109,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="67" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="71" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a7b5e437774bf520cbe6145a666612573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine" kindref="compound">Engine</ref> &amp;</type>
@@ -126,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="71" column="12"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="75" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a8da839b06829715ccb24f4dc2b525cf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -137,12 +111,12 @@
 <para>Reset engine. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                Unload all kernels and clear cache. 
+<para><verbatim>                Unload all kernels, clears cache and re-sets up the engine. 
 </verbatim> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="91" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="168" bodyend="183"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="95" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="207" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1aeaf00a4962b1973f47eda10efd641816" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -172,7 +146,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="98" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="121" bodyend="142"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="102" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="139" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5cdf98cc1064cef09f225a657489bb49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> &gt;</type>
+        <definition>Array&lt; Kernel &gt; ostk::physics::environment::ephemeris::spice::Engine::getKernels</definition>
+        <argsstring>() const</argsstring>
+        <name>getKernels</name>
+        <briefdescription>
+<para>Get kernels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Kernels </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="108" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="164" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a7f7e4b76e935a698e0b7896be9e1b4bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -202,7 +193,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="109" bodyend="119"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="115" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="120" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5a99e03bec66d5ec9dae3b6f6fca0cd7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::ephemeris::spice::Engine::isKernelLoaded</definition>
+        <argsstring>(const String &amp;aRegexString) const</argsstring>
+        <name>isKernelLoaded</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aRegexString</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if kernel is loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aRegexString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A regex string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if kernel is loaded </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="122" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="132" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a996ae30fae76f557dd4d43a53d3ec740" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -230,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="111" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="144" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="128" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="171" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ac7a364b05d98070b12de9f05fac23f51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -258,7 +279,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="156" bodyend="166"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="134" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="183" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1acd9d5f2208e9d811dc0372f69a1bbdbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::environment::ephemeris::spice::Engine::unloadAllKernels</definition>
+        <argsstring>()</argsstring>
+        <name>unloadAllKernels</name>
+        <briefdescription>
+<para>Unload all kernels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>                Unloads all kernels and clears the cache. 
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="140" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="195" bodyend="205"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -302,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="79" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="58" bodyend="107"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="83" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="69" bodyend="118"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -321,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="85" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="185" bodyend="190"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="89" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="221" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1adccf1f71e0fc9def23077306a82ad555" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> &gt;</type>
@@ -338,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="123" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="192" bodyend="209"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="146" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="228" bodyend="245"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -353,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="133" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="211" bodyend="216"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="153" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="247" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1afa2ac9e264d1e982b29e4b1cba20b31c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -370,7 +407,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="135" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="218" bodyend="221"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="155" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="252" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ad0e26b9790343b88bddeca418571a837" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::ephemeris::spice::Engine::isKernelLoaded_</definition>
+        <argsstring>(const String &amp;aRegexString) const</argsstring>
+        <name>isKernelLoaded_</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aRegexString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="157" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="257" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a199cca08e97c4bfd026ee275e747f877" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -395,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="137" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="223" bodyend="302"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="159" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="269" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1dabd1678e908b44a3fc24f387225bae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -408,20 +462,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="139" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="304" bodyend="322"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="161" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="339" bodyend="357"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ae4f18db25eeb80e250514c67ecb5b2d5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1afcbeedf3811e34a4e330b5cc6926195c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void ostk::physics::environment::ephemeris::spice::Engine::manageKernels</definition>
-        <argsstring>(const String &amp;aSpiceIdentifier, const Instant &amp;anInstant) const</argsstring>
+        <argsstring>(const String &amp;aSpiceIdentifier) const</argsstring>
         <name>manageKernels</name>
         <param>
           <type>const String &amp;</type>
           <declname>aSpiceIdentifier</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
-          <declname>anInstant</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -429,7 +479,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="324" bodyend="383"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="163" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="359" bodyend="399"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0fcd56c33521f07c666fcaf83d32f7a0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -446,7 +496,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="143" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="385" bodyend="422"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="165" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="401" bodyend="436"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab9081ab213e081afc468c10415122165" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -463,20 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="424" bodyend="449"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a9d6823c20367a6b8af9aecd3a849a3f3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ostk::physics::environment::ephemeris::spice::Engine::updateEarthKernelCache</definition>
-        <argsstring>()</argsstring>
-        <name>updateEarthKernelCache</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="147" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="451" bodyend="493"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="167" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="438" bodyend="459"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -495,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="149" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="495" bodyend="513"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="169" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="461" bodyend="479"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5b3a7f61a3a64fbc5fce18f6450aa51c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -512,7 +549,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="151" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="515" bodyend="536"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="171" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp" bodystart="481" bodyend="502"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -520,24 +557,25 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="55" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="54" bodyend="152"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" line="59" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp" bodystart="58" bodyend="172"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1adccf1f71e0fc9def23077306a82ad555" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>DefaultKernels</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0a71ccbfc29e969f589f39f2c5e5e732" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>earthKernelCache_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab839d933b6a4558cc4db001f6a267571" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>earthKernelCacheIndex_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a21f1268c563f1cd63fb5591908a7cb2c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>Engine</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1d4faf3b65fdf769550474c0ab73359c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>Engine</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ad76276802a8e2ef6f1ca0f6e87b3d73e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>Engine</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5b3a7f61a3a64fbc5fce18f6450aa51c" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>FrameNameFromSpiceObject</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a733d68259c9844891c91b6de29ff099c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>Get</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1aeaf00a4962b1973f47eda10efd641816" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>getFrameOf</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5cdf98cc1064cef09f225a657489bb49" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>getKernels</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a199cca08e97c4bfd026ee275e747f877" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>getTransformAt</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a7f7e4b76e935a698e0b7896be9e1b4bf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>isKernelLoaded</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5a99e03bec66d5ec9dae3b6f6fca0cd7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>isKernelLoaded</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1afa2ac9e264d1e982b29e4b1cba20b31c" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>isKernelLoaded_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ad0e26b9790343b88bddeca418571a837" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>isKernelLoaded_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab8e7aaa2468483dc822ee722382d4878" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>kernelSet_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a996ae30fae76f557dd4d43a53d3ec740" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>loadKernel</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0fcd56c33521f07c666fcaf83d32f7a0" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>loadKernel_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ae4f18db25eeb80e250514c67ecb5b2d5" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>manageKernels</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1afcbeedf3811e34a4e330b5cc6926195c" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>manageKernels</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1aa8858a87aa7cec66a61af0780099e9bf" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>mutex_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a880dd680a3b5444757480fafd1a52679" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1343c62aee413f640c39c90bfbdae469" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>operator=</name></member>
@@ -545,9 +583,9 @@
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a8da839b06829715ccb24f4dc2b525cf2" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>reset</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1dabd1678e908b44a3fc24f387225bae" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>setup</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ae05565d1938542755b756542127fa3a8" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>SpiceIdentifierFromSpiceObject</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1acd9d5f2208e9d811dc0372f69a1bbdbc" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>unloadAllKernels</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ac7a364b05d98070b12de9f05fac23f51" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>unloadKernel</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab9081ab213e081afc468c10415122165" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>unloadKernel_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a9d6823c20367a6b8af9aecd3a849a3f3" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Engine</scope><name>updateEarthKernelCache</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

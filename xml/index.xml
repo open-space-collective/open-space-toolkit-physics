@@ -580,8 +580,6 @@
   </compound>
   <compound refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine" kind="class"><name>ostk::physics::environment::ephemeris::spice::Engine</name>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab8e7aaa2468483dc822ee722382d4878" kind="variable"><name>kernelSet_</name></member>
-    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0a71ccbfc29e969f589f39f2c5e5e732" kind="variable"><name>earthKernelCache_</name></member>
-    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab839d933b6a4558cc4db001f6a267571" kind="variable"><name>earthKernelCacheIndex_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1aa8858a87aa7cec66a61af0780099e9bf" kind="variable"><name>mutex_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a21f1268c563f1cd63fb5591908a7cb2c" kind="function"><name>Engine</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1343c62aee413f640c39c90bfbdae469" kind="function"><name>operator=</name></member>
@@ -589,20 +587,23 @@
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a7b5e437774bf520cbe6145a666612573" kind="function"><name>operator=</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a8da839b06829715ccb24f4dc2b525cf2" kind="function"><name>reset</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1aeaf00a4962b1973f47eda10efd641816" kind="function"><name>getFrameOf</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5cdf98cc1064cef09f225a657489bb49" kind="function"><name>getKernels</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a7f7e4b76e935a698e0b7896be9e1b4bf" kind="function"><name>isKernelLoaded</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5a99e03bec66d5ec9dae3b6f6fca0cd7" kind="function"><name>isKernelLoaded</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a996ae30fae76f557dd4d43a53d3ec740" kind="function"><name>loadKernel</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ac7a364b05d98070b12de9f05fac23f51" kind="function"><name>unloadKernel</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1acd9d5f2208e9d811dc0372f69a1bbdbc" kind="function"><name>unloadAllKernels</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a880dd680a3b5444757480fafd1a52679" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a733d68259c9844891c91b6de29ff099c" kind="function"><name>Get</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1adccf1f71e0fc9def23077306a82ad555" kind="function"><name>DefaultKernels</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ad76276802a8e2ef6f1ca0f6e87b3d73e" kind="function"><name>Engine</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1afa2ac9e264d1e982b29e4b1cba20b31c" kind="function"><name>isKernelLoaded_</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ad0e26b9790343b88bddeca418571a837" kind="function"><name>isKernelLoaded_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a199cca08e97c4bfd026ee275e747f877" kind="function"><name>getTransformAt</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a1dabd1678e908b44a3fc24f387225bae" kind="function"><name>setup</name></member>
-    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ae4f18db25eeb80e250514c67ecb5b2d5" kind="function"><name>manageKernels</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1afcbeedf3811e34a4e330b5cc6926195c" kind="function"><name>manageKernels</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a0fcd56c33521f07c666fcaf83d32f7a0" kind="function"><name>loadKernel_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ab9081ab213e081afc468c10415122165" kind="function"><name>unloadKernel_</name></member>
-    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a9d6823c20367a6b8af9aecd3a849a3f3" kind="function"><name>updateEarthKernelCache</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1ae05565d1938542755b756542127fa3a8" kind="function"><name>SpiceIdentifierFromSpiceObject</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_engine_1a5b3a7f61a3a64fbc5fce18f6450aa51c" kind="function"><name>FrameNameFromSpiceObject</name></member>
   </compound>
@@ -1026,7 +1027,6 @@
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" kind="function"><name>fetchMatchingKernels</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a48ae90a9855188c30b99fc1c5e898233" kind="function"><name>findKernelPaths</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" kind="function"><name>findKernel</name></member>
-    <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a470c231a41e1b6d0496ee633f77aed3a" kind="function"><name>refresh</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1aea9d9a196e24751d6d6ccc0f88189f63" kind="function"><name>Get</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a1afababb0380dac14ae55ea5ad4f295e" kind="function"><name>Manager</name></member>
   </compound>
@@ -1724,33 +1724,6 @@
     <member refid="classostk_1_1physics_1_1_unit_1a2834e4e5fa10d96212016a3cb8a02f02" kind="function"><name>StringFromType</name></member>
     <member refid="classostk_1_1physics_1_1_unit_1a0ceaf85c29bb4964abc9d463c623353b" kind="function"><name>Unit</name></member>
   </compound>
-  <compound refid="classostk_1_1physics_1_1unit_1_1_unit" kind="class"><name>ostk::physics::unit::Unit</name>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kind="enum"><name>Type</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aec0fc0100c4fc1ce4eea230c3dc10360" kind="enumvalue"><name>Undefined</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aba2a9c6c8c77e03f83ef8bf543612275" kind="enumvalue"><name>Length</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aff2864d6f652ee0ac254814f1ae4f4a8" kind="enumvalue"><name>Mass</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aa76d4ef5f3f6a672bbfab2865563e530" kind="enumvalue"><name>Time</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aee7a8e262285ed49ea1b4e4ae11525bd" kind="enumvalue"><name>Temperature</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8a9a60fd92ac6161bffa549ef2cd17f05e" kind="enumvalue"><name>ElectricCurrent</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8ae91a9eb4f5dcc51ea18e180ea981d6ae" kind="enumvalue"><name>LuminousIntensity</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8a0e77a10e9579997fa646fbda4118e108" kind="enumvalue"><name>Derived</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a06a51d9b62f37a843a6635444f596e98" kind="variable"><name>type_</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a727da025691418da3f5aed6b9e19a203" kind="variable"><name>value_</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" kind="function"><name>Unit</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" kind="function"><name>~Unit</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a" kind="function"><name>clone</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" kind="function"><name>operator==</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" kind="function"><name>operator!=</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07" kind="function"><name>isDefined</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" kind="function"><name>isZero</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" kind="function"><name>accessValue</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" kind="function"><name>getType</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" kind="function"><name>getValue</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46" kind="function"><name>toString</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" kind="function"><name>accessValue</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" kind="function"><name>setValue</name></member>
-    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" kind="function"><name>ParseString</name></member>
-  </compound>
   <compound refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kind="class"><name>ostk::physics::unit::Derived::Unit</name>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afd7b7c5e5f3bd3bc55cd9bfa5f1d7361" kind="variable"><name>lengthUnit_</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abb8d92f732a12274e8da22cf65b96357" kind="variable"><name>lengthOrder_</name></member>
@@ -1799,6 +1772,33 @@
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a043ae264e51e9882c07e0376d9d6a742" kind="function"><name>MassFlowRate</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1a8e7aa56a56d5e7333f190093878dbd" kind="function"><name>MassDensity</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a6662545e0b59b790d4beb58325229890" kind="function"><name>Undefined</name></member>
+  </compound>
+  <compound refid="classostk_1_1physics_1_1unit_1_1_unit" kind="class"><name>ostk::physics::unit::Unit</name>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kind="enum"><name>Type</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aec0fc0100c4fc1ce4eea230c3dc10360" kind="enumvalue"><name>Undefined</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aba2a9c6c8c77e03f83ef8bf543612275" kind="enumvalue"><name>Length</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aff2864d6f652ee0ac254814f1ae4f4a8" kind="enumvalue"><name>Mass</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aa76d4ef5f3f6a672bbfab2865563e530" kind="enumvalue"><name>Time</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aee7a8e262285ed49ea1b4e4ae11525bd" kind="enumvalue"><name>Temperature</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8a9a60fd92ac6161bffa549ef2cd17f05e" kind="enumvalue"><name>ElectricCurrent</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8ae91a9eb4f5dcc51ea18e180ea981d6ae" kind="enumvalue"><name>LuminousIntensity</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8a0e77a10e9579997fa646fbda4118e108" kind="enumvalue"><name>Derived</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a06a51d9b62f37a843a6635444f596e98" kind="variable"><name>type_</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a727da025691418da3f5aed6b9e19a203" kind="variable"><name>value_</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" kind="function"><name>Unit</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" kind="function"><name>~Unit</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a" kind="function"><name>clone</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" kind="function"><name>operator==</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" kind="function"><name>operator!=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07" kind="function"><name>isDefined</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" kind="function"><name>isZero</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" kind="function"><name>accessValue</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" kind="function"><name>getType</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" kind="function"><name>getValue</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46" kind="function"><name>toString</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" kind="function"><name>accessValue</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" kind="function"><name>setValue</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" kind="function"><name>ParseString</name></member>
   </compound>
   <compound refid="classostk_1_1physics_1_1data_1_1_vector" kind="class"><name>ostk::physics::data::Vector</name>
     <member refid="classostk_1_1physics_1_1data_1_1_vector_1a6386546874c3abc232da832332242cbe" kind="variable"><name>value_</name></member>
@@ -2319,6 +2319,9 @@
   <compound refid="_s_p_i_c_e_8cpp" kind="file"><name>SPICE.cpp</name>
   </compound>
   <compound refid="_engine_8cpp" kind="file"><name>Engine.cpp</name>
+    <member refid="_engine_8cpp_1ae58ec14d1c3772ef8ee3126cd81366c2" kind="variable"><name>earthLatestHighPrecisionKernel</name></member>
+    <member refid="_engine_8cpp_1a58d8a398282ea45a688e77e49905823e" kind="variable"><name>earthHighPrecisionKernel</name></member>
+    <member refid="_engine_8cpp_1a8171ff5ab4d72e0d8315930b8c39d57f" kind="variable"><name>earthPredictedLowPrecisionKernel</name></member>
   </compound>
   <compound refid="_kernel_8cpp" kind="file"><name>Kernel.cpp</name>
   </compound>
