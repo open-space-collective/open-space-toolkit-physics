@@ -7,6 +7,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
 namespace ostk
 {
@@ -21,6 +22,7 @@ using ostk::core::type::Real;
 
 using ostk::physics::coordinate::Position;
 using ostk::physics::time::Instant;
+using ostk::physics::unit::Length;
 
 /// @brief                      Atmospheric model (interface)
 
@@ -53,7 +55,18 @@ class Model
     /// @param              [in] anInstant An Instant
     /// @return             Atmospheric density value [kg.m^-3]
 
+    [[deprecated("getDensityAt(const Position& aPosition, const Instant& anInstant) is deprecated. Please use getDensityAt(const Position& aPosition, const Instant& anInstant, const Length& anEquatorialRadius, const Real& aFlattening) instead.")]]
     virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
+
+    /// @brief              Get the atmospheric density value at a given position and instant
+    ///
+    /// @param              [in] aPosition A Position
+    /// @param              [in] anInstant An Instant
+    /// @param              [in] anEquatorialRadius An Equatorial Radius
+    /// @param              [in] aFlattening A Flattening
+    /// @return             Atmospheric density value [kg.m^-3]
+
+    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Length& anEquatorialRadius, const Real& aFlattening) const = 0;
 };
 
 }  // namespace atmospheric

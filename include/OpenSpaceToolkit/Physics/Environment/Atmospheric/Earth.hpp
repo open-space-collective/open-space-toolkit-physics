@@ -130,7 +130,18 @@ class Earth : public Model
     /// @param              [in] anInstant An Instant
     /// @return             Atmospheric density value [kg.m^-3]
 
+    [[deprecated("getDensityAt(const Position& aPosition, const Instant& anInstant) is deprecated. Please use getDensityAt(const LLA& aLLA, const Instant& anInstant) or getDensityAt(const Position& aPosition, const Instant& anInstant, const Length& anEquatorialRadius, const Real& aFlattening) instead.")]]
     Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+
+    /// @brief              Get the atmospheric density value at a given position and instant
+    ///
+    /// @param              [in] aPosition A Position, must be supplied in an celestial body frame.
+    /// @param              [in] anInstant An Instant
+    /// @param              [in] anEquatorialRadius An Equatorial Radius
+    /// @param              [in] aFlattening A Flattening
+    /// @return             Atmospheric density value [kg.m^-3]
+
+    Real getDensityAt(const Position& aPosition, const Instant& anInstant, const Length& anEquatorialRadius, const Real& aFlattening) const override;
 
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
@@ -139,6 +150,28 @@ class Earth : public Model
     /// @return             Atmospheric density value [kg.m^-3]
 
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
+
+    /// @brief              Create an exponential atmospheric model
+    ///
+    /// @return             Exponential atmospheric model
+
+    static Earth Exponential();
+
+    /// @brief              Create an NRLMSISE00 atmospheric model with CSSI input data
+    ///
+    /// @param              [in] aSunCelestialSPtr A shared pointer to the Sun celestial body. Optional, defaults to nullptr.
+    /// @return             NRLMSISE00 atmospheric model with CSSI input data
+
+    static Earth NRLMSISE00WithCSSI(const Shared<Celestial>& aSunCelestialSPtr = nullptr);
+
+    /// @brief              Create an NRLMSISE00 atmospheric model with constant flux and geo magnetic input data
+    ///
+    /// @param              [in] aF107ConstantValue A constant value for F10.7 input parameter
+    /// @param              [in] aF107AConstantValue A constant value for F10.7a input parameter
+    /// @param              [in] aKpConstantValue A constant value for Kp input parameter
+    /// @return             NRLMSISE00 atmospheric model with constant flux and geo magnetic input data
+
+    static Earth NRLMSISE00WithConstantFlux(const Real& aF107ConstantValue, const Real& aF107AConstantValue, const Real& aKpConstantValue);
 
     static constexpr double defaultF107ConstantValue = 150.0;   // 10⁻²² W⋅m⁻²⋅Hz⁻¹
     static constexpr double defaultF107AConstantValue = 150.0;  // 10⁻²² W⋅m⁻²⋅Hz⁻¹
