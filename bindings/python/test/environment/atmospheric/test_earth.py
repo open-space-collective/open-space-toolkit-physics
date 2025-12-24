@@ -176,3 +176,16 @@ class TestEarth:
         )
 
         assert density is not None
+
+    def test_exponential_static_method_success(self):
+        assert isinstance(EarthAtmosphericModel.exponential(), EarthAtmosphericModel)
+
+    def test_nrlmsise00_with_cssi_static_method_success(self):
+        assert isinstance(EarthAtmosphericModel.nrlmsise00_with_cssi(), EarthAtmosphericModel)
+
+    def test_nrlmsise00_with_cssi_static_method_with_sun_success(self):
+        assert isinstance(EarthAtmosphericModel.nrlmsise00_with_cssi(sun_celestial=Sun.default()), EarthAtmosphericModel)
+        assert isinstance(EarthAtmosphericModel.nrlmsise00_with_cssi(), EarthAtmosphericModel)
+
+    def test_nrlmsise00_with_constant_flux_static_method_success(self):
+        assert isinstance(EarthAtmosphericModel.nrlmsise00_with_constant_flux(f107_constant_value=150.0, f107_average_constant_value=150.0, kp_constant_value=3.0), EarthAtmosphericModel)
