@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <regex>
+#include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -258,7 +258,7 @@ bool Engine::isKernelLoaded_(const String& aRegexString) const
 {
     for (const auto& kernel : kernelSet_)
     {
-        if (std::regex_match(kernel.getName(), std::regex(aRegexString)))
+        if (boost::regex_match(kernel.getName(), boost::regex(aRegexString)))
         {
             return true;
         }

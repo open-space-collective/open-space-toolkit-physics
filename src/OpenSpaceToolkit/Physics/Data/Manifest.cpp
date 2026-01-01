@@ -3,6 +3,7 @@
 #include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
 #include <OpenSpaceToolkit/Core/Container/Object.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
+#include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
@@ -90,11 +91,11 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aData
 {
     Array<URL> urls = Array<URL>::Empty();
 
-    const std::regex aDataNameRegex(aDataNameRegexString);
+    const boost::regex aDataNameRegex(aDataNameRegexString);
 
     for (const auto& dictionaryIt : dictionary_)
     {
-        if (dictionaryIt.accessKey().match(aDataNameRegex))
+        if (boost::regex_match(dictionaryIt.accessKey(), aDataNameRegex))
         {
             Object filenamesDictValue = dictionaryIt.accessValue()["filenames"];
 
