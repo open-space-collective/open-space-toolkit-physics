@@ -405,14 +405,20 @@ DateTime DateTime::Parse(const String& aString, const DateTime::Format& aFormat)
     {
         case DateTime::Format::Undefined:  // Automatic format detection
         {
-            if (boost::regex_match(aString, boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?"
-                                         ")(?:\\+[0-9]{4})?(?:Z)?$")))
+            if (boost::regex_match(
+                    aString,
+                    boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?"
+                                 ")(?:\\+[0-9]{4})?(?:Z)?$")
+                ))
             {
                 return DateTime::Parse(aString, DateTime::Format::ISO8601);
             }
 
-            if (boost::regex_match(aString, boost::regex("^([\\d]{1,2} [\\w]{3} [\\d]{4}) "
-                                         "([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)(?:\\+[0-9]{4})?(?:Z)?$")))
+            if (boost::regex_match(
+                    aString,
+                    boost::regex("^([\\d]{1,2} [\\w]{3} [\\d]{4}) "
+                                 "([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)(?:\\+[0-9]{4})?(?:Z)?$")
+                ))
             {
                 return DateTime::Parse(aString, DateTime::Format::STK);
             }

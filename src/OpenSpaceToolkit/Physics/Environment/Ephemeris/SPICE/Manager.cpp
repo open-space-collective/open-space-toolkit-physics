@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <fstream>
 #include <numeric>
+
 #include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>

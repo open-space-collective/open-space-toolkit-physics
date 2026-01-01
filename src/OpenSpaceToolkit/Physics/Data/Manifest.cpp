@@ -1,9 +1,10 @@
 /// Apache License 2.0
 
+#include <boost/regex.hpp>
+
 #include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
 #include <OpenSpaceToolkit/Core/Container/Object.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>

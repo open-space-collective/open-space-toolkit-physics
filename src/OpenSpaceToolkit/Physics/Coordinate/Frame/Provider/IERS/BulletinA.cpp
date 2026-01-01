@@ -462,7 +462,8 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
     Index lineIndex = 0;
     String line;
 
-    static const boost::regex releaseDateRegex = boost::regex("^[ ]+([\\d]+) ([\\w]+) ([\\d]+)[ ]+Vol\\.[\\d\\w\\. ]+$");
+    static const boost::regex releaseDateRegex =
+        boost::regex("^[ ]+([\\d]+) ([\\w]+) ([\\d]+)[ ]+Vol\\.[\\d\\w\\. ]+$");
     static const boost::regex taiMinusUtcEpochRegex = boost::regex("^[ ]+Beginning ([\\d]+) ([\\w]+) ([\\d]+):[ ]+$");
     static const boost::regex taiMinusUtcRegex = boost::regex("^[ ]+TAI-UTC = ([-]?[\\d.]+) ([\\d]+) seconds[ ]+$");
     static const boost::regex observationRegex = boost::regex(
@@ -482,7 +483,8 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
 
     while (std::getline(fileStream, line))
     {
-        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) && boost::regex_match(line, match, releaseDateRegex))
+        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) &&
+            boost::regex_match(line, match, releaseDateRegex))
         {
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
             const Uint8 month = monthFromString(String(match[2]));
@@ -502,7 +504,8 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
                 Instant::DateTime(DateTime(Date(year, month, day), Time::Midnight()), Scale::UTC);  // [TBC] UTC?
         }
 
-        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) && boost::regex_match(line, match, taiMinusUtcRegex))
+        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) &&
+            boost::regex_match(line, match, taiMinusUtcRegex))
         {
             const Real seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
 
