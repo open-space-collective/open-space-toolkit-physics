@@ -135,7 +135,7 @@ class Earth : public Model
 
     /// @brief              Get the atmospheric density value at a given position and instant
     ///
-    /// @param              [in] aPosition A Position, must be supplied in an celestial body frame.
+    /// @param              [in] aPosition A Position, must be supplied in a celestial body frame.
     /// @param              [in] anInstant An Instant
     /// @param              [in] anEquatorialRadius An Equatorial Radius
     /// @param              [in] aFlattening A Flattening
