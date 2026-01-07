@@ -41,6 +41,7 @@ using ostk::core::type::Unique;
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::object::celestial::Sun;
@@ -51,7 +52,6 @@ using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using ostk::physics::environment::atmospheric::earth::Manager;
 
@@ -90,7 +90,23 @@ class NRLMSISE00Public : public NRLMSISE00
     using NRLMSISE00::nrlmsise_input;
 };
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)
+class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00 : public ::testing::Test
+{
+   protected:
+    void SetUp() override
+    {
+        const File file = File::Path(
+            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/SW-Last5Years.csv")
+        );
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        manager_.loadCSSISpaceWeather(spaceWeather);
+    }
+
+    Manager& manager_ = Manager::Get();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Constructor)
 {
     {
         EXPECT_NO_THROW(NRLMSISE00 nrlmsise = {});
@@ -105,7 +121,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Construc
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Clone)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Clone)
 {
     {
         const NRLMSISE00 nrlmsise = {};
@@ -114,7 +130,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Clone)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefined)
 {
     {
         const NRLMSISE00 nrlmsise = {};
@@ -123,29 +139,15 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefine
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
 {
     {
-        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
-        Real f107ConstantValue = 200.0;
-        Real f107AConstantValue = 205.0;
-        Real kpConstantValue = 3.0;
+        const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
+        const Real f107ConstantValue = 200.0;
+        const Real f107AConstantValue = 205.0;
+        const Real kpConstantValue = 3.0;
 
-        NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
-
-        EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
-        EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
-        EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
-        EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
-    }
-
-    {
-        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
-        Real f107ConstantValue = 200.0;
-        Real f107AConstantValue = 205.0;
-        Real kpConstantValue = 3.0;
-
-        NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        const NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
         EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
         EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
@@ -154,9 +156,23 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
     }
 
     {
-        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
+        const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
+        const Real f107ConstantValue = 200.0;
+        const Real f107AConstantValue = 205.0;
+        const Real kpConstantValue = 3.0;
 
-        NRLMSISE00 nrlmsise = {inputDataType};
+        const NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+
+        EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
+        EXPECT_EQ(f107ConstantValue, nrlmsise.getF107ConstantValue());
+        EXPECT_EQ(f107AConstantValue, nrlmsise.getF107AConstantValue());
+        EXPECT_EQ(kpConstantValue, nrlmsise.getKpConstantValue());
+    }
+
+    {
+        const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
+
+        const NRLMSISE00 nrlmsise = {inputDataType};
 
         EXPECT_EQ(inputDataType, nrlmsise.getInputDataType());
         EXPECT_EQ(EarthAtmosphericModel::defaultF107ConstantValue, nrlmsise.getF107ConstantValue());
@@ -167,14 +183,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ConvertKpToAp)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ConvertKpToAp)
 {
     {
         EXPECT_EQ(NRLMSISE00Public::convertKpToAp(-1.6), 1.0);
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayConstantFluxAndGeoMag)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayConstantFluxAndGeoMag)
 {
     /*
      * This test is to confirm that we compute fixed values for AP solar index values when using constant flux input
@@ -182,14 +198,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
      */
 
     {
-        NRLMSISE00Public::InputDataType inputDataType = NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
-        Real f107ConstantValue = 200.0;
-        Real f107AConstantValue = 205.0;
-        Real kpConstantValue = -1.6;
+        const NRLMSISE00Public::InputDataType inputDataType = NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
+        const Real f107ConstantValue = 200.0;
+        const Real f107AConstantValue = 205.0;
+        const Real kpConstantValue = -1.6;
 
-        NRLMSISE00Public nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        const NRLMSISE00Public nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
-        Array<Instant> instants = {
+        const Array<Instant> instants = {
             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC),
             Instant::DateTime(DateTime(2020, 1, 2, 0, 0, 0), Scale::UTC),
             Instant::DateTime(DateTime(2024, 1, 2, 0, 0, 0), Scale::UTC),
@@ -207,7 +223,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HourMarksShifted)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HourMarksShifted)
 {
     /*
      * This test is to confirm that we compute the same AP solar index values as Orekit when not at 3hour marks.
@@ -217,7 +233,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
                                "OreKitCSSIParameters3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
         const NRLMSISE00Public nrlmsise = {};
@@ -257,7 +273,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 }
 
 /* ignored for now pending resolution of: https://gitlab.orekit.org/orekit/orekit/-/issues/1119 */
-// TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HrMarks)
+// TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeAPArrayOrekit3HrMarks)
 // {
 
 //     const File referenceDataFile = File::Path(Path::Parse(
@@ -265,7 +281,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 //              ));
 
 //     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-//     Size rowCount = referenceData.getRowCount();
+//     const Size rowCount = referenceData.getRowCount();
 
 //     {
 //         const NRLMSISE00 nrlmsise = {};
@@ -310,7 +326,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeA
 //     }
 // }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeNRLMISE00InputOrekit)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeNRLMISE00InputOrekit)
 {
     /*
      * This test is to confirm that we compute the same Flux values as Orekit when not at 3hour marks.
@@ -320,7 +336,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
                                "OreKitCSSIParameters3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
         const NRLMSISE00Public nrlmsise = {};
@@ -347,7 +363,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, ComputeN
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarksPreciseLST)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarksPreciseLST)
 {
     /*
      * This test uses a precise local solar time just like Orekit. It doesn't match well for the following reasons:
@@ -359,7 +375,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                                "OreKitNRLMSISE500km3HourMarks.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
         const NRLMSISE00 nrlmsise = {};
@@ -402,7 +418,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedPreciseLST)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedPreciseLST)
 {
     /*
      * This test uses a precise local solar time just like Orekit. It also avoids 3hour marks to show that we match
@@ -417,10 +433,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                                "OreKitNRLMSISE500km3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
-        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+        const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
@@ -465,7 +481,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedStandardLST)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOrekit3HrMarkShiftedStandardLST)
 {
     /*
      * This test uses a rough local solar time calculation, which is reccomended by the NRLMSISE docs. This shows the
@@ -481,7 +497,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                                "OreKitNRLMSISE500km3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
         const NRLMSISE00 nrlmsise = {
@@ -532,7 +548,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     }
 }
 
-TEST(
+TEST_F(
     OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtOreKitNRLMSISESweep3HourMarksShifted
 )
 {
@@ -548,10 +564,10 @@ TEST(
                                "OreKitNRLMSISESweep3HourMarksShifted.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
-        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+        const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
@@ -597,7 +613,7 @@ TEST(
     }
 }
 
-TEST(
+TEST_F(
     OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00,
     GetDensityAtOreKitNRLMSISESweep3HourMarksShiftedIERS2003
 )
@@ -619,10 +635,10 @@ TEST(
                                "OreKitNRLMSISESweep3HourMarksShiftedIERS2003.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
-        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+        const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
@@ -665,7 +681,7 @@ TEST(
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtNRLMSISEWithOrekitInputs)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityAtNRLMSISEWithOrekitInputs)
 {
     /*
      * This test checks the density generated by OSTk when using the actual inputs that Orekit generates for itself. It
@@ -676,7 +692,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
                                "OreKitNRLMSISEInputsAndDensity.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
         for (Index i = 0; i < rowCount; i++)
@@ -728,7 +744,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensi
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputs)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputs)
 {
     /*
      * This test checks the input set generated by OSTk vs. Orekit. It was exported using some shenanigans in
@@ -741,10 +757,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
                                "OreKitNRLMSISEInputsAndDensity.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
-        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+        const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
@@ -811,7 +827,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputsUTC)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEInputsUTC)
 {
     /*
      * This test checks the input set generated by OSTk vs. Orekit. It was exported using some shenanigans in
@@ -825,10 +841,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
                                "OreKitNRLMSISEInputsAndDensityUTC.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
-        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+        const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
@@ -895,7 +911,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEDensityUTC)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGenerateNRLMSISEDensityUTC)
 {
     /*
      * This test compares the computed density when we theoretically have identical inputs as Orekit. It uses the same
@@ -906,10 +922,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
                                "OreKitNRLMSISEInputsAndDensityUTC.csv"));
 
     const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
-    Size rowCount = referenceData.getRowCount();
+    const Size rowCount = referenceData.getRowCount();
 
     {
-        Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
+        const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             Real::Undefined(),
@@ -951,31 +967,31 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, OrekitGe
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityConstantFluxAndGeoMagInputDataType)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDensityConstantFluxAndGeoMagInputDataType)
 {
     /*
      * This test verifies that for a given position the density is the same for all instants for ConstantFluxAndGeoMag
      * Inpout Data Source Type.
      */
     {
-        NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
-        Real f107ConstantValue = 200.0;
-        Real f107AConstantValue = 205.0;
-        Real kpConstantValue = -1.6;
+        const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
+        const Real f107ConstantValue = 200.0;
+        const Real f107AConstantValue = 205.0;
+        const Real kpConstantValue = -1.6;
 
-        NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
+        const NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
-        Array<Instant> instants = {
+        const Array<Instant> instants = {
             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::UTC),
             Instant::DateTime(DateTime(2020, 1, 2, 0, 0, 0), Scale::UTC),
             Instant::DateTime(DateTime(2024, 1, 2, 0, 0, 0), Scale::UTC),
         };
 
-        LLA lla = {Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)};
+        const LLA lla = {Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)};
 
         for (const auto& instant : instants)
         {
-            Real density = nrlmsise.getDensityAt(lla, instant);
+            const Real density = nrlmsise.getDensityAt(lla, instant);
             EXPECT_TRUE(1.16099e-08 - density <= 1e-12);  // Always the same value
         }
     }

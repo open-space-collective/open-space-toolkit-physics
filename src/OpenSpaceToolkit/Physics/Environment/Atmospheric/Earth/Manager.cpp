@@ -416,12 +416,6 @@ void Manager::setup_()
 
 void Manager::loadCSSISpaceWeather_(const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    if (CSSISpaceWeather_.isDefined() &&
-        (CSSISpaceWeather_.accessLastObservationDate() == aCSSISpaceWeather.accessLastObservationDate()))
-    {
-        throw ostk::core::error::RuntimeError("Identical CSSI Space Weather already loaded.");
-    }
-
     CSSISpaceWeather_ = aCSSISpaceWeather;
 }
 
