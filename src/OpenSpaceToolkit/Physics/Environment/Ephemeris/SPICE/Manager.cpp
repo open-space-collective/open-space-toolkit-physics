@@ -170,7 +170,7 @@ Array<Path> Manager::findKernelPaths(const String& aRegexString) const
     for (iterator iter {directory}; iter != end; ++iter)
     {
         const String filename = iter->path().filename().string();
-        if (std::filesystem::is_regular_file(*iter) && boost::regex_match(filename, aRegex))
+        if (std::filesystem::is_regular_file(*iter) && filename.match(aRegex))
         {
             kernelPaths.add(Path::Parse(iter->path().string()));
         }

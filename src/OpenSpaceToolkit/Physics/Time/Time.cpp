@@ -349,7 +349,7 @@ Time Time::Parse(const String& aString, const Time::Format& aFormat)
     {
         case Time::Format::Undefined:  // Automatic format detection
         {
-            if (boost::regex_match(aString, boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,9}))?$")))
+            if (aString.match(boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,9}))?$")))
             {
                 return Time::Parse(aString, Time::Format::ISO8601);
             }

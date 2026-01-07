@@ -246,7 +246,7 @@ Date Date::Parse(const String& aString, const Date::Format& aFormat)
     {
         case Date::Format::Undefined:  // Automatic format detection
         {
-            if (boost::regex_match(aString, boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+            if (aString.match(boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
             {
                 return Date::Parse(aString, Date::Format::STK);
             }
@@ -283,7 +283,7 @@ Date Date::Parse(const String& aString, const Date::Format& aFormat)
         {
             boost::smatch match;
 
-            if (aString.match(std::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+            if (boost::regex_match(aString, match, boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
             {
                 try
                 {

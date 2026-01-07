@@ -258,7 +258,7 @@ bool Engine::isKernelLoaded_(const String& aRegexString) const
 {
     for (const auto& kernel : kernelSet_)
     {
-        if (boost::regex_match(kernel.getName(), boost::regex(aRegexString)))
+        if (kernel.getName().match(boost::regex(aRegexString)))
         {
             return true;
         }
