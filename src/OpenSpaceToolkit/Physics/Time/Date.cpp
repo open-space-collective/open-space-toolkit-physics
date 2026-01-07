@@ -283,7 +283,7 @@ Date Date::Parse(const String& aString, const Date::Format& aFormat)
         {
             boost::smatch match;
 
-            if (boost::regex_match(aString, match, boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+            if (aString.match(std::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
             {
                 try
                 {

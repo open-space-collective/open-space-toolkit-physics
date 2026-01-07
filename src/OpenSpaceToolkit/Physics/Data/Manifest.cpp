@@ -96,7 +96,7 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aData
 
     for (const auto& dictionaryIt : dictionary_)
     {
-        if (boost::regex_match(dictionaryIt.accessKey(), aDataNameRegex))
+        if (dictionaryIt.accessKey().match(aDataNameRegex))
         {
             Object filenamesDictValue = dictionaryIt.accessValue()["filenames"];
 
