@@ -799,8 +799,6 @@ Duration Duration::Parse(const String& aString, const Duration::Format& aFormat)
         {
             boost::smatch match;
 
-            // if (boost::regex_match(aString, match,
-            // boost::regex("^([-])?P(?:([0-9]+)Y)?(?:([0-9]+)M)?(?:([0-9]+)D)?(?:T(?:([0-9]{1,2})H)?(?:([0-9]{1,2})M)?(?:(?:([0-9]{1,2})(?:\\.([0-9]{1,9}))?)S)?)?$")))
             if (boost::regex_match(
                     aString,
                     match,

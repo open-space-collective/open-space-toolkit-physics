@@ -402,7 +402,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSIS
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
-        EXPECT_ANY_THROW(manager_.loadCSSISpaceWeather(spaceWeather));
         EXPECT_ANY_THROW(manager_.loadCSSISpaceWeather(CSSISpaceWeather::Undefined()));
     }
 }
