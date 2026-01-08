@@ -2,10 +2,8 @@
 
 import pytest
 
-import numpy as np
-
-from ostk.core.filesystem import Directory
-
+from ostk.core.filesystem import Path
+from ostk.core.filesystem import File
 from ostk.physics.time import Instant
 from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
@@ -17,6 +15,8 @@ from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 from ostk.physics.environment.object.celestial import Sun
+from ostk.physics.environment.atmospheric.earth import Manager
+from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
 @pytest.fixture
@@ -121,8 +121,20 @@ class TestEarth:
         assert density is not None
 
     def test_get_density_at_nrlmsise_success(
-        self, earth_atmospheric_model_nrlmsise: EarthAtmosphericModel
+        self,
+        earth_atmospheric_model_nrlmsise: EarthAtmosphericModel,
     ):
+        manager = Manager.get()
+        manager.load_cssi_space_weather(
+            CSSISpaceWeather.load(
+                File.path(
+                    Path.parse(
+                        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/SW-Last5Years.csv"
+                    )
+                )
+            )
+        )
+
         latitude = Angle.degrees(30.0)
         longitude = Angle.degrees(40.0)
         altitude = Length.kilometers(500.0)

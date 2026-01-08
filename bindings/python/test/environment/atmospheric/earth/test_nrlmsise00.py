@@ -1,19 +1,17 @@
 # Apache License 2.0
 
-import pytest
-import numpy as np
-
+from ostk.core.filesystem import Path
+from ostk.core.filesystem import File
 from ostk.physics.time import Instant
 from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
 from ostk.physics.unit import Length
 from ostk.physics.unit import Angle
-from ostk.physics.coordinate import Position
-from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 
-from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
 from ostk.physics.environment.atmospheric.earth import NRLMSISE00
+from ostk.physics.environment.atmospheric.earth import Manager
+from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 
 
 class TestNRLMSISE00:
@@ -24,6 +22,17 @@ class TestNRLMSISE00:
         assert nrlmsise00_model.is_defined() is True
 
     def test_get_density_at_lla_no_sun_success(self, nrlmsise00_model):
+        manager = Manager.get()
+        manager.load_cssi_space_weather(
+            CSSISpaceWeather.load(
+                File.path(
+                    Path.parse(
+                        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/SW-Last5Years.csv"
+                    )
+                )
+            )
+        )
+
         lla = LLA(Angle.degrees(0.0), Angle.degrees(0.0), Length.meters(500e3))
 
         density = nrlmsise00_model.get_density_at(
