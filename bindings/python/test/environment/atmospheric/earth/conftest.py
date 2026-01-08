@@ -7,8 +7,6 @@ import pathlib
 from ostk.core.filesystem import Path
 from ostk.core.filesystem import File
 
-from ostk.io import URL
-
 from ostk.physics.coordinate import Frame
 from ostk.physics.environment.object.celestial import Sun
 from ostk.physics.environment.atmospheric.earth import Manager
@@ -49,9 +47,9 @@ def manager() -> Manager:
 
 
 @pytest.fixture
-def manager_with_cssi_space_weather(cssi_space_weather_file: File) -> Manager:
+def manager_with_cssi_space_weather(cssi_space_weather: CSSISpaceWeather) -> Manager:
     manager = Manager.get()
-    manager.load_cssi_space_weather(CSSISpaceWeather.load(cssi_space_weather_file))
+    manager.load_cssi_space_weather(cssi_space_weather)
 
     yield manager
 
