@@ -49,6 +49,17 @@ def manager() -> Manager:
 
 
 @pytest.fixture
+def manager_with_cssi_space_weather(cssi_space_weather_file: File) -> Manager:
+    manager = Manager.get()
+    manager.load_cssi_space_weather(CSSISpaceWeather.load(cssi_space_weather_file))
+
+    yield manager
+
+    manager.reset()
+    manager.clear_local_repository()
+
+
+@pytest.fixture
 def exponential_model() -> Exponential:
     return Exponential()
 
