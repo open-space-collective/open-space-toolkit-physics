@@ -38,6 +38,8 @@ class Environment
     /// @param              [in] An array of shared pointers to objects
     /// @param              [in] setGlobalInstance True if the global environment instance should be set
 
+    /// @throw             RuntimeError if duplicate Celestial Objects with the same name are found
+
     Environment(
         const Instant& anInstant,
         const Array<Shared<const Object>>& anObjectArray,
@@ -49,6 +51,8 @@ class Environment
     /// @param              [in] anObjectArray An array of shared pointers to objects
     /// @param              [in] anInstant An instant. Defaults to J2000 epoch.
     /// @param              [in] setGlobalInstance True if the global environment instance should be set
+
+    /// @throw             RuntimeError if duplicate Celestial Objects with the same name are found
 
     Environment(
         const Shared<const Object>& aCentralCelestialObject,
@@ -209,6 +213,12 @@ class Environment
     Instant instant_;
     Array<Shared<const Object>> objects_;
     Shared<const Object> centralCelestialObject_;
+
+    /// @brief              Validates the Celestial Objects in the environment, checking for duplicates
+    ///
+    /// @throw              RuntimeError if duplicate Celestial Objects with the same name are found
+
+    void validateCelestialObjects();
 
     /// @brief              Set the singleton instance of the environment
     ///
