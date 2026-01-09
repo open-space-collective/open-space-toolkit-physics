@@ -370,7 +370,7 @@ Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Insta
         throw ostk::core::error::runtime::Undefined("Atmospheric model");
     }
 
-    const Real atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
+    const Real atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition.inFrame(ephemeris_->accessFrame(), anInstant), anInstant, this->getEquatorialRadius(), this->getFlattening());
 
     const static Unit atmosphericDensityUnit =
         Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter));

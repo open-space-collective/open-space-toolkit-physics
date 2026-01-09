@@ -25,6 +25,7 @@ using ostk::core::error::RuntimeError;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
 using ostk::core::type::Real;
+using ostk::core::type::Shared;
 using ostk::core::type::String;
 
 using ostk::physics::coordinate::Frame;
@@ -258,7 +259,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Posi
             const Real referenceDensity = std::get<3>(testCase);
             const Real tolerance = std::get<4>(testCase);
 
-            const Real density = earthAtmosphericModel.getDensityAt(position, instant);
+            const Real density = earthAtmosphericModel.getDensityAt(position, instant, EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_);
 
             EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
                 "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
@@ -396,8 +397,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Fram
             const Instant instant = std::get<3>(testCase);
             const Real tolerance = std::get<4>(testCase);
 
-            const Real densityITRF = earthAtmosphericModelITRF.getDensityAt(positionITRF, instant);
-            const Real densityTEME = earthAtmosphericModelTEME.getDensityAt(positionITRF, instant);
+            const Real densityITRF = earthAtmosphericModelITRF.getDensityAt(positionITRF, instant, EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_);
+            const Real densityTEME = earthAtmosphericModelTEME.getDensityAt(positionITRF, instant, EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_);
 
             EXPECT_TRUE(densityITRF.isNear(densityTEME, tolerance)) << String::Format(
                 "{} ≈ {} Δ {} [T]", densityITRF.toString(), densityTEME.toString(), (densityITRF - densityTEME)
@@ -461,12 +462,82 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Sola
             const Instant instant = std::get<3>(testCase);
             const Real tolerance = std::get<4>(testCase);
 
-            const Real densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
-            const Real densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);
+            const Real densitySun = earthAtmosphericModelSun.getDensityAt(position, instant, EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_);
+            const Real densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant, EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_);
 
             EXPECT_FALSE(densitySun.isNear(densityNoSun, tolerance)) << String::Format(
                 "{} ≈ {} Δ {} [T]", densitySun.toString(), densityNoSun.toString(), (densitySun - densityNoSun)
             );
         }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Exponential)
+{
+    {
+        const EarthAtmosphericModel earthAtmosphericModel = EarthAtmosphericModel::Exponential();
+
+        EXPECT_TRUE(earthAtmosphericModel.isDefined());
+        EXPECT_EQ(EarthAtmosphericModel::Type::Exponential, earthAtmosphericModel.getType());
+        EXPECT_EQ(EarthAtmosphericModel::InputDataType::Undefined, earthAtmosphericModel.getInputDataType());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, NRLMSISE00WithCSSI)
+{
+    {
+        const EarthAtmosphericModel earthAtmosphericModel = EarthAtmosphericModel::NRLMSISE00WithCSSI();
+
+        EXPECT_TRUE(earthAtmosphericModel.isDefined());
+        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
+        EXPECT_EQ(EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile, earthAtmosphericModel.getInputDataType());
+    }
+
+    {
+        const Shared<Sun> sunSPtr = std::make_shared<Sun>(Sun::Default());
+        const EarthAtmosphericModel earthAtmosphericModel = EarthAtmosphericModel::NRLMSISE00WithCSSI(sunSPtr);
+
+        EXPECT_TRUE(earthAtmosphericModel.isDefined());
+        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
+        EXPECT_EQ(EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile, earthAtmosphericModel.getInputDataType());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, NRLMSISE00WithConstantFlux)
+{
+    {
+        const Real f107ConstantValue = 150.0;
+        const Real f107AConstantValue = 150.0;
+        const Real kpConstantValue = 3.0;
+
+        const EarthAtmosphericModel earthAtmosphericModel =
+            EarthAtmosphericModel::NRLMSISE00WithConstantFlux(f107ConstantValue, f107AConstantValue, kpConstantValue);
+
+        EXPECT_TRUE(earthAtmosphericModel.isDefined());
+        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
+        EXPECT_EQ(
+            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag, earthAtmosphericModel.getInputDataType()
+        );
+    }
+
+    {
+        const Real f107ConstantValue = 200.0;
+        const Real f107AConstantValue = 180.0;
+        const Real kpConstantValue = 5.0;
+
+        const EarthAtmosphericModel earthAtmosphericModel =
+            EarthAtmosphericModel::NRLMSISE00WithConstantFlux(f107ConstantValue, f107AConstantValue, kpConstantValue);
+
+        EXPECT_TRUE(earthAtmosphericModel.isDefined());
+        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
+        EXPECT_EQ(
+            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag, earthAtmosphericModel.getInputDataType()
+        );
+
+        // Test that the model works with the constant flux values
+        const LLA lla = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0));
+        const Instant instant = Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC);
+
+        EXPECT_NO_THROW(const Real density = earthAtmosphericModel.getDensityAt(lla, instant););
     }
 }
