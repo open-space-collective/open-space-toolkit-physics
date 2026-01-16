@@ -268,7 +268,9 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief              Parse an interval from a string representation.
     ///
     /// @code
-    ///                     Interval interval = Interval::Parse("[2000-01-01 12:00:00, 2000-01-01 12:00:01]") ;
+    ///                     Interval interval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01] [UTC]") ;
+    ///                     Interval halfOpenRightInterval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01
+    ///                     12:00:01[ [UTC]") ;
     /// @endcode
     ///
     /// @param              [in] aString String representation.
