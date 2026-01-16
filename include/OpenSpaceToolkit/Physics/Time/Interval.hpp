@@ -269,7 +269,8 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///                     Interval interval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01] [UTC]") ;
-    ///                     Interval halfOpenRightInterval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01[ [UTC]") ;
+    ///                     Interval halfOpenRightInterval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01
+    ///                     12:00:01[ [UTC]") ;
     /// @endcode
     ///
     /// @param              [in] aString String representation.
