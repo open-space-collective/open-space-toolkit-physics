@@ -488,6 +488,11 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             R"doc(
                 Parse an interval from a string representation.
 
+                ```
+                interval = Interval.parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01] [UTC]")
+                half_open_right_interval = Interval.parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01[ [UTC]")
+                ```
+
                 Args:
                     (str): String representation.
 
