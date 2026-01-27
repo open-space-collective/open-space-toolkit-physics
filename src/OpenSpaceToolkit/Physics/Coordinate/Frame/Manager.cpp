@@ -117,6 +117,27 @@ void Manager::removeFrameWithName(const String& aFrameName)
     }
 }
 
+void Manager::clearAllFrames()
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    frameMap_.clear();
+    transformCache_.clear();
+}
+
+Array<String> Manager::getAllFrameNames() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    Array<String> frameNames;
+    frameNames.reserve(frameMap_.size());
+    for (const auto& frame : frameMap_)
+    {
+        frameNames.add(frame.first);
+    }
+    return frameNames;
+}
+
 void Manager::addCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr,
     const Shared<const Frame>& aToFrameSPtr,

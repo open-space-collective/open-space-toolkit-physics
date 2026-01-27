@@ -52,6 +52,10 @@ class Manager
 
     void removeFrameWithName(const String& aFrameName);
 
+    void clearAllFrames();
+
+    Array<String> getAllFrameNames() const;
+
     void addCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr,
         const Shared<const Frame>& aToFrameSPtr,
