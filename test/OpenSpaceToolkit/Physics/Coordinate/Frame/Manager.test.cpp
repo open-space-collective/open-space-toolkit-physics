@@ -50,6 +50,8 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Manager : public ::testing::Test
             Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(90.0))),
             Vector3d::Zero()
         )));
+
+        Frame::GCRF();
     }
 
     void TearDown() override
@@ -94,7 +96,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, Get)
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, HasFrameWithName)
 {
     {
-        // GCRF always exists
         EXPECT_TRUE(manager_->hasFrameWithName("GCRF"));
     }
 

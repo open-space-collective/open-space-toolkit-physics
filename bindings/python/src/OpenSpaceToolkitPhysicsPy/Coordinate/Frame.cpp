@@ -2,6 +2,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Manager.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule)
@@ -383,5 +384,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     // Create "frame" python submodule
     auto frame = aModule.def_submodule("frame");
 
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(frame);
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(frame);
 }

@@ -5,6 +5,7 @@
 
 #include <mutex>
 
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -22,6 +23,7 @@ namespace coordinate
 namespace frame
 {
 
+using ostk::core::container::Array;
 using ostk::core::container::Map;
 using ostk::core::type::Shared;
 using ostk::core::type::Size;
