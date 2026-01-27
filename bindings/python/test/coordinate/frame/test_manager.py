@@ -37,26 +37,38 @@ def static_provider() -> Static:
 
 
 class TestManager:
-    def test_get_success(self):
+    def test_get_success(
+        self,
+    ):
         manager = Manager.get()
         assert manager is not None
 
-    def test_get_singleton(self):
+    def test_get_singleton(
+        self,
+    ):
         manager1 = Manager.get()
         manager2 = Manager.get()
         assert manager1 is manager2
 
-    def test_has_frame_with_name_success(self, manager: Manager):
+    def test_has_frame_with_name_success(
+        self,
+        manager: Manager,
+    ):
         # GCRF always exists
         assert manager.has_frame_with_name("GCRF") is True
 
-    def test_has_frame_with_name_not_found(self, manager: Manager):
+    def test_has_frame_with_name_not_found(
+        self,
+        manager: Manager,
+    ):
         assert manager.has_frame_with_name("NonExistentFrame") is False
 
     def test_has_frame_with_name_custom_frame(
-        self, manager: Manager, static_provider: Static
+        self,
+        manager: Manager,
+        static_provider: Static,
     ):
-        frame = Frame.construct("TestFrame", True, Frame.GCRF(), static_provider)
+        Frame.construct("TestFrame", True, Frame.GCRF(), static_provider)
 
         assert manager.has_frame_with_name("TestFrame") is True
 
@@ -78,14 +90,18 @@ class TestManager:
     def test_access_frame_with_name_custom_frame(
         self, manager: Manager, static_provider: Static
     ):
-        created_frame = Frame.construct("TestFrame", True, Frame.GCRF(), static_provider)
+        Frame.construct("TestFrame", True, Frame.GCRF(), static_provider)
 
         accessed_frame = manager.access_frame_with_name("TestFrame")
 
         assert accessed_frame is not None
         assert accessed_frame.get_name() == "TestFrame"
 
-    def test_get_all_frame_names_success(self, manager: Manager, static_provider: Static):
+    def test_get_all_frame_names_success(
+        self,
+        manager: Manager,
+        static_provider: Static,
+    ):
         Frame.construct("TestFrame1", True, Frame.GCRF(), static_provider)
         Frame.construct("TestFrame2", True, Frame.GCRF(), static_provider)
 
@@ -95,7 +111,9 @@ class TestManager:
         assert "TestFrame2" in frame_names
 
     def test_remove_frame_with_name_success(
-        self, manager: Manager, static_provider: Static
+        self,
+        manager: Manager,
+        static_provider: Static,
     ):
         Frame.construct("TestFrame", True, Frame.GCRF(), static_provider)
 
@@ -105,11 +123,18 @@ class TestManager:
 
         assert manager.has_frame_with_name("TestFrame") is False
 
-    def test_remove_frame_with_name_not_found(self, manager: Manager):
+    def test_remove_frame_with_name_not_found(
+        self,
+        manager: Manager,
+    ):
         with pytest.raises(Exception):
             manager.remove_frame_with_name("NonExistentFrame")
 
-    def test_clear_all_frames_success(self, manager: Manager, static_provider: Static):
+    def test_clear_all_frames_success(
+        self,
+        manager: Manager,
+        static_provider: Static,
+    ):
         Frame.construct("TestFrame1", True, Frame.GCRF(), static_provider)
         Frame.construct("TestFrame2", True, Frame.GCRF(), static_provider)
 
@@ -121,7 +146,10 @@ class TestManager:
         assert manager.has_frame_with_name("TestFrame1") is False
         assert manager.has_frame_with_name("TestFrame2") is False
 
-    def test_access_cached_transform_not_found(self, manager: Manager):
+    def test_access_cached_transform_not_found(
+        self,
+        manager: Manager,
+    ):
         gcrf = Frame.GCRF()
         itrf = Frame.ITRF()
         instant = Instant.J2000()
@@ -132,7 +160,9 @@ class TestManager:
         assert transform.is_defined() is False or transform.is_defined() is True
 
     def test_add_and_access_cached_transform_success(
-        self, manager: Manager, static_provider: Static
+        self,
+        manager: Manager,
+        static_provider: Static,
     ):
         frame1 = Frame.construct("TestFrame1", True, Frame.GCRF(), static_provider)
         frame2 = Frame.construct("TestFrame2", True, Frame.GCRF(), static_provider)
