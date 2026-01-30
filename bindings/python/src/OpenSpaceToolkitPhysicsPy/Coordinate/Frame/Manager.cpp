@@ -69,7 +69,24 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
                     list[str]: List of all frame names.
             )doc"
         )
+        .def(
+            "access_cached_transform",
+            &Manager::accessCachedTransform,
+            arg("from_frame"),
+            arg("to_frame"),
+            arg("instant"),
+            R"doc(
+                Access a cached transform between two frames at a given instant.
 
+                Args:
+                    from_frame (Frame): Source frame.
+                    to_frame (Frame): Destination frame.
+                    instant (Instant): Instant at which the transform is requested.
+
+                Returns:
+                    Transform: Cached transform if found, undefined transform otherwise.
+            )doc"
+        )
         .def(
             "add_frame",
             &Manager::addFrame,
@@ -99,25 +116,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
                 Clear all frames from the manager.
 
                 This removes all registered frames and clears the transform cache.
-            )doc"
-        )
-
-        .def(
-            "access_cached_transform",
-            &Manager::accessCachedTransform,
-            arg("from_frame"),
-            arg("to_frame"),
-            arg("instant"),
-            R"doc(
-                Access a cached transform between two frames at a given instant.
-
-                Args:
-                    from_frame (Frame): Source frame.
-                    to_frame (Frame): Destination frame.
-                    instant (Instant): Instant at which the transform is requested.
-
-                Returns:
-                    Transform: Cached transform if found, undefined transform otherwise.
             )doc"
         )
         .def(

@@ -37,6 +37,19 @@ Shared<const Frame> Manager::accessFrameWithName(const String& aFrameName) const
     return nullptr;
 }
 
+Array<String> Manager::getAllFrameNames() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    Array<String> frameNames;
+    frameNames.reserve(frameMap_.size());
+    for (const auto& frame : frameMap_)
+    {
+        frameNames.add(frame.first);
+    }
+    return frameNames;
+}
+
 const Transform Manager::accessCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
 ) const
@@ -123,19 +136,6 @@ void Manager::clearAllFrames()
 
     frameMap_.clear();
     transformCache_.clear();
-}
-
-Array<String> Manager::getAllFrameNames() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    Array<String> frameNames;
-    frameNames.reserve(frameMap_.size());
-    for (const auto& frame : frameMap_)
-    {
-        frameNames.add(frame.first);
-    }
-    return frameNames;
 }
 
 void Manager::addCachedTransform(
