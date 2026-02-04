@@ -157,7 +157,7 @@ class TestManager:
         transform = manager.access_cached_transform(gcrf, itrf, instant)
 
         # Should return undefined transform when not cached
-        assert transform.is_defined() is False or transform.is_defined() is True
+        assert transform.is_defined() is False
 
     def test_add_and_access_cached_transform_success(
         self,
