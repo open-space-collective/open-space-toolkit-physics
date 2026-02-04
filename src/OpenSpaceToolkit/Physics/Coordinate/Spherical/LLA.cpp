@@ -547,7 +547,7 @@ LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment:
         throw ostk::core::error::runtime::Undefined("Celestial object");
     }
 
-    if (aPosition.accessFrame() != celestialSPtr->accessFrame())
+    if (*aPosition.accessFrame() != *celestialSPtr->accessFrame())
     {
         throw ostk::core::error::RuntimeError(
             "Cannot convert Position to LLA from frame [{}], must be in [{}].",
