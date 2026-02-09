@@ -193,6 +193,51 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                 )doc"
             )
 
+            .def_static(
+                "exponential",
+                &Earth::Exponential,
+                R"doc(
+                    Create an exponential atmospheric model.
+
+                    Returns:
+                        Earth: Exponential atmospheric model.
+                )doc"
+            )
+
+            .def_static(
+                "nrlmsise00_with_cssi",
+                &Earth::NRLMSISE00WithCSSI,
+                arg("sun_celestial") = nullptr,
+                R"doc(
+                    Create an NRLMSISE00 atmospheric model with CSSI input data.
+
+                    Args:
+                        sun_celestial (Celestial, optional): A shared pointer to the Sun celestial body. Defaults to None.
+
+                    Returns:
+                        Earth: NRLMSISE00 atmospheric model with CSSI input data.
+                )doc"
+            )
+
+            .def_static(
+                "nrlmsise00_with_constant_flux",
+                &Earth::NRLMSISE00WithConstantFlux,
+                arg("f107_constant_value"),
+                arg("f107_average_constant_value"),
+                arg("kp_constant_value"),
+                R"doc(
+                    Create an NRLMSISE00 atmospheric model with constant flux and geo magnetic input data.
+
+                    Args:
+                        f107_constant_value (float): A constant value for F10.7 input parameter.
+                        f107_average_constant_value (float): A constant value for F10.7a input parameter.
+                        kp_constant_value (float): A constant value for Kp input parameter.
+
+                    Returns:
+                        Earth: NRLMSISE00 atmospheric model with constant flux and geo magnetic input data.
+                )doc"
+            )
+
             ;
     }
 

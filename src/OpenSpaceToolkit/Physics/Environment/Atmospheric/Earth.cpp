@@ -19,7 +19,7 @@ namespace atmospheric
 {
 
 using ostk::physics::coordinate::Frame;
-using ostk::physics::environment::atmospheric::earth::Exponential;
+using ExponentialModel = ostk::physics::environment::atmospheric::earth::Exponential;
 using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
@@ -45,12 +45,12 @@ class Earth::Impl
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const = 0;
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
+    Real getDensityAt(const Position& aPosition, const Instant& anInstant) const;
 
-   protected:
-    Shared<const Frame> earthFrameSPtr_;
-    Length earthRadius_;
-    Real earthFlattening_;
+    protected:
+     Shared<const Frame> earthFrameSPtr_;
+     Length earthRadius_;
+     Real earthFlattening_;
 
    private:
     Earth::Type type_;
@@ -84,6 +84,12 @@ Earth::InputDataType Earth::Impl::getInputDataType() const
     return inputDataType_;
 }
 
+Real Earth::Impl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
+{
+    const LLA lla = LLA::Cartesian(aPosition.getCoordinates(), earthRadius_, earthFlattening_);
+    return this->getDensityAt(lla, anInstant);
+}
+
 class Earth::ExponentialImpl : public Earth::Impl
 {
    public:
@@ -101,10 +107,8 @@ class Earth::ExponentialImpl : public Earth::Impl
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
-
    private:
-    Exponential exponentialModel_;
+   ExponentialModel exponentialModel_;
 };
 
 Earth::ExponentialImpl::ExponentialImpl(
@@ -130,14 +134,6 @@ Real Earth::ExponentialImpl::getDensityAt(const LLA& aLLA, const Instant& anInst
     return this->exponentialModel_.getDensityAt(aLLA, anInstant);
 }
 
-Real Earth::ExponentialImpl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
-{
-    return this->exponentialModel_.getDensityAt(
-        LLA::Cartesian(aPosition.inFrame(earthFrameSPtr_, anInstant).getCoordinates(), earthRadius_, earthFlattening_),
-        anInstant
-    );
-}
-
 class Earth::NRLMSISE00Impl : public Earth::Impl
 {
    public:
@@ -159,8 +155,6 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
     virtual NRLMSISE00Impl* clone() const override;
 
     virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
-
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
    private:
     NRLMSISE00 NRLMSISE00Model_;
@@ -204,14 +198,6 @@ Real Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInsta
     return this->NRLMSISE00Model_.getDensityAt(aLLA, anInstant);
 }
 
-Real Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
-{
-    return this->NRLMSISE00Model_.getDensityAt(
-        LLA::Cartesian(aPosition.inFrame(earthFrameSPtr_, anInstant).getCoordinates(), earthRadius_, earthFlattening_),
-        anInstant
-    );
-}
-
 Earth::Earth(
     const Earth::Type& aType,
     const Earth::InputDataType& anInputDataType,
@@ -236,6 +222,18 @@ Earth::Earth(
           aSunCelestialSPtr
       ))
 {
+    if (anEarthRadius.isDefined())
+    {
+        std::cout << "Warning: Earth radius will be removed in a future release as it is no longer needed. Please use the appropriate named static constructors." << std::endl;
+    }
+    if (anEarthFlattening.isDefined())
+    {
+        std::cout << "Warning: Earth flattening will be removed in a future release as it is no longer needed. Please use the appropriate named static constructors." << std::endl;
+    }
+    if (anEarthFrameSPtr != nullptr)
+    {
+        std::cout << "Warning: Earth frame will be removed in a future release as it is no longer needed. Please use the appropriate named static constructors." << std::endl;
+    }
 }
 
 Earth::Earth(const Earth& anEarthAtmosphericModel)
@@ -289,6 +287,28 @@ Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     return implUPtr_->getDensityAt(aLLA, anInstant);
 }
+
+Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant, const Length& anEquatorialRadius, const Real& aFlattening) const
+{
+    const LLA lla = LLA::Cartesian(aPosition.getCoordinates(), anEquatorialRadius, aFlattening);
+    return this->getDensityAt(lla, anInstant);
+}
+
+Earth Earth::Exponential()
+{
+    return Earth(Earth::Type::Exponential, Earth::InputDataType::Undefined, Real::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Length::Undefined(), Real::Undefined(), nullptr);
+}
+
+Earth Earth::NRLMSISE00WithCSSI(const Shared<Celestial>& aSunCelestialSPtr)
+{
+    return Earth(Earth::Type::NRLMSISE00, Earth::InputDataType::CSSISpaceWeatherFile, Real::Undefined(), Real::Undefined(), Real::Undefined(), nullptr, Length::Undefined(), Real::Undefined(), aSunCelestialSPtr);
+}
+
+Earth Earth::NRLMSISE00WithConstantFlux(const Real& aF107ConstantValue, const Real& aF107AConstantValue, const Real& aKpConstantValue)
+{
+    return Earth(Earth::Type::NRLMSISE00, Earth::InputDataType::ConstantFluxAndGeoMag, aF107ConstantValue, aF107AConstantValue, aKpConstantValue, nullptr, Length::Undefined(), Real::Undefined(), nullptr);
+}
+
 
 Unique<Earth::Impl> Earth::ImplFromType(
     const Earth::Type& aType,
