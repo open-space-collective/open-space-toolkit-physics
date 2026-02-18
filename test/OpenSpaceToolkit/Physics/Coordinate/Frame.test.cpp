@@ -4,6 +4,7 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
@@ -22,6 +23,7 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::coordinate::Axes;
 using ostk::physics::coordinate::Frame;
+using ostk::physics::coordinate::frame::Manager;
 using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::frame::provider::Static;
 using ostk::physics::coordinate::Position;
@@ -741,6 +743,29 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
         const String name = "";
 
         EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_));
+    }
+
+    // Test overwrite functionality
+    {
+        const String name = "Custom B";
+
+        // Create first frame
+        const Shared<const Frame> firstFrameSPtr =
+            Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_);
+        EXPECT_TRUE(firstFrameSPtr->isDefined());
+
+        // Attempt to create another frame with same name without overwrite - should throw
+        EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial_, Frame::ITRF(), providerSPtr_, false));
+
+        // Create another frame with same name with overwrite - should succeed
+        const Shared<const Frame> secondFrameSPtr =
+            Frame::Construct(name, isQuasiInertial_, Frame::ITRF(), providerSPtr_, true);
+        EXPECT_TRUE(secondFrameSPtr->isDefined());
+
+        // Verify the new frame has the expected parent (ITRF instead of GCRF)
+        EXPECT_TRUE(Manager::Get().hasFrameWithName(name));
+
+        Frame::Destruct(name);
     }
 }
 
