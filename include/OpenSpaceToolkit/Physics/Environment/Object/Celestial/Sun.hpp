@@ -41,34 +41,44 @@ using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
 class Sun : public Celestial
 {
    public:
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] anEphemeris An ephemeris for the Sun celestial object
-    /// @param              [in] aGravitationalModel A shared pointer to a gravitational model for the Sun celestial
-    /// object
-
+    /// @code
+    ///     Sun sun(ephemeris, gravModel);
+    /// @endcode
+    ///
+    /// @param [in] anEphemeris An ephemeris for the Sun celestial object
+    /// @param [in] aGravitationalModel A shared pointer to a gravitational model for the Sun celestial object
     Sun(const Shared<Ephemeris>& anEphemeris, const Shared<SunGravitationalModel>& aGravitationalModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     virtual ~Sun() override;
 
-    /// @brief              Clone the Sun celestial object
+    /// @brief Clone the Sun celestial object
     ///
-    /// @return             Pointer to Sun celestial object
-
+    /// @code
+    ///     Sun* sunPtr = sun.clone();
+    /// @endcode
+    ///
+    /// @return Pointer to Sun celestial object
     virtual Sun* clone() const override;
 
-    /// @brief              Default Sun model (Spherical)
+    /// @brief Default Sun model (Spherical)
     ///
-    /// @return             Sun
-
+    /// @code
+    ///     Sun sun = Sun::Default();
+    /// @endcode
+    ///
+    /// @return Sun
     static Sun Default();
 
-    /// @brief              Spherical model
+    /// @brief Spherical model
     ///
-    /// @return             Sun
-
+    /// @code
+    ///     Sun sun = Sun::Spherical();
+    /// @endcode
+    ///
+    /// @return Sun
     static Sun Spherical();
 
    private:

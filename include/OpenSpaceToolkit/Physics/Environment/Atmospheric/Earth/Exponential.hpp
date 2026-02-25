@@ -36,32 +36,48 @@ using ostk::physics::environment::atmospheric::Model;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
 
-/// @brief                      Exponential atmospheric model
+/// @brief Exponential atmospheric model
 
 class Exponential
 {
    public:
-    /// @brief              Constructor
+    /// @brief Constructor
+    ///
+    /// @code
+    ///     Exponential model;
+    /// @endcode
 
     Exponential();
 
-    /// @brief              Clone the exponential atmospheric model
+    /// @brief Clone the exponential atmospheric model
     ///
-    /// @return             Pointer to exponential atmospheric model
+    /// @code
+    ///     Exponential* modelPtr = model.clone();
+    /// @endcode
+    ///
+    /// @return Pointer to exponential atmospheric model
 
     virtual Exponential* clone() const;
 
-    /// @brief              Check if the exponential atmospheric model is defined
+    /// @brief Check if the exponential atmospheric model is defined
     ///
-    /// @return             True if the exponential atmospheric model is defined
+    /// @code
+    ///     model.isDefined();
+    /// @endcode
+    ///
+    /// @return True if the exponential atmospheric model is defined
 
     bool isDefined() const;
 
-    /// @brief              Get the atmospheric density value at a given position and instant
+    /// @brief Get the atmospheric density value at a given position and instant
     ///
-    /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
-    /// @param              [in] anInstant An instant
-    /// @return             Atmospheric density value [kg.m^-3]
+    /// @code
+    ///     Real density = model.getDensityAt(lla, instant);
+    /// @endcode
+    ///
+    /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+    /// @param [in] anInstant An instant
+    /// @return Atmospheric density value [kg.m^-3]
 
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 

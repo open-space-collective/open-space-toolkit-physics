@@ -38,32 +38,28 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
-/// @brief                      IERS Bulletin A
+/// @brief IERS Bulletin A
 ///
-///                             Contains rapid determinations for Earth orientation parameters:
-///                             x/y pole, UT1-UTC and their errors at daily intervals and predictions for 1 year into
-///                             the future.
+/// Contains rapid determinations for Earth orientation parameters:
+/// x/y pole, UT1-UTC and their errors at daily intervals and predictions for 1 year into the future.
 ///
-///                             The contents of IERS Bulletin A are divided into four sections:
+/// The contents of IERS Bulletin A are divided into four sections:
 ///
-///                             1. General information including key definitions and the most recently adopted values of
-///                             DUT1 and TAI-UTC.
+/// 1. General information including key definitions and the most recently adopted values of DUT1 and TAI-UTC.
 ///
-///                             2. Quick-look daily estimates of the EOPs determined by smoothing the observed data.
-///                             This involves the application of systematic corrections and statistical weighting.
-///                             The results are published with a delay of about one to three days between the date of
-///                             publication and the last available date with estimated EOP.
+/// 2. Quick-look daily estimates of the EOPs determined by smoothing the observed data.
+/// This involves the application of systematic corrections and statistical weighting.
+/// The results are published with a delay of about one to three days between the date of
+/// publication and the last available date with estimated EOP.
 ///
-///                             3. Predictions of x, y, and UT1-UTC, up to 365 days following the last day of data.
-///                             The predictions use similar algorithms based on seasonal filtering and autoregressive
-///                             processing for x, y, and UT1.
+/// 3. Predictions of x, y, and UT1-UTC, up to 365 days following the last day of data.
+/// The predictions use similar algorithms based on seasonal filtering and autoregressive processing for x, y, and UT1.
 ///
-///                             4. The combination series for the celestial pole offsets.
-///                             Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theory
-///                             (dpsi and deps) and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
+/// 4. The combination series for the celestial pole offsets.
+/// Bulletin A contains celestial pole offsets with respect to the IAU1980 Nutation theory
+/// (dpsi and deps) and the IAU 2000 Resolutions (dX and dY), beginning on 1 January 2003.
 ///
-/// @ref                        https://datacenter.iers.org/productMetadata.php?id=6
-
+/// @ref https://datacenter.iers.org/productMetadata.php?id=6
 class BulletinA
 {
    public:
@@ -98,105 +94,162 @@ class BulletinA
         Real ut1MinusUtc;  ///< [s] UT1-UTC
     };
 
+    /// @brief Output stream operator.
+    ///
+    /// @code
+    ///     std::cout << bulletinA;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] aBulletinA A Bulletin A
+    /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA);
 
-    /// @brief                  true if defined
+    /// @brief true if defined
     ///
-    /// @return                 true if defined
-
+    /// @code
+    ///     bulletinA.isDefined(); // True
+    /// @endcode
+    ///
+    /// @return true if defined
     bool isDefined() const;
 
-    /// @brief                  Access release Date
+    /// @brief Access release Date
     ///
-    /// @return                 Release Date
-
+    /// @code
+    ///     const Date& date = bulletinA.accessReleaseDate();
+    /// @endcode
+    ///
+    /// @return Release Date
     const Date& accessReleaseDate() const;
 
-    /// @brief                  Access timestamp at which the BulletinA file was last modified
+    /// @brief Access timestamp at which the BulletinA file was last modified
     ///
-    /// @return                 Instant indicating when the file was last updated based on file modification time
-
+    /// @code
+    ///     const Instant& timestamp = bulletinA.accessLastModifiedTimestamp();
+    /// @endcode
+    ///
+    /// @return Instant indicating when the file was last updated based on file modification time
     const Instant& accessLastModifiedTimestamp() const;
 
-    /// @brief                  Access TAI-UTC
+    /// @brief Access TAI-UTC
     ///
-    /// @return                 TAI-UTC
-
+    /// @code
+    ///     const Duration& taiMinusUtc = bulletinA.accessTAIMinusUTC();
+    /// @endcode
+    ///
+    /// @return TAI-UTC
     const Duration& accessTAIMinusUTC() const;
 
-    /// @brief                  Access TAI-UTC epoch
+    /// @brief Access TAI-UTC epoch
     ///
-    /// @return                 TAI-UTC epoch
-
+    /// @code
+    ///     const Instant& epoch = bulletinA.accessTAIMinusUTCEpoch();
+    /// @endcode
+    ///
+    /// @return TAI-UTC epoch
     const Instant& accessTAIMinusUTCEpoch() const;
 
-    /// @brief                  Access observation Interval
+    /// @brief Access observation Interval
     ///
-    /// @return                 Observation Interval of Instants
-
+    /// @code
+    ///     const Interval& interval = bulletinA.accessObservationInterval();
+    /// @endcode
+    ///
+    /// @return Observation Interval of Instants
     const Interval& accessObservationInterval() const;
 
-    /// @brief                  Access prediction Interval
+    /// @brief Access prediction Interval
     ///
-    /// @return                 Prediction Interval of Instants
-
+    /// @code
+    ///     const Interval& interval = bulletinA.accessPredictionInterval();
+    /// @endcode
+    ///
+    /// @return Prediction Interval of Instants
     const Interval& accessPredictionInterval() const;
 
-    /// @brief                  Get release Date of Bulletin A
+    /// @brief Get release Date of Bulletin A
     ///
-    /// @return                 Release Date of Bulletin A
-
+    /// @code
+    ///     Date date = bulletinA.getReleaseDate();
+    /// @endcode
+    ///
+    /// @return Release Date of Bulletin A
     Date getReleaseDate() const;
 
-    /// @brief                  Get TAI-UTC
+    /// @brief Get TAI-UTC
     ///
-    /// @return                 TAI-UTC
-
+    /// @code
+    ///     Duration taiMinusUtc = bulletinA.getTAIMinusUTC();
+    /// @endcode
+    ///
+    /// @return TAI-UTC
     Duration getTAIMinusUTC() const;
 
-    /// @brief                  Get TAI-UTC epoch
+    /// @brief Get TAI-UTC epoch
     ///
-    /// @return                 TAI-UTC epoch Instant
-
+    /// @code
+    ///     Instant epoch = bulletinA.getTAIMinusUTCEpoch();
+    /// @endcode
+    ///
+    /// @return TAI-UTC epoch Instant
     Instant getTAIMinusUTCEpoch() const;
 
-    /// @brief                  Get observation Interval
+    /// @brief Get observation Interval
     ///
-    /// @return                 Observation Interval of Instants
-
+    /// @code
+    ///     Interval interval = bulletinA.getObservationInterval();
+    /// @endcode
+    ///
+    /// @return Observation Interval of Instants
     Interval getObservationInterval() const;
 
-    /// @brief                  Get observation at Instant
+    /// @brief Get observation at Instant
     ///
-    /// @param                  [in] anInstant An Instant
-    /// @return                 Observation at Instant
-
+    /// @code
+    ///     BulletinA::Observation observation = bulletinA.getObservationAt(anInstant);
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return Observation at Instant
     BulletinA::Observation getObservationAt(const Instant& anInstant) const;
 
-    /// @brief                  Get prediction Interval
+    /// @brief Get prediction Interval
     ///
-    /// @return                 Prediction Interval of Instants
-
+    /// @code
+    ///     Interval interval = bulletinA.getPredictionInterval();
+    /// @endcode
+    ///
+    /// @return Prediction Interval of Instants
     Interval getPredictionInterval() const;
 
-    /// @brief                  Get prediction at Instant
+    /// @brief Get prediction at Instant
     ///
-    /// @param                  [in] anInstant An Instant
-    /// @return                 Prediction at Instant
-
+    /// @code
+    ///     BulletinA::Prediction prediction = bulletinA.getPredictionAt(anInstant);
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return Prediction at Instant
     BulletinA::Prediction getPredictionAt(const Instant& anInstant) const;
 
-    /// @brief                  Undefined factory function
+    /// @brief Undefined factory function
     ///
-    /// @return                 Undefined Bulletin A object
-
+    /// @code
+    ///     BulletinA bulletinA = BulletinA::Undefined();
+    /// @endcode
+    ///
+    /// @return Undefined Bulletin A object
     static BulletinA Undefined();
 
-    /// @brief                  Load Bulletin A from file
+    /// @brief Load Bulletin A from file
     ///
-    /// @param                  [in] aFile A file
-    /// @return                 Bulletin A object
-
+    /// @code
+    ///     BulletinA bulletinA = BulletinA::Load(file);
+    /// @endcode
+    ///
+    /// @param [in] aFile A file
+    /// @return Bulletin A object
     static BulletinA Load(const filesystem::File& aFile);
 
    private:

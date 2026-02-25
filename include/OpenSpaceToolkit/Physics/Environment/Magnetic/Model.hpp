@@ -20,37 +20,35 @@ using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::time::Instant;
 
-/// @brief                      Magnetic model (interface)
-
+/// @brief Magnetic model (interface)
 class Model
 {
    public:
-    /// @brief              Constructor (default)
-
+    /// @brief Constructor (default)
+    ///
+    /// @code
+    ///     Model model;
+    /// @endcode
     Model();
 
-    /// @brief              Destructor (pure virtual)
-
+    /// @brief Destructor (pure virtual)
     virtual ~Model() = 0;
 
-    /// @brief              Clone the magnetic model (pure virtual)
+    /// @brief Clone the magnetic model (pure virtual)
     ///
-    /// @return             Pointer to magnetic model
-
+    /// @return Pointer to magnetic model
     virtual Model* clone() const = 0;
 
-    /// @brief              Check if the magnetic model is defined (pure virtual)
+    /// @brief Check if the magnetic model is defined (pure virtual)
     ///
-    /// @return             True if the magnetic model is defined
-
+    /// @return True if the magnetic model is defined
     virtual bool isDefined() const = 0;
 
-    /// @brief              Get the magnetic field value at a given position and instant (pure virtual)
+    /// @brief Get the magnetic field value at a given position and instant (pure virtual)
     ///
-    /// @param              [in] aPosition A position, expressed in the magnetic object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Magnetic field value, expressed in the magnetic object frame [T]
-
+    /// @param [in] aPosition A position, expressed in the magnetic object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Magnetic field value, expressed in the magnetic object frame [T]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
 };
 

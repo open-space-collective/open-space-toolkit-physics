@@ -26,9 +26,13 @@ using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::coordinate::Transform;
 using ostk::physics::unit::Length;
 
-/// @brief                      North-East-Down (NED) frame
+/// @brief North-East-Down (NED) frame
 ///
-/// @ref                        https://en.wikipedia.org/wiki/North_east_down
+/// @code
+///     Transform transform = NorthEastDownTransformAt(lla, equatorialRadius, flattening);
+/// @endcode
+///
+/// @ref https://en.wikipedia.org/wiki/North_east_down
 
 Transform NorthEastDownTransformAt(
     const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening

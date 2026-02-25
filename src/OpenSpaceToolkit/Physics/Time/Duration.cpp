@@ -383,6 +383,16 @@ Integer Duration::getWeeks() const
     return Integer::Int64(std::abs(count_) / 604800000000000);
 }
 
+Duration Duration::getAbsolute() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Duration");
+    }
+
+    return Duration(std::abs(count_));
+}
+
 Real Duration::inNanoseconds() const
 {
     if (!this->isDefined())
@@ -502,16 +512,6 @@ Real Duration::in(const unit::Time::Unit& aTimeUnit) const
     }
 
     return Real::Undefined();
-}
-
-Duration Duration::getAbsolute() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
-    return Duration(std::abs(count_));
 }
 
 String Duration::toString(const Duration::Format& aFormat) const

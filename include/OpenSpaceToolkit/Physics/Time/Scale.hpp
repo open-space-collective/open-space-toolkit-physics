@@ -14,14 +14,13 @@ namespace time
 
 using ostk::core::type::String;
 
-/// @brief                      Time scale
+/// @brief Time scale
 ///
-/// @ref                        http://www.iausofa.org/sofa_ts_c.pdf
-/// @ref                        https://www.cv.nrao.edu/~rfisher/Ephemerides/times.html
-/// @ref                        http://stjarnhimlen.se/comp/time.html
-/// @ref                        http://www.navipedia.net/index.php/Time_References_in_GNSS
-/// @ref                        Springer Handbook of Global Navigation Satellite Systems
-
+/// @ref http://www.iausofa.org/sofa_ts_c.pdf
+/// @ref https://www.cv.nrao.edu/~rfisher/Ephemerides/times.html
+/// @ref http://stjarnhimlen.se/comp/time.html
+/// @ref http://www.navipedia.net/index.php/Time_References_in_GNSS
+/// @ref Springer Handbook of Global Navigation Satellite Systems
 enum class Scale
 {
 
@@ -46,26 +45,24 @@ enum class Scale
 
 };
 
-/// @brief                      Convert a time scale to its string representation
+/// @brief Convert a time scale to its string representation
 ///
 /// @code
-///                             String scaleString = StringFromScale(time::Scale::UTC) ; // "UTC"
+///     String scaleString = StringFromScale(time::Scale::UTC); // "UTC"
 /// @endcode
 ///
-/// @param                      [in] aScale A time scale
-/// @return                     String representation of time scale
-
+/// @param [in] aScale A time scale
+/// @return String representation of time scale
 String StringFromScale(const Scale& aScale);
 
-/// @brief                      Parse a string representation to its corresponding time scale
+/// @brief Parse a string representation to its corresponding time scale
 ///
 /// @code
-///                             time::Scale timeScale = ScaleFromString("UTC") ; // time::Scale::UTC
+///     time::Scale timeScale = ScaleFromString("UTC"); // time::Scale::UTC
 /// @endcode
 ///
-/// @param                      [in] aString A string
-/// @return                     Time scale
-
+/// @param [in] aString A string
+/// @return Time scale
 Scale ScaleFromString(const String& aString);
 
 }  // namespace time
