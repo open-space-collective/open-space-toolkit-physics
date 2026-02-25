@@ -65,7 +65,7 @@ class TEME : public Provider
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return The transform from TOD to TEME at the given instant
+    /// @return The transform from ITRF to TEME at the given instant
     virtual Transform getTransformAt(const Instant& anInstant) const override;
 };
 
