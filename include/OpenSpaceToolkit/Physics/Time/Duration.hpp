@@ -285,7 +285,7 @@ class Duration
     /// @brief Get the number of nanoseconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).nanoseconds(); // 0
+    ///     Duration::Seconds(15).getNanoseconds(); // 0
     /// @endcode
     ///
     /// @return Number of nanoseconds in duration
@@ -294,7 +294,7 @@ class Duration
     /// @brief Get the number of microseconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).microseconds(); // 0
+    ///     Duration::Seconds(15).getMicroseconds(); // 0
     /// @endcode
     ///
     /// @return Number of microseconds in duration
@@ -303,7 +303,7 @@ class Duration
     /// @brief Get the number of milliseconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).milliseconds(); // 0
+    ///     Duration::Seconds(15).getMilliseconds(); // 0
     /// @endcode
     ///
     /// @return Number of milliseconds in duration
@@ -312,7 +312,7 @@ class Duration
     /// @brief Get the number of seconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).seconds(); // 15
+    ///     Duration::Seconds(15).getSeconds(); // 15
     /// @endcode
     ///
     /// @return Number of seconds in duration
@@ -321,7 +321,7 @@ class Duration
     /// @brief Get the number of minutes in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).minutes(); // 0
+    ///     Duration::Seconds(15).getMinutes(); // 0
     /// @endcode
     ///
     /// @return Number of minutes in duration
@@ -330,7 +330,7 @@ class Duration
     /// @brief Get the number of hours in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).hours(); // 0
+    ///     Duration::Seconds(15).getHours(); // 0
     /// @endcode
     ///
     /// @return Number of hours in duration
@@ -339,7 +339,7 @@ class Duration
     /// @brief Get the number of days in duration
     ///
     /// @code
-    ///     Duration::Days(15).days(); // 15
+    ///     Duration::Days(15).getDays(); // 15
     /// @endcode
     ///
     /// @return Number of days in duration
@@ -348,7 +348,7 @@ class Duration
     /// @brief Get the number of weeks in duration
     ///
     /// @code
-    ///     Duration::Days(15).weeks(); // 2
+    ///     Duration::Days(15).getWeeks(); // 2
     /// @endcode
     ///
     /// @return Number of weeks in duration
