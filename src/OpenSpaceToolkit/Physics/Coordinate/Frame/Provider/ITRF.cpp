@@ -87,7 +87,7 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
     // However, it is dominated by a secular drift of about 47 microarcseconds per century, and so can be taken into
     // account by using s' = -47*t, where t is centuries since J2000.0.
 
-    const Real sp = iauSp00(djmjd0, tt);
+    const Real sp = eraSp00(djmjd0, tt);
 
     // Polar motion matrix (TIRS -> ITRS, IERS 2003)
     // The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning
@@ -95,7 +95,7 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
 
     double rpom[3][3];
 
-    iauPom00(xp, yp, sp, rpom);
+    eraPom00(xp, yp, sp, rpom);
 
     const Vector3d TIRF_x_ITRF = Vector3d(rpom[0][0], rpom[1][0], rpom[2][0]).normalized();
     const Vector3d TIRF_y_ITRF = Vector3d(rpom[0][1], rpom[1][1], rpom[2][1]).normalized();

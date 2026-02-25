@@ -77,7 +77,7 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
 
     // Earth rotation angle, IAU 2000 [rad]
 
-    const Real era = iauEra00(djmjd0 + date, tut);
+    const Real era = eraEra00(djmjd0 + date, tut);
 
     // CIRS to TIRF matrix
 

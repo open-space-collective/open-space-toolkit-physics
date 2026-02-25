@@ -3,6 +3,7 @@
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
+#include <OpenSpaceToolkit/Core/Type/Weak.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/2D/Object/Point.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/2D/Object/Polygon.hpp>
@@ -35,6 +36,7 @@ using ostk::core::container::Map;
 using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
+using ostk::core::type::Weak;
 
 using ostk::mathematics::geometry::d3::Intersection;
 using ostk::mathematics::geometry::d3::object::Ellipsoid;
@@ -73,6 +75,7 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 using ostk::core::container::Array;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
+using ostk::core::type::Weak;
 
 class OpenSpaceToolkit_Physics_Environment : public ::testing::Test
 {
@@ -103,30 +106,20 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Constructor)
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::EGM2008(2190, 2160));
+        const Array<Shared<const Object>> objects = {earthSPtr};
 
         {
-            EXPECT_NO_THROW(Environment(earthSPtr, {}, instant_, true));
+            EXPECT_NO_THROW(Environment(earthSPtr, objects, instant_, true));
             Environment::ResetGlobalInstance();
         }
 
         {
-            EXPECT_NO_THROW(Environment(earthSPtr, {}, instant_));
+            EXPECT_NO_THROW(Environment(earthSPtr, objects, instant_));
         }
 
         {
-            EXPECT_NO_THROW(Environment(earthSPtr, {}));
+            EXPECT_NO_THROW(Environment(earthSPtr, objects));
         }
-    }
-
-    // Duplicate celestial objects by name for both constructors
-    {
-        const Shared<Earth> earth1SPtr = std::make_shared<Earth>(Earth::Default());
-        const Shared<Earth> earth2SPtr = std::make_shared<Earth>(Earth::Default());
-
-        const Array<Shared<const Object>> objects = {earth1SPtr, earth2SPtr};
-
-        EXPECT_THROW(Environment(instant_, objects), ostk::core::error::RuntimeError);
-        EXPECT_THROW(Environment(earth1SPtr, objects), ostk::core::error::RuntimeError);
     }
 }
 
@@ -177,8 +170,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, HasCentralCelestial)
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::Default());
+        const Array<Shared<const Object>> objects = {earthSPtr};
 
-        Environment environment = Environment(earthSPtr, {});
+        Environment environment = Environment(earthSPtr, objects);
 
         EXPECT_TRUE(environment.hasCentralCelestialObject());
     }
@@ -276,8 +270,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCentralCelestial)
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::Default());
+        const Array<Shared<const Object>> objects = {earthSPtr};
 
-        const Environment environment = {earthSPtr, {}};
+        const Environment environment = {earthSPtr, objects};
         EXPECT_NO_THROW(environment.accessCentralCelestialObject());
     }
 }

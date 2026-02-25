@@ -27,7 +27,7 @@ namespace provider
 
 using ostk::physics::time::Scale;
 
-J2000::J2000(const iau::Theory& aTheory)
+J2000::J2000(const iau_j2000::Theory& aTheory)
     : theory_(aTheory)
 {
 }
@@ -44,7 +44,7 @@ bool J2000::isDefined() const
     return true;
 }
 
-iau::Theory J2000::getTheory() const
+iau_j2000::Theory J2000::getTheory() const
 {
     return this->theory_;
 }
@@ -67,29 +67,29 @@ Transform J2000::getTransformAt(const Instant& anInstant) const
 
     switch (this->theory_)
     {
-        case iau::Theory::IAU_2000A:
+        case iau_j2000::Theory::IAU_2000A:
         {
             const double EPS0 = 84381.448 * DAS2R;
 
             double dpsibi, depsbi, dra0, rbw[3][3];
 
-            iauBi00(&dpsibi, &depsbi, &dra0);
+            eraBi00(&dpsibi, &depsbi, &dra0);
 
-            iauIr(rbw);
-            iauRz(dra0, rbw);
-            iauRy(dpsibi * sin(EPS0), rbw);
-            iauRx(-depsbi, rbw);
-            iauCr(rbw, rb);
+            eraIr(rbw);
+            eraRz(dra0, rbw);
+            eraRy(dpsibi * sin(EPS0), rbw);
+            eraRx(-depsbi, rbw);
+            eraCr(rbw, rb);
 
             break;
         }
 
-        case iau::Theory::IAU_2006:
+        case iau_j2000::Theory::IAU_2006:
         {
             double gamb, phib, psib, epsa;
 
-            iauPfw06(DJM0, DJM00, &gamb, &phib, &psib, &epsa);
-            iauFw2m(gamb, phib, psib, epsa, rb);
+            eraPfw06(DJM0, DJM00, &gamb, &phib, &psib, &epsa);
+            eraFw2m(gamb, phib, psib, epsa, rb);
 
             break;
         }

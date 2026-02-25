@@ -40,9 +40,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
                     instant (Instant): An Instant.
                     objects (list[Object]): List of objects.
                     set_global_instance (bool, optional): True if the global environment instance should be set. Defaults to False.
-
-                Raises:
-                    RuntimeError: If duplicate Celestial Objects with the same name are found.
             )doc"
         )
         .def(
@@ -59,9 +56,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
                     objects (list[Object]): List of objects.
                     instant (Instant, optional): An Instant. Default is J2000 epoch.
                     set_global_instance (bool, optional): True if the global environment instance should be set. Defaults to False.
-
-                Raises:
-                    RuntimeError: If duplicate Celestial Objects with the same name are found.
             )doc"
         )
 

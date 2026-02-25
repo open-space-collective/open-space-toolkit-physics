@@ -71,7 +71,7 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     double y;
     double s;
 
-    iauXys06a(djmjd0, tt, &x, &y, &s);
+    eraXys06a(djmjd0, tt, &x, &y, &s);
 
     // CIP offsets wrt IAU 2006/2000A (mas->radians)
 
@@ -87,7 +87,7 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 
     double rc2i[3][3];  // dcm_CIRS_GCRS
 
-    iauC2ixys(x, y, s, rc2i);
+    eraC2ixys(x, y, s, rc2i);
 
     const Vector3d GCRF_x_CIRF = Vector3d(rc2i[0][0], rc2i[1][0], rc2i[2][0]).normalized();
     const Vector3d GCRF_y_CIRF = Vector3d(rc2i[0][1], rc2i[1][1], rc2i[2][1]).normalized();

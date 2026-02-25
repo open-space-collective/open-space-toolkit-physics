@@ -270,9 +270,12 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
     // const Instant::Count dateCount_TT = this->inScale(Scale::TT).count_ ; // [TBM] remove inScale ?
     const Instant::Count dateCount_TT = this->inScale(aTimeScale).count_;  // [TBM] remove inScale ?
 
-    const std::chrono::time_point<std::chrono::system_clock> dateTimePoint =
+    const auto dateTimePointAtNanosecondResolution =
         dateCount_TT.postEpoch_ ? (epochTimePoint + std::chrono::nanoseconds(dateCount_TT.countFromEpoch_))
                                 : (epochTimePoint - std::chrono::nanoseconds(dateCount_TT.countFromEpoch_));
+
+    const std::chrono::time_point<std::chrono::system_clock> dateTimePoint =
+        std::chrono::time_point_cast<std::chrono::system_clock::duration>(dateTimePointAtNanosecondResolution);
 
     std::time_t time = std::chrono::system_clock::to_time_t(dateTimePoint);
 

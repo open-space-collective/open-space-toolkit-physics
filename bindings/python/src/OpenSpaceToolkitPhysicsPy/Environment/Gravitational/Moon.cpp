@@ -88,14 +88,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
                 )doc"
             )
 
-            .def_readonly_static(
-                "spherical",
-                &Moon::Spherical,
-                R"doc(
-                    Spherical Moon model.
-                )doc"
-            )
-
             ;
 
         enum_<Moon::Type>(moon_class, "Type")

@@ -260,7 +260,7 @@ Vector3d LLA::toCartesian(const Length& anEllipsoidEquatorialRadius, const Real&
 
     double cartesianArray[3];
 
-    const int result = iauGd2gce(
+    const int result = eraGd2gce(
         ellipsoidEquatorialRadius.inMeters(),
         ellipsoidFlattening,
         longitude_rad,
@@ -327,7 +327,7 @@ LLA LLA::Cartesian(
     double longitude_rad;
     double altitude_m;
 
-    const int result = iauGc2gde(
+    const int result = eraGc2gde(
         ellipsoidEquatorialRadius.inMeters(),
         ellipsoidFlattening,
         Vector3d(aCartesianCoordinateSet).data(),
@@ -547,7 +547,7 @@ LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment:
         throw ostk::core::error::runtime::Undefined("Celestial object");
     }
 
-    if (*aPosition.accessFrame() != *celestialSPtr->accessFrame())
+    if (aPosition.accessFrame() != celestialSPtr->accessFrame())
     {
         throw ostk::core::error::RuntimeError(
             "Cannot convert Position to LLA from frame [{}], must be in [{}].",

@@ -4,7 +4,8 @@ SET (SPICEToolkit_ROOT_DIR ${SPICEToolkit_ROOT_DIR} "/usr/local")
 
 FIND_PATH (SPICEToolkit_INCLUDE_DIR "cspice/f2c.h" PATHS ${SPICEToolkit_ROOT_DIR} PATH_SUFFIXES "include")
 
-FIND_LIBRARY (SPICEToolkit_LIBRARY NAMES "cspice.a" PATHS ${SPICEToolkit_ROOT_DIR} PATH_SUFFIXES "lib")
+# Accept Unix (.a) and Windows (.lib) library names
+FIND_LIBRARY (SPICEToolkit_LIBRARY NAMES "cspice" PATHS ${SPICEToolkit_ROOT_DIR} PATH_SUFFIXES "lib" "lib64")
 
 SET (SPICEToolkit_LIBRARIES ${SPICEToolkit_LIBRARY})
 SET (SPICEToolkit_INCLUDE_DIRS ${SPICEToolkit_INCLUDE_DIR})

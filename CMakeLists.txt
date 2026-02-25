@@ -31,7 +31,7 @@ OPTION (BUILD_WITHOUT_DEPRECATED_DECLARATION_WARNINGS "Build without deprecated 
 
 ### Compatibility Check
 
-CMAKE_MINIMUM_REQUIRED (VERSION "2.8.12" FATAL_ERROR)
+CMAKE_MINIMUM_REQUIRED (VERSION "3.5" FATAL_ERROR)
 
 ### Paths
 
@@ -149,9 +149,20 @@ IF (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
     SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wshadow -Wno-deprecated")
 
-ELSE ()
+ELSEIF (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
     SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Wshadow")
+
+ELSEIF (MSVC)
+
+    # MSVC warning flags
+    SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /utf-8 /FS")
+    # Windows compatibility
+    ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS -DNOMINMAX -DWIN32_LEAN_AND_MEAN -D_USE_MATH_DEFINES)
+    SET (CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    SET (CMAKE_CXX_STANDARD 17)
+    # Force include Real formatter to make ostk::core::type::Real formattable with fmt on MSVC.
+    ADD_COMPILE_OPTIONS(/FI"${CMAKE_INSTALL_PREFIX}/include/OpenSpaceToolkit/Mathematics/RealFormatter.hpp")
 
 ENDIF ()
 
@@ -198,7 +209,7 @@ IF (WIN32)
     SET (INSTALL_DATA "bin")                            # C:\Programme\<project>
     SET (INSTALL_BIN "bin")                             # C:\Programme\<project>
     SET (INSTALL_LIB "lib")                             # C:\Programme\<project>\lib
-    SET (INSTALL_INCLUDE "include")                     # C:\Programme\<project>\include
+    SET (INSTALL_INCLUDE "include/${PROJECT_PATH}")     # C:\Programme\<project>\include\<project>
     SET (INSTALL_DOC "doc")                             # C:\Programme\<project>\doc
     SET (INSTALL_SHORTCUTS ".")                         # Not available under Windows
     SET (INSTALL_ICONS ".")                             # Not available under Windows
@@ -261,19 +272,25 @@ IF (BUILD_WITH_BOOST_STACKTRACE)
 
     ## Stacktrace definitions
     # Detect system architecture
-    if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
-        # Architecture-specific include for x86_64
-        set(BACKTRACE_INCLUDE "/usr/lib/gcc/x86_64-linux-gnu/9/include/backtrace.h")
+    if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64" OR CMAKE_SYSTEM_PROCESSOR MATCHES "AMD64")
+        # Architecture-specific include for x86_64/AMD64
+        if(WIN32)
+            # Windows doesn't use backtrace.h, skip this definition
+            message(STATUS "Windows AMD64 detected, skipping backtrace include")
+        else()
+            set(BACKTRACE_INCLUDE "/usr/lib/gcc/x86_64-linux-gnu/9/include/backtrace.h")
+            ADD_DEFINITIONS(-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
+        endif()
     elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
         # Example path adjustment for aarch64, adjust the path as needed
         set(BACKTRACE_INCLUDE "/usr/lib/gcc/aarch64-linux-gnu/9/include/backtrace.h")
+        ADD_DEFINITIONS(-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
     else()
         message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
     endif()
 
-    # Add definitions with architecture-specific path
+    # Add definitions
     ADD_DEFINITIONS(-DBOOST_STACKTRACE_USE_BACKTRACE)
-    ADD_DEFINITIONS(-DBOOST_STACKTRACE_BACKTRACE_INCLUDE_FILE=<${BACKTRACE_INCLUDE}>)
 ELSE()
     FIND_PACKAGE ("Boost" "1.82" REQUIRED COMPONENTS "date_time" "regex" "filesystem" "stacktrace_basic")
 ENDIF()
@@ -344,9 +361,13 @@ ELSE ()
     MESSAGE (SEND_ERROR "[GeographicLib] not found.")
 ENDIF ()
 
+### fmt
+
+FIND_PACKAGE ("fmt" CONFIG REQUIRED)
+
 ### Open Space Toolkit ▸ Core [5.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitCore" "5" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitCore" REQUIRED)
 
 IF (NOT OpenSpaceToolkitCore_FOUND)
 
@@ -356,7 +377,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ I/O [4.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitIO" "4" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitIO" REQUIRED)
 
 IF (NOT OpenSpaceToolkitIO_FOUND)
 
@@ -366,7 +387,7 @@ ENDIF ()
 
 ### Open Space Toolkit ▸ Mathematics [4.x.y]
 
-FIND_PACKAGE ("OpenSpaceToolkitMathematics" "4" REQUIRED)
+FIND_PACKAGE ("OpenSpaceToolkitMathematics" REQUIRED)
 
 IF (NOT OpenSpaceToolkitMathematics_FOUND)
 
@@ -404,10 +425,17 @@ IF (BUILD_SHARED_LIBRARY)
 
     TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include/")
     TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/src/")
+    TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC ${OpenSpaceToolkitCore_INCLUDE_DIRS})
+    TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC ${OpenSpaceToolkitIO_INCLUDE_DIRS})
+    TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC ${OpenSpaceToolkitMathematics_INCLUDE_DIRS})
+    # Add install include directory for Mathematics headers
+    TARGET_INCLUDE_DIRECTORIES (${SHARED_LIBRARY_TARGET} PUBLIC "${CMAKE_INSTALL_PREFIX}/include")
 
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "dl")
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "pthread")
-    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "stdc++fs")
+    IF (NOT WIN32)
+        TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "dl")
+        TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "pthread")
+        TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "stdc++fs")
+    ENDIF ()
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} "Boost::date_time" "Boost::filesystem" "Boost::regex")
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${NRLMSISE-00_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${SOFA_LIBRARIES})
@@ -416,6 +444,7 @@ IF (BUILD_SHARED_LIBRARY)
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitCore_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitIO_LIBRARIES})
     TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} ${OpenSpaceToolkitMathematics_LIBRARIES})
+    TARGET_LINK_LIBRARIES (${SHARED_LIBRARY_TARGET} fmt::fmt)
 
     SET_TARGET_PROPERTIES (${SHARED_LIBRARY_TARGET} PROPERTIES VERSION ${PROJECT_VERSION_STRING} SOVERSION ${PROJECT_VERSION_MAJOR} OUTPUT_NAME ${SHARED_LIBRARY_NAME} CLEAN_DIRECT_OUTPUT 1 INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
 
@@ -439,9 +468,11 @@ IF (BUILD_STATIC_LIBRARY)
 
     TARGET_INCLUDE_DIRECTORIES (${STATIC_LIBRARY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include/")
 
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "dl")
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "pthread")
-    TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "stdc++fs")
+    IF (NOT WIN32)
+        TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "dl")
+        TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "pthread")
+        TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "stdc++fs")
+    ENDIF ()
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} "Boost::date_time" "Boost::filesystem" "Boost::regex")
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${NRLMSISE-00_LIBRARIES})
     TARGET_LINK_LIBRARIES (${STATIC_LIBRARY_TARGET} ${SOFA_LIBRARIES})
@@ -471,7 +502,9 @@ IF (BUILD_SCRIPT)
 
     TARGET_INCLUDE_DIRECTORIES (${UTILITY_TARGET} PUBLIC "${PROJECT_SOURCE_DIR}/include/")
 
-    TARGET_LINK_LIBRARIES (${UTILITY_TARGET} "pthread")
+    IF (NOT WIN32)
+        TARGET_LINK_LIBRARIES (${UTILITY_TARGET} "pthread")
+    ENDIF ()
     TARGET_LINK_LIBRARIES (${UTILITY_TARGET} ${Boost_STACKTRACE_BACKTRACE_LIBRARY})
     TARGET_LINK_LIBRARIES (${UTILITY_TARGET} ${SHARED_LIBRARY_TARGET})
 

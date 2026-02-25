@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <boost/regex.hpp>
-
 #include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
 #include <OpenSpaceToolkit/Core/Container/Object.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -92,7 +90,7 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aData
 {
     Array<URL> urls = Array<URL>::Empty();
 
-    const boost::regex aDataNameRegex(aDataNameRegexString);
+    const std::regex aDataNameRegex(aDataNameRegexString);
 
     for (const auto& dictionaryIt : dictionary_)
     {
