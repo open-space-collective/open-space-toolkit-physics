@@ -88,16 +88,14 @@ class Environment
 
     bool hasCentralCelestialObject() const;
 
-    /// @brief              Returns true if a given geometry intersects any of the environment objects
+    /// @brief              Is position in eclipse
     ///
-    /// @param              [in] aGeometry A geometry
-    /// @param              [in] (optional) anObjectToIgnoreArray An array of objects to ignore
-    /// @return             True if a given geometry intersects any of the environment objects
+    /// @param              [in] aPosition A position
+    /// @param              [in] includePenumbra (optional) Whether to include penumbra in eclipse calculation. Defaults
+    /// to true.
+    /// @return             True if the position is in eclipse
 
-    bool intersects(
-        const Object::Geometry& aGeometry,
-        const Array<Shared<const Object>>& anObjectToIgnoreArray = Array<Shared<const Object>>::Empty()
-    ) const;
+    bool isPositionInEclipse(const Position& aPosition, const bool& includePenumbra = true) const;
 
     /// @brief              Access objects
     ///
@@ -143,14 +141,16 @@ class Environment
 
     void setInstant(const Instant& anInstant);
 
-    /// @brief              Is position in eclipse
+    /// @brief              Returns true if a given geometry intersects any of the environment objects
     ///
-    /// @param              [in] aPosition A position
-    /// @param              [in] includePenumbra (optional) Whether to include penumbra in eclipse calculation. Defaults
-    /// to true.
-    /// @return             True if the position is in eclipse
+    /// @param              [in] aGeometry A geometry
+    /// @param              [in] (optional) anObjectToIgnoreArray An array of objects to ignore
+    /// @return             True if a given geometry intersects any of the environment objects
 
-    bool isPositionInEclipse(const Position& aPosition, const bool& includePenumbra = true) const;
+    bool intersects(
+        const Object::Geometry& aGeometry,
+        const Array<Shared<const Object>>& anObjectToIgnoreArray = Array<Shared<const Object>>::Empty()
+    ) const;
 
     /// @brief              Get gravitational field at position
     ///

@@ -388,6 +388,16 @@ class Duration
 
     Integer getWeeks() const;
 
+    /// @brief              Get absolute duration
+    ///
+    /// @code
+    ///                     Duration::Seconds(-123.456).getAbsolute() ; // +123.456 [s]
+    /// @endcode
+    ///
+    /// @return             Absolute duration
+
+    Duration getAbsolute() const;
+
     /// @brief              Get nanosecond count
     ///
     /// @code
@@ -478,16 +488,6 @@ class Duration
     /// @return             Count in given time unit
 
     Real in(const unit::Time::Unit& aTimeUnit) const;
-
-    /// @brief              Get absolute duration
-    ///
-    /// @code
-    ///                     Duration::Seconds(-123.456).getAbsolute() ; // +123.456 [s]
-    /// @endcode
-    ///
-    /// @return             Absolute duration
-
-    Duration getAbsolute() const;
 
     /// @brief              Get string representation of duration
     ///

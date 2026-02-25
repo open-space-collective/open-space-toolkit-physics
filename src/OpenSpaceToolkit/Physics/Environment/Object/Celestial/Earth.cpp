@@ -81,20 +81,16 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
+Earth Earth::Default()
+{
+    return Earth::EGM2008(20, 20);
+}
+
 Earth Earth::GravitationalOnly(const Shared<EarthGravitationalModel>& aGravitatationalModel)
 {
     return Earth::FromModels(
         aGravitatationalModel,
         std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined),
-        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
-    );
-}
-
-Earth Earth::MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel)
-{
-    return Earth::FromModels(
-        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
-        aMagneticModel,
         std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
     );
 }
@@ -105,6 +101,15 @@ Earth Earth::AtmosphericOnly(const Shared<EarthAtmosphericModel>& anAtmosphericM
         std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
         std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined),
         anAtmosphericModel
+    );
+}
+
+Earth Earth::MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel)
+{
+    return Earth::FromModels(
+        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
+        aMagneticModel,
+        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
     );
 }
 
@@ -122,11 +127,6 @@ Earth Earth::FromModels(
         aMagneticModel,
         anAtmosphericModel,
     };
-}
-
-Earth Earth::Default()
-{
-    return Earth::EGM2008(20, 20);
 }
 
 Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
