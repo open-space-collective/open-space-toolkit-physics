@@ -57,7 +57,6 @@ class Earth : public Celestial
     ///     atmosModel);
     /// @endcode
     ///
-    /// @param [in] anInstant An instant for the Earth celestial object
     /// @param [in] aGravitationalParameter A gravitational parameter for the Earth celestial object
     /// @param [in] anEquatorialRadius An equatorial radius for the Earth celestial object
     /// @param [in] aFlattening A flattening for the Earth celestial object
@@ -85,7 +84,6 @@ class Earth : public Celestial
     ///     Earth earth(ephemeris, gravModel, magModel, atmosModel);
     /// @endcode
     ///
-    /// @param [in] anInstant An instant for the Earth celestial object
     /// @param [in] anEphemeris An ephemeris for the Earth celestial object
     /// @param [in] aGravitationalModel A gravitational model for the Earth celestial object
     /// @param [in] aMagneticModel A magnetic model for the Earth celestial object

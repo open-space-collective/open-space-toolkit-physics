@@ -85,7 +85,8 @@ bool Model::Parameters::operator==(const Model::Parameters& aParameterSet) const
     return (
         (gravitationalParameter_ == aParameterSet.gravitationalParameter_) &&
         (equatorialRadius_ == aParameterSet.equatorialRadius_) && (flattening_ == aParameterSet.flattening_) &&
-        (J2_ == aParameterSet.J2_) && (J3_ == aParameterSet.J3_) && (J4_ == aParameterSet.J4_)
+        (J2_ == aParameterSet.J2_) && (J3_ == aParameterSet.J3_) && (J4_ == aParameterSet.J4_) &&
+        (C20_ == aParameterSet.C20_) && (C30_ == aParameterSet.C30_) && (C40_ == aParameterSet.C40_)
     );
 }
 

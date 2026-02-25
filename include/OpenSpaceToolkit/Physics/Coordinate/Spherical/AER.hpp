@@ -166,7 +166,7 @@ class AER
     /// @param [in] aFromPosition A FROM position
     /// @param [in] aToPosition A TO position
     /// @param [in] (optional) isZNegative If true, elevation is measured positive toward the -Z axis
-
+    /// @return AER object
     static AER FromPositionToPosition(
         const Position& aFromPosition, const Position& aToPosition, const bool isZNegative = DEFAULT_IS_Z_NEGATIVE
     );
