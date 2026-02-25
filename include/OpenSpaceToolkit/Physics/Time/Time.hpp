@@ -37,8 +37,8 @@ class Time
     /// @brief Constructor
     ///
     /// @code
-    ///     Time time { 12, 34, 56 } ; // 12:34:56.000.000.000
-    ///     Time time { 12, 34, 56, 123, 456, 789 } ; // 12:34:56.123.456.789
+    ///     Time time { 12, 34, 56 }; // 12:34:56.000.000.000
+    ///     Time time { 12, 34, 56, 123, 456, 789 }; // 12:34:56.123.456.789
     /// @endcode
     ///
     /// @param [in] anHour An hour count (0 - 23)
@@ -59,7 +59,7 @@ class Time
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Time { 12, 34, 56 }  == Time { 12, 34, 56 }  ; // True
+    ///     Time { 12, 34, 56 }  == Time { 12, 34, 56 } ; // True
     /// @endcode
     ///
     /// @param [in] aTime A time
@@ -69,7 +69,7 @@ class Time
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Time { 12, 34, 56 }  != Time { 12, 34, 57 } ; // True
+    ///     Time { 12, 34, 56 }  != Time { 12, 34, 57 }; // True
     /// @endcode
     ///
     /// @param [in] aTime A time
@@ -79,7 +79,7 @@ class Time
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << Time { 12, 34, 56 }  ;
+    ///     std::cout << Time { 12, 34, 56 } ;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -90,7 +90,7 @@ class Time
     /// @brief Check if time is defined
     ///
     /// @code
-    ///     Time { 12, 34, 56 } .isDefined() ; // True
+    ///     Time { 12, 34, 56 } .isDefined(); // True
     /// @endcode
     ///
     /// @return True if time is defined
@@ -99,7 +99,7 @@ class Time
     /// @brief Get hour (0 - 23)
     ///
     /// @code
-    ///     Time(12, 34, 56).getHour() ; // 12
+    ///     Time(12, 34, 56).getHour(); // 12
     /// @endcode
     ///
     /// @return Hour
@@ -108,7 +108,7 @@ class Time
     /// @brief Get minute (0 - 59)
     ///
     /// @code
-    ///     Time(12, 34, 56).getMinute() ; // 34
+    ///     Time(12, 34, 56).getMinute(); // 34
     /// @endcode
     ///
     /// @return Minute
@@ -117,7 +117,7 @@ class Time
     /// @brief Get second (0 - 60)
     ///
     /// @code
-    ///     Time(12, 34, 56).getSecond() ; // 56
+    ///     Time(12, 34, 56).getSecond(); // 56
     /// @endcode
     ///
     /// @return Second
@@ -126,7 +126,7 @@ class Time
     /// @brief Get millisecond (0 - 999)
     ///
     /// @code
-    ///     Time(12, 34, 56, 123, 456, 789).getMillisecond() ; // 123
+    ///     Time(12, 34, 56, 123, 456, 789).getMillisecond(); // 123
     /// @endcode
     ///
     /// @return Millisecond
@@ -135,7 +135,7 @@ class Time
     /// @brief Get microsecond (0 - 999)
     ///
     /// @code
-    ///     Time(12, 34, 56, 123, 456, 789).getMicrosecond() ; // 456
+    ///     Time(12, 34, 56, 123, 456, 789).getMicrosecond(); // 456
     /// @endcode
     ///
     /// @return Microsecond
@@ -144,7 +144,7 @@ class Time
     /// @brief Get nanosecond (0 - 999)
     ///
     /// @code
-    ///     Time(12, 34, 56, 123, 456, 789).getNanosecond() ; // 789
+    ///     Time(12, 34, 56, 123, 456, 789).getNanosecond(); // 789
     /// @endcode
     ///
     /// @return Nanosecond
@@ -153,7 +153,7 @@ class Time
     /// @brief Get floating seconds (0.0 - 59.999999999)
     ///
     /// @code
-    ///     Time(12, 34, 56, 500).getFloatingSeconds() ; // 56.5
+    ///     Time(12, 34, 56, 500).getFloatingSeconds(); // 56.5
     /// @endcode
     ///
     /// @return Floating second
@@ -162,7 +162,7 @@ class Time
     /// @brief Get the total floating seconds
     ///
     /// @code
-    ///     Time { 12, 34, 56, 32 } .getTotalFloatingSeconds() ; // 45296.302
+    ///     Time { 12, 34, 56, 32 } .getTotalFloatingSeconds(); // 45296.302
     /// @endcode
     /// @return Total floating seconds
     Real getTotalFloatingSeconds() const;
@@ -170,7 +170,7 @@ class Time
     /// @brief Get the total floating hours
     ///
     /// @code
-    ///     Time { 12, 34, 56, 32 } .getTotalFloatingHours() ; // 12.748974
+    ///     Time { 12, 34, 56, 32 } .getTotalFloatingHours(); // 12.748974
     /// @endcode
     /// @return Total floating hours
     Real getTotalFloatingHours() const;
@@ -178,7 +178,7 @@ class Time
     /// @brief Get string representation of time
     ///
     /// @code
-    ///     Time { 12, 34, 56 } .toString() ; // 12:34:56.000.000.000
+    ///     Time { 12, 34, 56 } .toString(); // 12:34:56.000.000.000
     /// @endcode
     ///
     /// @param [in] (optional) aFormat A time format
@@ -188,8 +188,8 @@ class Time
     /// @brief Set hour
     ///
     /// @code
-    ///     Time time(12, 34, 56) ;
-    ///     time.setHour(18) ;
+    ///     Time time(12, 34, 56);
+    ///     time.setHour(18);
     /// @endcode
     ///
     /// @param [in] anHour An hour (0 - 23)
@@ -198,8 +198,8 @@ class Time
     /// @brief Set minute
     ///
     /// @code
-    ///     Time time(12, 34, 56) ;
-    ///     time.setMinute(45) ;
+    ///     Time time(12, 34, 56);
+    ///     time.setMinute(45);
     /// @endcode
     ///
     /// @param [in] aMinute A minute (0 - 59)
@@ -208,8 +208,8 @@ class Time
     /// @brief Set second
     ///
     /// @code
-    ///     Time time(12, 34, 56) ;
-    ///     time.setSecond(30) ;
+    ///     Time time(12, 34, 56);
+    ///     time.setSecond(30);
     /// @endcode
     ///
     /// @param [in] aSecond A second (0 - 60)
@@ -218,8 +218,8 @@ class Time
     /// @brief Set millisecond
     ///
     /// @code
-    ///     Time time(12, 34, 56) ;
-    ///     time.setMillisecond(500) ;
+    ///     Time time(12, 34, 56);
+    ///     time.setMillisecond(500);
     /// @endcode
     ///
     /// @param [in] aMillisecond A millisecond (0 - 999)
@@ -228,8 +228,8 @@ class Time
     /// @brief Set microsecond
     ///
     /// @code
-    ///     Time time(12, 34, 56) ;
-    ///     time.setMicrosecond(500) ;
+    ///     Time time(12, 34, 56);
+    ///     time.setMicrosecond(500);
     /// @endcode
     ///
     /// @param [in] aMicrosecond A microsecond (0 - 999)
@@ -238,8 +238,8 @@ class Time
     /// @brief Set nanosecond
     ///
     /// @code
-    ///     Time time(12, 34, 56) ;
-    ///     time.setNanosecond(500) ;
+    ///     Time time(12, 34, 56);
+    ///     time.setNanosecond(500);
     /// @endcode
     ///
     /// @param [in] aNanosecond A nanosecond (0 - 999)
@@ -248,8 +248,8 @@ class Time
     /// @brief Constructs an undefined time
     ///
     /// @code
-    ///     Time time = Time::Undefined() ;
-    ///     time.isDefined() ; // False
+    ///     Time time = Time::Undefined();
+    ///     time.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined time
@@ -258,7 +258,7 @@ class Time
     /// @brief Constructs a time at midnight
     ///
     /// @code
-    ///     Time time = Time::Midnight() ; // 00:00:00.000.000.000
+    ///     Time time = Time::Midnight(); // 00:00:00.000.000.000
     /// @endcode
     ///
     /// @return Midnight time
@@ -267,7 +267,7 @@ class Time
     /// @brief Constructs a time at noon
     ///
     /// @code
-    ///     Time time = Time::Noon() ; // 12:00:00.000.000.000
+    ///     Time time = Time::Noon(); // 12:00:00.000.000.000
     /// @endcode
     ///
     /// @return Noon time
@@ -276,11 +276,11 @@ class Time
     /// @brief Constructs a time from a string representation
     ///
     /// @code
-    ///     Time time = Time::Parse("12:34:56") ; // 12:34:56
-    ///     Time time = Time::Parse("12:34:56.123") ; // 12:34:56.123
-    ///     Time time = Time::Parse("12:34:56.123.456") ; // 12:34:56.123.456
-    ///     Time time = Time::Parse("12:34:56.123.456.789", Time::Format::Standard) ; //
-    ///     12:34:56.123.456.789 Time time = Time::Parse("12:34:56.123456789", Time::Format::ISO8601) ;
+    ///     Time time = Time::Parse("12:34:56"); // 12:34:56
+    ///     Time time = Time::Parse("12:34:56.123"); // 12:34:56.123
+    ///     Time time = Time::Parse("12:34:56.123.456"); // 12:34:56.123.456
+    ///     Time time = Time::Parse("12:34:56.123.456.789", Time::Format::Standard); //
+    ///     12:34:56.123.456.789 Time time = Time::Parse("12:34:56.123456789", Time::Format::ISO8601);
     ///     // 12:34:56.123.456.789
     /// @endcode
     ///
@@ -292,7 +292,7 @@ class Time
     /// @brief Constructs a time from a decimal number of hours
     ///
     /// @code
-    ///     Time time = Time::Hours(12.567) ; // 12:34:01.199.999.999
+    ///     Time time = Time::Hours(12.567); // 12:34:01.199.999.999
     /// @endcode
     ///
     /// @param [in] aReal A real number of hours
@@ -302,7 +302,7 @@ class Time
     /// @brief Constructs a time from a decimal number of seconds
     ///
     /// @code
-    ///     Time time = Time::Seconds(12.567) ; // 12:34:01.199.999.999
+    ///     Time time = Time::Seconds(12.567); // 12:34:01.199.999.999
     /// @endcode
     ///
     /// @param [in] aReal A real number of seconds

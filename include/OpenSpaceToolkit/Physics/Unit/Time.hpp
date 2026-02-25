@@ -45,7 +45,7 @@ class Time : public Unit
     /// @brief Constructor
     ///
     /// @code
-    ///     Time time(1.0, Time::Unit::Second) ;
+    ///     Time time(1.0, Time::Unit::Second);
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -55,8 +55,8 @@ class Time : public Unit
     /// @brief Clone the time unit.
     ///
     /// @code
-    ///     Time time = Time::Seconds(1.0) ;
-    ///     Time* clonePtr = time.clone() ;
+    ///     Time time = Time::Seconds(1.0);
+    ///     Time* clonePtr = time.clone();
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this time unit
@@ -66,7 +66,7 @@ class Time : public Unit
     /// @brief Check if the time unit is defined.
     ///
     /// @code
-    ///     Time::Seconds(1.0).isDefined() ; // True
+    ///     Time::Seconds(1.0).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -76,7 +76,7 @@ class Time : public Unit
     /// @brief Get the time unit.
     ///
     /// @code
-    ///     Time::Seconds(1.0).getUnit() ; // Time::Unit::Second
+    ///     Time::Seconds(1.0).getUnit(); // Time::Unit::Second
     /// @endcode
     ///
     /// @return The time unit
@@ -86,7 +86,7 @@ class Time : public Unit
     /// @brief Get the value in the specified unit.
     ///
     /// @code
-    ///     Time::Seconds(60.0).in(Time::Unit::Minute) ; // 1.0
+    ///     Time::Seconds(60.0).in(Time::Unit::Minute); // 1.0
     /// @endcode
     ///
     /// @param [in] aUnit A time unit
@@ -97,7 +97,7 @@ class Time : public Unit
     /// @brief Get the value in seconds.
     ///
     /// @code
-    ///     Time::Seconds(1.0).inSeconds() ; // 1.0
+    ///     Time::Seconds(1.0).inSeconds(); // 1.0
     /// @endcode
     ///
     /// @return The value in seconds
@@ -107,7 +107,7 @@ class Time : public Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     Time::Seconds(1.0).toString() ;
+    ///     Time::Seconds(1.0).toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
@@ -118,7 +118,7 @@ class Time : public Unit
     /// @brief Construct an undefined time unit.
     ///
     /// @code
-    ///     Time time = Time::Undefined() ;
+    ///     Time time = Time::Undefined();
     /// @endcode
     ///
     /// @return An undefined time unit
@@ -128,7 +128,7 @@ class Time : public Unit
     /// @brief Construct a time unit from a value in seconds.
     ///
     /// @code
-    ///     Time time = Time::Seconds(1.0) ;
+    ///     Time time = Time::Seconds(1.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in seconds
@@ -139,7 +139,7 @@ class Time : public Unit
     /// @brief Get the string representation of a time unit.
     ///
     /// @code
-    ///     Time::StringFromUnit(Time::Unit::Second) ; // "Second"
+    ///     Time::StringFromUnit(Time::Unit::Second); // "Second"
     /// @endcode
     ///
     /// @param [in] aUnit A time unit
@@ -150,7 +150,7 @@ class Time : public Unit
     /// @brief Get the symbol of a time unit.
     ///
     /// @code
-    ///     Time::SymbolFromUnit(Time::Unit::Second) ; // "s"
+    ///     Time::SymbolFromUnit(Time::Unit::Second); // "s"
     /// @endcode
     ///
     /// @param [in] aUnit A time unit

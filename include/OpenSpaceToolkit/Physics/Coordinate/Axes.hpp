@@ -32,7 +32,7 @@ class Axes
     /// @brief Constructor
     ///
     /// @code
-    ///     Axes axes({1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}, Frame::GCRF()) ;
+    ///     Axes axes({1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0}, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aXAxis An X-axis vector
@@ -44,7 +44,7 @@ class Axes
     /// @brief Equality operator
     ///
     /// @code
-    ///     axes == otherAxes ; // True
+    ///     axes == otherAxes; // True
     /// @endcode
     ///
     /// @param [in] anAxes An axes object to compare with
@@ -54,7 +54,7 @@ class Axes
     /// @brief Inequality operator
     ///
     /// @code
-    ///     axes != otherAxes ; // False
+    ///     axes != otherAxes; // False
     /// @endcode
     ///
     /// @param [in] anAxes An axes object to compare with
@@ -64,7 +64,7 @@ class Axes
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << axes ;
+    ///     std::cout << axes;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -75,7 +75,7 @@ class Axes
     /// @brief Check if the axes are defined
     ///
     /// @code
-    ///     Axes::Undefined().isDefined() ; // False
+    ///     Axes::Undefined().isDefined(); // False
     /// @endcode
     ///
     /// @return True if the axes are defined
@@ -84,7 +84,7 @@ class Axes
     /// @brief Get the X-axis vector
     ///
     /// @code
-    ///     axes.x() ;
+    ///     axes.x();
     /// @endcode
     ///
     /// @return Reference to the X-axis vector
@@ -93,7 +93,7 @@ class Axes
     /// @brief Get the Y-axis vector
     ///
     /// @code
-    ///     axes.y() ;
+    ///     axes.y();
     /// @endcode
     ///
     /// @return Reference to the Y-axis vector
@@ -102,7 +102,7 @@ class Axes
     /// @brief Get the Z-axis vector
     ///
     /// @code
-    ///     axes.z() ;
+    ///     axes.z();
     /// @endcode
     ///
     /// @return Reference to the Z-axis vector
@@ -111,7 +111,7 @@ class Axes
     /// @brief Get the reference frame
     ///
     /// @code
-    ///     axes.getFrame() ;
+    ///     axes.getFrame();
     /// @endcode
     ///
     /// @return Shared pointer to the reference frame
@@ -120,7 +120,7 @@ class Axes
     /// @brief Convert axes to a different reference frame at a given instant
     ///
     /// @code
-    ///     axes.inFrame(Frame::ITRF(), Instant::J2000()) ;
+    ///     axes.inFrame(Frame::ITRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aFrameSPtr A shared pointer to the target frame
@@ -131,7 +131,7 @@ class Axes
     /// @brief Construct an undefined axes object
     ///
     /// @code
-    ///     Axes axes = Axes::Undefined() ;
+    ///     Axes axes = Axes::Undefined();
     /// @endcode
     ///
     /// @return Undefined axes

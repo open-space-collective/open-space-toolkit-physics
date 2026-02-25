@@ -96,7 +96,7 @@ class CSSISpaceWeather
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << cssiSpaceWeather ;
+    ///     std::cout << cssiSpaceWeather;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream.
@@ -108,7 +108,7 @@ class CSSISpaceWeather
     /// @brief true if defined
     ///
     /// @code
-    ///     cssiSpaceWeather.isDefined() ;
+    ///     cssiSpaceWeather.isDefined();
     /// @endcode
     ///
     /// @return True if defined.
@@ -118,7 +118,7 @@ class CSSISpaceWeather
     /// @brief Access last observation Date. File publication date is the day following the last observation.
     ///
     /// @code
-    ///     const Date& date = cssiSpaceWeather.accessLastObservationDate() ;
+    ///     const Date& date = cssiSpaceWeather.accessLastObservationDate();
     /// @endcode
     ///
     /// @return Last observation Date.
@@ -128,7 +128,7 @@ class CSSISpaceWeather
     /// @brief Access timestamp at which the CSSISpaceWeather file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = cssiSpaceWeather.accessLastModifiedTimestamp() ;
+    ///     const Instant& timestamp = cssiSpaceWeather.accessLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
@@ -138,7 +138,7 @@ class CSSISpaceWeather
     /// @brief Access observation Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessObservationInterval() ;
+    ///     const Interval& interval = cssiSpaceWeather.accessObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants.
@@ -148,7 +148,7 @@ class CSSISpaceWeather
     /// @brief Access daily prediction Interval.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessObservationAt(instant) ;
+    ///     const Reading& reading = cssiSpaceWeather.accessObservationAt(instant);
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
@@ -158,7 +158,7 @@ class CSSISpaceWeather
     /// @brief Access daily prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessDailyPredictionInterval() ;
+    ///     const Interval& interval = cssiSpaceWeather.accessDailyPredictionInterval();
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
@@ -168,7 +168,7 @@ class CSSISpaceWeather
     /// @brief Access daily prediction at Instant.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessDailyPredictionAt(instant) ;
+    ///     const Reading& reading = cssiSpaceWeather.accessDailyPredictionAt(instant);
     /// @endcode
     ///
     /// @return Daily prediction at Instant.
@@ -178,7 +178,7 @@ class CSSISpaceWeather
     /// @brief Access monthly prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessMonthlyPredictionInterval() ;
+    ///     const Interval& interval = cssiSpaceWeather.accessMonthlyPredictionInterval();
     /// @endcode
     ///
     /// @return Monthly prediction Interval of Instants.
@@ -188,7 +188,7 @@ class CSSISpaceWeather
     /// @brief Access monthly prediction at Instant.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessMonthlyPredictionAt(instant) ;
+    ///     const Reading& reading = cssiSpaceWeather.accessMonthlyPredictionAt(instant);
     /// @endcode
     ///
     /// @return Monthly prediction at Instant.
@@ -199,7 +199,7 @@ class CSSISpaceWeather
     /// Look first in observations, then in daily predictions, then monthly predictions.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessReadingAt(instant) ;
+    ///     const Reading& reading = cssiSpaceWeather.accessReadingAt(instant);
     /// @endcode
     ///
     /// @return Reading prediction at Instant.
@@ -209,7 +209,7 @@ class CSSISpaceWeather
     /// @brief Access last reading before anInstant where aPredicate is true.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessLastReadingWhere(predicate, instant) ;
+    ///     const Reading& reading = cssiSpaceWeather.accessLastReadingWhere(predicate, instant);
     /// @endcode
     ///
     /// @param [in] aPredicate A predicate.
@@ -223,7 +223,7 @@ class CSSISpaceWeather
     /// @brief Undefined factory function
     ///
     /// @code
-    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Undefined() ;
+    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Undefined();
     /// @endcode
     ///
     /// @return Undefined CSSI Space Weather object.
@@ -233,7 +233,7 @@ class CSSISpaceWeather
     /// @brief Load CSSI Space Weather file in csv format.
     ///
     /// @code
-    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Load(file) ;
+    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Load(file);
     /// @endcode
     ///
     /// @param [in] aFile A CSSI Space Weather file.
@@ -244,7 +244,7 @@ class CSSISpaceWeather
     /// @brief Load CSSI Space Weather file in legacy .txt format.
     ///
     /// @code
-    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::LoadLegacy(file) ;
+    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::LoadLegacy(file);
     /// @endcode
     ///
     /// @param [in] aFile A CSSI Space Weather file.

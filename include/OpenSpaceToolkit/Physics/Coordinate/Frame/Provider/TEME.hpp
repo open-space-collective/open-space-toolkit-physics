@@ -33,7 +33,7 @@ class TEME : public Provider
     /// @brief Default constructor.
     ///
     /// @code
-    ///     TEME provider ;
+    ///     TEME provider;
     /// @endcode
     TEME();
 
@@ -43,7 +43,7 @@ class TEME : public Provider
     /// @brief Clone the TEME provider.
     ///
     /// @code
-    ///     TEME* clonePtr = provider.clone() ;
+    ///     TEME* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned TEME provider
@@ -52,7 +52,7 @@ class TEME : public Provider
     /// @brief Check if the TEME provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the TEME provider is defined
@@ -61,7 +61,7 @@ class TEME : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

@@ -42,7 +42,7 @@ class Length : public Unit
     /// @brief Constructor
     ///
     /// @code
-    ///     Length length(1.0, Length::Unit::Meter) ;
+    ///     Length length(1.0, Length::Unit::Meter);
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -52,8 +52,8 @@ class Length : public Unit
     /// @brief Clone the length.
     ///
     /// @code
-    ///     Length length = Length::Meters(1.0) ;
-    ///     Length* clonePtr = length.clone() ;
+    ///     Length length = Length::Meters(1.0);
+    ///     Length* clonePtr = length.clone();
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this length
@@ -62,7 +62,7 @@ class Length : public Unit
     /// @brief Equal to operator.
     ///
     /// @code
-    ///     Length::Meters(1.0) == Length::Meters(1.0) ; // True
+    ///     Length::Meters(1.0) == Length::Meters(1.0); // True
     /// @endcode
     ///
     /// @param [in] aLength A length to compare with
@@ -72,7 +72,7 @@ class Length : public Unit
     /// @brief Not equal to operator.
     ///
     /// @code
-    ///     Length::Meters(1.0) != Length::Meters(2.0) ; // True
+    ///     Length::Meters(1.0) != Length::Meters(2.0); // True
     /// @endcode
     ///
     /// @param [in] aLength A length to compare with
@@ -82,7 +82,7 @@ class Length : public Unit
     /// @brief Less than operator.
     ///
     /// @code
-    ///     Length::Meters(1.0) < Length::Meters(2.0) ; // True
+    ///     Length::Meters(1.0) < Length::Meters(2.0); // True
     /// @endcode
     ///
     /// @param [in] aLength A length to compare with
@@ -92,7 +92,7 @@ class Length : public Unit
     /// @brief Less than or equal to operator.
     ///
     /// @code
-    ///     Length::Meters(1.0) <= Length::Meters(1.0) ; // True
+    ///     Length::Meters(1.0) <= Length::Meters(1.0); // True
     /// @endcode
     ///
     /// @param [in] aLength A length to compare with
@@ -102,7 +102,7 @@ class Length : public Unit
     /// @brief Greater than operator.
     ///
     /// @code
-    ///     Length::Meters(2.0) > Length::Meters(1.0) ; // True
+    ///     Length::Meters(2.0) > Length::Meters(1.0); // True
     /// @endcode
     ///
     /// @param [in] aLength A length to compare with
@@ -112,7 +112,7 @@ class Length : public Unit
     /// @brief Greater than or equal to operator.
     ///
     /// @code
-    ///     Length::Meters(1.0) >= Length::Meters(1.0) ; // True
+    ///     Length::Meters(1.0) >= Length::Meters(1.0); // True
     /// @endcode
     ///
     /// @param [in] aLength A length to compare with
@@ -122,7 +122,7 @@ class Length : public Unit
     /// @brief Addition operator.
     ///
     /// @code
-    ///     Length::Meters(1.0) + Length::Meters(2.0) ; // 3.0 [m]
+    ///     Length::Meters(1.0) + Length::Meters(2.0); // 3.0 [m]
     /// @endcode
     ///
     /// @param [in] aLength A length to add
@@ -132,7 +132,7 @@ class Length : public Unit
     /// @brief Subtraction operator.
     ///
     /// @code
-    ///     Length::Meters(3.0) - Length::Meters(1.0) ; // 2.0 [m]
+    ///     Length::Meters(3.0) - Length::Meters(1.0); // 2.0 [m]
     /// @endcode
     ///
     /// @param [in] aLength A length to subtract
@@ -142,7 +142,7 @@ class Length : public Unit
     /// @brief Multiplication by scalar operator.
     ///
     /// @code
-    ///     Length::Meters(2.0) * 3.0 ; // 6.0 [m]
+    ///     Length::Meters(2.0) * 3.0; // 6.0 [m]
     /// @endcode
     ///
     /// @param [in] aReal A scalar multiplier
@@ -152,7 +152,7 @@ class Length : public Unit
     /// @brief Division by scalar operator.
     ///
     /// @code
-    ///     Length::Meters(6.0) / 2.0 ; // 3.0 [m]
+    ///     Length::Meters(6.0) / 2.0; // 3.0 [m]
     /// @endcode
     ///
     /// @param [in] aReal A scalar divisor
@@ -162,8 +162,8 @@ class Length : public Unit
     /// @brief Addition assignment operator.
     ///
     /// @code
-    ///     Length length = Length::Meters(1.0) ;
-    ///     length += Length::Meters(2.0) ; // 3.0 [m]
+    ///     Length length = Length::Meters(1.0);
+    ///     length += Length::Meters(2.0); // 3.0 [m]
     /// @endcode
     ///
     /// @param [in] aLength A length to add
@@ -173,8 +173,8 @@ class Length : public Unit
     /// @brief Subtraction assignment operator.
     ///
     /// @code
-    ///     Length length = Length::Meters(3.0) ;
-    ///     length -= Length::Meters(1.0) ; // 2.0 [m]
+    ///     Length length = Length::Meters(3.0);
+    ///     length -= Length::Meters(1.0); // 2.0 [m]
     /// @endcode
     ///
     /// @param [in] aLength A length to subtract
@@ -184,8 +184,8 @@ class Length : public Unit
     /// @brief Multiplication assignment operator.
     ///
     /// @code
-    ///     Length length = Length::Meters(2.0) ;
-    ///     length *= 3.0 ; // 6.0 [m]
+    ///     Length length = Length::Meters(2.0);
+    ///     length *= 3.0; // 6.0 [m]
     /// @endcode
     ///
     /// @param [in] aReal A scalar multiplier
@@ -195,8 +195,8 @@ class Length : public Unit
     /// @brief Division assignment operator.
     ///
     /// @code
-    ///     Length length = Length::Meters(6.0) ;
-    ///     length /= 2.0 ; // 3.0 [m]
+    ///     Length length = Length::Meters(6.0);
+    ///     length /= 2.0; // 3.0 [m]
     /// @endcode
     ///
     /// @param [in] aReal A scalar divisor
@@ -206,7 +206,7 @@ class Length : public Unit
     /// @brief Scalar multiplication operator (scalar * length).
     ///
     /// @code
-    ///     2.0 * Length::Meters(3.0) ; // 6.0 [m]
+    ///     2.0 * Length::Meters(3.0); // 6.0 [m]
     /// @endcode
     ///
     /// @param [in] aReal A scalar multiplier
@@ -217,7 +217,7 @@ class Length : public Unit
     /// @brief Unary plus operator.
     ///
     /// @code
-    ///     +Length::Meters(1.0) ; // 1.0 [m]
+    ///     +Length::Meters(1.0); // 1.0 [m]
     /// @endcode
     ///
     /// @return A copy of this length
@@ -226,7 +226,7 @@ class Length : public Unit
     /// @brief Unary minus operator.
     ///
     /// @code
-    ///     -Length::Meters(1.0) ; // -1.0 [m]
+    ///     -Length::Meters(1.0); // -1.0 [m]
     /// @endcode
     ///
     /// @return The negated length
@@ -235,7 +235,7 @@ class Length : public Unit
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << Length::Meters(1.0) ;
+    ///     std::cout << Length::Meters(1.0);
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -246,7 +246,7 @@ class Length : public Unit
     /// @brief Check if the length is defined.
     ///
     /// @code
-    ///     Length::Meters(1.0).isDefined() ; // True
+    ///     Length::Meters(1.0).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -255,7 +255,7 @@ class Length : public Unit
     /// @brief Check if the length value is zero.
     ///
     /// @code
-    ///     Length::Meters(0.0).isZero() ; // True
+    ///     Length::Meters(0.0).isZero(); // True
     /// @endcode
     ///
     /// @return True if zero
@@ -264,7 +264,7 @@ class Length : public Unit
     /// @brief Get the length unit.
     ///
     /// @code
-    ///     Length::Meters(1.0).getUnit() ; // Length::Unit::Meter
+    ///     Length::Meters(1.0).getUnit(); // Length::Unit::Meter
     /// @endcode
     ///
     /// @return The length unit
@@ -273,7 +273,7 @@ class Length : public Unit
     /// @brief Get the value in the specified unit.
     ///
     /// @code
-    ///     Length::Meters(1000.0).in(Length::Unit::Meter) ; // 1000.0
+    ///     Length::Meters(1000.0).in(Length::Unit::Meter); // 1000.0
     /// @endcode
     ///
     /// @param [in] aUnit A length unit
@@ -283,7 +283,7 @@ class Length : public Unit
     /// @brief Get the value in meters.
     ///
     /// @code
-    ///     Length::Kilometers(1.0).inMeters() ; // 1000.0
+    ///     Length::Kilometers(1.0).inMeters(); // 1000.0
     /// @endcode
     ///
     /// @return The value in meters
@@ -292,7 +292,7 @@ class Length : public Unit
     /// @brief Get the value in kilometers.
     ///
     /// @code
-    ///     Length::Meters(1000.0).inKilometers() ; // 1.0
+    ///     Length::Meters(1000.0).inKilometers(); // 1.0
     /// @endcode
     ///
     /// @return The value in kilometers
@@ -301,7 +301,7 @@ class Length : public Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     Length::Meters(1.0).toString() ; // "1.0 [m]"
+    ///     Length::Meters(1.0).toString(); // "1.0 [m]"
     /// @endcode
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
@@ -311,7 +311,7 @@ class Length : public Unit
     /// @brief Construct an undefined length.
     ///
     /// @code
-    ///     Length length = Length::Undefined() ;
+    ///     Length length = Length::Undefined();
     /// @endcode
     ///
     /// @return An undefined length
@@ -320,7 +320,7 @@ class Length : public Unit
     /// @brief Construct a length from a value in millimeters.
     ///
     /// @code
-    ///     Length length = Length::Millimeters(1000.0) ;
+    ///     Length length = Length::Millimeters(1000.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in millimeters
@@ -330,7 +330,7 @@ class Length : public Unit
     /// @brief Construct a length from a value in meters.
     ///
     /// @code
-    ///     Length length = Length::Meters(1.0) ;
+    ///     Length length = Length::Meters(1.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in meters
@@ -340,7 +340,7 @@ class Length : public Unit
     /// @brief Construct a length from a value in kilometers.
     ///
     /// @code
-    ///     Length length = Length::Kilometers(1.0) ;
+    ///     Length length = Length::Kilometers(1.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in kilometers
@@ -350,7 +350,7 @@ class Length : public Unit
     /// @brief Parse a length from a string.
     ///
     /// @code
-    ///     Length length = Length::Parse("1.0 [m]") ;
+    ///     Length length = Length::Parse("1.0 [m]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse
@@ -360,7 +360,7 @@ class Length : public Unit
     /// @brief Get the string representation of a length unit.
     ///
     /// @code
-    ///     Length::StringFromUnit(Length::Unit::Meter) ; // "Meter"
+    ///     Length::StringFromUnit(Length::Unit::Meter); // "Meter"
     /// @endcode
     ///
     /// @param [in] aUnit A length unit
@@ -370,7 +370,7 @@ class Length : public Unit
     /// @brief Get the symbol of a length unit.
     ///
     /// @code
-    ///     Length::SymbolFromUnit(Length::Unit::Meter) ; // "m"
+    ///     Length::SymbolFromUnit(Length::Unit::Meter); // "m"
     /// @endcode
     ///
     /// @param [in] aUnit A length unit
@@ -380,7 +380,7 @@ class Length : public Unit
     /// @brief Get the length unit from a symbol string.
     ///
     /// @code
-    ///     Length::UnitFromSymbol("m") ; // Length::Unit::Meter
+    ///     Length::UnitFromSymbol("m"); // Length::Unit::Meter
     /// @endcode
     ///
     /// @param [in] aSymbol A unit symbol

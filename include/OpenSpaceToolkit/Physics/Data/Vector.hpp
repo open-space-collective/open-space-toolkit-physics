@@ -35,7 +35,7 @@ class Vector
     /// @brief Construct a vector from a 3D value, a unit, and a reference frame.
     ///
     /// @code
-    ///     Vector vector({1.0, 0.0, 0.0}, Unit::Length(Length::Unit::Meter), Frame::GCRF()) ;
+    ///     Vector vector({1.0, 0.0, 0.0}, Unit::Length(Length::Unit::Meter), Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aValue A 3D vector value
@@ -46,7 +46,7 @@ class Vector
     /// @brief Equality operator.
     ///
     /// @code
-    ///     Boolean isEqual = (vectorA == vectorB) ;
+    ///     Boolean isEqual = (vectorA == vectorB);
     /// @endcode
     ///
     /// @param [in] aVector A vector to compare with
@@ -56,7 +56,7 @@ class Vector
     /// @brief Inequality operator.
     ///
     /// @code
-    ///     Boolean isNotEqual = (vectorA != vectorB) ;
+    ///     Boolean isNotEqual = (vectorA != vectorB);
     /// @endcode
     ///
     /// @param [in] aVector A vector to compare with
@@ -66,7 +66,7 @@ class Vector
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << vector ;
+    ///     std::cout << vector;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -77,7 +77,7 @@ class Vector
     /// @brief Check if the vector is defined.
     ///
     /// @code
-    ///     Boolean isDefined = vector.isDefined() ;
+    ///     Boolean isDefined = vector.isDefined();
     /// @endcode
     ///
     /// @return True if the vector is defined
@@ -86,7 +86,7 @@ class Vector
     /// @brief Get the 3D vector value.
     ///
     /// @code
-    ///     Vector3d value = vector.getValue() ;
+    ///     Vector3d value = vector.getValue();
     /// @endcode
     ///
     /// @return The 3D vector value
@@ -95,7 +95,7 @@ class Vector
     /// @brief Get the vector unit.
     ///
     /// @code
-    ///     Unit unit = vector.getUnit() ;
+    ///     Unit unit = vector.getUnit();
     /// @endcode
     ///
     /// @return The physical unit
@@ -104,7 +104,7 @@ class Vector
     /// @brief Get the reference frame.
     ///
     /// @code
-    ///     Shared<const Frame> frameSPtr = vector.getFrame() ;
+    ///     Shared<const Frame> frameSPtr = vector.getFrame();
     /// @endcode
     ///
     /// @return A shared pointer to the reference frame
@@ -113,7 +113,7 @@ class Vector
     /// @brief Convert the vector to a different unit.
     ///
     /// @code
-    ///     Vector vectorInKm = vector.inUnit(Unit::Length(Length::Unit::Kilometer)) ;
+    ///     Vector vectorInKm = vector.inUnit(Unit::Length(Length::Unit::Kilometer));
     /// @endcode
     ///
     /// @param [in] aUnit A target unit
@@ -123,7 +123,7 @@ class Vector
     /// @brief Transform the vector into a different reference frame at a given instant.
     ///
     /// @code
-    ///     Vector vectorInITRF = vector.inFrame(Frame::ITRF(), instant) ;
+    ///     Vector vectorInITRF = vector.inFrame(Frame::ITRF(), instant);
     /// @endcode
     ///
     /// @param [in] aFrameSPtr A shared pointer to the target reference frame
@@ -134,7 +134,7 @@ class Vector
     /// @brief Convert the vector to a string representation.
     ///
     /// @code
-    ///     String string = vector.toString() ;
+    ///     String string = vector.toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision for the values (default: 6)
@@ -144,7 +144,7 @@ class Vector
     /// @brief Construct an undefined vector.
     ///
     /// @code
-    ///     Vector vector = Vector::Undefined() ;
+    ///     Vector vector = Vector::Undefined();
     /// @endcode
     ///
     /// @return An undefined vector

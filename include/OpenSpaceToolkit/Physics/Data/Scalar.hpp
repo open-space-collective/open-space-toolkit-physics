@@ -34,7 +34,7 @@ class Scalar
     /// @brief Construct a scalar from a value and a unit.
     ///
     /// @code
-    ///     Scalar scalar(1.0, Unit::Length(Length::Unit::Meter)) ;
+    ///     Scalar scalar(1.0, Unit::Length(Length::Unit::Meter));
     /// @endcode
     ///
     /// @param [in] aValue A real value
@@ -44,7 +44,7 @@ class Scalar
     /// @brief Equality operator.
     ///
     /// @code
-    ///     Boolean isEqual = (scalarA == scalarB) ;
+    ///     Boolean isEqual = (scalarA == scalarB);
     /// @endcode
     ///
     /// @param [in] aScalar A scalar to compare with
@@ -54,7 +54,7 @@ class Scalar
     /// @brief Inequality operator.
     ///
     /// @code
-    ///     Boolean isNotEqual = (scalarA != scalarB) ;
+    ///     Boolean isNotEqual = (scalarA != scalarB);
     /// @endcode
     ///
     /// @param [in] aScalar A scalar to compare with
@@ -64,7 +64,7 @@ class Scalar
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << scalar ;
+    ///     std::cout << scalar;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -75,7 +75,7 @@ class Scalar
     /// @brief Check if the scalar is defined.
     ///
     /// @code
-    ///     Boolean isDefined = scalar.isDefined() ;
+    ///     Boolean isDefined = scalar.isDefined();
     /// @endcode
     ///
     /// @return True if the scalar is defined
@@ -84,7 +84,7 @@ class Scalar
     /// @brief Get the scalar value.
     ///
     /// @code
-    ///     Real value = scalar.getValue() ;
+    ///     Real value = scalar.getValue();
     /// @endcode
     ///
     /// @return The real value
@@ -93,7 +93,7 @@ class Scalar
     /// @brief Get the scalar unit.
     ///
     /// @code
-    ///     Unit unit = scalar.getUnit() ;
+    ///     Unit unit = scalar.getUnit();
     /// @endcode
     ///
     /// @return The physical unit
@@ -102,7 +102,7 @@ class Scalar
     /// @brief Convert the scalar to a different unit.
     ///
     /// @code
-    ///     Scalar scalarInKm = scalar.inUnit(Unit::Length(Length::Unit::Kilometer)) ;
+    ///     Scalar scalarInKm = scalar.inUnit(Unit::Length(Length::Unit::Kilometer));
     /// @endcode
     ///
     /// @param [in] aUnit A target unit
@@ -112,7 +112,7 @@ class Scalar
     /// @brief Convert the scalar to a string representation.
     ///
     /// @code
-    ///     String string = scalar.toString() ;
+    ///     String string = scalar.toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision for the value (optional)
@@ -122,7 +122,7 @@ class Scalar
     /// @brief Construct an undefined scalar.
     ///
     /// @code
-    ///     Scalar scalar = Scalar::Undefined() ;
+    ///     Scalar scalar = Scalar::Undefined();
     /// @endcode
     ///
     /// @return An undefined scalar

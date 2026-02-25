@@ -51,7 +51,7 @@ class Moon : public Model
     /// @brief Constructor
     ///
     /// @code
-    ///     Moon moonGrav(Moon::Type::Spherical) ;
+    ///     Moon moonGrav(Moon::Type::Spherical);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type
@@ -61,7 +61,7 @@ class Moon : public Model
     /// @brief Copy constructor
     ///
     /// @code
-    ///     Moon moonGravCopy(moonGrav) ;
+    ///     Moon moonGravCopy(moonGrav);
     /// @endcode
     ///
     /// @param [in] aMoonGravitationalModel A Moon model
@@ -70,7 +70,7 @@ class Moon : public Model
     /// @brief Copy assignment operator
     ///
     /// @code
-    ///     Moon moonGravCopy = moonGrav ;
+    ///     Moon moonGravCopy = moonGrav;
     /// @endcode
     ///
     /// @param [in] aMoonGravitationalModel A Moon model
@@ -83,7 +83,7 @@ class Moon : public Model
     /// @brief Clone the Moon gravitational model
     ///
     /// @code
-    ///     Moon* moonGravPtr = moonGrav.clone() ;
+    ///     Moon* moonGravPtr = moonGrav.clone();
     /// @endcode
     ///
     /// @return Pointer to Moon gravitational model
@@ -92,7 +92,7 @@ class Moon : public Model
     /// @brief Check if the Moon gravitational model is defined
     ///
     /// @code
-    ///     bool isDefined = moonGrav.isDefined() ;
+    ///     bool isDefined = moonGrav.isDefined();
     /// @endcode
     ///
     /// @return True if the Moon gravitational model is defined
@@ -101,7 +101,7 @@ class Moon : public Model
     /// @brief Get gravitational model type
     ///
     /// @code
-    ///     Moon::Type type = moonGrav.getType() ;
+    ///     Moon::Type type = moonGrav.getType();
     /// @endcode
     ///
     /// @return Gravitational model type
@@ -110,7 +110,7 @@ class Moon : public Model
     /// @brief Get the gravitational field value at a given position and instant
     ///
     /// @code
-    ///     Vector3d fieldValue = moonGrav.getFieldValueAt(position, instant) ;
+    ///     Vector3d fieldValue = moonGrav.getFieldValueAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
@@ -121,7 +121,7 @@ class Moon : public Model
     /// @brief Get gravitational model parameters for a given type.
     ///
     /// @code
-    ///     Model::Parameters params = Moon::ParametersFromType(Moon::Type::Spherical) ;
+    ///     Model::Parameters params = Moon::ParametersFromType(Moon::Type::Spherical);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type

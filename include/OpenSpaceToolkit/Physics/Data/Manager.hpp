@@ -48,7 +48,7 @@ class Manager : public BaseManager
     /// @brief Check if there are updates for data of a certain name.
     ///
     /// @code
-    ///     Instant timestamp = Manager::Get().getLastUpdateTimestampFor("earth-gravity-egm96") ;
+    ///     Instant timestamp = Manager::Get().getLastUpdateTimestampFor("earth-gravity-egm96");
     /// @endcode
     ///
     /// @param [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
@@ -59,7 +59,7 @@ class Manager : public BaseManager
     /// @brief Get the remote URL. This points to the base URL for the OSTk input data.
     ///
     /// @code
-    ///     URL remoteUrl = Manager::Get().getRemoteUrl() ;
+    ///     URL remoteUrl = Manager::Get().getRemoteUrl();
     /// @endcode
     ///
     /// @return Remote URL
@@ -68,7 +68,7 @@ class Manager : public BaseManager
     /// @brief Set the remote URL.
     ///
     /// @code
-    ///     Manager::Get().setRemoteUrl(URL::Parse("https://example.com/data/")) ;
+    ///     Manager::Get().setRemoteUrl(URL::Parse("https://example.com/data/"));
     /// @endcode
     ///
     /// @param [in] aRemoteUrl A remote URL
@@ -77,7 +77,7 @@ class Manager : public BaseManager
     /// @brief Get the remote data URL for a given data name.
     ///
     /// @code
-    ///     Array<URL> urls = Manager::Get().getRemoteDataUrls("earth-gravity-egm96") ;
+    ///     Array<URL> urls = Manager::Get().getRemoteDataUrls("earth-gravity-egm96");
     /// @endcode
     ///
     /// @param [in] aDataName name of the data. i.e. the key for the data entry in the manifest
@@ -87,7 +87,7 @@ class Manager : public BaseManager
     /// @brief Find remote URLs of data matching regular expression string
     ///
     /// @code
-    ///     Array<URL> urls = Manager::Get().findRemoteDataUrls("earth-gravity-.*") ;
+    ///     Array<URL> urls = Manager::Get().findRemoteDataUrls("earth-gravity-.*");
     /// @endcode
     ///
     /// @param [in] aDataNameRegex A regular expression string
@@ -97,7 +97,7 @@ class Manager : public BaseManager
     /// @brief Get a copy of the current manifest file.
     ///
     /// @code
-    ///     Manifest manifest = Manager::Get().getManifest() ;
+    ///     Manifest manifest = Manager::Get().getManifest();
     /// @endcode
     ///
     /// @return Manifest file
@@ -106,7 +106,7 @@ class Manager : public BaseManager
     /// @brief Load a new manifest file.
     ///
     /// @code
-    ///     Manager::Get().loadManifest(manifest) ;
+    ///     Manager::Get().loadManifest(manifest);
     /// @endcode
     ///
     /// @param [in] aManifest Manifest file to load
@@ -115,7 +115,7 @@ class Manager : public BaseManager
     /// @brief Return true if a manifest file already exists in the directory
     ///
     /// @code
-    ///     Boolean exists = Manager::Get().manifestFileExists() ;
+    ///     Boolean exists = Manager::Get().manifestFileExists();
     /// @endcode
     ///
     /// @return True if manifest file exists
@@ -124,7 +124,7 @@ class Manager : public BaseManager
     /// @brief Reset the manager.
     ///
     /// @code
-    ///     Manager::Get().reset() ;
+    ///     Manager::Get().reset();
     /// @endcode
     ///
     /// Unload the manifest file and forget manifest age.
@@ -133,7 +133,7 @@ class Manager : public BaseManager
     /// @brief Get manager singleton
     ///
     /// @code
-    ///     Manager& manager = Manager::Get() ;
+    ///     Manager& manager = Manager::Get();
     /// @endcode
     ///
     /// @return Reference to manager
@@ -142,7 +142,7 @@ class Manager : public BaseManager
     /// @brief Get the default remote URL for data fetching.
     ///
     /// @code
-    ///     URL defaultUrl = Manager::DefaultRemoteUrl() ;
+    ///     URL defaultUrl = Manager::DefaultRemoteUrl();
     /// @endcode
     ///
     /// @return Default remote URL
@@ -156,14 +156,14 @@ class Manager : public BaseManager
     /// @brief Default constructor.
     ///
     /// @code
-    ///     Manager manager ;
+    ///     Manager manager;
     /// @endcode
     Manager();
 
     /// @brief Fetch the latest manifest file from the remote.
     ///
     /// @code
-    ///     File manifestFile = manager.fetchLatestManifestFile_() ;
+    ///     File manifestFile = manager.fetchLatestManifestFile_();
     /// @endcode
     ///
     /// @return The fetched manifest file
@@ -173,7 +173,7 @@ class Manager : public BaseManager
     /// for other data files.
     ///
     /// @code
-    ///     manager.checkManifestAgeAndUpdate_() ;
+    ///     manager.checkManifestAgeAndUpdate_();
     /// @endcode
     ///
     /// We fetch the manifest file from the remote if: - It does not exist locally
@@ -184,7 +184,7 @@ class Manager : public BaseManager
     /// @brief Load a manifest object into internal state.
     ///
     /// @code
-    ///     manager.loadManifest_(manifest) ;
+    ///     manager.loadManifest_(manifest);
     /// @endcode
     ///
     /// @param [in] aManifest A manifest to load
@@ -195,7 +195,7 @@ class Manager : public BaseManager
     /// We limit this by limiting how frequently the manifest file is updated.
     ///
     /// @code
-    ///     Duration refreshRate = Manager::DataRefreshRate_() ;
+    ///     Duration refreshRate = Manager::DataRefreshRate_();
     /// @endcode
     ///
     /// @return Frequency in hours. Default is 24. Overriden by the OSTK_PHYSICS_DATA_REFRESH_RATE environment variable.

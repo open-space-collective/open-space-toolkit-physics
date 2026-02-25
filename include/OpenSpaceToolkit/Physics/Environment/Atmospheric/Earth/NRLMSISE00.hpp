@@ -62,7 +62,7 @@ class NRLMSISE00
     /// @brief Constructor
     ///
     /// @code
-    ///     NRLMSISE00 model(NRLMSISE00::InputDataType::CSSISpaceWeatherFile) ;
+    ///     NRLMSISE00 model(NRLMSISE00::InputDataType::CSSISpaceWeatherFile);
     /// @endcode
 
     NRLMSISE00(
@@ -79,7 +79,7 @@ class NRLMSISE00
     /// @brief Clone the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     NRLMSISE00* modelPtr = model.clone() ;
+    ///     NRLMSISE00* modelPtr = model.clone();
     /// @endcode
     ///
     /// @return Pointer to NRLMSISE00 atmospheric model
@@ -89,7 +89,7 @@ class NRLMSISE00
     /// @brief Check if the NRLMSISE00 atmospheric model is defined
     ///
     /// @code
-    ///     model.isDefined() ;
+    ///     model.isDefined();
     /// @endcode
     ///
     /// @return True if the NRLMSISE00 atmospheric model is defined
@@ -99,7 +99,7 @@ class NRLMSISE00
     /// @brief Get the input data source type used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     NRLMSISE00::InputDataType inputDataType = model.getInputDataType() ;
+    ///     NRLMSISE00::InputDataType inputDataType = model.getInputDataType();
     /// @endcode
     ///
     /// @return NRLMSISE00 input data source type
@@ -109,7 +109,7 @@ class NRLMSISE00
     /// @brief Get the constant value for F10.7 input parameter used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     Real f107 = model.getF107ConstantValue() ;
+    ///     Real f107 = model.getF107ConstantValue();
     /// @endcode
     ///
     /// @return Constant value for F10.7 input parameter
@@ -119,7 +119,7 @@ class NRLMSISE00
     /// @brief Get the constant value for F10.7a input parameter used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     Real f107a = model.getF107AConstantValue() ;
+    ///     Real f107a = model.getF107AConstantValue();
     /// @endcode
     ///
     /// @return Constant value for F10.7a input parameter
@@ -129,7 +129,7 @@ class NRLMSISE00
     /// @brief Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     Real kp = model.getKpConstantValue() ;
+    ///     Real kp = model.getKpConstantValue();
     /// @endcode
     ///
     /// @return Constant value for Kp input parameter
@@ -139,7 +139,7 @@ class NRLMSISE00
     /// @brief Get the atmospheric density value at a given position and instant.
     ///
     /// @code
-    ///     Real density = model.getDensityAt(lla, instant) ;
+    ///     Real density = model.getDensityAt(lla, instant);
     /// @endcode
     ///
     /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
@@ -174,7 +174,7 @@ class NRLMSISE00
     /// @brief Get the atmospheric density value by directly provided NRLMSISE input values.
     ///
     /// @code
-    ///     Real density = NRLMSISE00::GetDensityAt(input) ;
+    ///     Real density = NRLMSISE00::GetDensityAt(input);
     /// @endcode
     ///
     /// @param [in] NRLMSISE input struct
@@ -193,7 +193,7 @@ class NRLMSISE00
     /// @return Pointer to AP array struct
     ///
     /// @code
-    ///     Unique<NRLMSISE00::ap_array> apValues = model.computeApArray(instant) ;
+    ///     Unique<NRLMSISE00::ap_array> apValues = model.computeApArray(instant);
     /// @endcode
 
     Unique<NRLMSISE00::ap_array> computeApArray(const Instant& anInstant) const;
@@ -202,7 +202,7 @@ class NRLMSISE00
     /// Optionally use provided sun position to calculate local solar time.
     ///
     /// @code
-    ///     Unique<NRLMSISE00::nrlmsise_input> input = model.computeNRLMSISE00Input(apValues, lla, instant) ;
+    ///     Unique<NRLMSISE00::nrlmsise_input> input = model.computeNRLMSISE00Input(apValues, lla, instant);
     /// @endcode
     ///
     /// @param [in] apValues Pointer to AP values struct
@@ -216,7 +216,7 @@ class NRLMSISE00
     /// @brief Convert Kp index to Ap index
     ///
     /// @code
-    ///     Real ap = NRLMSISE00::convertKpToAp(kp) ;
+    ///     Real ap = NRLMSISE00::convertKpToAp(kp);
     /// @endcode
     ///
     /// @param [in] aKp Kp index

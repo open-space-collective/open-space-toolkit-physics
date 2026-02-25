@@ -44,7 +44,7 @@ class Moon : public Celestial
     /// @brief Constructor
     ///
     /// @code
-    ///     Moon moon(ephemeris, gravModel) ;
+    ///     Moon moon(ephemeris, gravModel);
     /// @endcode
     ///
     /// @param [in] anEphemeris An ephemeris for the Moon celestial object
@@ -57,7 +57,7 @@ class Moon : public Celestial
     /// @brief Clone the Moon celestial object
     ///
     /// @code
-    ///     Moon* moonPtr = moon.clone() ;
+    ///     Moon* moonPtr = moon.clone();
     /// @endcode
     ///
     /// @return Pointer to Moon celestial object
@@ -66,7 +66,7 @@ class Moon : public Celestial
     /// @brief Default Moon model (Spherical)
     ///
     /// @code
-    ///     Moon moon = Moon::Default() ;
+    ///     Moon moon = Moon::Default();
     /// @endcode
     ///
     /// @return Moon
@@ -75,7 +75,7 @@ class Moon : public Celestial
     /// @brief Spherical model
     ///
     /// @code
-    ///     Moon moon = Moon::Spherical() ;
+    ///     Moon moon = Moon::Spherical();
     /// @endcode
     ///
     /// @return Moon

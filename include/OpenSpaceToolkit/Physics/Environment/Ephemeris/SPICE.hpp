@@ -55,7 +55,7 @@ class SPICE : public Ephemeris
     /// @brief Constructor
     ///
     /// @code
-    ///     SPICE spice = SPICE(SPICE::Object::Earth) ;
+    ///     SPICE spice = SPICE(SPICE::Object::Earth);
     /// @endcode
     ///
     /// @param [in] anObject A SPICE object
@@ -75,8 +75,8 @@ class SPICE : public Ephemeris
     /// @brief Returns true if SPICE is defined
     ///
     /// @code
-    ///     SPICE spice = SPICE(SPICE::Object::Earth) ;
-    ///     spice.isDefined() ; // True
+    ///     SPICE spice = SPICE(SPICE::Object::Earth);
+    ///     spice.isDefined(); // True
     /// @endcode
     ///
     /// @return True if SPICE is defined
@@ -86,8 +86,8 @@ class SPICE : public Ephemeris
     /// @brief Access frame of SPICE object
     ///
     /// @code
-    ///     SPICE spice = SPICE(SPICE::Object::Earth) ;
-    ///     Shared<const Frame> frame = spice.accessFrame() ;
+    ///     SPICE spice = SPICE(SPICE::Object::Earth);
+    ///     Shared<const Frame> frame = spice.accessFrame();
     /// @endcode
     ///
     /// @return Shared pointer to frame
@@ -97,7 +97,7 @@ class SPICE : public Ephemeris
     /// @brief Convert SPICE object to string
     ///
     /// @code
-    ///     String str = SPICE::StringFromObject(SPICE::Object::Earth) ; // "Earth"
+    ///     String str = SPICE::StringFromObject(SPICE::Object::Earth); // "Earth"
     /// @endcode
     ///
     /// @param [in] anObject A SPICE object

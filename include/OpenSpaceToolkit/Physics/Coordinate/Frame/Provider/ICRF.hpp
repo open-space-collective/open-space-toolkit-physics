@@ -32,7 +32,7 @@ class ICRF : public Provider
     /// @brief Default constructor.
     ///
     /// @code
-    ///     ICRF provider ;
+    ///     ICRF provider;
     /// @endcode
     ICRF();
 
@@ -42,7 +42,7 @@ class ICRF : public Provider
     /// @brief Clone the ICRF provider.
     ///
     /// @code
-    ///     ICRF* clonePtr = provider.clone() ;
+    ///     ICRF* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned ICRF provider
@@ -51,7 +51,7 @@ class ICRF : public Provider
     /// @brief Check if the ICRF provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the ICRF provider is defined
@@ -60,7 +60,7 @@ class ICRF : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

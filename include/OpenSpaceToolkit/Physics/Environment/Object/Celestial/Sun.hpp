@@ -44,7 +44,7 @@ class Sun : public Celestial
     /// @brief Constructor
     ///
     /// @code
-    ///     Sun sun(ephemeris, gravModel) ;
+    ///     Sun sun(ephemeris, gravModel);
     /// @endcode
     ///
     /// @param [in] anEphemeris An ephemeris for the Sun celestial object
@@ -57,7 +57,7 @@ class Sun : public Celestial
     /// @brief Clone the Sun celestial object
     ///
     /// @code
-    ///     Sun* sunPtr = sun.clone() ;
+    ///     Sun* sunPtr = sun.clone();
     /// @endcode
     ///
     /// @return Pointer to Sun celestial object
@@ -66,7 +66,7 @@ class Sun : public Celestial
     /// @brief Default Sun model (Spherical)
     ///
     /// @code
-    ///     Sun sun = Sun::Default() ;
+    ///     Sun sun = Sun::Default();
     /// @endcode
     ///
     /// @return Sun
@@ -75,7 +75,7 @@ class Sun : public Celestial
     /// @brief Spherical model
     ///
     /// @code
-    ///     Sun sun = Sun::Spherical() ;
+    ///     Sun sun = Sun::Spherical();
     /// @endcode
     ///
     /// @return Sun

@@ -23,7 +23,7 @@ using ostk::physics::time::Instant;
 /// @brief Get the instant at which a file was last modified.
 ///
 /// @code
-///     Instant instant = utilities::getFileModifiedInstant(file) ;
+///     Instant instant = utilities::getFileModifiedInstant(file);
 /// @endcode
 ///
 /// @param [in] aFile A file

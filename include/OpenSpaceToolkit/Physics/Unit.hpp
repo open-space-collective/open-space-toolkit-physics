@@ -54,7 +54,7 @@ class Unit
     /// @brief Copy constructor.
     ///
     /// @code
-    ///     Unit unit(Unit::Length(unit::Length::Unit::Meter)) ;
+    ///     Unit unit(Unit::Length(unit::Length::Unit::Meter));
     /// @endcode
     ///
     /// @param [in] aUnit A unit to copy
@@ -64,7 +64,7 @@ class Unit
     /// @brief Copy assignment operator.
     ///
     /// @code
-    ///     Unit unit = Unit::Length(unit::Length::Unit::Meter) ;
+    ///     Unit unit = Unit::Length(unit::Length::Unit::Meter);
     /// @endcode
     ///
     /// @param [in] aUnit A unit to copy
@@ -75,7 +75,7 @@ class Unit
     /// @brief Equal to operator.
     ///
     /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter) == Unit::Length(unit::Length::Unit::Meter) ; // True
+    ///     Unit::Length(unit::Length::Unit::Meter) == Unit::Length(unit::Length::Unit::Meter); // True
     /// @endcode
     ///
     /// @param [in] aUnit A unit to compare with
@@ -86,7 +86,7 @@ class Unit
     /// @brief Not equal to operator.
     ///
     /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter) != Unit::None() ; // True
+    ///     Unit::Length(unit::Length::Unit::Meter) != Unit::None(); // True
     /// @endcode
     ///
     /// @param [in] aUnit A unit to compare with
@@ -97,7 +97,7 @@ class Unit
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << Unit::Length(unit::Length::Unit::Meter) ;
+    ///     std::cout << Unit::Length(unit::Length::Unit::Meter);
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -109,7 +109,7 @@ class Unit
     /// @brief Check if the unit is defined.
     ///
     /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter).isDefined() ; // True
+    ///     Unit::Length(unit::Length::Unit::Meter).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -119,7 +119,7 @@ class Unit
     /// @brief Check if the unit is none.
     ///
     /// @code
-    ///     Unit::None().isNone() ; // True
+    ///     Unit::None().isNone(); // True
     /// @endcode
     ///
     /// @return True if none
@@ -129,7 +129,7 @@ class Unit
     /// @brief Get the unit type.
     ///
     /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter).getType() ; // Unit::Type::Length
+    ///     Unit::Length(unit::Length::Unit::Meter).getType(); // Unit::Type::Length
     /// @endcode
     ///
     /// @return The unit type
@@ -139,7 +139,7 @@ class Unit
     /// @brief Get the conversion ratio to another unit.
     ///
     /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter).ratioTo(Unit::Length(unit::Length::Unit::Meter)) ; // 1.0
+    ///     Unit::Length(unit::Length::Unit::Meter).ratioTo(Unit::Length(unit::Length::Unit::Meter)); // 1.0
     /// @endcode
     ///
     /// @param [in] aUnit A unit to convert to
@@ -150,7 +150,7 @@ class Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter).toString() ;
+    ///     Unit::Length(unit::Length::Unit::Meter).toString();
     /// @endcode
     ///
     /// @return A string representation
@@ -160,7 +160,7 @@ class Unit
     /// @brief Construct an undefined unit.
     ///
     /// @code
-    ///     Unit unit = Unit::Undefined() ;
+    ///     Unit unit = Unit::Undefined();
     /// @endcode
     ///
     /// @return An undefined unit
@@ -170,7 +170,7 @@ class Unit
     /// @brief Construct a dimensionless (none) unit.
     ///
     /// @code
-    ///     Unit unit = Unit::None() ;
+    ///     Unit unit = Unit::None();
     /// @endcode
     ///
     /// @return A dimensionless unit
@@ -180,7 +180,7 @@ class Unit
     /// @brief Construct a length unit.
     ///
     /// @code
-    ///     Unit unit = Unit::Length(unit::Length::Unit::Meter) ;
+    ///     Unit unit = Unit::Length(unit::Length::Unit::Meter);
     /// @endcode
     ///
     /// @param [in] aLengthUnit A length unit
@@ -191,7 +191,7 @@ class Unit
     /// @brief Construct a derived unit.
     ///
     /// @code
-    ///     Unit unit = Unit::Derived(unit::Derived::Unit::MeterPerSecond()) ;
+    ///     Unit unit = Unit::Derived(unit::Derived::Unit::MeterPerSecond());
     /// @endcode
     ///
     /// @param [in] aDerivedUnit A derived unit
@@ -202,7 +202,7 @@ class Unit
     /// @brief Get the string representation of a unit type.
     ///
     /// @code
-    ///     Unit::StringFromType(Unit::Type::Length) ; // "Length"
+    ///     Unit::StringFromType(Unit::Type::Length); // "Length"
     /// @endcode
     ///
     /// @param [in] aType A unit type

@@ -35,7 +35,7 @@ class CIRF : public Provider
     /// @brief Default constructor.
     ///
     /// @code
-    ///     CIRF provider ;
+    ///     CIRF provider;
     /// @endcode
     CIRF();
 
@@ -45,7 +45,7 @@ class CIRF : public Provider
     /// @brief Clone the CIRF provider.
     ///
     /// @code
-    ///     CIRF* clonePtr = provider.clone() ;
+    ///     CIRF* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned CIRF provider
@@ -54,7 +54,7 @@ class CIRF : public Provider
     /// @brief Check if the CIRF provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the CIRF provider is defined
@@ -63,7 +63,7 @@ class CIRF : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

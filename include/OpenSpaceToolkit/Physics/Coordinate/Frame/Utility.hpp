@@ -29,7 +29,7 @@ using ostk::physics::unit::Length;
 /// @brief North-East-Down (NED) frame
 ///
 /// @code
-///     Transform transform = NorthEastDownTransformAt(lla, equatorialRadius, flattening) ;
+///     Transform transform = NorthEastDownTransformAt(lla, equatorialRadius, flattening);
 /// @endcode
 ///
 /// @ref https://en.wikipedia.org/wiki/North_east_down

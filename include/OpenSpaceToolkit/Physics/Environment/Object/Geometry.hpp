@@ -40,7 +40,7 @@ class Geometry
     /// @brief Constructor
     ///
     /// @code
-    ///     Geometry geometry = Geometry(anObject, Frame::GCRF()) ;
+    ///     Geometry geometry = Geometry(anObject, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] anObject An object
@@ -50,7 +50,7 @@ class Geometry
     /// @brief Constructor
     ///
     /// @code
-    ///     Geometry geometry = Geometry(aComposite, Frame::GCRF()) ;
+    ///     Geometry geometry = Geometry(aComposite, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aComposite A composite
@@ -71,9 +71,9 @@ class Geometry
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Geometry geometryA = Geometry::Undefined() ;
-    ///     Geometry geometryB = Geometry::Undefined() ;
-    ///     geometryA == geometryB ;
+    ///     Geometry geometryA = Geometry::Undefined();
+    ///     Geometry geometryB = Geometry::Undefined();
+    ///     geometryA == geometryB;
     /// @endcode
     ///
     /// @param [in] aGeometry A geometry
@@ -84,9 +84,9 @@ class Geometry
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Geometry geometryA = Geometry::Undefined() ;
-    ///     Geometry geometryB = Geometry::Undefined() ;
-    ///     geometryA != geometryB ;
+    ///     Geometry geometryA = Geometry::Undefined();
+    ///     Geometry geometryB = Geometry::Undefined();
+    ///     geometryA != geometryB;
     /// @endcode
     ///
     /// @param [in] aGeometry A geometry
@@ -103,8 +103,8 @@ class Geometry
     /// @brief Check if geometry is defined
     ///
     /// @code
-    ///     Geometry geometry = Geometry::Undefined() ;
-    ///     geometry.isDefined() ; // False
+    ///     Geometry geometry = Geometry::Undefined();
+    ///     geometry.isDefined(); // False
     /// @endcode
     ///
     /// @return True if geometry is defined
@@ -113,7 +113,7 @@ class Geometry
     /// @brief Print geometry to output stream
     ///
     /// @code
-    ///     geometry.print(std::cout) ;
+    ///     geometry.print(std::cout);
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -124,7 +124,7 @@ class Geometry
     /// @brief Check if geometry intersects another geometry
     ///
     /// @code
-    ///     geometryA.intersects(geometryB) ;
+    ///     geometryA.intersects(geometryB);
     /// @endcode
     ///
     /// @param [in] aGeometry A geometry
@@ -134,7 +134,7 @@ class Geometry
     /// @brief Check if geometry contains another geometry
     ///
     /// @code
-    ///     geometryA.contains(geometryB) ;
+    ///     geometryA.contains(geometryB);
     /// @endcode
     ///
     /// @param [in] aGeometry A geometry
@@ -144,7 +144,7 @@ class Geometry
     /// @brief Access composite
     ///
     /// @code
-    ///     const Composite& composite = geometry.accessComposite() ;
+    ///     const Composite& composite = geometry.accessComposite();
     /// @endcode
     ///
     /// @return Reference to composite
@@ -153,7 +153,7 @@ class Geometry
     /// @brief Access frame
     ///
     /// @code
-    ///     Shared<const Frame> frame = geometry.accessFrame() ;
+    ///     Shared<const Frame> frame = geometry.accessFrame();
     /// @endcode
     ///
     /// @return Shared pointer to frame
@@ -162,7 +162,7 @@ class Geometry
     /// @brief Get geometry expressed in a given frame
     ///
     /// @code
-    ///     Geometry transformed = geometry.in(Frame::ITRF(), anInstant) ;
+    ///     Geometry transformed = geometry.in(Frame::ITRF(), anInstant);
     /// @endcode
     ///
     /// @param [in] aFrameSPtr A shared pointer to frame
@@ -173,7 +173,7 @@ class Geometry
     /// @brief Compute intersection of geometry with another geometry
     ///
     /// @code
-    ///     Geometry intersection = geometryA.intersectionWith(geometryB) ;
+    ///     Geometry intersection = geometryA.intersectionWith(geometryB);
     /// @endcode
     ///
     /// @param [in] aGeometry A geometry
@@ -183,7 +183,7 @@ class Geometry
     /// @brief Constructs an undefined geometry
     ///
     /// @code
-    ///     Geometry geometry = Geometry::Undefined() ; // Undefined
+    ///     Geometry geometry = Geometry::Undefined(); // Undefined
     /// @endcode
     ///
     /// @return Undefined geometry

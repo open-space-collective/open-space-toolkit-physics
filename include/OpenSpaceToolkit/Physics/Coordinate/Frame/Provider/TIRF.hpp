@@ -34,7 +34,7 @@ class TIRF : public Provider
     /// @brief Default constructor.
     ///
     /// @code
-    ///     TIRF provider ;
+    ///     TIRF provider;
     /// @endcode
     TIRF();
 
@@ -44,7 +44,7 @@ class TIRF : public Provider
     /// @brief Clone the TIRF provider.
     ///
     /// @code
-    ///     TIRF* clonePtr = provider.clone() ;
+    ///     TIRF* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned TIRF provider
@@ -53,7 +53,7 @@ class TIRF : public Provider
     /// @brief Check if the TIRF provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the TIRF provider is defined
@@ -62,7 +62,7 @@ class TIRF : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

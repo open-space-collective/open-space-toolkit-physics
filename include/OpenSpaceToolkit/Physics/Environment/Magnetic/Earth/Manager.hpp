@@ -57,7 +57,7 @@ class Manager : public BaseManager
     /// @brief Returns true if manager has data file for the given model type
     ///
     /// @code
-    ///     bool hasFiles = Manager::Get().hasDataFilesForType(EarthMagneticModel::Type::EMM2017) ;
+    ///     bool hasFiles = Manager::Get().hasDataFilesForType(EarthMagneticModel::Type::EMM2017);
     /// @endcode
     ///
     /// @param [in] aModelType A model type
@@ -67,7 +67,7 @@ class Manager : public BaseManager
     /// @brief Returns array of file objects for the given type
     ///
     /// @code
-    ///     Array<File> files = Manager::Get().localDataFilesForType(EarthMagneticModel::Type::EMM2017) ;
+    ///     Array<File> files = Manager::Get().localDataFilesForType(EarthMagneticModel::Type::EMM2017);
     /// @endcode
     ///
     /// @param [in] aModelType A model type
@@ -77,7 +77,7 @@ class Manager : public BaseManager
     /// @brief Fetch data file from remote
     ///
     /// @code
-    ///     Manager::Get().fetchDataFilesForType(EarthMagneticModel::Type::EMM2017) ;
+    ///     Manager::Get().fetchDataFilesForType(EarthMagneticModel::Type::EMM2017);
     /// @endcode
     ///
     /// @param [in] aModelType A model type
@@ -86,7 +86,7 @@ class Manager : public BaseManager
     /// @brief Get manager singleton
     ///
     /// @code
-    ///     Manager& manager = Manager::Get() ;
+    ///     Manager& manager = Manager::Get();
     /// @endcode
     ///
     /// @return Reference to manager

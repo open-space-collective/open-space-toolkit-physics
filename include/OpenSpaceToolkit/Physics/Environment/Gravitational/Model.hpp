@@ -45,7 +45,7 @@ class Model
         /// @brief Constructor.
         ///
         /// @code
-        ///     Parameters params(gravitationalParameter, equatorialRadius, flattening, C20, C40) ;
+        ///     Parameters params(gravitationalParameter, equatorialRadius, flattening, C20, C40);
         /// @endcode
         ///
         /// @param [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
@@ -64,7 +64,7 @@ class Model
         /// @brief Constructor.
         ///
         /// @code
-        ///     Parameters params(gravitationalParameter, equatorialRadius, flattening, C20, C30, C40) ;
+        ///     Parameters params(gravitationalParameter, equatorialRadius, flattening, C20, C30, C40);
         /// @endcode
         ///
         /// @param [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
@@ -85,7 +85,7 @@ class Model
         /// @brief Equal to operator.
         ///
         /// @code
-        ///     bool isEqual = (params1 == params2) ;
+        ///     bool isEqual = (params1 == params2);
         /// @endcode
         ///
         /// @param [in] aParameterSet A parameter set
@@ -95,7 +95,7 @@ class Model
         /// @brief Not equal to operator.
         ///
         /// @code
-        ///     bool isNotEqual = (params1 != params2) ;
+        ///     bool isNotEqual = (params1 != params2);
         /// @endcode
         ///
         /// @param [in] aParameterSet A parameter set
@@ -105,7 +105,7 @@ class Model
         /// @brief Output stream operator.
         ///
         /// @code
-        ///     std::cout << params ;
+        ///     std::cout << params;
         /// @endcode
         ///
         /// @param [in] anOutputStream An output stream
@@ -116,7 +116,7 @@ class Model
         /// @brief Check if the parameter set is defined.
         ///
         /// @code
-        ///     bool isDefined = params.isDefined() ;
+        ///     bool isDefined = params.isDefined();
         /// @endcode
         ///
         /// @return True if the parameter set is defined
@@ -125,7 +125,7 @@ class Model
         /// @brief Construct an undefined parameter set.
         ///
         /// @code
-        ///     Parameters params = Parameters::Undefined() ;
+        ///     Parameters params = Parameters::Undefined();
         /// @endcode
         ///
         /// @return An undefined parameter set
@@ -134,7 +134,7 @@ class Model
         /// @brief Compute geocentric radius of ellipsoid at a given latitude.
         ///
         /// @code
-        ///     Length radius = params.computeGeocentricRadiusAt(latitude) ;
+        ///     Length radius = params.computeGeocentricRadiusAt(latitude);
         /// @endcode
         ///
         /// @param [in] aLatitude A latitude
@@ -155,7 +155,7 @@ class Model
     /// @brief Constructor (default)
     ///
     /// @code
-    ///     Model model(parameters) ;
+    ///     Model model(parameters);
     /// @endcode
     Model(const Parameters& aSetOfParameters);
 
@@ -182,7 +182,7 @@ class Model
     /// @brief Get the gravitational model parameters.
     ///
     /// @code
-    ///     Parameters params = model.getParameters() ;
+    ///     Parameters params = model.getParameters();
     /// @endcode
     ///
     /// @return Gravitational model parameters

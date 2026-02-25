@@ -49,7 +49,7 @@ class Transform
     ///
     /// @code
     ///     Transform transform(Instant::J2000(), {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, Quaternion::Unit(), {0.0, 0.0, 0.0},
-    ///     Transform::Type::Passive) ;
+    ///     Transform::Type::Passive);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -70,7 +70,7 @@ class Transform
     /// @brief Equality operator
     ///
     /// @code
-    ///     transform == otherTransform ; // True
+    ///     transform == otherTransform; // True
     /// @endcode
     ///
     /// @param [in] aTransform A transform to compare with
@@ -80,7 +80,7 @@ class Transform
     /// @brief Inequality operator
     ///
     /// @code
-    ///     transform != otherTransform ; // False
+    ///     transform != otherTransform; // False
     /// @endcode
     ///
     /// @param [in] aTransform A transform to compare with
@@ -90,7 +90,7 @@ class Transform
     /// @brief Composition operator
     ///
     /// @code
-    ///     Transform composed = firstTransform * secondTransform ;
+    ///     Transform composed = firstTransform * secondTransform;
     /// @endcode
     ///
     /// @param [in] aTransform A transform to compose with
@@ -100,7 +100,7 @@ class Transform
     /// @brief Composition assignment operator
     ///
     /// @code
-    ///     transform *= otherTransform ;
+    ///     transform *= otherTransform;
     /// @endcode
     ///
     /// @param [in] aTransform A transform to compose with
@@ -110,7 +110,7 @@ class Transform
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << transform ;
+    ///     std::cout << transform;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -121,7 +121,7 @@ class Transform
     /// @brief Check if the transform is defined
     ///
     /// @code
-    ///     Transform::Undefined().isDefined() ; // False
+    ///     Transform::Undefined().isDefined(); // False
     /// @endcode
     ///
     /// @return True if the transform is defined
@@ -130,7 +130,7 @@ class Transform
     /// @brief Check if the transform is the identity transform
     ///
     /// @code
-    ///     Transform::Identity(Instant::J2000()).isIdentity() ; // True
+    ///     Transform::Identity(Instant::J2000()).isIdentity(); // True
     /// @endcode
     ///
     /// @return True if the transform is identity
@@ -139,7 +139,7 @@ class Transform
     /// @brief Access the instant
     ///
     /// @code
-    ///     transform.accessInstant() ;
+    ///     transform.accessInstant();
     /// @endcode
     ///
     /// @return Reference to the instant
@@ -148,7 +148,7 @@ class Transform
     /// @brief Access the translation vector
     ///
     /// @code
-    ///     transform.accessTranslation() ;
+    ///     transform.accessTranslation();
     /// @endcode
     ///
     /// @return Reference to the translation vector
@@ -157,7 +157,7 @@ class Transform
     /// @brief Access the velocity vector
     ///
     /// @code
-    ///     transform.accessVelocity() ;
+    ///     transform.accessVelocity();
     /// @endcode
     ///
     /// @return Reference to the velocity vector
@@ -166,7 +166,7 @@ class Transform
     /// @brief Access the orientation quaternion
     ///
     /// @code
-    ///     transform.accessOrientation() ;
+    ///     transform.accessOrientation();
     /// @endcode
     ///
     /// @return Reference to the orientation quaternion
@@ -175,7 +175,7 @@ class Transform
     /// @brief Access the angular velocity vector
     ///
     /// @code
-    ///     transform.accessAngularVelocity() ;
+    ///     transform.accessAngularVelocity();
     /// @endcode
     ///
     /// @return Reference to the angular velocity vector
@@ -184,7 +184,7 @@ class Transform
     /// @brief Get the instant
     ///
     /// @code
-    ///     transform.getInstant() ;
+    ///     transform.getInstant();
     /// @endcode
     ///
     /// @return Instant
@@ -193,7 +193,7 @@ class Transform
     /// @brief Get the translation vector
     ///
     /// @code
-    ///     transform.getTranslation() ;
+    ///     transform.getTranslation();
     /// @endcode
     ///
     /// @return Translation vector
@@ -202,7 +202,7 @@ class Transform
     /// @brief Get the velocity vector
     ///
     /// @code
-    ///     transform.getVelocity() ;
+    ///     transform.getVelocity();
     /// @endcode
     ///
     /// @return Velocity vector
@@ -211,7 +211,7 @@ class Transform
     /// @brief Get the orientation quaternion
     ///
     /// @code
-    ///     transform.getOrientation() ;
+    ///     transform.getOrientation();
     /// @endcode
     ///
     /// @return Orientation quaternion
@@ -220,7 +220,7 @@ class Transform
     /// @brief Get the angular velocity vector
     ///
     /// @code
-    ///     transform.getAngularVelocity() ;
+    ///     transform.getAngularVelocity();
     /// @endcode
     ///
     /// @return Angular velocity vector
@@ -229,7 +229,7 @@ class Transform
     /// @brief Get the inverse of the transform
     ///
     /// @code
-    ///     Transform inverse = transform.getInverse() ;
+    ///     Transform inverse = transform.getInverse();
     /// @endcode
     ///
     /// @return Inverse transform
@@ -238,7 +238,7 @@ class Transform
     /// @brief Apply the transform to a position vector
     ///
     /// @code
-    ///     Vector3d result = transform.applyToPosition({7000000.0, 0.0, 0.0}) ;
+    ///     Vector3d result = transform.applyToPosition({7000000.0, 0.0, 0.0});
     /// @endcode
     ///
     /// @param [in] aPosition A position vector
@@ -248,7 +248,7 @@ class Transform
     /// @brief Apply the transform to a velocity vector
     ///
     /// @code
-    ///     Vector3d result = transform.applyToVelocity({7000000.0, 0.0, 0.0}, {0.0, 7546.0, 0.0}) ;
+    ///     Vector3d result = transform.applyToVelocity({7000000.0, 0.0, 0.0}, {0.0, 7546.0, 0.0});
     /// @endcode
     ///
     /// @param [in] aPosition A position vector
@@ -259,7 +259,7 @@ class Transform
     /// @brief Apply the transform rotation to a vector
     ///
     /// @code
-    ///     Vector3d result = transform.applyToVector({1.0, 0.0, 0.0}) ;
+    ///     Vector3d result = transform.applyToVector({1.0, 0.0, 0.0});
     /// @endcode
     ///
     /// @param [in] aVector A vector
@@ -269,7 +269,7 @@ class Transform
     /// @brief Construct an undefined transform
     ///
     /// @code
-    ///     Transform transform = Transform::Undefined() ;
+    ///     Transform transform = Transform::Undefined();
     /// @endcode
     ///
     /// @return Undefined transform
@@ -278,7 +278,7 @@ class Transform
     /// @brief Construct an identity transform at a given instant
     ///
     /// @code
-    ///     Transform transform = Transform::Identity(Instant::J2000()) ;
+    ///     Transform transform = Transform::Identity(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -289,7 +289,7 @@ class Transform
     ///
     /// @code
     ///     Transform transform = Transform::Active(Instant::J2000(), {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
-    ///     Quaternion::Unit(), {0.0, 0.0, 0.0}) ;
+    ///     Quaternion::Unit(), {0.0, 0.0, 0.0});
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -310,7 +310,7 @@ class Transform
     ///
     /// @code
     ///     Transform transform = Transform::Passive(Instant::J2000(), {1.0, 0.0, 0.0}, {0.0, 0.0, 0.0},
-    ///     Quaternion::Unit(), {0.0, 0.0, 0.0}) ;
+    ///     Quaternion::Unit(), {0.0, 0.0, 0.0});
     /// @endcode
     ///
     /// @param [in] anInstant An instant

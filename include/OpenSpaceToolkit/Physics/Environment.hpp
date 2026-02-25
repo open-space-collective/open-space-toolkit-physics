@@ -35,7 +35,7 @@ class Environment
     /// @brief Constructor
     ///
     /// @code
-    ///     Environment env = Environment(Instant::J2000(), {}) ;
+    ///     Environment env = Environment(Instant::J2000(), {});
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -51,7 +51,7 @@ class Environment
     /// @brief Constructor
     ///
     /// @code
-    ///     Environment env = Environment(earthSPtr, {earthSPtr, sunSPtr, moonSPtr}) ;
+    ///     Environment env = Environment(earthSPtr, {earthSPtr, sunSPtr, moonSPtr});
     /// @endcode
     ///
     /// @param [in] aCentralCelestialObject A central body
@@ -76,8 +76,8 @@ class Environment
     /// @brief Check if environment is defined
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     env.isDefined() ; // True
+    ///     Environment env = Environment::Default();
+    ///     env.isDefined(); // True
     /// @endcode
     ///
     /// @return True if environment is defined
@@ -86,8 +86,8 @@ class Environment
     /// @brief Returns true if environment contains objects with a given name
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     env.hasObjectWithName("Earth") ; // True
+    ///     Environment env = Environment::Default();
+    ///     env.hasObjectWithName("Earth"); // True
     /// @endcode
     ///
     /// @param [in] aName An object name
@@ -97,8 +97,8 @@ class Environment
     /// @brief Has central celestial
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     env.hasCentralCelestialObject() ; // True
+    ///     Environment env = Environment::Default();
+    ///     env.hasCentralCelestialObject(); // True
     /// @endcode
     ///
     /// @return True if environment has central celestial
@@ -107,8 +107,8 @@ class Environment
     /// @brief Is position in eclipse
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     env.isPositionInEclipse(aPosition) ;
+    ///     Environment env = Environment::Default();
+    ///     env.isPositionInEclipse(aPosition);
     /// @endcode
     ///
     /// @param [in] aPosition A position
@@ -119,8 +119,8 @@ class Environment
     /// @brief Access objects
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     Array<Shared<const Object>> objects = env.accessObjects() ;
+    ///     Environment env = Environment::Default();
+    ///     Array<Shared<const Object>> objects = env.accessObjects();
     /// @endcode
     ///
     /// @return Reference to array of shared pointers to objects
@@ -129,8 +129,8 @@ class Environment
     /// @brief Access object with a given name
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     Shared<const Object> earth = env.accessObjectWithName("Earth") ;
+    ///     Environment env = Environment::Default();
+    ///     Shared<const Object> earth = env.accessObjectWithName("Earth");
     /// @endcode
     ///
     /// @param [in] aName An object name
@@ -140,8 +140,8 @@ class Environment
     /// @brief Access celestial object with a given name
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     Shared<const Celestial> earth = env.accessCelestialObjectWithName("Earth") ;
+    ///     Environment env = Environment::Default();
+    ///     Shared<const Celestial> earth = env.accessCelestialObjectWithName("Earth");
     /// @endcode
     ///
     /// @param [in] aName A celestial object name
@@ -151,8 +151,8 @@ class Environment
     /// @brief Access central celestial
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     Shared<const Celestial> central = env.accessCentralCelestialObject() ;
+    ///     Environment env = Environment::Default();
+    ///     Shared<const Celestial> central = env.accessCentralCelestialObject();
     /// @endcode
     ///
     /// @return Shared pointer to central celestial
@@ -161,8 +161,8 @@ class Environment
     /// @brief Get instant
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     Instant instant = env.getInstant() ;
+    ///     Environment env = Environment::Default();
+    ///     Instant instant = env.getInstant();
     /// @endcode
     ///
     /// @return Instant
@@ -171,8 +171,8 @@ class Environment
     /// @brief Get names of objects
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     Array<String> names = env.getObjectNames() ;
+    ///     Environment env = Environment::Default();
+    ///     Array<String> names = env.getObjectNames();
     /// @endcode
     ///
     /// @return Array of objects names
@@ -181,8 +181,8 @@ class Environment
     /// @brief Set instant
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     env.setInstant(Instant::Now()) ;
+    ///     Environment env = Environment::Default();
+    ///     env.setInstant(Instant::Now());
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -191,8 +191,8 @@ class Environment
     /// @brief Returns true if a given geometry intersects any of the environment objects
     ///
     /// @code
-    ///     Environment env = Environment::Default() ;
-    ///     env.intersects(aGeometry) ;
+    ///     Environment env = Environment::Default();
+    ///     env.intersects(aGeometry);
     /// @endcode
     ///
     /// @param [in] aGeometry A geometry
@@ -206,8 +206,8 @@ class Environment
     /// @brief Constructs an undefined environment
     ///
     /// @code
-    ///     Environment environment = Environment::Undefined() ;
-    ///     environment.isDefined() ; // False
+    ///     Environment environment = Environment::Undefined();
+    ///     environment.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined environment
@@ -228,14 +228,14 @@ class Environment
     /// @brief Reset the singleton instance of the environment to null
     ///
     /// @code
-    ///     Environment::ResetGlobalInstance() ;
+    ///     Environment::ResetGlobalInstance();
     /// @endcode
     static void ResetGlobalInstance();
 
     /// @brief Get the singleton instance of the environment
     ///
     /// @code
-    ///     Shared<Environment> env = Environment::AccessGlobalInstance() ;
+    ///     Shared<Environment> env = Environment::AccessGlobalInstance();
     /// @endcode
     ///
     /// @return Shared pointer to the singleton instance
@@ -244,7 +244,7 @@ class Environment
     /// @brief Checks if the global instance is set
     ///
     /// @code
-    ///     Environment::HasGlobalInstance() ; // False
+    ///     Environment::HasGlobalInstance(); // False
     /// @endcode
     ///
     /// @return True if the global instance is set

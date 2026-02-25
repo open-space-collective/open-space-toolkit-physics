@@ -45,7 +45,7 @@ class Manager
     /// @brief Check if a frame with the given name exists.
     ///
     /// @code
-    ///     Manager::Get().hasFrameWithName("GCRF") ; // True
+    ///     Manager::Get().hasFrameWithName("GCRF"); // True
     /// @endcode
     ///
     /// @param [in] aFrameName A frame name
@@ -56,7 +56,7 @@ class Manager
     /// @brief Access frame with the given name.
     ///
     /// @code
-    ///     Shared<const Frame> frameSPtr = Manager::Get().accessFrameWithName("GCRF") ;
+    ///     Shared<const Frame> frameSPtr = Manager::Get().accessFrameWithName("GCRF");
     /// @endcode
     ///
     /// @param [in] aFrameName A frame name
@@ -67,7 +67,7 @@ class Manager
     /// @brief Get names of all registered frames.
     ///
     /// @code
-    ///     Array<String> frameNames = Manager::Get().getAllFrameNames() ;
+    ///     Array<String> frameNames = Manager::Get().getAllFrameNames();
     /// @endcode
     ///
     /// @return Array of frame names
@@ -77,7 +77,7 @@ class Manager
     /// @brief Access a cached transform between two frames at a given instant.
     ///
     /// @code
-    ///     Transform transform = Manager::Get().accessCachedTransform(fromFrameSPtr, toFrameSPtr, instant) ;
+    ///     Transform transform = Manager::Get().accessCachedTransform(fromFrameSPtr, toFrameSPtr, instant);
     /// @endcode
     ///
     /// @param [in] aFromFrameSPtr A shared pointer to the source frame
@@ -92,7 +92,7 @@ class Manager
     /// @brief Add a frame to the manager.
     ///
     /// @code
-    ///     Manager::Get().addFrame(frameSPtr) ;
+    ///     Manager::Get().addFrame(frameSPtr);
     /// @endcode
     ///
     /// @param [in] aFrameSPtr A shared pointer to the frame
@@ -102,7 +102,7 @@ class Manager
     /// @brief Remove a frame with the given name.
     ///
     /// @code
-    ///     Manager::Get().removeFrameWithName("MyCustomFrame") ;
+    ///     Manager::Get().removeFrameWithName("MyCustomFrame");
     /// @endcode
     ///
     /// @param [in] aFrameName A frame name
@@ -112,7 +112,7 @@ class Manager
     /// @brief Remove all registered frames.
     ///
     /// @code
-    ///     Manager::Get().clearAllFrames() ;
+    ///     Manager::Get().clearAllFrames();
     /// @endcode
 
     void clearAllFrames();
@@ -120,7 +120,7 @@ class Manager
     /// @brief Add a transform to the cache.
     ///
     /// @code
-    ///     Manager::Get().addCachedTransform(fromFrameSPtr, toFrameSPtr, instant, transform) ;
+    ///     Manager::Get().addCachedTransform(fromFrameSPtr, toFrameSPtr, instant, transform);
     /// @endcode
     ///
     /// @param [in] aFromFrameSPtr A shared pointer to the source frame
@@ -138,7 +138,7 @@ class Manager
     /// @brief Get the manager singleton.
     ///
     /// @code
-    ///     Manager& manager = Manager::Get() ;
+    ///     Manager& manager = Manager::Get();
     /// @endcode
     ///
     /// @return Reference to the manager

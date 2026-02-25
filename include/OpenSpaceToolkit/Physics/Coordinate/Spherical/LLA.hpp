@@ -62,7 +62,7 @@ class LLA
     /// @brief Constructs an LLA (Latitude, Longitude, Altitude) object.
     ///
     /// @code
-    ///     LLA lla(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0)) ;
+    ///     LLA lla(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0));
     /// @endcode
     ///
     /// @param aLatitude Latitude angle.
@@ -74,7 +74,7 @@ class LLA
     /// @brief Equality operator.
     ///
     /// @code
-    ///     lla == otherLLA ; // True
+    ///     lla == otherLLA; // True
     /// @endcode
     ///
     /// @param aLLA Another LLA object to compare with.
@@ -85,7 +85,7 @@ class LLA
     /// @brief Inequality operator.
     ///
     /// @code
-    ///     lla != otherLLA ; // False
+    ///     lla != otherLLA; // False
     /// @endcode
     ///
     /// @param aLLA Another LLA object to compare with.
@@ -96,7 +96,7 @@ class LLA
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << lla ;
+    ///     std::cout << lla;
     /// @endcode
     ///
     /// @param anOutputStream Output stream.
@@ -108,7 +108,7 @@ class LLA
     /// @brief Checks if the LLA object is defined.
     ///
     /// @code
-    ///     LLA::Undefined().isDefined() ; // False
+    ///     LLA::Undefined().isDefined(); // False
     /// @endcode
     ///
     /// @return True if the LLA object is defined.
@@ -118,7 +118,7 @@ class LLA
     /// @brief Gets the latitude angle.
     ///
     /// @code
-    ///     lla.getLatitude() ;
+    ///     lla.getLatitude();
     /// @endcode
     ///
     /// @return Latitude angle.
@@ -128,7 +128,7 @@ class LLA
     /// @brief Gets the longitude angle.
     ///
     /// @code
-    ///     lla.getLongitude() ;
+    ///     lla.getLongitude();
     /// @endcode
     ///
     /// @return Longitude angle.
@@ -138,7 +138,7 @@ class LLA
     /// @brief Gets the altitude length.
     ///
     /// @code
-    ///     lla.getAltitude() ;
+    ///     lla.getAltitude();
     /// @endcode
     ///
     /// @return Altitude length.
@@ -148,7 +148,7 @@ class LLA
     /// @brief Returns an LLA object representing the position on the surface.
     ///
     /// @code
-    ///     lla.onSurface() ;
+    ///     lla.onSurface();
     /// @endcode
     ///
     /// @return An LLA object on the surface.
@@ -160,7 +160,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     lla.calculateDistanceTo(otherLLA) ;
+    ///     lla.calculateDistanceTo(otherLLA);
     /// @endcode
     ///
     /// @param [in] aLLA A LLA coordinate
@@ -178,7 +178,7 @@ class LLA
     /// Will use the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     lla.calculateAzimuthTo(otherLLA) ;
+    ///     lla.calculateAzimuthTo(otherLLA);
     /// @endcode
     ///
     /// @param [in] aLLA A LLA coordinate
@@ -197,7 +197,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     lla.calculateIntermediateTo(otherLLA, 0.5) ;
+    ///     lla.calculateIntermediateTo(otherLLA, 0.5);
     /// @endcode
     ///
     /// @param [in] aLLA A LLA coordinate
@@ -217,7 +217,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     lla.calculateForward(Angle::Degrees(90.0), Length::Meters(1000.0)) ;
+    ///     lla.calculateForward(Angle::Degrees(90.0), Length::Meters(1000.0));
     /// @endcode
     ///
     /// @param [in] aDirection An azimuth angle
@@ -237,7 +237,7 @@ class LLA
     /// interval. Will use the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     lla.calculateLinspaceTo(otherLLA, 10) ;
+    ///     lla.calculateLinspaceTo(otherLLA, 10);
     /// @endcode
     ///
     /// @param [in] aLLA A LLA coordinate
@@ -255,7 +255,7 @@ class LLA
     /// @brief Converts the LLA (Latitude, Longitude, Altitude) object to a 3D vector.
     ///
     /// @code
-    ///     lla.toVector() ;
+    ///     lla.toVector();
     /// @endcode
     ///
     /// @return 3D vector representation of the LLA object.
@@ -264,7 +264,7 @@ class LLA
     /// @brief Convert LLA coordinates to a 2D point
     ///
     /// @code
-    ///     lla.toPoint2d() ;
+    ///     lla.toPoint2d();
     /// @endcode
     ///
     /// @return 2D point (Longitude, Latitude)
@@ -274,7 +274,7 @@ class LLA
     /// @brief Convert LLA coordinates to a 3D point
     ///
     /// @code
-    ///     lla.toPoint3d() ;
+    ///     lla.toPoint3d();
     /// @endcode
     ///
     /// @return 3D point (Longitude, Latitude, Altitude)
@@ -284,7 +284,7 @@ class LLA
     /// @brief Converts the LLA (Latitude, Longitude, Altitude) object to Cartesian coordinates.
     ///
     /// @code
-    ///     lla.toCartesian(Length::Meters(6378137.0), 1.0 / 298.257223563) ;
+    ///     lla.toCartesian(Length::Meters(6378137.0), 1.0 / 298.257223563);
     /// @endcode
     ///
     /// @param [in] anEllipsoidEquatorialRadius Equatorial radius of the ellipsoid
@@ -298,7 +298,7 @@ class LLA
     /// @brief Converts the LLA (Latitude, Longitude, Altitude) object to a string representation.
     ///
     /// @code
-    ///     lla.toString() ;
+    ///     lla.toString();
     /// @endcode
     ///
     /// @return String representation of the LLA object.
@@ -307,7 +307,7 @@ class LLA
     /// @brief Constructs an undefined LLA (Latitude, Longitude, Altitude) object.
     ///
     /// @code
-    ///     LLA lla = LLA::Undefined() ;
+    ///     LLA lla = LLA::Undefined();
     /// @endcode
     ///
     /// @return Undefined LLA object.
@@ -316,7 +316,7 @@ class LLA
     /// @brief Constructs an LLA (Latitude, Longitude, Altitude) object from a 3D vector.
     ///
     /// @code
-    ///     LLA lla = LLA::Vector({0.0, 0.0, 0.0}) ;
+    ///     LLA lla = LLA::Vector({0.0, 0.0, 0.0});
     /// @endcode
     ///
     /// @param [in] aVector 3D vector representing the LLA coordinates.
@@ -326,7 +326,7 @@ class LLA
     /// @brief Constructs an LLA (Latitude, Longitude, Altitude) object from Cartesian coordinates.
     ///
     /// @code
-    ///     LLA lla = LLA::Cartesian({6378137.0, 0.0, 0.0}) ;
+    ///     LLA lla = LLA::Cartesian({6378137.0, 0.0, 0.0});
     /// @endcode
     ///
     /// @param [in] aCartesianCoordinateSet 3D vector representing the Cartesian coordinates.
@@ -343,7 +343,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     LLA::DistanceBetween(firstLLA, secondLLA) ;
+    ///     LLA::DistanceBetween(firstLLA, secondLLA);
     /// @endcode
     ///
     /// @param [in] aFirstLLA A first LLA coordinate
@@ -363,7 +363,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     LLA::AzimuthBetween(firstLLA, secondLLA) ;
+    ///     LLA::AzimuthBetween(firstLLA, secondLLA);
     /// @endcode
     ///
     /// @param [in] aFirstLLA A first LLA coordinate
@@ -383,7 +383,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     LLA::IntermediateBetween(firstLLA, secondLLA, 0.5) ;
+    ///     LLA::IntermediateBetween(firstLLA, secondLLA, 0.5);
     /// @endcode
     ///
     /// @param [in] aFirstLLA A first LLA coordinate
@@ -405,7 +405,7 @@ class LLA
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     LLA::Forward(lla, Angle::Degrees(90.0), Length::Meters(1000.0)) ;
+    ///     LLA::Forward(lla, Angle::Degrees(90.0), Length::Meters(1000.0));
     /// @endcode
     ///
     /// @param [in] aLLA A LLA coordinate
@@ -427,7 +427,7 @@ class LLA
     /// points. Will use the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
-    ///     LLA::Linspace(firstLLA, secondLLA, 10) ;
+    ///     LLA::Linspace(firstLLA, secondLLA, 10);
     /// @endcode
     ///
     /// @param [in] aFirstLLA A first LLA coordinate
@@ -449,7 +449,7 @@ class LLA
     /// central body from the global environment instance will be used if it's available.
     ///
     /// @code
-    ///     LLA lla = LLA::FromPosition(position) ;
+    ///     LLA lla = LLA::FromPosition(position);
     /// @endcode
     ///
     /// @param [in] aPosition A Position

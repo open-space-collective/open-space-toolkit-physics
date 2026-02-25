@@ -53,7 +53,7 @@ class Kernel
     /// @brief Constructor
     ///
     /// @code
-    ///     Kernel kernel = Kernel(Kernel::Type::SPK, File::Path(Path::Parse("/path/to/kernel.bsp"))) ;
+    ///     Kernel kernel = Kernel(Kernel::Type::SPK, File::Path(Path::Parse("/path/to/kernel.bsp")));
     /// @endcode
     ///
     /// @param [in] aType A kernel type
@@ -64,9 +64,9 @@ class Kernel
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Kernel kernelA = Kernel::Undefined() ;
-    ///     Kernel kernelB = Kernel::Undefined() ;
-    ///     kernelA == kernelB ;
+    ///     Kernel kernelA = Kernel::Undefined();
+    ///     Kernel kernelB = Kernel::Undefined();
+    ///     kernelA == kernelB;
     /// @endcode
     ///
     /// @param [in] aKernel A kernel
@@ -77,9 +77,9 @@ class Kernel
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Kernel kernelA = Kernel::Undefined() ;
-    ///     Kernel kernelB = Kernel::Undefined() ;
-    ///     kernelA != kernelB ;
+    ///     Kernel kernelA = Kernel::Undefined();
+    ///     Kernel kernelB = Kernel::Undefined();
+    ///     kernelA != kernelB;
     /// @endcode
     ///
     /// @param [in] aKernel A kernel
@@ -90,8 +90,8 @@ class Kernel
     /// @brief Returns true if kernel is defined
     ///
     /// @code
-    ///     Kernel kernel = Kernel::Undefined() ;
-    ///     kernel.isDefined() ; // False
+    ///     Kernel kernel = Kernel::Undefined();
+    ///     kernel.isDefined(); // False
     /// @endcode
     ///
     /// @return True if kernel is defined
@@ -101,8 +101,8 @@ class Kernel
     /// @brief Get kernel type
     ///
     /// @code
-    ///     Kernel kernel = Kernel::File(aFile) ;
-    ///     Kernel::Type type = kernel.getType() ;
+    ///     Kernel kernel = Kernel::File(aFile);
+    ///     Kernel::Type type = kernel.getType();
     /// @endcode
     ///
     /// @return Kernel type
@@ -112,8 +112,8 @@ class Kernel
     /// @brief Get kernel name
     ///
     /// @code
-    ///     Kernel kernel = Kernel::File(aFile) ;
-    ///     String name = kernel.getName() ;
+    ///     Kernel kernel = Kernel::File(aFile);
+    ///     String name = kernel.getName();
     /// @endcode
     ///
     /// @return Kernel name
@@ -123,8 +123,8 @@ class Kernel
     /// @brief Get kernel file
     ///
     /// @code
-    ///     Kernel kernel = Kernel::File(aFile) ;
-    ///     filesystem::File file = kernel.getFile() ;
+    ///     Kernel kernel = Kernel::File(aFile);
+    ///     filesystem::File file = kernel.getFile();
     /// @endcode
     ///
     /// @return Kernel file
@@ -134,8 +134,8 @@ class Kernel
     /// @brief Constructs an undefined kernel
     ///
     /// @code
-    ///     Kernel kernel = Kernel::Undefined() ;
-    ///     kernel.isDefined() ; // False
+    ///     Kernel kernel = Kernel::Undefined();
+    ///     kernel.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined kernel
@@ -145,7 +145,7 @@ class Kernel
     /// @brief Constructs a kernel from a file
     ///
     /// @code
-    ///     Kernel kernel = Kernel::File(filesystem::File::Path(Path::Parse("/path/to/de430.bsp"))) ;
+    ///     Kernel kernel = Kernel::File(filesystem::File::Path(Path::Parse("/path/to/de430.bsp")));
     /// @endcode
     ///
     /// @param [in] aFile A kernel file
@@ -156,7 +156,7 @@ class Kernel
     /// @brief Converts kernel type string to type
     ///
     /// @code
-    ///     Kernel::Type type = Kernel::TypeFromString("SPK") ;
+    ///     Kernel::Type type = Kernel::TypeFromString("SPK");
     /// @endcode
     ///
     /// @param [in] aType A kernel type string
@@ -167,7 +167,7 @@ class Kernel
     /// @brief Converts kernel type to string
     ///
     /// @code
-    ///     String str = Kernel::StringFromType(Kernel::Type::SPK) ; // "SPK"
+    ///     String str = Kernel::StringFromType(Kernel::Type::SPK); // "SPK"
     /// @endcode
     ///
     /// @param [in] aType A kernel type
@@ -178,7 +178,7 @@ class Kernel
     /// @brief Converts file extension to kernel type
     ///
     /// @code
-    ///     Kernel::Type type = Kernel::TypeFromFileExtension("bsp") ; // Kernel::Type::SPK
+    ///     Kernel::Type type = Kernel::TypeFromFileExtension("bsp"); // Kernel::Type::SPK
     /// @endcode
     ///
     /// @param [in] aFileExtension A file extension

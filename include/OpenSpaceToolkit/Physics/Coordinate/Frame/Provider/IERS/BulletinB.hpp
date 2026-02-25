@@ -64,7 +64,7 @@ class BulletinB
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << bulletinB ;
+    ///     std::cout << bulletinB;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -75,7 +75,7 @@ class BulletinB
     /// @brief true if defined
     ///
     /// @code
-    ///     bulletinB.isDefined() ; // True
+    ///     bulletinB.isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined.
@@ -84,7 +84,7 @@ class BulletinB
     /// @brief Undefined factory function
     ///
     /// @code
-    ///     BulletinB bulletinB = BulletinB::Undefined() ;
+    ///     BulletinB bulletinB = BulletinB::Undefined();
     /// @endcode
     ///
     /// @return Undefined Bulletin B object.
@@ -93,7 +93,7 @@ class BulletinB
     /// @brief Load Bulletin B from file
     ///
     /// @code
-    ///     BulletinB bulletinB = BulletinB::Load(file) ;
+    ///     BulletinB bulletinB = BulletinB::Load(file);
     /// @endcode
     ///
     /// @param [in] aFile A file.

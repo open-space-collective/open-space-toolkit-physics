@@ -47,7 +47,7 @@ class DateTime
     /// @brief Constructor
     ///
     /// @code
-    ///     DateTime dateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ; // 2018-01-02
+    ///     DateTime dateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)); // 2018-01-02
     ///     12:34:56.123.456.789
     /// @endcode
     ///
@@ -58,9 +58,9 @@ class DateTime
     /// @brief Constructor
     ///
     /// @code
-    ///     DateTime dateTime(2018, 1, 2) ; // 2018-01-02 00:00:00.000.000.000
-    ///     DateTime dateTime(2018, 1, 2, 12, 34, 56) ; // 2018-01-02 12:34:56.000.000.000
-    ///     DateTime dateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) ; // 2018-01-02
+    ///     DateTime dateTime(2018, 1, 2); // 2018-01-02 00:00:00.000.000.000
+    ///     DateTime dateTime(2018, 1, 2, 12, 34, 56); // 2018-01-02 12:34:56.000.000.000
+    ///     DateTime dateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789); // 2018-01-02
     ///     12:34:56.123.456.789
     /// @endcode
     ///
@@ -89,7 +89,7 @@ class DateTime
     ///
     /// @code
     ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) == DateTime(Date(2018, 1, 2),
-    ///     Time(12, 34, 56, 123, 456, 789)) ; // True
+    ///     Time(12, 34, 56, 123, 456, 789)); // True
     /// @endcode
     ///
     /// @param [in] aDateTime A date-time
@@ -100,7 +100,7 @@ class DateTime
     ///
     /// @code
     ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) != DateTime(Date(2018, 1, 3),
-    ///     Time(12, 34, 56, 123, 456, 789)) ; // True
+    ///     Time(12, 34, 56, 123, 456, 789)); // True
     /// @endcode
     ///
     /// @param [in] aDateTime A date-time
@@ -110,7 +110,7 @@ class DateTime
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)) ;
+    ///     std::cout << DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789));
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -121,7 +121,7 @@ class DateTime
     /// @brief Check if date-time is defined
     ///
     /// @code
-    ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined() ; // True
+    ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined(); // True
     /// @endcode
     ///
     /// @return True if date-time is defined
@@ -130,7 +130,7 @@ class DateTime
     /// @brief Get reference to date
     ///
     /// @code
-    ///     const Date& date = DateTime(2018, 1, 2, 12, 34, 56).accessDate() ;
+    ///     const Date& date = DateTime(2018, 1, 2, 12, 34, 56).accessDate();
     /// @endcode
     ///
     /// @return Reference to date
@@ -139,7 +139,7 @@ class DateTime
     /// @brief Get reference to time
     ///
     /// @code
-    ///     const Time& time = DateTime(2018, 1, 2, 12, 34, 56).accessTime() ;
+    ///     const Time& time = DateTime(2018, 1, 2, 12, 34, 56).accessTime();
     /// @endcode
     ///
     /// @return Reference to time
@@ -148,7 +148,7 @@ class DateTime
     /// @brief Get date
     ///
     /// @code
-    ///     Date date = DateTime(2018, 1, 2, 12, 34, 56).getDate() ; // 2018-01-02
+    ///     Date date = DateTime(2018, 1, 2, 12, 34, 56).getDate(); // 2018-01-02
     /// @endcode
     ///
     /// @return Date
@@ -157,7 +157,7 @@ class DateTime
     /// @brief Get time
     ///
     /// @code
-    ///     Time time = DateTime(2018, 1, 2, 12, 34, 56).getTime() ; // 12:34:56
+    ///     Time time = DateTime(2018, 1, 2, 12, 34, 56).getTime(); // 12:34:56
     /// @endcode
     ///
     /// @return Time
@@ -166,7 +166,7 @@ class DateTime
     /// @brief Get Julian Date
     ///
     /// @code
-    ///     DateTime(AAA).getJulianDate() ; // XXX.X
+    ///     DateTime(AAA).getJulianDate(); // XXX.X
     /// @endcode
     ///
     /// @return Julian Date
@@ -175,7 +175,7 @@ class DateTime
     /// @brief Get Modified Julian Date
     ///
     /// @code
-    ///     DateTime(AAA).getModifiedJulianDate() ; // XXX.X
+    ///     DateTime(AAA).getModifiedJulianDate(); // XXX.X
     /// @endcode
     ///
     /// @return Modified Julian Date
@@ -185,9 +185,9 @@ class DateTime
     ///
     /// @code
     ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456,
-    ///     789)).toString(DateTime::Format::Standard) ; // 2018-01-02 12:34:56.123.456.789
+    ///     789)).toString(DateTime::Format::Standard); // 2018-01-02 12:34:56.123.456.789
     ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456,
-    ///     789)).toString(DateTime::Format::ISO8601) ; // 2018-01-02T12:34:56.123.456.789
+    ///     789)).toString(DateTime::Format::ISO8601); // 2018-01-02T12:34:56.123.456.789
     /// @endcode
     ///
     /// @return Serialized date-time
@@ -196,8 +196,8 @@ class DateTime
     /// @brief Constructs an undefined date-time
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::Undefined() ;
-    ///     dateTime.isDefined() ; // False
+    ///     DateTime dateTime = DateTime::Undefined();
+    ///     dateTime.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined date-time
@@ -206,7 +206,7 @@ class DateTime
     /// @brief J2000 epoch (2000-01-01 12:00:00.000.000.00)
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::J2000() ; // 2000-01-01 12:00:00
+    ///     DateTime dateTime = DateTime::J2000(); // 2000-01-01 12:00:00
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
@@ -217,7 +217,7 @@ class DateTime
     /// @brief GPS epoch (1980-01-06 00:00:00.000.000.000)
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::GPSEpoch() ; // 1980-01-06 00:00:00
+    ///     DateTime dateTime = DateTime::GPSEpoch(); // 1980-01-06 00:00:00
     /// @endcode
     ///
     /// @ref http://tycho.usno.navy.mil/gpstt.html
@@ -228,7 +228,7 @@ class DateTime
     /// @brief Unix epoch (1970-01-01 00:00:00.000.000.000)
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::UnixEpoch() ; // 1970-01-01 00:00:00
+    ///     DateTime dateTime = DateTime::UnixEpoch(); // 1970-01-01 00:00:00
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Unix_time
@@ -239,7 +239,7 @@ class DateTime
     /// @brief Modified Julian Date epoch (1858-11-17 00:00:00.000.000.000)
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::ModifiedJulianDateEpoch() ; // 1858-11-17 00:00:00
+    ///     DateTime dateTime = DateTime::ModifiedJulianDateEpoch(); // 1858-11-17 00:00:00
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Julian_day
@@ -250,7 +250,7 @@ class DateTime
     /// @brief Date-time from Julian Date
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::JulianDate(2451545.0) ; // 2000-01-01 12:00:00
+    ///     DateTime dateTime = DateTime::JulianDate(2451545.0); // 2000-01-01 12:00:00
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Julian_day
@@ -262,7 +262,7 @@ class DateTime
     /// @brief Date-time from Modified Julian Date
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::ModifiedJulianDate(51544.5) ; // 2000-01-01 12:00:00
+    ///     DateTime dateTime = DateTime::ModifiedJulianDate(51544.5); // 2000-01-01 12:00:00
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Julian_day
@@ -274,7 +274,7 @@ class DateTime
     /// @brief Constructs a date-time from a string representation
     ///
     /// @code
-    ///     DateTime dateTime = DateTime::Parse("2018-01-02 12:34:56.123.456.789") ; // 2018-01-02
+    ///     DateTime dateTime = DateTime::Parse("2018-01-02 12:34:56.123.456.789"); // 2018-01-02
     /// @endcode
     ///
     /// @param [in] aString A string

@@ -36,7 +36,7 @@ class Dipole : public Model
     /// @brief Constructor
     ///
     /// @code
-    ///     Dipole model(magneticMoment) ;
+    ///     Dipole model(magneticMoment);
     /// @endcode
     ///
     /// @param [in] aMagneticMoment A magnetic moment [A⋅m2]
@@ -45,7 +45,7 @@ class Dipole : public Model
     /// @brief Clone the dipole magnetic model
     ///
     /// @code
-    ///     Dipole* modelPtr = model.clone() ;
+    ///     Dipole* modelPtr = model.clone();
     /// @endcode
     ///
     /// @return Pointer to dipole magnetic model
@@ -54,7 +54,7 @@ class Dipole : public Model
     /// @brief Check if the dipole magnetic model is defined
     ///
     /// @code
-    ///     bool isDefined = model.isDefined() ;
+    ///     bool isDefined = model.isDefined();
     /// @endcode
     ///
     /// @return True if the dipole magnetic model is defined
@@ -63,7 +63,7 @@ class Dipole : public Model
     /// @brief Get the magnetic field value at a given position and instant
     ///
     /// @code
-    ///     Vector3d fieldValue = model.getFieldValueAt(position, instant) ;
+    ///     Vector3d fieldValue = model.getFieldValueAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A position, expressed in the magnetic object frame [m]

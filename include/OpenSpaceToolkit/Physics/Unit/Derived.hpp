@@ -41,7 +41,7 @@ class Derived : public Unit
         /// @brief Constructor from integer order.
         ///
         /// @code
-        ///     Derived::Order order(1) ;
+        ///     Derived::Order order(1);
         /// @endcode
         ///
         /// @param [in] aNumerator A numerator value (denominator defaults to 1)
@@ -51,7 +51,7 @@ class Derived : public Unit
         /// @brief Constructor from fractional order.
         ///
         /// @code
-        ///     Derived::Order order(1, 2) ;
+        ///     Derived::Order order(1, 2);
         /// @endcode
         ///
         /// @param [in] aNumerator A numerator value
@@ -62,7 +62,7 @@ class Derived : public Unit
         /// @brief Equal to operator.
         ///
         /// @code
-        ///     Derived::Order(1) == Derived::Order(1) ; // True
+        ///     Derived::Order(1) == Derived::Order(1); // True
         /// @endcode
         ///
         /// @param [in] anOrder An order to compare with
@@ -73,7 +73,7 @@ class Derived : public Unit
         /// @brief Not equal to operator.
         ///
         /// @code
-        ///     Derived::Order(1) != Derived::Order(2) ; // True
+        ///     Derived::Order(1) != Derived::Order(2); // True
         /// @endcode
         ///
         /// @param [in] anOrder An order to compare with
@@ -84,7 +84,7 @@ class Derived : public Unit
         /// @brief Check if the order is zero.
         ///
         /// @code
-        ///     Derived::Order(0).isZero() ; // True
+        ///     Derived::Order(0).isZero(); // True
         /// @endcode
         ///
         /// @return True if zero
@@ -94,7 +94,7 @@ class Derived : public Unit
         /// @brief Check if the order is unity (1).
         ///
         /// @code
-        ///     Derived::Order(1).isUnity() ; // True
+        ///     Derived::Order(1).isUnity(); // True
         /// @endcode
         ///
         /// @return True if unity
@@ -104,7 +104,7 @@ class Derived : public Unit
         /// @brief Get the numerator.
         ///
         /// @code
-        ///     Derived::Order(1, 2).getNumerator() ; // 1
+        ///     Derived::Order(1, 2).getNumerator(); // 1
         /// @endcode
         ///
         /// @return The numerator
@@ -114,7 +114,7 @@ class Derived : public Unit
         /// @brief Get the denominator.
         ///
         /// @code
-        ///     Derived::Order(1, 2).getDenominator() ; // 2
+        ///     Derived::Order(1, 2).getDenominator(); // 2
         /// @endcode
         ///
         /// @return The denominator
@@ -124,7 +124,7 @@ class Derived : public Unit
         /// @brief Get the value as a real number (numerator / denominator).
         ///
         /// @code
-        ///     Derived::Order(1, 2).getValue() ; // 0.5
+        ///     Derived::Order(1, 2).getValue(); // 0.5
         /// @endcode
         ///
         /// @return The value
@@ -134,7 +134,7 @@ class Derived : public Unit
         /// @brief Convert to string representation.
         ///
         /// @code
-        ///     Derived::Order(1, 2).toString() ;
+        ///     Derived::Order(1, 2).toString();
         /// @endcode
         ///
         /// @return A string representation
@@ -144,7 +144,7 @@ class Derived : public Unit
         /// @brief Construct a zero order.
         ///
         /// @code
-        ///     Derived::Order order = Derived::Order::Zero() ;
+        ///     Derived::Order order = Derived::Order::Zero();
         /// @endcode
         ///
         /// @return A zero order
@@ -154,7 +154,7 @@ class Derived : public Unit
         /// @brief Construct a first order (1).
         ///
         /// @code
-        ///     Derived::Order order = Derived::Order::One() ;
+        ///     Derived::Order order = Derived::Order::One();
         /// @endcode
         ///
         /// @return A first order
@@ -164,7 +164,7 @@ class Derived : public Unit
         /// @brief Construct a second order (2).
         ///
         /// @code
-        ///     Derived::Order order = Derived::Order::Two() ;
+        ///     Derived::Order order = Derived::Order::Two();
         /// @endcode
         ///
         /// @return A second order
@@ -184,7 +184,7 @@ class Derived : public Unit
         /// @brief Constructor.
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::MeterPerSecond() ;
+        ///     Derived::Unit unit = Derived::Unit::MeterPerSecond();
         /// @endcode
         ///
         /// @param [in] aLengthUnit A length unit
@@ -214,7 +214,7 @@ class Derived : public Unit
         /// @brief Equal to operator.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond() == Derived::Unit::MeterPerSecond() ; // True
+        ///     Derived::Unit::MeterPerSecond() == Derived::Unit::MeterPerSecond(); // True
         /// @endcode
         ///
         /// @param [in] aUnit A derived unit to compare with
@@ -225,7 +225,7 @@ class Derived : public Unit
         /// @brief Not equal to operator.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond() != Derived::Unit::Newton() ; // True
+        ///     Derived::Unit::MeterPerSecond() != Derived::Unit::Newton(); // True
         /// @endcode
         ///
         /// @param [in] aUnit A derived unit to compare with
@@ -236,7 +236,7 @@ class Derived : public Unit
         /// @brief Check if the unit is defined.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().isDefined() ; // True
+        ///     Derived::Unit::MeterPerSecond().isDefined(); // True
         /// @endcode
         ///
         /// @return True if defined
@@ -246,7 +246,7 @@ class Derived : public Unit
         /// @brief Check if this unit is compatible with another unit (same dimension orders).
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().isCompatibleWith(Derived::Unit::MeterPerSecond()) ; // True
+        ///     Derived::Unit::MeterPerSecond().isCompatibleWith(Derived::Unit::MeterPerSecond()); // True
         /// @endcode
         ///
         /// @param [in] aUnit A derived unit
@@ -257,7 +257,7 @@ class Derived : public Unit
         /// @brief Access the length unit.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessLengthUnit() ; // Length::Unit::Meter
+        ///     Derived::Unit::MeterPerSecond().accessLengthUnit(); // Length::Unit::Meter
         /// @endcode
         ///
         /// @return A const reference to the length unit
@@ -267,7 +267,7 @@ class Derived : public Unit
         /// @brief Access the length order.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessLengthOrder() ;
+        ///     Derived::Unit::MeterPerSecond().accessLengthOrder();
         /// @endcode
         ///
         /// @return A const reference to the length order
@@ -277,7 +277,7 @@ class Derived : public Unit
         /// @brief Access the mass unit.
         ///
         /// @code
-        ///     Derived::Unit::Newton().accessMassUnit() ; // Mass::Unit::Kilogram
+        ///     Derived::Unit::Newton().accessMassUnit(); // Mass::Unit::Kilogram
         /// @endcode
         ///
         /// @return A const reference to the mass unit
@@ -287,7 +287,7 @@ class Derived : public Unit
         /// @brief Access the mass order.
         ///
         /// @code
-        ///     Derived::Unit::Newton().accessMassOrder() ;
+        ///     Derived::Unit::Newton().accessMassOrder();
         /// @endcode
         ///
         /// @return A const reference to the mass order
@@ -297,7 +297,7 @@ class Derived : public Unit
         /// @brief Access the time unit.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessTimeUnit() ; // Time::Unit::Second
+        ///     Derived::Unit::MeterPerSecond().accessTimeUnit(); // Time::Unit::Second
         /// @endcode
         ///
         /// @return A const reference to the time unit
@@ -307,7 +307,7 @@ class Derived : public Unit
         /// @brief Access the time order.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessTimeOrder() ;
+        ///     Derived::Unit::MeterPerSecond().accessTimeOrder();
         /// @endcode
         ///
         /// @return A const reference to the time order
@@ -317,7 +317,7 @@ class Derived : public Unit
         /// @brief Access the electric current unit.
         ///
         /// @code
-        ///     Derived::Unit::Tesla().accessElectricCurrentUnit() ;
+        ///     Derived::Unit::Tesla().accessElectricCurrentUnit();
         /// @endcode
         ///
         /// @return A const reference to the electric current unit
@@ -327,7 +327,7 @@ class Derived : public Unit
         /// @brief Access the electric current order.
         ///
         /// @code
-        ///     Derived::Unit::Tesla().accessElectricCurrentOrder() ;
+        ///     Derived::Unit::Tesla().accessElectricCurrentOrder();
         /// @endcode
         ///
         /// @return A const reference to the electric current order
@@ -337,7 +337,7 @@ class Derived : public Unit
         /// @brief Access the angle unit.
         ///
         /// @code
-        ///     Derived::Unit::RadianPerSecond().accessAngleUnit() ; // Angle::Unit::Radian
+        ///     Derived::Unit::RadianPerSecond().accessAngleUnit(); // Angle::Unit::Radian
         /// @endcode
         ///
         /// @return A const reference to the angle unit
@@ -347,7 +347,7 @@ class Derived : public Unit
         /// @brief Access the angle order.
         ///
         /// @code
-        ///     Derived::Unit::RadianPerSecond().accessAngleOrder() ;
+        ///     Derived::Unit::RadianPerSecond().accessAngleOrder();
         /// @endcode
         ///
         /// @return A const reference to the angle order
@@ -357,7 +357,7 @@ class Derived : public Unit
         /// @brief Convert to string representation.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().toString() ;
+        ///     Derived::Unit::MeterPerSecond().toString();
         /// @endcode
         ///
         /// @return A string representation
@@ -367,7 +367,7 @@ class Derived : public Unit
         /// @brief Get the unit symbol.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().getSymbol() ;
+        ///     Derived::Unit::MeterPerSecond().getSymbol();
         /// @endcode
         ///
         /// @return The unit symbol
@@ -379,7 +379,7 @@ class Derived : public Unit
         /// @brief Construct a square meter unit (m^2).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::SquareMeter() ;
+        ///     Derived::Unit unit = Derived::Unit::SquareMeter();
         /// @endcode
         ///
         /// @return A square meter unit
@@ -389,7 +389,7 @@ class Derived : public Unit
         /// @brief Construct a cubic meter unit (m^3).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::CubicMeter() ;
+        ///     Derived::Unit unit = Derived::Unit::CubicMeter();
         /// @endcode
         ///
         /// @return A cubic meter unit
@@ -399,7 +399,7 @@ class Derived : public Unit
         /// @brief Construct a hertz unit (s^-1).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Hertz() ;
+        ///     Derived::Unit unit = Derived::Unit::Hertz();
         /// @endcode
         ///
         /// @return A hertz unit
@@ -409,7 +409,7 @@ class Derived : public Unit
         /// @brief Construct a watt unit (kg.m^2.s^-3).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Watt() ;
+        ///     Derived::Unit unit = Derived::Unit::Watt();
         /// @endcode
         ///
         /// @return A watt unit
@@ -419,7 +419,7 @@ class Derived : public Unit
         /// @brief Construct a tesla unit (kg.s^-2.A^-1).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Tesla() ;
+        ///     Derived::Unit unit = Derived::Unit::Tesla();
         /// @endcode
         ///
         /// @return A tesla unit
@@ -429,7 +429,7 @@ class Derived : public Unit
         /// @brief Construct a newton unit (kg.m.s^-2).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Newton() ;
+        ///     Derived::Unit unit = Derived::Unit::Newton();
         /// @endcode
         ///
         /// @return A newton unit
@@ -439,7 +439,7 @@ class Derived : public Unit
         /// @brief Construct a kilogram per second unit (kg.s^-1).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::KilogramPerSecond() ;
+        ///     Derived::Unit unit = Derived::Unit::KilogramPerSecond();
         /// @endcode
         ///
         /// @return A kilogram per second unit
@@ -449,7 +449,7 @@ class Derived : public Unit
         /// @brief Construct a meter per second unit (m.s^-1).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::MeterPerSecond() ;
+        ///     Derived::Unit unit = Derived::Unit::MeterPerSecond();
         /// @endcode
         ///
         /// @return A meter per second unit
@@ -459,7 +459,7 @@ class Derived : public Unit
         /// @brief Construct a meter per second squared unit (m.s^-2).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::MeterPerSecondSquared() ;
+        ///     Derived::Unit unit = Derived::Unit::MeterPerSecondSquared();
         /// @endcode
         ///
         /// @return A meter per second squared unit
@@ -469,7 +469,7 @@ class Derived : public Unit
         /// @brief Construct a meter cubed per second squared unit (m^3.s^-2).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::MeterCubedPerSecondSquared() ;
+        ///     Derived::Unit unit = Derived::Unit::MeterCubedPerSecondSquared();
         /// @endcode
         ///
         /// @return A meter cubed per second squared unit
@@ -479,7 +479,7 @@ class Derived : public Unit
         /// @brief Construct a radian per second unit (rad.s^-1).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::RadianPerSecond() ;
+        ///     Derived::Unit unit = Derived::Unit::RadianPerSecond();
         /// @endcode
         ///
         /// @return A radian per second unit
@@ -489,7 +489,7 @@ class Derived : public Unit
         /// @brief Construct a revolution per day unit (rev.day^-1).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::RevolutionPerDay() ;
+        ///     Derived::Unit unit = Derived::Unit::RevolutionPerDay();
         /// @endcode
         ///
         /// @return A revolution per day unit
@@ -501,7 +501,7 @@ class Derived : public Unit
         /// @brief Construct a velocity unit.
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Velocity(Length::Unit::Meter, Time::Unit::Second) ;
+        ///     Derived::Unit unit = Derived::Unit::Velocity(Length::Unit::Meter, Time::Unit::Second);
         /// @endcode
         ///
         /// @param [in] aLengthUnit A length unit
@@ -513,7 +513,7 @@ class Derived : public Unit
         /// @brief Construct an acceleration unit.
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second) ;
+        ///     Derived::Unit unit = Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second);
         /// @endcode
         ///
         /// @param [in] aLengthUnit A length unit
@@ -525,7 +525,7 @@ class Derived : public Unit
         /// @brief Construct an angular velocity unit.
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::AngularVelocity(Angle::Unit::Radian, Time::Unit::Second) ;
+        ///     Derived::Unit unit = Derived::Unit::AngularVelocity(Angle::Unit::Radian, Time::Unit::Second);
         /// @endcode
         ///
         /// @param [in] anAngleUnit An angle unit
@@ -537,7 +537,7 @@ class Derived : public Unit
         /// @brief Construct a gravitational parameter unit (length^3 / time^2).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second) ;
+        ///     Derived::Unit unit = Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second);
         /// @endcode
         ///
         /// @param [in] aLengthUnit A length unit
@@ -550,7 +550,7 @@ class Derived : public Unit
         ///
         /// @code
         ///     Derived::Unit unit = Derived::Unit::Force(Mass::Unit::Kilogram, Length::Unit::Meter, Time::Unit::Second)
-        ///     ;
+        ///    ;
         /// @endcode
         ///
         /// @param [in] aMassUnit A mass unit
@@ -563,7 +563,7 @@ class Derived : public Unit
         /// @brief Construct a mass flow rate unit (mass / time).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::MassFlowRate(Mass::Unit::Kilogram, Time::Unit::Second) ;
+        ///     Derived::Unit unit = Derived::Unit::MassFlowRate(Mass::Unit::Kilogram, Time::Unit::Second);
         /// @endcode
         ///
         /// @param [in] aMassUnit A mass unit
@@ -575,7 +575,7 @@ class Derived : public Unit
         /// @brief Construct a mass density unit (mass / length^3).
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter) ;
+        ///     Derived::Unit unit = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter);
         /// @endcode
         ///
         /// @param [in] aMassUnit A mass unit
@@ -587,7 +587,7 @@ class Derived : public Unit
         /// @brief Construct an undefined derived unit.
         ///
         /// @code
-        ///     Derived::Unit unit = Derived::Unit::Undefined() ;
+        ///     Derived::Unit unit = Derived::Unit::Undefined();
         /// @endcode
         ///
         /// @return An undefined derived unit
@@ -608,14 +608,14 @@ class Derived : public Unit
         Time::Unit timeUnit_;
         Order timeOrder_;
 
-        // Temperature::Unit temperatureUnit_ ;
-        // Order           temperatureOrder_ ;
+        // Temperature::Unit temperatureUnit_;
+        // Order           temperatureOrder_;
 
         ElectricCurrent::Unit electricCurrentUnit_;
         Order electricCurrentOrder_;
 
-        // LuminousIntensity::Unit luminousIntensityUnit_ ;
-        // Order           luminousIntensityOrder_ ;
+        // LuminousIntensity::Unit luminousIntensityUnit_;
+        // Order           luminousIntensityOrder_;
 
         // Derived
 
@@ -626,7 +626,7 @@ class Derived : public Unit
     /// @brief Constructor.
     ///
     /// @code
-    ///     Derived derived(1.0, Derived::Unit::MeterPerSecond()) ;
+    ///     Derived derived(1.0, Derived::Unit::MeterPerSecond());
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -637,8 +637,8 @@ class Derived : public Unit
     /// @brief Clone the derived unit.
     ///
     /// @code
-    ///     Derived derived(1.0, Derived::Unit::MeterPerSecond()) ;
-    ///     Derived* clonePtr = derived.clone() ;
+    ///     Derived derived(1.0, Derived::Unit::MeterPerSecond());
+    ///     Derived* clonePtr = derived.clone();
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this derived unit
@@ -648,7 +648,7 @@ class Derived : public Unit
     /// @brief Equal to operator.
     ///
     /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()) == Derived(1.0, Derived::Unit::MeterPerSecond()) ; // True
+    ///     Derived(1.0, Derived::Unit::MeterPerSecond()) == Derived(1.0, Derived::Unit::MeterPerSecond()); // True
     /// @endcode
     ///
     /// @param [in] aDerivedUnit A derived unit to compare with
@@ -659,7 +659,7 @@ class Derived : public Unit
     /// @brief Not equal to operator.
     ///
     /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()) != Derived(2.0, Derived::Unit::MeterPerSecond()) ; // True
+    ///     Derived(1.0, Derived::Unit::MeterPerSecond()) != Derived(2.0, Derived::Unit::MeterPerSecond()); // True
     /// @endcode
     ///
     /// @param [in] aDerivedUnit A derived unit to compare with
@@ -670,7 +670,7 @@ class Derived : public Unit
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << Derived(1.0, Derived::Unit::MeterPerSecond()) ;
+    ///     std::cout << Derived(1.0, Derived::Unit::MeterPerSecond());
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -682,7 +682,7 @@ class Derived : public Unit
     /// @brief Check if the derived unit is defined.
     ///
     /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).isDefined() ; // True
+    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -692,7 +692,7 @@ class Derived : public Unit
     /// @brief Get the derived unit.
     ///
     /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).getUnit() ;
+    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).getUnit();
     /// @endcode
     ///
     /// @return The derived unit
@@ -702,7 +702,7 @@ class Derived : public Unit
     /// @brief Get the value in the specified unit.
     ///
     /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).in(Derived::Unit::MeterPerSecond()) ; // 1.0
+    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).in(Derived::Unit::MeterPerSecond()); // 1.0
     /// @endcode
     ///
     /// @param [in] aUnit A derived unit
@@ -713,7 +713,7 @@ class Derived : public Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).toString() ;
+    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
@@ -724,7 +724,7 @@ class Derived : public Unit
     /// @brief Construct an undefined derived unit.
     ///
     /// @code
-    ///     Derived derived = Derived::Undefined() ;
+    ///     Derived derived = Derived::Undefined();
     /// @endcode
     ///
     /// @return An undefined derived unit
@@ -734,7 +734,7 @@ class Derived : public Unit
     /// @brief Parse a derived unit from a string.
     ///
     /// @code
-    ///     Derived derived = Derived::Parse("1.0 [m/s]") ;
+    ///     Derived derived = Derived::Parse("1.0 [m/s]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse
@@ -745,7 +745,7 @@ class Derived : public Unit
     /// @brief Get the string representation of a derived unit.
     ///
     /// @code
-    ///     Derived::StringFromUnit(Derived::Unit::MeterPerSecond()) ;
+    ///     Derived::StringFromUnit(Derived::Unit::MeterPerSecond());
     /// @endcode
     ///
     /// @param [in] aUnit A derived unit
@@ -756,7 +756,7 @@ class Derived : public Unit
     /// @brief Get the symbol of a derived unit.
     ///
     /// @code
-    ///     Derived::SymbolFromUnit(Derived::Unit::MeterPerSecond()) ;
+    ///     Derived::SymbolFromUnit(Derived::Unit::MeterPerSecond());
     /// @endcode
     ///
     /// @param [in] aUnit A derived unit

@@ -91,7 +91,7 @@ class Finals2000A
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << finals2000A ;
+    ///     std::cout << finals2000A;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -102,7 +102,7 @@ class Finals2000A
     /// @brief true if defined
     ///
     /// @code
-    ///     finals2000A.isDefined() ; // True
+    ///     finals2000A.isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -111,7 +111,7 @@ class Finals2000A
     /// @brief Access timestamp at which the BulletinA file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = finals2000A.accessLastModifiedTimestamp() ;
+    ///     const Instant& timestamp = finals2000A.accessLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
@@ -120,7 +120,7 @@ class Finals2000A
     /// @brief Get data interval
     ///
     /// @code
-    ///     Interval interval = finals2000A.getInterval() ;
+    ///     Interval interval = finals2000A.getInterval();
     /// @endcode
     ///
     /// @return Data Intervalt of Instants
@@ -129,7 +129,7 @@ class Finals2000A
     /// @brief Get polar motion at Instant
     ///
     /// @code
-    ///     Vector2d polarMotion = finals2000A.getPolarMotionAt(anInstant) ;
+    ///     Vector2d polarMotion = finals2000A.getPolarMotionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
@@ -139,7 +139,7 @@ class Finals2000A
     /// @brief Get UT1-UTC at Instant
     ///
     /// @code
-    ///     Real ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant) ;
+    ///     Real ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
@@ -149,7 +149,7 @@ class Finals2000A
     /// @brief Get LOD (Length Of Day) at Instant
     ///
     /// @code
-    ///     Real lod = finals2000A.getLodAt(anInstant) ;
+    ///     Real lod = finals2000A.getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
@@ -159,7 +159,7 @@ class Finals2000A
     /// @brief Get Data reading at instant
     ///
     /// @code
-    ///     Finals2000A::Data data = finals2000A.getDataAt(anInstant) ;
+    ///     Finals2000A::Data data = finals2000A.getDataAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
@@ -169,7 +169,7 @@ class Finals2000A
     /// @brief Undefined factory function
     ///
     /// @code
-    ///     Finals2000A finals2000A = Finals2000A::Undefined() ;
+    ///     Finals2000A finals2000A = Finals2000A::Undefined();
     /// @endcode
     ///
     /// @return Undefined Finals2000A object
@@ -178,7 +178,7 @@ class Finals2000A
     /// @brief Load Finals2000A from file
     ///
     /// @code
-    ///     Finals2000A finals2000A = Finals2000A::Load(file) ;
+    ///     Finals2000A finals2000A = Finals2000A::Load(file);
     /// @endcode
     ///
     /// @param [in] aFile A file

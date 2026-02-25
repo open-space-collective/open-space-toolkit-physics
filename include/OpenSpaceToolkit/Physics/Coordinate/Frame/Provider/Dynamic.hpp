@@ -33,7 +33,7 @@ class Dynamic : public Provider
     /// @brief Constructor.
     ///
     /// @code
-    ///     Dynamic provider(generator) ;
+    ///     Dynamic provider(generator);
     /// @endcode
     ///
     /// @param [in] aGenerator A transform generator function
@@ -45,7 +45,7 @@ class Dynamic : public Provider
     /// @brief Clone the Dynamic provider.
     ///
     /// @code
-    ///     Dynamic* clonePtr = provider.clone() ;
+    ///     Dynamic* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned Dynamic provider
@@ -54,7 +54,7 @@ class Dynamic : public Provider
     /// @brief Check if the Dynamic provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the Dynamic provider is defined
@@ -63,7 +63,7 @@ class Dynamic : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -73,7 +73,7 @@ class Dynamic : public Provider
     /// @brief Create an undefined Dynamic provider.
     ///
     /// @code
-    ///     Dynamic provider = Dynamic::Undefined() ;
+    ///     Dynamic provider = Dynamic::Undefined();
     /// @endcode
     ///
     /// @return An undefined Dynamic provider

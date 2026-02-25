@@ -63,7 +63,7 @@ class Manager : public BaseManager
     /// @brief Get Bulletin A directory
     ///
     /// @code
-    ///     Directory directory = Manager::Get().getBulletinADirectory() ;
+    ///     Directory directory = Manager::Get().getBulletinADirectory();
     /// @endcode
     ///
     /// @return Bulletin A directory
@@ -72,7 +72,7 @@ class Manager : public BaseManager
     /// @brief Get Finals 2000A directory
     ///
     /// @code
-    ///     Directory directory = Manager::Get().getFinals2000ADirectory() ;
+    ///     Directory directory = Manager::Get().getFinals2000ADirectory();
     /// @endcode
     ///
     /// @return Finals 2000A directory
@@ -81,7 +81,7 @@ class Manager : public BaseManager
     /// @brief Get Bulletin A
     ///
     /// @code
-    ///     BulletinA bulletinA = Manager::Get().getBulletinA() ;
+    ///     BulletinA bulletinA = Manager::Get().getBulletinA();
     /// @endcode
     ///
     /// @return Bulletin A
@@ -90,7 +90,7 @@ class Manager : public BaseManager
     /// @brief Get Finals 2000A
     ///
     /// @code
-    ///     Finals2000A finals2000A = Manager::Get().getFinals2000A() ;
+    ///     Finals2000A finals2000A = Manager::Get().getFinals2000A();
     /// @endcode
     ///
     /// @return Finals 2000A
@@ -99,7 +99,7 @@ class Manager : public BaseManager
     /// @brief Get polar motion at instant
     ///
     /// @code
-    ///     Vector2d polarMotion = Manager::Get().getPolarMotionAt(anInstant) ;
+    ///     Vector2d polarMotion = Manager::Get().getPolarMotionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -109,7 +109,7 @@ class Manager : public BaseManager
     /// @brief Get UT1 - UTC at instant
     ///
     /// @code
-    ///     Real ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant) ;
+    ///     Real ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -119,7 +119,7 @@ class Manager : public BaseManager
     /// @brief Get length of day at instant
     ///
     /// @code
-    ///     Real lod = Manager::Get().getLodAt(anInstant) ;
+    ///     Real lod = Manager::Get().getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -129,7 +129,7 @@ class Manager : public BaseManager
     /// @brief Load Bulletin A
     ///
     /// @code
-    ///     Manager::Get().loadBulletinA(bulletinA) ;
+    ///     Manager::Get().loadBulletinA(bulletinA);
     /// @endcode
     ///
     /// @param [in] aBulletinA A Bulletin A
@@ -138,7 +138,7 @@ class Manager : public BaseManager
     /// @brief Load Finals 2000A
     ///
     /// @code
-    ///     Manager::Get().loadFinals2000A(finals2000A) ;
+    ///     Manager::Get().loadFinals2000A(finals2000A);
     /// @endcode
     ///
     /// @param [in] aFinals2000A A Finals 2000A
@@ -147,7 +147,7 @@ class Manager : public BaseManager
     /// @brief Fetch latest Bulletin A file
     ///
     /// @code
-    ///     File file = Manager::Get().fetchLatestBulletinA() ;
+    ///     File file = Manager::Get().fetchLatestBulletinA();
     /// @endcode
     ///
     /// @return Latest Bulletin A file
@@ -156,7 +156,7 @@ class Manager : public BaseManager
     /// @brief Fetch latest Finals 2000A file
     ///
     /// @code
-    ///     File file = Manager::Get().fetchLatestFinals2000A() ;
+    ///     File file = Manager::Get().fetchLatestFinals2000A();
     /// @endcode
     ///
     /// @return Latest Finals 2000A file
@@ -165,7 +165,7 @@ class Manager : public BaseManager
     /// @brief Reset manager
     ///
     /// @code
-    ///     Manager::Get().reset() ;
+    ///     Manager::Get().reset();
     /// @endcode
     ///
     /// Unload all bulletins.
@@ -174,7 +174,7 @@ class Manager : public BaseManager
     /// @brief Clear local repository
     ///
     /// @code
-    ///     Manager::Get().clearLocalRepository() ;
+    ///     Manager::Get().clearLocalRepository();
     /// @endcode
     ///
     /// Delete all files in local repository.
@@ -183,7 +183,7 @@ class Manager : public BaseManager
     /// @brief Get manager singleton
     ///
     /// @code
-    ///     Manager& manager = Manager::Get() ;
+    ///     Manager& manager = Manager::Get();
     /// @endcode
     ///
     /// @return Reference to manager

@@ -44,7 +44,7 @@ class Exponential
     /// @brief Constructor
     ///
     /// @code
-    ///     Exponential model ;
+    ///     Exponential model;
     /// @endcode
 
     Exponential();
@@ -52,7 +52,7 @@ class Exponential
     /// @brief Clone the exponential atmospheric model
     ///
     /// @code
-    ///     Exponential* modelPtr = model.clone() ;
+    ///     Exponential* modelPtr = model.clone();
     /// @endcode
     ///
     /// @return Pointer to exponential atmospheric model
@@ -62,7 +62,7 @@ class Exponential
     /// @brief Check if the exponential atmospheric model is defined
     ///
     /// @code
-    ///     model.isDefined() ;
+    ///     model.isDefined();
     /// @endcode
     ///
     /// @return True if the exponential atmospheric model is defined
@@ -72,7 +72,7 @@ class Exponential
     /// @brief Get the atmospheric density value at a given position and instant
     ///
     /// @code
-    ///     Real density = model.getDensityAt(lla, instant) ;
+    ///     Real density = model.getDensityAt(lla, instant);
     /// @endcode
     ///
     /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]

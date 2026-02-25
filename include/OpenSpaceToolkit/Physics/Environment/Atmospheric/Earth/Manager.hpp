@@ -64,7 +64,7 @@ class Manager : public BaseManager
     /// @brief Get CSSI Space Weather directory
     ///
     /// @code
-    ///     Directory directory = Manager::Get().getCSSISpaceWeatherDirectory() ;
+    ///     Directory directory = Manager::Get().getCSSISpaceWeatherDirectory();
     /// @endcode
     ///
     /// @return CSSI Space Weather directory
@@ -74,7 +74,7 @@ class Manager : public BaseManager
     /// @brief Get currently loaded CSSI Space Weather file
     ///
     /// @code
-    ///     CSSISpaceWeather sw = Manager::Get().getLoadedCSSISpaceWeather() ;
+    ///     CSSISpaceWeather sw = Manager::Get().getLoadedCSSISpaceWeather();
     /// @endcode
     ///
     /// @return Currently loaded CSSI Space Weather file
@@ -84,7 +84,7 @@ class Manager : public BaseManager
     /// @brief Get CSSI Space Weather at instant
     ///
     /// @code
-    ///     CSSISpaceWeather sw = Manager::Get().getCSSISpaceWeatherAt(instant) ;
+    ///     CSSISpaceWeather sw = Manager::Get().getCSSISpaceWeatherAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -95,7 +95,7 @@ class Manager : public BaseManager
     /// @brief Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
     ///
     /// @code
-    ///     Array<Integer> kpIndices = Manager::Get().getKp3HourSolarIndicesAt(instant) ;
+    ///     Array<Integer> kpIndices = Manager::Get().getKp3HourSolarIndicesAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -106,7 +106,7 @@ class Manager : public BaseManager
     /// @brief Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
     ///
     /// @code
-    ///     Array<Integer> apIndices = Manager::Get().getAp3HourSolarIndicesAt(instant) ;
+    ///     Array<Integer> apIndices = Manager::Get().getAp3HourSolarIndicesAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -117,7 +117,7 @@ class Manager : public BaseManager
     /// @brief Get daily Ap index for the day containing instant.
     ///
     /// @code
-    ///     Integer apDaily = Manager::Get().getApDailyIndexAt(instant) ;
+    ///     Integer apDaily = Manager::Get().getApDailyIndexAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -128,7 +128,7 @@ class Manager : public BaseManager
     /// @brief Get the daily value for F10.7 solar flux at instant.
     ///
     /// @code
-    ///     Real f107 = Manager::Get().getF107SolarFluxAt(instant) ;
+    ///     Real f107 = Manager::Get().getF107SolarFluxAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -139,7 +139,7 @@ class Manager : public BaseManager
     /// @brief Get the 81-day average value for F10.7 solar flux centered on instant.
     ///
     /// @code
-    ///     Real f107Avg = Manager::Get().getF107SolarFlux81DayAvgAt(instant) ;
+    ///     Real f107Avg = Manager::Get().getF107SolarFlux81DayAvgAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
@@ -150,7 +150,7 @@ class Manager : public BaseManager
     /// @brief Load CSSI Space Weather
     ///
     /// @code
-    ///     Manager::Get().loadCSSISpaceWeather(cssiSpaceWeather) ;
+    ///     Manager::Get().loadCSSISpaceWeather(cssiSpaceWeather);
     /// @endcode
     ///
     /// @param [in] aCSSISpaceWeather A CSSI Space Weather
@@ -160,7 +160,7 @@ class Manager : public BaseManager
     /// @brief Fetch latest CSSI Space Weather file
     ///
     /// @code
-    ///     File file = Manager::Get().fetchLatestCSSISpaceWeather() ;
+    ///     File file = Manager::Get().fetchLatestCSSISpaceWeather();
     /// @endcode
     ///
     /// @return Latest CSSI Space Weather file
@@ -170,7 +170,7 @@ class Manager : public BaseManager
     /// @brief Reset manager
     ///
     /// @code
-    ///     Manager::Get().reset() ;
+    ///     Manager::Get().reset();
     /// @endcode
     ///
     /// Unload all space weather files and clear cache.
@@ -180,7 +180,7 @@ class Manager : public BaseManager
     /// @brief Get manager singleton
     ///
     /// @code
-    ///     Manager& manager = Manager::Get() ;
+    ///     Manager& manager = Manager::Get();
     /// @endcode
     ///
     /// @return Reference to manager

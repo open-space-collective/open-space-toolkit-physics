@@ -61,7 +61,7 @@ class Earth : public Model
     /// @brief Constructor
     ///
     /// @code
-    ///     Earth earthMag(Earth::Type::EMM2017) ;
+    ///     Earth earthMag(Earth::Type::EMM2017);
     /// @endcode
     ///
     /// @param [in] aType A magnetic model type
@@ -71,7 +71,7 @@ class Earth : public Model
     /// @brief Copy constructor
     ///
     /// @code
-    ///     Earth earthMagCopy(earthMag) ;
+    ///     Earth earthMagCopy(earthMag);
     /// @endcode
     ///
     /// @param [in] anEarthMagneticModel An Earth model
@@ -80,7 +80,7 @@ class Earth : public Model
     /// @brief Copy assignment operator
     ///
     /// @code
-    ///     Earth earthMagCopy = earthMag ;
+    ///     Earth earthMagCopy = earthMag;
     /// @endcode
     ///
     /// @param [in] anEarthMagneticModel An Earth model
@@ -93,7 +93,7 @@ class Earth : public Model
     /// @brief Clone the Earth magnetic model
     ///
     /// @code
-    ///     Earth* earthMagPtr = earthMag.clone() ;
+    ///     Earth* earthMagPtr = earthMag.clone();
     /// @endcode
     ///
     /// @return Pointer to Earth magnetic model
@@ -102,7 +102,7 @@ class Earth : public Model
     /// @brief Check if the Earth magnetic model is defined
     ///
     /// @code
-    ///     bool isDefined = earthMag.isDefined() ;
+    ///     bool isDefined = earthMag.isDefined();
     /// @endcode
     ///
     /// @return True if the Earth magnetic model is defined
@@ -111,7 +111,7 @@ class Earth : public Model
     /// @brief Get magnetic model type
     ///
     /// @code
-    ///     Earth::Type type = earthMag.getType() ;
+    ///     Earth::Type type = earthMag.getType();
     /// @endcode
     ///
     /// @return Magnetic model type
@@ -120,7 +120,7 @@ class Earth : public Model
     /// @brief Get the magnetic field value at a given position and instant
     ///
     /// @code
-    ///     Vector3d fieldValue = earthMag.getFieldValueAt(position, instant) ;
+    ///     Vector3d fieldValue = earthMag.getFieldValueAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A position, expressed in the magnetic object frame [m]

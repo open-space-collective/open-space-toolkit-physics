@@ -65,7 +65,7 @@ class Manager : public BaseManager
     /// @brief Fetch kernel from remote
     ///
     /// @code
-    ///     Manager::Get().fetchKernel(aKernel) ;
+    ///     Manager::Get().fetchKernel(aKernel);
     /// @endcode
     ///
     /// @param [in] aKernel A kernel
@@ -75,7 +75,7 @@ class Manager : public BaseManager
     /// @brief Fetch kernels matching regular expression
     ///
     /// @code
-    ///     Array<Kernel> kernels = Manager::Get().fetchMatchingKernels("de430.*\\.bsp") ;
+    ///     Array<Kernel> kernels = Manager::Get().fetchMatchingKernels("de430.*\\.bsp");
     /// @endcode
     ///
     /// @param [in] aRegexString A regular expression string
@@ -86,7 +86,7 @@ class Manager : public BaseManager
     /// @brief Find kernel paths matching regular expression in local repository.
     ///
     /// @code
-    ///     Array<Path> paths = Manager::Get().findKernelPaths("de430.*\\.bsp") ;
+    ///     Array<Path> paths = Manager::Get().findKernelPaths("de430.*\\.bsp");
     /// @endcode
     ///
     /// @param [in] aRegexString A regular expression
@@ -98,7 +98,7 @@ class Manager : public BaseManager
     /// Always return the first found.
     ///
     /// @code
-    ///     Kernel kernel = Manager::Get().findKernel("de430.*\\.bsp") ;
+    ///     Kernel kernel = Manager::Get().findKernel("de430.*\\.bsp");
     /// @endcode
     ///
     /// @param [in] aRegexString A regular expression
@@ -109,7 +109,7 @@ class Manager : public BaseManager
     /// @brief Get manager singleton
     ///
     /// @code
-    ///     Manager& manager = Manager::Get() ;
+    ///     Manager& manager = Manager::Get();
     /// @endcode
     ///
     /// @return Reference to manager

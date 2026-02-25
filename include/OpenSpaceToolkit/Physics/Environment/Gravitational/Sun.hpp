@@ -50,7 +50,7 @@ class Sun : public Model
     /// @brief Constructor
     ///
     /// @code
-    ///     Sun sunGrav(Sun::Type::Spherical) ;
+    ///     Sun sunGrav(Sun::Type::Spherical);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type
@@ -60,7 +60,7 @@ class Sun : public Model
     /// @brief Copy constructor
     ///
     /// @code
-    ///     Sun sunGravCopy(sunGrav) ;
+    ///     Sun sunGravCopy(sunGrav);
     /// @endcode
     ///
     /// @param [in] aSunGravitationalModel A Sun model
@@ -69,7 +69,7 @@ class Sun : public Model
     /// @brief Copy assignment operator
     ///
     /// @code
-    ///     Sun sunGravCopy = sunGrav ;
+    ///     Sun sunGravCopy = sunGrav;
     /// @endcode
     ///
     /// @param [in] aSunGravitationalModel A Sun model
@@ -82,7 +82,7 @@ class Sun : public Model
     /// @brief Clone the Sun gravitational model
     ///
     /// @code
-    ///     Sun* sunGravPtr = sunGrav.clone() ;
+    ///     Sun* sunGravPtr = sunGrav.clone();
     /// @endcode
     ///
     /// @return Pointer to Sun gravitational model
@@ -91,7 +91,7 @@ class Sun : public Model
     /// @brief Check if the Sun gravitational model is defined
     ///
     /// @code
-    ///     bool isDefined = sunGrav.isDefined() ;
+    ///     bool isDefined = sunGrav.isDefined();
     /// @endcode
     ///
     /// @return True if the Sun gravitational model is defined
@@ -100,7 +100,7 @@ class Sun : public Model
     /// @brief Get gravitational model type
     ///
     /// @code
-    ///     Sun::Type type = sunGrav.getType() ;
+    ///     Sun::Type type = sunGrav.getType();
     /// @endcode
     ///
     /// @return Gravitational model type
@@ -109,7 +109,7 @@ class Sun : public Model
     /// @brief Get the gravitational field value at a given position and instant
     ///
     /// @code
-    ///     Vector3d fieldValue = sunGrav.getFieldValueAt(position, instant) ;
+    ///     Vector3d fieldValue = sunGrav.getFieldValueAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
@@ -120,12 +120,12 @@ class Sun : public Model
     /// @brief Get gravitational model parameters for a given type.
     ///
     /// @code
-    ///     Model::Parameters params = Sun::ParametersFromType(Sun::Type::Spherical) ;
+    ///     Model::Parameters params = Sun::ParametersFromType(Sun::Type::Spherical);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type
     /// @return Gravitational model parameters
-    Model::Parameters ParametersFromType(const Sun::Type& aType);
+    static Model::Parameters ParametersFromType(const Sun::Type& aType);
 
    private:
     class Impl;

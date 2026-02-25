@@ -54,7 +54,7 @@ class Earth : public Celestial
     ///
     /// @code
     ///     Earth earth(gravitationalParameter, equatorialRadius, flattening, J2, J4, ephemeris, gravModel, magModel,
-    ///     atmosModel) ;
+    ///     atmosModel);
     /// @endcode
     ///
     /// @param [in] anInstant An instant for the Earth celestial object
@@ -82,7 +82,7 @@ class Earth : public Celestial
     /// @brief Constructor
     ///
     /// @code
-    ///     Earth earth(ephemeris, gravModel, magModel, atmosModel) ;
+    ///     Earth earth(ephemeris, gravModel, magModel, atmosModel);
     /// @endcode
     ///
     /// @param [in] anInstant An instant for the Earth celestial object
@@ -103,7 +103,7 @@ class Earth : public Celestial
     /// @brief Clone the Earth celestial object.
     ///
     /// @code
-    ///     Earth* earthPtr = earth.clone() ;
+    ///     Earth* earthPtr = earth.clone();
     /// @endcode
     ///
     /// @return Pointer to Earth celestial object
@@ -112,7 +112,7 @@ class Earth : public Celestial
     /// @brief Default Earth model (EGM2008)
     ///
     /// @code
-    ///     Earth earth = Earth::Default() ;
+    ///     Earth earth = Earth::Default();
     /// @endcode
     ///
     /// @return Earth
@@ -121,7 +121,7 @@ class Earth : public Celestial
     /// @brief Just gravity model
     ///
     /// @code
-    ///     Earth earth = Earth::GravitationalOnly(gravModel) ;
+    ///     Earth earth = Earth::GravitationalOnly(gravModel);
     /// @endcode
     ///
     /// @param [in] aGravitationalModel A gravitational model
@@ -131,7 +131,7 @@ class Earth : public Celestial
     /// @brief Just atmospheric model
     ///
     /// @code
-    ///     Earth earth = Earth::AtmosphericOnly(atmosModel) ;
+    ///     Earth earth = Earth::AtmosphericOnly(atmosModel);
     /// @endcode
     ///
     /// @param [in] anAtmosphericModel An atmospheric model
@@ -141,7 +141,7 @@ class Earth : public Celestial
     /// @brief Just magnetic model
     ///
     /// @code
-    ///     Earth earth = Earth::MagneticOnly(magModel) ;
+    ///     Earth earth = Earth::MagneticOnly(magModel);
     /// @endcode
     ///
     /// @param [in] aMagneticModel A magnetic model
@@ -151,7 +151,7 @@ class Earth : public Celestial
     /// @brief Create earth from specified models
     ///
     /// @code
-    ///     Earth earth = Earth::FromModels(gravModel, magModel, atmosModel) ;
+    ///     Earth earth = Earth::FromModels(gravModel, magModel, atmosModel);
     /// @endcode
     ///
     /// @param [in] aGravitationalModel A gravitational model
@@ -168,7 +168,7 @@ class Earth : public Celestial
     /// @brief Earth Gravity Model 2008 model (EGM2008)
     ///
     /// @code
-    ///     Earth earth = Earth::EGM2008() ;
+    ///     Earth earth = Earth::EGM2008();
     /// @endcode
     ///
     /// @return Earth
@@ -183,7 +183,7 @@ class Earth : public Celestial
     /// Equatorial radius: 6378137.0 [m].
     ///
     /// @code
-    ///     Earth earth = Earth::WGS84_EGM96() ;
+    ///     Earth earth = Earth::WGS84_EGM96();
     /// @endcode
     ///
     /// @ref NIMA TR8350.2, Third Edition, 4 July 1997.
@@ -197,7 +197,7 @@ class Earth : public Celestial
     /// @brief Earth Gravity Model 1996 (EGM96)
     ///
     /// @code
-    ///     Earth earth = Earth::EGM96() ;
+    ///     Earth earth = Earth::EGM96();
     /// @endcode
     ///
     /// @return Earth
@@ -209,7 +209,7 @@ class Earth : public Celestial
     /// @brief Earth Gravity Model 1984 (EGM84)
     ///
     /// @code
-    ///     Earth earth = Earth::EGM84() ;
+    ///     Earth earth = Earth::EGM84();
     /// @endcode
     ///
     /// @return Earth
@@ -221,7 +221,7 @@ class Earth : public Celestial
     /// @brief World Geodetic System 1984 (WGS84)
     ///
     /// @code
-    ///     Earth earth = Earth::WGS84() ;
+    ///     Earth earth = Earth::WGS84();
     /// @endcode
     ///
     /// @return Earth
@@ -233,7 +233,7 @@ class Earth : public Celestial
     /// @brief Spherical model
     ///
     /// @code
-    ///     Earth earth = Earth::Spherical() ;
+    ///     Earth earth = Earth::Spherical();
     /// @endcode
     ///
     /// @return Earth

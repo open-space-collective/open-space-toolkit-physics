@@ -41,7 +41,7 @@ class MOD : public Provider
     /// @brief Constructor.
     ///
     /// @code
-    ///     MOD provider(Instant::J2000()) ;
+    ///     MOD provider(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anEpoch An epoch instant
@@ -53,7 +53,7 @@ class MOD : public Provider
     /// @brief Clone the MOD provider.
     ///
     /// @code
-    ///     MOD* clonePtr = provider.clone() ;
+    ///     MOD* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned MOD provider
@@ -62,7 +62,7 @@ class MOD : public Provider
     /// @brief Check if the MOD provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the MOD provider is defined
@@ -71,7 +71,7 @@ class MOD : public Provider
     /// @brief Get the epoch.
     ///
     /// @code
-    ///     Instant epoch = provider.getEpoch() ;
+    ///     Instant epoch = provider.getEpoch();
     /// @endcode
     ///
     /// @return The epoch instant
@@ -80,7 +80,7 @@ class MOD : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

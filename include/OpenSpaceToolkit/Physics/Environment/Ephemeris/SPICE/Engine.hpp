@@ -85,7 +85,7 @@ class Engine
     /// @brief Get engine singleton
     ///
     /// @code
-    ///     Engine& engine = Engine::Get() ;
+    ///     Engine& engine = Engine::Get();
     /// @endcode
     ///
     /// @return Reference to engine
@@ -97,7 +97,7 @@ class Engine
     /// Unload all kernels, clears cache and re-sets up the engine.
     ///
     /// @code
-    ///     Engine::Get().reset() ;
+    ///     Engine::Get().reset();
     /// @endcode
 
     void reset();
@@ -105,7 +105,7 @@ class Engine
     /// @brief Get frame of SPICE object
     ///
     /// @code
-    ///     Shared<const Frame> frame = Engine::Get().getFrameOf(SPICE::Object::Earth) ;
+    ///     Shared<const Frame> frame = Engine::Get().getFrameOf(SPICE::Object::Earth);
     /// @endcode
     ///
     /// @param [in] A SPICE object
@@ -116,7 +116,7 @@ class Engine
     /// @brief Get kernels
     ///
     /// @code
-    ///     Array<Kernel> kernels = Engine::Get().getKernels() ;
+    ///     Array<Kernel> kernels = Engine::Get().getKernels();
     /// @endcode
     ///
     /// @return Kernels
@@ -126,7 +126,7 @@ class Engine
     /// @brief Returns true if kernel is loaded
     ///
     /// @code
-    ///     Engine::Get().isKernelLoaded(aKernel) ;
+    ///     Engine::Get().isKernelLoaded(aKernel);
     /// @endcode
     ///
     /// @param [in] aKernel A kernel
@@ -137,7 +137,7 @@ class Engine
     /// @brief Returns true if kernel is loaded
     ///
     /// @code
-    ///     Engine::Get().isKernelLoaded("de430.*\\.bsp") ;
+    ///     Engine::Get().isKernelLoaded("de430.*\\.bsp");
     /// @endcode
     ///
     /// @param [in] aRegexString A regex string
@@ -148,7 +148,7 @@ class Engine
     /// @brief Load kernel
     ///
     /// @code
-    ///     Engine::Get().loadKernel(aKernel) ;
+    ///     Engine::Get().loadKernel(aKernel);
     /// @endcode
     ///
     /// @param [in] aKernel A kernel
@@ -158,7 +158,7 @@ class Engine
     /// @brief Unload kernel
     ///
     /// @code
-    ///     Engine::Get().unloadKernel(aKernel) ;
+    ///     Engine::Get().unloadKernel(aKernel);
     /// @endcode
     ///
     /// @param [in] aKernel
@@ -170,7 +170,7 @@ class Engine
     /// Unloads all kernels and clears the cache.
     ///
     /// @code
-    ///     Engine::Get().unloadAllKernels() ;
+    ///     Engine::Get().unloadAllKernels();
     /// @endcode
 
     void unloadAllKernels();
@@ -178,7 +178,7 @@ class Engine
     /// @brief Get default kernels
     ///
     /// @code
-    ///     Array<Kernel> kernels = Engine::DefaultKernels() ;
+    ///     Array<Kernel> kernels = Engine::DefaultKernels();
     /// @endcode
     ///
     /// @return Default kernels

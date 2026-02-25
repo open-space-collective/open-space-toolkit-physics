@@ -64,7 +64,7 @@ class Earth : public Model
     /// @brief Constructor with directory specification and max degree and order variables
     ///
     /// @code
-    ///     Earth earthGrav(Earth::Type::EGM2008) ;
+    ///     Earth earthGrav(Earth::Type::EGM2008);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type
@@ -81,7 +81,7 @@ class Earth : public Model
     /// @brief Constructor with max degree and order variables
     ///
     /// @code
-    ///     Earth earthGrav(Earth::Type::EGM2008, 10, 10) ;
+    ///     Earth earthGrav(Earth::Type::EGM2008, 10, 10);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type
@@ -92,7 +92,7 @@ class Earth : public Model
     /// @brief Copy constructor
     ///
     /// @code
-    ///     Earth earthGravCopy(earthGrav) ;
+    ///     Earth earthGravCopy(earthGrav);
     /// @endcode
     ///
     /// @param [in] anEarthGravitationalModel An Earth model
@@ -101,7 +101,7 @@ class Earth : public Model
     /// @brief Copy assignment operator
     ///
     /// @code
-    ///     Earth earthGravCopy = earthGrav ;
+    ///     Earth earthGravCopy = earthGrav;
     /// @endcode
     ///
     /// @param [in] anEarthGravitationalModel An Earth model
@@ -114,7 +114,7 @@ class Earth : public Model
     /// @brief Clone the Earth gravitational model
     ///
     /// @code
-    ///     Earth* earthGravPtr = earthGrav.clone() ;
+    ///     Earth* earthGravPtr = earthGrav.clone();
     /// @endcode
     ///
     /// @return Pointer to Earth gravitational model
@@ -123,7 +123,7 @@ class Earth : public Model
     /// @brief Check if the Earth gravitational model is defined
     ///
     /// @code
-    ///     bool isDefined = earthGrav.isDefined() ;
+    ///     bool isDefined = earthGrav.isDefined();
     /// @endcode
     ///
     /// @return True if the Earth gravitational model is defined
@@ -132,7 +132,7 @@ class Earth : public Model
     /// @brief Get gravitational model type
     ///
     /// @code
-    ///     Earth::Type type = earthGrav.getType() ;
+    ///     Earth::Type type = earthGrav.getType();
     /// @endcode
     ///
     /// @return Gravitational model type
@@ -141,7 +141,7 @@ class Earth : public Model
     /// @brief Get gravitational model degree
     ///
     /// @code
-    ///     Integer degree = earthGrav.getDegree() ;
+    ///     Integer degree = earthGrav.getDegree();
     /// @endcode
     ///
     /// @return Gravitational model degree
@@ -150,7 +150,7 @@ class Earth : public Model
     /// @brief Get gravitational model order
     ///
     /// @code
-    ///     Integer order = earthGrav.getOrder() ;
+    ///     Integer order = earthGrav.getOrder();
     /// @endcode
     ///
     /// @return Gravitational model order
@@ -159,7 +159,7 @@ class Earth : public Model
     /// @brief Get the gravitational field value at a given position and instant
     ///
     /// @code
-    ///     Vector3d fieldValue = earthGrav.getFieldValueAt(position, instant) ;
+    ///     Vector3d fieldValue = earthGrav.getFieldValueAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
@@ -170,7 +170,7 @@ class Earth : public Model
     /// @brief Get gravitational model parameters for a given type.
     ///
     /// @code
-    ///     Model::Parameters params = Earth::ParametersFromType(Earth::Type::EGM2008) ;
+    ///     Model::Parameters params = Earth::ParametersFromType(Earth::Type::EGM2008);
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type

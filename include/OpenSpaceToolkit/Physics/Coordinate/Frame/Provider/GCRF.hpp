@@ -32,7 +32,7 @@ class GCRF : public Provider
     /// @brief Default constructor.
     ///
     /// @code
-    ///     GCRF provider ;
+    ///     GCRF provider;
     /// @endcode
     GCRF();
 
@@ -42,7 +42,7 @@ class GCRF : public Provider
     /// @brief Clone the GCRF provider.
     ///
     /// @code
-    ///     GCRF* clonePtr = provider.clone() ;
+    ///     GCRF* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned GCRF provider
@@ -51,7 +51,7 @@ class GCRF : public Provider
     /// @brief Check if the GCRF provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the GCRF provider is defined
@@ -60,7 +60,7 @@ class GCRF : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

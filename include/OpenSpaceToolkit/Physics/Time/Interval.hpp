@@ -37,7 +37,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Constructor
     ///
     /// @code
-    ///     Interval interval(Instant::J2000(), Instant::Now(), Interval::Type::Closed) ;
+    ///     Interval interval(Instant::J2000(), Instant::Now(), Interval::Type::Closed);
     /// @endcode
     ///
     /// @param [in] aLowerBound A lower bound
@@ -48,7 +48,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << Interval::Closed(Instant::J2000(), Instant::J2000() + Duration::Hours(1.0)) ;
+    ///     std::cout << Interval::Closed(Instant::J2000(), Instant::J2000() + Duration::Hours(1.0));
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -59,7 +59,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Check if the interval is defined.
     ///
     /// @code
-    ///     Interval::Closed(Instant::J2000(), Instant::Now()).isDefined() ; // True
+    ///     Interval::Closed(Instant::J2000(), Instant::Now()).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined.
@@ -68,7 +68,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Access the start instant.
     ///
     /// @code
-    ///     const Instant& start = Interval::Closed(Instant::J2000(), Instant::Now()).accessStart() ;
+    ///     const Instant& start = Interval::Closed(Instant::J2000(), Instant::Now()).accessStart();
     /// @endcode
     ///
     /// @return Start instant.
@@ -77,7 +77,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Access the end instant.
     ///
     /// @code
-    ///     const Instant& end = Interval::Closed(Instant::J2000(), Instant::Now()).accessEnd() ;
+    ///     const Instant& end = Interval::Closed(Instant::J2000(), Instant::Now()).accessEnd();
     /// @endcode
     ///
     /// @return End instant.
@@ -86,7 +86,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Get the start instant.
     ///
     /// @code
-    ///     Instant start = Interval::Closed(Instant::J2000(), Instant::Now()).getStart() ;
+    ///     Instant start = Interval::Closed(Instant::J2000(), Instant::Now()).getStart();
     /// @endcode
     ///
     /// @return Start instant.
@@ -95,7 +95,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Get the end instant.
     ///
     /// @code
-    ///     Instant end = Interval::Closed(Instant::J2000(), Instant::Now()).getEnd() ;
+    ///     Instant end = Interval::Closed(Instant::J2000(), Instant::Now()).getEnd();
     /// @endcode
     ///
     /// @return End instant.
@@ -105,7 +105,7 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///     Duration duration = Interval::Closed(Instant::J2000(), Instant::J2000() +
-    ///     Duration::Hours(1.0)).getDuration() ; // 1.0 [hr]
+    ///     Duration::Hours(1.0)).getDuration(); // 1.0 [hr]
     /// @endcode
     ///
     /// @return Duration.
@@ -114,7 +114,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Get the center instant.
     ///
     /// @code
-    ///     Instant center = Interval::Closed(Instant::J2000(), Instant::J2000() + Duration::Hours(2.0)).getCenter() ;
+    ///     Instant center = Interval::Closed(Instant::J2000(), Instant::J2000() + Duration::Hours(2.0)).getCenter();
     /// @endcode
     ///
     /// @return Center instant.
@@ -123,7 +123,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Get the intersection with another interval.
     ///
     /// @code
-    ///     Interval interval = Interval::Closed(startInstant, endInstant).getIntersectionWith(anotherInterval) ;
+    ///     Interval interval = Interval::Closed(startInstant, endInstant).getIntersectionWith(anotherInterval);
     /// @endcode
     ///
     /// @param [in] anInterval Another interval.
@@ -133,7 +133,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Get the union with another interval.
     ///
     /// @code
-    ///     Interval interval = Interval::Closed(startInstant, endInstant).getUnionWith(anotherInterval) ;
+    ///     Interval interval = Interval::Closed(startInstant, endInstant).getUnionWith(anotherInterval);
     /// @endcode
     ///
     /// @param [in] anInterval Another interval.
@@ -143,7 +143,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Convert the interval to a string.
     ///
     /// @code
-    ///     Interval::Closed(Instant::J2000(), Instant::J2000() + Duration::Hours(1.0)).toString(Scale::UTC) ;
+    ///     Interval::Closed(Instant::J2000(), Instant::J2000() + Duration::Hours(1.0)).toString(Scale::UTC);
     /// @endcode
     ///
     /// @param [in] aTimeScale Time scale.
@@ -154,7 +154,7 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///     Array<Instant> grid = Interval::Closed(Instant::J2000(), Instant::J2000() +
-    ///     Duration::Hours(1.0)).generateGrid(Duration::Minutes(10.0)) ;
+    ///     Duration::Hours(1.0)).generateGrid(Duration::Minutes(10.0));
     /// @endcode
     ///
     /// @param [in] aTimeStep Time step.
@@ -164,8 +164,8 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Create an undefined interval.
     ///
     /// @code
-    ///     Interval interval = Interval::Undefined() ;
-    ///     interval.isDefined() ; // False
+    ///     Interval interval = Interval::Undefined();
+    ///     interval.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined interval.
@@ -174,7 +174,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Constructs a closed interval
     ///
     /// @code
-    ///     Interval interval = Interval::Closed(Instant::J2000(), Instant::Now()) ; // [J2000, Now]
+    ///     Interval interval = Interval::Closed(Instant::J2000(), Instant::Now()); // [J2000, Now]
     /// @endcode
     ///
     /// @param [in] aLowerBound Start instant.
@@ -185,7 +185,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Constructs an open interval
     ///
     /// @code
-    ///     Interval interval = Interval::Open(Instant::J2000(), Instant::Now()) ; // (J2000, Now)
+    ///     Interval interval = Interval::Open(Instant::J2000(), Instant::Now()); // (J2000, Now)
     /// @endcode
     ///
     /// @param [in] aLowerBound Start instant.
@@ -196,7 +196,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Constructs an half-open left interval
     ///
     /// @code
-    ///     Interval interval = Interval::HalfOpenLeft(Instant::J2000(), Instant::Now()) ; // (J2000,
+    ///     Interval interval = Interval::HalfOpenLeft(Instant::J2000(), Instant::Now()); // (J2000,
     ///     Now]
     /// @endcode
     ///
@@ -208,7 +208,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Constructs an half-open right interval
     ///
     /// @code
-    ///     Interval interval = Interval::HalfOpenRight(Instant::J2000(), Instant::Now()) ; // [J2000,
+    ///     Interval interval = Interval::HalfOpenRight(Instant::J2000(), Instant::Now()); // [J2000,
     ///     Now)
     /// @endcode
     ///
@@ -221,7 +221,7 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///     Interval interval = Interval::Centered(Instant::J2000(), Duration::Seconds(1.0),
-    ///     Interval::Type::Closed) ; // [1999-12-31 23:59:59.500.000.000, 2000-01-01
+    ///     Interval::Type::Closed); // [1999-12-31 23:59:59.500.000.000, 2000-01-01
     ///     00:00:00.500.000.000]
     /// @endcode
     ///
@@ -237,9 +237,9 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///     Array<Interval> intervals = { Interval::Closed(Instant::2000(), Instant::2001()),
-    ///     Interval::Closed(Instant::2002(), Instant::2004()) } ;
-    ///     Interval interval = Interval::Closed(Instant::2001(), Instant::2003()) ;
-    ///     Array<Interval> clippedIntervals = Interval::Clip(intervals, interval) ; // { [2001,
+    ///     Interval::Closed(Instant::2002(), Instant::2004()) };
+    ///     Interval interval = Interval::Closed(Instant::2001(), Instant::2003());
+    ///     Array<Interval> clippedIntervals = Interval::Clip(intervals, interval); // { [2001,
     ///     2001], [2002, 2003] }
     /// @endcode
     ///
@@ -251,7 +251,7 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Creates a sorted list of intervals.
     ///
     /// @code
-    ///     Array<Interval> sortedIntervals = Interval::Sort(intervals) ;
+    ///     Array<Interval> sortedIntervals = Interval::Sort(intervals);
     /// @endcode
     ///
     /// @param [in] anIntervalArray A list of intervals.
@@ -266,8 +266,8 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///     Array<Interval> intervals = { Interval::Closed(Instant::2000(), Instant::2002()),
-    ///     Interval::Closed(Instant::2001(), Instant::2003()) } ;
-    ///     Array<Interval> mergedIntervals = Interval::Merge(intervals) ; // { [2000, 2003] }
+    ///     Interval::Closed(Instant::2001(), Instant::2003()) };
+    ///     Array<Interval> mergedIntervals = Interval::Merge(intervals); // { [2000, 2003] }
     /// @endcode
     ///
     /// @param [in] anIntervalArray A list of intervals.
@@ -278,9 +278,9 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @code
     ///     Array<Interval> intervals = { Interval::Closed(Instant::2000(), Instant::2001()),
-    ///     Interval::Closed(Instant::2002(), Instant::2004()) } ;
-    ///     Interval interval = Interval::Closed(Instant::1999(), Instant::2005()) ;
-    ///     Array<Interval> gaps = Interval::GetGaps(intervals) ; // { [2001, 2002] }
+    ///     Interval::Closed(Instant::2002(), Instant::2004()) };
+    ///     Interval interval = Interval::Closed(Instant::1999(), Instant::2005());
+    ///     Array<Interval> gaps = Interval::GetGaps(intervals); // { [2001, 2002] }
     /// @endcode
     ///
     /// @param [in] anIntervalArray A list of intervals.
@@ -296,9 +296,9 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @code
     ///     Array<Interval> intervals = { Interval::Closed(Instant::2000(), Instant::2002()),
     ///     Interval::Closed(Instant::2001(), Instant::2004()),  Interval::Closed(Instant::2006(),
-    ///     Instant::2007()) } ;
-    ///     Array<Interval> anotherIntervals = { Interval::Closed(Instant::2001(), Instant::2003()) } ;
-    ///     Array<Interval> logicalOrIntervals = Interval::LogicalOr(intervals, anotherIntervals) ; //
+    ///     Instant::2007()) };
+    ///     Array<Interval> anotherIntervals = { Interval::Closed(Instant::2001(), Instant::2003()) };
+    ///     Array<Interval> logicalOrIntervals = Interval::LogicalOr(intervals, anotherIntervals); //
     ///     { [2000, 2004], [2006, 2007] }
     /// @endcode
     ///
@@ -314,9 +314,9 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @code
     ///     Array<Interval> intervals = { Interval::Closed(Instant::2000(), Instant::2002()),
     ///     Interval::Closed(Instant::2001(), Instant::2004()),  Interval::Closed(Instant::2006(),
-    ///     Instant::2007()) } ;
-    ///     Array<Interval> anotherIntervals = { Interval::Closed(Instant::2001(), Instant::2003()) } ;
-    ///     Array<Interval> logicalAndIntervals = Interval::LogicalAnd(intervals, anotherIntervals) ; //
+    ///     Instant::2007()) };
+    ///     Array<Interval> anotherIntervals = { Interval::Closed(Instant::2001(), Instant::2003()) };
+    ///     Array<Interval> logicalAndIntervals = Interval::LogicalAnd(intervals, anotherIntervals); //
     ///     { [2001, 2002], [2001, 2003] }
     /// @endcode
     ///
@@ -331,9 +331,9 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Parse an interval from a string representation.
     ///
     /// @code
-    ///     Interval interval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01] [UTC]") ;
+    ///     Interval interval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01 12:00:01] [UTC]");
     ///     Interval halfOpenRightInterval = Interval::Parse("[2000-01-01 12:00:00 - 2000-01-01
-    ///     12:00:01[ [UTC]") ;
+    ///     12:00:01[ [UTC]");
     /// @endcode
     ///
     /// @param [in] aString String representation.

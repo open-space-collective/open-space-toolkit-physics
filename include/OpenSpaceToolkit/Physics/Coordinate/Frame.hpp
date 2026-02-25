@@ -56,7 +56,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Equality operator
     ///
     /// @code
-    ///     Frame::GCRF() == Frame::GCRF() ; // True
+    ///     Frame::GCRF() == Frame::GCRF(); // True
     /// @endcode
     ///
     /// @param [in] aFrame A frame to compare with
@@ -66,7 +66,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Inequality operator
     ///
     /// @code
-    ///     Frame::GCRF() != Frame::ITRF() ; // True
+    ///     Frame::GCRF() != Frame::ITRF(); // True
     /// @endcode
     ///
     /// @param [in] aFrame A frame to compare with
@@ -76,7 +76,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << *Frame::GCRF() ;
+    ///     std::cout << *Frame::GCRF();
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -87,7 +87,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Check if the frame is defined
     ///
     /// @code
-    ///     Frame::GCRF()->isDefined() ; // True
+    ///     Frame::GCRF()->isDefined(); // True
     /// @endcode
     ///
     /// @return True if the frame is defined
@@ -96,7 +96,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Check if the frame is quasi-inertial
     ///
     /// @code
-    ///     Frame::GCRF()->isQuasiInertial() ; // True
+    ///     Frame::GCRF()->isQuasiInertial(); // True
     /// @endcode
     ///
     /// @return True if the frame is quasi-inertial
@@ -105,7 +105,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Check if the frame has a parent frame
     ///
     /// @code
-    ///     Frame::ITRF()->hasParent() ; // True
+    ///     Frame::ITRF()->hasParent(); // True
     /// @endcode
     ///
     /// @return True if the frame has a parent
@@ -114,7 +114,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Access the parent frame
     ///
     /// @code
-    ///     Frame::ITRF()->accessParent() ;
+    ///     Frame::ITRF()->accessParent();
     /// @endcode
     ///
     /// @return Shared pointer to the parent frame
@@ -123,7 +123,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Access an ancestor frame at a given degree
     ///
     /// @code
-    ///     Frame::ITRF()->accessAncestor(2) ;
+    ///     Frame::ITRF()->accessAncestor(2);
     /// @endcode
     ///
     /// @param [in] anAncestorDegree The ancestor degree (1 = parent, 2 = grandparent, etc.)
@@ -133,7 +133,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Access the transform provider
     ///
     /// @code
-    ///     Frame::GCRF()->accessProvider() ;
+    ///     Frame::GCRF()->accessProvider();
     /// @endcode
     ///
     /// @return Shared pointer to the transform provider
@@ -142,7 +142,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the name of the frame
     ///
     /// @code
-    ///     Frame::GCRF()->getName() ; // "GCRF"
+    ///     Frame::GCRF()->getName(); // "GCRF"
     /// @endcode
     ///
     /// @return Frame name
@@ -151,7 +151,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the origin of this frame expressed in another frame at a given instant
     ///
     /// @code
-    ///     Frame::ITRF()->getOriginIn(Frame::GCRF(), Instant::J2000()) ;
+    ///     Frame::ITRF()->getOriginIn(Frame::GCRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aFrame A shared pointer to the target frame
@@ -162,7 +162,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the velocity of this frame's origin expressed in another frame at a given instant
     ///
     /// @code
-    ///     Frame::ITRF()->getVelocityIn(Frame::GCRF(), Instant::J2000()) ;
+    ///     Frame::ITRF()->getVelocityIn(Frame::GCRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aFrame A shared pointer to the target frame
@@ -173,7 +173,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the axes of this frame expressed in another frame at a given instant
     ///
     /// @code
-    ///     Frame::ITRF()->getAxesIn(Frame::GCRF(), Instant::J2000()) ;
+    ///     Frame::ITRF()->getAxesIn(Frame::GCRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aFrame A shared pointer to the target frame
@@ -184,7 +184,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the transform from this frame to another frame at a given instant
     ///
     /// @code
-    ///     Frame::ITRF()->getTransformTo(Frame::GCRF(), Instant::J2000()) ;
+    ///     Frame::ITRF()->getTransformTo(Frame::GCRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aFrame A shared pointer to the target frame
@@ -195,7 +195,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Construct an undefined frame
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::Undefined() ;
+    ///     Shared<const Frame> frame = Frame::Undefined();
     /// @endcode
     ///
     /// @return Shared pointer to an undefined frame
@@ -204,7 +204,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the Geocentric Celestial Reference Frame (GCRF)
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::GCRF() ;
+    ///     Shared<const Frame> frame = Frame::GCRF();
     /// @endcode
     ///
     /// @return Shared pointer to the GCRF frame
@@ -213,7 +213,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the J2000 frame for a given IAU theory
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::J2000(iau::Theory::IAU_2006) ;
+    ///     Shared<const Frame> frame = Frame::J2000(iau::Theory::IAU_2006);
     /// @endcode
     ///
     /// @param [in] aTheory An IAU precession-nutation theory
@@ -223,7 +223,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the Mean of Date (MOD) frame for a given epoch
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::MOD(Instant::J2000()) ;
+    ///     Shared<const Frame> frame = Frame::MOD(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anEpoch An epoch instant
@@ -233,7 +233,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the True of Date (TOD) frame for a given epoch and IAU theory
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006) ;
+    ///     Shared<const Frame> frame = Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006);
     /// @endcode
     ///
     /// @param [in] anEpoch An epoch instant
@@ -244,7 +244,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the True Equator Mean Equinox (TEME) frame
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::TEME() ;
+    ///     Shared<const Frame> frame = Frame::TEME();
     /// @endcode
     ///
     /// @return Shared pointer to the TEME frame
@@ -253,7 +253,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the True Equator Mean Equinox (TEME) frame of a given epoch
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::TEMEOfEpoch(Instant::J2000()) ;
+    ///     Shared<const Frame> frame = Frame::TEMEOfEpoch(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anEpoch An epoch instant
@@ -263,7 +263,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the Celestial Intermediate Reference Frame (CIRF)
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::CIRF() ;
+    ///     Shared<const Frame> frame = Frame::CIRF();
     /// @endcode
     ///
     /// @return Shared pointer to the CIRF frame
@@ -272,7 +272,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the Terrestrial Intermediate Reference Frame (TIRF)
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::TIRF() ;
+    ///     Shared<const Frame> frame = Frame::TIRF();
     /// @endcode
     ///
     /// @return Shared pointer to the TIRF frame
@@ -281,7 +281,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get the International Terrestrial Reference Frame (ITRF)
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::ITRF() ;
+    ///     Shared<const Frame> frame = Frame::ITRF();
     /// @endcode
     ///
     /// @return Shared pointer to the ITRF frame
@@ -290,7 +290,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Get a frame by name
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::WithName("GCRF") ;
+    ///     Shared<const Frame> frame = Frame::WithName("GCRF");
     /// @endcode
     ///
     /// @param [in] aName A frame name
@@ -300,7 +300,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Check if a frame with the given name exists
     ///
     /// @code
-    ///     Frame::Exists("GCRF") ; // True
+    ///     Frame::Exists("GCRF"); // True
     /// @endcode
     ///
     /// @param [in] aName A frame name
@@ -310,7 +310,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Constructor
     ///
     /// @code
-    ///     Shared<const Frame> frame = Frame::Construct("MyFrame", true, Frame::GCRF(), aProvider) ;
+    ///     Shared<const Frame> frame = Frame::Construct("MyFrame", true, Frame::GCRF(), aProvider);
     /// @endcode
     ///
     /// @param [in] aName A frame name
@@ -328,7 +328,7 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @brief Destruct and remove a frame by name
     ///
     /// @code
-    ///     Frame::Destruct("MyFrame") ;
+    ///     Frame::Destruct("MyFrame");
     /// @endcode
     ///
     /// @param [in] aName A frame name

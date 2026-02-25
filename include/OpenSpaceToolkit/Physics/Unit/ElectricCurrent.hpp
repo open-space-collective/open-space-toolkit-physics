@@ -38,7 +38,7 @@ class ElectricCurrent : public Unit
     /// @brief Constructor
     ///
     /// @code
-    ///     ElectricCurrent electricCurrent { 1.0, ElectricCurrent::Unit::Ampere } ;
+    ///     ElectricCurrent electricCurrent { 1.0, ElectricCurrent::Unit::Ampere };
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -49,8 +49,8 @@ class ElectricCurrent : public Unit
     /// @brief Clone the electric current.
     ///
     /// @code
-    ///     ElectricCurrent current = ElectricCurrent::Amperes(1.0) ;
-    ///     ElectricCurrent* clonePtr = current.clone() ;
+    ///     ElectricCurrent current = ElectricCurrent::Amperes(1.0);
+    ///     ElectricCurrent* clonePtr = current.clone();
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this electric current
@@ -60,7 +60,7 @@ class ElectricCurrent : public Unit
     /// @brief Check if the electric current is defined.
     ///
     /// @code
-    ///     ElectricCurrent::Amperes(1.0).isDefined() ; // True
+    ///     ElectricCurrent::Amperes(1.0).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -70,7 +70,7 @@ class ElectricCurrent : public Unit
     /// @brief Get the electric current unit.
     ///
     /// @code
-    ///     ElectricCurrent::Amperes(1.0).getUnit() ; // ElectricCurrent::Unit::Ampere
+    ///     ElectricCurrent::Amperes(1.0).getUnit(); // ElectricCurrent::Unit::Ampere
     /// @endcode
     ///
     /// @return The electric current unit
@@ -80,7 +80,7 @@ class ElectricCurrent : public Unit
     /// @brief Get the value in the specified unit.
     ///
     /// @code
-    ///     ElectricCurrent::Amperes(1.0).in(ElectricCurrent::Unit::Ampere) ; // 1.0
+    ///     ElectricCurrent::Amperes(1.0).in(ElectricCurrent::Unit::Ampere); // 1.0
     /// @endcode
     ///
     /// @param [in] aUnit An electric current unit
@@ -91,7 +91,7 @@ class ElectricCurrent : public Unit
     /// @brief Get the value in amperes.
     ///
     /// @code
-    ///     ElectricCurrent::Amperes(1.0).inAmperes() ; // 1.0
+    ///     ElectricCurrent::Amperes(1.0).inAmperes(); // 1.0
     /// @endcode
     ///
     /// @return The value in amperes
@@ -101,7 +101,7 @@ class ElectricCurrent : public Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     ElectricCurrent::Amperes(1.0).toString() ;
+    ///     ElectricCurrent::Amperes(1.0).toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
@@ -112,7 +112,7 @@ class ElectricCurrent : public Unit
     /// @brief Construct an undefined electric current.
     ///
     /// @code
-    ///     ElectricCurrent current = ElectricCurrent::Undefined() ;
+    ///     ElectricCurrent current = ElectricCurrent::Undefined();
     /// @endcode
     ///
     /// @return An undefined electric current
@@ -122,7 +122,7 @@ class ElectricCurrent : public Unit
     /// @brief Construct an electric current from a value in amperes.
     ///
     /// @code
-    ///     ElectricCurrent current = ElectricCurrent::Amperes(1.0) ;
+    ///     ElectricCurrent current = ElectricCurrent::Amperes(1.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in amperes
@@ -133,7 +133,7 @@ class ElectricCurrent : public Unit
     /// @brief Parse an electric current from a string.
     ///
     /// @code
-    ///     ElectricCurrent current = ElectricCurrent::Parse("1.0 [A]") ;
+    ///     ElectricCurrent current = ElectricCurrent::Parse("1.0 [A]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse
@@ -144,7 +144,7 @@ class ElectricCurrent : public Unit
     /// @brief Get the string representation of an electric current unit.
     ///
     /// @code
-    ///     ElectricCurrent::StringFromUnit(ElectricCurrent::Unit::Ampere) ; // "Ampere"
+    ///     ElectricCurrent::StringFromUnit(ElectricCurrent::Unit::Ampere); // "Ampere"
     /// @endcode
     ///
     /// @param [in] aUnit An electric current unit
@@ -155,7 +155,7 @@ class ElectricCurrent : public Unit
     /// @brief Get the symbol of an electric current unit.
     ///
     /// @code
-    ///     ElectricCurrent::SymbolFromUnit(ElectricCurrent::Unit::Ampere) ; // "A"
+    ///     ElectricCurrent::SymbolFromUnit(ElectricCurrent::Unit::Ampere); // "A"
     /// @endcode
     ///
     /// @param [in] aUnit An electric current unit

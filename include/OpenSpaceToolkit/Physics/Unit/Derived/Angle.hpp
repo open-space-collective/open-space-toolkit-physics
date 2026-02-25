@@ -51,7 +51,7 @@ class Angle : public Unit
     /// @brief Constructor
     ///
     /// @code
-    ///     Angle angle(90.0, Angle::Unit::Degree) ;
+    ///     Angle angle(90.0, Angle::Unit::Degree);
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -62,7 +62,7 @@ class Angle : public Unit
     /// @brief Constructor from a mathematics geometry angle.
     ///
     /// @code
-    ///     Angle angle(ostk::mathematics::geometry::Angle::Degrees(90.0)) ;
+    ///     Angle angle(ostk::mathematics::geometry::Angle::Degrees(90.0));
     /// @endcode
     ///
     /// @param [in] anAngle A mathematics geometry angle
@@ -72,8 +72,8 @@ class Angle : public Unit
     /// @brief Clone the angle.
     ///
     /// @code
-    ///     Angle angle = Angle::Degrees(90.0) ;
-    ///     Angle* clonePtr = angle.clone() ;
+    ///     Angle angle = Angle::Degrees(90.0);
+    ///     Angle* clonePtr = angle.clone();
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this angle
@@ -83,7 +83,7 @@ class Angle : public Unit
     /// @brief Equal to operator.
     ///
     /// @code
-    ///     Angle::Degrees(90.0) == Angle::Degrees(90.0) ; // True
+    ///     Angle::Degrees(90.0) == Angle::Degrees(90.0); // True
     /// @endcode
     ///
     /// @param [in] anAngle An angle to compare with
@@ -94,7 +94,7 @@ class Angle : public Unit
     /// @brief Not equal to operator.
     ///
     /// @code
-    ///     Angle::Degrees(90.0) != Angle::Degrees(180.0) ; // True
+    ///     Angle::Degrees(90.0) != Angle::Degrees(180.0); // True
     /// @endcode
     ///
     /// @param [in] anAngle An angle to compare with
@@ -105,7 +105,7 @@ class Angle : public Unit
     /// @brief Addition operator.
     ///
     /// @code
-    ///     Angle::Degrees(90.0) + Angle::Degrees(90.0) ; // 180.0 [deg]
+    ///     Angle::Degrees(90.0) + Angle::Degrees(90.0); // 180.0 [deg]
     /// @endcode
     ///
     /// @param [in] anAngle An angle to add
@@ -116,7 +116,7 @@ class Angle : public Unit
     /// @brief Subtraction operator.
     ///
     /// @code
-    ///     Angle::Degrees(180.0) - Angle::Degrees(90.0) ; // 90.0 [deg]
+    ///     Angle::Degrees(180.0) - Angle::Degrees(90.0); // 90.0 [deg]
     /// @endcode
     ///
     /// @param [in] anAngle An angle to subtract
@@ -127,7 +127,7 @@ class Angle : public Unit
     /// @brief Multiplication by scalar operator.
     ///
     /// @code
-    ///     Angle::Degrees(90.0) * 2.0 ; // 180.0 [deg]
+    ///     Angle::Degrees(90.0) * 2.0; // 180.0 [deg]
     /// @endcode
     ///
     /// @param [in] aReal A scalar multiplier
@@ -138,7 +138,7 @@ class Angle : public Unit
     /// @brief Division by scalar operator.
     ///
     /// @code
-    ///     Angle::Degrees(180.0) / 2.0 ; // 90.0 [deg]
+    ///     Angle::Degrees(180.0) / 2.0; // 90.0 [deg]
     /// @endcode
     ///
     /// @param [in] aReal A scalar divisor
@@ -149,8 +149,8 @@ class Angle : public Unit
     /// @brief Addition assignment operator.
     ///
     /// @code
-    ///     Angle angle = Angle::Degrees(90.0) ;
-    ///     angle += Angle::Degrees(90.0) ; // 180.0 [deg]
+    ///     Angle angle = Angle::Degrees(90.0);
+    ///     angle += Angle::Degrees(90.0); // 180.0 [deg]
     /// @endcode
     ///
     /// @param [in] anAngle An angle to add
@@ -161,8 +161,8 @@ class Angle : public Unit
     /// @brief Subtraction assignment operator.
     ///
     /// @code
-    ///     Angle angle = Angle::Degrees(180.0) ;
-    ///     angle -= Angle::Degrees(90.0) ; // 90.0 [deg]
+    ///     Angle angle = Angle::Degrees(180.0);
+    ///     angle -= Angle::Degrees(90.0); // 90.0 [deg]
     /// @endcode
     ///
     /// @param [in] anAngle An angle to subtract
@@ -173,8 +173,8 @@ class Angle : public Unit
     /// @brief Multiplication assignment operator.
     ///
     /// @code
-    ///     Angle angle = Angle::Degrees(90.0) ;
-    ///     angle *= 2.0 ; // 180.0 [deg]
+    ///     Angle angle = Angle::Degrees(90.0);
+    ///     angle *= 2.0; // 180.0 [deg]
     /// @endcode
     ///
     /// @param [in] aReal A scalar multiplier
@@ -185,8 +185,8 @@ class Angle : public Unit
     /// @brief Division assignment operator.
     ///
     /// @code
-    ///     Angle angle = Angle::Degrees(180.0) ;
-    ///     angle /= 2.0 ; // 90.0 [deg]
+    ///     Angle angle = Angle::Degrees(180.0);
+    ///     angle /= 2.0; // 90.0 [deg]
     /// @endcode
     ///
     /// @param [in] aReal A scalar divisor
@@ -197,7 +197,7 @@ class Angle : public Unit
     /// @brief Scalar multiplication operator (scalar * angle).
     ///
     /// @code
-    ///     2.0 * Angle::Degrees(90.0) ; // 180.0 [deg]
+    ///     2.0 * Angle::Degrees(90.0); // 180.0 [deg]
     /// @endcode
     ///
     /// @param [in] aReal A scalar multiplier
@@ -209,7 +209,7 @@ class Angle : public Unit
     /// @brief Unary plus operator.
     ///
     /// @code
-    ///     +Angle::Degrees(90.0) ; // 90.0 [deg]
+    ///     +Angle::Degrees(90.0); // 90.0 [deg]
     /// @endcode
     ///
     /// @return A copy of this angle
@@ -219,7 +219,7 @@ class Angle : public Unit
     /// @brief Unary minus operator.
     ///
     /// @code
-    ///     -Angle::Degrees(90.0) ; // -90.0 [deg]
+    ///     -Angle::Degrees(90.0); // -90.0 [deg]
     /// @endcode
     ///
     /// @return The negated angle
@@ -229,7 +229,7 @@ class Angle : public Unit
     /// @brief Conversion operator to mathematics geometry angle.
     ///
     /// @code
-    ///     ostk::mathematics::geometry::Angle mathAngle = Angle::Degrees(90.0) ;
+    ///     ostk::mathematics::geometry::Angle mathAngle = Angle::Degrees(90.0);
     /// @endcode
     ///
     /// @return A mathematics geometry angle
@@ -239,7 +239,7 @@ class Angle : public Unit
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << Angle::Degrees(90.0) ;
+    ///     std::cout << Angle::Degrees(90.0);
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -251,7 +251,7 @@ class Angle : public Unit
     /// @brief Check if the angle is defined.
     ///
     /// @code
-    ///     Angle::Degrees(90.0).isDefined() ; // True
+    ///     Angle::Degrees(90.0).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -261,7 +261,7 @@ class Angle : public Unit
     /// @brief Check if the angle value is zero.
     ///
     /// @code
-    ///     Angle::Degrees(0.0).isZero() ; // True
+    ///     Angle::Degrees(0.0).isZero(); // True
     /// @endcode
     ///
     /// @return True if zero
@@ -271,7 +271,7 @@ class Angle : public Unit
     /// @brief Get the angle unit.
     ///
     /// @code
-    ///     Angle::Degrees(90.0).getUnit() ; // Angle::Unit::Degree
+    ///     Angle::Degrees(90.0).getUnit(); // Angle::Unit::Degree
     /// @endcode
     ///
     /// @return The angle unit
@@ -281,7 +281,7 @@ class Angle : public Unit
     /// @brief Get the value in the specified unit.
     ///
     /// @code
-    ///     Angle::Degrees(90.0).in(Angle::Unit::Radian) ;
+    ///     Angle::Degrees(90.0).in(Angle::Unit::Radian);
     /// @endcode
     ///
     /// @param [in] aUnit An angle unit
@@ -292,7 +292,7 @@ class Angle : public Unit
     /// @brief Get the value in radians.
     ///
     /// @code
-    ///     Angle::Degrees(180.0).inRadians() ;
+    ///     Angle::Degrees(180.0).inRadians();
     /// @endcode
     ///
     /// @return The value in radians
@@ -302,7 +302,7 @@ class Angle : public Unit
     /// @brief Get the value in radians within the specified range.
     ///
     /// @code
-    ///     Angle::Degrees(270.0).inRadians(0.0, Real::TwoPi()) ;
+    ///     Angle::Degrees(270.0).inRadians(0.0, Real::TwoPi());
     /// @endcode
     ///
     /// @param [in] aLowerBound A lower bound (in radians)
@@ -314,7 +314,7 @@ class Angle : public Unit
     /// @brief Get the value in degrees.
     ///
     /// @code
-    ///     Angle::Radians(Real::Pi()).inDegrees() ; // 180.0
+    ///     Angle::Radians(Real::Pi()).inDegrees(); // 180.0
     /// @endcode
     ///
     /// @return The value in degrees
@@ -324,7 +324,7 @@ class Angle : public Unit
     /// @brief Get the value in degrees within the specified range.
     ///
     /// @code
-    ///     Angle::Degrees(400.0).inDegrees(0.0, 360.0) ; // 40.0
+    ///     Angle::Degrees(400.0).inDegrees(0.0, 360.0); // 40.0
     /// @endcode
     ///
     /// @param [in] aLowerBound A lower bound (in degrees)
@@ -336,7 +336,7 @@ class Angle : public Unit
     /// @brief Get the value in arcminutes.
     ///
     /// @code
-    ///     Angle::Degrees(1.0).inArcminutes() ; // 60.0
+    ///     Angle::Degrees(1.0).inArcminutes(); // 60.0
     /// @endcode
     ///
     /// @return The value in arcminutes
@@ -346,7 +346,7 @@ class Angle : public Unit
     /// @brief Get the value in arcminutes within the specified range.
     ///
     /// @code
-    ///     Angle::Arcminutes(100.0).inArcminutes(0.0, 60.0) ;
+    ///     Angle::Arcminutes(100.0).inArcminutes(0.0, 60.0);
     /// @endcode
     ///
     /// @param [in] aLowerBound A lower bound (in arcminutes)
@@ -358,7 +358,7 @@ class Angle : public Unit
     /// @brief Get the value in arcseconds.
     ///
     /// @code
-    ///     Angle::Degrees(1.0).inArcseconds() ; // 3600.0
+    ///     Angle::Degrees(1.0).inArcseconds(); // 3600.0
     /// @endcode
     ///
     /// @return The value in arcseconds
@@ -368,7 +368,7 @@ class Angle : public Unit
     /// @brief Get the value in arcseconds within the specified range.
     ///
     /// @code
-    ///     Angle::Arcseconds(5000.0).inArcseconds(0.0, 3600.0) ;
+    ///     Angle::Arcseconds(5000.0).inArcseconds(0.0, 3600.0);
     /// @endcode
     ///
     /// @param [in] aLowerBound A lower bound (in arcseconds)
@@ -380,7 +380,7 @@ class Angle : public Unit
     /// @brief Get the value in revolutions.
     ///
     /// @code
-    ///     Angle::Degrees(360.0).inRevolutions() ; // 1.0
+    ///     Angle::Degrees(360.0).inRevolutions(); // 1.0
     /// @endcode
     ///
     /// @return The value in revolutions
@@ -390,7 +390,7 @@ class Angle : public Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     Angle::Degrees(90.0).toString() ;
+    ///     Angle::Degrees(90.0).toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
@@ -401,7 +401,7 @@ class Angle : public Unit
     /// @brief Construct an undefined angle.
     ///
     /// @code
-    ///     Angle angle = Angle::Undefined() ;
+    ///     Angle angle = Angle::Undefined();
     /// @endcode
     ///
     /// @return An undefined angle
@@ -411,7 +411,7 @@ class Angle : public Unit
     /// @brief Construct a zero angle.
     ///
     /// @code
-    ///     Angle angle = Angle::Zero() ;
+    ///     Angle angle = Angle::Zero();
     /// @endcode
     ///
     /// @return A zero angle
@@ -421,7 +421,7 @@ class Angle : public Unit
     /// @brief Construct an angle of pi/2 radians (90 degrees).
     ///
     /// @code
-    ///     Angle angle = Angle::HalfPi() ;
+    ///     Angle angle = Angle::HalfPi();
     /// @endcode
     ///
     /// @return A half-pi angle
@@ -431,7 +431,7 @@ class Angle : public Unit
     /// @brief Construct an angle of pi radians (180 degrees).
     ///
     /// @code
-    ///     Angle angle = Angle::Pi() ;
+    ///     Angle angle = Angle::Pi();
     /// @endcode
     ///
     /// @return A pi angle
@@ -441,7 +441,7 @@ class Angle : public Unit
     /// @brief Construct an angle of 2*pi radians (360 degrees).
     ///
     /// @code
-    ///     Angle angle = Angle::TwoPi() ;
+    ///     Angle angle = Angle::TwoPi();
     /// @endcode
     ///
     /// @return A two-pi angle
@@ -451,7 +451,7 @@ class Angle : public Unit
     /// @brief Construct an angle from a value in radians.
     ///
     /// @code
-    ///     Angle angle = Angle::Radians(3.14159) ;
+    ///     Angle angle = Angle::Radians(3.14159);
     /// @endcode
     ///
     /// @param [in] aValue A value in radians
@@ -462,7 +462,7 @@ class Angle : public Unit
     /// @brief Construct an angle from a value in degrees.
     ///
     /// @code
-    ///     Angle angle = Angle::Degrees(90.0) ;
+    ///     Angle angle = Angle::Degrees(90.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in degrees
@@ -473,7 +473,7 @@ class Angle : public Unit
     /// @brief Construct an angle from a value in arcminutes.
     ///
     /// @code
-    ///     Angle angle = Angle::Arcminutes(60.0) ;
+    ///     Angle angle = Angle::Arcminutes(60.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in arcminutes
@@ -484,7 +484,7 @@ class Angle : public Unit
     /// @brief Construct an angle from a value in arcseconds.
     ///
     /// @code
-    ///     Angle angle = Angle::Arcseconds(3600.0) ;
+    ///     Angle angle = Angle::Arcseconds(3600.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in arcseconds
@@ -495,7 +495,7 @@ class Angle : public Unit
     /// @brief Construct an angle from a value in revolutions.
     ///
     /// @code
-    ///     Angle angle = Angle::Revolutions(1.0) ;
+    ///     Angle angle = Angle::Revolutions(1.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in revolutions
@@ -506,7 +506,7 @@ class Angle : public Unit
     /// @brief Compute the angle between two 2D vectors.
     ///
     /// @code
-    ///     Angle angle = Angle::Between(Vector2d(1.0, 0.0), Vector2d(0.0, 1.0)) ;
+    ///     Angle angle = Angle::Between(Vector2d(1.0, 0.0), Vector2d(0.0, 1.0));
     /// @endcode
     ///
     /// @param [in] aFirstVector A first 2D vector
@@ -518,7 +518,7 @@ class Angle : public Unit
     /// @brief Compute the angle between two 3D vectors.
     ///
     /// @code
-    ///     Angle angle = Angle::Between(Vector3d(1.0, 0.0, 0.0), Vector3d(0.0, 1.0, 0.0)) ;
+    ///     Angle angle = Angle::Between(Vector3d(1.0, 0.0, 0.0), Vector3d(0.0, 1.0, 0.0));
     /// @endcode
     ///
     /// @param [in] aFirstVector A first 3D vector
@@ -530,7 +530,7 @@ class Angle : public Unit
     /// @brief Parse an angle from a string.
     ///
     /// @code
-    ///     Angle angle = Angle::Parse("90.0 [deg]") ;
+    ///     Angle angle = Angle::Parse("90.0 [deg]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse
@@ -541,7 +541,7 @@ class Angle : public Unit
     /// @brief Get the string representation of an angle unit.
     ///
     /// @code
-    ///     Angle::StringFromUnit(Angle::Unit::Degree) ; // "Degree"
+    ///     Angle::StringFromUnit(Angle::Unit::Degree); // "Degree"
     /// @endcode
     ///
     /// @param [in] aUnit An angle unit
@@ -552,7 +552,7 @@ class Angle : public Unit
     /// @brief Get the symbol of an angle unit.
     ///
     /// @code
-    ///     Angle::SymbolFromUnit(Angle::Unit::Degree) ; // "deg"
+    ///     Angle::SymbolFromUnit(Angle::Unit::Degree); // "deg"
     /// @endcode
     ///
     /// @param [in] aUnit An angle unit
@@ -563,7 +563,7 @@ class Angle : public Unit
     /// @brief Get the angle unit from a symbol string.
     ///
     /// @code
-    ///     Angle::UnitFromSymbol("deg") ; // Angle::Unit::Degree
+    ///     Angle::UnitFromSymbol("deg"); // Angle::Unit::Degree
     /// @endcode
     ///
     /// @param [in] aSymbol A unit symbol

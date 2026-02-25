@@ -38,7 +38,7 @@ class Manifest
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << manifest ;
+    ///     std::cout << manifest;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -49,7 +49,7 @@ class Manifest
     /// @brief Return true if manifest is defined.
     ///
     /// @code
-    ///     Boolean isDefined = manifest.isDefined() ;
+    ///     Boolean isDefined = manifest.isDefined();
     /// @endcode
     ///
     /// @return True if manifest is defined.
@@ -58,7 +58,7 @@ class Manifest
     /// @brief Get last update timestamp
     ///
     /// @code
-    ///     Instant timestamp = manifest.getLastModifiedTimestamp() ;
+    ///     Instant timestamp = manifest.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the manifest was last updated based on file modification time
@@ -67,7 +67,7 @@ class Manifest
     /// @brief Get last update timestamp for data
     ///
     /// @code
-    ///     Instant timestamp = manifest.getLastUpdateTimestampFor("earth-gravity-egm96") ;
+    ///     Instant timestamp = manifest.getLastUpdateTimestampFor("earth-gravity-egm96");
     /// @endcode
     ///
     /// @param [in] dataName A data name
@@ -77,7 +77,7 @@ class Manifest
     /// @brief Get the next update check timestamp for data
     ///
     /// @code
-    ///     Instant timestamp = manifest.getNextUpdateCheckTimestampFor("earth-gravity-egm96") ;
+    ///     Instant timestamp = manifest.getNextUpdateCheckTimestampFor("earth-gravity-egm96");
     /// @endcode
     ///
     /// @param [in] dataName A data name
@@ -87,7 +87,7 @@ class Manifest
     /// @brief Get the remote data URL for a given data name.
     ///
     /// @code
-    ///     Array<URL> urls = manifest.getRemoteDataUrls(baseUrl, "earth-gravity-egm96") ;
+    ///     Array<URL> urls = manifest.getRemoteDataUrls(baseUrl, "earth-gravity-egm96");
     /// @endcode
     ///
     /// @param [in] aBaseUrl A base URL for remote data
@@ -98,7 +98,7 @@ class Manifest
     /// @brief Return remote data URLs the for data items matching the given name regex string
     ///
     /// @code
-    ///     Array<URL> urls = manifest.findRemoteDataUrls(baseUrl, "earth-gravity-.*") ;
+    ///     Array<URL> urls = manifest.findRemoteDataUrls(baseUrl, "earth-gravity-.*");
     /// @endcode
     ///
     /// @param [in] aBaseUrl A base URL for remote data
@@ -109,7 +109,7 @@ class Manifest
     /// @brief Construct an undefined manifest
     ///
     /// @code
-    ///     Manifest manifest = Manifest::Undefined() ;
+    ///     Manifest manifest = Manifest::Undefined();
     /// @endcode
     ///
     /// @return Undefined manifest
@@ -118,7 +118,7 @@ class Manifest
     /// @brief Load manifest from file
     ///
     /// @code
-    ///     Manifest manifest = Manifest::Load(file) ;
+    ///     Manifest manifest = Manifest::Load(file);
     /// @endcode
     ///
     /// @param [in] aFile A manifest file

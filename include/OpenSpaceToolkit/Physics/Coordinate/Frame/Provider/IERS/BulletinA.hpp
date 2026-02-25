@@ -97,7 +97,7 @@ class BulletinA
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << bulletinA ;
+    ///     std::cout << bulletinA;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -108,7 +108,7 @@ class BulletinA
     /// @brief true if defined
     ///
     /// @code
-    ///     bulletinA.isDefined() ; // True
+    ///     bulletinA.isDefined(); // True
     /// @endcode
     ///
     /// @return true if defined
@@ -117,7 +117,7 @@ class BulletinA
     /// @brief Access release Date
     ///
     /// @code
-    ///     const Date& date = bulletinA.accessReleaseDate() ;
+    ///     const Date& date = bulletinA.accessReleaseDate();
     /// @endcode
     ///
     /// @return Release Date
@@ -126,7 +126,7 @@ class BulletinA
     /// @brief Access timestamp at which the BulletinA file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = bulletinA.accessLastModifiedTimestamp() ;
+    ///     const Instant& timestamp = bulletinA.accessLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
@@ -135,7 +135,7 @@ class BulletinA
     /// @brief Access TAI-UTC
     ///
     /// @code
-    ///     const Duration& taiMinusUtc = bulletinA.accessTAIMinusUTC() ;
+    ///     const Duration& taiMinusUtc = bulletinA.accessTAIMinusUTC();
     /// @endcode
     ///
     /// @return TAI-UTC
@@ -144,7 +144,7 @@ class BulletinA
     /// @brief Access TAI-UTC epoch
     ///
     /// @code
-    ///     const Instant& epoch = bulletinA.accessTAIMinusUTCEpoch() ;
+    ///     const Instant& epoch = bulletinA.accessTAIMinusUTCEpoch();
     /// @endcode
     ///
     /// @return TAI-UTC epoch
@@ -153,7 +153,7 @@ class BulletinA
     /// @brief Access observation Interval
     ///
     /// @code
-    ///     const Interval& interval = bulletinA.accessObservationInterval() ;
+    ///     const Interval& interval = bulletinA.accessObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants
@@ -162,7 +162,7 @@ class BulletinA
     /// @brief Access prediction Interval
     ///
     /// @code
-    ///     const Interval& interval = bulletinA.accessPredictionInterval() ;
+    ///     const Interval& interval = bulletinA.accessPredictionInterval();
     /// @endcode
     ///
     /// @return Prediction Interval of Instants
@@ -171,7 +171,7 @@ class BulletinA
     /// @brief Get release Date of Bulletin A
     ///
     /// @code
-    ///     Date date = bulletinA.getReleaseDate() ;
+    ///     Date date = bulletinA.getReleaseDate();
     /// @endcode
     ///
     /// @return Release Date of Bulletin A
@@ -180,7 +180,7 @@ class BulletinA
     /// @brief Get TAI-UTC
     ///
     /// @code
-    ///     Duration taiMinusUtc = bulletinA.getTAIMinusUTC() ;
+    ///     Duration taiMinusUtc = bulletinA.getTAIMinusUTC();
     /// @endcode
     ///
     /// @return TAI-UTC
@@ -189,7 +189,7 @@ class BulletinA
     /// @brief Get TAI-UTC epoch
     ///
     /// @code
-    ///     Instant epoch = bulletinA.getTAIMinusUTCEpoch() ;
+    ///     Instant epoch = bulletinA.getTAIMinusUTCEpoch();
     /// @endcode
     ///
     /// @return TAI-UTC epoch Instant
@@ -198,7 +198,7 @@ class BulletinA
     /// @brief Get observation Interval
     ///
     /// @code
-    ///     Interval interval = bulletinA.getObservationInterval() ;
+    ///     Interval interval = bulletinA.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants
@@ -207,7 +207,7 @@ class BulletinA
     /// @brief Get observation at Instant
     ///
     /// @code
-    ///     BulletinA::Observation observation = bulletinA.getObservationAt(anInstant) ;
+    ///     BulletinA::Observation observation = bulletinA.getObservationAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
@@ -217,7 +217,7 @@ class BulletinA
     /// @brief Get prediction Interval
     ///
     /// @code
-    ///     Interval interval = bulletinA.getPredictionInterval() ;
+    ///     Interval interval = bulletinA.getPredictionInterval();
     /// @endcode
     ///
     /// @return Prediction Interval of Instants
@@ -226,7 +226,7 @@ class BulletinA
     /// @brief Get prediction at Instant
     ///
     /// @code
-    ///     BulletinA::Prediction prediction = bulletinA.getPredictionAt(anInstant) ;
+    ///     BulletinA::Prediction prediction = bulletinA.getPredictionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
@@ -236,7 +236,7 @@ class BulletinA
     /// @brief Undefined factory function
     ///
     /// @code
-    ///     BulletinA bulletinA = BulletinA::Undefined() ;
+    ///     BulletinA bulletinA = BulletinA::Undefined();
     /// @endcode
     ///
     /// @return Undefined Bulletin A object
@@ -245,7 +245,7 @@ class BulletinA
     /// @brief Load Bulletin A from file
     ///
     /// @code
-    ///     BulletinA bulletinA = BulletinA::Load(file) ;
+    ///     BulletinA bulletinA = BulletinA::Load(file);
     /// @endcode
     ///
     /// @param [in] aFile A file

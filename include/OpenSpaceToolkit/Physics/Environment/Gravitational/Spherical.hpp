@@ -31,7 +31,7 @@ class Spherical : public Model
     /// @brief Constructor
     ///
     /// @code
-    ///     Spherical model(parameters) ;
+    ///     Spherical model(parameters);
     /// @endcode
     ///
     /// @param [in] aParameterSet A set of gravitational parameters
@@ -40,7 +40,7 @@ class Spherical : public Model
     /// @brief Clone the spherical gravitational model
     ///
     /// @code
-    ///     Spherical* modelPtr = model.clone() ;
+    ///     Spherical* modelPtr = model.clone();
     /// @endcode
     ///
     /// @return Pointer to spherical gravitational model
@@ -49,7 +49,7 @@ class Spherical : public Model
     /// @brief Check if the spherical gravitational model is defined
     ///
     /// @code
-    ///     bool isDefined = model.isDefined() ;
+    ///     bool isDefined = model.isDefined();
     /// @endcode
     ///
     /// @return True if the spherical gravitational model is defined
@@ -58,7 +58,7 @@ class Spherical : public Model
     /// @brief Get the gravitational field value at a given position and instant
     ///
     /// @code
-    ///     Vector3d fieldValue = model.getFieldValueAt(position, instant) ;
+    ///     Vector3d fieldValue = model.getFieldValueAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A position, expressed in the gravitational object frame [m]

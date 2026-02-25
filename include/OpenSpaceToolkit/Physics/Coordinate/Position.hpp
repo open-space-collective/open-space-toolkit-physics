@@ -57,7 +57,7 @@ class Position
     /// @brief Constructor
     ///
     /// @code
-    ///     Position position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()) ;
+    ///     Position position({0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aCoordinateSet A coordinate set
@@ -72,7 +72,7 @@ class Position
     /// @brief Copy constructor
     ///
     /// @code
-    ///     Position copy(position) ;
+    ///     Position copy(position);
     /// @endcode
     ///
     /// @param [in] aPosition A position
@@ -81,7 +81,7 @@ class Position
     /// @brief Copy assignment operator
     ///
     /// @code
-    ///     Position copy = position ;
+    ///     Position copy = position;
     /// @endcode
     ///
     /// @param [in] aPosition A position
@@ -91,7 +91,7 @@ class Position
     /// @brief Equality operator
     ///
     /// @code
-    ///     position == otherPosition ; // True
+    ///     position == otherPosition; // True
     /// @endcode
     ///
     /// @param [in] aPosition A position
@@ -101,7 +101,7 @@ class Position
     /// @brief Inequality operator
     ///
     /// @code
-    ///     position != otherPosition ; // False
+    ///     position != otherPosition; // False
     /// @endcode
     ///
     /// @param [in] aPosition A position
@@ -111,7 +111,7 @@ class Position
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << position ;
+    ///     std::cout << position;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -122,7 +122,7 @@ class Position
     /// @brief Check if position is defined
     ///
     /// @code
-    ///     Position::Undefined().isDefined() ; // False
+    ///     Position::Undefined().isDefined(); // False
     /// @endcode
     ///
     /// @return True if position is defined
@@ -131,7 +131,7 @@ class Position
     /// @brief Check if position is near another position within a tolerance
     ///
     /// @code
-    ///     position.isNear(otherPosition, Length::Meters(1.0)) ; // True
+    ///     position.isNear(otherPosition, Length::Meters(1.0)); // True
     /// @endcode
     ///
     /// @param [in] aPosition A position
@@ -142,7 +142,7 @@ class Position
     /// @brief Access coordinates
     ///
     /// @code
-    ///     position.accessCoordinates() ;
+    ///     position.accessCoordinates();
     /// @endcode
     ///
     /// @return Reference to coordinates
@@ -151,7 +151,7 @@ class Position
     /// @brief Access frame
     ///
     /// @code
-    ///     position.accessFrame() ;
+    ///     position.accessFrame();
     /// @endcode
     ///
     /// @return Shared pointer to frame
@@ -160,7 +160,7 @@ class Position
     /// @brief Get coordinates
     ///
     /// @code
-    ///     position.getCoordinates() ;
+    ///     position.getCoordinates();
     /// @endcode
     ///
     /// @return Coordinates
@@ -169,7 +169,7 @@ class Position
     /// @brief Get unit
     ///
     /// @code
-    ///     position.getUnit() ;
+    ///     position.getUnit();
     /// @endcode
     ///
     /// @return Unit
@@ -178,7 +178,7 @@ class Position
     /// @brief Convert position to a different unit
     ///
     /// @code
-    ///     position.inUnit(Position::Unit::Meter) ;
+    ///     position.inUnit(Position::Unit::Meter);
     /// @endcode
     ///
     /// @param [in] aUnit A unit
@@ -188,7 +188,7 @@ class Position
     /// @brief Convert position to meters
     ///
     /// @code
-    ///     position.inMeters() ;
+    ///     position.inMeters();
     /// @endcode
     ///
     /// @return Position in meters
@@ -197,7 +197,7 @@ class Position
     /// @brief Convert position to a different frame at a given instant
     ///
     /// @code
-    ///     position.inFrame(Frame::ITRF(), Instant::J2000()) ;
+    ///     position.inFrame(Frame::ITRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aFrameSPtr A shared pointer to a frame
@@ -208,7 +208,7 @@ class Position
     /// @brief Convert position to string
     ///
     /// @code
-    ///     position.toString() ;
+    ///     position.toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision
@@ -218,7 +218,7 @@ class Position
     /// @brief Constructs an undefined position
     ///
     /// @code
-    ///     Position position = Position::Undefined() ;
+    ///     Position position = Position::Undefined();
     /// @endcode
     ///
     /// @return Undefined position
@@ -227,7 +227,7 @@ class Position
     /// @brief Constructs a position in meters
     ///
     /// @code
-    ///     Position position = Position::Meters({7000000.0, 0.0, 0.0}, Frame::GCRF()) ;
+    ///     Position position = Position::Meters({7000000.0, 0.0, 0.0}, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aCoordinateSet A coordinate set
@@ -239,7 +239,7 @@ class Position
     /// central body from the global environment instance will be used if it's available.
     ///
     /// @code
-    ///     Position position = Position::FromLLA(LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0))) ;
+    ///     Position position = Position::FromLLA(LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0)));
     /// @endcode
     ///
     /// @param [in] aLLA A LLA coordinate

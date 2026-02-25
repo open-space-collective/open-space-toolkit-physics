@@ -48,7 +48,7 @@ class Unit
     /// @brief Constructor.
     ///
     /// @code
-    ///     Unit unit(Unit::Type::Length, 1.0) ;
+    ///     Unit unit(Unit::Type::Length, 1.0);
     /// @endcode
     ///
     /// @param [in] aType A unit type
@@ -66,7 +66,7 @@ class Unit
     /// @brief Equal to operator.
     ///
     /// @code
-    ///     Unit(Unit::Type::Length, 1.0) == Unit(Unit::Type::Length, 1.0) ; // True
+    ///     Unit(Unit::Type::Length, 1.0) == Unit(Unit::Type::Length, 1.0); // True
     /// @endcode
     ///
     /// @param [in] aUnit A unit to compare with
@@ -76,7 +76,7 @@ class Unit
     /// @brief Not equal to operator.
     ///
     /// @code
-    ///     Unit(Unit::Type::Length, 1.0) != Unit(Unit::Type::Mass, 1.0) ; // True
+    ///     Unit(Unit::Type::Length, 1.0) != Unit(Unit::Type::Mass, 1.0); // True
     /// @endcode
     ///
     /// @param [in] aUnit A unit to compare with
@@ -86,7 +86,7 @@ class Unit
     /// @brief Check if the unit is defined.
     ///
     /// @code
-    ///     Unit(Unit::Type::Length, 1.0).isDefined() ; // True
+    ///     Unit(Unit::Type::Length, 1.0).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -95,7 +95,7 @@ class Unit
     /// @brief Check if the value is zero.
     ///
     /// @code
-    ///     Unit(Unit::Type::Length, 0.0).isZero() ; // True
+    ///     Unit(Unit::Type::Length, 0.0).isZero(); // True
     /// @endcode
     ///
     /// @return True if zero
@@ -104,7 +104,7 @@ class Unit
     /// @brief Access the value by const reference.
     ///
     /// @code
-    ///     const Real& value = Unit(Unit::Type::Length, 1.0).accessValue() ;
+    ///     const Real& value = Unit(Unit::Type::Length, 1.0).accessValue();
     /// @endcode
     ///
     /// @return A const reference to the value
@@ -113,7 +113,7 @@ class Unit
     /// @brief Get the unit type.
     ///
     /// @code
-    ///     Unit(Unit::Type::Length, 1.0).getType() ; // Unit::Type::Length
+    ///     Unit(Unit::Type::Length, 1.0).getType(); // Unit::Type::Length
     /// @endcode
     ///
     /// @return The unit type
@@ -122,7 +122,7 @@ class Unit
     /// @brief Get the value.
     ///
     /// @code
-    ///     Unit(Unit::Type::Length, 1.0).getValue() ; // 1.0
+    ///     Unit(Unit::Type::Length, 1.0).getValue(); // 1.0
     /// @endcode
     ///
     /// @return The value
@@ -137,8 +137,8 @@ class Unit
     /// @brief Access the value by mutable reference.
     ///
     /// @code
-    ///     Length length = Length::Meters(1.0) ;
-    ///     length.accessValue() = 2.0 ;
+    ///     Length length = Length::Meters(1.0);
+    ///     length.accessValue() = 2.0;
     /// @endcode
     ///
     /// @return A mutable reference to the value
@@ -147,8 +147,8 @@ class Unit
     /// @brief Set the value.
     ///
     /// @code
-    ///     Length length = Length::Meters(1.0) ;
-    ///     length.setValue(2.0) ;
+    ///     Length length = Length::Meters(1.0);
+    ///     length.setValue(2.0);
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -159,7 +159,7 @@ class Unit
     /// @brief Parse a string into a value and unit symbol pair.
     ///
     /// @code
-    ///     Pair<Real, String> pair = Unit::ParseString("1.0 [m]") ;
+    ///     Pair<Real, String> pair = Unit::ParseString("1.0 [m]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse

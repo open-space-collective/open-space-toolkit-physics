@@ -27,7 +27,7 @@ class Model
     /// @brief Constructor (default)
     ///
     /// @code
-    ///     Model model ;
+    ///     Model model;
     /// @endcode
     Model();
 

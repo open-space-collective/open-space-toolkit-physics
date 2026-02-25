@@ -34,7 +34,7 @@ class Direction : public Vector
     /// @brief Construct a direction from a 3D vector and a reference frame.
     ///
     /// @code
-    ///     Direction direction({1.0, 0.0, 0.0}, Frame::GCRF()) ;
+    ///     Direction direction({1.0, 0.0, 0.0}, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aValue A 3D vector (will be normalized)
@@ -44,18 +44,18 @@ class Direction : public Vector
     /// @brief Output stream operator.
     ///
     /// @code
-    ///     std::cout << direction ;
+    ///     std::cout << direction;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
-    /// @param [in] aVector A vector
+    /// @param [in] aDirection A direction
     /// @return A reference to the output stream
-    friend std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector);
+    friend std::ostream& operator<<(std::ostream& anOutputStream, const Direction& aDirection);
 
     /// @brief Construct an undefined direction.
     ///
     /// @code
-    ///     Direction direction = Direction::Undefined() ;
+    ///     Direction direction = Direction::Undefined();
     /// @endcode
     ///
     /// @return An undefined direction

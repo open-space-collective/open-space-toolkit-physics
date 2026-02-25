@@ -40,7 +40,7 @@ class Mass : public Unit
     /// @brief Constructor
     ///
     /// @code
-    ///     Mass mass(1.0, Mass::Unit::Kilogram) ;
+    ///     Mass mass(1.0, Mass::Unit::Kilogram);
     /// @endcode
     ///
     /// @param [in] aValue A value
@@ -50,8 +50,8 @@ class Mass : public Unit
     /// @brief Clone the mass.
     ///
     /// @code
-    ///     Mass mass = Mass::Kilograms(1.0) ;
-    ///     Mass* clonePtr = mass.clone() ;
+    ///     Mass mass = Mass::Kilograms(1.0);
+    ///     Mass* clonePtr = mass.clone();
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this mass
@@ -61,7 +61,7 @@ class Mass : public Unit
     /// @brief Check if the mass is defined.
     ///
     /// @code
-    ///     Mass::Kilograms(1.0).isDefined() ; // True
+    ///     Mass::Kilograms(1.0).isDefined(); // True
     /// @endcode
     ///
     /// @return True if defined
@@ -71,7 +71,7 @@ class Mass : public Unit
     /// @brief Get the mass unit.
     ///
     /// @code
-    ///     Mass::Kilograms(1.0).getUnit() ; // Mass::Unit::Kilogram
+    ///     Mass::Kilograms(1.0).getUnit(); // Mass::Unit::Kilogram
     /// @endcode
     ///
     /// @return The mass unit
@@ -81,7 +81,7 @@ class Mass : public Unit
     /// @brief Get the value in the specified unit.
     ///
     /// @code
-    ///     Mass::Kilograms(1.0).in(Mass::Unit::Kilogram) ; // 1.0
+    ///     Mass::Kilograms(1.0).in(Mass::Unit::Kilogram); // 1.0
     /// @endcode
     ///
     /// @param [in] aUnit A mass unit
@@ -92,7 +92,7 @@ class Mass : public Unit
     /// @brief Get the value in kilograms.
     ///
     /// @code
-    ///     Mass::Kilograms(1.0).inKilograms() ; // 1.0
+    ///     Mass::Kilograms(1.0).inKilograms(); // 1.0
     /// @endcode
     ///
     /// @return The value in kilograms
@@ -102,7 +102,7 @@ class Mass : public Unit
     /// @brief Convert to string representation.
     ///
     /// @code
-    ///     Mass::Kilograms(1.0).toString() ;
+    ///     Mass::Kilograms(1.0).toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
@@ -113,7 +113,7 @@ class Mass : public Unit
     /// @brief Construct an undefined mass.
     ///
     /// @code
-    ///     Mass mass = Mass::Undefined() ;
+    ///     Mass mass = Mass::Undefined();
     /// @endcode
     ///
     /// @return An undefined mass
@@ -123,7 +123,7 @@ class Mass : public Unit
     /// @brief Construct a mass from a value in kilograms.
     ///
     /// @code
-    ///     Mass mass = Mass::Kilograms(100.0) ;
+    ///     Mass mass = Mass::Kilograms(100.0);
     /// @endcode
     ///
     /// @param [in] aValue A value in kilograms
@@ -134,7 +134,7 @@ class Mass : public Unit
     /// @brief Parse a mass from a string.
     ///
     /// @code
-    ///     Mass mass = Mass::Parse("1.0 [kg]") ;
+    ///     Mass mass = Mass::Parse("1.0 [kg]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse
@@ -145,7 +145,7 @@ class Mass : public Unit
     /// @brief Get the string representation of a mass unit.
     ///
     /// @code
-    ///     Mass::StringFromUnit(Mass::Unit::Kilogram) ; // "Kilogram"
+    ///     Mass::StringFromUnit(Mass::Unit::Kilogram); // "Kilogram"
     /// @endcode
     ///
     /// @param [in] aUnit A mass unit
@@ -156,7 +156,7 @@ class Mass : public Unit
     /// @brief Get the symbol of a mass unit.
     ///
     /// @code
-    ///     Mass::SymbolFromUnit(Mass::Unit::Kilogram) ; // "kg"
+    ///     Mass::SymbolFromUnit(Mass::Unit::Kilogram); // "kg"
     /// @endcode
     ///
     /// @param [in] aUnit A mass unit

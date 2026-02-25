@@ -36,7 +36,7 @@ class AER
     /// @brief Constructor
     ///
     /// @code
-    ///     AER aer(Angle::Degrees(45.0), Angle::Degrees(30.0), Length::Meters(1000.0)) ;
+    ///     AER aer(Angle::Degrees(45.0), Angle::Degrees(30.0), Length::Meters(1000.0));
     /// @endcode
     ///
     /// @param [in] anAzimuth An azimuth angle
@@ -47,7 +47,7 @@ class AER
     /// @brief Equality operator
     ///
     /// @code
-    ///     aer == otherAER ; // True
+    ///     aer == otherAER; // True
     /// @endcode
     ///
     /// @param [in] anAER An AER object to compare with
@@ -57,7 +57,7 @@ class AER
     /// @brief Inequality operator
     ///
     /// @code
-    ///     aer != otherAER ; // False
+    ///     aer != otherAER; // False
     /// @endcode
     ///
     /// @param [in] anAER An AER object to compare with
@@ -67,7 +67,7 @@ class AER
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << aer ;
+    ///     std::cout << aer;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -78,7 +78,7 @@ class AER
     /// @brief Check if the AER object is defined
     ///
     /// @code
-    ///     AER::Undefined().isDefined() ; // False
+    ///     AER::Undefined().isDefined(); // False
     /// @endcode
     ///
     /// @return True if the AER object is defined
@@ -87,7 +87,7 @@ class AER
     /// @brief Get the azimuth angle
     ///
     /// @code
-    ///     aer.getAzimuth() ;
+    ///     aer.getAzimuth();
     /// @endcode
     ///
     /// @return Azimuth angle
@@ -96,7 +96,7 @@ class AER
     /// @brief Get the elevation angle
     ///
     /// @code
-    ///     aer.getElevation() ;
+    ///     aer.getElevation();
     /// @endcode
     ///
     /// @return Elevation angle
@@ -105,7 +105,7 @@ class AER
     /// @brief Get the range
     ///
     /// @code
-    ///     aer.getRange() ;
+    ///     aer.getRange();
     /// @endcode
     ///
     /// @return Range
@@ -114,7 +114,7 @@ class AER
     /// @brief Convert AER to a 3D vector (azimuth, elevation, range)
     ///
     /// @code
-    ///     aer.toVector() ;
+    ///     aer.toVector();
     /// @endcode
     ///
     /// @return 3D vector representation
@@ -123,7 +123,7 @@ class AER
     /// @brief Convert AER to Cartesian coordinates
     ///
     /// @code
-    ///     aer.toCartesian() ;
+    ///     aer.toCartesian();
     /// @endcode
     ///
     /// @return Cartesian coordinate vector
@@ -132,7 +132,7 @@ class AER
     /// @brief Convert AER to string
     ///
     /// @code
-    ///     aer.toString() ;
+    ///     aer.toString();
     /// @endcode
     ///
     /// @return String representation of the AER object
@@ -141,7 +141,7 @@ class AER
     /// @brief Construct an undefined AER object
     ///
     /// @code
-    ///     AER aer = AER::Undefined() ;
+    ///     AER aer = AER::Undefined();
     /// @endcode
     ///
     /// @return Undefined AER
@@ -150,7 +150,7 @@ class AER
     /// @brief Construct an AER object from a 3D vector
     ///
     /// @code
-    ///     AER aer = AER::Vector({45.0, 30.0, 1000.0}) ;
+    ///     AER aer = AER::Vector({45.0, 30.0, 1000.0});
     /// @endcode
     ///
     /// @param [in] aVector A 3D vector (azimuth, elevation, range)
@@ -160,7 +160,7 @@ class AER
     /// @brief AER from the relative position between two positions
     ///
     /// @code
-    ///     AER aer = AER::FromPositionToPosition(fromPosition, toPosition) ;
+    ///     AER aer = AER::FromPositionToPosition(fromPosition, toPosition);
     /// @endcode
     ///
     /// @param [in] aFromPosition A FROM position

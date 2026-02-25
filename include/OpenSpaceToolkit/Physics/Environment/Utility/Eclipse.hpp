@@ -52,7 +52,7 @@ class EclipsePhase
     /// @brief Constructor
     ///
     /// @code
-    ///     EclipsePhase phase = EclipsePhase(EclipsePhase::Region::Umbra, anInterval, true) ;
+    ///     EclipsePhase phase = EclipsePhase(EclipsePhase::Region::Umbra, anInterval, true);
     /// @endcode
     ///
     /// @param [in] aRegion The region of the eclipse phase
@@ -63,7 +63,7 @@ class EclipsePhase
     /// @brief Get the region of the eclipse phase
     ///
     /// @code
-    ///     EclipsePhase::Region region = phase.getRegion() ;
+    ///     EclipsePhase::Region region = phase.getRegion();
     /// @endcode
     ///
     /// @return The region of the eclipse phase
@@ -72,7 +72,7 @@ class EclipsePhase
     /// @brief Get the time interval of the eclipse phase
     ///
     /// @code
-    ///     const Interval& interval = phase.getInterval() ;
+    ///     const Interval& interval = phase.getInterval();
     /// @endcode
     ///
     /// @return The time interval of the eclipse phase
@@ -81,7 +81,7 @@ class EclipsePhase
     /// @brief Check if the eclipse phase is complete
     ///
     /// @code
-    ///     phase.isComplete() ; // True
+    ///     phase.isComplete(); // True
     /// @endcode
     ///
     /// @return True if the phase is complete, false otherwise
@@ -97,7 +97,7 @@ class EclipsePhase
     /// @brief Equality operator
     ///
     /// @code
-    ///     phaseA == phaseB ;
+    ///     phaseA == phaseB;
     /// @endcode
     ///
     /// @param [in] anEclipsePhase The other EclipsePhase to compare with
@@ -107,7 +107,7 @@ class EclipsePhase
     /// @brief Inequality operator
     ///
     /// @code
-    ///     phaseA != phaseB ;
+    ///     phaseA != phaseB;
     /// @endcode
     ///
     /// @param [in] anEclipsePhase The other EclipsePhase to compare with
@@ -127,7 +127,7 @@ class Eclipse
     /// @brief Constructor
     ///
     /// @code
-    ///     Eclipse eclipse = Eclipse(sun, earth, phases) ;
+    ///     Eclipse eclipse = Eclipse(sun, earth, phases);
     /// @endcode
     ///
     /// @param [in] anOccultedCelestialObject The occulted celestial object
@@ -144,7 +144,7 @@ class Eclipse
     /// @brief Access the occulted celestial object
     ///
     /// @code
-    ///     const Celestial& occulted = eclipse.accessOccultedCelestialObject() ;
+    ///     const Celestial& occulted = eclipse.accessOccultedCelestialObject();
     /// @endcode
     ///
     /// @return The occulted celestial object
@@ -153,7 +153,7 @@ class Eclipse
     /// @brief Access the occulting celestial object
     ///
     /// @code
-    ///     const Celestial& occulting = eclipse.accessOccultingCelestialObject() ;
+    ///     const Celestial& occulting = eclipse.accessOccultingCelestialObject();
     /// @endcode
     ///
     /// @return The occulting celestial object
@@ -162,7 +162,7 @@ class Eclipse
     /// @brief Get the phases of the eclipse
     ///
     /// @code
-    ///     const Array<EclipsePhase>& phases = eclipse.getPhases() ;
+    ///     const Array<EclipsePhase>& phases = eclipse.getPhases();
     /// @endcode
     ///
     /// @return The phases of the eclipse
@@ -171,7 +171,7 @@ class Eclipse
     /// @brief Get the duration of the eclipse
     ///
     /// @code
-    ///     Duration duration = eclipse.getDuration() ;
+    ///     Duration duration = eclipse.getDuration();
     /// @endcode
     ///
     /// @param [in] includePenumbra Whether to include the penumbra phases. Defaults to true
@@ -181,7 +181,7 @@ class Eclipse
     /// @brief Get the interval of the eclipse
     ///
     /// @code
-    ///     Interval interval = eclipse.getInterval() ;
+    ///     Interval interval = eclipse.getInterval();
     /// @endcode
     ///
     /// @param [in] includePenumbra Whether to include the penumbra phases. Defaults to true
@@ -207,7 +207,7 @@ class Eclipse
 /// @brief Calculate eclipse intervals for a given position
 ///
 /// @code
-///     Array<Interval> intervals = eclipseIntervalsAtPosition(anInterval, aPosition, anEnvironment) ;
+///     Array<Interval> intervals = eclipseIntervalsAtPosition(anInterval, aPosition, anEnvironment);
 /// @endcode
 ///
 /// @param [in] anAnalysisInterval An analysis interval
@@ -231,7 +231,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 /// Reference: Montenbruck and Gill, Satellite Orbits: Models, Methods, and Applications, 4th edition, Springer.
 ///
 /// @code
-///     Real shadowValue = montenbruckGillShadowFunction(anInstant, aPosition, sun, earth) ;
+///     Real shadowValue = montenbruckGillShadowFunction(anInstant, aPosition, sun, earth);
 /// @endcode
 ///
 /// @param [in] anInstant The instant at which the shadow function is evaluated

@@ -34,7 +34,7 @@ class Date
     /// @brief Constructor
     ///
     /// @code
-    ///     Date date(2018, 1, 2) ; // 2018-01-02
+    ///     Date date(2018, 1, 2); // 2018-01-02
     /// @endcode
     ///
     /// @param [in] aYear A year (1400 - 9999)
@@ -45,7 +45,7 @@ class Date
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Date(2018, 1, 2) == Date(2018, 1, 2) ; // True
+    ///     Date(2018, 1, 2) == Date(2018, 1, 2); // True
     /// @endcode
     ///
     /// @param [in] aDate A date
@@ -55,7 +55,7 @@ class Date
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Date(2018, 1, 2) != Date(2018, 1, 1) ; // True
+    ///     Date(2018, 1, 2) != Date(2018, 1, 1); // True
     /// @endcode
     ///
     /// @param [in] aDate A date
@@ -65,7 +65,7 @@ class Date
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << Date(2018, 1, 2) ;
+    ///     std::cout << Date(2018, 1, 2);
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -76,7 +76,7 @@ class Date
     /// @brief Check if date is defined
     ///
     /// @code
-    ///     Date(2018, 1, 2).isDefined() ; // True
+    ///     Date(2018, 1, 2).isDefined(); // True
     /// @endcode
     ///
     /// @return True if date is defined
@@ -85,7 +85,7 @@ class Date
     /// @brief Get year (1400 - 9999)
     ///
     /// @code
-    ///     Date(2018, 1, 2).getYear() ; // 2018
+    ///     Date(2018, 1, 2).getYear(); // 2018
     /// @endcode
     ///
     /// @return Year
@@ -94,7 +94,7 @@ class Date
     /// @brief Get month (1 - 12)
     ///
     /// @code
-    ///     Date(2018, 1, 2).getMonth() ; // 1
+    ///     Date(2018, 1, 2).getMonth(); // 1
     /// @endcode
     ///
     /// @return Month
@@ -103,7 +103,7 @@ class Date
     /// @brief Get day (1 - 31)
     ///
     /// @code
-    ///     Date(2018, 1, 2).getDay() ; // 2
+    ///     Date(2018, 1, 2).getDay(); // 2
     /// @endcode
     ///
     /// @return Day
@@ -112,7 +112,7 @@ class Date
     /// @brief Get string representation of date
     ///
     /// @code
-    ///     Date(2018, 1, 2).toString() ; // 2018-01-02
+    ///     Date(2018, 1, 2).toString(); // 2018-01-02
     /// @endcode
     ///
     /// @param [in] (optional) aFormat A date format
@@ -122,8 +122,8 @@ class Date
     /// @brief Set year
     ///
     /// @code
-    ///     Date date(2018, 1, 2) ;
-    ///     date.setYear(2020) ;
+    ///     Date date(2018, 1, 2);
+    ///     date.setYear(2020);
     /// @endcode
     ///
     /// @param [in] aYear A year (1400 - 9999)
@@ -133,8 +133,8 @@ class Date
     /// @brief Set month
     ///
     /// @code
-    ///     Date date(2018, 1, 2) ;
-    ///     date.setMonth(6) ;
+    ///     Date date(2018, 1, 2);
+    ///     date.setMonth(6);
     /// @endcode
     ///
     /// @param [in] aMonth A month (1 - 12)
@@ -144,8 +144,8 @@ class Date
     /// @brief Set day
     ///
     /// @code
-    ///     Date date(2018, 1, 2) ;
-    ///     date.setDay(15) ;
+    ///     Date date(2018, 1, 2);
+    ///     date.setDay(15);
     /// @endcode
     ///
     /// @param [in] aDay A day (1 - 31)
@@ -155,8 +155,8 @@ class Date
     /// @brief Constructs an undefined date
     ///
     /// @code
-    ///     Date date = Date::Undefined() ;
-    ///     date.isDefined() ; // False
+    ///     Date date = Date::Undefined();
+    ///     date.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined date
@@ -165,7 +165,7 @@ class Date
     /// @brief J2000 epoch (2000-01-01)
     ///
     /// @code
-    ///     Date date = Date::J2000() ; // 2000-01-01
+    ///     Date date = Date::J2000(); // 2000-01-01
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
@@ -176,7 +176,7 @@ class Date
     /// @brief GPS epoch (1980-01-06)
     ///
     /// @code
-    ///     Date date = Date::GPSEpoch() ; // 1980-01-06
+    ///     Date date = Date::GPSEpoch(); // 1980-01-06
     /// @endcode
     ///
     /// @ref http://tycho.usno.navy.mil/gpstt.html
@@ -187,7 +187,7 @@ class Date
     /// @brief Unix epoch (1970-01-01)
     ///
     /// @code
-    ///     Date date = Date::UnixEpoch() ; // 1970-01-01
+    ///     Date date = Date::UnixEpoch(); // 1970-01-01
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Unix_time
@@ -198,7 +198,7 @@ class Date
     /// @brief Modified julian dates epoch (1858-11-17)
     ///
     /// @code
-    ///     Date date = Date::ModifiedJulianDateEpoch() ; // 1858-11-17
+    ///     Date date = Date::ModifiedJulianDateEpoch(); // 1858-11-17
     /// @endcode
     ///
     /// @ref https://en.wikipedia.org/wiki/Julian_day
@@ -209,7 +209,7 @@ class Date
     /// @brief Constructs a date from a string representation
     ///
     /// @code
-    ///     Date date = Date::Parse("2018-01-02") ; // 2018-01-02
+    ///     Date date = Date::Parse("2018-01-02"); // 2018-01-02
     /// @endcode
     ///
     /// @param [in] aString A string

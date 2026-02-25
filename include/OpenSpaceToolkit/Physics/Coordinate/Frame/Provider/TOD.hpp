@@ -38,7 +38,7 @@ class TOD : public Provider
     /// @brief Constructor.
     ///
     /// @code
-    ///     TOD provider(Instant::J2000(), iau::Theory::IAU_2006) ;
+    ///     TOD provider(Instant::J2000(), iau::Theory::IAU_2006);
     /// @endcode
     ///
     /// @param [in] anEpoch An epoch instant
@@ -51,7 +51,7 @@ class TOD : public Provider
     /// @brief Clone the TOD provider.
     ///
     /// @code
-    ///     TOD* clonePtr = provider.clone() ;
+    ///     TOD* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned TOD provider
@@ -60,7 +60,7 @@ class TOD : public Provider
     /// @brief Check if the TOD provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the TOD provider is defined
@@ -69,7 +69,7 @@ class TOD : public Provider
     /// @brief Get the epoch.
     ///
     /// @code
-    ///     Instant epoch = provider.getEpoch() ;
+    ///     Instant epoch = provider.getEpoch();
     /// @endcode
     ///
     /// @return The epoch instant
@@ -78,7 +78,7 @@ class TOD : public Provider
     /// @brief Get the IAU theory.
     ///
     /// @code
-    ///     iau::Theory theory = provider.getTheory() ;
+    ///     iau::Theory theory = provider.getTheory();
     /// @endcode
     ///
     /// @return The IAU theory
@@ -87,7 +87,7 @@ class TOD : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant

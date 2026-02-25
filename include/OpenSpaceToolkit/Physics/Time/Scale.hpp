@@ -48,7 +48,7 @@ enum class Scale
 /// @brief Convert a time scale to its string representation
 ///
 /// @code
-///     String scaleString = StringFromScale(time::Scale::UTC) ; // "UTC"
+///     String scaleString = StringFromScale(time::Scale::UTC); // "UTC"
 /// @endcode
 ///
 /// @param [in] aScale A time scale
@@ -58,7 +58,7 @@ String StringFromScale(const Scale& aScale);
 /// @brief Parse a string representation to its corresponding time scale
 ///
 /// @code
-///     time::Scale timeScale = ScaleFromString("UTC") ; // time::Scale::UTC
+///     time::Scale timeScale = ScaleFromString("UTC"); // time::Scale::UTC
 /// @endcode
 ///
 /// @param [in] aString A string

@@ -42,7 +42,7 @@ class Duration
     /// @brief Constructor
     ///
     /// @code
-    ///     Duration duration(123) ; // 123 [ns]
+    ///     Duration duration(123); // 123 [ns]
     /// @endcode
     /// @param [in] aNanosecondCount A nanosecond count
     Duration(Int64 aNanosecondCount);
@@ -50,7 +50,7 @@ class Duration
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Duration(123) == Duration(123) ; // True
+    ///     Duration(123) == Duration(123); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -60,7 +60,7 @@ class Duration
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Duration(123) != Duration(456) ; // True
+    ///     Duration(123) != Duration(456); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -70,7 +70,7 @@ class Duration
     /// @brief Less than operator
     ///
     /// @code
-    ///     Duration(123) < Duration(456) ; // True
+    ///     Duration(123) < Duration(456); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -80,7 +80,7 @@ class Duration
     /// @brief Less than or equal to operator
     ///
     /// @code
-    ///     Duration(123) <= Duration(456) ; // True
+    ///     Duration(123) <= Duration(456); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -90,7 +90,7 @@ class Duration
     /// @brief Greater than operator
     ///
     /// @code
-    ///     Duration(456) > Duration(123) ; // True
+    ///     Duration(456) > Duration(123); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -100,7 +100,7 @@ class Duration
     /// @brief Greater than operator
     ///
     /// @code
-    ///     Duration(456) >= Duration(123) ; // True
+    ///     Duration(456) >= Duration(123); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -110,7 +110,7 @@ class Duration
     /// @brief Addition operator
     ///
     /// @code
-    ///     Duration::Seconds(1.0) + Duration::Seconds(1.0) ; // 2.0 [s]
+    ///     Duration::Seconds(1.0) + Duration::Seconds(1.0); // 2.0 [s]
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -120,7 +120,7 @@ class Duration
     /// @brief Subtraction operator
     ///
     /// @code
-    ///     Duration::Seconds(1.0) - Duration::Seconds(1.0) ; // 0.0 [s]
+    ///     Duration::Seconds(1.0) - Duration::Seconds(1.0); // 0.0 [s]
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -130,7 +130,7 @@ class Duration
     /// @brief Multiplication operator
     ///
     /// @code
-    ///     Duration::Seconds(1.0) * 2.0 ; // 2.0 [s]
+    ///     Duration::Seconds(1.0) * 2.0; // 2.0 [s]
     /// @endcode
     ///
     /// @param [in] aMultiplier A multiplier
@@ -140,7 +140,7 @@ class Duration
     /// @brief Division operator
     ///
     /// @code
-    ///     Duration::Seconds(1.0) / 2.0 ; // 0.5 [s]
+    ///     Duration::Seconds(1.0) / 2.0; // 0.5 [s]
     /// @endcode
     ///
     /// @param [in] aDivider A divider
@@ -150,7 +150,7 @@ class Duration
     /// @brief Unary plus operator
     ///
     /// @code
-    ///     Duration duration = +Duration::Seconds(1.0) ; // +1.0 [s]
+    ///     Duration duration = +Duration::Seconds(1.0); // +1.0 [s]
     /// @endcode
     ///
     /// @return Duration
@@ -159,7 +159,7 @@ class Duration
     /// @brief Unary minus operator
     ///
     /// @code
-    ///     Duration duration = -Duration::Seconds(1.0) ; // -1.0 [s]
+    ///     Duration duration = -Duration::Seconds(1.0); // -1.0 [s]
     /// @endcode
     ///
     /// @return Duration
@@ -168,8 +168,8 @@ class Duration
     /// @brief Addition assignement operator
     ///
     /// @code
-    ///     Duration duration = Duration::Seconds(1.0) ;
-    ///     duration += Duration::Seconds(1.0) ; // 2.0 [s]
+    ///     Duration duration = Duration::Seconds(1.0);
+    ///     duration += Duration::Seconds(1.0); // 2.0 [s]
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -179,8 +179,8 @@ class Duration
     /// @brief Subtraction assignement operator
     ///
     /// @code
-    ///     Duration duration = Duration::Seconds(1.0) ;
-    ///     duration -= Duration::Seconds(1.0) ; // 0.0 [s]
+    ///     Duration duration = Duration::Seconds(1.0);
+    ///     duration -= Duration::Seconds(1.0); // 0.0 [s]
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -190,8 +190,8 @@ class Duration
     /// @brief Multiplication assignement operator
     ///
     /// @code
-    ///     Duration duration = Duration::Seconds(1.0) ;
-    ///     duration *= 2.0 ; // 2.0 [s]
+    ///     Duration duration = Duration::Seconds(1.0);
+    ///     duration *= 2.0; // 2.0 [s]
     /// @endcode
     ///
     /// @param [in] aMultiplier A multiplier
@@ -201,8 +201,8 @@ class Duration
     /// @brief Division assignement operator
     ///
     /// @code
-    ///     Duration duration = Duration::Seconds(1.0) ;
-    ///     duration /= 2.0 ; // 0.5 [s]
+    ///     Duration duration = Duration::Seconds(1.0);
+    ///     duration /= 2.0; // 0.5 [s]
     /// @endcode
     ///
     /// @param [in] aDivider A divider
@@ -212,7 +212,7 @@ class Duration
     /// @brief Multiplication operator
     ///
     /// @code
-    ///     2.0 * Duration::Seconds(1.0) ; // 2.0 [s]
+    ///     2.0 * Duration::Seconds(1.0); // 2.0 [s]
     /// @endcode
     ///
     /// @param [in] aMultiplier A multiplier
@@ -223,7 +223,7 @@ class Duration
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << Duration(123) ;
+    ///     std::cout << Duration(123);
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -234,7 +234,7 @@ class Duration
     /// @brief Check if duration is defined
     ///
     /// @code
-    ///     Duration(123).isDefined() ; // True
+    ///     Duration(123).isDefined(); // True
     /// @endcode
     ///
     /// @return True if duration is defined
@@ -243,7 +243,7 @@ class Duration
     /// @brief Check if duration is zero
     ///
     /// @code
-    ///     Duration(0).isZero() ; // True
+    ///     Duration(0).isZero(); // True
     /// @endcode
     ///
     /// @return True if duration is zero
@@ -252,9 +252,9 @@ class Duration
     /// @brief Check if duration is positive
     ///
     /// @code
-    ///     Duration(+1).isPositive() ; // True
-    ///     Duration(-1).isPositive() ; // False
-    ///     Duration(0).isPositive() ; // True
+    ///     Duration(+1).isPositive(); // True
+    ///     Duration(-1).isPositive(); // False
+    ///     Duration(0).isPositive(); // True
     /// @endcode
     ///
     /// @return True if duration is positive
@@ -263,9 +263,9 @@ class Duration
     /// @brief Check if duration is strictly positive
     ///
     /// @code
-    ///     Duration(+1).isStrictlyPositive() ; // True
-    ///     Duration(-1).isStrictlyPositive() ; // False
-    ///     Duration(0).isStrictlyPositive() ; // False
+    ///     Duration(+1).isStrictlyPositive(); // True
+    ///     Duration(-1).isStrictlyPositive(); // False
+    ///     Duration(0).isStrictlyPositive(); // False
     /// @endcode
     ///
     /// @return True if duration is strictly positive
@@ -274,7 +274,7 @@ class Duration
     /// @brief Check if duration is near another duration
     ///
     /// @code
-    ///     Duration::Seconds(2.0).isNear(Duration::Seconds(1.0), Duration::Seconds(1.0)) ; // True
+    ///     Duration::Seconds(2.0).isNear(Duration::Seconds(1.0), Duration::Seconds(1.0)); // True
     /// @endcode
     ///
     /// @param [in] aDuration A duration
@@ -285,7 +285,7 @@ class Duration
     /// @brief Get the number of nanoseconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).nanoseconds() ; // 0
+    ///     Duration::Seconds(15).nanoseconds(); // 0
     /// @endcode
     ///
     /// @return Number of nanoseconds in duration
@@ -294,7 +294,7 @@ class Duration
     /// @brief Get the number of microseconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).microseconds() ; // 0
+    ///     Duration::Seconds(15).microseconds(); // 0
     /// @endcode
     ///
     /// @return Number of microseconds in duration
@@ -303,7 +303,7 @@ class Duration
     /// @brief Get the number of milliseconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).milliseconds() ; // 0
+    ///     Duration::Seconds(15).milliseconds(); // 0
     /// @endcode
     ///
     /// @return Number of milliseconds in duration
@@ -312,7 +312,7 @@ class Duration
     /// @brief Get the number of seconds in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).seconds() ; // 15
+    ///     Duration::Seconds(15).seconds(); // 15
     /// @endcode
     ///
     /// @return Number of seconds in duration
@@ -321,7 +321,7 @@ class Duration
     /// @brief Get the number of minutes in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).minutes() ; // 0
+    ///     Duration::Seconds(15).minutes(); // 0
     /// @endcode
     ///
     /// @return Number of minutes in duration
@@ -330,7 +330,7 @@ class Duration
     /// @brief Get the number of hours in duration
     ///
     /// @code
-    ///     Duration::Seconds(15).hours() ; // 0
+    ///     Duration::Seconds(15).hours(); // 0
     /// @endcode
     ///
     /// @return Number of hours in duration
@@ -339,7 +339,7 @@ class Duration
     /// @brief Get the number of days in duration
     ///
     /// @code
-    ///     Duration::Days(15).days() ; // 15
+    ///     Duration::Days(15).days(); // 15
     /// @endcode
     ///
     /// @return Number of days in duration
@@ -348,7 +348,7 @@ class Duration
     /// @brief Get the number of weeks in duration
     ///
     /// @code
-    ///     Duration::Days(15).weeks() ; // 2
+    ///     Duration::Days(15).weeks(); // 2
     /// @endcode
     ///
     /// @return Number of weeks in duration
@@ -357,7 +357,7 @@ class Duration
     /// @brief Get absolute duration
     ///
     /// @code
-    ///     Duration::Seconds(-123.456).getAbsolute() ; // +123.456 [s]
+    ///     Duration::Seconds(-123.456).getAbsolute(); // +123.456 [s]
     /// @endcode
     ///
     /// @return Absolute duration
@@ -366,7 +366,7 @@ class Duration
     /// @brief Get nanosecond count
     ///
     /// @code
-    ///     Duration::Nanoseconds(123).inNanoseconds() ; // 123.0
+    ///     Duration::Nanoseconds(123).inNanoseconds(); // 123.0
     /// @endcode
     ///
     /// @return Nanosecond count
@@ -375,7 +375,7 @@ class Duration
     /// @brief Get microsecond count
     ///
     /// @code
-    ///     Duration::Microseconds(123).inMicroseconds() ; // 123.0
+    ///     Duration::Microseconds(123).inMicroseconds(); // 123.0
     /// @endcode
     ///
     /// @return Microsecond count
@@ -384,7 +384,7 @@ class Duration
     /// @brief Get millisecond count
     ///
     /// @code
-    ///     Duration::Milliseconds(123).inMilliseconds() ; // 123.0
+    ///     Duration::Milliseconds(123).inMilliseconds(); // 123.0
     /// @endcode
     ///
     /// @return Millisecond count
@@ -393,7 +393,7 @@ class Duration
     /// @brief Get second count
     ///
     /// @code
-    ///     Duration::Seconds(123).inSeconds() ; // 123.0
+    ///     Duration::Seconds(123).inSeconds(); // 123.0
     /// @endcode
     ///
     /// @return Second count
@@ -402,7 +402,7 @@ class Duration
     /// @brief Get minute count
     ///
     /// @code
-    ///     Duration::Minutes(123).inMinutes() ; // 123.0
+    ///     Duration::Minutes(123).inMinutes(); // 123.0
     /// @endcode
     ///
     /// @return Minute count
@@ -411,7 +411,7 @@ class Duration
     /// @brief Get hour count
     ///
     /// @code
-    ///     Duration::Hours(123).inHours() ; // 123.0
+    ///     Duration::Hours(123).inHours(); // 123.0
     /// @endcode
     ///
     /// @return Hour count
@@ -420,7 +420,7 @@ class Duration
     /// @brief Get day count
     ///
     /// @code
-    ///     Duration::Days(123).inDays() ; // 123.0
+    ///     Duration::Days(123).inDays(); // 123.0
     /// @endcode
     ///
     /// @return Day count
@@ -429,7 +429,7 @@ class Duration
     /// @brief Get week count
     ///
     /// @code
-    ///     Duration::Weeks(123).inWeeks() ; // 123.0
+    ///     Duration::Weeks(123).inWeeks(); // 123.0
     /// @endcode
     ///
     /// @return Week count
@@ -438,7 +438,7 @@ class Duration
     /// @brief Get count in given time unit
     ///
     /// @code
-    ///     Duration::Weeks(123).in(Time::Unit::Week) ; // 123.0
+    ///     Duration::Weeks(123).in(Time::Unit::Week); // 123.0
     /// @endcode
     ///
     /// @param [in] aTimeUnit A time unit
@@ -448,8 +448,8 @@ class Duration
     /// @brief Get string representation of duration
     ///
     /// @code
-    ///     Duration::Seconds(123.456).toString(Duration::Format::Standard) ; // 02:03.456
-    ///     Duration::Seconds(123.456).toString(Duration::Format::ISO8601) ; // PT2M3.456S
+    ///     Duration::Seconds(123.456).toString(Duration::Format::Standard); // 02:03.456
+    ///     Duration::Seconds(123.456).toString(Duration::Format::ISO8601); // PT2M3.456S
     /// @endcode
     ///
     /// @param [in] aFormat A representation format
@@ -459,8 +459,8 @@ class Duration
     /// @brief Constructs an undefined duration
     ///
     /// @code
-    ///     Duration duration = Duration::Undefined() ;
-    ///     duration.isDefined() ; // False
+    ///     Duration duration = Duration::Undefined();
+    ///     duration.isDefined(); // False
     /// @endcode
     ///
     /// @return Undefined duration
@@ -469,8 +469,8 @@ class Duration
     /// @brief Constructs a zero duration
     ///
     /// @code
-    ///     Duration duration = Duration::Zero() ;
-    ///     duration.isZero() ; // True
+    ///     Duration duration = Duration::Zero();
+    ///     duration.isZero(); // True
     /// @endcode
     ///
     /// @return Zero duration
@@ -479,7 +479,7 @@ class Duration
     /// @brief Constructs a duration from a nanosecond count
     ///
     /// @code
-    ///     Duration duration = Duration::Nanoseconds(123) ;
+    ///     Duration duration = Duration::Nanoseconds(123);
     /// @endcode
     ///
     /// @param [in] aNanosecondCount A nanosecond count
@@ -489,7 +489,7 @@ class Duration
     /// @brief Constructs a duration from a microsecond count
     ///
     /// @code
-    ///     Duration duration = Duration::Microseconds(123) ;
+    ///     Duration duration = Duration::Microseconds(123);
     /// @endcode
     ///
     /// @param [in] aMicrosecondCount A microsecond count
@@ -499,7 +499,7 @@ class Duration
     /// @brief Constructs a duration from a millisecond count
     ///
     /// @code
-    ///     Duration duration = Duration::Milliseconds(123) ;
+    ///     Duration duration = Duration::Milliseconds(123);
     /// @endcode
     ///
     /// @param [in] aMillisecondCount A millisecond count
@@ -509,7 +509,7 @@ class Duration
     /// @brief Constructs a duration from a second count
     ///
     /// @code
-    ///     Duration duration = Duration::Seconds(123) ;
+    ///     Duration duration = Duration::Seconds(123);
     /// @endcode
     ///
     /// @param [in] aSecondCount A second count
@@ -519,7 +519,7 @@ class Duration
     /// @brief Constructs a duration from a minute count
     ///
     /// @code
-    ///     Duration duration = Duration::Minutes(123) ;
+    ///     Duration duration = Duration::Minutes(123);
     /// @endcode
     ///
     /// @param [in] aMinuteCount A minute count
@@ -529,7 +529,7 @@ class Duration
     /// @brief Constructs a duration from a hour count
     ///
     /// @code
-    ///     Duration duration = Duration::Hours(123) ;
+    ///     Duration duration = Duration::Hours(123);
     /// @endcode
     ///
     /// @param [in] anHourCount A hour count
@@ -539,7 +539,7 @@ class Duration
     /// @brief Constructs a duration from a day count
     ///
     /// @code
-    ///     Duration duration = Duration::Days(123) ;
+    ///     Duration duration = Duration::Days(123);
     /// @endcode
     ///
     /// @param [in] aDayCount A day count
@@ -549,7 +549,7 @@ class Duration
     /// @brief Constructs a duration from a week count
     ///
     /// @code
-    ///     Duration duration = Duration::Weeks(123) ;
+    ///     Duration duration = Duration::Weeks(123);
     /// @endcode
     ///
     /// @param [in] aWeekCount A week count
@@ -561,7 +561,7 @@ class Duration
     /// Duration is positive is firstInstant < secondInstant.
     ///
     /// @code
-    ///     Duration duration = Duration::Between(firstInstant, secondInstant) ;
+    ///     Duration duration = Duration::Between(firstInstant, secondInstant);
     /// @endcode
     ///
     /// @param [in] aFirstInstant A first instant
@@ -572,9 +572,9 @@ class Duration
     /// @brief Constructs a duration from a string representation
     ///
     /// @code
-    ///     Duration duration = Duration::Parse("12:34:56.123.456.789") ;
-    ///     Duration duration = Duration::Parse("12:34:56.123.456.789", Duration::Format::Standard) ;
-    ///     Duration duration = Duration::Parse("12:34:56.123456789", Duration::Format::ISO8601) ;
+    ///     Duration duration = Duration::Parse("12:34:56.123.456.789");
+    ///     Duration duration = Duration::Parse("12:34:56.123.456.789", Duration::Format::Standard);
+    ///     Duration duration = Duration::Parse("12:34:56.123456789", Duration::Format::ISO8601);
     /// @endcode
     ///
     /// @param [in] aString A string

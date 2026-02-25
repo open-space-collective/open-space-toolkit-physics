@@ -50,7 +50,7 @@ class Velocity
     /// @brief Constructor
     ///
     /// @code
-    ///     Velocity velocity({0.0, 7546.0, 0.0}, Velocity::Unit::MeterPerSecond, Frame::GCRF()) ;
+    ///     Velocity velocity({0.0, 7546.0, 0.0}, Velocity::Unit::MeterPerSecond, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aCoordinateSet A coordinate set
@@ -61,7 +61,7 @@ class Velocity
     /// @brief Equality operator
     ///
     /// @code
-    ///     velocity == otherVelocity ; // True
+    ///     velocity == otherVelocity; // True
     /// @endcode
     ///
     /// @param [in] aVelocity A velocity to compare with
@@ -71,7 +71,7 @@ class Velocity
     /// @brief Inequality operator
     ///
     /// @code
-    ///     velocity != otherVelocity ; // False
+    ///     velocity != otherVelocity; // False
     /// @endcode
     ///
     /// @param [in] aVelocity A velocity to compare with
@@ -81,7 +81,7 @@ class Velocity
     /// @brief Output stream operator
     ///
     /// @code
-    ///     std::cout << velocity ;
+    ///     std::cout << velocity;
     /// @endcode
     ///
     /// @param [in] anOutputStream An output stream
@@ -92,7 +92,7 @@ class Velocity
     /// @brief Check if the velocity is defined
     ///
     /// @code
-    ///     Velocity::Undefined().isDefined() ; // False
+    ///     Velocity::Undefined().isDefined(); // False
     /// @endcode
     ///
     /// @return True if the velocity is defined
@@ -101,7 +101,7 @@ class Velocity
     /// @brief Access coordinates
     ///
     /// @code
-    ///     velocity.accessCoordinates() ;
+    ///     velocity.accessCoordinates();
     /// @endcode
     ///
     /// @return Reference to coordinates
@@ -110,7 +110,7 @@ class Velocity
     /// @brief Access frame
     ///
     /// @code
-    ///     velocity.accessFrame() ;
+    ///     velocity.accessFrame();
     /// @endcode
     ///
     /// @return Shared pointer to the frame
@@ -119,7 +119,7 @@ class Velocity
     /// @brief Get coordinates
     ///
     /// @code
-    ///     velocity.getCoordinates() ;
+    ///     velocity.getCoordinates();
     /// @endcode
     ///
     /// @return Coordinates
@@ -128,7 +128,7 @@ class Velocity
     /// @brief Get the velocity unit
     ///
     /// @code
-    ///     velocity.getUnit() ;
+    ///     velocity.getUnit();
     /// @endcode
     ///
     /// @return Velocity unit
@@ -137,7 +137,7 @@ class Velocity
     /// @brief Convert velocity to a different unit
     ///
     /// @code
-    ///     velocity.inUnit(Velocity::Unit::MeterPerSecond) ;
+    ///     velocity.inUnit(Velocity::Unit::MeterPerSecond);
     /// @endcode
     ///
     /// @param [in] aUnit A velocity unit
@@ -147,7 +147,7 @@ class Velocity
     /// @brief Convert velocity to a different frame at a given instant
     ///
     /// @code
-    ///     velocity.inFrame(position, Frame::ITRF(), Instant::J2000()) ;
+    ///     velocity.inFrame(position, Frame::ITRF(), Instant::J2000());
     /// @endcode
     ///
     /// @param [in] aPosition The associated position
@@ -159,7 +159,7 @@ class Velocity
     /// @brief Convert velocity to string
     ///
     /// @code
-    ///     velocity.toString() ;
+    ///     velocity.toString();
     /// @endcode
     ///
     /// @param [in] aPrecision A precision
@@ -169,7 +169,7 @@ class Velocity
     /// @brief Construct an undefined velocity
     ///
     /// @code
-    ///     Velocity velocity = Velocity::Undefined() ;
+    ///     Velocity velocity = Velocity::Undefined();
     /// @endcode
     ///
     /// @return Undefined velocity
@@ -178,7 +178,7 @@ class Velocity
     /// @brief Construct a velocity in meters per second
     ///
     /// @code
-    ///     Velocity velocity = Velocity::MetersPerSecond({0.0, 7546.0, 0.0}, Frame::GCRF()) ;
+    ///     Velocity velocity = Velocity::MetersPerSecond({0.0, 7546.0, 0.0}, Frame::GCRF());
     /// @endcode
     ///
     /// @param [in] aCoordinateSet A coordinate set
@@ -189,7 +189,7 @@ class Velocity
     /// @brief Get the string representation of a velocity unit
     ///
     /// @code
-    ///     Velocity::StringFromUnit(Velocity::Unit::MeterPerSecond) ; // "m/s"
+    ///     Velocity::StringFromUnit(Velocity::Unit::MeterPerSecond); // "m/s"
     /// @endcode
     ///
     /// @param [in] aUnit A velocity unit

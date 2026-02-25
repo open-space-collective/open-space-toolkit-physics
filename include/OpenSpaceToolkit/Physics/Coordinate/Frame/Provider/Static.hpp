@@ -30,7 +30,7 @@ class Static : public Provider
     /// @brief Constructor.
     ///
     /// @code
-    ///     Static provider(transform) ;
+    ///     Static provider(transform);
     /// @endcode
     ///
     /// @param [in] aTransform A static transform
@@ -42,7 +42,7 @@ class Static : public Provider
     /// @brief Clone the Static provider.
     ///
     /// @code
-    ///     Static* clonePtr = provider.clone() ;
+    ///     Static* clonePtr = provider.clone();
     /// @endcode
     ///
     /// @return A pointer to the cloned Static provider
@@ -51,7 +51,7 @@ class Static : public Provider
     /// @brief Check if the Static provider is defined.
     ///
     /// @code
-    ///     provider.isDefined() ; // True
+    ///     provider.isDefined(); // True
     /// @endcode
     ///
     /// @return True if the Static provider is defined
@@ -60,7 +60,7 @@ class Static : public Provider
     /// @brief Get the transform at a given instant.
     ///
     /// @code
-    ///     Transform transform = provider.getTransformAt(Instant::J2000()) ;
+    ///     Transform transform = provider.getTransformAt(Instant::J2000());
     /// @endcode
     ///
     /// @param [in] anInstant An instant (ignored for static transforms)

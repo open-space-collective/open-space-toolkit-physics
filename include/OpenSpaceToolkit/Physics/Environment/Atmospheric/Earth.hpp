@@ -61,7 +61,7 @@ class Earth : public Model
     /// @brief Constructor
     ///
     /// @code
-    ///     Earth earthAtmo(Earth::Type::Exponential) ;
+    ///     Earth earthAtmo(Earth::Type::Exponential);
     /// @endcode
     ///
     /// @param [in] aType An atmospheric model type
@@ -88,7 +88,7 @@ class Earth : public Model
     /// @brief Copy constructor
     ///
     /// @code
-    ///     Earth earthAtmoCopy(earthAtmo) ;
+    ///     Earth earthAtmoCopy(earthAtmo);
     /// @endcode
     ///
     /// @param [in] anEarthAtmosphericModel An Earth atmospheric model
@@ -97,7 +97,7 @@ class Earth : public Model
     /// @brief Copy assignment operator
     ///
     /// @code
-    ///     Earth earthAtmoB = earthAtmoA ;
+    ///     Earth earthAtmoB = earthAtmoA;
     /// @endcode
     ///
     /// @param [in] anEarthAtmosphericModel An Earth atmospheric model
@@ -110,7 +110,7 @@ class Earth : public Model
     /// @brief Clone the Earth atmospheric model
     ///
     /// @code
-    ///     Earth* earthAtmoPtr = earthAtmo.clone() ;
+    ///     Earth* earthAtmoPtr = earthAtmo.clone();
     /// @endcode
     ///
     /// @return Pointer to Earth atmospheric model
@@ -119,7 +119,7 @@ class Earth : public Model
     /// @brief Check if the Earth atmospheric model is defined
     ///
     /// @code
-    ///     earthAtmo.isDefined() ;
+    ///     earthAtmo.isDefined();
     /// @endcode
     ///
     /// @return True if the Earth atmospheric model is defined
@@ -128,7 +128,7 @@ class Earth : public Model
     /// @brief Get atmospheric model type
     ///
     /// @code
-    ///     Earth::Type type = earthAtmo.getType() ;
+    ///     Earth::Type type = earthAtmo.getType();
     /// @endcode
     ///
     /// @return Atmospheric model type
@@ -137,7 +137,7 @@ class Earth : public Model
     /// @brief Get input data source type
     ///
     /// @code
-    ///     Earth::InputDataType inputDataType = earthAtmo.getInputDataType() ;
+    ///     Earth::InputDataType inputDataType = earthAtmo.getInputDataType();
     /// @endcode
     ///
     /// @return Input data source type
@@ -146,7 +146,7 @@ class Earth : public Model
     /// @brief Get the atmospheric density value at a given position and instant
     ///
     /// @code
-    ///     Real density = earthAtmo.getDensityAt(position, instant) ;
+    ///     Real density = earthAtmo.getDensityAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A Position
@@ -157,7 +157,7 @@ class Earth : public Model
     /// @brief Get the atmospheric density value at a given position and instant
     ///
     /// @code
-    ///     Real density = earthAtmo.getDensityAt(lla, instant) ;
+    ///     Real density = earthAtmo.getDensityAt(lla, instant);
     /// @endcode
     ///
     /// @param [in] aLLA A LLA
