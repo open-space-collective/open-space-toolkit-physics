@@ -220,8 +220,7 @@ class Manager
     ///
     /// @param [in] aLocalRepositoryLockTimeoutEnvironmentVariableName Environment variable name to check
     /// @return The default lock timeout duration
-    static Duration DefaultLocalRepositoryLockTimeout_(
-        const String& aLocalRepositoryLockTimeoutEnvironmentVariableName
+    static Duration DefaultLocalRepositoryLockTimeout_(const String& aLocalRepositoryLockTimeoutEnvironmentVariableName
     );
 };
 
