@@ -503,6 +503,18 @@ class Angle : public Unit
 
     static Angle Revolutions(const Real& aValue);
 
+    /// @brief Compute the shortest signed angle from the first angle to the second.
+    /// Positive if the shortest path from `first_angle` to `second_angle` is clockwise, otherwise negative.
+    /// The result is in the range (-180, +180] degrees and is returned in the unit of the first angle.
+    ///
+    /// @code
+    ///     Angle angle = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(90.0));
+    /// @endcode
+    ///
+    /// @param [in] aFirstAngle A first angle
+    /// @param [in] aSecondAngle A second angle
+    /// @return The shortest signed angle from the first angle to the second
+
     static Angle Between(const Angle& aFirstAngle, const Angle& aSecondAngle);
 
     /// @brief Compute the angle between two 2D vectors.

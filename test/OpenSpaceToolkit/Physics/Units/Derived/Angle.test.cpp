@@ -1191,6 +1191,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
         EXPECT_NEAR(result.inDegrees(), -20.0, 1e-10);
     }
 
+<<<<<<< HEAD
     // Unnormalized cases
     {
         const Angle result = Angle::Between(Angle::Degrees(720.0), Angle::Degrees(10.0));
@@ -1201,6 +1202,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
         const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(730.0));
         EXPECT_NEAR(result.inDegrees(), 10.0, 1e-10);
     }
+=======
+>>>>>>> 94ce641b (feat: add shortest path angle computation)
     // Half-turn
     {
         const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(180.0));

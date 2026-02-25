@@ -417,7 +417,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
             R"doc(
                 Compute the shortest signed angle from the first angle to the second.
                 Positive if the shortest path from `first_angle` to `second_angle` is clockwise, otherwise negative.
-
                 The result is in the range (-180, +180] degrees and is returned in the unit of the first angle.
 
                 Args:
