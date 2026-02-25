@@ -47,99 +47,143 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using BaseManager = ostk::physics::Manager;
 
-/// @brief                      CSSI space weather manager (thread-safe)
+/// @brief CSSI space weather manager (thread-safe)
 ///
-///                             The following environment variables can be defined:
+/// The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE" will override
-///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY" will
-///                             override "DefaultLocalRepository"
-///                             -
-///                             "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
-///                             will override "DefaultLocalRepositoryLockTimeout"
+/// - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_MODE" will override "DefaultMode"
+/// - "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository" -
+/// "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+/// will override "DefaultLocalRepositoryLockTimeout"
 ///
-/// @ref                        https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
+/// @ref https://ai-solutions.com/_help_Files/cssi_space_weather_file.htm
 
 class Manager : public BaseManager
 {
    public:
-    /// @brief                  Get CSSI Space Weather directory
+    /// @brief Get CSSI Space Weather directory
     ///
-    /// @return                 CSSI Space Weather directory
+    /// @code
+    ///     Directory directory = Manager::Get().getCSSISpaceWeatherDirectory() ;
+    /// @endcode
+    ///
+    /// @return CSSI Space Weather directory
 
     Directory getCSSISpaceWeatherDirectory() const;
 
-    /// @brief                  Get currently loaded CSSI Space Weather file
+    /// @brief Get currently loaded CSSI Space Weather file
     ///
-    /// @return                 Currently loaded CSSI Space Weather file
+    /// @code
+    ///     CSSISpaceWeather sw = Manager::Get().getLoadedCSSISpaceWeather() ;
+    /// @endcode
+    ///
+    /// @return Currently loaded CSSI Space Weather file
 
     CSSISpaceWeather getLoadedCSSISpaceWeather() const;
 
-    /// @brief                  Get CSSI Space Weather at instant
+    /// @brief Get CSSI Space Weather at instant
     ///
-    /// @param                  [in] anInstant An instant
-    /// @return                 CSSI Space Weather
+    /// @code
+    ///     CSSISpaceWeather sw = Manager::Get().getCSSISpaceWeatherAt(instant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return CSSI Space Weather
 
     CSSISpaceWeather getCSSISpaceWeatherAt(const Instant& anInstant) const;
 
-    /// @brief                  Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
+    /// @brief Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
     ///
-    /// @param                  [in] anInstant An instant
-    /// @return                 Array of 3-hourly Kp solar indices
+    /// @code
+    ///     Array<Integer> kpIndices = Manager::Get().getKp3HourSolarIndicesAt(instant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return Array of 3-hourly Kp solar indices
 
     Array<Integer> getKp3HourSolarIndicesAt(const Instant& anInstant) const;
 
-    /// @brief                  Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
+    /// @brief Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
     ///
-    /// @param                  [in] anInstant An instant
-    /// @return                 Array of 3-hourly Ap solar indices
+    /// @code
+    ///     Array<Integer> apIndices = Manager::Get().getAp3HourSolarIndicesAt(instant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return Array of 3-hourly Ap solar indices
 
     Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
 
-    /// @brief                  Get daily Ap index for the day containing instant.
+    /// @brief Get daily Ap index for the day containing instant.
     ///
-    /// @param                  [in] anInstant An instant
-    /// @return                 daily Ap index
+    /// @code
+    ///     Integer apDaily = Manager::Get().getApDailyIndexAt(instant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return daily Ap index
 
     Integer getApDailyIndexAt(const Instant& anInstant) const;
 
-    /// @brief                  Get the daily value for F10.7 solar flux at instant.
+    /// @brief Get the daily value for F10.7 solar flux at instant.
     ///
-    /// @param                  [in] anInstant An instant
-    /// @return                 Daily value for F10.7 solar flux
+    /// @code
+    ///     Real f107 = Manager::Get().getF107SolarFluxAt(instant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return Daily value for F10.7 solar flux
 
     Real getF107SolarFluxAt(const Instant& anInstant) const;
 
-    /// @brief                  Get the 81-day average value for F10.7 solar flux
-    ///                         centered on instant.
+    /// @brief Get the 81-day average value for F10.7 solar flux centered on instant.
     ///
-    /// @param                  [in] anInstant An instant
-    /// @return                 Centered 81-day average value for F10.7 solar flux
+    /// @code
+    ///     Real f107Avg = Manager::Get().getF107SolarFlux81DayAvgAt(instant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return Centered 81-day average value for F10.7 solar flux
 
     Real getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
 
-    /// @brief                  Load CSSI Space Weather
+    /// @brief Load CSSI Space Weather
     ///
-    /// @param                  [in] aCSSISpaceWeather A CSSI Space Weather
+    /// @code
+    ///     Manager::Get().loadCSSISpaceWeather(cssiSpaceWeather) ;
+    /// @endcode
+    ///
+    /// @param [in] aCSSISpaceWeather A CSSI Space Weather
 
     void loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief                  Fetch latest CSSI Space Weather file
+    /// @brief Fetch latest CSSI Space Weather file
     ///
-    /// @return                 Latest CSSI Space Weather file
+    /// @code
+    ///     File file = Manager::Get().fetchLatestCSSISpaceWeather() ;
+    /// @endcode
+    ///
+    /// @return Latest CSSI Space Weather file
 
     File fetchLatestCSSISpaceWeather();
 
-    /// @brief                  Reset manager
+    /// @brief Reset manager
     ///
-    ///                         Unload all space weather files and clear cache.
+    /// @code
+    ///     Manager::Get().reset() ;
+    /// @endcode
+    ///
+    /// Unload all space weather files and clear cache.
 
     virtual void reset() override;
 
-    /// @brief                  Get manager singleton
+    /// @brief Get manager singleton
     ///
-    /// @return                 Reference to manager
+    /// @code
+    ///     Manager& manager = Manager::Get() ;
+    /// @endcode
+    ///
+    /// @return Reference to manager
 
     static Manager& Get();
 

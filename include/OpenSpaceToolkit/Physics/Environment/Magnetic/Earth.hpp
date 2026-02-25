@@ -32,10 +32,9 @@ using ostk::physics::environment::magnetic::Model;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Derived;
 
-/// @brief                      Earth magnetic model
+/// @brief Earth magnetic model
 ///
-/// @ref                        https://geographiclib.sourceforge.io/html/magnetic.html
-
+/// @ref https://geographiclib.sourceforge.io/html/magnetic.html
 class Earth : public Model
 {
    public:
@@ -59,54 +58,74 @@ class Earth : public Model
 
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aType A magnetic model type
-    /// @param              [in] (optional) aDataDirectory A magnetic model data directory
-
+    /// @code
+    ///     Earth earthMag(Earth::Type::EMM2017) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A magnetic model type
+    /// @param [in] (optional) aDataDirectory A magnetic model data directory
     Earth(const Earth::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
 
-    /// @brief              Copy constructor
+    /// @brief Copy constructor
     ///
-    /// @param              [in] anEarthMagneticModel An Earth model
-
+    /// @code
+    ///     Earth earthMagCopy(earthMag) ;
+    /// @endcode
+    ///
+    /// @param [in] anEarthMagneticModel An Earth model
     Earth(const Earth& anEarthMagneticModel);
 
-    /// @brief              Copy assignment operator
+    /// @brief Copy assignment operator
     ///
-    /// @param              [in] anEarthMagneticModel An Earth model
-    /// @return             Reference to Earth model
-
+    /// @code
+    ///     Earth earthMagCopy = earthMag ;
+    /// @endcode
+    ///
+    /// @param [in] anEarthMagneticModel An Earth model
+    /// @return Reference to Earth model
     Earth& operator=(const Earth& anEarthMagneticModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     ~Earth();
 
-    /// @brief              Clone the Earth magnetic model
+    /// @brief Clone the Earth magnetic model
     ///
-    /// @return             Pointer to Earth magnetic model
-
+    /// @code
+    ///     Earth* earthMagPtr = earthMag.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Earth magnetic model
     virtual Earth* clone() const override;
 
-    /// @brief              Check if the Earth magnetic model is defined
+    /// @brief Check if the Earth magnetic model is defined
     ///
-    /// @return             True if the Earth magnetic model is defined
-
-    bool isDefined() const;
-
-    /// @brief              Get magnetic model type
+    /// @code
+    ///     bool isDefined = earthMag.isDefined() ;
+    /// @endcode
     ///
-    /// @return             Magnetic model type
+    /// @return True if the Earth magnetic model is defined
+    virtual bool isDefined() const override;
 
+    /// @brief Get magnetic model type
+    ///
+    /// @code
+    ///     Earth::Type type = earthMag.getType() ;
+    /// @endcode
+    ///
+    /// @return Magnetic model type
     Earth::Type getType() const;
 
-    /// @brief              Get the magnetic field value at a given position and instant
+    /// @brief Get the magnetic field value at a given position and instant
     ///
-    /// @param              [in] aPosition A position, expressed in the magnetic object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Magnetic field value, expressed in the magnetic object frame [T]
-
+    /// @code
+    ///     Vector3d fieldValue = earthMag.getFieldValueAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A position, expressed in the magnetic object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Magnetic field value, expressed in the magnetic object frame [T]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:

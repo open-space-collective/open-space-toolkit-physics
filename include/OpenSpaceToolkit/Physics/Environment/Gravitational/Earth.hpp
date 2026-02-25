@@ -31,13 +31,12 @@ using ostk::io::URL;
 using ostk::physics::environment::gravitational::Model;
 using ostk::physics::time::Instant;
 
-/// @brief                      Earth gravitational model
+/// @brief Earth gravitational model
 ///
-///                             The gravitational potential is expanded as sum of spherical harmonics.
+/// The gravitational potential is expanded as sum of spherical harmonics.
 ///
-/// @ref                        https://en.wikipedia.org/wiki/Spherical_harmonics
-/// @ref                        https://geographiclib.sourceforge.io/html/gravity.html
-
+/// @ref https://en.wikipedia.org/wiki/Spherical_harmonics
+/// @ref https://geographiclib.sourceforge.io/html/gravity.html
 class Earth : public Model
 {
    public:
@@ -62,13 +61,16 @@ class Earth : public Model
         EGM2008       ///< The Earth Gravity Model 2008, which includes terms up to degree 2190.
     };
 
-    /// @brief              Constructor with directory specification and max degree and order variables
+    /// @brief Constructor with directory specification and max degree and order variables
     ///
-    /// @param              [in] aType A gravitational model type
-    /// @param              [in] (optional) aDataDirectory A gravitational model data directory
-    /// @param              [in] (optional) aGravityModelDegree A gravitational model degree
-    /// @param              [in] (optional) aGravityModelOrder A gravitational model order
-
+    /// @code
+    ///     Earth earthGrav(Earth::Type::EGM2008) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @param [in] (optional) aDataDirectory A gravitational model data directory
+    /// @param [in] (optional) aGravityModelDegree A gravitational model degree
+    /// @param [in] (optional) aGravityModelOrder A gravitational model order
     Earth(
         const Earth::Type& aType,
         const Directory& aDataDirectory = Directory::Undefined(),
@@ -76,69 +78,103 @@ class Earth : public Model
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
 
-    /// @brief              Constructor with max degree and order variables
+    /// @brief Constructor with max degree and order variables
     ///
-    /// @param              [in] aType A gravitational model type
-    /// @param              [in] aGravityModelDegree A gravitational model degree
-    /// @param              [in] aGravityModelOrder A gravitational model order
-
+    /// @code
+    ///     Earth earthGrav(Earth::Type::EGM2008, 10, 10) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @param [in] aGravityModelDegree A gravitational model degree
+    /// @param [in] aGravityModelOrder A gravitational model order
     Earth(const Earth::Type& aType, const Integer& aGravityModelDegree, const Integer& aGravityModelOrder);
 
-    /// @brief              Copy constructor
+    /// @brief Copy constructor
     ///
-    /// @param              [in] anEarthGravitationalModel An Earth model
-
+    /// @code
+    ///     Earth earthGravCopy(earthGrav) ;
+    /// @endcode
+    ///
+    /// @param [in] anEarthGravitationalModel An Earth model
     Earth(const Earth& anEarthGravitationalModel);
 
-    /// @brief              Copy assignment operator
+    /// @brief Copy assignment operator
     ///
-    /// @param              [in] anEarthGravitationalModel An Earth model
-    /// @return             Reference to Earth model
-
+    /// @code
+    ///     Earth earthGravCopy = earthGrav ;
+    /// @endcode
+    ///
+    /// @param [in] anEarthGravitationalModel An Earth model
+    /// @return Reference to Earth model
     Earth& operator=(const Earth& anEarthGravitationalModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     ~Earth();
 
-    /// @brief              Clone the Earth gravitational model
+    /// @brief Clone the Earth gravitational model
     ///
-    /// @return             Pointer to Earth gravitational model
-
+    /// @code
+    ///     Earth* earthGravPtr = earthGrav.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Earth gravitational model
     virtual Earth* clone() const override;
 
-    /// @brief              Check if the Earth gravitational model is defined
+    /// @brief Check if the Earth gravitational model is defined
     ///
-    /// @return             True if the Earth gravitational model is defined
-
+    /// @code
+    ///     bool isDefined = earthGrav.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if the Earth gravitational model is defined
     virtual bool isDefined() const override;
 
-    /// @brief              Get gravitational model type
+    /// @brief Get gravitational model type
     ///
-    /// @return             Gravitational model type
-
+    /// @code
+    ///     Earth::Type type = earthGrav.getType() ;
+    /// @endcode
+    ///
+    /// @return Gravitational model type
     Earth::Type getType() const;
 
-    /// @brief              Get gravitational model degree
+    /// @brief Get gravitational model degree
     ///
-    /// @return             Gravitational model degree
-
+    /// @code
+    ///     Integer degree = earthGrav.getDegree() ;
+    /// @endcode
+    ///
+    /// @return Gravitational model degree
     virtual Integer getDegree() const;
 
-    /// @brief              Get gravitational model order
+    /// @brief Get gravitational model order
     ///
-    /// @return             Gravitational model order
-
+    /// @code
+    ///     Integer order = earthGrav.getOrder() ;
+    /// @endcode
+    ///
+    /// @return Gravitational model order
     virtual Integer getOrder() const;
 
-    /// @brief              Get the gravitational field value at a given position and instant
+    /// @brief Get the gravitational field value at a given position and instant
     ///
-    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
-
+    /// @code
+    ///     Vector3d fieldValue = earthGrav.getFieldValueAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Gravitational field value, expressed in the gravitational object frame [m.s-2]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
+    /// @brief Get gravitational model parameters for a given type.
+    ///
+    /// @code
+    ///     Model::Parameters params = Earth::ParametersFromType(Earth::Type::EGM2008) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @return Gravitational model parameters
     static Model::Parameters ParametersFromType(const Earth::Type& aType);
 
     static constexpr double gravityConstant = 9.80665;  /// Standard gravity [m.s-2]

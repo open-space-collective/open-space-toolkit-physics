@@ -47,107 +47,146 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using BaseManager = ostk::physics::Manager;
 
-/// @brief                      IERS bulletins manager (thread-safe)
+/// @brief IERS bulletins manager (thread-safe)
 ///
-///                             The following environment variables can be defined:
+/// The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE" will override
-///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY" will override
-///                             "DefaultLocalRepository"
-///                             - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
-///                             will override "DefaultLocalRepositoryLockTimeout"
+/// - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE" will override "DefaultMode"
+/// - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
+/// - "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
+/// will override "DefaultLocalRepositoryLockTimeout"
 ///
-/// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
-
+/// @ref https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html
 class Manager : public BaseManager
 {
    public:
-    /// @brief              Get Bulletin A directory
+    /// @brief Get Bulletin A directory
     ///
-    /// @return             Bulletin A directory
-
+    /// @code
+    ///     Directory directory = Manager::Get().getBulletinADirectory() ;
+    /// @endcode
+    ///
+    /// @return Bulletin A directory
     Directory getBulletinADirectory() const;
 
-    /// @brief              Get Finals 2000A directory
+    /// @brief Get Finals 2000A directory
     ///
-    /// @return             Finals 2000A directory
-
+    /// @code
+    ///     Directory directory = Manager::Get().getFinals2000ADirectory() ;
+    /// @endcode
+    ///
+    /// @return Finals 2000A directory
     Directory getFinals2000ADirectory() const;
 
-    /// @brief              Get Bulletin A
+    /// @brief Get Bulletin A
     ///
-    /// @return             Bulletin A
-
+    /// @code
+    ///     BulletinA bulletinA = Manager::Get().getBulletinA() ;
+    /// @endcode
+    ///
+    /// @return Bulletin A
     BulletinA getBulletinA() const;
 
-    /// @brief              Get Finals 2000A
+    /// @brief Get Finals 2000A
     ///
-    /// @return             Finals 2000A
-
+    /// @code
+    ///     Finals2000A finals2000A = Manager::Get().getFinals2000A() ;
+    /// @endcode
+    ///
+    /// @return Finals 2000A
     Finals2000A getFinals2000A() const;
 
-    /// @brief              Get polar motion at instant
+    /// @brief Get polar motion at instant
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             [asec] Polar motion
-
+    /// @code
+    ///     Vector2d polarMotion = Manager::Get().getPolarMotionAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return [asec] Polar motion
     Vector2d getPolarMotionAt(const Instant& anInstant) const;
 
-    /// @brief              Get UT1 - UTC at instant
+    /// @brief Get UT1 - UTC at instant
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             [sec] UT1 - UTC
-
+    /// @code
+    ///     Real ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return [sec] UT1 - UTC
     Real getUt1MinusUtcAt(const Instant& anInstant) const;
 
-    /// @brief              Get length of day at instant
+    /// @brief Get length of day at instant
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             [ms] Length of day
-
+    /// @code
+    ///     Real lod = Manager::Get().getLodAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return [ms] Length of day
     Real getLodAt(const Instant& anInstant) const;
 
-    /// @brief              Load Bulletin A
+    /// @brief Load Bulletin A
     ///
-    /// @param              [in] aBulletinA A Bulletin A
-
+    /// @code
+    ///     Manager::Get().loadBulletinA(bulletinA) ;
+    /// @endcode
+    ///
+    /// @param [in] aBulletinA A Bulletin A
     void loadBulletinA(const BulletinA& aBulletinA);
 
-    /// @brief              Load Finals 2000A
+    /// @brief Load Finals 2000A
     ///
-    /// @param              [in] aFinals2000A A Finals 2000A
-
+    /// @code
+    ///     Manager::Get().loadFinals2000A(finals2000A) ;
+    /// @endcode
+    ///
+    /// @param [in] aFinals2000A A Finals 2000A
     void loadFinals2000A(const Finals2000A& aFinals2000A);
 
-    /// @brief              Fetch latest Bulletin A file
+    /// @brief Fetch latest Bulletin A file
     ///
-    /// @return             Latest Bulletin A file
-
+    /// @code
+    ///     File file = Manager::Get().fetchLatestBulletinA() ;
+    /// @endcode
+    ///
+    /// @return Latest Bulletin A file
     File fetchLatestBulletinA() const;
 
-    /// @brief              Fetch latest Finals 2000A file
+    /// @brief Fetch latest Finals 2000A file
     ///
-    /// @return             Latest Finals 2000A file
-
+    /// @code
+    ///     File file = Manager::Get().fetchLatestFinals2000A() ;
+    /// @endcode
+    ///
+    /// @return Latest Finals 2000A file
     File fetchLatestFinals2000A() const;
 
-    /// @brief              Reset manager
+    /// @brief Reset manager
     ///
-    ///                     Unload all bulletins.
-
-    virtual void reset();
-
-    /// @brief              Clear local repository
+    /// @code
+    ///     Manager::Get().reset() ;
+    /// @endcode
     ///
-    ///                     Delete all files in local repository.
+    /// Unload all bulletins.
+    virtual void reset() override;
 
+    /// @brief Clear local repository
+    ///
+    /// @code
+    ///     Manager::Get().clearLocalRepository() ;
+    /// @endcode
+    ///
+    /// Delete all files in local repository.
     void clearLocalRepository();
 
-    /// @brief              Get manager singleton
+    /// @brief Get manager singleton
     ///
-    /// @return             Reference to manager
-
+    /// @code
+    ///     Manager& manager = Manager::Get() ;
+    /// @endcode
+    ///
+    /// @return Reference to manager
     static Manager& Get();
 
    private:

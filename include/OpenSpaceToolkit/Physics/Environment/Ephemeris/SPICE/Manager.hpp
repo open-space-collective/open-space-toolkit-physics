@@ -51,49 +51,68 @@ using ostk::physics::time::Instant;
 using ManifestManager = ostk::physics::data::Manager;
 using BaseManager = ostk::physics::Manager;
 
-/// @brief                      SPICE Toolkit kernel manager
+/// @brief SPICE Toolkit kernel manager
 ///
-///                             Fetches and manages necessary SPICE kernels.
+/// Fetches and manages necessary SPICE kernels.
 ///
-///                             The following environment variables can be defined:
+/// The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY" will override
-///                             "DefaultLocalRepository"
+/// - "OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
 
 class Manager : public BaseManager
 {
    public:
-    /// @brief              Fetch kernel from remote
+    /// @brief Fetch kernel from remote
     ///
-    /// @param              [in] aKernel A kernel
+    /// @code
+    ///     Manager::Get().fetchKernel(aKernel) ;
+    /// @endcode
+    ///
+    /// @param [in] aKernel A kernel
 
     void fetchKernel(const Kernel& aKernel) const;
 
-    /// @brief              Fetch kernels matching regular expression
+    /// @brief Fetch kernels matching regular expression
     ///
-    /// @param              [in] aRegexString A regular expression string
-    /// @return             An array of kernels
+    /// @code
+    ///     Array<Kernel> kernels = Manager::Get().fetchMatchingKernels("de430.*\\.bsp") ;
+    /// @endcode
+    ///
+    /// @param [in] aRegexString A regular expression string
+    /// @return An array of kernels
 
     Array<Kernel> fetchMatchingKernels(const String& aRegexString) const;
 
-    /// @brief              Find kernel paths matching regular expression in local repository.
+    /// @brief Find kernel paths matching regular expression in local repository.
     ///
-    /// @param              [in] aRegexString A regular expression
-    /// @return             An array of kernel paths
+    /// @code
+    ///     Array<Path> paths = Manager::Get().findKernelPaths("de430.*\\.bsp") ;
+    /// @endcode
+    ///
+    /// @param [in] aRegexString A regular expression
+    /// @return An array of kernel paths
 
     Array<Path> findKernelPaths(const String& aRegexString) const;
 
-    /// @brief              Find kernels matching regular expression. Search locally first, then remotely.
-    ///                     Always return the first found.
+    /// @brief Find kernels matching regular expression. Search locally first, then remotely.
+    /// Always return the first found.
     ///
-    /// @param              [in] aRegexString A regular expression
-    /// @return             An array of kernels
+    /// @code
+    ///     Kernel kernel = Manager::Get().findKernel("de430.*\\.bsp") ;
+    /// @endcode
+    ///
+    /// @param [in] aRegexString A regular expression
+    /// @return An array of kernels
 
     Kernel findKernel(const String& aRegexString) const;
 
-    /// @brief              Get manager singleton
+    /// @brief Get manager singleton
     ///
-    /// @return             Reference to manager
+    /// @code
+    ///     Manager& manager = Manager::Get() ;
+    /// @endcode
+    ///
+    /// @return Reference to manager
 
     static Manager& Get();
 

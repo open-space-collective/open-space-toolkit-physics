@@ -47,7 +47,7 @@ using ostk::physics::unit::Length;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-/// @brief                      NRLMSISE00 atmospheric model
+/// @brief NRLMSISE00 atmospheric model
 
 class NRLMSISE00
 {
@@ -59,7 +59,11 @@ class NRLMSISE00
                                 ///< parameters
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
+    ///
+    /// @code
+    ///     NRLMSISE00 model(NRLMSISE00::InputDataType::CSSISpaceWeatherFile) ;
+    /// @endcode
 
     NRLMSISE00(
         const InputDataType& anInputDataType = InputDataType::CSSISpaceWeatherFile,
@@ -72,51 +76,75 @@ class NRLMSISE00
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
-    /// @brief              Clone the NRLMSISE00 atmospheric model
+    /// @brief Clone the NRLMSISE00 atmospheric model
     ///
-    /// @return             Pointer to NRLMSISE00 atmospheric model
+    /// @code
+    ///     NRLMSISE00* modelPtr = model.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to NRLMSISE00 atmospheric model
 
     virtual NRLMSISE00* clone() const;
 
-    /// @brief              Check if the NRLMSISE00 atmospheric model is defined
+    /// @brief Check if the NRLMSISE00 atmospheric model is defined
     ///
-    /// @return             True if the NRLMSISE00 atmospheric model is defined
+    /// @code
+    ///     model.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if the NRLMSISE00 atmospheric model is defined
 
     bool isDefined() const;
 
-    /// @brief              Get the input data source type used to construct the NRLMSISE00 atmospheric model
+    /// @brief Get the input data source type used to construct the NRLMSISE00 atmospheric model
     ///
-    /// @return             NRLMSISE00 input data source type
+    /// @code
+    ///     NRLMSISE00::InputDataType inputDataType = model.getInputDataType() ;
+    /// @endcode
+    ///
+    /// @return NRLMSISE00 input data source type
 
     InputDataType getInputDataType() const;
 
-    /// @brief              Get the constant value for F10.7 input parameter used to construct the NRLMSISE00
-    /// atmospheric model
+    /// @brief Get the constant value for F10.7 input parameter used to construct the NRLMSISE00 atmospheric model
     ///
-    /// @return             Constant value for F10.7 input parameter
+    /// @code
+    ///     Real f107 = model.getF107ConstantValue() ;
+    /// @endcode
+    ///
+    /// @return Constant value for F10.7 input parameter
 
     Real getF107ConstantValue() const;
 
-    /// @brief              Get the constant value for F10.7a input parameter used to construct the NRLMSISE00
-    /// atmospheric model
+    /// @brief Get the constant value for F10.7a input parameter used to construct the NRLMSISE00 atmospheric model
     ///
-    /// @return             Constant value for F10.7a input parameter
+    /// @code
+    ///     Real f107a = model.getF107AConstantValue() ;
+    /// @endcode
+    ///
+    /// @return Constant value for F10.7a input parameter
 
     Real getF107AConstantValue() const;
 
-    /// @brief              Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric
-    /// model
+    /// @brief Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric model
     ///
-    /// @return             Constant value for Kp input parameter
+    /// @code
+    ///     Real kp = model.getKpConstantValue() ;
+    /// @endcode
+    ///
+    /// @return Constant value for Kp input parameter
 
     Real getKpConstantValue() const;
 
-    /// @brief              Get the atmospheric density value at a given position and instant.
+    /// @brief Get the atmospheric density value at a given position and instant.
     ///
-    /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
-    /// @param              [in] anInstant An instant
-
-    /// @return             Atmospheric density value [kg.m^-3]
+    /// @code
+    ///     Real density = model.getDensityAt(lla, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+    /// @param [in] anInstant An instant
+    /// @return Atmospheric density value [kg.m^-3]
 
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
@@ -143,47 +171,56 @@ class NRLMSISE00
         struct ap_array* ap_a;  // array of 7 values of AP. [see computeApArray below]
     };
 
-    /// @brief              Get the atmospheric density value by directly provided NRLMSISE input values.
+    /// @brief Get the atmospheric density value by directly provided NRLMSISE input values.
     ///
-    /// @param              [in] NRLMSISE input struct
-
-    /// @return             Atmospheric density value [kg.m^-3]
+    /// @code
+    ///     Real density = NRLMSISE00::GetDensityAt(input) ;
+    /// @endcode
+    ///
+    /// @param [in] NRLMSISE input struct
+    /// @return Atmospheric density value [kg.m^-3]
 
     static Real GetDensityAt(nrlmsise_input& input);
 
-    /// @brief              Fill the provided array with AP values needed for the NRLMSISE model.
-    ///                     The output array is filled like so:
+    /// @brief Fill the provided array with AP values needed for the NRLMSISE model. The output array is filled like so:
     ///
-    ///                     0 : daily AP [average of current day AP values]
-    ///                     1 : 3 hr AP index for instant
-    ///                     2 : 3 hr AP index for 3 hrs before instant
-    ///                     3 : 3 hr AP index for 6 hrs before instant
-    ///                     4 : 3 hr AP index for 9 hrs before instant
-    ///                     5 : Average of eight 3 hr AP indices from 12 to 33 hrs
-    ///                             prior to instant
-    ///                     6 : Average of eight 3 hr AP indices from 36 to 57 hrs
-    ///                             prior to instant
+    /// 0 : daily AP [average of current day AP values] 1 : 3 hr AP index for instant
+    /// 2 : 3 hr AP index for 3 hrs before instant 3 : 3 hr AP index for 6 hrs before instant
+    /// 4 : 3 hr AP index for 9 hrs before instant 5 : Average of eight 3 hr AP indices from 12 to 33 hrs
+    /// prior to instant 6 : Average of eight 3 hr AP indices from 36 to 57 hrs prior to instant
     ///
-    /// @param              [in] anInstant An Instant
-    /// @return             Pointer to AP array struct
+    /// @param [in] anInstant An Instant
+    /// @return Pointer to AP array struct
+    ///
+    /// @code
+    ///     Unique<NRLMSISE00::ap_array> apValues = model.computeApArray(instant) ;
+    /// @endcode
 
     Unique<NRLMSISE00::ap_array> computeApArray(const Instant& anInstant) const;
 
-    /// @brief              Compute the NRLMSISE00 input and populate into the given struct
-    ///                     Optionally use provided sun position to calculate local solar time.
+    /// @brief Compute the NRLMSISE00 input and populate into the given struct
+    /// Optionally use provided sun position to calculate local solar time.
     ///
-    /// @param              [in] apValues Pointer to AP values struct
-    /// @param              [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
-    /// @param              [in] anInstant An instant
+    /// @code
+    ///     Unique<NRLMSISE00::nrlmsise_input> input = model.computeNRLMSISE00Input(apValues, lla, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] apValues Pointer to AP values struct
+    /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
+    /// @param [in] anInstant An instant
 
     Unique<NRLMSISE00::nrlmsise_input> computeNRLMSISE00Input(
         const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
     ) const;
 
-    /// @brief            Convert Kp index to Ap index
+    /// @brief Convert Kp index to Ap index
     ///
-    /// @param            [in] aKp Kp index
-    /// @return           Ap index
+    /// @code
+    ///     Real ap = NRLMSISE00::convertKpToAp(kp) ;
+    /// @endcode
+    ///
+    /// @param [in] aKp Kp index
+    /// @return Ap index
 
     static Real convertKpToAp(const Real& aKp);
 

@@ -25,17 +25,40 @@ using ostk::physics::coordinate::Frame;
 using ostk::physics::data::Vector;
 using ostk::physics::time::Instant;
 
-/// @brief                      Direction
+/// @brief Direction
 ///
-///                             A unit vector, expressed in a given frame.
-
+/// A unit vector, expressed in a given frame.
 class Direction : public Vector
 {
    public:
+    /// @brief Construct a direction from a 3D vector and a reference frame.
+    ///
+    /// @code
+    ///     Direction direction({1.0, 0.0, 0.0}, Frame::GCRF()) ;
+    /// @endcode
+    ///
+    /// @param [in] aValue A 3D vector (will be normalized)
+    /// @param [in] aFrameSPtr A shared pointer to the reference frame
     Direction(const Vector3d& aValue, const Shared<const Frame>& aFrameSPtr);
 
+    /// @brief Output stream operator.
+    ///
+    /// @code
+    ///     std::cout << direction ;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] aVector A vector
+    /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector);
 
+    /// @brief Construct an undefined direction.
+    ///
+    /// @code
+    ///     Direction direction = Direction::Undefined() ;
+    /// @endcode
+    ///
+    /// @return An undefined direction
     static Direction Undefined();
 };
 

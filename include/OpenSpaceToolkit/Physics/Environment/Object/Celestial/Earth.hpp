@@ -50,20 +50,23 @@ using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 class Earth : public Celestial
 {
    public:
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-
-    /// @param              [in] anInstant An instant for the Earth celestial object
-    /// @param              [in] aGravitationalParameter A gravitational parameter for the Earth celestial object
-    /// @param              [in] anEquatorialRadius An equatorial radius for the Earth celestial object
-    /// @param              [in] aFlattening A flattening for the Earth celestial object
-    /// @param              [in] aJ2 A J2 coefficient for the Earth celestial object
-    /// @param              [in] aJ4 A J4 coefficient for the Earth celestial object
-    /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
-    /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
-    /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
-    /// @param              [in] anAtmosphericModel An atmospheric model for the Earth celestial object
-
+    /// @code
+    ///     Earth earth(gravitationalParameter, equatorialRadius, flattening, J2, J4, ephemeris, gravModel, magModel,
+    ///     atmosModel) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant for the Earth celestial object
+    /// @param [in] aGravitationalParameter A gravitational parameter for the Earth celestial object
+    /// @param [in] anEquatorialRadius An equatorial radius for the Earth celestial object
+    /// @param [in] aFlattening A flattening for the Earth celestial object
+    /// @param [in] aJ2 A J2 coefficient for the Earth celestial object
+    /// @param [in] aJ4 A J4 coefficient for the Earth celestial object
+    /// @param [in] anEphemeris An ephemeris for the Earth celestial object
+    /// @param [in] aGravitationalModel A gravitational model for the Earth celestial object
+    /// @param [in] aMagneticModel A magnetic model for the Earth celestial object
+    /// @param [in] anAtmosphericModel An atmospheric model for the Earth celestial object
     Earth(
         const Derived& aGravitationalParameter,
         const Length& anEquatorialRadius,
@@ -76,14 +79,17 @@ class Earth : public Celestial
         const Shared<EarthAtmosphericModel>& anAtmosphericModel
     );
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] anInstant An instant for the Earth celestial object
-    /// @param              [in] anEphemeris An ephemeris for the Earth celestial object
-    /// @param              [in] aGravitationalModel A gravitational model for the Earth celestial object
-    /// @param              [in] aMagneticModel A magnetic model for the Earth celestial object
-    /// @param              [in] anAtmosphericModel An atmospheric model for the Earth celestial object
-
+    /// @code
+    ///     Earth earth(ephemeris, gravModel, magModel, atmosModel) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant for the Earth celestial object
+    /// @param [in] anEphemeris An ephemeris for the Earth celestial object
+    /// @param [in] aGravitationalModel A gravitational model for the Earth celestial object
+    /// @param [in] aMagneticModel A magnetic model for the Earth celestial object
+    /// @param [in] anAtmosphericModel An atmospheric model for the Earth celestial object
     Earth(
         const Shared<Ephemeris>& anEphemeris,
         const Shared<EarthGravitationalModel>& aGravitationalModel = nullptr,
@@ -91,106 +97,146 @@ class Earth : public Celestial
         const Shared<EarthAtmosphericModel>& anAtmosphericModel = nullptr
     );
 
+    /// @brief Destructor
     virtual ~Earth() override;
 
+    /// @brief Clone the Earth celestial object.
+    ///
+    /// @code
+    ///     Earth* earthPtr = earth.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Earth celestial object
     virtual Earth* clone() const override;
 
-    /// @brief              Default Earth model (EGM2008)
+    /// @brief Default Earth model (EGM2008)
     ///
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::Default() ;
+    /// @endcode
+    ///
+    /// @return Earth
     static Earth Default();
 
-    /// @brief              Just gravity model
+    /// @brief Just gravity model
     ///
-    /// @param              [in] aGravitationalModel A gravitational model
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::GravitationalOnly(gravModel) ;
+    /// @endcode
+    ///
+    /// @param [in] aGravitationalModel A gravitational model
+    /// @return Earth
     static Earth GravitationalOnly(const Shared<EarthGravitationalModel>& aGravitationalModel);
 
-    /// @brief              Just atmospheric model
+    /// @brief Just atmospheric model
     ///
-    /// @param              [in] anAtmosphericModel An atmospheric model
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::AtmosphericOnly(atmosModel) ;
+    /// @endcode
+    ///
+    /// @param [in] anAtmosphericModel An atmospheric model
+    /// @return Earth
     static Earth AtmosphericOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel);
 
-    /// @brief              Just magnetic model
+    /// @brief Just magnetic model
     ///
-    /// @param`             [in] aMagneticModel A magnetic model
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::MagneticOnly(magModel) ;
+    /// @endcode
+    ///
+    /// @param [in] aMagneticModel A magnetic model
+    /// @return Earth
     static Earth MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel);
 
-    /// @brief              Create earth from specified models
+    /// @brief Create earth from specified models
     ///
-    /// @param              [in] aGravitationalModel A gravitational model
-    /// @param              [in] aMagneticModel A magnetic model
-    /// @param              [in] anAtmosphericModel An atmospheric model
+    /// @code
+    ///     Earth earth = Earth::FromModels(gravModel, magModel, atmosModel) ;
+    /// @endcode
     ///
-    /// @return             Earth
-
+    /// @param [in] aGravitationalModel A gravitational model
+    /// @param [in] aMagneticModel A magnetic model
+    /// @param [in] anAtmosphericModel An atmospheric model
+    ///
+    /// @return Earth
     static Earth FromModels(
         const Shared<EarthGravitationalModel>& aGravitationalModel,
         const Shared<EarthMagneticModel>& aMagneticModel,
         const Shared<EarthAtmosphericModel>& anAtmosphericModel
     );
 
-    /// @brief              Earth Gravity Model 2008 model (EGM2008)
+    /// @brief Earth Gravity Model 2008 model (EGM2008)
     ///
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::EGM2008() ;
+    /// @endcode
+    ///
+    /// @return Earth
     static Earth EGM2008(
         const Integer& aGravityModelDegree = Integer::Undefined(),
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
 
-    /// @brief              World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96)
+    /// @brief World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96)
     ///
-    ///                     EGM96 coefficients and WGS84 shape.
-    ///                     Gravitational parameter: 398600441800000 [m^3/s^2].
-    ///                     Equatorial radius: 6378137.0 [m].
+    /// EGM96 coefficients and WGS84 shape. Gravitational parameter: 398600441800000 [m^3/s^2].
+    /// Equatorial radius: 6378137.0 [m].
     ///
-    /// @ref                NIMA TR8350.2, Third Edition, 4 July 1997.
+    /// @code
+    ///     Earth earth = Earth::WGS84_EGM96() ;
+    /// @endcode
     ///
-    /// @return             Earth
-
+    /// @ref NIMA TR8350.2, Third Edition, 4 July 1997.
+    ///
+    /// @return Earth
     static Earth WGS84_EGM96(
         const Integer& aGravityModelDegree = Integer::Undefined(),
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
 
-    /// @brief              Earth Gravity Model 1996 (EGM96)
+    /// @brief Earth Gravity Model 1996 (EGM96)
     ///
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::EGM96() ;
+    /// @endcode
+    ///
+    /// @return Earth
     static Earth EGM96(
         const Integer& aGravityModelDegree = Integer::Undefined(),
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
 
-    /// @brief              Earth Gravity Model 1984 (EGM84)
+    /// @brief Earth Gravity Model 1984 (EGM84)
     ///
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::EGM84() ;
+    /// @endcode
+    ///
+    /// @return Earth
     static Earth EGM84(
         const Integer& aGravityModelDegree = Integer::Undefined(),
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
 
-    /// @brief              World Geodetic System 1984 (WGS84)
+    /// @brief World Geodetic System 1984 (WGS84)
     ///
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::WGS84() ;
+    /// @endcode
+    ///
+    /// @return Earth
     static Earth WGS84(
         const Integer& aGravityModelDegree = Integer::Undefined(),
         const Integer& aGravityModelOrder = Integer::Undefined()
     );
 
-    /// @brief              Spherical model
+    /// @brief Spherical model
     ///
-    /// @return             Earth
-
+    /// @code
+    ///     Earth earth = Earth::Spherical() ;
+    /// @endcode
+    ///
+    /// @return Earth
     static Earth Spherical();
 
    private:

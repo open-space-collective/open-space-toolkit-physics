@@ -31,72 +31,98 @@ using ostk::io::URL;
 
 using ostk::physics::time::Instant;
 
-/// @brief                      Data class for the OSTk Data Manifest
-
+/// @brief Data class for the OSTk Data Manifest
 class Manifest
 {
    public:
-    /// @brief                  Output stream operator
+    /// @brief Output stream operator
     ///
-    /// @param                  [in] anOutputStream An output stream
-    /// @param                  [in] aManifest A manifest
-    /// @return                 A reference to output stream
-
+    /// @code
+    ///     std::cout << manifest ;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] aManifest A manifest
+    /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest);
 
-    /// @brief                  Return true if manifest is defined.
+    /// @brief Return true if manifest is defined.
     ///
-    /// @return                 True if manifest is defined.
-
+    /// @code
+    ///     Boolean isDefined = manifest.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if manifest is defined.
     bool isDefined() const;
 
-    /// @brief                  Get last update timestamp
+    /// @brief Get last update timestamp
     ///
-    /// @return                 Instant indicating when the manifest was last updated based on file modification time
-
+    /// @code
+    ///     Instant timestamp = manifest.getLastModifiedTimestamp() ;
+    /// @endcode
+    ///
+    /// @return Instant indicating when the manifest was last updated based on file modification time
     Instant getLastModifiedTimestamp() const;
 
-    /// @brief                  Get last update timestamp for data
+    /// @brief Get last update timestamp for data
     ///
-    /// @param                  [in] dataName A data name
-    /// @return                 Last update instant for data
-
+    /// @code
+    ///     Instant timestamp = manifest.getLastUpdateTimestampFor("earth-gravity-egm96") ;
+    /// @endcode
+    ///
+    /// @param [in] dataName A data name
+    /// @return Last update instant for data
     Instant getLastUpdateTimestampFor(const String& aDataName) const;
 
-    /// @brief                  Get the next update check timestamp for data
+    /// @brief Get the next update check timestamp for data
     ///
-    /// @param                  [in] dataName A data name
-    /// @return                 Next update check instant for data
-
+    /// @code
+    ///     Instant timestamp = manifest.getNextUpdateCheckTimestampFor("earth-gravity-egm96") ;
+    /// @endcode
+    ///
+    /// @param [in] dataName A data name
+    /// @return Next update check instant for data
     Instant getNextUpdateCheckTimestampFor(const String& aDataName) const;
 
-    /// @brief                  Get the remote data URL for a given data name.
+    /// @brief Get the remote data URL for a given data name.
     ///
-    /// @param                  [in] aBaseUrl A base URL for remote data
-    /// @param                  [in] aDataName name of the data. i.e. the key for the data entry in the manifest
-    /// @return                 Array of remote data URLs
-
+    /// @code
+    ///     Array<URL> urls = manifest.getRemoteDataUrls(baseUrl, "earth-gravity-egm96") ;
+    /// @endcode
+    ///
+    /// @param [in] aBaseUrl A base URL for remote data
+    /// @param [in] aDataName name of the data. i.e. the key for the data entry in the manifest
+    /// @return Array of remote data URLs
     Array<URL> getRemoteDataUrls(const URL& aBaseUrl, const String& aDataName) const;
 
-    /// @brief                  Return remote data URLs the for data items matching the given name regex string
+    /// @brief Return remote data URLs the for data items matching the given name regex string
     ///
-    /// @param                  [in] aBaseUrl A base URL for remote data
-    /// @param                  [in] aDataNameRegexString A data name regex string
-    /// @return                 Array of remote data URLs
-
+    /// @code
+    ///     Array<URL> urls = manifest.findRemoteDataUrls(baseUrl, "earth-gravity-.*") ;
+    /// @endcode
+    ///
+    /// @param [in] aBaseUrl A base URL for remote data
+    /// @param [in] aDataNameRegexString A data name regex string
+    /// @return Array of remote data URLs
     Array<URL> findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const;
 
-    /// @brief                  Construct an undefined manifest
+    /// @brief Construct an undefined manifest
     ///
-    /// @return                 Undefined manifest
-
+    /// @code
+    ///     Manifest manifest = Manifest::Undefined() ;
+    /// @endcode
+    ///
+    /// @return Undefined manifest
     static Manifest Undefined();
 
-    /// @brief                  Load manifest from file
+    /// @brief Load manifest from file
     ///
-    /// @param                  [in] aFile A manifest file
-    /// @return                 Manifest
-
+    /// @code
+    ///     Manifest manifest = Manifest::Load(file) ;
+    /// @endcode
+    ///
+    /// @param [in] aFile A manifest file
+    /// @return Manifest
     static Manifest Load(const File& aFile);
 
    private:

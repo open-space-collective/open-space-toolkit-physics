@@ -33,10 +33,9 @@ using ostk::physics::environment::gravitational::Model;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Derived;
 
-/// @brief                      Moon gravitational model
+/// @brief Moon gravitational model
 ///
-///                             The gravitational potential of the Moon for now is kept as a simple spherical model.
-
+/// The gravitational potential of the Moon for now is kept as a simple spherical model.
 class Moon : public Model
 {
    public:
@@ -49,56 +48,84 @@ class Moon : public Model
         Spherical   /// The spherical gravity originating from a point source at the center of the Moon
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aType A gravitational model type
-    /// @param              [in] (optional) aDataDirectory A gravitational model data directory
-
+    /// @code
+    ///     Moon moonGrav(Moon::Type::Spherical) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @param [in] (optional) aDataDirectory A gravitational model data directory
     Moon(const Moon::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
 
-    /// @brief              Copy constructor
+    /// @brief Copy constructor
     ///
-    /// @param              [in] aMoonGravitationalModel A Moon model
-
+    /// @code
+    ///     Moon moonGravCopy(moonGrav) ;
+    /// @endcode
+    ///
+    /// @param [in] aMoonGravitationalModel A Moon model
     Moon(const Moon& aMoonGravitationalModel);
 
-    /// @brief              Copy assignment operator
+    /// @brief Copy assignment operator
     ///
-    /// @param              [in] aMoonGravitationalModel A Moon model
-    /// @return             Reference to Moon model
-
+    /// @code
+    ///     Moon moonGravCopy = moonGrav ;
+    /// @endcode
+    ///
+    /// @param [in] aMoonGravitationalModel A Moon model
+    /// @return Reference to Moon model
     Moon& operator=(const Moon& aMoonGravitationalModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     ~Moon();
 
-    /// @brief              Clone the Moon gravitational model
+    /// @brief Clone the Moon gravitational model
     ///
-    /// @return             Pointer to Moon gravitational model
-
+    /// @code
+    ///     Moon* moonGravPtr = moonGrav.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Moon gravitational model
     virtual Moon* clone() const override;
 
-    /// @brief              Check if the Moon gravitational model is defined
+    /// @brief Check if the Moon gravitational model is defined
     ///
-    /// @return             True if the Moon gravitational model is defined
-
+    /// @code
+    ///     bool isDefined = moonGrav.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if the Moon gravitational model is defined
     virtual bool isDefined() const override;
 
-    /// @brief              Get gravitational model type
+    /// @brief Get gravitational model type
     ///
-    /// @return             Gravitational model type
-
+    /// @code
+    ///     Moon::Type type = moonGrav.getType() ;
+    /// @endcode
+    ///
+    /// @return Gravitational model type
     Moon::Type getType() const;
 
-    /// @brief              Get the gravitational field value at a given position and instant
+    /// @brief Get the gravitational field value at a given position and instant
     ///
-    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
-
+    /// @code
+    ///     Vector3d fieldValue = moonGrav.getFieldValueAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Gravitational field value, expressed in the gravitational object frame [m.s-2]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
+    /// @brief Get gravitational model parameters for a given type.
+    ///
+    /// @code
+    ///     Model::Parameters params = Moon::ParametersFromType(Moon::Type::Spherical) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @return Gravitational model parameters
     static Model::Parameters ParametersFromType(const Moon::Type& aType);
 
    private:

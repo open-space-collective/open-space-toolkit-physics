@@ -39,8 +39,7 @@ using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
-/// @brief                      Earth atmospheric model
-
+/// @brief Earth atmospheric model
 class Earth : public Model
 {
    public:
@@ -59,18 +58,21 @@ class Earth : public Model
                                 ///< parameters from CSSI
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aType An atmospheric model type
-    /// @param              [in] anInputDataType An input data source type
-    /// @param              [in] aF107ConstantValue A constant value for F10.7 input parameter
-    /// @param              [in] aF107AConstantValue A constant value for F10.7a input parameter
-    /// @param              [in] aKpConstantValue A constant value for Kp input parameter
-    /// @param              [in] anEarthFrameSPtr A shared pointer to the Earth frame
-    /// @param              [in] anEarthRadius An Earth radius
-    /// @param              [in] anEarthFlattening An Earth flattening
-    /// @param              [in] aSunCelestialSPtr A shared pointer to the Sun celestial body
-
+    /// @code
+    ///     Earth earthAtmo(Earth::Type::Exponential) ;
+    /// @endcode
+    ///
+    /// @param [in] aType An atmospheric model type
+    /// @param [in] anInputDataType An input data source type
+    /// @param [in] aF107ConstantValue A constant value for F10.7 input parameter
+    /// @param [in] aF107AConstantValue A constant value for F10.7a input parameter
+    /// @param [in] aKpConstantValue A constant value for Kp input parameter
+    /// @param [in] anEarthFrameSPtr A shared pointer to the Earth frame
+    /// @param [in] anEarthRadius An Earth radius
+    /// @param [in] anEarthFlattening An Earth flattening
+    /// @param [in] aSunCelestialSPtr A shared pointer to the Sun celestial body
     Earth(
         const Earth::Type& aType,
         const Earth::InputDataType& anInputDataType = Earth::InputDataType::CSSISpaceWeatherFile,
@@ -83,61 +85,84 @@ class Earth : public Model
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
-    /// @brief              Copy constructor
+    /// @brief Copy constructor
     ///
-    /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
-
+    /// @code
+    ///     Earth earthAtmoCopy(earthAtmo) ;
+    /// @endcode
+    ///
+    /// @param [in] anEarthAtmosphericModel An Earth atmospheric model
     Earth(const Earth& anEarthAtmosphericModel);
 
-    /// @brief              Copy assignment operator
+    /// @brief Copy assignment operator
     ///
-    /// @param              [in] anEarthAtmosphericModel An Earth atmospheric model
-    /// @return             Reference to Earth atmospheric model
-
+    /// @code
+    ///     Earth earthAtmoB = earthAtmoA ;
+    /// @endcode
+    ///
+    /// @param [in] anEarthAtmosphericModel An Earth atmospheric model
+    /// @return Reference to Earth atmospheric model
     Earth& operator=(const Earth& anEarthAtmosphericModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     ~Earth();
 
-    /// @brief              Clone the Earth atmospheric model
+    /// @brief Clone the Earth atmospheric model
     ///
-    /// @return             Pointer to Earth atmospheric model
-
+    /// @code
+    ///     Earth* earthAtmoPtr = earthAtmo.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Earth atmospheric model
     virtual Earth* clone() const override;
 
-    /// @brief              Check if the Earth atmospheric model is defined
+    /// @brief Check if the Earth atmospheric model is defined
     ///
-    /// @return             True if the Earth atmospheric model is defined
-
-    bool isDefined() const;
-
-    /// @brief              Get atmospheric model type
+    /// @code
+    ///     earthAtmo.isDefined() ;
+    /// @endcode
     ///
-    /// @return             Atmospheric model type
+    /// @return True if the Earth atmospheric model is defined
+    virtual bool isDefined() const override;
 
+    /// @brief Get atmospheric model type
+    ///
+    /// @code
+    ///     Earth::Type type = earthAtmo.getType() ;
+    /// @endcode
+    ///
+    /// @return Atmospheric model type
     Earth::Type getType() const;
 
-    /// @brief              Get input data source type
+    /// @brief Get input data source type
     ///
-    /// @return             Input data source type
-
+    /// @code
+    ///     Earth::InputDataType inputDataType = earthAtmo.getInputDataType() ;
+    /// @endcode
+    ///
+    /// @return Input data source type
     Earth::InputDataType getInputDataType() const;
 
-    /// @brief              Get the atmospheric density value at a given position and instant
+    /// @brief Get the atmospheric density value at a given position and instant
     ///
-    /// @param              [in] aPosition A Position
-    /// @param              [in] anInstant An Instant
-    /// @return             Atmospheric density value [kg.m^-3]
-
+    /// @code
+    ///     Real density = earthAtmo.getDensityAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A Position
+    /// @param [in] anInstant An Instant
+    /// @return Atmospheric density value [kg.m^-3]
     Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
-    /// @brief              Get the atmospheric density value at a given position and instant
+    /// @brief Get the atmospheric density value at a given position and instant
     ///
-    /// @param              [in] aLLA A LLA
-    /// @param              [in] anInstant An Instant
-    /// @return             Atmospheric density value [kg.m^-3]
-
+    /// @code
+    ///     Real density = earthAtmo.getDensityAt(lla, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aLLA A LLA
+    /// @param [in] anInstant An Instant
+    /// @return Atmospheric density value [kg.m^-3]
     Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
     static constexpr double defaultF107ConstantValue = 150.0;   // 10⁻²² W⋅m⁻²⋅Hz⁻¹

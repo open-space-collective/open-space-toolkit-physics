@@ -24,40 +24,51 @@ using ostk::physics::environment::magnetic::Model;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Derived;
 
-/// @brief						Magnetic dipole model
+/// @brief Magnetic dipole model
 ///
-/// @ref						https://en.wikipedia.org/wiki/Magnetic_dipole
-/// @ref						https://en.wikipedia.org/wiki/Magnetic_moment
-/// @ref                        https://en.wikipedia.org/wiki/Vacuum_permeability
-/// @ref                        https://en.wikipedia.org/wiki/Dipole_model_of_the_Earth%27s_magnetic_field
-
+/// @ref https://en.wikipedia.org/wiki/Magnetic_dipole
+/// @ref https://en.wikipedia.org/wiki/Magnetic_moment
+/// @ref https://en.wikipedia.org/wiki/Vacuum_permeability
+/// @ref https://en.wikipedia.org/wiki/Dipole_model_of_the_Earth%27s_magnetic_field
 class Dipole : public Model
 {
    public:
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aMagneticMoment A magnetic moment [A⋅m2]
-
+    /// @code
+    ///     Dipole model(magneticMoment) ;
+    /// @endcode
+    ///
+    /// @param [in] aMagneticMoment A magnetic moment [A⋅m2]
     Dipole(const Vector3d& aMagneticMoment);
 
-    /// @brief              Clone the dipole magnetic model
+    /// @brief Clone the dipole magnetic model
     ///
-    /// @return             Pointer to dipole magnetic model
-
+    /// @code
+    ///     Dipole* modelPtr = model.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to dipole magnetic model
     virtual Dipole* clone() const override;
 
-    /// @brief              Check if the dipole magnetic model is defined
+    /// @brief Check if the dipole magnetic model is defined
     ///
-    /// @return             True if the dipole magnetic model is defined
-
-    bool isDefined() const;
-
-    /// @brief              Get the magnetic field value at a given position and instant
+    /// @code
+    ///     bool isDefined = model.isDefined() ;
+    /// @endcode
     ///
-    /// @param              [in] aPosition A position, expressed in the magnetic object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Magnetic field value, expressed in the magnetic object frame [T]
+    /// @return True if the dipole magnetic model is defined
+    virtual bool isDefined() const override;
 
+    /// @brief Get the magnetic field value at a given position and instant
+    ///
+    /// @code
+    ///     Vector3d fieldValue = model.getFieldValueAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A position, expressed in the magnetic object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Magnetic field value, expressed in the magnetic object frame [T]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:

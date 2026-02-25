@@ -24,35 +24,46 @@ using ostk::physics::environment::gravitational::Model;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Derived;
 
-/// @brief                      Spherical gravitational model
-
+/// @brief Spherical gravitational model
 class Spherical : public Model
 {
    public:
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aParameterSet A set of gravitational parameters
-
+    /// @code
+    ///     Spherical model(parameters) ;
+    /// @endcode
+    ///
+    /// @param [in] aParameterSet A set of gravitational parameters
     Spherical(const Model::Parameters& aParameterSet);
 
-    /// @brief              Clone the spherical gravitational model
+    /// @brief Clone the spherical gravitational model
     ///
-    /// @return             Pointer to spherical gravitational model
-
+    /// @code
+    ///     Spherical* modelPtr = model.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to spherical gravitational model
     virtual Spherical* clone() const override;
 
-    /// @brief              Check if the spherical gravitational model is defined
+    /// @brief Check if the spherical gravitational model is defined
     ///
-    /// @return             True if the spherical gravitational model is defined
-
+    /// @code
+    ///     bool isDefined = model.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if the spherical gravitational model is defined
     virtual bool isDefined() const override;
 
-    /// @brief              Get the gravitational field value at a given position and instant
+    /// @brief Get the gravitational field value at a given position and instant
     ///
-    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
-
+    /// @code
+    ///     Vector3d fieldValue = model.getFieldValueAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Gravitational field value, expressed in the gravitational object frame [m.s-2]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:

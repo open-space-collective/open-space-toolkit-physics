@@ -25,10 +25,9 @@ using ostk::core::type::String;
 using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 
-/// @brief                      OSTk manager base class (thread-safe)
+/// @brief OSTk manager base class (thread-safe)
 ///
-///                             The base manager defines methods for tracking and checking the manifest file.
-
+/// The base manager defines methods for tracking and checking the manifest file.
 class Manager
 {
    public:
@@ -40,62 +39,78 @@ class Manager
 
     };
 
-    /// @brief                  Copy constructor (deleted)
-
+    /// @brief Copy constructor (deleted)
     Manager(const Manager& aManager) = delete;
 
-    /// @brief                  Copy assignment operator (deleted)
-
+    /// @brief Copy assignment operator (deleted)
     Manager& operator=(const Manager& aManager) = delete;
 
-    /// @brief                  move constructor (deleted)
-
+    /// @brief move constructor (deleted)
     Manager(Manager&&) = delete;
 
-    /// @brief                  move assignment operator (deleted)
-
+    /// @brief move assignment operator (deleted)
     Manager& operator=(Manager&&) = delete;
 
-    /// @brief                  Destructor
-
+    /// @brief Destructor
     virtual ~Manager() = default;
 
-    /// @brief                  Get manager mode
+    /// @brief Get manager mode
     ///
-    /// @return                 Manager mode
-
+    /// @code
+    ///     Manager::Mode mode = manager.getMode() ;
+    /// @endcode
+    ///
+    /// @return Manager mode
     Manager::Mode getMode() const;
 
-    /// @brief                  Get local repository
+    /// @brief Get local repository
     ///
-    /// @return                 Local repository
-
+    /// @code
+    ///     Directory localRepository = manager.getLocalRepository() ;
+    /// @endcode
+    ///
+    /// @return Local repository
     Directory getLocalRepository() const;
 
-    /// @brief                  Get local repository timeout, the maximum time to lock the local repository
+    /// @brief Get local repository timeout, the maximum time to lock the local repository
     ///
-    /// @return                 Local repository timeout
-
+    /// @code
+    ///     Duration timeout = manager.getLocalRepositoryLockTimeout() ;
+    /// @endcode
+    ///
+    /// @return Local repository timeout
     Duration getLocalRepositoryLockTimeout() const;
 
-    /// @brief                  Set manager mode
+    /// @brief Set manager mode
     ///
-    /// @param                  [in] aMode A manager mode
-
+    /// @code
+    ///     manager.setMode(Manager::Mode::Automatic) ;
+    /// @endcode
+    ///
+    /// @param [in] aMode A manager mode
     void setMode(const Manager::Mode& aMode);
 
-    /// @brief                  Set local repository
+    /// @brief Set local repository
     ///
-    /// @param                  [in] aDirectory A repository directory
-
+    /// @code
+    ///     manager.setLocalRepository(Directory::Path(Path::Parse("/path/to/repo"))) ;
+    /// @endcode
+    ///
+    /// @param [in] aDirectory A repository directory
     void setLocalRepository(const Directory& aDirectory);
 
-    /// @brief                  Reset the manager to it's default state
-
+    /// @brief Reset the manager to it's default state
+    ///
+    /// @code
+    ///     manager.reset() ;
+    /// @endcode
     virtual void reset();
 
-    /// @brief                  Clear local repository, removing all files.
-
+    /// @brief Clear local repository, removing all files.
+    ///
+    /// @code
+    ///     manager.clearLocalRepository() ;
+    /// @endcode
     void clearLocalRepository();
 
    protected:
@@ -111,6 +126,17 @@ class Manager
 
     mutable std::mutex mutex_;
 
+    /// @brief Construct a manager with configuration from environment variables.
+    ///
+    /// @code
+    ///     Manager manager("OSTK_MODE", defaultDir, "OSTK_REPO", path, "OSTK_TIMEOUT") ;
+    /// @endcode
+    ///
+    /// @param [in] aManagerModeEnvironmentVariableName Environment variable name for the manager mode
+    /// @param [in] aDefaultLocalRepositoryDirectory Default local repository directory
+    /// @param [in] aLocalRepositoryEnvironmentVariableName Environment variable name for the local repository
+    /// @param [in] aLocalRepositoryPath Path to the local repository
+    /// @param [in] aLocalRepositoryLockTimeoutEnvironmentVariableName Environment variable name for lock timeout
     Manager(
         const String& aManagerModeEnvironmentVariableName,
         const Directory& aDefaultLocalRepositoryDirectory,
@@ -119,21 +145,81 @@ class Manager
         const String& aLocalRepositoryLockTimeoutEnvironmentVariableName
     );
 
+    /// @brief Set up the manager, initializing configuration from environment variables.
+    ///
+    /// @code
+    ///     manager.setup_() ;
+    /// @endcode
     virtual void setup_();
 
+    /// @brief Check if the local repository is currently locked.
+    ///
+    /// @code
+    ///     Boolean isLocked = manager.isLocalRepositoryLocked_() ;
+    /// @endcode
+    ///
+    /// @return True if the local repository is locked
     bool isLocalRepositoryLocked_() const;
+
+    /// @brief Get the lock file for the local repository.
+    ///
+    /// @code
+    ///     File lockFile = manager.getLocalRepositoryLockFile_() ;
+    /// @endcode
+    ///
+    /// @return The lock file
     File getLocalRepositoryLockFile_() const;
+
+    /// @brief Lock the local repository with a timeout.
+    ///
+    /// @code
+    ///     manager.lockLocalRepository_(Duration::Seconds(30.0)) ;
+    /// @endcode
+    ///
+    /// @param [in] aTimeout Maximum duration to wait for the lock
     void lockLocalRepository_(const Duration& aTimeout) const;
+
+    /// @brief Unlock the local repository.
+    ///
+    /// @code
+    ///     manager.unlockLocalRepository_() ;
+    /// @endcode
     void unlockLocalRepository_() const;
 
+    /// @brief Get the default local repository directory from environment or defaults.
+    ///
+    /// @code
+    ///     Directory dir = Manager::DefaultLocalRepository_(defaultDir, "OSTK_REPO", path) ;
+    /// @endcode
+    ///
+    /// @param [in] aDefaultLocalRepositoryDirectory Default directory if environment variable is not set
+    /// @param [in] aLocalRepositoryEnvironmentVariableName Environment variable name to check
+    /// @param [in] aLocalRepositoryPath Relative path within the repository
+    /// @return The default local repository directory
     static Directory DefaultLocalRepository_(
         const Directory& aDefaultLocalRepositoryDirectory,
         const String& aLocalRepositoryEnvironmentVariableName,
         const Path& aLocalRepositoryPath
     );
 
+    /// @brief Get the default manager mode from an environment variable.
+    ///
+    /// @code
+    ///     Manager::Mode mode = Manager::DefaultMode_("OSTK_MODE") ;
+    /// @endcode
+    ///
+    /// @param [in] aManagerModeEnvironmentVariableName Environment variable name to check
+    /// @return The default manager mode
     static Manager::Mode DefaultMode_(const String& aManagerModeEnvironmentVariableName);
 
+    /// @brief Get the default local repository lock timeout from an environment variable.
+    ///
+    /// @code
+    ///     Duration timeout = Manager::DefaultLocalRepositoryLockTimeout_("OSTK_TIMEOUT") ;
+    /// @endcode
+    ///
+    /// @param [in] aLocalRepositoryLockTimeoutEnvironmentVariableName Environment variable name to check
+    /// @return The default lock timeout duration
     static Duration DefaultLocalRepositoryLockTimeout_(const String& aLocalRepositoryLockTimeoutEnvironmentVariableName
     );
 };

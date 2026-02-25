@@ -39,13 +39,13 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 using ostk::physics::time::Scale;
 
-/// @brief                      Center for Space Weather and Innovation (CSSI) Space Weather data file.
+/// @brief Center for Space Weather and Innovation (CSSI) Space Weather data file.
 ///
-///                             Consolidated data set which contains solar radiation and geomagnetic indices.
-///                             Particularly contains the F10.7 solar flux index and Ap/Kp geomagnetic indices,
-///                             which are commonly used to model atmospheric density.
+/// Consolidated data set which contains solar radiation and geomagnetic indices.
+/// Particularly contains the F10.7 solar flux index and Ap/Kp geomagnetic indices,
+/// which are commonly used to model atmospheric density.
 ///
-/// @ref                        http://celestrak.org/SpaceData/SpaceWx-format.php
+/// @ref http://celestrak.org/SpaceData/SpaceWx-format.php
 
 class CSSISpaceWeather
 {
@@ -85,107 +85,170 @@ class CSSISpaceWeather
                         /// units of 10-22 W/m2/Hz.
         Real F107Adj;   /// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
         String F107DataType;   /// Flux Qualifier.
-                               /// OBS: Observed flux measurement
-                               /// INT: CelesTrak linear interpolation of missing data
-                               /// PRD: 45-Day predicted flux
-                               /// PRM: Monthly predicted flux
+                               /// OBS: Observed flux measurement INT: CelesTrak linear interpolation of missing data
+                               /// PRD: 45-Day predicted flux PRM: Monthly predicted flux
         Real F107ObsCenter81;  /// Centered 81-day arithmetic average of F107 (observed).
         Real F107ObsLast81;    /// Last 81-day arithmetic average of F107 (observed).
         Real F107AdjCenter81;  /// Centered 81-day arithmetic average of F10.7 (adjusted).
         Real F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
     };
 
+    /// @brief Output stream operator.
+    ///
+    /// @code
+    ///     std::cout << cssiSpaceWeather ;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream.
+    /// @param [in] aCSSISpaceWeather A CSSI Space Weather object.
+    /// @return Reference to the output stream.
+
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief                  true if defined
+    /// @brief true if defined
     ///
-    /// @return                 True if defined.
+    /// @code
+    ///     cssiSpaceWeather.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if defined.
 
     bool isDefined() const;
 
-    /// @brief                  Access last observation Date. File publication date is the day following the last
-    /// observation.
+    /// @brief Access last observation Date. File publication date is the day following the last observation.
     ///
-    /// @return                 Last observation Date.
+    /// @code
+    ///     const Date& date = cssiSpaceWeather.accessLastObservationDate() ;
+    /// @endcode
+    ///
+    /// @return Last observation Date.
 
     const Date& accessLastObservationDate() const;
 
-    /// @brief                  Access timestamp at which the CSSISpaceWeather file was last modified
+    /// @brief Access timestamp at which the CSSISpaceWeather file was last modified
     ///
-    /// @return                 Instant indicating when the file was last updated based on file modification time
+    /// @code
+    ///     const Instant& timestamp = cssiSpaceWeather.accessLastModifiedTimestamp() ;
+    /// @endcode
+    ///
+    /// @return Instant indicating when the file was last updated based on file modification time
 
     const Instant& accessLastModifiedTimestamp() const;
 
-    /// @brief                  Access observation Interval.
+    /// @brief Access observation Interval.
     ///
-    /// @return                 Observation Interval of Instants.
+    /// @code
+    ///     const Interval& interval = cssiSpaceWeather.accessObservationInterval() ;
+    /// @endcode
+    ///
+    /// @return Observation Interval of Instants.
 
     const Interval& accessObservationInterval() const;
 
-    /// @brief                  Access daily prediction Interval.
+    /// @brief Access daily prediction Interval.
     ///
-    /// @return                 Daily prediction Interval of Instants.
+    /// @code
+    ///     const Reading& reading = cssiSpaceWeather.accessObservationAt(instant) ;
+    /// @endcode
+    ///
+    /// @return Daily prediction Interval of Instants.
 
     const Reading& accessObservationAt(const Instant& anInstant) const;
 
-    /// @brief                  Access daily prediction Interval.
+    /// @brief Access daily prediction Interval.
     ///
-    /// @return                 Daily prediction Interval of Instants.
+    /// @code
+    ///     const Interval& interval = cssiSpaceWeather.accessDailyPredictionInterval() ;
+    /// @endcode
+    ///
+    /// @return Daily prediction Interval of Instants.
 
     const Interval& accessDailyPredictionInterval() const;
 
-    /// @brief                  Access daily prediction at Instant.
+    /// @brief Access daily prediction at Instant.
     ///
-    /// @return                 Daily prediction at Instant.
+    /// @code
+    ///     const Reading& reading = cssiSpaceWeather.accessDailyPredictionAt(instant) ;
+    /// @endcode
+    ///
+    /// @return Daily prediction at Instant.
 
     const Reading& accessDailyPredictionAt(const Instant& anInstant) const;
 
-    /// @brief                  Access monthly prediction Interval.
+    /// @brief Access monthly prediction Interval.
     ///
-    /// @return                 Monthly prediction Interval of Instants.
+    /// @code
+    ///     const Interval& interval = cssiSpaceWeather.accessMonthlyPredictionInterval() ;
+    /// @endcode
+    ///
+    /// @return Monthly prediction Interval of Instants.
 
     const Interval& accessMonthlyPredictionInterval() const;
 
-    /// @brief                  Access monthly prediction at Instant.
+    /// @brief Access monthly prediction at Instant.
     ///
-    /// @return                 Monthly prediction at Instant.
+    /// @code
+    ///     const Reading& reading = cssiSpaceWeather.accessMonthlyPredictionAt(instant) ;
+    /// @endcode
+    ///
+    /// @return Monthly prediction at Instant.
 
     const Reading& accessMonthlyPredictionAt(const Instant& anInstant) const;
 
-    /// @brief                  Access reading at Instant.
-    ///                         Look first in observations, then in daily predictions, then monthly predictions.
+    /// @brief Access reading at Instant.
+    /// Look first in observations, then in daily predictions, then monthly predictions.
     ///
-    /// @return                 Reading prediction at Instant.
+    /// @code
+    ///     const Reading& reading = cssiSpaceWeather.accessReadingAt(instant) ;
+    /// @endcode
+    ///
+    /// @return Reading prediction at Instant.
 
     const Reading& accessReadingAt(const Instant& anInstant) const;
 
-    /// @brief                  Access last reading before anInstant where aPredicate is true.
+    /// @brief Access last reading before anInstant where aPredicate is true.
     ///
-    /// @param                  [in] aPredicate A predicate.
-    /// @param                  [in] anInstant An Instant.
-    /// @return                 Last Reading satisfying predicate.
+    /// @code
+    ///     const Reading& reading = cssiSpaceWeather.accessLastReadingWhere(predicate, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPredicate A predicate.
+    /// @param [in] anInstant An Instant.
+    /// @return Last Reading satisfying predicate.
 
     const Reading& accessLastReadingWhere(
         const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
     ) const;
 
-    /// @brief                  Undefined factory function
+    /// @brief Undefined factory function
     ///
-    /// @return                 Undefined CSSI Space Weather object.
+    /// @code
+    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Undefined() ;
+    /// @endcode
+    ///
+    /// @return Undefined CSSI Space Weather object.
 
     static CSSISpaceWeather Undefined();
 
-    /// @brief                  Load CSSI Space Weather file in csv format.
+    /// @brief Load CSSI Space Weather file in csv format.
     ///
-    /// @param                  [in] aFile A CSSI Space Weather file.
-    /// @return                 CSSI Space Weather object.
+    /// @code
+    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Load(file) ;
+    /// @endcode
+    ///
+    /// @param [in] aFile A CSSI Space Weather file.
+    /// @return CSSI Space Weather object.
 
     static CSSISpaceWeather Load(const File& aFile);
 
-    /// @brief                  Load CSSI Space Weather file in legacy .txt format.
+    /// @brief Load CSSI Space Weather file in legacy .txt format.
     ///
-    /// @param                  [in] aFile A CSSI Space Weather file.
-    /// @return                 CSSI Space Weather object.
+    /// @code
+    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::LoadLegacy(file) ;
+    /// @endcode
+    ///
+    /// @param [in] aFile A CSSI Space Weather file.
+    /// @return CSSI Space Weather object.
 
     static CSSISpaceWeather LoadLegacy(const File& aFile);
 

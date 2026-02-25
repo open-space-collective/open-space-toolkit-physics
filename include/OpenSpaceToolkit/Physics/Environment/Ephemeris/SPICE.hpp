@@ -26,14 +26,14 @@ using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::Ephemeris;
 using ostk::physics::time::Instant;
 
-/// @brief                      SPICE Toolkit ephemeris
+/// @brief SPICE Toolkit ephemeris
 ///
-/// @ref                        https://en.wikipedia.org/wiki/Jet_Propulsion_Laboratory_Development_Ephemeris
+/// @ref https://en.wikipedia.org/wiki/Jet_Propulsion_Laboratory_Development_Ephemeris
 
 class SPICE : public Ephemeris
 {
    public:
-    /// @brief              SPICE object
+    /// @brief SPICE object
 
     enum class Object
     {
@@ -52,38 +52,56 @@ class SPICE : public Ephemeris
 
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] anObject A SPICE object
+    /// @code
+    ///     SPICE spice = SPICE(SPICE::Object::Earth) ;
+    /// @endcode
+    ///
+    /// @param [in] anObject A SPICE object
 
     SPICE(const SPICE::Object& anObject);
 
-    /// @brief              Destructor
+    /// @brief Destructor
 
     virtual ~SPICE() override;
 
-    /// @brief              Clone
+    /// @brief Clone
     ///
-    /// @return             Pointer to SPICE
+    /// @return Pointer to SPICE
 
     virtual SPICE* clone() const override;
 
-    /// @brief              Returns true if SPICE is defined
+    /// @brief Returns true if SPICE is defined
     ///
-    /// @return             True if SPICE is defined
+    /// @code
+    ///     SPICE spice = SPICE(SPICE::Object::Earth) ;
+    ///     spice.isDefined() ; // True
+    /// @endcode
+    ///
+    /// @return True if SPICE is defined
 
     virtual bool isDefined() const override;
 
-    /// @brief              Access frame of SPICE object
+    /// @brief Access frame of SPICE object
     ///
-    /// @return             Shared pointer to frame
+    /// @code
+    ///     SPICE spice = SPICE(SPICE::Object::Earth) ;
+    ///     Shared<const Frame> frame = spice.accessFrame() ;
+    /// @endcode
+    ///
+    /// @return Shared pointer to frame
 
     virtual Shared<const Frame> accessFrame() const override;
 
-    /// @brief              Convert SPICE object to string
+    /// @brief Convert SPICE object to string
     ///
-    /// @param              [in] anObject A SPICE object
-    /// @return             String representation of SPICE object
+    /// @code
+    ///     String str = SPICE::StringFromObject(SPICE::Object::Earth) ; // "Earth"
+    /// @endcode
+    ///
+    /// @param [in] anObject A SPICE object
+    /// @return String representation of SPICE object
 
     static String StringFromObject(const SPICE::Object& anObject);
 

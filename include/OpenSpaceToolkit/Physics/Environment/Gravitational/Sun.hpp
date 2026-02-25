@@ -33,10 +33,9 @@ using ostk::physics::environment::gravitational::Model;
 using ostk::physics::time::Instant;
 using ostk::physics::unit::Derived;
 
-/// @brief                      Sun gravitational model
+/// @brief Sun gravitational model
 ///
-///                             The gravitational potential of the Sun for now is kept as a simple spherical model.
-
+/// The gravitational potential of the Sun for now is kept as a simple spherical model.
 class Sun : public Model
 {
    public:
@@ -48,56 +47,84 @@ class Sun : public Model
         Spherical   /// The spherical gravity originating from a point source at the center of the Sun
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aType A gravitational model type
-    /// @param              [in] (optional) aDataDirectory A gravitational model data directory
-
+    /// @code
+    ///     Sun sunGrav(Sun::Type::Spherical) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @param [in] (optional) aDataDirectory A gravitational model data directory
     Sun(const Sun::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
 
-    /// @brief              Copy constructor
+    /// @brief Copy constructor
     ///
-    /// @param              [in] aSunGravitationalModel A Sun model
-
+    /// @code
+    ///     Sun sunGravCopy(sunGrav) ;
+    /// @endcode
+    ///
+    /// @param [in] aSunGravitationalModel A Sun model
     Sun(const Sun& aSunGravitationalModel);
 
-    /// @brief              Copy assignment operator
+    /// @brief Copy assignment operator
     ///
-    /// @param              [in] aSunGravitationalModel A Sun model
-    /// @return             Reference to Sun model
-
+    /// @code
+    ///     Sun sunGravCopy = sunGrav ;
+    /// @endcode
+    ///
+    /// @param [in] aSunGravitationalModel A Sun model
+    /// @return Reference to Sun model
     Sun& operator=(const Sun& aSunGravitationalModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     ~Sun();
 
-    /// @brief              Clone the Sun gravitational model
+    /// @brief Clone the Sun gravitational model
     ///
-    /// @return             Pointer to Sun gravitational model
-
+    /// @code
+    ///     Sun* sunGravPtr = sunGrav.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Sun gravitational model
     virtual Sun* clone() const override;
 
-    /// @brief              Check if the Sun gravitational model is defined
+    /// @brief Check if the Sun gravitational model is defined
     ///
-    /// @return             True if the Sun gravitational model is defined
-
+    /// @code
+    ///     bool isDefined = sunGrav.isDefined() ;
+    /// @endcode
+    ///
+    /// @return True if the Sun gravitational model is defined
     virtual bool isDefined() const override;
 
-    /// @brief              Get gravitational model type
+    /// @brief Get gravitational model type
     ///
-    /// @return             Gravitational model type
-
+    /// @code
+    ///     Sun::Type type = sunGrav.getType() ;
+    /// @endcode
+    ///
+    /// @return Gravitational model type
     Sun::Type getType() const;
 
-    /// @brief              Get the gravitational field value at a given position and instant
+    /// @brief Get the gravitational field value at a given position and instant
     ///
-    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
-
+    /// @code
+    ///     Vector3d fieldValue = sunGrav.getFieldValueAt(position, instant) ;
+    /// @endcode
+    ///
+    /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Gravitational field value, expressed in the gravitational object frame [m.s-2]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
+    /// @brief Get gravitational model parameters for a given type.
+    ///
+    /// @code
+    ///     Model::Parameters params = Sun::ParametersFromType(Sun::Type::Spherical) ;
+    /// @endcode
+    ///
+    /// @param [in] aType A gravitational model type
+    /// @return Gravitational model parameters
     Model::Parameters ParametersFromType(const Sun::Type& aType);
 
    private:

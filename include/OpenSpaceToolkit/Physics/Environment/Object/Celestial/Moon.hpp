@@ -41,34 +41,44 @@ using MoonGravitationalModel = ostk::physics::environment::gravitational::Moon;
 class Moon : public Celestial
 {
    public:
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] anEphemeris An ephemeris for the Moon celestial object
-    /// @param              [in] aGravitationalModel A gravitational model for the Moon celestial object
-    /// (Spherical model only)
-
+    /// @code
+    ///     Moon moon(ephemeris, gravModel) ;
+    /// @endcode
+    ///
+    /// @param [in] anEphemeris An ephemeris for the Moon celestial object
+    /// @param [in] aGravitationalModel A gravitational model for the Moon celestial object (Spherical model only)
     Moon(const Shared<Ephemeris>& anEphemeris, const Shared<MoonGravitationalModel>& aGravitationalModel);
 
-    /// @brief              Destructor
-
+    /// @brief Destructor
     virtual ~Moon() override;
 
-    /// @brief              Clone the Moon celestial object
+    /// @brief Clone the Moon celestial object
     ///
-    /// @return             Pointer to Moon celestial object
-
+    /// @code
+    ///     Moon* moonPtr = moon.clone() ;
+    /// @endcode
+    ///
+    /// @return Pointer to Moon celestial object
     virtual Moon* clone() const override;
 
-    /// @brief              Default Moon model (Spherical)
+    /// @brief Default Moon model (Spherical)
     ///
-    /// @return             Moon
-
+    /// @code
+    ///     Moon moon = Moon::Default() ;
+    /// @endcode
+    ///
+    /// @return Moon
     static Moon Default();
 
-    /// @brief              Spherical model
+    /// @brief Spherical model
     ///
-    /// @return             Moon
-
+    /// @code
+    ///     Moon moon = Moon::Spherical() ;
+    /// @endcode
+    ///
+    /// @return Moon
     static Moon Spherical();
 
    private:

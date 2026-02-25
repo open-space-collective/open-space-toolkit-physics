@@ -20,8 +20,14 @@ using ostk::core::filesystem::File;
 
 using ostk::physics::time::Instant;
 
-/// @brief                      Get the instant at which a file was last modified.
-
+/// @brief Get the instant at which a file was last modified.
+///
+/// @code
+///     Instant instant = utilities::getFileModifiedInstant(file) ;
+/// @endcode
+///
+/// @param [in] aFile A file
+/// @return The instant at which the file was last modified
 Instant getFileModifiedInstant(const File& aFile);
 
 }  // namespace utilities

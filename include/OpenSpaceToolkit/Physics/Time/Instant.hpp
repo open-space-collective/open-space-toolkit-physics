@@ -29,354 +29,330 @@ using ostk::physics::time::Scale;
 #define DEFAULT_TIME_SCALE Scale::UTC
 #define DEFAULT_DATE_TIME_FORMAT DateTime::Format::Standard
 
-/// @brief                      Point in time
+/// @brief Point in time
 ///
-/// @ref                        https://en.wikipedia.org/wiki/Instant
+/// @ref https://en.wikipedia.org/wiki/Instant
 /// @ref https://www.boost.org/doc/libs/1_67_0/doc/html/date_time/details.html#date_time.calculations
-/// @ref                        http://rhodesmill.org/skyfield/time.html
-/// @ref                        http://www.madore.org/~david/computers/unix-leap-seconds.html
-/// @ref                        http://help.agi.com/AGIComponentsJava/html/TimeAndTimeStandards.htm
-
+/// @ref http://rhodesmill.org/skyfield/time.html
+/// @ref http://www.madore.org/~david/computers/unix-leap-seconds.html
+/// @ref http://help.agi.com/AGIComponentsJava/html/TimeAndTimeStandards.htm
 class Instant
 {
    public:
-    /// @brief              Default constructor (deleted)
-
+    /// @brief Default constructor (deleted)
     Instant() = delete;
 
-    /// @brief              Equal to operator
+    /// @brief Equal to operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ==
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ==
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             True if instants are equal
-
+    /// @param [in] anInstant An instant
+    /// @return True if instants are equal
     bool operator==(const Instant& anInstant) const;
 
-    /// @brief              Not equal to operator
+    /// @brief Not equal to operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) !=
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) !=
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             True if instants are not equal
-
+    /// @param [in] anInstant An instant
+    /// @return True if instants are not equal
     bool operator!=(const Instant& anInstant) const;
 
-    /// @brief              Less than operator
+    /// @brief Less than operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) <
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) <
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             True if lhs duration is less than rhs duration
-
+    /// @param [in] anInstant An instant
+    /// @return True if lhs duration is less than rhs duration
     bool operator<(const Instant& anInstant) const;
 
-    /// @brief              Less than or equal to operator
+    /// @brief Less than or equal to operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) <=
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) <=
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             True if lhs duration is less than or equal to rhs duration
-
+    /// @param [in] anInstant An instant
+    /// @return True if lhs duration is less than or equal to rhs duration
     bool operator<=(const Instant& anInstant) const;
 
-    /// @brief              Greater than operator
+    /// @brief Greater than operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) >
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) >
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             True if lhs duration is greater than rhs duration
-
+    /// @param [in] anInstant An instant
+    /// @return True if lhs duration is greater than rhs duration
     bool operator>(const Instant& anInstant) const;
 
-    /// @brief              Greater than operator
+    /// @brief Greater than operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) >=
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) >=
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             True if lhs duration is greater than or equal to rhs duration
-
+    /// @param [in] anInstant An instant
+    /// @return True if lhs duration is greater than or equal to rhs duration
     bool operator>=(const Instant& anInstant) const;
 
-    /// @brief              Addition operator
+    /// @brief Addition operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) + Duration::Days(1.0) ; //
-    ///                     2018-01-02 00:00:00
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) + Duration::Days(1.0) ; //
+    ///     2018-01-02 00:00:00
     /// @endcode
     ///
-    /// @param              [in] aDuration A duration
-    /// @return             Instant
-
+    /// @param [in] aDuration A duration
+    /// @return Instant
     Instant operator+(const Duration& aDuration) const;
 
-    /// @brief              Subtraction operator
+    /// @brief Subtraction operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) - Duration::Days(1.0) ; //
-    ///                     2018-01-01 00:00:00
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) - Duration::Days(1.0) ; //
+    ///     2018-01-01 00:00:00
     /// @endcode
     ///
-    /// @param              [in] aDuration A duration
-    /// @return             Instant
-
+    /// @param [in] aDuration A duration
+    /// @return Instant
     Instant operator-(const Duration& aDuration) const;
 
-    /// @brief              Subtraction operator
+    /// @brief Subtraction operator
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) -
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // 1.0 [day]
+    ///     Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) -
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ; // 1.0 [day]
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @return             Duration
-
+    /// @param [in] anInstant An instant
+    /// @return Duration
     Duration operator-(const Instant& anInstant) const;
 
-    /// @brief              Addition assignement operator
+    /// @brief Addition assignement operator
     ///
     /// @code
-    ///                     Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ;
-    ///                     instant += Duration::Days(1.0) ; // 2018-01-02 00:00:00 [TT]
+    ///     Instant instant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT) ;
+    ///     instant += Duration::Days(1.0) ; // 2018-01-02 00:00:00 [TT]
     /// @endcode
     ///
-    /// @param              [in] aDuration A duration
-    /// @return             Reference to instant
-
+    /// @param [in] aDuration A duration
+    /// @return Reference to instant
     Instant& operator+=(const Duration& aDuration);
 
-    /// @brief              Subtraction assignement operator
+    /// @brief Subtraction assignement operator
     ///
     /// @code
-    ///                     Instant instant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ;
-    ///                     instant -= Duration::Days(1.0) ; // 2018-01-01 00:00:00 [TT]
+    ///     Instant instant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT) ;
+    ///     instant -= Duration::Days(1.0) ; // 2018-01-01 00:00:00 [TT]
     /// @endcode
     ///
-    /// @param              [in] aDuration A duration
-    /// @return             Reference to instant
-
+    /// @param [in] aDuration A duration
+    /// @return Reference to instant
     Instant& operator-=(const Duration& aDuration);
 
-    /// @brief              Output stream operator
+    /// @brief Output stream operator
     ///
     /// @code
-    ///                     std::cout << Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
+    ///     std::cout << Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC) ;
     /// @endcode
     ///
-    /// @param              [in] anOutputStream An output stream
-    /// @param              [in] anInstant An instant
-    /// @return             A reference to output stream
-
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] anInstant An instant
+    /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Instant& anInstant);
 
-    /// @brief              Check if instant is defined
+    /// @brief Check if instant is defined
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC).isDefined() ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC).isDefined() ; // True
     /// @endcode
     ///
-    /// @return             True if instant is defined
-
+    /// @return True if instant is defined
     bool isDefined() const;
 
-    /// @brief              Check if instant is post-epoch (J2000)
+    /// @brief Check if instant is post-epoch (J2000)
     ///
     /// @code
-    ///                     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC).isPostEpoch() ; // True
+    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC).isPostEpoch() ; // True
     /// @endcode
     ///
-    /// @return             True if instant is post-epoch
-
+    /// @return True if instant is post-epoch
     bool isPostEpoch() const;
 
-    /// @brief              Check if instant is near another instant
+    /// @brief Check if instant is near another instant
     ///
     /// @code
-    ///                     Instant::J2000().isNear(Instant::J2000(), Duration::Zero()) ; // True
+    ///     Instant::J2000().isNear(Instant::J2000(), Duration::Zero()) ; // True
     /// @endcode
     ///
-    /// @param              [in] anInstant An instant
-    /// @param              [in] aTolerance A tolerance
-    /// @return             True if instant is near another instant
-
+    /// @param [in] anInstant An instant
+    /// @param [in] aTolerance A tolerance
+    /// @return True if instant is near another instant
     bool isNear(const Instant& anInstant, const Duration& aTolerance) const;
 
-    /// @brief              Get date-time expressed in given time scale
+    /// @brief Get date-time expressed in given time scale
     ///
     /// @code
-    ///                     Instant::J2000().getDateTime(Scale::TT) ; // 2000-01-01 12:00:00
+    ///     Instant::J2000().getDateTime(Scale::TT) ; // 2000-01-01 12:00:00
     /// @endcode
     ///
-    /// @param              [in] aTimeScale A time scale
-    /// @return             Date-time
-
+    /// @param [in] aTimeScale A time scale
+    /// @return Date-time
     time::DateTime getDateTime(const Scale& aTimeScale) const;
 
-    /// @brief              Get Julian Date expressed in given time scale
+    /// @brief Get Julian Date expressed in given time scale
     ///
     /// @code
-    ///                     Instant::J2000().getJulianDate(Scale::TT) ; // 2451545.0
+    ///     Instant::J2000().getJulianDate(Scale::TT) ; // 2451545.0
     /// @endcode
     ///
-    /// @param              [in] aTimeScale A time scale
-    /// @return             Julian Date
-
+    /// @param [in] aTimeScale A time scale
+    /// @return Julian Date
     Real getJulianDate(const Scale& aTimeScale) const;
 
-    /// @brief              Get Modified Julian Date expressed in given time scale
+    /// @brief Get Modified Julian Date expressed in given time scale
     ///
     /// @code
-    ///                     Instant::J2000().getModifiedJulianDate(Scale::TT) ; // 51544.0
+    ///     Instant::J2000().getModifiedJulianDate(Scale::TT) ; // 51544.0
     /// @endcode
     ///
-    /// @param              [in] aTimeScale A time scale
-    /// @return             Modified Julian Date
-
+    /// @param [in] aTimeScale A time scale
+    /// @return Modified Julian Date
     Real getModifiedJulianDate(const Scale& aTimeScale) const;
 
-    /// @brief              Get Leap Second count
+    /// @brief Get Leap Second count
     ///
-    ///                     The Leap Second count is the number of seconds between TAI and UTC scales.
+    /// The Leap Second count is the number of seconds between TAI and UTC scales.
     ///
     /// @code
-    ///                     Instant::J2000().getLeapSecondCount() ;
+    ///     Instant::J2000().getLeapSecondCount() ;
     /// @endcode
     ///
-    /// @return             Leap Second
-
+    /// @return Leap Second
     Int64 getLeapSecondCount() const;
 
-    /// @brief              Get string representation of instant
+    /// @brief Get string representation of instant
     ///
     /// @code
-    ///                     Instant::J2000().toString(Scale::TT) ; // 2000-01-01 12:00:00 [TT]
+    ///     Instant::J2000().toString(Scale::TT) ; // 2000-01-01 12:00:00 [TT]
     /// @endcode
     ///
-    /// @param              [in] aTimeScale A time scale
-    /// @return             Serialized instant
-
+    /// @param [in] aTimeScale A time scale
+    /// @return Serialized instant
     String toString(
         const Scale& aTimeScale = DEFAULT_TIME_SCALE, const DateTime::Format& aDateTimeFormat = DEFAULT_DATE_TIME_FORMAT
     ) const;
 
-    /// @brief              Constructs an undefined instant
+    /// @brief Constructs an undefined instant
     ///
     /// @code
-    ///                     Instant instant = Instant::Undefined() ;
-    ///                     instant.isDefined() ; // False
+    ///     Instant instant = Instant::Undefined() ;
+    ///     instant.isDefined() ; // False
     /// @endcode
     ///
-    /// @return             Undefined instant
-
+    /// @return Undefined instant
     static Instant Undefined();
 
-    /// @brief              Constructs an instant at current time
+    /// @brief Constructs an instant at current time
     ///
     /// @code
-    ///                     Instant instant = Instant::Now() ;
+    ///     Instant instant = Instant::Now() ;
     /// @endcode
     ///
-    /// @return             Instant at current time
-
+    /// @return Instant at current time
     static Instant Now();
 
-    /// @brief              Constructs instant at J2000 epoch
+    /// @brief Constructs instant at J2000 epoch
     ///
-    ///                     The currently-used standard epoch "J2000" is defined by international agreement to be
-    ///                     equivalent to:
-    ///                     - The Gregorian date January 1, 2000 at 12:00 TT (Terrestrial Time).
-    ///                     - The Julian date 2451545.0 TT (Terrestrial Time).
-    ///                     - January 1, 2000, 11:59:27.816 TAI (International Atomic Time).
-    ///                     - January 1, 2000, 11:58:55.816 UTC (Coordinated Universal Time).
+    /// The currently-used standard epoch "J2000" is defined by international agreement to be equivalent to:
+    /// - The Gregorian date January 1, 2000 at 12:00 TT (Terrestrial Time).
+    /// - The Julian date 2451545.0 TT (Terrestrial Time).
+    /// - January 1, 2000, 11:59:27.816 TAI (International Atomic Time).
+    /// - January 1, 2000, 11:58:55.816 UTC (Coordinated Universal Time).
     ///
-    /// @ref                https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
+    /// @code
+    ///     Instant instant = Instant::J2000() ; // 2000-01-01 12:00:00 [TT]
+    /// @endcode
     ///
-    /// @return             Instant at J2000 epoch
-
+    /// @ref https://en.wikipedia.org/wiki/Epoch_(astronomy)#Julian_years_and_J2000
+    ///
+    /// @return Instant at J2000 epoch
     static Instant J2000();
 
-    /// @brief              Constructs instant at GPS epoch
+    /// @brief Constructs instant at GPS epoch
     ///
-    ///                     The GPS epoch is equivalent to:
-    ///                     - January 6, 1980, 00:00:00 UTC (Coordinated Universal Time).
+    /// The GPS epoch is equivalent to: - January 6, 1980, 00:00:00 UTC (Coordinated Universal Time).
     ///
-    /// @return             Instant at GPSEpoch epoch
-
+    /// @code
+    ///     Instant instant = Instant::GPSEpoch() ; // 1980-01-06 00:00:00 [UTC]
+    /// @endcode
+    ///
+    /// @return Instant at GPSEpoch epoch
     static Instant GPSEpoch();
 
-    /// @brief              Constructs instant from date-time
+    /// @brief Constructs instant from date-time
     ///
     /// @code
-    ///                     Instant instant = Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT) ; //
-    ///                     2000-01-01 12:00:00 [TT]
+    ///     Instant instant = Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT) ; //
+    ///     2000-01-01 12:00:00 [TT]
     /// @endcode
     ///
-    /// @input              [in] aDateTime A date-time
-    /// @input              [in] aTimeScale A time scale
-    /// @return             Instant
-
+    /// @input [in] aDateTime A date-time
+    /// @input [in] aTimeScale A time scale
+    /// @return Instant
     static Instant DateTime(const time::DateTime& aDateTime, const Scale& aTimeScale);
 
-    /// @brief              Constructs instant from Julian Date
+    /// @brief Constructs instant from Julian Date
     ///
     /// @code
-    ///                     Instant instant = Instant::JulianDate(2451545.0, Scale::TT) ; // 2000-01-01 12:00:00 [TT]
+    ///     Instant instant = Instant::JulianDate(2451545.0, Scale::TT) ; // 2000-01-01 12:00:00 [TT]
     /// @endcode
     ///
-    /// @ref                https://en.wikipedia.org/wiki/Julian_day
+    /// @ref https://en.wikipedia.org/wiki/Julian_day
     ///
-    /// @input              [in] aJulianDate A Julian Date
-    /// @input              [in] aTimeScale A time scale
-    /// @return             Instant
-
+    /// @input [in] aJulianDate A Julian Date
+    /// @input [in] aTimeScale A time scale
+    /// @return Instant
     static Instant JulianDate(const Real& aJulianDate, const Scale& aTimeScale);
 
-    /// @brief              Constructs instant from Modified Julian Date
+    /// @brief Constructs instant from Modified Julian Date
     ///
     /// @code
-    ///                     Instant instant = Instant::ModifiedJulianDate(51544.0, Scale::TT) ; // 2000-01-01 12:00:00
-    ///                     [TT]
+    ///     Instant instant = Instant::ModifiedJulianDate(51544.0, Scale::TT) ; // 2000-01-01 12:00:00
+    ///     [TT]
     /// @endcode
     ///
-    /// @ref                https://en.wikipedia.org/wiki/Julian_day
+    /// @ref https://en.wikipedia.org/wiki/Julian_day
     ///
-    /// @input              [in] aJulianDate A Modified Julian Date
-    /// @input              [in] aTimeScale A time scale
-    /// @return             Instant
-
+    /// @input [in] aJulianDate A Modified Julian Date
+    /// @input [in] aTimeScale A time scale
+    /// @return Instant
     static Instant ModifiedJulianDate(const Real& aModifiedJulianDate, const Scale& aTimeScale);
 
-    /// @brief              Constructs an Instant from a string representation and Scale.
+    /// @brief Constructs an Instant from a string representation and Scale.
     ///
     /// @code
-    ///                     Instant instant = Instant::Parse("2018-01-02 12:34:56.123.456.789", Scale::UTC) ; //
-    ///                     2018-01-02
+    ///     Instant instant = Instant::Parse("2018-01-02 12:34:56.123.456.789", Scale::UTC) ; //
+    ///     2018-01-02
     /// @endcode
     ///
-    /// @param              [in] aString A string
-    /// @param              [in] aTimeScale A time scale
-    /// @param              [in] (optional) aFormat A date-time format (automatic detection if Undefined)
-    /// @return             Instant
-
+    /// @param [in] aString A string
+    /// @param [in] aTimeScale A time scale
+    /// @param [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @return Instant
     static Instant Parse(
         const String& aString, const Scale& aTimeScale, const DateTime::Format& aFormat = DateTime::Format::Undefined
     );

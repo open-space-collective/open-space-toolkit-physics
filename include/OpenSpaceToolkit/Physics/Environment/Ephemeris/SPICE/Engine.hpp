@@ -53,95 +53,135 @@ using ostk::physics::environment::ephemeris::spice::Kernel;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
-/// @brief                      SPICE Toolkit engine
+/// @brief SPICE Toolkit engine
 
 class Engine
 {
    public:
-    /// @brief              Copy constructor (deleted)
+    /// @brief Copy constructor (deleted)
 
     Engine(const Engine& aSpiceEngine) = delete;
 
-    /// @brief              Copy assignment operator (deleted)
+    /// @brief Copy assignment operator (deleted)
 
     Engine& operator=(const Engine& aSpiceEngine) = delete;
 
-    /// @brief                  move constructor (deleted)
+    /// @brief move constructor (deleted)
 
     Engine(Engine&&) = delete;
 
-    /// @brief                  move assignment operator (deleted)
+    /// @brief move assignment operator (deleted)
 
     Engine& operator=(Engine&&) = delete;
 
-    /// @brief              Output stream operator
+    /// @brief Output stream operator
     ///
-    /// @param              [in] anOutputStream An output stream
-    /// @param              [in] anEngine A SPICE engine
-    /// @return             A reference to output stream
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] anEngine A SPICE engine
+    /// @return A reference to output stream
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Engine& anEngine);
 
-    /// @brief              Get engine singleton
+    /// @brief Get engine singleton
     ///
-    /// @return             Reference to engine
+    /// @code
+    ///     Engine& engine = Engine::Get() ;
+    /// @endcode
+    ///
+    /// @return Reference to engine
 
     static Engine& Get();
 
-    /// @brief              Reset engine
+    /// @brief Reset engine
     ///
-    ///                     Unload all kernels, clears cache and re-sets up the engine.
+    /// Unload all kernels, clears cache and re-sets up the engine.
+    ///
+    /// @code
+    ///     Engine::Get().reset() ;
+    /// @endcode
 
     void reset();
 
-    /// @brief              Get frame of SPICE object
+    /// @brief Get frame of SPICE object
     ///
-    /// @param              [in] A SPICE object
-    /// @return             Frame of SPICE object
+    /// @code
+    ///     Shared<const Frame> frame = Engine::Get().getFrameOf(SPICE::Object::Earth) ;
+    /// @endcode
+    ///
+    /// @param [in] A SPICE object
+    /// @return Frame of SPICE object
 
     Shared<const Frame> getFrameOf(const SPICE::Object& aSpiceObject) const;
 
-    /// @brief              Get kernels
+    /// @brief Get kernels
     ///
-    /// @return             Kernels
+    /// @code
+    ///     Array<Kernel> kernels = Engine::Get().getKernels() ;
+    /// @endcode
+    ///
+    /// @return Kernels
 
     Array<Kernel> getKernels() const;
 
-    /// @brief              Returns true if kernel is loaded
+    /// @brief Returns true if kernel is loaded
     ///
-    /// @param              [in] aKernel A kernel
-    /// @return             True if kernel is loaded
+    /// @code
+    ///     Engine::Get().isKernelLoaded(aKernel) ;
+    /// @endcode
+    ///
+    /// @param [in] aKernel A kernel
+    /// @return True if kernel is loaded
 
     bool isKernelLoaded(const Kernel& aKernel) const;
 
-    /// @brief              Returns true if kernel is loaded
+    /// @brief Returns true if kernel is loaded
     ///
-    /// @param              [in] aRegexString A regex string
-    /// @return             True if kernel is loaded
+    /// @code
+    ///     Engine::Get().isKernelLoaded("de430.*\\.bsp") ;
+    /// @endcode
+    ///
+    /// @param [in] aRegexString A regex string
+    /// @return True if kernel is loaded
 
     bool isKernelLoaded(const String& aRegexString) const;
 
-    /// @brief              Load kernel
+    /// @brief Load kernel
     ///
-    /// @param              [in] aKernel A kernel
+    /// @code
+    ///     Engine::Get().loadKernel(aKernel) ;
+    /// @endcode
+    ///
+    /// @param [in] aKernel A kernel
 
     void loadKernel(const Kernel& aKernel);
 
-    /// @brief              Unload kernel
+    /// @brief Unload kernel
     ///
-    /// @param              [in] aKernel
+    /// @code
+    ///     Engine::Get().unloadKernel(aKernel) ;
+    /// @endcode
+    ///
+    /// @param [in] aKernel
 
     void unloadKernel(const Kernel& aKernel);
 
-    /// @brief              Unload all kernels
+    /// @brief Unload all kernels
     ///
-    ///                     Unloads all kernels and clears the cache.
+    /// Unloads all kernels and clears the cache.
+    ///
+    /// @code
+    ///     Engine::Get().unloadAllKernels() ;
+    /// @endcode
 
     void unloadAllKernels();
 
-    /// @brief              Get default kernels
+    /// @brief Get default kernels
     ///
-    /// @return             Default kernels
+    /// @code
+    ///     Array<Kernel> kernels = Engine::DefaultKernels() ;
+    /// @endcode
+    ///
+    /// @return Default kernels
 
     static Array<Kernel> DefaultKernels();
 

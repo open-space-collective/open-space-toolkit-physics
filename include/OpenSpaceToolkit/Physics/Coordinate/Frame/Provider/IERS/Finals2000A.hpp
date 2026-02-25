@@ -44,15 +44,12 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
-/// @brief                      Standard Rapid EOP Data since 01. January 1992 (IAU2000)
+/// @brief Standard Rapid EOP Data since 01. January 1992 (IAU2000)
 ///
-///                             This file (updated weekly) is the complete Earth orientation data set, since 1 January
-///                             1992 with 1 year of predictions. The nutation series in dX and dY uses the IAU 2000A
-///                             Nutation Theory.
+/// This file (updated weekly) is the complete Earth orientation data set, since 1 January
+/// 1992 with 1 year of predictions. The nutation series in dX and dY uses the IAU 2000A Nutation Theory.
 ///
-/// @ref                        https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html -> finals.data
-/// (IAU2000)
-
+/// @ref https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html -> finals.data (IAU2000)
 class Finals2000A
 {
    public:
@@ -91,65 +88,101 @@ class Finals2000A
         Real dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
     };
 
+    /// @brief Output stream operator.
+    ///
+    /// @code
+    ///     std::cout << finals2000A ;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] aFinals2000A A Finals2000A
+    /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A);
 
-    /// @brief                  true if defined
+    /// @brief true if defined
     ///
-    /// @return                 True if defined
-
+    /// @code
+    ///     finals2000A.isDefined() ; // True
+    /// @endcode
+    ///
+    /// @return True if defined
     bool isDefined() const;
 
-    /// @brief                  Access timestamp at which the BulletinA file was last modified
+    /// @brief Access timestamp at which the BulletinA file was last modified
     ///
-    /// @return                 Instant indicating when the file was last updated based on file modification time
-
+    /// @code
+    ///     const Instant& timestamp = finals2000A.accessLastModifiedTimestamp() ;
+    /// @endcode
+    ///
+    /// @return Instant indicating when the file was last updated based on file modification time
     const Instant& accessLastModifiedTimestamp() const;
 
-    /// @brief                  Get data interval
+    /// @brief Get data interval
     ///
-    /// @return                 Data Intervalt of Instants
-
+    /// @code
+    ///     Interval interval = finals2000A.getInterval() ;
+    /// @endcode
+    ///
+    /// @return Data Intervalt of Instants
     Interval getInterval() const;
 
-    /// @brief                  Get polar motion at Instant
+    /// @brief Get polar motion at Instant
     ///
-    /// @param                  [in] anInstant An Instant
-    /// @return                 Polar motion
-
+    /// @code
+    ///     Vector2d polarMotion = finals2000A.getPolarMotionAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return Polar motion
     Vector2d getPolarMotionAt(const Instant& anInstant) const;
 
-    /// @brief                  Get UT1-UTC at Instant
+    /// @brief Get UT1-UTC at Instant
     ///
-    /// @param                  [in] anInstant An Instant
-    /// @return                 UT1-UTC
-
+    /// @code
+    ///     Real ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return UT1-UTC
     Real getUt1MinusUtcAt(const Instant& anInstant) const;
 
-    /// @brief                  Get LOD (Length Of Day) at Instant
+    /// @brief Get LOD (Length Of Day) at Instant
     ///
-    /// @param                  [in] anInstant An Instant
-    /// @return                 LOD
-
+    /// @code
+    ///     Real lod = finals2000A.getLodAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return LOD
     Real getLodAt(const Instant& anInstant) const;
 
-    /// @brief                  Get Data reading at instant
+    /// @brief Get Data reading at instant
     ///
-    /// @param                  [in] anInstant An Instant
-    /// @return                 Data reading
-
+    /// @code
+    ///     Finals2000A::Data data = finals2000A.getDataAt(anInstant) ;
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return Data reading
     Finals2000A::Data getDataAt(const Instant& anInstant) const;
 
-    /// @brief                  Undefined factory function
+    /// @brief Undefined factory function
     ///
-    /// @return                 Undefined Finals2000A object
-
+    /// @code
+    ///     Finals2000A finals2000A = Finals2000A::Undefined() ;
+    /// @endcode
+    ///
+    /// @return Undefined Finals2000A object
     static Finals2000A Undefined();
 
-    /// @brief                  Load Finals2000A from file
+    /// @brief Load Finals2000A from file
     ///
-    /// @param                  [in] aFile A file
-    /// @return                 Finals2000A object
-
+    /// @code
+    ///     Finals2000A finals2000A = Finals2000A::Load(file) ;
+    /// @endcode
+    ///
+    /// @param [in] aFile A file
+    /// @return Finals2000A object
     static Finals2000A Load(const filesystem::File& aFile);
 
    private:

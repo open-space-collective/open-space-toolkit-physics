@@ -43,44 +43,53 @@ using ostk::physics::time::Duration;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
 using BaseManager = ostk::physics::Manager;
 
-/// @brief                      Earth magnetic model data manager
+/// @brief Earth magnetic model data manager
 ///
-///                             Fetches and manages necessary magnetic model data files.
+/// Fetches and manages necessary magnetic model data files.
 ///
-///                             The following environment variables can be defined:
+/// The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE" will override
-///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override
-///                             "DefaultLocalRepository"
-
+/// - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_MODE" will override "DefaultMode"
+/// - "OSTK_PHYSICS_ENVIRONMENT_MAGNETIC_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
 class Manager : public BaseManager
 {
    public:
-    /// @brief                  Returns true if manager has data file for the given model type
+    /// @brief Returns true if manager has data file for the given model type
     ///
-    /// @param                  [in] aModelType A model type
-    /// @return                 True if manager has data file for the given model type
-
+    /// @code
+    ///     bool hasFiles = Manager::Get().hasDataFilesForType(EarthMagneticModel::Type::EMM2017) ;
+    /// @endcode
+    ///
+    /// @param [in] aModelType A model type
+    /// @return True if manager has data file for the given model type
     bool hasDataFilesForType(const EarthMagneticModel::Type& aModelType) const;
 
-    /// @brief                  Returns array of file objects for the given type
+    /// @brief Returns array of file objects for the given type
     ///
-    /// @param                  [in] aModelType A model type
-    /// @return                 Array of Files
-
+    /// @code
+    ///     Array<File> files = Manager::Get().localDataFilesForType(EarthMagneticModel::Type::EMM2017) ;
+    /// @endcode
+    ///
+    /// @param [in] aModelType A model type
+    /// @return Array of Files
     Array<File> localDataFilesForType(const EarthMagneticModel::Type& aModelType) const;
 
-    /// @brief                  Fetch data file from remote
+    /// @brief Fetch data file from remote
     ///
-    /// @param                  [in] aModelType A model type
-
+    /// @code
+    ///     Manager::Get().fetchDataFilesForType(EarthMagneticModel::Type::EMM2017) ;
+    /// @endcode
+    ///
+    /// @param [in] aModelType A model type
     void fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) const;
 
-    /// @brief                  Get manager singleton
+    /// @brief Get manager singleton
     ///
-    /// @return                 Reference to manager
-
+    /// @code
+    ///     Manager& manager = Manager::Get() ;
+    /// @endcode
+    ///
+    /// @return Reference to manager
     static Manager& Get();
 
    private:

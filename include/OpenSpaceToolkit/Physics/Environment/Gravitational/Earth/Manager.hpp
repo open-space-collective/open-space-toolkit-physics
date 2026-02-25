@@ -43,44 +43,53 @@ using ostk::physics::time::Duration;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using BaseManager = ostk::physics::Manager;
 
-/// @brief                      Earth gravitational model data manager
+/// @brief Earth gravitational model data manager
 ///
-///                             Fetches and manages necessary gravity model data files.
+/// Fetches and manages necessary gravity model data files.
 ///
-///                             The following environment variables can be defined:
+/// The following environment variables can be defined:
 ///
-///                             - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE" will override
-///                             "DefaultMode"
-///                             - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY" will override
-///                             "DefaultLocalRepository"
-
+/// - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE" will override "DefaultMode"
+/// - "OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY" will override "DefaultLocalRepository"
 class Manager : public BaseManager
 {
    public:
-    /// @brief                  Returns true if manager has data file for the given model type
+    /// @brief Returns true if manager has data file for the given model type
     ///
-    /// @param                  [in] aModelType A model type
-    /// @return                 True if manager has data file for the given model type
-
+    /// @code
+    ///     bool hasFiles = Manager::Get().hasDataFilesForType(EarthGravitationalModel::Type::EGM2008) ;
+    /// @endcode
+    ///
+    /// @param [in] aModelType A model type
+    /// @return True if manager has data file for the given model type
     bool hasDataFilesForType(const EarthGravitationalModel::Type& aModelType) const;
 
-    /// @brief                  Returns array of file objects for the given type
+    /// @brief Returns array of file objects for the given type
     ///
-    /// @param                  [in] aModelType A model type
-    /// @return                 Array of Files
-
+    /// @code
+    ///     Array<File> files = Manager::Get().localDataFilesForType(EarthGravitationalModel::Type::EGM2008) ;
+    /// @endcode
+    ///
+    /// @param [in] aModelType A model type
+    /// @return Array of Files
     Array<File> localDataFilesForType(const EarthGravitationalModel::Type& aModelType) const;
 
-    /// @brief                  Fetch data file from remote
+    /// @brief Fetch data file from remote
     ///
-    /// @param                  [in] aModelType A model type
-
+    /// @code
+    ///     Manager::Get().fetchDataFilesForType(EarthGravitationalModel::Type::EGM2008) ;
+    /// @endcode
+    ///
+    /// @param [in] aModelType A model type
     void fetchDataFilesForType(const EarthGravitationalModel::Type& aModelType) const;
 
-    /// @brief                  Get manager singleton
+    /// @brief Get manager singleton
     ///
-    /// @return                 Reference to manager
-
+    /// @code
+    ///     Manager& manager = Manager::Get() ;
+    /// @endcode
+    ///
+    /// @return Reference to manager
     static Manager& Get();
 
    private:
