@@ -1164,6 +1164,67 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Parse)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
+{
+    using ostk::core::type::Real;
+    using ostk::physics::unit::Angle;
+
+    // Basic cases
+    {
+        const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(90.0));
+        EXPECT_NEAR(result.inDegrees(), 90.0, 1e-10);
+    }
+
+    {
+        const Angle result = Angle::Between(Angle::Degrees(90.0), Angle::Degrees(0.0));
+        EXPECT_NEAR(result.inDegrees(), -90.0, 1e-10);
+    }
+
+    // Wrap-around cases
+    {
+        const Angle result = Angle::Between(Angle::Degrees(350.0), Angle::Degrees(10.0));
+        EXPECT_NEAR(result.inDegrees(), 20.0, 1e-10);
+    }
+
+    {
+        const Angle result = Angle::Between(Angle::Degrees(10.0), Angle::Degrees(350.0));
+        EXPECT_NEAR(result.inDegrees(), -20.0, 1e-10);
+    }
+
+    // Half-turn
+    {
+        const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(180.0));
+        EXPECT_NEAR(result.inDegrees(), 180.0, 1e-10);
+    }
+
+    // Same angle
+    {
+        const Angle result = Angle::Between(Angle::Degrees(45.0), Angle::Degrees(45.0));
+        EXPECT_NEAR(result.inDegrees(), 0.0, 1e-10);
+    }
+
+    // Cross-unit: first angle in degrees, second in radians — result should be in degrees
+    {
+        const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Radians(Real::Pi() / 2.0));
+        EXPECT_EQ(result.getUnit(), Angle::Unit::Degree);
+        EXPECT_NEAR(result.inDegrees(), 90.0, 1e-10);
+    }
+
+    // Result in radians when first angle is in radians
+    {
+        const Angle result = Angle::Between(Angle::Radians(0.0), Angle::Degrees(90.0));
+        EXPECT_EQ(result.getUnit(), Angle::Unit::Radian);
+        EXPECT_NEAR(result.inRadians(), Real::Pi() / 2.0, 1e-10);
+    }
+
+    // Undefined input handling
+    {
+        EXPECT_ANY_THROW(Angle::Between(Angle::Undefined(), Angle::Degrees(0.0)));
+        EXPECT_ANY_THROW(Angle::Between(Angle::Degrees(0.0), Angle::Undefined()));
+        EXPECT_ANY_THROW(Angle::Between(Angle::Undefined(), Angle::Undefined()));
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, StringFromUnit)
 {
     using ostk::physics::unit::Angle;

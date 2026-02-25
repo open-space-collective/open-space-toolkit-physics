@@ -503,6 +503,8 @@ class Angle : public Unit
 
     static Angle Revolutions(const Real& aValue);
 
+    static Angle Between(const Angle& aFirstAngle, const Angle& aSecondAngle);
+
     /// @brief Compute the angle between two 2D vectors.
     ///
     /// @code
