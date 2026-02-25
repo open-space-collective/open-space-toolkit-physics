@@ -1201,6 +1201,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
         const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(730.0));
         EXPECT_NEAR(result.inDegrees(), 10.0, 1e-10);
     }
+
     // Half-turn
     {
         const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(180.0));
