@@ -149,49 +149,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             )
 
             .def_readonly_static(
-                "EGM2008",
-                &Earth::EGM2008,
-                R"doc(
-                    The Earth Gravity Model 2008, which includes terms up to degree 2190.
-                )doc"
-            )
-            .def_readonly_static(
-                "EGM96",
-                &Earth::EGM96,
-                R"doc(
-                    The Earth Gravity Model 1996, which includes terms up to degree 360.
-                )doc"
-            )
-            .def_readonly_static(
-                "EGM84",
-                &Earth::EGM84,
-                R"doc(
-                    The Earth Gravity Model 1984, which includes terms up to degree 180.
-                )doc"
-            )
-            .def_readonly_static(
-                "WGS84_EGM96",
-                &Earth::WGS84_EGM96,
-                R"doc(
-                    The normal gravitational field for the reference ellipsoid plus the Earth Gravity Model 1996,
-                    which includes terms up to degree 360.
-                )doc"
-            )
-            .def_readonly_static(
-                "WGS84",
-                &Earth::WGS84,
-                R"doc(
-                    The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20.
-                )doc"
-            )
-            .def_readonly_static(
-                "spherical",
-                &Earth::Spherical,
-                R"doc(
-                    The spherical gravity originating from a point source at the center of the Earth.
-                )doc"
-            )
-            .def_readonly_static(
                 "gravity_constant",
                 &Earth::gravityConstant,
                 R"doc(

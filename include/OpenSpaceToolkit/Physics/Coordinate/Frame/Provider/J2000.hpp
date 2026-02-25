@@ -19,7 +19,7 @@ namespace frame
 namespace provider
 {
 
-namespace iau = ostk::physics::coordinate::frame::provider::iau;
+namespace iau_j2000 = ostk::physics::coordinate::frame::provider::iau;
 
 using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::Transform;
@@ -35,7 +35,7 @@ using ostk::physics::time::Instant;
 class J2000 : public Provider
 {
    public:
-    J2000(const iau::Theory& aTheory);
+    J2000(const iau_j2000::Theory& aTheory);
 
     virtual ~J2000() override;
 
@@ -43,14 +43,14 @@ class J2000 : public Provider
 
     virtual bool isDefined() const override;
 
-    iau::Theory getTheory() const;
+    iau_j2000::Theory getTheory() const;
 
     Instant getEpoch() const;
 
     virtual Transform getTransformAt(const Instant& anInstant) const override;
 
    private:
-    iau::Theory theory_;
+    iau_j2000::Theory theory_;
 };
 
 }  // namespace provider

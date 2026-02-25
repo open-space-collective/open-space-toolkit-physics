@@ -81,14 +81,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
                 )doc"
             )
 
-            .def_readonly_static(
-                "spherical",
-                &Sun::Spherical,
-                R"doc(
-                    Spherical gravitational model.
-                )doc"
-            )
-
             ;
 
         enum_<Sun::Type>(sun_class, "Type")

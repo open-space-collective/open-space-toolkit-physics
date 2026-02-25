@@ -23,7 +23,7 @@ namespace provider
 
 using ostk::physics::time::Scale;
 
-TOD::TOD(const Instant& anEpoch, const iau::Theory& aTheory)
+TOD::TOD(const Instant& anEpoch, const iau_tod::Theory& aTheory)
     : epoch_(anEpoch),
       theory_(aTheory)
 {
@@ -51,7 +51,7 @@ Instant TOD::getEpoch() const
     return this->epoch_;
 }
 
-iau::Theory TOD::getTheory() const
+iau_tod::Theory TOD::getTheory() const
 {
     if (!this->isDefined())
     {
@@ -82,20 +82,20 @@ Transform TOD::getTransformAt(const Instant& anInstant) const
 
     switch (this->theory_)
     {
-        case iau::Theory::IAU_2000A:
+        case iau_tod::Theory::IAU_2000A:
             // Matrix of precession−nutation for a given date (including frame bias), equinox based, IAU 2000A model.
-            iauPnm00a(date1, date2, rbpn);
+            eraPnm00a(date1, date2, rbpn);
             break;
 
-        case iau::Theory::IAU_2000B:
+        case iau_tod::Theory::IAU_2000B:
             // Matrix of precession−nutation for a given date (including frame bias), equinox−based, IAU 2000B model.
-            iauPnm00b(date1, date2, rbpn);
+            eraPnm00b(date1, date2, rbpn);
             break;
 
-        case iau::Theory::IAU_2006:
+        case iau_tod::Theory::IAU_2006:
             // Matrix of precession−nutation for a given date (including frame bias), equinox based, IAU 2006 precession
             // and IAU 2000A nutation models.
-            iauPnm06a(date1, date2, rbpn);
+            eraPnm06a(date1, date2, rbpn);
             break;
 
         default:

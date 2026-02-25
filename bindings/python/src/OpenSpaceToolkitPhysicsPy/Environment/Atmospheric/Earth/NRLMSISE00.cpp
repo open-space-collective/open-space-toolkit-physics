@@ -16,7 +16,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     using ostk::physics::environment::object::Celestial;
     using ostk::physics::time::Instant;
     using ostk::physics::unit::Length;
-    using EarthGravityModel = ostk::physics::environment::gravitational::Earth;
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
     using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 
@@ -63,8 +62,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
             arg("f107_average_constant_value") = EarthAtmosphericModel::defaultF107AConstantValue,
             arg("kp_constant_value") = EarthAtmosphericModel::defaultKpConstantValue,
             arg_v("earth_frame", Frame::ITRF(), "Frame.ITRF()"),
-            arg_v("earth_radius", EarthGravityModel::WGS84.equatorialRadius_, "WGS84.equatorialRadius_"),
-            arg_v("earth_flattening", EarthGravityModel::WGS84.flattening_, "WGS84.flattening_"),
+            arg_v("earth_radius", Length::Meters(6378137.0), "Length.Meters(6378137.0)"),
+            arg("earth_flattening") = 1.0 / 298.257223563,
             arg("sun_celestial") = nullptr,
             R"doc(
                 Constructor.

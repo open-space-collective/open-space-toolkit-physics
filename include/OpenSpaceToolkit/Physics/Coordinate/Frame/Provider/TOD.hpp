@@ -19,7 +19,7 @@ namespace frame
 namespace provider
 {
 
-namespace iau = ostk::physics::coordinate::frame::provider::iau;
+namespace iau_tod = ostk::physics::coordinate::frame::provider::iau;
 
 using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::Transform;
@@ -36,7 +36,7 @@ using ostk::physics::time::Instant;
 class TOD : public Provider
 {
    public:
-    TOD(const Instant& anEpoch, const iau::Theory& aTheory);
+    TOD(const Instant& anEpoch, const iau_tod::Theory& aTheory);
 
     virtual ~TOD() override;
 
@@ -46,13 +46,13 @@ class TOD : public Provider
 
     Instant getEpoch() const;
 
-    iau::Theory getTheory() const;
+    iau_tod::Theory getTheory() const;
 
     virtual Transform getTransformAt(const Instant& anInstant) const override;
 
    private:
     Instant epoch_;
-    iau::Theory theory_;
+    iau_tod::Theory theory_;
 };
 
 }  // namespace provider

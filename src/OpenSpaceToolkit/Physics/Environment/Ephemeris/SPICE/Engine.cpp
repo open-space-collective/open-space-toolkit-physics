@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <boost/regex.hpp>
+#include <regex>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -15,7 +15,6 @@
 extern "C"
 {
 #include "cspice/SpiceUsr.h"
-#include "cspice/SpiceZfc.h"
 }
 
 using ostk::core::type::String;
@@ -258,7 +257,7 @@ bool Engine::isKernelLoaded_(const String& aRegexString) const
 {
     for (const auto& kernel : kernelSet_)
     {
-        if (kernel.getName().match(boost::regex(aRegexString)))
+        if (std::regex_match(kernel.getName(), std::regex(aRegexString)))
         {
             return true;
         }

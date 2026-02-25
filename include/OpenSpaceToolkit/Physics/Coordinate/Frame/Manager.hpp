@@ -5,7 +5,6 @@
 
 #include <mutex>
 
-#include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -23,7 +22,6 @@ namespace coordinate
 namespace frame
 {
 
-using ostk::core::container::Array;
 using ostk::core::container::Map;
 using ostk::core::type::Shared;
 using ostk::core::type::Size;
@@ -46,8 +44,6 @@ class Manager
 
     Shared<const Frame> accessFrameWithName(const String& aFrameName) const;
 
-    Array<String> getAllFrameNames() const;
-
     const Transform accessCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
     ) const;
@@ -55,8 +51,6 @@ class Manager
     void addFrame(const Shared<const Frame>& aFrameSPtr);
 
     void removeFrameWithName(const String& aFrameName);
-
-    void clearAllFrames();
 
     void addCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr,

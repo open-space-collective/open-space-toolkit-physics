@@ -37,19 +37,6 @@ Shared<const Frame> Manager::accessFrameWithName(const String& aFrameName) const
     return nullptr;
 }
 
-Array<String> Manager::getAllFrameNames() const
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    Array<String> frameNames;
-    frameNames.reserve(frameMap_.size());
-    for (const auto& frame : frameMap_)
-    {
-        frameNames.add(frame.first);
-    }
-    return frameNames;
-}
-
 const Transform Manager::accessCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
 ) const
@@ -128,14 +115,6 @@ void Manager::removeFrameWithName(const String& aFrameName)
     {
         throw ostk::core::error::RuntimeError("No frame with name [{}].", aFrameName);
     }
-}
-
-void Manager::clearAllFrames()
-{
-    const std::lock_guard<std::mutex> lock {mutex_};
-
-    frameMap_.clear();
-    transformCache_.clear();
 }
 
 void Manager::addCachedTransform(

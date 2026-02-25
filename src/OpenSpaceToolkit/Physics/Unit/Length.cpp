@@ -326,12 +326,12 @@ Length Length::Parse(const String& aString)
 
     if (symbol == "mm")
     {
-        return {value / 1000.0, Length::Unit::Meter};
+        return Length(value / 1000.0, Length::Unit::Meter);
     }
 
     if (symbol == "km")
     {
-        return {value * 1000.0, Length::Unit::Meter};
+        return Length(value * 1000.0, Length::Unit::Meter);
     }
 
     return {value, Length::UnitFromSymbol(symbol)};
