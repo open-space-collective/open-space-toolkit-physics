@@ -411,6 +411,24 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def_static(
             "between",
+            overload_cast<const Angle&, const Angle&>(&Angle::Between),
+            arg("first_angle"),
+            arg("second_angle"),
+            R"doc(
+                Compute the shortest signed angle from the first angle to the second.
+                Positive if the shortest path from `first_angle` to `second_angle` is clockwise, otherwise negative.
+                The result is in the range (-180, +180] degrees and is returned in the unit of the first angle.
+
+                Args:
+                    first_angle (Angle): The first angle.
+                    second_angle (Angle): The second angle.
+
+                Returns:
+                    Angle: The shortest signed angular difference.
+            )doc"
+        )
+        .def_static(
+            "between",
             overload_cast<const Vector2d&, const Vector2d&>(&Angle::Between),
             arg("first_vector"),
             arg("second_vector"),

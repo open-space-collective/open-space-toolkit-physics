@@ -56,7 +56,6 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value
     /// @param [in] aUnit An angle unit
-
     Angle(const Real& aValue, const Angle::Unit& aUnit);
 
     /// @brief Constructor from a mathematics geometry angle.
@@ -66,7 +65,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @param [in] anAngle A mathematics geometry angle
-
     Angle(const ostk::mathematics::geometry::Angle& anAngle);
 
     /// @brief Clone the angle.
@@ -77,7 +75,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A pointer to a dynamically allocated clone of this angle
-
     virtual Angle* clone() const override;
 
     /// @brief Equal to operator.
@@ -88,7 +85,6 @@ class Angle : public Unit
     ///
     /// @param [in] anAngle An angle to compare with
     /// @return True if angles are equal
-
     bool operator==(const Angle& anAngle) const;
 
     /// @brief Not equal to operator.
@@ -99,7 +95,6 @@ class Angle : public Unit
     ///
     /// @param [in] anAngle An angle to compare with
     /// @return True if angles are not equal
-
     bool operator!=(const Angle& anAngle) const;
 
     /// @brief Addition operator.
@@ -110,7 +105,6 @@ class Angle : public Unit
     ///
     /// @param [in] anAngle An angle to add
     /// @return The sum of the two angles
-
     Angle operator+(const Angle& anAngle) const;
 
     /// @brief Subtraction operator.
@@ -121,7 +115,6 @@ class Angle : public Unit
     ///
     /// @param [in] anAngle An angle to subtract
     /// @return The difference of the two angles
-
     Angle operator-(const Angle& anAngle) const;
 
     /// @brief Multiplication by scalar operator.
@@ -132,7 +125,6 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar multiplier
     /// @return The scaled angle
-
     Angle operator*(const Real& aReal) const;
 
     /// @brief Division by scalar operator.
@@ -143,7 +135,6 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar divisor
     /// @return The scaled angle
-
     Angle operator/(const Real& aReal) const;
 
     /// @brief Addition assignment operator.
@@ -155,7 +146,6 @@ class Angle : public Unit
     ///
     /// @param [in] anAngle An angle to add
     /// @return A reference to this angle after addition
-
     Angle& operator+=(const Angle& anAngle);
 
     /// @brief Subtraction assignment operator.
@@ -167,7 +157,6 @@ class Angle : public Unit
     ///
     /// @param [in] anAngle An angle to subtract
     /// @return A reference to this angle after subtraction
-
     Angle& operator-=(const Angle& anAngle);
 
     /// @brief Multiplication assignment operator.
@@ -179,7 +168,6 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar multiplier
     /// @return A reference to this angle after multiplication
-
     Angle& operator*=(const Real& aReal);
 
     /// @brief Division assignment operator.
@@ -191,7 +179,6 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar divisor
     /// @return A reference to this angle after division
-
     Angle& operator/=(const Real& aReal);
 
     /// @brief Scalar multiplication operator (scalar * angle).
@@ -203,7 +190,6 @@ class Angle : public Unit
     /// @param [in] aReal A scalar multiplier
     /// @param [in] anAngle An angle
     /// @return The scaled angle
-
     friend Angle operator*(const Real& aReal, const Angle& anAngle);
 
     /// @brief Unary plus operator.
@@ -213,7 +199,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A copy of this angle
-
     Angle operator+() const;
 
     /// @brief Unary minus operator.
@@ -223,7 +208,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The negated angle
-
     Angle operator-() const;
 
     /// @brief Conversion operator to mathematics geometry angle.
@@ -233,7 +217,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A mathematics geometry angle
-
     operator ostk::mathematics::geometry::Angle() const;
 
     /// @brief Output stream operator.
@@ -245,7 +228,6 @@ class Angle : public Unit
     /// @param [in] anOutputStream An output stream
     /// @param [in] anAngle An angle
     /// @return A reference to the output stream
-
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle);
 
     /// @brief Check if the angle is defined.
@@ -255,7 +237,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return True if defined
-
     virtual bool isDefined() const override;
 
     /// @brief Check if the angle value is zero.
@@ -265,7 +246,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return True if zero
-
     bool isZero() const;
 
     /// @brief Get the angle unit.
@@ -275,7 +255,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The angle unit
-
     Angle::Unit getUnit() const;
 
     /// @brief Get the value in the specified unit.
@@ -286,7 +265,6 @@ class Angle : public Unit
     ///
     /// @param [in] aUnit An angle unit
     /// @return The value in the specified unit
-
     Real in(const Angle::Unit& aUnit) const;
 
     /// @brief Get the value in radians.
@@ -296,7 +274,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in radians
-
     Real inRadians() const;
 
     /// @brief Get the value in radians within the specified range.
@@ -308,7 +285,6 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in radians)
     /// @param [in] anUpperBound An upper bound (in radians)
     /// @return The value in radians within the range
-
     Real inRadians(const Real& aLowerBound, const Real& anUpperBound) const;
 
     /// @brief Get the value in degrees.
@@ -318,7 +294,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in degrees
-
     Real inDegrees() const;
 
     /// @brief Get the value in degrees within the specified range.
@@ -330,7 +305,6 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in degrees)
     /// @param [in] anUpperBound An upper bound (in degrees)
     /// @return The value in degrees within the range
-
     Real inDegrees(const Real& aLowerBound, const Real& anUpperBound) const;
 
     /// @brief Get the value in arcminutes.
@@ -340,7 +314,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in arcminutes
-
     Real inArcminutes() const;
 
     /// @brief Get the value in arcminutes within the specified range.
@@ -352,7 +325,6 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in arcminutes)
     /// @param [in] anUpperBound An upper bound (in arcminutes)
     /// @return The value in arcminutes within the range
-
     Real inArcminutes(const Real& aLowerBound, const Real& anUpperBound) const;
 
     /// @brief Get the value in arcseconds.
@@ -362,7 +334,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in arcseconds
-
     Real inArcseconds() const;
 
     /// @brief Get the value in arcseconds within the specified range.
@@ -374,7 +345,6 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in arcseconds)
     /// @param [in] anUpperBound An upper bound (in arcseconds)
     /// @return The value in arcseconds within the range
-
     Real inArcseconds(const Real& aLowerBound, const Real& anUpperBound) const;
 
     /// @brief Get the value in revolutions.
@@ -384,7 +354,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in revolutions
-
     Real inRevolutions() const;
 
     /// @brief Convert to string representation.
@@ -395,7 +364,6 @@ class Angle : public Unit
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
-
     virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
 
     /// @brief Construct an undefined angle.
@@ -405,7 +373,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return An undefined angle
-
     static Angle Undefined();
 
     /// @brief Construct a zero angle.
@@ -415,7 +382,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A zero angle
-
     static Angle Zero();
 
     /// @brief Construct an angle of pi/2 radians (90 degrees).
@@ -425,7 +391,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A half-pi angle
-
     static Angle HalfPi();
 
     /// @brief Construct an angle of pi radians (180 degrees).
@@ -435,7 +400,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A pi angle
-
     static Angle Pi();
 
     /// @brief Construct an angle of 2*pi radians (360 degrees).
@@ -445,7 +409,6 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return A two-pi angle
-
     static Angle TwoPi();
 
     /// @brief Construct an angle from a value in radians.
@@ -456,7 +419,6 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in radians
     /// @return An angle
-
     static Angle Radians(const Real& aValue);
 
     /// @brief Construct an angle from a value in degrees.
@@ -467,7 +429,6 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in degrees
     /// @return An angle
-
     static Angle Degrees(const Real& aValue);
 
     /// @brief Construct an angle from a value in arcminutes.
@@ -478,7 +439,6 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in arcminutes
     /// @return An angle
-
     static Angle Arcminutes(const Real& aValue);
 
     /// @brief Construct an angle from a value in arcseconds.
@@ -489,7 +449,6 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in arcseconds
     /// @return An angle
-
     static Angle Arcseconds(const Real& aValue);
 
     /// @brief Construct an angle from a value in revolutions.
@@ -500,8 +459,20 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in revolutions
     /// @return An angle
-
     static Angle Revolutions(const Real& aValue);
+
+    /// @brief Compute the shortest signed angle from the first angle to the second.
+    /// Positive if the shortest path from `aFirstAngle` to `aSecondAngle` is clockwise, otherwise negative.
+    /// The result is in the range (-180, +180] degrees and is returned in the unit of the first angle.
+    ///
+    /// @code
+    ///     Angle angle = Angle::Between(Angle::Degrees(0.0), Angle::Degrees(90.0));
+    /// @endcode
+    ///
+    /// @param [in] aFirstAngle A first angle
+    /// @param [in] aSecondAngle A second angle
+    /// @return The shortest signed angle from the first angle to the second
+    static Angle Between(const Angle& aFirstAngle, const Angle& aSecondAngle);
 
     /// @brief Compute the angle between two 2D vectors.
     ///
@@ -512,7 +483,6 @@ class Angle : public Unit
     /// @param [in] aFirstVector A first 2D vector
     /// @param [in] aSecondVector A second 2D vector
     /// @return The angle between the two vectors
-
     static Angle Between(const Vector2d& aFirstVector, const Vector2d& aSecondVector);
 
     /// @brief Compute the angle between two 3D vectors.
@@ -524,7 +494,6 @@ class Angle : public Unit
     /// @param [in] aFirstVector A first 3D vector
     /// @param [in] aSecondVector A second 3D vector
     /// @return The angle between the two vectors
-
     static Angle Between(const Vector3d& aFirstVector, const Vector3d& aSecondVector);
 
     /// @brief Parse an angle from a string.
@@ -535,7 +504,6 @@ class Angle : public Unit
     ///
     /// @param [in] aString A string to parse
     /// @return An angle
-
     static Angle Parse(const String& aString);
 
     /// @brief Get the string representation of an angle unit.
@@ -546,7 +514,6 @@ class Angle : public Unit
     ///
     /// @param [in] aUnit An angle unit
     /// @return The string representation
-
     static String StringFromUnit(const Angle::Unit& aUnit);
 
     /// @brief Get the symbol of an angle unit.
@@ -557,7 +524,6 @@ class Angle : public Unit
     ///
     /// @param [in] aUnit An angle unit
     /// @return The unit symbol
-
     static String SymbolFromUnit(const Angle::Unit& aUnit);
 
     /// @brief Get the angle unit from a symbol string.
@@ -568,7 +534,6 @@ class Angle : public Unit
     ///
     /// @param [in] aSymbol A unit symbol
     /// @return The angle unit
-
     static Angle::Unit UnitFromSymbol(const String& aSymbol);
 
    private:
