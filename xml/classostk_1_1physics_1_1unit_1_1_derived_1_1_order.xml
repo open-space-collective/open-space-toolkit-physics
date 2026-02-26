@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="68" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="68" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="175" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a3e60e820e7b101c50f63aac9c9d0d9e7" prot="private" static="no" mutable="no">
         <type>Int16</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="69" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="69" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="176" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="176" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,12 +42,25 @@
           <declname>aNumerator</declname>
         </param>
         <briefdescription>
+<para>Constructor from integer order. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order<sp/>order(1);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aNumerator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A numerator value (denominator defaults to 1) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="41" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="17" bodyend="21"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="49" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="17" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1adb45584799eb8bc10365879cd5c276a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -63,12 +76,33 @@
           <declname>aDenominator</declname>
         </param>
         <briefdescription>
+<para>Constructor from fractional order. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order<sp/>order(1,<sp/>2);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aNumerator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A numerator value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aDenominator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A denominator value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="43" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="23" bodyend="31"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="60" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="23" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1ad41d1f0b527f6689b9d786c366910119" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -80,12 +114,27 @@
           <declname>anOrder</declname>
         </param>
         <briefdescription>
+<para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1)<sp/>==<sp/>Derived::Order(1);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOrder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An order to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if orders are equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="45" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="33" bodyend="36"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="71" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1ad4c2a3f05a4015116b1514488fe4aed6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -97,12 +146,27 @@
           <declname>anOrder</declname>
         </param>
         <briefdescription>
+<para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1)<sp/>!=<sp/>Derived::Order(2);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOrder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An order to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if orders are not equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="47" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="38" bodyend="41"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="82" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a940ee7884cbfa43bd3e48dae41144eef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -110,12 +174,18 @@
         <argsstring>() const</argsstring>
         <name>isZero</name>
         <briefdescription>
+<para>Check if the order is zero. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(0).isZero();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if zero </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="49" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="43" bodyend="46"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="92" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a149f90ab9ac2aab0c5878bfd67072219" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -123,12 +193,18 @@
         <argsstring>() const</argsstring>
         <name>isUnity</name>
         <briefdescription>
+<para>Check if the order is unity (1). </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1).isUnity();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if unity </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="51" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="48" bodyend="51"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="102" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="48" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1aa40d7b7666551f2c52c53e4d6e805e77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Int16</type>
@@ -136,12 +212,18 @@
         <argsstring>() const</argsstring>
         <name>getNumerator</name>
         <briefdescription>
+<para>Get the numerator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1,<sp/>2).getNumerator();<sp/>//<sp/>1</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The numerator </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="53" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="53" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="112" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a57dcb6a98e301f9cc9dd0b95f373fef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Int16</type>
@@ -149,12 +231,18 @@
         <argsstring>() const</argsstring>
         <name>getDenominator</name>
         <briefdescription>
+<para>Get the denominator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1,<sp/>2).getDenominator();<sp/>//<sp/>2</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The denominator </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="55" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="58" bodyend="61"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="122" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a063fbf1ee971431ac882fb8fea43a293" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -162,12 +250,18 @@
         <argsstring>() const</argsstring>
         <name>getValue</name>
         <briefdescription>
+<para>Get the value as a real number (numerator / denominator). </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1,<sp/>2).getValue();<sp/>//<sp/>0.5</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The value </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="57" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="63" bodyend="68"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="132" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="63" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a6cc6fdfbd1fc3d43703471be84686cc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -175,12 +269,18 @@
         <argsstring>() const</argsstring>
         <name>toString</name>
         <briefdescription>
+<para>Convert to string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order(1,<sp/>2).toString();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="59" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="70" bodyend="85"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="142" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="70" bodyend="85"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -190,12 +290,18 @@
         <argsstring>()</argsstring>
         <name>Zero</name>
         <briefdescription>
+<para>Construct a zero order. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order<sp/>order<sp/>=<sp/>Derived::Order::Zero();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A zero order </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="61" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="87" bodyend="90"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="152" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="87" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a5db56df4a1414962337f811062cb4262" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -203,12 +309,18 @@
         <argsstring>()</argsstring>
         <name>One</name>
         <briefdescription>
+<para>Construct a first order (1). </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order<sp/>order<sp/>=<sp/>Derived::Order::One();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A first order </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="63" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="92" bodyend="95"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="162" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a299b1161b786384ec64b0659a66b4574" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -216,12 +328,18 @@
         <argsstring>()</argsstring>
         <name>Two</name>
         <briefdescription>
+<para>Construct a second order (2). </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::Order<sp/>order<sp/>=<sp/>Derived::Order::Two();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A second order </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="65" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="97" bodyend="100"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="172" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="97" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -229,7 +347,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="38" bodyend="70"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="38" bodyend="177"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a3e60e820e7b101c50f63aac9c9d0d9e7" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>denominator_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order_1a57dcb6a98e301f9cc9dd0b95f373fef5" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Order</scope><name>getDenominator</name></member>

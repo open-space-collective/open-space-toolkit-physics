@@ -18,6 +18,8 @@
 <para>Fetch kernel from remote. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().fetchKernel(aKernel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aKernel</parametername>
@@ -31,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="43" bodyend="100"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="73" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="45" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> &gt;</type>
@@ -46,6 +48,8 @@
 <para>Fetch kernels matching regular expression. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Kernel&gt;<sp/>kernels<sp/>=<sp/>Manager::Get().fetchMatchingKernels(&quot;de430.*\\.bsp&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aRegexString</parametername>
@@ -61,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="77" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="102" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="84" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="104" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a48ae90a9855188c30b99fc1c5e898233" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; Path &gt;</type>
@@ -76,6 +80,8 @@
 <para>Find kernel paths matching regular expression in local repository. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;Path&gt;<sp/>paths<sp/>=<sp/>Manager::Get().findKernelPaths(&quot;de430.*\\.bsp&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aRegexString</parametername>
@@ -91,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="84" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="156" bodyend="178"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="95" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="158" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref></type>
@@ -106,6 +112,8 @@
 <para>Find kernels matching regular expression. Search locally first, then remotely. Always return the first found. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Manager::Get().findKernel(&quot;de430.*\\.bsp&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aRegexString</parametername>
@@ -121,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="92" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="180" bodyend="198"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="107" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="182" bodyend="200"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -134,13 +142,15 @@
 <para>Get manager singleton. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager&amp;<sp/>manager<sp/>=<sp/>Manager::Get();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Reference to manager </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="98" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="36" bodyend="41"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="117" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="38" bodyend="43"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -155,20 +165,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="101" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="200" bodyend="210"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="120" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="202" bodyend="212"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> Toolkit kernel manager. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        Fetches and manages necessary SPICE kernels.
-
-                        The following environment variables can be defined:
-
-                        - &quot;OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY&quot; will override
-                        &quot;DefaultLocalRepository&quot; 
-</verbatim> </para>
+<para>Fetches and manages necessary <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e" kindref="compound">SPICE</ref> kernels.</para>
+<para>The following environment variables can be defined:</para>
+<para><itemizedlist>
+<listitem><para>&quot;OSTK_PHYSICS_ENVIRONMENT_EPHEMERIS_SPICE_MANAGER_LOCAL_REPOSITORY&quot; will override &quot;DefaultLocalRepository&quot; </para>
+</listitem></itemizedlist>
+</para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -228,7 +237,7 @@
         <label>Directory</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="63" bodyend="102"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="63" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" bodystart="62" bodyend="121"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>clearLocalRepository</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1ae19fdd045a4f38eb4642ff7d31791604" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Manager</scope><name>DefaultLocalRepository_</name></member>

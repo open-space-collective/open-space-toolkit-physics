@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="46" bodyend="50"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="45" bodyend="49"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="44" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="44" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="43" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="108" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="106" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="135" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,6 +87,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon<sp/>moonGrav(Moon::Type::Spherical);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -108,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="57" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="89" bodyend="93"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="89" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a9309d4ba7336268d4d173632ff1bf18d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -123,6 +125,8 @@
 <para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon<sp/>moonGravCopy(moonGrav);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aMoonGravitationalModel</parametername>
@@ -136,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="63" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="95" bodyend="99"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="68" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="95" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a26226ccd5a99dd7826cc38ff3d023afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> &amp;</type>
@@ -151,6 +155,8 @@
 <para>Copy assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon<sp/>moonGravCopy<sp/>=<sp/>moonGrav;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aMoonGravitationalModel</parametername>
@@ -166,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="101" bodyend="113"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="78" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="101" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1aa315790d15e586d7614f2abd630f00e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -180,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="74" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="115" bodyend="115"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="81" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a264078001de13a1f35297a87a7c3abec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> *</type>
@@ -192,13 +198,15 @@
 <para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> gravitational model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon*<sp/>moonGravPtr<sp/>=<sp/>moonGrav.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> gravitational model </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="80" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="117" bodyend="120"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="90" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="117" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a5de9cc287bc744b58b0070415523c9f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -210,13 +218,15 @@
 <para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> gravitational model is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bool<sp/>isDefined<sp/>=<sp/>moonGrav.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> gravitational model is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="86" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="122" bodyend="125"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="99" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="122" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a1f58512d7bc337392a7338b90aa213de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a09ec881799f85fdef3547ef443d57c27" kindref="member">Moon::Type</ref></type>
@@ -227,13 +237,15 @@
 <para>Get gravitational model type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon::Type<sp/>type<sp/>=<sp/>moonGrav.getType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Gravitational model type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="92" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="127" bodyend="130"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="108" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="127" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a4771ff76d04a7f850b1bd29b146696ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -253,6 +265,8 @@
 <para>Get the gravitational field value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Vector3d<sp/>fieldValue<sp/>=<sp/>moonGrav.getFieldValueAt(position,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aPosition</parametername>
@@ -276,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="100" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="132" bodyend="135"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="119" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="132" bodyend="135"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -290,12 +304,27 @@
           <declname>aType</declname>
         </param>
         <briefdescription>
+<para>Get gravitational model parameters for a given type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Model::Parameters<sp/>params<sp/>=<sp/>Moon::ParametersFromType(Moon::Type::Spherical);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Gravitational model parameters </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="102" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="137" bodyend="150"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="129" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="137" bodyend="150"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -318,15 +347,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="110" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="152" bodyend="166"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="137" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp" bodystart="152" bodyend="166"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> gravitational model. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        The gravitational potential of the Moon for now is kept as a simple spherical model. 
-</verbatim> </para>
+<para>The gravitational potential of the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon" kindref="compound">Moon</ref> for now is kept as a simple spherical model. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">
@@ -352,7 +380,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="41" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="40" bodyend="111"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp" bodystart="39" bodyend="138"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a264078001de13a1f35297a87a7c3abec" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Moon</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a4771ff76d04a7f850b1bd29b146696ae" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Moon</scope><name>getFieldValueAt</name></member>

@@ -123,10 +123,32 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>bulletinA;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aBulletinA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Bulletin A </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" line="31" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="31" bodyend="99"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" line="32" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="32" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1ae80eabaf618cfa1369870bd029d92c41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -144,6 +166,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>finals2000A;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aFinals2000A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

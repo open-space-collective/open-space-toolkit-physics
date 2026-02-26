@@ -15,14 +15,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="128" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="128" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="156" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="127" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="126" bodyend="129"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="155" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="154" bodyend="157"/>
     <listofallmembers>
       <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array_1ad536aa04d3b492706adbebedea3790f0" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::ap_array</scope><name>a</name></member>
     </listofallmembers>

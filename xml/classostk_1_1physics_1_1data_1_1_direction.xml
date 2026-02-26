@@ -19,35 +19,79 @@
           <declname>aFrameSPtr</declname>
         </param>
         <briefdescription>
+<para>Construct a direction from a 3D vector and a reference frame. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Direction<sp/>direction({1.0,<sp/>0.0,<sp/>0.0},<sp/>Frame::GCRF());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A 3D vector (will be normalized) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the reference frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="35" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="21" bodyend="28"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="42" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="21" bodyend="28"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
-      <memberdef kind="friend" id="classostk_1_1physics_1_1data_1_1_direction_1a2f1253dbad20965d2209456421eabf71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1data_1_1_direction_1af770aab4c47075a00263cc578c3453f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
         <definition>std::ostream&amp; operator&lt;&lt;</definition>
-        <argsstring>(std::ostream &amp;anOutputStream, const Vector &amp;aVector)</argsstring>
+        <argsstring>(std::ostream &amp;anOutputStream, const Direction &amp;aDirection)</argsstring>
         <name>operator&lt;&lt;</name>
         <param>
           <type>std::ostream &amp;</type>
           <declname>anOutputStream</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref> &amp;</type>
-          <declname>aVector</declname>
+          <type>const <ref refid="classostk_1_1physics_1_1data_1_1_direction" kindref="compound">Direction</ref> &amp;</type>
+          <declname>aDirection</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>direction;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aDirection</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A direction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="37" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="37" bodyend="53"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="53" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="30" bodyend="45"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -57,20 +101,25 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined direction. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Direction<sp/>direction<sp/>=<sp/>Direction::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined direction </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="39" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="47" bodyend="50"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="62" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="47" bodyend="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1data_1_1_direction" kindref="compound">Direction</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        A unit vector, expressed in a given frame. 
-</verbatim> </para>
+<para>A unit vector, expressed in a given frame. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -96,7 +145,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" bodystart="32" bodyend="40"/>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" line="32" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Direction.hpp" bodystart="31" bodyend="63"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1data_1_1_direction_1ac247d7c6d290db488940c0100b5cda5d" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>Direction</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_vector_1a39b99207e2617954be6629916d327fb6" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>getFrame</name></member>
@@ -106,7 +155,7 @@
       <member refid="classostk_1_1physics_1_1data_1_1_vector_1a0ea065eeb3ccb829951c81c206eefd76" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>inUnit</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_vector_1aa5fee0fe657ba4b33e835ed4df37d0e1" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_vector_1a732642a94770c1486537368c44a0d434" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>operator!=</name></member>
-      <member refid="classostk_1_1physics_1_1data_1_1_direction_1a2f1253dbad20965d2209456421eabf71" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_direction_1af770aab4c47075a00263cc578c3453f5" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_vector_1a4be0fe51a56b19eb4c7252436944b382" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_vector_1ac1475f98235658dfad18dba4474f3ee1" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>toString</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_direction_1a47b0ba9fb3f592e2fd1fba846af6483c" prot="public" virt="non-virtual"><scope>ostk::physics::data::Direction</scope><name>Undefined</name></member>

@@ -22,6 +22,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon<sp/>moon(ephemeris,<sp/>gravModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEphemeris</parametername>
@@ -43,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="50" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="22" bodyend="38"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="52" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="22" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon_1ae2584a0d4961bf6dbe02ff87fb598d11" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -57,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="54" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="40" bodyend="40"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="55" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon_1aab8fdc1a02c990987ea2bbf56896f484" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref> *</type>
@@ -69,13 +71,15 @@
 <para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref> celestial object. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon*<sp/>moonPtr<sp/>=<sp/>moon.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref> celestial object </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="60" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="42" bodyend="45"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="64" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="42" bodyend="45"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -88,13 +92,15 @@
 <para>Default <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref> model (Spherical) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon<sp/>moon<sp/>=<sp/>Moon::Default();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="66" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="47" bodyend="50"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="73" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon_1aa438a7f66a3e64bdb99b625db7f9cd90" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref></type>
@@ -105,13 +111,15 @@
 <para>Spherical model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Moon<sp/>moon<sp/>=<sp/>Moon::Spherical();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_moon" kindref="compound">Moon</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="72" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="52" bodyend="60"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="82" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="52" bodyend="60"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -130,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="75" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="62" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="85" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.cpp" bodystart="62" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -173,7 +181,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1_object"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" bodystart="41" bodyend="76"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp" bodystart="41" bodyend="86"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a60d182194f5b3925d40878616fd12ec1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Moon</scope><name>accessAtmosphericModel</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0e365cdf7cddbe4aa38e68e8c10665d6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Moon</scope><name>accessEphemeris</name></member>

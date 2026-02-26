@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp" bodystart="14" bodyend="14"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="30" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp" bodystart="14" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a06f6f87b472a1e5bcae7c43c38cfcd66" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="36" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp" bodystart="16" bodyend="16"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="33" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.cpp" bodystart="16" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a7e4acfd959afea71c12aeba665a66c17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model" kindref="compound">Model</ref> *</type>
@@ -49,14 +49,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="42" column="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="38" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ac79efc08d6bae1464944174ef1c26b98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool ostk::physics::environment::atmospheric::Model::isDefined</definition>
         <argsstring>() const =0</argsstring>
         <name>isDefined</name>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1d16a61abd21e39d8d2eaec3f07ba4a9">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1ae9dee3ee229cc531b50069a1a67ab4cc">isDefined</reimplementedby>
         <briefdescription>
 <para>Check if the atmospheric model is defined (pure virtual) </para>
         </briefdescription>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="48" column="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="43" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a981d47a2368daf1b9d81c63e17db7d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Real</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="56" column="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="50" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -130,7 +130,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"/>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" bodystart="27" bodyend="57"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" line="27" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Model.hpp" bodystart="26" bodyend="51"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a7e4acfd959afea71c12aeba665a66c17" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1a981d47a2368daf1b9d81c63e17db7d09" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Model</scope><name>getDensityAt</name></member>

@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="35" bodyend="42"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="33" bodyend="40"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="31" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="31" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="30" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="643" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="643" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="586" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="586" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_duration_1a00ab9551503fa77ba826481a707e55d9" prot="private" static="no" mutable="no">
         <type>Int64</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="644" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="644" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="587" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="587" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -98,7 +98,7 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration(123)<sp/>;<sp/>//<sp/>123<sp/>[ns]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration(123);<sp/>//<sp/>123<sp/>[ns]</highlight></codeline>
 </programlisting> <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aNanosecondCount</parametername>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="51" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="21" bodyend="25"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="21" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a92649b4f3f332daf372bb78ac1db6740" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -127,7 +127,7 @@
 <para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>==<sp/>Duration(123)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>==<sp/>Duration(123);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="62" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="27" bodyend="35"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="58" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="27" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a5e99b046bbf8aa1de0f8e212b7794e38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -159,7 +159,7 @@
 <para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>!=<sp/>Duration(456)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>!=<sp/>Duration(456);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -176,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="73" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="37" bodyend="45"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="68" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="37" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a76fbb444ae7db2e6e61c237bf96b9032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -191,7 +191,7 @@
 <para>Less than operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>&lt;<sp/>Duration(456)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>&lt;<sp/>Duration(456);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -208,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="84" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="47" bodyend="55"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="78" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="47" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a31b9328d64a66fd3f46ca8100b8dd91c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -223,7 +223,7 @@
 <para>Less than or equal to operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>&lt;=<sp/>Duration(456)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(123)<sp/>&lt;=<sp/>Duration(456);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="95" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="57" bodyend="65"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="88" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="57" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a9daebcdc2a5ab12306630d85e44dcb7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -255,7 +255,7 @@
 <para>Greater than operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(456)<sp/>&gt;<sp/>Duration(123)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(456)<sp/>&gt;<sp/>Duration(123);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -272,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="106" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="67" bodyend="75"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="98" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="67" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a3c742aac8e660effd3575fe0ca570d75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -287,7 +287,7 @@
 <para>Greater than operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(456)<sp/>&gt;=<sp/>Duration(123)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(456)<sp/>&gt;=<sp/>Duration(123);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -304,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="77" bodyend="85"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="108" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="77" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a26a68103c9ee563c99257590fbc60079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -319,7 +319,7 @@
 <para>Addition operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>+<sp/>Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>+<sp/>Duration::Seconds(1.0);<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -336,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="128" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="87" bodyend="95"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="118" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="87" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a211f0f909d453c61aad6677409507698" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -351,7 +351,7 @@
 <para>Subtraction operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>-<sp/>Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>0.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>-<sp/>Duration::Seconds(1.0);<sp/>//<sp/>0.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="139" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="97" bodyend="105"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="128" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="97" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1afca79b9de1ea487b00abdb8be8c5608d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -383,7 +383,7 @@
 <para>Multiplication operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>*<sp/>2.0<sp/>;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>*<sp/>2.0;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -400,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="150" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="107" bodyend="120"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="138" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="107" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a2400f4ac59f56e2a73090cff9404c67c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -415,7 +415,7 @@
 <para>Division operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>/<sp/>2.0<sp/>;<sp/>//<sp/>0.5<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(1.0)<sp/>/<sp/>2.0;<sp/>//<sp/>0.5<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="161" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="122" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="148" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="122" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a172bf36df42a169ecf5893daa3f7d7b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -443,7 +443,7 @@
 <para>Unary plus operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>+Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>+1.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>+Duration::Seconds(1.0);<sp/>//<sp/>+1.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> </para>
 </simplesect>
@@ -451,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="171" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="142" bodyend="150"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="157" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="142" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad6311a658bac277c9739cf938106a274" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -462,7 +462,7 @@
 <para>Unary minus operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>-Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>-1.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>-Duration::Seconds(1.0);<sp/>//<sp/>-1.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> </para>
 </simplesect>
@@ -470,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="181" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="152" bodyend="160"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="166" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="152" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1af0bd86fc4ec2d7a59219b3c72f699892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
@@ -485,8 +485,8 @@
 <para>Addition assignement operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">duration<sp/>+=<sp/>Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0);</highlight></codeline>
+<codeline><highlight class="normal">duration<sp/>+=<sp/>Duration::Seconds(1.0);<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -503,7 +503,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="193" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="162" bodyend="172"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="177" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="162" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a81655d5bcb4ed4b13d2858a4c01917bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
@@ -518,8 +518,8 @@
 <para>Subtraction assignement operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">duration<sp/>-=<sp/>Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>0.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0);</highlight></codeline>
+<codeline><highlight class="normal">duration<sp/>-=<sp/>Duration::Seconds(1.0);<sp/>//<sp/>0.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -536,7 +536,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="205" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="174" bodyend="184"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="188" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="174" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ae26dc624227d7c6d8cb4a7436c34a4ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
@@ -551,8 +551,8 @@
 <para>Multiplication assignement operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">duration<sp/>*=<sp/>2.0<sp/>;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0);</highlight></codeline>
+<codeline><highlight class="normal">duration<sp/>*=<sp/>2.0;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -569,7 +569,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="217" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="186" bodyend="201"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="199" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="186" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ac1e48e49d1dfeb3890a6944f13c513b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
@@ -584,8 +584,8 @@
 <para>Division assignement operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">duration<sp/>/=<sp/>2.0<sp/>;<sp/>//<sp/>0.5<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(1.0);</highlight></codeline>
+<codeline><highlight class="normal">duration<sp/>/=<sp/>2.0;<sp/>//<sp/>0.5<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -602,7 +602,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="229" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="203" bodyend="223"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="210" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="203" bodyend="223"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a4676fb2c4107f121bd197d4475507d40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -613,7 +613,7 @@
 <para>Check if duration is defined. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(123).isDefined()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(123).isDefined();<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>True if duration is defined </para>
 </simplesect>
@@ -621,7 +621,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="263" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="246" bodyend="249"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="241" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="246" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a41b6aa4c574b3b98c32d5fafaa0a1fc2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -632,7 +632,7 @@
 <para>Check if duration is zero. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(0).isZero()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(0).isZero();<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>True if duration is zero </para>
 </simplesect>
@@ -640,7 +640,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="273" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="251" bodyend="259"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="250" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="251" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a98211c27882beea4d5eadb6e825b85cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -651,9 +651,9 @@
 <para>Check if duration is positive. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(+1).isPositive()<sp/>;<sp/>//<sp/>True</highlight></codeline>
-<codeline><highlight class="normal">Duration(-1).isPositive()<sp/>;<sp/>//<sp/>False</highlight></codeline>
-<codeline><highlight class="normal">Duration(0).isPositive()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(+1).isPositive();<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Duration(-1).isPositive();<sp/>//<sp/>False</highlight></codeline>
+<codeline><highlight class="normal">Duration(0).isPositive();<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>True if duration is positive </para>
 </simplesect>
@@ -661,7 +661,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="285" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="261" bodyend="269"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="261" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="261" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad72312f690761a3b5bfbe8ed0204d87e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -672,9 +672,9 @@
 <para>Check if duration is strictly positive. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(+1).isStrictlyPositive()<sp/>;<sp/>//<sp/>True</highlight></codeline>
-<codeline><highlight class="normal">Duration(-1).isStrictlyPositive()<sp/>;<sp/>//<sp/>False</highlight></codeline>
-<codeline><highlight class="normal">Duration(0).isStrictlyPositive()<sp/>;<sp/>//<sp/>False</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration(+1).isStrictlyPositive();<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Duration(-1).isStrictlyPositive();<sp/>//<sp/>False</highlight></codeline>
+<codeline><highlight class="normal">Duration(0).isStrictlyPositive();<sp/>//<sp/>False</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>True if duration is strictly positive </para>
 </simplesect>
@@ -682,7 +682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="297" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="271" bodyend="279"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="272" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="271" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a89fe2dee0dec4b81040ecc7a31bb3f87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -701,7 +701,7 @@
 <para>Check if duration is near another duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(2.0).isNear(Duration::Seconds(1.0),<sp/>Duration::Seconds(1.0))<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(2.0).isNear(Duration::Seconds(1.0),<sp/>Duration::Seconds(1.0));<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -726,7 +726,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="309" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="281" bodyend="304"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="283" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="281" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6b5818c374c3535f7827f6970c563206" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -737,7 +737,7 @@
 <para>Get the number of nanoseconds in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).nanoseconds()<sp/>;<sp/>//<sp/>0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).getNanoseconds();<sp/>//<sp/>0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of nanoseconds in duration </para>
 </simplesect>
@@ -745,7 +745,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="319" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="306" bodyend="314"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="292" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="306" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a022d05824638f8288e84131d6b5e07be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -756,7 +756,7 @@
 <para>Get the number of microseconds in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).microseconds()<sp/>;<sp/>//<sp/>0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).getMicroseconds();<sp/>//<sp/>0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of microseconds in duration </para>
 </simplesect>
@@ -764,7 +764,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="329" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="316" bodyend="324"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="301" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="316" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a4ff289a3d0fb16c73899adcfe381a111" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -775,7 +775,7 @@
 <para>Get the number of milliseconds in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).milliseconds()<sp/>;<sp/>//<sp/>0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).getMilliseconds();<sp/>//<sp/>0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of milliseconds in duration </para>
 </simplesect>
@@ -783,7 +783,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="339" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="326" bodyend="334"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="310" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="326" bodyend="334"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aff2319bf58b7c3da9e87ccd88867ffe7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -794,7 +794,7 @@
 <para>Get the number of seconds in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).seconds()<sp/>;<sp/>//<sp/>15</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).getSeconds();<sp/>//<sp/>15</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of seconds in duration </para>
 </simplesect>
@@ -802,7 +802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="349" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="336" bodyend="344"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="319" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="336" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a59eb18f0275a8683e73b9b86194bf9da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -813,7 +813,7 @@
 <para>Get the number of minutes in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).minutes()<sp/>;<sp/>//<sp/>0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).getMinutes();<sp/>//<sp/>0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of minutes in duration </para>
 </simplesect>
@@ -821,7 +821,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="359" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="346" bodyend="354"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="328" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="346" bodyend="354"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ac33d36a6a043ad71b0203b02b9ff961b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -832,7 +832,7 @@
 <para>Get the number of hours in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).hours()<sp/>;<sp/>//<sp/>0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(15).getHours();<sp/>//<sp/>0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of hours in duration </para>
 </simplesect>
@@ -840,7 +840,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="369" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="356" bodyend="364"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="337" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="356" bodyend="364"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8902625ed4b1d8d2a23bf7c5e9f886c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -851,7 +851,7 @@
 <para>Get the number of days in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Days(15).days()<sp/>;<sp/>//<sp/>15</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Days(15).getDays();<sp/>//<sp/>15</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of days in duration </para>
 </simplesect>
@@ -859,7 +859,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="379" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="366" bodyend="374"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="346" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="366" bodyend="374"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1af42d2314c9d99b87ff09cf8470a460cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Integer</type>
@@ -870,7 +870,7 @@
 <para>Get the number of weeks in duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Days(15).weeks()<sp/>;<sp/>//<sp/>2</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Days(15).getWeeks();<sp/>//<sp/>2</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Number of weeks in duration </para>
 </simplesect>
@@ -878,7 +878,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="389" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="376" bodyend="384"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="355" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="376" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a99649d50bb22e54f1ba4bd901fe3a7e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
+        <definition>Duration ostk::physics::time::Duration::getAbsolute</definition>
+        <argsstring>() const</argsstring>
+        <name>getAbsolute</name>
+        <briefdescription>
+<para>Get absolute duration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(-123.456).getAbsolute();<sp/>//<sp/>+123.456<sp/>[s]</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Absolute duration </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="364" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="386" bodyend="394"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a00148c707cda4dc7b93aab5280200cd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -889,7 +908,7 @@
 <para>Get nanosecond count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Nanoseconds(123).inNanoseconds()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Nanoseconds(123).inNanoseconds();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Nanosecond count </para>
 </simplesect>
@@ -897,7 +916,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="399" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="386" bodyend="394"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="373" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="396" bodyend="404"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a67a7723ff079f5a4404a5fa1b0fd2128" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -908,7 +927,7 @@
 <para>Get microsecond count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Microseconds(123).inMicroseconds()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Microseconds(123).inMicroseconds();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Microsecond count </para>
 </simplesect>
@@ -916,7 +935,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="409" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="396" bodyend="404"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="382" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="406" bodyend="414"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8a754e57d49d857d7fbcd62be81b858d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -927,7 +946,7 @@
 <para>Get millisecond count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Milliseconds(123).inMilliseconds()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Milliseconds(123).inMilliseconds();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Millisecond count </para>
 </simplesect>
@@ -935,7 +954,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="419" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="406" bodyend="414"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="391" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="416" bodyend="424"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ab2062045cd441c3eba4d58773a7bb01b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -946,7 +965,7 @@
 <para>Get second count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(123).inSeconds()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(123).inSeconds();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Second count </para>
 </simplesect>
@@ -954,7 +973,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="429" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="416" bodyend="424"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="400" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="426" bodyend="434"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8ad5153d6f3ee225d9e4c32a2e19febc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -965,7 +984,7 @@
 <para>Get minute count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Minutes(123).inMinutes()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Minutes(123).inMinutes();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Minute count </para>
 </simplesect>
@@ -973,7 +992,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="439" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="426" bodyend="434"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="409" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="436" bodyend="444"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a24026d219798a960db5482f4cda808c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -984,7 +1003,7 @@
 <para>Get hour count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Hours(123).inHours()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Hours(123).inHours();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Hour count </para>
 </simplesect>
@@ -992,7 +1011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="449" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="436" bodyend="444"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="418" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="446" bodyend="454"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a2c8f2e97717d02ba4f8dc044fe4f0b1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -1003,7 +1022,7 @@
 <para>Get day count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Days(123).inDays()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Days(123).inDays();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Day count </para>
 </simplesect>
@@ -1011,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="459" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="446" bodyend="454"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="427" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="456" bodyend="464"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a99c5afa0b16e2239cd2cae12454d228d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -1022,7 +1041,7 @@
 <para>Get week count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Weeks(123).inWeeks()<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Weeks(123).inWeeks();<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Week count </para>
 </simplesect>
@@ -1030,7 +1049,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="469" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="456" bodyend="464"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="436" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="466" bodyend="474"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aa89099508db5e3bc895790f665101360" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -1045,7 +1064,7 @@
 <para>Get count in given time unit. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Weeks(123).in(Time::Unit::Week)<sp/>;<sp/>//<sp/>123.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Weeks(123).in(Time::Unit::Week);<sp/>//<sp/>123.0</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1062,26 +1081,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="480" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="466" bodyend="505"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a99649d50bb22e54f1ba4bd901fe3a7e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
-        <definition>Duration ostk::physics::time::Duration::getAbsolute</definition>
-        <argsstring>() const</argsstring>
-        <name>getAbsolute</name>
-        <briefdescription>
-<para>Get absolute duration. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(-123.456).getAbsolute()<sp/>;<sp/>//<sp/>+123.456<sp/>[s]</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Absolute duration </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="490" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="507" bodyend="515"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="446" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="476" bodyend="515"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a20ef00f7f5889c3e815800bb72920482" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -1097,8 +1097,8 @@
 <para>Get string representation of duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration::Seconds(123.456).toString(Duration::Format::Standard)<sp/>;<sp/>//<sp/>02:03.456</highlight></codeline>
-<codeline><highlight class="normal">Duration::Seconds(123.456).toString(Duration::Format::ISO8601)<sp/>;<sp/>//<sp/>PT2M3.456S</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration::Seconds(123.456).toString(Duration::Format::Standard);<sp/>//<sp/>02:03.456</highlight></codeline>
+<codeline><highlight class="normal">Duration::Seconds(123.456).toString(Duration::Format::ISO8601);<sp/>//<sp/>PT2M3.456S</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1115,7 +1115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="502" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="517" bodyend="673"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="457" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="517" bodyend="673"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -1136,7 +1136,7 @@
 <para>Multiplication operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">2.0<sp/>*<sp/>Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">2.0<sp/>*<sp/>Duration::Seconds(1.0);<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1161,7 +1161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="241" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="225" bodyend="233"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="221" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="225" bodyend="233"/>
       </memberdef>
       <memberdef kind="friend" id="classostk_1_1physics_1_1time_1_1_duration_1a82573aea35c8642b571f78c85ca70fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
@@ -1180,7 +1180,7 @@
 <para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Duration(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Duration(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1205,7 +1205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="253" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="235" bodyend="244"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="232" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="235" bodyend="244"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1218,8 +1218,8 @@
 <para>Constructs an undefined duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Undefined()<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">duration.isDefined()<sp/>;<sp/>//<sp/>False</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">duration.isDefined();<sp/>//<sp/>False</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Undefined duration </para>
 </simplesect>
@@ -1227,7 +1227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="513" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="675" bodyend="678"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="467" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="675" bodyend="678"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1acacd92afc598a3a48289307337fce217" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1238,8 +1238,8 @@
 <para>Constructs a zero duration. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Zero()<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">duration.isZero()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Zero();</highlight></codeline>
+<codeline><highlight class="normal">duration.isZero();<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Zero duration </para>
 </simplesect>
@@ -1247,7 +1247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="524" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="680" bodyend="683"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="477" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="680" bodyend="683"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a81e8036be5cf9ee2f0108ac955642c96" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1262,7 +1262,7 @@
 <para>Constructs a duration from a nanosecond count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Nanoseconds(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Nanoseconds(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1279,7 +1279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="535" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="685" bodyend="688"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="487" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="685" bodyend="688"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ab63d75db1524c35849385e07c0dc261a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1294,7 +1294,7 @@
 <para>Constructs a duration from a microsecond count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Microseconds(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Microseconds(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1311,7 +1311,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="546" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="690" bodyend="693"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="497" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="690" bodyend="693"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a0712e9c93f9be6ca4d837998fda90e7a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1326,7 +1326,7 @@
 <para>Constructs a duration from a millisecond count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Milliseconds(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Milliseconds(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1343,7 +1343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="557" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="695" bodyend="698"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="507" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="695" bodyend="698"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad973fa34fcc308fdcc8d50c3ee694764" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1358,7 +1358,7 @@
 <para>Constructs a duration from a second count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Seconds(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1375,7 +1375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="568" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="700" bodyend="703"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="517" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="700" bodyend="703"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a1cd2884c6bb89071780c7dffcba9b49f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1390,7 +1390,7 @@
 <para>Constructs a duration from a minute count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Minutes(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Minutes(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1407,7 +1407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="579" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="705" bodyend="708"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="527" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="705" bodyend="708"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a950723133d46c93a06907543d15e4dc0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1422,7 +1422,7 @@
 <para>Constructs a duration from a hour count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Hours(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Hours(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1439,7 +1439,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="590" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="710" bodyend="713"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="537" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="710" bodyend="713"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aefb4abc87c6957d00650228d069fa1e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1454,7 +1454,7 @@
 <para>Constructs a duration from a day count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Days(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Days(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1471,7 +1471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="601" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="715" bodyend="718"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="547" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="715" bodyend="718"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6186e3350364f407e390f520b93dbf83" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1486,7 +1486,7 @@
 <para>Constructs a duration from a week count. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Weeks(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Weeks(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1503,7 +1503,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="612" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="720" bodyend="723"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="557" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="720" bodyend="723"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6e3ed5971283cccf4cbc591dd7919efa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1522,9 +1522,8 @@
 <para>Constructs a duration between two instants. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                Duration is positive is firstInstant &lt; secondInstant.
-</verbatim></para>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Between(firstInstant,<sp/>secondInstant)<sp/>;</highlight></codeline>
+<para><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> is positive is firstInstant &lt; secondInstant.</para>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Between(firstInstant,<sp/>secondInstant);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1549,7 +1548,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="626" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="725" bodyend="728"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="570" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="725" bodyend="728"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1afe4136976a7c4e5c2ec00c0aa5583b18" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1569,9 +1568,9 @@
 <para>Constructs a duration from a string representation. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Parse(&quot;12:34:56.123.456.789&quot;)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Parse(&quot;12:34:56.123.456.789&quot;,<sp/>Duration::Format::Standard)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Parse(&quot;12:34:56.123456789&quot;,<sp/>Duration::Format::ISO8601)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Parse(&quot;12:34:56.123.456.789&quot;);</highlight></codeline>
+<codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Parse(&quot;12:34:56.123.456.789&quot;,<sp/>Duration::Format::Standard);</highlight></codeline>
+<codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Parse(&quot;12:34:56.123456789&quot;,<sp/>Duration::Format::ISO8601);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -1596,7 +1595,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="640" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="730" bodyend="908"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="583" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="730" bodyend="906"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1611,7 +1610,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="646" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="910" bodyend="914"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="589" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="908" bodyend="912"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1619,7 +1618,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="29" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="28" bodyend="647"/>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="27" bodyend="590"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a6e3ed5971283cccf4cbc591dd7919efa" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Between</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a00ab9551503fa77ba826481a707e55d9" prot="private" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>count_</name></member>

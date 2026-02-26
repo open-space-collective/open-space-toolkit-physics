@@ -11,12 +11,15 @@
         <argsstring>()</argsstring>
         <name>TEME</name>
         <briefdescription>
+<para>Default constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">TEME<sp/>provider;</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="34" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="32" bodyend="32"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="32" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a23d2c9b2c7dced3eb3cda051fb26b743" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -24,12 +27,13 @@
         <argsstring>() override</argsstring>
         <name>~TEME</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="36" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="34" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="41" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1ad0b1cfe2241d1e02d85f35a97542ea48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> *</type>
@@ -38,12 +42,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
         <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">TEME*<sp/>clonePtr<sp/>=<sp/>provider.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to the cloned <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="38" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="36" bodyend="39"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="50" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="36" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a911f2844ceaef26996437f327ba4e2b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -52,12 +62,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
         <briefdescription>
+<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> provider is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> provider is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="40" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="41" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="59" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a0d80a8d9519ab227b2205700e0dd9b1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -70,12 +86,27 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Get the transform at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>provider.getTransformAt(Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transform from <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f" kindref="compound">ITRF</ref> to <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> at the given instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="42" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="46" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="69" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="46" bodyend="140"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -110,7 +141,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="32" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" bodystart="31" bodyend="43"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="31" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" bodystart="30" bodyend="70"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1ad0b1cfe2241d1e02d85f35a97542ea48" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a0d80a8d9519ab227b2205700e0dd9b1f" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>getTransformAt</name></member>

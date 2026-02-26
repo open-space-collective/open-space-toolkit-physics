@@ -50,15 +50,10 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth(gravitationalParameter,<sp/>equatorialRadius,<sp/>flattening,<sp/>J2,<sp/>J4,<sp/>ephemeris,<sp/>gravModel,<sp/>magModel,</highlight></codeline>
+<codeline><highlight class="normal">atmosModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">anInstant</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An instant for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
 <parameternamelist>
 <parametername direction="in">aGravitationalParameter</parametername>
 </parameternamelist>
@@ -135,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="67" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="22" bodyend="48"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="69" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="22" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a04a4cf746c8434fb47e61d5462008453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -165,15 +160,9 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth(ephemeris,<sp/>gravModel,<sp/>magModel,<sp/>atmosModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">anInstant</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>An instant for the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
 <parameternamelist>
 <parametername direction="in">anEphemeris</parametername>
 </parameternamelist>
@@ -210,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="87" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="50" bodyend="75"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="91" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="50" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a0a57b4939dd660610fa612aacc7a01c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -218,12 +207,13 @@
         <argsstring>() override</argsstring>
         <name>~Earth</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="94" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="77" bodyend="77"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="99" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a4ccdbfcb7d3ad42c87eaf7f1f5ca576c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> *</type>
@@ -232,12 +222,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1adbbbc6c86fdec5f6d24e7b64419b885c">clone</reimplements>
         <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth*<sp/>earthPtr<sp/>=<sp/>earth.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> celestial object </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="96" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="79" bodyend="82"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="108" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="79" bodyend="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -250,13 +246,15 @@
 <para>Default <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> model (EGM2008) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::Default();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="102" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="127" bodyend="130"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="117" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="84" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1af4e38f0dcc47b0fb8b3295a1eb21e308" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -271,6 +269,8 @@
 <para>Just gravity model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::GravitationalOnly(gravModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aGravitationalModel</parametername>
@@ -286,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="109" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="84" bodyend="91"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="127" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="89" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a50c6a03684538b04041d202e1fa25c24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -301,6 +301,8 @@
 <para>Just atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::AtmosphericOnly(atmosModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anAtmosphericModel</parametername>
@@ -316,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="116" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="102" bodyend="109"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="137" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="98" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ae75f36be563cd9cecec539c7b590d437" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -331,12 +333,14 @@
 <para>Just magnetic model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::MagneticOnly(magModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>`</parametername>
+<parametername direction="in">aMagneticModel</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>[in] aMagneticModel A magnetic model </para>
+<para>A magnetic model </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -346,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="123" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="93" bodyend="100"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="147" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="107" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a1375db175db4fbdc50af699b28c4e18b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -369,6 +373,8 @@
 <para>Create earth from specified models. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::FromModels(gravModel,<sp/>magModel,<sp/>atmosModel);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aGravitationalModel</parametername>
@@ -400,7 +406,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="133" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="111" bodyend="125"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="160" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="116" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a10edb4ebdd46a4ae83e020c79d5866fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -421,13 +427,15 @@
 <para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 2008 model (EGM2008) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::EGM2008();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="143" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="132" bodyend="137"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="173" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="132" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1aa9586bbfa33e0130fbe499dd23748fe7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -448,10 +456,9 @@
 <para>World Geodetic System 1984 (WGS84) + <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 1996 (EGM96) </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                EGM96 coefficients and WGS84 shape.
-                Gravitational parameter: 398600441800000 [m^3/s^2].
-                Equatorial radius: 6378137.0 [m].
-</verbatim></para>
+<para>EGM96 coefficients and WGS84 shape. Gravitational parameter: 398600441800000 [m^3/s^2]. Equatorial radius: 6378137.0 [m].</para>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::WGS84_EGM96();</highlight></codeline>
+</programlisting></para>
 <para>NIMA TR8350.2, Third Edition, 4 July 1997.</para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
@@ -459,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="158" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="139" bodyend="144"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="190" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="139" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a52d255251c6b6770c8bd86c9d187289a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -480,13 +487,15 @@
 <para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 1996 (EGM96) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::EGM96();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="167" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="146" bodyend="151"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="202" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="146" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1ad63a8f55e77cad0b28524fdb3ef43b2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -507,13 +516,15 @@
 <para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> Gravity Model 1984 (EGM84) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::EGM84();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="176" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="153" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="214" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="153" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1abc5717390846fec03abe2935cccedd18" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -534,13 +545,15 @@
 <para>World Geodetic System 1984 (WGS84) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::WGS84();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="185" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="160" bodyend="165"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="226" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="160" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth_1a54f2070adf8e3fd2821650382957cb2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref></type>
@@ -551,13 +564,15 @@
 <para>Spherical model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earth<sp/>=<sp/>Earth::Spherical();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">Earth</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="194" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="167" bodyend="172"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="238" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="167" bodyend="172"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -584,7 +599,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="197" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="174" bodyend="189"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="241" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.cpp" bodystart="174" bodyend="189"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -627,7 +642,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1_object"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" bodystart="50" bodyend="200"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" line="51" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp" bodystart="50" bodyend="244"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a60d182194f5b3925d40878616fd12ec1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessAtmosphericModel</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0e365cdf7cddbe4aa38e68e8c10665d6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::celestial::Earth</scope><name>accessEphemeris</name></member>

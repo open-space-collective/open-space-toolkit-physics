@@ -1144,7 +1144,7 @@
 <codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;Celestial<sp/>object&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="549"><highlight class="normal"></highlight></codeline>
-<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aPosition.accessFrame()<sp/>!=<sp/>celestialSPtr-&gt;accessFrame())</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*aPosition.accessFrame()<sp/>!=<sp/>*celestialSPtr-&gt;accessFrame())</highlight></codeline>
 <codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
 <codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>convert<sp/>Position<sp/>to<sp/>LLA<sp/>from<sp/>frame<sp/>[{}],<sp/>must<sp/>be<sp/>in<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>

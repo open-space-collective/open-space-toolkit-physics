@@ -71,6 +71,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>direction;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aDirection</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A direction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -92,6 +114,8 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>manifest;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anOutputStream</parametername>
@@ -115,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" line="26" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="37"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" line="28" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="28" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1a702ce7315b53edd862a42b5f2c980e71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -133,6 +157,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>scalar;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aScalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -154,6 +200,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>vector;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aVector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

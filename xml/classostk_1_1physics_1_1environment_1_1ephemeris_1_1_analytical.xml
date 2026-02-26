@@ -57,8 +57,12 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1abe95fecc4079240c1acf319afc1d4c54">clone</reimplements>
         <briefdescription>
+<para>Clone the ephemeris. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to cloned ephemeris. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -71,8 +75,12 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1a1b1722954d5794996c1c3de88c27a90d">isDefined</reimplements>
         <briefdescription>
+<para>Check if the ephemeris is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if the ephemeris is defined. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -85,8 +93,12 @@
         <name>accessFrame</name>
         <reimplements refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aba61e3f69e9c699881b7660d20748078">accessFrame</reimplements>
         <briefdescription>
+<para>Access the reference frame of the ephemeris. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Shared pointer to the reference frame. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="_engine_8cpp" kind="file" language="C++">
     <compoundname>Engine.cpp</compoundname>
-    <includes local="no">regex</includes>
+    <includes local="no">boost/regex.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Container/Array.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Container/Map.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Error.hpp</includes>
@@ -141,9 +141,6 @@
       </node>
       <node id="52">
         <label>OpenSpaceToolkit/IO/URL.hpp</label>
-      </node>
-      <node id="2">
-        <label>regex</label>
       </node>
       <node id="26">
         <label>unordered_set</label>
@@ -409,6 +406,9 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>boost/regex.hpp</label>
+      </node>
       <node id="36">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp</label>
         <link refid="_theory_8hpp"/>
@@ -638,7 +638,7 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;regex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/regex.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Array.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Map.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -896,7 +896,7 @@
 <codeline lineno="258"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>kernel<sp/>:<sp/>kernelSet_)</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::regex_match(kernel.getName(),<sp/>std::regex(aRegexString)))</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(kernel.getName().match(boost::regex(aRegexString)))</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

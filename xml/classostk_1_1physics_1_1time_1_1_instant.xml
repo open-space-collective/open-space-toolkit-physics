@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="414" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="414" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="390" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="390" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_instant_1a514327c524a76c206ee16a76d3761213" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">Scale</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="415" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="415" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="391" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="391" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="45" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="43" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a701dd98cce0e8b7536aab09555a889f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -61,7 +61,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>==</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="21" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="54" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="21" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a897d758d25118001f6958c865cb6f0e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -94,7 +94,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>!=</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="69" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="31" bodyend="39"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="31" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a17692f0ecb5ab2feecf153c0e1d9d2a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -127,7 +127,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>&lt;</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="81" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="41" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="76" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a6c9a495ac6041a46602def3c0eaaef33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -160,7 +160,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>&lt;=</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="93" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="51" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="87" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="51" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a1e73faadcf3c6724a5e67f35db007697" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -193,7 +193,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>&gt;</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="61" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="98" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="61" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1af5370a5e8c4b39f46f2baf79105b35cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -226,7 +226,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>&gt;=</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="71" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="109" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="71" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1ae3a88555e64eefbdf9953a5f96e8cb1b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -258,7 +258,7 @@
 <para>Addition operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>+<sp/>Duration::Days(1.0)<sp/>;<sp/>//</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>+<sp/>Duration::Days(1.0);<sp/>//</highlight></codeline>
 <codeline><highlight class="normal">2018-01-02<sp/>00:00:00</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="129" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="81" bodyend="94"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="120" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="81" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acda8b20c4ab0c89b717cf11d750767bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -291,7 +291,7 @@
 <para>Subtraction operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>-<sp/>Duration::Days(1.0)<sp/>;<sp/>//</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>-<sp/>Duration::Days(1.0);<sp/>//</highlight></codeline>
 <codeline><highlight class="normal">2018-01-01<sp/>00:00:00</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
@@ -309,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="141" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="96" bodyend="109"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="131" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="96" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1aad77e9b8aa2ab6c2d1f18c95a91e6a8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -325,7 +325,7 @@
         </briefdescription>
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>-</highlight></codeline>
-<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//<sp/>1.0<sp/>[day]</highlight></codeline>
+<codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//<sp/>1.0<sp/>[day]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -342,7 +342,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="153" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="111" bodyend="139"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="142" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="111" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a48ba0a7bd60a02b7c7f989adc9a451cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
@@ -357,8 +357,8 @@
 <para>Addition assignement operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">instant<sp/>+=<sp/>Duration::Days(1.0)<sp/>;<sp/>//<sp/>2018-01-02<sp/>00:00:00<sp/>[TT]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);</highlight></codeline>
+<codeline><highlight class="normal">instant<sp/>+=<sp/>Duration::Days(1.0);<sp/>//<sp/>2018-01-02<sp/>00:00:00<sp/>[TT]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -375,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="165" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="141" bodyend="156"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="153" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="141" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1abac01f937383ef281b4047ad692453ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
@@ -390,8 +390,8 @@
 <para>Subtraction assignement operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">instant<sp/>-=<sp/>Duration::Days(1.0)<sp/>;<sp/>//<sp/>2018-01-01<sp/>00:00:00<sp/>[TT]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>2,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::TT);</highlight></codeline>
+<codeline><highlight class="normal">instant<sp/>-=<sp/>Duration::Days(1.0);<sp/>//<sp/>2018-01-01<sp/>00:00:00<sp/>[TT]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -408,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="177" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="158" bodyend="173"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="164" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="158" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a3036cb77f2686a81c51f0c658881b3ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -419,7 +419,7 @@
 <para>Check if instant is defined. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC).isDefined()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC).isDefined();<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>True if instant is defined </para>
 </simplesect>
@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="199" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="188" bodyend="191"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="184" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="188" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a2e7fcfd9e7aae17b737ee138098b9771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -438,7 +438,7 @@
 <para>Check if instant is post-epoch (J2000) </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC).isPostEpoch()<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC).isPostEpoch();<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>True if instant is post-epoch </para>
 </simplesect>
@@ -446,7 +446,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="209" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="193" bodyend="201"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="193" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="193" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a6bbb53cd76ec7d4e89ebbb45cf7ae03b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -465,7 +465,7 @@
 <para>Check if instant is near another instant. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::J2000().isNear(Instant::J2000(),<sp/>Duration::Zero())<sp/>;<sp/>//<sp/>True</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::J2000().isNear(Instant::J2000(),<sp/>Duration::Zero());<sp/>//<sp/>True</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -490,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="221" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="203" bodyend="226"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="204" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="203" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a3fccf9781f8466ce2163aa2396f70560" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">time::DateTime</ref></type>
@@ -505,7 +505,7 @@
 <para>Get date-time expressed in given time scale. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::J2000().getDateTime(Scale::TT)<sp/>;<sp/>//<sp/>2000-01-01<sp/>12:00:00</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::J2000().getDateTime(Scale::TT);<sp/>//<sp/>2000-01-01<sp/>12:00:00</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -522,7 +522,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="232" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="228" bodyend="300"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="214" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="228" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a71b3a5992123fddb3a3539dc99df66c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -537,7 +537,7 @@
 <para>Get Julian <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> expressed in given time scale. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::J2000().getJulianDate(Scale::TT)<sp/>;<sp/>//<sp/>2451545.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::J2000().getJulianDate(Scale::TT);<sp/>//<sp/>2451545.0</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -554,7 +554,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="243" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="302" bodyend="315"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="224" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="302" bodyend="315"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1aeaaf152c806c5f98ad03933ede05fe2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -569,7 +569,7 @@
 <para>Get Modified Julian <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> expressed in given time scale. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::J2000().getModifiedJulianDate(Scale::TT)<sp/>;<sp/>//<sp/>51544.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::J2000().getModifiedJulianDate(Scale::TT);<sp/>//<sp/>51544.0</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -586,7 +586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="254" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="317" bodyend="330"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="234" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="317" bodyend="330"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1aceab87ef79e6f5d1438ac78e11bdcd6f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -597,9 +597,8 @@
 <para>Get Leap Second count. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                The Leap Second count is the number of seconds between TAI and UTC scales.
-</verbatim></para>
-<para><programlisting><codeline><highlight class="normal">Instant::J2000().getLeapSecondCount()<sp/>;</highlight></codeline>
+<para>The Leap Second count is the number of seconds between TAI and UTC scales.</para>
+<para><programlisting><codeline><highlight class="normal">Instant::J2000().getLeapSecondCount();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Leap Second </para>
 </simplesect>
@@ -607,7 +606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="266" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="332" bodyend="335"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="245" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="332" bodyend="335"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1ad2848890ee69709ed5540d1c8fa017e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -628,7 +627,7 @@
 <para>Get string representation of instant. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant::J2000().toString(Scale::TT)<sp/>;<sp/>//<sp/>2000-01-01<sp/>12:00:00<sp/>[TT]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant::J2000().toString(Scale::TT);<sp/>//<sp/>2000-01-01<sp/>12:00:00<sp/>[TT]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -645,7 +644,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="277" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="337" bodyend="350"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="255" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="337" bodyend="350"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -666,7 +665,7 @@
 <para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -691,7 +690,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="189" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="175" bodyend="186"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="175" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="175" bodyend="186"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -704,8 +703,8 @@
 <para>Constructs an undefined instant. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::Undefined()<sp/>;</highlight></codeline>
-<codeline><highlight class="normal">instant.isDefined()<sp/>;<sp/>//<sp/>False</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">instant.isDefined();<sp/>//<sp/>False</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Undefined instant </para>
 </simplesect>
@@ -713,7 +712,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="290" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="352" bodyend="355"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="267" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="352" bodyend="355"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -724,7 +723,7 @@
 <para>Constructs an instant at current time. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::Now()<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::Now();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> at current time </para>
 </simplesect>
@@ -732,7 +731,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="300" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="357" bodyend="409"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="276" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="357" bodyend="409"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a3f84d0c2d0b140326d3b172b54e3ffff" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -743,13 +742,15 @@
 <para>Constructs instant at J2000 epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                The currently-used standard epoch &quot;J2000&quot; is defined by international agreement to be
-                equivalent to:
-                - The Gregorian date January 1, 2000 at 12:00 TT (Terrestrial Time).
-                - The Julian date 2451545.0 TT (Terrestrial Time).
-                - January 1, 2000, 11:59:27.816 TAI (International Atomic Time).
-                - January 1, 2000, 11:58:55.816 UTC (Coordinated Universal Time).
-</verbatim></para>
+<para>The currently-used standard epoch &quot;J2000&quot; is defined by international agreement to be equivalent to:<itemizedlist>
+<listitem><para>The Gregorian date January 1, 2000 at 12:00 TT (Terrestrial <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>).</para>
+</listitem><listitem><para>The Julian date 2451545.0 TT (Terrestrial <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>).</para>
+</listitem><listitem><para>January 1, 2000, 11:59:27.816 TAI (International Atomic <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>).</para>
+</listitem><listitem><para>January 1, 2000, 11:58:55.816 UTC (Coordinated Universal <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>).</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::J2000();<sp/>//<sp/>2000-01-01<sp/>12:00:00<sp/>[TT]</highlight></codeline>
+</programlisting></para>
 <para><ulink url="https://en.wikipedia.org/wiki/Epoch_">https://en.wikipedia.org/wiki/Epoch_</ulink>(astronomy)#Julian_years_and_J2000</para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> at J2000 epoch </para>
 </simplesect>
@@ -757,7 +758,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="315" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="411" bodyend="414"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="293" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="411" bodyend="414"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1aa1fb260db41fbf1e96f0fe9f9f494139" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -768,16 +769,16 @@
 <para>Constructs instant at GPS epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                The GPS epoch is equivalent to:
-                - January 6, 1980, 00:00:00 UTC (Coordinated Universal Time).
-</verbatim></para>
+<para>The GPS epoch is equivalent to: - January 6, 1980, 00:00:00 UTC (Coordinated Universal <ref refid="classostk_1_1physics_1_1time_1_1_time" kindref="compound">Time</ref>).</para>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::GPSEpoch();<sp/>//<sp/>1980-01-06<sp/>00:00:00<sp/>[UTC]</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> at GPSEpoch epoch </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="324" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="416" bodyend="419"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="304" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="416" bodyend="419"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1afd5725574a02389b80fad4baff313c8a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -796,7 +797,7 @@
 <para>Constructs instant from date-time. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::DateTime(DateTime(2000,<sp/>1,<sp/>1,<sp/>12,<sp/>0,<sp/>0),<sp/>Scale::TT)<sp/>;<sp/>//</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::DateTime(DateTime(2000,<sp/>1,<sp/>1,<sp/>12,<sp/>0,<sp/>0),<sp/>Scale::TT);<sp/>//</highlight></codeline>
 <codeline><highlight class="normal">2000-01-01<sp/>12:00:00<sp/>[TT]</highlight></codeline>
 </programlisting></para>
 <para>@input [in] aDateTime A date-time @input [in] aTimeScale A time scale <simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> </para>
@@ -805,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="337" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="421" bodyend="502"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="316" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="421" bodyend="502"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a8826d68093086f8b203a5be940ef34fb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -824,7 +825,7 @@
 <para>Constructs instant from Julian <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::JulianDate(2451545.0,<sp/>Scale::TT)<sp/>;<sp/>//<sp/>2000-01-01<sp/>12:00:00<sp/>[TT]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::JulianDate(2451545.0,<sp/>Scale::TT);<sp/>//<sp/>2000-01-01<sp/>12:00:00<sp/>[TT]</highlight></codeline>
 </programlisting></para>
 <para><ulink url="https://en.wikipedia.org/wiki/Julian_day">https://en.wikipedia.org/wiki/Julian_day</ulink></para>
 <para>@input [in] aJulianDate A Julian <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> @input [in] aTimeScale A time scale <simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> </para>
@@ -833,7 +834,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="351" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="504" bodyend="517"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="329" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="504" bodyend="517"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1af515c6d0547e40a337efb865a71c2558" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -852,7 +853,7 @@
 <para>Constructs instant from Modified Julian <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::ModifiedJulianDate(51544.0,<sp/>Scale::TT)<sp/>;<sp/>//<sp/>2000-01-01<sp/>12:00:00</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::ModifiedJulianDate(51544.0,<sp/>Scale::TT);<sp/>//<sp/>2000-01-01<sp/>12:00:00</highlight></codeline>
 <codeline><highlight class="normal">[TT]</highlight></codeline>
 </programlisting></para>
 <para><ulink url="https://en.wikipedia.org/wiki/Julian_day">https://en.wikipedia.org/wiki/Julian_day</ulink></para>
@@ -862,7 +863,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="366" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="519" bodyend="532"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="343" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="519" bodyend="532"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a0d3cede504554df010a362932b85b2df" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -886,7 +887,7 @@
 <para>Constructs an <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> from a string representation and Scale. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::Parse(&quot;2018-01-02<sp/>12:34:56.123.456.789&quot;,<sp/>Scale::UTC)<sp/>;<sp/>//</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>Instant::Parse(&quot;2018-01-02<sp/>12:34:56.123.456.789&quot;,<sp/>Scale::UTC);<sp/>//</highlight></codeline>
 <codeline><highlight class="normal">2018-01-02</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
@@ -920,7 +921,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="380" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="534" bodyend="537"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="356" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="534" bodyend="537"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -943,7 +944,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="417" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="539" bodyend="543"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="393" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="539" bodyend="543"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a06a4a7f22f3edf9c0fef4eb032fda53f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -960,7 +961,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="419" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="545" bodyend="548"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="395" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="545" bodyend="548"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -987,7 +988,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="421" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="550" bodyend="678"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="397" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="550" bodyend="678"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a0cd7650fbf7047587d0e7827715d48e5" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1004,7 +1005,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="425" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="680" bodyend="683"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="401" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="680" bodyend="683"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a096f256ad914f5cd04d2a02e779845d8" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1021,7 +1022,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="427" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="685" bodyend="688"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="403" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="685" bodyend="688"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1abc3e3061167797c270cb9c9d68ab4aa9" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1038,7 +1039,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="429" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="690" bodyend="693"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="405" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="690" bodyend="693"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a4dedbd7670ba3c89c173c8df412f312d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1055,7 +1056,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="431" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="695" bodyend="698"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="407" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="695" bodyend="698"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acfed140f8597a04ffc5a65a9ef29d4cd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1072,7 +1073,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="433" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="700" bodyend="703"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="409" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="700" bodyend="703"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1a76915db988ab68438685266291f1cf07" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1089,7 +1090,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="435" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="705" bodyend="708"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="411" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="705" bodyend="708"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1aeb7a95b7a2ed8b22aef90f2e6e60992c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1106,7 +1107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="437" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="710" bodyend="713"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="413" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="710" bodyend="713"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1ae478cbfc3bcbe425027e878c3d047f5f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Instant::Count</type>
@@ -1123,7 +1124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="439" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="715" bodyend="718"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="415" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="715" bodyend="718"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acfe4d11e901f97f44d18020e9f6cbbd0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1140,7 +1141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="441" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="720" bodyend="820"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="417" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="720" bodyend="820"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1acaa941ef4df4715cc03fdf1bbb911bde" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1157,7 +1158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="443" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="822" bodyend="924"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="419" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="822" bodyend="924"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1adac5dedf407dcb8e44acf0f73bbe5ef5" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1174,7 +1175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="445" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="926" bodyend="933"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="421" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="926" bodyend="933"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_instant_1ada74d6e6167d7a7a4f90105fa71ea291" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Int64</type>
@@ -1191,7 +1192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="447" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="935" bodyend="942"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="423" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="935" bodyend="942"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1200,7 +1201,7 @@
     <detaileddescription>
 <para><ulink url="https://en.wikipedia.org/wiki/Instant">https://en.wikipedia.org/wiki/Instant</ulink> <ulink url="https://www.boost.org/doc/libs/1_67_0/doc/html/date_time/details.html#date_time.calculations">https://www.boost.org/doc/libs/1_67_0/doc/html/date_time/details.html#date_time.calculations</ulink> <ulink url="http://rhodesmill.org/skyfield/time.html">http://rhodesmill.org/skyfield/time.html</ulink> <ulink url="http://www.madore.org">http://www.madore.org</ulink>/~david/computers/unix-leap-seconds.html <ulink url="http://help.agi.com/AGIComponentsJava/html/TimeAndTimeStandards.htm">http://help.agi.com/AGIComponentsJava/html/TimeAndTimeStandards.htm</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="41" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="40" bodyend="448"/>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Instant.hpp" bodystart="39" bodyend="424"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1time_1_1_instant_1a8ddcd2265cb2e7b80228715193139828" prot="private" virt="non-virtual"><scope>ostk::physics::time::Instant</scope><name>ConvertCountScale</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_instant_1a51887b0b37bfd4b795bfbce8905085ac" prot="private" virt="non-virtual"><scope>ostk::physics::time::Instant</scope><name>count_</name></member>

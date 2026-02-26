@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="92" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" bodystart="92" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="104" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -33,12 +33,35 @@
           <declname>aBulletinB</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>bulletinB;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aBulletinB</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Bulletin B </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="70" column="12"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="73" column="12"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,13 +74,15 @@
 <para>true if defined </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bulletinB.isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if defined. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="76" column="10"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="82" column="10"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -70,13 +95,15 @@
 <para>Undefined factory function. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">BulletinB<sp/>bulletinB<sp/>=<sp/>BulletinB::Undefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Undefined Bulletin B object. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="82" column="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="91" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1ac3938e01a38787b0cb98f231b6be5cc1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b" kindref="compound">BulletinB</ref></type>
@@ -91,6 +118,8 @@
 <para>Load Bulletin B from file. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">BulletinB<sp/>bulletinB<sp/>=<sp/>BulletinB::Load(file);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aFile</parametername>
@@ -106,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="89" column="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="101" column="22"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -121,38 +150,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="94" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="106" column="5"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>IERS Bulletin B. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        IERS Bulletin B provides current information on the Earth’s orientation in the IERS
-                        Reference System. This includes Universal Time, coordinates of the terrestrial pole, and
-                        celestial pole offsets. IERS Bulletin B consists of 5 sections:
-
-                        Section 1:
-                        Daily final values at 0:00 UT of x, y, UT1-UTC, dX, dY, and their uncertainties. Time
-                        span: one month with final values, one month with preliminary values.
-
-                        Section 2:
-                        Daily final values at 0:00 UT of celestial pole offsets dPsi and dEps in the IAU 1980
-                        system and their uncertainties.
-
-                        Section 3:
-                        Earth angular velocity (daily estimates of LOD and OMEGA with their uncertainties).
-
-                        Section 4:
-                        Information on the time scales and announcement of occurring leap seconds.
-
-                        Section 5:
-                        Average formal precision of the individual and combined series contributing or not to
-                        the combination and their agreement with the combination.
-</verbatim></para>
+<para>IERS Bulletin B provides current information on the Earth’s orientation in the IERS Reference System. This includes Universal Time, coordinates of the terrestrial pole, and celestial pole offsets. IERS Bulletin B consists of 5 sections:</para>
+<para>Section 1: Daily final values at 0:00 UT of x, y, UT1-UTC, dX, dY, and their uncertainties. Time span: one month with final values, one month with preliminary values.</para>
+<para>Section 2: Daily final values at 0:00 UT of celestial pole offsets dPsi and dEps in the IAU 1980 system and their uncertainties.</para>
+<para>Section 3: Earth angular velocity (daily estimates of LOD and OMEGA with their uncertainties).</para>
+<para>Section 4: Information on the time scales and announcement of occurring leap seconds.</para>
+<para>Section 5: Average formal precision of the individual and combined series contributing or not to the combination and their agreement with the combination.</para>
 <para><ulink url="https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html">https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="68" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" bodystart="67" bodyend="95"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" line="62" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinB.hpp" bodystart="61" bodyend="107"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a21b7ecc5c17126a495942c447dd823bb" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>BulletinB</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_b_1a01db4d24c669be0a9057fb46d10cce49" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinB</scope><name>isDefined</name></member>

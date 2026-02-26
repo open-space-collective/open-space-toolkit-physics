@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="103" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="103" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="129" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manifest_1a3c010f1e95a3f9fa8e672f29de28894b" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="104" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="104" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="130" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -49,6 +49,8 @@
 <para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>manifest;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anOutputStream</parametername>
@@ -72,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="45" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="26" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="47" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="28" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -85,13 +87,15 @@
 <para>Return true if manifest is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Boolean<sp/>isDefined<sp/>=<sp/>manifest.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if manifest is defined. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="51" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="39" bodyend="42"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="56" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1ae48a7367e7c0af23b626726a60b9ba03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -102,13 +106,15 @@
 <para>Get last update timestamp. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>timestamp<sp/>=<sp/>manifest.getLastModifiedTimestamp();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Instant indicating when the manifest was last updated based on file modification time </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="57" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="44" bodyend="47"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="65" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -123,6 +129,8 @@
 <para>Get last update timestamp for data. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>timestamp<sp/>=<sp/>manifest.getLastUpdateTimestampFor(&quot;earth-gravity-egm96&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">dataName</parametername>
@@ -138,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="64" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="49" bodyend="54"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="75" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="51" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1ad0cb18f62d58be9e11b3b03947dd85a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -153,6 +161,8 @@
 <para>Get the next update check timestamp for data. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>timestamp<sp/>=<sp/>manifest.getNextUpdateCheckTimestampFor(&quot;earth-gravity-egm96&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">dataName</parametername>
@@ -168,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="71" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="56" bodyend="62"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="85" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="58" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -187,6 +197,8 @@
 <para>Get the remote data URL for a given data name. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;URL&gt;<sp/>urls<sp/>=<sp/>manifest.getRemoteDataUrls(baseUrl,<sp/>&quot;earth-gravity-egm96&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aBaseUrl</parametername>
@@ -210,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="79" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="64" bodyend="87"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="96" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="66" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -229,6 +241,8 @@
 <para>Return remote data URLs the for data items matching the given name regex string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;URL&gt;<sp/>urls<sp/>=<sp/>manifest.findRemoteDataUrls(baseUrl,<sp/>&quot;earth-gravity-.*&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aBaseUrl</parametername>
@@ -252,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="87" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="89" bodyend="119"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="107" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="91" bodyend="121"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -265,13 +279,15 @@
 <para>Construct an undefined manifest. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manifest<sp/>manifest<sp/>=<sp/>Manifest::Undefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Undefined manifest </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="93" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="121" bodyend="124"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="116" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="123" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a478db942042993efd3dccbb36fd811a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref></type>
@@ -286,6 +302,8 @@
 <para>Load manifest from file. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manifest<sp/>manifest<sp/>=<sp/>Manifest::Load(file);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aFile</parametername>
@@ -301,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="100" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="126" bodyend="139"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="126" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="128" bodyend="141"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -316,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="106" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="141" bodyend="145"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="132" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="143" bodyend="147"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -324,7 +342,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="36" bodyend="107"/>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="35" bodyend="133"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1acb9f322babd113e4f8118f4005d4ced7" prot="private" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>dictionary_</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>findRemoteDataUrls</name></member>

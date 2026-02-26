@@ -21,12 +21,13 @@
         <argsstring>()</argsstring>
         <name>Provider</name>
         <briefdescription>
+<para>Default constructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="26" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp" bodystart="14" bodyend="14"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="27" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp" bodystart="14" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type></type>
@@ -34,12 +35,13 @@
         <argsstring>()=0</argsstring>
         <name>~Provider</name>
         <briefdescription>
+<para>Pure virtual destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="28" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp" bodystart="16" bodyend="16"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="30" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp" bodystart="16" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref> *</type>
@@ -50,20 +52,24 @@
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1acb1c3f7659934152da9e42c4473445ef">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1a02a7f3e1421e734de0173fdf124f2555">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1afa65465d2ea24dc80b2fab244a7b047b">clone</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1ad0b1cfe2241d1e02d85f35a97542ea48">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a6cf784518e31c99adac70fefa7fb9118">clone</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a2cde9742d70f5cb6e0754d5b3ed479b3">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aaf20555c7f95ec18f79c29d6f492ffd4">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a1fe8106f5e8d7f21da3e289972cac24e">clone</reimplementedby>
         <briefdescription>
+<para>Clone the provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>A pointer to the cloned provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="30" column="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="35" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -74,20 +80,24 @@
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1afa8933f23b07290d80acadf9540f7921">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1ab3b4582f0a55c0d659968b07852505f7">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1aeb30dd3d275e6f7b560406fa60fa4c2c">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abf6833cfa8b876455d4d4fdb9eaeab7a">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a911f2844ceaef26996437f327ba4e2b5">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ae8b4ed3330ad21c038a58cc3a4e409d6">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abf6833cfa8b876455d4d4fdb9eaeab7a">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a14472546281e5dcc3088366fa8e14bc9">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1af574adfe8d2651c63e542f34dde9caac">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abbe9c5a824770b315ab8b94a4a95734f">isDefined</reimplementedby>
         <briefdescription>
+<para>Check if the provider is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if the provider is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="32" column="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="40" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -98,24 +108,37 @@
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_t_r_f_1a125054ae8a4a00733e21c67dbfc715b3">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1a9c7bc6ec239d7c12c216705fa271bdc1">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1ac38fd258d2d673715d007722f94e980f">getTransformAt</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a844779f3cac6a69327616a2979f91230">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a0d80a8d9519ab227b2205700e0dd9b1f">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ac5b8c45d930c729709a60d0c81b1b3a6">getTransformAt</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a844779f3cac6a69327616a2979f91230">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a47bb2b66b7f6af8c0d0c4c750ff7b2a5">getTransformAt</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a65ef7c999f1ab6faa1aff7498abc457d">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1ac670582a8388ff87644de6d0cace7bd2">getTransformAt</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aa2bf8be89797e81620edac58da4b1f11">getTransformAt</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a65ef7c999f1ab6faa1aff7498abc457d">getTransformAt</reimplementedby>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Get the transform at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transform at the given instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="34" column="23"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="47" column="23"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -195,7 +218,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="24" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" bodystart="23" bodyend="35"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" line="24" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp" bodystart="23" bodyend="48"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::Provider</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::Provider</scope><name>getTransformAt</name></member>

@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="53" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="52" bodyend="63"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="52" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="51" bodyend="62"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="45" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="45" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="44" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a173b9e634b696714acaaad185479906b" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="46" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="46" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="45" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9f8fc9e4d616b6be369a3f7c31019fb9" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="47" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="47" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="46" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a405a3c73b867967297e0c6d3b01e74ae" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="48" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="47" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa80e59367da181f3d2e07b41c8644911" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="49" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="49" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="48" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a214ad1690ab596bfff53fc08c75b8d07" prot="public" static="yes" mutable="no">
         <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="50" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="50" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="49" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a75d21e693bb671527098207bc9e4f3ae" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr double</type>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="144" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="144" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="180" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="151" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="149" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="187" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="185" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -259,6 +259,8 @@
 <para>Constructor with directory specification and max degree and order variables. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthGrav(Earth::Type::EGM2008);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -296,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="72" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="424" bodyend="433"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="74" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="424" bodyend="433"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a2243f0148e76e465394e70c2551e50fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -319,6 +321,8 @@
 <para>Constructor with max degree and order variables. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthGrav(Earth::Type::EGM2008,<sp/>10,<sp/>10);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -348,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="85" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="435" bodyend="438"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="90" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="435" bodyend="438"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a821f98411c65f59e6a297c6bcc3de291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -363,6 +367,8 @@
 <para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthGravCopy(earthGrav);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEarthGravitationalModel</parametername>
@@ -376,7 +382,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="91" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="440" bodyend="446"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="99" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="440" bodyend="446"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1accc913e0c0a5c7c8348c13217c5de4f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> &amp;</type>
@@ -391,6 +397,8 @@
 <para>Copy assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthGravCopy<sp/>=<sp/>earthGrav;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEarthGravitationalModel</parametername>
@@ -406,7 +414,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="448" bodyend="460"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="109" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="448" bodyend="460"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a0bd1037605f6fb37fb6babc7bb8ae745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -420,7 +428,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="102" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="462" bodyend="462"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="112" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="462" bodyend="462"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a987c2df62d8fedb368acf37e71ba7a47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> *</type>
@@ -432,13 +440,15 @@
 <para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> gravitational model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth*<sp/>earthGravPtr<sp/>=<sp/>earthGrav.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> gravitational model </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="108" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="464" bodyend="467"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="121" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="464" bodyend="467"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1abbe5c7a3e6fc2639c902ef9453d1435b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -450,13 +460,15 @@
 <para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> gravitational model is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bool<sp/>isDefined<sp/>=<sp/>earthGrav.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> gravitational model is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="114" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="469" bodyend="472"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="130" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="469" bodyend="472"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa65dd2a5ce980e8a4f7f502387c1ff61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref></type>
@@ -467,13 +479,15 @@
 <para>Get gravitational model type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth::Type<sp/>type<sp/>=<sp/>earthGrav.getType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Gravitational model type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="120" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="474" bodyend="477"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="139" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="474" bodyend="477"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1afc1f91c9235cf7a27a69e731c5461b83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Integer</type>
@@ -484,13 +498,15 @@
 <para>Get gravitational model degree. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Integer<sp/>degree<sp/>=<sp/>earthGrav.getDegree();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Gravitational model degree </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="126" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="479" bodyend="482"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="148" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="479" bodyend="482"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa9eb64a765ea67ac70990060220167ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Integer</type>
@@ -501,13 +517,15 @@
 <para>Get gravitational model order. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Integer<sp/>order<sp/>=<sp/>earthGrav.getOrder();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Gravitational model order </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="132" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="484" bodyend="487"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="157" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="484" bodyend="487"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9e536649566761f4bdd467993abfcedd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -527,6 +545,8 @@
 <para>Get the gravitational field value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Vector3d<sp/>fieldValue<sp/>=<sp/>earthGrav.getFieldValueAt(position,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aPosition</parametername>
@@ -550,7 +570,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="140" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="489" bodyend="492"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="168" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="489" bodyend="492"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -564,12 +584,27 @@
           <declname>aType</declname>
         </param>
         <briefdescription>
+<para>Get gravitational model parameters for a given type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Model::Parameters<sp/>params<sp/>=<sp/>Earth::ParametersFromType(Earth::Type::EGM2008);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Gravitational model parameters </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="142" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="513" bodyend="541"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="178" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="513" bodyend="541"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -600,15 +635,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="153" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="494" bodyend="511"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="189" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="494" bodyend="511"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> gravitational model. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        The gravitational potential is expanded as sum of spherical harmonics.
-</verbatim></para>
+<para>The gravitational potential is expanded as sum of spherical harmonics.</para>
 <para><ulink url="https://en.wikipedia.org/wiki/Spherical_harmonics">https://en.wikipedia.org/wiki/Spherical_harmonics</ulink> <ulink url="https://geographiclib.sourceforge.io/html/gravity.html">https://geographiclib.sourceforge.io/html/gravity.html</ulink> </para>
     </detaileddescription>
     <inheritancegraph>
@@ -635,7 +669,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="41" bodyend="159"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" line="41" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp" bodystart="40" bodyend="195"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a987c2df62d8fedb368acf37e71ba7a47" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a65816e63e9212691bb689d01bffb6755" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth</scope><name>Earth</name></member>

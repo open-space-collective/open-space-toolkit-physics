@@ -11,12 +11,13 @@
         <argsstring></argsstring>
         <name>Generator</name>
         <briefdescription>
+<para><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> generator function type. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="30" column="27" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="30" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="31" column="27" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -31,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="45" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="45" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="83" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,12 +46,25 @@
           <declname>aGenerator</declname>
         </param>
         <briefdescription>
+<para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Dynamic<sp/>provider(generator);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aGenerator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A transform generator function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="19" bodyend="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="19" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abef48108a6ec9b766ee7efb0e2ae8983" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -58,12 +72,13 @@
         <argsstring>() override</argsstring>
         <name>~Dynamic</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="34" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="24" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="43" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="24" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> *</type>
@@ -72,12 +87,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
         <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Dynamic*<sp/>clonePtr<sp/>=<sp/>provider.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to the cloned <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="36" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="26" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="52" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="26" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abf6833cfa8b876455d4d4fdb9eaeab7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -86,12 +107,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
         <briefdescription>
+<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="38" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="31" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="61" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a844779f3cac6a69327616a2979f91230" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -104,12 +131,27 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Get the transform at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>provider.getTransformAt(Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transform at the given instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="40" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="36" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="71" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="36" bodyend="44"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -119,12 +161,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Create an undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Dynamic<sp/>provider<sp/>=<sp/>Dynamic::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="42" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="46" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="80" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="46" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,7 +204,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="27" bodyend="46"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="27" bodyend="84"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a62e97f92fe5d66a227640502afbeb173" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>Dynamic</name></member>

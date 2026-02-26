@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="191" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="191" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="228" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="228" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a97211e33105e1cb46e84ca57b9f49652" prot="private" static="no" mutable="no">
         <type>Real</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="192" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="192" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="229" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1ac0cf7d103efa0ee2b39c55b965833793" prot="private" static="no" mutable="no">
         <type>Real</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="193" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="193" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="230" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="230" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a03490856fa49af57788f9a230b719417" prot="private" static="no" mutable="no">
         <type>Real</type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="194" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="194" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="231" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a9b5d210485571c21886a5659a7fd1f80" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="195" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="195" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="232" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="232" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a21b831d0c528916f8032236335275ab7" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="196" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="196" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="233" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="233" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a1c51018a0ddfd069a3b93c5032dbf415" prot="private" static="no" mutable="no">
         <type>Real</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="197" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="197" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="234" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="234" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a454aaa11e2a54f65dc9b0ced6d202775" prot="private" static="no" mutable="no">
         <type>Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> &gt;</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="198" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="198" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="235" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="235" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -190,10 +190,12 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">NRLMSISE00<sp/>model(NRLMSISE00::InputDataType::CSSISpaceWeatherFile);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="64" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="55" bodyend="74"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="68" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="55" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7116c623396b409568be82b421eb027f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> *</type>
@@ -204,13 +206,15 @@
 <para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">NRLMSISE00*<sp/>modelPtr<sp/>=<sp/>model.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="79" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="76" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="87" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="76" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a0a1b679056412e4b3f7b86d038f442ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -221,13 +225,15 @@
 <para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">model.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="85" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="81" bodyend="84"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="97" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="81" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1affd51790f05201cccb3fd2de52224acb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a13681ea31002aa2d82c909a7b89bafae" kindref="member">InputDataType</ref></type>
@@ -238,13 +244,15 @@
 <para>Get the input data source type used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">NRLMSISE00::InputDataType<sp/>inputDataType<sp/>=<sp/>model.getInputDataType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> input data source type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="91" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="306" bodyend="309"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="107" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="306" bodyend="309"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a029295aaf70df37c8100a8f6d277dbed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -255,13 +263,15 @@
 <para>Get the constant value for F10.7 input parameter used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>f107<sp/>=<sp/>model.getF107ConstantValue();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Constant value for F10.7 input parameter </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="98" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="311" bodyend="314"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="311" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1aff2e159d4886117f54bc058a759b1aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -272,13 +282,15 @@
 <para>Get the constant value for F10.7a input parameter used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>f107a<sp/>=<sp/>model.getF107AConstantValue();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Constant value for F10.7a input parameter </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="316" bodyend="319"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="316" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a2489ac1cc74bd80f6e758f5b5ed3b209" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -289,13 +301,15 @@
 <para>Get the constant value for Kp input parameter used to construct the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>kp<sp/>=<sp/>model.getKpConstantValue();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Constant value for Kp input parameter </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="112" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="321" bodyend="324"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="137" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="321" bodyend="324"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1ad7ec217766c1ceb0c592cab9a78d13a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -314,6 +328,8 @@
 <para>Get the atmospheric density value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>density<sp/>=<sp/>model.getDensityAt(lla,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aLLA</parametername>
@@ -337,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="121" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="326" bodyend="338"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="149" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="326" bodyend="338"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-static-func">
@@ -354,6 +370,8 @@
 <para>Get the atmospheric density value by directly provided NRLMSISE input values. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>density<sp/>=<sp/>NRLMSISE00::GetDensityAt(input);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">NRLMSISE</parametername>
@@ -369,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="152" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="340" bodyend="356"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="183" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="340" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7272f9e6f403ff92e27f44ddc5936531" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -384,6 +402,8 @@
 <para>Convert Kp index to Ap index. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>ap<sp/>=<sp/>NRLMSISE00::convertKpToAp(kp);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aKp</parametername>
@@ -399,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="188" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="296" bodyend="304"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="225" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="296" bodyend="304"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -426,13 +446,14 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Pointer to AP array struct </para>
+<simplesect kind="return"><para>Pointer to AP array struct</para>
 </simplesect>
-</para>
+<programlisting><codeline><highlight class="normal">Unique&lt;NRLMSISE00::ap_array&gt;<sp/>apValues<sp/>=<sp/>model.computeApArray(instant);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="170" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="86" bodyend="193"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="199" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="86" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a49169b5e700962a383190062800180d1" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Unique&lt; <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input" kindref="compound">NRLMSISE00::nrlmsise_input</ref> &gt;</type>
@@ -455,6 +476,8 @@
 <para>Compute the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00" kindref="compound">NRLMSISE00</ref> input and populate into the given struct Optionally use provided sun position to calculate local solar time. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unique&lt;NRLMSISE00::nrlmsise_input&gt;<sp/>input<sp/>=<sp/>model.computeNRLMSISE00Input(apValues,<sp/>lla,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">apValues</parametername>
@@ -484,7 +507,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="179" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="195" bodyend="294"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="212" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="195" bodyend="294"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -492,7 +515,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="53" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="52" bodyend="199"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="53" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="52" bodyend="236"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a7116c623396b409568be82b421eb027f" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1a60dc2226aeca0a8b2efbc484b8e4c2fc" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00</scope><name>computeApArray</name></member>

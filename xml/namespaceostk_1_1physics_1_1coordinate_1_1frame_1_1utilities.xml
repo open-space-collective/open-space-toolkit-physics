@@ -24,11 +24,13 @@
 <para>North-East-Down (NED) frame. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>NorthEastDownTransformAt(lla,<sp/>equatorialRadius,<sp/>flattening);</highlight></codeline>
+</programlisting></para>
 <para><ulink url="https://en.wikipedia.org/wiki/North_east_down">https://en.wikipedia.org/wiki/North_east_down</ulink> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp" line="21" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp" bodystart="21" bodyend="71" declfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.hpp" declline="33" declcolumn="11"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp" line="21" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.cpp" bodystart="21" bodyend="71" declfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Utility.hpp" declline="37" declcolumn="11"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

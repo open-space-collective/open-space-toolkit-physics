@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="133" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="133" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="161" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a0bbe4b27415296d5f05156858bb5629f" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="134" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="134" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="162" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a21a05f1953895ff255d2e6383af2be2c" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="135" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="135" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="163" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a37b54d883b0050a5d7a56a8848a1a6bd" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="136" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="136" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="164" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a9bab20123287c599ac1fefc7b935932a" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="137" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="137" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="165" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a922988922328d04eed6cee08492db52a" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="138" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="138" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="166" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a083f5448b04610a7b32c592bfe959397" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="139" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="139" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="167" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ace5d7a43f007775e8a1952c9c965e490" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="140" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="140" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="168" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a5477011ba0149198afd451048d8168db" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="141" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="141" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="169" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ac07c6ffa81d0172cee502fc098110b64" prot="public" static="no" mutable="no">
         <type>double</type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="142" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="142" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="170" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ad5c701a600589787d6621285d172c3e0" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1ap__array" kindref="compound">ap_array</ref> *</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="143" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="143" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="171" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -165,7 +165,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="132" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="131" bodyend="144"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="160" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="159" bodyend="172"/>
     <listofallmembers>
       <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1a37b54d883b0050a5d7a56a8848a1a6bd" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>alt</name></member>
       <member refid="structostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_n_r_l_m_s_i_s_e00_1_1nrlmsise__input_1ac07c6ffa81d0172cee502fc098110b64" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::NRLMSISE00::nrlmsise_input</scope><name>ap</name></member>

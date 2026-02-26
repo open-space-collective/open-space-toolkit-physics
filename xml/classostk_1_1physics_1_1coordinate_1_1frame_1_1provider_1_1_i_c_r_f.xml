@@ -11,12 +11,15 @@
         <argsstring>()</argsstring>
         <name>ICRF</name>
         <briefdescription>
+<para>Default constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ICRF<sp/>provider;</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="16" bodyend="16"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="37" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="16" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1af3a48303e720882df719844ed608ca6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -24,12 +27,13 @@
         <argsstring>() override</argsstring>
         <name>~ICRF</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="34" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="18" bodyend="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="40" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="18" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1a02a7f3e1421e734de0173fdf124f2555" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" kindref="compound">ICRF</ref> *</type>
@@ -38,12 +42,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
         <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" kindref="compound">ICRF</ref> provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ICRF*<sp/>clonePtr<sp/>=<sp/>provider.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to the cloned <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" kindref="compound">ICRF</ref> provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="36" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="20" bodyend="23"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="49" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="20" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1ab3b4582f0a55c0d659968b07852505f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -52,12 +62,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
         <briefdescription>
+<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" kindref="compound">ICRF</ref> provider is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" kindref="compound">ICRF</ref> provider is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="38" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="25" bodyend="28"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="58" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="25" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1a9c7bc6ec239d7c12c216705fa271bdc1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -70,12 +86,27 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Get the transform at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>provider.getTransformAt(Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transform from <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref> to <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f" kindref="compound">ICRF</ref> at the given instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="40" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="30" bodyend="36"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="68" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.cpp" bodystart="30" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -108,7 +139,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" bodystart="29" bodyend="41"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ICRF.hpp" bodystart="29" bodyend="69"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1a02a7f3e1421e734de0173fdf124f2555" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::ICRF</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_i_c_r_f_1a9c7bc6ec239d7c12c216705fa271bdc1" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::ICRF</scope><name>getTransformAt</name></member>

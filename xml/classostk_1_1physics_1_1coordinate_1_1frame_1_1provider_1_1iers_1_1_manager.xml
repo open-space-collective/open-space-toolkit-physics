@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="154" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="154" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="193" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="193" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a972172eb4b3e0c4a907e7a451bf8f0ad" prot="private" static="no" mutable="yes">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="155" column="25" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="155" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="194" column="25" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="194" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,6 +42,8 @@
 <para>Get Bulletin A directory. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Directory<sp/>directory<sp/>=<sp/>Manager::Get().getBulletinADirectory();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Bulletin A directory </para>
 </simplesect>
 </para>
@@ -59,13 +61,15 @@
 <para>Get Finals 2000A directory. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Directory<sp/>directory<sp/>=<sp/>Manager::Get().getFinals2000ADirectory();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Finals 2000A directory </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="76" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="61" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="79" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="61" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae4354d467590b5618ead4e803e27f1c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref></type>
@@ -76,13 +80,15 @@
 <para>Get Bulletin A. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">BulletinA<sp/>bulletinA<sp/>=<sp/>Manager::Get().getBulletinA();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Bulletin A </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="82" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="66" bodyend="78"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="88" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="66" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae1438b267761499c6855ac0b67499a25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref></type>
@@ -93,13 +99,15 @@
 <para>Get Finals 2000A. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Finals2000A<sp/>finals2000A<sp/>=<sp/>Manager::Get().getFinals2000A();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Finals 2000A </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="88" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="80" bodyend="92"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="97" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="80" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a8a716d1e249c474cf386da943a661baa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector2d</type>
@@ -114,6 +122,8 @@
 <para>Get polar motion at instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Vector2d<sp/>polarMotion<sp/>=<sp/>Manager::Get().getPolarMotionAt(anInstant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anInstant</parametername>
@@ -129,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="95" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="94" bodyend="145"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="107" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="94" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1af81e4efc8bdb557554d0a84d8c1655eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -144,6 +154,8 @@
 <para>Get UT1 - UTC at instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>ut1MinusUtc<sp/>=<sp/>Manager::Get().getUt1MinusUtcAt(anInstant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anInstant</parametername>
@@ -159,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="147" bodyend="191"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="147" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1acd6418c53bdb544a4a408cccee54c60a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -174,6 +186,8 @@
 <para>Get length of day at instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>lod<sp/>=<sp/>Manager::Get().getLodAt(anInstant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anInstant</parametername>
@@ -189,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="109" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="193" bodyend="212"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="193" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a5fb58ac83d89062bf7b34155f5233e0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -204,6 +218,8 @@
 <para>Load Bulletin A. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().loadBulletinA(bulletinA);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aBulletinA</parametername>
@@ -217,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="115" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="214" bodyend="224"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="136" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="214" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1aeff64ac91ccf7322a07e6b3935b981d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -232,6 +248,8 @@
 <para>Load Finals 2000A. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().loadFinals2000A(finals2000A);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aFinals2000A</parametername>
@@ -245,7 +263,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="121" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="226" bodyend="236"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="226" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1abd848b225cc7a48dee3d563b490431a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -256,13 +274,15 @@
 <para>Fetch latest Bulletin A file. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">File<sp/>file<sp/>=<sp/>Manager::Get().fetchLatestBulletinA();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Latest Bulletin A file </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="238" bodyend="243"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="154" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="238" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ab0f1f99ea683d9b609c4683854d1eff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -273,30 +293,33 @@
 <para>Fetch latest Finals 2000A file. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">File<sp/>file<sp/>=<sp/>Manager::Get().fetchLatestFinals2000A();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Latest Finals 2000A file </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="133" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="245" bodyend="250"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="163" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="245" bodyend="250"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4d2797de02f1de4a66f949f8224bf8ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1add26b38d4c215f1386e672379c3c5421" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void ostk::physics::coordinate::frame::provider::iers::Manager::reset</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() override</argsstring>
         <name>reset</name>
         <reimplements refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606">reset</reimplements>
         <briefdescription>
 <para>Reset manager. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                Unload all bulletins. 
-</verbatim> </para>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().reset();</highlight></codeline>
+</programlisting></para>
+<para>Unload all bulletins. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="139" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="252" bodyend="258"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="172" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="252" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae6d52b7df4fb9d6db61950df0d0884ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -307,12 +330,13 @@
 <para>Clear local repository. </para>
         </briefdescription>
         <detaileddescription>
-<para><verbatim>                Delete all files in local repository. 
-</verbatim> </para>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().clearLocalRepository();</highlight></codeline>
+</programlisting></para>
+<para>Delete all files in local repository. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="260" bodyend="265"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="181" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="260" bodyend="265"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -325,13 +349,15 @@
 <para>Get manager singleton. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager&amp;<sp/>manager<sp/>=<sp/>Manager::Get();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Reference to manager </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="151" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="267" bodyend="272"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="190" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="267" bodyend="272"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -346,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="157" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="274" bodyend="286"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="196" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="274" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae776c687cb623a0bfc82fc512298272a" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -355,12 +381,15 @@
         <name>setup_</name>
         <reimplements refid="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189">setup_</reimplements>
         <briefdescription>
+<para>Set up the manager, initializing configuration from environment variables. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">manager.setup_();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="159" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="288" bodyend="301"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="198" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="288" bodyend="301"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae2849d6fca09f174258ad5e14652c1b6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -377,7 +406,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="163" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="303" bodyend="306"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="202" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="303" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a77709a47bc6998d1b87cbca116b39367" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -394,7 +423,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="164" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="308" bodyend="311"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="203" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="308" bodyend="311"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6c52cf62790b09e4d033aa0f13e46a6e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> *</type>
@@ -407,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="166" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="313" bodyend="384"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="205" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="313" bodyend="384"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac73ff55040eaaf9ece767af8752b1f38" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a" kindref="compound">Finals2000A</ref> *</type>
@@ -420,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="167" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="386" bodyend="457"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="206" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="386" bodyend="457"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a59924e50a12708368ad3a3d93f6caef9" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -433,7 +462,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="169" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="459" bodyend="561"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="208" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="459" bodyend="561"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a877e273e6701d5c22942ea3602a36912" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -446,22 +475,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="170" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="563" bodyend="666"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="209" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" bodystart="563" bodyend="666"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>IERS bulletins manager (thread-safe) </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        The following environment variables can be defined:
-
-                        - &quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE&quot; will override
-                        &quot;DefaultMode&quot;
-                        - &quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY&quot; will override
-                        &quot;DefaultLocalRepository&quot;
-                        - &quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT&quot;
-                        will override &quot;DefaultLocalRepositoryLockTimeout&quot;
-</verbatim></para>
+<para>The following environment variables can be defined:</para>
+<para><itemizedlist>
+<listitem><para>&quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_MODE&quot; will override &quot;DefaultMode&quot;</para>
+</listitem><listitem><para>&quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY&quot; will override &quot;DefaultLocalRepository&quot;</para>
+</listitem><listitem><para>&quot;OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT&quot; will override &quot;DefaultLocalRepositoryLockTimeout&quot;</para>
+</listitem></itemizedlist>
+</para>
 <para><ulink url="https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html">https://www.iers.org/IERS/EN/DataProducts/EarthOrientationData/eop.html</ulink> </para>
     </detaileddescription>
     <inheritancegraph>
@@ -522,7 +549,7 @@
         <label>Directory</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="63" bodyend="171"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" line="61" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp" bodystart="60" bodyend="210"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a6c52cf62790b09e4d033aa0f13e46a6e" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>accessBulletinA_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ac73ff55040eaaf9ece767af8752b1f38" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>accessFinals2000A_</name></member>
@@ -570,7 +597,7 @@
       <member refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" prot="protected" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>mutex_</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1ada7527cacea9ba3511b17fce95dd0834" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1a6c4b4e0304dc55e101034f9a7830091a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>operator=</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4d2797de02f1de4a66f949f8224bf8ae" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>reset</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1add26b38d4c215f1386e672379c3c5421" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>reset</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1ac5a18a4272b5d26ff78e32cba7c08baf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>setLocalRepository</name></member>
       <member refid="classostk_1_1physics_1_1_manager_1aec2b97acf4a1d22b95b5a978a52c4356" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>setMode</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae776c687cb623a0bfc82fc512298272a" prot="private" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Manager</scope><name>setup_</name></member>

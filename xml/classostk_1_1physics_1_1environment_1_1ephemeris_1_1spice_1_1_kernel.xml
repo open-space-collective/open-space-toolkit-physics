@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="133" column="18" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" bodystart="133" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="190" column="18" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" bodystart="190" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a8abfcb978a6c0a4ea3a78bc63d4bfe70" prot="private" static="no" mutable="no">
         <type>filesystem::File</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="134" column="22" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" bodystart="134" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="191" column="22" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" bodystart="191" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -158,6 +158,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel(Kernel::Type::SPK,<sp/>File::Path(Path::Parse(&quot;/path/to/kernel.bsp&quot;)));</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -179,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="22" bodyend="26"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="62" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="22" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a13b5cb99b47f896e9ebc84f100323827" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -194,6 +196,10 @@
 <para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernelA<sp/>=<sp/>Kernel::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">Kernel<sp/>kernelB<sp/>=<sp/>Kernel::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">kernelA<sp/>==<sp/>kernelB;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aKernel</parametername>
@@ -209,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="28" bodyend="36"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="75" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="28" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1aa84c41458508b34abbd86aa7e49d355c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -224,6 +230,10 @@
 <para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernelA<sp/>=<sp/>Kernel::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">Kernel<sp/>kernelB<sp/>=<sp/>Kernel::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">kernelA<sp/>!=<sp/>kernelB;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aKernel</parametername>
@@ -239,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="72" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="38" bodyend="41"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="88" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a361ec8317eb7a164142e52d995a53fef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -250,13 +260,16 @@
 <para>Returns true if kernel is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">kernel.isDefined();<sp/>//<sp/>False</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if kernel is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="78" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="43" bodyend="46"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="99" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1add8e7994e9a777ce15942ba71b39c7fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a5d514a9e43a1a198c7ea72e95edc534c" kindref="member">Kernel::Type</ref></type>
@@ -267,13 +280,16 @@
 <para>Get kernel type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel::File(aFile);</highlight></codeline>
+<codeline><highlight class="normal">Kernel::Type<sp/>type<sp/>=<sp/>kernel.getType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="84" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="48" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="110" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="48" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a67a1c06a22296735f9b085294bfd6835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -284,13 +300,16 @@
 <para>Get kernel name. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel::File(aFile);</highlight></codeline>
+<codeline><highlight class="normal">String<sp/>name<sp/>=<sp/>kernel.getName();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> name </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="90" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="58" bodyend="66"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="121" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="58" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1ad75952d8ec41d900c3e983a536bd056c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>filesystem::File</type>
@@ -301,13 +320,16 @@
 <para>Get kernel file. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel::File(aFile);</highlight></codeline>
+<codeline><highlight class="normal">filesystem::File<sp/>file<sp/>=<sp/>kernel.getFile();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> file </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="96" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="68" bodyend="76"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="132" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="68" bodyend="76"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -320,13 +342,16 @@
 <para>Constructs an undefined kernel. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel::Undefined();</highlight></codeline>
+<codeline><highlight class="normal">kernel.isDefined();<sp/>//<sp/>False</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Undefined kernel </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="102" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="78" bodyend="81"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="143" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1acaf192b3f14cb06b0337f8a8970dd78d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref></type>
@@ -341,6 +366,8 @@
 <para>Constructs a kernel from a file. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel<sp/>kernel<sp/>=<sp/>Kernel::File(filesystem::File::Path(Path::Parse(&quot;/path/to/de430.bsp&quot;)));</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aFile</parametername>
@@ -356,7 +383,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="109" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="83" bodyend="91"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="154" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="83" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1ab7a8ea969b8337b20b9edfcc4df88c1e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a5d514a9e43a1a198c7ea72e95edc534c" kindref="member">Kernel::Type</ref></type>
@@ -371,6 +398,8 @@
 <para>Converts kernel type string to type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel::Type<sp/>type<sp/>=<sp/>Kernel::TypeFromString(&quot;SPK&quot;);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -386,7 +415,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="116" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="93" bodyend="113"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="165" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="93" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a0aa422d379b12b6e4e2a070ed4f3fd8b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -401,6 +430,8 @@
 <para>Converts kernel type to string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">String<sp/>str<sp/>=<sp/>Kernel::StringFromType(Kernel::Type::SPK);<sp/>//<sp/>&quot;SPK&quot;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -416,7 +447,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="123" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="115" bodyend="135"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="176" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="115" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a5ee9fe5e6765d0c82aae54a3d3ba5122" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a5d514a9e43a1a198c7ea72e95edc534c" kindref="member">Kernel::Type</ref></type>
@@ -431,6 +462,8 @@
 <para>Converts file extension to kernel type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Kernel::Type<sp/>type<sp/>=<sp/>Kernel::TypeFromFileExtension(&quot;bsp&quot;);<sp/>//<sp/>Kernel::Type::SPK</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aFileExtension</parametername>
@@ -446,7 +479,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="130" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="137" bodyend="204"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="187" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp" bodystart="137" bodyend="204"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -455,7 +488,7 @@
     <detaileddescription>
 <para><ulink url="https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/info/intrdctn.html">https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/info/intrdctn.html</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" bodystart="32" bodyend="135"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp" bodystart="32" bodyend="192"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1acaf192b3f14cb06b0337f8a8970dd78d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Kernel</scope><name>File</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel_1a8abfcb978a6c0a4ea3a78bc63d4bfe70" prot="private" virt="non-virtual"><scope>ostk::physics::environment::ephemeris::spice::Kernel</scope><name>file_</name></member>

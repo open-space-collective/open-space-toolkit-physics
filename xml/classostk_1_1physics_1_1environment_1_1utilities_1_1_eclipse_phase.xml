@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="94" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="94" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="118" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a8856160ebe61459033c735a8217e1c85" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="95" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="95" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="119" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a521d95d1a8c138b2f05fd0c393ba5d2e" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="96" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="96" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="120" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -99,6 +99,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">EclipsePhase<sp/>phase<sp/>=<sp/>EclipsePhase(EclipsePhase::Region::Umbra,<sp/>anInterval,<sp/>true);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aRegion</parametername>
@@ -128,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="57" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="37" bodyend="42"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="61" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="37" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a7ae1e00b5373b1774bcb79b556ee3a4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a16d9129cccbe7226d6bf78b9aedbbbc6" kindref="member">Region</ref></type>
@@ -139,13 +141,15 @@
 <para>Get the region of the eclipse phase. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">EclipsePhase::Region<sp/>region<sp/>=<sp/>phase.getRegion();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>The region of the eclipse phase </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="62" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="44" bodyend="47"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="70" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1aedd81132f459a20402a1e3c749a745d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
@@ -156,13 +160,15 @@
 <para>Get the time interval of the eclipse phase. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Interval&amp;<sp/>interval<sp/>=<sp/>phase.getInterval();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>The time interval of the eclipse phase </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="67" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="49" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="79" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a17f8860802afa605e4d34a5b1643ba20" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -173,13 +179,15 @@
 <para>Check if the eclipse phase is complete. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">phase.isComplete();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the phase is complete, false otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="72" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="54" bodyend="57"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="88" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="54" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a666176da8c5eb88d83575c7c2de0449a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -194,6 +202,8 @@
 <para>Equality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">phaseA<sp/>==<sp/>phaseB;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEclipsePhase</parametername>
@@ -209,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="85" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="75" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="75" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1af2404d09c7df70390441ff5807488442" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -224,6 +234,8 @@
 <para>Inequality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">phaseA<sp/>!=<sp/>phaseB;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEclipsePhase</parametername>
@@ -239,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="91" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="81" bodyend="84"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="115" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="81" bodyend="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -283,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="79" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="95" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="73"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -291,7 +303,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="43" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="42" bodyend="97"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="43" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" bodystart="42" bodyend="121"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1a36de63e564ec2c745c75cdbd6d7e37d4" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::EclipsePhase</scope><name>EclipsePhase</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1aedd81132f459a20402a1e3c749a745d5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::utilities::EclipsePhase</scope><name>getInterval</name></member>

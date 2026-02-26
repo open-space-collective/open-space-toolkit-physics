@@ -16,10 +16,24 @@
 <para>Get the instant at which a file was last modified. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>instant<sp/>=<sp/>utilities::getFileModifiedInstant(file);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The instant at which the file was last modified </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" line="22" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" bodystart="22" bodyend="57" declfile="include/OpenSpaceToolkit/Physics/Data/Utility.hpp" declline="25" declcolumn="9"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" line="22" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" bodystart="22" bodyend="57" declfile="include/OpenSpaceToolkit/Physics/Data/Utility.hpp" declline="31" declcolumn="9"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

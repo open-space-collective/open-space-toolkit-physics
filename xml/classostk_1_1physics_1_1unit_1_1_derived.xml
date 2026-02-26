@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="231" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="231" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="768" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="768" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -39,11 +39,22 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting></programlisting></para>
+<para><programlisting><codeline><highlight class="normal">Derived<sp/>derived(1.0,<sp/>Derived::Unit::MeterPerSecond());</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
+<parametername direction="in">aValue</parametername>
 </parameternamelist>
 <parameterdescription>
+<para>A value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -51,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="204" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="633" bodyend="637"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="635" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="633" bodyend="637"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a9f6a512e1f97f4910876af64fa0bea03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> *</type>
@@ -60,12 +71,19 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a">clone</reimplements>
         <briefdescription>
+<para>Clone the derived unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived<sp/>derived(1.0,<sp/>Derived::Unit::MeterPerSecond());</highlight></codeline>
+<codeline><highlight class="normal">Derived*<sp/>clonePtr<sp/>=<sp/>derived.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to a dynamically allocated clone of this derived unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="206" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="639" bodyend="642"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="646" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="639" bodyend="642"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1accabc0c2a4a8e86dc8452ccc6ace6684" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -77,12 +95,27 @@
           <declname>aDerivedUnit</declname>
         </param>
         <briefdescription>
+<para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived(1.0,<sp/>Derived::Unit::MeterPerSecond())<sp/>==<sp/>Derived(1.0,<sp/>Derived::Unit::MeterPerSecond());<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDerivedUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if derived units are equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="208" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="644" bodyend="652"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="657" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="644" bodyend="652"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1ade2796cfeb32c5f89d2c247315f8ce6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -94,12 +127,27 @@
           <declname>aDerivedUnit</declname>
         </param>
         <briefdescription>
+<para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived(1.0,<sp/>Derived::Unit::MeterPerSecond())<sp/>!=<sp/>Derived(2.0,<sp/>Derived::Unit::MeterPerSecond());<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aDerivedUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if derived units are not equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="210" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="654" bodyend="657"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="668" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="654" bodyend="657"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a3d569e23bed90199f71aa36dee95feac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -108,12 +156,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
         <briefdescription>
+<para>Check if the derived unit is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived(1.0,<sp/>Derived::Unit::MeterPerSecond()).isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="214" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="671" bodyend="674"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="690" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="671" bodyend="674"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a45cf40c80c18ee35fa485442a622ae7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref></type>
@@ -121,12 +175,18 @@
         <argsstring>() const</argsstring>
         <name>getUnit</name>
         <briefdescription>
+<para>Get the derived unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived(1.0,<sp/>Derived::Unit::MeterPerSecond()).getUnit();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The derived unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="216" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="676" bodyend="679"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="700" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="676" bodyend="679"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1aacd800679032faedc19efbc30688380d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -138,12 +198,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the value in the specified unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived(1.0,<sp/>Derived::Unit::MeterPerSecond()).in(Derived::Unit::MeterPerSecond());<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value in the specified unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="218" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="681" bodyend="701"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="711" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="681" bodyend="701"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a1907d0e8f647d160dfb7c1c3b436189b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>String</type>
@@ -157,12 +232,27 @@
           <defval>Integer::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Convert to string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived(1.0,<sp/>Derived::Unit::MeterPerSecond()).toString();</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision (number of decimal places) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="220" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="703" bodyend="711"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="722" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="703" bodyend="711"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -180,12 +270,35 @@
           <declname>aDerivedUnit</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Derived(1.0,<sp/>Derived::Unit::MeterPerSecond());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aDerivedUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="212" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="659" bodyend="669"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="680" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="659" bodyend="669"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -195,12 +308,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined derived unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived<sp/>derived<sp/>=<sp/>Derived::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined derived unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="222" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="713" bodyend="716"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="732" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="713" bodyend="716"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a9ff458815691940b0c3c0b9ab79782ef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
@@ -212,12 +331,27 @@
           <declname>aString</declname>
         </param>
         <briefdescription>
+<para>Parse a derived unit from a string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived<sp/>derived<sp/>=<sp/>Derived::Parse(&quot;1.0<sp/>[m/s]&quot;);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string to parse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A derived unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="224" column="20"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="743" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1acc5c5a598e57d3f5b07e660ff0a65feb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -229,12 +363,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the string representation of a derived unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::StringFromUnit(Derived::Unit::MeterPerSecond());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="226" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="723" bodyend="726"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="754" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="723" bodyend="726"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1a8c41484e6965af069f1bcc822adeab7d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -246,12 +395,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the symbol of a derived unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Derived::SymbolFromUnit(Derived::Unit::MeterPerSecond());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A derived unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unit symbol </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="228" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="728" bodyend="731"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="765" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="728" bodyend="731"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -270,7 +434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="233" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="733" bodyend="770"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="770" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="733" bodyend="770"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -303,7 +467,7 @@
         <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="33" bodyend="234"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="33" bodyend="771"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>accessValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived</scope><name>accessValue</name></member>

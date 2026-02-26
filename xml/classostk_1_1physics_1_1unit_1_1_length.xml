@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="122" column="18" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" bodystart="122" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="391" column="18" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" bodystart="391" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -98,7 +98,7 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Length<sp/>length(1.0,<sp/>Length::Unit::Meter)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length(1.0,<sp/>Length::Unit::Meter);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="51" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="15" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="50" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a5fec4d279df8dc0970c1db3bfac485f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> *</type>
@@ -130,12 +130,19 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a">clone</reimplements>
         <briefdescription>
+<para>Clone the length. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(1.0);</highlight></codeline>
+<codeline><highlight class="normal">Length*<sp/>clonePtr<sp/>=<sp/>length.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to a dynamically allocated clone of this length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="53" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="21" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="60" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="21" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a7fb04028c4d99f588b41bf4f70ab8bce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -147,12 +154,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0)<sp/>==<sp/>Length::Meters(1.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if lengths are equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="26" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="26" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a987527316d24c95a2ee9239a3ad83a0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -164,12 +186,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0)<sp/>!=<sp/>Length::Meters(2.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if lengths are not equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="36" bodyend="39"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="80" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="36" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a616991e8b006dc80b890e58325df7daa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -181,12 +218,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Less than operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0)<sp/>&lt;<sp/>Length::Meters(2.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if this length is less than the given length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="41" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="90" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a9bfb54d7384d3552702dbd0f381eef9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -198,12 +250,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Less than or equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0)<sp/>&lt;=<sp/>Length::Meters(1.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if this length is less than or equal to the given length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="61" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="51" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="100" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="51" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1acc54651a2495e1adaf665ca784e0baee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -215,12 +282,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Greater than operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(2.0)<sp/>&gt;<sp/>Length::Meters(1.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if this length is greater than the given length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="63" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="61" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="110" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="61" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a28043045ad121590c74d0454e2cf8250" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -232,12 +314,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Greater than or equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0)<sp/>&gt;=<sp/>Length::Meters(1.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if this length is greater than or equal to the given length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="71" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="120" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="71" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a549f58cc15c539d5910e72e62b91aa30" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -249,12 +346,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Addition operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0)<sp/>+<sp/>Length::Meters(2.0);<sp/>//<sp/>3.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The sum of the two lengths </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="67" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="81" bodyend="89"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="130" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="81" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1ad5fadda36b83be3ac569cca701eeb464" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -266,12 +378,27 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Subtraction operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(3.0)<sp/>-<sp/>Length::Meters(1.0);<sp/>//<sp/>2.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to subtract </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The difference of the two lengths </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="69" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="91" bodyend="99"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="140" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="91" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a6d5a1479914f5a23e96fd7038c449488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -283,12 +410,27 @@
           <declname>aReal</declname>
         </param>
         <briefdescription>
+<para>Multiplication by scalar operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(2.0)<sp/>*<sp/>3.0;<sp/>//<sp/>6.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aReal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar multiplier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scaled length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="71" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="101" bodyend="114"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="150" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="101" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1ad738292438ac46eefd7a15d95b21d3d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -300,12 +442,27 @@
           <declname>aReal</declname>
         </param>
         <briefdescription>
+<para>Division by scalar operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(6.0)<sp/>/<sp/>2.0;<sp/>//<sp/>3.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aReal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar divisor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scaled length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="73" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="116" bodyend="134"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="160" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="116" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1ac9cdbabd7c216e1a48cfe6d297c843eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
@@ -317,12 +474,28 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Addition assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(1.0);</highlight></codeline>
+<codeline><highlight class="normal">length<sp/>+=<sp/>Length::Meters(2.0);<sp/>//<sp/>3.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to this length after addition </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="75" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="136" bodyend="146"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="171" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="136" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a82c2513cd9241c3a78831c9654d8c0aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
@@ -334,12 +507,28 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Subtraction assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(3.0);</highlight></codeline>
+<codeline><highlight class="normal">length<sp/>-=<sp/>Length::Meters(1.0);<sp/>//<sp/>2.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length to subtract </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to this length after subtraction </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="77" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="148" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="182" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="148" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1afece55359e0028aae4fb0ee2be6f922d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
@@ -351,12 +540,28 @@
           <declname>aReal</declname>
         </param>
         <briefdescription>
+<para>Multiplication assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(2.0);</highlight></codeline>
+<codeline><highlight class="normal">length<sp/>*=<sp/>3.0;<sp/>//<sp/>6.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aReal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar multiplier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to this length after multiplication </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="79" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="160" bodyend="175"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="193" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="160" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a1cc349701d666b91798fe53ce04a99c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
@@ -368,12 +573,28 @@
           <declname>aReal</declname>
         </param>
         <briefdescription>
+<para>Division assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(6.0);</highlight></codeline>
+<codeline><highlight class="normal">length<sp/>/=<sp/>2.0;<sp/>//<sp/>3.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aReal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar divisor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to this length after division </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="81" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="177" bodyend="197"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="204" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="177" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a22709feca592e2aa7d73590a23c8b6c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -381,12 +602,18 @@
         <argsstring>() const</argsstring>
         <name>operator+</name>
         <briefdescription>
+<para>Unary plus operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">+Length::Meters(1.0);<sp/>//<sp/>1.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A copy of this length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="85" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="214" bodyend="222"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="224" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="214" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a317af929953321c8033b248f1b788161" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -394,12 +621,18 @@
         <argsstring>() const</argsstring>
         <name>operator-</name>
         <briefdescription>
+<para>Unary minus operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">-Length::Meters(1.0);<sp/>//<sp/>-1.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The negated length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="87" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="224" bodyend="232"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="233" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="224" bodyend="232"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a6eeac66a9bc802ec6426c37a9bc670d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -408,12 +641,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
         <briefdescription>
+<para>Check if the length is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0).isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="91" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="246" bodyend="249"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="253" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="246" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a7509c17c1a828ec0caccd38f6a82dd7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -421,12 +660,18 @@
         <argsstring>() const</argsstring>
         <name>isZero</name>
         <briefdescription>
+<para>Check if the length value is zero. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(0.0).isZero();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if zero </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="93" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="251" bodyend="259"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="262" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="251" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a169c89803a08714a5ec9be83f0c53e0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref></type>
@@ -434,12 +679,18 @@
         <argsstring>() const</argsstring>
         <name>getUnit</name>
         <briefdescription>
+<para>Get the length unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0).getUnit();<sp/>//<sp/>Length::Unit::Meter</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The length unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="95" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="261" bodyend="264"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="271" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="261" bodyend="264"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1aeb55a1227662e33573cf421dee49689e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -451,12 +702,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the value in the specified unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1000.0).in(Length::Unit::Meter);<sp/>//<sp/>1000.0</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value in the specified unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="97" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="266" bodyend="279"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="281" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="266" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a640344d5a8675be66b247e3eb2e4c207" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -464,12 +730,18 @@
         <argsstring>() const</argsstring>
         <name>inMeters</name>
         <briefdescription>
+<para>Get the value in meters. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Kilometers(1.0).inMeters();<sp/>//<sp/>1000.0</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The value in meters </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="99" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="281" bodyend="284"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="290" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="281" bodyend="284"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a12398be3e772573627a4e98002c80077" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -477,12 +749,18 @@
         <argsstring>() const</argsstring>
         <name>inKilometers</name>
         <briefdescription>
+<para>Get the value in kilometers. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1000.0).inKilometers();<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The value in kilometers </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="101" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="286" bodyend="289"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="299" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="286" bodyend="289"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1acd18f9028428333ed255aab36c97b4e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>String</type>
@@ -496,12 +774,27 @@
           <defval>Integer::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Convert to string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::Meters(1.0).toString();<sp/>//<sp/>&quot;1.0<sp/>[m]&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision (number of decimal places) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="103" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="291" bodyend="299"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="309" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="291" bodyend="299"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -519,12 +812,35 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Scalar multiplication operator (scalar * length). </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">2.0<sp/>*<sp/>Length::Meters(3.0);<sp/>//<sp/>6.0<sp/>[m]</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aReal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar multiplier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scaled length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="83" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="199" bodyend="212"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="215" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="199" bodyend="212"/>
       </memberdef>
       <memberdef kind="friend" id="classostk_1_1physics_1_1unit_1_1_length_1a95a13170a8d57cb0060eae94520eace4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
@@ -540,12 +856,35 @@
           <declname>aLength</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Length::Meters(1.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="89" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="234" bodyend="244"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="244" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="234" bodyend="244"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -555,12 +894,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined length. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="105" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="301" bodyend="304"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="318" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="301" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a285c6b4b72ec9d5a341e737236537f74" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -572,12 +917,27 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Construct a length from a value in millimeters. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Millimeters(1000.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value in millimeters </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="107" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="306" bodyend="309"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="328" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="306" bodyend="309"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1abbf066175fb52379787f724649e964c9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -589,12 +949,27 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Construct a length from a value in meters. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(1.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value in meters </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="109" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="311" bodyend="314"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="338" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="311" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a2b54371389e59ddf15bbeca936b82384" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -606,12 +981,27 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Construct a length from a value in kilometers. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Kilometers(1.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value in kilometers </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="111" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="316" bodyend="319"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="348" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="316" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1abe7d9c8c4b6b80862163c69ad7504f1d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -623,12 +1013,27 @@
           <declname>aString</declname>
         </param>
         <briefdescription>
+<para>Parse a length from a string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Parse(&quot;1.0<sp/>[m]&quot;);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string to parse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A length </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="113" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="321" bodyend="338"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="358" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="321" bodyend="338"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a513d391baaa56c3244f3c6568b56bc65" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -640,12 +1045,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the string representation of a length unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::StringFromUnit(Length::Unit::Meter);<sp/>//<sp/>&quot;Meter&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="115" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="340" bodyend="368"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="368" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="340" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1a21df6f0da83cca1f2172976ae44d0b25" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -657,12 +1077,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the symbol of a length unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::SymbolFromUnit(Length::Unit::Meter);<sp/>//<sp/>&quot;m&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A length unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unit symbol </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="117" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="370" bodyend="395"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="378" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="370" bodyend="395"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_length_1aff4b422ba5f45f336b8ddee59d2791d9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref></type>
@@ -674,12 +1109,27 @@
           <declname>aSymbol</declname>
         </param>
         <briefdescription>
+<para>Get the length unit from a symbol string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length::UnitFromSymbol(&quot;m&quot;);<sp/>//<sp/>Length::Unit::Meter</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aSymbol</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A unit symbol </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The length unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="119" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="397" bodyend="425"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="388" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="397" bodyend="425"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -698,7 +1148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="124" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="427" bodyend="452"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="393" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="427" bodyend="452"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -731,7 +1181,7 @@
         <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" bodystart="27" bodyend="125"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Length.hpp" bodystart="27" bodyend="394"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Length</scope><name>accessValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Length</scope><name>accessValue</name></member>

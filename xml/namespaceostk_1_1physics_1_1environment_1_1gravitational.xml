@@ -58,10 +58,32 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>params;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aParameterSet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A parameter set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" line="97" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="97" bodyend="127"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" line="98" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="98" bodyend="128"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

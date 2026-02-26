@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="54" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="54" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="91" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,12 +30,25 @@
           <declname>anEpoch</declname>
         </param>
         <briefdescription>
+<para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">MOD<sp/>provider(Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anEpoch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An epoch instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="41" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="54" bodyend="57"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="54" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1aed25865ea188d361ceb039880b176905" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -43,12 +56,13 @@
         <argsstring>() override</argsstring>
         <name>~MOD</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="43" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="59" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="51" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a1fe8106f5e8d7f21da3e289972cac24e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> *</type>
@@ -57,12 +71,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
         <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">MOD*<sp/>clonePtr<sp/>=<sp/>provider.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to the cloned <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="45" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="61" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="60" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="61" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abbe9c5a824770b315ab8b94a4a95734f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -71,12 +91,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
         <briefdescription>
+<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> provider is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> provider is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="47" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="66" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="69" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a6fb9c4e332856a561586ffaf94b995ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -84,12 +110,18 @@
         <argsstring>() const</argsstring>
         <name>getEpoch</name>
         <briefdescription>
+<para>Get the epoch. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Instant<sp/>epoch<sp/>=<sp/>provider.getEpoch();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The epoch instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="49" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="71" bodyend="74"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="78" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a65ef7c999f1ab6faa1aff7498abc457d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -102,26 +134,35 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Get the transform at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>provider.getTransformAt(Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transform from <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref> to <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> at the given instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="51" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="76" bodyend="106"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="88" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="76" bodyend="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Mean of Date (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref>) frame provider. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        Transformation from the Geocentric Celestial Reference Frame (GCRF) frame to the Mean of
-                        Date (MOD) frame. This algorithm uses the IAU-76/FK5 theory.
-
-                        The Mean of Date (MOD) frame is rotated into the Geocentric Celestial Reference Frame
-                        (GCRF) considering the IAU 1976 Precession model. Notice that if the conversion `TOD =&gt;
-                        MOD` is performed **without** considering the EOP corrections, then the GCRF obtained by
-                        this rotation is what is usually called the J2000 reference frame.
-</verbatim></para>
+<para>Transformation from the Geocentric Celestial Reference <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref>) frame to the Mean of Date (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref>) frame. This algorithm uses the IAU-76/FK5 theory.</para>
+<para>The Mean of Date (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref>) frame is rotated into the Geocentric Celestial Reference <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref>) considering the IAU 1976 Precession model. Notice that if the conversion <computeroutput><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d" kindref="compound">TOD</ref> =&gt; <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref></computeroutput> is performed <bold>without</bold> considering the EOP corrections, then the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref> obtained by this rotation is what is usually called the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000" kindref="compound">J2000</ref> reference frame.</para>
 <para><ulink url="https://en.wikipedia.org/wiki/Earth-centered_inertial">https://en.wikipedia.org/wiki/Earth-centered_inertial</ulink> <ulink url="https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/Transformation/fk5/fk5.jl#L396">https://github.com/JuliaSpace/SatelliteToolbox.jl/blob/master/src/Transformation/fk5/fk5.jl#L396</ulink> </para>
     </detaileddescription>
     <inheritancegraph>
@@ -148,7 +189,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="38" bodyend="55"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="38" bodyend="92"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a1fe8106f5e8d7f21da3e289972cac24e" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1aa9463ec066f6194e932f5975bee687ab" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>epoch_</name></member>

@@ -11,12 +11,15 @@
         <argsstring>()</argsstring>
         <name>CIRF</name>
         <briefdescription>
+<para>Default constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">CIRF<sp/>provider;</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="35" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="30" bodyend="30"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="30" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a8083ccded88a09e80ea3478a1eae0074" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -24,12 +27,13 @@
         <argsstring>() override</argsstring>
         <name>~CIRF</name>
         <briefdescription>
+<para>Destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="37" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="32" bodyend="32"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="43" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="32" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> *</type>
@@ -38,12 +42,18 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6">clone</reimplements>
         <briefdescription>
+<para>Clone the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> provider. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">CIRF*<sp/>clonePtr<sp/>=<sp/>provider.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to the cloned <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> provider </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="39" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="34" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="52" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -52,12 +62,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
         <briefdescription>
+<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> provider is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> provider is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="41" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="39" bodyend="42"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="61" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a47bb2b66b7f6af8c0d0c4c750ff7b2a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -70,20 +86,34 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Get the transform at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>provider.getTransformAt(Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The transform from <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref> to <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> at the given instant </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="43" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="44" bodyend="107"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="71" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="44" bodyend="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Celestial Intermediate Reference <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> (<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref>) provider. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        Bias, precession-nutation
-</verbatim></para>
+<para>Bias, precession-nutation</para>
 <para><ulink url="https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf">https://www.iers.org/SharedDocs/Publikationen/EN/IERS/Publications/tn/TechnNote36/tn36_174.pdf</ulink>?__blob=publicationFile&amp;v=1 </para>
     </detaileddescription>
     <inheritancegraph>
@@ -110,7 +140,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" bodystart="32" bodyend="44"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" bodystart="32" bodyend="72"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a07b839b310ac49eb05d72b9192824b51" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>CIRF</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>clone</name></member>

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="56" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="56" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="132" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_scalar_1a3a57e02beab9a304be7318e858853e21" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="57" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="57" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="133" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,12 +46,33 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Construct a scalar from a value and a unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Scalar<sp/>scalar(1.0,<sp/>Unit::Length(Length::Unit::Meter));</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A real value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A physical unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="35" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="15" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="42" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a92a4f3e75436e61c077c6d8b37198e95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -63,12 +84,27 @@
           <declname>aScalar</declname>
         </param>
         <briefdescription>
+<para>Equality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Boolean<sp/>isEqual<sp/>=<sp/>(scalarA<sp/>==<sp/>scalarB);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aScalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if scalars are equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="37" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="21" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="52" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="21" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a9d1f401cb3df5a6621c1fc04d86ce423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -80,12 +116,27 @@
           <declname>aScalar</declname>
         </param>
         <briefdescription>
+<para>Inequality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Boolean<sp/>isNotEqual<sp/>=<sp/>(scalarA<sp/>!=<sp/>scalarB);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aScalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if scalars are not equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="39" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="31" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="62" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1a93ea853416cca1007c462ffafdd4aa95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -93,12 +144,18 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Check if the scalar is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Boolean<sp/>isDefined<sp/>=<sp/>scalar.isDefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the scalar is defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="43" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="50" bodyend="53"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1ab632ef637308f3b97f0ab4ef63780e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -106,12 +163,18 @@
         <argsstring>() const</argsstring>
         <name>getValue</name>
         <briefdescription>
+<para>Get the scalar value. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>value<sp/>=<sp/>scalar.getValue();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The real value </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="45" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="55" bodyend="58"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="91" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1af2bf59b6c0681b8770083006328ecdd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
@@ -119,12 +182,18 @@
         <argsstring>() const</argsstring>
         <name>getUnit</name>
         <briefdescription>
+<para>Get the scalar unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit<sp/>unit<sp/>=<sp/>scalar.getUnit();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The physical unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="47" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="60" bodyend="63"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1abe53604aa68b58737d7ffbf039a018f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref></type>
@@ -136,12 +205,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Convert the scalar to a different unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Scalar<sp/>scalarInKm<sp/>=<sp/>scalar.inUnit(Unit::Length(Length::Unit::Kilometer));</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A target unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The scalar expressed in the given unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="49" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="65" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="110" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="65" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_scalar_1acc184e1d5fa8e7868fcb67e065e68b77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -154,12 +238,27 @@
           <defval>Integer::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Convert the scalar to a string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">String<sp/>string<sp/>=<sp/>scalar.toString();</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision for the value (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="51" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="75" bodyend="83"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="120" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="75" bodyend="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -177,12 +276,35 @@
           <declname>aScalar</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>scalar;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aScalar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="41" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="36" bodyend="48"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="73" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="36" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -192,24 +314,28 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined scalar. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Scalar<sp/>scalar<sp/>=<sp/>Scalar::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined scalar </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="53" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="85" bodyend="88"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="129" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="85" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref> quantity. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        A scalar quantity is a physical quantity that can be described by a single element of a
-                        number field such as a real number, often accompanied by units of measurement.
-</verbatim></para>
+<para>A scalar quantity is a physical quantity that can be described by a single element of a number field such as a real number, often accompanied by units of measurement.</para>
 <para><ulink url="https://en.wikipedia.org/wiki/Scalar_">https://en.wikipedia.org/wiki/Scalar_</ulink>(physics) </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="32" bodyend="58"/>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" line="32" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Scalar.hpp" bodystart="31" bodyend="134"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1data_1_1_scalar_1af2bf59b6c0681b8770083006328ecdd5" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>getUnit</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_scalar_1ab632ef637308f3b97f0ab4ef63780e54" prot="public" virt="non-virtual"><scope>ostk::physics::data::Scalar</scope><name>getValue</name></member>

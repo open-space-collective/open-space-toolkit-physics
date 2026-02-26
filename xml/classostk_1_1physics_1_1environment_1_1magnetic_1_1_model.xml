@@ -15,10 +15,12 @@
 <para>Constructor (default) </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Model<sp/>model;</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="30" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.cpp" bodystart="17" bodyend="17"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.cpp" bodystart="17" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1a6fe1b73447dc65989d31db636fa73953" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type></type>
@@ -32,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="34" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.cpp" bodystart="19" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="35" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.cpp" bodystart="19" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1af357908c151a7809bbbc8fc676bd07b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model" kindref="compound">Model</ref> *</type>
@@ -58,8 +60,8 @@
         <definition>virtual bool ostk::physics::environment::magnetic::Model::isDefined</definition>
         <argsstring>() const =0</argsstring>
         <name>isDefined</name>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1a0e8ec00a64950ad684929591c5c6bcb4">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a3a5080990cbd2b4204c59f10cd58271d">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_dipole_1acbc4e73b22c937cc95bc8540c981cc53">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a319888830792f1153dd77bc37bf89492">isDefined</reimplementedby>
         <briefdescription>
 <para>Check if the magnetic model is defined (pure virtual) </para>
         </briefdescription>
@@ -70,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="46" column="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="45" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1abf0510f9be2c196ea3c0586d02979b0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Vector3d</type>
@@ -114,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="54" column="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="52" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -140,7 +142,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model"/>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="26" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" bodystart="25" bodyend="55"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp" bodystart="24" bodyend="53"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1af357908c151a7809bbbc8fc676bd07b6" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::magnetic::Model</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1abf0510f9be2c196ea3c0586d02979b0f" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::magnetic::Model</scope><name>getFieldValueAt</name></member>

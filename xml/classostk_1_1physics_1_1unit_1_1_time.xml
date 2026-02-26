@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="77" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" bodystart="77" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="162" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -122,7 +122,7 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Time<sp/>time(1.0,<sp/>Time::Unit::Second)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time(1.0,<sp/>Time::Unit::Second);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="54" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="15" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="53" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1a89aa564329823b9de4e97de1dde9bfeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_time" kindref="compound">Time</ref> *</type>
@@ -154,12 +154,19 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a">clone</reimplements>
         <briefdescription>
+<para>Clone the time unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Seconds(1.0);</highlight></codeline>
+<codeline><highlight class="normal">Time*<sp/>clonePtr<sp/>=<sp/>time.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to a dynamically allocated clone of this time unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="56" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="21" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="64" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="21" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1affd0553d1512c5b0c9972c6e17ec916e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -168,12 +175,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
         <briefdescription>
+<para>Check if the time unit is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::Seconds(1.0).isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="58" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="26" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="74" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="26" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1aadb1f6a8df36b9c37dc04318b228fac8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref></type>
@@ -181,12 +194,18 @@
         <argsstring>() const</argsstring>
         <name>getUnit</name>
         <briefdescription>
+<para>Get the time unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::Seconds(1.0).getUnit();<sp/>//<sp/>Time::Unit::Second</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The time unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="60" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="31" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="84" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1a23e002d1a1f33ce5c81ed91021d60f67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -198,12 +217,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the value in the specified unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::Seconds(60.0).in(Time::Unit::Minute);<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A time unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value in the specified unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="62" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="36" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="95" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="36" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1af6e07e4690da036690b9528df828f36b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -211,12 +245,18 @@
         <argsstring>() const</argsstring>
         <name>inSeconds</name>
         <briefdescription>
+<para>Get the value in seconds. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::Seconds(1.0).inSeconds();<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The value in seconds </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="64" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="51" bodyend="54"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1a7a6e2b48e241cde3488f27312d356b3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>String</type>
@@ -230,12 +270,27 @@
           <defval>Integer::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Convert to string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::Seconds(1.0).toString();</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision (number of decimal places) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="66" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="56" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="116" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="56" bodyend="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -245,12 +300,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined time unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined time unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="68" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="66" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="126" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1aa1651f06cf209818ab5051255a74733a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_time" kindref="compound">Time</ref></type>
@@ -262,12 +323,27 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Construct a time unit from a value in seconds. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time<sp/>time<sp/>=<sp/>Time::Seconds(1.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value in seconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A time unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="70" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="71" bodyend="74"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="137" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1a20bec87572f75c843f1db886fd7a7ae2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -279,12 +355,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the string representation of a time unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::StringFromUnit(Time::Unit::Second);<sp/>//<sp/>&quot;Second&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A time unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="72" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="81" bodyend="118"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="148" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="81" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_time_1a9b799246a6fea6317eb13bcfc21c2f93" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -296,12 +387,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the symbol of a time unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Time::SymbolFromUnit(Time::Unit::Second);<sp/>//<sp/>&quot;s&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A time unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unit symbol </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="74" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="120" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="159" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="120" bodyend="154"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -320,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="79" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="156" bodyend="190"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="164" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Time.cpp" bodystart="156" bodyend="190"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -353,7 +459,7 @@
         <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" bodystart="27" bodyend="80"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Time.hpp" bodystart="27" bodyend="165"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Time</scope><name>accessValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Time</scope><name>accessValue</name></member>

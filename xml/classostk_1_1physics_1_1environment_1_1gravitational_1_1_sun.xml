@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="46" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="45" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="45" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="44" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="43" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="43" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="42" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="107" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="105" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="134" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,6 +87,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Sun<sp/>sunGrav(Sun::Type::Spherical);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -108,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="56" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="89" bodyend="93"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="89" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1a3c2504abf25c3af22a41cdc8d793838e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -123,6 +125,8 @@
 <para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Sun<sp/>sunGravCopy(sunGrav);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aSunGravitationalModel</parametername>
@@ -136,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="62" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="95" bodyend="99"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="67" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="95" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1a9eb14731759cdb1a8ab4b92c5e193111" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> &amp;</type>
@@ -151,6 +155,8 @@
 <para>Copy assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Sun<sp/>sunGravCopy<sp/>=<sp/>sunGrav;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aSunGravitationalModel</parametername>
@@ -166,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="69" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="101" bodyend="113"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="77" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="101" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ad7441f87bf6088f1f1d4fbf6e9dd6ff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -180,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="73" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="115" bodyend="115"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="80" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1aa884bdf367fcbe7aa81289cc077c9dad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> *</type>
@@ -192,13 +198,15 @@
 <para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> gravitational model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Sun*<sp/>sunGravPtr<sp/>=<sp/>sunGrav.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> gravitational model </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="79" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="117" bodyend="120"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="89" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="117" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ac45193bd4e61dbf93d38319f4d7842dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -210,13 +218,15 @@
 <para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> gravitational model is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bool<sp/>isDefined<sp/>=<sp/>sunGrav.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> gravitational model is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="85" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="122" bodyend="125"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="98" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="122" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ac79af34fa7adcb7340b86a059b7585e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ae567145f71c7750a9e4e43a309bd19db" kindref="member">Sun::Type</ref></type>
@@ -227,13 +237,15 @@
 <para>Get gravitational model type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Sun::Type<sp/>type<sp/>=<sp/>sunGrav.getType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Gravitational model type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="91" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="127" bodyend="130"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="107" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="127" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ac8aac491e31bde1690f5d85c7c5fe590" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -253,6 +265,8 @@
 <para>Get the gravitational field value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Vector3d<sp/>fieldValue<sp/>=<sp/>sunGrav.getFieldValueAt(position,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aPosition</parametername>
@@ -276,9 +290,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="99" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="132" bodyend="135"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="118" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="132" bodyend="135"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1a5b9dbd2aecf758f6d960db3b7821bc31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1a5b9dbd2aecf758f6d960db3b7821bc31" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Model::Parameters</ref></type>
         <definition>Model::Parameters ostk::physics::environment::gravitational::Sun::ParametersFromType</definition>
         <argsstring>(const Sun::Type &amp;aType)</argsstring>
@@ -288,12 +304,27 @@
           <declname>aType</declname>
         </param>
         <briefdescription>
+<para>Get gravitational model parameters for a given type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Model::Parameters<sp/>params<sp/>=<sp/>Sun::ParametersFromType(Sun::Type::Spherical);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A gravitational model type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Gravitational model parameters </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="101" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="137" bodyend="150"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="128" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="137" bodyend="150"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -316,15 +347,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="109" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="152" bodyend="166"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="136" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.cpp" bodystart="152" bodyend="166"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> gravitational model. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        The gravitational potential of the Sun for now is kept as a simple spherical model. 
-</verbatim> </para>
+<para>The gravitational potential of the <ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun" kindref="compound">Sun</ref> for now is kept as a simple spherical model. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">
@@ -350,7 +380,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="41" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="40" bodyend="110"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp" bodystart="39" bodyend="137"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1aa884bdf367fcbe7aa81289cc077c9dad" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Sun</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ac8aac491e31bde1690f5d85c7c5fe590" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Sun</scope><name>getFieldValueAt</name></member>

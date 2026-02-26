@@ -642,7 +642,7 @@
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;fetchLatestFinals2000A_();</highlight></codeline>
 <codeline lineno="250"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
-<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1a4d2797de02f1de4a66f949f8224bf8ae" kindref="member">Manager::reset</ref>()</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1add26b38d4c215f1386e672379c3c5421" kindref="member">Manager::reset</ref>()</highlight></codeline>
 <codeline lineno="253"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" kindref="member">BaseManager::reset</ref>();</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"></highlight></codeline>

@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="72" column="27" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="72" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="167" column="27" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -66,7 +66,7 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>electricCurrent<sp/>{<sp/>1.0,<sp/>ElectricCurrent::Unit::Ampere<sp/>}<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>electricCurrent<sp/>{<sp/>1.0,<sp/>ElectricCurrent::Unit::Ampere<sp/>};</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -98,12 +98,19 @@
         <name>clone</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a">clone</reimplements>
         <briefdescription>
+<para>Clone the electric current. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>current<sp/>=<sp/>ElectricCurrent::Amperes(1.0);</highlight></codeline>
+<codeline><highlight class="normal">ElectricCurrent*<sp/>clonePtr<sp/>=<sp/>current.clone();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A pointer to a dynamically allocated clone of this electric current </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="49" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="21" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="58" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="21" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a022780771b00926143ea03a5599fea4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -112,12 +119,18 @@
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
         <briefdescription>
+<para>Check if the electric current is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::Amperes(1.0).isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="51" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="26" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="68" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="26" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a66456793da06177132d9086c09a1e72b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref></type>
@@ -125,12 +138,18 @@
         <argsstring>() const</argsstring>
         <name>getUnit</name>
         <briefdescription>
+<para>Get the electric current unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::Amperes(1.0).getUnit();<sp/>//<sp/>ElectricCurrent::Unit::Ampere</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The electric current unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="53" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="31" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="78" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ace3efcea29b6327bf47cefa20395888d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -142,12 +161,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the value in the specified unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::Amperes(1.0).in(ElectricCurrent::Unit::Ampere);<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An electric current unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value in the specified unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="36" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="89" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="36" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ad64c82310c329453c248151854e11249" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -155,12 +189,18 @@
         <argsstring>() const</argsstring>
         <name>inAmperes</name>
         <briefdescription>
+<para>Get the value in amperes. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::Amperes(1.0).inAmperes();<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The value in amperes </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="51" bodyend="54"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="99" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a7c77014239ba31f0b64bbf8ed7771e75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>String</type>
@@ -174,12 +214,27 @@
           <defval>Integer::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Convert to string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::Amperes(1.0).toString();</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision (number of decimal places) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="59" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="56" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="110" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="56" bodyend="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -189,12 +244,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined electric current. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>current<sp/>=<sp/>ElectricCurrent::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>An undefined electric current </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="61" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="66" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="120" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ad07f184596869b31cf94f15e9fbaa687" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref></type>
@@ -206,12 +267,27 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Construct an electric current from a value in amperes. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>current<sp/>=<sp/>ElectricCurrent::Amperes(1.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value in amperes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An electric current </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="63" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="71" bodyend="74"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="131" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1ad8dd271000475039b8649357bd615177" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref></type>
@@ -223,12 +299,27 @@
           <declname>aString</declname>
         </param>
         <briefdescription>
+<para>Parse an electric current from a string. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent<sp/>current<sp/>=<sp/>ElectricCurrent::Parse(&quot;1.0<sp/>[A]&quot;);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string to parse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An electric current </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="65" column="28"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="142" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a6b0f8a5a5d2e472beaa8f21b62ec3843" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -240,12 +331,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the string representation of an electric current unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::StringFromUnit(ElectricCurrent::Unit::Ampere);<sp/>//<sp/>&quot;Ampere&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An electric current unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="67" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="81" bodyend="97"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="153" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="81" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_electric_current_1a7e7c3c8ad78e291694f298a11ebe2056" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -257,12 +363,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Get the symbol of an electric current unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">ElectricCurrent::SymbolFromUnit(ElectricCurrent::Unit::Ampere);<sp/>//<sp/>&quot;A&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An electric current unit </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The unit symbol </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="69" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="99" bodyend="112"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="164" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="99" bodyend="112"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -281,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="74" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="114" bodyend="127"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="169" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp" bodystart="114" bodyend="127"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -314,7 +435,7 @@
         <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="27" bodyend="75"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp" bodystart="27" bodyend="170"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>accessValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::ElectricCurrent</scope><name>accessValue</name></member>

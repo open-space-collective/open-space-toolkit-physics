@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="65" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="65" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="149" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" prot="private" static="no" mutable="no">
         <type>Map&lt; String, Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="66" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="66" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="150" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a8a72adc24738214445c553a78295ca3d" prot="private" static="no" mutable="no">
         <type>Map&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> *, Map&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> *, Map&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>, <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &gt; &gt; &gt;</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="68" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="68" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="152" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a33ddf1a08b6a8a2d85d752c0ba7ae754" prot="private" static="no" mutable="yes">
         <type>std::mutex</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="70" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="70" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="154" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="39" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="41" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ad1bf0d565112eac93b3fce6639629341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="41" column="13"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="43" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7963c97f063b5cdd276f3ffd375ef8e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -102,12 +102,27 @@
           <declname>aFrameName</declname>
         </param>
         <briefdescription>
+<para>Check if a frame with the given name exists. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().hasFrameWithName(&quot;GCRF&quot;);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A frame name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if a frame with the given name exists </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="43" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="17" bodyend="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="54" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="17" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aac7fb7d84fa6cb1d41019c4e5d0d617f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -119,12 +134,46 @@
           <declname>aFrameName</declname>
         </param>
         <briefdescription>
+<para>Access frame with the given name. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Shared&lt;const<sp/>Frame&gt;<sp/>frameSPtr<sp/>=<sp/>Manager::Get().accessFrameWithName(&quot;GCRF&quot;);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A frame name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Shared pointer to the frame </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="45" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="24" bodyend="38"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="65" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="24" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac1cce20258b585f4c70ca4fae3048c6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Array&lt; String &gt;</type>
+        <definition>Array&lt; String &gt; ostk::physics::coordinate::frame::Manager::getAllFrameNames</definition>
+        <argsstring>() const</argsstring>
+        <name>getAllFrameNames</name>
+        <briefdescription>
+<para>Get names of all registered frames. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;String&gt;<sp/>frameNames<sp/>=<sp/>Manager::Get().getAllFrameNames();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Array of frame names </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="40" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a0f5bd33bc74842d47f58cfcd675860ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -144,12 +193,43 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Access a cached transform between two frames at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>Manager::Get().accessCachedTransform(fromFrameSPtr,<sp/>toFrameSPtr,<sp/>instant);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFromFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the source frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aToFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the destination frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The cached transform </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="47" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="40" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="88" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="53" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a402814124348fc9217912a83dd29dda6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -161,12 +241,25 @@
           <declname>aFrameSPtr</declname>
         </param>
         <briefdescription>
+<para>Add a frame to the manager. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().addFrame(frameSPtr);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="51" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="66" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="79" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1b87264403a57572eb08f590bc6a85e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -178,12 +271,41 @@
           <declname>aFrameName</declname>
         </param>
         <briefdescription>
+<para>Remove a frame with the given name. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().removeFrameWithName(&quot;MyCustomFrame&quot;);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A frame name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="53" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="81" bodyend="118"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="110" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="94" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7fb97e9337d1df702d4e92c45655fd3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::Manager::clearAllFrames</definition>
+        <argsstring>()</argsstring>
+        <name>clearAllFrames</name>
+        <briefdescription>
+<para>Remove all registered frames. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().clearAllFrames();</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="118" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="133" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aad244181e43540dcb967652f92f99d62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -207,12 +329,49 @@
           <declname>aTransform</declname>
         </param>
         <briefdescription>
+<para>Add a transform to the cache. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().addCachedTransform(fromFrameSPtr,<sp/>toFrameSPtr,<sp/>instant,<sp/>transform);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFromFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the source frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aToFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the destination frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aTransform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A transform </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="120" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="141" bodyend="179"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -222,12 +381,18 @@
         <argsstring>()</argsstring>
         <name>Get</name>
         <briefdescription>
+<para>Get the manager singleton. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager&amp;<sp/>manager<sp/>=<sp/>Manager::Get();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Reference to the manager </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="62" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="160" bodyend="187"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="146" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="181" bodyend="208"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -246,7 +411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="72" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="189" bodyend="192"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="156" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="210" bodyend="213"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -254,14 +419,16 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="36" bodyend="73"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="38" bodyend="157"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a0f5bd33bc74842d47f58cfcd675860ee" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>accessCachedTransform</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aac7fb7d84fa6cb1d41019c4e5d0d617f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>accessFrameWithName</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aad244181e43540dcb967652f92f99d62" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>addCachedTransform</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a402814124348fc9217912a83dd29dda6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>addFrame</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7fb97e9337d1df702d4e92c45655fd3a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>clearAllFrames</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>frameMap_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a96bac91e86c805cbab50135642b010cf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Get</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac1cce20258b585f4c70ca4fae3048c6c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getAllFrameNames</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7963c97f063b5cdd276f3ffd375ef8e4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>hasFrameWithName</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ab05b65e241c0caa4c90518b1722a9522" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Manager</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ab78680548ad919be7520b2ee4e1dd12b" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Manager</name></member>

@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" line="26" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" bodystart="25" bodyend="47"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" bodystart="24" bodyend="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -157,7 +157,7 @@
 <para>Convert a time scale to its string representation. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">String<sp/>scaleString<sp/>=<sp/>StringFromScale(time::Scale::UTC)<sp/>;<sp/>//<sp/>&quot;UTC&quot;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">String<sp/>scaleString<sp/>=<sp/>StringFromScale(time::Scale::UTC);<sp/>//<sp/>&quot;UTC&quot;</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="14" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="14" bodyend="69" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="58" declcolumn="8"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="14" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="14" bodyend="69" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="56" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a2c5cdf23bd0ca664bc0c033e4d005d6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">Scale</ref></type>
@@ -189,7 +189,7 @@
 <para>Parse a string representation to its corresponding time scale. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">time::Scale<sp/>timeScale<sp/>=<sp/>ScaleFromString(&quot;UTC&quot;)<sp/>;<sp/>//<sp/>time::Scale::UTC</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">time::Scale<sp/>timeScale<sp/>=<sp/>ScaleFromString(&quot;UTC&quot;);<sp/>//<sp/>time::Scale::UTC</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="71" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="71" bodyend="151" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="69" declcolumn="7"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="71" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="71" bodyend="151" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="66" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a0019f95c3d716a096edccf30a9edfc19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -224,7 +224,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Date(2018,<sp/>1,<sp/>2)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Date(2018,<sp/>1,<sp/>2);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -267,7 +267,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>DateTime(Date(2018,<sp/>1,<sp/>2),<sp/>Time(12,<sp/>34,<sp/>56,<sp/>123,<sp/>456,<sp/>789))<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>DateTime(Date(2018,<sp/>1,<sp/>2),<sp/>Time(12,<sp/>34,<sp/>56,<sp/>123,<sp/>456,<sp/>789));</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -310,7 +310,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">2.0<sp/>*<sp/>Duration::Seconds(1.0)<sp/>;<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">2.0<sp/>*<sp/>Duration::Seconds(1.0);<sp/>//<sp/>2.0<sp/>[s]</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -353,7 +353,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Duration(123)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Duration(123);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -396,7 +396,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC)<sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Instant::DateTime(DateTime(2018,<sp/>1,<sp/>1,<sp/>0,<sp/>0,<sp/>0),<sp/>Scale::UTC);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -439,6 +439,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Interval::Closed(Instant::J2000(),<sp/>Instant::J2000()<sp/>+<sp/>Duration::Hours(1.0));</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInterval</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An interval </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -460,7 +482,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/><sp/>;</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>Time<sp/>{<sp/>12,<sp/>34,<sp/>56<sp/>}<sp/>;</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>

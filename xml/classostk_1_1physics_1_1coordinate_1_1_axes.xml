@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="55" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="55" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="141" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a901e0251eba0ef966ed76d95a1e21e11" prot="private" static="no" mutable="no">
         <type>Vector3d</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="56" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="56" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="142" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_axes_1aecda2531136a716cea4aa10870f526f6" prot="private" static="no" mutable="no">
         <type>Vector3d</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="57" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="57" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="143" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a9a60f424bcb327835bf209cf02e1b080" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="59" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="59" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="145" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -80,12 +80,49 @@
           <declname>aFrameSPtr</declname>
         </param>
         <briefdescription>
+<para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Axes<sp/>axes({1.0,<sp/>0.0,<sp/>0.0},<sp/>{0.0,<sp/>1.0,<sp/>0.0},<sp/>{0.0,<sp/>0.0,<sp/>1.0},<sp/>Frame::GCRF());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aXAxis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An X-axis vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aYAxis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Y-axis vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aZAxis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A Z-axis vector </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the reference frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="32" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="16" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="42" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="16" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1adb14e9764a5f835222b6870d06e3da3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -97,12 +134,27 @@
           <declname>anAxes</declname>
         </param>
         <briefdescription>
+<para>Equality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes<sp/>==<sp/>otherAxes;<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anAxes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An axes object to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if axes are equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="34" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="26" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="52" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="26" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a81d4b8ab08576d13e93134e064edb6cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -114,12 +166,27 @@
           <declname>anAxes</declname>
         </param>
         <briefdescription>
+<para>Inequality operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes<sp/>!=<sp/>otherAxes;<sp/>//<sp/>False</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anAxes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An axes object to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if axes are not equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="36" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="36" bodyend="39"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="62" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="36" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a8b3615f43a30fd1cbb2afde52b6c2ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -127,12 +194,18 @@
         <argsstring>() const</argsstring>
         <name>isDefined</name>
         <briefdescription>
+<para>Check if the axes are defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Axes::Undefined().isDefined();<sp/>//<sp/>False</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if the axes are defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="40" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="59" bodyend="62"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a8ec6cf15dd2a626e29d6efa262718c9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -140,12 +213,18 @@
         <argsstring>() const</argsstring>
         <name>x</name>
         <briefdescription>
+<para>Get the X-axis vector. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes.x();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Reference to the X-axis vector </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="42" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="64" bodyend="72"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="91" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="64" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a46926ef6f081b750050c609efc662c81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -153,12 +232,18 @@
         <argsstring>() const</argsstring>
         <name>y</name>
         <briefdescription>
+<para>Get the Y-axis vector. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes.y();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Reference to the Y-axis vector </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="44" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="74" bodyend="82"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="100" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="74" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a1af0d13a788039739783604fd31bdf45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -166,12 +251,18 @@
         <argsstring>() const</argsstring>
         <name>z</name>
         <briefdescription>
+<para>Get the Z-axis vector. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes.z();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Reference to the Z-axis vector </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="46" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="84" bodyend="92"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="109" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="84" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1a19aa6b98fd97b839ac7f9f29fa65ee31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -179,12 +270,18 @@
         <argsstring>() const</argsstring>
         <name>getFrame</name>
         <briefdescription>
+<para>Get the reference frame. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes.getFrame();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Shared pointer to the reference frame </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="48" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="94" bodyend="102"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="118" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="94" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_axes_1aff12c7433fefac8ac01bd96414e7b053" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_axes" kindref="compound">Axes</ref></type>
@@ -200,12 +297,35 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
+<para>Convert axes to a different reference frame at a given instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">axes.inFrame(Frame::ITRF(),<sp/>Instant::J2000());</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aFrameSPtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the target frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An instant </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1_axes" kindref="compound">Axes</ref> expressed in the specified frame </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="50" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="104" bodyend="131"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="129" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="104" bodyend="131"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -223,12 +343,35 @@
           <declname>anAxes</declname>
         </param>
         <briefdescription>
+<para>Output stream operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">std::cout<sp/>&lt;&lt;<sp/>axes;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">anOutputStream</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An output stream </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anAxes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An axes object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the output stream </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="38" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="41" bodyend="57"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="73" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="41" bodyend="57"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -238,12 +381,18 @@
         <argsstring>()</argsstring>
         <name>Undefined</name>
         <briefdescription>
+<para>Construct an undefined axes object. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Axes<sp/>axes<sp/>=<sp/>Axes::Undefined();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Undefined axes </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="52" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="133" bodyend="136"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="138" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="133" bodyend="136"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -251,7 +400,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="29" bodyend="60"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Axes.hpp" bodystart="29" bodyend="146"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_axes_1ae01e6c131657c9b21c1e3fb47b823a03" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Axes</scope><name>Axes</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_axes_1a9a60f424bcb327835bf209cf02e1b080" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Axes</scope><name>frameSPtr_</name></member>

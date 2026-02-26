@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="35" bodyend="47"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="35" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="34" bodyend="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="79" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="79" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="170" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_unit_1a727da025691418da3f5aed6b9e19a203" prot="private" static="no" mutable="no">
         <type>Real</type>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="80" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="80" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="171" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -121,12 +121,33 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit<sp/>unit(Unit::Type::Length,<sp/>1.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A unit type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="49" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="18" bodyend="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="56" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="18" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type></type>
@@ -134,12 +155,13 @@
         <argsstring>()=0</argsstring>
         <name>~Unit</name>
         <briefdescription>
+<para>Pure virtual destructor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="51" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="24" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="59" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="24" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref> *</type>
@@ -153,12 +175,16 @@
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_angle_1a39c7a0b125c2c78d6e9394f0c97dce01">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_derived_1a9f6a512e1f97f4910876af64fa0bea03">clone</reimplementedby>
         <briefdescription>
+<para>Clone the unit. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>A pointer to a dynamically allocated clone of this unit </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="53" column="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="64" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -170,12 +196,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit(Unit::Type::Length,<sp/>1.0)<sp/>==<sp/>Unit(Unit::Type::Length,<sp/>1.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A unit to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if units are equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="26" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="74" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="26" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -187,12 +228,27 @@
           <declname>aUnit</declname>
         </param>
         <briefdescription>
+<para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit(Unit::Type::Length,<sp/>1.0)<sp/>!=<sp/>Unit(Unit::Type::Mass,<sp/>1.0);<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aUnit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A unit to compare with </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if units are not equal </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="36" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="36" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -202,16 +258,22 @@
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a022780771b00926143ea03a5599fea4a">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_mass_1a7119d821ddc2dff61ed68572fe4e95f8">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_time_1affd0553d1512c5b0c9972c6e17ec916e">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_length_1a6eeac66a9bc802ec6426c37a9bc670d6">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_angle_1aab59a73aa91bfc0ac889f7e8cf7fac4c">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_length_1a6eeac66a9bc802ec6426c37a9bc670d6">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_derived_1a3d569e23bed90199f71aa36dee95feac">isDefined</reimplementedby>
         <briefdescription>
+<para>Check if the unit is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit(Unit::Type::Length,<sp/>1.0).isDefined();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if defined </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="59" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="46" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="93" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -219,12 +281,18 @@
         <argsstring>() const</argsstring>
         <name>isZero</name>
         <briefdescription>
+<para>Check if the value is zero. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit(Unit::Type::Length,<sp/>0.0).isZero();<sp/>//<sp/>True</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>True if zero </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="61" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="51" bodyend="54"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Real &amp;</type>
@@ -232,12 +300,18 @@
         <argsstring>() const</argsstring>
         <name>accessValue</name>
         <briefdescription>
+<para>Access the value by const reference. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Real&amp;<sp/>value<sp/>=<sp/>Unit(Unit::Type::Length,<sp/>1.0).accessValue();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A const reference to the value </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="63" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="56" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="111" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="56" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref></type>
@@ -245,12 +319,18 @@
         <argsstring>() const</argsstring>
         <name>getType</name>
         <briefdescription>
+<para>Get the unit type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit(Unit::Type::Length,<sp/>1.0).getType();<sp/>//<sp/>Unit::Type::Length</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The unit type </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="65" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="61" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="120" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="61" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -258,12 +338,18 @@
         <argsstring>() const</argsstring>
         <name>getValue</name>
         <briefdescription>
+<para>Get the value. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Unit(Unit::Type::Length,<sp/>1.0).getValue();<sp/>//<sp/>1.0</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The value </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="67" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="66" bodyend="69"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="129" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>String</type>
@@ -282,12 +368,25 @@
           <defval>Integer::Undefined()</defval>
         </param>
         <briefdescription>
+<para>Convert to string representation. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision (number of decimal places) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A string representation </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="69" column="20"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="135" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Real &amp;</type>
@@ -295,12 +394,19 @@
         <argsstring>()</argsstring>
         <name>accessValue</name>
         <briefdescription>
+<para>Access the value by mutable reference. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(1.0);</highlight></codeline>
+<codeline><highlight class="normal">length.accessValue()<sp/>=<sp/>2.0;</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>A mutable reference to the value </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="71" column="10"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="145" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -312,12 +418,26 @@
           <declname>aValue</declname>
         </param>
         <briefdescription>
+<para>Set the value. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Length<sp/>length<sp/>=<sp/>Length::Meters(1.0);</highlight></codeline>
+<codeline><highlight class="normal">length.setValue(2.0);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="73" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="76" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="156" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="76" bodyend="79"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-static-func">
@@ -331,12 +451,27 @@
           <declname>aString</declname>
         </param>
         <briefdescription>
+<para>Parse a string into a value and unit symbol pair. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Pair&lt;Real,<sp/>String&gt;<sp/>pair<sp/>=<sp/>Unit::ParseString(&quot;1.0<sp/>[m]&quot;);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string to parse </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pair of (value, unit symbol) </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="76" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="81" bodyend="101"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="167" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Unit.cpp" bodystart="81" bodyend="101"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -396,7 +531,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="32" bodyend="81"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" line="32" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp" bodystart="31" bodyend="172"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Unit</scope><name>accessValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Unit</scope><name>accessValue</name></member>

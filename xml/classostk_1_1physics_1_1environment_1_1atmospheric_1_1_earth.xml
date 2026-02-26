@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="47" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="46" bodyend="51"/>
       </memberdef>
       <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a95c47e34028290fd5644025b4e5b735c" prot="public" static="no" strong="yes">
         <type></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="55" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="54" bodyend="60"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="54" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="53" bodyend="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="143" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="143" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="168" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a9eac604602c9b7753700c538f7bfd114" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr double</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="144" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="144" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="169" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a63de2da48803d7dbe898f29f35102c74" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr double</type>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="145" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="145" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="170" column="29" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="154" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="152" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="179" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -192,6 +192,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthAtmo(Earth::Type::Exponential);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aType</parametername>
@@ -269,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="74" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="215" bodyend="239"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="76" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="215" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1af7b73cdb654df9a3809240225e0387cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -284,6 +286,8 @@
 <para>Copy constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthAtmoCopy(earthAtmo);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEarthAtmosphericModel</parametername>
@@ -297,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="90" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="241" bodyend="245"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="95" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="241" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a2b00fa92a4d1765307a5bf159581719f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">Earth</ref> &amp;</type>
@@ -312,6 +316,8 @@
 <para>Copy assignment operator. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth<sp/>earthAtmoB<sp/>=<sp/>earthAtmoA;</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">anEarthAtmosphericModel</parametername>
@@ -327,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="97" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="247" bodyend="259"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="105" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="247" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a7af6281b3a6f34daf930dd14811f1b8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -341,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="101" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="261" bodyend="261"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="108" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="261" bodyend="261"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a9be90efb873e548b1e6ffb2533c0e79c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">Earth</ref> *</type>
@@ -353,31 +359,35 @@
 <para>Clone the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">Earth</ref> atmospheric model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth*<sp/>earthAtmoPtr<sp/>=<sp/>earthAtmo.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">Earth</ref> atmospheric model </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="107" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="263" bodyend="266"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="117" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="263" bodyend="266"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1d16a61abd21e39d8d2eaec3f07ba4a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1ae9dee3ee229cc531b50069a1a67ab4cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool ostk::physics::environment::atmospheric::Earth::isDefined</definition>
-        <argsstring>() const</argsstring>
+        <argsstring>() const override</argsstring>
         <name>isDefined</name>
         <reimplements refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ac79efc08d6bae1464944174ef1c26b98">isDefined</reimplements>
         <briefdescription>
 <para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">Earth</ref> atmospheric model is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">earthAtmo.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">Earth</ref> atmospheric model is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="113" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="268" bodyend="271"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="126" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="268" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1acfaaed7032dbf0e76f608c37281cf7de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1df841508cb5d989c11b033f49365c2f" kindref="member">Earth::Type</ref></type>
@@ -388,13 +398,15 @@
 <para>Get atmospheric model type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth::Type<sp/>type<sp/>=<sp/>earthAtmo.getType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Atmospheric model type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="119" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="273" bodyend="276"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="135" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="273" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1aaaf1ce739afa280c8ee0a5502d56b143" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a95c47e34028290fd5644025b4e5b735c" kindref="member">Earth::InputDataType</ref></type>
@@ -405,13 +417,15 @@
 <para>Get input data source type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Earth::InputDataType<sp/>inputDataType<sp/>=<sp/>earthAtmo.getInputDataType();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Input data source type </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="125" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="278" bodyend="281"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="144" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="278" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1af07312f16bc60d0bae6368daf08ed978" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Real</type>
@@ -431,6 +445,8 @@
 <para>Get the atmospheric density value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>density<sp/>=<sp/>earthAtmo.getDensityAt(position,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aPosition</parametername>
@@ -454,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="133" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="283" bodyend="286"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="155" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="283" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a4689f059c2ac46eaab19e70f83f7110b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Real</type>
@@ -473,6 +489,8 @@
 <para>Get the atmospheric density value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Real<sp/>density<sp/>=<sp/>earthAtmo.getDensityAt(lla,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aLLA</parametername>
@@ -496,7 +514,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="141" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="288" bodyend="291"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="166" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="288" bodyend="291"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -511,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="148" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="173" column="5"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -562,7 +580,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="156" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="293" bodyend="364"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="181" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="293" bodyend="364"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -594,7 +612,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="45" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="44" bodyend="167"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="44" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="43" bodyend="192"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a9be90efb873e548b1e6ffb2533c0e79c" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a9eac604602c9b7753700c538f7bfd114" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>defaultF107AConstantValue</name></member>
@@ -610,7 +628,7 @@
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a861bb13fcc1417b73a7540e51061b69d" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>ImplFromType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a19097a679c36ebf7b686914208919f63" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>implUPtr_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a95c47e34028290fd5644025b4e5b735c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>InputDataType</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1d16a61abd21e39d8d2eaec3f07ba4a9" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1ae9dee3ee229cc531b50069a1a67ab4cc" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_model_1ad47700055f55caa9b74be5e2ea2468d1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>Model</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a2b00fa92a4d1765307a5bf159581719f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1df841508cb5d989c11b033f49365c2f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth</scope><name>Type</name></member>

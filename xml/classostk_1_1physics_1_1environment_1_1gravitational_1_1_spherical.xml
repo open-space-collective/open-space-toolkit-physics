@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="59" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="59" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="70" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -33,6 +33,8 @@
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Spherical<sp/>model(parameters);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aParameterSet</parametername>
@@ -46,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="36" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="22" bodyend="30"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="22" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1ac9f63de9656589a27a77e7a8d48836bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical" kindref="compound">Spherical</ref> *</type>
@@ -58,13 +60,15 @@
 <para>Clone the spherical gravitational model. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Spherical*<sp/>modelPtr<sp/>=<sp/>model.clone();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Pointer to spherical gravitational model </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="42" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="32" bodyend="35"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="47" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="32" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a2cae24e92b19dbba581cfd53c80996a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -76,13 +80,15 @@
 <para>Check if the spherical gravitational model is defined. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bool<sp/>isDefined<sp/>=<sp/>model.isDefined();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>True if the spherical gravitational model is defined </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="48" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="37" bodyend="40"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="56" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="37" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a37243cf671418b0cb9eff229101b5e96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -102,6 +108,8 @@
 <para>Get the gravitational field value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Vector3d<sp/>fieldValue<sp/>=<sp/>model.getFieldValueAt(position,<sp/>instant);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aPosition</parametername>
@@ -125,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="56" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="42" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="67" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="42" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -157,7 +165,7 @@
         <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="29" bodyend="60"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="29" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="28" bodyend="71"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1ac9f63de9656589a27a77e7a8d48836bd" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a37243cf671418b0cb9eff229101b5e96" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>getFieldValueAt</name></member>

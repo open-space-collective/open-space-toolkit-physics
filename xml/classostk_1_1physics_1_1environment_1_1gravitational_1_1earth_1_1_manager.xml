@@ -18,6 +18,8 @@
 <para>Returns true if manager has data file for the given model type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bool<sp/>hasFiles<sp/>=<sp/>Manager::Get().hasDataFilesForType(EarthGravitationalModel::Type::EGM2008);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aModelType</parametername>
@@ -48,6 +50,8 @@
 <para>Returns array of file objects for the given type. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Array&lt;File&gt;<sp/>files<sp/>=<sp/>Manager::Get().localDataFilesForType(EarthGravitationalModel::Type::EGM2008);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aModelType</parametername>
@@ -63,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="72" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="46" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="46" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac52e42436593b14c37f92c453bd2af54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -78,6 +82,8 @@
 <para>Fetch data file from remote. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().fetchDataFilesForType(EarthGravitationalModel::Type::EGM2008);</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">aModelType</parametername>
@@ -91,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="78" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="58" bodyend="151"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="58" bodyend="151"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -104,13 +110,15 @@
 <para>Get manager singleton. </para>
         </briefdescription>
         <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Manager&amp;<sp/>manager<sp/>=<sp/>Manager::Get();</highlight></codeline>
+</programlisting></para>
 <para><simplesect kind="return"><para>Reference to manager </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="84" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="153" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="93" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="153" bodyend="158"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -125,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="87" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="160" bodyend="169"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="96" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="160" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a89bc29551f91e63439ff988eeb4dcb13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -142,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="89" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="171" bodyend="183"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="171" bodyend="183"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -161,22 +169,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="91" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="185" bodyend="207"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="100" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="185" bodyend="207"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref> gravitational model data manager. </para>
     </briefdescription>
     <detaileddescription>
-<para><verbatim>                        Fetches and manages necessary gravity model data files.
-
-                        The following environment variables can be defined:
-
-                        - &quot;OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE&quot; will override
-                        &quot;DefaultMode&quot;
-                        - &quot;OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY&quot; will override
-                        &quot;DefaultLocalRepository&quot; 
-</verbatim> </para>
+<para>Fetches and manages necessary gravity model data files.</para>
+<para>The following environment variables can be defined:</para>
+<para><itemizedlist>
+<listitem><para>&quot;OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_MODE&quot; will override &quot;DefaultMode&quot;</para>
+</listitem><listitem><para>&quot;OSTK_PHYSICS_ENVIRONMENT_GRAVITATIONAL_EARTH_MANAGER_LOCAL_REPOSITORY&quot; will override &quot;DefaultLocalRepository&quot; </para>
+</listitem></itemizedlist>
+</para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -236,7 +242,7 @@
         <label>Directory</label>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="58" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="57" bodyend="92"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="55" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" bodystart="54" bodyend="101"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>clearLocalRepository</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a536e4814746d1c8442faa6e5e1ea651e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::earth::Manager</scope><name>DataFileNameFromType_</name></member>

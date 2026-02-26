@@ -20,6 +20,7 @@
       :template: custom-class-template.rst
       :nosignatures:
    
+      Manager
       Provider
    
    
