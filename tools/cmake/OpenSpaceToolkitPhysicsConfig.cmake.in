@@ -6,12 +6,10 @@ FIND_PATH (
     OpenSpaceToolkitPhysics_INCLUDE_DIR
     NAMES
         "OpenSpaceToolkit/Physics/Unit.hpp"
-        "Unit.hpp"
     PATHS
         ${OpenSpaceToolkitPhysics_ROOT_DIR}
     PATH_SUFFIXES
         "include"
-        "include/OpenSpaceToolkit/Physics"
     NO_DEFAULT_PATH
 )
 
@@ -75,7 +73,9 @@ IF (OpenSpaceToolkitPhysics_INCLUDE_DIR)
     ENDIF ()
 
     SET (OpenSpaceToolkitPhysics_LIBRARIES ${OpenSpaceToolkitPhysics_LIBRARY})
-    SET (OpenSpaceToolkitPhysics_RUNTIME_LIBRARIES ${OpenSpaceToolkitPhysics_RUNTIME_LIBRARY})
+    IF (WIN32 AND OpenSpaceToolkitPhysics_RUNTIME_LIBRARY)
+        SET (OpenSpaceToolkitPhysics_RUNTIME_LIBRARIES ${OpenSpaceToolkitPhysics_RUNTIME_LIBRARY})
+    ENDIF ()
 
     SET (OpenSpaceToolkitPhysics_FOUND TRUE)
 
