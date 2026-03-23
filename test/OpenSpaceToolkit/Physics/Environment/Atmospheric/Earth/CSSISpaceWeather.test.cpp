@@ -475,6 +475,18 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
+// Regression: this file include monthly prediction (PRM) rows where Kp/Ap columns are
+// left blank (empty CSV fields). Loading this file threw an error ("Object is not of type [Integer].")
+// as it attempted to access the integer/real values on empty cells.
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load_BlankPRMGeomagneticColumnsThrows)
+{
+    const File failureFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "NRLMSISE00/SW-Last5Years-BlankPRMGeomagneticColumns.csv"));
+
+    EXPECT_NO_THROW({ CSSISpaceWeather::Load(failureFile); });
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, LoadLegacy)
 {
     {

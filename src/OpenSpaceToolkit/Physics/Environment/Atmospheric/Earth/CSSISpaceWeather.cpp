@@ -7,6 +7,7 @@
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/lexical_cast.hpp>
 
+#include <OpenSpaceToolkit/Core/Container/Object.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Size.hpp>
@@ -27,6 +28,7 @@ namespace atmospheric
 namespace earth
 {
 
+using ostk::core::container::Object;
 using ostk::core::container::Table;
 using ostk::core::type::Index;
 using ostk::core::type::Real;
@@ -459,6 +461,52 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
     Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
+    // Helper functions to parse optional Integer/Real cells
+    const auto parseOptionalIntegerCell = [](const Object& anObject) -> Integer
+    {
+        if (!anObject.isDefined())
+        {
+            return Integer::Undefined();
+        }
+
+        if (anObject.isInteger())
+        {
+            return anObject.getInteger();
+        }
+
+        if (anObject.isString() && anObject.getString().isEmpty())
+        {
+            return Integer::Undefined();
+        }
+
+        return Integer::Undefined();
+    };
+
+    const auto parseOptionalRealCell = [](const Object& anObject) -> Real
+    {
+        if (!anObject.isDefined())
+        {
+            return Real::Undefined();
+        }
+
+        if (anObject.isReal())
+        {
+            return anObject.getReal();
+        }
+
+        if (anObject.isInteger())
+        {
+            return Real::Integer(anObject.getInteger());
+        }
+
+        if (anObject.isString() && anObject.getString().isEmpty())
+        {
+            return Real::Undefined();
+        }
+
+        return Real::Undefined();
+    };
+
     for (const auto& row : spaceWeatherTable)
     {
         if (row.isEmpty() || !row[0].isDefined())
@@ -476,36 +524,36 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
         const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
 
-        const Integer BSRN = row[1].isDefined() ? row[1].getInteger() : Integer::Undefined();
-        const Integer ND = row[2].isDefined() ? row[2].getInteger() : Integer::Undefined();
-        const Integer Kp1 = row[3].isDefined() ? row[3].getInteger() : Integer::Undefined();
-        const Integer Kp2 = row[4].isDefined() ? row[4].getInteger() : Integer::Undefined();
-        const Integer Kp3 = row[5].isDefined() ? row[5].getInteger() : Integer::Undefined();
-        const Integer Kp4 = row[6].isDefined() ? row[6].getInteger() : Integer::Undefined();
-        const Integer Kp5 = row[7].isDefined() ? row[7].getInteger() : Integer::Undefined();
-        const Integer Kp6 = row[8].isDefined() ? row[8].getInteger() : Integer::Undefined();
-        const Integer Kp7 = row[9].isDefined() ? row[9].getInteger() : Integer::Undefined();
-        const Integer Kp8 = row[10].isDefined() ? row[10].getInteger() : Integer::Undefined();
-        const Integer KpSum = row[11].isDefined() ? row[11].getInteger() : Integer::Undefined();
-        const Integer Ap1 = row[12].isDefined() ? row[12].getInteger() : Integer::Undefined();
-        const Integer Ap2 = row[13].isDefined() ? row[13].getInteger() : Integer::Undefined();
-        const Integer Ap3 = row[14].isDefined() ? row[14].getInteger() : Integer::Undefined();
-        const Integer Ap4 = row[15].isDefined() ? row[15].getInteger() : Integer::Undefined();
-        const Integer Ap5 = row[16].isDefined() ? row[16].getInteger() : Integer::Undefined();
-        const Integer Ap6 = row[17].isDefined() ? row[17].getInteger() : Integer::Undefined();
-        const Integer Ap7 = row[18].isDefined() ? row[18].getInteger() : Integer::Undefined();
-        const Integer Ap8 = row[19].isDefined() ? row[19].getInteger() : Integer::Undefined();
-        const Integer ApAvg = row[20].isDefined() ? row[20].getInteger() : Integer::Undefined();
-        const Real Cp = row[21].isDefined() ? row[21].getReal() : Real::Undefined();
-        const Integer C9 = row[22].isDefined() ? row[22].getInteger() : Integer::Undefined();
-        const Integer ISN = row[23].isDefined() ? row[23].getInteger() : Integer::Undefined();
-        const Real F107Obs = row[24].isDefined() ? row[24].getReal() : Real::Undefined();
-        const Real F107Adj = row[25].isDefined() ? row[25].getReal() : Real::Undefined();
+        const Integer BSRN = parseOptionalIntegerCell(row[1]);
+        const Integer ND = parseOptionalIntegerCell(row[2]);
+        const Integer Kp1 = parseOptionalIntegerCell(row[3]);
+        const Integer Kp2 = parseOptionalIntegerCell(row[4]);
+        const Integer Kp3 = parseOptionalIntegerCell(row[5]);
+        const Integer Kp4 = parseOptionalIntegerCell(row[6]);
+        const Integer Kp5 = parseOptionalIntegerCell(row[7]);
+        const Integer Kp6 = parseOptionalIntegerCell(row[8]);
+        const Integer Kp7 = parseOptionalIntegerCell(row[9]);
+        const Integer Kp8 = parseOptionalIntegerCell(row[10]);
+        const Integer KpSum = parseOptionalIntegerCell(row[11]);
+        const Integer Ap1 = parseOptionalIntegerCell(row[12]);
+        const Integer Ap2 = parseOptionalIntegerCell(row[13]);
+        const Integer Ap3 = parseOptionalIntegerCell(row[14]);
+        const Integer Ap4 = parseOptionalIntegerCell(row[15]);
+        const Integer Ap5 = parseOptionalIntegerCell(row[16]);
+        const Integer Ap6 = parseOptionalIntegerCell(row[17]);
+        const Integer Ap7 = parseOptionalIntegerCell(row[18]);
+        const Integer Ap8 = parseOptionalIntegerCell(row[19]);
+        const Integer ApAvg = parseOptionalIntegerCell(row[20]);
+        const Real Cp = parseOptionalRealCell(row[21]);
+        const Integer C9 = parseOptionalIntegerCell(row[22]);
+        const Integer ISN = parseOptionalIntegerCell(row[23]);
+        const Real F107Obs = parseOptionalRealCell(row[24]);
+        const Real F107Adj = parseOptionalRealCell(row[25]);
         const String F107DataType = row[26].getString();
-        const Real F107ObsCenter81 = row[27].isDefined() ? row[27].getReal() : Real::Undefined();
-        const Real F107ObsLast81 = row[28].isDefined() ? row[28].getReal() : Real::Undefined();
-        const Real F107AdjCenter81 = row[29].isDefined() ? row[29].getReal() : Real::Undefined();
-        const Real F107AdjLast81 = row[30].isDefined() ? row[30].getReal() : Real::Undefined();
+        const Real F107ObsCenter81 = parseOptionalRealCell(row[27]);
+        const Real F107ObsLast81 = parseOptionalRealCell(row[28]);
+        const Real F107AdjCenter81 = parseOptionalRealCell(row[29]);
+        const Real F107AdjLast81 = parseOptionalRealCell(row[30]);
 
         const CSSISpaceWeather::Reading reading = {
             date,
