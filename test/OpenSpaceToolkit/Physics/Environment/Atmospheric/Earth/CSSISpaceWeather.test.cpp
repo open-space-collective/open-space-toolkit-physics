@@ -475,10 +475,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
-// Regression: this file include monthly prediction (PRM) rows where Kp/Ap columns are
+// Regression (https://github.com/open-space-collective/open-space-toolkit-physics/pull/366):
+//
+// This file include monthly prediction (PRM) rows where Kp/Ap columns are
 // left blank (empty CSV fields). Loading this file threw an error ("Object is not of type [Integer].")
 // as it attempted to access the integer/real values on empty cells.
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load_BlankPRMGeomagneticColumnsThrows)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Regression_LoadBlankColumnsDoesNotThrow)
 {
     const File failureFile =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
