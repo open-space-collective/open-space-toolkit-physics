@@ -477,16 +477,89 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
 // Regression (https://github.com/open-space-collective/open-space-toolkit-physics/pull/366):
 //
-// This file include monthly prediction (PRM) rows where Kp/Ap columns are
-// left blank (empty CSV fields). Loading this file threw an error ("Object is not of type [Integer].")
-// as it attempted to access the integer/real values on empty cells.
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Regression_LoadBlankColumnsDoesNotThrow)
+// Checks edge-case columns (leading spaces, undefined values, etc.) are properly loaded.
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Regression_LoadEdgeCaseColumns)
 {
-    const File failureFile =
+    const File file =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                               "NRLMSISE00/SW-Last5Years-BlankPRMGeomagneticColumns.csv"));
+                               "NRLMSISE00/SW-Last5Years-Regression-PR366.csv"));
 
-    EXPECT_NO_THROW({ CSSISpaceWeather::Load(failureFile); });
+    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+    {
+        const CSSISpaceWeather::Reading reading =
+            spaceWeather.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2026-04-16 12:00:00"), Scale::UTC));
+
+        EXPECT_EQ(Date::Parse("2026-04-16", Date::Format::Standard), reading.date);
+        EXPECT_EQ(2627, reading.BSRN);
+        EXPECT_EQ(24, reading.ND);
+        EXPECT_EQ(10, reading.Kp1);
+        EXPECT_EQ(10, reading.Kp2);
+        EXPECT_EQ(10, reading.Kp3);
+        EXPECT_EQ(10, reading.Kp4);
+        EXPECT_EQ(10, reading.Kp5);
+        EXPECT_EQ(10, reading.Kp6);
+        EXPECT_EQ(10, reading.Kp7);
+        EXPECT_EQ(10, reading.Kp8);
+        EXPECT_EQ(80, reading.KpSum);
+        EXPECT_EQ(4, reading.Ap1);
+        EXPECT_EQ(4, reading.Ap2);
+        EXPECT_EQ(4, reading.Ap3);
+        EXPECT_EQ(4, reading.Ap4);
+        EXPECT_EQ(4, reading.Ap5);
+        EXPECT_EQ(4, reading.Ap6);
+        EXPECT_EQ(4, reading.Ap7);
+        EXPECT_EQ(4, reading.Ap8);
+        EXPECT_EQ(4, reading.ApAvg);
+        EXPECT_NEAR(0.1, reading.Cp, 1e-15);
+        EXPECT_EQ(0, reading.C9);
+        EXPECT_EQ(102, reading.ISN);
+        EXPECT_NEAR(114.2, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(115.0, reading.F107Adj, 1e-15);
+        EXPECT_EQ("PRD", reading.F107DataType);
+        EXPECT_NEAR(121.6, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(128.2, reading.F107ObsLast81, 1e-15);
+        EXPECT_NEAR(122.4, reading.F107AdjCenter81, 1e-15);
+        EXPECT_NEAR(126.3, reading.F107AdjLast81, 1e-15);
+    }
+
+    {
+        const CSSISpaceWeather::Reading reading =
+            spaceWeather.accessMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2026-06-15 12:00:00"), Scale::UTC)
+            );
+
+        EXPECT_EQ(Date::Parse("2026-06-01", Date::Format::Standard), reading.date);
+        EXPECT_EQ(2629, reading.BSRN);
+        EXPECT_EQ(16, reading.ND);
+        EXPECT_FALSE(reading.Kp1.isDefined());
+        EXPECT_FALSE(reading.Kp2.isDefined());
+        EXPECT_FALSE(reading.Kp3.isDefined());
+        EXPECT_FALSE(reading.Kp4.isDefined());
+        EXPECT_FALSE(reading.Kp5.isDefined());
+        EXPECT_FALSE(reading.Kp6.isDefined());
+        EXPECT_FALSE(reading.Kp7.isDefined());
+        EXPECT_FALSE(reading.Kp8.isDefined());
+        EXPECT_FALSE(reading.KpSum.isDefined());
+        EXPECT_FALSE(reading.Ap1.isDefined());
+        EXPECT_FALSE(reading.Ap2.isDefined());
+        EXPECT_FALSE(reading.Ap3.isDefined());
+        EXPECT_FALSE(reading.Ap4.isDefined());
+        EXPECT_FALSE(reading.Ap5.isDefined());
+        EXPECT_FALSE(reading.Ap6.isDefined());
+        EXPECT_FALSE(reading.Ap7.isDefined());
+        EXPECT_FALSE(reading.Ap8.isDefined());
+        EXPECT_FALSE(reading.ApAvg.isDefined());
+        EXPECT_FALSE(reading.Cp.isDefined());
+        EXPECT_FALSE(reading.C9.isDefined());
+        EXPECT_EQ(98, reading.ISN);
+        EXPECT_NEAR(125.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(129.3, reading.F107Adj, 1e-15);
+        EXPECT_EQ("PRM", reading.F107DataType);
+        EXPECT_NEAR(125.1, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(121.6, reading.F107ObsLast81, 1e-15);
+        EXPECT_NEAR(128.3, reading.F107AdjCenter81, 1e-15);
+        EXPECT_NEAR(122.8, reading.F107AdjLast81, 1e-15);
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, LoadLegacy)

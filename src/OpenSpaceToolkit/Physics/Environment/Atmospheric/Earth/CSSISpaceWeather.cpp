@@ -462,49 +462,41 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
     // Helper functions to parse optional Integer/Real cells
-    const auto parseOptionalIntegerCell = [](const Object& anObject) -> Integer
+    const auto parseOptionalIntegerCell = [](const Object& obj) -> Integer
     {
-        if (!anObject.isDefined())
-        {
+        if (!obj.isDefined())
             return Integer::Undefined();
-        }
 
-        if (anObject.isInteger())
-        {
-            return anObject.getInteger();
-        }
+        if (obj.isInteger())
+            return obj.getInteger();
 
-        if (anObject.isString() && anObject.getString().isEmpty())
-        {
+        if (!obj.isString())
             return Integer::Undefined();
-        }
 
-        return Integer::Undefined();
+        if (obj.getString().trim().empty())
+            return Integer::Undefined();
+
+        return Integer::Parse(obj.getString().trim());
     };
 
-    const auto parseOptionalRealCell = [](const Object& anObject) -> Real
+    const auto parseOptionalRealCell = [](const Object& obj) -> Real
     {
-        if (!anObject.isDefined())
-        {
+        if (!obj.isDefined())
             return Real::Undefined();
-        }
 
-        if (anObject.isReal())
-        {
-            return anObject.getReal();
-        }
+        if (obj.isReal())
+            return obj.getReal();
 
-        if (anObject.isInteger())
-        {
-            return Real::Integer(anObject.getInteger());
-        }
+        if (obj.isInteger())
+            return Real::Integer(obj.getInteger());
 
-        if (anObject.isString() && anObject.getString().isEmpty())
-        {
+        if (!obj.isString())
             return Real::Undefined();
-        }
 
-        return Real::Undefined();
+        if (obj.getString().trim().empty())
+            return Real::Undefined();
+
+        return Real::Parse(obj.getString().trim());
     };
 
     for (const auto& row : spaceWeatherTable)
