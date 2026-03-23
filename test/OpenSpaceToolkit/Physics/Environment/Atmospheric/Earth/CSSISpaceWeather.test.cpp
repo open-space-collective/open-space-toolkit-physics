@@ -500,9 +500,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(10, reading.Kp5);
         EXPECT_EQ(10, reading.Kp6);
         EXPECT_EQ(10, reading.Kp7);
-        EXPECT_EQ(10, reading.Kp8);
-        EXPECT_EQ(80, reading.KpSum);
-        EXPECT_EQ(4, reading.Ap1);
+        EXPECT_EQ(10, reading.Kp8);    // Has a trailing space
+        EXPECT_EQ(80, reading.KpSum);  // Has a leading space
+        EXPECT_EQ(4, reading.Ap1);     // Has both leading and trailing spaces
         EXPECT_EQ(4, reading.Ap2);
         EXPECT_EQ(4, reading.Ap3);
         EXPECT_EQ(4, reading.Ap4);
@@ -524,9 +524,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
-        const CSSISpaceWeather::Reading reading =
-            spaceWeather.accessMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2026-06-15 12:00:00"), Scale::UTC)
-            );
+        const CSSISpaceWeather::Reading reading = spaceWeather.accessMonthlyPredictionAt(
+            Instant::DateTime(DateTime::Parse("2026-06-15 12:00:00"), Scale::UTC)  // Has many undefined values
+        );
 
         EXPECT_EQ(Date::Parse("2026-06-01", Date::Format::Standard), reading.date);
         EXPECT_EQ(2629, reading.BSRN);
