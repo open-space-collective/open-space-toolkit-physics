@@ -43,15 +43,13 @@ Instant getFileModifiedInstant(const File& aFile)
 
     // Convert to struct tm in UTC
     std::tm utcTime;
-    gmtime_r(&timeT, &utcTime);
+    if (gmtime_r(&timeT, &utcTime) == nullptr)
+    {
+        throw ostk::core::error::RuntimeError("Failed to convert time to UTC.");
+    }
 
     DateTime lastWriteTimeDT = DateTime(
-        utcTime.tm_year + 1900,
-        utcTime.tm_mon + 1,
-        utcTime.tm_mday,
-        utcTime.tm_hour,
-        utcTime.tm_min,
-        utcTime.tm_sec
+        utcTime.tm_year + 1900, utcTime.tm_mon + 1, utcTime.tm_mday, utcTime.tm_hour, utcTime.tm_min, utcTime.tm_sec
     );
 
     return Instant::DateTime(lastWriteTimeDT, Scale::UTC);
