@@ -276,7 +276,8 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
 
     std::time_t time = std::chrono::system_clock::to_time_t(dateTimePoint);
 
-    const std::tm tm = *std::gmtime(&time);
+    std::tm tm;
+    gmtime_r(&time, &tm);
 
     const Uint16 year = 1900 + tm.tm_year;
     const Uint8 month = tm.tm_mon + 1;

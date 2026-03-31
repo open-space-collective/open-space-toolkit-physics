@@ -42,15 +42,16 @@ Instant getFileModifiedInstant(const File& aFile)
     std::time_t timeT = std::chrono::system_clock::to_time_t(cftime);
 
     // Convert to struct tm in UTC
-    std::tm* utcTime = std::gmtime(&timeT);
+    std::tm utcTime;
+    gmtime_r(&timeT, &utcTime);
 
     DateTime lastWriteTimeDT = DateTime(
-        utcTime->tm_year + 1900,
-        utcTime->tm_mon + 1,
-        utcTime->tm_mday,
-        utcTime->tm_hour,
-        utcTime->tm_min,
-        utcTime->tm_sec
+        utcTime.tm_year + 1900,
+        utcTime.tm_mon + 1,
+        utcTime.tm_mday,
+        utcTime.tm_hour,
+        utcTime.tm_min,
+        utcTime.tm_sec
     );
 
     return Instant::DateTime(lastWriteTimeDT, Scale::UTC);
