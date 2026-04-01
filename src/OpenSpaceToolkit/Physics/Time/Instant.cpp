@@ -276,7 +276,11 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
 
     std::time_t time = std::chrono::system_clock::to_time_t(dateTimePoint);
 
-    const std::tm tm = *std::gmtime(&time);
+    std::tm tm = {};
+    if (gmtime_r(&time, &tm) == nullptr)
+    {
+        throw ostk::core::error::RuntimeError("Failed to convert time to UTC.");
+    }
 
     const Uint16 year = 1900 + tm.tm_year;
     const Uint8 month = tm.tm_mon + 1;
