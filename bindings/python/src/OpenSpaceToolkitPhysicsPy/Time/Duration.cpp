@@ -73,6 +73,13 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
                 return aDuration.toString();
             }
         )
+        .def(
+            "__hash__",
+            +[](const Duration& aDuration) -> size_t
+            {
+                return std::hash<Duration> {}(aDuration);
+            }
+        )
 
         .def(
             "is_defined",

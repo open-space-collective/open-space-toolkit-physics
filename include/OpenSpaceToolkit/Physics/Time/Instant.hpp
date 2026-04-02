@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Instant__
 #define __OpenSpaceToolkit_Physics_Time_Instant__
 
+#include <functional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -421,10 +423,38 @@ class Instant
     static Int64 DUT1_UTC(const Instant::Count& aCount_UTC);
 
     static Int64 DUT1_UT1(const Instant::Count& aCount_UT1);
+
+    friend struct std::hash<Instant>;
 };
 
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::Instant>
+{
+    size_t operator()(const ostk::physics::time::Instant& anInstant) const
+    {
+        if (!anInstant.isDefined())
+        {
+            return 0;
+        }
+
+        // Normalize to TAI scale so that equal instants in different scales produce the same hash
+        const auto normalizedCount = (anInstant.scale_ == ostk::physics::time::Scale::TAI)
+                                         ? anInstant.count_
+                                         : anInstant.inScale(ostk::physics::time::Scale::TAI).count_;
+
+        size_t seed = std::hash<ostk::core::type::Uint64> {}(normalizedCount.countFromEpoch_);
+        seed ^= std::hash<bool> {}(normalizedCount.postEpoch_) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        return seed;
+    }
+};
+
+}  // namespace std
 
 #endif

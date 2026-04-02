@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Duration__
 #define __OpenSpaceToolkit_Physics_Time_Duration__
 
+#include <functional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -587,10 +589,31 @@ class Duration
     Int64 count_;
 
     Duration();
+
+    friend struct std::hash<Duration>;
 };
 
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::Duration>
+{
+    size_t operator()(const ostk::physics::time::Duration& aDuration) const
+    {
+        if (!aDuration.defined_)
+        {
+            return 0;
+        }
+
+        return std::hash<ostk::core::type::Int64> {}(aDuration.count_);
+    }
+};
+
+}  // namespace std
 
 #endif
