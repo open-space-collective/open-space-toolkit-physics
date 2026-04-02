@@ -5,6 +5,8 @@
 
 #include <functional>
 
+#include <boost/functional/hash.hpp>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -449,19 +451,11 @@ struct hash<ostk::physics::time::Instant>
                                        ? anInstant.count_
                                        : anInstant.inScale(ostk::physics::time::Scale::TAI).count_;
 
-        // Custom hash specialization for Instant.
-        // The hashing process follows two critical steps:
-        //
-        // 1. Normalization: Converts the Instant to the TAI (International Atomic Time) scale.
-        // This ensures "Hash Equality" (if a == b, then hash(a) == hash(b)), even if
-        // the instants were originally defined in different time scales.
-        //
-        // 2. Bit Mixing: Uses a combination of std::hash and a Golden Ratio constant (0x9e3779b9).
-        // The constant is an approximation of 2^32 / phi, used to ensure that the
-        // resulting bits are spread uniformly across the size_t range. This prevents
-        // "clustering" and reduces collisions in hash tables.
-        size_t seed = std::hash<ostk::core::type::Uint64> {}(normalizedCount.countFromEpoch_);
-        seed ^= std::hash<bool> {}(normalizedCount.postEpoch_) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        // Normalization: use TAI so equal instants in different scales hash the same.
+        // Combine count fields with boost::hash_combine for stable mixing into size_t.
+        size_t seed = 0;
+        boost::hash_combine(seed, normalizedCount.countFromEpoch_);
+        boost::hash_combine(seed, normalizedCount.postEpoch_);
         return seed;
     }
 };
