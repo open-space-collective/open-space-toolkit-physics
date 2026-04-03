@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <unordered_map>
+
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
@@ -2214,5 +2216,34 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Parse)
                 (-duration), Duration::Parse((-duration).toString(Duration::Format::ISO8601), Duration::Format::ISO8601)
             );
         }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Duration, Hash)
+{
+    {
+        const Duration duration_1 = Duration::Seconds(1.0);
+        const Duration duration_2 = Duration::Seconds(1.0);
+
+        EXPECT_EQ(std::hash<Duration> {}(duration_1), std::hash<Duration> {}(duration_2));
+    }
+
+    {
+        const Duration duration_1 = Duration::Seconds(1.0);
+        const Duration duration_2 = Duration::Seconds(2.0);
+
+        EXPECT_NE(std::hash<Duration> {}(duration_1), std::hash<Duration> {}(duration_2));
+    }
+
+    {
+        std::unordered_map<Duration, int> map;
+
+        const Duration duration = Duration::Minutes(5.0);
+
+        map[duration] = 42;
+
+        EXPECT_EQ(map.at(duration), 42);
+        EXPECT_EQ(map.at(Duration::Minutes(5.0)), 42);
+        EXPECT_EQ(map.count(Duration::Minutes(3.0)), 0u);
     }
 }

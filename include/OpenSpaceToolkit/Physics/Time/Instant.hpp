@@ -3,6 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Instant__
 #define __OpenSpaceToolkit_Physics_Time_Instant__
 
+#include <functional>
+
+#include <boost/functional/hash.hpp>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -421,10 +425,41 @@ class Instant
     static Int64 DUT1_UTC(const Instant::Count& aCount_UTC);
 
     static Int64 DUT1_UT1(const Instant::Count& aCount_UT1);
+
+    friend struct std::hash<Instant>;
 };
 
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::Instant>
+{
+    size_t operator()(const ostk::physics::time::Instant& anInstant) const
+    {
+        if (!anInstant.isDefined())
+        {
+            return 0;
+        }
+
+        // Normalize to TAI scale so that equal instants in different scales produce the same hash
+        const auto normalizedCount = (anInstant.scale_ == ostk::physics::time::Scale::TAI)
+                                       ? anInstant.count_
+                                       : anInstant.inScale(ostk::physics::time::Scale::TAI).count_;
+
+        // Normalization: use TAI so equal instants in different scales hash the same.
+        // Combine count fields with boost::hash_combine for stable mixing into size_t.
+        size_t seed = 0;
+        boost::hash_combine(seed, normalizedCount.countFromEpoch_);
+        boost::hash_combine(seed, normalizedCount.postEpoch_);
+        return seed;
+    }
+};
+
+}  // namespace std
 
 #endif

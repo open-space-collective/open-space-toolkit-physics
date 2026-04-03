@@ -101,3 +101,21 @@ def test_instant_to_string():
     assert Instant.J2000().to_string() is not None
     assert Instant.J2000().to_string(Scale.UTC) is not None
     assert Instant.J2000().to_string(Scale.UTC, DateTime.Format.ISO8601) is not None
+
+
+def test_instant_hash():
+    instant_a = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
+    instant_b = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
+    instant_c = Instant.date_time(DateTime(2020, 1, 2, 0, 0, 0), Scale.UTC)
+
+    assert hash(instant_a) == hash(instant_b)
+    assert hash(instant_a) != hash(instant_c)
+
+    # Test as dictionary key
+    d = {instant_a: "value"}
+    assert d[instant_b] == "value"
+    assert instant_c not in d
+
+    # Test in set
+    s = {instant_a, instant_b, instant_c}
+    assert len(s) == 2
