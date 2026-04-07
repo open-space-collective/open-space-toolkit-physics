@@ -145,7 +145,7 @@ class Kernel
     /// @brief Constructs a kernel from a file
     ///
     /// @code
-    ///     Kernel kernel = Kernel::File(filesystem::File::Path(Path::Parse("/path/to/de430.bsp")));
+    ///     Kernel kernel = Kernel::File(filesystem::File::Path(Path::Parse("/path/to/de432s.bsp")));
     /// @endcode
     ///
     /// @param [in] aFile A kernel file
