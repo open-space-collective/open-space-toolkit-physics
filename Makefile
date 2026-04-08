@@ -25,15 +25,6 @@ extract_python_package_version := $(shell echo $(project_version) | sed 's/-/./'
 dev_username := developer
 
 
-# Handle multi-platform builds locally (CI sets these env vars, but need defaults here)
-TARGETPLATFORM ?= linux/amd64
-$(info Target platform is $(TARGETPLATFORM))
-
-# Debug symbols toggle (on for amd64, off for arm64 builds)
-DEBUG_SYMBOLS_TOGGLE := $(shell if [ "$(TARGETPLATFORM)" = "linux/amd64" ]; then echo "ON"; else echo "OFF"; fi)
-$(info Debug symbols $(DEBUG_SYMBOLS_TOGGLE))
-
-
 pull: ## Pull all images
 
 	@ echo "Pulling images..."
@@ -234,7 +225,7 @@ build-packages-cpp-standalone: ## Build C++ packages (standalone)
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DCPACK_GENERATOR=DEB -DBUILD_WITH_DEBUG_SYMBOLS=$(DEBUG_SYMBOLS_TOGGLE) .. \
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=OFF -DCPACK_GENERATOR=DEB -DBUILD_WITH_DEBUG_SYMBOLS=OFF .. \
 		&& $(MAKE) package \
 		&& mkdir -p /app/packages/cpp \
 		&& mv /app/build/*.deb /app/packages/cpp"
@@ -258,7 +249,7 @@ build-packages-python-standalone: ## Build Python packages (standalone)
 		--volume="/app/build" \
 		--workdir=/app/build \
 		$(docker_development_image_repository):$(docker_image_version) \
-		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON -DBUILD_WITH_DEBUG_SYMBOLS=$(DEBUG_SYMBOLS_TOGGLE) .. \
+		/bin/bash -c "cmake -DBUILD_UNIT_TESTS=OFF -DBUILD_PYTHON_BINDINGS=ON -DBUILD_WITH_DEBUG_SYMBOLS=OFF .. \
 		&& $(MAKE) -j 4 \
 		&& mkdir -p /app/packages/python \
 		&& mv /app/build/bindings/python/dist/*.whl /app/packages/python"
