@@ -562,6 +562,57 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
+// Regression:
+//
+// Upstream feeds occasionally emit a PRM row on a non-1st-of-month date to fill the gap between
+// the last observation and the first daily prediction. The parser must classify that row as a
+// daily prediction so the monthly-lookup invariant (keyed by 1st-of-month) holds and
+// accessReadingAt does not throw "Cannot find monthly prediction at [...]" for that day.
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Regression_PRMOnNonFirstOfMonth)
+{
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "CSSISpaceWeather/SW-Last5Years-Regression-PRM-NonFirstOfMonth.test.csv"));
+
+    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+    EXPECT_TRUE(spaceWeather.isDefined());
+
+    {
+        // The 2026-05-09 row is tagged PRM in the CSV but is not the 1st of the month;
+        // it should be re-classified as a daily prediction.
+        const Instant gapInstant = Instant::DateTime(DateTime::Parse("2026-05-09 12:50:01"), Scale::UTC);
+
+        EXPECT_NO_THROW(spaceWeather.accessReadingAt(gapInstant));
+
+        const CSSISpaceWeather::Reading reading = spaceWeather.accessReadingAt(gapInstant);
+
+        EXPECT_EQ(Date::Parse("2026-05-09", Date::Format::Standard), reading.date);
+        EXPECT_EQ("PRM", reading.F107DataType);  // tag is preserved on the row
+        EXPECT_NEAR(127.8, reading.F107Obs, 1e-15);
+    }
+
+    {
+        // Direct daily-prediction access for the same day should succeed.
+        const CSSISpaceWeather::Reading reading =
+            spaceWeather.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2026-05-09 12:50:01"), Scale::UTC));
+
+        EXPECT_EQ(Date::Parse("2026-05-09", Date::Format::Standard), reading.date);
+        EXPECT_NEAR(127.8, reading.F107Obs, 1e-15);
+    }
+
+    {
+        // The "real" monthly predictions on 1st-of-month dates must still load correctly.
+        const CSSISpaceWeather::Reading reading =
+            spaceWeather.accessMonthlyPredictionAt(Instant::DateTime(DateTime::Parse("2026-07-15 00:00:00"), Scale::UTC)
+            );
+
+        EXPECT_EQ(Date::Parse("2026-07-01", Date::Format::Standard), reading.date);
+        EXPECT_EQ("PRM", reading.F107DataType);
+        EXPECT_NEAR(121.8, reading.F107Obs, 1e-15);
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, LoadLegacy)
 {
     {

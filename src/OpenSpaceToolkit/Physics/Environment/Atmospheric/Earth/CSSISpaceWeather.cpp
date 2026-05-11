@@ -585,8 +585,12 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         {
             spaceWeather.observations_.insert({mjd, reading});
         }
-        else if (F107DataType == "PRD")
+        else if (F107DataType == "PRD" || (F107DataType == "PRM" && date.getDay() != 1))
         {
+            // PRM rows are only valid as monthly predictions when dated on the 1st of the month.
+            // Upstream feeds occasionally emit a PRM row on a non-1st date to fill the gap between
+            // the last observation and the first daily prediction; treat those as daily predictions
+            // so the monthly-lookup invariant (keyed by 1st-of-month) holds.
             spaceWeather.dailyPredictions_.insert({mjd, reading});
         }
         else
