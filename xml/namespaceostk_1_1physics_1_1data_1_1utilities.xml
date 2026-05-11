@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" line="22" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" bodystart="22" bodyend="57" declfile="include/OpenSpaceToolkit/Physics/Data/Utility.hpp" declline="31" declcolumn="9"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" line="22" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Data/Utility.cpp" bodystart="22" bodyend="56" declfile="include/OpenSpaceToolkit/Physics/Data/Utility.hpp" declline="31" declcolumn="9"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
