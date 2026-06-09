@@ -26,7 +26,7 @@ bool Vector::operator==(const Vector& aVector) const
         return false;
     }
 
-    return (value_ == aVector.value_) && (unit_ == aVector.unit_) && (frameSPtr_ == aVector.frameSPtr_);
+    return (value_ == aVector.value_) && (unit_ == aVector.unit_) && ((*frameSPtr_) == (*aVector.frameSPtr_));
 }
 
 bool Vector::operator!=(const Vector& aVector) const
