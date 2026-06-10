@@ -407,7 +407,7 @@
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value_<sp/>==<sp/>aVector.value_)<sp/>&amp;&amp;<sp/>(unit_<sp/>==<sp/>aVector.unit_)<sp/>&amp;&amp;<sp/>(frameSPtr_<sp/>==<sp/>aVector.frameSPtr_);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(value_<sp/>==<sp/>aVector.value_)<sp/>&amp;&amp;<sp/>(unit_<sp/>==<sp/>aVector.unit_)<sp/>&amp;&amp;<sp/>((*frameSPtr_)<sp/>==<sp/>(*aVector.frameSPtr_));</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Vector::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector&amp;<sp/>aVector)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
