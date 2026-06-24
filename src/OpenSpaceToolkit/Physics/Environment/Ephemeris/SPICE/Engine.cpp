@@ -232,7 +232,7 @@ Array<Kernel> Engine::DefaultKernels()
     static const Array<Kernel> defaultKernels = {
 
         Manager::Get().findKernel("latest_leapseconds.tls"),        // Leap seconds
-        Manager::Get().findKernel("de430.bsp"),                     // Ephemeris
+        Manager::Get().findKernel("de432s.bsp"),                    // Ephemeris
         Manager::Get().findKernel("pck[0-9]*\\.tpc"),               // System body shape and orientation constants
         Manager::Get().findKernel("earth_assoc_itrf93.tf"),         // Associates Earth to the ITRF93 frame
         Manager::Get().findKernel(earthLatestHighPrecisionKernel),  // Earth orientation (high precision)
@@ -379,9 +379,9 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
         }
         else
         {
-            if (!isKernelLoaded("de[0-9]+\\.bsp"))
+            if (!isKernelLoaded("de[0-9]+s?\\.bsp"))
             {
-                const Array<Kernel> planetaryKernels = Manager::Get().fetchMatchingKernels("de[0-9]+\\.bsp");
+                const Array<Kernel> planetaryKernels = Manager::Get().fetchMatchingKernels("de[0-9]+s?\\.bsp");
                 if (!planetaryKernels.isEmpty())
                 {
                     for (const auto& kernel : planetaryKernels)
