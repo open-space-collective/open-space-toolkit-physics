@@ -449,7 +449,10 @@ LLA LLA::IntermediateBetween(
 
     geodesicLine.Position(distance.inMeters() * aRatio, latitude_deg, longitude_deg);
 
-    return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)};
+    // Linearly interpolate the altitude between the two coordinates at the given ratio
+    const Length altitude = aFirstLLA.getAltitude() + (aSecondLLA.getAltitude() - aFirstLLA.getAltitude()) * aRatio;
+
+    return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), altitude};
 }
 
 LLA LLA::Forward(
@@ -485,7 +488,8 @@ LLA LLA::Forward(
         longitude_deg
     );
 
-    return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)};
+    // Preserve the altitude of the source coordinate
+    return {Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), aLLA.getAltitude()};
 }
 
 Array<LLA> LLA::Linspace(
@@ -522,10 +526,19 @@ Array<LLA> LLA::Linspace(
     GeographicLib::Math::real latitude_deg;
     GeographicLib::Math::real longitude_deg;
 
+    const Length firstAltitude = aFirstLLA.getAltitude();
+    const Length altitudeDifference = aSecondLLA.getAltitude() - firstAltitude;
+
     for (Size i = 0; i < aNumberOfPoints; ++i)
     {
         geodesicLine.Position((i + 1) * geodesicLine.Distance() / (aNumberOfPoints + 1), latitude_deg, longitude_deg);
-        intermediateLLAs.add(LLA(Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), Length::Meters(0.0)));
+
+        // Linearly interpolate the altitude between the two coordinates at this point's ratio along the geodesic
+        const Real ratio = static_cast<double>(i + 1) / static_cast<double>(aNumberOfPoints + 1);
+
+        intermediateLLAs.add(
+            LLA(Angle::Degrees(latitude_deg), Angle::Degrees(longitude_deg), firstAltitude + altitudeDifference * ratio)
+        );
     }
 
     return intermediateLLAs;
