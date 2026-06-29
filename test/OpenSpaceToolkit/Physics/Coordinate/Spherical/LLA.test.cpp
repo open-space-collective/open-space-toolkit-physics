@@ -25,6 +25,7 @@ using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
 using ostk::core::type::Real;
 using ostk::core::type::Shared;
+using ostk::core::type::Size;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
@@ -365,6 +366,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateT
         EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(-30.281783237740761));
     }
 
+    // altitude is linearly interpolated between the two coordinates
+    {
+        const LLA lla1 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(100.0));
+        const LLA lla2 = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(200.0));
+
+        const LLA llaIntermediate =
+            lla1.calculateIntermediateTo(lla2, 0.25, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaIntermediate.getAltitude().inMeters(), 125.0, 1e-13);
+    }
+
     {
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
@@ -431,6 +443,18 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateForward_WGS84
         EXPECT_NEAR(llaExpected.getLongitude().inDegrees(), llaCalculated.getLongitude().inDegrees(), 1e-13);
     }
 
+    // altitude of the source coordinate is preserved
+    {
+        const LLA lla = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(500.0));
+        const Angle azimuth = Angle::Degrees(90.0);
+        const Length distance = Length::Meters(1113194.9079327357);
+
+        const LLA llaCalculated =
+            lla.calculateForward(azimuth, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaCalculated.getAltitude().inMeters(), 500.0, 1e-13);
+    }
+
     {
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const Angle azimuth = Angle::Degrees(-108.0281189033601);
@@ -471,6 +495,23 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WG
             const LLA llaExpected = std::get<1>(element);
             EXPECT_NEAR(lla.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
             EXPECT_NEAR(lla.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+        }
+    }
+
+    // altitude is linearly interpolated between the two coordinates
+    {
+        const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(1000.0));
+
+        const Array<LLA> llas = lla1.calculateLinspaceTo(lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        // 4 points at ratios 1/5, 2/5, 3/5, 4/5 along the geodesic
+        const Array<Real> expectedAltitudes_m = {200.0, 400.0, 600.0, 800.0};
+
+        EXPECT_EQ(llas.getSize(), 4);
+        for (Size i = 0; i < llas.getSize(); ++i)
+        {
+            EXPECT_NEAR(llas[i].getAltitude().inMeters(), expectedAltitudes_m[i], 1e-13);
         }
     }
 
@@ -982,6 +1023,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateBetween_WG
         EXPECT_EQ(llaIntermediate.getLongitude(), Angle::Degrees(-30.281783237740761));
     }
 
+    // altitude is linearly interpolated between the two coordinates
+    {
+        const LLA lla1 = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(100.0));
+        const LLA lla2 = LLA(Angle::Degrees(0.0), Angle::Degrees(10.0), Length::Meters(200.0));
+
+        const LLA llaIntermediate =
+            LLA::IntermediateBetween(lla1, lla2, 0.25, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaIntermediate.getAltitude().inMeters(), 125.0, 1e-13);
+    }
+
     {
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const LLA llaSouthPole = LLA(Angle::Degrees(-90.0), Angle::Degrees(15.0), Length::Meters(1.0));
@@ -1049,6 +1101,18 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Forward_WGS84)
         EXPECT_NEAR(llaExpected.getLongitude().inDegrees(), llaCalculated.getLongitude().inDegrees(), 1e-13);
     }
 
+    // altitude of the source coordinate is preserved
+    {
+        const LLA lla = LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(500.0));
+        const Angle azimuth = Angle::Degrees(90.0);
+        const Length distance = Length::Meters(1113194.9079327357);
+
+        const LLA llaCalculated =
+            LLA::Forward(lla, azimuth, distance, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        EXPECT_NEAR(llaCalculated.getAltitude().inMeters(), 500.0, 1e-13);
+    }
+
     {
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         const Angle azimuth = Angle::Degrees(-108.0281189033601);
@@ -1090,6 +1154,23 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Linspace_WGS84)
             const LLA llaExpected = std::get<1>(element);
             EXPECT_NEAR(lla.getLatitude().inDegrees(), llaExpected.getLatitude().inDegrees(), 1e-13);
             EXPECT_NEAR(lla.getLongitude().inDegrees(), llaExpected.getLongitude().inDegrees(), 1e-13);
+        }
+    }
+
+    // altitude is linearly interpolated between the two coordinates
+    {
+        const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
+        const LLA lla2 = LLA(Angle::Degrees(40.0), Angle::Degrees(-20.0), Length::Meters(1000.0));
+
+        const Array<LLA> llas = LLA::Linspace(lla1, lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
+
+        // 4 points at ratios 1/5, 2/5, 3/5, 4/5 along the geodesic
+        const Array<Real> expectedAltitudes_m = {200.0, 400.0, 600.0, 800.0};
+
+        EXPECT_EQ(llas.getSize(), 4);
+        for (Size i = 0; i < llas.getSize(); ++i)
+        {
+            EXPECT_NEAR(llas[i].getAltitude().inMeters(), expectedAltitudes_m[i], 1e-13);
         }
     }
 

@@ -193,8 +193,10 @@ class LLA
         const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief Calculate a point between this LLA coordinate and another LLA coordinate. Will use
-    /// the central celestial from the global environment if no ellipsoid parameters are provided.
+    /// @brief Calculate a point between this LLA coordinate and another LLA coordinate. The altitude
+    /// of the returned coordinate is linearly interpolated between the two coordinates' altitudes at
+    /// the given ratio. Will use the central celestial from the global environment if no ellipsoid
+    /// parameters are provided.
     ///
     /// @code
     ///     lla.calculateIntermediateTo(otherLLA, 0.5);
@@ -204,7 +206,8 @@ class LLA
     /// @param [in] aRatio A ratio
     /// @param [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param [in] anEllipsoidFlattening An ellipsoid flattening
-    /// @return A point between the two LLA coordinates
+    /// @return A point between the two LLA coordinates, with altitude linearly interpolated between
+    /// the two coordinates' altitudes
 
     LLA calculateIntermediateTo(
         const LLA& aLLA,
@@ -213,8 +216,9 @@ class LLA
         const Real& anEllipsoidFlattening = Real::Undefined()
     ) const;
 
-    /// @brief Propagate this LLA coordinate in provided direction and distance. Will use
-    /// the central celestial from the global environment if no ellipsoid parameters are provided.
+    /// @brief Propagate this LLA coordinate in provided direction and distance. The altitude of this
+    /// coordinate is preserved in the returned coordinate. Will use the central celestial from the
+    /// global environment if no ellipsoid parameters are provided.
     ///
     /// @code
     ///     lla.calculateForward(Angle::Degrees(90.0), Length::Meters(1000.0));
@@ -224,7 +228,7 @@ class LLA
     /// @param [in] aDistance A distance
     /// @param [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param [in] anEllipsoidFlattening An ellipsoid flattening
-    /// @return Propagated LLA coordinate
+    /// @return Propagated LLA coordinate, preserving this coordinate's altitude
 
     LLA calculateForward(
         const Angle& aDirection,
@@ -234,7 +238,9 @@ class LLA
     ) const;
 
     /// @brief Generate LLAs between this LLA coordinate and another LLA coordinate at a given
-    /// interval. Will use the central celestial from the global environment if no ellipsoid parameters are provided.
+    /// interval. The altitude of each generated coordinate is linearly interpolated between the two
+    /// coordinates' altitudes. Will use the central celestial from the global environment if no
+    /// ellipsoid parameters are provided.
     ///
     /// @code
     ///     lla.calculateLinspaceTo(otherLLA, 10);
@@ -244,6 +250,7 @@ class LLA
     /// @param [in] aNumberOfPoints A number of points
     /// @param [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param [in] anEllipsoidFlattening An ellipsoid flattening
+    /// @return Intermediate LLAs, with altitudes linearly interpolated between the two coordinates' altitudes
 
     Array<LLA> calculateLinspaceTo(
         const LLA& aLLA,
@@ -379,7 +386,8 @@ class LLA
         const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief Calculate a point between two LLA coordinates. Will use
+    /// @brief Calculate a point between two LLA coordinates. The altitude of the returned coordinate
+    /// is linearly interpolated between the two coordinates' altitudes at the given ratio. Will use
     /// the central celestial from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
@@ -391,7 +399,8 @@ class LLA
     /// @param [in] aRatio A ratio
     /// @param [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param [in] anEllipsoidFlattening An ellipsoid flattening
-    /// @return A point between the two LLA coordinates
+    /// @return A point between the two LLA coordinates, with altitude linearly interpolated between
+    /// the two coordinates' altitudes
 
     static LLA IntermediateBetween(
         const LLA& aFirstLLA,
@@ -401,8 +410,9 @@ class LLA
         const Real& anEllipsoidFlattening = Real::Undefined()
     );
 
-    /// @brief Propagate LLA coordinates in provided direction and distance. Will use
-    /// the central celestial from the global environment if no ellipsoid parameters are provided.
+    /// @brief Propagate LLA coordinates in provided direction and distance. The altitude of the
+    /// provided coordinate is preserved in the returned coordinate. Will use the central celestial
+    /// from the global environment if no ellipsoid parameters are provided.
     ///
     /// @code
     ///     LLA::Forward(lla, Angle::Degrees(90.0), Length::Meters(1000.0));
@@ -413,7 +423,7 @@ class LLA
     /// @param [in] aDistance A distance
     /// @param [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param [in] anEllipsoidFlattening An ellipsoid flattening
-    /// @return Propagated LLA coordinate
+    /// @return Propagated LLA coordinate, preserving the provided coordinate's altitude
 
     static LLA Forward(
         const LLA& aLLA,
@@ -424,7 +434,9 @@ class LLA
     );
 
     /// @brief Generate equidistant LLAs between two LLA coordinates for the specified number of
-    /// points. Will use the central celestial from the global environment if no ellipsoid parameters are provided.
+    /// points. The altitude of each generated coordinate is linearly interpolated between the two
+    /// coordinates' altitudes. Will use the central celestial from the global environment if no
+    /// ellipsoid parameters are provided.
     ///
     /// @code
     ///     LLA::Linspace(firstLLA, secondLLA, 10);
@@ -435,7 +447,8 @@ class LLA
     /// @param [in] aNumberOfPoints A number of points
     /// @param [in] anEllipsoidEquatorialRadius An ellipsoid equatorial radius
     /// @param [in] anEllipsoidFlattening An ellipsoid flattening
-    /// @return intermediate equidistant LLAs between the two LLA coordinates
+    /// @return Intermediate equidistant LLAs between the two LLA coordinates, with altitudes linearly
+    /// interpolated between the two coordinates' altitudes
 
     static Array<LLA> Linspace(
         const LLA& aFirstLLA,

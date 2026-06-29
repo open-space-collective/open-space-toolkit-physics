@@ -163,7 +163,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::calculateIntermediateTo,
             R"doc(
                 Calculate a point between this LLA coordinate and another LLA coordinate.
-                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
+                The altitude of the returned coordinate is linearly interpolated between the two coordinates' altitudes at the given ratio.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used.
 
                 Args:
                     lla (LLA): Another LLA coordinate.
@@ -172,7 +173,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
                 Returns:
-                    LLA: A point between the two LLA coordinates.
+                    LLA: A point between the two LLA coordinates, with altitude linearly interpolated between the two coordinates' altitudes.
             )doc",
             arg("lla"),
             arg("ratio"),
@@ -184,7 +185,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::calculateForward,
             R"doc(
                 Propagate this LLA coordinate in provided direction and distance.
-                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
+                The altitude of this coordinate is preserved in the returned coordinate.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used.
 
                 Args:
                     azimuth (Angle): Azimuth.
@@ -193,7 +195,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
                 Returns:
-                    LLA: Propagated LLA coordinate.
+                    LLA: Propagated LLA coordinate, preserving this coordinate's altitude.
             )doc",
             arg("azimuth"),
             arg("distance"),
@@ -205,7 +207,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::calculateLinspaceTo,
             R"doc(
                 Generate LLAs between this LLA coordinate and another LLA coordinate at a given interval.
-                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
+                The altitude of each generated coordinate is linearly interpolated between the two coordinates' altitudes.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used.
 
                 Args:
                     lla (LLA): Another LLA coordinate.
@@ -214,7 +217,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
                 Returns:
-                    list[LLA]: List of LLA coordinates.
+                    list[LLA]: List of LLA coordinates, with altitudes linearly interpolated between the two coordinates' altitudes.
             )doc",
             arg("lla"),
             arg("number_of_points"),
@@ -350,7 +353,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::IntermediateBetween,
             R"doc(
                 Calculate a point between two LLA coordinates.
-                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
+                The altitude of the returned coordinate is linearly interpolated between the two coordinates' altitudes at the given ratio.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used.
 
                 Args:
                     lla_1 (LLA): First LLA coordinate.
@@ -360,7 +364,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
                 Returns:
-                    LLA: A point between the two LLA coordinates.
+                    LLA: A point between the two LLA coordinates, with altitude linearly interpolated between the two coordinates' altitudes.
             )doc",
             arg("lla_1"),
             arg("lla_2"),
@@ -373,7 +377,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::Forward,
             R"doc(
                 Propagate an LLA coordinate in provided direction and distance.
-                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
+                The altitude of the provided coordinate is preserved in the returned coordinate.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used.
 
                 Args:
                     lla (LLA): LLA coordinate.
@@ -383,7 +388,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
                 Returns:
-                    LLA: Propagated LLA coordinate.
+                    LLA: Propagated LLA coordinate, preserving the provided coordinate's altitude.
             )doc",
             arg("lla"),
             arg("azimuth"),
@@ -396,7 +401,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             &LLA::Linspace,
             R"doc(
                 Generate LLAs between two LLA coordinates at a given interval.
-                If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
+                The altitude of each generated coordinate is linearly interpolated between the two coordinates' altitudes.
+                If ellipsoid parameters are not provided, values from the global Environment central celestial are used.
 
                 Args:
                     lla_1 (LLA): First LLA coordinate.
@@ -406,7 +412,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
                 Returns:
-                    list[LLA]: List of LLA coordinates.
+                    list[LLA]: List of LLA coordinates, with altitudes linearly interpolated between the two coordinates' altitudes.
             )doc",
             arg("lla_1"),
             arg("lla_2"),
