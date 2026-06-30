@@ -22,37 +22,31 @@ using ostk::core::type::Real;
 using ostk::physics::coordinate::Position;
 using ostk::physics::time::Instant;
 
-/// @brief                      Atmospheric model (interface)
-
+/// @brief Atmospheric model (interface)
 class Model
 {
    public:
-    /// @brief              Constructor (default)
-
+    /// @brief Constructor (default)
     Model();
 
-    /// @brief              Destructor (pure virtual)
-
+    /// @brief Destructor (pure virtual)
     virtual ~Model() = 0;
 
-    /// @brief              Clone the atmospheric model (pure virtual)
+    /// @brief Clone the atmospheric model (pure virtual)
     ///
-    /// @return             Pointer to atmospheric model
-
+    /// @return Pointer to atmospheric model
     virtual Model* clone() const = 0;
 
-    /// @brief              Check if the atmospheric model is defined (pure virtual)
+    /// @brief Check if the atmospheric model is defined (pure virtual)
     ///
-    /// @return             True if the atmospheric model is defined
-
+    /// @return True if the atmospheric model is defined
     virtual bool isDefined() const = 0;
 
-    /// @brief              Get the atmospheric density value at a given position and instant
+    /// @brief Get the atmospheric density value at a given position and instant
     ///
-    /// @param              [in] aPosition A Position
-    /// @param              [in] anInstant An Instant
-    /// @return             Atmospheric density value [kg.m^-3]
-
+    /// @param [in] aPosition A Position
+    /// @param [in] anInstant An Instant
+    /// @return Atmospheric density value [kg.m^-3]
     virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
 };
 

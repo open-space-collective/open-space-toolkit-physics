@@ -37,6 +37,19 @@ Shared<const Frame> Manager::accessFrameWithName(const String& aFrameName) const
     return nullptr;
 }
 
+Array<String> Manager::getAllFrameNames() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    Array<String> frameNames;
+    frameNames.reserve(frameMap_.size());
+    for (const auto& frame : frameMap_)
+    {
+        frameNames.add(frame.first);
+    }
+    return frameNames;
+}
+
 const Transform Manager::accessCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
 ) const
@@ -117,6 +130,14 @@ void Manager::removeFrameWithName(const String& aFrameName)
     }
 }
 
+void Manager::clearAllFrames()
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    frameMap_.clear();
+    transformCache_.clear();
+}
+
 void Manager::addCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr,
     const Shared<const Frame>& aToFrameSPtr,
@@ -126,18 +147,35 @@ void Manager::addCachedTransform(
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    if (transformCache_.size() >= maxTransformCacheSize_)
-    {
-        // TODO: Implement LRU or FIFO eviction strategy
-        // For now, clear oldest entries
-        transformCache_.clear();
-    }
-
     const auto transformCacheFromFrameIt = transformCache_.insert({aFromFrameSPtr.get(), {}}).first;
     const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({aToFrameSPtr.get(), {}}).first;
+
+    // Check size for this specific frame pair
+    if (transformCacheToFrameIt->second.size() >= maxTransformCacheSize_)
+    {
+        // Clear instants for this frame pair only
+        // TBI: Improve caching strategy, perhaps LRU.
+        transformCacheToFrameIt->second.clear();
+    }
+
     const auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({anInstant, aTransform}).first;
 
     (void)transformCacheToInstantIt;
+
+    // Eagerly cache the reverse transform (toFrame -> fromFrame -> instant)
+    const auto reverseTransformCacheToFrameIt = transformCache_.insert({aToFrameSPtr.get(), {}}).first;
+    const auto reverseTransformCacheFromFrameIt =
+        reverseTransformCacheToFrameIt->second.insert({aFromFrameSPtr.get(), {}}).first;
+
+    // Check size for this specific frame pair
+    if (reverseTransformCacheFromFrameIt->second.size() >= maxTransformCacheSize_)
+    {
+        // Clear instants for this frame pair only
+        // TBI: Improve caching strategy, perhaps LRU.
+        reverseTransformCacheFromFrameIt->second.clear();
+    }
+
+    reverseTransformCacheFromFrameIt->second.insert({anInstant, aTransform.getInverse()}).first;
 }
 
 Manager& Manager::Get()

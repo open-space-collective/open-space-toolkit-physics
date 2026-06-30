@@ -1,6 +1,7 @@
 # Apache License 2.0
 
 import math
+import numpy as np
 
 import pytest
 
@@ -24,7 +25,14 @@ def test_angle_conversion():
 def test_angle_unit():
     enum_members = Unit.__members__
 
-    list_keys = ["Undefined", "Radian", "Degree", "Arcminute", "Arcsecond", "Revolution"]
+    list_keys = [
+        "Undefined",
+        "Radian",
+        "Degree",
+        "Arcminute",
+        "Arcsecond",
+        "Revolution",
+    ]
 
     list_values = [
         Unit.Undefined,
@@ -366,3 +374,20 @@ def test_to_string():
     angle: AnglePhysics = AnglePhysics(3.141592653589793, Unit.Radian)
     assert angle.to_string() == "3.1415926535897931 [rad]"
     assert angle.to_string(precision=1) == "3.1 [rad]"
+
+
+def test_between():
+    angle_1: AnglePhysics = AnglePhysics.degrees(30.0)
+    angle_2: AnglePhysics = AnglePhysics.degrees(60.0)
+
+    assert AnglePhysics.between(angle_1, angle_2) is not None
+
+    vector_2d_1: np.ndarray = np.array([1.0, 0.0])
+    vector_2d_2: np.ndarray = np.array([0.0, 1.0])
+
+    assert AnglePhysics.between(vector_2d_1, vector_2d_2) is not None
+
+    vector_3d_1: np.ndarray = np.array([1.0, 0.0, 0.0])
+    vector_3d_2: np.ndarray = np.array([0.0, 1.0, 0.0])
+
+    assert AnglePhysics.between(vector_3d_1, vector_3d_2) is not None

@@ -5,6 +5,8 @@
 #include <fstream>
 #include <numeric>
 
+#include <boost/regex.hpp>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Dictionary.hpp>
 #include <OpenSpaceToolkit/Core/Container/Object.hpp>
@@ -153,11 +155,11 @@ Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
     return matchingKernels;
 }
 
-Kernel Manager::findKernel(const String& aRegexString) const
+Array<Path> Manager::findKernelPaths(const String& aRegexString) const
 {
     using iterator = std::filesystem::directory_iterator;
 
-    const std::regex aRegex {aRegexString};
+    const boost::regex aRegex {aRegexString};
 
     Array<Path> kernelPaths;
 
@@ -168,11 +170,18 @@ Kernel Manager::findKernel(const String& aRegexString) const
     for (iterator iter {directory}; iter != end; ++iter)
     {
         const String filename = iter->path().filename().string();
-        if (std::filesystem::is_regular_file(*iter) && std::regex_match(filename, aRegex))
+        if (std::filesystem::is_regular_file(*iter) && filename.match(aRegex))
         {
             kernelPaths.add(Path::Parse(iter->path().string()));
         }
     }
+
+    return kernelPaths;
+}
+
+Kernel Manager::findKernel(const String& aRegexString) const
+{
+    const Array<Path> kernelPaths = findKernelPaths(aRegexString);
 
     // If none found, fall back to fetching from remote
     if (kernelPaths.isEmpty())

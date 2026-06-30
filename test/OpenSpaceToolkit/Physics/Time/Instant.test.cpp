@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <unordered_map>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 
@@ -2181,5 +2183,47 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
     for (const auto& instant : instants)
     {
         EXPECT_EQ(instant.getDateTime(Scale::UTC), (instant + Duration::Seconds(+1.0)).getDateTime(Scale::UTC));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, Hash)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+
+    {
+        const Instant instant_1 = Instant::DateTime(DateTime::Parse("2020-01-01 00:00:00"), Scale::UTC);
+        const Instant instant_2 = Instant::DateTime(DateTime::Parse("2020-01-01 00:00:00"), Scale::UTC);
+
+        EXPECT_EQ(std::hash<Instant> {}(instant_1), std::hash<Instant> {}(instant_2));
+    }
+
+    {
+        const Instant instant_1 = Instant::DateTime(DateTime::Parse("2020-01-01 00:00:00"), Scale::UTC);
+        const Instant instant_2 = Instant::DateTime(DateTime::Parse("2020-01-02 00:00:00"), Scale::UTC);
+
+        EXPECT_NE(std::hash<Instant> {}(instant_1), std::hash<Instant> {}(instant_2));
+    }
+
+    {
+        // Equal instants in different scales must produce the same hash
+        const Instant instant_utc = Instant::DateTime(DateTime::Parse("2020-01-01 00:00:00"), Scale::UTC);
+        const Instant instant_tai = Instant::DateTime(DateTime::Parse("2020-01-01 00:00:37"), Scale::TAI);
+
+        EXPECT_EQ(instant_utc, instant_tai);
+        EXPECT_EQ(std::hash<Instant> {}(instant_utc), std::hash<Instant> {}(instant_tai));
+    }
+
+    {
+        std::unordered_map<Instant, int> map;
+
+        const Instant instant = Instant::DateTime(DateTime::Parse("2020-06-15 12:00:00"), Scale::UTC);
+
+        map[instant] = 42;
+
+        EXPECT_EQ(map.at(instant), 42);
+        EXPECT_EQ(map.at(Instant::DateTime(DateTime::Parse("2020-06-15 12:00:00"), Scale::UTC)), 42);
+        EXPECT_EQ(map.count(Instant::DateTime(DateTime::Parse("2020-06-16 12:00:00"), Scale::UTC)), 0u);
     }
 }

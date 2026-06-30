@@ -25,9 +25,9 @@ using ostk::core::type::String;
 
 using ostk::physics::time::Instant;
 
-/// @brief                      SPICE Toolkit kernel. Generalized data class for every type of kernel.
+/// @brief SPICE Toolkit kernel. Generalized data class for every type of kernel.
 ///
-/// @ref                        https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/info/intrdctn.html
+/// @ref https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/info/intrdctn.html
 
 class Kernel
 {
@@ -50,82 +50,139 @@ class Kernel
 
     };
 
-    /// @brief              Constructor
+    /// @brief Constructor
     ///
-    /// @param              [in] aType A kernel type
-    /// @param              [in] aFile A kernel file
+    /// @code
+    ///     Kernel kernel = Kernel(Kernel::Type::SPK, File::Path(Path::Parse("/path/to/kernel.bsp")));
+    /// @endcode
+    ///
+    /// @param [in] aType A kernel type
+    /// @param [in] aFile A kernel file
 
     Kernel(const Kernel::Type& aType, const filesystem::File& aFile);
 
-    /// @brief              Equal to operator
+    /// @brief Equal to operator
     ///
-    /// @param              [in] aKernel A kernel
-    /// @return             True if kernels are equal
+    /// @code
+    ///     Kernel kernelA = Kernel::Undefined();
+    ///     Kernel kernelB = Kernel::Undefined();
+    ///     kernelA == kernelB;
+    /// @endcode
+    ///
+    /// @param [in] aKernel A kernel
+    /// @return True if kernels are equal
 
     bool operator==(const Kernel& aKernel) const;
 
-    /// @brief              Not equal to operator
+    /// @brief Not equal to operator
     ///
-    /// @param              [in] aKernel A kernel
-    /// @return             True if kernels are not equal
+    /// @code
+    ///     Kernel kernelA = Kernel::Undefined();
+    ///     Kernel kernelB = Kernel::Undefined();
+    ///     kernelA != kernelB;
+    /// @endcode
+    ///
+    /// @param [in] aKernel A kernel
+    /// @return True if kernels are not equal
 
     bool operator!=(const Kernel& aKernel) const;
 
-    /// @brief              Returns true if kernel is defined
+    /// @brief Returns true if kernel is defined
     ///
-    /// @return             True if kernel is defined
+    /// @code
+    ///     Kernel kernel = Kernel::Undefined();
+    ///     kernel.isDefined(); // False
+    /// @endcode
+    ///
+    /// @return True if kernel is defined
 
     bool isDefined() const;
 
-    /// @brief              Get kernel type
+    /// @brief Get kernel type
     ///
-    /// @return             Kernel type
+    /// @code
+    ///     Kernel kernel = Kernel::File(aFile);
+    ///     Kernel::Type type = kernel.getType();
+    /// @endcode
+    ///
+    /// @return Kernel type
 
     Kernel::Type getType() const;
 
-    /// @brief              Get kernel name
+    /// @brief Get kernel name
     ///
-    /// @return             Kernel name
+    /// @code
+    ///     Kernel kernel = Kernel::File(aFile);
+    ///     String name = kernel.getName();
+    /// @endcode
+    ///
+    /// @return Kernel name
 
     String getName() const;
 
-    /// @brief              Get kernel file
+    /// @brief Get kernel file
     ///
-    /// @return             Kernel file
+    /// @code
+    ///     Kernel kernel = Kernel::File(aFile);
+    ///     filesystem::File file = kernel.getFile();
+    /// @endcode
+    ///
+    /// @return Kernel file
 
     filesystem::File getFile() const;
 
-    /// @brief              Constructs an undefined kernel
+    /// @brief Constructs an undefined kernel
     ///
-    /// @return             Undefined kernel
+    /// @code
+    ///     Kernel kernel = Kernel::Undefined();
+    ///     kernel.isDefined(); // False
+    /// @endcode
+    ///
+    /// @return Undefined kernel
 
     static Kernel Undefined();
 
-    /// @brief              Constructs a kernel from a file
+    /// @brief Constructs a kernel from a file
     ///
-    /// @param              [in] aFile A kernel file
-    /// @return             Kernel
+    /// @code
+    ///     Kernel kernel = Kernel::File(filesystem::File::Path(Path::Parse("/path/to/de430.bsp")));
+    /// @endcode
+    ///
+    /// @param [in] aFile A kernel file
+    /// @return Kernel
 
     static Kernel File(const filesystem::File& aFile);
 
-    /// @brief              Converts kernel type string to type
+    /// @brief Converts kernel type string to type
     ///
-    /// @param              [in] aType A kernel type string
-    /// @return             A kernel type
+    /// @code
+    ///     Kernel::Type type = Kernel::TypeFromString("SPK");
+    /// @endcode
+    ///
+    /// @param [in] aType A kernel type string
+    /// @return A kernel type
 
     static Kernel::Type TypeFromString(const String& aString);
 
-    /// @brief              Converts kernel type to string
+    /// @brief Converts kernel type to string
     ///
-    /// @param              [in] aType A kernel type
-    /// @return             A string
+    /// @code
+    ///     String str = Kernel::StringFromType(Kernel::Type::SPK); // "SPK"
+    /// @endcode
+    ///
+    /// @param [in] aType A kernel type
+    /// @return A string
 
     static String StringFromType(const Kernel::Type& aType);
 
-    /// @brief              Converts file extension to kernel type
+    /// @brief Converts file extension to kernel type
     ///
-    /// @param              [in] aFileExtension A file extension
-    /// @return             Kernel type
+    /// @code
+    ///     Kernel::Type type = Kernel::TypeFromFileExtension("bsp"); // Kernel::Type::SPK
+    /// @endcode
+    ///
+    /// @param [in] aFileExtension A file extension
+    /// @return Kernel type
 
     static Kernel::Type TypeFromFileExtension(const String& aFileExtension);
 

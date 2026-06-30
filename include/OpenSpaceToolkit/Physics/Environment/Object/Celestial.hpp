@@ -128,6 +128,12 @@ class Celestial : public Object
 
     virtual bool isDefined() const override;
 
+    bool gravitationalModelIsDefined() const;
+
+    bool magneticModelIsDefined() const;
+
+    bool atmosphericModelIsDefined() const;
+
     Shared<const Ephemeris> accessEphemeris() const;
 
     Shared<const GravitationalModel> accessGravitationalModel() const;
@@ -136,11 +142,7 @@ class Celestial : public Object
 
     Shared<const AtmosphericModel> accessAtmosphericModel() const;
 
-    bool gravitationalModelIsDefined() const;
-
-    bool magneticModelIsDefined() const;
-
-    bool atmosphericModelIsDefined() const;
+    virtual Shared<const Frame> accessFrame() const override;
 
     Celestial::Type getType() const;
 
@@ -153,8 +155,6 @@ class Celestial : public Object
     Real getJ2() const;
 
     Real getJ4() const;
-
-    virtual Shared<const Frame> accessFrame() const override;
 
     virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 

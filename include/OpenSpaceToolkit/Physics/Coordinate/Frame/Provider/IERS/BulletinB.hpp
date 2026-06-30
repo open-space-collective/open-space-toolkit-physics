@@ -38,54 +38,66 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Interval;
 
-/// @brief                      IERS Bulletin B
+/// @brief IERS Bulletin B
 ///
-///                             IERS Bulletin B provides current information on the Earth’s orientation in the IERS
-///                             Reference System. This includes Universal Time, coordinates of the terrestrial pole, and
-///                             celestial pole offsets. IERS Bulletin B consists of 5 sections:
+/// IERS Bulletin B provides current information on the Earth’s orientation in the IERS
+/// Reference System. This includes Universal Time, coordinates of the terrestrial pole, and
+/// celestial pole offsets. IERS Bulletin B consists of 5 sections:
 ///
-///                             Section 1:
-///                             Daily final values at 0:00 UT of x, y, UT1-UTC, dX, dY, and their uncertainties. Time
-///                             span: one month with final values, one month with preliminary values.
+/// Section 1: Daily final values at 0:00 UT of x, y, UT1-UTC, dX, dY, and their uncertainties. Time
+/// span: one month with final values, one month with preliminary values.
 ///
-///                             Section 2:
-///                             Daily final values at 0:00 UT of celestial pole offsets dPsi and dEps in the IAU 1980
-///                             system and their uncertainties.
+/// Section 2: Daily final values at 0:00 UT of celestial pole offsets dPsi and dEps in the IAU 1980
+/// system and their uncertainties.
 ///
-///                             Section 3:
-///                             Earth angular velocity (daily estimates of LOD and OMEGA with their uncertainties).
+/// Section 3: Earth angular velocity (daily estimates of LOD and OMEGA with their uncertainties).
 ///
-///                             Section 4:
-///                             Information on the time scales and announcement of occurring leap seconds.
+/// Section 4: Information on the time scales and announcement of occurring leap seconds.
 ///
-///                             Section 5:
-///                             Average formal precision of the individual and combined series contributing or not to
-///                             the combination and their agreement with the combination.
+/// Section 5: Average formal precision of the individual and combined series contributing or not to
+/// the combination and their agreement with the combination.
 ///
-/// @ref                        https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html
-
+/// @ref https://www.iers.org/IERS/EN/Publications/Bulletins/bulletins.html
 class BulletinB
 {
    public:
+    /// @brief Output stream operator.
+    ///
+    /// @code
+    ///     std::cout << bulletinB;
+    /// @endcode
+    ///
+    /// @param [in] anOutputStream An output stream
+    /// @param [in] aBulletinB A Bulletin B
+    /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinB& aBulletinB);
 
-    /// @brief              true if defined
+    /// @brief true if defined
     ///
-    /// @return             True if defined.
-
+    /// @code
+    ///     bulletinB.isDefined(); // True
+    /// @endcode
+    ///
+    /// @return True if defined.
     bool isDefined() const;
 
-    /// @brief              Undefined factory function
+    /// @brief Undefined factory function
     ///
-    /// @return             Undefined Bulletin B object.
-
+    /// @code
+    ///     BulletinB bulletinB = BulletinB::Undefined();
+    /// @endcode
+    ///
+    /// @return Undefined Bulletin B object.
     static BulletinB Undefined();
 
-    /// @brief              Load Bulletin B from file
+    /// @brief Load Bulletin B from file
     ///
-    /// @param              [in] aFile A file.
-    /// @return             Bulletin B object.
-
+    /// @code
+    ///     BulletinB bulletinB = BulletinB::Load(file);
+    /// @endcode
+    ///
+    /// @param [in] aFile A file.
+    /// @return Bulletin B object.
     static BulletinB Load(const filesystem::File& aFile);
 
    private:

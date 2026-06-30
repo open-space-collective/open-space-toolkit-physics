@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
@@ -202,6 +203,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
 {
     using ostk::physics::time::Instant;
+    using FrameManager = ostk::physics::coordinate::frame::Manager;
 
     {
         const Position position_GCRF = {{7000e3, 1000e3, 500e3}, Position::Unit::Meter, Frame::GCRF()};
@@ -219,6 +221,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
         EXPECT_ANY_THROW(Position::Undefined().inFrame(Frame::ITRF(), Instant::J2000()));
         EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::Undefined(), Instant::J2000()));
         EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::ITRF(), Instant::Undefined()));
+    }
+
+    {
+        const Position position_GCRF = {{7000e3, 1000e3, 500e3}, Position::Unit::Meter, Frame::GCRF()};
+
+        EXPECT_NO_THROW(position_GCRF.inFrame(Frame::ITRF(), Instant::J2000()));
+
+        FrameManager::Get().clearAllFrames();
+
+        EXPECT_NO_THROW(position_GCRF.inFrame(Frame::ITRF(), Instant::J2000()));
     }
 }
 

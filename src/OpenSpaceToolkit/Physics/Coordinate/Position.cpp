@@ -102,7 +102,7 @@ bool Position::isNear(const Position& aPosition, const Length& aTolerance) const
         throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    if (frameSPtr_ != aPosition.frameSPtr_)
+    if ((*frameSPtr_) != (*aPosition.frameSPtr_))
     {
         throw ostk::core::error::RuntimeError("Position are expressed in different frames.");
     }

@@ -163,10 +163,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        Kernel kernel = Kernel(Kernel::Type::LSK, expectedKernelFile);
+        const Kernel kernel = Kernel(Kernel::Type::LSK, expectedKernelFile);
 
         // kernel file doesn't exist, so it should fetch
-        Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
+        const Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
         EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
@@ -178,7 +178,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         EXPECT_TRUE(expectedKernelFile.exists());
 
-        Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
+        const Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
 
         EXPECT_TRUE(foundKernel.isDefined());
         EXPECT_EQ(
@@ -187,15 +187,138 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
     }
 
     {
-        // check that it fetches one that is not there, earth_200101_[0-9]*_predict\\.bpc
+        // check that it fetches one that is not there
         File expectedKernelFile =
-            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_200101_990827_predict.bpc"));
+            File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_assoc_itrf93.tf"));
 
         EXPECT_FALSE(expectedKernelFile.exists());
 
-        Kernel fetchedKernel = manager_.findKernel("earth_200101_[0-9]*_predict\\.bpc");
+        const Kernel fetchedKernel = manager_.findKernel("earth_assoc_itrf93.tf");
         EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
+    }
+
+    manager_.getLocalRepository().remove();
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelPaths)
+{
+    // make subdir for test
+    manager_.setLocalRepository(Directory::Path(
+        Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/") +
+        Path::Parse("FindKernelPathsTest/")
+    ));
+
+    if (manager_.getLocalRepository().exists())
+    {
+        manager_.getLocalRepository().remove();
+    }
+    manager_.getLocalRepository().create();
+
+    {
+        // Create test kernel files matching the patterns from Engine.cpp
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("latest_leapseconds.tls")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("de430.bsp")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00010.tpc")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00011.tpc")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_latest_high_prec.bpc")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_assoc_itrf93.tf")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_080317.tf")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_assoc_me.tf")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("moon_pa_de421_1900-2050.bpc")).create();
+        // Add a non-matching file to ensure it's not included
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("other_file.txt")).create();
+    }
+
+    {
+        // Test exact match: latest_leapseconds.tls
+        Array<Path> paths = manager_.findKernelPaths("latest_leapseconds.tls");
+        EXPECT_EQ(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("latest_leapseconds.tls") != String::npos);
+    }
+
+    {
+        // Test exact match: de430.bsp
+        Array<Path> paths = manager_.findKernelPaths("de430.bsp");
+        EXPECT_EQ(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("de430.bsp") != String::npos);
+    }
+
+    {
+        // Test regex pattern: pck[0-9]*\\.tpc (should match multiple files)
+        Array<Path> paths = manager_.findKernelPaths("pck[0-9]*\\.tpc");
+        EXPECT_GE(paths.getSize(), 2);
+        bool foundPck00010 = false;
+        bool foundPck00011 = false;
+        for (const auto& path : paths)
+        {
+            if (path.toString().find("pck00010.tpc") != String::npos)
+            {
+                foundPck00010 = true;
+            }
+            if (path.toString().find("pck00011.tpc") != String::npos)
+            {
+                foundPck00011 = true;
+            }
+        }
+        EXPECT_TRUE(foundPck00010);
+        EXPECT_TRUE(foundPck00011);
+    }
+
+    {
+        // Test exact match: earth_assoc_itrf93.tf
+        Array<Path> paths = manager_.findKernelPaths("earth_assoc_itrf93.tf");
+        EXPECT_EQ(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("earth_assoc_itrf93.tf") != String::npos);
+    }
+
+    {
+        // Test regex pattern: earth_latest_high_prec.bpc
+        Array<Path> paths = manager_.findKernelPaths("earth_latest_high_prec.bpc");
+        EXPECT_GE(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("earth_latest_high_prec.bpc") != String::npos);
+    }
+
+    {
+        // Test exact match: moon_080317.tf
+        Array<Path> paths = manager_.findKernelPaths("moon_080317.tf");
+        EXPECT_EQ(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("moon_080317.tf") != String::npos);
+    }
+
+    {
+        // Test exact match: moon_assoc_me.tf
+        Array<Path> paths = manager_.findKernelPaths("moon_assoc_me.tf");
+        EXPECT_EQ(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("moon_assoc_me.tf") != String::npos);
+    }
+
+    {
+        // Test exact match: moon_pa_de421_1900-2050.bpc
+        Array<Path> paths = manager_.findKernelPaths("moon_pa_de421_1900-2050.bpc");
+        EXPECT_EQ(paths.getSize(), 1);
+        EXPECT_TRUE(paths.accessFirst().toString().find("moon_pa_de421_1900-2050.bpc") != String::npos);
+    }
+
+    {
+        // Test non-matching pattern (should return empty)
+        Array<Path> paths = manager_.findKernelPaths("nonexistent_file\\.txt");
+        EXPECT_EQ(paths.getSize(), 0);
+    }
+
+    {
+        // Test regex pattern that matches other_file.txt
+        Array<Path> paths = manager_.findKernelPaths(".*\\.txt");
+        EXPECT_GE(paths.getSize(), 1);
+        bool foundOtherFile = false;
+        for (const auto& path : paths)
+        {
+            if (path.toString().find("other_file.txt") != String::npos)
+            {
+                foundOtherFile = true;
+            }
+        }
+        EXPECT_TRUE(foundOtherFile);
     }
 
     manager_.getLocalRepository().remove();

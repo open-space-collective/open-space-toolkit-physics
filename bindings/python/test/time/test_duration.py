@@ -218,3 +218,20 @@ class TestDuration:
         assert duration is not None
         assert isinstance(duration, Duration)
         assert duration.is_defined() is True
+
+    def test_hash(self):
+        duration_a = Duration.seconds(1.0)
+        duration_b = Duration.seconds(1.0)
+        duration_c = Duration.seconds(2.0)
+
+        assert hash(duration_a) == hash(duration_b)
+        assert hash(duration_a) != hash(duration_c)
+
+        # Test as dictionary key
+        d = {duration_a: "value"}
+        assert d[duration_b] == "value"
+        assert duration_c not in d
+
+        # Test in set
+        s = {duration_a, duration_b, duration_c}
+        assert len(s) == 2

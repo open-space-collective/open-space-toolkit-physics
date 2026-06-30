@@ -534,6 +534,26 @@ Angle Angle::Revolutions(const Real& aValue)
     return Angle(aValue, Angle::Unit::Revolution);
 }
 
+Angle Angle::Between(const Angle& aFirstAngle, const Angle& aSecondAngle)
+{
+    if (!aFirstAngle.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("First angle");
+    }
+
+    if (!aSecondAngle.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Second angle");
+    }
+
+    const Real firstRadians = aFirstAngle.inRadians();
+    const Real secondRadians = aSecondAngle.inRadians();
+
+    const Real delta = std::atan2(std::sin(secondRadians - firstRadians), std::cos(secondRadians - firstRadians));
+
+    return Angle(delta * Angle::SIRatio(Angle::Unit::Radian) / Angle::SIRatio(aFirstAngle.unit_), aFirstAngle.unit_);
+}
+
 Angle Angle::Between(const Vector2d& aFirstVector, const Vector2d& aSecondVector)
 {
     if ((!aFirstVector.isDefined()) || (!aSecondVector.isDefined()))

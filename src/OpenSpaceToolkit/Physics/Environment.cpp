@@ -30,6 +30,8 @@ Environment::Environment(
       objects_(anObjectArray),
       centralCelestialObject_(nullptr)
 {
+    this->validateCelestialObjects();
+
     if (setGlobalInstance)
     {
         Environment::SetGlobalInstance(std::make_shared<Environment>(*this));
@@ -53,6 +55,8 @@ Environment::Environment(
     {
         objects_.add(objectSPtr);
     }
+
+    this->validateCelestialObjects();
 
     if (setGlobalInstance)
     {
@@ -119,13 +123,15 @@ bool Environment::hasCentralCelestialObject() const
     return centralCelestialObject_ != nullptr;
 }
 
-bool Environment::intersects(
-    const Object::Geometry& aGeometry, const Array<Shared<const Object>>& anObjectToIgnoreArray
-) const
+bool Environment::isPositionInEclipse(const Position& aPosition, const bool& includePenumbra) const
 {
-    if (!aGeometry.isDefined())
+    using ostk::physics::environment::Object;
+    using ostk::physics::environment::object::Celestial;
+    using ostk::physics::environment::utilities::montenbruckGillShadowFunction;
+
+    if (!aPosition.isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Geometry");
+        throw ostk::core::error::runtime::Undefined("Position");
     }
 
     if (!this->isDefined())
@@ -133,13 +139,33 @@ bool Environment::intersects(
         throw ostk::core::error::runtime::Undefined("Environment");
     }
 
+    const Instant instant = this->getInstant();
+
+    const Shared<const Celestial> sunSPtr = this->accessCelestialObjectWithName("Sun");
+
     for (const auto& objectSPtr : objects_)
     {
-        if (!anObjectToIgnoreArray.contains(objectSPtr))
+        if (objectSPtr->getName() != "Sun")
         {
-            if (objectSPtr->getGeometryIn(aGeometry.accessFrame(), instant_).intersects(aGeometry))
+            const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
+            if (celestialSPtr != nullptr)
             {
-                return true;
+                const Real shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
+
+                if (includePenumbra)
+                {
+                    if (shadowValue < 1.0)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (shadowValue == 0.0)
+                    {
+                        return true;
+                    }
+                }
             }
         }
     }
@@ -258,15 +284,13 @@ void Environment::setInstant(const Instant& anInstant)
     instant_ = anInstant;
 }
 
-bool Environment::isPositionInEclipse(const Position& aPosition, const bool& includePenumbra) const
+bool Environment::intersects(
+    const Object::Geometry& aGeometry, const Array<Shared<const Object>>& anObjectToIgnoreArray
+) const
 {
-    using ostk::physics::environment::Object;
-    using ostk::physics::environment::object::Celestial;
-    using ostk::physics::environment::utilities::montenbruckGillShadowFunction;
-
-    if (!aPosition.isDefined())
+    if (!aGeometry.isDefined())
     {
-        throw ostk::core::error::runtime::Undefined("Position");
+        throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
     if (!this->isDefined())
@@ -274,33 +298,13 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
         throw ostk::core::error::runtime::Undefined("Environment");
     }
 
-    const Instant instant = this->getInstant();
-
-    const Shared<const Celestial> sunSPtr = this->accessCelestialObjectWithName("Sun");
-
     for (const auto& objectSPtr : objects_)
     {
-        if (objectSPtr->getName() != "Sun")
+        if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
-            const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
-            if (celestialSPtr != nullptr)
+            if (objectSPtr->getGeometryIn(aGeometry.accessFrame(), instant_).intersects(aGeometry))
             {
-                const Real shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
-
-                if (includePenumbra)
-                {
-                    if (shadowValue < 1.0)
-                    {
-                        return true;
-                    }
-                }
-                else
-                {
-                    if (shadowValue == 0.0)
-                    {
-                        return true;
-                    }
-                }
+                return true;
             }
         }
     }
@@ -356,16 +360,39 @@ Shared<Environment> Environment::AccessGlobalInstance()
     return instance;
 }
 
+bool Environment::HasGlobalInstance()
+{
+    std::shared_lock<std::shared_mutex> lock(mutex);
+    return instance != nullptr;
+}
+
 void Environment::SetGlobalInstance(const Shared<Environment>& anInstance)
 {
     std::unique_lock<std::shared_mutex> lock(mutex);
     instance = anInstance;
 }
 
-bool Environment::HasGlobalInstance()
+void Environment::validateCelestialObjects()
 {
-    std::shared_lock<std::shared_mutex> lock(mutex);
-    return instance != nullptr;
+    Array<String> celestialNames = Array<String>::Empty();
+
+    for (const auto& objectSPtr : objects_)
+    {
+        const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
+
+        // Only check for duplicates amongst Celestial Objects. Non-Celestial Objects aren't checked.
+        if (celestialSPtr != nullptr)
+        {
+            const String& name = celestialSPtr->accessName();
+
+            if (celestialNames.contains(name))
+            {
+                throw ostk::core::error::RuntimeError("Duplicate Celestial Object with name [{}] detected.", name);
+            }
+
+            celestialNames.add(name);
+        }
+    }
 }
 
 }  // namespace physics

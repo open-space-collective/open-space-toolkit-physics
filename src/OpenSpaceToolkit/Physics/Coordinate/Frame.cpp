@@ -266,7 +266,7 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     Transform transform_origin_common = Transform::Identity(anInstant);
 
-    for (auto framePtr = this; framePtr != commonAncestorSPtr.get(); framePtr = framePtr->accessParent().get())
+    for (auto framePtr = this; (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->accessParent().get())
     {
         transform_origin_common *= framePtr->accessProvider()->getTransformAt(anInstant);
     }
@@ -275,7 +275,7 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     Transform transform_destination_common = Transform::Identity(anInstant);
 
-    for (auto framePtr = aFrameSPtr.get(); framePtr != commonAncestorSPtr.get();
+    for (auto framePtr = aFrameSPtr.get(); (*framePtr) != (*commonAncestorSPtr);
          framePtr = framePtr->accessParent().get())
     {
         transform_destination_common *= framePtr->accessProvider()->getTransformAt(anInstant);

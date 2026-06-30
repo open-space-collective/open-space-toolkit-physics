@@ -7,6 +7,8 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
@@ -20,12 +22,16 @@
 using ostk::core::container::Array;
 using ostk::core::container::Tuple;
 using ostk::core::error::RuntimeError;
+using ostk::core::filesystem::File;
+using ostk::core::filesystem::Path;
 using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::coordinate::Frame;
 using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
+using ostk::physics::environment::atmospheric::earth::CSSISpaceWeather;
+using ostk::physics::environment::atmospheric::earth::Manager;
 using ostk::physics::time::DateTime;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
@@ -37,7 +43,23 @@ using ostk::physics::environment::object::celestial::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
+class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth : public ::testing::Test
+{
+   protected:
+    void SetUp() override
+    {
+        const File file = File::Path(
+            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/SW-Last5Years.csv")
+        );
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        manager_.loadCSSISpaceWeather(spaceWeather);
+    }
+
+    Manager& manager_ = Manager::Get();
+};
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 {
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential));
@@ -94,7 +116,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 {
     {
         const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Exponential};
@@ -111,7 +133,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
 {
     {
         EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Exponential};
@@ -128,7 +150,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, OperatorEquals)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
 {
     {
         EXPECT_EQ(
@@ -144,7 +166,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetType)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
 {
     {
         EXPECT_EQ(
@@ -177,7 +199,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
 {
     {
         EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
@@ -188,7 +210,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Position)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Position)
 {
     {
         static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases = {
@@ -245,7 +267,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Positi
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 {
     {
         // Hand calculated values to validate
@@ -320,7 +342,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames)
 {
     {
         static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
@@ -384,7 +406,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 {
     {
         static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>

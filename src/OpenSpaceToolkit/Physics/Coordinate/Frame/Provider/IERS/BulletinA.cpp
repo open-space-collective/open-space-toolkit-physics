@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include <boost/lexical_cast.hpp>
+#include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -461,14 +462,15 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
     Index lineIndex = 0;
     String line;
 
-    static const std::regex releaseDateRegex = std::regex("^[ ]+([\\d]+) ([\\w]+) ([\\d]+)[ ]+Vol\\.[\\d\\w\\. ]+$");
-    static const std::regex taiMinusUtcEpochRegex = std::regex("^[ ]+Beginning ([\\d]+) ([\\w]+) ([\\d]+):[ ]+$");
-    static const std::regex taiMinusUtcRegex = std::regex("^[ ]+TAI-UTC = ([-]?[\\d.]+) ([\\d]+) seconds[ ]+$");
-    static const std::regex observationRegex = std::regex(
+    static const boost::regex releaseDateRegex =
+        boost::regex("^[ ]+([\\d]+) ([\\w]+) ([\\d]+)[ ]+Vol\\.[\\d\\w\\. ]+$");
+    static const boost::regex taiMinusUtcEpochRegex = boost::regex("^[ ]+Beginning ([\\d]+) ([\\w]+) ([\\d]+):[ ]+$");
+    static const boost::regex taiMinusUtcRegex = boost::regex("^[ ]+TAI-UTC = ([-]?[\\d.]+) ([\\d]+) seconds[ ]+$");
+    static const boost::regex observationRegex = boost::regex(
         "^[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([-]?[\\d.]+)[ ]+([\\d.]+)[ ]+([-]?[\\d.]+)[ "
         "]+([\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([\\d.]+)[ ]+$"
     );
-    static const std::regex predictionRegex = std::regex(
+    static const boost::regex predictionRegex = boost::regex(
         "^[ ]+([\\d]{4})[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([\\d]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+([-]?[\\d.]+)[ ]+$"
     );
 
@@ -477,11 +479,12 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
     // - If Bulletin A has constant line count, using line index based parsing will be much faster
     // - Use flags to identify sections, to avoid regex'ing each line
 
-    std::smatch match;
+    boost::smatch match;
 
     while (std::getline(fileStream, line))
     {
-        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) && std::regex_match(line, match, releaseDateRegex))
+        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) &&
+            boost::regex_match(line, match, releaseDateRegex))
         {
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
             const Uint8 month = monthFromString(String(match[2]));
@@ -491,7 +494,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
         }
 
         if ((lineIndex < 30) && (!bulletin.taiMinusUtcEpoch_.isDefined()) &&
-            std::regex_match(line, match, taiMinusUtcEpochRegex))
+            boost::regex_match(line, match, taiMinusUtcEpochRegex))
         {
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
             const Uint8 month = monthFromString(String(match[2]));
@@ -501,14 +504,15 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
                 Instant::DateTime(DateTime(Date(year, month, day), Time::Midnight()), Scale::UTC);  // [TBC] UTC?
         }
 
-        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) && std::regex_match(line, match, taiMinusUtcRegex))
+        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) &&
+            boost::regex_match(line, match, taiMinusUtcRegex))
         {
             const Real seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
 
             bulletin.taiMinusUtc_ = Duration::Seconds(seconds);
         }
 
-        if (std::regex_match(line, match, observationRegex))
+        if (boost::regex_match(line, match, observationRegex))
         {
             const Integer year = 2000 + boost::lexical_cast<int>(match[1]);
             const Integer month = boost::lexical_cast<int>(match[2]);
@@ -530,7 +534,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
             bulletin.observations_.insert({mjd, observation});
         }
 
-        if (std::regex_match(line, match, predictionRegex))
+        if (boost::regex_match(line, match, predictionRegex))
         {
             const Integer year = boost::lexical_cast<int>(match[1]);
             const Integer month = boost::lexical_cast<int>(match[2]);

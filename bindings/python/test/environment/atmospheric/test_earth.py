@@ -1,11 +1,11 @@
 # Apache License 2.0
 
+import pathlib
+
 import pytest
 
-import numpy as np
-
-from ostk.core.filesystem import Directory
-
+from ostk.core.filesystem import Path
+from ostk.core.filesystem import File
 from ostk.physics.time import Instant
 from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
@@ -15,8 +15,42 @@ from ostk.physics.coordinate import Position
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.spherical import LLA
 from ostk.physics.environment.atmospheric import Earth as EarthAtmosphericModel
+from ostk.physics.environment.atmospheric.earth import CSSISpaceWeather
 from ostk.physics.environment.gravitational import Earth as EarthGravitationalModel
 from ostk.physics.environment.object.celestial import Sun
+from ostk.physics.environment.atmospheric.earth import Manager
+
+
+@pytest.fixture
+def cssi_space_weather() -> CSSISpaceWeather:
+    return CSSISpaceWeather.load(
+        File.path(
+            Path.parse(
+                f"{pathlib.Path(__file__).parent.absolute()}/earth/data/SW-Last5Years.test.csv"
+            )
+        )
+    )
+
+
+@pytest.fixture
+def manager() -> Manager:
+    manager = Manager.get()
+
+    yield manager
+
+    manager.reset()
+    manager.clear_local_repository()
+
+
+@pytest.fixture
+def manager_with_cssi_space_weather(cssi_space_weather: CSSISpaceWeather) -> Manager:
+    manager = Manager.get()
+    manager.load_cssi_space_weather(cssi_space_weather)
+
+    yield manager
+
+    manager.reset()
+    manager.clear_local_repository()
 
 
 @pytest.fixture
@@ -96,9 +130,10 @@ class TestEarth:
         )
 
     def test_is_defined_success(
-        self, earth_atmospheric_model_exponential: EarthAtmosphericModel
+        self,
+        earth_atmospheric_model_exponential: EarthAtmosphericModel,
     ):
-        assert earth_atmospheric_model_exponential.is_defined() == True
+        assert earth_atmospheric_model_exponential.is_defined()
 
     def test_get_density_at_exponential_success(
         self, earth_atmospheric_model_exponential: EarthAtmosphericModel
@@ -121,7 +156,9 @@ class TestEarth:
         assert density is not None
 
     def test_get_density_at_nrlmsise_success(
-        self, earth_atmospheric_model_nrlmsise: EarthAtmosphericModel
+        self,
+        earth_atmospheric_model_nrlmsise: EarthAtmosphericModel,
+        manager_with_cssi_space_weather: Manager,
     ):
         latitude = Angle.degrees(30.0)
         longitude = Angle.degrees(40.0)

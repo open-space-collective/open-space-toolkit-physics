@@ -31,7 +31,7 @@ using ostk::physics::unit::Derived;
 using ostk::physics::unit::Length;
 using ostk::physics::unit::Time;
 
-/// @brief                      Gravitational model (interface)
+/// @brief Gravitational model (interface)
 
 static const Derived::Unit GravitationalParameterSIUnit =
     Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second);
@@ -39,17 +39,20 @@ static const Derived::Unit GravitationalParameterSIUnit =
 class Model
 {
    public:
-    // @brief                  Gravitational model parameters
+    /// @brief Gravitational model parameters.
     struct Parameters
     {
-        // @brief              Constructor
-
-        // @param              [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
-        // @param              [in] anEquatorialRadius An equatorial radius [m]
-        // @param              [in] aFlattening A flattening
-        // @param              [in] aC20 C20
-        // @param              [in] aC40 C40
-
+        /// @brief Constructor.
+        ///
+        /// @code
+        ///     Parameters params(gravitationalParameter, equatorialRadius, flattening, C20, C40);
+        /// @endcode
+        ///
+        /// @param [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
+        /// @param [in] anEquatorialRadius An equatorial radius [m]
+        /// @param [in] aFlattening A flattening
+        /// @param [in] aC20 C20
+        /// @param [in] aC40 C40
         Parameters(
             const Derived& aGravitationalParameter,
             const Length& anEquatorialRadius,
@@ -58,15 +61,18 @@ class Model
             const Real& aC40
         );
 
-        // @brief              Constructor
-
-        // @param              [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
-        // @param              [in] anEquatorialRadius An equatorial radius [m]
-        // @param              [in] aFlattening A flattening
-        // @param              [in] aC20 C20
-        // @param              [in] aC30 C30
-        // @param              [in] aC40 C40
-
+        /// @brief Constructor.
+        ///
+        /// @code
+        ///     Parameters params(gravitationalParameter, equatorialRadius, flattening, C20, C30, C40);
+        /// @endcode
+        ///
+        /// @param [in] aGravitationalParameter A gravitational parameter [m^3/s^2]
+        /// @param [in] anEquatorialRadius An equatorial radius [m]
+        /// @param [in] aFlattening A flattening
+        /// @param [in] aC20 C20
+        /// @param [in] aC30 C30
+        /// @param [in] aC40 C40
         Parameters(
             const Derived& aGravitationalParameter,
             const Length& anEquatorialRadius,
@@ -76,45 +82,63 @@ class Model
             const Real& aC40
         );
 
-        // @brief              Equal to operator
-        //
-        // @param              [in] aParameterSet A parameter set
-        // @return             True if the parameter set are equal
-
+        /// @brief Equal to operator.
+        ///
+        /// @code
+        ///     bool isEqual = (params1 == params2);
+        /// @endcode
+        ///
+        /// @param [in] aParameterSet A parameter set
+        /// @return True if the parameter sets are equal
         bool operator==(const Parameters& aParameterSet) const;
 
-        // @brief              Not equal to operator
-        //
-        // @param              [in] aParameterSet A parameter set
-        // @return             True if the parameter set are not equal
-
+        /// @brief Not equal to operator.
+        ///
+        /// @code
+        ///     bool isNotEqual = (params1 != params2);
+        /// @endcode
+        ///
+        /// @param [in] aParameterSet A parameter set
+        /// @return True if the parameter sets are not equal
         bool operator!=(const Parameters& aParameterSet) const;
 
-        // @brief              Output stream operator
-        //
-        // @param              [in] anOutputStream An output stream
-        // @param              [in] aParameterSet A parameter set
-        // @return             A reference to output stream
-
+        /// @brief Output stream operator.
+        ///
+        /// @code
+        ///     std::cout << params;
+        /// @endcode
+        ///
+        /// @param [in] anOutputStream An output stream
+        /// @param [in] aParameterSet A parameter set
+        /// @return A reference to output stream
         friend std::ostream& operator<<(std::ostream& anOutputStream, const Parameters& aParameterSet);
 
-        // @brief              Check if the parameter set is defined
-        //
-        // @return             True if the parameter set is defined
-
+        /// @brief Check if the parameter set is defined.
+        ///
+        /// @code
+        ///     bool isDefined = params.isDefined();
+        /// @endcode
+        ///
+        /// @return True if the parameter set is defined
         bool isDefined() const;
 
-        // @brief              Undefined parameter set
-        //
-        // @return             An undefined parameter set
-
+        /// @brief Construct an undefined parameter set.
+        ///
+        /// @code
+        ///     Parameters params = Parameters::Undefined();
+        /// @endcode
+        ///
+        /// @return An undefined parameter set
         static Parameters Undefined();
 
-        // @brief              Compute geocentric radius of ellipsoid at a given latitude
-        //
-        // @param              [in] aLatitude A latitude
-        // @return             Geocentric radius of ellipsoid at a given latitude
-
+        /// @brief Compute geocentric radius of ellipsoid at a given latitude.
+        ///
+        /// @code
+        ///     Length radius = params.computeGeocentricRadiusAt(latitude);
+        /// @endcode
+        ///
+        /// @param [in] aLatitude A latitude
+        /// @return Geocentric radius of ellipsoid at the given latitude
         Length computeGeocentricRadiusAt(const Angle& aLatitude) const;
 
         Derived gravitationalParameter_;
@@ -128,34 +152,40 @@ class Model
         Real J4_;
     };
 
-    /// @brief              Constructor (default)
-
+    /// @brief Constructor (default)
+    ///
+    /// @code
+    ///     Model model(parameters);
+    /// @endcode
     Model(const Parameters& aSetOfParameters);
 
-    /// @brief              Destructor (pure virtual)
-
+    /// @brief Destructor (pure virtual)
     virtual ~Model() = 0;
 
-    /// @brief              Clone the gravitational model (pure virtual)
+    /// @brief Clone the gravitational model (pure virtual)
     ///
-    /// @return             Pointer to gravitational model
-
+    /// @return Pointer to gravitational model
     virtual Model* clone() const = 0;
 
-    /// @brief              Check if the gravitational model is defined (pure virtual)
+    /// @brief Check if the gravitational model is defined (pure virtual)
     ///
-    /// @return             True if the gravitational model is defined
-
+    /// @return True if the gravitational model is defined
     virtual bool isDefined() const = 0;
 
-    /// @brief              Get the gravitational field value at a given position and instant (pure virtual)
+    /// @brief Get the gravitational field value at a given position and instant (pure virtual)
     ///
-    /// @param              [in] aPosition A position, expressed in the gravitational object frame [m]
-    /// @param              [in] anInstant An instant
-    /// @return             Gravitational field value, expressed in the gravitational object frame [m.s-2]
-
+    /// @param [in] aPosition A position, expressed in the gravitational object frame [m]
+    /// @param [in] anInstant An instant
+    /// @return Gravitational field value, expressed in the gravitational object frame [m.s-2]
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
 
+    /// @brief Get the gravitational model parameters.
+    ///
+    /// @code
+    ///     Parameters params = model.getParameters();
+    /// @endcode
+    ///
+    /// @return Gravitational model parameters
     Parameters getParameters() const;
 
    private:
