@@ -6,6 +6,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SunMoonAnalytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
 
 namespace ostk
@@ -55,6 +56,16 @@ Sun Sun::Spherical()
 
     return {
         std::make_shared<SPICE>(SPICE::Object::Sun),
+        std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical),
+    };
+}
+
+Sun Sun::Analytical()
+{
+    using ostk::physics::environment::ephemeris::SunMoonAnalytical;
+
+    return {
+        std::make_shared<SunMoonAnalytical>(SunMoonAnalytical::Body::Sun),
         std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical),
     };
 }

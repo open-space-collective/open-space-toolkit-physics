@@ -59,6 +59,18 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(pybind11:
                         Sun: Sun.
                 )doc"
             )
+            .def_static(
+                "analytical",
+                &Sun::Analytical,
+                R"doc(
+                    Spherical model with a low-precision analytical ephemeris (Montenbruck & Gill).
+
+                    Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (~0.01 deg).
+
+                    Returns:
+                        Sun: Sun.
+                )doc"
+            )
 
             ;
     }

@@ -81,6 +81,17 @@ class Sun : public Celestial
     /// @return Sun
     static Sun Spherical();
 
+    /// @brief Spherical model with a low-precision analytical ephemeris (Montenbruck & Gill)
+    ///
+    /// Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (~0.01 deg).
+    ///
+    /// @code
+    ///     Sun sun = Sun::Analytical();
+    /// @endcode
+    ///
+    /// @return Sun
+    static Sun Analytical();
+
    private:
     static Object::Geometry Geometry(const Shared<const Frame>& aFrameSPtr);
 };
