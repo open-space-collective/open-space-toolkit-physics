@@ -1222,6 +1222,27 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate_ConsistencyWithDateTime)
+{
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // The arithmetic conversion must agree with the DateTime-based conversion to within
+    // the double resolution of a Julian date (the DateTime path quantizes at ~1e-9 day).
+
+    for (auto const& scale : scales)
+    {
+        for (int i = -200; i <= 200; i += 7)
+        {
+            const Instant instant = Instant::J2000() + Duration::Days(37.3 * i) + Duration::Nanoseconds(123456789);
+
+            EXPECT_NEAR(instant.getDateTime(scale).getModifiedJulianDate(), instant.getModifiedJulianDate(scale), 1e-8);
+            EXPECT_NEAR(instant.getDateTime(scale).getJulianDate(), instant.getJulianDate(scale), 1e-8);
+        }
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 {
     using ostk::physics::time::DateTime;

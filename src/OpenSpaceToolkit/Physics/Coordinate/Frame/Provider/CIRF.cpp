@@ -63,7 +63,7 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     // Time (TT)
 
     static const Real djmjd0 = 2400000.5;
-    const Real tt = anInstant.getDateTime(Scale::TT).getModifiedJulianDate();
+    const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
 
     // CIP and CIO, IAU 2006/2000A
 

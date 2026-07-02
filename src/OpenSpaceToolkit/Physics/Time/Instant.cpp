@@ -305,21 +305,13 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
 
 Real Instant::getJulianDate(const Scale& aTimeScale) const
 {
-    if (aTimeScale == Scale::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Scale");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    return this->getDateTime(aTimeScale).getJulianDate();
+    return this->getModifiedJulianDate(aTimeScale) + 2400000.5;
 }
 
 Real Instant::getModifiedJulianDate(const Scale& aTimeScale) const
 {
+    using ostk::core::type::Uint64;
+
     if (aTimeScale == Scale::Undefined)
     {
         throw ostk::core::error::runtime::Undefined("Scale");
@@ -330,7 +322,21 @@ Real Instant::getModifiedJulianDate(const Scale& aTimeScale) const
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    return this->getDateTime(aTimeScale).getModifiedJulianDate();
+    // J2000 epoch (2000-01-01 12:00:00 in the target scale) is MJD 51544.5.
+    // The whole-day / remainder split keeps the conversion exact to the double
+    // resolution of the resulting MJD.
+
+    const Instant::Count count = this->inScale(aTimeScale).count_;
+
+    static const Uint64 nanosecondsPerDay = 86400000000000ULL;
+
+    const Uint64 wholeDays = count.countFromEpoch_ / nanosecondsPerDay;
+    const Uint64 remainderNanoseconds = count.countFromEpoch_ % nanosecondsPerDay;
+
+    const double dayOffset = static_cast<double>(wholeDays) +
+                             static_cast<double>(remainderNanoseconds) / static_cast<double>(nanosecondsPerDay);
+
+    return 51544.5 + (count.postEpoch_ ? dayOffset : -dayOffset);
 }
 
 Int64 Instant::getLeapSecondCount() const
