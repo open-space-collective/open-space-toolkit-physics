@@ -1237,9 +1237,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate_ConsistencyWit
         {
             const Instant instant = Instant::J2000() + Duration::Days(37.3 * i) + Duration::Nanoseconds(123456789);
 
-            EXPECT_NEAR(
-                instant.getDateTime(scale).getModifiedJulianDate(), instant.getModifiedJulianDate(scale), 1e-8
-            );
+            EXPECT_NEAR(instant.getDateTime(scale).getModifiedJulianDate(), instant.getModifiedJulianDate(scale), 1e-8);
             EXPECT_NEAR(instant.getDateTime(scale).getJulianDate(), instant.getJulianDate(scale), 1e-8);
         }
     }

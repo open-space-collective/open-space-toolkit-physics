@@ -333,8 +333,8 @@ Real Instant::getModifiedJulianDate(const Scale& aTimeScale) const
     const Uint64 wholeDays = count.countFromEpoch_ / nanosecondsPerDay;
     const Uint64 remainderNanoseconds = count.countFromEpoch_ % nanosecondsPerDay;
 
-    const double dayOffset =
-        static_cast<double>(wholeDays) + static_cast<double>(remainderNanoseconds) / static_cast<double>(nanosecondsPerDay);
+    const double dayOffset = static_cast<double>(wholeDays) +
+                             static_cast<double>(remainderNanoseconds) / static_cast<double>(nanosecondsPerDay);
 
     return 51544.5 + (count.postEpoch_ ? dayOffset : -dayOffset);
 }
