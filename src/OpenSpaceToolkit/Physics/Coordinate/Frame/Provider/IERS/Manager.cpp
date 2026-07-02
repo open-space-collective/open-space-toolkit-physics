@@ -211,6 +211,61 @@ Real Manager::getLodAt(const Instant& anInstant) const
     return Real::Undefined();
 }
 
+Pair<Real, Real> Manager::getUt1MinusUtcAndLodAt(const Instant& anInstant) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    std::lock_guard<std::mutex> lock {mutex_};
+
+    // Try data in this order:
+    // 1. Bulletin A rapid service observations (released daily)
+    // 2. Bulletin A predictions (released daily)
+    // 3. Finals 2000A observations (released weekly)
+    //
+    // Bulletin A does not provide LOD, so LOD is always sourced from Finals 2000A.
+    //
+    // https://hpiers.obspm.fr/eoppc/bul/bulb/explanatory.html
+
+    const BulletinA* bulletinAPtr = this->accessBulletinA_();
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
+
+    Real ut1MinusUtc = Real::Undefined();
+
+    if (bulletinAPtr != nullptr)
+    {
+        if (bulletinAPtr->accessObservationInterval().contains(anInstant))
+        {
+            ut1MinusUtc = bulletinAPtr->getObservationAt(anInstant).ut1MinusUtc;
+        }
+        else if (bulletinAPtr->accessPredictionInterval().contains(anInstant))
+        {
+            ut1MinusUtc = bulletinAPtr->getPredictionAt(anInstant).ut1MinusUtc;
+        }
+    }
+
+    if (!ut1MinusUtc.isDefined())
+    {
+        if (finals2000aPtr == nullptr)
+        {
+            throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
+        }
+
+        // Neither Bulletin A observation nor prediction covers this instant: get UT1 - UTC and LOD from
+        // Finals 2000A together, in a single data range lookup.
+        return finals2000aPtr->getUt1MinusUtcAndLodAt(anInstant);
+    }
+
+    if (finals2000aPtr == nullptr)
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain LOD at [{}].", anInstant.toString());
+    }
+
+    return {ut1MinusUtc, finals2000aPtr->getLodAt(anInstant)};
+}
+
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
 {
     if (!aBulletinA.isDefined())
