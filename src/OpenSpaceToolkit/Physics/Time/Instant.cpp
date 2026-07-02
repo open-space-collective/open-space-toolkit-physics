@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <chrono>
+#include <cstdint>
 #include <iomanip>
 #include <stdlib.h>
 
@@ -10,6 +11,46 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
+
+namespace
+{
+
+// Low-level proleptic-Gregorian calendar algorithms, after Howard Hinnant's
+// "chrono-Compatible Low-Level Date Algorithms" (https://howardhinnant.github.io/date_algorithms.html)
+
+/// @brief Number of days from 1970-01-01 to the given civil date
+std::int64_t daysFromCivil(std::int32_t aYear, std::uint32_t aMonth, std::uint32_t aDay)
+{
+    aYear -= aMonth <= 2;
+    const std::int32_t era = (aYear >= 0 ? aYear : aYear - 399) / 400;
+    const std::uint32_t yearOfEra = static_cast<std::uint32_t>(aYear - era * 400);                 // [0, 399]
+    const std::uint32_t dayOfYear = (153 * (aMonth + (aMonth > 2 ? -3 : 9)) + 2) / 5 + aDay - 1;   // [0, 365]
+    const std::uint32_t dayOfEra = yearOfEra * 365 + yearOfEra / 4 - yearOfEra / 100 + dayOfYear;  // [0, 146096]
+
+    return static_cast<std::int64_t>(era) * 146097 + static_cast<std::int64_t>(dayOfEra) - 719468;
+}
+
+/// @brief Civil date from the number of days since 1970-01-01
+void civilFromDays(std::int64_t aDayCount, std::int32_t& aYear, std::uint32_t& aMonth, std::uint32_t& aDay)
+{
+    aDayCount += 719468;
+    const std::int64_t era = (aDayCount >= 0 ? aDayCount : aDayCount - 146096) / 146097;
+    const std::uint32_t dayOfEra = static_cast<std::uint32_t>(aDayCount - era * 146097);  // [0, 146096]
+    const std::uint32_t yearOfEra =
+        (dayOfEra - dayOfEra / 1460 + dayOfEra / 36524 - dayOfEra / 146096) / 365;                   // [0, 399]
+    const std::uint32_t dayOfYear = dayOfEra - (365 * yearOfEra + yearOfEra / 4 - yearOfEra / 100);  // [0, 365]
+    const std::uint32_t monthIndex = (5 * dayOfYear + 2) / 153;                                      // [0, 11]
+
+    aDay = dayOfYear - (153 * monthIndex + 2) / 5 + 1;
+    aMonth = monthIndex < 10 ? monthIndex + 3 : monthIndex - 9;
+    aYear = static_cast<std::int32_t>(yearOfEra) + static_cast<std::int32_t>(era) * 400 + (aMonth <= 2);
+}
+
+constexpr std::int64_t nanosecondsPerDay = 86400000000000LL;
+constexpr std::int64_t nanosecondsPerHalfDay = 43200000000000LL;
+constexpr std::int64_t daysFromUnixEpochTo2000 = 10957;  // 1970-01-01 -> 2000-01-01
+
+}  // namespace
 
 namespace ostk
 {
@@ -239,66 +280,40 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    // auto getTimePointString =
-    // [ ] (const std::chrono::time_point<std::chrono::system_clock>& aTimePoint) -> String
-    // {
+    const Instant::Count count = this->inScale(aTimeScale).count_;
 
-    //     std::time_t time = std::chrono::system_clock::to_time_t(aTimePoint) ;
+    // Signed nanosecond offset from 2000-01-01 00:00:00 (the midnight preceding the J2000 epoch at noon).
+    // 128-bit arithmetic: the unsigned count can exceed the signed 64-bit range (~292 years from epoch).
 
-    //     std::stringstream stringStream ;
+    const __int128 offsetFromMidnight = (count.postEpoch_ ? static_cast<__int128>(count.countFromEpoch_)
+                                                          : -static_cast<__int128>(count.countFromEpoch_)) +
+                                        nanosecondsPerHalfDay;
 
-    //     stringStream << std::put_time(std::gmtime(&time), "%F %T %z") ;
+    // Floored division into a day count and a nanosecond-of-day in [0, 86400e9)
 
-    //     return stringStream.str() ;
+    __int128 dayCount = offsetFromMidnight / nanosecondsPerDay;
+    __int128 nanosecondsOfDay = offsetFromMidnight % nanosecondsPerDay;
 
-    // } ;
-
-    // Epoch
-
-    std::tm epochTime = {};  // J2000
-
-    epochTime.tm_sec = 0;
-    epochTime.tm_min = 0;
-    epochTime.tm_hour = 12;
-    epochTime.tm_mday = 1;
-    epochTime.tm_mon = 0;
-    epochTime.tm_year = 100;
-
-    const std::chrono::time_point<std::chrono::system_clock> epochTimePoint =
-        std::chrono::system_clock::from_time_t(std::mktime(&epochTime));
-
-    // const Instant::Count dateCount_TT = this->inScale(Scale::TT).count_ ; // [TBM] remove inScale ?
-    const Instant::Count dateCount_TT = this->inScale(aTimeScale).count_;  // [TBM] remove inScale ?
-
-    const std::chrono::time_point<std::chrono::system_clock> dateTimePoint =
-        dateCount_TT.postEpoch_ ? (epochTimePoint + std::chrono::nanoseconds(dateCount_TT.countFromEpoch_))
-                                : (epochTimePoint - std::chrono::nanoseconds(dateCount_TT.countFromEpoch_));
-
-    std::time_t time = std::chrono::system_clock::to_time_t(dateTimePoint);
-
-    std::tm tm = {};
-    if (gmtime_r(&time, &tm) == nullptr)
+    if (nanosecondsOfDay < 0)
     {
-        throw ostk::core::error::RuntimeError("Failed to convert time to UTC.");
+        nanosecondsOfDay += nanosecondsPerDay;
+        dayCount -= 1;
     }
 
-    const Uint16 year = 1900 + tm.tm_year;
-    const Uint8 month = tm.tm_mon + 1;
-    const Uint8 day = tm.tm_mday;
+    std::int32_t year = 0;
+    std::uint32_t month = 0;
+    std::uint32_t day = 0;
 
-    const Uint8 hours = tm.tm_hour;
-    const Uint8 minutes = tm.tm_min;
-    const Uint8 seconds = tm.tm_sec;
+    civilFromDays(static_cast<std::int64_t>(dayCount) + daysFromUnixEpochTo2000, year, month, day);
 
-    const auto fraction = dateTimePoint - std::chrono::time_point_cast<std::chrono::seconds>(dateTimePoint);
+    const std::uint64_t timeOfDay = static_cast<std::uint64_t>(nanosecondsOfDay);
 
-    const Uint16 milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(fraction).count();
-    const Uint16 microseconds =
-        std::chrono::duration_cast<std::chrono::microseconds>(fraction).count() - milliseconds * 1000;
-    const Uint16 nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(fraction).count() -
-                               milliseconds * 1000000 - microseconds * 1000;
-
-    // [TBI] Time scale conversion
+    const Uint8 hours = timeOfDay / 3600000000000ULL;
+    const Uint8 minutes = (timeOfDay / 60000000000ULL) % 60;
+    const Uint8 seconds = (timeOfDay / 1000000000ULL) % 60;
+    const Uint16 milliseconds = (timeOfDay / 1000000ULL) % 1000;
+    const Uint16 microseconds = (timeOfDay / 1000ULL) % 1000;
+    const Uint16 nanoseconds = timeOfDay % 1000ULL;
 
     return time::DateTime(year, month, day, hours, minutes, seconds, milliseconds, microseconds, nanoseconds);
 }
@@ -430,8 +445,6 @@ Instant Instant::GPSEpoch()
 
 Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeScale)
 {
-    using ostk::core::type::Int32;
-
     if (!aDateTime.isDefined())
     {
         throw ostk::core::error::runtime::Wrong("DateTime");
@@ -450,61 +463,27 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
         );
     }
 
-    // Epoch
+    // Days from 2000-01-01, then signed nanosecond offset from the J2000 epoch (2000-01-01 12:00:00)
 
-    std::tm epochTime = {};  // J2000
+    const std::int64_t dayCount =
+        daysFromCivil(
+            aDateTime.accessDate().getYear(), aDateTime.accessDate().getMonth(), aDateTime.accessDate().getDay()
+        ) -
+        daysFromUnixEpochTo2000;
 
-    epochTime.tm_sec = 0;
-    epochTime.tm_min = 0;
-    epochTime.tm_hour = 12;
-    epochTime.tm_mday = 1;
-    epochTime.tm_mon = 0;
-    epochTime.tm_year = 100;
+    const std::int64_t timeOfDay =
+        aDateTime.accessTime().getHour() * 3600000000000LL + aDateTime.accessTime().getMinute() * 60000000000LL +
+        aDateTime.accessTime().getSecond() * 1000000000LL + aDateTime.accessTime().getMillisecond() * 1000000LL +
+        aDateTime.accessTime().getMicrosecond() * 1000LL + aDateTime.accessTime().getNanosecond();
 
-    const std::chrono::time_point<std::chrono::system_clock> epochTimePoint =
-        std::chrono::system_clock::from_time_t(std::mktime(&epochTime));
+    const __int128 offset = static_cast<__int128>(dayCount) * nanosecondsPerDay + timeOfDay - nanosecondsPerHalfDay;
 
-    // Date
-
-    std::tm dateTime = {};
-
-    dateTime.tm_sec = aDateTime.accessTime().getSecond();
-    dateTime.tm_min = aDateTime.accessTime().getMinute();
-    dateTime.tm_hour = aDateTime.accessTime().getHour();
-    dateTime.tm_mday = aDateTime.accessDate().getDay();
-    dateTime.tm_mon = aDateTime.accessDate().getMonth() - 1;
-    dateTime.tm_year = static_cast<Int32>(aDateTime.accessDate().getYear()) - 1900;
-
-    const std::chrono::time_point<std::chrono::system_clock> dateTimePoint =
-        std::chrono::system_clock::from_time_t(std::mktime(&dateTime));
-
-    // Difference
-
-    const auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(dateTimePoint - epochTimePoint);
-
-    Uint64 nanosecondCount = 0;
-    bool postEpoch = true;
-
-    if (nanoseconds.count() >= 0)
-    {
-        const Uint64 ns = nanoseconds.count();
-
-        nanosecondCount = ns + aDateTime.accessTime().getMillisecond() * 1000000 +
-                          aDateTime.accessTime().getMicrosecond() * 1000 + aDateTime.accessTime().getNanosecond();
-        postEpoch = true;
-    }
-    else
-    {
-        const Uint64 ns = std::abs(nanoseconds.count());
-
-        nanosecondCount = ns - aDateTime.accessTime().getMillisecond() * 1000000 -
-                          aDateTime.accessTime().getMicrosecond() * 1000 - aDateTime.accessTime().getNanosecond();
-        postEpoch = false;
-    }
+    const bool postEpoch = offset >= 0;
+    const Uint64 nanosecondCount = static_cast<Uint64>(postEpoch ? offset : -offset);
 
     // Output
 
-    const Instant::Count count = {nanosecondCount, postEpoch};  // [TBM] This cast in incorrect !!
+    const Instant::Count count = {nanosecondCount, postEpoch};
 
     const Instant::Count count_TT = Instant::ConvertCountScale(count, aTimeScale, Scale::TT);
 
