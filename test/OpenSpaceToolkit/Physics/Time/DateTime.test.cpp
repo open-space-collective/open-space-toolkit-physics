@@ -246,6 +246,15 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetModifiedJulianDate)
     }
 
     {
+        // Sub-second resolution: the direct computation resolves ~0.6 us at current epochs
+        // (a JD - 2400000.5 detour would quantize to ~40 us)
+
+        EXPECT_EQ(59945.25, DateTime(2023, 1, 1, 6, 0, 0).getModifiedJulianDate());
+        EXPECT_NEAR(59945.0 + 1e-6 / 86400.0, DateTime(2023, 1, 1, 0, 0, 0, 0, 1, 0).getModifiedJulianDate(), 1e-12);
+        EXPECT_NEAR(59945.5 + 1.0 / 86400.0, DateTime(2023, 1, 1, 12, 0, 1).getModifiedJulianDate(), 1e-11);
+    }
+
+    {
         EXPECT_ANY_THROW(DateTime::Undefined().getModifiedJulianDate());
     }
 }
