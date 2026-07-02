@@ -15,3 +15,9 @@ class TestSun:
 
         assert sun is not None
         assert isinstance(sun, Sun)
+
+    def test_analytical_success(self):
+        sun = Sun.analytical()
+
+        assert sun is not None
+        assert isinstance(sun, Sun)
