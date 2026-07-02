@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -14,6 +15,8 @@
 #include <sofa/sofa.h>
 
 #define DAYSEC (86400.0)
+
+using ostk::core::container::Pair;
 
 using IersManager = ostk::physics::coordinate::frame::provider::iers::Manager;
 
@@ -69,9 +72,12 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
     const Real date = std::floor(utc);
     const Real time = utc - date;
 
-    // UT1 - UTC (s)
+    // UT1 - UTC (s) and Angular velocity: obtained together in a single Manager lookup, since both are
+    // needed here and this avoids a duplicate mutex acquisition and Finals 2000A data range lookup.
 
-    const Real dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+    const Pair<Real, Real> dut1AndLod = IersManager::Get().getUt1MinusUtcAndLodAt(anInstant);
+
+    const Real dut1 = dut1AndLod.first;  // [s]
 
     const Real tut = time + dut1 / DAYSEC;
 
@@ -89,7 +95,7 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
 
     // Angular velocity
 
-    Real lod_ms = IersManager::Get().getLodAt(anInstant);  // [ms]
+    Real lod_ms = dut1AndLod.second;  // [ms]
 
     if (!lod_ms.isDefined())
     {
