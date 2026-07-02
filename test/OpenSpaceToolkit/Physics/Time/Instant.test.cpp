@@ -1243,6 +1243,32 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate_ConsistencyWit
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime_RoundTrip)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // Calendar round-trip at nanosecond resolution across the supported year range [1970, 2554]
+
+    for (auto const& scale : scales)
+    {
+        for (const auto& dateTime : {
+                 DateTime(1970, 1, 1, 0, 0, 0, 0, 0, 1),
+                 DateTime(1979, 3, 15, 3, 4, 5, 6, 7, 8),
+                 DateTime(1999, 12, 31, 23, 59, 59, 999, 999, 999),
+                 DateTime(2000, 1, 1, 12, 0, 0),
+                 DateTime(2000, 2, 29, 23, 59, 59, 1, 2, 3),
+                 DateTime(2023, 7, 1, 1, 2, 3, 4, 5, 6),
+                 DateTime(2100, 3, 1, 0, 0, 0, 500, 0, 0),
+                 DateTime(2554, 12, 31, 23, 59, 59, 999, 999, 999),
+             })
+        {
+            EXPECT_EQ(dateTime, Instant::DateTime(dateTime, scale).getDateTime(scale)) << dateTime.toString();
+        }
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 {
     using ostk::physics::time::DateTime;
