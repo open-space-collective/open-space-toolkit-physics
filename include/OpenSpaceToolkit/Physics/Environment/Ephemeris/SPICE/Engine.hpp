@@ -137,7 +137,7 @@ class Engine
     /// @brief Returns true if kernel is loaded
     ///
     /// @code
-    ///     Engine::Get().isKernelLoaded("de430.*\\.bsp");
+    ///     Engine::Get().isKernelLoaded("de432s.*\\.bsp");
     /// @endcode
     ///
     /// @param [in] aRegexString A regex string

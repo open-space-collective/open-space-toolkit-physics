@@ -218,7 +218,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
     {
         // Create test kernel files matching the patterns from Engine.cpp
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("latest_leapseconds.tls")).create();
-        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("de430.bsp")).create();
+        File::Path(manager_.getLocalRepository().getPath() + Path::Parse("de432s.bsp")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00010.tpc")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("pck00011.tpc")).create();
         File::Path(manager_.getLocalRepository().getPath() + Path::Parse("earth_latest_high_prec.bpc")).create();
@@ -238,10 +238,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
     }
 
     {
-        // Test exact match: de430.bsp
-        Array<Path> paths = manager_.findKernelPaths("de430.bsp");
+        // Test exact match: de432s.bsp
+        Array<Path> paths = manager_.findKernelPaths("de432s.bsp");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("de430.bsp") != String::npos);
+        EXPECT_TRUE(paths.accessFirst().toString().find("de432s.bsp") != String::npos);
     }
 
     {

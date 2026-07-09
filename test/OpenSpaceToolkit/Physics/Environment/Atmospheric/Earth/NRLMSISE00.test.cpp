@@ -885,7 +885,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
 
             const Real secTolerance = 1e-15;  // matches much better when accounting for UT1/UTC difference!
             const Real altTolerance = 1e-15;
-            const Real lstTolerance = 1.3e-8;  // matches much better when accounting for UT1/UTC difference!
+            const Real lstTolerance = 1.4e-8;  // matches much better when accounting for UT1/UTC difference!
 
             const Real secError = std::abs(sec - input->sec);
             const Real altError = std::abs(altitude - input->alt);

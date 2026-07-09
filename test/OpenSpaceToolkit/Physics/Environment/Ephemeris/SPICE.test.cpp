@@ -98,7 +98,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
              0.03,
              1e-10,
              {Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
+              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de432s.bsp"))),    // Ephemeris
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
               ),  // System body shape and orientation constants
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("earth_assoc_itrf93.tf"))),
@@ -109,13 +109,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Sun.csv"
              )),
              100.0,
-             1e-5,
+             2e-5,
              0.0,
              1e-12,
              {
                  Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))
-                 ),                                                                                    // Leap seconds
-                 Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),  // Ephemeris
+                 ),                                                                                     // Leap seconds
+                 Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de432s.bsp"))),  // Ephemeris
                  Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
                  )  // System body shape and orientation constants
              }},
@@ -124,11 +124,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Moon.csv"
              )),
              10.0,
-             1e-5,
+             2e-5,
              1.0,
              1e-11,
              {Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
-              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
+              Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de432s.bsp"))),    // Ephemeris
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))
               ),  // System body shape and orientation constants
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("moon_080317.tf"))),
@@ -265,7 +265,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
         EXPECT_NO_THROW({ sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); });
 
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls"))));
-        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de430.bsp"))));
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de432s.bsp"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./pck00010.tpc"))));
 
         EXPECT_NO_THROW(
