@@ -106,7 +106,7 @@ RUN cd /tmp \
     && cp -r lib/* /usr/local/lib/ \
     && ln -s /usr/local/lib/cspice.a /usr/local/lib/libcspice.a \
     && rm -rf /tmp/cspice \
-    && apt-get remove -y csh \
+    && apt-get remove -y csh $(if [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "clang-18"; fi) \
     && rm -rf /var/lib/apt/lists/*
 
 # GeographicLib
