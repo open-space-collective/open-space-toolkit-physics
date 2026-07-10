@@ -98,7 +98,8 @@ RUN cd /tmp \
     && tar -xf cspice.tar.Z \
     && cd cspice \
     && apt-get update \
-    && apt-get install -y csh \
+    && apt-get install -y csh $(if [ ${TARGETPLATFORM} = "linux/arm64" ]; then echo "clang-18"; fi) \
+    && if [ ${TARGETPLATFORM} = "linux/arm64" ]; then ln -sf /usr/bin/clang-18 /usr/local/bin/clang; fi \
     && ./makeall.csh > /dev/null \
     && mkdir -p /usr/local/include/cspice \
     && cp -r include/* /usr/local/include/cspice/ \
