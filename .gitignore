@@ -53,5 +53,7 @@ docs/cpp_rst
 tmp/
 __pycache__
 .ipynb_checkpoints
-.open-space-toolkit/
-
+.pytest_cache/
+.open-space-toolkit
+scripts
+*.egg-info/
