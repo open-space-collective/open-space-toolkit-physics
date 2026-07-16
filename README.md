@@ -236,6 +236,7 @@ The following table shows the availabe data source settings with the different e
 | `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY`                                        | `./.open-space-toolkit/physics/data/`                                                                  |
 | `OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT`                           | `60`                                                                                                   |
 | `OSTK_PHYSICS_FRAME_MANAGER_MAX_TRANSFORM_CACHE_SIZE`                                | `1000`                                                                                                 |
+| `OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_CIRF_XYS_INTERPOLATION`                      | `False`                                                                                                |
 
 ## Tutorials
 
