@@ -29,8 +29,8 @@ namespace
 /// transform (~50 us per evaluation) while its output varies smoothly in time (the shortest
 /// significant nutation periods are ~5 days). Evaluating the series on a uniform 0.25-day
 /// grid and interpolating with a centered 4-point Lagrange polynomial reproduces the direct
-/// evaluation to nano-arcsecond level, several orders of magnitude below both the series
-/// truncation level and the CIP corrections applied by the caller.
+/// evaluation to micro-arcsecond level (observed max ~1.2 uas), roughly two orders of magnitude
+/// below the ~0.2 mas CIP corrections applied by the caller, so the error is negligible.
 class XysGrid
 {
    public:
@@ -48,8 +48,9 @@ class XysGrid
         double s;
     };
 
+    // 0.25 days, with maximum 16384 size gives ~11 years of storage.
     static constexpr double gridSpacingDays_ = 0.25;
-    static constexpr std::size_t maxNodeCount_ = 16384;
+    static constexpr std::size_t maxNodeCount_ = 16384;  // maximum ~1 MB of memory
 
     std::mutex mutex_;
     std::unordered_map<std::int64_t, Node> nodes_;
