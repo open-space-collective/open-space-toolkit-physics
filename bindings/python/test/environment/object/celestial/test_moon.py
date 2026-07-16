@@ -15,3 +15,9 @@ class TestMoon:
 
         assert moon is not None
         assert isinstance(moon, Moon)
+
+    def test_analytical_success(self):
+        moon = Moon.analytical()
+
+        assert moon is not None
+        assert isinstance(moon, Moon)

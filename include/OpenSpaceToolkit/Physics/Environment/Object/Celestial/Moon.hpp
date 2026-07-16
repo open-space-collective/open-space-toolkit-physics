@@ -81,6 +81,17 @@ class Moon : public Celestial
     /// @return Moon
     static Moon Spherical();
 
+    /// @brief Spherical model with a low-precision analytical ephemeris (Montenbruck & Gill)
+    ///
+    /// Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (~0.1-0.3 deg).
+    ///
+    /// @code
+    ///     Moon moon = Moon::Analytical();
+    /// @endcode
+    ///
+    /// @return Moon
+    static Moon Analytical();
+
    private:
     static Object::Geometry Geometry(const Shared<const Frame>& aFrameSPtr);
 };
