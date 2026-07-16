@@ -68,7 +68,7 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
     static const Real djmjd0 = 2400000.5;
     const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
 
-    // The polar motion xp,yp can be obtained from IERS bulletins.  The
+    // The polar motion xp,yp can be obtained from IERS bulletins. The
     // values are the coordinates (in radians) of the Celestial
     // Intermediate Pole with respect to the International Terrestrial
     // Reference System (see IERS Conventions 2003), measured along the
