@@ -45,7 +45,7 @@ ext-modules = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["ostk.physics"]
+include = ["ostk.physics", "ostk.physics.*"]
 
 [tool.setuptools.package-data]
 "ostk.physics" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so"]
