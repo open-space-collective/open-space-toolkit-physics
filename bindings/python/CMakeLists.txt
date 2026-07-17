@@ -167,7 +167,7 @@ FUNCTION (PY_ADD_PACKAGE_DIRECTORY NAME)
                             COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${SHARED_LIBRARY_TARGET}" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}"
                             COMMAND cp "${CMAKE_SOURCE_DIR}/lib/${LIBRARY_TARGET}.*${EXTENSION}*.so" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_PATH}/"
                             COMMAND cp "${CMAKE_CURRENT_SOURCE_DIR}/README.md" "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/README.md"
-                            COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && uv sync --all-extras
+                            COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && uv sync --python ${PYTHON_VERSION} --all-extras
                             COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && uv run pybind11-stubgen -o . "${PROJECT_GROUP}.${PROJECT_SUBGROUP}" # generate stubs in same dir as binaries
                             COMMAND find "${CMAKE_CURRENT_BINARY_DIR}/${NAME}/${PROJECT_GROUP}" -type f -name "*.pyi" -exec sed -i "s/: \\\\.\\\\.\\\\./: typing.Any/g" {} + # crudely fix broken stubs; need to escape \\
                             COMMAND cd "${CMAKE_CURRENT_BINARY_DIR}/${NAME}" && env _PYTHON_HOST_PLATFORM="${PLATFORM}" uv build
