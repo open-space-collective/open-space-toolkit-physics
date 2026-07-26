@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <atomic>
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
@@ -101,14 +102,16 @@ class XysGrid
     }
 };
 
-bool useXysInterpolation()
+bool xysInterpolationEnabledFromEnv()
 {
-    static const bool enabled = []() -> bool
-    {
-        const char* env = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_CIRF_XYS_INTERPOLATION");
-        return !((env != nullptr) && ((std::strcmp(env, "Disabled") == 0) || (std::strcmp(env, "False") == 0)));
-    }();
+    const char* env = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_CIRF_XYS_INTERPOLATION");
+    return !((env != nullptr) && ((std::strcmp(env, "Disabled") == 0) || (std::strcmp(env, "False") == 0)));
+}
 
+// Effective interpolation flag: initialized from the environment, overridable at runtime.
+std::atomic<bool>& xysInterpolationEnabledFlag()
+{
+    static std::atomic<bool> enabled {xysInterpolationEnabledFromEnv()};
     return enabled;
 }
 
@@ -160,7 +163,6 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 
     // Time (TT)
 
-    static const Real djmjd0 = 2400000.5;
     const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
 
     // CIP and CIO, IAU 2006/2000A
@@ -169,14 +171,7 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     double y;
     double s;
 
-    if (useXysInterpolation())
-    {
-        XysGrid::Evaluate(tt, x, y, s);
-    }
-    else
-    {
-        iauXys06a(djmjd0, tt, &x, &y, &s);
-    }
+    CIRF::ComputeCIPCoordinates(tt, x, y, s, CIRF::IsXysInterpolationEnabled());
 
     // CIP offsets wrt IAU 2006/2000A (mas->radians)
 
@@ -209,6 +204,32 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     const Vector3d w_CIRF_GCRF_in_CIRF = {0.0, 0.0, 0.0};
 
     return Transform::Passive(anInstant, x_CIRF_GCRF, v_CIRF_GCRF, q_CIRF_GCRF, w_CIRF_GCRF_in_CIRF);
+}
+
+void CIRF::ComputeCIPCoordinates(
+    const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
+)
+{
+    static const double djmjd0 = 2400000.5;
+
+    if (interpolate)
+    {
+        XysGrid::Evaluate(aModifiedJulianDate_TT, x, y, s);
+    }
+    else
+    {
+        iauXys06a(djmjd0, aModifiedJulianDate_TT, &x, &y, &s);
+    }
+}
+
+bool CIRF::IsXysInterpolationEnabled()
+{
+    return xysInterpolationEnabledFlag().load();
+}
+
+void CIRF::SetXysInterpolationEnabled(const bool anInterpolationEnabledFlag)
+{
+    xysInterpolationEnabledFlag().store(anInterpolationEnabledFlag);
 }
 
 }  // namespace provider
