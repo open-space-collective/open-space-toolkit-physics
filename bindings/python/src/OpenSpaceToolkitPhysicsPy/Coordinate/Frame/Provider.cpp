@@ -2,6 +2,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
 
+#include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/CIRF.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/Dynamic.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/IAU.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/IERS.cpp>
@@ -59,6 +60,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(provider);
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS(provider);
     OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU(provider);
+    OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(provider);
 
     // register_ptr_to_python<Shared<const Provider>>() ;
 
