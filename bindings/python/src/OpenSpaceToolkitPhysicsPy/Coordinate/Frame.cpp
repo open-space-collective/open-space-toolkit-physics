@@ -315,6 +315,32 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
         .def_static(
+            "sun_analytical",
+            &Frame::SunAnalytical,
+            R"doc(
+                Get the low-precision analytical Sun frame.
+
+                The frame is centered on the Sun, with an identity orientation with respect to GCRF.
+                The Sun position is computed from the analytical series of Montenbruck & Gill.
+
+                Returns:
+                    Frame: Analytical Sun frame.
+            )doc"
+        )
+        .def_static(
+            "moon_analytical",
+            &Frame::MoonAnalytical,
+            R"doc(
+                Get the low-precision analytical Moon frame.
+
+                The frame is centered on the Moon, with an identity orientation with respect to GCRF.
+                The Moon position is computed from the analytical series of Montenbruck & Gill.
+
+                Returns:
+                    Frame: Analytical Moon frame.
+            )doc"
+        )
+        .def_static(
             "with_name",
             &Frame::WithName,
             arg("name"),

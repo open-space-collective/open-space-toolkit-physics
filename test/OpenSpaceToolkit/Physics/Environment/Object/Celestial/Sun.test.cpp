@@ -19,6 +19,7 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
@@ -31,7 +32,11 @@
 
 #include <Global.test.hpp>
 
+using ostk::physics::coordinate::Frame;
 using ostk::physics::environment::object::celestial::Sun;
+using ostk::physics::time::DateTime;
+using ostk::physics::time::Instant;
+using ostk::physics::time::Scale;
 
 // TEST (OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun, Constructor)
 // {
@@ -50,5 +55,20 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun, Spherical)
 {
     {
         EXPECT_NO_THROW(Sun::Spherical());
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun, Analytical)
+{
+    {
+        EXPECT_NO_THROW(Sun::Analytical());
+    }
+
+    {
+        const Sun sun = Sun::Analytical();
+
+        const Instant instant = Instant::DateTime(DateTime(2024, 1, 1, 0, 0, 0), Scale::UTC);
+
+        EXPECT_TRUE(sun.getPositionIn(Frame::GCRF(), instant).isDefined());
     }
 }

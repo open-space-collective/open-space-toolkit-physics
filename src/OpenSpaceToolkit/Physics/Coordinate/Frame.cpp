@@ -10,7 +10,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MoonAnalytical.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/SunAnalytical.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp>
@@ -389,6 +391,24 @@ Shared<const Frame> Frame::ITRF()
     static const Shared<const Provider> providerSPtr = std::make_shared<const ITRFProvider>();
 
     return Frame::Emplace("ITRF", false, Frame::TIRF(), providerSPtr);
+}
+
+Shared<const Frame> Frame::SunAnalytical()
+{
+    using SunAnalyticalProvider = ostk::physics::coordinate::frame::provider::SunAnalytical;
+
+    static const Shared<const Provider> providerSPtr = std::make_shared<const SunAnalyticalProvider>();
+
+    return Frame::Emplace("Sun (Analytical)", false, Frame::GCRF(), providerSPtr);
+}
+
+Shared<const Frame> Frame::MoonAnalytical()
+{
+    using MoonAnalyticalProvider = ostk::physics::coordinate::frame::provider::MoonAnalytical;
+
+    static const Shared<const Provider> providerSPtr = std::make_shared<const MoonAnalyticalProvider>();
+
+    return Frame::Emplace("Moon (Analytical)", false, Frame::GCRF(), providerSPtr);
 }
 
 Shared<const Frame> Frame::WithName(const String& aName)

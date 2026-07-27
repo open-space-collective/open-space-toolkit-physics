@@ -343,6 +343,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
         EXPECT_EQ(Frame::ITRF(), Frame::TEME()->accessParent());
         EXPECT_EQ(Frame::GCRF(), Frame::TEMEOfEpoch(Instant::J2000())->accessParent());
         EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->accessParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::SunAnalytical()->accessParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::MoonAnalytical()->accessParent());
         EXPECT_EQ(Frame::CIRF(), Frame::TIRF()->accessParent());
         EXPECT_EQ(Frame::TIRF(), Frame::ITRF()->accessParent());
     }
@@ -692,6 +694,22 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, ITRF)
 {
     {
         EXPECT_TRUE(Frame::ITRF()->isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, SunAnalytical)
+{
+    {
+        EXPECT_TRUE(Frame::SunAnalytical()->isDefined());
+        EXPECT_EQ("Sun (Analytical)", Frame::SunAnalytical()->getName());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, MoonAnalytical)
+{
+    {
+        EXPECT_TRUE(Frame::MoonAnalytical()->isDefined());
+        EXPECT_EQ("Moon (Analytical)", Frame::MoonAnalytical()->getName());
     }
 }
 

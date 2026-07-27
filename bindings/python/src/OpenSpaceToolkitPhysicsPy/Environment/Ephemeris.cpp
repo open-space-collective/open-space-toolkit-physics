@@ -3,7 +3,6 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/Analytical.cpp>
-#include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/CelestialAnalytical.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/SPICE.cpp>
 
 using namespace pybind11;
@@ -82,6 +81,5 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(pybind11::module& aM
 
     // Add objects to python "ephemeris" submodules
     OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_Analytical(ephemeris);
-    OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_CelestialAnalytical(ephemeris);
     OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(ephemeris);
 }

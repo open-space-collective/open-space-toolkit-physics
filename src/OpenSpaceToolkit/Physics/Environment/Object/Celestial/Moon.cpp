@@ -5,7 +5,7 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
-#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/CelestialAnalytical.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Moon.hpp>
 
@@ -62,10 +62,10 @@ Moon Moon::Spherical()
 
 Moon Moon::Analytical()
 {
-    using ostk::physics::environment::ephemeris::CelestialAnalytical;
+    using ostk::physics::environment::ephemeris::Analytical;
 
     return {
-        std::make_shared<CelestialAnalytical>(Celestial::Type::Moon),
+        std::make_shared<Analytical>(Frame::MoonAnalytical()),
         std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical),
     };
 }

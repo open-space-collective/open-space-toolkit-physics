@@ -287,6 +287,30 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @return Shared pointer to the ITRF frame
     static Shared<const Frame> ITRF();
 
+    /// @brief Get the low-precision analytical Sun frame
+    ///
+    /// The frame is centered on the Sun, with an identity orientation with respect to GCRF.
+    /// The Sun position is computed from the analytical series of Montenbruck & Gill.
+    ///
+    /// @code
+    ///     Shared<const Frame> frame = Frame::SunAnalytical();
+    /// @endcode
+    ///
+    /// @return Shared pointer to the analytical Sun frame
+    static Shared<const Frame> SunAnalytical();
+
+    /// @brief Get the low-precision analytical Moon frame
+    ///
+    /// The frame is centered on the Moon, with an identity orientation with respect to GCRF.
+    /// The Moon position is computed from the analytical series of Montenbruck & Gill.
+    ///
+    /// @code
+    ///     Shared<const Frame> frame = Frame::MoonAnalytical();
+    /// @endcode
+    ///
+    /// @return Shared pointer to the analytical Moon frame
+    static Shared<const Frame> MoonAnalytical();
+
     /// @brief Get a frame by name
     ///
     /// @code
