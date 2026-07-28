@@ -156,6 +156,19 @@ class Finals2000A
     /// @return LOD
     Real getLodAt(const Instant& anInstant) const;
 
+    /// @brief Get UT1-UTC and LOD (Length Of Day) at Instant, in a single data range lookup
+    ///
+    /// Equivalent to calling `getUt1MinusUtcAt` and `getLodAt` separately, but performs the underlying
+    /// data range lookup and Modified Julian Date computation only once for both quantities.
+    ///
+    /// @code
+    ///     Pair<Real, Real> ut1MinusUtcAndLod = finals2000A.getUt1MinusUtcAndLodAt(anInstant);
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return Pair of {UT1-UTC [s], LOD [ms]}
+    Pair<Real, Real> getUt1MinusUtcAndLodAt(const Instant& anInstant) const;
+
     /// @brief Get Data reading at instant
     ///
     /// @code
