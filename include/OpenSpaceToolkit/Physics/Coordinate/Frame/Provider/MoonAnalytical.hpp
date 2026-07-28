@@ -70,15 +70,6 @@ class MoonAnalytical : public Provider
     /// @brief Compute the Moon position [m], with respect to the mean equator and equinox of J2000 (treated as
     /// GCRF).
     static Vector3d ComputePosition(const Instant& anInstant);
-
-    /// @brief Rotate a vector from the J2000 ecliptic plane to the mean equator and equinox of J2000.
-    static Vector3d EquatorialFromEcliptic(const Vector3d& anEclipticVector);
-
-    /// @brief Julian centuries (TT) since J2000, i.e. (MJD_TT - 51544.5) / 36525.
-    static double JulianCenturiesSinceJ2000(const Instant& anInstant);
-
-    /// @brief Return the fractional part of a value.
-    static double FractionalPart(const double aValue);
 };
 
 }  // namespace provider

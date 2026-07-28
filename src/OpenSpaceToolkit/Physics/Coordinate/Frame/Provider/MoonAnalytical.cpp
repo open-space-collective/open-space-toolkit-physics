@@ -8,10 +8,14 @@
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MoonAnalytical.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
+using ostk::physics::coordinate::frame::provider::utilities::EquatorialFromEcliptic;
+using ostk::physics::coordinate::frame::provider::utilities::FractionalPart;
+using ostk::physics::coordinate::frame::provider::utilities::JulianCenturiesSinceJ2000;
 using ostk::physics::time::Duration;
 
 namespace
@@ -23,7 +27,6 @@ namespace
 constexpr double Pi = M_PI;
 constexpr double TwoPi = 2.0 * M_PI;
 constexpr double ArcsecondsToRadians = Pi / (180.0 * 3600.0);
-constexpr double ObliquityOfEclipticJ2000_rad = 23.43929111 * Pi / 180.0;
 
 }  // namespace
 
@@ -84,17 +87,15 @@ Vector3d MoonAnalytical::ComputePosition(const Instant& anInstant)
 {
     // Ref: Montenbruck & Gill, Section 3.3.2. Accuracy: ~0.1-0.3 deg in direction (< 0.1 deg over 2020-2026).
 
-    const double T = MoonAnalytical::JulianCenturiesSinceJ2000(anInstant);
+    const double T = JulianCenturiesSinceJ2000(anInstant);
 
     // Mean elements of lunar orbit
 
-    const double L_0 =
-        MoonAnalytical::FractionalPart(0.606433 + 1336.851344 * T);  // Mean longitude [rev] w.r.t. J2000 equinox
-    const double l = TwoPi * MoonAnalytical::FractionalPart(0.374897 + 1325.552410 * T);  // Moon's mean anomaly [rad]
-    const double lp = TwoPi * MoonAnalytical::FractionalPart(0.993133 + 99.997361 * T);   // Sun's mean anomaly [rad]
-    const double D =
-        TwoPi * MoonAnalytical::FractionalPart(0.827361 + 1236.853086 * T);  // Diff. long. Moon - Sun [rad]
-    const double F = TwoPi * MoonAnalytical::FractionalPart(0.259086 + 1342.227825 * T);  // Argument of latitude [rad]
+    const double L_0 = FractionalPart(0.606433 + 1336.851344 * T);  // Mean longitude [rev] w.r.t. J2000 equinox
+    const double l = TwoPi * FractionalPart(0.374897 + 1325.552410 * T);  // Moon's mean anomaly [rad]
+    const double lp = TwoPi * FractionalPart(0.993133 + 99.997361 * T);   // Sun's mean anomaly [rad]
+    const double D = TwoPi * FractionalPart(0.827361 + 1236.853086 * T);  // Diff. long. Moon - Sun [rad]
+    const double F = TwoPi * FractionalPart(0.259086 + 1342.227825 * T);  // Argument of latitude [rad]
 
     // Ecliptic longitude (w.r.t. equinox of J2000)
 
@@ -104,7 +105,7 @@ Vector3d MoonAnalytical::ComputePosition(const Instant& anInstant)
                       192.0 * std::sin(l + 2.0 * D) - 165.0 * std::sin(lp - 2.0 * D) - 125.0 * std::sin(D) -
                       110.0 * std::sin(l + lp) + 148.0 * std::sin(l - lp) - 55.0 * std::sin(2.0 * F - 2.0 * D);  // ["]
 
-    const double L = TwoPi * MoonAnalytical::FractionalPart(L_0 + dL / 1296.0e3);  // [rad]
+    const double L = TwoPi * FractionalPart(L_0 + dL / 1296.0e3);  // [rad]
 
     // Ecliptic latitude
 
@@ -123,37 +124,7 @@ Vector3d MoonAnalytical::ComputePosition(const Instant& anInstant)
 
     // Equatorial position vector
 
-    return MoonAnalytical::EquatorialFromEcliptic(
-        {r * std::cos(L) * std::cos(B), r * std::sin(L) * std::cos(B), r * std::sin(B)}
-    );
-}
-
-Vector3d MoonAnalytical::EquatorialFromEcliptic(const Vector3d& anEclipticVector)
-{
-    const double cosObliquity = std::cos(ObliquityOfEclipticJ2000_rad);
-    const double sinObliquity = std::sin(ObliquityOfEclipticJ2000_rad);
-
-    return {
-        anEclipticVector.x(),
-        cosObliquity * anEclipticVector.y() - sinObliquity * anEclipticVector.z(),
-        sinObliquity * anEclipticVector.y() + cosObliquity * anEclipticVector.z(),
-    };
-}
-
-double MoonAnalytical::JulianCenturiesSinceJ2000(const Instant& anInstant)
-{
-    // Computed from the elapsed duration since the J2000 epoch (2000-01-01 12:00:00 [TT], i.e. MJD 51544.5 [TT]):
-    // elapsed SI seconds equal elapsed TT seconds (TT - TAI is a constant offset),
-    // which avoids a costly Instant -> DateTime -> Modified Julian Date conversion.
-
-    static const Instant j2000_TT = Instant::J2000();
-
-    return static_cast<double>((anInstant - j2000_TT).inSeconds()) / (36525.0 * 86400.0);
-}
-
-double MoonAnalytical::FractionalPart(const double aValue)
-{
-    return aValue - std::floor(aValue);
+    return EquatorialFromEcliptic({r * std::cos(L) * std::cos(B), r * std::sin(L) * std::cos(B), r * std::sin(B)});
 }
 
 }  // namespace provider
