@@ -66,7 +66,7 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
     // Time (TT)
 
     static const Real djmjd0 = 2400000.5;
-    const Real tt = anInstant.getDateTime(Scale::TT).getModifiedJulianDate();
+    const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
 
     // The polar motion xp,yp can be obtained from IERS bulletins.  The
     // values are the coordinates (in radians) of the Celestial
