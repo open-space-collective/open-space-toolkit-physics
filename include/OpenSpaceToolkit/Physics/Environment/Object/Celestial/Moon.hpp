@@ -72,7 +72,7 @@ class Moon : public Celestial
     /// @return Moon
     static Moon Default();
 
-    /// @brief Spherical model
+    /// @brief Spherical gravitational model with high-precision SPICE based ephemeris
     ///
     /// @code
     ///     Moon moon = Moon::Spherical();
@@ -81,7 +81,7 @@ class Moon : public Celestial
     /// @return Moon
     static Moon Spherical();
 
-    /// @brief Spherical model with a low-precision analytical ephemeris (Montenbruck & Gill)
+    /// @brief Spherical gravitational model with a low-precision analytical ephemeris (Montenbruck & Gill)
     ///
     /// Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (~0.1-0.3 deg).
     ///

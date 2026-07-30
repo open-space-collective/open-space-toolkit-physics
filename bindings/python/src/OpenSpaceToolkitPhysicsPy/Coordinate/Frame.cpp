@@ -323,6 +323,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
                 The frame is centered on the Sun, with an identity orientation with respect to GCRF.
                 The Sun position is computed from the analytical series of Montenbruck & Gill.
 
+                Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (< 0.1 deg).
+
                 Returns:
                     Frame: Analytical Sun frame.
             )doc"
@@ -335,6 +337,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
 
                 The frame is centered on the Moon, with an identity orientation with respect to GCRF.
                 The Moon position is computed from the analytical series of Montenbruck & Gill.
+
+                Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (~0.1-0.3 deg).
 
                 Returns:
                     Frame: Analytical Moon frame.

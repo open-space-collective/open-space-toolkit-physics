@@ -72,7 +72,7 @@ class Sun : public Celestial
     /// @return Sun
     static Sun Default();
 
-    /// @brief Spherical model
+    /// @brief Spherical gravitational model with a high-precision SPICE based ephemeris
     ///
     /// @code
     ///     Sun sun = Sun::Spherical();
@@ -81,7 +81,7 @@ class Sun : public Celestial
     /// @return Sun
     static Sun Spherical();
 
-    /// @brief Spherical model with a low-precision analytical ephemeris (Montenbruck & Gill)
+    /// @brief Spherical gravitational model with a low-precision analytical ephemeris (Montenbruck & Gill)
     ///
     /// Much faster than the SPICE-based ephemeris, at the cost of a lower position accuracy (< 0.1 deg).
     ///
