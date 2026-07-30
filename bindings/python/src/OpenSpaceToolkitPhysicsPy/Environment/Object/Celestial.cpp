@@ -251,8 +251,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 Get the position of the celestial object in a given frame at a given instant.
 
                 Args:
-                    frame (Frame): Frame.
-                    instant (Instant): Instant.
+                    frame (Frame): A Frame.
+                    instant (Instant): An Instant.
 
                 Returns:
                     Position: Position.
@@ -267,8 +267,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 Get the transform of the celestial object to a given frame at a given instant.
 
                 Args:
-                    frame (Frame): Frame.
-                    instant (Instant): Instant.
+                    frame (Frame): A Frame.
+                    instant (Instant): An Instant.
 
                 Returns:
                     Transform: Transform.
@@ -283,18 +283,62 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 Get the axes of the celestial object in a given frame at a given instant.
 
                 Args:
-                    frame (Frame): Frame.
-                    instant (Instant): Instant.
+                    frame (Frame): A Frame.
+                    instant (Instant): An Instant.
 
                 Returns:
                     Axes: Axes.
             )doc"
         )
 
-        // TBI: whenenver data::Vector and data::Scalar is supported in Python
-        // .def("get_gravitational_field_at", &Celestial::getGravitationalFieldAt, arg("position"), arg("instant"))
-        // .def("get_magnetic_field_at", &Celestial::getMagneticFieldAt, arg("position"), arg("instant"))
-        // .def("get_atmospheric_density_at", &Celestial::getAtmosphericDensityAt, arg("position"), arg("instant"))
+        .def(
+            "get_gravitational_field_at",
+            &Celestial::getGravitationalFieldAt,
+            arg("position"),
+            arg("instant"),
+            R"doc(
+                Get the gravitational field value of the celestial object at the provided position and instant.
+
+                Args:
+                    position (Position): A Position.
+                    instant (Instant): An Instant.
+
+                Returns:
+                    Vector: Gravitational field value as a vector.
+            )doc"
+        )
+        .def(
+            "get_magnetic_field_at",
+            &Celestial::getMagneticFieldAt,
+            arg("position"),
+            arg("instant"),
+            R"doc(
+                Get the magnetic field value of the celestial object at the provided position and instant.
+
+                Args:
+                    position (Position): A Position.
+                    instant (Instant): An Instant.
+
+                Returns:
+                    Vector: Magnetic field value as a vector.
+            )doc"
+        )
+        .def(
+            "get_atmospheric_density_at",
+            &Celestial::getAtmosphericDensityAt,
+            arg("position"),
+            arg("instant"),
+            R"doc(
+                Get the atmospheric density value of the celestial object at the provided position and instant.
+
+                Args:
+                    position (Position): A Position.
+                    instant (Instant): An Instant.
+
+                Returns:
+                    Vector: Atmospheric density value as a vector.
+            )doc"
+        )
 
         .def(
             "gravitational_model_is_defined",
