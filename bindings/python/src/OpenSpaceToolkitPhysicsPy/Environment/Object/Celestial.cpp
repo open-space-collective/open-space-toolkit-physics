@@ -336,7 +336,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                     instant (Instant): An Instant.
 
                 Returns:
-                    Vector: Atmospheric density value as a vector.
+                    Scalar: Atmospheric density value as a vector.
             )doc"
         )
 
