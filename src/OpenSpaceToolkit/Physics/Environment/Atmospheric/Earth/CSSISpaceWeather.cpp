@@ -339,8 +339,10 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
         );
     }
 
-    const Integer year = anInstant.getDateTime(Scale::UTC).getDate().getYear();
-    const Integer month = anInstant.getDateTime(Scale::UTC).getDate().getMonth();
+    const Date date = anInstant.getDateTime(Scale::UTC).getDate();
+
+    const Integer year = date.getYear();
+    const Integer month = date.getMonth();
 
     const Real monthMjd = DateTime(year, month, 1).getModifiedJulianDate();
 
