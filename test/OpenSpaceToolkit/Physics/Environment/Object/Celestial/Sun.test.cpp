@@ -163,7 +163,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun_Analytical, Com
 
         for (const auto& instant : ComparisonInstants())
         {
-            const Vector3d x_GCRF_analytical = Sun::ComputeAnalyticalPosition(instant).getCoordinates();
+            const Vector3d x_GCRF_analytical = sunSpice.computeAnalyticalPosition(instant).getCoordinates();
             const Vector3d x_GCRF_spice = sunSpice.getPositionIn(Frame::GCRF(), instant).getCoordinates();
 
             const Real angularSeparation_deg = ComputeAngularSeparation_deg(x_GCRF_analytical, x_GCRF_spice);

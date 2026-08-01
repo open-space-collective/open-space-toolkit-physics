@@ -80,7 +80,7 @@ class Sun : public Celestial
     /// where only an approximate body position is needed.
     ///
     /// @code
-    ///     Position position = Sun::ComputeAnalyticalPosition(instant);
+    ///     Position position = sun.computeAnalyticalPosition(instant);
     /// @endcode
     ///
     /// @ref O. Montenbruck, E. Gill, "Satellite Orbits: Models, Methods and Applications", Section 3.3.2.

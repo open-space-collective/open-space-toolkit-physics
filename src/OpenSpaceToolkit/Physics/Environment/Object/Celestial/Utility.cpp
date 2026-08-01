@@ -34,7 +34,7 @@ Vector3d EquatorialFromEcliptic(const Vector3d& anEclipticVector)
 
 double JulianCenturiesSinceJ2000(const Instant& anInstant)
 {
-    return static_cast<double>((anInstant.getModifiedJulianDate(Scale::TT))) / (36525.0 * 86400.0);
+    return static_cast<double>(anInstant.getModifiedJulianDate(Scale::TT) - 51544.5) / 36525.0;
 }
 
 double FractionalPart(const double aValue)

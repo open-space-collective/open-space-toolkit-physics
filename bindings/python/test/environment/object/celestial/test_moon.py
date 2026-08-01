@@ -21,7 +21,9 @@ class TestMoon:
         assert isinstance(moon, Moon)
 
     def test_compute_analytical_position_success(self):
-        position = Moon.compute_analytical_position(
+        moon = Moon.spherical()
+
+        position = moon.compute_analytical_position(
             instant=Instant.date_time(DateTime(2024, 1, 1, 0, 0, 0), Scale.UTC)
         )
 

@@ -21,7 +21,9 @@ class TestSun:
         assert isinstance(sun, Sun)
 
     def test_compute_analytical_position_success(self):
-        position = Sun.compute_analytical_position(
+        sun = Sun.default()
+
+        position = sun.compute_analytical_position(
             instant=Instant.date_time(DateTime(2024, 1, 1, 0, 0, 0), Scale.UTC)
         )
 

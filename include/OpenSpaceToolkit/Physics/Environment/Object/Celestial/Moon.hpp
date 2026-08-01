@@ -79,7 +79,7 @@ class Moon : public Celestial
     /// where only an approximate body position is needed.
     ///
     /// @code
-    ///     Position position = Moon::ComputeAnalyticalPosition(instant);
+    ///     Position position = moon.computeAnalyticalPosition(instant);
     /// @endcode
     ///
     /// @ref O. Montenbruck, E. Gill, "Satellite Orbits: Models, Methods and Applications", Section 3.3.2.
