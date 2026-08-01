@@ -3,6 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__
 
+#include <atomic>
 #include <mutex>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
@@ -147,6 +148,20 @@ class Manager : public BaseManager
 
     Real getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
 
+    /// @brief Get the version of the currently loaded CSSI Space Weather data
+    ///
+    /// The version is incremented every time the manager loads, replaces or unloads its data.
+    /// Consumers that memoize values read from the manager can compare it against the version
+    /// they read under to detect that their memo has gone stale.
+    ///
+    /// @code
+    ///     Index version = Manager::Get().getDataVersion();
+    /// @endcode
+    ///
+    /// @return Version of the currently loaded data
+
+    Index getDataVersion() const;
+
     /// @brief Load CSSI Space Weather
     ///
     /// @code
@@ -189,6 +204,9 @@ class Manager : public BaseManager
 
    private:
     CSSISpaceWeather CSSISpaceWeather_;
+
+    /// Bumped whenever CSSISpaceWeather_ is replaced. Read without holding the mutex, hence atomic.
+    std::atomic<Index> dataVersion_;
 
     Manager();
 

@@ -93,6 +93,38 @@ class CSSISpaceWeather
         Real F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
     };
 
+    /// @brief Space weather quantity for which a per-day fallback index is maintained.
+    ///
+    /// Not every reading carries every quantity: monthly predictions, for instance, carry a
+    /// solar flux but no geomagnetic indices. Reading such a quantity therefore resolves to
+    /// the most recent reading that does carry it. That fallback is precomputed at load time
+    /// for the quantities below, so resolving it costs a single array lookup rather than a
+    /// backward scan whose length grows with how far ahead the query is.
+    ///
+    /// @ref CSSISpaceWeather::accessLastReadingWhereDefined
+
+    enum class Quantity
+    {
+        Kp,               ///< The eight 3-hourly Kp indices.
+        Ap,               ///< The eight 3-hourly Ap indices.
+        ApDaily,          ///< The daily Ap average.
+        F107Obs,          ///< The observed F10.7 solar flux.
+        F107ObsCenter81,  ///< The centered 81-day average of the observed F10.7 solar flux.
+    };
+
+    /// @brief Copy constructor.
+    ///
+    /// @param [in] aCSSISpaceWeather A CSSI Space Weather object.
+
+    CSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather);
+
+    /// @brief Copy assignment operator.
+    ///
+    /// @param [in] aCSSISpaceWeather A CSSI Space Weather object.
+    /// @return Reference to this object.
+
+    CSSISpaceWeather& operator=(const CSSISpaceWeather& aCSSISpaceWeather);
+
     /// @brief Output stream operator.
     ///
     /// @code
@@ -220,6 +252,22 @@ class CSSISpaceWeather
         const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
     ) const;
 
+    /// @brief Access the most recent reading, at or before an Instant, that carries the given quantity.
+    ///
+    /// Unlike accessLastReadingWhere, which scans the file backwards on every call, this resolves
+    /// through an index built once at load time and is therefore constant-time regardless of how
+    /// far the Instant sits past the last reading carrying the quantity.
+    ///
+    /// @code
+    ///     const Reading& reading = cssiSpaceWeather.accessLastReadingWhereDefined(Quantity::Ap, instant);
+    /// @endcode
+    ///
+    /// @param [in] aQuantity A quantity.
+    /// @param [in] anInstant An Instant.
+    /// @return Most recent Reading, at or before the Instant, carrying the quantity.
+
+    const Reading& accessLastReadingWhereDefined(const Quantity& aQuantity, const Instant& anInstant) const;
+
     /// @brief Undefined factory function
     ///
     /// @code
@@ -265,7 +313,27 @@ class CSSISpaceWeather
     Interval monthlyPredictionInterval_;
     Map<Integer, CSSISpaceWeather::Reading> monthlyPredictions_;
 
+    /// Day-indexed views over the readings above, rebuilt whenever the maps change.
+    /// Both are indexed by (MJD day - indexedFirstDay_) and point into the map nodes,
+    /// which are stable for as long as the maps are not mutated.
+
+    bool isDefined_;                             /// Whether all three reading maps and their Intervals are set.
+    Integer indexedFirstDay_;                    /// MJD day of the first indexed day.
+    Array<const Reading*> readingIndex_;         /// Reading covering each day, null where the file has none.
+    Array<Array<const Reading*>> definedIndex_;  /// Per Quantity, last reading at or before each day carrying it.
+
     CSSISpaceWeather();
+
+    /// @brief Access the reading covering an Instant through the day index.
+    ///
+    /// @param [in] anInstant An Instant.
+    /// @return Pointer to the Reading, or null if the day index does not resolve it.
+
+    const Reading* accessReadingPtrAt_(const Instant& anInstant) const;
+
+    /// @brief Rebuild the day indices from the reading maps.
+
+    void buildIndex_();
 };
 
 }  // namespace earth

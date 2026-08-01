@@ -1,7 +1,9 @@
 /// Apache License 2.0
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <sstream>
 
 #include <boost/algorithm/string/trim.hpp>
@@ -43,6 +45,106 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
 
 using ostk::physics::data::utilities::getFileModifiedInstant;
+
+namespace
+{
+
+/// Number of entries in CSSISpaceWeather::Quantity.
+const Size QuantityCount = 5;
+
+/// Derive the MJD day containing an Instant.
+///
+/// Instant::getModifiedJulianDate splits the count into whole days and a remainder, so the
+/// result is exact to double precision and flooring it recovers the day without going through
+/// Real/Integer temporaries.
+int DayIndexOf(const Instant& anInstant)
+{
+    return static_cast<int>(std::floor(static_cast<double>(anInstant.getModifiedJulianDate(Scale::UTC))));
+}
+
+bool IsQuantityDefined(const CSSISpaceWeather::Quantity& aQuantity, const CSSISpaceWeather::Reading& aReading)
+{
+    switch (aQuantity)
+    {
+        case CSSISpaceWeather::Quantity::Kp:
+            return aReading.Kp1.isDefined() && aReading.Kp2.isDefined() && aReading.Kp3.isDefined() &&
+                   aReading.Kp4.isDefined() && aReading.Kp5.isDefined() && aReading.Kp6.isDefined() &&
+                   aReading.Kp7.isDefined() && aReading.Kp8.isDefined();
+
+        case CSSISpaceWeather::Quantity::Ap:
+            return aReading.Ap1.isDefined() && aReading.Ap2.isDefined() && aReading.Ap3.isDefined() &&
+                   aReading.Ap4.isDefined() && aReading.Ap5.isDefined() && aReading.Ap6.isDefined() &&
+                   aReading.Ap7.isDefined() && aReading.Ap8.isDefined();
+
+        case CSSISpaceWeather::Quantity::ApDaily:
+            return aReading.ApAvg.isDefined();
+
+        case CSSISpaceWeather::Quantity::F107Obs:
+            return aReading.F107Obs.isDefined();
+
+        case CSSISpaceWeather::Quantity::F107ObsCenter81:
+            return aReading.F107ObsCenter81.isDefined();
+    }
+
+    return false;
+}
+
+int DayCountInMonth(const int aYear, const int aMonth)
+{
+    static const int dayCounts[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (aMonth == 2)
+    {
+        const bool isLeapYear = ((aYear % 4) == 0) && (((aYear % 100) != 0) || ((aYear % 400) == 0));
+
+        return isLeapYear ? 29 : 28;
+    }
+
+    return dayCounts[aMonth - 1];
+}
+
+}  // namespace
+
+CSSISpaceWeather::CSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)
+    : lastObservationDate_(aCSSISpaceWeather.lastObservationDate_),
+      lastModifiedTimestamp_(aCSSISpaceWeather.lastModifiedTimestamp_),
+      observationInterval_(aCSSISpaceWeather.observationInterval_),
+      observations_(aCSSISpaceWeather.observations_),
+      dailyPredictionInterval_(aCSSISpaceWeather.dailyPredictionInterval_),
+      dailyPredictions_(aCSSISpaceWeather.dailyPredictions_),
+      monthlyPredictionInterval_(aCSSISpaceWeather.monthlyPredictionInterval_),
+      monthlyPredictions_(aCSSISpaceWeather.monthlyPredictions_),
+      isDefined_(false),
+      indexedFirstDay_(Integer::Undefined()),
+      readingIndex_(Array<const Reading*>::Empty()),
+      definedIndex_(Array<Array<const Reading*>>::Empty())
+{
+    // The indices point into our own map nodes, so they cannot be copied over from the source.
+
+    this->buildIndex_();
+}
+
+CSSISpaceWeather& CSSISpaceWeather::operator=(const CSSISpaceWeather& aCSSISpaceWeather)
+{
+    if (this != &aCSSISpaceWeather)
+    {
+        lastObservationDate_ = aCSSISpaceWeather.lastObservationDate_;
+        lastModifiedTimestamp_ = aCSSISpaceWeather.lastModifiedTimestamp_;
+
+        observationInterval_ = aCSSISpaceWeather.observationInterval_;
+        observations_ = aCSSISpaceWeather.observations_;
+
+        dailyPredictionInterval_ = aCSSISpaceWeather.dailyPredictionInterval_;
+        dailyPredictions_ = aCSSISpaceWeather.dailyPredictions_;
+
+        monthlyPredictionInterval_ = aCSSISpaceWeather.monthlyPredictionInterval_;
+        monthlyPredictions_ = aCSSISpaceWeather.monthlyPredictions_;
+
+        this->buildIndex_();
+    }
+
+    return *this;
+}
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
@@ -195,8 +297,10 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
 bool CSSISpaceWeather::isDefined() const
 {
-    return observationInterval_.isDefined() && (!observations_.empty()) && dailyPredictionInterval_.isDefined() &&
-           (!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() && (!monthlyPredictions_.empty());
+    // Established when the indices are built: the readings never change afterwards, and this is
+    // re-checked by every accessor.
+
+    return isDefined_;
 }
 
 const Date& CSSISpaceWeather::accessLastObservationDate() const
@@ -251,9 +355,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
-
-    const auto observationIt = observations_.find(instantMjd.floor());
+    const auto observationIt = observations_.find(Integer::Int32(DayIndexOf(anInstant)));
 
     if (observationIt != observations_.end())
     {
@@ -295,9 +397,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessDailyPredictionAt(const
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
-
-    const auto predictionIt = dailyPredictions_.find(instantMjd.floor());
+    const auto predictionIt = dailyPredictions_.find(Integer::Int32(DayIndexOf(anInstant)));
 
     if (predictionIt != dailyPredictions_.end())
     {
@@ -358,6 +458,15 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
 
 const CSSISpaceWeather::Reading& CSSISpaceWeather::accessReadingAt(const Instant& anInstant) const
 {
+    if (const Reading* readingPtr = this->accessReadingPtrAt_(anInstant))
+    {
+        return *readingPtr;
+    }
+
+    // The day index does not cover this Instant, either because it falls outside the file or
+    // because it lands on a day the file does not fully cover. Fall back to the interval
+    // dispatch, which resolves the remaining cases and reports the appropriate error.
+
     if (observationInterval_.contains(anInstant))
     {
         return this->accessObservationAt(anInstant);
@@ -405,9 +514,15 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
             return reading;
         }
 
-        // Go back in time by approximately 1 month at a time, but not past the last daily prediction
-        searchInstant =
-            std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.accessEnd() - Duration::Days(1));
+        // Go back in time by approximately 1 month at a time, but not past the last daily prediction.
+        // The daily prediction Interval is half-open, so its end Instant is not itself a valid search
+        // point: a stride landing on it exactly would exit this loop with nothing left to search.
+
+        const Instant nextSearchInstant = searchInstant - Duration::Days(30);
+
+        searchInstant = (nextSearchInstant > dailyPredictionInterval_.accessEnd())
+                          ? nextSearchInstant
+                          : dailyPredictionInterval_.accessEnd() - Duration::Days(1);
     }
 
     // Search daily predicton data backwards, skips if not relevant
@@ -434,6 +549,47 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
         }
 
         searchInstant -= Duration::Days(1);
+    }
+
+    throw ostk::core::error::RuntimeError(
+        "Failed to extrapolate CSSI Space Weather Data to [{}].", anInstant.toString(Scale::UTC)
+    );
+}
+
+const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhereDefined(
+    const Quantity& aQuantity, const Instant& anInstant
+) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
+    }
+
+    // The day is established once here and reused for both lookups below.
+
+    const int dayOffset = DayIndexOf(anInstant) - static_cast<int>(indexedFirstDay_);
+
+    const bool isIndexed = (dayOffset >= 0) && (static_cast<Size>(dayOffset) < readingIndex_.getSize());
+
+    if ((!isIndexed) || (readingIndex_[static_cast<Size>(dayOffset)] == nullptr))
+    {
+        // The day index does not resolve this Instant. Defer to accessReadingAt, which either
+        // resolves it through the Interval dispatch or reports why it cannot.
+
+        static_cast<void>(this->accessReadingAt(anInstant));
+    }
+
+    if (isIndexed)
+    {
+        if (const Reading* readingPtr = definedIndex_[static_cast<Size>(aQuantity)][static_cast<Size>(dayOffset)])
+        {
+            return *readingPtr;
+        }
     }
 
     throw ostk::core::error::RuntimeError(
@@ -657,6 +813,8 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         spaceWeather.monthlyPredictionInterval_ =
             Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
     }
+
+    spaceWeather.buildIndex_();
 
     return spaceWeather;
 }
@@ -935,6 +1093,8 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
         }
     }
 
+    spaceWeather.buildIndex_();
+
     return spaceWeather;
 }
 
@@ -948,8 +1108,147 @@ CSSISpaceWeather::CSSISpaceWeather()
       dailyPredictions_(Map<Integer, CSSISpaceWeather::Reading>()),
 
       monthlyPredictionInterval_(Interval::Undefined()),
-      monthlyPredictions_(Map<Integer, CSSISpaceWeather::Reading>())
+      monthlyPredictions_(Map<Integer, CSSISpaceWeather::Reading>()),
+
+      isDefined_(false),
+      indexedFirstDay_(Integer::Undefined()),
+      readingIndex_(Array<const Reading*>::Empty()),
+      definedIndex_(Array<Array<const Reading*>>(QuantityCount, Array<const Reading*>::Empty()))
 {
+}
+
+const CSSISpaceWeather::Reading* CSSISpaceWeather::accessReadingPtrAt_(const Instant& anInstant) const
+{
+    if (readingIndex_.isEmpty() || (!anInstant.isDefined()))
+    {
+        return nullptr;
+    }
+
+    const int dayOffset = DayIndexOf(anInstant) - static_cast<int>(indexedFirstDay_);
+
+    if ((dayOffset < 0) || (static_cast<Size>(dayOffset) >= readingIndex_.getSize()))
+    {
+        return nullptr;
+    }
+
+    return readingIndex_[static_cast<Size>(dayOffset)];
+}
+
+void CSSISpaceWeather::buildIndex_()
+{
+    isDefined_ = observationInterval_.isDefined() && (!observations_.empty()) && dailyPredictionInterval_.isDefined() &&
+                 (!dailyPredictions_.empty()) && monthlyPredictionInterval_.isDefined() &&
+                 (!monthlyPredictions_.empty());
+
+    indexedFirstDay_ = Integer::Undefined();
+    readingIndex_ = Array<const Reading*>::Empty();
+    definedIndex_ = Array<Array<const Reading*>>(QuantityCount, Array<const Reading*>::Empty());
+
+    if (observations_.empty() && dailyPredictions_.empty() && monthlyPredictions_.empty())
+    {
+        return;
+    }
+
+    // The index spans every day the file touches. Each map is keyed by MJD day, so the day
+    // bounds come straight off the maps without going through the Intervals.
+
+    int firstDay = std::numeric_limits<int>::max();
+    int lastDay = std::numeric_limits<int>::min();
+
+    for (const auto* readingMapPtr : {&observations_, &dailyPredictions_, &monthlyPredictions_})
+    {
+        if (!readingMapPtr->empty())
+        {
+            firstDay = std::min(firstDay, static_cast<int>(readingMapPtr->begin()->first));
+            lastDay = std::max(lastDay, static_cast<int>(readingMapPtr->rbegin()->first));
+        }
+    }
+
+    const Size dayCount = static_cast<Size>(lastDay - firstDay) + 1;
+
+    indexedFirstDay_ = Integer::Int32(firstDay);
+
+    // Resolve the reading of each day, lowest precedence first, mirroring accessReadingAt's
+    // dispatch. Monthly predictions are keyed on the first of the month and stand for the whole
+    // month; daily predictions and observations are keyed on the day itself.
+
+    Array<const Reading*> dayReadings = Array<const Reading*>(dayCount, nullptr);
+
+    for (const auto& monthlyPredictionIt : monthlyPredictions_)
+    {
+        const Date& monthDate = monthlyPredictionIt.second.date;
+
+        if (monthDate.getDay() != 1)
+        {
+            // accessMonthlyPredictionAt keys on the first of the month, so a reading dated
+            // anywhere else is unreachable through it and must stay unreachable here too.
+
+            continue;
+        }
+
+        const int monthFirstDay = static_cast<int>(monthlyPredictionIt.first);
+
+        const int monthLastDay = monthFirstDay + DayCountInMonth(monthDate.getYear(), monthDate.getMonth()) - 1;
+
+        for (int day = std::max(monthFirstDay, firstDay); day <= std::min(monthLastDay, lastDay); ++day)
+        {
+            dayReadings[static_cast<Size>(day - firstDay)] = &monthlyPredictionIt.second;
+        }
+    }
+
+    for (const auto& dailyPredictionIt : dailyPredictions_)
+    {
+        dayReadings[static_cast<Size>(static_cast<int>(dailyPredictionIt.first) - firstDay)] =
+            &dailyPredictionIt.second;
+    }
+
+    for (const auto& observationIt : observations_)
+    {
+        dayReadings[static_cast<Size>(static_cast<int>(observationIt.first) - firstDay)] = &observationIt.second;
+    }
+
+    // Walk the days forward once, carrying the last reading seen to carry each quantity, so that
+    // reading a quantity the reading of the day does not carry costs a single lookup rather than
+    // a backward scan.
+
+    Array<const Reading*> lastDefinedReadings = Array<const Reading*>(QuantityCount, nullptr);
+
+    for (Size quantityIndex = 0; quantityIndex < QuantityCount; ++quantityIndex)
+    {
+        definedIndex_[quantityIndex] = Array<const Reading*>(dayCount, nullptr);
+    }
+
+    for (Size dayIndex = 0; dayIndex < dayCount; ++dayIndex)
+    {
+        const Reading* readingPtr = dayReadings[dayIndex];
+
+        for (Size quantityIndex = 0; quantityIndex < QuantityCount; ++quantityIndex)
+        {
+            if ((readingPtr != nullptr) && IsQuantityDefined(static_cast<Quantity>(quantityIndex), *readingPtr))
+            {
+                lastDefinedReadings[quantityIndex] = readingPtr;
+            }
+
+            definedIndex_[quantityIndex][dayIndex] = lastDefinedReadings[quantityIndex];
+        }
+    }
+
+    readingIndex_ = std::move(dayReadings);
+
+    // The monthly prediction Interval is closed on the first of its last month, so only midnight
+    // of that day is covered. Drop it from the reading index — where a day either resolves whole
+    // or not at all — and let the Interval dispatch handle it.
+
+    if (!monthlyPredictions_.empty())
+    {
+        const Size lastMonthlyOffset =
+            static_cast<Size>(static_cast<int>(monthlyPredictions_.rbegin()->first) - firstDay);
+
+        if (readingIndex_[lastMonthlyOffset] == &monthlyPredictions_.rbegin()->second)
+        {
+            readingIndex_[lastMonthlyOffset] = nullptr;
+        }
+    }
 }
 
 }  // namespace earth

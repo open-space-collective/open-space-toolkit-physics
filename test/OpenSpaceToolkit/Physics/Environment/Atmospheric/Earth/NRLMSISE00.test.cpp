@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <thread>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
@@ -46,6 +48,7 @@ using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 using ostk::physics::environment::object::Celestial;
 using ostk::physics::environment::object::celestial::Sun;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
@@ -993,6 +996,176 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
         {
             const Real density = nrlmsise.getDensityAt(lla, instant);
             EXPECT_TRUE(1.16099e-08 - density <= 1e-12);  // Always the same value
+        }
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, SpaceWeatherMemoIsExact)
+{
+    /*
+     * The space weather inputs are memoized on the range over which they are constant. A model
+     * reused across a time series therefore serves most calls from the memo, and must return
+     * exactly what a model that resolves every call from scratch does — including across the
+     * 3-hour and day boundaries where the memo turns over, and when time runs backwards.
+     */
+
+    const NRLMSISE00 reusedModel = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile};
+
+    const LLA lla = {Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)};
+
+    const Instant startInstant = Instant::DateTime(DateTime(2020, 3, 2, 2, 58, 0), Scale::UTC);
+
+    Array<Instant> instants = Array<Instant>::Empty();
+
+    // 8 minute steps over 2 days walk across every 3-hour boundary and one day boundary
+    for (Index index = 0; index < 360; ++index)
+    {
+        instants.add(startInstant + Duration::Minutes(8.0 * static_cast<double>(index)));
+    }
+
+    // and then back down again, so the memo is also asked for instants before the range it holds
+    for (Index index = 0; index < 360; ++index)
+    {
+        instants.add(startInstant + Duration::Minutes(8.0 * static_cast<double>(359 - index)));
+    }
+
+    for (const Instant& instant : instants)
+    {
+        // A model constructed here has an empty memo, so it always takes the full path
+        const NRLMSISE00 freshModel = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile};
+
+        EXPECT_EQ(freshModel.getDensityAt(lla, instant), reusedModel.getDensityAt(lla, instant))
+            << "at " << instant.toString(Scale::UTC);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, SpaceWeatherMemoIsInvalidatedOnLoad)
+{
+    /*
+     * Loading a new space weather file has to be visible to models that already memoized values
+     * read from the previous one, however recently they read them.
+     */
+
+    const File otherFile =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+                               "SW-Last5Years-Regression-PR366.csv"));
+
+    const LLA lla = {Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)};
+
+    // 2024-07-15 is a monthly prediction in the file loaded by SetUp and an observation in the other
+    const Instant instant = Instant::DateTime(DateTime(2024, 7, 15, 12, 0, 0), Scale::UTC);
+
+    const NRLMSISE00 reusedModel = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile};
+
+    const Real densityBefore = reusedModel.getDensityAt(lla, instant);
+
+    manager_.loadCSSISpaceWeather(CSSISpaceWeather::Load(otherFile));
+
+    const Real densityAfter = reusedModel.getDensityAt(lla, instant);
+
+    const NRLMSISE00 freshModel = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile};
+
+    EXPECT_EQ(freshModel.getDensityAt(lla, instant), densityAfter);
+    EXPECT_NE(densityBefore, densityAfter) << "the two files must disagree for this test to mean anything";
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, SpaceWeatherMemoIsThreadSafe)
+{
+    /*
+     * The space weather memo lives on a const model, so it has to hold up under concurrent
+     * readers. Each thread walks a different stretch of time, which keeps the memo turning over
+     * rather than settling on one range.
+     *
+     * This exercises the input assembly only, not getDensityAt: the vendored NRLMSISE-00 core
+     * (gtd7d) keeps its working state in file-scope globals and is not reentrant, so the model as
+     * a whole cannot be evaluated from several threads at once regardless of this memo.
+     */
+
+    const NRLMSISE00Public sharedModel = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile};
+
+    const LLA lla = {Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)};
+
+    const Size threadCount = 8;
+    const Size stepCount = 200;
+
+    const Instant startInstant = Instant::DateTime(DateTime(2020, 3, 2, 0, 0, 0), Scale::UTC);
+
+    const auto instantAt = [&startInstant](const Size aThreadIndex, const Size aStepIndex) -> Instant
+    {
+        return startInstant + Duration::Hours(7.0 * static_cast<double>(aThreadIndex)) +
+               Duration::Minutes(11.0 * static_cast<double>(aStepIndex));
+    };
+
+    // The nine space weather derived inputs to the model core
+    const auto inputsAt = [&lla, &instantAt](
+                              const NRLMSISE00Public& aModel, const Size aThreadIndex, const Size aStepIndex
+                          ) -> Array<Real>
+    {
+        const Instant instant = instantAt(aThreadIndex, aStepIndex);
+
+        const Unique<NRLMSISE00Public::ap_array> apValues = aModel.computeApArray(instant);
+        const Unique<NRLMSISE00Public::nrlmsise_input> input = aModel.computeNRLMSISE00Input(apValues, lla, instant);
+
+        Array<Real> inputs = Array<Real>::Empty();
+
+        for (Index index = 0; index < 7; ++index)
+        {
+            inputs.add(input->ap_a->a[index]);
+        }
+
+        inputs.add(input->f107);
+        inputs.add(input->f107A);
+
+        return inputs;
+    };
+
+    // Reference values, resolved one at a time by models that never reuse their memo
+    Array<Array<Array<Real>>> referenceInputs = Array<Array<Array<Real>>>::Empty();
+
+    for (Size threadIndex = 0; threadIndex < threadCount; ++threadIndex)
+    {
+        Array<Array<Real>> threadInputs = Array<Array<Real>>::Empty();
+
+        for (Size stepIndex = 0; stepIndex < stepCount; ++stepIndex)
+        {
+            const NRLMSISE00Public freshModel = {NRLMSISE00::InputDataType::CSSISpaceWeatherFile};
+
+            threadInputs.add(inputsAt(freshModel, threadIndex, stepIndex));
+        }
+
+        referenceInputs.add(threadInputs);
+    }
+
+    Array<Array<Array<Real>>> concurrentInputs =
+        Array<Array<Array<Real>>>(threadCount, Array<Array<Real>>(stepCount, Array<Real>::Empty()));
+
+    std::vector<std::thread> threads;
+    threads.reserve(threadCount);
+
+    for (Size threadIndex = 0; threadIndex < threadCount; ++threadIndex)
+    {
+        threads.emplace_back(
+            [&, threadIndex]()
+            {
+                for (Size stepIndex = 0; stepIndex < stepCount; ++stepIndex)
+                {
+                    concurrentInputs[threadIndex][stepIndex] = inputsAt(sharedModel, threadIndex, stepIndex);
+                }
+            }
+        );
+    }
+
+    for (std::thread& thread : threads)
+    {
+        thread.join();
+    }
+
+    for (Size threadIndex = 0; threadIndex < threadCount; ++threadIndex)
+    {
+        for (Size stepIndex = 0; stepIndex < stepCount; ++stepIndex)
+        {
+            EXPECT_EQ(referenceInputs[threadIndex][stepIndex], concurrentInputs[threadIndex][stepIndex])
+                << "at thread " << threadIndex << " step " << stepIndex;
         }
     }
 }

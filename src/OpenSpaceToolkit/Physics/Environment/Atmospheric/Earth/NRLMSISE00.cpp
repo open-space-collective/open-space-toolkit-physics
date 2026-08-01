@@ -73,6 +73,42 @@ NRLMSISE00::NRLMSISE00(
 {
 }
 
+NRLMSISE00::NRLMSISE00(const NRLMSISE00& aNRLMSISE00Model)
+    : inputDataType_(aNRLMSISE00Model.inputDataType_),
+      f107ConstantValue_(aNRLMSISE00Model.f107ConstantValue_),
+      f107AConstantValue_(aNRLMSISE00Model.f107AConstantValue_),
+      kpConstantValue_(aNRLMSISE00Model.kpConstantValue_),
+      earthFrameSPtr_(aNRLMSISE00Model.earthFrameSPtr_),
+      earthRadius_(aNRLMSISE00Model.earthRadius_),
+      earthFlattening_(aNRLMSISE00Model.earthFlattening_),
+      sunCelestialSPtr_(aNRLMSISE00Model.sunCelestialSPtr_),
+      spaceWeatherMemo_(SpaceWeatherMemo())
+{
+    // The memo is deliberately left empty rather than copied: it is a per-instance cache, and
+    // copying it would mean reading the source's memo under this instance's mutex.
+}
+
+NRLMSISE00& NRLMSISE00::operator=(const NRLMSISE00& aNRLMSISE00Model)
+{
+    if (this != &aNRLMSISE00Model)
+    {
+        inputDataType_ = aNRLMSISE00Model.inputDataType_;
+        f107ConstantValue_ = aNRLMSISE00Model.f107ConstantValue_;
+        f107AConstantValue_ = aNRLMSISE00Model.f107AConstantValue_;
+        kpConstantValue_ = aNRLMSISE00Model.kpConstantValue_;
+        earthFrameSPtr_ = aNRLMSISE00Model.earthFrameSPtr_;
+        earthRadius_ = aNRLMSISE00Model.earthRadius_;
+        earthFlattening_ = aNRLMSISE00Model.earthFlattening_;
+        sunCelestialSPtr_ = aNRLMSISE00Model.sunCelestialSPtr_;
+
+        const std::lock_guard<std::mutex> lock {spaceWeatherMemoMutex_};
+
+        spaceWeatherMemo_ = SpaceWeatherMemo();
+    }
+
+    return *this;
+}
+
 NRLMSISE00* NRLMSISE00::clone() const
 {
     return new NRLMSISE00(*this);
@@ -136,7 +172,26 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             //
             // Then use that as a starting index to find the correct data points and averages.
 
+            // Every input above is a step function of time that only changes on a 3-hour UTC
+            // boundary: the fetched days, the start index derived from the time of day of the
+            // 57-hour look-back, and the daily Ap. Serve the memo while the Instant stays inside
+            // the 3-hour range the memo was resolved for.
+
             const Manager& spaceWeatherManager = Manager::Get();
+
+            const Index dataVersion = spaceWeatherManager.getDataVersion();
+
+            {
+                const std::lock_guard<std::mutex> lock {spaceWeatherMemoMutex_};
+
+                if (spaceWeatherMemo_.apIsValid && (spaceWeatherMemo_.apDataVersion == dataVersion) &&
+                    (!(anInstant < spaceWeatherMemo_.apRangeStart)) && (anInstant < spaceWeatherMemo_.apRangeEnd))
+                {
+                    *outputStruct = spaceWeatherMemo_.apValues;
+
+                    return outputStruct;
+                }
+            }
 
             // Fetch AP parameters for each day up to 57 hours ago
             const Instant instant57HrPrevious = anInstant - Duration::Hours(57);
@@ -154,8 +209,9 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             }
 
             // Fetch AP indices for all days. Stack them into one continuous array.
+            // Each day contributes eight 3-hourly indices.
             Array<Integer> apMultiDayArray = Array<Integer>::Empty();
-            apMultiDayArray.reserve(fetchDays.getSize());
+            apMultiDayArray.reserve(fetchDays.getSize() * 8);
 
             for (const Instant& fetchDay : fetchDays)
             {
@@ -184,6 +240,23 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             outputStruct->a[4] = apMultiDayArray[startIndex + 16];  // now - 9 hours
             outputStruct->a[5] = apAvg12HrTo36Hr;
             outputStruct->a[6] = apAvg36HrTo57Hr;
+
+            // Record the 3-hour range this result holds for. The version read before the manager
+            // was queried is the one stored: if a new file was loaded while we were reading, the
+            // manager is now ahead of it and the memo is discarded on the next call.
+
+            {
+                const double threeHourIndex =
+                    std::floor(static_cast<double>(anInstant.getModifiedJulianDate(Scale::UTC)) * 8.0);
+
+                const std::lock_guard<std::mutex> lock {spaceWeatherMemoMutex_};
+
+                spaceWeatherMemo_.apRangeStart = Instant::ModifiedJulianDate(Real(threeHourIndex / 8.0), Scale::UTC);
+                spaceWeatherMemo_.apRangeEnd = spaceWeatherMemo_.apRangeStart + Duration::Hours(3);
+                spaceWeatherMemo_.apValues = *outputStruct;
+                spaceWeatherMemo_.apDataVersion = dataVersion;
+                spaceWeatherMemo_.apIsValid = true;
+            }
 
             break;
         }
@@ -218,11 +291,44 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
             // Input reference is in the NRLMSISE header file
             // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
 
+            // Both values resolve to a per-day reading, so both are step functions of the UTC day.
+            // Serve the memo while the Instant stays inside the day it was resolved for.
+
             const Manager& spaceWeatherManager = Manager::Get();
+
+            const Index dataVersion = spaceWeatherManager.getDataVersion();
+
+            {
+                const std::lock_guard<std::mutex> lock {spaceWeatherMemoMutex_};
+
+                if (spaceWeatherMemo_.f107IsValid && (spaceWeatherMemo_.f107DataVersion == dataVersion) &&
+                    (!(anInstant < spaceWeatherMemo_.f107RangeStart)) && (anInstant < spaceWeatherMemo_.f107RangeEnd))
+                {
+                    f107Previous = spaceWeatherMemo_.f107Previous;
+                    f107Average = spaceWeatherMemo_.f107Average;
+
+                    break;
+                }
+            }
 
             // Solar flux values
             f107Previous = spaceWeatherManager.getF107SolarFluxAt(anInstant - Duration::Days(1));
             f107Average = spaceWeatherManager.getF107SolarFlux81DayAvgAt(anInstant);
+
+            {
+                const Instant dayStart = Instant::ModifiedJulianDate(
+                    Real(std::floor(static_cast<double>(anInstant.getModifiedJulianDate(Scale::UTC)))), Scale::UTC
+                );
+
+                const std::lock_guard<std::mutex> lock {spaceWeatherMemoMutex_};
+
+                spaceWeatherMemo_.f107RangeStart = dayStart;
+                spaceWeatherMemo_.f107RangeEnd = dayStart + Duration::Days(1);
+                spaceWeatherMemo_.f107Previous = f107Previous;
+                spaceWeatherMemo_.f107Average = f107Average;
+                spaceWeatherMemo_.f107DataVersion = dataVersion;
+                spaceWeatherMemo_.f107IsValid = true;
+            }
 
             break;
         }

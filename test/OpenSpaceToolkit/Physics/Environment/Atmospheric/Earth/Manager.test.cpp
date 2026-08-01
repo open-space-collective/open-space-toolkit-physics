@@ -5,6 +5,7 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
@@ -17,6 +18,7 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
+using ostk::core::type::Index;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
@@ -429,6 +431,38 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Reset)
         manager_.reset();
 
         EXPECT_FALSE(manager_.getLoadedCSSISpaceWeather().isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetDataVersion)
+{
+    {
+        const File file =
+            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
+
+        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+        // Consumers memoizing values read from the manager rely on the version moving whenever the
+        // data behind those values does.
+
+        const Index initialDataVersion = manager_.getDataVersion();
+
+        manager_.loadCSSISpaceWeather(spaceWeather);
+
+        const Index loadedDataVersion = manager_.getDataVersion();
+
+        EXPECT_NE(initialDataVersion, loadedDataVersion);
+
+        manager_.loadCSSISpaceWeather(spaceWeather);
+
+        EXPECT_NE(loadedDataVersion, manager_.getDataVersion());
+
+        const Index reloadedDataVersion = manager_.getDataVersion();
+
+        manager_.reset();
+
+        EXPECT_NE(reloadedDataVersion, manager_.getDataVersion());
     }
 }
 

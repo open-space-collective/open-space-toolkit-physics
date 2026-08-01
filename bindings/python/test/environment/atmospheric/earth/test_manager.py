@@ -169,5 +169,22 @@ class TestManager:
         assert manager.get_local_repository().exists()
         assert manager.get_cssi_space_weather_directory().is_empty()
 
+    def test_get_data_version_success(
+        self,
+        manager: Manager,
+        cssi_space_weather: CSSISpaceWeather,
+    ):
+        initial_data_version: int = manager.get_data_version()
+
+        manager.load_cssi_space_weather(cssi_space_weather)
+
+        loaded_data_version: int = manager.get_data_version()
+
+        assert loaded_data_version != initial_data_version
+
+        manager.reset()
+
+        assert manager.get_data_version() != loaded_data_version
+
     def test_get_success(self):
         assert isinstance(Manager.get(), Manager)

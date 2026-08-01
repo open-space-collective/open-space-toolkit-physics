@@ -155,6 +155,26 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                     Reading: Last Reading satisfying predicate.
             )doc"
         )
+        .def(
+            "access_last_reading_where_defined",
+            &CSSISpaceWeather::accessLastReadingWhereDefined,
+            arg("quantity"),
+            arg("instant"),
+            R"doc(
+                Access the most recent reading, at or before an Instant, that carries the given quantity.
+
+                Unlike access_last_reading_where, which scans the file backwards on every call, this
+                resolves through an index built once at load time and is therefore constant-time
+                regardless of how far the Instant sits past the last reading carrying the quantity.
+
+                Args:
+                    quantity (CSSISpaceWeather.Quantity): A quantity.
+                    instant (Instant): An instant.
+
+                Returns:
+                    Reading: Most recent Reading, at or before the Instant, carrying the quantity.
+            )doc"
+        )
 
         .def_static(
             "undefined",
@@ -192,6 +212,57 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
                 Returns:
                     CSSISpaceWeather: CSSI Space Weather object.
+            )doc"
+        )
+
+        ;
+
+    enum_<CSSISpaceWeather::Quantity>(
+        CSSISpaceWeatherClass,
+        "Quantity",
+        R"doc(
+            Space weather quantity for which a per-day fallback index is maintained.
+
+            Not every reading carries every quantity: monthly predictions, for instance, carry a
+            solar flux but no geomagnetic indices. Reading such a quantity therefore resolves to
+            the most recent reading that does carry it.
+
+        )doc"
+    )
+
+        .value(
+            "Kp",
+            CSSISpaceWeather::Quantity::Kp,
+            R"doc(
+                The eight 3-hourly Kp indices.
+            )doc"
+        )
+        .value(
+            "Ap",
+            CSSISpaceWeather::Quantity::Ap,
+            R"doc(
+                The eight 3-hourly Ap indices.
+            )doc"
+        )
+        .value(
+            "ApDaily",
+            CSSISpaceWeather::Quantity::ApDaily,
+            R"doc(
+                The daily Ap average.
+            )doc"
+        )
+        .value(
+            "F107Obs",
+            CSSISpaceWeather::Quantity::F107Obs,
+            R"doc(
+                The observed F10.7 solar flux.
+            )doc"
+        )
+        .value(
+            "F107ObsCenter81",
+            CSSISpaceWeather::Quantity::F107ObsCenter81,
+            R"doc(
+                The centered 81-day average of the observed F10.7 solar flux.
             )doc"
         )
 

@@ -463,6 +463,157 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
+// Regression (https://github.com/open-space-collective/open-space-toolkit-physics/pull/366):
+//
+// The backward scan strides 30 days at a time through the monthly predictions, clamping so as not
+// to step past the last daily prediction. The daily prediction Interval is half-open, so a stride
+// landing exactly on its end Instant used to exit the monthly loop with an Instant that no Interval
+// contains, skipping both remaining loops and failing to extrapolate even though readings carrying
+// the value were sitting right there.
+TEST_F(
+    OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather,
+    Regression_AccessLastReadingWhereStrideOntoDailyPredictionEnd
+)
+{
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+    this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
+
+    // The daily predictions end at 2023-08-04 00:00:00, so a search from 2023-09-04 strides
+    // 2023-09-03 -> 2023-08-04, landing exactly on that open bound.
+
+    const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
+        [](const CSSISpaceWeather::Reading& reading) -> bool
+        {
+            return reading.Ap1.isDefined();
+        },
+        Instant::DateTime(DateTime::Parse("2023-09-04 00:00:00"), Scale::UTC)
+    );
+
+    EXPECT_EQ(Date::Parse("2023-08-03", Date::Format::Standard), lastGoodReading.date);
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastReadingWhereDefined)
+{
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
+    this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
+
+    {
+        // calling Undefined Space Weather
+        EXPECT_THROW(
+            CSSISpaceWeather::Undefined().accessLastReadingWhereDefined(
+                CSSISpaceWeather::Quantity::Ap, Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
+            ),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        // calling with Undefined Instant
+        EXPECT_THROW(
+            CSSISpaceWeather_.accessLastReadingWhereDefined(CSSISpaceWeather::Quantity::Ap, Instant::Undefined()),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        // calling with an Instant before the file starts
+        EXPECT_THROW(
+            CSSISpaceWeather_.accessLastReadingWhereDefined(
+                CSSISpaceWeather::Quantity::Ap, Instant::DateTime(DateTime::Parse("2017-12-31 00:00:00"), Scale::UTC)
+            ),
+            ostk::core::error::RuntimeError
+        );
+    }
+
+    {
+        // The reading of the day carries the quantity
+        const CSSISpaceWeather::Reading& reading = CSSISpaceWeather_.accessLastReadingWhereDefined(
+            CSSISpaceWeather::Quantity::F107ObsCenter81,
+            Instant::DateTime(DateTime::Parse("2023-06-21 12:00:00"), Scale::UTC)
+        );
+
+        EXPECT_EQ(Date::Parse("2023-06-21", Date::Format::Standard), reading.date);
+    }
+
+    {
+        // The daily prediction of 2023-06-21 carries no F10.7 observation, the previous one does
+        const CSSISpaceWeather::Reading& reading = CSSISpaceWeather_.accessLastReadingWhereDefined(
+            CSSISpaceWeather::Quantity::F107Obs, Instant::DateTime(DateTime::Parse("2023-06-21 12:00:00"), Scale::UTC)
+        );
+
+        EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), reading.date);
+    }
+
+    {
+        // The daily prediction of 2023-06-21 carries no daily Ap, the previous one does
+        const CSSISpaceWeather::Reading& reading = CSSISpaceWeather_.accessLastReadingWhereDefined(
+            CSSISpaceWeather::Quantity::ApDaily, Instant::DateTime(DateTime::Parse("2023-06-21 12:00:00"), Scale::UTC)
+        );
+
+        EXPECT_EQ(Date::Parse("2023-06-20", Date::Format::Standard), reading.date);
+    }
+
+    {
+        // The daily prediction of 2023-06-20 is missing a Kp index, the previous observation is not
+        const CSSISpaceWeather::Reading& reading = CSSISpaceWeather_.accessLastReadingWhereDefined(
+            CSSISpaceWeather::Quantity::Kp, Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC)
+        );
+
+        EXPECT_EQ(Date::Parse("2023-06-19", Date::Format::Standard), reading.date);
+    }
+
+    {
+        // Monthly predictions carry a solar flux of their own
+        const CSSISpaceWeather::Reading& reading = CSSISpaceWeather_.accessLastReadingWhereDefined(
+            CSSISpaceWeather::Quantity::F107Obs, Instant::DateTime(DateTime::Parse("2023-12-15 12:00:00"), Scale::UTC)
+        );
+
+        EXPECT_EQ(Date::Parse("2023-12-01", Date::Format::Standard), reading.date);
+    }
+
+    {
+        // Monthly predictions carry no geomagnetic indices, so both resolve to the last daily
+        // prediction that does — however far into the monthly range the Instant sits.
+        for (const auto& dateTimeString : {"2023-12-01 00:00:00", "2028-12-15 12:00:00"})
+        {
+            const Instant instant = Instant::DateTime(DateTime::Parse(dateTimeString), Scale::UTC);
+
+            EXPECT_EQ(
+                Date::Parse("2023-08-03", Date::Format::Standard),
+                CSSISpaceWeather_.accessLastReadingWhereDefined(CSSISpaceWeather::Quantity::Ap, instant).date
+            );
+            EXPECT_EQ(
+                Date::Parse("2023-08-03", Date::Format::Standard),
+                CSSISpaceWeather_.accessLastReadingWhereDefined(CSSISpaceWeather::Quantity::Kp, instant).date
+            );
+        }
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, CopyRebindsDayIndex)
+{
+    // The day indices point into the reading maps, so a copy has to rebuild them against its own.
+
+    const CSSISpaceWeather copiedSpaceWeather = CSSISpaceWeather_;
+
+    CSSISpaceWeather assignedSpaceWeather = CSSISpaceWeather::Undefined();
+    assignedSpaceWeather = copiedSpaceWeather;
+
+    const Instant instant = Instant::DateTime(DateTime::Parse("2023-06-20 12:00:00"), Scale::UTC);
+
+    EXPECT_EQ(CSSISpaceWeather_.accessReadingAt(instant).date, copiedSpaceWeather.accessReadingAt(instant).date);
+    EXPECT_EQ(CSSISpaceWeather_.accessReadingAt(instant).date, assignedSpaceWeather.accessReadingAt(instant).date);
+
+    EXPECT_EQ(
+        CSSISpaceWeather_.accessLastReadingWhereDefined(CSSISpaceWeather::Quantity::Ap, instant).date,
+        assignedSpaceWeather.accessLastReadingWhereDefined(CSSISpaceWeather::Quantity::Ap, instant).date
+    );
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load)
 {
     {

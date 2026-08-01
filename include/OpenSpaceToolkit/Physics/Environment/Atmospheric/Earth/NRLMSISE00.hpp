@@ -3,8 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00__
 
+#include <mutex>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Type/Index.hpp>
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
@@ -32,6 +35,7 @@ namespace earth
 
 using ostk::core::container::Array;
 using ostk::core::container::Tuple;
+using ostk::core::type::Index;
 using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::Shared;
@@ -75,6 +79,23 @@ class NRLMSISE00
         const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
+
+    /// @brief Copy constructor
+    ///
+    /// The space weather memo is not copied: the copy starts with an empty one.
+    ///
+    /// @param [in] aNRLMSISE00Model A NRLMSISE00 atmospheric model
+
+    NRLMSISE00(const NRLMSISE00& aNRLMSISE00Model);
+
+    /// @brief Copy assignment operator
+    ///
+    /// The space weather memo is not copied: the assigned model starts with an empty one.
+    ///
+    /// @param [in] aNRLMSISE00Model A NRLMSISE00 atmospheric model
+    /// @return Reference to this model
+
+    NRLMSISE00& operator=(const NRLMSISE00& aNRLMSISE00Model);
 
     /// @brief Clone the NRLMSISE00 atmospheric model
     ///
@@ -233,6 +254,33 @@ class NRLMSISE00
     Length earthRadius_;
     Real earthFlattening_;
     Shared<Celestial> sunCelestialSPtr_;
+
+    /// @brief Memo of the space weather inputs, which are step functions of time.
+    ///
+    /// The Ap array only changes on 3-hour UTC boundaries and the F10.7 pair only on day
+    /// boundaries, so within a bucket every space weather read returns what the previous call
+    /// already resolved — about a thousand times over at a 10 second propagation step. Each
+    /// entry records the half-open Instant range it holds for, plus the version of the manager
+    /// data it was read from so that loading a new space weather file discards it.
+
+    struct SpaceWeatherMemo
+    {
+        Instant apRangeStart = Instant::Undefined();
+        Instant apRangeEnd = Instant::Undefined();
+        ap_array apValues = {};
+        Index apDataVersion = 0;
+        bool apIsValid = false;
+
+        Instant f107RangeStart = Instant::Undefined();
+        Instant f107RangeEnd = Instant::Undefined();
+        Real f107Previous = Real::Undefined();
+        Real f107Average = Real::Undefined();
+        Index f107DataVersion = 0;
+        bool f107IsValid = false;
+    };
+
+    mutable SpaceWeatherMemo spaceWeatherMemo_;
+    mutable std::mutex spaceWeatherMemoMutex_;
 };
 
 }  // namespace earth

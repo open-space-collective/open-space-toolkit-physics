@@ -119,6 +119,55 @@ class TestCSSISpaceWeather:
                 Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC),
             )
 
+    def test_access_last_reading_where_defined_success(
+        self,
+        cssi_space_weather: CSSISpaceWeather,
+    ):
+        # Published monthly predictions carry no geomagnetic indices, so an Ap read anywhere in
+        # the monthly range resolves back to the reading that overlaps the end of the daily
+        # predictions -- which loading synthesizes from the last daily prediction, 2023-08-03 --
+        # and stays there however far into the future the instant sits.
+        last_daily_prediction: CSSISpaceWeather.Reading = (
+            cssi_space_weather.access_daily_prediction_at(
+                Instant.date_time(datetime(2023, 8, 3, 12, 0, 0), Scale.UTC)
+            )
+        )
+
+        for date_time in (
+            datetime(2023, 12, 1, 0, 0, 0),
+            datetime(2028, 12, 15, 12, 0, 0),
+        ):
+            reading: CSSISpaceWeather.Reading = (
+                cssi_space_weather.access_last_reading_where_defined(
+                    CSSISpaceWeather.Quantity.Ap,
+                    Instant.date_time(date_time, Scale.UTC),
+                )
+            )
+
+            assert reading.date.to_string() == "2023-08-01"
+            assert reading.ap_1 == last_daily_prediction.ap_1
+            assert reading.ap_8 == last_daily_prediction.ap_8
+            assert reading.ap_avg == last_daily_prediction.ap_avg
+
+        # Monthly predictions do carry a solar flux of their own
+        reading: CSSISpaceWeather.Reading = (
+            cssi_space_weather.access_last_reading_where_defined(
+                CSSISpaceWeather.Quantity.F107Obs,
+                Instant.date_time(datetime(2023, 12, 15, 12, 0, 0), Scale.UTC),
+            )
+        )
+
+        assert reading.date.to_string() == "2023-12-01"
+
+    def test_access_last_reading_where_defined_failure(
+        self, cssi_space_weather: CSSISpaceWeather
+    ):
+        with pytest.raises(RuntimeError):
+            cssi_space_weather.access_last_reading_where_defined(
+                CSSISpaceWeather.Quantity.Ap,
+                Instant.date_time(datetime(2017, 12, 31, 0, 0, 0), Scale.UTC),
+            )
+
     def test_undefined_success(self):
         assert CSSISpaceWeather.undefined() is not None
 

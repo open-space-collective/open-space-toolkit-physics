@@ -134,6 +134,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
         )
 
         .def(
+            "get_data_version",
+            &Manager::getDataVersion,
+            R"doc(
+                Get the version of the currently loaded CSSI Space Weather data.
+
+                The version is incremented every time the manager loads, replaces or unloads its
+                data. Consumers that memoize values read from the manager can compare it against
+                the version they read under to detect that their memo has gone stale.
+
+                Returns:
+                    int: Version of the currently loaded data.
+            )doc"
+        )
+
+        .def(
             "load_cssi_space_weather",
             &Manager::loadCSSISpaceWeather,
             arg("cssi_space_weather"),
