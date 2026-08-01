@@ -2,17 +2,17 @@
 
 #include <cmath>
 
-#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Utility.hpp>
+#include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Utility.hpp>
 
 namespace ostk
 {
 namespace physics
 {
-namespace coordinate
+namespace environment
 {
-namespace frame
+namespace object
 {
-namespace provider
+namespace celestial
 {
 namespace utilities
 {
@@ -46,8 +46,8 @@ double FractionalPart(const double aValue)
 }
 
 }  // namespace utilities
-}  // namespace provider
-}  // namespace frame
-}  // namespace coordinate
+}  // namespace celestial
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk

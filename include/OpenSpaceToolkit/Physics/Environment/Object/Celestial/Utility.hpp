@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
-#ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Utility__
-#define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Utility__
+#ifndef __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Utility__
+#define __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Utility__
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
@@ -11,11 +11,11 @@ namespace ostk
 {
 namespace physics
 {
-namespace coordinate
+namespace environment
 {
-namespace frame
+namespace object
 {
-namespace provider
+namespace celestial
 {
 namespace utilities
 {
@@ -37,9 +37,9 @@ double JulianCenturiesSinceJ2000(const Instant& anInstant);
 double FractionalPart(const double aValue);
 
 }  // namespace utilities
-}  // namespace provider
-}  // namespace frame
-}  // namespace coordinate
+}  // namespace celestial
+}  // namespace object
+}  // namespace environment
 }  // namespace physics
 }  // namespace ostk
 

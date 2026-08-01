@@ -174,6 +174,18 @@ class Celestial : public Object
 
     Object::Geometry getTerminatorGeometry() const;
 
+    /// @brief Compute the position of the celestial object from a low-precision analytical model, in GCRF
+    ///
+    /// Unlike Celestial::getPositionIn, this does not rely on the ephemeris of the celestial object, and is
+    /// therefore orders of magnitude faster than a SPICE-based ephemeris. It is well-suited for applications
+    /// such as third-body point-mass gravity, where only an approximate body position is needed.
+    ///
+    /// Only defined for the celestial objects providing an analytical model (Sun and Moon).
+    ///
+    /// @param [in] anInstant An instant
+    /// @return Position of the celestial object, in GCRF
+    virtual Position computeAnalyticalPosition(const Instant& anInstant) const;
+
     static Celestial Undefined();
 
     static String StringFromFrameType(const Celestial::FrameType& aFrameType);

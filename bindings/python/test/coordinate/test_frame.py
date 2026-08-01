@@ -86,12 +86,6 @@ class TestFrame:
     def test_ITRF(self):
         assert Frame.ITRF() is not None
 
-    def test_sun_analytical(self):
-        assert Frame.sun_analytical() is not None
-
-    def test_moon_analytical(self):
-        assert Frame.moon_analytical() is not None
-
     def test_with_name(self, frame: Frame):
         assert Frame.with_name(name=frame.get_name()) is not None
 
