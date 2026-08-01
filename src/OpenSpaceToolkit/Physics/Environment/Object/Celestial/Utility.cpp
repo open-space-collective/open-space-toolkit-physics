@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Utility.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
 namespace ostk
 {
@@ -16,6 +17,8 @@ namespace celestial
 {
 namespace utilities
 {
+
+using ostk::physics::time::Scale;
 
 Vector3d EquatorialFromEcliptic(const Vector3d& anEclipticVector)
 {
@@ -31,13 +34,7 @@ Vector3d EquatorialFromEcliptic(const Vector3d& anEclipticVector)
 
 double JulianCenturiesSinceJ2000(const Instant& anInstant)
 {
-    // Computed from the elapsed duration since the J2000 epoch (2000-01-01 12:00:00 [TT], i.e. MJD 51544.5 [TT]):
-    // elapsed SI seconds equal elapsed TT seconds (TT - TAI is a constant offset),
-    // which avoids a costly Instant -> DateTime -> Modified Julian Date conversion.
-
-    static const Instant j2000_TT = Instant::J2000();
-
-    return static_cast<double>((anInstant - j2000_TT).inSeconds()) / (36525.0 * 86400.0);
+    return static_cast<double>((anInstant.getModifiedJulianDate(Scale::TT))) / (36525.0 * 86400.0);
 }
 
 double FractionalPart(const double aValue)

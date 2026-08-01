@@ -65,7 +65,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Moon(pybind11
                 &Moon::ComputeAnalyticalPosition,
                 arg("instant"),
                 R"doc(
-                    Compute the Moon position from a low-precision analytical model (Montenbruck & Gill), in GCRF.
+                    Compute the Moon position from a fast low-precision analytical model (Montenbruck & Gill), in GCRF.
 
                     Much faster than a SPICE-based ephemeris, and requires no ephemeris data, at the cost of a
                     lower position accuracy (< 0.1 deg in direction, < 0.15% in distance).

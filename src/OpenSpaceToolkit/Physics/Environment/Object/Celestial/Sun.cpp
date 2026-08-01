@@ -18,9 +18,6 @@ using ostk::physics::environment::object::celestial::utilities::JulianCenturiesS
 namespace
 {
 
-// Analytical Sun position series
-// Ref: O. Montenbruck, E. Gill, "Satellite Orbits: Models, Methods and Applications", Section 3.3.2
-
 constexpr double TwoPi = 2.0 * M_PI;
 
 }  // namespace
@@ -63,27 +60,6 @@ Sun* Sun::clone() const
 
 Position Sun::computeAnalyticalPosition(const Instant& anInstant) const
 {
-    return Sun::ComputeAnalyticalPosition(anInstant);
-}
-
-Sun Sun::Default()
-{
-    return Sun::Spherical();
-}
-
-Sun Sun::Spherical()
-{
-    using ostk::physics::environment::ephemeris::SPICE;
-
-    return {
-        std::make_shared<SPICE>(SPICE::Object::Sun),
-        std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical),
-    };
-}
-
-Position Sun::ComputeAnalyticalPosition(const Instant& anInstant)
-{
-    // Ref: Montenbruck & Gill, Section 3.3.2.
     // Accuracy: < 0.1 deg in direction over 2020-2026,
     // dominated by a slow drift (~11.6 arcsec/year) due to the neglected motion of the Earth's perihelion.
 
@@ -105,6 +81,21 @@ Position Sun::ComputeAnalyticalPosition(const Instant& anInstant)
     // Equatorial position vector
 
     return Position::Meters(EquatorialFromEcliptic({r * std::cos(L), r * std::sin(L), 0.0}), Frame::GCRF());
+}
+
+Sun Sun::Default()
+{
+    return Sun::Spherical();
+}
+
+Sun Sun::Spherical()
+{
+    using ostk::physics::environment::ephemeris::SPICE;
+
+    return {
+        std::make_shared<SPICE>(SPICE::Object::Sun),
+        std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical),
+    };
 }
 
 Object::Geometry Sun::Geometry(const Shared<const Frame>& aFrame)

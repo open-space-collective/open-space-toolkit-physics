@@ -65,11 +65,24 @@ class Moon : public Celestial
     /// @return Pointer to Moon celestial object
     virtual Moon* clone() const override;
 
-    /// @brief Compute the Moon position from a low-precision analytical model, in GCRF
+    /// @brief Compute the Moon position from a fast low-precision analytical model, in GCRF
+    ///
+    /// The position is computed from the analytical series of Montenbruck & Gill, with respect to the mean
+    /// equator and equinox of J2000, which is treated as GCRF (the frame bias of ~23 mas is far below the
+    /// accuracy of the series).
+    ///
+    /// Accuracy with respect to high-precision (JPL DE) ephemerides, measured over 2020-2026:
+    /// < 0.1 deg in direction, < 0.15% in distance.
+    ///
+    /// This is orders of magnitude faster than a SPICE-based ephemeris, requires no ephemeris data,
+    /// and is well-suited for applications such as third-body point-mass gravity
+    /// where only an approximate body position is needed.
     ///
     /// @code
-    ///     Position position = moon.computeAnalyticalPosition(instant);
+    ///     Position position = Moon::ComputeAnalyticalPosition(instant);
     /// @endcode
+    ///
+    /// @ref O. Montenbruck, E. Gill, "Satellite Orbits: Models, Methods and Applications", Section 3.3.2.
     ///
     /// @param [in] anInstant An instant
     /// @return Position of the Moon, in GCRF
@@ -92,29 +105,6 @@ class Moon : public Celestial
     ///
     /// @return Moon
     static Moon Spherical();
-
-    /// @brief Compute the Moon position from a low-precision analytical model, in GCRF
-    ///
-    /// The position is computed from the analytical series of Montenbruck & Gill, with respect to the mean
-    /// equator and equinox of J2000, which is treated as GCRF (the frame bias of ~23 mas is far below the
-    /// accuracy of the series).
-    ///
-    /// Accuracy with respect to high-precision (JPL DE) ephemerides, measured over 2020-2026:
-    /// < 0.1 deg in direction, < 0.15% in distance.
-    ///
-    /// This is orders of magnitude faster than a SPICE-based ephemeris, requires no ephemeris data,
-    /// and is well-suited for applications such as third-body point-mass gravity
-    /// where only an approximate body position is needed.
-    ///
-    /// @code
-    ///     Position position = Moon::ComputeAnalyticalPosition(instant);
-    /// @endcode
-    ///
-    /// @ref O. Montenbruck, E. Gill, "Satellite Orbits: Models, Methods and Applications", Section 3.3.2.
-    ///
-    /// @param [in] anInstant An instant
-    /// @return Position of the Moon, in GCRF
-    static Position ComputeAnalyticalPosition(const Instant& anInstant);
 
    private:
     static Object::Geometry Geometry(const Shared<const Frame>& aFrameSPtr);

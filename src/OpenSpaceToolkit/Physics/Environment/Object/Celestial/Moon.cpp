@@ -18,9 +18,6 @@ using ostk::physics::environment::object::celestial::utilities::JulianCenturiesS
 namespace
 {
 
-// Analytical Moon position series
-// Ref: O. Montenbruck, E. Gill, "Satellite Orbits: Models, Methods and Applications", Section 3.3.2
-
 constexpr double Pi = M_PI;
 constexpr double TwoPi = 2.0 * M_PI;
 constexpr double ArcsecondsToRadians = Pi / (180.0 * 3600.0);
@@ -65,28 +62,6 @@ Moon* Moon::clone() const
 
 Position Moon::computeAnalyticalPosition(const Instant& anInstant) const
 {
-    return Moon::ComputeAnalyticalPosition(anInstant);
-}
-
-Moon Moon::Default()
-{
-    return Moon::Spherical();
-}
-
-Moon Moon::Spherical()
-{
-    using ostk::physics::environment::ephemeris::SPICE;
-
-    return {
-        std::make_shared<SPICE>(SPICE::Object::Moon),
-        std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical),
-    };
-}
-
-Position Moon::ComputeAnalyticalPosition(const Instant& anInstant)
-{
-    // Ref: Montenbruck & Gill, Section 3.3.2. Accuracy: ~0.1-0.3 deg in direction (< 0.1 deg over 2020-2026).
-
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
@@ -108,7 +83,8 @@ Position Moon::ComputeAnalyticalPosition(const Instant& anInstant)
                       769.0 * std::sin(2.0 * l) - 668.0 * std::sin(lp) - 412.0 * std::sin(2.0 * F) -
                       212.0 * std::sin(2.0 * l - 2.0 * D) - 206.0 * std::sin(l + lp - 2.0 * D) +
                       192.0 * std::sin(l + 2.0 * D) - 165.0 * std::sin(lp - 2.0 * D) - 125.0 * std::sin(D) -
-                      110.0 * std::sin(l + lp) + 148.0 * std::sin(l - lp) - 55.0 * std::sin(2.0 * F - 2.0 * D);  // ["]
+                      110.0 * std::sin(l + lp) + 148.0 * std::sin(l - lp) -
+                      55.0 * std::sin(2.0 * F - 2.0 * D);  // [deg second]
 
     const double L = TwoPi * FractionalPart(L_0 + dL / 1296.0e3);  // [rad]
 
@@ -117,7 +93,8 @@ Position Moon::ComputeAnalyticalPosition(const Instant& anInstant)
     const double S = F + (dL + 412.0 * std::sin(2.0 * F) + 541.0 * std::sin(lp)) * ArcsecondsToRadians;  // [rad]
     const double h = F - 2.0 * D;                                                                        // [rad]
     const double N = -526.0 * std::sin(h) + 44.0 * std::sin(l + h) - 31.0 * std::sin(-l + h) - 23.0 * std::sin(lp + h) +
-                     11.0 * std::sin(-lp + h) - 25.0 * std::sin(-2.0 * l + F) + 21.0 * std::sin(-l + F);  // ["]
+                     11.0 * std::sin(-lp + h) - 25.0 * std::sin(-2.0 * l + F) +
+                     21.0 * std::sin(-l + F);  // [deg second]
 
     const double B = (18520.0 * std::sin(S) + N) * ArcsecondsToRadians;  // [rad]
 
@@ -133,6 +110,21 @@ Position Moon::ComputeAnalyticalPosition(const Instant& anInstant)
         EquatorialFromEcliptic({r * std::cos(L) * std::cos(B), r * std::sin(L) * std::cos(B), r * std::sin(B)}),
         Frame::GCRF()
     );
+}
+
+Moon Moon::Default()
+{
+    return Moon::Spherical();
+}
+
+Moon Moon::Spherical()
+{
+    using ostk::physics::environment::ephemeris::SPICE;
+
+    return {
+        std::make_shared<SPICE>(SPICE::Object::Moon),
+        std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical),
+    };
 }
 
 Object::Geometry Moon::Geometry(const Shared<const Frame>& aFrame)

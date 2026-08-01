@@ -136,39 +136,25 @@ class OpenSpaceToolkit_Physics_Environment_Object_Celestial_Moon_Analytical : pu
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Moon_Analytical, ComputeAnalyticalPosition)
 {
+    this->loadSpiceKernels();
+
+    const Moon moon = Moon::Default();
+
     {
         const Instant instant = Instant::DateTime(DateTime(2024, 1, 1, 0, 0, 0), Scale::UTC);
 
-        const Position position = Moon::ComputeAnalyticalPosition(instant);
+        const Position position = moon.computeAnalyticalPosition(instant);
 
         EXPECT_TRUE(position.isDefined());
         EXPECT_EQ(Frame::GCRF(), position.accessFrame());
     }
 
     {
-        EXPECT_ANY_THROW(Moon::ComputeAnalyticalPosition(Instant::Undefined()));
+        EXPECT_ANY_THROW(moon.computeAnalyticalPosition(Instant::Undefined()));
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Moon_Analytical, computeAnalyticalPosition)
-{
-    {
-        this->loadSpiceKernels();
-
-        const Moon moon = Moon::Default();
-
-        const Instant instant = Instant::DateTime(DateTime(2024, 1, 1, 0, 0, 0), Scale::UTC);
-
-        // The instance method dispatches to the static one
-
-        EXPECT_EQ(
-            Moon::ComputeAnalyticalPosition(instant).getCoordinates(),
-            moon.computeAnalyticalPosition(instant).getCoordinates()
-        );
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Moon_Analytical, ComputeAnalyticalPositionVersusSpice)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Moon_Analytical, ComputeAnalyticalPosition_VersusSpice)
 {
     {
         this->loadSpiceKernels();

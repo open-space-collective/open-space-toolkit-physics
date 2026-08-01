@@ -136,39 +136,25 @@ class OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun_Analytical : pub
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun_Analytical, ComputeAnalyticalPosition)
 {
+    this->loadSpiceKernels();
+
+    const Sun sun = Sun::Default();
+
     {
         const Instant instant = Instant::DateTime(DateTime(2024, 1, 1, 0, 0, 0), Scale::UTC);
 
-        const Position position = Sun::ComputeAnalyticalPosition(instant);
+        const Position position = sun.computeAnalyticalPosition(instant);
 
         EXPECT_TRUE(position.isDefined());
         EXPECT_EQ(Frame::GCRF(), position.accessFrame());
     }
 
     {
-        EXPECT_ANY_THROW(Sun::ComputeAnalyticalPosition(Instant::Undefined()));
+        EXPECT_ANY_THROW(sun.computeAnalyticalPosition(Instant::Undefined()));
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun_Analytical, computeAnalyticalPosition)
-{
-    {
-        this->loadSpiceKernels();
-
-        const Sun sun = Sun::Default();
-
-        const Instant instant = Instant::DateTime(DateTime(2024, 1, 1, 0, 0, 0), Scale::UTC);
-
-        // The instance method dispatches to the static one
-
-        EXPECT_EQ(
-            Sun::ComputeAnalyticalPosition(instant).getCoordinates(),
-            sun.computeAnalyticalPosition(instant).getCoordinates()
-        );
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun_Analytical, ComputeAnalyticalPositionVersusSpice)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun_Analytical, ComputeAnalyticalPosition_VersusSpice)
 {
     {
         this->loadSpiceKernels();
