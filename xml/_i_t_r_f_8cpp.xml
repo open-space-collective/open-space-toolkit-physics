@@ -438,7 +438,7 @@
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>(TT)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>djmjd0<sp/>=<sp/>2400000.5;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>tt<sp/>=<sp/>anInstant.getDateTime(Scale::TT).getModifiedJulianDate();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>tt<sp/>=<sp/>anInstant.getModifiedJulianDate(Scale::TT);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>polar<sp/>motion<sp/>xp,yp<sp/>can<sp/>be<sp/>obtained<sp/>from<sp/>IERS<sp/>bulletins.<sp/><sp/>The</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>values<sp/>are<sp/>the<sp/>coordinates<sp/>(in<sp/>radians)<sp/>of<sp/>the<sp/>Celestial</highlight><highlight class="normal"></highlight></codeline>
