@@ -1845,8 +1845,6 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" kind="function"><name>StringFromUnit</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a227acaa975d6292b80076c028abc7732" kind="function"><name>DerivedUnitFromVelocityUnit</name></member>
   </compound>
-  <compound refid="namespace_0d147" kind="namespace"><name>@147</name>
-  </compound>
   <compound refid="namespace_n_r_l_m_s_i_s_e00__c" kind="namespace"><name>NRLMSISE00_c</name>
   </compound>
   <compound refid="namespaceostk" kind="namespace"><name>ostk</name>
