@@ -64,7 +64,7 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
     // Time (UTC)
 
     static const Real djmjd0 = 2400000.5;
-    const Real utc = anInstant.getDateTime(Scale::UTC).getModifiedJulianDate();
+    const Real utc = anInstant.getModifiedJulianDate(Scale::UTC);
 
     const Real date = std::floor(utc);
     const Real time = utc - date;

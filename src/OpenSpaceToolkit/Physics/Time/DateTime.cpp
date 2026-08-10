@@ -169,12 +169,41 @@ Real DateTime::getJulianDate() const
 
 Real DateTime::getModifiedJulianDate() const
 {
+    using ostk::core::type::Int16;
+    using ostk::core::type::Int32;
+
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("DateTime");
     }
 
-    return DateTime::ModifiedJulianDateFromJulianDate(this->getJulianDate());
+    // Computed directly from the calendar fields rather than as getJulianDate() - 2400000.5:
+    // differencing through a ~2.4e6-magnitude double quantizes the result to ~40 us of time,
+    // while the direct computation resolves ~0.6 us at current epochs.
+
+    const Uint16 year = date_.getYear();
+    const Uint8 month = date_.getMonth();
+    const Uint8 day = date_.getDay();
+
+    const Int32 julianDayNumber = day + 1461 * (year + 4800 + (month - 14) / 12) / 4 +
+                                  367 * (month - 2 - (month - 14) / 12 * 12) / 12 -
+                                  3 * ((year + 4900 + (month - 14) / 12) / 100) / 4 - 32075;
+
+    const Int16 hour = time_.getHour();
+    const Int16 minute = time_.getMinute();
+    const Int16 second = time_.getSecond();
+    const Uint16 millisecond = time_.getMillisecond();
+    const Uint16 microsecond = time_.getMicrosecond();
+    const Uint16 nanosecond = time_.getNanosecond();
+
+    const Real fractionalDay = (hour + (minute / 60.0) + (second / 3600.0) +
+                                ((millisecond / 1e3) + (microsecond / 1e6) + (nanosecond / 1e9)) / 3600.0) /
+                               24.0;
+
+    // The Julian Day Number refers to noon of the calendar day: the Modified Julian Date
+    // (offset 2400000.5) at midnight of that day is JDN - 2400001.
+
+    return Real(julianDayNumber - 2400001) + fractionalDay;
 }
 
 String DateTime::toString(const DateTime::Format& aFormat) const

@@ -1222,6 +1222,53 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate_ConsistencyWithDateTime)
+{
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // The arithmetic conversion must agree with the DateTime-based conversion to within
+    // the double resolution of a Julian date (the DateTime path quantizes at ~1e-9 day).
+
+    for (auto const& scale : scales)
+    {
+        for (int i = -200; i <= 200; i += 7)
+        {
+            const Instant instant = Instant::J2000() + Duration::Days(37.3 * i) + Duration::Nanoseconds(123456789);
+
+            EXPECT_NEAR(instant.getDateTime(scale).getModifiedJulianDate(), instant.getModifiedJulianDate(scale), 1e-8);
+            EXPECT_NEAR(instant.getDateTime(scale).getJulianDate(), instant.getJulianDate(scale), 1e-8);
+        }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime_RoundTrip)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // Calendar round-trip at nanosecond resolution across the supported year range [1970, 2554]
+
+    for (auto const& scale : scales)
+    {
+        for (const auto& dateTime : {
+                 DateTime(1970, 1, 1, 0, 0, 0, 0, 0, 1),
+                 DateTime(1979, 3, 15, 3, 4, 5, 6, 7, 8),
+                 DateTime(1999, 12, 31, 23, 59, 59, 999, 999, 999),
+                 DateTime(2000, 1, 1, 12, 0, 0),
+                 DateTime(2000, 2, 29, 23, 59, 59, 1, 2, 3),
+                 DateTime(2023, 7, 1, 1, 2, 3, 4, 5, 6),
+                 DateTime(2100, 3, 1, 0, 0, 0, 500, 0, 0),
+                 DateTime(2554, 12, 31, 23, 59, 59, 999, 999, 999),
+             })
+        {
+            EXPECT_EQ(dateTime, Instant::DateTime(dateTime, scale).getDateTime(scale)) << dateTime.toString();
+        }
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 {
     using ostk::physics::time::DateTime;
