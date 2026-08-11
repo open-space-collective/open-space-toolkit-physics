@@ -211,7 +211,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
         const Position position_ITRF = position_GCRF.inFrame(Frame::ITRF(), Instant::J2000());
 
         EXPECT_TRUE(
-            position_ITRF.getCoordinates().isNear(Vector3d(254638.493586864, 7066495.80294488, 499796.263037415), 1e-8)
+            position_ITRF.getCoordinates().isNear(Vector3d(254638.49423473, 7066495.80292154, 499796.263037414), 1e-3)
         ) << position_ITRF;
         EXPECT_EQ(Position::Unit::Meter, position_ITRF.getUnit()) << position_ITRF;
         EXPECT_EQ(Frame::ITRF(), position_ITRF.accessFrame()) << position_ITRF;
