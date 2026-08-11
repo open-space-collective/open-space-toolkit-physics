@@ -112,14 +112,53 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
                 Args:
                     type (Earth.Type): Earth atmospheric model type.
-                    input_data_type (Earth.InputDataType): Earth atmospheric model input data type.
-                    f107_constant_value (Real): F10.7 constant value.
-                    f107_average_constant_value (Real): F10.7a constant value.
-                    kp_constant_value (Real): Kp constant value.
+                    input_data_type (Earth.InputDataType, optional): Earth atmospheric model input data type. Defaults to Earth.InputDataType.Undefined.
+                    f107_constant_value (Real, optional): F10.7 constant value. Defaults to 150.0.
+                    f107_average_constant_value (Real, optional): F10.7a constant value. Defaults to 150.0.
+                    kp_constant_value (Real, optional): Kp constant value. Defaults to 3.0.
+                    earth_frame (Frame, optional): Earth frame. Defaults to Frame.ITRF().
+                    earth_radius (Length, optional): Earth radius [m]. Defaults to the WGS84 equatorial radius.
+                    earth_flattening (Real, optional): Earth flattening. Defaults to the WGS84 flattening.
+                    sun_celestial (Celestial, optional): Sun celestial object. Defaults to None.
+
+                Returns:
+                    Earth: Earth atmospheric model.
+                )doc"
+            )
+
+            .def(
+                init<
+                    const Earth::Type&,
+                    const Shared<const Frame>&,
+                    const Earth::InputDataType&,
+                    const Real&,
+                    const Real&,
+                    const Real&,
+                    const Length&,
+                    const Real&,
+                    const Shared<Celestial>&>(),
+                arg("type"),
+                arg("earth_frame"),
+                arg("input_data_type") = Earth::InputDataType::CSSISpaceWeatherFile,
+                arg("f107_constant_value") = Earth::defaultF107ConstantValue,
+                arg("f107_average_constant_value") = Earth::defaultF107AConstantValue,
+                arg("kp_constant_value") = Earth::defaultKpConstantValue,
+                arg_v("earth_radius", EarthGravityModel::WGS84.equatorialRadius_, "WGS84.equatorialRadius_"),
+                arg_v("earth_flattening", EarthGravityModel::WGS84.flattening_, "WGS84.flattening_"),
+                arg("sun_celestial") = nullptr,
+                R"doc(
+                    Constructor, with the Earth frame as second argument.
+
+                Args:
+                    type (Earth.Type): Earth atmospheric model type.
                     earth_frame (Frame): Earth frame.
-                    earth_radius (Length): Earth radius [m].
-                    earth_flattening (Real): Earth flattening.
-                    sun_celestial (Celestial): Sun celestial object.
+                    input_data_type (Earth.InputDataType, optional): Earth atmospheric model input data type. Defaults to Earth.InputDataType.CSSISpaceWeatherFile.
+                    f107_constant_value (Real, optional): F10.7 constant value. Defaults to 150.0.
+                    f107_average_constant_value (Real, optional): F10.7a constant value. Defaults to 150.0.
+                    kp_constant_value (Real, optional): Kp constant value. Defaults to 3.0.
+                    earth_radius (Length, optional): Earth radius [m]. Defaults to the WGS84 equatorial radius.
+                    earth_flattening (Real, optional): Earth flattening. Defaults to the WGS84 flattening.
+                    sun_celestial (Celestial, optional): Sun celestial object. Defaults to None.
 
                 Returns:
                     Earth: Earth atmospheric model.

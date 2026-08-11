@@ -238,6 +238,32 @@ Earth::Earth(
 {
 }
 
+Earth::Earth(
+    const Earth::Type& aType,
+    const Shared<const Frame>& anEarthFrameSPtr,
+    const Earth::InputDataType& anInputDataType,
+    const Real& aF107ConstantValue,
+    const Real& aF107AConstantValue,
+    const Real& aKpConstantValue,
+    const Length& anEarthRadius,
+    const Real& anEarthFlattening,
+    const Shared<Celestial>& aSunCelestialSPtr
+)
+    : Model(),
+      implUPtr_(Earth::ImplFromType(
+          aType,
+          anInputDataType,
+          aF107ConstantValue,
+          aF107AConstantValue,
+          aKpConstantValue,
+          anEarthFrameSPtr,
+          anEarthRadius,
+          anEarthFlattening,
+          aSunCelestialSPtr
+      ))
+{
+}
+
 Earth::Earth(const Earth& anEarthAtmosphericModel)
     : Model(anEarthAtmosphericModel),
       implUPtr_((anEarthAtmosphericModel.implUPtr_ != nullptr) ? anEarthAtmosphericModel.implUPtr_->clone() : nullptr)

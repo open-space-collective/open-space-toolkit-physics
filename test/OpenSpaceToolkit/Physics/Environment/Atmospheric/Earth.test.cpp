@@ -116,6 +116,184 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_EarthFrame)
+{
+    {
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential, Frame::ITRF())
+        );
+    }
+
+    {
+        EXPECT_NO_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00, Frame::TEME())
+        );
+    }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
+            EarthAtmosphericModel::Type::NRLMSISE00,
+            Frame::ITRF(),
+            EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
+        ));
+    }
+
+    {
+        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
+            EarthAtmosphericModel::Type::NRLMSISE00,
+            Frame::ITRF(),
+            EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
+            150.0,
+            150.0,
+            3.0,
+            EarthGravitationalModel::EGM2008.equatorialRadius_,
+            EarthGravitationalModel::EGM2008.flattening_,
+            std::make_shared<Sun>(Sun::Default())
+        ));
+    }
+
+    {
+        EXPECT_THROW(
+            EarthAtmosphericModel earthAtmosphericModel(
+                EarthAtmosphericModel::Type::NRLMSISE00,
+                Frame::ITRF(),
+                EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
+                Real::Undefined(),
+                150.0,
+                3.0
+            ),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Undefined, Frame::ITRF()};
+
+        EXPECT_FALSE(earthAtmosphericModel.isDefined());
+    }
+
+    {
+        const EarthAtmosphericModel earthAtmosphericModel = {
+            EarthAtmosphericModel::Type::NRLMSISE00, Frame::ITRF(), EarthAtmosphericModel::InputDataType::Undefined
+        };
+
+        EXPECT_TRUE(earthAtmosphericModel.isDefined());
+        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
+        EXPECT_EQ(EarthAtmosphericModel::InputDataType::Undefined, earthAtmosphericModel.getInputDataType());
+    }
+
+    // The Earth frame defaults to CSSISpaceWeatherFile as input data type
+    {
+        const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::NRLMSISE00, Frame::ITRF()};
+
+        EXPECT_EQ(EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile, earthAtmosphericModel.getInputDataType());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_EarthFrame_Consistency)
+{
+    // The frame-first constructor must be equivalent to the fully-specified constructor
+    {
+        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant>>
+            testCases = {
+                {EarthAtmosphericModel::Type::Exponential,
+                 EarthAtmosphericModel::InputDataType::Undefined,
+                 LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(500.0)),
+                 Instant::J2000()},
+                {EarthAtmosphericModel::Type::NRLMSISE00,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
+                 LLA(Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Kilometers(500.0)),
+                 Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC)}
+            };
+
+        for (const auto& testCase : testCases)
+        {
+            const EarthAtmosphericModel::Type type = std::get<0>(testCase);
+            const EarthAtmosphericModel::InputDataType inputDataType = std::get<1>(testCase);
+            const LLA lla = std::get<2>(testCase);
+            const Instant instant = std::get<3>(testCase);
+
+            const Position position = {
+                lla.toCartesian(
+                    EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
+                ),
+                Position::Unit::Meter,
+                Frame::ITRF()
+            };
+
+            const EarthAtmosphericModel referenceModel = {
+                type,
+                inputDataType,
+                150.0,
+                150.0,
+                3.0,
+                Frame::TEME(),
+                EarthGravitationalModel::EGM2008.equatorialRadius_,
+                EarthGravitationalModel::EGM2008.flattening_
+            };
+
+            const EarthAtmosphericModel frameFirstModel = {
+                type,
+                Frame::TEME(),
+                inputDataType,
+                150.0,
+                150.0,
+                3.0,
+                EarthGravitationalModel::EGM2008.equatorialRadius_,
+                EarthGravitationalModel::EGM2008.flattening_
+            };
+
+            EXPECT_EQ(referenceModel.getType(), frameFirstModel.getType());
+            EXPECT_EQ(referenceModel.getInputDataType(), frameFirstModel.getInputDataType());
+            EXPECT_EQ(referenceModel.getDensityAt(position, instant), frameFirstModel.getDensityAt(position, instant));
+        }
+    }
+
+    // The Sun celestial body is forwarded by the frame-first constructor
+    {
+        const LLA lla = LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(350.0));
+        const Instant instant = Instant::DateTime(DateTime::Parse("2021-01-01 00:00:00"), Scale::UTC);
+
+        const Position position = {
+            lla.toCartesian(
+                EarthGravitationalModel::EGM2008.equatorialRadius_, EarthGravitationalModel::EGM2008.flattening_
+            ),
+            Position::Unit::Meter,
+            Frame::ITRF()
+        };
+
+        const EarthAtmosphericModel earthAtmosphericModelSun = {
+            EarthAtmosphericModel::Type::NRLMSISE00,
+            Frame::ITRF(),
+            EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
+            EarthGravitationalModel::EGM2008.equatorialRadius_,
+            EarthGravitationalModel::EGM2008.flattening_,
+            std::make_shared<Sun>(Sun::Default())
+        };
+
+        const EarthAtmosphericModel earthAtmosphericModelNoSun = {
+            EarthAtmosphericModel::Type::NRLMSISE00,
+            Frame::ITRF(),
+            EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
+            Real::Undefined(),
+            Real::Undefined(),
+            Real::Undefined(),
+            EarthGravitationalModel::EGM2008.equatorialRadius_,
+            EarthGravitationalModel::EGM2008.flattening_
+        };
+
+        const Real densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
+        const Real densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);
+
+        EXPECT_FALSE(densitySun.isNear(densityNoSun, 1e-15)) << String::Format(
+            "{} ≈ {} Δ {} [T]", densitySun.toString(), densityNoSun.toString(), (densitySun - densityNoSun)
+        );
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Clone)
 {
     {
