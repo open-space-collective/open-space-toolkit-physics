@@ -65,14 +65,14 @@ class Earth : public Model
     /// @endcode
     ///
     /// @param [in] aType An atmospheric model type
-    /// @param [in] anInputDataType An input data source type
-    /// @param [in] aF107ConstantValue A constant value for F10.7 input parameter
-    /// @param [in] aF107AConstantValue A constant value for F10.7a input parameter
-    /// @param [in] aKpConstantValue A constant value for Kp input parameter
-    /// @param [in] anEarthFrameSPtr A shared pointer to the Earth frame
-    /// @param [in] anEarthRadius An Earth radius
-    /// @param [in] anEarthFlattening An Earth flattening
-    /// @param [in] aSunCelestialSPtr A shared pointer to the Sun celestial body
+    /// @param [in] anInputDataType An input data source type. Defaults to CSSISpaceWeatherFile
+    /// @param [in] aF107ConstantValue A constant value for F10.7 input parameter. Defaults to 150.0
+    /// @param [in] aF107AConstantValue A constant value for F10.7a input parameter. Defaults to 150.0
+    /// @param [in] aKpConstantValue A constant value for Kp input parameter. Defaults to 3.0
+    /// @param [in] anEarthFrameSPtr A shared pointer to the Earth frame. Defaults to Frame::ITRF()
+    /// @param [in] anEarthRadius An Earth radius. Defaults to WGS84 radius
+    /// @param [in] anEarthFlattening An Earth flattening. Defaults to WGS84 flattening
+    /// @param [in] aSunCelestialSPtr A shared pointer to the Sun celestial body. Defaults to nullptr
     Earth(
         const Earth::Type& aType,
         const Earth::InputDataType& anInputDataType = Earth::InputDataType::CSSISpaceWeatherFile,
@@ -80,6 +80,36 @@ class Earth : public Model
         const Real& aF107AConstantValue = defaultF107AConstantValue,
         const Real& aKpConstantValue = defaultKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
+        const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
+        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        const Shared<Celestial>& aSunCelestialSPtr = nullptr
+    );
+
+    /// @brief Constructor, with the Earth frame as second argument
+    ///
+    /// This overload allows specifying the Earth frame without having to spell out the
+    /// input data type and the constant flux and geomagnetic index values.
+    ///
+    /// @code
+    ///     Earth earthAtmo(Earth::Type::Exponential, Frame::ITRF());
+    /// @endcode
+    ///
+    /// @param [in] aType An atmospheric model type
+    /// @param [in] anEarthFrameSPtr A shared pointer to the Earth frame
+    /// @param [in] anInputDataType An input data source type. Defaults to CSSISpaceWeatherFile
+    /// @param [in] aF107ConstantValue A constant value for F10.7 input parameter. Defaults to 150.0
+    /// @param [in] aF107AConstantValue A constant value for F10.7a input parameter. Defaults to 150.0
+    /// @param [in] aKpConstantValue A constant value for Kp input parameter. Defaults to 3.0
+    /// @param [in] anEarthRadius An Earth radius. Defaults to WGS84 radius
+    /// @param [in] anEarthFlattening An Earth flattening. Defaults to WGS84 flattening
+    /// @param [in] aSunCelestialSPtr A shared pointer to the Sun celestial body. Defaults to nullptr
+    Earth(
+        const Earth::Type& aType,
+        const Shared<const Frame>& anEarthFrameSPtr,
+        const Earth::InputDataType& anInputDataType = Earth::InputDataType::CSSISpaceWeatherFile,
+        const Real& aF107ConstantValue = defaultF107ConstantValue,
+        const Real& aF107AConstantValue = defaultF107AConstantValue,
+        const Real& aKpConstantValue = defaultKpConstantValue,
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
         const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr

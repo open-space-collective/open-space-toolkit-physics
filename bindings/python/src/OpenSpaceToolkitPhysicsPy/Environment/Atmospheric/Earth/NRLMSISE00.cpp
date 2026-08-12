@@ -70,14 +70,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
                 Constructor.
 
                 Args:
-                    input_data_type (NRLMSISE00.InputDataType): Input data source type.
-                    f107_constant_value (float): F10.7 constant value.
-                    f107_average_constant_value (float): F10.7a constant value.
-                    kp_constant_value (float): Kp constant value.
-                    earth_frame (Frame): Earth frame.
-                    earth_radius (Length): Earth radius [m].
-                    earth_flattening (float): Earth flattening.
-                    sun_celestial (Celestial): Sun celestial object. Defaults to None.
+                    input_data_type (NRLMSISE00.InputDataType, optional): Input data source type. Defaults to NRLMSISE00.InputDataType.CSSISpaceWeatherFile.
+                    f107_constant_value (float, optional): F10.7 constant value. Defaults to 150.0.
+                    f107_average_constant_value (float, optional): F10.7a constant value. Defaults to 150.0.
+                    kp_constant_value (float, optional): Kp constant value. Defaults to 3.0.
+                    earth_frame (Frame, optional): Earth frame. Defaults to Frame.ITRF().
+                    earth_radius (Length, optional): Earth radius [m]. Defaults to the WGS84 equatorial radius.
+                    earth_flattening (float, optional): Earth flattening. Defaults to the WGS84 flattening.
+                    sun_celestial (Celestial, optional): Sun celestial object. Defaults to None.
             )doc"
         )
 

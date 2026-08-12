@@ -113,6 +113,59 @@ class TestEarth:
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
 
+    def test_constructor_success_with_earth_frame(self):
+        earth_atmospheric_model = EarthAtmosphericModel(
+            EarthAtmosphericModel.Type.Exponential,
+            Frame.ITRF(),
+        )
+
+        assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
+
+    def test_constructor_success_with_earth_frame_and_params(self):
+        earth_atmospheric_model = EarthAtmosphericModel(
+            EarthAtmosphericModel.Type.NRLMSISE00,
+            Frame.TEME(),
+            input_data_type=EarthAtmosphericModel.InputDataType.ConstantFluxAndGeoMag,
+            f107_constant_value=160.0,
+            f107_average_constant_value=160.0,
+            kp_constant_value=4.0,
+            earth_radius=EarthGravitationalModel.WGS84.equatorial_radius,
+            earth_flattening=EarthGravitationalModel.WGS84.flattening,
+            sun_celestial=Sun.default(),
+        )
+
+        assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
+        assert earth_atmospheric_model.is_defined()
+        assert earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.NRLMSISE00
+        assert (
+            earth_atmospheric_model.get_input_data_type()
+            == EarthAtmosphericModel.InputDataType.ConstantFluxAndGeoMag
+        )
+
+    def test_constructor_success_with_earth_frame_get_density_at(
+        self,
+        manager_with_cssi_space_weather: Manager,
+    ):
+        earth_atmospheric_model = EarthAtmosphericModel(
+            EarthAtmosphericModel.Type.NRLMSISE00,
+            Frame.ITRF(),
+        )
+
+        density = earth_atmospheric_model.get_density_at(
+            position=Position.meters(
+                coordinates=LLA(
+                    Angle.degrees(30.0), Angle.degrees(40.0), Length.kilometers(500.0)
+                ).to_cartesian(
+                    ellipsoid_equatorial_radius=EarthGravitationalModel.EGM2008.equatorial_radius,
+                    ellipsoid_flattening=EarthGravitationalModel.EGM2008.flattening,
+                ),
+                frame=Frame.ITRF(),
+            ),
+            instant=Instant.date_time(DateTime.parse("2021-01-01 00:00:00"), Scale.UTC),
+        )
+
+        assert density is not None
+
     def test_get_type_success(
         self, earth_atmospheric_model_exponential: EarthAtmosphericModel
     ):
