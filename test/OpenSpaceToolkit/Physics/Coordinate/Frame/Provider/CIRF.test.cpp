@@ -75,6 +75,33 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
     EXPECT_LT(maxErrorS, toleranceRad) << "max s error: " << (maxErrorS / ARCSEC_IN_RAD) << " arcsec";
 }
 
+// Verifies that clearing the cached X, Y, s interpolation grid is transparent: the interpolated output for a given
+// instant is unchanged (the grid nodes are recomputed deterministically from the same series), and that clearing an
+// already-empty cache is a no-op.
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ClearXysCache)
+{
+    const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TT);
+    const Real tt = instant.getModifiedJulianDate(Scale::TT);
+
+    double xBefore, yBefore, sBefore;
+    CIRF::ComputeCIPCoordinates(tt, xBefore, yBefore, sBefore, true);
+
+    EXPECT_NO_THROW(CIRF::ClearXysCache());
+
+    double xAfter, yAfter, sAfter;
+    CIRF::ComputeCIPCoordinates(tt, xAfter, yAfter, sAfter, true);
+
+    EXPECT_DOUBLE_EQ(xBefore, xAfter);
+    EXPECT_DOUBLE_EQ(yBefore, yAfter);
+    EXPECT_DOUBLE_EQ(sBefore, sAfter);
+
+    // Clearing an empty cache, repeatedly, is harmless.
+
+    CIRF::ClearXysCache();
+
+    EXPECT_NO_THROW(CIRF::ClearXysCache());
+}
+
 // Verifies that the full GCRF -> ITRF transform is essentially unchanged (sub-millimeter at the Earth's surface)
 // whether or not X, Y, s interpolation is enabled. The GCRF -> CIRF portion is computed both ways via the real CIRF
 // provider (toggling the runtime flag); the interpolation-independent CIRF -> ITRF portion (Earth rotation + polar
