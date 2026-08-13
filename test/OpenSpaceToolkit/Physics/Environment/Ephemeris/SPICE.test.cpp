@@ -300,10 +300,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 {
     {
-        // Automatic mode fetches missing kernels into the local repository, so it must run against
-        // the default repository rather than the committed test kernels: pointing it at the latter
-        // makes the run overwrite files tracked in git.
-
         manager_.setMode(Manager::Mode::Automatic);
 
         engine_.reset();
