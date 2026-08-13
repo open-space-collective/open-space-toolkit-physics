@@ -104,6 +104,16 @@ class CIRF : public Provider
     ///
     /// @param [in] anInterpolationEnabledFlag True to enable interpolation, false to evaluate the series directly
     static void SetXysInterpolationEnabled(const bool anInterpolationEnabledFlag);
+
+    /// @brief Clear the cached X, Y, s interpolation grid.
+    ///
+    /// Releases the memory held by the grid nodes computed so far. Subsequent interpolated evaluations
+    /// re-populate the grid on demand, so this only affects memory usage and performance, not results.
+    ///
+    /// @code
+    ///     CIRF::ClearXysCache();
+    /// @endcode
+    static void ClearXysCache();
 };
 
 }  // namespace provider

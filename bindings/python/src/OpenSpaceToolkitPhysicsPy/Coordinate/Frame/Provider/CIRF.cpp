@@ -116,5 +116,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
             )doc"
         )
 
+        .def_static(
+            "clear_xys_cache",
+            &CIRF::ClearXysCache,
+            R"doc(
+                Clear the cached X, Y, s interpolation grid.
+
+                Releases the memory held by the grid nodes computed so far. Subsequent interpolated evaluations
+                re-populate the grid on demand, so this only affects memory usage and performance, not results.
+            )doc"
+        )
+
         ;
 }
