@@ -42,6 +42,25 @@ class TestCIRF:
         assert isinstance(y, float)
         assert isinstance(s, float)
 
+    def test_clear_xys_cache_success(self, instant: Instant):
+        modified_julian_date_tt: float = instant.get_modified_julian_date(Scale.TT)
+
+        CIRF.compute_cip_coordinates(
+            modified_julian_date_tt=modified_julian_date_tt,
+            interpolate=True,
+        )
+
+        assert CIRF.clear_xys_cache() is None
+
+        x, y, s = CIRF.compute_cip_coordinates(
+            modified_julian_date_tt=modified_julian_date_tt,
+            interpolate=True,
+        )
+
+        assert isinstance(x, float)
+        assert isinstance(y, float)
+        assert isinstance(s, float)
+
     def test_xys_interpolation_enabled_success(self):
         initial: bool = CIRF.is_xys_interpolation_enabled()
 

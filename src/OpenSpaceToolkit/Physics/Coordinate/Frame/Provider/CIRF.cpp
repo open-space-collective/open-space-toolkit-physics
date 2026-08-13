@@ -37,8 +37,12 @@ class XysGrid
    public:
     static void Evaluate(const double aModifiedJulianDate_TT, double& x, double& y, double& s)
     {
-        static XysGrid grid;
-        grid.evaluate(aModifiedJulianDate_TT, x, y, s);
+        XysGrid::Get().evaluate(aModifiedJulianDate_TT, x, y, s);
+    }
+
+    static void Clear()
+    {
+        XysGrid::Get().clear();
     }
 
    private:
@@ -99,6 +103,20 @@ class XysGrid
         iauXys06a(2400000.5, static_cast<double>(aNodeIndex) * gridSpacingDays_, &node.x, &node.y, &node.s);
 
         return this->nodes_.emplace(aNodeIndex, node).first->second;
+    }
+
+    void clear()
+    {
+        const std::lock_guard<std::mutex> lock {mutex_};
+
+        this->nodes_.clear();
+    }
+
+    static XysGrid& Get()
+    {
+        static XysGrid grid;
+
+        return grid;
     }
 };
 
@@ -230,6 +248,11 @@ bool CIRF::IsXysInterpolationEnabled()
 void CIRF::SetXysInterpolationEnabled(const bool anInterpolationEnabledFlag)
 {
     xysInterpolationEnabledFlag().store(anInterpolationEnabledFlag);
+}
+
+void CIRF::ClearXysCache()
+{
+    XysGrid::Clear();
 }
 
 }  // namespace provider
