@@ -37,8 +37,12 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
    protected:
     void SetUp() override
     {
+        // Never point the Manager at the committed test kernels: it is the directory kernels are
+        // fetched into, so any test that fetches would overwrite files tracked in git. Each test
+        // below narrows this to its own subdirectory.
+
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/"))
+            Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/"))
         );
 
         // cache current directory environment variables
