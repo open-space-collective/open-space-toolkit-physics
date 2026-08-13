@@ -562,3 +562,36 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetAtmosphericDensit
         }
     }
 }
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, ComputeAnalyticalPosition)
+{
+    {
+        const String name = "Some Planet";
+        const Celestial::Type type = Celestial::Type::Earth;
+        const Derived gravitationalParameter = {
+            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        };
+        const Real j2 = 0.0;
+        const Real j4 = 0.0;
+        const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
+        const Instant instant = Instant::J2000();
+
+        const Celestial celestial = {
+            name,
+            type,
+            gravitationalParameter,
+            EarthGravitationalModel::EGM2008.equatorialRadius_,
+            EarthGravitationalModel::EGM2008.flattening_,
+            j2,
+            j4,
+            ephemeris,
+            nullptr,
+            nullptr,
+            nullptr
+        };
+
+        // Only the celestial objects providing an analytical model (Sun and Moon) support this
+
+        EXPECT_ANY_THROW(celestial.computeAnalyticalPosition(instant));
+    }
+}
