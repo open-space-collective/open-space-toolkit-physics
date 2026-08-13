@@ -99,6 +99,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 
     {
+        // access observation 1 nanosecond before end of interval
+        // Regression test for #393
+        const Instant instantNearEnd =
+            CSSISpaceWeather_.accessObservationInterval().accessEnd() - Duration::Nanoseconds(1.0);
+
+        const CSSISpaceWeather::Reading& observation = CSSISpaceWeather_.accessObservationAt(instantNearEnd);
+
+        EXPECT_EQ(CSSISpaceWeather_.accessLastObservationDate(), observation.date);
+    }
+
+    {
         // calling Undefined Space Weather
         EXPECT_THROW(
             CSSISpaceWeather::Undefined().accessObservationAt(
@@ -169,6 +180,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_NEAR(164.6, firstDailyPrediction.F107Obs, 1e-15);
         EXPECT_NEAR(160.2, firstDailyPrediction.F107ObsCenter81, 1e-15);
+    }
+
+    {
+        // access daily prediction 1 nanosecond before end of interval
+        // Regression test for #393
+        const Instant instantNearEnd =
+            CSSISpaceWeather_.accessDailyPredictionInterval().accessEnd() - Duration::Nanoseconds(1.0);
+
+        const CSSISpaceWeather::Reading& prediction = CSSISpaceWeather_.accessDailyPredictionAt(instantNearEnd);
+
+        EXPECT_EQ(Date::Parse("2023-08-03", Date::Format::Standard), prediction.date);
     }
 
     {

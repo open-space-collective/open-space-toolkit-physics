@@ -251,9 +251,13 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
+    // Construct the MJD by only using the date component of the Instant, because an Instant just before
+    // the end of the observationInterval (within some nanoseconds) can have an MJD in the next day
+    // due to floating-point rounding error.
+    const Date date = anInstant.getDateTime(Scale::UTC).getDate();
+    const Integer mjd = DateTime(date, Time::Midnight()).getModifiedJulianDate().floor();
 
-    const auto observationIt = observations_.find(instantMjd.floor());
+    const auto observationIt = observations_.find(mjd);
 
     if (observationIt != observations_.end())
     {
@@ -295,9 +299,13 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessDailyPredictionAt(const
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
+    // Construct the MJD by only using the date component of the Instant, because an Instant just before
+    // the end of the dailyPredictionInterval (within some nanoseconds) can have an MJD in the next day
+    // due to floating-point rounding error.
+    const Date date = anInstant.getDateTime(Scale::UTC).getDate();
+    const Integer mjd = DateTime(date, Time::Midnight()).getModifiedJulianDate().floor();
 
-    const auto predictionIt = dailyPredictions_.find(instantMjd.floor());
+    const auto predictionIt = dailyPredictions_.find(mjd);
 
     if (predictionIt != dailyPredictions_.end())
     {
