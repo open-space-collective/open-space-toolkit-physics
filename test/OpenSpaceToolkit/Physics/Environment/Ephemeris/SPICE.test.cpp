@@ -59,11 +59,30 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE : public ::testing::T
     {
     }
 
+    void SetUp() override
+    {
+        // The Manager is a process-wide singleton, so whatever this suite leaves configured is
+        // inherited by every suite that runs after it. Remember the incoming configuration here
+        // and put it back in TearDown, so nothing leaks out of this suite.
+
+        localRepository_ = manager_.getLocalRepository();
+        mode_ = manager_.getMode();
+    }
+
     void TearDown() override
     {
+        // Restore the repository before resetting the Engine: reset() reloads the default kernels
+        // against whatever repository is configured at that moment, and in Automatic mode a
+        // missing kernel is fetched into it.
+
+        manager_.setLocalRepository(localRepository_);
+        manager_.setMode(mode_);
+
         engine_.reset();
-        manager_.setMode(Manager::Mode::Automatic);
     }
+
+    Directory localRepository_ = Directory::Undefined();
+    Manager::Mode mode_ = Manager::Mode::Automatic;
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
@@ -281,9 +300,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 {
     {
-        Manager::Get().setLocalRepository(
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"))
-        );
+        manager_.setMode(Manager::Mode::Automatic);
 
         engine_.reset();
 
