@@ -6,6 +6,7 @@
 #include <mutex>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Index.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
@@ -35,6 +36,7 @@ namespace iers
 {
 
 using ostk::core::container::Array;
+using ostk::core::container::Pair;
 using ostk::core::filesystem::Directory;
 using ostk::core::type::Index;
 using ostk::core::type::Real;
@@ -125,6 +127,21 @@ class Manager : public BaseManager
     /// @param [in] anInstant An instant
     /// @return [ms] Length of day
     Real getLodAt(const Instant& anInstant) const;
+
+    /// @brief Get UT1 - UTC and length of day at instant, in a single lookup
+    ///
+    /// Equivalent to calling `getUt1MinusUtcAt` and `getLodAt` separately, but acquires the internal
+    /// lock only once and, when falling back to Finals 2000A, performs the underlying data range
+    /// lookup only once for both quantities. Bulletin A does not provide LOD, so LOD is always sourced
+    /// from Finals 2000A regardless of whether UT1 - UTC came from Bulletin A or Finals 2000A.
+    ///
+    /// @code
+    ///     Pair<Real, Real> ut1MinusUtcAndLod = Manager::Get().getUt1MinusUtcAndLodAt(anInstant);
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return Pair of {[sec] UT1 - UTC, [ms] Length of day}
+    Pair<Real, Real> getUt1MinusUtcAndLodAt(const Instant& anInstant) const;
 
     /// @brief Load Bulletin A
     ///
