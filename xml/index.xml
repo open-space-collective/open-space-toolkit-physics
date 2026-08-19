@@ -490,6 +490,7 @@
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a63de2da48803d7dbe898f29f35102c74" kind="variable"><name>defaultKpConstantValue</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a19097a679c36ebf7b686914208919f63" kind="variable"><name>implUPtr_</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a584895c7de09b1e49bfb3c546e7ebaff" kind="function"><name>Earth</name></member>
+    <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a71d1caddf6c5652199f63b1b5c614bc0" kind="function"><name>Earth</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1af7b73cdb654df9a3809240225e0387cb" kind="function"><name>Earth</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a2b00fa92a4d1765307a5bf159581719f" kind="function"><name>operator=</name></member>
     <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a7af6281b3a6f34daf930dd14811f1b8e" kind="function"><name>~Earth</name></member>
@@ -1844,6 +1845,8 @@
     <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a175b53534c1c6038dda85be4ffb5b323" kind="function"><name>MetersPerSecond</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" kind="function"><name>StringFromUnit</name></member>
     <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a227acaa975d6292b80076c028abc7732" kind="function"><name>DerivedUnitFromVelocityUnit</name></member>
+  </compound>
+  <compound refid="namespace_0d147" kind="namespace"><name>@147</name>
   </compound>
   <compound refid="namespace_n_r_l_m_s_i_s_e00__c" kind="namespace"><name>NRLMSISE00_c</name>
   </compound>
