@@ -38,7 +38,7 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager : public ::te
     void SetUp() override
     {
         manager_.setLocalRepository(
-            Directory::Path(Path::Parse("test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/"))
+            Directory::Path(Path::Parse("/app/.open-space-toolkit/physics/environment/ephemeris/spice/"))
         );
 
         // cache current directory environment variables
