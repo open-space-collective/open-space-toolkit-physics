@@ -57,6 +57,17 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind
                 Returns:
                     bool: True if the Spherical gravitational model is defined.
             )doc"
+        )
+
+        .def(
+            "is_point_mass",
+            &Spherical::isPointMass,
+            R"doc(
+                Check if the gravitational model is a point mass model.
+
+                Returns:
+                    bool: True if the gravitational model is a point mass model.
+            )doc"
         );
 
     ;

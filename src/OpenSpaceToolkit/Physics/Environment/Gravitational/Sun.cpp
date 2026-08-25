@@ -124,6 +124,11 @@ bool Sun::isDefined() const
     return implUPtr_ != nullptr;
 }
 
+bool Sun::isPointMass() const
+{
+    return this->isDefined() && (this->getType() == Sun::Type::Spherical);
+}
+
 Sun::Type Sun::getType() const
 {
     return implUPtr_->getType();

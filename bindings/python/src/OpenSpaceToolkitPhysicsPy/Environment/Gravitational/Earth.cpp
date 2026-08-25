@@ -100,6 +100,17 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             )
 
             .def(
+                "is_point_mass",
+                &Earth::isPointMass,
+                R"doc(
+                    Check if the gravitational model is a point mass model.
+
+                    Returns:
+                        bool: True if the gravitational model is a point mass model.
+                )doc"
+            )
+
+            .def(
                 "get_type",
                 &Earth::getType,
                 R"doc(
