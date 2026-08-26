@@ -196,6 +196,46 @@ Real Finals2000A::getLodAt(const Instant& anInstant) const
     throw ostk::core::error::RuntimeError("Cannot get length of day at [{}].", anInstant.toString(Scale::UTC));
 }
 
+Pair<Real, Real> Finals2000A::getUt1MinusUtcAndLodAt(const Instant& anInstant) const
+{
+    using ostk::physics::time::Scale;
+
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Finals 2000A");
+    }
+
+    const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
+
+    if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
+    {
+        const Finals2000A::Data& previousData = *(dataRange.first);
+        const Finals2000A::Data& nextData = *(dataRange.second);
+
+        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+
+        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
+
+        const Real ut1MinusUtc_A =
+            (previousData.ut1MinusUtc_A.isDefined() && nextData.ut1MinusUtc_A.isDefined())
+                ? previousData.ut1MinusUtc_A + ratio * (nextData.ut1MinusUtc_A - previousData.ut1MinusUtc_A)
+                : Real::Undefined();
+
+        const Real lod_A = (previousData.lod_A.isDefined() && nextData.lod_A.isDefined())
+                             ? previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A)
+                             : Real::Undefined();
+
+        return {ut1MinusUtc_A, lod_A};
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot get UT1 - UTC and LOD at [{}].", anInstant.toString(Scale::UTC));
+}
+
 Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;

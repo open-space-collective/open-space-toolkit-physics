@@ -375,6 +375,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAndLodAt)
+{
+    using ostk::core::container::Pair;
+    using ostk::core::type::Real;
+
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // Instant resolved via Finals 2000A (well before Bulletin A's loaded observation/prediction coverage):
+    // the combined lookup must return values bit-identical to the two separate calls.
+    {
+        const Instant instant = Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC);
+
+        const Real referenceUt1MinusUtc = manager_.getUt1MinusUtcAt(instant);
+        const Real referenceLod = manager_.getLodAt(instant);
+
+        const Pair<Real, Real> ut1MinusUtcAndLod = manager_.getUt1MinusUtcAndLodAt(instant);
+
+        EXPECT_EQ(referenceUt1MinusUtc, ut1MinusUtcAndLod.first);
+        EXPECT_EQ(referenceLod, ut1MinusUtcAndLod.second);
+    }
+
+    // Instant resolved via Bulletin A for UT1 - UTC: LOD is still sourced from Finals 2000A (Bulletin A does
+    // not provide LOD), so the combined lookup must still match the two separate calls exactly.
+    {
+        const Instant instant = Instant::DateTime(DateTime(2018, 10, 10, 0, 0, 0), Scale::UTC);
+
+        const Real referenceUt1MinusUtc = manager_.getUt1MinusUtcAt(instant);
+        const Real referenceLod = manager_.getLodAt(instant);
+
+        const Pair<Real, Real> ut1MinusUtcAndLod = manager_.getUt1MinusUtcAndLodAt(instant);
+
+        EXPECT_EQ(referenceUt1MinusUtc, ut1MinusUtcAndLod.first);
+        EXPECT_EQ(referenceLod, ut1MinusUtcAndLod.second);
+    }
+}
+
 // TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetLodAt)
 // {
 
