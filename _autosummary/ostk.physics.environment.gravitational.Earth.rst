@@ -22,6 +22,7 @@ ostk.physics.environment.gravitational.Earth
       ~Earth.get_parameters
       ~Earth.get_type
       ~Earth.is_defined
+      ~Earth.is_point_mass
    
    
 

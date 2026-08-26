@@ -20,6 +20,7 @@ ostk.physics.environment.gravitational.Moon
       ~Moon.get_parameters
       ~Moon.get_type
       ~Moon.is_defined
+      ~Moon.is_point_mass
    
    
 

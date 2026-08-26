@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="70" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="70" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="79" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -90,6 +90,26 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="56" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="37" bodyend="40"/>
       </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a23e3665b0938df25922c860354bfb0bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool ostk::physics::environment::gravitational::Spherical::isPointMass</definition>
+        <argsstring>() const override</argsstring>
+        <name>isPointMass</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1abffbe823d0a3f7a7318f6c3be9049a23">isPointMass</reimplements>
+        <briefdescription>
+<para>Returns true if the gravitational model is a point mass model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">bool<sp/>isPointMass<sp/>=<sp/>model.isPointMass();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>true if the gravitational model is a point mass </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="65" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="42" bodyend="45"/>
+      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a37243cf671418b0cb9eff229101b5e96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
         <definition>Vector3d ostk::physics::environment::gravitational::Spherical::getFieldValueAt</definition>
@@ -133,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="67" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="42" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="76" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp" bodystart="47" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -165,13 +185,14 @@
         <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="29" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="28" bodyend="71"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" line="29" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp" bodystart="28" bodyend="80"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1ac9f63de9656589a27a77e7a8d48836bd" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a37243cf671418b0cb9eff229101b5e96" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>getFieldValueAt</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a8427bc33c74fec9fb5f2e8e8d90951ae" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>getParameters</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1ad525862c50a182f07163bca24c49f9a3" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>gravitationalParameter_SI_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a2cae24e92b19dbba581cfd53c80996a2" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a23e3665b0938df25922c860354bfb0bb" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>isPointMass</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a9d98958336517d512355d7d02b03a731" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>Model</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1ac4966bd9e4352cdadf75aae6cd1c9721" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>Spherical</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1ab44f53d6e046fb5d436b90128aff0850" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Spherical</scope><name>~Model</name></member>

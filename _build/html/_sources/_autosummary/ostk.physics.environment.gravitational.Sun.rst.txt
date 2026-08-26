@@ -20,6 +20,7 @@ ostk.physics.environment.gravitational.Sun
       ~Sun.get_parameters
       ~Sun.get_type
       ~Sun.is_defined
+      ~Sun.is_point_mass
    
    
 

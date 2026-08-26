@@ -17,6 +17,7 @@ ostk.physics.environment.gravitational.Model
       :nosignatures:
    
       ~Model.get_parameters
+      ~Model.is_point_mass
    
    
 
