@@ -172,6 +172,15 @@ class Model
     /// @return True if the gravitational model is defined
     virtual bool isDefined() const = 0;
 
+    /// @brief Returns true if the gravitational model is a point mass model
+    ///
+    /// @code
+    ///     bool isPointMass = model.isPointMass();
+    /// @endcode
+    ///
+    /// @return true if the gravitational model is a point mass
+    virtual bool isPointMass() const;
+
     /// @brief Get the gravitational field value at a given position and instant (pure virtual)
     ///
     /// @param [in] aPosition A position, expressed in the gravitational object frame [m]

@@ -184,6 +184,24 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsPointMass)
+{
+    {
+        EarthGravitationalModelManager::Get().setLocalRepository(
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
+        );
+
+        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isPointMass());
+
+        EXPECT_TRUE(EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).isPointMass());
+
+        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::WGS84).isPointMass());
+        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).isPointMass());
+
+        EarthGravitationalModelManager::Get().reset();
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ParametersFromType)
 {
     const Array<Tuple<EarthGravitationalModel::Type, EarthGravitationalModel::Parameters>> testCases = {

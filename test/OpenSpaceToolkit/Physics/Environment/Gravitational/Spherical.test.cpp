@@ -48,6 +48,20 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Clone)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, IsPointMass)
+{
+    {
+        const Derived gravitationalParameter = {
+            1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        };
+
+        const Model::Parameters parameterSet(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
+        const Spherical spherical = {parameterSet};
+
+        EXPECT_TRUE(spherical.isPointMass());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, GetFieldValueAt)
 {
     {

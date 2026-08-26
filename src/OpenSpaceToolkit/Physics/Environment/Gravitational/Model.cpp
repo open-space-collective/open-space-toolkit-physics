@@ -157,12 +157,17 @@ Model::Model(const Parameters& aSetOfParameters)
 {
 }
 
+Model::~Model() {}
+
+bool Model::isPointMass() const
+{
+    return false;
+}
+
 Model::Parameters Model::getParameters() const
 {
     return parameters_;
 }
-
-Model::~Model() {}
 
 }  // namespace gravitational
 }  // namespace environment

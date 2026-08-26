@@ -129,6 +129,15 @@ class Earth : public Model
     /// @return True if the Earth gravitational model is defined
     virtual bool isDefined() const override;
 
+    /// @brief Returns true if the gravitational model is a point mass model
+    ///
+    /// @code
+    ///     bool isPointMass = earthGrav.isPointMass();
+    /// @endcode
+    ///
+    /// @return true if the gravitational model is a point mass
+    virtual bool isPointMass() const override;
+
     /// @brief Get gravitational model type
     ///
     /// @code

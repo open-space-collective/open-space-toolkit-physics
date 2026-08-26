@@ -39,6 +39,11 @@ bool Spherical::isDefined() const
     return gravitationalParameter_SI_.isDefined();
 }
 
+bool Spherical::isPointMass() const
+{
+    return true;
+}
+
 Vector3d Spherical::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     (void)anInstant;  // Temporal invariance

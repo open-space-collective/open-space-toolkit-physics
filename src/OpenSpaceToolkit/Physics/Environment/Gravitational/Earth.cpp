@@ -471,6 +471,11 @@ bool Earth::isDefined() const
     return implUPtr_ != nullptr;
 }
 
+bool Earth::isPointMass() const
+{
+    return this->isDefined() && (this->getType() == Earth::Type::Spherical);
+}
+
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();

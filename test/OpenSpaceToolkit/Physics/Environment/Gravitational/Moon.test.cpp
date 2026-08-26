@@ -43,6 +43,15 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsDefined)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsPointMass)
+{
+    {
+        EXPECT_FALSE(MoonGravitationalModel(MoonGravitationalModel::Type::Undefined).isPointMass());
+
+        EXPECT_TRUE(MoonGravitationalModel(MoonGravitationalModel::Type::Spherical).isPointMass());
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetType)
 {
     {

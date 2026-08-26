@@ -124,6 +124,11 @@ bool Moon::isDefined() const
     return implUPtr_ != nullptr;
 }
 
+bool Moon::isPointMass() const
+{
+    return this->isDefined() && (this->getType() == Moon::Type::Spherical);
+}
+
 Moon::Type Moon::getType() const
 {
     return implUPtr_->getType();

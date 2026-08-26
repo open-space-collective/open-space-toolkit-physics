@@ -63,6 +63,25 @@ class TestEarth:
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
         assert isinstance(earth_gravitational_model, GravitationalModel)
 
+    def test_is_point_mass_success(
+        self, earth_gravitational_model: EarthGravitationalModel
+    ):
+        assert earth_gravitational_model.is_point_mass() is False
+
+        assert (
+            EarthGravitationalModel(
+                EarthGravitationalModel.Type.Spherical
+            ).is_point_mass()
+            is True
+        )
+
+        assert (
+            EarthGravitationalModel(
+                EarthGravitationalModel.Type.Undefined
+            ).is_point_mass()
+            is False
+        )
+
     def test_get_type_success(self, earth_gravitational_model: EarthGravitationalModel):
         assert (
             earth_gravitational_model.get_type() == EarthGravitationalModel.Type.EGM2008

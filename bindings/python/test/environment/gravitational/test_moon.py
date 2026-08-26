@@ -35,6 +35,16 @@ class TestMoon:
         assert isinstance(moon_gravitational_model, MoonGravitationalModel)
         assert isinstance(moon_gravitational_model, GravitationalModel)
 
+    def test_is_point_mass_success(
+        self, moon_gravitational_model: MoonGravitationalModel
+    ):
+        assert moon_gravitational_model.is_point_mass() is True
+
+        assert (
+            MoonGravitationalModel(MoonGravitationalModel.Type.Undefined).is_point_mass()
+            is False
+        )
+
     def test_get_type_success(self, moon_gravitational_model: MoonGravitationalModel):
         assert (
             moon_gravitational_model.get_type() == MoonGravitationalModel.Type.Spherical

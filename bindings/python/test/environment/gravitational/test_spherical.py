@@ -19,6 +19,13 @@ class TestSpherical:
         assert isinstance(spherical_gravitational_model, SphericalGravitationalModel)
         assert isinstance(spherical_gravitational_model, GravitationalModel)
 
+    def test_is_point_mass_success(self):
+        spherical_gravitational_model = SphericalGravitationalModel(
+            EarthGravitationalModel.spherical
+        )
+
+        assert spherical_gravitational_model.is_point_mass() is True
+
     def test_get_field_value_at_success(self):
         spherical_gravitational_model = SphericalGravitationalModel(
             EarthGravitationalModel.spherical

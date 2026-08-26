@@ -24,6 +24,17 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
 
             .def("get_parameters", &Model::getParameters)
 
+            .def(
+                "is_point_mass",
+                &Model::isPointMass,
+                R"doc(
+                    Check if the gravitational model is a point mass model.
+
+                    Returns:
+                        bool: True if the gravitational model is a point mass model.
+                )doc"
+            )
+
             ;
     }
 

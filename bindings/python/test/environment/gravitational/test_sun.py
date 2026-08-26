@@ -35,6 +35,14 @@ class TestSun:
         assert isinstance(sun_gravitational_model, SunGravitationalModel)
         assert isinstance(sun_gravitational_model, GravitationalModel)
 
+    def test_is_point_mass_success(self, sun_gravitational_model: SunGravitationalModel):
+        assert sun_gravitational_model.is_point_mass() is True
+
+        assert (
+            SunGravitationalModel(SunGravitationalModel.Type.Undefined).is_point_mass()
+            is False
+        )
+
     def test_get_type_success(self, sun_gravitational_model: SunGravitationalModel):
         assert sun_gravitational_model.get_type() == SunGravitationalModel.Type.Spherical
 
