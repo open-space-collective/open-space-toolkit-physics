@@ -149,6 +149,16 @@ Vector3d Position::getCoordinates() const
     return coordinates_;
 }
 
+Length Position::getDistance() const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Position");
+    }
+
+    return {coordinates_.norm(), unit_};
+}
+
 Position::Unit Position::getUnit() const
 {
     if (!this->isDefined())
