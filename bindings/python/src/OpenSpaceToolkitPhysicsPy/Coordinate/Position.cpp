@@ -116,10 +116,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             "get_norm",
             &Position::getNorm,
             R"doc(
-                Get the Position norm.
+                Get the distance to the Position Frame origin.
 
                 Returns:
-                    Length: Position norm in the Position unit.
+                    Length: Distance to the Position Frame origin.
             )doc"
         )
         .def(
