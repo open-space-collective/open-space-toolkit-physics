@@ -166,14 +166,14 @@ class Position
     /// @return Coordinates
     Vector3d getCoordinates() const;
 
-    /// @brief Get distance from the frame origin
+    /// @brief Get position norm
     ///
     /// @code
-    ///     position.getDistance();
+    ///     position.getNorm();
     /// @endcode
     ///
-    /// @return Distance from the frame origin in the position unit
-    Length getDistance() const;
+    /// @return Position norm in the position unit
+    Length getNorm() const;
 
     /// @brief Get unit
     ///

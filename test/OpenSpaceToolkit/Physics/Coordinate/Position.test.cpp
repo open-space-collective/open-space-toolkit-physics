@@ -156,28 +156,28 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetCoordinates)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetDistance)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetNorm)
 {
     {
         const Position position = {{3.0, -4.0, 12.0}, Position::Unit::Meter, Frame::GCRF()};
 
-        EXPECT_EQ(Length::Meters(13.0), position.getDistance());
+        EXPECT_EQ(Length::Meters(13.0), position.getNorm());
     }
 
     {
         const Position position = {{3.0, -4.0, 12.0}, Position::Unit::Foot, Frame::GCRF()};
 
-        EXPECT_EQ(Length(13.0, Length::Unit::Foot), position.getDistance());
+        EXPECT_EQ(Length(13.0, Length::Unit::Foot), position.getNorm());
     }
 
     {
         const Position position = {{0.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()};
 
-        EXPECT_EQ(Length(0.0, Length::Unit::Meter), position.getDistance());
+        EXPECT_EQ(Length(0.0, Length::Unit::Meter), position.getNorm());
     }
 
     {
-        EXPECT_ANY_THROW(Position::Undefined().getDistance());
+        EXPECT_ANY_THROW(Position::Undefined().getNorm());
     }
 }
 

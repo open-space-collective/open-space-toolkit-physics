@@ -131,16 +131,16 @@ class TestPosition:
         assert isinstance(coordinates, np.ndarray)
         assert np.array_equal(coordinates, vector)
 
-    def test_get_distance(self, unit: Length.Unit, frame: Frame):
+    def test_get_norm(self, unit: Length.Unit, frame: Frame):
         position: Position = Position([3.0, -4.0, 12.0], unit, frame)
 
-        distance: Length = position.get_distance()
+        norm: Length = position.get_norm()
 
-        assert isinstance(distance, Length)
-        assert distance == Length.meters(13.0)
+        assert isinstance(norm, Length)
+        assert norm == Length.meters(13.0)
 
         with pytest.raises(RuntimeError):
-            Position.undefined().get_distance()
+            Position.undefined().get_norm()
 
     def test_get_unit(self, unit: Length.Unit, frame: Frame):
         vector = [1000.0, 0.0, 0.0]

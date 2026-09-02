@@ -149,7 +149,7 @@ Vector3d Position::getCoordinates() const
     return coordinates_;
 }
 
-Length Position::getDistance() const
+Length Position::getNorm() const
 {
     if (!this->isDefined())
     {
