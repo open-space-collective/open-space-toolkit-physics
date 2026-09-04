@@ -134,3 +134,21 @@ def test_date_set_day():
     date = Date(2018, 1, 1)
 
     date.set_day(2)
+
+
+def test_date_hash():
+    date_a = Date(2018, 1, 1)
+    date_b = Date(2018, 1, 1)
+    date_c = Date(2018, 1, 2)
+
+    assert hash(date_a) == hash(date_b)
+    assert hash(date_a) != hash(date_c)
+
+    # Test as dictionary key
+    d = {date_a: "value"}
+    assert d[date_b] == "value"
+    assert date_c not in d
+
+    # Test in set
+    s = {date_a, date_b, date_c}
+    assert len(s) == 2

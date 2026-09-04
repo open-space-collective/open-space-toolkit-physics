@@ -32,6 +32,13 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
                 return aDate.toString();
             }
         )
+        .def(
+            "__hash__",
+            +[](const Date& aDate) -> size_t
+            {
+                return std::hash<Date> {}(aDate);
+            }
+        )
 
         .def(
             "is_defined",

@@ -112,3 +112,20 @@ class TestTime:
 
     def test_seconds(self) -> None:
         assert Time.seconds(1238.0345) is not None
+
+    def test_hash(self) -> None:
+        time_a = Time(12, 34, 56)
+        time_b = Time(12, 34, 56)
+        time_c = Time(12, 34, 57)
+
+        assert hash(time_a) == hash(time_b)
+        assert hash(time_a) != hash(time_c)
+
+        # Test as dictionary key
+        d = {time_a: "value"}
+        assert d[time_b] == "value"
+        assert time_c not in d
+
+        # Test in set
+        s = {time_a, time_b, time_c}
+        assert len(s) == 2

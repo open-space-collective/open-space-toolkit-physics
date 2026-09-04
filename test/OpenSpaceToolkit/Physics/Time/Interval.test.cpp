@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <unordered_map>
+
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
 #include <Global.test.hpp>
@@ -1029,5 +1031,44 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, LogicalAnd)
         };
 
         EXPECT_EQ(expectedArray, Interval::LogicalAnd(array1, array2));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Interval, Hash)
+{
+    const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
+    const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT);
+
+    {
+        EXPECT_EQ(
+            std::hash<Interval> {}(Interval::Closed(startInstant, endInstant)),
+            std::hash<Interval> {}(Interval::Closed(startInstant, endInstant))
+        );
+    }
+
+    {
+        EXPECT_NE(
+            std::hash<Interval> {}(Interval::Closed(startInstant, endInstant)),
+            std::hash<Interval> {}(Interval::Closed(startInstant, endInstant + Duration::Seconds(1.0)))
+        );
+
+        // Intervals with identical bounds but different types must produce different hashes
+        EXPECT_NE(
+            std::hash<Interval> {}(Interval::Closed(startInstant, endInstant)),
+            std::hash<Interval> {}(Interval(startInstant, endInstant, Interval::Type::Open))
+        );
+    }
+
+    {
+        EXPECT_EQ(std::hash<Interval> {}(Interval::Undefined()), 0u);
+    }
+
+    {
+        std::unordered_map<Interval, int> map;
+
+        map[Interval::Closed(startInstant, endInstant)] = 42;
+
+        EXPECT_EQ(map.at(Interval::Closed(startInstant, endInstant)), 42);
+        EXPECT_EQ(map.count(Interval::Closed(startInstant, endInstant + Duration::Seconds(1.0))), 0u);
     }
 }

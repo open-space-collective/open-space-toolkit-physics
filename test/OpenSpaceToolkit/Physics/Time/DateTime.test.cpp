@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <unordered_map>
+
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
 #include <Global.test.hpp>
@@ -651,5 +653,39 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
         EXPECT_ANY_THROW(DateTime::Parse("10000-01-01T00:00:00"));
         EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456"));
         EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456.789"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_DateTime, Hash)
+{
+    {
+        EXPECT_EQ(
+            std::hash<DateTime> {}(DateTime(Date(2018, 1, 2), Time(12, 34, 56))),
+            std::hash<DateTime> {}(DateTime(Date(2018, 1, 2), Time(12, 34, 56)))
+        );
+    }
+
+    {
+        EXPECT_NE(
+            std::hash<DateTime> {}(DateTime(Date(2018, 1, 2), Time(12, 34, 56))),
+            std::hash<DateTime> {}(DateTime(Date(2018, 1, 3), Time(12, 34, 56)))
+        );
+        EXPECT_NE(
+            std::hash<DateTime> {}(DateTime(Date(2018, 1, 2), Time(12, 34, 56))),
+            std::hash<DateTime> {}(DateTime(Date(2018, 1, 2), Time(12, 34, 57)))
+        );
+    }
+
+    {
+        EXPECT_EQ(std::hash<DateTime> {}(DateTime::Undefined()), 0u);
+    }
+
+    {
+        std::unordered_map<DateTime, int> map;
+
+        map[DateTime(Date(2018, 1, 2), Time(12, 34, 56))] = 42;
+
+        EXPECT_EQ(map.at(DateTime(Date(2018, 1, 2), Time(12, 34, 56))), 42);
+        EXPECT_EQ(map.count(DateTime(Date(2018, 1, 2), Time(12, 34, 57))), 0u);
     }
 }

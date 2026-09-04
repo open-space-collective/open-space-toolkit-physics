@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <unordered_map>
+
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
 #include <Global.test.hpp>
@@ -461,5 +463,34 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Hours)
 {
     {
         EXPECT_EQ(Time(12, 30, 15, 234, 456, 678), Time::Hours(12.504231793521667));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Time, Hash)
+{
+    {
+        EXPECT_EQ(
+            std::hash<Time> {}(Time(12, 34, 56, 123, 456, 789)), std::hash<Time> {}(Time(12, 34, 56, 123, 456, 789))
+        );
+    }
+
+    {
+        EXPECT_NE(std::hash<Time> {}(Time(12, 34, 56)), std::hash<Time> {}(Time(12, 34, 57)));
+        EXPECT_NE(std::hash<Time> {}(Time(12, 34, 56)), std::hash<Time> {}(Time(12, 34, 56, 1)));
+        EXPECT_NE(std::hash<Time> {}(Time(12, 34, 56)), std::hash<Time> {}(Time(12, 34, 56, 0, 1)));
+        EXPECT_NE(std::hash<Time> {}(Time(12, 34, 56)), std::hash<Time> {}(Time(12, 34, 56, 0, 0, 1)));
+    }
+
+    {
+        EXPECT_EQ(std::hash<Time> {}(Time::Undefined()), 0u);
+    }
+
+    {
+        std::unordered_map<Time, int> map;
+
+        map[Time(12, 34, 56)] = 42;
+
+        EXPECT_EQ(map.at(Time(12, 34, 56)), 42);
+        EXPECT_EQ(map.count(Time(12, 34, 57)), 0u);
     }
 }

@@ -83,6 +83,13 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
                 return aTime.toString();
             }
         )
+        .def(
+            "__hash__",
+            +[](const Time& aTime) -> size_t
+            {
+                return std::hash<Time> {}(aTime);
+            }
+        )
 
         .def(
             "is_defined",

@@ -228,3 +228,20 @@ class TestDateTime:
         assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
 
         assert (datetime.datetime.now() + datetime.timedelta(days=1)) is not None
+
+    def test_hash_success(self):
+        date_time_a = DateTime(2018, 1, 1, 12, 34, 56)
+        date_time_b = DateTime(2018, 1, 1, 12, 34, 56)
+        date_time_c = DateTime(2018, 1, 1, 12, 34, 57)
+
+        assert hash(date_time_a) == hash(date_time_b)
+        assert hash(date_time_a) != hash(date_time_c)
+
+        # Test as dictionary key
+        d = {date_time_a: "value"}
+        assert d[date_time_b] == "value"
+        assert date_time_c not in d
+
+        # Test in set
+        s = {date_time_a, date_time_b, date_time_c}
+        assert len(s) == 2

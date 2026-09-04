@@ -3,6 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Date__
 #define __OpenSpaceToolkit_Physics_Time_Date__
 
+#include <functional>
+
+#include <boost/functional/hash.hpp>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -227,10 +231,35 @@ class Date
     Date();
 
     static void ValidateDate(Uint16 aYear, Uint8 aMonth, Uint8 aDay);
+
+    friend struct std::hash<Date>;
 };
 
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::Date>
+{
+    size_t operator()(const ostk::physics::time::Date& aDate) const
+    {
+        if (!aDate.defined_)
+        {
+            return 0;
+        }
+
+        size_t seed = 0;
+        boost::hash_combine(seed, aDate.year_);
+        boost::hash_combine(seed, aDate.month_);
+        boost::hash_combine(seed, aDate.day_);
+        return seed;
+    }
+};
+
+}  // namespace std
 
 #endif

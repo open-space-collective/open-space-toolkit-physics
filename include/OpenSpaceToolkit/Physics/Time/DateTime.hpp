@@ -3,6 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_DateTime__
 #define __OpenSpaceToolkit_Physics_Time_DateTime__
 
+#include <functional>
+
+#include <boost/functional/hash.hpp>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -289,10 +293,34 @@ class DateTime
     static Real ModifiedJulianDateFromJulianDate(const Real& aJulianDate);
 
     static Real JulianDateFromModifiedJulianDate(const Real& aModifiedJulianDate);
+
+    friend struct std::hash<DateTime>;
 };
 
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::DateTime>
+{
+    size_t operator()(const ostk::physics::time::DateTime& aDateTime) const
+    {
+        if (!aDateTime.isDefined())
+        {
+            return 0;
+        }
+
+        size_t seed = 0;
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Date> {}(aDateTime.date_));
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Time> {}(aDateTime.time_));
+        return seed;
+    }
+};
+
+}  // namespace std
 
 #endif

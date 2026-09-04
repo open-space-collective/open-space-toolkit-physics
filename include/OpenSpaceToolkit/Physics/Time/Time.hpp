@@ -3,6 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Time__
 #define __OpenSpaceToolkit_Physics_Time_Time__
 
+#include <functional>
+
+#include <boost/functional/hash.hpp>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -327,10 +331,38 @@ class Time
     static void ValidateMillisecond(Uint16 aMillisecond);
     static void ValidateMicrosecond(Uint16 aMicrosecond);
     static void ValidateNanosecond(Uint16 aNanosecond);
+
+    friend struct std::hash<Time>;
 };
 
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::Time>
+{
+    size_t operator()(const ostk::physics::time::Time& aTime) const
+    {
+        if (!aTime.defined_)
+        {
+            return 0;
+        }
+
+        size_t seed = 0;
+        boost::hash_combine(seed, aTime.hour_);
+        boost::hash_combine(seed, aTime.minute_);
+        boost::hash_combine(seed, aTime.second_);
+        boost::hash_combine(seed, aTime.millisecond_);
+        boost::hash_combine(seed, aTime.microsecond_);
+        boost::hash_combine(seed, aTime.nanosecond_);
+        return seed;
+    }
+};
+
+}  // namespace std
 
 #endif

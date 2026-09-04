@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <unordered_map>
+
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 
 #include <Global.test.hpp>
@@ -311,5 +313,31 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Parse)
         EXPECT_ANY_THROW(Date::Parse("-2000-01-01"));
         EXPECT_ANY_THROW(Date::Parse("-32769-01-01"));
         EXPECT_ANY_THROW(Date::Parse("32768-01-01"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Date, Hash)
+{
+    {
+        EXPECT_EQ(std::hash<Date> {}(Date(2018, 1, 2)), std::hash<Date> {}(Date(2018, 1, 2)));
+    }
+
+    {
+        EXPECT_NE(std::hash<Date> {}(Date(2018, 1, 2)), std::hash<Date> {}(Date(2018, 1, 3)));
+        EXPECT_NE(std::hash<Date> {}(Date(2018, 1, 2)), std::hash<Date> {}(Date(2018, 2, 2)));
+        EXPECT_NE(std::hash<Date> {}(Date(2018, 1, 2)), std::hash<Date> {}(Date(2019, 1, 2)));
+    }
+
+    {
+        EXPECT_EQ(std::hash<Date> {}(Date::Undefined()), 0u);
+    }
+
+    {
+        std::unordered_map<Date, int> map;
+
+        map[Date(2018, 1, 2)] = 42;
+
+        EXPECT_EQ(map.at(Date(2018, 1, 2)), 42);
+        EXPECT_EQ(map.count(Date(2018, 1, 3)), 0u);
     }
 }
