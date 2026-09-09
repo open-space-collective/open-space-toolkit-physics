@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -215,70 +215,70 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
 
     class_<BulletinA::Observation>(bulletinA, "Observation")
 
-        .def_readonly(
+        .def_ro(
             "year",
             &BulletinA::Observation::year,
             R"doc(
                 Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "month",
             &BulletinA::Observation::month,
             R"doc(
                 Month number.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "day",
             &BulletinA::Observation::day,
             R"doc(
                 Day of month.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "mjd",
             &BulletinA::Observation::mjd,
             R"doc(
                 Modified Julian Day.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x",
             &BulletinA::Observation::x,
             R"doc(
                 PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x_error",
             &BulletinA::Observation::xError,
             R"doc(
                 PM-x error [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y",
             &BulletinA::Observation::y,
             R"doc(
                 PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y_error",
             &BulletinA::Observation::yError,
             R"doc(
                 PM-y error [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc",
             &BulletinA::Observation::ut1MinusUtc,
             R"doc(
                 UT1-UTC [s].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc_error",
             &BulletinA::Observation::ut1MinusUtcError,
             R"doc(
@@ -290,49 +290,49 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
 
     class_<BulletinA::Prediction>(bulletinA, "Prediction")
 
-        .def_readonly(
+        .def_ro(
             "year",
             &BulletinA::Prediction::year,
             R"doc(
                 Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "month",
             &BulletinA::Prediction::month,
             R"doc(
                 Month number.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "day",
             &BulletinA::Prediction::day,
             R"doc(
                 Day of month.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "mjd",
             &BulletinA::Prediction::mjd,
             R"doc(
                 Modified Julian Day.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x",
             &BulletinA::Prediction::x,
             R"doc(
                 PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y",
             &BulletinA::Prediction::y,
             R"doc(
                 PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc",
             &BulletinA::Prediction::ut1MinusUtc,
             R"doc(

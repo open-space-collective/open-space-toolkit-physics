@@ -4,9 +4,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
     using ostk::physics::coordinate::Transform;
     using ostk::physics::time::Instant;
 
-    class_<Dynamic, Shared<Dynamic>, Provider>(
+    class_<Dynamic, Provider>(
         aModule,
         "Dynamic",
         R"doc(
@@ -27,11 +27,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
         // Custom Constructor for Dynamic
         .def(
             "__init__",
-            (+[](Dynamic& aDynamicFrameProvider, const pybind11::object& aGeneratorObject)
+            (+[](Dynamic& aDynamicFrameProvider, const nanobind::object& aGeneratorObject)
              {
                  const auto generatorProxy = [aGeneratorObject](const Instant& anInstant) -> Transform
                  {
-                     return pybind11::cast<Transform>(aGeneratorObject(anInstant));
+                     return nanobind::cast<Transform>(aGeneratorObject(anInstant));
                  };
 
                  // might need to add return type to the function (Shared<Dynamic>)

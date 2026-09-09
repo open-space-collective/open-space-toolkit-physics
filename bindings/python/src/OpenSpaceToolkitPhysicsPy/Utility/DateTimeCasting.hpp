@@ -2,98 +2,137 @@
 
 #include <datetime.h>
 
-#include <pybind11/pybind11.h>
+#include <nanobind/nanobind.h>
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
-// https://github.com/pybind/pybind11/issues/1176 (MAIN)
-// https://pybind11.readthedocs.io/en/stable/advanced/cast/custom.html
-// https://github.com/pybind/pybind11/blob/master/include/pybind11/chrono.h
+// https://nanobind.readthedocs.io/en/latest/porting.html
+// https://nanobind.readthedocs.io/en/latest/lowlevel.html
 // https://docs.python.org/3/c-api/datetime.html
-// https://en.cppreference.com/w/cpp/chrono/system_clock/to_time_t
-// https://github.com/pybind/pybind11/issues/2417
 
 using ostk::physics::time::DateTime;
 
-namespace pybind11
+namespace nanobind
 {
 namespace detail
 {
 
+/// @brief                      Accept a python datetime wherever a DateTime is expected, and return
+///                             DateTime as a python datetime.
+///
+///                             The base caster handles an actual bound DateTime; everything below it
+///                             is the datetime.datetime interoperability.
+
 template <>
-class type_caster<DateTime> : public type_caster_base<DateTime>
+struct type_caster<DateTime> : type_caster_base<DateTime>
 {
-    using type = DateTime;
-    using base = type_caster_base<DateTime>;
+    using Base = type_caster_base<DateTime>;
 
-   public:
-    // datetime.datetime (Python) -> DateTime (C++)
-    bool load(handle src, bool convert)
+    /// @brief                  Keeps a DateTime built from a python datetime alive for the call.
+
+    object convertedObject_;
+
+    bool from_python(handle aSource, uint8_t someFlags, cleanup_list* aCleanupList) noexcept
     {
-        // Lazy initialise the PyDateTime import
-        if (!PyDateTimeAPI)
+        if (!aSource.is_valid())
         {
-            PyDateTime_IMPORT;
-        }
-
-        if (!src)
             return false;
+        }
 
-        if (base::load(src, convert))
+        if (Base::from_python(aSource, someFlags, aCleanupList))
         {
             return true;
         }
-        else if (PyDateTime_Check(src.ptr()))
+
+        if (!importDateTimeApi())
         {
-            const int year = PyDateTime_GET_YEAR(src.ptr());
-            const int month = PyDateTime_GET_MONTH(src.ptr());
-            const int day = PyDateTime_GET_DAY(src.ptr());
-
-            const int hour = PyDateTime_DATE_GET_HOUR(src.ptr());
-            const int minute = PyDateTime_DATE_GET_MINUTE(src.ptr());
-            const int second = PyDateTime_DATE_GET_SECOND(src.ptr());
-
-            int microseconds = PyDateTime_DATE_GET_MICROSECOND(src.ptr());
-
-            const int millisecond = microseconds / 1000;
-            const int microsecond = microseconds - millisecond * 1000;
-
-            value = new DateTime(year, month, day, hour, minute, second, millisecond, microsecond);
-
-            return true;
+            return false;
         }
 
-        // Possibility to add conditions to convert datetime.date and datetime.time
+        if (!PyDateTime_Check(aSource.ptr()))
+        {
+            return false;
+        }
 
-        return false;
+        const int microseconds = PyDateTime_DATE_GET_MICROSECOND(aSource.ptr());
+        const int millisecond = microseconds / 1000;
+
+        const DateTime dateTime = {
+            PyDateTime_GET_YEAR(aSource.ptr()),
+            PyDateTime_GET_MONTH(aSource.ptr()),
+            PyDateTime_GET_DAY(aSource.ptr()),
+            PyDateTime_DATE_GET_HOUR(aSource.ptr()),
+            PyDateTime_DATE_GET_MINUTE(aSource.ptr()),
+            PyDateTime_DATE_GET_SECOND(aSource.ptr()),
+            millisecond,
+            microseconds - millisecond * 1000,
+        };
+
+        // Round-trip through a bound DateTime so the base caster owns the storage.
+
+        convertedObject_ = steal(Base::from_cpp(dateTime, rv_policy::copy, nullptr));
+
+        if (!convertedObject_.is_valid())
+        {
+            PyErr_Clear();
+
+            return false;
+        }
+
+        return Base::from_python(convertedObject_, someFlags, aCleanupList);
     }
 
-    // DateTime (C++) -> datetime.datetime (Python)
-    static handle cast(const DateTime& aDateTime, return_value_policy /* policy */, handle /* parent */)
+    // Declared here so that the base class template of the same name is hidden.
+
+    static handle from_cpp(const DateTime& aDateTime, rv_policy, cleanup_list*) noexcept
     {
-        // Lazy initialise the PyDateTime import
-        if (!PyDateTimeAPI)
+        if (!importDateTimeApi())
         {
-            PyDateTime_IMPORT;
+            return handle();
         }
 
         if (!aDateTime.isDefined())
         {
-            return pybind11::none();
+            return none().release();
         }
 
-        const int year = static_cast<int>(aDateTime.accessDate().getYear());
-        const int month = static_cast<int>(aDateTime.accessDate().getMonth());
-        const int day = static_cast<int>(aDateTime.accessDate().getDay());
-        const int hour = static_cast<int>(aDateTime.accessTime().getHour());
-        const int minute = static_cast<int>(aDateTime.accessTime().getMinute());
-        const int second = static_cast<int>(aDateTime.accessTime().getSecond());
         const int microseconds =
             (aDateTime.accessTime().getMillisecond() * 1000) + aDateTime.accessTime().getMicrosecond();
 
-        return PyDateTime_FromDateAndTime(year, month, day, hour, minute, second, microseconds);
+        return PyDateTime_FromDateAndTime(
+            static_cast<int>(aDateTime.accessDate().getYear()),
+            static_cast<int>(aDateTime.accessDate().getMonth()),
+            static_cast<int>(aDateTime.accessDate().getDay()),
+            static_cast<int>(aDateTime.accessTime().getHour()),
+            static_cast<int>(aDateTime.accessTime().getMinute()),
+            static_cast<int>(aDateTime.accessTime().getSecond()),
+            microseconds
+        );
+    }
+
+    static handle from_cpp(const DateTime* aDateTimePtr, rv_policy aPolicy, cleanup_list* aCleanupList) noexcept
+    {
+        return (aDateTimePtr != nullptr) ? from_cpp(*aDateTimePtr, aPolicy, aCleanupList) : none().release();
+    }
+
+   private:
+    static bool importDateTimeApi() noexcept
+    {
+        if (PyDateTimeAPI == nullptr)
+        {
+            PyDateTime_IMPORT;
+
+            if (PyDateTimeAPI == nullptr)
+            {
+                PyErr_Clear();
+
+                return false;
+            }
+        }
+
+        return true;
     }
 };
 
 }  // namespace detail
-}  // namespace pybind11
+}  // namespace nanobind

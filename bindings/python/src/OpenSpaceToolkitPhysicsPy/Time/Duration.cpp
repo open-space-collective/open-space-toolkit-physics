@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Duration(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -22,13 +22,13 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
     duration_class
 
+        // nanobind has no `init(factory)`; a placement-new `__init__` is the equivalent.
         .def(
-            init(
-                [](const std::chrono::microseconds& aCount)
-                {
-                    return new Duration(aCount.count() * 1000);
-                }
-            ),
+            "__init__",
+            [](Duration* aDurationPtr, const std::chrono::microseconds& aCount)
+            {
+                new (aDurationPtr) Duration(aCount.count() * 1000);
+            },
             R"doc(
                 Constructor.
                 Args:
@@ -46,24 +46,137 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self < self)
-        .def(self <= self)
-        .def(self > self)
-        .def(self >= self)
+        .def(
+            "__lt__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self < other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__le__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self <= other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__gt__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self > other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ge__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self >= other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self + self)
-        .def(self - self)
-        .def(self * double())
-        .def(self / double())
-        .def(double() * self)
+        .def(
+            "__add__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self + other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self - other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__mul__",
+            [](const Duration& self, const double& other)
+            {
+                return self * other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__truediv__",
+            [](const Duration& self, const double& other)
+            {
+                return self / other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__rmul__",
+            [](const Duration& self, const double& other)
+            {
+                return other * self;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self += self)
-        .def(self -= self)
-        .def(self *= double())
-        .def(self /= double())
+        .def(
+            "__iadd__",
+            [](Duration& self, const Duration& other) -> Duration&
+            {
+                self += other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Duration& self, const Duration& other) -> Duration&
+            {
+                self -= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__imul__",
+            [](Duration& self, const double& other) -> Duration&
+            {
+                self *= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__itruediv__",
+            [](Duration& self, const double& other) -> Duration&
+            {
+                self /= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<Duration>))
         .def(

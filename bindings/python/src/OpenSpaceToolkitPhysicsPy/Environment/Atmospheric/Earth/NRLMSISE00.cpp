@@ -4,9 +4,9 @@
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Real;
     using ostk::core::type::Shared;
@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
     using ostk::physics::environment::atmospheric::earth::NRLMSISE00;
 
-    class_<NRLMSISE00, Shared<NRLMSISE00>> nrlmsise(
+    class_<NRLMSISE00> nrlmsise(
         aModule,
         "NRLMSISE00",
         R"doc(
@@ -62,9 +62,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
             arg("f107_constant_value") = EarthAtmosphericModel::defaultF107ConstantValue,
             arg("f107_average_constant_value") = EarthAtmosphericModel::defaultF107AConstantValue,
             arg("kp_constant_value") = EarthAtmosphericModel::defaultKpConstantValue,
-            arg_v("earth_frame", Frame::ITRF(), "Frame.ITRF()"),
-            arg_v("earth_radius", EarthGravityModel::WGS84.equatorialRadius_, "WGS84.equatorialRadius_"),
-            arg_v("earth_flattening", EarthGravityModel::WGS84.flattening_, "WGS84.flattening_"),
+            arg("earth_frame").sig("Frame.ITRF()") = Frame::ITRF(),
+            arg("earth_radius").sig("WGS84.equatorialRadius_") = EarthGravityModel::WGS84.equatorialRadius_,
+            arg("earth_flattening").sig("WGS84.flattening_") = EarthGravityModel::WGS84.flattening_,
             arg("sun_celestial") = nullptr,
             R"doc(
                 Constructor.

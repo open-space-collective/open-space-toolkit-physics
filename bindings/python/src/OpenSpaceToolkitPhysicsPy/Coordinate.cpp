@@ -7,7 +7,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Transform.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Velocity.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate(nanobind::module_& aModule)
 {
     // Create "coordinate" python submodule
     auto coordinate = aModule.def_submodule("coordinate");

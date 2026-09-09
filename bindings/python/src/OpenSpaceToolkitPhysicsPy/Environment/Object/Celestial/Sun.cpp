@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Sun.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Sun(pybind11:
     using SunGravitationalModel = ostk::physics::environment::gravitational::Sun;
 
     {
-        class_<Sun, Shared<Sun>, Celestial>(
+        class_<Sun, Celestial>(
             aModule,
             "Sun",
             R"doc(

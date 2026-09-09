@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/Analytical.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_Analytical(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_Analytical(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -12,7 +12,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_Analytical(pybind11:
     using ostk::physics::environment::Ephemeris;
     using ostk::physics::environment::ephemeris::Analytical;
 
-    class_<Analytical, Shared<Analytical>, Ephemeris>(
+    class_<Analytical, Ephemeris>(
         aModule,
         "Analytical",
         R"doc(

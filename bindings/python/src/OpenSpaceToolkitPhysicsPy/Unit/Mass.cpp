@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Mass.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -33,8 +33,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
         )doc"
     )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         // .def("__str__", &(shiftToString<Mass>))
         .def(
@@ -89,7 +103,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
         .def(
             "to_string",
             &Mass::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            arg("aPrecision") = Integer::Undefined(),
             R"doc(
                 Convert mass to string.
 
