@@ -19,6 +19,7 @@ ostk.physics.coordinate.Position
       ~Position.access_frame
       ~Position.from_lla
       ~Position.get_coordinates
+      ~Position.get_norm
       ~Position.get_unit
       ~Position.in_frame
       ~Position.in_meters

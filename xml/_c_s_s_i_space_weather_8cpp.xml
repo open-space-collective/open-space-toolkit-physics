@@ -81,6 +81,10 @@
       <node id="31">
         <label>OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
         <link refid="_interval_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
