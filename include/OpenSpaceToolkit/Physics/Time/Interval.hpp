@@ -3,6 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Interval__
 #define __OpenSpaceToolkit_Physics_Time_Interval__
 
+#include <functional>
+
+#include <boost/functional/hash.hpp>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
@@ -350,5 +354,28 @@ class Interval : public mathematics::object::Interval<Instant>
 }  // namespace time
 }  // namespace physics
 }  // namespace ostk
+
+namespace std
+{
+
+template <>
+struct hash<ostk::physics::time::Interval>
+{
+    size_t operator()(const ostk::physics::time::Interval& anInterval) const
+    {
+        if (!anInterval.isDefined())
+        {
+            return 0;
+        }
+
+        size_t seed = 0;
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.accessStart()));
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.accessEnd()));
+        boost::hash_combine(seed, static_cast<int>(anInterval.getType()));
+        return seed;
+    }
+};
+
+}  // namespace std
 
 #endif
