@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -23,7 +23,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
     {
-        class_<Earth, Celestial, Shared<Earth>>(
+        class_<Earth, Celestial>(
             aModule,
             "Earth",
             R"doc(
@@ -75,9 +75,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                     const Shared<EarthMagneticModel>&,
                     const Shared<EarthAtmosphericModel>&>(),
                 arg("ephemeris"),
-                arg("gravitational_model") = pybind11::none(),
-                arg("magnetic_model") = pybind11::none(),
-                arg("atmospheric_model") = pybind11::none(),
+                arg("gravitational_model") = nanobind::none(),
+                arg("magnetic_model") = nanobind::none(),
+                arg("atmospheric_model") = nanobind::none(),
                 R"doc(
                     Constructor
 
@@ -106,8 +106,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
             .def_static(
                 "EGM2008",
                 &Earth::EGM2008,
-                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                arg("degree").sig("Integer.undefined()") = Integer::Undefined(),
+                arg("order").sig("Integer.undefined()") = Integer::Undefined(),
                 R"doc(
                     Earth Gravity Model 2008 model (EGM2008).
 
@@ -123,8 +123,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
             .def_static(
                 "WGS84_EGM96",
                 &Earth::WGS84_EGM96,
-                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                arg("degree").sig("Integer.undefined()") = Integer::Undefined(),
+                arg("order").sig("Integer.undefined()") = Integer::Undefined(),
                 R"doc(
                     World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96).
 
@@ -144,8 +144,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
             .def_static(
                 "EGM96",
                 &Earth::EGM96,
-                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                arg("degree").sig("Integer.undefined()") = Integer::Undefined(),
+                arg("order").sig("Integer.undefined()") = Integer::Undefined(),
                 R"doc(
                     Earth Gravity Model 1996 (EGM96).
 
@@ -160,8 +160,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
             .def_static(
                 "EGM84",
                 &Earth::EGM84,
-                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                arg("degree").sig("Integer.undefined()") = Integer::Undefined(),
+                arg("order").sig("Integer.undefined()") = Integer::Undefined(),
                 R"doc(
                     Earth Gravity Model 1984 (EGM84).
 
@@ -176,8 +176,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
             .def_static(
                 "WGS84",
                 &Earth::WGS84,
-                arg_v("degree", Integer::Undefined(), "Integer.undefined()"),
-                arg_v("order", Integer::Undefined(), "Integer.undefined()"),
+                arg("degree").sig("Integer.undefined()") = Integer::Undefined(),
+                arg("order").sig("Integer.undefined()") = Integer::Undefined(),
                 R"doc(
                     World Geodetic System 1984 (WGS84).
 

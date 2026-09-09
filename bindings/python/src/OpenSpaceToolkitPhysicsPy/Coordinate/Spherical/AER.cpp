@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::coordinate::Position;
     using ostk::physics::coordinate::spherical::AER;
@@ -35,7 +35,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const AER& self, const AER& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Equality operator.
 
@@ -47,7 +52,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const AER& self, const AER& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -153,7 +163,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
             &AER::FromPositionToPosition,
             arg("from_position"),
             arg("to_position"),
-            arg_v("is_z_negative", DEFAULT_IS_Z_NEGATIVE, "True"),
+            arg("is_z_negative").sig("True") = DEFAULT_IS_Z_NEGATIVE,
             R"doc(
                 Construct AER from position to position.
 

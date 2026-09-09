@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Real;
 
@@ -51,7 +51,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Equality operator.
 
@@ -63,7 +68,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -76,7 +86,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self * self,
+            "__mul__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self * other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Multiplication operator.
 
@@ -89,7 +104,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self *= self,
+            "__imul__",
+            [](Transform& self, const Transform& other) -> Transform&
+            {
+                self *= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator(),
             R"doc(
                 Multiplication assignment operator.
 
@@ -128,7 +150,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def(
             "access_instant",
             &Transform::accessInstant,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access the instant.
 
@@ -139,7 +161,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def(
             "access_translation",
             &Transform::accessTranslation,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access the translation.
 
@@ -150,7 +172,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def(
             "access_velocity",
             &Transform::accessVelocity,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access the velocity.
 
@@ -161,7 +183,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def(
             "access_orientation",
             &Transform::accessOrientation,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access the orientation.
 
@@ -172,7 +194,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def(
             "access_angular_velocity",
             &Transform::accessAngularVelocity,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access the angular velocity.
 
