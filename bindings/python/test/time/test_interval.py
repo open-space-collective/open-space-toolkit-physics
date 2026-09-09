@@ -431,3 +431,22 @@ class TestInterval:
         ]
 
         assert Interval.logical_and(intervals_1, intervals_2) == expected
+
+    def test_hash(self):
+        interval_a = build_interval(0.0, 10.0)
+        interval_b = build_interval(0.0, 10.0)
+        interval_c = build_interval(0.0, 20.0)
+        interval_d = build_interval(0.0, 10.0, Interval.Type.Open)
+
+        assert hash(interval_a) == hash(interval_b)
+        assert hash(interval_a) != hash(interval_c)
+        assert hash(interval_a) != hash(interval_d)
+
+        # Test as dictionary key
+        d = {interval_a: "value"}
+        assert d[interval_b] == "value"
+        assert interval_c not in d
+
+        # Test in set
+        s = {interval_a, interval_b, interval_c}
+        assert len(s) == 2

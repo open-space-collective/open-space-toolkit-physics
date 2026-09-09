@@ -50,6 +50,13 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                 return anInterval.toString();
             }
         )
+        .def(
+            "__hash__",
+            +[](const Interval& anInterval) -> size_t
+            {
+                return std::hash<Interval> {}(anInterval);
+            }
+        )
 
         .def(
             "is_defined",
