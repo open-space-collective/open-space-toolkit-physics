@@ -6,6 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
 {
     using namespace pybind11;
 
+    using ostk::core::type::Integer;
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
     using ostk::core::type::Uint8;
@@ -198,12 +199,38 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             )doc"
         )
         .def(
+            "replace",
+            &Time::replace,
+            R"doc(
+                Copy the time, replacing the provided components.
+
+                Args:
+                    hour (int, optional): Hour count (0 - 23). Defaults to the already existing hour of this Time instance.
+                    minute (int, optional): Minute count (0 - 59). Defaults to the already existing minute of this Time instance.
+                    second (int, optional): Second count (0 - 60). Defaults to the already existing second of this Time instance.
+                    millisecond (int, optional): Millisecond count (0 - 999). Defaults to the already existing millisecond of this Time instance.
+                    microsecond (int, optional): Microsecond count (0 - 999). Defaults to the already existing microsecond of this Time instance.
+                    nanosecond (int, optional): Nanosecond count (0 - 999). Defaults to the already existing nanosecond of this Time instance.
+
+                Returns:
+                    Time: Time.
+            )doc",
+            arg("hour") = Integer::Undefined(),
+            arg("minute") = Integer::Undefined(),
+            arg("second") = Integer::Undefined(),
+            arg("millisecond") = Integer::Undefined(),
+            arg("microsecond") = Integer::Undefined(),
+            arg("nanosecond") = Integer::Undefined()
+        )
+
+        .def(
             "set_hour",
             +[](Time& aTime, const Uint8 anHour) -> void
             {
                 PyErr_WarnEx(
                     PyExc_DeprecationWarning,
-                    "Use Time(hour, minute, second, millisecond, microsecond, nanosecond) instead.",
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
                     1
                 );
                 aTime.setHour(anHour);
@@ -222,7 +249,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             {
                 PyErr_WarnEx(
                     PyExc_DeprecationWarning,
-                    "Use Time(hour, minute, second, millisecond, microsecond, nanosecond) instead.",
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
                     1
                 );
                 aTime.setMinute(aMinute);
@@ -241,7 +269,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             {
                 PyErr_WarnEx(
                     PyExc_DeprecationWarning,
-                    "Use Time(hour, minute, second, millisecond, microsecond, nanosecond) instead.",
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
                     1
                 );
                 aTime.setSecond(aSecond);
@@ -260,7 +289,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             {
                 PyErr_WarnEx(
                     PyExc_DeprecationWarning,
-                    "Use Time(hour, minute, second, millisecond, microsecond, nanosecond) instead.",
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
                     1
                 );
                 aTime.setMillisecond(aMillisecond);
@@ -279,7 +309,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             {
                 PyErr_WarnEx(
                     PyExc_DeprecationWarning,
-                    "Use Time(hour, minute, second, millisecond, microsecond, nanosecond) instead.",
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
                     1
                 );
                 aTime.setMicrosecond(aMicrosecond);
@@ -298,7 +329,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             {
                 PyErr_WarnEx(
                     PyExc_DeprecationWarning,
-                    "Use Time(hour, minute, second, millisecond, microsecond, nanosecond) instead.",
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
                     1
                 );
                 aTime.setNanosecond(aNanosecond);

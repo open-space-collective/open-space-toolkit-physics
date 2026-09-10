@@ -13,6 +13,7 @@ namespace physics
 namespace time
 {
 
+using ostk::core::type::Integer;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -119,6 +120,24 @@ class Date
     /// @return Serialized date
     String toString(const Date::Format& aFormat = Date::Format::Standard) const;
 
+    /// @brief Copy the date, replacing the provided components
+    ///
+    /// Undefined components are copied from this date.
+    ///
+    /// @code
+    ///     Date(2018, 1, 2).replace(Integer::Undefined(), 6); // 2018-06-02
+    /// @endcode
+    ///
+    /// @param [in] (optional) aYear A year (1400 - 9999)
+    /// @param [in] (optional) aMonth A month (1 - 12)
+    /// @param [in] (optional) aDay A day (1 - 31)
+    /// @return Date
+    Date replace(
+        const Integer& aYear = Integer::Undefined(),
+        const Integer& aMonth = Integer::Undefined(),
+        const Integer& aDay = Integer::Undefined()
+    ) const;
+
     /// @brief Set year
     ///
     /// @code
@@ -126,10 +145,10 @@ class Date
     ///     date.setYear(2020);
     /// @endcode
     ///
-    /// @deprecated Use Date(aYear, aMonth, aDay) instead.
+    /// @deprecated Use Date::replace(aYear, aMonth, aDay) instead.
     /// @param [in] aYear A year (1400 - 9999)
 
-    [[deprecated("Use Date(aYear, aMonth, aDay) instead.")]]
+    [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setYear(Uint16 aYear);
 
     /// @brief Set month
@@ -139,10 +158,10 @@ class Date
     ///     date.setMonth(6);
     /// @endcode
     ///
-    /// @deprecated Use Date(aYear, aMonth, aDay) instead.
+    /// @deprecated Use Date::replace(aYear, aMonth, aDay) instead.
     /// @param [in] aMonth A month (1 - 12)
 
-    [[deprecated("Use Date(aYear, aMonth, aDay) instead.")]]
+    [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setMonth(Uint8 aMonth);
 
     /// @brief Set day
@@ -152,10 +171,10 @@ class Date
     ///     date.setDay(15);
     /// @endcode
     ///
-    /// @deprecated Use Date(aYear, aMonth, aDay) instead.
+    /// @deprecated Use Date::replace(aYear, aMonth, aDay) instead.
     /// @param [in] aDay A day (1 - 31)
 
-    [[deprecated("Use Date(aYear, aMonth, aDay) instead.")]]
+    [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setDay(Uint8 aDay);
 
     /// @brief Constructs an undefined date
@@ -232,7 +251,7 @@ class Date
 
     Date();
 
-    static void ValidateDate(Uint16 aYear, Uint8 aMonth, Uint8 aDay);
+    static void ValidateDate(const Integer& aYear, const Integer& aMonth, const Integer& aDay);
 };
 
 }  // namespace time

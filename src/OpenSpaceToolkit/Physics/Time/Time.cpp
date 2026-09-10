@@ -251,6 +251,44 @@ String Time::toString(const Time::Format& aFormat) const
     return String::Empty();
 }
 
+Time Time::replace(
+    const Integer& anHour,
+    const Integer& aMinute,
+    const Integer& aSecond,
+    const Integer& aMillisecond,
+    const Integer& aMicrosecond,
+    const Integer& aNanosecond
+) const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Time");
+    }
+
+    const Integer hour = anHour.isDefined() ? anHour : Integer::Uint8(hour_);
+    const Integer minute = aMinute.isDefined() ? aMinute : Integer::Uint8(minute_);
+    const Integer second = aSecond.isDefined() ? aSecond : Integer::Uint8(second_);
+    const Integer millisecond = aMillisecond.isDefined() ? aMillisecond : Integer::Uint16(millisecond_);
+    const Integer microsecond = aMicrosecond.isDefined() ? aMicrosecond : Integer::Uint16(microsecond_);
+    const Integer nanosecond = aNanosecond.isDefined() ? aNanosecond : Integer::Uint16(nanosecond_);
+
+    Time::ValidateHour(hour);
+    Time::ValidateMinute(minute);
+    Time::ValidateSecond(second);
+    Time::ValidateMillisecond(millisecond);
+    Time::ValidateMicrosecond(microsecond);
+    Time::ValidateNanosecond(nanosecond);
+
+    return Time(
+        static_cast<Uint8>(hour),
+        static_cast<Uint8>(minute),
+        static_cast<Uint8>(second),
+        static_cast<Uint16>(millisecond),
+        static_cast<Uint16>(microsecond),
+        static_cast<Uint16>(nanosecond)
+    );
+}
+
 void Time::setHour(Uint8 anHour)
 {
     if (!this->isDefined())
@@ -554,51 +592,57 @@ Time::Time()
 {
 }
 
-void Time::ValidateHour(Uint8 anHour)
+void Time::ValidateHour(const Integer& anHour)
 {
-    if (anHour > 23)
+    if (!anHour.isDefined() || (anHour < 0) || (anHour > 23))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Hour [{}] out of range [0 - 23].", anHour));
+        throw ostk::core::error::RuntimeError(String::Format("Hour [{}] out of range [0 - 23].", anHour.toString()));
     }
 }
 
-void Time::ValidateMinute(Uint8 aMinute)
+void Time::ValidateMinute(const Integer& aMinute)
 {
-    if (aMinute > 59)
+    if (!aMinute.isDefined() || (aMinute < 0) || (aMinute > 59))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Minute [{}] out of range [0 - 59].", aMinute));
+        throw ostk::core::error::RuntimeError(String::Format("Minute [{}] out of range [0 - 59].", aMinute.toString()));
     }
 }
 
-void Time::ValidateSecond(Uint8 aSecond)
+void Time::ValidateSecond(const Integer& aSecond)
 {
-    if (aSecond > 60)
+    if (!aSecond.isDefined() || (aSecond < 0) || (aSecond > 60))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Second [{}] out of range [0 - 60].", aSecond));
+        throw ostk::core::error::RuntimeError(String::Format("Second [{}] out of range [0 - 60].", aSecond.toString()));
     }
 }
 
-void Time::ValidateMillisecond(Uint16 aMillisecond)
+void Time::ValidateMillisecond(const Integer& aMillisecond)
 {
-    if (aMillisecond > 999)
+    if (!aMillisecond.isDefined() || (aMillisecond < 0) || (aMillisecond > 999))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Millisecond [{}] out of range [0 - 999].", aMillisecond));
+        throw ostk::core::error::RuntimeError(
+            String::Format("Millisecond [{}] out of range [0 - 999].", aMillisecond.toString())
+        );
     }
 }
 
-void Time::ValidateMicrosecond(Uint16 aMicrosecond)
+void Time::ValidateMicrosecond(const Integer& aMicrosecond)
 {
-    if (aMicrosecond > 999)
+    if (!aMicrosecond.isDefined() || (aMicrosecond < 0) || (aMicrosecond > 999))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Microsecond [{}] out of range [0 - 999].", aMicrosecond));
+        throw ostk::core::error::RuntimeError(
+            String::Format("Microsecond [{}] out of range [0 - 999].", aMicrosecond.toString())
+        );
     }
 }
 
-void Time::ValidateNanosecond(Uint16 aNanosecond)
+void Time::ValidateNanosecond(const Integer& aNanosecond)
 {
-    if (aNanosecond > 999)
+    if (!aNanosecond.isDefined() || (aNanosecond < 0) || (aNanosecond > 999))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Nanosecond [{}] out of range [0 - 999].", aNanosecond));
+        throw ostk::core::error::RuntimeError(
+            String::Format("Nanosecond [{}] out of range [0 - 999].", aNanosecond.toString())
+        );
     }
 }
 
