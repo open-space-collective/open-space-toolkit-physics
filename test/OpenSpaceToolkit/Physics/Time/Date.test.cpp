@@ -4,6 +4,8 @@
 
 #include <Global.test.hpp>
 
+using ostk::core::type::Integer;
+
 using ostk::physics::time::Date;
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, Constructor)
@@ -161,6 +163,33 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, ToString)
     {
         EXPECT_ANY_THROW(Date::Undefined().toString());
         EXPECT_ANY_THROW(Date(2000, 1, 1).toString(Date::Format::Undefined));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Date, Replace)
+{
+    {
+        const Date date = Date(2018, 1, 2);
+
+        EXPECT_EQ(date, date.replace());
+        EXPECT_EQ(Date(2019, 1, 2), date.replace(2019));
+        EXPECT_EQ(Date(2018, 6, 2), date.replace(Integer::Undefined(), 6));
+        EXPECT_EQ(Date(2018, 1, 15), date.replace(Integer::Undefined(), Integer::Undefined(), 15));
+        EXPECT_EQ(Date(2019, 6, 15), date.replace(2019, 6, 15));
+
+        // Existing date is left untouched
+        EXPECT_EQ(Date(2018, 1, 2), date);
+    }
+
+    {
+        EXPECT_ANY_THROW(Date::Undefined().replace(2018));
+
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(1399));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(-1));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined(), 13));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined(), Integer::Undefined(), 32));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined(), Integer::Undefined(), 257));
+        EXPECT_ANY_THROW(Date(2018, 2, 1).replace(Integer::Undefined(), Integer::Undefined(), 30));
     }
 }
 

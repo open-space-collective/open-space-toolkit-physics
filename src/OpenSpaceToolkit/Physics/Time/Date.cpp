@@ -174,6 +174,22 @@ String Date::toString(const Date::Format& aFormat) const
     return String::Empty();
 }
 
+Date Date::replace(const Integer& aYear, const Integer& aMonth, const Integer& aDay) const
+{
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Date");
+    }
+
+    const Integer year = aYear.isDefined() ? aYear : Integer::Uint16(year_);
+    const Integer month = aMonth.isDefined() ? aMonth : Integer::Uint8(month_);
+    const Integer day = aDay.isDefined() ? aDay : Integer::Uint8(day_);
+
+    Date::ValidateDate(year, month, day);
+
+    return Date(static_cast<Uint16>(year), static_cast<Uint8>(month), static_cast<Uint8>(day));
+}
+
 void Date::setYear(Uint16 aYear)
 {
     if (!this->isDefined())
@@ -385,34 +401,39 @@ Date::Date()
 {
 }
 
-void Date::ValidateDate(Uint16 aYear, Uint8 aMonth, Uint8 aDay)
+void Date::ValidateDate(const Integer& aYear, const Integer& aMonth, const Integer& aDay)
 {
-    if ((aYear < 1400) || (aYear > 9999))
+    if (!aYear.isDefined() || (aYear < 1400) || (aYear > 9999))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear));
+        throw ostk::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear.toString())
+        );
     }
 
-    if ((aMonth == 0) || (aMonth > 12))
+    if (!aMonth.isDefined() || (aMonth < 1) || (aMonth > 12))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth));
+        throw ostk::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth.toString()));
     }
 
-    if ((aDay == 0) || (aDay > 31))
+    if (!aDay.isDefined() || (aDay < 1) || (aDay > 31))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay));
+        throw ostk::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay.toString()));
     }
 
     // [TBM] This is a quick and dirty implementation using boost::gregorian::date, it should be replaced by something
     // more efficient
 
+    const Uint16 year = static_cast<Uint16>(aYear);
+    const Uint8 month = static_cast<Uint8>(aMonth);
+    const Uint8 day = static_cast<Uint8>(aDay);
+
     try
     {
-        boost::gregorian::date date(aYear, aMonth, aDay);
+        boost::gregorian::date date(year, month, day);
     }
     catch (const std::out_of_range& e)
     {
         throw ostk::core::error::RuntimeError(
-            String::Format("Date [{:d}-{:02d}-{:02d}] out of range.", aYear, aMonth, aDay)
+            String::Format("Date [{:d}-{:02d}-{:02d}] out of range.", year, month, day)
         );
     }
 }

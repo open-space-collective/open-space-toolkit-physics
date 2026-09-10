@@ -6,6 +6,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
 {
     using namespace pybind11;
 
+    using ostk::core::type::Integer;
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
     using ostk::core::type::Uint8;
@@ -104,10 +105,29 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             }
         )
         .def(
+            "replace",
+            &Date::replace,
+            R"doc(
+                Copy the date, replacing the provided components.
+
+                Args:
+                    year (int, optional): Year (1400 - 9999). Defaults to the already existing year of this Date instance.
+                    month (int, optional): Month (1 - 12). Defaults to the already existing month of this Date instance.
+                    day (int, optional): Day (1 - 31). Defaults to the already existing day of this Date instance.
+
+                Returns:
+                    Date: Date.
+            )doc",
+            arg("year") = Integer::Undefined(),
+            arg("month") = Integer::Undefined(),
+            arg("day") = Integer::Undefined()
+        )
+
+        .def(
             "set_year",
             +[](Date& aDate, const Uint16 aYear) -> void
             {
-                PyErr_WarnEx(PyExc_DeprecationWarning, "Use Date(year, month, day) instead.", 1);
+                PyErr_WarnEx(PyExc_DeprecationWarning, "Use Date.replace(year=..., month=..., day=...) instead.", 1);
                 aDate.setYear(aYear);
             },
             R"doc(
@@ -122,7 +142,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             "set_month",
             +[](Date& aDate, const Uint8 aMonth) -> void
             {
-                PyErr_WarnEx(PyExc_DeprecationWarning, "Use Date(year, month, day) instead.", 1);
+                PyErr_WarnEx(PyExc_DeprecationWarning, "Use Date.replace(year=..., month=..., day=...) instead.", 1);
                 aDate.setMonth(aMonth);
             },
             R"doc(
@@ -137,7 +157,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             "set_day",
             +[](Date& aDate, const Uint8 aDay) -> void
             {
-                PyErr_WarnEx(PyExc_DeprecationWarning, "Use Date(year, month, day) instead.", 1);
+                PyErr_WarnEx(PyExc_DeprecationWarning, "Use Date.replace(year=..., month=..., day=...) instead.", 1);
                 aDate.setDay(aDay);
             },
             R"doc(
