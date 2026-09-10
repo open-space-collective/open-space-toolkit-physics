@@ -192,7 +192,9 @@ class Time
     ///     time.setHour(18);
     /// @endcode
     ///
+    /// @deprecated Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] anHour An hour (0 - 23)
+    [[deprecated("Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setHour(Uint8 anHour);
 
     /// @brief Set minute
@@ -202,7 +204,9 @@ class Time
     ///     time.setMinute(45);
     /// @endcode
     ///
+    /// @deprecated Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aMinute A minute (0 - 59)
+    [[deprecated("Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setMinute(Uint8 aMinute);
 
     /// @brief Set second
@@ -212,7 +216,9 @@ class Time
     ///     time.setSecond(30);
     /// @endcode
     ///
+    /// @deprecated Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aSecond A second (0 - 60)
+    [[deprecated("Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setSecond(Uint8 aSecond);
 
     /// @brief Set millisecond
@@ -222,7 +228,9 @@ class Time
     ///     time.setMillisecond(500);
     /// @endcode
     ///
+    /// @deprecated Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aMillisecond A millisecond (0 - 999)
+    [[deprecated("Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setMillisecond(Uint16 aMillisecond);
 
     /// @brief Set microsecond
@@ -232,7 +240,9 @@ class Time
     ///     time.setMicrosecond(500);
     /// @endcode
     ///
+    /// @deprecated Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aMicrosecond A microsecond (0 - 999)
+    [[deprecated("Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setMicrosecond(Uint16 aMicrosecond);
 
     /// @brief Set nanosecond
@@ -242,7 +252,9 @@ class Time
     ///     time.setNanosecond(500);
     /// @endcode
     ///
+    /// @deprecated Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aNanosecond A nanosecond (0 - 999)
+    [[deprecated("Use Time(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setNanosecond(Uint16 aNanosecond);
 
     /// @brief Constructs an undefined time

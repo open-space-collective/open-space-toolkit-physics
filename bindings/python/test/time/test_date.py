@@ -121,16 +121,19 @@ def test_date_to_string():
 def test_date_set_year():
     date = Date(2018, 1, 1)
 
-    date.set_year(2019)
+    with pytest.warns(DeprecationWarning):
+        date.set_year(2019)
 
 
 def test_date_set_month():
     date = Date(2018, 1, 1)
 
-    date.set_month(2)
+    with pytest.warns(DeprecationWarning):
+        date.set_month(2)
 
 
 def test_date_set_day():
     date = Date(2018, 1, 1)
 
-    date.set_day(2)
+    with pytest.warns(DeprecationWarning):
+        date.set_day(2)

@@ -126,8 +126,10 @@ class Date
     ///     date.setYear(2020);
     /// @endcode
     ///
+    /// @deprecated Use Date(aYear, aMonth, aDay) instead.
     /// @param [in] aYear A year (1400 - 9999)
 
+    [[deprecated("Use Date(aYear, aMonth, aDay) instead.")]]
     void setYear(Uint16 aYear);
 
     /// @brief Set month
@@ -137,8 +139,10 @@ class Date
     ///     date.setMonth(6);
     /// @endcode
     ///
+    /// @deprecated Use Date(aYear, aMonth, aDay) instead.
     /// @param [in] aMonth A month (1 - 12)
 
+    [[deprecated("Use Date(aYear, aMonth, aDay) instead.")]]
     void setMonth(Uint8 aMonth);
 
     /// @brief Set day
@@ -148,8 +152,10 @@ class Date
     ///     date.setDay(15);
     /// @endcode
     ///
+    /// @deprecated Use Date(aYear, aMonth, aDay) instead.
     /// @param [in] aDay A day (1 - 31)
 
+    [[deprecated("Use Date(aYear, aMonth, aDay) instead.")]]
     void setDay(Uint8 aDay);
 
     /// @brief Constructs an undefined date

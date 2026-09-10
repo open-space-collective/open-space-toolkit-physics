@@ -75,27 +75,39 @@ class TestTime:
         assert time.to_string(Time.Format.ISO8601) is not None
 
     def test_set_hour(self, time: Time) -> None:
-        time.set_hour(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_hour(1)
+
         assert time.get_hour() == 1
 
     def test_set_minute(self, time: Time) -> None:
-        time.set_minute(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_minute(1)
+
         assert time.get_minute() == 1
 
     def test_set_second(self, time: Time) -> None:
-        time.set_second(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_second(1)
+
         assert time.get_second() == 1
 
     def test_set_millisecond(self, time: Time) -> None:
-        time.set_millisecond(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_millisecond(1)
+
         assert time.get_millisecond() == 1
 
     def test_set_microsecond(self, time: Time) -> None:
-        time.set_microsecond(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_microsecond(1)
+
         assert time.get_microsecond() == 1
 
     def test_set_nanosecond(self, time: Time) -> None:
-        time.set_nanosecond(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_nanosecond(1)
+
         assert time.get_nanosecond() == 1
 
     def test_undefined(self) -> None:
