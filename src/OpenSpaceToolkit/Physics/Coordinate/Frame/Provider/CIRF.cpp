@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <array>
 #include <atomic>
 #include <cmath>
 #include <cstdlib>
@@ -29,9 +30,10 @@ namespace
 /// The IAU 2006/2000A X, Y, s series (iauXys06a) dominates the cost of a GCRF <> CIRF
 /// transform (~50 us per evaluation) while its output varies smoothly in time (the shortest
 /// significant nutation periods are ~5 days). Evaluating the series on a uniform 0.25-day
-/// grid and interpolating with a centered 4-point Lagrange polynomial reproduces the direct
-/// evaluation to micro-arcsecond level (observed max ~1.2 uas), roughly two orders of magnitude
-/// below the ~0.2 mas CIP corrections applied by the caller, so the error is negligible.
+/// grid and interpolating with a centered 8-point Lagrange polynomial reproduces the direct
+/// evaluation to the double-precision floor (observed max ~1e-4 uas on X, Y, s and ~6e-16 rad
+/// on the resulting rotation, sampled over 1980-2060), so the interpolated and direct paths
+/// are indistinguishable. Same grid spacing, 4-point polynomial: ~1 uas; 8-point at 12 h: ~0.02 uas.
 class XysGrid
 {
    public:
@@ -53,9 +55,13 @@ class XysGrid
         double s;
     };
 
-    // 0.25 days, with maximum 16384 size gives ~11 years of storage.
+    // 0.25 days (4 series evaluations per simulated day), with maximum 16384 size gives ~11 years of storage.
     static constexpr double gridSpacingDays_ = 0.25;
     static constexpr std::size_t maxNodeCount_ = 16384;  // maximum ~1 MB of memory
+
+    // Centered 8-point stencil: a date in grid interval [k, k + 1) is interpolated from nodes k - 3 ... k + 4.
+    static constexpr std::size_t stencilSize_ = 8;
+    static constexpr std::int64_t stencilFirstOffset_ = -3;
 
     std::mutex mutex_;
     std::unordered_map<std::int64_t, Node> nodes_;
@@ -63,26 +69,25 @@ class XysGrid
     void evaluate(const double aModifiedJulianDate_TT, double& x, double& y, double& s)
     {
         const double gridCoordinate = aModifiedJulianDate_TT / gridSpacingDays_;
-        const std::int64_t nodeIndex = static_cast<std::int64_t>(std::floor(gridCoordinate));
-        const double tau = gridCoordinate - static_cast<double>(nodeIndex);  // in [0, 1)
+        const std::int64_t intervalIndex = static_cast<std::int64_t>(std::floor(gridCoordinate));
+        const double tau = gridCoordinate - static_cast<double>(intervalIndex);  // in [0, 1)
+
+        const std::array<double, stencilSize_> weights = XysGrid::LagrangeWeights(tau);
 
         const std::lock_guard<std::mutex> lock {mutex_};
 
-        const Node node0 = this->accessNode(nodeIndex - 1);
-        const Node node1 = this->accessNode(nodeIndex);
-        const Node node2 = this->accessNode(nodeIndex + 1);
-        const Node node3 = this->accessNode(nodeIndex + 2);
+        x = 0.0;
+        y = 0.0;
+        s = 0.0;
 
-        // Centered 4-point Lagrange weights at tau between node1 and node2
+        for (std::size_t j = 0; j < stencilSize_; ++j)
+        {
+            const Node& node = this->accessNode(intervalIndex + stencilFirstOffset_ + static_cast<std::int64_t>(j));
 
-        const double w0 = -tau * (tau - 1.0) * (tau - 2.0) / 6.0;
-        const double w1 = (tau + 1.0) * (tau - 1.0) * (tau - 2.0) / 2.0;
-        const double w2 = -(tau + 1.0) * tau * (tau - 2.0) / 2.0;
-        const double w3 = (tau + 1.0) * tau * (tau - 1.0) / 6.0;
-
-        x = w0 * node0.x + w1 * node1.x + w2 * node2.x + w3 * node3.x;
-        y = w0 * node0.y + w1 * node1.y + w2 * node2.y + w3 * node3.y;
-        s = w0 * node0.s + w1 * node1.s + w2 * node2.s + w3 * node3.s;
+            x += weights[j] * node.x;
+            y += weights[j] * node.y;
+            s += weights[j] * node.s;
+        }
     }
 
     const Node& accessNode(const std::int64_t aNodeIndex)  // requires mutex_ to be held
@@ -117,6 +122,34 @@ class XysGrid
         static XysGrid grid;
 
         return grid;
+    }
+
+    /// Weights of the Lagrange polynomial through the stencil nodes, evaluated at tau in [0, 1), where tau is measured
+    /// from the node at offset 0 in units of the grid spacing. At tau == 0 the weight of that node is exactly 1.
+    static std::array<double, stencilSize_> LagrangeWeights(const double tau)
+    {
+        std::array<double, stencilSize_> weights;
+
+        for (std::size_t j = 0; j < stencilSize_; ++j)
+        {
+            const double p = static_cast<double>(stencilFirstOffset_ + static_cast<std::int64_t>(j));
+
+            double weight = 1.0;
+
+            for (std::size_t m = 0; m < stencilSize_; ++m)
+            {
+                if (m != j)
+                {
+                    const double q = static_cast<double>(stencilFirstOffset_ + static_cast<std::int64_t>(m));
+
+                    weight *= (tau - q) / (p - q);
+                }
+            }
+
+            weights[j] = weight;
+        }
+
+        return weights;
     }
 };
 

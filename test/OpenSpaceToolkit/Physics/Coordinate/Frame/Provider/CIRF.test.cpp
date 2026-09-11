@@ -35,9 +35,9 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 static const double ARCSEC_IN_RAD = 4.848136811095359935899141e-6;
 
 // Verifies that the production X, Y, s interpolation (CIRF::ComputeCIPCoordinates with interpolation enabled)
-// reproduces the direct iauXys06a evaluation to micro-arcsecond level, orders of magnitude below the ~0.2 mas CIP
-// corrections applied downstream. Both paths are exercised through the real production entry point, so a bug in the
-// interpolation grid would be caught here.
+// reproduces the direct iauXys06a evaluation to the double-precision floor, orders of magnitude below both the ~0.2 mas
+// CIP corrections applied downstream and the accuracy of the IAU 2006/2000A model itself. Both paths are exercised
+// through the real production entry point, so a bug in the interpolation grid would be caught here.
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordinatesInterpolationAccuracy)
 {
     const Instant startInstant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TT);
@@ -66,9 +66,11 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
         maxErrorS = std::max(maxErrorS, std::abs(sInterp - sDirect));
     }
 
-    // Interpolation error stays at the micro-arcsecond level (observed max ~1.2e-6 arcsec), roughly two orders of
-    // magnitude below the ~0.2 mas (200 micro-arcsec) CIP corrections applied downstream, so it is negligible.
-    const double toleranceRad = 1.0e-5 * ARCSEC_IN_RAD;  // 10 micro-arcseconds
+    // With the centered 8-point Lagrange polynomial on the 0.25-day grid, the interpolation error sits at the
+    // double-precision floor (observed max ~1.2e-10 arcsec, i.e. ~1e-4 micro-arcsec, over 1980-2060). The tolerance
+    // leaves roughly an order of magnitude of margin for platform rounding differences (e.g. FMA contraction) while
+    // still catching a regression to a lower-order polynomial (4-point: ~1e-6 arcsec).
+    const double toleranceRad = 1.0e-9 * ARCSEC_IN_RAD;  // 1e-3 micro-arcseconds
 
     EXPECT_LT(maxErrorX, toleranceRad) << "max X error: " << (maxErrorX / ARCSEC_IN_RAD) << " arcsec";
     EXPECT_LT(maxErrorY, toleranceRad) << "max Y error: " << (maxErrorY / ARCSEC_IN_RAD) << " arcsec";
