@@ -609,11 +609,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
         EXPECT_TRUE(transform.getTranslation().isNear(Vector3d(+0.0, +0.0, +0.0), Real::Epsilon()));
         EXPECT_TRUE(transform.getVelocity().isNear(Vector3d(+0.0, +0.0, +0.0), Real::Epsilon()));
         EXPECT_TRUE(transform.getOrientation().isNear(
-            Quaternion::XYZS(-1.86147346436534e-05, 8.45983422546411e-07, 0.641490222201766, 0.767131210727542),
+            Quaternion::XYZS(-1.86150273614916e-05, 8.46314352205194e-07, 0.641490222166591, 0.767131210756949),
             Angle::Degrees(Real::Epsilon())
         ));
         EXPECT_TRUE(transform.getAngularVelocity().isNear(
-            Vector3d(1.96489918038813e-09, 2.04221635598212e-09, -7.29211506735101e-05), Real::Epsilon()
+            Vector3d(1.96496359039311e-09, 2.04221814481195e-09, -7.29211506735083e-05), Real::Epsilon()
         ));
     }
 
