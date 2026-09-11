@@ -6,7 +6,10 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
 {
     using namespace pybind11;
 
+    using ostk::core::type::Integer;
     using ostk::core::type::String;
+    using ostk::core::type::Uint16;
+    using ostk::core::type::Uint8;
 
     using ostk::physics::time::Time;
 
@@ -196,64 +199,149 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
             )doc"
         )
         .def(
+            "replace",
+            &Time::replace,
+            R"doc(
+                Copy the time, replacing the provided components.
+
+                Args:
+                    hour (int, optional): Hour count (0 - 23). Defaults to the already existing hour of this Time instance.
+                    minute (int, optional): Minute count (0 - 59). Defaults to the already existing minute of this Time instance.
+                    second (int, optional): Second count (0 - 60). Defaults to the already existing second of this Time instance.
+                    millisecond (int, optional): Millisecond count (0 - 999). Defaults to the already existing millisecond of this Time instance.
+                    microsecond (int, optional): Microsecond count (0 - 999). Defaults to the already existing microsecond of this Time instance.
+                    nanosecond (int, optional): Nanosecond count (0 - 999). Defaults to the already existing nanosecond of this Time instance.
+
+                Returns:
+                    Time: Time.
+            )doc",
+            arg("hour") = Integer::Undefined(),
+            arg("minute") = Integer::Undefined(),
+            arg("second") = Integer::Undefined(),
+            arg("millisecond") = Integer::Undefined(),
+            arg("microsecond") = Integer::Undefined(),
+            arg("nanosecond") = Integer::Undefined()
+        )
+
+        .def(
             "set_hour",
-            &Time::setHour,
+            +[](Time& aTime, const Uint8 anHour) -> void
+            {
+                PyErr_WarnEx(
+                    PyExc_DeprecationWarning,
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
+                    1
+                );
+                aTime.setHour(anHour);
+            },
             R"doc(
                 Set hour count.
 
                 Args:
                     an_hour (int): An hour count (0 - 23).
-            )doc"
+            )doc",
+            arg("an_hour")
         )
         .def(
             "set_minute",
-            &Time::setMinute,
+            +[](Time& aTime, const Uint8 aMinute) -> void
+            {
+                PyErr_WarnEx(
+                    PyExc_DeprecationWarning,
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
+                    1
+                );
+                aTime.setMinute(aMinute);
+            },
             R"doc(
                 Set minute count.
 
                 Args:
                     a_minute (int): A minute count (0 - 59).
-            )doc"
+            )doc",
+            arg("a_minute")
         )
         .def(
             "set_second",
-            &Time::setSecond,
+            +[](Time& aTime, const Uint8 aSecond) -> void
+            {
+                PyErr_WarnEx(
+                    PyExc_DeprecationWarning,
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
+                    1
+                );
+                aTime.setSecond(aSecond);
+            },
             R"doc(
                 Set second count.
 
                 Args:
                     a_second (int): A second count (0 - 60).
-            )doc"
+            )doc",
+            arg("a_second")
         )
         .def(
             "set_millisecond",
-            &Time::setMillisecond,
+            +[](Time& aTime, const Uint16 aMillisecond) -> void
+            {
+                PyErr_WarnEx(
+                    PyExc_DeprecationWarning,
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
+                    1
+                );
+                aTime.setMillisecond(aMillisecond);
+            },
             R"doc(
                 Set millisecond count.
 
                 Args:
                     a_millisecond (int): A millisecond count (0 - 999).
-            )doc"
+            )doc",
+            arg("a_millisecond")
         )
         .def(
             "set_microsecond",
-            &Time::setMicrosecond,
+            +[](Time& aTime, const Uint16 aMicrosecond) -> void
+            {
+                PyErr_WarnEx(
+                    PyExc_DeprecationWarning,
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
+                    1
+                );
+                aTime.setMicrosecond(aMicrosecond);
+            },
             R"doc(
                 Set microsecond count.
 
                 Args:
                     a_microsecond (int): A microsecond count (0 - 999).
-            )doc"
+            )doc",
+            arg("a_microsecond")
         )
         .def(
             "set_nanosecond",
-            &Time::setNanosecond,
+            +[](Time& aTime, const Uint16 aNanosecond) -> void
+            {
+                PyErr_WarnEx(
+                    PyExc_DeprecationWarning,
+                    "Use Time.replace(hour=..., minute=..., second=..., millisecond=..., "
+                    "microsecond=..., nanosecond=...) instead.",
+                    1
+                );
+                aTime.setNanosecond(aNanosecond);
+            },
             R"doc(
                 Set nanosecond count.
 
                 Args:
                     a_nanosecond (int): A nanosecond count (0 - 999).
-            )doc"
+            )doc",
+            arg("a_nanosecond")
         )
         .def(
             "to_string",

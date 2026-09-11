@@ -1,9 +1,7 @@
 # Apache License 2.0
 
 import pytest
-
 from ostk.core.type import String
-
 from ostk.physics.time import Date
 
 
@@ -118,19 +116,35 @@ def test_date_to_string():
     date.to_string(Date.Format.STK)
 
 
+def test_date_replace():
+    date = Date(2018, 1, 2)
+
+    assert date.replace() == date
+    assert date.replace(year=2019) == Date(2019, 1, 2)
+    assert date.replace(month=6) == Date(2018, 6, 2)
+    assert date.replace(day=15) == Date(2018, 1, 15)
+    assert date.replace(2019, 6, 15) == Date(2019, 6, 15)
+
+    # Original date is left untouched
+    assert date == Date(2018, 1, 2)
+
+
 def test_date_set_year():
     date = Date(2018, 1, 1)
 
-    date.set_year(2019)
+    with pytest.warns(DeprecationWarning):
+        date.set_year(2019)
 
 
 def test_date_set_month():
     date = Date(2018, 1, 1)
 
-    date.set_month(2)
+    with pytest.warns(DeprecationWarning):
+        date.set_month(2)
 
 
 def test_date_set_day():
     date = Date(2018, 1, 1)
 
-    date.set_day(2)
+    with pytest.warns(DeprecationWarning):
+        date.set_day(2)

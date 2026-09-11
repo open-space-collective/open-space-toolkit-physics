@@ -74,28 +74,55 @@ class TestTime:
         assert time.to_string(Time.Format.Standard) is not None
         assert time.to_string(Time.Format.ISO8601) is not None
 
+    def test_replace(self) -> None:
+        time = Time(12, 34, 56, 1, 2, 3)
+
+        assert time.replace() == time
+        assert time.replace(hour=18) == Time(18, 34, 56, 1, 2, 3)
+        assert time.replace(minute=45) == Time(12, 45, 56, 1, 2, 3)
+        assert time.replace(second=30) == Time(12, 34, 30, 1, 2, 3)
+        assert time.replace(millisecond=100) == Time(12, 34, 56, 100, 2, 3)
+        assert time.replace(microsecond=200) == Time(12, 34, 56, 1, 200, 3)
+        assert time.replace(nanosecond=300) == Time(12, 34, 56, 1, 2, 300)
+        assert time.replace(0, 0, 0, 0, 0, 0) == Time.midnight()
+
+        # Original time is left untouched
+        assert time == Time(12, 34, 56, 1, 2, 3)
+
     def test_set_hour(self, time: Time) -> None:
-        time.set_hour(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_hour(1)
+
         assert time.get_hour() == 1
 
     def test_set_minute(self, time: Time) -> None:
-        time.set_minute(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_minute(1)
+
         assert time.get_minute() == 1
 
     def test_set_second(self, time: Time) -> None:
-        time.set_second(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_second(1)
+
         assert time.get_second() == 1
 
     def test_set_millisecond(self, time: Time) -> None:
-        time.set_millisecond(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_millisecond(1)
+
         assert time.get_millisecond() == 1
 
     def test_set_microsecond(self, time: Time) -> None:
-        time.set_microsecond(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_microsecond(1)
+
         assert time.get_microsecond() == 1
 
     def test_set_nanosecond(self, time: Time) -> None:
-        time.set_nanosecond(1)
+        with pytest.warns(DeprecationWarning):
+            time.set_nanosecond(1)
+
         assert time.get_nanosecond() == 1
 
     def test_undefined(self) -> None:
