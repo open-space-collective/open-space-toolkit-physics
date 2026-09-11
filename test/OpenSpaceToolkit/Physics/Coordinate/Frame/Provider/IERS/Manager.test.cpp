@@ -166,7 +166,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
     {
         manager_.reset();
         manager_.setMode(Manager::Mode::Manual);
-        std::cout << manager_.getLocalRepository() << std::endl;
 
         EXPECT_NO_THROW(manager_.getBulletinA());
     }
