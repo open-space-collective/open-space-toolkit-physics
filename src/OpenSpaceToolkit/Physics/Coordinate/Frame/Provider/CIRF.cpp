@@ -4,8 +4,10 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
+#include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
@@ -15,6 +17,39 @@
 
 #define DAS2R (4.848136811095359935899141e-6)
 #define DMAS2R (DAS2R / 1e3)
+
+namespace
+{
+
+using ostk::mathematics::object::Vector2d;
+
+using ostk::physics::time::Instant;
+using IersManager = ostk::physics::coordinate::frame::provider::iers::Manager;
+
+/// Observed celestial pole offsets (dX, dY) [mas] at the given instant: the IERS corrections to the IAU 2006/2000A
+/// precession-nutation model (mostly the Free Core Nutation, which the model does not predict). Zero when the IERS
+/// data does not provide them (no data available, instant outside the data span, or offsets not filled in for that
+/// date): the model is then used as is.
+Vector2d celestialPoleOffsetsAt(const Instant& anInstant)
+{
+    try
+    {
+        const Vector2d celestialPoleOffsets_mas = IersManager::Get().getCelestialPoleOffsetsAt(anInstant);
+
+        if (celestialPoleOffsets_mas.isDefined())
+        {
+            return celestialPoleOffsets_mas;
+        }
+    }
+    catch (const ostk::core::error::RuntimeError&)
+    {
+        // No IERS data covering the instant
+    }
+
+    return Vector2d(0.0, 0.0);
+}
+
+}  // namespace
 
 namespace ostk
 {
@@ -73,15 +108,22 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 
     iauXys06a(djmjd0, tt, &x, &y, &s);
 
-    // CIP offsets wrt IAU 2006/2000A (mas->radians)
+    // Celestial pole offsets wrt IAU 2006/2000A: observed dX, dY from the IERS (mas -> radians)
 
-    static const Real dx06 = +0.1750 * DMAS2R;
-    static const Real dy06 = -0.2259 * DMAS2R;
+    const Vector2d celestialPoleOffsets_mas = celestialPoleOffsetsAt(anInstant);
 
-    // Add CIP corrections
+    const double dx = celestialPoleOffsets_mas.x() * DMAS2R;
+    const double dy = celestialPoleOffsets_mas.y() * DMAS2R;
 
-    x += dx06;
-    y += dy06;
+    // Add CIP corrections. The CIO locator series actually provides s + XY / 2 (IERS Conventions 2010, Section
+    // 5.5.6), so s is re-derived from the corrected X, Y to keep it consistent (a ~1e-12 rad effect).
+
+    const double sPlusHalfXY = s + 0.5 * x * y;
+
+    x += dx;
+    y += dy;
+
+    s = sPlusHalfXY - 0.5 * x * y;
 
     // GCRS to CIRS matrix
 

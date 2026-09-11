@@ -67,13 +67,20 @@ INSTANTIATE_TEST_SUITE_P(
         ),
 
         // GCRF <> CIRF (Orekit)
+        //
+        // Reference generated with Orekit 13.1.8 (IERS 2010 conventions, FramesFactory.getCIRF(IERS_2010, false)),
+        // daily from 2020-01-01 to 2025-06-30 TAI, with the IERS finals2000A.all of 2026-09-11 restricted to its
+        // Bulletin A columns (Orekit otherwise prefers the Bulletin B columns, which OSTk does not use and which
+        // are zero-filled on some dates). The celestial pole offsets dX, dY are observed values over the whole
+        // span, which ends more than a year before the file date because the IERS keeps revising the Bulletin A
+        // values of the last year (by up to ~0.1 mas) between file releases.
         std::make_tuple(
             "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Transforms/GCRF_CIRF_orekit.csv",
             "CIRF",
             "",
             0.0,   // Translation tolerance [m]
             0.0,   // Relative velocity tolerance [m/s]
-            1e-1,  // Orientation tolerance at Earth Surface [m]
+            2e-2,  // Orientation tolerance at Earth Surface [m]
             1e-11  // Angular velocity tolerance [rad/s]
         ),
 

@@ -51,6 +51,13 @@ class TestFinals2000A:
             Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)
         ).is_defined()
 
+    def test_get_celestial_pole_offsets_at_success(self, finals_2000a: Finals2000A):
+        celestial_pole_offsets = finals_2000a.get_celestial_pole_offsets_at(
+            Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)
+        )
+
+        assert len(celestial_pole_offsets) == 2
+
     def test_get_data_at_success(self, finals_2000a: Finals2000A):
         data: Finals2000A.Data = finals_2000a.get_data_at(
             Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)

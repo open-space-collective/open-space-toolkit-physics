@@ -94,6 +94,23 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
             )doc"
         )
         .def(
+            "get_celestial_pole_offsets_at",
+            &Finals2000A::getCelestialPoleOffsetsAt,
+            arg("instant"),
+            R"doc(
+                Get celestial pole offsets (dX, dY) at instant.
+
+                Observed corrections to the IAU 2006/2000A precession-nutation model (Bulletin A values and predictions),
+                linearly interpolated between the daily values.
+
+                Args:
+                    instant (Instant): Instant.
+
+                Returns:
+                    np.ndarray: Celestial pole offsets (dX, dY) [mas], undefined if not provided at the instant.
+            )doc"
+        )
+        .def(
             "get_data_at",
             &Finals2000A::getDataAt,
             arg("instant"),

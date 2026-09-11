@@ -117,6 +117,22 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
                     float: Length of day [ms].
             )doc"
         )
+        .def(
+            "get_celestial_pole_offsets_at",
+            &Manager::getCelestialPoleOffsetsAt,
+            arg("instant"),
+            R"doc(
+                Get celestial pole offsets (dX, dY) at instant.
+
+                Observed corrections to the IAU 2006/2000A precession-nutation model, from the Finals 2000A data.
+
+                Args:
+                    instant (Instant): Instant.
+
+                Returns:
+                    np.ndarray: Celestial pole offsets (dX, dY) [mas], undefined if not provided at the instant.
+            )doc"
+        )
 
         .def(
             "load_bulletin_a",
