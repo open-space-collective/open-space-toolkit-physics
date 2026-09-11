@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <thread>
+#include <vector>
 
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
@@ -75,6 +77,99 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
     EXPECT_LT(maxErrorX, toleranceRad) << "max X error: " << (maxErrorX / ARCSEC_IN_RAD) << " arcsec";
     EXPECT_LT(maxErrorY, toleranceRad) << "max Y error: " << (maxErrorY / ARCSEC_IN_RAD) << " arcsec";
     EXPECT_LT(maxErrorS, toleranceRad) << "max s error: " << (maxErrorS / ARCSEC_IN_RAD) << " arcsec";
+}
+
+// Verifies that interpolated evaluations can run concurrently from several threads, and that the result depends
+// neither on the evaluation order nor on which thread populated the shared node cache: grid nodes sit at fixed absolute
+// epochs and are deterministic functions of the series, so a concurrent evaluation starting from an empty cache must
+// match a single-threaded one, and both must match the direct evaluation.
+TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordinatesInterpolationThreadSafety)
+{
+    const std::size_t threadCount = 8;
+    const std::size_t sampleCount = 400;
+
+    const Instant startInstant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TT);
+
+    // Each thread walks ~20 days at a 73-minute step (not a divisor of the 0.25-day grid spacing). Thread spans start
+    // 15 days apart, so threads populate distinct parts of the shared cache concurrently and also race on the nodes of
+    // the ~5 days they share with their neighbor.
+    const auto modifiedJulianDateAt =
+        [&startInstant](const std::size_t aThreadIndex, const std::size_t aSampleIndex) -> Real
+    {
+        return (startInstant + Duration::Days(15.0 * static_cast<double>(aThreadIndex)) +
+                Duration::Minutes(73.0 * static_cast<double>(aSampleIndex)))
+            .getModifiedJulianDate(Scale::TT);
+    };
+
+    struct Coordinates
+    {
+        double x;
+        double y;
+        double s;
+    };
+
+    // Concurrent interpolated evaluation, starting from an empty shared cache
+
+    CIRF::ClearXysCache();
+
+    std::vector<std::vector<Coordinates>> concurrentResults(threadCount, std::vector<Coordinates>(sampleCount));
+
+    {
+        std::vector<std::thread> threads;
+
+        for (std::size_t threadIndex = 0; threadIndex < threadCount; ++threadIndex)
+        {
+            threads.emplace_back(
+                [&modifiedJulianDateAt, &concurrentResults, threadIndex, sampleCount]()
+                {
+                    for (std::size_t sampleIndex = 0; sampleIndex < sampleCount; ++sampleIndex)
+                    {
+                        Coordinates& coordinates = concurrentResults[threadIndex][sampleIndex];
+
+                        CIRF::ComputeCIPCoordinates(
+                            modifiedJulianDateAt(threadIndex, sampleIndex),
+                            coordinates.x,
+                            coordinates.y,
+                            coordinates.s,
+                            true
+                        );
+                    }
+                }
+            );
+        }
+
+        for (std::thread& thread : threads)
+        {
+            thread.join();
+        }
+    }
+
+    // Compare against a single-threaded interpolated evaluation and against the direct evaluation
+
+    const double toleranceRad = 1.0e-9 * ARCSEC_IN_RAD;  // 1e-3 micro-arcseconds, as in the accuracy test
+
+    for (std::size_t threadIndex = 0; threadIndex < threadCount; ++threadIndex)
+    {
+        for (std::size_t sampleIndex = 0; sampleIndex < sampleCount; ++sampleIndex)
+        {
+            const Real tt = modifiedJulianDateAt(threadIndex, sampleIndex);
+            const Coordinates& concurrent = concurrentResults[threadIndex][sampleIndex];
+
+            double xInterp, yInterp, sInterp;
+            CIRF::ComputeCIPCoordinates(tt, xInterp, yInterp, sInterp, true);
+
+            EXPECT_DOUBLE_EQ(concurrent.x, xInterp) << "thread " << threadIndex << ", sample " << sampleIndex;
+            EXPECT_DOUBLE_EQ(concurrent.y, yInterp) << "thread " << threadIndex << ", sample " << sampleIndex;
+            EXPECT_DOUBLE_EQ(concurrent.s, sInterp) << "thread " << threadIndex << ", sample " << sampleIndex;
+
+            double xDirect, yDirect, sDirect;
+            CIRF::ComputeCIPCoordinates(tt, xDirect, yDirect, sDirect, false);
+
+            EXPECT_NEAR(concurrent.x, xDirect, toleranceRad) << "thread " << threadIndex << ", sample " << sampleIndex;
+            EXPECT_NEAR(concurrent.y, yDirect, toleranceRad) << "thread " << threadIndex << ", sample " << sampleIndex;
+            EXPECT_NEAR(concurrent.s, sDirect, toleranceRad) << "thread " << threadIndex << ", sample " << sampleIndex;
+        }
+    }
 }
 
 // Verifies that clearing the cached X, Y, s interpolation grid is transparent: the interpolated output for a given

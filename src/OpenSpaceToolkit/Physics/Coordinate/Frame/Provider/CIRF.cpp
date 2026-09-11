@@ -5,6 +5,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
+#include <limits>
 #include <mutex>
 #include <unordered_map>
 
@@ -34,6 +35,14 @@ namespace
 /// evaluation to the double-precision floor (observed max ~1e-4 uas on X, Y, s and ~6e-16 rad
 /// on the resulting rotation, sampled over 1980-2060), so the interpolated and direct paths
 /// are indistinguishable. Same grid spacing, 4-point polynomial: ~1 uas; 8-point at 12 h: ~0.02 uas.
+///
+/// Thread safety: the shared node map is guarded by a mutex, but the hot path does not take it.
+/// Each thread keeps the stencil of its most recent grid interval in a thread_local window, so
+/// consecutive evaluations within the same 0.25-day interval (the common case when stepping
+/// through time) are lock-free. The mutex is only taken when a thread moves to another interval,
+/// and the series itself is evaluated outside the lock, so a cache miss on one thread never
+/// blocks the others. Nodes are deterministic functions of their index, hence the result never
+/// depends on which thread populated the cache or on the evaluation order.
 class XysGrid
 {
    public:
@@ -63,18 +72,30 @@ class XysGrid
     static constexpr std::size_t stencilSize_ = 8;
     static constexpr std::int64_t stencilFirstOffset_ = -3;
 
+    /// Stencil nodes of one grid interval, kept per thread (see class comment).
+    struct Window
+    {
+        std::int64_t intervalIndex = std::numeric_limits<std::int64_t>::min();
+        std::array<Node, stencilSize_> nodes {};
+    };
+
     std::mutex mutex_;
     std::unordered_map<std::int64_t, Node> nodes_;
 
     void evaluate(const double aModifiedJulianDate_TT, double& x, double& y, double& s)
     {
+        static thread_local Window window;
+
         const double gridCoordinate = aModifiedJulianDate_TT / gridSpacingDays_;
         const std::int64_t intervalIndex = static_cast<std::int64_t>(std::floor(gridCoordinate));
         const double tau = gridCoordinate - static_cast<double>(intervalIndex);  // in [0, 1)
 
-        const std::array<double, stencilSize_> weights = XysGrid::LagrangeWeights(tau);
+        if (window.intervalIndex != intervalIndex)
+        {
+            this->loadWindow(intervalIndex, window);
+        }
 
-        const std::lock_guard<std::mutex> lock {mutex_};
+        const std::array<double, stencilSize_> weights = XysGrid::LagrangeWeights(tau);
 
         x = 0.0;
         y = 0.0;
@@ -82,36 +103,56 @@ class XysGrid
 
         for (std::size_t j = 0; j < stencilSize_; ++j)
         {
-            const Node& node = this->accessNode(intervalIndex + stencilFirstOffset_ + static_cast<std::int64_t>(j));
-
-            x += weights[j] * node.x;
-            y += weights[j] * node.y;
-            s += weights[j] * node.s;
+            x += weights[j] * window.nodes[j].x;
+            y += weights[j] * window.nodes[j].y;
+            s += weights[j] * window.nodes[j].s;
         }
     }
 
-    const Node& accessNode(const std::int64_t aNodeIndex)  // requires mutex_ to be held
+    void loadWindow(const std::int64_t anIntervalIndex, Window& aWindow)
     {
-        const auto nodeIt = this->nodes_.find(aNodeIndex);
-
-        if (nodeIt != this->nodes_.end())
+        for (std::size_t j = 0; j < stencilSize_; ++j)
         {
-            return nodeIt->second;
+            aWindow.nodes[j] = this->getNode(anIntervalIndex + stencilFirstOffset_ + static_cast<std::int64_t>(j));
         }
+
+        aWindow.intervalIndex = anIntervalIndex;
+    }
+
+    Node getNode(const std::int64_t aNodeIndex)
+    {
+        {
+            const std::lock_guard<std::mutex> lock {mutex_};
+
+            const auto nodeIt = this->nodes_.find(aNodeIndex);
+
+            if (nodeIt != this->nodes_.end())
+            {
+                return nodeIt->second;
+            }
+        }
+
+        // Cache miss: evaluate the series outside the lock so that other threads are not blocked meanwhile. Threads
+        // missing on the same node compute identical values, and emplace keeps whichever was inserted first.
+
+        Node node;
+        iauXys06a(2400000.5, static_cast<double>(aNodeIndex) * gridSpacingDays_, &node.x, &node.y, &node.s);
+
+        const std::lock_guard<std::mutex> lock {mutex_};
 
         if (this->nodes_.size() >= maxNodeCount_)
         {
             this->nodes_.clear();
         }
 
-        Node node;
-        iauXys06a(2400000.5, static_cast<double>(aNodeIndex) * gridSpacingDays_, &node.x, &node.y, &node.s);
-
         return this->nodes_.emplace(aNodeIndex, node).first->second;
     }
 
     void clear()
     {
+        // Only the shared map is released. Per-thread windows hold a fixed 8 nodes each and remain valid, since
+        // nodes are deterministic functions of their index.
+
         const std::lock_guard<std::mutex> lock {mutex_};
 
         this->nodes_.clear();
