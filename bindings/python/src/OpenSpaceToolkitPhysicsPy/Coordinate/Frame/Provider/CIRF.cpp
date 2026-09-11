@@ -93,8 +93,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
             R"doc(
                 Check whether X, Y, s interpolation is enabled.
 
-                Defaults to enabled, unless the environment variable
-                OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_CIRF_XYS_INTERPOLATION is set to "Disabled" or "False".
+                Defaults to disabled, unless the environment variable
+                OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_CIRF_XYS_INTERPOLATION is set to "Enabled" or "True".
                 Can be overridden at runtime via `set_xys_interpolation_enabled`.
 
                 Returns:

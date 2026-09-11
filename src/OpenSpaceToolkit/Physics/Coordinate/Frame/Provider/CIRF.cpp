@@ -123,7 +123,18 @@ class XysGrid
 bool xysInterpolationEnabledFromEnv()
 {
     const char* env = std::getenv("OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_CIRF_XYS_INTERPOLATION");
-    return !((env != nullptr) && ((std::strcmp(env, "Disabled") == 0) || (std::strcmp(env, "False") == 0)));
+    if (env == nullptr)
+    {
+        return false;
+    }
+
+    if ((std::strcmp(env, "Enabled") == 0) || (std::strcmp(env, "enabled") == 0) || (std::strcmp(env, "True") == 0) ||
+        (std::strcmp(env, "true") == 0))
+    {
+        return true;
+    }
+
+    return false;
 }
 
 // Effective interpolation flag: initialized from the environment, overridable at runtime.
