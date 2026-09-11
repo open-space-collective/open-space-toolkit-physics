@@ -74,21 +74,6 @@ class CIRF : public Provider
     /// @return The transform from GCRF to CIRF at the given instant
     virtual Transform getTransformAt(const Instant& anInstant) const override;
 
-    /// @brief Compute the IAU 2006/2000A CIP X, Y and CIO locator s at a given instant.
-    ///
-    /// This is the raw model output (before the observed CIP offsets applied by
-    /// @ref getTransformAt), evaluated either directly via the SOFA series or by
-    /// interpolating a cached grid of the series (see @ref IsXysInterpolationEnabled).
-    ///
-    /// @param [in] aModifiedJulianDate_TT A Modified Julian Date, in the TT scale
-    /// @param [out] x The CIP X coordinate [rad]
-    /// @param [out] y The CIP Y coordinate [rad]
-    /// @param [out] s The CIO locator s [rad]
-    /// @param [in] interpolate If true, interpolate a cached grid of the series; otherwise evaluate it directly
-    static void ComputeCIPCoordinates(
-        const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
-    );
-
     /// @brief Check whether X, Y, s interpolation is enabled.
     ///
     /// Defaults to disabled, unless the environment variable
@@ -100,7 +85,7 @@ class CIRF : public Provider
 
     /// @brief Enable or disable X, Y, s interpolation at runtime.
     ///
-    /// Overrides the environment-variable default. Primarily intended for testing and benchmarking.
+    /// Overrides the environment-variable default for the lifetime of the process.
     ///
     /// @param [in] anInterpolationEnabledFlag True to enable interpolation, false to evaluate the series directly
     static void SetXysInterpolationEnabled(const bool anInterpolationEnabledFlag);
@@ -114,6 +99,26 @@ class CIRF : public Provider
     ///     CIRF::ClearXysCache();
     /// @endcode
     static void ClearXysCache();
+
+   private:
+    /// Test-only access to @ref ComputeCIPCoordinates (defined in CIRF.test.cpp).
+    friend class CIRFTestAccessor;
+
+    /// @brief Compute the IAU 2006/2000A CIP (Celestial Intermediate Pole) X, Y and CIO (Celestial Intermediate Origin)
+    /// locator `s` at a given instant.
+    ///
+    /// This is the raw model output (before the observed CIP offsets applied by
+    /// @ref getTransformAt), evaluated either directly via the SOFA series or by
+    /// interpolating a cached grid of the series (see @ref IsXysInterpolationEnabled).
+    ///
+    /// @param [in] aModifiedJulianDate_TT A Modified Julian Date, in the TT scale
+    /// @param [out] x The CIP X coordinate [rad]
+    /// @param [out] y The CIP Y coordinate [rad]
+    /// @param [out] s The CIO locator s [rad]
+    /// @param [in] interpolate If true, interpolate a cached grid of the series; otherwise evaluate it directly
+    static void ComputeCIPCoordinates(
+        const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
+    );
 };
 
 }  // namespace provider

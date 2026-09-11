@@ -309,6 +309,21 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     return Transform::Passive(anInstant, x_CIRF_GCRF, v_CIRF_GCRF, q_CIRF_GCRF, w_CIRF_GCRF_in_CIRF);
 }
 
+bool CIRF::IsXysInterpolationEnabled()
+{
+    return xysInterpolationEnabledFlag().load();
+}
+
+void CIRF::SetXysInterpolationEnabled(const bool anInterpolationEnabledFlag)
+{
+    xysInterpolationEnabledFlag().store(anInterpolationEnabledFlag);
+}
+
+void CIRF::ClearXysCache()
+{
+    XysGrid::Clear();
+}
+
 void CIRF::ComputeCIPCoordinates(
     const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
 )
@@ -323,21 +338,6 @@ void CIRF::ComputeCIPCoordinates(
     {
         iauXys06a(djmjd0, aModifiedJulianDate_TT, &x, &y, &s);
     }
-}
-
-bool CIRF::IsXysInterpolationEnabled()
-{
-    return xysInterpolationEnabledFlag().load();
-}
-
-void CIRF::SetXysInterpolationEnabled(const bool anInterpolationEnabledFlag)
-{
-    xysInterpolationEnabledFlag().store(anInterpolationEnabledFlag);
-}
-
-void CIRF::ClearXysCache()
-{
-    XysGrid::Clear();
 }
 
 }  // namespace provider

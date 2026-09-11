@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <tuple>
-
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::module& aModule)
@@ -58,36 +56,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
         )
 
         .def_static(
-            "compute_cip_coordinates",
-            [](const Real& aModifiedJulianDate_TT, const bool interpolate) -> std::tuple<double, double, double>
-            {
-                double x;
-                double y;
-                double s;
-
-                CIRF::ComputeCIPCoordinates(aModifiedJulianDate_TT, x, y, s, interpolate);
-
-                return {x, y, s};
-            },
-            arg("modified_julian_date_tt"),
-            arg("interpolate"),
-            R"doc(
-                Compute the IAU 2006/2000A CIP X, Y and CIO locator s at a given instant.
-
-                This is the raw model output (before the observed CIP offsets applied by `get_transform_at`),
-                evaluated either directly via the SOFA series or by interpolating a cached grid of the series
-                (see `is_xys_interpolation_enabled`).
-
-                Args:
-                    modified_julian_date_tt (float): A Modified Julian Date, in the TT scale.
-                    interpolate (bool): If True, interpolate a cached grid of the series; otherwise evaluate it directly.
-
-                Returns:
-                    tuple[float, float, float]: The CIP X coordinate [rad], the CIP Y coordinate [rad] and the CIO locator s [rad].
-            )doc"
-        )
-
-        .def_static(
             "is_xys_interpolation_enabled",
             &CIRF::IsXysInterpolationEnabled,
             R"doc(
@@ -109,7 +77,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
             R"doc(
                 Enable or disable X, Y, s interpolation at runtime.
 
-                Overrides the environment-variable default. Primarily intended for testing and benchmarking.
+                Overrides the environment-variable default for the lifetime of the process.
 
                 Args:
                     interpolation_enabled (bool): True to enable interpolation, False to evaluate the series directly.

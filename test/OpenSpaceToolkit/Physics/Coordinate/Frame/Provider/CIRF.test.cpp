@@ -33,13 +33,32 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 
+namespace ostk::physics::coordinate::frame::provider
+{
+
+/// Test-only access to CIRF::ComputeCIPCoordinates, which is private in production (declared friend in CIRF.hpp).
+class CIRFTestAccessor
+{
+   public:
+    static void ComputeCIPCoordinates(
+        const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
+    )
+    {
+        CIRF::ComputeCIPCoordinates(aModifiedJulianDate_TT, x, y, s, interpolate);
+    }
+};
+
+}  // namespace ostk::physics::coordinate::frame::provider
+
+using ostk::physics::coordinate::frame::provider::CIRFTestAccessor;
+
 // 1 arcsecond in radians (SOFA DAS2R)
 static const double ARCSEC_IN_RAD = 4.848136811095359935899141e-6;
 
 // Verifies that the production X, Y, s interpolation (CIRF::ComputeCIPCoordinates with interpolation enabled)
 // reproduces the direct iauXys06a evaluation to the double-precision floor, orders of magnitude below both the ~0.2 mas
-// CIP corrections applied downstream and the accuracy of the IAU 2006/2000A model itself. Both paths are exercised
-// through the real production entry point, so a bug in the interpolation grid would be caught here.
+// CIP corrections applied downstream and the accuracy of the IAU 2006/2000A model itself. Both paths go through the
+// same private entry point that CIRF::getTransformAt uses, so a bug in the interpolation grid would be caught here.
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordinatesInterpolationAccuracy)
 {
     const Instant startInstant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TT);
@@ -58,10 +77,10 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
         const Real tt = instant.getModifiedJulianDate(Scale::TT);
 
         double xDirect, yDirect, sDirect;
-        CIRF::ComputeCIPCoordinates(tt, xDirect, yDirect, sDirect, false);
+        CIRFTestAccessor::ComputeCIPCoordinates(tt, xDirect, yDirect, sDirect, false);
 
         double xInterp, yInterp, sInterp;
-        CIRF::ComputeCIPCoordinates(tt, xInterp, yInterp, sInterp, true);
+        CIRFTestAccessor::ComputeCIPCoordinates(tt, xInterp, yInterp, sInterp, true);
 
         maxErrorX = std::max(maxErrorX, std::abs(xInterp - xDirect));
         maxErrorY = std::max(maxErrorY, std::abs(yInterp - yDirect));
@@ -126,7 +145,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
                     {
                         Coordinates& coordinates = concurrentResults[threadIndex][sampleIndex];
 
-                        CIRF::ComputeCIPCoordinates(
+                        CIRFTestAccessor::ComputeCIPCoordinates(
                             modifiedJulianDateAt(threadIndex, sampleIndex),
                             coordinates.x,
                             coordinates.y,
@@ -156,14 +175,14 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
             const Coordinates& concurrent = concurrentResults[threadIndex][sampleIndex];
 
             double xInterp, yInterp, sInterp;
-            CIRF::ComputeCIPCoordinates(tt, xInterp, yInterp, sInterp, true);
+            CIRFTestAccessor::ComputeCIPCoordinates(tt, xInterp, yInterp, sInterp, true);
 
             EXPECT_DOUBLE_EQ(concurrent.x, xInterp) << "thread " << threadIndex << ", sample " << sampleIndex;
             EXPECT_DOUBLE_EQ(concurrent.y, yInterp) << "thread " << threadIndex << ", sample " << sampleIndex;
             EXPECT_DOUBLE_EQ(concurrent.s, sInterp) << "thread " << threadIndex << ", sample " << sampleIndex;
 
             double xDirect, yDirect, sDirect;
-            CIRF::ComputeCIPCoordinates(tt, xDirect, yDirect, sDirect, false);
+            CIRFTestAccessor::ComputeCIPCoordinates(tt, xDirect, yDirect, sDirect, false);
 
             EXPECT_NEAR(concurrent.x, xDirect, toleranceRad) << "thread " << threadIndex << ", sample " << sampleIndex;
             EXPECT_NEAR(concurrent.y, yDirect, toleranceRad) << "thread " << threadIndex << ", sample " << sampleIndex;
@@ -181,12 +200,12 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ClearXysCache)
     const Real tt = instant.getModifiedJulianDate(Scale::TT);
 
     double xBefore, yBefore, sBefore;
-    CIRF::ComputeCIPCoordinates(tt, xBefore, yBefore, sBefore, true);
+    CIRFTestAccessor::ComputeCIPCoordinates(tt, xBefore, yBefore, sBefore, true);
 
     EXPECT_NO_THROW(CIRF::ClearXysCache());
 
     double xAfter, yAfter, sAfter;
-    CIRF::ComputeCIPCoordinates(tt, xAfter, yAfter, sAfter, true);
+    CIRFTestAccessor::ComputeCIPCoordinates(tt, xAfter, yAfter, sAfter, true);
 
     EXPECT_DOUBLE_EQ(xBefore, xAfter);
     EXPECT_DOUBLE_EQ(yBefore, yAfter);
