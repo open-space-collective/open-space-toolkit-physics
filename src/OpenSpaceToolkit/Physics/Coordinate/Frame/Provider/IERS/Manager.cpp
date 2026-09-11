@@ -211,6 +211,30 @@ Real Manager::getLodAt(const Instant& anInstant) const
     return Real::Undefined();
 }
 
+Vector2d Manager::getCelestialPoleOffsetsAt(const Instant& anInstant) const
+{
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    std::lock_guard<std::mutex> lock {mutex_};
+
+    // Bulletin A is not parsed for celestial pole offsets: use Finals 2000A, which carries the Bulletin A values
+    // and predictions.
+
+    const Finals2000A* finals2000aPtr = this->accessFinals2000A_();
+
+    if (finals2000aPtr != nullptr)
+    {
+        return finals2000aPtr->getCelestialPoleOffsetsAt(anInstant);
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot obtain celestial pole offsets at [{}].", anInstant.toString());
+
+    return Vector2d::Undefined();
+}
+
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
 {
     if (!aBulletinA.isDefined())

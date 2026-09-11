@@ -196,6 +196,48 @@ Real Finals2000A::getLodAt(const Instant& anInstant) const
     throw ostk::core::error::RuntimeError("Cannot get length of day at [{}].", anInstant.toString(Scale::UTC));
 }
 
+Vector2d Finals2000A::getCelestialPoleOffsetsAt(const Instant& anInstant) const
+{
+    using ostk::physics::time::Scale;
+
+    if (!anInstant.isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Instant");
+    }
+
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Finals 2000A");
+    }
+
+    const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
+
+    if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
+    {
+        const Finals2000A::Data& previousData = *(dataRange.first);
+        const Finals2000A::Data& nextData = *(dataRange.second);
+
+        if (previousData.dx_A.isDefined() && previousData.dy_A.isDefined() && nextData.dx_A.isDefined() &&
+            nextData.dy_A.isDefined())
+        {
+            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+
+            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
+
+            const Real dx_A = previousData.dx_A + ratio * (nextData.dx_A - previousData.dx_A);
+            const Real dy_A = previousData.dy_A + ratio * (nextData.dy_A - previousData.dy_A);
+
+            return {dx_A, dy_A};
+        }
+        else
+        {
+            return Vector2d::Undefined();
+        }
+    }
+
+    throw ostk::core::error::RuntimeError("Cannot get celestial pole offsets at [{}].", anInstant.toString(Scale::UTC));
+}
+
 Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;

@@ -375,6 +375,54 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetCelestialPoleOffsetsAt)
+{
+    manager_.setMode(Manager::Mode::Manual);
+    manager_.loadFinals2000A(finals2000A_);
+
+    // Bulletin A dX, dY [mas] in the Finals 2000A file: 2020-10-31: (0.239, 0.121), 2020-11-01: (0.209, 0.118)
+
+    {
+        const Vector2d celestialPoleOffsets_mas =
+            manager_.getCelestialPoleOffsetsAt(Instant::DateTime(DateTime(2020, 10, 31, 0, 0, 0), Scale::UTC));
+
+        EXPECT_TRUE(celestialPoleOffsets_mas.isNear(Vector2d(0.239, 0.121), 1e-12))
+            << celestialPoleOffsets_mas.toString();
+    }
+
+    // Linear interpolation between the daily values
+
+    {
+        const Vector2d celestialPoleOffsets_mas =
+            manager_.getCelestialPoleOffsetsAt(Instant::DateTime(DateTime(2020, 10, 31, 12, 0, 0), Scale::UTC));
+
+        EXPECT_TRUE(celestialPoleOffsets_mas.isNear(Vector2d(0.224, 0.1195), 1e-12))
+            << celestialPoleOffsets_mas.toString();
+    }
+
+    // Undefined where the file carries no dX, dY (far predictions)
+
+    {
+        const Vector2d celestialPoleOffsets_mas =
+            manager_.getCelestialPoleOffsetsAt(Instant::DateTime(DateTime(2025, 6, 1, 0, 0, 0), Scale::UTC));
+
+        EXPECT_FALSE(celestialPoleOffsets_mas.isDefined());
+    }
+
+    // Outside the data span
+
+    {
+        EXPECT_THROW(
+            manager_.getCelestialPoleOffsetsAt(Instant::DateTime(DateTime(2030, 1, 1, 0, 0, 0), Scale::UTC)),
+            ostk::core::error::RuntimeError
+        );
+    }
+
+    {
+        EXPECT_THROW(manager_.getCelestialPoleOffsetsAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
+    }
+}
+
 // TEST (OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetLodAt)
 // {
 

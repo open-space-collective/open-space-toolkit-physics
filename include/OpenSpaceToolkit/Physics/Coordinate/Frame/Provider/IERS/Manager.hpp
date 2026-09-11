@@ -126,6 +126,19 @@ class Manager : public BaseManager
     /// @return [ms] Length of day
     Real getLodAt(const Instant& anInstant) const;
 
+    /// @brief Get celestial pole offsets (dX, dY) at instant
+    ///
+    /// Observed corrections to the IAU 2006/2000A precession-nutation model (Free Core Nutation not removed),
+    /// from the Finals 2000A data (Bulletin A values and predictions).
+    ///
+    /// @code
+    ///     Vector2d celestialPoleOffsets = Manager::Get().getCelestialPoleOffsetsAt(anInstant);
+    /// @endcode
+    ///
+    /// @param [in] anInstant An instant
+    /// @return [mas] Celestial pole offsets (dX, dY), undefined if not provided at the given instant
+    Vector2d getCelestialPoleOffsetsAt(const Instant& anInstant) const;
+
     /// @brief Load Bulletin A
     ///
     /// @code

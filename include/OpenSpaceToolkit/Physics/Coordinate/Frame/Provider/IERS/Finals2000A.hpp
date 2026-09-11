@@ -156,6 +156,19 @@ class Finals2000A
     /// @return LOD
     Real getLodAt(const Instant& anInstant) const;
 
+    /// @brief Get celestial pole offsets (dX, dY) at Instant
+    ///
+    /// Observed corrections to the IAU 2006/2000A precession-nutation model (Bulletin A values and predictions,
+    /// Free Core Nutation not removed), linearly interpolated between the daily values.
+    ///
+    /// @code
+    ///     Vector2d celestialPoleOffsets = finals2000A.getCelestialPoleOffsetsAt(anInstant);
+    /// @endcode
+    ///
+    /// @param [in] anInstant An Instant
+    /// @return [mas] Celestial pole offsets (dX, dY), undefined if not provided at the given instant
+    Vector2d getCelestialPoleOffsetsAt(const Instant& anInstant) const;
+
     /// @brief Get Data reading at instant
     ///
     /// @code

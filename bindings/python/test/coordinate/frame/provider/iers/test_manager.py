@@ -119,6 +119,13 @@ class TestManager:
             == 0.43790000000000001
         )
 
+    def test_get_celestial_pole_offsets_at_success(self, manager: Manager):
+        celestial_pole_offsets = manager.get_celestial_pole_offsets_at(
+            Instant.date_time(datetime(2020, 1, 1, 0, 0, 0), Scale.UTC)
+        )
+
+        assert len(celestial_pole_offsets) == 2
+
     def test_set_mode_success(self, manager: Manager):
         assert manager.get_mode() == Manager.Mode.Automatic
 
