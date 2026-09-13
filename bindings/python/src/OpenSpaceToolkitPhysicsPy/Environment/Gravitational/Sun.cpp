@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::Directory;
     using ostk::core::type::Shared;
@@ -13,7 +13,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
     using ostk::physics::environment::gravitational::Sun;
 
     {
-        class_<Sun, Model, Shared<Sun>> sun_class(
+        class_<Sun, Model> sun_class(
             aModule,
             "Sun",
             R"doc(
@@ -92,7 +92,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
                 )doc"
             )
 
-            .def_readonly_static(
+            .def_ro_static(
                 "spherical",
                 &Sun::Spherical,
                 R"doc(

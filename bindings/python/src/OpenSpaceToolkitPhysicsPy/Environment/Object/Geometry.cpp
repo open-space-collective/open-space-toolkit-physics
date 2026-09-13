@@ -14,9 +14,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::Unique;
@@ -50,8 +50,22 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         .def(init<const Composite&, const Shared<const Frame>&>())
         .def(init<const Geometry::Object&, const Shared<const Frame>&>())
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Geometry& self, const Geometry& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Geometry& self, const Geometry& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
@@ -97,7 +111,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         .def(
             "access_composite",
             &Geometry::accessComposite,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Access composite.
 

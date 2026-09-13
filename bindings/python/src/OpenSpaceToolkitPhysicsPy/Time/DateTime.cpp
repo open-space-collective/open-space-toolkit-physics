@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -64,8 +64,22 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const DateTime& self, const DateTime& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const DateTime& self, const DateTime& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<DateTime>))
         .def(
@@ -259,7 +273,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
 
         ;
 
-    // https://pybind11.readthedocs.io/en/stable/advanced/functions.html#default-arguments-revisited
+    // https://nanobind.readthedocs.io/en/stable/advanced/functions.html#default-arguments-revisited
     // "default arguments are converted to Python objects right at declaration time"
     // The following parsing function requires DateTime::Format to be binded for proper declaration
     datetime_class.def_static("parse", &DateTime::Parse, arg("string"), arg("format") = DateTime::Format::Undefined);

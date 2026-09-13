@@ -7,9 +7,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Unit/Mass.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Unit/Time.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::Unit;
 
@@ -98,8 +98,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
 
     unit_class
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Unit& self, const Unit& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Unit& self, const Unit& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<Unit>))
         .def("__repr__", &(shiftToString<Unit>))

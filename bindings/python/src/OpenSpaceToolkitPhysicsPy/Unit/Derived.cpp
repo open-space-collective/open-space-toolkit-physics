@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -38,8 +38,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Derived& self, const Derived& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Derived& self, const Derived& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<Derived>))
         .def(
@@ -84,7 +98,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         .def(
             "to_string",
             &Derived::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            arg("aPrecision") = Integer::Undefined(),
             R"doc(
                 Convert to string.
 
@@ -166,8 +180,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Derived::Order& self, const Derived::Order& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Derived::Order& self, const Derived::Order& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def(
             "is_zero",
@@ -284,20 +312,34 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
              const Angle::Unit&,
              const Derived::Order&>())
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Derived::Unit& self, const Derived::Unit& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Derived::Unit& self, const Derived::Unit& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def("is_defined", &Derived::Unit::isDefined)
         .def("is_compatible_with", &Derived::Unit::isCompatibleWith)
 
-        // .def("access_length_unit", &Derived::Unit::accessLengthUnit, return_value_policy::reference)
-        // .def("access_length_order", &Derived::Unit::accessLengthOrder, return_value_policy::reference)
-        // .def("access_mass_unit", &Derived::Unit::accessMassUnit, return_value_policy::reference)
-        // .def("access_mass_order", &Derived::Unit::accessMassOrder, return_value_policy::reference)
-        // .def("access_time_unit", &Derived::Unit::accessTimeUnit, return_value_policy::reference)
-        // .def("access_time_order", &Derived::Unit::accessTimeOrder, return_value_policy::reference)
-        // .def("access_angle_unit", &Derived::Unit::accessAngleUnit, return_value_policy::reference)
-        // .def("access_angle_order", &Derived::Unit::accessAngleOrder, return_value_policy::reference)
+        // .def("access_length_unit", &Derived::Unit::accessLengthUnit, rv_policy::reference)
+        // .def("access_length_order", &Derived::Unit::accessLengthOrder, rv_policy::reference)
+        // .def("access_mass_unit", &Derived::Unit::accessMassUnit, rv_policy::reference)
+        // .def("access_mass_order", &Derived::Unit::accessMassOrder, rv_policy::reference)
+        // .def("access_time_unit", &Derived::Unit::accessTimeUnit, rv_policy::reference)
+        // .def("access_time_order", &Derived::Unit::accessTimeOrder, rv_policy::reference)
+        // .def("access_angle_unit", &Derived::Unit::accessAngleUnit, rv_policy::reference)
+        // .def("access_angle_order", &Derived::Unit::accessAngleOrder, rv_policy::reference)
         .def(
             "to_string",
             &Derived::Unit::toString,

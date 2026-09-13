@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -35,27 +35,154 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Length& self, const Length& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Length& self, const Length& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self < self)
-        .def(self <= self)
-        .def(self > self)
-        .def(self >= self)
+        .def(
+            "__lt__",
+            [](const Length& self, const Length& other)
+            {
+                return self < other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__le__",
+            [](const Length& self, const Length& other)
+            {
+                return self <= other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__gt__",
+            [](const Length& self, const Length& other)
+            {
+                return self > other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ge__",
+            [](const Length& self, const Length& other)
+            {
+                return self >= other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self + self)
-        .def(self - self)
-        .def(self * double())
-        .def(self / double())
-        .def(double() * self)
+        .def(
+            "__add__",
+            [](const Length& self, const Length& other)
+            {
+                return self + other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Length& self, const Length& other)
+            {
+                return self - other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__mul__",
+            [](const Length& self, const double& other)
+            {
+                return self * other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__truediv__",
+            [](const Length& self, const double& other)
+            {
+                return self / other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__rmul__",
+            [](const Length& self, const double& other)
+            {
+                return other * self;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self += self)
-        .def(self -= self)
-        .def(self *= double())
-        .def(self /= double())
+        .def(
+            "__iadd__",
+            [](Length& self, const Length& other) -> Length&
+            {
+                self += other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Length& self, const Length& other) -> Length&
+            {
+                self -= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__imul__",
+            [](Length& self, const double& other) -> Length&
+            {
+                self *= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__itruediv__",
+            [](Length& self, const double& other) -> Length&
+            {
+                self /= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
 
-        .def(+self)
-        .def(-self)
+        .def(
+            "__pos__",
+            [](const Length& self)
+            {
+                return +self;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__neg__",
+            [](const Length& self)
+            {
+                return -self;
+            },
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<Length>))
         .def(
@@ -130,7 +257,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
         .def(
             "to_string",
             &Length::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            arg("aPrecision") = Integer::Undefined(),
             R"doc(
                 Get the string representation of the length.
 
@@ -281,8 +408,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Interval<Length>& self, const Interval<Length>& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Interval<Length>& self, const Interval<Length>& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         .def(
             "is_defined",

@@ -2,12 +2,12 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Utility/ArrayCasting.hpp>
 #include <OpenSpaceToolkitPhysicsPy/Utility/DateTimeCasting.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utility/EigenSequenceCasting.hpp>
 #include <OpenSpaceToolkitPhysicsPy/Utility/ShiftToString.hpp>
-#include <pybind11/chrono.h>
-#include <pybind11/eigen.h>
-#include <pybind11/numpy.h>
-#include <pybind11/operators.h>
-#include <pybind11/pybind11.h>
+#include <nanobind/eigen/dense.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/ndarray.h>
+#include <nanobind/stl/chrono.h>
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data.cpp>
@@ -16,7 +16,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Time.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Unit.cpp>
 
-PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
+NB_MODULE(OpenSpaceToolkitPhysicsPy, m)
 {
     // Add optional docstring for package OpenSpaceToolkitPhysicsPy
     m.doc() = "Physical units, time, reference frames, environment modeling for OpenSpaceToolkit";

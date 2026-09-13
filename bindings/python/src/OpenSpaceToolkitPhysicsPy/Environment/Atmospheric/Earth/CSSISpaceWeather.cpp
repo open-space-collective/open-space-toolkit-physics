@@ -1,12 +1,12 @@
 /// Apache License 2.0
 
-#include <pybind11/functional.h>
+#include <nanobind/stl/function.h>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWeather(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWeather(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -206,7 +206,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         )doc"
     )
 
-        .def_readonly(
+        .def_ro(
             "date",
             &CSSISpaceWeather::Reading::date,
             R"doc(
@@ -214,7 +214,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "bsrn",
             &CSSISpaceWeather::Reading::BSRN,
             R"doc(
@@ -222,7 +222,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "nd",
             &CSSISpaceWeather::Reading::ND,
             R"doc(
@@ -230,7 +230,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_1",
             &CSSISpaceWeather::Reading::Kp1,
             R"doc(
@@ -238,14 +238,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                 
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_2",
             &CSSISpaceWeather::Reading::Kp2,
             R"doc(
                 Planetary 3-hour Range Index (Kp) for 0300-0600 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_3",
             &CSSISpaceWeather::Reading::Kp3,
             R"doc(
@@ -253,147 +253,147 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_4",
             &CSSISpaceWeather::Reading::Kp4,
             R"doc(
                 Planetary 3-hour Range Index (Kp) for 0900-1200 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_5",
             &CSSISpaceWeather::Reading::Kp5,
             R"doc(
                 Planetary 3-hour Range Index (Kp) for 1200-1500 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_6",
             &CSSISpaceWeather::Reading::Kp6,
             R"doc(
                 Planetary 3-hour Range Index (Kp) for 1500-1800 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_7",
             &CSSISpaceWeather::Reading::Kp7,
             R"doc(
                 Planetary 3-hour Range Index (Kp) for 1800-2100 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_8",
             &CSSISpaceWeather::Reading::Kp8,
             R"doc(
                 Planetary 3-hour Range Index (Kp) for 2100-0000 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "kp_sum",
             &CSSISpaceWeather::Reading::KpSum,
             R"doc(
                 Sum of the 8 Kp indices for the day.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_1",
             &CSSISpaceWeather::Reading::Ap1,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 0000-0300 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_2",
             &CSSISpaceWeather::Reading::Ap2,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 0300-0600 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_3",
             &CSSISpaceWeather::Reading::Ap3,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 0600-0900 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_4",
             &CSSISpaceWeather::Reading::Ap4,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 0900-1200 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_5",
             &CSSISpaceWeather::Reading::Ap5,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 1200-1500 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_6",
             &CSSISpaceWeather::Reading::Ap6,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 1500-1800 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_7",
             &CSSISpaceWeather::Reading::Ap7,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 1800-2100 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_8",
             &CSSISpaceWeather::Reading::Ap8,
             R"doc(
                 Planetary Equivalent Amplitude (Ap) for 2100-0000 UT.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ap_avg",
             &CSSISpaceWeather::Reading::ApAvg,
             R"doc(
                 Arithmetic average of the 8 Ap indices for the day.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "cp",
             &CSSISpaceWeather::Reading::Cp,
             R"doc(
                 Cp or Planetary Daily Character Figure. A qualitative estimate of overall level of magnetic activity for the day determined from the sum of the 8 Ap indices. Cp ranges, in steps of one-tenth, from 0 (quiet) to 2.5 (highly disturbed).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "c9",
             &CSSISpaceWeather::Reading::C9,
             R"doc(
                 C9. A conversion of the 0-to-2.5 range of the Cp index to one digit between 0 and 9.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "isn",
             &CSSISpaceWeather::Reading::ISN,
             R"doc(
                 International Sunspot Number. Records contain the Zurich number through 1980 Dec 31 and the International Brussels number thereafter.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_obs",
             &CSSISpaceWeather::Reading::F107Obs,
             R"doc(
                 Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_adj",
             &CSSISpaceWeather::Reading::F107Adj,
             R"doc(
                 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_data_type",
             &CSSISpaceWeather::Reading::F107DataType,
             R"doc(
@@ -404,28 +404,28 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                 - PRM: Monthly predicted flux.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_obs_center_81",
             &CSSISpaceWeather::Reading::F107ObsCenter81,
             R"doc(
                 Centered 81-day arithmetic average of F107 (observed).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_obs_last_81",
             &CSSISpaceWeather::Reading::F107ObsLast81,
             R"doc(
                 Last 81-day arithmetic average of F107 (observed).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_adj_center_81",
             &CSSISpaceWeather::Reading::F107AdjCenter81,
             R"doc(
                 Centered 81-day arithmetic average of F10.7 (adjusted).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "f107_adj_last_81",
             &CSSISpaceWeather::Reading::F107AdjLast81,
             R"doc(

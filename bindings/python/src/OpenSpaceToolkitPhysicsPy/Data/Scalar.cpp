@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -40,7 +40,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Scalar& self, const Scalar& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Equality operator.
 
@@ -52,7 +57,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Scalar& self, const Scalar& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -114,7 +124,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def(
             "to_string",
             &Scalar::toString,
-            arg_v("precision", Integer::Undefined(), "Integer.Undefined()"),
+            arg("precision").sig("Integer.Undefined()") = Integer::Undefined(),
             R"doc(
                 Convert to string.
 

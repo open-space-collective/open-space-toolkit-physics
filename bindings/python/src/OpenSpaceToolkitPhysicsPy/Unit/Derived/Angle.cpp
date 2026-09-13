@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -15,11 +15,11 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
     using ostk::physics::unit::Angle;
 
     // Extend the mathematics module constructor
-    module math_module = module::import("ostk.mathematics.geometry");
+    module_ math_module = module_::import_("ostk.mathematics.geometry");
 
     // Get the Mathematics Angle class
     class_<ostk::mathematics::geometry::Angle> math_angle =
-        math_module.attr("Angle").cast<class_<ostk::mathematics::geometry::Angle>>();
+        borrow<class_<ostk::mathematics::geometry::Angle>>(math_module.attr("Angle"));
 
     // Add a new constructor to the Mathematics Angle class
     math_angle.def(init<const ostk::physics::unit::Angle&>());
@@ -60,14 +60,56 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
 
         // Define methods
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self + self)
-        .def(self - self)
+        .def(
+            "__add__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self + other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self - other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(+self)
-        .def(-self)
+        .def(
+            "__pos__",
+            [](const Angle& self)
+            {
+                return +self;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__neg__",
+            [](const Angle& self)
+            {
+                return -self;
+            },
+            nanobind::is_operator()
+        )
 
         .def(
             "__mul__",
@@ -102,8 +144,26 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
             is_operator()
         )
 
-        .def(self += self)
-        .def(self -= self)
+        .def(
+            "__iadd__",
+            [](Angle& self, const Angle& other) -> Angle&
+            {
+                self += other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Angle& self, const Angle& other) -> Angle&
+            {
+                self -= other;
+                return self;
+            },
+            nanobind::rv_policy::none,
+            nanobind::is_operator()
+        )
 
         .def("__str__", &(shiftToString<Angle>))
         .def(
@@ -276,7 +336,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         .def(
             "to_string",
             &Angle::toString,
-            arg_v("precision", Integer::Undefined(), "Integer.undefined()"),
+            arg("precision").sig("Integer.undefined()") = Integer::Undefined(),
             R"doc(
                 Get the string representation of the angle.
 

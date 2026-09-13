@@ -3,9 +3,9 @@
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Manager.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::environment::atmospheric::earth::Manager;
     using BaseManager = ostk::physics::Manager;
@@ -159,7 +159,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
         .def_static(
             "get",
             &Manager::Get,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Get manager singleton.
 

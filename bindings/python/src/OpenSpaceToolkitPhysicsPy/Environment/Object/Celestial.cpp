@@ -6,9 +6,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial/Moon.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial/Sun.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Real;
     using ostk::core::type::Shared;
@@ -24,7 +24,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
     using MagneticModel = ostk::physics::environment::magnetic::Model;
     using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
 
-    class_<Celestial, Shared<Celestial>, Object> celestial_class(
+    class_<Celestial, Object> celestial_class(
         aModule,
         "Celestial",
         R"doc(

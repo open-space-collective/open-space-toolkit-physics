@@ -4,7 +4,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/IERS/Finals2000A.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/IERS/Manager.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS(nanobind::module_& aModule)
 {
     // Create "iers" python submodule
     auto iers = aModule.def_submodule("iers");

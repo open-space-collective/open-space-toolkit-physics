@@ -1,12 +1,12 @@
 /// Apache License 2.0
 
-#include <pybind11/pybind11.h>
+#include <nanobind/nanobind.h>
 
 #include <OpenSpaceToolkitPhysicsPy/Data/Provider/Nadir.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Provider(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Provider(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     // Create "provider" python submodule
     auto provider = aModule.def_submodule("provider");

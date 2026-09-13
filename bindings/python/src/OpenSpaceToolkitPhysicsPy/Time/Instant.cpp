@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Instant(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -21,23 +21,72 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         )doc"
     )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
-        .def(self < self)
-        .def(self <= self)
-        .def(self > self)
-        .def(self >= self)
+        .def(
+            "__lt__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self < other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__le__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self <= other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__gt__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self > other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ge__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self >= other;
+            },
+            nanobind::is_operator()
+        )
 
         // Duration() is private in this context
         // .def(self + Duration())
         // .def(self - Duration())
         // .def(self += Duration())
         // .def(self -= Duration())
-        .def(self - self)
+        .def(
+            "__sub__",
+            [](const Instant& self, const Instant& other)
+            {
+                return self - other;
+            },
+            nanobind::is_operator()
+        )
         .def(
             "__add__",
-            [](const Instant &anInstant, Duration aDuration)
+            [](const Instant& anInstant, Duration aDuration)
             {
                 return anInstant + aDuration;
             },
@@ -45,7 +94,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         )
         .def(
             "__sub__",
-            [](const Instant &anInstant, Duration aDuration)
+            [](const Instant& anInstant, Duration aDuration)
             {
                 return anInstant - aDuration;
             },
@@ -53,7 +102,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         )
         .def(
             "__iadd__",
-            [](const Instant &anInstant, Duration aDuration)
+            [](const Instant& anInstant, Duration aDuration)
             {
                 return anInstant + aDuration;
             },
@@ -61,7 +110,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         )
         .def(
             "__isub__",
-            [](const Instant &anInstant, Duration aDuration)
+            [](const Instant& anInstant, Duration aDuration)
             {
                 return anInstant - aDuration;
             },
@@ -71,14 +120,14 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         .def("__str__", &(shiftToString<Instant>))
         .def(
             "__repr__",
-            +[](const Instant &anInstant) -> std::string
+            +[](const Instant& anInstant) -> std::string
             {
                 return anInstant.toString();
             }
         )
         .def(
             "__hash__",
-            +[](const Instant &anInstant) -> size_t
+            +[](const Instant& anInstant) -> size_t
             {
                 return std::hash<Instant> {}(anInstant);
             }
@@ -157,9 +206,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
         )
         .def(
             "to_string",
-            overload_cast<const Scale &, const DateTime::Format &>(&Instant::toString, const_),
-            arg_v("scale", DEFAULT_TIME_SCALE, "Scale.UTC"),
-            arg_v("date_time_format", DEFAULT_DATE_TIME_FORMAT, "Format.Standard"),
+            overload_cast<const Scale&, const DateTime::Format&>(&Instant::toString, const_),
+            arg("scale").sig("Scale.UTC") = DEFAULT_TIME_SCALE,
+            arg("date_time_format").sig("Format.Standard") = DEFAULT_DATE_TIME_FORMAT,
             R"doc(
                 Convert to string.
 
@@ -257,7 +306,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
             &Instant::Parse,
             arg("string"),
             arg("scale"),
-            arg_v("date_time_format", DEFAULT_DATE_TIME_FORMAT, "Format.Standard"),
+            arg("date_time_format").sig("Format.Standard") = DEFAULT_DATE_TIME_FORMAT,
 
             R"doc(
                 Create an instant from a string representation.
@@ -266,7 +315,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                     string (str): String representation.
                     scale (Time.Scale): Time scale.
                     date_time_format (DateTime.Format): Date-time format.
-
 
                 Returns:
                     Instant: Instant.

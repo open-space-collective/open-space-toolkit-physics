@@ -1,11 +1,13 @@
 /// Apache License 2.0
 
+#include <nanobind/trampoline.h>
+
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/Analytical.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/SPICE.cpp>
 
-using namespace pybind11;
+using namespace nanobind;
 
 using ostk::core::type::Shared;
 
@@ -15,29 +17,29 @@ using ostk::physics::environment::Ephemeris;
 class PyEphemeris : public Ephemeris
 {
    public:
-    using Ephemeris::Ephemeris;
+    NB_TRAMPOLINE(Ephemeris, 3);
 
     // Trampoline (need one for each virtual function)
 
     Ephemeris* clone() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(Ephemeris*, Ephemeris, "clone", clone);
+        NB_OVERRIDE_PURE_NAME("clone", clone);
     }
 
     bool isDefined() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(bool, Ephemeris, "is_defined", isDefined);
+        NB_OVERRIDE_PURE_NAME("is_defined", isDefined);
     }
 
     Shared<const Frame> accessFrame() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(Shared<const Frame>, Ephemeris, "access_frame", accessFrame);
+        NB_OVERRIDE_PURE_NAME("access_frame", accessFrame);
     }
 };
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(nanobind::module_& aModule)
 {
-    class_<Ephemeris, PyEphemeris, Shared<Ephemeris>>(
+    class_<Ephemeris, PyEphemeris>(
         aModule,
         "Ephemeris",
         R"doc(

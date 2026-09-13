@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::String;
@@ -139,7 +139,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
         .def_static(
             "get",
             &Manager::Get,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Get manager singleton.
 

@@ -29,7 +29,7 @@ dependencies = [
 
 [project.optional-dependencies]
 prebuild = [
-    "pybind11-stubgen"
+    "nanobind==2.9.2"
 ]
 test = [
     "pytest"
@@ -48,5 +48,5 @@ ext-modules = [
 include = ["ostk.physics", "ostk.physics.*"]
 
 [tool.setuptools.package-data]
-"ostk.physics" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so"]
+"ostk.physics" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so", "*.pyi", "py.typed"]
 "*" = ["*/data/*"]

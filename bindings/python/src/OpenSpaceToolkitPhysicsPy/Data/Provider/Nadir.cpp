@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Provider_Nadir(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Provider_Nadir(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::coordinate::Frame;
     using ostk::physics::data::provider::Nadir;

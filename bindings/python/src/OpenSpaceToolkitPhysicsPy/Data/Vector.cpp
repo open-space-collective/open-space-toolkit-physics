@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Vector(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -39,7 +39,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Vector& self, const Vector& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Equality operator.
 
@@ -51,7 +56,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Vector& self, const Vector& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Inequality operator.
 

@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Integer;
     using ostk::core::type::Real;
@@ -35,8 +35,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const ElectricCurrent& self, const ElectricCurrent& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const ElectricCurrent& self, const ElectricCurrent& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator()
+        )
 
         // .def(self < self)
         // .def(self <= self)
@@ -108,7 +122,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         .def(
             "to_string",
             &ElectricCurrent::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            arg("aPrecision") = Integer::Undefined(),
             R"doc(
                 Get the string representation of the electric current.
 

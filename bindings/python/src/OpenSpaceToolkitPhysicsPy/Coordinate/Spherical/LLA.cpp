@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Real;
 
@@ -39,7 +39,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const LLA& self, const LLA& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Equality operator.
 
@@ -51,7 +56,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const LLA& self, const LLA& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -135,8 +145,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     Length: Distance.
             )doc",
             arg("lla"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def(
             "calculate_azimuth_to",
@@ -155,8 +165,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 
                 )doc",
             arg("lla"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def(
             "calculate_intermediate_to",
@@ -177,8 +187,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("lla"),
             arg("ratio"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def(
             "calculate_forward",
@@ -199,8 +209,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("azimuth"),
             arg("distance"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def(
             "calculate_linspace_to",
@@ -221,8 +231,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("lla"),
             arg("number_of_points"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
 
         .def(
@@ -249,8 +259,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Returns:
                     np.ndarray: Cartesian.
             )doc",
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def(
             "to_string",
@@ -303,8 +313,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     LLA: LLA.
             )doc",
             arg("cartesian_coordinates"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def_static(
             "distance_between",
@@ -324,8 +334,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("lla_1"),
             arg("lla_2"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def_static(
             "azimuth_between",
@@ -345,8 +355,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("lla_1"),
             arg("lla_2"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def_static(
             "intermediate_between",
@@ -369,8 +379,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg("ratio"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def_static(
             "forward",
@@ -393,8 +403,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla"),
             arg("azimuth"),
             arg("distance"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def_static(
             "linspace",
@@ -417,8 +427,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg("number_of_points"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg("ellipsoid_equatorial_radius").sig("Length.Undefined()") = Length::Undefined(),
+            arg("ellipsoid_flattening").sig("Real.Undefined()") = Real::Undefined()
         )
         .def_static(
             "from_position",
@@ -434,7 +444,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     LLA: LLA.
             )doc",
             arg("position"),
-            arg_v("celestial", nullptr, "None")
+            arg("celestial").sig("None") = nullptr
         )
 
         ;

@@ -5,9 +5,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Manager.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::String;
@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     using ostk::physics::coordinate::Frame;
     using ostk::physics::coordinate::frame::Provider;
 
-    class_<Frame, Shared<Frame>>(
+    class_<Frame>(
         aModule,
         "Frame",
         R"doc(
@@ -29,7 +29,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Frame& self, const Frame& other)
+            {
+                return self == other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Equality operator.
 
@@ -41,7 +46,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Frame& self, const Frame& other)
+            {
+                return self != other;
+            },
+            nanobind::is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -349,7 +359,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             arg("is_quasi_inertial"),
             arg("parent_frame"),
             arg("provider"),
-            arg_v("overwrite", false, "false"),
+            arg("overwrite").sig("false") = false,
             R"doc(
                 Construct a frame.
 

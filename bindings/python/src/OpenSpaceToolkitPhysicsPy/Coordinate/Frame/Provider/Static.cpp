@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Static(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Static(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -12,7 +12,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Static(pybind11:
     using ostk::physics::coordinate::frame::provider::Static;
     using ostk::physics::coordinate::Transform;
 
-    class_<Static, Shared<Static>, Provider>(
+    class_<Static, Provider>(
         aModule,
         "Static",
         R"doc(
