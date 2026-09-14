@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Time__
 #define __OpenSpaceToolkit_Physics_Time_Time__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -188,11 +190,11 @@ class Time
 
     /// @brief Copy the time, replacing the provided components
     ///
-    /// Undefined components are copied from this time.
+    /// Components left empty are copied from this time.
     ///
     /// @code
     ///     Time(12, 34, 56).replace(18); // 18:34:56.000.000.000
-    ///     Time(12, 34, 56).replace(Integer::Undefined(), 45); // 12:45:56.000.000.000
+    ///     Time(12, 34, 56).replace(std::nullopt, 45); // 12:45:56.000.000.000
     /// @endcode
     ///
     /// @param [in] (optional) anHour An hour count (0 - 23)
@@ -203,12 +205,12 @@ class Time
     /// @param [in] (optional) aNanosecond A nanosecond count (0 - 999)
     /// @return Time
     Time replace(
-        const Integer& anHour = Integer::Undefined(),
-        const Integer& aMinute = Integer::Undefined(),
-        const Integer& aSecond = Integer::Undefined(),
-        const Integer& aMillisecond = Integer::Undefined(),
-        const Integer& aMicrosecond = Integer::Undefined(),
-        const Integer& aNanosecond = Integer::Undefined()
+        const std::optional<Integer>& anHour = std::nullopt,
+        const std::optional<Integer>& aMinute = std::nullopt,
+        const std::optional<Integer>& aSecond = std::nullopt,
+        const std::optional<Integer>& aMillisecond = std::nullopt,
+        const std::optional<Integer>& aMicrosecond = std::nullopt,
+        const std::optional<Integer>& aNanosecond = std::nullopt
     ) const;
 
     /// @brief Set hour

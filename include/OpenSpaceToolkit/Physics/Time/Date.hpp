@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Date__
 #define __OpenSpaceToolkit_Physics_Time_Date__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -122,10 +124,10 @@ class Date
 
     /// @brief Copy the date, replacing the provided components
     ///
-    /// Undefined components are copied from this date.
+    /// Components left empty are copied from this date.
     ///
     /// @code
-    ///     Date(2018, 1, 2).replace(Integer::Undefined(), 6); // 2018-06-02
+    ///     Date(2018, 1, 2).replace(std::nullopt, 6); // 2018-06-02
     /// @endcode
     ///
     /// @param [in] (optional) aYear A year (1400 - 9999)
@@ -133,9 +135,9 @@ class Date
     /// @param [in] (optional) aDay A day (1 - 31)
     /// @return Date
     Date replace(
-        const Integer& aYear = Integer::Undefined(),
-        const Integer& aMonth = Integer::Undefined(),
-        const Integer& aDay = Integer::Undefined()
+        const std::optional<Integer>& aYear = std::nullopt,
+        const std::optional<Integer>& aMonth = std::nullopt,
+        const std::optional<Integer>& aDay = std::nullopt
     ) const;
 
     /// @brief Set year

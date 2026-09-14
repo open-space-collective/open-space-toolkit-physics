@@ -252,12 +252,12 @@ String Time::toString(const Time::Format& aFormat) const
 }
 
 Time Time::replace(
-    const Integer& anHour,
-    const Integer& aMinute,
-    const Integer& aSecond,
-    const Integer& aMillisecond,
-    const Integer& aMicrosecond,
-    const Integer& aNanosecond
+    const std::optional<Integer>& anHour,
+    const std::optional<Integer>& aMinute,
+    const std::optional<Integer>& aSecond,
+    const std::optional<Integer>& aMillisecond,
+    const std::optional<Integer>& aMicrosecond,
+    const std::optional<Integer>& aNanosecond
 ) const
 {
     if (!this->isDefined())
@@ -265,12 +265,12 @@ Time Time::replace(
         throw ostk::core::error::runtime::Undefined("Time");
     }
 
-    const Integer hour = anHour.isDefined() ? anHour : Integer::Uint8(hour_);
-    const Integer minute = aMinute.isDefined() ? aMinute : Integer::Uint8(minute_);
-    const Integer second = aSecond.isDefined() ? aSecond : Integer::Uint8(second_);
-    const Integer millisecond = aMillisecond.isDefined() ? aMillisecond : Integer::Uint16(millisecond_);
-    const Integer microsecond = aMicrosecond.isDefined() ? aMicrosecond : Integer::Uint16(microsecond_);
-    const Integer nanosecond = aNanosecond.isDefined() ? aNanosecond : Integer::Uint16(nanosecond_);
+    const Integer hour = anHour.value_or(Integer::Uint8(hour_));
+    const Integer minute = aMinute.value_or(Integer::Uint8(minute_));
+    const Integer second = aSecond.value_or(Integer::Uint8(second_));
+    const Integer millisecond = aMillisecond.value_or(Integer::Uint16(millisecond_));
+    const Integer microsecond = aMicrosecond.value_or(Integer::Uint16(microsecond_));
+    const Integer nanosecond = aNanosecond.value_or(Integer::Uint16(nanosecond_));
 
     Time::ValidateHour(hour);
     Time::ValidateMinute(minute);

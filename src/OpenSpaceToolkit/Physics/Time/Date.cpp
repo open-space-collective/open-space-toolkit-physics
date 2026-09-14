@@ -174,16 +174,18 @@ String Date::toString(const Date::Format& aFormat) const
     return String::Empty();
 }
 
-Date Date::replace(const Integer& aYear, const Integer& aMonth, const Integer& aDay) const
+Date Date::replace(
+    const std::optional<Integer>& aYear, const std::optional<Integer>& aMonth, const std::optional<Integer>& aDay
+) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Date");
     }
 
-    const Integer year = aYear.isDefined() ? aYear : Integer::Uint16(year_);
-    const Integer month = aMonth.isDefined() ? aMonth : Integer::Uint8(month_);
-    const Integer day = aDay.isDefined() ? aDay : Integer::Uint8(day_);
+    const Integer year = aYear.value_or(Integer::Uint16(year_));
+    const Integer month = aMonth.value_or(Integer::Uint8(month_));
+    const Integer day = aDay.value_or(Integer::Uint8(day_));
 
     Date::ValidateDate(year, month, day);
 

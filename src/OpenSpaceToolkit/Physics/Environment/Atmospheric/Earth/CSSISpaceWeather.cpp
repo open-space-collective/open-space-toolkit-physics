@@ -642,7 +642,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         // so that the data Intervals overlap
         const CSSISpaceWeather::Reading& lastDailyPrediction = spaceWeather.dailyPredictions_.rbegin()->second;
 
-        const Date monthBeginningDate = lastDailyPrediction.date.replace(Integer::Undefined(), Integer::Undefined(), 1);
+        const Date monthBeginningDate = lastDailyPrediction.date.replace(std::nullopt, std::nullopt, 1);
 
         CSSISpaceWeather::Reading overlapMonthlyReading = lastDailyPrediction;
         overlapMonthlyReading.date = monthBeginningDate;
@@ -794,7 +794,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             // so that the data Intervals overlap
             const CSSISpaceWeather::Reading& lastDailyPrediction = spaceWeather.dailyPredictions_.rbegin()->second;
 
-            const Date monthBeginningDate = lastDailyPrediction.date.replace(Integer::Undefined(), Integer::Undefined(), 1);
+            const Date monthBeginningDate = lastDailyPrediction.date.replace(std::nullopt, std::nullopt, 1);
 
             CSSISpaceWeather::Reading overlapMonthlyReading = lastDailyPrediction;
             overlapMonthlyReading.date = monthBeginningDate;

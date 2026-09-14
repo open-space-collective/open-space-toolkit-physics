@@ -249,15 +249,17 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Replace)
 {
     {
         const Time time = Time(1, 2, 3, 4, 5, 6);
-        const Integer undefined = Integer::Undefined();
 
         EXPECT_EQ(time, time.replace());
         EXPECT_EQ(Time(12, 2, 3, 4, 5, 6), time.replace(12));
-        EXPECT_EQ(Time(1, 34, 3, 4, 5, 6), time.replace(undefined, 34));
-        EXPECT_EQ(Time(1, 2, 56, 4, 5, 6), time.replace(undefined, undefined, 56));
-        EXPECT_EQ(Time(1, 2, 3, 100, 5, 6), time.replace(undefined, undefined, undefined, 100));
-        EXPECT_EQ(Time(1, 2, 3, 4, 200, 6), time.replace(undefined, undefined, undefined, undefined, 200));
-        EXPECT_EQ(Time(1, 2, 3, 4, 5, 300), time.replace(undefined, undefined, undefined, undefined, undefined, 300));
+        EXPECT_EQ(Time(1, 34, 3, 4, 5, 6), time.replace(std::nullopt, 34));
+        EXPECT_EQ(Time(1, 2, 56, 4, 5, 6), time.replace(std::nullopt, std::nullopt, 56));
+        EXPECT_EQ(Time(1, 2, 3, 100, 5, 6), time.replace(std::nullopt, std::nullopt, std::nullopt, 100));
+        EXPECT_EQ(Time(1, 2, 3, 4, 200, 6), time.replace(std::nullopt, std::nullopt, std::nullopt, std::nullopt, 200));
+        EXPECT_EQ(
+            Time(1, 2, 3, 4, 5, 300),
+            time.replace(std::nullopt, std::nullopt, std::nullopt, std::nullopt, std::nullopt, 300)
+        );
         EXPECT_EQ(Time(12, 34, 56, 100, 200, 300), time.replace(12, 34, 56, 100, 200, 300));
 
         // Existing time is left untouched
@@ -265,18 +267,19 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Replace)
     }
 
     {
-        const Integer undefined = Integer::Undefined();
-
         EXPECT_ANY_THROW(Time::Undefined().replace(12));
 
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(24));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(-1));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(256));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(undefined, 60));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(undefined, undefined, 61));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(undefined, undefined, undefined, 1000));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(undefined, undefined, undefined, undefined, 1000));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(undefined, undefined, undefined, undefined, undefined, 1000));
+        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(Integer::Undefined()));
+        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, 60));
+        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, 61));
+        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, std::nullopt, 1000));
+        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, std::nullopt, std::nullopt, 1000));
+        EXPECT_ANY_THROW(
+            Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, std::nullopt, std::nullopt, std::nullopt, 1000)
+        );
     }
 }
 

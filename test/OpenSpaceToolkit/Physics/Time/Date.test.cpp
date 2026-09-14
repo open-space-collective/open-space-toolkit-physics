@@ -173,8 +173,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Replace)
 
         EXPECT_EQ(date, date.replace());
         EXPECT_EQ(Date(2019, 1, 2), date.replace(2019));
-        EXPECT_EQ(Date(2018, 6, 2), date.replace(Integer::Undefined(), 6));
-        EXPECT_EQ(Date(2018, 1, 15), date.replace(Integer::Undefined(), Integer::Undefined(), 15));
+        EXPECT_EQ(Date(2018, 6, 2), date.replace(std::nullopt, 6));
+        EXPECT_EQ(Date(2018, 1, 15), date.replace(std::nullopt, std::nullopt, 15));
         EXPECT_EQ(Date(2019, 6, 15), date.replace(2019, 6, 15));
 
         // Existing date is left untouched
@@ -186,10 +186,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Replace)
 
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(1399));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(-1));
-        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined(), 13));
-        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined(), Integer::Undefined(), 32));
-        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined(), Integer::Undefined(), 257));
-        EXPECT_ANY_THROW(Date(2018, 2, 1).replace(Integer::Undefined(), Integer::Undefined(), 30));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined()));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, 13));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, std::nullopt, 32));
+        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, std::nullopt, 257));
     }
 }
 

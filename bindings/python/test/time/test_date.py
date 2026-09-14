@@ -124,6 +124,7 @@ def test_date_replace():
     assert date.replace(month=6) == Date(2018, 6, 2)
     assert date.replace(day=15) == Date(2018, 1, 15)
     assert date.replace(2019, 6, 15) == Date(2019, 6, 15)
+    assert date.replace(None, 6, None) == Date(2018, 6, 2)
 
     # Original date is left untouched
     assert date == Date(2018, 1, 2)

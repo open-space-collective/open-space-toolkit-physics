@@ -85,6 +85,7 @@ class TestTime:
         assert time.replace(microsecond=200) == Time(12, 34, 56, 1, 200, 3)
         assert time.replace(nanosecond=300) == Time(12, 34, 56, 1, 2, 300)
         assert time.replace(0, 0, 0, 0, 0, 0) == Time.midnight()
+        assert time.replace(hour=None, minute=45) == Time(12, 45, 56, 1, 2, 3)
 
         # Original time is left untouched
         assert time == Time(12, 34, 56, 1, 2, 3)

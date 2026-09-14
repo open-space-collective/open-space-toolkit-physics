@@ -6,7 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
     using ostk::core::type::Uint8;
@@ -111,16 +110,16 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
                 Copy the date, replacing the provided components.
 
                 Args:
-                    year (int, optional): Year (1400 - 9999). Defaults to the already existing year of this Date instance.
-                    month (int, optional): Month (1 - 12). Defaults to the already existing month of this Date instance.
-                    day (int, optional): Day (1 - 31). Defaults to the already existing day of this Date instance.
+                    year (int | None, optional): Year (1400 - 9999). Defaults to the already existing year of this Date instance.
+                    month (int | None, optional): Month (1 - 12). Defaults to the already existing month of this Date instance.
+                    day (int | None, optional): Day (1 - 31). Defaults to the already existing day of this Date instance.
 
                 Returns:
                     Date: Date.
             )doc",
-            arg("year") = Integer::Undefined(),
-            arg("month") = Integer::Undefined(),
-            arg("day") = Integer::Undefined()
+            arg("year") = std::nullopt,
+            arg("month") = std::nullopt,
+            arg("day") = std::nullopt
         )
 
         .def(
