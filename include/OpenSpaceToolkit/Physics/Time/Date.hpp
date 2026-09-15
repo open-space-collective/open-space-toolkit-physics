@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Date__
 #define __OpenSpaceToolkit_Physics_Time_Date__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -13,6 +15,7 @@ namespace physics
 namespace time
 {
 
+using ostk::core::type::Integer;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -119,6 +122,24 @@ class Date
     /// @return Serialized date
     String toString(const Date::Format& aFormat = Date::Format::Standard) const;
 
+    /// @brief Copy the date, replacing the provided components
+    ///
+    /// Components left empty are copied from this date.
+    ///
+    /// @code
+    ///     Date(2018, 1, 2).replace(std::nullopt, 6); // 2018-06-02
+    /// @endcode
+    ///
+    /// @param [in] (optional) aYear A year (1400 - 9999)
+    /// @param [in] (optional) aMonth A month (1 - 12)
+    /// @param [in] (optional) aDay A day (1 - 31)
+    /// @return Date
+    Date replace(
+        const std::optional<Integer>& aYear = std::nullopt,
+        const std::optional<Integer>& aMonth = std::nullopt,
+        const std::optional<Integer>& aDay = std::nullopt
+    ) const;
+
     /// @brief Set year
     ///
     /// @code
@@ -126,8 +147,10 @@ class Date
     ///     date.setYear(2020);
     /// @endcode
     ///
+    /// @deprecated Use Date::replace(aYear, aMonth, aDay) instead.
     /// @param [in] aYear A year (1400 - 9999)
 
+    [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setYear(Uint16 aYear);
 
     /// @brief Set month
@@ -137,8 +160,10 @@ class Date
     ///     date.setMonth(6);
     /// @endcode
     ///
+    /// @deprecated Use Date::replace(aYear, aMonth, aDay) instead.
     /// @param [in] aMonth A month (1 - 12)
 
+    [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setMonth(Uint8 aMonth);
 
     /// @brief Set day
@@ -148,8 +173,10 @@ class Date
     ///     date.setDay(15);
     /// @endcode
     ///
+    /// @deprecated Use Date::replace(aYear, aMonth, aDay) instead.
     /// @param [in] aDay A day (1 - 31)
 
+    [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setDay(Uint8 aDay);
 
     /// @brief Constructs an undefined date
@@ -226,7 +253,7 @@ class Date
 
     Date();
 
-    static void ValidateDate(Uint16 aYear, Uint8 aMonth, Uint8 aDay);
+    static void ValidateDate(const Integer& aYear, const Integer& aMonth, const Integer& aDay);
 };
 
 }  // namespace time

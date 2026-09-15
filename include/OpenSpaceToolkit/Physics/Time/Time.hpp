@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_Time__
 #define __OpenSpaceToolkit_Physics_Time_Time__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -14,6 +16,7 @@ namespace physics
 namespace time
 {
 
+using ostk::core::type::Integer;
 using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
@@ -185,6 +188,31 @@ class Time
     /// @return Serialized time
     String toString(const Time::Format& aFormat = Time::Format::Standard) const;
 
+    /// @brief Copy the time, replacing the provided components
+    ///
+    /// Components left empty are copied from this time.
+    ///
+    /// @code
+    ///     Time(12, 34, 56).replace(18); // 18:34:56.000.000.000
+    ///     Time(12, 34, 56).replace(std::nullopt, 45); // 12:45:56.000.000.000
+    /// @endcode
+    ///
+    /// @param [in] (optional) anHour An hour count (0 - 23)
+    /// @param [in] (optional) aMinute A minute count (0 - 59)
+    /// @param [in] (optional) aSecond A second count (0 - 60)
+    /// @param [in] (optional) aMillisecond A millisecond count (0 - 999)
+    /// @param [in] (optional) aMicrosecond A microsecond count (0 - 999)
+    /// @param [in] (optional) aNanosecond A nanosecond count (0 - 999)
+    /// @return Time
+    Time replace(
+        const std::optional<Integer>& anHour = std::nullopt,
+        const std::optional<Integer>& aMinute = std::nullopt,
+        const std::optional<Integer>& aSecond = std::nullopt,
+        const std::optional<Integer>& aMillisecond = std::nullopt,
+        const std::optional<Integer>& aMicrosecond = std::nullopt,
+        const std::optional<Integer>& aNanosecond = std::nullopt
+    ) const;
+
     /// @brief Set hour
     ///
     /// @code
@@ -192,7 +220,9 @@ class Time
     ///     time.setHour(18);
     /// @endcode
     ///
+    /// @deprecated Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] anHour An hour (0 - 23)
+    [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setHour(Uint8 anHour);
 
     /// @brief Set minute
@@ -202,7 +232,9 @@ class Time
     ///     time.setMinute(45);
     /// @endcode
     ///
+    /// @deprecated Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aMinute A minute (0 - 59)
+    [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setMinute(Uint8 aMinute);
 
     /// @brief Set second
@@ -212,7 +244,9 @@ class Time
     ///     time.setSecond(30);
     /// @endcode
     ///
+    /// @deprecated Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aSecond A second (0 - 60)
+    [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setSecond(Uint8 aSecond);
 
     /// @brief Set millisecond
@@ -222,7 +256,9 @@ class Time
     ///     time.setMillisecond(500);
     /// @endcode
     ///
+    /// @deprecated Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aMillisecond A millisecond (0 - 999)
+    [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setMillisecond(Uint16 aMillisecond);
 
     /// @brief Set microsecond
@@ -232,7 +268,9 @@ class Time
     ///     time.setMicrosecond(500);
     /// @endcode
     ///
+    /// @deprecated Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aMicrosecond A microsecond (0 - 999)
+    [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setMicrosecond(Uint16 aMicrosecond);
 
     /// @brief Set nanosecond
@@ -242,7 +280,9 @@ class Time
     ///     time.setNanosecond(500);
     /// @endcode
     ///
+    /// @deprecated Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.
     /// @param [in] aNanosecond A nanosecond (0 - 999)
+    [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setNanosecond(Uint16 aNanosecond);
 
     /// @brief Constructs an undefined time
@@ -321,12 +361,12 @@ class Time
 
     Time();
 
-    static void ValidateHour(Uint8 anHour);
-    static void ValidateMinute(Uint8 aMinute);
-    static void ValidateSecond(Uint8 aSecond);
-    static void ValidateMillisecond(Uint16 aMillisecond);
-    static void ValidateMicrosecond(Uint16 aMicrosecond);
-    static void ValidateNanosecond(Uint16 aNanosecond);
+    static void ValidateHour(const Integer& anHour);
+    static void ValidateMinute(const Integer& aMinute);
+    static void ValidateSecond(const Integer& aSecond);
+    static void ValidateMillisecond(const Integer& aMillisecond);
+    static void ValidateMicrosecond(const Integer& aMicrosecond);
+    static void ValidateNanosecond(const Integer& aNanosecond);
 };
 
 }  // namespace time
