@@ -135,6 +135,37 @@ class Manager
         const Transform& aTransform
     );
 
+    /// @brief Get the maximum number of cached transforms held per frame pair.
+    ///
+    /// @code
+    ///     Size maxTransformCacheSize = Manager::Get().getMaxTransformCacheSize();
+    /// @endcode
+    ///
+    /// @return The maximum transform cache size
+
+    Size getMaxTransformCacheSize() const;
+
+    /// @brief Set the maximum number of cached transforms held per frame pair.
+    ///
+    /// @details The cache is keyed by frame pair and, within a pair, by instant. This bounds the number of
+    /// instants held for each pair; once a pair reaches the bound, the instants cached for it are dropped and
+    /// repopulated from scratch. Work that walks a long span of distinct instants — access generation, a
+    /// propagation reported at fine cadence — will pass that bound, and past it very nearly every lookup misses.
+    /// Sizing the cache to the number of distinct instants a run evaluates avoids that.
+    ///
+    /// A larger cache is not free: it is worth raising when a run evaluates many distinct instants, and worth
+    /// nothing when it reuses a small set of them. Prefer measuring over raising it on principle.
+    ///
+    /// Lowering the bound drops any pair already holding more than the new bound.
+    ///
+    /// @code
+    ///     Manager::Get().setMaxTransformCacheSize(100000);
+    /// @endcode
+    ///
+    /// @param [in] aMaxTransformCacheSize A maximum transform cache size, strictly positive
+
+    void setMaxTransformCacheSize(const Size& aMaxTransformCacheSize);
+
     /// @brief Get the manager singleton.
     ///
     /// @code
