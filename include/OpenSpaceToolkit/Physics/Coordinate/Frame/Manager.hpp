@@ -3,7 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 
+#include <list>
 #include <mutex>
+#include <unordered_map>
+#include <utility>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -34,6 +37,9 @@ using ostk::physics::coordinate::Transform;
 using ostk::physics::time::Instant;
 
 /// @brief Reference frame manager (thread-safe)
+///
+/// Transforms are cached per frame pair, using a Least Recently Used (LRU) strategy: once the cache of a frame
+/// pair is full, adding a transform evicts the least recently used one.
 
 class Manager
 {
@@ -135,6 +141,16 @@ class Manager
         const Transform& aTransform
     );
 
+    /// @brief Get the maximum number of transforms cached per frame pair.
+    ///
+    /// @code
+    ///     Size maxTransformCacheSize = Manager::Get().getMaxTransformCacheSize();
+    /// @endcode
+    ///
+    /// @return The maximum number of transforms cached per frame pair
+
+    Size getMaxTransformCacheSize() const;
+
     /// @brief Get the manager singleton.
     ///
     /// @code
@@ -146,14 +162,50 @@ class Manager
     static Manager& Get();
 
    private:
+    /// @brief Least Recently Used (LRU) cache of transforms, for a single frame pair
+    ///
+    /// Once the cache is full, adding a transform evicts the least recently used one.
+
+    class TransformCache
+    {
+       public:
+        TransformCache(const Size& aMaxSize);
+
+        /// @brief Access the transform cached at a given instant, marking it as most recently used.
+        ///
+        /// @param [in] anInstant An instant
+        /// @return Pointer to the cached transform, or null pointer if no transform is cached at that instant
+
+        const Transform* accessTransformAt(const Instant& anInstant);
+
+        /// @brief Add a transform at a given instant, evicting the least recently used one if the cache is full.
+        ///
+        /// @param [in] anInstant An instant
+        /// @param [in] aTransform A transform
+
+        void addTransformAt(const Instant& anInstant, const Transform& aTransform);
+
+       private:
+        using Entry = std::pair<Instant, Transform>;
+        using EntryList = std::list<Entry>;
+
+        Size maxSize_;
+
+        EntryList entryList_;  // Most recently used entry at the front
+
+        std::unordered_map<Instant, EntryList::iterator> entryMap_;
+    };
+
     Size maxTransformCacheSize_;
     Map<String, Shared<const Frame>> frameMap_;
 
-    Map<const Frame*, Map<const Frame*, Map<Instant, Transform>>> transformCache_;
+    mutable Map<const Frame*, Map<const Frame*, TransformCache>> transformCache_;
 
     mutable std::mutex mutex_;
 
     Manager(const Size& aMaxTransformCacheSize);
+
+    TransformCache& accessTransformCache(const Frame* aFromFramePtr, const Frame* aToFramePtr) const;
 };
 
 }  // namespace frame

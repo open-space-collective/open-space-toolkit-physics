@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
+#include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
@@ -20,6 +21,7 @@
 
 using ostk::core::container::Array;
 using ostk::core::type::Shared;
+using ostk::core::type::Size;
 using ostk::core::type::String;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
@@ -32,6 +34,7 @@ using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::frame::provider::Static;
 using ostk::physics::coordinate::Transform;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
@@ -73,6 +76,22 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Manager : public ::testing::Test
         {
             Frame::Destruct("TestFrame3");
         }
+    }
+
+    static Instant InstantAtIndex(const Size& anIndex)
+    {
+        return Instant::J2000() + Duration::Seconds(static_cast<double>(anIndex));
+    }
+
+    static Transform TransformAtIndex(const Size& anIndex)
+    {
+        return Transform::Passive(
+            OpenSpaceToolkit_Physics_Coordinate_Frame_Manager::InstantAtIndex(anIndex),
+            Vector3d(static_cast<double>(anIndex), 0.0, 0.0),
+            Vector3d::Zero(),
+            Quaternion::Unit(),
+            Vector3d::Zero()
+        );
     }
 
     Manager* manager_;
@@ -388,5 +407,101 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessCachedTransform_
         const Instant differentInstant = Instant::DateTime(DateTime(2025, 1, 1, 0, 0, 0), Scale::UTC);
         const Transform cachedMiss2 = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, differentInstant);
         EXPECT_FALSE(cachedMiss2.isDefined());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, GetMaxTransformCacheSize)
+{
+    {
+        EXPECT_GT(manager_->getMaxTransformCacheSize(), 0u);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AddCachedTransform_OverwritesExistingInstant)
+{
+    {
+        const Shared<const Frame> frameSPtr1 = Frame::Construct("TestFrame1", true, Frame::GCRF(), providerSPtr_);
+        const Shared<const Frame> frameSPtr2 = Frame::Construct("TestFrame2", true, Frame::GCRF(), providerSPtr_);
+
+        const Instant instant = Instant::J2000();
+
+        manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant, TransformAtIndex(1));
+        manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant, TransformAtIndex(2));
+
+        const Transform cachedForward = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instant);
+
+        EXPECT_TRUE(cachedForward.isDefined());
+        EXPECT_TRUE(cachedForward.getTranslation().isNear(Vector3d(2.0, 0.0, 0.0), 1e-10));
+
+        const Transform cachedReverse = manager_->accessCachedTransform(frameSPtr2, frameSPtr1, instant);
+
+        EXPECT_TRUE(cachedReverse.isDefined());
+        EXPECT_TRUE(cachedReverse.getTranslation().isNear(Vector3d(-2.0, 0.0, 0.0), 1e-10));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AddCachedTransform_EvictsLeastRecentlyUsed)
+{
+    {
+        const Shared<const Frame> frameSPtr1 = Frame::Construct("TestFrame1", true, Frame::GCRF(), providerSPtr_);
+        const Shared<const Frame> frameSPtr2 = Frame::Construct("TestFrame2", true, Frame::GCRF(), providerSPtr_);
+
+        const Size maxTransformCacheSize = manager_->getMaxTransformCacheSize();
+
+        // Fill the cache for this frame pair
+
+        for (Size index = 0; index < maxTransformCacheSize; ++index)
+        {
+            manager_->addCachedTransform(frameSPtr1, frameSPtr2, InstantAtIndex(index), TransformAtIndex(index));
+        }
+
+        // All transforms are cached, in both directions
+
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, InstantAtIndex(0)).isDefined());
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr2, frameSPtr1, InstantAtIndex(0)).isDefined());
+
+        // Adding one more transform evicts the least recently used one, which is the first one that was added,
+        // as accessing it above made it the most recently used one again
+
+        manager_->addCachedTransform(
+            frameSPtr1, frameSPtr2, InstantAtIndex(maxTransformCacheSize), TransformAtIndex(maxTransformCacheSize)
+        );
+
+        EXPECT_FALSE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, InstantAtIndex(1)).isDefined());
+        EXPECT_FALSE(manager_->accessCachedTransform(frameSPtr2, frameSPtr1, InstantAtIndex(1)).isDefined());
+
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, InstantAtIndex(0)).isDefined());
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr2, frameSPtr1, InstantAtIndex(0)).isDefined());
+
+        const Transform lastCached =
+            manager_->accessCachedTransform(frameSPtr1, frameSPtr2, InstantAtIndex(maxTransformCacheSize));
+
+        EXPECT_TRUE(lastCached.isDefined());
+        EXPECT_TRUE(
+            lastCached.getTranslation().isNear(Vector3d(static_cast<double>(maxTransformCacheSize), 0.0, 0.0), 1e-10)
+        );
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AddCachedTransform_DoesNotEvictOtherFramePairs)
+{
+    {
+        const Shared<const Frame> frameSPtr1 = Frame::Construct("TestFrame1", true, Frame::GCRF(), providerSPtr_);
+        const Shared<const Frame> frameSPtr2 = Frame::Construct("TestFrame2", true, Frame::GCRF(), providerSPtr_);
+        const Shared<const Frame> frameSPtr3 = Frame::Construct("TestFrame3", true, Frame::GCRF(), providerSPtr_);
+
+        const Size maxTransformCacheSize = manager_->getMaxTransformCacheSize();
+
+        manager_->addCachedTransform(frameSPtr1, frameSPtr3, InstantAtIndex(0), TransformAtIndex(0));
+
+        // Overflow the cache of another frame pair
+
+        for (Size index = 0; index <= maxTransformCacheSize; ++index)
+        {
+            manager_->addCachedTransform(frameSPtr1, frameSPtr2, InstantAtIndex(index), TransformAtIndex(index));
+        }
+
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr3, InstantAtIndex(0)).isDefined());
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr3, frameSPtr1, InstantAtIndex(0)).isDefined());
     }
 }
