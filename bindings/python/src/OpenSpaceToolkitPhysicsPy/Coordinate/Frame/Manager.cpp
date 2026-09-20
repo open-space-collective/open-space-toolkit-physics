@@ -22,10 +22,13 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
 
             Manages the lifecycle and caching of reference frames. This is a singleton class.
 
+            Transforms are cached per frame pair, using a Least Recently Used (LRU) strategy: once the
+            cache of a frame pair is full, adding a transform evicts the least recently used one.
+
             The following environment variable can be defined:
 
             - "OSTK_PHYSICS_FRAME_MANAGER_MAX_TRANSFORM_CACHE_SIZE" will override the default
-              maximum transform cache size (default: 1000)
+              maximum transform cache size, per frame pair (default: 1000)
         )doc"
     );
 
@@ -78,6 +81,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
             R"doc(
                 Access a cached transform between two frames at a given instant.
 
+                On a cache hit, the transform is marked as the most recently used one.
+
                 Args:
                     from_frame (Frame): Source frame.
                     to_frame (Frame): Destination frame.
@@ -128,11 +133,23 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
             R"doc(
                 Add a transform to the cache.
 
+                The least recently used transform of that frame pair is evicted, if the cache is full.
+
                 Args:
                     from_frame (Frame): Source frame.
                     to_frame (Frame): Destination frame.
                     instant (Instant): Instant at which the transform applies.
                     transform (Transform): Transform to cache.
+            )doc"
+        )
+        .def(
+            "get_max_transform_cache_size",
+            &Manager::getMaxTransformCacheSize,
+            R"doc(
+                Get the maximum number of transforms cached per frame pair.
+
+                Returns:
+                    int: Maximum number of transforms cached per frame pair.
             )doc"
         )
 

@@ -4,6 +4,7 @@ import pytest
 
 from ostk.mathematics.geometry.d3.transformation.rotation import Quaternion
 
+from ostk.physics.time import Duration
 from ostk.physics.time import Instant
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate import Transform
@@ -184,3 +185,69 @@ class TestManager:
         # Reverse transform should also be cached (eager caching)
         cached_reverse = manager.access_cached_transform(frame2, frame1, instant)
         assert cached_reverse.is_defined() is True
+
+    def test_get_max_transform_cache_size_success(
+        self,
+        manager: Manager,
+    ):
+        assert manager.get_max_transform_cache_size() > 0
+
+    def test_add_cached_transform_evicts_least_recently_used(
+        self,
+        manager: Manager,
+        static_provider: Static,
+    ):
+        frame_1 = Frame.construct("TestFrame1", True, Frame.GCRF(), static_provider)
+        frame_2 = Frame.construct("TestFrame2", True, Frame.GCRF(), static_provider)
+
+        max_transform_cache_size: int = manager.get_max_transform_cache_size()
+
+        def instant_at(index: int) -> Instant:
+            return Instant.J2000() + Duration.seconds(float(index))
+
+        def transform_at(index: int) -> Transform:
+            return Transform.passive(
+                instant_at(index),
+                [float(index), 0.0, 0.0],
+                [0.0, 0.0, 0.0],
+                Quaternion.unit(),
+                [0.0, 0.0, 0.0],
+            )
+
+        # Fill the cache for this frame pair
+
+        for index in range(max_transform_cache_size):
+            manager.add_cached_transform(
+                frame_1, frame_2, instant_at(index), transform_at(index)
+            )
+
+        # Accessing the first transform makes it the most recently used one
+
+        assert (
+            manager.access_cached_transform(frame_1, frame_2, instant_at(0)).is_defined()
+            is True
+        )
+
+        # Adding one more transform evicts the least recently used one
+
+        manager.add_cached_transform(
+            frame_1,
+            frame_2,
+            instant_at(max_transform_cache_size),
+            transform_at(max_transform_cache_size),
+        )
+
+        assert (
+            manager.access_cached_transform(frame_1, frame_2, instant_at(1)).is_defined()
+            is False
+        )
+        assert (
+            manager.access_cached_transform(frame_1, frame_2, instant_at(0)).is_defined()
+            is True
+        )
+        assert (
+            manager.access_cached_transform(
+                frame_1, frame_2, instant_at(max_transform_cache_size)
+            ).is_defined()
+            is True
+        )

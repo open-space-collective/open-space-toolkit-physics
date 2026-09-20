@@ -64,11 +64,9 @@ const Transform Manager::accessCachedTransform(
 
         if (transformCacheToFrameIt != transformCacheFromFrameIt->second.end())
         {
-            const auto transformCacheInstantIt = transformCacheToFrameIt->second.find(anInstant);
-
-            if (transformCacheInstantIt != transformCacheToFrameIt->second.end())
+            if (const Transform* transformPtr = transformCacheToFrameIt->second.accessTransformAt(anInstant))
             {
-                return (transformCacheInstantIt->second);
+                return (*transformPtr);
             }
         }
     }
@@ -147,35 +145,19 @@ void Manager::addCachedTransform(
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    const auto transformCacheFromFrameIt = transformCache_.insert({aFromFrameSPtr.get(), {}}).first;
-    const auto transformCacheToFrameIt = transformCacheFromFrameIt->second.insert({aToFrameSPtr.get(), {}}).first;
-
-    // Check size for this specific frame pair
-    if (transformCacheToFrameIt->second.size() >= maxTransformCacheSize_)
-    {
-        // Clear instants for this frame pair only
-        // TBI: Improve caching strategy, perhaps LRU.
-        transformCacheToFrameIt->second.clear();
-    }
-
-    const auto transformCacheToInstantIt = transformCacheToFrameIt->second.insert({anInstant, aTransform}).first;
-
-    (void)transformCacheToInstantIt;
+    this->accessTransformCache(aFromFrameSPtr.get(), aToFrameSPtr.get()).addTransformAt(anInstant, aTransform);
 
     // Eagerly cache the reverse transform (toFrame -> fromFrame -> instant)
-    const auto reverseTransformCacheToFrameIt = transformCache_.insert({aToFrameSPtr.get(), {}}).first;
-    const auto reverseTransformCacheFromFrameIt =
-        reverseTransformCacheToFrameIt->second.insert({aFromFrameSPtr.get(), {}}).first;
 
-    // Check size for this specific frame pair
-    if (reverseTransformCacheFromFrameIt->second.size() >= maxTransformCacheSize_)
-    {
-        // Clear instants for this frame pair only
-        // TBI: Improve caching strategy, perhaps LRU.
-        reverseTransformCacheFromFrameIt->second.clear();
-    }
+    this->accessTransformCache(aToFrameSPtr.get(), aFromFrameSPtr.get())
+        .addTransformAt(anInstant, aTransform.getInverse());
+}
 
-    reverseTransformCacheFromFrameIt->second.insert({anInstant, aTransform.getInverse()}).first;
+Size Manager::getMaxTransformCacheSize() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    return maxTransformCacheSize_;
 }
 
 Manager& Manager::Get()
@@ -210,6 +192,66 @@ Manager& Manager::Get()
 Manager::Manager(const Size& aMaxTransformCacheSize)
     : maxTransformCacheSize_(aMaxTransformCacheSize)
 {
+}
+
+Manager::TransformCache& Manager::accessTransformCache(const Frame* aFromFramePtr, const Frame* aToFramePtr) const
+{
+    auto& toFrameTransformCacheMap = transformCache_[aFromFramePtr];
+
+    return toFrameTransformCacheMap.try_emplace(aToFramePtr, maxTransformCacheSize_).first->second;
+}
+
+Manager::TransformCache::TransformCache(const Size& aMaxSize)
+    : maxSize_(aMaxSize)
+{
+}
+
+const Transform* Manager::TransformCache::accessTransformAt(const Instant& anInstant)
+{
+    const auto entryMapIt = entryMap_.find(anInstant);
+
+    if (entryMapIt == entryMap_.end())
+    {
+        return nullptr;
+    }
+
+    // Mark the entry as the most recently used one
+
+    entryList_.splice(entryList_.begin(), entryList_, entryMapIt->second);
+
+    return &(entryMapIt->second->second);
+}
+
+void Manager::TransformCache::addTransformAt(const Instant& anInstant, const Transform& aTransform)
+{
+    if (maxSize_ == 0)
+    {
+        return;
+    }
+
+    const auto entryMapIt = entryMap_.find(anInstant);
+
+    if (entryMapIt != entryMap_.end())
+    {
+        // Replace the cached transform, and mark it as the most recently used one
+
+        entryMapIt->second->second = aTransform;
+
+        entryList_.splice(entryList_.begin(), entryList_, entryMapIt->second);
+
+        return;
+    }
+
+    // Evict the least recently used entries, if the cache is full
+
+    while (entryList_.size() >= maxSize_)
+    {
+        entryMap_.erase(entryList_.back().first);
+        entryList_.pop_back();
+    }
+
+    entryList_.emplace_front(anInstant, aTransform);
+    entryMap_.emplace(anInstant, entryList_.begin());
 }
 
 }  // namespace frame
