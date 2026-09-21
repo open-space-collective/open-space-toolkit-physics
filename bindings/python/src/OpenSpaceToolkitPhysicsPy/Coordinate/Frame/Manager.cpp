@@ -26,6 +26,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
 
             - "OSTK_PHYSICS_FRAME_MANAGER_MAX_TRANSFORM_CACHE_SIZE" will override the default
               maximum transform cache size (default: 1000)
+
+            The same bound can be set at runtime with set_max_transform_cache_size.
         )doc"
     );
 
@@ -133,6 +135,29 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
                     to_frame (Frame): Destination frame.
                     instant (Instant): Instant at which the transform applies.
                     transform (Transform): Transform to cache.
+            )doc"
+        )
+
+        .def(
+            "get_max_transform_cache_size",
+            &Manager::getMaxTransformCacheSize,
+            R"doc(
+                Get the maximum number of cached transforms held per frame pair.
+
+                Returns:
+                    int: Maximum transform cache size.
+            )doc"
+        )
+        .def(
+            "set_max_transform_cache_size",
+            &Manager::setMaxTransformCacheSize,
+            arg("max_transform_cache_size"),
+            R"doc(
+                Set the maximum number of cached transforms held per frame pair.
+
+
+                Args:
+                    max_transform_cache_size (int): Maximum transform cache size. Must be strictly positive.
             )doc"
         )
 

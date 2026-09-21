@@ -184,3 +184,15 @@ class TestManager:
         # Reverse transform should also be cached (eager caching)
         cached_reverse = manager.access_cached_transform(frame2, frame1, instant)
         assert cached_reverse.is_defined() is True
+
+    def test_max_transform_cache_size(self, manager: Manager):
+        original_size: int = manager.get_max_transform_cache_size()
+
+        try:
+            with pytest.raises(Exception):
+                manager.set_max_transform_cache_size(0)
+
+            manager.set_max_transform_cache_size(12345)
+            assert manager.get_max_transform_cache_size() == 12345
+        finally:
+            manager.set_max_transform_cache_size(original_size)

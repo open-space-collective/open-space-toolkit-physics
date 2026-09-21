@@ -20,6 +20,7 @@
 
 using ostk::core::container::Array;
 using ostk::core::type::Shared;
+using ostk::core::type::Size;
 using ostk::core::type::String;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
@@ -32,6 +33,7 @@ using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::frame::provider::Static;
 using ostk::physics::coordinate::Transform;
 using ostk::physics::time::DateTime;
+using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
@@ -389,4 +391,69 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessCachedTransform_
         const Transform cachedMiss2 = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, differentInstant);
         EXPECT_FALSE(cachedMiss2.isDefined());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, MaxTransformCacheSize)
+{
+    const Size originalMaxTransformCacheSize = manager_->getMaxTransformCacheSize();
+
+    {
+        EXPECT_ANY_THROW(manager_->setMaxTransformCacheSize(0));
+
+        manager_->setMaxTransformCacheSize(4);
+        EXPECT_EQ(4, manager_->getMaxTransformCacheSize());
+    }
+
+    {
+        const Shared<const Frame> frameSPtr1 = Frame::Construct("CacheSizeFrame1", true, Frame::GCRF(), providerSPtr_);
+        const Shared<const Frame> frameSPtr2 = Frame::Construct("CacheSizeFrame2", true, Frame::GCRF(), providerSPtr_);
+
+        const auto cacheTransformAt = [&frameSPtr1, &frameSPtr2, this](const Instant& anInstant) -> void
+        {
+            manager_->addCachedTransform(
+                frameSPtr1,
+                frameSPtr2,
+                anInstant,
+                Transform::Passive(
+                    anInstant, Vector3d(1.0, 0.0, 0.0), Vector3d::Zero(), Quaternion::Unit(), Vector3d::Zero()
+                )
+            );
+        };
+
+        const Instant firstInstant = Instant::J2000();
+
+        // Fill the pair to its bound, one distinct instant at a time.
+        for (Size i = 0; i < 4; ++i)
+        {
+            cacheTransformAt(firstInstant + Duration::Seconds(static_cast<double>(i)));
+        }
+
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, firstInstant).isDefined());
+
+        // One instant past the bound drops everything cached for the pair, so the earliest is gone and only the
+        // instant that triggered the drop remains.
+        const Instant instantPastTheBound = firstInstant + Duration::Seconds(4.0);
+
+        cacheTransformAt(instantPastTheBound);
+
+        EXPECT_FALSE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, firstInstant).isDefined());
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).isDefined());
+
+        // Raising the bound keeps what is already cached.
+        manager_->setMaxTransformCacheSize(64);
+
+        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).isDefined());
+
+        // Lowering it below what a pair already holds drops that pair immediately.
+        cacheTransformAt(firstInstant + Duration::Seconds(10.0));
+
+        manager_->setMaxTransformCacheSize(1);
+
+        EXPECT_FALSE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).isDefined());
+
+        manager_->removeFrameWithName("CacheSizeFrame1");
+        manager_->removeFrameWithName("CacheSizeFrame2");
+    }
+
+    manager_->setMaxTransformCacheSize(originalMaxTransformCacheSize);
 }

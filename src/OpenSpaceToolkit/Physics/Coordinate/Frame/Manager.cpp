@@ -178,6 +178,38 @@ void Manager::addCachedTransform(
     reverseTransformCacheFromFrameIt->second.insert({anInstant, aTransform.getInverse()}).first;
 }
 
+Size Manager::getMaxTransformCacheSize() const
+{
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    return maxTransformCacheSize_;
+}
+
+void Manager::setMaxTransformCacheSize(const Size& aMaxTransformCacheSize)
+{
+    if (aMaxTransformCacheSize == 0)
+    {
+        throw ostk::core::error::runtime::Wrong("Maximum transform cache size");
+    }
+
+    const std::lock_guard<std::mutex> lock {mutex_};
+
+    maxTransformCacheSize_ = aMaxTransformCacheSize;
+
+    // Lowering the bound leaves pairs that already hold more than it. Drop those now, rather than waiting for
+    // the next insertion into each one to notice.
+    for (auto& transformCacheFromFrameIt : transformCache_)
+    {
+        for (auto& transformCacheToFrameIt : transformCacheFromFrameIt.second)
+        {
+            if (transformCacheToFrameIt.second.size() > maxTransformCacheSize_)
+            {
+                transformCacheToFrameIt.second.clear();
+            }
+        }
+    }
+}
+
 Manager& Manager::Get()
 {
     static Size maxTransformCacheSize = []()
