@@ -53,6 +53,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="19" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="21" column="1"/>
   </compounddef>
 </doxygen>

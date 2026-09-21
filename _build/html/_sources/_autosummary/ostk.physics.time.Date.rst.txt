@@ -24,6 +24,7 @@ ostk.physics.time.Date
       ~Date.is_defined
       ~Date.modified_julian_date_epoch
       ~Date.parse
+      ~Date.replace
       ~Date.set_day
       ~Date.set_month
       ~Date.set_year

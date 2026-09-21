@@ -30,6 +30,7 @@ ostk.physics.time.Time
       ~Time.midnight
       ~Time.noon
       ~Time.parse
+      ~Time.replace
       ~Time.seconds
       ~Time.set_hour
       ~Time.set_microsecond

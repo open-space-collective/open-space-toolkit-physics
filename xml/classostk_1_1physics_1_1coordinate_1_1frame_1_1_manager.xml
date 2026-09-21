@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="149" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="149" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="179" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" prot="private" static="no" mutable="no">
         <type>Map&lt; String, Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="150" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="150" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="180" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a8a72adc24738214445c553a78295ca3d" prot="private" static="no" mutable="no">
         <type>Map&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> *, Map&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> *, Map&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>, <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &gt; &gt; &gt;</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="152" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="152" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="182" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a33ddf1a08b6a8a2d85d752c0ba7ae754" prot="private" static="no" mutable="yes">
         <type>std::mutex</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="154" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="154" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="184" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -373,6 +373,58 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="141" bodyend="179"/>
       </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac4c770bc1d88122128e9bee40bc2c961" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Size</type>
+        <definition>Size ostk::physics::coordinate::frame::Manager::getMaxTransformCacheSize</definition>
+        <argsstring>() const</argsstring>
+        <name>getMaxTransformCacheSize</name>
+        <briefdescription>
+<para>Get the maximum number of cached transforms held per frame pair. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">Size<sp/>maxTransformCacheSize<sp/>=<sp/>Manager::Get().getMaxTransformCacheSize();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>The maximum transform cache size </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="146" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="181" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1cc9f57ac5406f7d25447ff2cb73958e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ostk::physics::coordinate::frame::Manager::setMaxTransformCacheSize</definition>
+        <argsstring>(const Size &amp;aMaxTransformCacheSize)</argsstring>
+        <name>setMaxTransformCacheSize</name>
+        <param>
+          <type>const Size &amp;</type>
+          <declname>aMaxTransformCacheSize</declname>
+        </param>
+        <briefdescription>
+<para>Set the maximum number of cached transforms held per frame pair. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The cache is keyed by frame pair and, within a pair, by instant. This bounds the number of instants held for each pair; once a pair reaches the bound, the instants cached for it are dropped and repopulated from scratch. Work that walks a long span of distinct instants — access generation, a propagation reported at fine cadence — will pass that bound, and past it very nearly every lookup misses. Sizing the cache to the number of distinct instants a run evaluates avoids that.</para>
+<para>A larger cache is not free: it is trading memory for performance.</para>
+<para>Lowering the bound drops any pair already holding more than the new bound.</para>
+<para><programlisting><codeline><highlight class="normal">Manager::Get().setMaxTransformCacheSize(100000);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aMaxTransformCacheSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A maximum transform cache size, strictly positive </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="166" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="188" bodyend="211"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a96bac91e86c805cbab50135642b010cf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -392,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="146" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="181" bodyend="208"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="176" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="213" bodyend="240"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -411,7 +463,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="156" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="210" bodyend="213"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="186" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="242" bodyend="245"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -419,7 +471,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="38" bodyend="157"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="38" bodyend="187"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a0f5bd33bc74842d47f58cfcd675860ee" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>accessCachedTransform</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aac7fb7d84fa6cb1d41019c4e5d0d617f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>accessFrameWithName</name></member>
@@ -429,6 +481,7 @@
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>frameMap_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a96bac91e86c805cbab50135642b010cf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Get</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac1cce20258b585f4c70ca4fae3048c6c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getAllFrameNames</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac4c770bc1d88122128e9bee40bc2c961" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getMaxTransformCacheSize</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7963c97f063b5cdd276f3ffd375ef8e4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>hasFrameWithName</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ab05b65e241c0caa4c90518b1722a9522" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Manager</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ab78680548ad919be7520b2ee4e1dd12b" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Manager</name></member>
@@ -436,6 +489,7 @@
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a33ddf1a08b6a8a2d85d752c0ba7ae754" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>mutex_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ad1bf0d565112eac93b3fce6639629341" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1b87264403a57572eb08f590bc6a85e6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>removeFrameWithName</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1cc9f57ac5406f7d25447ff2cb73958e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>setMaxTransformCacheSize</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a8a72adc24738214445c553a78295ca3d" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>transformCache_</name></member>
     </listofallmembers>
   </compounddef>

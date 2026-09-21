@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="deprecated" kind="page">
+    <compoundname>deprecated</compoundname>
+    <title>Deprecated List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_date_1aa4e71082fc602b1a1e5740e9db04b071" kindref="member">ostk::physics::time::Date::setDay</ref>  (Uint8 aDay)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000003"/>Use Date::replace(aYear, aMonth, aDay) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_date_1a40a08deb839e23115ef4ca822497dd9b" kindref="member">ostk::physics::time::Date::setMonth</ref>  (Uint8 aMonth)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000002"/>Use Date::replace(aYear, aMonth, aDay) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_date_1a86b990462a6e3a79211b7a3c888ade04" kindref="member">ostk::physics::time::Date::setYear</ref>  (Uint16 aYear)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000001"/>Use Date::replace(aYear, aMonth, aDay) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_time_1a27d456d374f5799050f3ea8aed8478ac" kindref="member">ostk::physics::time::Time::setHour</ref>  (Uint8 anHour)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000004"/>Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_time_1a4e746282febe29d5412f7e871b49ac86" kindref="member">ostk::physics::time::Time::setMicrosecond</ref>  (Uint16 aMicrosecond)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000008"/>Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_time_1a78a51113cfca7af8e14fbf519b04ad25" kindref="member">ostk::physics::time::Time::setMillisecond</ref>  (Uint16 aMillisecond)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000007"/>Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_time_1aef028b25ce2ff2d216e9fdc957c6ac4f" kindref="member">ostk::physics::time::Time::setMinute</ref>  (Uint8 aMinute)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000005"/>Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_time_1a35df10195d96fe03990493a52cd7d61e" kindref="member">ostk::physics::time::Time::setNanosecond</ref>  (Uint16 aNanosecond)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000009"/>Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="classostk_1_1physics_1_1time_1_1_time_1a4f5cc2bb2a6ff653eca82e5a754fa781" kindref="member">ostk::physics::time::Time::setSecond</ref>  (Uint8 aSecond)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000006"/>Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead. </para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

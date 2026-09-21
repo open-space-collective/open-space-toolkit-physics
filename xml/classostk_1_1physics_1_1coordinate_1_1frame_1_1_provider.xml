@@ -55,8 +55,8 @@
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1ad0b1cfe2241d1e02d85f35a97542ea48">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1a6cf784518e31c99adac70fefa7fb9118">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa">clone</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a2cde9742d70f5cb6e0754d5b3ed479b3">clone</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aaf20555c7f95ec18f79c29d6f492ffd4">clone</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a1fe8106f5e8d7f21da3e289972cac24e">clone</reimplementedby>
         <briefdescription>
@@ -83,8 +83,8 @@
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a911f2844ceaef26996437f327ba4e2b5">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_i_r_f_1ae8b4ed3330ad21c038a58cc3a4e409d6">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abf6833cfa8b876455d4d4fdb9eaeab7a">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_j2000_1a14472546281e5dcc3088366fa8e14bc9">isDefined</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1af574adfe8d2651c63e542f34dde9caac">isDefined</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abbe9c5a824770b315ab8b94a4a95734f">isDefined</reimplementedby>
         <briefdescription>

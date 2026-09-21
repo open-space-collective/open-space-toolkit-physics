@@ -26,7 +26,7 @@
       <node id="22">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="28">
+      <node id="29">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
         <childnode refid="6" relation="include">
@@ -56,7 +56,7 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
         <childnode refid="21" relation="include">
@@ -67,10 +67,10 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
         <childnode refid="4" relation="include">
@@ -93,7 +93,7 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -111,11 +111,11 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -141,6 +141,9 @@
       </node>
       <node id="12">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp</label>
+      </node>
+      <node id="25">
+        <label>optional</label>
       </node>
       <node id="8">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
@@ -194,6 +197,8 @@
       <node id="24">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -246,9 +251,11 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">

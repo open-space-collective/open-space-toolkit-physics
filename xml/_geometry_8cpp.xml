@@ -34,7 +34,7 @@
       <node id="26">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="43">
+      <node id="44">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp</label>
         <link refid="_provider_8hpp"/>
         <childnode refid="19" relation="include">
@@ -42,7 +42,7 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="36">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
         <childnode refid="21" relation="include">
@@ -54,7 +54,7 @@
       <node id="15">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Sphere.hpp</label>
       </node>
-      <node id="52">
+      <node id="53">
         <label>OpenSpaceToolkit/Physics/Unit/Mass.hpp</label>
         <link refid="_mass_8hpp"/>
         <childnode refid="27" relation="include">
@@ -63,7 +63,7 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -83,7 +83,7 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
         <childnode refid="25" relation="include">
@@ -94,13 +94,13 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/PointSet.hpp</label>
       </node>
-      <node id="32">
+      <node id="33">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
         <childnode refid="27" relation="include">
@@ -109,7 +109,7 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -129,7 +129,7 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="24">
@@ -147,20 +147,20 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
       </node>
-      <node id="33">
+      <node id="34">
         <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
         <link refid="_unit_2_unit_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
@@ -169,13 +169,13 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>OpenSpaceToolkit/Core/Type/Shared.hpp</label>
       </node>
       <node id="3">
         <label>OpenSpaceToolkit/Core/Utility.hpp</label>
       </node>
-      <node id="48">
+      <node id="49">
         <label>OpenSpaceToolkit/Physics/Unit/Derived.hpp</label>
         <link refid="_derived_8hpp"/>
         <childnode refid="27" relation="include">
@@ -184,17 +184,17 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -206,23 +206,26 @@
       <node id="9">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp</label>
       </node>
-      <node id="36">
+      <node id="37">
         <label>OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp</label>
         <link refid="_geometry_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
         <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
+      </node>
+      <node id="30">
+        <label>optional</label>
       </node>
       <node id="18">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp</label>
@@ -230,15 +233,15 @@
       <node id="5">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp</label>
       </node>
-      <node id="34">
+      <node id="35">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
-      <node id="45">
+      <node id="46">
         <label>OpenSpaceToolkit/Physics/Coordinate/Position.hpp</label>
         <link refid="_position_8hpp"/>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -248,7 +251,7 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -260,7 +263,7 @@
       <node id="2">
         <label>OpenSpaceToolkit/Core/Error.hpp</label>
       </node>
-      <node id="38">
+      <node id="39">
         <label>OpenSpaceToolkit/Core/Type/Unique.hpp</label>
       </node>
       <node id="21">
@@ -269,22 +272,22 @@
       <node id="27">
         <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
       </node>
-      <node id="47">
+      <node id="48">
         <label>OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp</label>
         <link refid="_velocity_8hpp"/>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -293,15 +296,17 @@
       <node id="29">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Composite.hpp</label>
       </node>
-      <node id="51">
+      <node id="52">
         <label>OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp</label>
         <link refid="_electric_current_8hpp"/>
         <childnode refid="27" relation="include">
@@ -310,13 +315,13 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Intersection.hpp</label>
       </node>
-      <node id="49">
+      <node id="50">
         <label>OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</label>
         <link refid="_angle_8hpp"/>
         <childnode refid="27" relation="include">
@@ -325,11 +330,11 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="23">
@@ -374,10 +379,10 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="47">
         <label>OpenSpaceToolkit/Physics/Unit/Length.hpp</label>
         <link refid="_length_8hpp"/>
         <childnode refid="27" relation="include">
@@ -386,31 +391,29 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="45">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IAU/Theory.hpp</label>
         <link refid="_theory_8hpp"/>
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</label>
         <link refid="_frame_8hpp"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
@@ -418,14 +421,18 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
@@ -433,17 +440,17 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="43">
         <label>OpenSpaceToolkit/Physics/Coordinate/Axes.hpp</label>
         <link refid="_axes_8hpp"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="42">
         <label>memory</label>
       </node>
     </incdepgraph>
