@@ -155,9 +155,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
             R"doc(
                 Set the maximum number of cached transforms held per frame pair.
 
-                Work that walks a long span of distinct instants will pass the default bound, past which very
-                nearly every lookup misses. Sizing the cache to the number of distinct instants a run evaluates
-                avoids that. Lowering the bound drops any pair already holding more than it.
 
                 Args:
                     max_transform_cache_size (int): Maximum transform cache size. Must be strictly positive.

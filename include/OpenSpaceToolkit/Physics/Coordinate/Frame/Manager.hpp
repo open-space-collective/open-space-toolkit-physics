@@ -153,8 +153,7 @@ class Manager
     /// propagation reported at fine cadence — will pass that bound, and past it very nearly every lookup misses.
     /// Sizing the cache to the number of distinct instants a run evaluates avoids that.
     ///
-    /// A larger cache is not free: it is worth raising when a run evaluates many distinct instants, and worth
-    /// nothing when it reuses a small set of them. Prefer measuring over raising it on principle.
+    /// A larger cache is not free: it is trading memory for performance.
     ///
     /// Lowering the bound drops any pair already holding more than the new bound.
     ///
