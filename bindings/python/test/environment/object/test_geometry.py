@@ -30,13 +30,6 @@ class TestGeometry:
         self,
         composite: Composite,
     ):
-        """`access_composite` must keep its parent geometry alive.
-
-        Several accessors hand back a geometry *by value*, so binding
-        `access_composite` with a bare `return_value_policy::reference` leaves the
-        returned composite pointing into an object Python is free to collect as soon as
-        the expression ends. A regression shows up here as garbage data or a segfault.
-        """
 
         accessed = Geometry(composite, Frame.GCRF()).access_composite()
 
