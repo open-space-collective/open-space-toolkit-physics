@@ -30,7 +30,6 @@ class TestGeometry:
         self,
         composite: Composite,
     ):
-
         accessed = Geometry(composite, Frame.GCRF()).access_composite()
 
         gc.collect()
