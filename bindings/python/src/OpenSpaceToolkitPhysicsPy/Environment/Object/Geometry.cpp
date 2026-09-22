@@ -93,13 +93,19 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
             )doc"
         )
 
-        // .def("access_composite", &Geometry::accessComposite, return_value_policy<reference_existing_object>())
         .def(
             "access_composite",
             &Geometry::accessComposite,
-            return_value_policy::reference,
+            // `reference_internal` (rather than `reference`) ties the lifetime of the
+            // returned composite to that of its parent geometry. With a bare `reference`,
+            // `geometry.intersection_with(earth).access_composite()` hands back a
+            // reference into a geometry that Python is free to collect straight away.
+            return_value_policy::reference_internal,
             R"doc(
                 Access composite.
+
+                The returned composite is a view into this geometry: it keeps its parent
+                alive, and is invalidated if the parent geometry is mutated.
 
                 Returns:
                     Composite: Composite.
