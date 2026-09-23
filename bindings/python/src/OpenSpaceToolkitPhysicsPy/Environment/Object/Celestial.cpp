@@ -290,6 +290,24 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                     Axes: Axes.
             )doc"
         )
+        .def(
+            "compute_analytical_position",
+            &Celestial::computeAnalyticalPosition,
+            arg("instant"),
+            R"doc(
+                Compute the position of the celestial object using a fast low-precision analytical model, in GCRF.
+
+                Unlike Celestial.get_position_in, this does not utilize on the ephemeris of the celestial object.
+
+                Only defined for the celestial objects providing an analytical model.
+
+                Args:
+                    instant (Instant): Instant.
+
+                Returns:
+                    Position: Position of the celestial object, in GCRF.
+            )doc"
+        )
 
         .def(
             "get_gravitational_field_at",

@@ -434,6 +434,15 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
 
 // }
 
+Position Celestial::computeAnalyticalPosition(const Instant& anInstant) const
+{
+    (void)anInstant;
+
+    // Overrided by celestial objects
+
+    throw ostk::core::error::runtime::ToBeImplemented("Celestial :: computeAnalyticalPosition");
+}
+
 Celestial Celestial::Undefined()
 {
     return {

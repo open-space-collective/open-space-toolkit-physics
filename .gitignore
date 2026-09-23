@@ -54,6 +54,11 @@ tmp/
 __pycache__
 .ipynb_checkpoints
 .pytest_cache/
+.cache/
 .open-space-toolkit
 scripts
 *.egg-info/
+
+## AI
+.claude/
+.cursor/
