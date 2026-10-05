@@ -339,7 +339,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
              1e-4},
             // {
             // File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/GetUt1MinusUtcAt/DUT1
-            // 3.csv")), 1e-4 } // [TBI] Discrepancy with STK at leap second crossing
+            // 3.csv")), 1e-4 } // At 2017-01-01 00:00:37 TAI (00:00:00 UTC, right after the leap second), STK still
+            // returns the value before the leap second (-0.4087 s), while IERS tabulates +0.5913 s for that date. See
+            // GetUt1MinusUtcAt_LeapSecond for the leap second crossing.
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -371,6 +373,73 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
         const Instant instant = Instant::DateTime(DateTime(2018, 10, 10, 0, 0, 0), Scale::UTC);
 
         EXPECT_NO_THROW(manager_.getUt1MinusUtcAt(instant));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt_LeapSecond)
+{
+    using ostk::core::container::Array;
+    using ostk::core::container::Tuple;
+    using ostk::core::type::Real;
+    using ostk::core::type::String;
+
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // UT1 - UTC jumps by +1 s at the leap second ending 2016-12-31, while UT1 - TAI is continuous.
+    // Finals 2000A: UT1 - UTC = -0.4077601 s on 2016-12-31 and +0.5912821 s on 2017-01-01,
+    // i.e. UT1 - TAI = -36.4077601 s and -36.4087179 s.
+    // The Bulletin A loaded by the fixture (June 2018) does not cover these dates: Finals 2000A is used.
+
+    const Array<Tuple<String, Real>> referenceValues = {
+        {"2016-12-31 00:00:00", -0.4077601},
+        {"2016-12-31 12:00:00", -0.4082390},
+        {"2016-12-31 23:59:59", -0.4087179},
+        {"2017-01-01 00:00:00", +0.5912821},
+        {"2017-01-01 12:00:00", +0.5907287},
+    };
+
+    for (const auto& referenceValue : referenceValues)
+    {
+        const Instant instant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceValue)), Scale::UTC);
+        const Real referenceUt1MinusUtc = std::get<1>(referenceValue);
+
+        EXPECT_NEAR(referenceUt1MinusUtc, manager_.getUt1MinusUtcAt(instant), 1e-7) << std::get<0>(referenceValue);
+        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getUt1MinusUtcAt(instant), 1e-7) << std::get<0>(referenceValue);
+        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getDataAt(instant).ut1MinusUtc_A, 1e-7)
+            << std::get<0>(referenceValue);
+    }
+
+    {
+        // Bulletin B values: UT1 - UTC = -0.4077600 s on 2016-12-31 and +0.5912975 s on 2017-01-01
+
+        const Instant instant = Instant::DateTime(DateTime::Parse("2016-12-31 12:00:00"), Scale::UTC);
+
+        EXPECT_NEAR(-0.40823125, finals2000A_.getDataAt(instant).ut1MinusUtc_B, 1e-7);
+    }
+
+    {
+        // UT1 - UTC applies to the UTC representation of the instant, including during the leap second itself
+        // (2016-12-31 23:59:60 UTC, from 2017-01-01 00:00:36 TAI): UT1 - TAI must stay continuous across it
+
+        const Array<String> dateTimeStrings_TAI = {
+            "2017-01-01 00:00:35",
+            "2017-01-01 00:00:36",
+            "2017-01-01 00:00:36.5",
+            "2017-01-01 00:00:37",
+        };
+
+        for (const auto& dateTimeString_TAI : dateTimeStrings_TAI)
+        {
+            const Instant instant = Instant::DateTime(DateTime::Parse(dateTimeString_TAI), Scale::TAI);
+
+            const Real ut1MinusTai =
+                (instant.getModifiedJulianDate(Scale::UTC) - instant.getModifiedJulianDate(Scale::TAI)) * 86400.0 +
+                manager_.getUt1MinusUtcAt(instant);
+
+            EXPECT_NEAR(-36.4087179, ut1MinusTai, 1e-5) << dateTimeString_TAI;
+        }
     }
 }
 
