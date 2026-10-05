@@ -386,24 +386,27 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
+    // Month names are usually spelled in full, but some bulletins abbreviate them
+    // (e.g. "Beginning 1 Jan 2017:" in Vol. XXX No. 001)
+
     const auto monthFromString = [](const String& aMonthString) -> Uint8
     {
-        if (aMonthString == "January")
+        if ((aMonthString == "January") || (aMonthString == "Jan"))
         {
             return 1;
         }
 
-        if (aMonthString == "February")
+        if ((aMonthString == "February") || (aMonthString == "Feb"))
         {
             return 2;
         }
 
-        if (aMonthString == "March")
+        if ((aMonthString == "March") || (aMonthString == "Mar"))
         {
             return 3;
         }
 
-        if (aMonthString == "April")
+        if ((aMonthString == "April") || (aMonthString == "Apr"))
         {
             return 4;
         }
@@ -413,37 +416,37 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
             return 5;
         }
 
-        if (aMonthString == "June")
+        if ((aMonthString == "June") || (aMonthString == "Jun"))
         {
             return 6;
         }
 
-        if (aMonthString == "July")
+        if ((aMonthString == "July") || (aMonthString == "Jul"))
         {
             return 7;
         }
 
-        if (aMonthString == "August")
+        if ((aMonthString == "August") || (aMonthString == "Aug"))
         {
             return 8;
         }
 
-        if (aMonthString == "September")
+        if ((aMonthString == "September") || (aMonthString == "Sep"))
         {
             return 9;
         }
 
-        if (aMonthString == "October")
+        if ((aMonthString == "October") || (aMonthString == "Oct"))
         {
             return 10;
         }
 
-        if (aMonthString == "November")
+        if ((aMonthString == "November") || (aMonthString == "Nov"))
         {
             return 11;
         }
 
-        if (aMonthString == "December")
+        if ((aMonthString == "December") || (aMonthString == "Dec"))
         {
             return 12;
         }
