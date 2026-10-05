@@ -24,8 +24,6 @@ using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::object::Matrix3d;
 using ostk::mathematics::object::Vector3d;
 
-using ostk::physics::time::Scale;
-
 // Reference: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/aareadme.txt
 static const String earthLatestHighPrecisionKernel = "earth_latest_high_prec\\.bpc";
 static const String earthHighPrecisionKernel = "earth_000101_[0-9]{6}_[0-9]{6}\\.bpc";
@@ -271,7 +269,11 @@ Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& a
 {
     // Time
 
-    const SpiceDouble ephemerisTime = unitim_c(anInstant.getJulianDate(Scale::TT), "JDTDB", "ET");
+    // SPICE ephemeris time (ET) is TDB seconds past J2000, while TDB - TT varies by up to about 1.7 ms over a year:
+    // convert TT seconds past J2000 to TDB. Seconds past J2000 keep the nanosecond resolution of the instant, which a
+    // Julian date stored as a double would round to tens of microseconds.
+
+    const SpiceDouble ephemerisTime = unitim_c((anInstant - Instant::J2000()).inSeconds(), "TDT", "TDB");
 
     if (failed_c())
     {
