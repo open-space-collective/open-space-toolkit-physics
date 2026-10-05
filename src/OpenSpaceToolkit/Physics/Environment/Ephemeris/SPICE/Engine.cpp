@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <boost/regex.hpp>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
@@ -23,6 +25,8 @@ using ostk::core::type::String;
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::object::Matrix3d;
 using ostk::mathematics::object::Vector3d;
+
+using ostk::physics::time::Scale;
 
 // Reference: https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/aareadme.txt
 static const String earthLatestHighPrecisionKernel = "earth_latest_high_prec\\.bpc";
@@ -270,10 +274,17 @@ Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& a
     // Time
 
     // SPICE ephemeris time (ET) is TDB seconds past J2000, while TDB - TT varies by up to about 1.7 ms over a year:
-    // convert TT seconds past J2000 to TDB. Seconds past J2000 keep the nanosecond resolution of the instant, which a
-    // Julian date stored as a double would round to tens of microseconds.
+    // convert TT seconds past J2000 to TDB.
+    // The whole days and the time of day are computed apart: the time of day keeps the nanosecond resolution of the
+    // instant, which a Julian date stored as a double rounds to tens of microseconds. The whole instant is not
+    // subtracted from J2000 directly, as a duration only spans about 292 years.
 
-    const SpiceDouble ephemerisTime = unitim_c((anInstant - Instant::J2000()).inSeconds(), "TDT", "TDB");
+    const SpiceDouble dayModifiedJulianDate_TT = std::floor(anInstant.getModifiedJulianDate(Scale::TT));
+    const SpiceDouble secondsSinceJ2000_TT =
+        (dayModifiedJulianDate_TT - 51544.5) * 86400.0 +
+        (anInstant - Instant::ModifiedJulianDate(dayModifiedJulianDate_TT, Scale::TT)).inSeconds();
+
+    const SpiceDouble ephemerisTime = unitim_c(secondsSinceJ2000_TT, "TDT", "TDB");
 
     if (failed_c())
     {
