@@ -247,6 +247,37 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame_FarFromJ2000)
+{
+    // A duration from J2000 only spans about 292 years: the ephemeris time must stay continuous across
+    // 2292-04-11 11:47:16.854 TT, which is still covered by DE430
+
+    {
+        const Directory spiceLocalRepository =
+            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"));
+
+        manager_.setMode(Manager::Mode::Manual);
+
+        engine_.reset();
+
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))));
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))));
+        engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))));
+
+        const Shared<const Frame> frameSPtr = SPICE(SPICE::Object::Sun).accessFrame();
+
+        const Instant instantBefore = Instant::DateTime(DateTime(2292, 4, 11, 11, 47, 15), Scale::TT);
+        const Instant instantAfter = Instant::DateTime(DateTime(2292, 4, 11, 11, 47, 18), Scale::TT);
+
+        const Vector3d x_GCRF_before = frameSPtr->getOriginIn(Frame::GCRF(), instantBefore).getCoordinates();
+        const Vector3d v_GCRF_before = frameSPtr->getVelocityIn(Frame::GCRF(), instantBefore).getCoordinates();
+        const Vector3d x_GCRF_after = frameSPtr->getOriginIn(Frame::GCRF(), instantAfter).getCoordinates();
+
+        EXPECT_TRUE(x_GCRF_after.isNear(x_GCRF_before + 3.0 * v_GCRF_before, 1.0))
+            << String::Format("{} ~ {}", x_GCRF_after.toString(), (x_GCRF_before + 3.0 * v_GCRF_before).toString());
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, StringFromObject)
 {
     {
