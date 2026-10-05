@@ -1,5 +1,9 @@
 /// Apache License 2.0
 
+#include <cstdlib>
+#include <ctime>
+#include <optional>
+#include <string>
 #include <unordered_map>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
@@ -1730,6 +1734,76 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Now)
         EXPECT_TRUE(now_A < now_B);
 
         EXPECT_GT(Duration::Milliseconds(1.0), now_B - now_A);
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, Now_LocalTimeZone)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // Restores the TZ environment variable on scope exit, whatever happens in between
+    class TimeZoneGuard
+    {
+       public:
+        TimeZoneGuard()
+        {
+            if (const char* timeZone = std::getenv("TZ"))
+            {
+                timeZone_ = timeZone;
+            }
+        }
+
+        ~TimeZoneGuard()
+        {
+            if (timeZone_.has_value())
+            {
+                setenv("TZ", timeZone_->c_str(), 1);
+            }
+            else
+            {
+                unsetenv("TZ");
+            }
+
+            tzset();
+        }
+
+       private:
+        std::optional<std::string> timeZone_;
+    };
+
+    {
+        const TimeZoneGuard timeZoneGuard;
+
+        // POSIX time zone strings, which do not require the tz database
+        for (const std::string timeZone : {"UTC0", "EST5", "IST-5:30", "NZST-12"})
+        {
+            setenv("TZ", timeZone.c_str(), 1);
+            tzset();
+
+            const std::time_t currentTime = std::time(nullptr);
+
+            std::tm currentDateTime_UTC = {};
+            gmtime_r(&currentTime, &currentDateTime_UTC);
+
+            const Instant referenceInstant = Instant::DateTime(
+                DateTime(
+                    currentDateTime_UTC.tm_year + 1900,
+                    currentDateTime_UTC.tm_mon + 1,
+                    currentDateTime_UTC.tm_mday,
+                    currentDateTime_UTC.tm_hour,
+                    currentDateTime_UTC.tm_min,
+                    currentDateTime_UTC.tm_sec
+                ),
+                Scale::UTC
+            );
+
+            const Instant now = Instant::Now();
+
+            EXPECT_LT((now - referenceInstant).getAbsolute().inSeconds(), 2.0)
+                << timeZone << ": " << now.toString(Scale::UTC) << " ~ " << referenceInstant.toString(Scale::UTC);
+        }
     }
 }
 

@@ -397,17 +397,13 @@ Instant Instant::Now()
 
     // Epoch
 
-    std::tm epochTime = {};  // J2000
+    // J2000 (2000-01-01 12:00:00 UTC) as a Unix timestamp. It is computed rather than built with std::mktime, which
+    // interprets a calendar date in the local time zone of the machine.
 
-    epochTime.tm_sec = 0;
-    epochTime.tm_min = 0;
-    epochTime.tm_hour = 12;
-    epochTime.tm_mday = 1;
-    epochTime.tm_mon = 0;
-    epochTime.tm_year = 100;
+    static constexpr std::time_t j2000UnixTimestamp = daysFromUnixEpochTo2000 * 86400 + 43200;
 
     const std::chrono::time_point<std::chrono::system_clock> epochTimePoint =
-        std::chrono::system_clock::from_time_t(std::mktime(&epochTime));
+        std::chrono::system_clock::from_time_t(j2000UnixTimestamp);
 
     // Now
 
