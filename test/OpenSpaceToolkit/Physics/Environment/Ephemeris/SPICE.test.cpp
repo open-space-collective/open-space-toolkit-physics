@@ -114,7 +114,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
              )),
              0.0,
              0.0,
-             0.03,
+             0.01,
              1e-10,
              {Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
               Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))),     // Ephemeris
@@ -127,8 +127,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
              File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Sun.csv"
              )),
-             100.0,
-             1e-5,
+             0.01,
+             1e-9,
              0.0,
              1e-12,
              {
@@ -142,8 +142,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
              File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Moon.csv"
              )),
-             10.0,
-             1e-5,
+             0.001,
+             1e-9,
              1.0,
              1e-11,
              {Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("naif0012.tls"))),  // Leap seconds
