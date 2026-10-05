@@ -32,6 +32,11 @@ class TestManager : public Manager
     MOCK_METHOD(File, fetchLatestManifestFile_, (), (const));
 };
 
+class TestManagerWithIO : public Manager
+{
+    // Create a manager that fetches its manifest, independent of the shared Manager::Get() instance
+};
+
 class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
 {
    protected:
@@ -346,6 +351,35 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetRemoteUrl)
 
         EXPECT_ANY_THROW(manager_.setRemoteUrl(URL::Undefined()));
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetRemoteUrl_ManifestFetch)
+{
+    // The manifest must be fetched from the remote URL set on the manager, not from the default one
+
+    Directory temporaryDirectory = Directory::Path(Path::Parse("/tmp/ostk-test-manifest-remote-url"));
+
+    if (temporaryDirectory.exists())
+    {
+        temporaryDirectory.remove();
+    }
+
+    temporaryDirectory.create();
+
+    TestManagerWithIO manager;
+    manager.setLocalRepository(temporaryDirectory);
+    manager.setMode(Manager::Mode::Automatic);
+    manager.setRemoteUrl(URL::Parse("http://127.0.0.1:1/mirror"));  // Nothing listens on port 1: the fetch fails fast
+
+    testing::internal::CaptureStdout();
+
+    EXPECT_ANY_THROW(manager.getLastUpdateTimestampFor("manifest"));
+
+    const std::string output = testing::internal::GetCapturedStdout();
+
+    EXPECT_THAT(output, testing::HasSubstr("Fetching Data Manifest from [http://127.0.0.1:1/mirror/manifest.json]"));
+
+    temporaryDirectory.remove();
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manager, DefaultRemoteUrl)
