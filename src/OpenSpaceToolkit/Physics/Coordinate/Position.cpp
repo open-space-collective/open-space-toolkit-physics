@@ -201,7 +201,16 @@ Position Position::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant&
         throw ostk::core::error::runtime::Undefined("Position");
     }
 
-    return {frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToPosition(coordinates_), unit_, aFrameSPtr};
+    const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant);
+
+    // The transform translation is in meters: apply it to coordinates in meters, then convert back to the unit
+
+    if (unit_ == Position::Unit::Meter)
+    {
+        return {transform.applyToPosition(coordinates_), unit_, aFrameSPtr};
+    }
+
+    return Position::Meters(transform.applyToPosition(this->inMeters().accessCoordinates()), aFrameSPtr).inUnit(unit_);
 }
 
 String Position::toString(const Integer& aPrecision) const
