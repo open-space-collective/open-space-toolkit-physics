@@ -1,10 +1,14 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
+#include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
 #include <Global.test.hpp>
 
@@ -256,6 +260,49 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
         FrameManager::Get().clearAllFrames();
 
         EXPECT_NO_THROW(position_GCRF.inFrame(Frame::ITRF(), Instant::J2000()));
+    }
+
+    {
+        // Frame shifted from ITRF, as a ground station local frame: the transform translation is in meters, so a
+        // position in feet must give the same result as the same position in meters
+
+        using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
+        using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
+        using ostk::physics::coordinate::frame::provider::Static;
+        using ostk::physics::coordinate::Transform;
+        using ostk::physics::unit::Angle;
+
+        const Shared<const Frame> stationFrameSPtr = Frame::Construct(
+            "Station",
+            false,
+            Frame::ITRF(),
+            std::make_shared<Static>(Static(Transform::Passive(
+                Instant::J2000(),
+                Vector3d(-4.0e6, 3.0e6, 3.5e6),
+                Vector3d::Zero(),
+                Quaternion::RotationVector(RotationVector({0.0, 0.0, 1.0}, Angle::Degrees(30.0))),
+                Vector3d::Zero()
+            )))
+        );
+
+        const Position position_GCRF = {{7000e3, 1000e3, 500e3}, Position::Unit::Meter, Frame::GCRF()};
+        const Position position_GCRF_ft = position_GCRF.inUnit(Position::Unit::Foot);
+
+        const Position position_STATION = position_GCRF.inFrame(stationFrameSPtr, Instant::J2000());
+        const Position position_STATION_ft = position_GCRF_ft.inFrame(stationFrameSPtr, Instant::J2000());
+
+        EXPECT_EQ(Position::Unit::Foot, position_STATION_ft.getUnit());
+        EXPECT_EQ(stationFrameSPtr, position_STATION_ft.accessFrame());
+        EXPECT_TRUE(position_STATION_ft.inMeters().getCoordinates().isNear(position_STATION.getCoordinates(), 1e-6))
+            << position_STATION_ft.inMeters() << " ~ " << position_STATION;
+
+        const Position position_GCRF_ft_roundTrip = position_STATION_ft.inFrame(Frame::GCRF(), Instant::J2000());
+
+        EXPECT_EQ(Position::Unit::Foot, position_GCRF_ft_roundTrip.getUnit());
+        EXPECT_TRUE(position_GCRF_ft_roundTrip.inMeters().getCoordinates().isNear(position_GCRF.getCoordinates(), 1e-6))
+            << position_GCRF_ft_roundTrip.inMeters() << " ~ " << position_GCRF;
+
+        Frame::Destruct("Station");
     }
 }
 
