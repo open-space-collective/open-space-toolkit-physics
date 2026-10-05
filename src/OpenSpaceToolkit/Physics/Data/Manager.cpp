@@ -206,7 +206,7 @@ File Manager::fetchLatestManifestFile_() const
 
     this->lockLocalRepository_(localRepositoryLockTimeout_);
 
-    String remoteUrlString = Manager::DefaultRemoteUrl().toString();
+    String remoteUrlString = remoteUrl_.toString();
 
     if (remoteUrlString.getLast() == '/')
     {
