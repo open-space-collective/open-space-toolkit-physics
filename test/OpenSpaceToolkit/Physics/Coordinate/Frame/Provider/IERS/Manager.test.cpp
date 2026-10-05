@@ -1,5 +1,8 @@
 /// Apache License 2.0
 
+#include <filesystem>
+#include <string>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
@@ -39,7 +42,30 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
    protected:
     void SetUp() override
     {
+        // Work on a copy of the test data: in Automatic mode, the Manager replaces local files that are older than the
+        // remote ones, which would overwrite the committed test data. The fresh copies are newer than the remote
+        // files, so the tests run against the test data.
+
+        if (temporaryDirectory_.exists())
+        {
+            temporaryDirectory_.remove();
+        }
+
+        temporaryDirectory_.create();
+
         manager_.setLocalRepository(localRepositoryDirectory);
+        manager_.setMode(Manager::Mode::Automatic);
+
+        const auto copyFileToDirectory = [](const File& aFile, const Directory& aDirectory) -> void
+        {
+            std::filesystem::copy_file(
+                std::string(aFile.getPath().toString()),
+                std::string((aDirectory.getPath() + Path::Parse(aFile.getName())).toString())
+            );
+        };
+
+        copyFileToDirectory(bulletinAFile_, manager_.getBulletinADirectory());
+        copyFileToDirectory(finals2000AFile_, manager_.getFinals2000ADirectory());
 
         this->bulletinA_ = BulletinA::Load(bulletinAFile_);
         this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
@@ -83,6 +109,8 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         manager_.setLocalRepository(localRepositoryDirectory);
         manager_.setMode(Manager::Mode::Automatic);
         manager_.reset();
+
+        temporaryDirectory_.remove();
     }
 
     const File bulletinAFile_ =
@@ -98,8 +126,9 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
 
     Manager& manager_ = Manager::Get();
 
-    const Directory localRepositoryDirectory =
-        Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/"));
+    Directory temporaryDirectory_ = Directory::Path(Path::Parse("/tmp/ostk-physics-test-iers-manager"));
+
+    const Directory localRepositoryDirectory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("IERS"));
 
     const char* localRepositoryVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY";
     const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
@@ -151,9 +180,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
     {
         manager_.reset();
         manager_.setMode(Manager::Mode::Manual);
-        Directory newDirectory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/Temp")
-        );
+        Directory newDirectory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/Temp"));
         manager_.setLocalRepository(newDirectory);
 
         EXPECT_THROW(manager_.getBulletinA(), ostk::core::error::RuntimeError);
@@ -176,9 +203,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
     // This test is not deterministic, as it depends on the remote server
     {
         manager_.reset();
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/New"));
         manager_.setLocalRepository(directory);
 
         File bulletinAFile = File::Undefined();
@@ -208,9 +233,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinal
     // This test is not deterministic, as it depends on the remote server
     {
         manager_.reset();
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/New"));
         manager_.setLocalRepository(directory);
 
         EXPECT_NO_THROW(manager_.getFinals2000A());
@@ -227,9 +250,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinal
     {
         manager_.reset();
         manager_.setMode(Manager::Mode::Manual);
-        Directory newDirectory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/Temp")
-        );
+        Directory newDirectory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/Temp"));
         manager_.setLocalRepository(newDirectory);
 
         EXPECT_THROW(manager_.getFinals2000A(), ostk::core::error::RuntimeError);
@@ -294,9 +315,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Future)
 {
-    Directory directory = Directory::Path(
-        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/Temp")
-    );
+    Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/Temp"));
     manager_.setLocalRepository(directory);
     const File latestFinals2000A = manager_.fetchLatestFinals2000A();
     const Finals2000A finals2000A = Finals2000A::Load(latestFinals2000A);
@@ -451,9 +470,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, FetchLat
     {
         manager_.reset();
 
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/New"));
         manager_.setLocalRepository(directory);
         const File latestBulletinA = manager_.fetchLatestBulletinA();
 
@@ -471,9 +488,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, FetchLat
 {
     {
         manager_.reset();
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/New"));
         manager_.setLocalRepository(directory);
 
         const File latestFinals2000A = manager_.fetchLatestFinals2000A();
@@ -504,9 +519,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, ClearLocalRepository)
 {
     {
-        Directory directory =
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/Temp"
-            ));
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("Manager/Temp"));
         manager_.setLocalRepository(directory);
         manager_.clearLocalRepository();
 
