@@ -1269,6 +1269,84 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime_RoundTrip)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Instant, GetDateTime_LeapSecond)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // The leap second ending 2016-12-31 is 23:59:60 UTC, from 2017-01-01 00:00:36 TAI to 00:00:37 TAI
+
+    const Instant beforeLeapSecond = Instant::DateTime(DateTime(2017, 1, 1, 0, 0, 35, 500), Scale::TAI);
+    const Instant leapSecond = Instant::DateTime(DateTime(2017, 1, 1, 0, 0, 36, 500), Scale::TAI);
+    const Instant afterLeapSecond = Instant::DateTime(DateTime(2017, 1, 1, 0, 0, 37, 500), Scale::TAI);
+
+    {
+        EXPECT_EQ(DateTime(2016, 12, 31, 23, 59, 59, 500), beforeLeapSecond.getDateTime(Scale::UTC));
+        EXPECT_EQ(DateTime(2016, 12, 31, 23, 59, 60, 500), leapSecond.getDateTime(Scale::UTC));
+        EXPECT_EQ(DateTime(2017, 1, 1, 0, 0, 0, 500), afterLeapSecond.getDateTime(Scale::UTC));
+
+        EXPECT_EQ("2016-12-31 23:59:60.500 [UTC]", leapSecond.toString(Scale::UTC));
+    }
+
+    {
+        // TAI - UTC is still 36 s during the leap second, consistent with 23:59:60 UTC
+
+        EXPECT_EQ(36, leapSecond.getLeapSecondCount());
+    }
+
+    {
+        // Only UTC has leap seconds
+
+        EXPECT_EQ(DateTime(2017, 1, 1, 0, 0, 36, 500), leapSecond.getDateTime(Scale::TAI));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime_LeapSecond)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Duration;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    {
+        // The leap second ending 2016-12-31 is 23:59:60 UTC, from 2017-01-01 00:00:36 TAI to 00:00:37 TAI
+
+        EXPECT_EQ(
+            Instant::DateTime(DateTime(2017, 1, 1, 0, 0, 36, 500), Scale::TAI),
+            Instant::DateTime(DateTime(2016, 12, 31, 23, 59, 60, 500), Scale::UTC)
+        );
+        EXPECT_EQ(
+            Instant::DateTime(DateTime(2017, 1, 1, 0, 0, 36, 500), Scale::TAI),
+            Instant::DateTime(DateTime::Parse("2016-12-31 23:59:60.500"), Scale::UTC)
+        );
+    }
+
+    {
+        // Every instant around the leap second round trips through its UTC date-time
+
+        const Instant leapSecondStart = Instant::DateTime(DateTime(2017, 1, 1, 0, 0, 36), Scale::TAI);
+
+        for (int halfSecondCount = -4; halfSecondCount <= 4; ++halfSecondCount)
+        {
+            const Instant instant = leapSecondStart + Duration::Milliseconds(500.0 * halfSecondCount);
+
+            EXPECT_EQ(instant, Instant::DateTime(instant.getDateTime(Scale::UTC), Scale::UTC))
+                << instant.toString(Scale::TAI) << " ~ " << instant.toString(Scale::UTC);
+        }
+    }
+
+    {
+        // On a day without a leap second, 23:59:60 is the first second of the next day
+
+        EXPECT_EQ(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC),
+            Instant::DateTime(DateTime(2017, 12, 31, 23, 59, 60), Scale::UTC)
+        );
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Instant, GetLeapSecondCount)
 {
     using ostk::physics::time::DateTime;
@@ -2196,6 +2274,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
     using ostk::physics::time::Duration;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
+    using ostk::physics::time::Time;
 
     const Array<Instant> instants = {
         Instant::DateTime(DateTime::Parse("2016-12-31 23:59:59"), Scale::UTC),
@@ -2229,7 +2308,15 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Test_1)
 
     for (const auto& instant : instants)
     {
-        EXPECT_EQ(instant.getDateTime(Scale::UTC), (instant + Duration::Seconds(+1.0)).getDateTime(Scale::UTC));
+        // The second after 23:59:59 UTC is the leap second, 23:59:60 UTC
+
+        const DateTime dateTime = instant.getDateTime(Scale::UTC);
+        const DateTime leapSecondDateTime = (instant + Duration::Seconds(+1.0)).getDateTime(Scale::UTC);
+
+        EXPECT_EQ(dateTime.accessDate(), leapSecondDateTime.accessDate()) << instant.toString(Scale::UTC);
+        EXPECT_EQ(Time(23, 59, 60), leapSecondDateTime.accessTime()) << instant.toString(Scale::UTC);
+        EXPECT_EQ(instant + Duration::Seconds(+1.0), Instant::DateTime(leapSecondDateTime, Scale::UTC))
+            << instant.toString(Scale::UTC);
     }
 }
 
