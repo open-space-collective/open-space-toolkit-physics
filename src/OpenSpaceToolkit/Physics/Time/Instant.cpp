@@ -310,10 +310,19 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
 
     const Uint8 hours = timeOfDay / 3600000000000ULL;
     const Uint8 minutes = (timeOfDay / 60000000000ULL) % 60;
-    const Uint8 seconds = (timeOfDay / 1000000000ULL) % 60;
+    Uint8 seconds = (timeOfDay / 1000000000ULL) % 60;
     const Uint16 milliseconds = (timeOfDay / 1000000ULL) % 1000;
     const Uint16 microseconds = (timeOfDay / 1000ULL) % 1000;
     const Uint16 nanoseconds = timeOfDay % 1000ULL;
+
+    // A leap second (23:59:60 UTC) has the same UTC count as the second before it (23:59:59 UTC): the UTC count of
+    // an instant within a leap second does not convert back to its TAI count.
+
+    if ((aTimeScale == Scale::UTC) && (hours == 23) && (minutes == 59) && (seconds == 59) &&
+        (Instant::TAI_UTC(count) != this->inScale(Scale::TAI).count_))
+    {
+        seconds = 60;
+    }
 
     return time::DateTime(year, month, day, hours, minutes, seconds, milliseconds, microseconds, nanoseconds);
 }
@@ -461,6 +470,30 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
         throw ostk::core::error::RuntimeError(
             "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2554
         );
+    }
+
+    // A UTC second 60 is a leap second, one second after second 59 (on a day without a leap second, the first second
+    // of the next minute). Count from second 59, which has a UTC count of its own.
+
+    if ((aTimeScale == Scale::UTC) && (aDateTime.accessTime().getSecond() == 60))
+    {
+        const Time& time_UTC = aDateTime.accessTime();
+
+        return Instant::DateTime(
+                   time::DateTime(
+                       aDateTime.accessDate(),
+                       Time(
+                           time_UTC.getHour(),
+                           time_UTC.getMinute(),
+                           59,
+                           time_UTC.getMillisecond(),
+                           time_UTC.getMicrosecond(),
+                           time_UTC.getNanosecond()
+                       )
+                   ),
+                   Scale::UTC
+               ) +
+               Duration::Seconds(1.0);
     }
 
     // Days from 2000-01-01, then signed nanosecond offset from the J2000 epoch (2000-01-01 12:00:00)
