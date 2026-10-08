@@ -1,6 +1,5 @@
 /// Apache License 2.0
 
-#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -13,6 +12,7 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 
 namespace ostk
@@ -28,75 +28,8 @@ namespace provider
 namespace iers
 {
 
+using ostk::physics::coordinate::frame::provider::iers::utilities::interpolateUt1MinusUtc;
 using ostk::physics::data::utilities::getFileModifiedInstant;
-
-namespace
-{
-
-/// @brief TAI - UTC at an instant [s]
-///
-/// Computed from the TAI and UTC representations of the instant, which UT1 - UTC is applied to. During a leap second,
-/// the UTC representation already uses the offset after the leap second, while Instant::getLeapSecondCount still
-/// reports the offset before it.
-///
-/// @param anInstant An instant
-/// @return TAI - UTC [s]
-Real getTaiMinusUtcAt(const Instant& anInstant)
-{
-    using ostk::physics::time::Scale;
-
-    return std::round(
-        (anInstant.getModifiedJulianDate(Scale::TAI) - anInstant.getModifiedJulianDate(Scale::UTC)) * 86400.0
-    );
-}
-
-/// @brief Linearly interpolate UT1 - UTC between two tabulated values
-///
-/// UT1 - UTC jumps by +1 s across a leap second, while UT1 - TAI is continuous. Interpolating UT1 - UTC directly
-/// spreads that jump over the whole day that ends with the leap second. Across a leap second, UT1 - TAI is
-/// interpolated instead and converted back to UT1 - UTC with TAI - UTC at the requested instant.
-///
-/// @param aPreviousUt1MinusUtc UT1 - UTC at the previous tabulated date [s]
-/// @param aPreviousMjd_UTC Previous tabulated date (UTC modified Julian date)
-/// @param aNextUt1MinusUtc UT1 - UTC at the next tabulated date [s]
-/// @param aNextMjd_UTC Next tabulated date (UTC modified Julian date)
-/// @param aRatio Interpolation ratio
-/// @param anInstant Instant at which UT1 - UTC is interpolated
-/// @return UT1 - UTC at the instant [s]
-Real interpolateUt1MinusUtc(
-    const Real& aPreviousUt1MinusUtc,
-    const Real& aPreviousMjd_UTC,
-    const Real& aNextUt1MinusUtc,
-    const Real& aNextMjd_UTC,
-    const Real& aRatio,
-    const Instant& anInstant
-)
-{
-    using ostk::physics::time::Scale;
-
-    if (!aPreviousUt1MinusUtc.isDefined() || !aNextUt1MinusUtc.isDefined())
-    {
-        return Real::Undefined();
-    }
-
-    // UT1 - UTC changes by a few milliseconds per day: a step larger than half a second can only be a leap second
-
-    if ((aNextUt1MinusUtc - aPreviousUt1MinusUtc).abs() < 0.5)
-    {
-        return aPreviousUt1MinusUtc + aRatio * (aNextUt1MinusUtc - aPreviousUt1MinusUtc);
-    }
-
-    const Real previousUt1MinusTai =
-        aPreviousUt1MinusUtc - getTaiMinusUtcAt(Instant::ModifiedJulianDate(aPreviousMjd_UTC, Scale::UTC));
-    const Real nextUt1MinusTai =
-        aNextUt1MinusUtc - getTaiMinusUtcAt(Instant::ModifiedJulianDate(aNextMjd_UTC, Scale::UTC));
-
-    const Real ut1MinusTai = previousUt1MinusTai + aRatio * (nextUt1MinusTai - previousUt1MinusTai);
-
-    return ut1MinusTai + getTaiMinusUtcAt(anInstant);
-}
-
-}  // namespace
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A)
 {
