@@ -6,6 +6,8 @@
 
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
+using ostk::core::type::Real;
+using ostk::core::type::String;
 
 using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 using ostk::physics::time::Date;
@@ -178,6 +180,29 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
     }
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObservationAt_LeapSecond)
+{
+    // IERS Bulletin A Vol. XXX No. 001 (5 January 2017), whose observations span the leap second ending 2016-12-31.
+    // UT1 - UTC jumps by +1 s at the leap second, while UT1 - TAI is continuous: UT1 - UTC = -0.407858 s on
+    // 2016-12-31 and +0.591162 s on 2017-01-01, i.e. UT1 - TAI = -36.407858 s and -36.408838 s.
+    // The bulletin spells its TAI - UTC epoch "1 Jan 2017": the fixture spells the month in full for the parser.
+
+    const BulletinA bulletinA = BulletinA::Load(File::Path(Path::Parse(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/bulletina-xxx-001.txt"
+    )));
+
+    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> Real
+    {
+        return bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse(aDateTimeString), Scale::UTC)).ut1MinusUtc;
+    };
+
+    EXPECT_NEAR(-0.407858, ut1MinusUtcAt("2016-12-31 00:00:00"), 1e-9);
+    EXPECT_NEAR(-0.408348, ut1MinusUtcAt("2016-12-31 12:00:00"), 1e-7);
+    EXPECT_NEAR(-0.408838, ut1MinusUtcAt("2016-12-31 23:59:59"), 1e-7);
+    EXPECT_NEAR(+0.591162, ut1MinusUtcAt("2017-01-01 00:00:00"), 1e-9);
+    EXPECT_NEAR(+0.5906095, ut1MinusUtcAt("2017-01-01 12:00:00"), 1e-7);
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionInterval)
 {
     {
@@ -215,6 +240,28 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
             Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
         ));
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionAt_LeapSecond)
+{
+    // IERS Bulletin A Vol. XXIX No. 052 (29 December 2016), whose predictions span the leap second ending 2016-12-31.
+    // UT1 - UTC jumps by +1 s at the leap second, while UT1 - TAI is continuous: UT1 - UTC = -0.40780 s on
+    // 2016-12-31 and +0.59127 s on 2017-01-01, i.e. UT1 - TAI = -36.40780 s and -36.40873 s.
+
+    const BulletinA bulletinA = BulletinA::Load(File::Path(Path::Parse(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/bulletina-xxix-052.txt"
+    )));
+
+    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> Real
+    {
+        return bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse(aDateTimeString), Scale::UTC)).ut1MinusUtc;
+    };
+
+    EXPECT_NEAR(-0.40780, ut1MinusUtcAt("2016-12-31 00:00:00"), 1e-9);
+    EXPECT_NEAR(-0.408265, ut1MinusUtcAt("2016-12-31 12:00:00"), 1e-7);
+    EXPECT_NEAR(-0.408730, ut1MinusUtcAt("2016-12-31 23:59:59"), 1e-7);
+    EXPECT_NEAR(+0.59127, ut1MinusUtcAt("2017-01-01 00:00:00"), 1e-9);
+    EXPECT_NEAR(+0.590745, ut1MinusUtcAt("2017-01-01 12:00:00"), 1e-7);
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
