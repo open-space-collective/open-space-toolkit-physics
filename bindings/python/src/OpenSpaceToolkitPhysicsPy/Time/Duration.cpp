@@ -22,7 +22,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(nanobind::module_& aModule)
 
     duration_class
 
-        // nanobind has no `init(factory)`; a placement-new `__init__` is the equivalent.
         .def(
             "__init__",
             [](Duration* aDurationPtr, const std::chrono::microseconds& aCount)

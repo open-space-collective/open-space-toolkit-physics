@@ -546,8 +546,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
         ;
 
     // `Interval::Type` is `ostk::mathematics::object::IntervalBase::Type`, which `ostk.mathematics`
-    // already binds. pybind11 allowed a second, module-local registration of the same C++
-    // enumeration; nanobind keeps one registry per domain, so the existing one is reused.
+    // already binds, so the existing binding is reused.
     interval_class.attr("Type") = module_::import_("ostk.mathematics.object").attr("RealInterval").attr("Type");
 
     implicitly_convertible<ostk::mathematics::object::Interval<ostk::physics::time::Instant>, Interval>();
