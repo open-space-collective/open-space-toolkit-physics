@@ -141,7 +141,7 @@ FUNCTION (PY_ADD_MODULE NAME)
     TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${PROJECT_SOURCE_DIR}/include")
     TARGET_INCLUDE_DIRECTORIES (${NAME} PUBLIC "${PROJECT_SOURCE_DIR}/src")
 
-    # Pybind11/Python Link
+    # Python Link
     TARGET_LINK_LIBRARIES (${NAME} PRIVATE "nanobind-static-${PYTHON_VERSION}" python${PYTHON_VERSION}::headers)
     TARGET_COMPILE_OPTIONS (${NAME} PRIVATE "-fno-strict-aliasing")
     # Trade nanobind's verbose assertion messages for a smaller binary.
@@ -242,7 +242,7 @@ INCLUDE (FetchContent)
 FetchContent_Declare (
     nanobind
     GIT_REPOSITORY https://github.com/wjakob/nanobind.git
-    GIT_TAG v2.9.2
+    GIT_TAG v3.1.0
     GIT_SHALLOW TRUE
 )
 
@@ -261,7 +261,7 @@ SET (NANOBIND_SOURCES "${nanobind_SOURCE_DIR}/src/nb_combined.cpp")
 ### Python
 
 # Python versions to build for and support
-SET (PYTHON_SEARCH_VERSIONS 3.9 3.10 3.11 3.12 3.13 3.14 CACHE STRING "Versions of Python bindings to build.")
+SET (PYTHON_SEARCH_VERSIONS 3.10 3.11 3.12 3.13 3.14 CACHE STRING "Versions of Python bindings to build.")
 
 MESSAGE (STATUS "Looking for available python versions...")
 FOREACH (PYTHON_VERSION ${PYTHON_SEARCH_VERSIONS})

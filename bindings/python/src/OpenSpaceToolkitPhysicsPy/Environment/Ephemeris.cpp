@@ -17,7 +17,7 @@ using ostk::physics::environment::Ephemeris;
 class PyEphemeris : public Ephemeris
 {
    public:
-    NB_TRAMPOLINE(Ephemeris, 3);
+    NB_TRAMPOLINE(Ephemeris);
 
     // Trampoline (need one for each virtual function)
 
