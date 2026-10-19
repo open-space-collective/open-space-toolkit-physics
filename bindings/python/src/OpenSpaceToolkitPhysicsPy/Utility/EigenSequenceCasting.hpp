@@ -3,9 +3,10 @@
 #ifndef __OpenSpaceToolkitPy_Utility_EigenSequenceCasting__
 #define __OpenSpaceToolkitPy_Utility_EigenSequenceCasting__
 
-#include <Eigen/Dense>
 #include <nanobind/eigen/dense.h>
 #include <nanobind/nanobind.h>
+
+#include <Eigen/Dense>
 
 /// @brief                      Accept any python sequence where a dense Eigen vector or matrix is expected.
 ///
@@ -112,10 +113,10 @@ struct EigenSequenceCaster
     }
 };
 
-#define OSTK_EIGEN_SEQUENCE_CASTER(...)                       \
-    template <>                                              \
+#define OSTK_EIGEN_SEQUENCE_CASTER(...)                                \
+    template <>                                                        \
     struct type_caster<__VA_ARGS__> : EigenSequenceCaster<__VA_ARGS__> \
-    {                                                        \
+    {                                                                  \
     };
 
 // Matches the aliases in open-space-toolkit-mathematics' Object/Vector.hpp.
