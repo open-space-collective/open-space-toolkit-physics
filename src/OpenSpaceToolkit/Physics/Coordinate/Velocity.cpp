@@ -133,7 +133,7 @@ Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>&
 
     return {
         frameSPtr_->getTransformTo(aFrameSPtr, anInstant)
-            .applyToVelocity(aPosition.inFrame(frameSPtr_, anInstant).accessCoordinates(), coordinates_),
+            .applyToVelocity(aPosition.inFrame(frameSPtr_, anInstant).inMeters().accessCoordinates(), coordinates_),
         unit_,
         aFrameSPtr
     };
