@@ -276,7 +276,7 @@ Transform Engine::getTransformAt(const String& aSpiceIdentifier, const String& a
     // SPICE ephemeris time (ET) is TDB seconds past J2000, while TDB - TT varies by up to about 1.7 ms over a year:
     // convert TT seconds past J2000 to TDB.
 
-    const SpiceDouble dayModifiedJulianDate_TT = std::floor(anInstant.getModifiedJulianDate(Scale::TT));
+    const Real dayModifiedJulianDate_TT = std::floor(anInstant.getModifiedJulianDate(Scale::TT));
     const SpiceDouble secondsSinceJ2000_TT =
         (dayModifiedJulianDate_TT - 51544.5) * 86400.0 +
         (anInstant - Instant::ModifiedJulianDate(dayModifiedJulianDate_TT, Scale::TT)).inSeconds();
