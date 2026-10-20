@@ -1,11 +1,22 @@
 /// Apache License 2.0
 
+#include <fstream>
+#include <sstream>
+#include <string>
+
+#include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
 
 #include <Global.test.hpp>
 
+using ostk::core::container::Array;
+using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
+using ostk::core::type::Size;
+using ostk::core::type::String;
 
 using ostk::physics::coordinate::frame::provider::iers::BulletinA;
 using ostk::physics::time::Date;
@@ -215,6 +226,86 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
             Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
         ));
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load_AbbreviatedMonthNames)
+{
+    // Some bulletins abbreviate month names, e.g. "Beginning 1 Jan 2017:" in Vol. XXX No. 001 (5 January 2017).
+    // Write copies of the test bulletin with abbreviated month names and check they load.
+
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
+        );
+
+    std::string content;
+
+    {
+        std::ifstream fileStream {std::string(file.getPath().toString())};
+        std::stringstream contentStream;
+        contentStream << fileStream.rdbuf();
+        content = contentStream.str();
+    }
+
+    const auto replace = [](std::string aString, const std::string& aSubstring, const std::string& aReplacement
+                         ) -> std::string
+    {
+        const std::size_t position = aString.find(aSubstring);
+
+        EXPECT_NE(std::string::npos, position) << aSubstring;
+
+        return (position != std::string::npos) ? aString.replace(position, aSubstring.size(), aReplacement) : aString;
+    };
+
+    Directory temporaryDirectory = Directory::Path(Path::Parse("/tmp/ostk-physics-test-bulletin-a"));
+
+    if (temporaryDirectory.exists())
+    {
+        temporaryDirectory.remove();
+    }
+
+    temporaryDirectory.create();
+
+    const File abbreviatedFile = File::Path(temporaryDirectory.getPath() + Path::Parse("ser7.dat"));
+
+    const auto loadWith = [&](const std::string& aContent) -> BulletinA
+    {
+        {
+            std::ofstream fileStream {std::string(abbreviatedFile.getPath().toString())};
+            fileStream << aContent;
+        }
+
+        return BulletinA::Load(abbreviatedFile);
+    };
+
+    {
+        const Array<String> monthAbbreviations = {
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        };
+
+        for (Size monthIndex = 0; monthIndex < monthAbbreviations.getSize(); ++monthIndex)
+        {
+            const std::string beginningLine = "Beginning 1 " + std::string(monthAbbreviations[monthIndex]) + " 2017:";
+
+            const BulletinA bulletinA = loadWith(replace(content, "Beginning 1 January 2017:", beginningLine));
+
+            EXPECT_EQ(
+                Instant::DateTime(DateTime(2017, monthIndex + 1, 1, 0, 0, 0), Scale::UTC),
+                bulletinA.getTAIMinusUTCEpoch()
+            ) << beginningLine;
+        }
+    }
+
+    {
+        const BulletinA bulletinA = loadWith(replace(content, "28 June 2018 ", "28 Jun 2018  "));
+
+        EXPECT_EQ(Date(2018, 6, 28), bulletinA.getReleaseDate());
+    }
+
+    {
+        EXPECT_ANY_THROW(loadWith(replace(content, "Beginning 1 January 2017:", "Beginning 1 Janvier 2017:")));
+    }
+
+    temporaryDirectory.remove();
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
