@@ -19,8 +19,6 @@ namespace frame
 namespace provider
 {
 
-namespace iau = ostk::physics::coordinate::frame::provider::iau;
-
 using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::Transform;
 using ostk::physics::time::Instant;
