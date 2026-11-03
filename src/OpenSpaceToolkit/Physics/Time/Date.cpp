@@ -254,25 +254,27 @@ Date Date::ModifiedJulianDateEpoch()
     return Date(1858, 11, 17);
 }
 
-Date Date::Parse(const String& aString, const Date::Format& aFormat)
+Date Date::Parse(const String& aString, const std::optional<Date::Format>& aFormat)
 {
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
     }
 
-    switch (aFormat)
+    if (!aFormat.has_value())
     {
-        case Date::Format::Undefined:  // Automatic format detection
-        {
-            if (aString.match(boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
-            {
-                return Date::Parse(aString, Date::Format::STK);
-            }
+        // Automatic format detection
 
-            return Date::Parse(aString, Date::Format::Standard);
+        if (aString.match(boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+        {
+            return Date::Parse(aString, Date::Format::STK);
         }
 
+        return Date::Parse(aString, Date::Format::Standard);
+    }
+
+    switch (aFormat.value())
+    {
         case Date::Format::Standard:
         {
             boost::smatch match;

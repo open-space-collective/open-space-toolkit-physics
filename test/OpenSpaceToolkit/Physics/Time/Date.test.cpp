@@ -160,7 +160,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, ToString)
 
     {
         EXPECT_ANY_THROW(Date::Undefined().toString());
-        EXPECT_ANY_THROW(Date(2000, 1, 1).toString(Date::Format::Undefined));
     }
 }
 
@@ -337,5 +336,23 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Parse)
         EXPECT_ANY_THROW(Date::Parse("-2000-01-01"));
         EXPECT_ANY_THROW(Date::Parse("-32769-01-01"));
         EXPECT_ANY_THROW(Date::Parse("32768-01-01"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Date, ParseWithoutFormat)
+{
+    using ostk::physics::time::Date;
+
+    {
+        EXPECT_EQ(Date::Parse("2018-01-02", Date::Format::Standard), Date::Parse("2018-01-02"));
+        EXPECT_EQ(Date::Parse("2018-01-02", Date::Format::Standard), Date::Parse("2018-01-02", std::nullopt));
+
+        EXPECT_EQ(Date::Parse("2 Jan 2018", Date::Format::STK), Date::Parse("2 Jan 2018"));
+        EXPECT_EQ(Date::Parse("2 Jan 2018", Date::Format::STK), Date::Parse("2 Jan 2018", std::nullopt));
+    }
+
+    {
+        EXPECT_ANY_THROW(Date::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(Date::Parse("", std::nullopt));
     }
 }

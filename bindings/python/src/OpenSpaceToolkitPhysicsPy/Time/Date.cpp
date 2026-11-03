@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
@@ -231,13 +233,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
     enum_<Date::Format>(date_class, "Format", pybind11::module_local())
 
         .value(
-            "Undefined",
-            Date::Format::Undefined,
-            R"doc(
-                Undefined date format.
-            )doc"
-        )
-        .value(
             "Standard",
             Date::Format::Standard,
             R"doc(
@@ -254,5 +249,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
 
         ;
 
-    date_class.def_static("parse", &Date::Parse, "aString"_a, "aFormat"_a = Date::Format::Undefined);
+    date_class.def_static("parse", &Date::Parse, "aString"_a, "aFormat"_a = none());
 }

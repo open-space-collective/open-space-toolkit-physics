@@ -32,7 +32,7 @@ def test_date_modified_julian_date_epoch():
 def test_date_parse():
     ## Using python strings
 
-    # Testing with default format argument (Date::Format::Undefined)
+    # Testing with default format argument (None, which detects the format)
     date: Date = Date.parse("2018-01-01")
 
     assert date is not None
@@ -55,7 +55,7 @@ def test_date_parse():
 
     ## Using String class
 
-    # Testing with default format argument (Date::Format::Undefined)
+    # Testing with default format argument (None, which detects the format)
     date: Date = Date.parse(String("2018-01-01"))
 
     assert date is not None
@@ -75,6 +75,21 @@ def test_date_parse():
     assert date is not None
     assert isinstance(date, Date)
     assert date.is_defined()
+
+
+def test_date_parse_without_format():
+    assert Date.parse("2018-01-02") == Date.parse("2018-01-02", Date.Format.Standard)
+    assert Date.parse("2018-01-02", None) == Date.parse(
+        "2018-01-02", Date.Format.Standard
+    )
+    assert Date.parse("2 Jan 2018", None) == Date.parse("2 Jan 2018", Date.Format.STK)
+
+    with pytest.raises(RuntimeError):
+        Date.parse("abc", None)
+
+
+def test_date_format_has_no_undefined():
+    assert not hasattr(Date.Format, "Undefined")
 
 
 def test_date_operators():

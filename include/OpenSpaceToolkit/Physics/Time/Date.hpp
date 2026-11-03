@@ -27,9 +27,8 @@ class Date
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (YYYY-MM-DD)
-        STK         ///< STK format (d Mon YYYY)
+        Standard,  ///< Standard format (YYYY-MM-DD)
+        STK        ///< STK format (d Mon YYYY)
 
     };
 
@@ -239,9 +238,9 @@ class Date
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A date format
+    /// @param [in] aFormat A date format (default: std::nullopt, which detects the format)
     /// @return Date
-    static Date Parse(const String& aString, const Date::Format& aFormat = Date::Format::Undefined);
+    static Date Parse(const String& aString, const std::optional<Date::Format>& aFormat = std::nullopt);
 
    private:
     bool defined_;
