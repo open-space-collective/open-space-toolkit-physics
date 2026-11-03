@@ -28,9 +28,8 @@ class Time
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (hh:mm:ss.sss.sss.sss)
-        ISO8601     ///< ISO 8601 format (hh:mm:ss.sssssssss)
+        Standard,  ///< Standard format (hh:mm:ss.sss.sss.sss)
+        ISO8601    ///< ISO 8601 format (hh:mm:ss.sssssssss)
 
     };
 
@@ -322,9 +321,9 @@ class Time
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A time format (automatic detection if Undefined)
+    /// @param [in] aFormat A time format (default: std::nullopt, which detects the format)
     /// @return Time
-    static Time Parse(const String& aString, const Time::Format& aFormat = Time::Format::Undefined);
+    static Time Parse(const String& aString, const std::optional<Time::Format>& aFormat = std::nullopt);
 
     /// @brief Constructs a time from a decimal number of hours
     ///

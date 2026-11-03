@@ -35,6 +35,23 @@ class TestTime:
         assert isinstance(time, Time)
         assert time.is_defined()
 
+    def test_parse_without_format(self) -> None:
+        assert Time.parse("12:34:56.123.456") == Time.parse(
+            "12:34:56.123.456", Time.Format.Standard
+        )
+        assert Time.parse("12:34:56.123.456", format=None) == Time.parse(
+            "12:34:56.123.456", Time.Format.Standard
+        )
+        assert Time.parse("12:34:56.123456789", format=None) == Time.parse(
+            "12:34:56.123456789", Time.Format.ISO8601
+        )
+
+        with pytest.raises(RuntimeError):
+            Time.parse("abc", format=None)
+
+    def test_format_has_no_undefined(self) -> None:
+        assert not hasattr(Time.Format, "Undefined")
+
     def test_operators(self, time: Time) -> None:
         assert (time == time) is not None
         assert (time != time) is not None

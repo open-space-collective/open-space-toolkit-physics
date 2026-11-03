@@ -378,25 +378,27 @@ Time Time::Noon()
     return Time(12, 0, 0, 0, 0, 0);
 }
 
-Time Time::Parse(const String& aString, const Time::Format& aFormat)
+Time Time::Parse(const String& aString, const std::optional<Time::Format>& aFormat)
 {
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
     }
 
-    switch (aFormat)
+    if (!aFormat.has_value())
     {
-        case Time::Format::Undefined:  // Automatic format detection
-        {
-            if (aString.match(boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,9}))?$")))
-            {
-                return Time::Parse(aString, Time::Format::ISO8601);
-            }
+        // Automatic format detection
 
-            return Time::Parse(aString, Time::Format::Standard);
+        if (aString.match(boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,9}))?$")))
+        {
+            return Time::Parse(aString, Time::Format::ISO8601);
         }
 
+        return Time::Parse(aString, Time::Format::Standard);
+    }
+
+    switch (aFormat.value())
+    {
         case Time::Format::Standard:
         {
             boost::smatch match;

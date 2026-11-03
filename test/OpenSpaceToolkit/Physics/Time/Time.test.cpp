@@ -419,7 +419,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Noon)
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, Parse)
 {
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), Time::Parse("12:34:56.123.456.789"));
@@ -486,6 +486,28 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Parse)
         EXPECT_ANY_THROW(Time::Parse("12:34:61", Time::Format::ISO8601));
         EXPECT_ANY_THROW(Time::Parse("12:34:61.", Time::Format::ISO8601));
         EXPECT_ANY_THROW(Time::Parse("-12:34:56", Time::Format::ISO8601));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Time, ParseWithoutFormat)
+{
+    using ostk::physics::time::Time;
+
+    {
+        EXPECT_EQ(Time::Parse("12:34:56.123.456", Time::Format::Standard), Time::Parse("12:34:56.123.456"));
+        EXPECT_EQ(
+            Time::Parse("12:34:56.123.456", Time::Format::Standard), Time::Parse("12:34:56.123.456", std::nullopt)
+        );
+
+        EXPECT_EQ(Time::Parse("12:34:56.123456789", Time::Format::ISO8601), Time::Parse("12:34:56.123456789"));
+        EXPECT_EQ(
+            Time::Parse("12:34:56.123456789", Time::Format::ISO8601), Time::Parse("12:34:56.123456789", std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(Time::Parse("", std::nullopt));
     }
 }
 

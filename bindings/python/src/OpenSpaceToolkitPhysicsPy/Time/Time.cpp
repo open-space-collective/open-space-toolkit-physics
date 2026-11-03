@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
@@ -22,13 +24,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
 
     enum_<Time::Format>(time_class, "Format")
 
-        .value(
-            "Undefined",
-            Time::Format::Undefined,
-            R"doc(
-                Undefined time format.
-            )doc"
-        )
         .value(
             "Standard",
             Time::Format::Standard,
@@ -410,13 +405,13 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
 
                 Args:
                     string (str): A string.
-                    format (Time.Format, optional): A time format (automatic detection if Undefined).
+                    format (Time.Format | None, optional): A time format. If None, the format is detected.
 
                 Returns:
                     Time: Time.
             )doc",
             arg("string"),
-            arg("format") = Time::Format::Undefined
+            arg("format") = none()
         )
         .def_static(
             "hours",
