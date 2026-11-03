@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Time_Duration__
 
 #include <functional>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -32,9 +33,8 @@ class Duration
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
-        ISO8601     ///< ISO 8601 format (PnDTnHnMnS)
+        Standard,  ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
+        ISO8601    ///< ISO 8601 format (PnDTnHnMnS)
 
     };
 
@@ -577,9 +577,9 @@ class Duration
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A duration format (automatic detection if Undefined)
+    /// @param [in] aFormat A duration format (default: std::nullopt, which detects the format)
     /// @return Duration
-    static Duration Parse(const String& aString, const Duration::Format& aFormat = Duration::Format::Undefined);
+    static Duration Parse(const String& aString, const std::optional<Duration::Format>& aFormat = std::nullopt);
 
    private:
     bool defined_;

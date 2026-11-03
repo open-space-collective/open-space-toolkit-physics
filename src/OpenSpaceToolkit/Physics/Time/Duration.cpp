@@ -768,25 +768,27 @@ Duration Duration::Between(const Instant& aFirstInstant, const Instant& aSecondI
     return aSecondInstant - aFirstInstant;
 }
 
-Duration Duration::Parse(const String& aString, const Duration::Format& aFormat)
+Duration Duration::Parse(const String& aString, const std::optional<Duration::Format>& aFormat)
 {
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
     }
 
-    switch (aFormat)
+    if (!aFormat.has_value())
     {
-        case Duration::Format::Undefined:  // Automatic format detection
-        {
-            if ((aString.getLength() > 1) && ((aString[0] == 'P') || (aString[1] == 'P')))
-            {
-                return Duration::Parse(aString, Duration::Format::ISO8601);
-            }
+        // Automatic format detection
 
-            return Duration::Parse(aString, Duration::Format::Standard);
+        if ((aString.getLength() > 1) && ((aString[0] == 'P') || (aString[1] == 'P')))
+        {
+            return Duration::Parse(aString, Duration::Format::ISO8601);
         }
 
+        return Duration::Parse(aString, Duration::Format::Standard);
+    }
+
+    switch (aFormat.value())
+    {
         case Duration::Format::Standard:
         {
             boost::smatch match;

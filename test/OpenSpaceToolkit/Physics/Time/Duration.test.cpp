@@ -1916,7 +1916,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Between)
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Parse)
 {
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         EXPECT_EQ(Duration::Zero(), Duration::Parse("00.000.000.000"));
@@ -2247,6 +2247,31 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Parse)
                 (-duration), Duration::Parse((-duration).toString(Duration::Format::ISO8601), Duration::Format::ISO8601)
             );
         }
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Duration, ParseWithoutFormat)
+{
+    using ostk::physics::time::Duration;
+
+    {
+        EXPECT_EQ(
+            Duration::Parse("02:03.456.000.000", Duration::Format::Standard), Duration::Parse("02:03.456.000.000")
+        );
+        EXPECT_EQ(
+            Duration::Parse("02:03.456.000.000", Duration::Format::Standard),
+            Duration::Parse("02:03.456.000.000", std::nullopt)
+        );
+
+        EXPECT_EQ(Duration::Parse("PT2M3.456S", Duration::Format::ISO8601), Duration::Parse("PT2M3.456S"));
+        EXPECT_EQ(
+            Duration::Parse("PT2M3.456S", Duration::Format::ISO8601), Duration::Parse("PT2M3.456S", std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Duration::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(Duration::Parse("", std::nullopt));
     }
 }
 
