@@ -68,24 +68,6 @@ class BulletinB
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinB& aBulletinB);
 
-    /// @brief true if defined
-    ///
-    /// @code
-    ///     bulletinB.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined.
-    bool isDefined() const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     BulletinB bulletinB = BulletinB::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined Bulletin B object.
-    static BulletinB Undefined();
-
     /// @brief Load Bulletin B from file
     ///
     /// @code
