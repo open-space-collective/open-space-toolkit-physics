@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <pybind11/functional.h>
+#include <pybind11/stl.h>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
@@ -202,6 +203,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         "Reading",
         R"doc(
             CSSI Space Weather reading.
+
+            Integer-valued fields are None, and float-valued fields are NaN, when the value is missing from the file.
 
         )doc"
     )

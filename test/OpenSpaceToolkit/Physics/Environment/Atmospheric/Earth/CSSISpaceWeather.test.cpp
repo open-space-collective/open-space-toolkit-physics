@@ -412,7 +412,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return reading.Ap1.isDefined();
+                return reading.Ap1.has_value();
             },
             Instant::DateTime(DateTime::Parse("2023-12-01 00:00:00"), Scale::UTC)
         );
@@ -425,7 +425,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return reading.Kp1.isDefined();
+                return reading.Kp1.has_value();
             },
             Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC)
         );
@@ -555,26 +555,26 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(Date::Parse("2026-06-01", Date::Format::Standard), reading.date);
         EXPECT_EQ(2629, reading.BSRN);
         EXPECT_EQ(16, reading.ND);
-        EXPECT_FALSE(reading.Kp1.isDefined());
-        EXPECT_FALSE(reading.Kp2.isDefined());
-        EXPECT_FALSE(reading.Kp3.isDefined());
-        EXPECT_FALSE(reading.Kp4.isDefined());
-        EXPECT_FALSE(reading.Kp5.isDefined());
-        EXPECT_FALSE(reading.Kp6.isDefined());
-        EXPECT_FALSE(reading.Kp7.isDefined());
-        EXPECT_FALSE(reading.Kp8.isDefined());
-        EXPECT_FALSE(reading.KpSum.isDefined());
-        EXPECT_FALSE(reading.Ap1.isDefined());
-        EXPECT_FALSE(reading.Ap2.isDefined());
-        EXPECT_FALSE(reading.Ap3.isDefined());
-        EXPECT_FALSE(reading.Ap4.isDefined());
-        EXPECT_FALSE(reading.Ap5.isDefined());
-        EXPECT_FALSE(reading.Ap6.isDefined());
-        EXPECT_FALSE(reading.Ap7.isDefined());
-        EXPECT_FALSE(reading.Ap8.isDefined());
-        EXPECT_FALSE(reading.ApAvg.isDefined());
+        EXPECT_FALSE(reading.Kp1.has_value());
+        EXPECT_FALSE(reading.Kp2.has_value());
+        EXPECT_FALSE(reading.Kp3.has_value());
+        EXPECT_FALSE(reading.Kp4.has_value());
+        EXPECT_FALSE(reading.Kp5.has_value());
+        EXPECT_FALSE(reading.Kp6.has_value());
+        EXPECT_FALSE(reading.Kp7.has_value());
+        EXPECT_FALSE(reading.Kp8.has_value());
+        EXPECT_FALSE(reading.KpSum.has_value());
+        EXPECT_FALSE(reading.Ap1.has_value());
+        EXPECT_FALSE(reading.Ap2.has_value());
+        EXPECT_FALSE(reading.Ap3.has_value());
+        EXPECT_FALSE(reading.Ap4.has_value());
+        EXPECT_FALSE(reading.Ap5.has_value());
+        EXPECT_FALSE(reading.Ap6.has_value());
+        EXPECT_FALSE(reading.Ap7.has_value());
+        EXPECT_FALSE(reading.Ap8.has_value());
+        EXPECT_FALSE(reading.ApAvg.has_value());
         EXPECT_TRUE(std::isnan(reading.Cp));
-        EXPECT_FALSE(reading.C9.isDefined());
+        EXPECT_FALSE(reading.C9.has_value());
         EXPECT_EQ(98, reading.ISN);
         EXPECT_NEAR(125.8, reading.F107Obs, 1e-15);
         EXPECT_NEAR(129.3, reading.F107Adj, 1e-15);

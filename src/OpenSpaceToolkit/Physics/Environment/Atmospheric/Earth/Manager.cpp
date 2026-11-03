@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
+#include <optional>
 #include <thread>
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -37,7 +38,6 @@ namespace earth
 
 using ostk::core::container::Map;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -88,9 +88,9 @@ Array<int> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
+    static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<std::optional<int>>
     {
-        return Array<Integer> {
+        return Array<std::optional<int>> {
             aReading.Kp1,
             aReading.Kp2,
             aReading.Kp3,
@@ -104,24 +104,32 @@ Array<int> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& reading) -> bool
     {
-        const Array<Integer>& array = getKpArray(reading);
+        const Array<std::optional<int>>& array = getKpArray(reading);
         return std::all_of(
             array.begin(),
             array.end(),
-            [](const Integer& val)
+            [](const std::optional<int>& val)
             {
-                return val.isDefined();
+                return val.has_value();
             }
         );
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
-    const Array<Integer> kpArray =
+    const Array<std::optional<int>> kpArray =
         outputIsDefined(reading) ? getKpArray(reading)
                                  : getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
 
-    return Array<int>(kpArray.begin(), kpArray.end());
+    Array<int> kpIndices = Array<int>::Empty();
+    kpIndices.reserve(kpArray.size());
+
+    for (const std::optional<int>& kpIndex : kpArray)
+    {
+        kpIndices.add(kpIndex.value());
+    }
+
+    return kpIndices;
 }
 
 Array<int> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
@@ -129,9 +137,9 @@ Array<int> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
+    static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<std::optional<int>>
     {
-        return Array<Integer> {
+        return Array<std::optional<int>> {
             aReading.Ap1,
             aReading.Ap2,
             aReading.Ap3,
@@ -145,24 +153,32 @@ Array<int> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        const Array<Integer>& array = getApArray(aReading);
+        const Array<std::optional<int>>& array = getApArray(aReading);
         return std::all_of(
             array.begin(),
             array.end(),
-            [](const Integer& val)
+            [](const std::optional<int>& val)
             {
-                return val.isDefined();
+                return val.has_value();
             }
         );
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
-    const Array<Integer> apArray =
+    const Array<std::optional<int>> apArray =
         outputIsDefined(reading) ? getApArray(reading)
                                  : getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
 
-    return Array<int>(apArray.begin(), apArray.end());
+    Array<int> apIndices = Array<int>::Empty();
+    apIndices.reserve(apArray.size());
+
+    for (const std::optional<int>& apIndex : apArray)
+    {
+        apIndices.add(apIndex.value());
+    }
+
+    return apIndices;
 }
 
 int Manager::getApDailyIndexAt(const Instant& anInstant) const
@@ -172,12 +188,12 @@ int Manager::getApDailyIndexAt(const Instant& anInstant) const
 
     static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> int
     {
-        return aReading.ApAvg;
+        return aReading.ApAvg.value();
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return aReading.ApAvg.isDefined();
+        return aReading.ApAvg.has_value();
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);

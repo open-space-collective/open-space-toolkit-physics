@@ -43,6 +43,8 @@ class TestCSSISpaceWeather:
 
         assert observation.date.to_string() == "2023-06-19"
         assert observation.kp_sum == 177
+        assert isinstance(observation.kp_1, int)
+        assert isinstance(observation.ap_1, int)
         assert observation.f107_obs == pytest.approx(168.8)
         assert observation.f107_obs_center_81 == pytest.approx(160.1)
 
@@ -88,6 +90,8 @@ class TestCSSISpaceWeather:
         assert prediction.date.to_string() == "2029-01-01"
         assert prediction.f107_obs == pytest.approx(83.5)
         assert prediction.f107_obs_center_81 == pytest.approx(83.6)
+        assert prediction.kp_1 is None
+        assert prediction.ap_1 is None
 
     def test_access_reading_at_success(self, cssi_space_weather: CSSISpaceWeather):
         reading: CSSISpaceWeather.Reading = cssi_space_weather.access_reading_at(
