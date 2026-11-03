@@ -99,8 +99,22 @@ class TestEarth:
             EarthGravitationalModel.Type.Spherical
         )
 
-        assert spherical_earth_gravitational_model.get_degree().is_defined() is False
-        assert spherical_earth_gravitational_model.get_order().is_defined() is False
+        assert spherical_earth_gravitational_model.get_degree() is None
+        assert spherical_earth_gravitational_model.get_order() is None
+
+        default_earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.EGM84
+        )
+
+        assert default_earth_gravitational_model.get_degree() is None
+        assert default_earth_gravitational_model.get_order() is None
+
+        partial_earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.EGM84, 52, None
+        )
+
+        assert partial_earth_gravitational_model.get_degree() == 52
+        assert partial_earth_gravitational_model.get_order() is None
 
     def test_get_field_value_at_success(
         self, earth_gravitational_model: EarthGravitationalModel

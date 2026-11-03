@@ -225,7 +225,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
 {
     EXPECT_NO_THROW(Earth::EGM84());
     EXPECT_NO_THROW(Earth::EGM84(180, 180));
+    EXPECT_NO_THROW(Earth::EGM84(std::nullopt, std::nullopt));
     EXPECT_ANY_THROW(Earth::EGM84(3000, 3000));
+    EXPECT_ANY_THROW(Earth::EGM84(3000, std::nullopt));
 
     const Earth earth = Earth::EGM84();
 

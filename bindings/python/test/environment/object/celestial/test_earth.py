@@ -111,6 +111,11 @@ class TestEarth:
         assert earth_custom is not None
         assert isinstance(earth_custom, Earth)
 
+        earth_none: Earth = Earth.EGM84(None, None)
+
+        assert earth_none is not None
+        assert isinstance(earth_none, Earth)
+
     def test_WGS84_success(self):
         earth = Earth.WGS84()
 

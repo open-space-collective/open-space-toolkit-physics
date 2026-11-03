@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -21,7 +23,6 @@ namespace gravitational
 {
 
 using ostk::core::filesystem::Directory;
-using ostk::core::type::Integer;
 using ostk::core::type::Unique;
 
 using ostk::io::URL;
@@ -67,13 +68,15 @@ class Earth : public Model
     ///
     /// @param [in] aType A gravitational model type
     /// @param [in] (optional) aDataDirectory A gravitational model data directory
-    /// @param [in] (optional) aGravityModelDegree A gravitational model degree
-    /// @param [in] (optional) aGravityModelOrder A gravitational model order
+    /// @param [in] aGravityModelDegree A gravitational model degree (default: std::nullopt, which uses the
+    /// maximum degree of the model)
+    /// @param [in] aGravityModelOrder A gravitational model order (default: std::nullopt, which uses the maximum
+    /// order of the model)
     Earth(
         const Earth::Type& aType,
         const Directory& aDataDirectory = Directory::Undefined(),
-        const Integer& aGravityModelDegree = Integer::Undefined(),
-        const Integer& aGravityModelOrder = Integer::Undefined()
+        const std::optional<int>& aGravityModelDegree = std::nullopt,
+        const std::optional<int>& aGravityModelOrder = std::nullopt
     );
 
     /// @brief Constructor with max degree and order variables
@@ -83,9 +86,14 @@ class Earth : public Model
     /// @endcode
     ///
     /// @param [in] aType A gravitational model type
-    /// @param [in] aGravityModelDegree A gravitational model degree
-    /// @param [in] aGravityModelOrder A gravitational model order
-    Earth(const Earth::Type& aType, const Integer& aGravityModelDegree, const Integer& aGravityModelOrder);
+    /// @param [in] aGravityModelDegree A gravitational model degree (std::nullopt uses the maximum degree of the
+    /// model)
+    /// @param [in] aGravityModelOrder A gravitational model order (std::nullopt uses the maximum order of the model)
+    Earth(
+        const Earth::Type& aType,
+        const std::optional<int>& aGravityModelDegree,
+        const std::optional<int>& aGravityModelOrder
+    );
 
     /// @brief Copy constructor
     ///
@@ -148,20 +156,22 @@ class Earth : public Model
     /// @brief Get gravitational model degree
     ///
     /// @code
-    ///     Integer degree = earthGrav.getDegree();
+    ///     std::optional<int> degree = earthGrav.getDegree();
     /// @endcode
     ///
-    /// @return Gravitational model degree
-    virtual Integer getDegree() const;
+    /// @return Gravitational model degree, or std::nullopt if it was not specified or does not apply (spherical
+    /// model)
+    virtual std::optional<int> getDegree() const;
 
     /// @brief Get gravitational model order
     ///
     /// @code
-    ///     Integer order = earthGrav.getOrder();
+    ///     std::optional<int> order = earthGrav.getOrder();
     /// @endcode
     ///
-    /// @return Gravitational model order
-    virtual Integer getOrder() const;
+    /// @return Gravitational model order, or std::nullopt if it was not specified or does not apply (spherical
+    /// model)
+    virtual std::optional<int> getOrder() const;
 
     /// @brief Get the gravitational field value at a given position and instant
     ///
@@ -196,8 +206,8 @@ class Earth : public Model
     static Unique<Impl> ImplFromType(
         const Earth::Type& aType,
         const Directory& aDataDirectory,
-        const Integer& aGravityModelDegree,
-        const Integer& aGravityModelOrder
+        const std::optional<int>& aGravityModelDegree,
+        const std::optional<int>& aGravityModelOrder
     );
 };
 

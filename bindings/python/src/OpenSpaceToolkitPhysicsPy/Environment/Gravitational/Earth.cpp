@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Earth/Manager.cpp>
@@ -9,7 +11,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
     using namespace pybind11;
 
     using ostk::core::filesystem::Directory;
-    using ostk::core::type::Integer;
     using ostk::core::type::Shared;
 
     using ostk::physics::environment::gravitational::Earth;
@@ -57,7 +58,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             )
 
             .def(
-                init<const Earth::Type&, const Directory&, const Integer&, const Integer&>(),
+                init<const Earth::Type&, const Directory&, const std::optional<int>&, const std::optional<int>&>(),
                 arg("type"),
                 arg("directory"),
                 arg("gravitational_model_degree"),
@@ -68,13 +69,13 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                     Args:
                         type (Earth.Type): Earth model type.
                         directory (Directory): Directory containing the gravity model data files.
-                        gravitational_model_degree (int): Degree of the gravitational model.
-                        gravitational_model_order (int): Order of the gravitational model.
+                        gravitational_model_degree (int | None): Degree of the gravitational model. If None, the maximum degree of the model is used.
+                        gravitational_model_order (int | None): Order of the gravitational model. If None, the maximum order of the model is used.
                 )doc"
             )
 
             .def(
-                init<const Earth::Type&, const Integer&, const Integer&>(),
+                init<const Earth::Type&, const std::optional<int>&, const std::optional<int>&>(),
                 arg("type"),
                 arg("gravitational_model_degree"),
                 arg("gravitational_model_order"),
@@ -83,8 +84,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
                     Args:
                         type (Earth.Type): Earth model type.
-                        gravitational_model_degree (int): Degree of the gravitational model.
-                        gravitational_model_order (int): Order of the gravitational model.
+                        gravitational_model_degree (int | None): Degree of the gravitational model. If None, the maximum degree of the model is used.
+                        gravitational_model_order (int | None): Order of the gravitational model. If None, the maximum order of the model is used.
                 )doc"
             )
 
@@ -128,7 +129,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                     Get the Earth model degree.
 
                     Returns:
-                        int: Earth model degree.
+                        int | None: Earth model degree, or None if it was not specified or does not apply (spherical model).
                 )doc"
             )
             .def(
@@ -138,7 +139,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                     Get the Earth model order.
 
                     Returns:
-                        int: Earth model order.
+                        int | None: Earth model order, or None if it was not specified or does not apply (spherical model).
                 )doc"
             )
 
