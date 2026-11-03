@@ -6,8 +6,6 @@
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
@@ -34,8 +32,6 @@ namespace filesystem = ostk::core::filesystem;
 using ostk::core::container::Map;
 using ostk::core::container::Pair;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector2d;
 
@@ -55,37 +51,37 @@ class Finals2000A
    public:
     struct Data
     {
-        Integer year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
-        Integer month;  ///< Month number
-        Integer day;    ///< Day of month
+        int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+        int month;  ///< Month number
+        int day;    ///< Day of month
 
-        Real mjd;  ///< Fractional Modified Julian Date (MJD UTC)
+        double mjd;  ///< Fractional Modified Julian Date (MJD UTC)
 
         char polarMotionflag;  ///< IERS (I) or Prediction (P) flag for Bulletin A polar motion values
 
-        Real x_A;       ///< [asec] Bulletin A PM-x
-        Real xError_A;  ///< [asec] Error in PM-x
-        Real y_A;       ///< [asec] Bulletin A PM-y
-        Real yError_A;  ///< [asec] Error in PM-y
+        double x_A;       ///< [asec] Bulletin A PM-x
+        double xError_A;  ///< [asec] Error in PM-x
+        double y_A;       ///< [asec] Bulletin A PM-y
+        double yError_A;  ///< [asec] Error in PM-y
 
         char ut1MinusUtcFlag;  ///< IERS (I) or Prediction (P) flag for Bulletin A UT1-UTC values
 
-        Real ut1MinusUtc_A;       ///< [s] Bulletin A UT1-UTC
-        Real ut1MinusUtcError_A;  ///< [s] Error in UT1-UTC
-        Real lod_A;               ///< [ms] Bulletin A LOD (not always filled)
-        Real lodError_A;          ///< [ms] Error in LOD (not always filled)
+        double ut1MinusUtc_A;       ///< [s] Bulletin A UT1-UTC
+        double ut1MinusUtcError_A;  ///< [s] Error in UT1-UTC
+        double lod_A;               ///< [ms] Bulletin A LOD (not always filled)
+        double lodError_A;          ///< [ms] Error in LOD (not always filled)
 
         char nutationFlag;  ///< IERS (I) or Prediction (P) flag for Bulletin A nutation values
 
-        Real dx_A;           ///< [amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed
-        Real dxError_A;      ///< [amsec] Error in dX
-        Real dy_A;           ///< [amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed
-        Real dyError_A;      ///< [amsec] Error in dY
-        Real x_B;            ///< [asec] Bulletin B PM-x
-        Real y_B;            ///< [asec] Bulletin B PM-y
-        Real ut1MinusUtc_B;  ///< [s] Bulletin B UT1-UTC
-        Real dx_B;           ///< [amsec] Bulletin B dX wrt IAU2000A Nutation
-        Real dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
+        double dx_A;           ///< [amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed
+        double dxError_A;      ///< [amsec] Error in dX
+        double dy_A;           ///< [amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed
+        double dyError_A;      ///< [amsec] Error in dY
+        double x_B;            ///< [asec] Bulletin B PM-x
+        double y_B;            ///< [asec] Bulletin B PM-y
+        double ut1MinusUtc_B;  ///< [s] Bulletin B UT1-UTC
+        double dx_B;           ///< [amsec] Bulletin B dX wrt IAU2000A Nutation
+        double dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
     };
 
     /// @brief Output stream operator.
@@ -139,22 +135,22 @@ class Finals2000A
     /// @brief Get UT1-UTC at Instant
     ///
     /// @code
-    ///     Real ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
+    ///     double ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
     /// @return UT1-UTC
-    Real getUt1MinusUtcAt(const Instant& anInstant) const;
+    double getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief Get LOD (Length Of Day) at Instant
     ///
     /// @code
-    ///     Real lod = finals2000A.getLodAt(anInstant);
+    ///     double lod = finals2000A.getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
     /// @return LOD
-    Real getLodAt(const Instant& anInstant) const;
+    double getLodAt(const Instant& anInstant) const;
 
     /// @brief Get Data reading at instant
     ///
@@ -188,7 +184,7 @@ class Finals2000A
    private:
     Instant lastModifiedTimestamp_;
     Interval span_;
-    Map<Real, Finals2000A::Data> data_;
+    Map<double, Finals2000A::Data> data_;
 
     Finals2000A();
 

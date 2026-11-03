@@ -2,7 +2,7 @@
 
 import pytest
 
-from ostk.core.type import Real, String
+from ostk.core.type import String
 
 import ostk.physics as physics
 
@@ -231,7 +231,7 @@ def test_unit_length_in_meters():
     length: Length = Length(4000.0, Unit.Meter)
 
     assert length.in_meters() is not None
-    assert isinstance(length.in_meters(), Real)
+    assert isinstance(length.in_meters(), float)
     assert length.in_meters() == 4000.0
 
 
@@ -240,7 +240,7 @@ def test_unit_length_in_meters():
 #     length: Length = Length(4000.0, Unit.Meter)
 
 #     assert length.in_millimeters() is not None
-#     assert isinstance(length.in_millimeters(), Real)
+#     assert isinstance(length.in_millimeters(), float)
 #     assert length.in_millimeters() == 4000000.0
 
 
@@ -248,7 +248,7 @@ def test_unit_length_kilometers():
     length: Length = Length(4000.0, Unit.Meter)
 
     assert length.in_kilometers() is not None
-    assert isinstance(length.in_kilometers(), Real)
+    assert isinstance(length.in_kilometers(), float)
     assert length.in_kilometers() == 4.0
 
 

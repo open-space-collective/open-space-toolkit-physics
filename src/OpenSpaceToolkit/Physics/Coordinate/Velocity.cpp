@@ -112,7 +112,7 @@ Velocity Velocity::inUnit(const Velocity::Unit& aUnit) const
         throw ostk::core::error::runtime::Undefined("Velocity");
     }
 
-    const Real conversionFactor =
+    const double conversionFactor =
         Derived(1.0, Velocity::DerivedUnitFromVelocityUnit(unit_)).in(Velocity::DerivedUnitFromVelocityUnit(aUnit));
 
     return {coordinates_ * conversionFactor, aUnit, frameSPtr_};
@@ -139,7 +139,7 @@ Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>&
     };
 }
 
-String Velocity::toString(const Integer& aPrecision) const
+String Velocity::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
@@ -148,7 +148,7 @@ String Velocity::toString(const Integer& aPrecision) const
 
     return String::Format(
         "{} [{}] @ {}",
-        (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()),
+        ((aPrecision >= 0) ? coordinates_.toString(aPrecision) : coordinates_.toString()),
         Velocity::StringFromUnit(unit_),
         frameSPtr_->getName()
     );

@@ -101,7 +101,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
                     instant (Instant): An instant.
 
                 Returns:
-                    Integer: Daily Ap index.
+                    int: Daily Ap index.
             )doc"
         )
         .def(

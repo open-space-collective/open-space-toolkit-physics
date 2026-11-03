@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -36,7 +38,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -81,9 +82,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, accessModel)
         1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
     };
     const Length equatorialRadius = Length::Kilometers(1000.0);
-    const Real flattening = 0.0;
-    const Real j2 = 0.0;
-    const Real j4 = 0.0;
+    const double flattening = 0.0;
+    const double j2 = 0.0;
+    const double j4 = 0.0;
 
     const EarthGravitationalModel::Parameters gravitationalModelParameters = {
         gravitationalParameter, equatorialRadius, flattening, j2, j4
@@ -154,9 +155,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, modelIsDefined)
         1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
     };
     const Length equatorialRadius = Length::Kilometers(1000.0);
-    const Real flattening = 0.0;
-    const Real j2 = 0.0;
-    const Real j4 = 0.0;
+    const double flattening = 0.0;
+    const double j2 = 0.0;
+    const double j4 = 0.0;
 
     const EarthGravitationalModel::Parameters gravitationalModelParameters = {
         gravitationalParameter, equatorialRadius, flattening, j2, j4
@@ -276,9 +277,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetGravitationalFiel
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
         };
         const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
+        const double flattening = 0.0;
+        const double j2 = 0.0;
+        const double j4 = 0.0;
 
         const EarthGravitationalModel::Parameters gravitationalModelParameters = {
             gravitationalParameter, equatorialRadius, flattening, j2, j4
@@ -358,9 +359,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetMagneticFieldAt)
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
         };
         const Length equatorialRadius = Length::Kilometers(1000.0);
-        const Real flattening = 0.0;
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
+        const double flattening = 0.0;
+        const double j2 = 0.0;
+        const double j4 = 0.0;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<MagneticModel> magneticModel = std::make_shared<Dipole>(Vector3d {0.0, 0.0, 1.0});
         const Instant instant = Instant::J2000();
@@ -425,8 +426,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetAtmosphericDensit
         const Derived gravitationalParameter = {
             1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
         };
-        const Real j2 = 0.0;
-        const Real j4 = 0.0;
+        const double j2 = 0.0;
+        const double j4 = 0.0;
         const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
         const Shared<AtmosphericModel> atmosphericModel =
             std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential);
@@ -460,7 +461,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetAtmosphericDensit
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined());
 
-            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear(1.77622e-08, 1e-13));
+            EXPECT_TRUE(std::abs(atmosphericDensityValue.getValue() - 1.77622e-08) <= 1e-13);
             EXPECT_EQ(
                 Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)),
                 atmosphericDensityValue.getUnit()
@@ -481,7 +482,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetAtmosphericDensit
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined());
 
-            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear(7.08245e-13, 1e-15));
+            EXPECT_TRUE(std::abs(atmosphericDensityValue.getValue() - 7.08245e-13) <= 1e-15);
             EXPECT_EQ(
                 Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)),
                 atmosphericDensityValue.getUnit()
@@ -502,7 +503,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetAtmosphericDensit
 
             EXPECT_TRUE(atmosphericDensityValue.isDefined());
 
-            EXPECT_TRUE(atmosphericDensityValue.getValue().isNear(6.85869e-13, 1e-15));
+            EXPECT_TRUE(std::abs(atmosphericDensityValue.getValue() - 6.85869e-13) <= 1e-15);
             EXPECT_EQ(
                 Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter)),
                 atmosphericDensityValue.getUnit()

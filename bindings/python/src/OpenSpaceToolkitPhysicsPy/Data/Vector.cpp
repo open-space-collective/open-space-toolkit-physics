@@ -144,7 +144,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                 Convert to (formatted) string.
 
                 Args:
-                    precision (Integer): Precision.
+                    precision (int): Precision.
 
                 Returns:
                     str: String representation.

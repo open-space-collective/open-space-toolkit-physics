@@ -9,7 +9,6 @@
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
 using ostk::core::type::String;
 
 using ostk::physics::Manager;

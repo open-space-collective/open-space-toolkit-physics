@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -63,42 +65,42 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
 
     // Time (UTC)
 
-    static const Real djmjd0 = 2400000.5;
-    const Real utc = anInstant.getModifiedJulianDate(Scale::UTC);
+    static const double djmjd0 = 2400000.5;
+    const double utc = anInstant.getModifiedJulianDate(Scale::UTC);
 
-    const Real date = std::floor(utc);
-    const Real time = utc - date;
+    const double date = std::floor(utc);
+    const double time = utc - date;
 
     // UT1 - UTC (s)
 
-    const Real dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+    const double dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
 
-    const Real tut = time + dut1 / DAYSEC;
+    const double tut = time + dut1 / DAYSEC;
 
     // Earth rotation angle, IAU 2000 [rad]
 
-    const Real era = iauEra00(djmjd0 + date, tut);
+    const double era = iauEra00(djmjd0 + date, tut);
 
     // CIRS to TIRF matrix
 
-    const Real cosEra = std::cos(era);
-    const Real sinEra = std::sin(era);
+    const double cosEra = std::cos(era);
+    const double sinEra = std::sin(era);
 
     const RotationMatrix dcm_TIRF_CIRF =
         RotationMatrix::Rows({+cosEra, +sinEra, 0.0}, {-sinEra, +cosEra, 0.0}, {0.0, 0.0, 1.0});
 
     // Angular velocity
 
-    Real lod_ms = IersManager::Get().getLodAt(anInstant);  // [ms]
+    double lod_ms = IersManager::Get().getLodAt(anInstant);  // [ms]
 
-    if (!lod_ms.isDefined())
+    if (std::isnan(lod_ms))
     {
         // throw ostk::core::error::runtime::Undefined("LOD") ; // [TBI] Fail in strict mode
         lod_ms = 0.0;
     }
 
-    const Real w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) *
-                             1e-12;  // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
+    const double w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) *
+                               1e-12;  // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
 
     // Output
 

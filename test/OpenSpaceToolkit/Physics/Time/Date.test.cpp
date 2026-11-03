@@ -4,8 +4,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Integer;
-
 using ostk::physics::time::Date;
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, Constructor)
@@ -186,7 +184,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Replace)
 
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(1399));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(-1));
-        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined()));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, 13));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, std::nullopt, 32));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, std::nullopt, 257));

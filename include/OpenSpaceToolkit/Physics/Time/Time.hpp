@@ -6,7 +6,6 @@
 #include <optional>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 namespace ostk
@@ -16,8 +15,6 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -160,7 +157,7 @@ class Time
     /// @endcode
     ///
     /// @return Floating second
-    Real getFloatingSeconds() const;
+    double getFloatingSeconds() const;
 
     /// @brief Get the total floating seconds
     ///
@@ -168,7 +165,7 @@ class Time
     ///     Time { 12, 34, 56, 32 } .getTotalFloatingSeconds(); // 45296.302
     /// @endcode
     /// @return Total floating seconds
-    Real getTotalFloatingSeconds() const;
+    double getTotalFloatingSeconds() const;
 
     /// @brief Get the total floating hours
     ///
@@ -176,7 +173,7 @@ class Time
     ///     Time { 12, 34, 56, 32 } .getTotalFloatingHours(); // 12.748974
     /// @endcode
     /// @return Total floating hours
-    Real getTotalFloatingHours() const;
+    double getTotalFloatingHours() const;
 
     /// @brief Get string representation of time
     ///
@@ -205,12 +202,12 @@ class Time
     /// @param [in] (optional) aNanosecond A nanosecond count (0 - 999)
     /// @return Time
     Time replace(
-        const std::optional<Integer>& anHour = std::nullopt,
-        const std::optional<Integer>& aMinute = std::nullopt,
-        const std::optional<Integer>& aSecond = std::nullopt,
-        const std::optional<Integer>& aMillisecond = std::nullopt,
-        const std::optional<Integer>& aMicrosecond = std::nullopt,
-        const std::optional<Integer>& aNanosecond = std::nullopt
+        const std::optional<int>& anHour = std::nullopt,
+        const std::optional<int>& aMinute = std::nullopt,
+        const std::optional<int>& aSecond = std::nullopt,
+        const std::optional<int>& aMillisecond = std::nullopt,
+        const std::optional<int>& aMicrosecond = std::nullopt,
+        const std::optional<int>& aNanosecond = std::nullopt
     ) const;
 
     /// @brief Set hour
@@ -337,7 +334,7 @@ class Time
     ///
     /// @param [in] aReal A real number of hours
     /// @return Time
-    static Time Hours(const Real& aReal);
+    static Time Hours(double aReal);
 
     /// @brief Constructs a time from a decimal number of seconds
     ///
@@ -347,7 +344,7 @@ class Time
     ///
     /// @param [in] aReal A real number of seconds
     /// @return Time
-    static Time Seconds(const Real& aReal);
+    static Time Seconds(double aReal);
 
    private:
     bool defined_;
@@ -361,12 +358,12 @@ class Time
 
     Time();
 
-    static void ValidateHour(const Integer& anHour);
-    static void ValidateMinute(const Integer& aMinute);
-    static void ValidateSecond(const Integer& aSecond);
-    static void ValidateMillisecond(const Integer& aMillisecond);
-    static void ValidateMicrosecond(const Integer& aMicrosecond);
-    static void ValidateNanosecond(const Integer& aNanosecond);
+    static void ValidateHour(int anHour);
+    static void ValidateMinute(int aMinute);
+    static void ValidateSecond(int aSecond);
+    static void ValidateMillisecond(int aMillisecond);
+    static void ValidateMicrosecond(int aMicrosecond);
+    static void ValidateNanosecond(int aNanosecond);
 };
 
 }  // namespace time

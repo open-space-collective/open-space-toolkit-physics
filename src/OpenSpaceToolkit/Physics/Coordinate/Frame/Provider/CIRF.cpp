@@ -266,7 +266,7 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 
     // Time (TT)
 
-    const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
+    const double tt = anInstant.getModifiedJulianDate(Scale::TT);
 
     // CIP and CIO, IAU 2006/2000A
 
@@ -278,8 +278,8 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 
     // CIP offsets wrt IAU 2006/2000A (mas->radians)
 
-    static const Real dx06 = +0.1750 * DMAS2R;
-    static const Real dy06 = -0.2259 * DMAS2R;
+    static const double dx06 = +0.1750 * DMAS2R;
+    static const double dy06 = -0.2259 * DMAS2R;
 
     // Add CIP corrections
 
@@ -324,9 +324,7 @@ void CIRF::ClearXysCache()
     XysGrid::Clear();
 }
 
-void CIRF::ComputeCIPCoordinates(
-    const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
-)
+void CIRF::ComputeCIPCoordinates(double aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate)
 {
     static const double djmjd0 = 2400000.5;
 

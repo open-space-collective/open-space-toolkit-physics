@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit_Derived_Angle__
 #define __OpenSpaceToolkit_Physics_Unit_Derived_Angle__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp>
@@ -19,8 +17,6 @@ namespace physics
 namespace unit
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector2d;
@@ -56,7 +52,7 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value
     /// @param [in] aUnit An angle unit
-    Angle(const Real& aValue, const Angle::Unit& aUnit);
+    Angle(double aValue, const Angle::Unit& aUnit);
 
     /// @brief Constructor from a mathematics geometry angle.
     ///
@@ -125,7 +121,7 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar multiplier
     /// @return The scaled angle
-    Angle operator*(const Real& aReal) const;
+    Angle operator*(double aReal) const;
 
     /// @brief Division by scalar operator.
     ///
@@ -135,7 +131,7 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar divisor
     /// @return The scaled angle
-    Angle operator/(const Real& aReal) const;
+    Angle operator/(double aReal) const;
 
     /// @brief Addition assignment operator.
     ///
@@ -168,7 +164,7 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar multiplier
     /// @return A reference to this angle after multiplication
-    Angle& operator*=(const Real& aReal);
+    Angle& operator*=(double aReal);
 
     /// @brief Division assignment operator.
     ///
@@ -179,7 +175,7 @@ class Angle : public Unit
     ///
     /// @param [in] aReal A scalar divisor
     /// @return A reference to this angle after division
-    Angle& operator/=(const Real& aReal);
+    Angle& operator/=(double aReal);
 
     /// @brief Scalar multiplication operator (scalar * angle).
     ///
@@ -190,7 +186,7 @@ class Angle : public Unit
     /// @param [in] aReal A scalar multiplier
     /// @param [in] anAngle An angle
     /// @return The scaled angle
-    friend Angle operator*(const Real& aReal, const Angle& anAngle);
+    friend Angle operator*(double aReal, const Angle& anAngle);
 
     /// @brief Unary plus operator.
     ///
@@ -265,7 +261,7 @@ class Angle : public Unit
     ///
     /// @param [in] aUnit An angle unit
     /// @return The value in the specified unit
-    Real in(const Angle::Unit& aUnit) const;
+    double in(const Angle::Unit& aUnit) const;
 
     /// @brief Get the value in radians.
     ///
@@ -274,27 +270,27 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in radians
-    Real inRadians() const;
+    double inRadians() const;
 
     /// @brief Get the value in radians within the specified range.
     ///
     /// @code
-    ///     Angle::Degrees(270.0).inRadians(0.0, Real::TwoPi());
+    ///     Angle::Degrees(270.0).inRadians(0.0, 2.0 * M_PI);
     /// @endcode
     ///
     /// @param [in] aLowerBound A lower bound (in radians)
     /// @param [in] anUpperBound An upper bound (in radians)
     /// @return The value in radians within the range
-    Real inRadians(const Real& aLowerBound, const Real& anUpperBound) const;
+    double inRadians(double aLowerBound, double anUpperBound) const;
 
     /// @brief Get the value in degrees.
     ///
     /// @code
-    ///     Angle::Radians(Real::Pi()).inDegrees(); // 180.0
+    ///     Angle::Radians(M_PI).inDegrees(); // 180.0
     /// @endcode
     ///
     /// @return The value in degrees
-    Real inDegrees() const;
+    double inDegrees() const;
 
     /// @brief Get the value in degrees within the specified range.
     ///
@@ -305,7 +301,7 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in degrees)
     /// @param [in] anUpperBound An upper bound (in degrees)
     /// @return The value in degrees within the range
-    Real inDegrees(const Real& aLowerBound, const Real& anUpperBound) const;
+    double inDegrees(double aLowerBound, double anUpperBound) const;
 
     /// @brief Get the value in arcminutes.
     ///
@@ -314,7 +310,7 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in arcminutes
-    Real inArcminutes() const;
+    double inArcminutes() const;
 
     /// @brief Get the value in arcminutes within the specified range.
     ///
@@ -325,7 +321,7 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in arcminutes)
     /// @param [in] anUpperBound An upper bound (in arcminutes)
     /// @return The value in arcminutes within the range
-    Real inArcminutes(const Real& aLowerBound, const Real& anUpperBound) const;
+    double inArcminutes(double aLowerBound, double anUpperBound) const;
 
     /// @brief Get the value in arcseconds.
     ///
@@ -334,7 +330,7 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in arcseconds
-    Real inArcseconds() const;
+    double inArcseconds() const;
 
     /// @brief Get the value in arcseconds within the specified range.
     ///
@@ -345,7 +341,7 @@ class Angle : public Unit
     /// @param [in] aLowerBound A lower bound (in arcseconds)
     /// @param [in] anUpperBound An upper bound (in arcseconds)
     /// @return The value in arcseconds within the range
-    Real inArcseconds(const Real& aLowerBound, const Real& anUpperBound) const;
+    double inArcseconds(double aLowerBound, double anUpperBound) const;
 
     /// @brief Get the value in revolutions.
     ///
@@ -354,7 +350,7 @@ class Angle : public Unit
     /// @endcode
     ///
     /// @return The value in revolutions
-    Real inRevolutions() const;
+    double inRevolutions() const;
 
     /// @brief Convert to string representation.
     ///
@@ -364,7 +360,7 @@ class Angle : public Unit
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
+    virtual String toString(int aPrecision = -1) const override;
 
     /// @brief Construct an undefined angle.
     ///
@@ -419,7 +415,7 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in radians
     /// @return An angle
-    static Angle Radians(const Real& aValue);
+    static Angle Radians(double aValue);
 
     /// @brief Construct an angle from a value in degrees.
     ///
@@ -429,7 +425,7 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in degrees
     /// @return An angle
-    static Angle Degrees(const Real& aValue);
+    static Angle Degrees(double aValue);
 
     /// @brief Construct an angle from a value in arcminutes.
     ///
@@ -439,7 +435,7 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in arcminutes
     /// @return An angle
-    static Angle Arcminutes(const Real& aValue);
+    static Angle Arcminutes(double aValue);
 
     /// @brief Construct an angle from a value in arcseconds.
     ///
@@ -449,7 +445,7 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in arcseconds
     /// @return An angle
-    static Angle Arcseconds(const Real& aValue);
+    static Angle Arcseconds(double aValue);
 
     /// @brief Construct an angle from a value in revolutions.
     ///
@@ -459,7 +455,7 @@ class Angle : public Unit
     ///
     /// @param [in] aValue A value in revolutions
     /// @return An angle
-    static Angle Revolutions(const Real& aValue);
+    static Angle Revolutions(double aValue);
 
     /// @brief Compute the shortest signed angle from the first angle to the second.
     /// Positive if the shortest path from `aFirstAngle` to `aSecondAngle` is clockwise, otherwise negative.
@@ -539,9 +535,9 @@ class Angle : public Unit
    private:
     Angle::Unit unit_;
 
-    static Real SIRatio(const Angle::Unit& aUnit);
+    static double SIRatio(const Angle::Unit& aUnit);
 
-    static Real ReduceRange(const Real& aValue, const Real& aRangeLowerBound, const Real& aRangeUpperBound);
+    static double ReduceRange(double aValue, double aRangeLowerBound, double aRangeUpperBound);
 };
 
 }  // namespace unit

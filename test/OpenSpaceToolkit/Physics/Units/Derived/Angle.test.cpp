@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp>
 
@@ -10,18 +11,17 @@
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Constructor)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Angle::Unit unit = Angle::Unit::Radian;
 
         EXPECT_NO_THROW(Angle(value, unit));
     }
 
     {
-        const Real value = Real::Undefined();
+        const double value = std::numeric_limits<double>::quiet_NaN();
         const Angle::Unit unit = Angle::Unit::Undefined;
 
         EXPECT_NO_THROW(Angle(value, unit));
@@ -30,7 +30,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, EqualToOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -41,14 +40,14 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, EqualToOperator)
     }
 
     {
-        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian) == Angle(Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian) == Angle(2.0 * Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian) == Angle(4.0 * Real::TwoPi(), Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian) == Angle(2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian) == Angle(2.0 * 2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian) == Angle(4.0 * 2.0 * M_PI, Angle::Unit::Radian));
 
-        EXPECT_TRUE(Angle(Real::TwoPi(), Angle::Unit::Radian) == Angle(0.0, Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(Real::TwoPi(), Angle::Unit::Radian) == Angle(Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(Real::TwoPi(), Angle::Unit::Radian) == Angle(2.0 * Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(Real::TwoPi(), Angle::Unit::Radian) == Angle(4.0 * Real::TwoPi(), Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(2.0 * M_PI, Angle::Unit::Radian) == Angle(0.0, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(2.0 * M_PI, Angle::Unit::Radian) == Angle(2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(2.0 * M_PI, Angle::Unit::Radian) == Angle(2.0 * 2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(2.0 * M_PI, Angle::Unit::Radian) == Angle(4.0 * 2.0 * M_PI, Angle::Unit::Radian));
     }
 
     {
@@ -57,10 +56,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, EqualToOperator)
         EXPECT_TRUE(Angle(0.0, Angle::Unit::Arcsecond) == Angle(0.0, Angle::Unit::Radian));
         EXPECT_TRUE(Angle(0.0, Angle::Unit::Revolution) == Angle(0.0, Angle::Unit::Radian));
 
-        EXPECT_TRUE(Angle(90.0, Angle::Unit::Degree) == Angle(Real::HalfPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(5400.0, Angle::Unit::Arcminute) == Angle(Real::HalfPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(324000.0, Angle::Unit::Arcsecond) == Angle(Real::HalfPi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(0.25, Angle::Unit::Revolution) == Angle(Real::HalfPi(), Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(90.0, Angle::Unit::Degree) == Angle(M_PI / 2.0, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(5400.0, Angle::Unit::Arcminute) == Angle(M_PI / 2.0, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(324000.0, Angle::Unit::Arcsecond) == Angle(M_PI / 2.0, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(0.25, Angle::Unit::Revolution) == Angle(M_PI / 2.0, Angle::Unit::Radian));
 
         EXPECT_TRUE(Angle(360.0, Angle::Unit::Degree) == Angle(0.0, Angle::Unit::Radian));
         EXPECT_TRUE(Angle(21600.0, Angle::Unit::Arcminute) == Angle(0.0, Angle::Unit::Radian));
@@ -77,16 +76,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, EqualToOperator)
     }
 
     {
-        EXPECT_FALSE(Angle(90.0, Angle::Unit::Degree) == Angle(Real::Pi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(5400.0, Angle::Unit::Arcminute) == Angle(Real::Pi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(324000.0, Angle::Unit::Arcsecond) == Angle(Real::Pi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(0.25, Angle::Unit::Revolution) == Angle(Real::Pi(), Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(90.0, Angle::Unit::Degree) == Angle(M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(5400.0, Angle::Unit::Arcminute) == Angle(M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(324000.0, Angle::Unit::Arcsecond) == Angle(M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(0.25, Angle::Unit::Revolution) == Angle(M_PI, Angle::Unit::Radian));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, NotEqualToOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -98,10 +96,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, NotEqualToOperator)
     }
 
     {
-        EXPECT_TRUE(Angle(90.0, Angle::Unit::Degree) != Angle(Real::Pi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(5400.0, Angle::Unit::Arcminute) != Angle(Real::Pi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(324000.0, Angle::Unit::Arcsecond) != Angle(Real::Pi(), Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(0.25, Angle::Unit::Revolution) != Angle(Real::Pi(), Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(90.0, Angle::Unit::Degree) != Angle(M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(5400.0, Angle::Unit::Arcminute) != Angle(M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(324000.0, Angle::Unit::Arcsecond) != Angle(M_PI, Angle::Unit::Radian));
+        EXPECT_TRUE(Angle(0.25, Angle::Unit::Revolution) != Angle(M_PI, Angle::Unit::Radian));
     }
 
     {
@@ -112,14 +110,14 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, NotEqualToOperator)
     }
 
     {
-        EXPECT_FALSE(Angle(0.0, Angle::Unit::Radian) != Angle(Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(0.0, Angle::Unit::Radian) != Angle(2.0 * Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(0.0, Angle::Unit::Radian) != Angle(4.0 * Real::TwoPi(), Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(0.0, Angle::Unit::Radian) != Angle(2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(0.0, Angle::Unit::Radian) != Angle(2.0 * 2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(0.0, Angle::Unit::Radian) != Angle(4.0 * 2.0 * M_PI, Angle::Unit::Radian));
 
-        EXPECT_FALSE(Angle(Real::TwoPi(), Angle::Unit::Radian) != Angle(0.0, Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(Real::TwoPi(), Angle::Unit::Radian) != Angle(Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(Real::TwoPi(), Angle::Unit::Radian) != Angle(2.0 * Real::TwoPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(Real::TwoPi(), Angle::Unit::Radian) != Angle(4.0 * Real::TwoPi(), Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(2.0 * M_PI, Angle::Unit::Radian) != Angle(0.0, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(2.0 * M_PI, Angle::Unit::Radian) != Angle(2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(2.0 * M_PI, Angle::Unit::Radian) != Angle(2.0 * 2.0 * M_PI, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(2.0 * M_PI, Angle::Unit::Radian) != Angle(4.0 * 2.0 * M_PI, Angle::Unit::Radian));
     }
 
     {
@@ -128,10 +126,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, NotEqualToOperator)
         EXPECT_FALSE(Angle(0.0, Angle::Unit::Arcsecond) != Angle(0.0, Angle::Unit::Radian));
         EXPECT_FALSE(Angle(0.0, Angle::Unit::Revolution) != Angle(0.0, Angle::Unit::Radian));
 
-        EXPECT_FALSE(Angle(90.0, Angle::Unit::Degree) != Angle(Real::HalfPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(5400.0, Angle::Unit::Arcminute) != Angle(Real::HalfPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(324000.0, Angle::Unit::Arcsecond) != Angle(Real::HalfPi(), Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(0.25, Angle::Unit::Revolution) != Angle(Real::HalfPi(), Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(90.0, Angle::Unit::Degree) != Angle(M_PI / 2.0, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(5400.0, Angle::Unit::Arcminute) != Angle(M_PI / 2.0, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(324000.0, Angle::Unit::Arcsecond) != Angle(M_PI / 2.0, Angle::Unit::Radian));
+        EXPECT_FALSE(Angle(0.25, Angle::Unit::Revolution) != Angle(M_PI / 2.0, Angle::Unit::Radian));
 
         EXPECT_FALSE(Angle(360.0, Angle::Unit::Degree) != Angle(0.0, Angle::Unit::Radian));
         EXPECT_FALSE(Angle(21600.0, Angle::Unit::Arcminute) != Angle(0.0, Angle::Unit::Radian));
@@ -302,7 +300,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, SubtractionOperator)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, MultiplicationOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -344,14 +341,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, MultiplicationOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) * Real::Undefined());
-        EXPECT_ANY_THROW(Real::Undefined() * Angle(1.0, Angle::Unit::Radian));
+        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) * std::numeric_limits<double>::quiet_NaN());
+        EXPECT_ANY_THROW(std::numeric_limits<double>::quiet_NaN() * Angle(1.0, Angle::Unit::Radian));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, DivisionOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -392,8 +388,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, DivisionOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) / Real::Undefined());
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) / Real::Zero());
+        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) / std::numeric_limits<double>::quiet_NaN());
+        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) / 0.0);
     }
 }
 
@@ -565,7 +561,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, SubtractionAssignmentOperator)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, MultiplicationAssignmentOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -590,13 +585,12 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, MultiplicationAssignmentOperat
     }
 
     {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) *= Real::Undefined());
+        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) *= std::numeric_limits<double>::quiet_NaN());
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, DivisionAssignmentOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -621,8 +615,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, DivisionAssignmentOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) /= Real::Undefined());
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) /= Real::Zero());
+        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) /= std::numeric_limits<double>::quiet_NaN());
+        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) /= 0.0);
     }
 }
 
@@ -707,7 +701,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, StreamOperator)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, IsDefined)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -722,14 +715,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, IsDefined)
 
     {
         EXPECT_FALSE(Angle::Undefined().isDefined());
-        EXPECT_FALSE(Angle(Real::Undefined(), Angle::Unit::Radian).isDefined());
+        EXPECT_FALSE(Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Radian).isDefined());
         EXPECT_FALSE(Angle(1.0, Angle::Unit::Undefined).isDefined());
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, IsZero)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
@@ -751,7 +743,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, IsZero)
 
     {
         EXPECT_ANY_THROW(Angle::Undefined().isZero());
-        EXPECT_ANY_THROW(Angle(Real::Undefined(), Angle::Unit::Radian).isZero());
+        EXPECT_ANY_THROW(Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Radian).isZero());
         EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Undefined).isZero());
     }
 }
@@ -792,8 +784,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, In)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InRadians)
 {
-    using ostk::core::type::Real;
-
     using ostk::physics::unit::Angle;
 
     {
@@ -801,31 +791,31 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InRadians)
     }
 
     {
-        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
 
-        EXPECT_EQ(Real::Pi(), Angle(Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
-        EXPECT_EQ(Real::Pi(), Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
+        EXPECT_EQ(M_PI, Angle(M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
+        EXPECT_EQ(M_PI, Angle(3.0 * M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
 
-        EXPECT_EQ(Real::Pi(), Angle(-Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
-        EXPECT_EQ(Real::Pi(), Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(0.0, Real::TwoPi()));
+        EXPECT_EQ(M_PI, Angle(-M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
+        EXPECT_EQ(M_PI, Angle(-3.0 * M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inRadians(0.0, 2.0 * M_PI));
     }
 
     {
-        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
+        EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
 
-        EXPECT_EQ(-Real::Pi(), Angle(Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
-        EXPECT_EQ(-Real::Pi(), Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
+        EXPECT_EQ(-M_PI, Angle(M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
+        EXPECT_EQ(-M_PI, Angle(3.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
 
-        EXPECT_EQ(-Real::Pi(), Angle(-Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
-        EXPECT_EQ(-Real::Pi(), Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inRadians(-Real::Pi(), Real::Pi()));
+        EXPECT_EQ(-M_PI, Angle(-M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
+        EXPECT_EQ(-M_PI, Angle(-3.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
     }
 
     {
@@ -834,46 +824,45 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InRadians)
 
     {
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, 0.0));
-        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, Real::Pi()));
-        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(+Real::Pi(), -Real::Pi()));
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(0.0, M_PI));
+        EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inRadians(+M_PI, -M_PI));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InDegrees)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
-        EXPECT_EQ(360.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inDegrees());
+        EXPECT_EQ(360.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inDegrees());
     }
 
     {
         EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 360.0));
 
-        EXPECT_EQ(180.0, Angle(Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
-        EXPECT_EQ(180.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(180.0, Angle(M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(180.0, Angle(3.0 * M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
 
-        EXPECT_EQ(180.0, Angle(-Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
-        EXPECT_EQ(180.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(180.0, Angle(-M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(180.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inDegrees(0.0, 360.0));
     }
 
     {
         EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
 
-        EXPECT_EQ(-180.0, Angle(Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
-        EXPECT_EQ(-180.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(-180.0, Angle(M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(-180.0, Angle(3.0 * M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
 
-        EXPECT_EQ(-180.0, Angle(-Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
-        EXPECT_EQ(-180.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(-180.0, Angle(-M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(-180.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inDegrees(-180.0, +180.0));
     }
 
     {
@@ -889,43 +878,38 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InDegrees)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InArcminutes)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
-        EXPECT_EQ(360.0 * 60.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcminutes());
+        EXPECT_EQ(360.0 * 60.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inArcminutes());
     }
 
     {
         EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
 
-        EXPECT_EQ(180.0 * 60.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
-        EXPECT_EQ(180.0 * 60.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(180.0 * 60.0, Angle(M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(180.0 * 60.0, Angle(3.0 * M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
 
-        EXPECT_EQ(180.0 * 60.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
-        EXPECT_EQ(180.0 * 60.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(180.0 * 60.0, Angle(-M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(180.0 * 60.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inArcminutes(0.0, 360.0 * 60.0));
     }
 
     {
         EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
 
-        EXPECT_EQ(-180.0 * 60.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
-        EXPECT_EQ(
-            -180.0 * 60.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)
-        );
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(-180.0 * 60.0, Angle(M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(-180.0 * 60.0, Angle(3.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
 
-        EXPECT_EQ(-180.0 * 60.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
-        EXPECT_EQ(
-            -180.0 * 60.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0)
-        );
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(-180.0 * 60.0, Angle(-M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(-180.0 * 60.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
     }
 
     {
@@ -941,48 +925,42 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InArcminutes)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InArcseconds)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
-        EXPECT_EQ(360.0 * 3600.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcseconds());
+        EXPECT_EQ(360.0 * 3600.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inArcseconds());
     }
 
     {
         EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
 
-        EXPECT_EQ(180.0 * 3600.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
-        EXPECT_EQ(180.0 * 3600.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(180.0 * 3600.0, Angle(M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(180.0 * 3600.0, Angle(3.0 * M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
 
-        EXPECT_EQ(180.0 * 3600.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
-        EXPECT_EQ(180.0 * 3600.0, Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(180.0 * 3600.0, Angle(-M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(180.0 * 3600.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inArcseconds(0.0, 360.0 * 3600.0));
     }
 
     {
         EXPECT_EQ(0.0, Angle(0.0, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
 
+        EXPECT_EQ(-180.0 * 3600.0, Angle(M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
         EXPECT_EQ(
-            -180.0 * 3600.0, Angle(Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)
+            -180.0 * 3600.0, Angle(3.0 * M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)
         );
-        EXPECT_EQ(0.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
-        EXPECT_EQ(
-            -180.0 * 3600.0, Angle(3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)
-        );
-        EXPECT_EQ(0.0, Angle(4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(4.0 * M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
 
+        EXPECT_EQ(-180.0 * 3600.0, Angle(-M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
         EXPECT_EQ(
-            -180.0 * 3600.0, Angle(-Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)
+            -180.0 * 3600.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)
         );
-        EXPECT_EQ(0.0, Angle(-Real::TwoPi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
-        EXPECT_EQ(
-            -180.0 * 3600.0,
-            Angle(-3.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0)
-        );
-        EXPECT_EQ(0.0, Angle(-4.0 * Real::Pi(), Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
+        EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inArcseconds(-180.0 * 3600.0, +180.0 * 3600.0));
     }
 
     {
@@ -998,11 +976,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InArcseconds)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InRevolutions)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     {
-        EXPECT_EQ(1.0, Angle(Real::TwoPi(), Angle::Unit::Radian).inRevolutions());
+        EXPECT_EQ(1.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inRevolutions());
     }
 
     {
@@ -1166,7 +1143,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Parse)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Angle;
 
     // Basic cases
@@ -1216,7 +1192,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
 
     // Cross-unit: first angle in degrees, second in radians — result should be in degrees
     {
-        const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Radians(Real::Pi() / 2.0));
+        const Angle result = Angle::Between(Angle::Degrees(0.0), Angle::Radians(M_PI / 2.0));
         EXPECT_EQ(result.getUnit(), Angle::Unit::Degree);
         EXPECT_NEAR(result.inDegrees(), 90.0, 1e-10);
     }
@@ -1225,7 +1201,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
     {
         const Angle result = Angle::Between(Angle::Radians(0.0), Angle::Degrees(90.0));
         EXPECT_EQ(result.getUnit(), Angle::Unit::Radian);
-        EXPECT_NEAR(result.inRadians(), Real::Pi() / 2.0, 1e-10);
+        EXPECT_NEAR(result.inRadians(), M_PI / 2.0, 1e-10);
     }
 
     // Undefined input handling

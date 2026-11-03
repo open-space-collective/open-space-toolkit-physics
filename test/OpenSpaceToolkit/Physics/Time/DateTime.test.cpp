@@ -1,10 +1,10 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
 #include <Global.test.hpp>
-
-using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::DateTime;
@@ -404,7 +404,7 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, JulianDate)
     }
 
     {
-        EXPECT_ANY_THROW(DateTime::JulianDate(Real::Undefined()));
+        EXPECT_ANY_THROW(DateTime::JulianDate(std::numeric_limits<double>::quiet_NaN()));
         EXPECT_ANY_THROW(DateTime::JulianDate(0.0));
     }
 }
@@ -420,7 +420,7 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDate)
     }
 
     {
-        EXPECT_ANY_THROW(DateTime::ModifiedJulianDate(Real::Undefined()));
+        EXPECT_ANY_THROW(DateTime::ModifiedJulianDate(std::numeric_limits<double>::quiet_NaN()));
     }
 }
 

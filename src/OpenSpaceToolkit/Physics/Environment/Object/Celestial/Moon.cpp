@@ -64,8 +64,8 @@ Object::Geometry Moon::Geometry(const Shared<const Frame>& aFrame)
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
-    const Real equatorialRadius_m = MoonGravitationalModel::Spherical.equatorialRadius_.inMeters();
-    const Real polarRadius_m = equatorialRadius_m * (1.0 - MoonGravitationalModel::Spherical.flattening_);
+    const double equatorialRadius_m = MoonGravitationalModel::Spherical.equatorialRadius_.inMeters();
+    const double polarRadius_m = equatorialRadius_m * (1.0 - MoonGravitationalModel::Spherical.flattening_);
 
     const Ellipsoid ellipsoid = {
         Point::Origin(),

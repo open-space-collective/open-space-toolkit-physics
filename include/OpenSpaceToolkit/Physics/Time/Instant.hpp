@@ -8,7 +8,6 @@
 #include <boost/functional/hash.hpp>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
@@ -24,7 +23,6 @@ namespace time
 {
 
 using ostk::core::type::Int64;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::type::Uint64;
 using ostk::physics::time::Duration;
@@ -225,7 +223,7 @@ class Instant
     ///
     /// @param [in] aTimeScale A time scale
     /// @return Julian Date
-    Real getJulianDate(const Scale& aTimeScale) const;
+    double getJulianDate(const Scale& aTimeScale) const;
 
     /// @brief Get Modified Julian Date expressed in given time scale
     ///
@@ -235,7 +233,7 @@ class Instant
     ///
     /// @param [in] aTimeScale A time scale
     /// @return Modified Julian Date
-    Real getModifiedJulianDate(const Scale& aTimeScale) const;
+    double getModifiedJulianDate(const Scale& aTimeScale) const;
 
     /// @brief Get Leap Second count
     ///
@@ -330,7 +328,7 @@ class Instant
     /// @input [in] aJulianDate A Julian Date
     /// @input [in] aTimeScale A time scale
     /// @return Instant
-    static Instant JulianDate(const Real& aJulianDate, const Scale& aTimeScale);
+    static Instant JulianDate(double aJulianDate, const Scale& aTimeScale);
 
     /// @brief Constructs instant from Modified Julian Date
     ///
@@ -344,7 +342,7 @@ class Instant
     /// @input [in] aJulianDate A Modified Julian Date
     /// @input [in] aTimeScale A time scale
     /// @return Instant
-    static Instant ModifiedJulianDate(const Real& aModifiedJulianDate, const Scale& aTimeScale);
+    static Instant ModifiedJulianDate(double aModifiedJulianDate, const Scale& aTimeScale);
 
     /// @brief Constructs an Instant from a string representation and Scale.
     ///

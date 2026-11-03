@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
@@ -143,7 +145,7 @@ Uint16 Time::getNanosecond() const
     return nanosecond_;
 }
 
-Real Time::getFloatingSeconds() const
+double Time::getFloatingSeconds() const
 {
     if (!this->isDefined())
     {
@@ -154,7 +156,7 @@ Real Time::getFloatingSeconds() const
            (static_cast<double>(microsecond_) / 1e6) + (static_cast<double>(nanosecond_) / 1e9);
 }
 
-Real Time::getTotalFloatingSeconds() const
+double Time::getTotalFloatingSeconds() const
 {
     if (!this->isDefined())
     {
@@ -164,7 +166,7 @@ Real Time::getTotalFloatingSeconds() const
     return static_cast<double>(hour_) * 3600.0 + static_cast<double>(minute_) * 60.0 + this->getFloatingSeconds();
 }
 
-Real Time::getTotalFloatingHours() const
+double Time::getTotalFloatingHours() const
 {
     if (!this->isDefined())
     {
@@ -252,12 +254,12 @@ String Time::toString(const Time::Format& aFormat) const
 }
 
 Time Time::replace(
-    const std::optional<Integer>& anHour,
-    const std::optional<Integer>& aMinute,
-    const std::optional<Integer>& aSecond,
-    const std::optional<Integer>& aMillisecond,
-    const std::optional<Integer>& aMicrosecond,
-    const std::optional<Integer>& aNanosecond
+    const std::optional<int>& anHour,
+    const std::optional<int>& aMinute,
+    const std::optional<int>& aSecond,
+    const std::optional<int>& aMillisecond,
+    const std::optional<int>& aMicrosecond,
+    const std::optional<int>& aNanosecond
 ) const
 {
     if (!this->isDefined())
@@ -265,12 +267,12 @@ Time Time::replace(
         throw ostk::core::error::runtime::Undefined("Time");
     }
 
-    const Integer hour = anHour.value_or(Integer::Uint8(hour_));
-    const Integer minute = aMinute.value_or(Integer::Uint8(minute_));
-    const Integer second = aSecond.value_or(Integer::Uint8(second_));
-    const Integer millisecond = aMillisecond.value_or(Integer::Uint16(millisecond_));
-    const Integer microsecond = aMicrosecond.value_or(Integer::Uint16(microsecond_));
-    const Integer nanosecond = aNanosecond.value_or(Integer::Uint16(nanosecond_));
+    const int hour = anHour.value_or(static_cast<int>(hour_));
+    const int minute = aMinute.value_or(static_cast<int>(minute_));
+    const int second = aSecond.value_or(static_cast<int>(second_));
+    const int millisecond = aMillisecond.value_or(static_cast<int>(millisecond_));
+    const int microsecond = aMicrosecond.value_or(static_cast<int>(microsecond_));
+    const int nanosecond = aNanosecond.value_or(static_cast<int>(nanosecond_));
 
     Time::ValidateHour(hour);
     Time::ValidateMinute(minute);
@@ -554,28 +556,33 @@ Time Time::Parse(const String& aString, const Time::Format& aFormat)
     return Time::Undefined();
 }
 
-Time Time::Hours(const Real& aReal)
+Time Time::Hours(double aReal)
 {
     return Time::Seconds(aReal * 3600.0);
 }
 
-Time Time::Seconds(const Real& aReal)
+Time Time::Seconds(double aReal)
 {
+    if (std::isnan(aReal))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     const Uint8 hour_Int = static_cast<Uint8>(aReal / 3600.0);
 
-    const Real minute = (aReal - Real::Integer(hour_Int) * 3600.0) / 60.0;
+    const double minute = (aReal - static_cast<double>(hour_Int) * 3600.0) / 60.0;
     const Uint8 minute_Int = static_cast<Uint8>(minute);
 
-    const Real second = aReal - Real::Integer(hour_Int) * 3600.0 - Real::Integer(minute_Int) * 60.0;
+    const double second = aReal - static_cast<double>(hour_Int) * 3600.0 - static_cast<double>(minute_Int) * 60.0;
     const Uint8 second_Int = static_cast<Uint8>(second);
 
-    const Real millisecond = (second - Real::Integer(second_Int)) * 1e3;
+    const double millisecond = (second - static_cast<double>(second_Int)) * 1e3;
     const Uint16 millisecond_Int = static_cast<Uint16>(millisecond);
 
-    const Real microsecond = (millisecond - Real::Integer(millisecond_Int)) * 1e3;
+    const double microsecond = (millisecond - static_cast<double>(millisecond_Int)) * 1e3;
     const Uint16 microsecond_Int = static_cast<Uint16>(microsecond);
 
-    const Real nanosecond = (microsecond - Real::Integer(microsecond_Int)) * 1e3;
+    const double nanosecond = (microsecond - static_cast<double>(microsecond_Int)) * 1e3;
     const Uint16 nanosecond_Int = static_cast<Uint16>(nanosecond);
 
     return Time(hour_Int, minute_Int, second_Int, millisecond_Int, microsecond_Int, nanosecond_Int);
@@ -592,57 +599,51 @@ Time::Time()
 {
 }
 
-void Time::ValidateHour(const Integer& anHour)
+void Time::ValidateHour(int anHour)
 {
-    if (!anHour.isDefined() || (anHour < 0) || (anHour > 23))
+    if ((anHour < 0) || (anHour > 23))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Hour [{}] out of range [0 - 23].", anHour.toString()));
+        throw ostk::core::error::RuntimeError(String::Format("Hour [{}] out of range [0 - 23].", anHour));
     }
 }
 
-void Time::ValidateMinute(const Integer& aMinute)
+void Time::ValidateMinute(int aMinute)
 {
-    if (!aMinute.isDefined() || (aMinute < 0) || (aMinute > 59))
+    if ((aMinute < 0) || (aMinute > 59))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Minute [{}] out of range [0 - 59].", aMinute.toString()));
+        throw ostk::core::error::RuntimeError(String::Format("Minute [{}] out of range [0 - 59].", aMinute));
     }
 }
 
-void Time::ValidateSecond(const Integer& aSecond)
+void Time::ValidateSecond(int aSecond)
 {
-    if (!aSecond.isDefined() || (aSecond < 0) || (aSecond > 60))
+    if ((aSecond < 0) || (aSecond > 60))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Second [{}] out of range [0 - 60].", aSecond.toString()));
+        throw ostk::core::error::RuntimeError(String::Format("Second [{}] out of range [0 - 60].", aSecond));
     }
 }
 
-void Time::ValidateMillisecond(const Integer& aMillisecond)
+void Time::ValidateMillisecond(int aMillisecond)
 {
-    if (!aMillisecond.isDefined() || (aMillisecond < 0) || (aMillisecond > 999))
+    if ((aMillisecond < 0) || (aMillisecond > 999))
     {
-        throw ostk::core::error::RuntimeError(
-            String::Format("Millisecond [{}] out of range [0 - 999].", aMillisecond.toString())
-        );
+        throw ostk::core::error::RuntimeError(String::Format("Millisecond [{}] out of range [0 - 999].", aMillisecond));
     }
 }
 
-void Time::ValidateMicrosecond(const Integer& aMicrosecond)
+void Time::ValidateMicrosecond(int aMicrosecond)
 {
-    if (!aMicrosecond.isDefined() || (aMicrosecond < 0) || (aMicrosecond > 999))
+    if ((aMicrosecond < 0) || (aMicrosecond > 999))
     {
-        throw ostk::core::error::RuntimeError(
-            String::Format("Microsecond [{}] out of range [0 - 999].", aMicrosecond.toString())
-        );
+        throw ostk::core::error::RuntimeError(String::Format("Microsecond [{}] out of range [0 - 999].", aMicrosecond));
     }
 }
 
-void Time::ValidateNanosecond(const Integer& aNanosecond)
+void Time::ValidateNanosecond(int aNanosecond)
 {
-    if (!aNanosecond.isDefined() || (aNanosecond < 0) || (aNanosecond > 999))
+    if ((aNanosecond < 0) || (aNanosecond > 999))
     {
-        throw ostk::core::error::RuntimeError(
-            String::Format("Nanosecond [{}] out of range [0 - 999].", aNanosecond.toString())
-        );
+        throw ostk::core::error::RuntimeError(String::Format("Nanosecond [{}] out of range [0 - 999].", aNanosecond));
     }
 }
 

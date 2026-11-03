@@ -1,5 +1,7 @@
 # Apache License 2.0
 
+import math
+
 from datetime import datetime
 
 from ostk.core.filesystem import File
@@ -47,9 +49,11 @@ class TestFinals2000A:
             )
             == 1.5646
         )
-        assert not finals_2000a.get_lod_at(
-            Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)
-        ).is_defined()
+        assert math.isnan(
+            finals_2000a.get_lod_at(
+                Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)
+            )
+        )
 
     def test_get_data_at_success(self, finals_2000a: Finals2000A):
         data: Finals2000A.Data = finals_2000a.get_data_at(
@@ -70,18 +74,18 @@ class TestFinals2000A:
         assert data.ut1_minus_utc_flag == "P"
         assert data.ut1_minus_utc_a == -0.17524010000000001
         assert data.ut1_minus_utc_error_a == 0.0002041
-        assert not data.lod_a.is_defined()
-        assert not data.lod_error_a.is_defined()
+        assert math.isnan(data.lod_a)
+        assert math.isnan(data.lod_error_a)
         assert data.nutation_flag == "P"
         assert data.dx_a == 0.021999999999999999
         assert data.dx_error_a == 0.128
         assert data.dy_a == 0.17899999999999999
         assert data.dy_error_a == 0.16
-        assert not data.x_b.is_defined()
-        assert not data.y_b.is_defined()
-        assert not data.ut1_minus_utc_b.is_defined()
-        assert not data.dx_b.is_defined()
-        assert not data.dy_b.is_defined()
+        assert math.isnan(data.x_b)
+        assert math.isnan(data.y_b)
+        assert math.isnan(data.ut1_minus_utc_b)
+        assert math.isnan(data.dx_b)
+        assert math.isnan(data.dy_b)
 
     def test_undefined_success(self):
         assert Finals2000A.undefined() is not None

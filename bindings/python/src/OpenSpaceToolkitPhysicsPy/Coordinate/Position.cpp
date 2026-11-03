@@ -6,7 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
     using ostk::core::type::Shared;
 
     using ostk::mathematics::object::Vector3d;
@@ -171,12 +170,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def(
             "to_string",
             &Position::toString,
-            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
+            arg_v("precision", -1, "-1"),
             R"doc(
                 Create a string representation.
 
                 Args:
-                    precision (Integer): Precision.
+                    precision (int): Precision.
 
                 Returns:
                     String: String representation.

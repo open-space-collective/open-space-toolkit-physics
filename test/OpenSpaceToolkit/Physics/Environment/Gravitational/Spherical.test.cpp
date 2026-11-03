@@ -7,8 +7,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
-
 using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::environment::gravitational::Model;

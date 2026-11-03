@@ -1,7 +1,8 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Direction.hpp>
@@ -14,14 +15,12 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::Real;
-
 using ostk::physics::Unit;
 
 Direction::Direction(const Vector3d& aValue, const Shared<const Frame>& aFrameSPtr)
     : Vector(aValue.normalized(), Unit::None(), aFrameSPtr)
 {
-    if (std::abs(aValue.norm() - 1.0) > Real::Epsilon())
+    if (std::abs(aValue.norm() - 1.0) > 1e-15)
     {
         throw ostk::core::error::RuntimeError("Direction vector is not unitary [{}].", aValue.norm());
     }

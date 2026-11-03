@@ -7,7 +7,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
     using namespace pybind11;
 
     using ostk::core::container::Array;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
 
     using ostk::physics::coordinate::Position;

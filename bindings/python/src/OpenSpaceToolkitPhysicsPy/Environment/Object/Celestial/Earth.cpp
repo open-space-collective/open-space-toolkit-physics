@@ -7,7 +7,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
     using namespace pybind11;
 
     using ostk::core::type::Integer;
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
 
     using ostk::physics::coordinate::Frame;
@@ -35,9 +34,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                 init<
                     const Derived&,
                     const Length&,
-                    const Real&,
-                    const Real&,
-                    const Real&,
+                    double,
+                    double,
+                    double,
                     const Shared<Ephemeris>&,
                     const Shared<EarthGravitationalModel>&,
                     const Shared<EarthMagneticModel>&,
@@ -57,9 +56,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                     Args:
                         gravitational_parameter (Derived): Gravitational parameter [m³/s²].
                         equatorial_radius (Length): Equatorial radius [m].
-                        flattening (Real): Flattening.
-                        J2_parameter_value (Real): J2 parameter value.
-                        J4_parameter_value (Real): J4 parameter value.
+                        flattening (float): Flattening.
+                        J2_parameter_value (float): J2 parameter value.
+                        J4_parameter_value (float): J4 parameter value.
                         ephemeris (Ephemeris): Ephemeris.
                         gravitational_model (EarthGravitationalModel): Gravitational model.
                         magnetic_model (EarthMagneticModel): Magnetic model.

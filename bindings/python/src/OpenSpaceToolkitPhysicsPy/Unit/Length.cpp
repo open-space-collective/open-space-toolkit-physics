@@ -8,9 +8,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
-
     using ostk::physics::unit::Length;
 
     class_<Length> length(
@@ -25,12 +22,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 
     length
         .def(
-            init<Real, Length::Unit>(),
+            init<double, Length::Unit>(),
             R"doc(
                 Constructor.
 
                 Args:
-                    aReal (Real): A real number.
+                    aReal (float): A real number.
                     aUnit (Length.Unit): A length unit.
             )doc"
         )
@@ -130,7 +127,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
         .def(
             "to_string",
             &Length::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Get the string representation of the length.
 

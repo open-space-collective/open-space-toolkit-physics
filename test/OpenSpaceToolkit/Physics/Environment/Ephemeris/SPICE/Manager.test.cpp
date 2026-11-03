@@ -5,7 +5,6 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
@@ -18,8 +17,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::io::URL;

@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <chrono>
+#include <cmath>
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
@@ -82,7 +83,7 @@ CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
     throw ostk::core::error::RuntimeError("Cannot obtain CSSI Space Weather File at [{}].", anInstant.toString());
 }
 
-Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
+Array<int> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
@@ -116,17 +117,14 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
-    if (outputIsDefined(reading))
-    {
-        return getKpArray(reading);
-    }
-    else
-    {
-        return getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
-    }
+    const Array<Integer> kpArray =
+        outputIsDefined(reading) ? getKpArray(reading)
+                                 : getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+
+    return Array<int>(kpArray.begin(), kpArray.end());
 }
 
-Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
+Array<int> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
@@ -160,22 +158,19 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
 
-    if (outputIsDefined(reading))
-    {
-        return getApArray(reading);
-    }
-    else
-    {
-        return getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
-    }
+    const Array<Integer> apArray =
+        outputIsDefined(reading) ? getApArray(reading)
+                                 : getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+
+    return Array<int>(apArray.begin(), apArray.end());
 }
 
-Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
+int Manager::getApDailyIndexAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> Integer
+    static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> int
     {
         return aReading.ApAvg;
     };
@@ -197,19 +192,19 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
     }
 }
 
-Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
+double Manager::getF107SolarFluxAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> Real
+    static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> double
     {
         return aReading.F107Obs;
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return aReading.F107Obs.isDefined();
+        return !std::isnan(aReading.F107Obs);
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
@@ -224,19 +219,19 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
     }
 }
 
-Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
+double Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> Real
+    static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> double
     {
         return aReading.F107ObsCenter81;
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return aReading.F107ObsCenter81.isDefined();
+        return !std::isnan(aReading.F107ObsCenter81);
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);

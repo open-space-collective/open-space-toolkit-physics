@@ -4,7 +4,6 @@
 #define __OpenSpaceToolkit_Physics_Time_DateTime__
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
@@ -17,7 +16,6 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::physics::time::Date;
 using ostk::physics::time::Time;
@@ -170,7 +168,7 @@ class DateTime
     /// @endcode
     ///
     /// @return Julian Date
-    Real getJulianDate() const;
+    double getJulianDate() const;
 
     /// @brief Get Modified Julian Date
     ///
@@ -179,7 +177,7 @@ class DateTime
     /// @endcode
     ///
     /// @return Modified Julian Date
-    Real getModifiedJulianDate() const;
+    double getModifiedJulianDate() const;
 
     /// @brief Get string representation of date-time
     ///
@@ -257,7 +255,7 @@ class DateTime
     ///
     /// @input [in] aJulianDate A Julian Date
     /// @return Date-time
-    static DateTime JulianDate(const Real& aJulianDate);
+    static DateTime JulianDate(double aJulianDate);
 
     /// @brief Date-time from Modified Julian Date
     ///
@@ -269,7 +267,7 @@ class DateTime
     ///
     /// @input [in] aModifiedJulianDate A Modified Julian Date
     /// @return Date-time
-    static DateTime ModifiedJulianDate(const Real& aModifiedJulianDate);
+    static DateTime ModifiedJulianDate(double aModifiedJulianDate);
 
     /// @brief Constructs a date-time from a string representation
     ///
@@ -286,9 +284,9 @@ class DateTime
     Date date_;
     Time time_;
 
-    static Real ModifiedJulianDateFromJulianDate(const Real& aJulianDate);
+    static double ModifiedJulianDateFromJulianDate(double aJulianDate);
 
-    static Real JulianDateFromModifiedJulianDate(const Real& aModifiedJulianDate);
+    static double JulianDateFromModifiedJulianDate(double aModifiedJulianDate);
 };
 
 }  // namespace time

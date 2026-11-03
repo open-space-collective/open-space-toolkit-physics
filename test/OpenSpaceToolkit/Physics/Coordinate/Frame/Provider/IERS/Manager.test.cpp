@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <cmath>
 #include <filesystem>
 #include <string>
 
@@ -8,7 +9,6 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -22,7 +22,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::io::URL;
@@ -271,7 +270,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinal
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Past)
 {
     {
-        const Array<Tuple<File, Real>> referenceScenarios = {
+        const Array<Tuple<File, double>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetPolarMotionAt/Pole Wander 1.csv")),
              1e-8},
@@ -288,7 +287,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
             // Reference data setup
 
             const File referenceDataFile = std::get<0>(referenceScenario);
-            const Real tolerance = std::get<1>(referenceScenario);
+            const double tolerance = std::get<1>(referenceScenario);
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -300,7 +299,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
                 const Vector2d referencePolarMotion_rad = {referenceRow[1].accessReal(), referenceRow[2].accessReal()};
 
-                const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant) * (Real::Pi() / 180.0 / 3600.0);
+                const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant) * (M_PI / 180.0 / 3600.0);
 
                 EXPECT_TRUE(polarMotion_rad.isNear(referencePolarMotion_rad, tolerance)) << String::Format(
                     "{} - {} ~ {}",
@@ -341,7 +340,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     using ostk::core::container::Array;
     using ostk::core::container::Table;
     using ostk::core::container::Tuple;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
 
     using ostk::physics::time::DateTime;
@@ -349,7 +347,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     using ostk::physics::time::Scale;
 
     {
-        const Array<Tuple<File, Real>> referenceScenarios = {
+        const Array<Tuple<File, double>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetUt1MinusUtcAt/DUT1 1.csv")),
              1e-4},
@@ -368,7 +366,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
             // Reference data setup
 
             const File referenceDataFile = std::get<0>(referenceScenario);
-            const Real tolerance = std::get<1>(referenceScenario);
+            const double tolerance = std::get<1>(referenceScenario);
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -378,9 +376,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
             {
                 const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
 
-                const Real referenceDUT1 = {referenceRow[3].accessReal()};
+                const double referenceDUT1 = {referenceRow[3].accessReal()};
 
-                const Real dUT1 = manager_.getUt1MinusUtcAt(instant);
+                const double dUT1 = manager_.getUt1MinusUtcAt(instant);
 
                 EXPECT_NEAR(referenceDUT1, dUT1, tolerance)
                     << String::Format("{} - {} ~ {}", instant.toString(Scale::TAI), referenceDUT1, dUT1);
@@ -399,7 +397,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 {
     using ostk::core::container::Array;
     using ostk::core::container::Tuple;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
 
     using ostk::physics::time::DateTime;
@@ -411,7 +408,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     // i.e. UT1 - TAI = -36.4077601 s and -36.4087179 s.
     // The Bulletin A loaded by the fixture (June 2018) does not cover these dates: Finals 2000A is used.
 
-    const Array<Tuple<String, Real>> referenceValues = {
+    const Array<Tuple<String, double>> referenceValues = {
         {"2016-12-31 00:00:00", -0.4077601},
         {"2016-12-31 12:00:00", -0.4082390},
         {"2016-12-31 23:59:59", -0.4087179},
@@ -422,7 +419,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     for (const auto& referenceValue : referenceValues)
     {
         const Instant instant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceValue)), Scale::UTC);
-        const Real referenceUt1MinusUtc = std::get<1>(referenceValue);
+        const double referenceUt1MinusUtc = std::get<1>(referenceValue);
 
         EXPECT_NEAR(referenceUt1MinusUtc, manager_.getUt1MinusUtcAt(instant), 1e-7) << std::get<0>(referenceValue);
         EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getUt1MinusUtcAt(instant), 1e-7) << std::get<0>(referenceValue);
@@ -453,7 +450,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
         {
             const Instant instant = Instant::DateTime(DateTime::Parse(dateTimeString_TAI), Scale::TAI);
 
-            const Real ut1MinusTai =
+            const double ut1MinusTai =
                 (instant.getModifiedJulianDate(Scale::UTC) - instant.getModifiedJulianDate(Scale::TAI)) * 86400.0 +
                 manager_.getUt1MinusUtcAt(instant);
 

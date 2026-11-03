@@ -8,8 +8,6 @@
 #include <boost/functional/hash.hpp>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Interval.hpp>
@@ -25,7 +23,6 @@ namespace time
 {
 
 using ostk::core::container::Array;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::time::Instant;

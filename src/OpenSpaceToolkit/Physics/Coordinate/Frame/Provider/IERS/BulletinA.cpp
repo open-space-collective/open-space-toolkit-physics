@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -212,13 +213,13 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
+    const double instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
 
-    const auto observationIt = observations_.find(instantMjd.floor());
+    const auto observationIt = observations_.find(static_cast<int>(std::floor(instantMjd)));
 
     if (observationIt != observations_.end())
     {
-        if (instantMjd.isInteger())
+        if (std::isfinite(instantMjd) && (std::floor(instantMjd) == instantMjd))
         {
             return observationIt->second;
         }
@@ -242,27 +243,27 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
                 observation2It = observationIt;
             }
 
-            const Integer year = observationIt->second.year;
-            const Integer month = observationIt->second.month;
-            const Integer day = observationIt->second.day;
+            const int year = observationIt->second.year;
+            const int month = observationIt->second.month;
+            const int day = observationIt->second.day;
 
             // [TBI] IERS gazette #13 for more precise interpolation and correction for tidal effects
 
             const Observation observation1 = observation1It->second;
             const Observation observation2 = observation2It->second;
 
-            const Real ratio = (instantMjd - observation1.mjd) / (observation2.mjd - observation1.mjd);
+            const double ratio = (instantMjd - observation1.mjd) / (observation2.mjd - observation1.mjd);
 
-            const Real mjd = observation1.mjd + ratio * (observation2.mjd - observation1.mjd);
+            const double mjd = observation1.mjd + ratio * (observation2.mjd - observation1.mjd);
 
-            const Real x = observation1.x + ratio * (observation2.x - observation1.x);
-            const Real xError = observation1.xError + ratio * (observation2.xError - observation1.xError);
-            const Real y = observation1.y + ratio * (observation2.y - observation1.y);
-            const Real yError = observation1.yError + ratio * (observation2.yError - observation1.yError);
-            const Real ut1MinusUtc = interpolateUt1MinusUtc(
+            const double x = observation1.x + ratio * (observation2.x - observation1.x);
+            const double xError = observation1.xError + ratio * (observation2.xError - observation1.xError);
+            const double y = observation1.y + ratio * (observation2.y - observation1.y);
+            const double yError = observation1.yError + ratio * (observation2.yError - observation1.yError);
+            const double ut1MinusUtc = interpolateUt1MinusUtc(
                 observation1.ut1MinusUtc, observation1.mjd, observation2.ut1MinusUtc, observation2.mjd, ratio, anInstant
             );
-            const Real ut1MinusUtcError =
+            const double ut1MinusUtcError =
                 observation1.ut1MinusUtcError + ratio * (observation2.ut1MinusUtcError - observation1.ut1MinusUtcError);
 
             const BulletinA::Observation observation = {
@@ -285,8 +286,6 @@ Interval BulletinA::getPredictionInterval() const
 
 BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
 {
-    using ostk::core::type::Real;
-
     using ostk::physics::time::Scale;
 
     if (!anInstant.isDefined())
@@ -309,13 +308,13 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
         );
     }
 
-    const Real instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
+    const double instantMjd = anInstant.getModifiedJulianDate(Scale::UTC);
 
-    const auto predictionIt = predictions_.find(instantMjd.floor());
+    const auto predictionIt = predictions_.find(static_cast<int>(std::floor(instantMjd)));
 
     if (predictionIt != predictions_.end())
     {
-        if (instantMjd.isInteger())
+        if (std::isfinite(instantMjd) && (std::floor(instantMjd) == instantMjd))
         {
             return predictionIt->second;
         }
@@ -330,18 +329,18 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
                 const BulletinA::Prediction& previousPrediction = predictionIt->second;
                 const BulletinA::Prediction& nextPrediction = nextPredictionIt->second;
 
-                const Real ratio =
+                const double ratio =
                     (instantMjd - previousPrediction.mjd) / (nextPrediction.mjd - previousPrediction.mjd);
 
-                const Integer year = previousPrediction.year;
-                const Integer month = previousPrediction.month;
-                const Integer day = previousPrediction.day;
+                const int year = previousPrediction.year;
+                const int month = previousPrediction.month;
+                const int day = previousPrediction.day;
 
-                const Real mjd = previousPrediction.mjd + ratio * (nextPrediction.mjd - previousPrediction.mjd);
+                const double mjd = previousPrediction.mjd + ratio * (nextPrediction.mjd - previousPrediction.mjd);
 
-                const Real x = previousPrediction.x + ratio * (nextPrediction.x - previousPrediction.x);
-                const Real y = previousPrediction.y + ratio * (nextPrediction.y - previousPrediction.y);
-                const Real ut1MinusUtc = interpolateUt1MinusUtc(
+                const double x = previousPrediction.x + ratio * (nextPrediction.x - previousPrediction.x);
+                const double y = previousPrediction.y + ratio * (nextPrediction.y - previousPrediction.y);
+                const double ut1MinusUtc = interpolateUt1MinusUtc(
                     previousPrediction.ut1MinusUtc,
                     previousPrediction.mjd,
                     nextPrediction.ut1MinusUtc,
@@ -376,7 +375,6 @@ BulletinA BulletinA::Undefined()
 BulletinA BulletinA::Load(const filesystem::File& aFile)
 {
     using ostk::core::type::Index;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
     using ostk::core::type::Uint8;
@@ -519,28 +517,28 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
         if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) &&
             boost::regex_match(line, match, taiMinusUtcRegex))
         {
-            const Real seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
+            const double seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
 
             bulletin.taiMinusUtc_ = Duration::Seconds(seconds);
         }
 
         if (boost::regex_match(line, match, observationRegex))
         {
-            const Integer year = 2000 + boost::lexical_cast<int>(match[1]);
-            const Integer month = boost::lexical_cast<int>(match[2]);
-            const Integer day = boost::lexical_cast<int>(match[3]);
+            const int year = 2000 + boost::lexical_cast<int>(match[1]);
+            const int month = boost::lexical_cast<int>(match[2]);
+            const int day = boost::lexical_cast<int>(match[3]);
 
-            const Integer mjd = boost::lexical_cast<int>(match[4]);
+            const int mjd = boost::lexical_cast<int>(match[4]);
 
-            const Real x = boost::lexical_cast<double>(match[5]);
-            const Real xError = boost::lexical_cast<double>(match[6]);
-            const Real y = boost::lexical_cast<double>(match[7]);
-            const Real yError = boost::lexical_cast<double>(match[8]);
-            const Real ut1MinusUtc = boost::lexical_cast<double>(match[9]);
-            const Real ut1MinusUtcError = boost::lexical_cast<double>(match[10]);
+            const double x = boost::lexical_cast<double>(match[5]);
+            const double xError = boost::lexical_cast<double>(match[6]);
+            const double y = boost::lexical_cast<double>(match[7]);
+            const double yError = boost::lexical_cast<double>(match[8]);
+            const double ut1MinusUtc = boost::lexical_cast<double>(match[9]);
+            const double ut1MinusUtcError = boost::lexical_cast<double>(match[10]);
 
             const BulletinA::Observation observation = {
-                year, month, day, Real::Integer(mjd), x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError
+                year, month, day, static_cast<double>(mjd), x, xError, y, yError, ut1MinusUtc, ut1MinusUtcError
             };
 
             bulletin.observations_.insert({mjd, observation});
@@ -548,21 +546,21 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
 
         if (boost::regex_match(line, match, predictionRegex))
         {
-            const Integer year = boost::lexical_cast<int>(match[1]);
-            const Integer month = boost::lexical_cast<int>(match[2]);
-            const Integer day = boost::lexical_cast<int>(match[3]);
+            const int year = boost::lexical_cast<int>(match[1]);
+            const int month = boost::lexical_cast<int>(match[2]);
+            const int day = boost::lexical_cast<int>(match[3]);
 
-            const Integer mjd = boost::lexical_cast<int>(match[4]);
+            const int mjd = boost::lexical_cast<int>(match[4]);
 
-            const Real x = boost::lexical_cast<double>(match[5]);
-            const Real y = boost::lexical_cast<double>(match[6]);
-            const Real ut1MinusUtc = boost::lexical_cast<double>(match[7]);
+            const double x = boost::lexical_cast<double>(match[5]);
+            const double y = boost::lexical_cast<double>(match[6]);
+            const double ut1MinusUtc = boost::lexical_cast<double>(match[7]);
 
             const BulletinA::Prediction prediction = {
                 year,
                 month,
                 day,
-                Real::Integer(mjd),
+                static_cast<double>(mjd),
                 x,
                 y,
                 ut1MinusUtc,
@@ -577,9 +575,9 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
     if (!bulletin.observations_.empty())
     {
         const Instant observationStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.begin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(static_cast<double>(bulletin.observations_.begin()->first), Scale::UTC);
         const Instant observationEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.observations_.rbegin()->first), Scale::UTC) +
+            Instant::ModifiedJulianDate(static_cast<double>(bulletin.observations_.rbegin()->first), Scale::UTC) +
             Duration::Days(1);
 
         bulletin.observationInterval_ =
@@ -589,9 +587,9 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
     if (!bulletin.predictions_.empty())
     {
         const Instant predictionStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.predictions_.begin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(static_cast<double>(bulletin.predictions_.begin()->first), Scale::UTC);
         const Instant predictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(bulletin.predictions_.rbegin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(static_cast<double>(bulletin.predictions_.rbegin()->first), Scale::UTC);
 
         bulletin.predictionInterval_ = Interval::Closed(predictionStartInstant, predictionEndInstant);
     }
@@ -605,9 +603,9 @@ BulletinA::BulletinA()
       taiMinusUtc_(Duration::Undefined()),
       taiMinusUtcEpoch_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),
-      observations_(Map<Integer, BulletinA::Observation>()),
+      observations_(Map<int, BulletinA::Observation>()),
       predictionInterval_(Interval::Undefined()),
-      predictions_(Map<Integer, BulletinA::Prediction>())
+      predictions_(Map<int, BulletinA::Prediction>())
 {
 }
 

@@ -6,8 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
 
     using ostk::physics::unit::Mass;
@@ -23,12 +21,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
     );
 
     mass.def(
-            init<Real, Mass::Unit>(),
+            init<double, Mass::Unit>(),
             R"doc(
             Constructor.
 
             Args:
-                aReal (Real): A real number.
+                aReal (float): A real number.
                 aUnit (Mass.Unit): A mass unit.
         )doc"
     )
@@ -89,7 +87,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
         .def(
             "to_string",
             &Mass::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Convert mass to string.
 

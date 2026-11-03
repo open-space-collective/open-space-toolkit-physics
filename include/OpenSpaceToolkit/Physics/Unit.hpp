@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit__
 #define __OpenSpaceToolkit_Physics_Unit__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -19,7 +18,6 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::type::Unique;
 
@@ -145,7 +143,7 @@ class Unit
     /// @param [in] aUnit A unit to convert to
     /// @return The conversion ratio
 
-    Real ratioTo(const Unit& aUnit) const;
+    double ratioTo(const Unit& aUnit) const;
 
     /// @brief Convert to string representation.
     ///

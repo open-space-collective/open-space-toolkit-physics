@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object_Celestial__
 #define __OpenSpaceToolkit_Physics_Environment_Object_Celestial__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -35,7 +34,6 @@ namespace environment
 namespace object
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -86,11 +84,11 @@ class Celestial : public Object
     {
         static Derived GravitationalParameter;
         static Length EquatorialRadius;
-        static Real Flattening;
-        static Real C20;
-        static Real C40;
-        static Real J2;
-        static Real J4;
+        static double Flattening;
+        static double C20;
+        static double C40;
+        static double J2;
+        static double J4;
     };
 
     Celestial(
@@ -98,9 +96,9 @@ class Celestial : public Object
         const Celestial::Type& aType,
         const Derived& aGravitationalParameter,
         const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
+        double aFlattening,
+        double aJ2,
+        double aJ4,
         const Shared<Ephemeris>& anEphemeris,
         const Shared<GravitationalModel>& aGravitationalModel,
         const Shared<MagneticModel>& aMagneticModel,
@@ -112,9 +110,9 @@ class Celestial : public Object
         const Celestial::Type& aType,
         const Derived& aGravitationalParameter,
         const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
+        double aFlattening,
+        double aJ2,
+        double aJ4,
         const Shared<Ephemeris>& anEphemeris,
         const Shared<GravitationalModel>& aGravitationalModel,
         const Shared<MagneticModel>& aMagneticModel,
@@ -150,11 +148,11 @@ class Celestial : public Object
 
     Length getEquatorialRadius() const;
 
-    Real getFlattening() const;
+    double getFlattening() const;
 
-    Real getJ2() const;
+    double getJ2() const;
 
-    Real getJ4() const;
+    double getJ4() const;
 
     virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 
@@ -182,9 +180,9 @@ class Celestial : public Object
     Celestial::Type type_;
     Derived gravitationalParameter_;
     Length equatorialRadius_;
-    Real flattening_;
-    Real j2_;
-    Real j4_;
+    double flattening_;
+    double j2_;
+    double j4_;
     Shared<Ephemeris> ephemeris_;
     Shared<GravitationalModel> gravitationalModelSPtr_;
     Shared<MagneticModel> magneticModelSPtr_;

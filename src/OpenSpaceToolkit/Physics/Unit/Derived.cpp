@@ -1,11 +1,13 @@
 /// Apache License 2.0
 
 #include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -13,6 +15,8 @@ namespace physics
 {
 namespace unit
 {
+
+using ostk::physics::utility::DoubleToString;
 
 Derived::Order::Order(Int16 aNumerator)
     : numerator_(aNumerator),
@@ -60,28 +64,24 @@ Int16 Derived::Order::getDenominator() const
     return denominator_;
 }
 
-Real Derived::Order::getValue() const
+double Derived::Order::getValue() const
 {
-    using ostk::core::type::Integer;
-
-    return Real::Integer(Integer::Int16(numerator_)) / Real::Integer(Integer::Int16(denominator_));
+    return static_cast<double>(numerator_) / static_cast<double>(denominator_);
 }
 
 String Derived::Order::toString() const
 {
-    using ostk::core::type::Integer;
-
     if (denominator_ == 1)
     {
-        return Integer::Int16(numerator_).toString();
+        return std::to_string(numerator_);
     }
 
     if (numerator_ == 1)
     {
-        return "-" + Integer::Int16(denominator_).toString();
+        return "-" + std::to_string(denominator_);
     }
 
-    return Integer::Int16(numerator_).toString() + "/" + Integer::Int16(denominator_).toString();
+    return std::to_string(numerator_) + "/" + std::to_string(denominator_);
 }
 
 Derived::Order Derived::Order::Zero()
@@ -630,7 +630,7 @@ Derived::Unit Derived::Unit::Undefined()
 
 // }
 
-Derived::Derived(const Real& aValue, const Derived::Unit& aUnit)
+Derived::Derived(double aValue, const Derived::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Derived, aValue),
       unit_(aUnit)
 {
@@ -678,11 +678,11 @@ Derived::Unit Derived::getUnit() const
     return unit_;
 }
 
-Real Derived::in(const Derived::Unit& aUnit) const
+double Derived::in(const Derived::Unit& aUnit) const
 {
     if (!this->isDefined())
     {
-        return Real::Undefined();
+        return std::numeric_limits<double>::quiet_NaN();
     }
 
     if (unit_ == aUnit)
@@ -700,19 +700,19 @@ Real Derived::in(const Derived::Unit& aUnit) const
     return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit);
 }
 
-String Derived::toString(const Integer& aPrecision) const
+String Derived::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Derived");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + unit_.getSymbol() + "]";
+    return DoubleToString(this->accessValue(), aPrecision) + " [" + unit_.getSymbol() + "]";
 }
 
 Derived Derived::Undefined()
 {
-    return {Real::Undefined(), Derived::Unit::Undefined()};
+    return {std::numeric_limits<double>::quiet_NaN(), Derived::Unit::Undefined()};
 }
 
 // Derived                         Derived::Parse                               (   const   String& aString )
@@ -730,9 +730,9 @@ String Derived::SymbolFromUnit(const Derived::Unit& aUnit)
     return aUnit.getSymbol();
 }
 
-Real Derived::SIRatio(const Derived::Unit& aUnit)
+double Derived::SIRatio(const Derived::Unit& aUnit)
 {
-    Real ratio = 1.0;
+    double ratio = 1.0;
 
     if (!aUnit.accessLengthOrder().isZero())
     {

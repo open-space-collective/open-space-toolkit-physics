@@ -336,7 +336,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             "to_timedelta",
             +[](const Duration& aDuration) -> std::chrono::microseconds
             {
-                return std::chrono::microseconds(aDuration.inMicroseconds());
+                const auto microsecondCount = static_cast<std::chrono::microseconds::rep>(aDuration.inMicroseconds());
+
+                return std::chrono::microseconds(microsecondCount);
             }
         )
 

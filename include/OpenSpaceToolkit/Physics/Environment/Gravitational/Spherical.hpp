@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
-
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
@@ -17,8 +15,6 @@ namespace environment
 {
 namespace gravitational
 {
-
-using ostk::core::type::Real;
 
 using ostk::physics::environment::gravitational::Model;
 using ostk::physics::time::Instant;
@@ -76,7 +72,7 @@ class Spherical : public Model
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
-    Real gravitationalParameter_SI_;
+    double gravitationalParameter_SI_;
 };
 
 }  // namespace gravitational

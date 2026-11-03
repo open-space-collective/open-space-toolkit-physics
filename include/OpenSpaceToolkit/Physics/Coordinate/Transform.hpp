@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Transform__
 #define __OpenSpaceToolkit_Physics_Coordinate_Transform__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
@@ -18,7 +17,6 @@ namespace physics
 namespace coordinate
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;

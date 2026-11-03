@@ -1,9 +1,9 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Size.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -36,8 +36,6 @@ namespace earth
 {
 
 using ostk::core::container::Array;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::Size;
 using ostk::core::type::Unique;
 
@@ -54,12 +52,12 @@ using ostk::physics::environment::atmospheric::earth::Manager;
 
 NRLMSISE00::NRLMSISE00(
     const InputDataType& anInputDataType,
-    const Real& aF107ConstantValue,
-    const Real& aF107AConstantValue,
-    const Real& aKpConstantValue,
+    double aF107ConstantValue,
+    double aF107AConstantValue,
+    double aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening,
+    double anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : inputDataType_(anInputDataType),
@@ -93,7 +91,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
         {
             // Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
 
-            const Real constantApValue = this->convertKpToAp(this->kpConstantValue_);
+            const double constantApValue = this->convertKpToAp(this->kpConstantValue_);
 
             std::fill(std::begin(outputStruct->a), std::end(outputStruct->a), constantApValue);
 
@@ -154,7 +152,7 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             }
 
             // Fetch AP indices for all days. Stack them into one continuous array.
-            Array<Integer> apMultiDayArray = Array<Integer>::Empty();
+            Array<int> apMultiDayArray = Array<int>::Empty();
             apMultiDayArray.reserve(fetchDays.getSize());
 
             for (const Instant& fetchDay : fetchDays)
@@ -167,15 +165,15 @@ Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant
             const Time startTime = instant57HrPrevious.getDateTime(Scale::UTC).getTime();
             const Size startIndex = (startTime.getHour() / 3);
 
-            const Array<Integer>::ConstIterator startIterator = apMultiDayArray.begin() + startIndex;
+            const Array<int>::ConstIterator startIterator = apMultiDayArray.begin() + startIndex;
 
             // Average of 8 AP values from 57 hours ago to 36 hours ago
-            const Real apAvg36HrTo57Hr =
-                Real(Array<Integer>(startIterator, startIterator + 8).reduce(std::plus<Integer>())) / 8.0;
+            const double apAvg36HrTo57Hr =
+                double(Array<int>(startIterator, startIterator + 8).reduce(std::plus<int>())) / 8.0;
 
             // Average of 8 AP values from 36 hours ago to 12 hours ago
-            const Real apAvg12HrTo36Hr =
-                Real(Array<Integer>(startIterator + 8, startIterator + 16).reduce(std::plus<Integer>())) / 8.0;
+            const double apAvg12HrTo36Hr =
+                double(Array<int>(startIterator + 8, startIterator + 16).reduce(std::plus<int>())) / 8.0;
 
             outputStruct->a[0] = spaceWeatherManager.getApDailyIndexAt(anInstant);
             outputStruct->a[1] = apMultiDayArray[startIndex + 19];  // now
@@ -196,8 +194,8 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
 ) const
 {
-    Real f107Previous = Real::Undefined();
-    Real f107Average = Real::Undefined();
+    double f107Previous = std::numeric_limits<double>::quiet_NaN();
+    double f107Average = std::numeric_limits<double>::quiet_NaN();
 
     switch (this->inputDataType_)
     {
@@ -231,15 +229,15 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const DateTime currentDateTime = anInstant.getDateTime(Scale::UTC);
 
     // current year/doy/sec
-    const Integer year = currentDateTime.getDate().getYear();
+    const int year = currentDateTime.getDate().getYear();
 
     const Instant startOfYear = Instant::DateTime(DateTime(Date(year, 1, 1), Time::Midnight()), Scale::UTC);
-    const Integer dayOfYear = (anInstant - startOfYear).getDays() + 1;
+    const int dayOfYear = (anInstant - startOfYear).getDays() + 1;
 
     const Time timeOfDay = currentDateTime.getTime();
-    const Integer secondsInDay = timeOfDay.getHour() * 3600 + timeOfDay.getMinute() * 60 + timeOfDay.getSecond();
+    const int secondsInDay = timeOfDay.getHour() * 3600 + timeOfDay.getMinute() * 60 + timeOfDay.getSecond();
 
-    Real lst = Real::Undefined();
+    double lst = std::numeric_limits<double>::quiet_NaN();
 
     // Use actual sun position to compute local solar time if provided
     if (sunCelestialSPtr_)
@@ -250,19 +248,19 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
 
         const Position sunPositionInFrame = sunCelestialSPtr_->getPositionIn(earthFrameSPtr_, anInstant);
 
-        lst = (Real::Pi() + std::atan2(
-                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[1] -
-                                    sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[0],
-                                sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[0] +
-                                    sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[1]
-                            )) *
-              12.0 / Real::Pi();
+        lst = (M_PI + std::atan2(
+                          sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[1] -
+                              sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[0],
+                          sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[0] +
+                              sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[1]
+                      )) *
+              12.0 / M_PI;
     }
     else
     {
         // This is the preferred method per the NRLMSISE documentation
         // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h#L103
-        lst = Real::Integer(secondsInDay) / 3600.0 + aLLA.getLongitude().inDegrees() / 15.0;
+        lst = static_cast<double>(secondsInDay) / 3600.0 + aLLA.getLongitude().inDegrees() / 15.0;
     }
 
     Unique<NRLMSISE00::nrlmsise_input> input = std::make_unique<NRLMSISE00::nrlmsise_input>();
@@ -284,7 +282,7 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     }
     else
     {
-        const Real ap = this->convertKpToAp(this->kpConstantValue_);
+        const double ap = this->convertKpToAp(this->kpConstantValue_);
 
         input->ap = ap;
         input->ap_a = nullptr;
@@ -293,9 +291,9 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     return input;
 }
 
-Real NRLMSISE00::convertKpToAp(const Real& aKp)
+double NRLMSISE00::convertKpToAp(double aKp)
 {
-    if (!aKp.isDefined())
+    if (std::isnan(aKp))
     {
         throw ostk::core::error::runtime::Undefined("Kp");
     }
@@ -308,22 +306,22 @@ NRLMSISE00::InputDataType NRLMSISE00::getInputDataType() const
     return this->inputDataType_;
 }
 
-Real NRLMSISE00::getF107ConstantValue() const
+double NRLMSISE00::getF107ConstantValue() const
 {
     return this->f107ConstantValue_;
 }
 
-Real NRLMSISE00::getF107AConstantValue() const
+double NRLMSISE00::getF107AConstantValue() const
 {
     return this->f107AConstantValue_;
 }
 
-Real NRLMSISE00::getKpConstantValue() const
+double NRLMSISE00::getKpConstantValue() const
 {
     return this->kpConstantValue_;
 }
 
-Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+double NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     Unique<NRLMSISE00::ap_array> apValues = nullptr;
 
@@ -337,7 +335,7 @@ Real NRLMSISE00::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
     return NRLMSISE00::GetDensityAt(*input);
 }
 
-Real NRLMSISE00::GetDensityAt(NRLMSISE00::nrlmsise_input& input)
+double NRLMSISE00::GetDensityAt(NRLMSISE00::nrlmsise_input& input)
 {
     // Included from https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
     NRLMSISE00_c::nrlmsise_output output;

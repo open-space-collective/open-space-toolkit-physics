@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -170,16 +172,16 @@ AER AER::FromPositionToPosition(const Position& aFromPosition, const Position& a
     const Vector3d fromPositionToPosition = toPositionCoordinates - fromPositionCoordinates;
     const Vector3d fromPositionToPositionDirection = fromPositionToPosition.normalized();
 
-    Real azimuth_rad = std::atan2(fromPositionToPositionDirection.y(), fromPositionToPositionDirection.x());
+    double azimuth_rad = std::atan2(fromPositionToPositionDirection.y(), fromPositionToPositionDirection.x());
 
     if (azimuth_rad < 0.0)
     {
         azimuth_rad += 2.0 * M_PI;
     }
 
-    const Real elevation_rad =
+    const double elevation_rad =
         isZNegative ? std::asin(-fromPositionToPositionDirection.z()) : std::asin(+fromPositionToPositionDirection.z());
-    const Real range_m = fromPositionToPosition.norm();
+    const double range_m = fromPositionToPosition.norm();
 
     return {Angle::Radians(azimuth_rad), Angle::Radians(elevation_rad), Length::Meters(range_m)};
 }

@@ -5,7 +5,6 @@
 #include <thread>
 #include <vector>
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
@@ -20,7 +19,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
@@ -41,7 +39,7 @@ class CIRFTestAccessor
 {
    public:
     static void ComputeCIPCoordinates(
-        const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
+        double aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
     )
     {
         CIRF::ComputeCIPCoordinates(aModifiedJulianDate_TT, x, y, s, interpolate);
@@ -74,7 +72,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
     for (std::size_t i = 0; i < sampleCount; ++i)
     {
         const Instant instant = startInstant + Duration::Minutes(137.0 * static_cast<double>(i));
-        const Real tt = instant.getModifiedJulianDate(Scale::TT);
+        const double tt = instant.getModifiedJulianDate(Scale::TT);
 
         double xDirect, yDirect, sDirect;
         CIRFTestAccessor::ComputeCIPCoordinates(tt, xDirect, yDirect, sDirect, false);
@@ -113,7 +111,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
     // 15 days apart, so threads populate distinct parts of the shared cache concurrently and also race on the nodes of
     // the ~5 days they share with their neighbor.
     const auto modifiedJulianDateAt =
-        [&startInstant](const std::size_t aThreadIndex, const std::size_t aSampleIndex) -> Real
+        [&startInstant](const std::size_t aThreadIndex, const std::size_t aSampleIndex) -> double
     {
         return (startInstant + Duration::Days(15.0 * static_cast<double>(aThreadIndex)) +
                 Duration::Minutes(73.0 * static_cast<double>(aSampleIndex)))
@@ -171,7 +169,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
     {
         for (std::size_t sampleIndex = 0; sampleIndex < sampleCount; ++sampleIndex)
         {
-            const Real tt = modifiedJulianDateAt(threadIndex, sampleIndex);
+            const double tt = modifiedJulianDateAt(threadIndex, sampleIndex);
             const Coordinates& concurrent = concurrentResults[threadIndex][sampleIndex];
 
             double xInterp, yInterp, sInterp;
@@ -197,7 +195,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ComputeCIPCoordina
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF, ClearXysCache)
 {
     const Instant instant = Instant::DateTime(DateTime(2020, 1, 1, 0, 0, 0), Scale::TT);
-    const Real tt = instant.getModifiedJulianDate(Scale::TT);
+    const double tt = instant.getModifiedJulianDate(Scale::TT);
 
     double xBefore, yBefore, sBefore;
     CIRFTestAccessor::ComputeCIPCoordinates(tt, xBefore, yBefore, sBefore, true);

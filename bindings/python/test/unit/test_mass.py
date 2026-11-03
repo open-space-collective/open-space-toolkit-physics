@@ -2,7 +2,7 @@
 
 import pytest
 
-from ostk.core.type import Real, String
+from ostk.core.type import String
 
 import ostk.physics as physics
 
@@ -96,7 +96,7 @@ def test_unit_mass_in_kilograms():
     mass: Mass = Mass(4000.0, Unit.Kilogram)
 
     assert mass.in_kilograms() is not None
-    assert isinstance(mass.in_kilograms(), Real)
+    assert isinstance(mass.in_kilograms(), float)
     assert mass.in_kilograms() == 4000.0
 
 

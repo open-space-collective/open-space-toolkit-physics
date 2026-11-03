@@ -1,12 +1,12 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module& aModule)
 {
     using namespace pybind11;
-
-    using ostk::core::type::Real;
 
     using ostk::physics::coordinate::spherical::LLA;
     using ostk::physics::unit::Angle;
@@ -136,7 +136,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("lla"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def(
             "calculate_azimuth_to",
@@ -156,7 +156,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 )doc",
             arg("lla"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def(
             "calculate_intermediate_to",
@@ -168,7 +168,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 
                 Args:
                     lla (LLA): Another LLA coordinate.
-                    ratio (Real): Ratio.
+                    ratio (float): Ratio.
                     ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
@@ -178,7 +178,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla"),
             arg("ratio"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def(
             "calculate_forward",
@@ -200,7 +200,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("azimuth"),
             arg("distance"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def(
             "calculate_linspace_to",
@@ -222,7 +222,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla"),
             arg("number_of_points"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
 
         .def(
@@ -250,7 +250,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     np.ndarray: Cartesian.
             )doc",
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def(
             "to_string",
@@ -304,7 +304,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc",
             arg("cartesian_coordinates"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def_static(
             "distance_between",
@@ -325,7 +325,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def_static(
             "azimuth_between",
@@ -346,7 +346,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def_static(
             "intermediate_between",
@@ -359,7 +359,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Args:
                     lla_1 (LLA): First LLA coordinate.
                     lla_2 (LLA): Second LLA coordinate.
-                    ratio (Real): Ratio.
+                    ratio (float): Ratio.
                     ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
                     ellipsoid_flattening (float): Flattening of the ellipsoid.
 
@@ -370,7 +370,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_2"),
             arg("ratio"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def_static(
             "forward",
@@ -394,7 +394,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("azimuth"),
             arg("distance"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def_static(
             "linspace",
@@ -418,7 +418,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_2"),
             arg("number_of_points"),
             arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", Real::Undefined(), "Real.Undefined()")
+            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
         )
         .def_static(
             "from_position",

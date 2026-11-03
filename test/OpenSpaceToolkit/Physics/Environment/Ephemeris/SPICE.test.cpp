@@ -3,7 +3,6 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -27,7 +26,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -107,7 +105,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
         const Directory spiceLocalRepository =
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"));
 
-        const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios = {
+        const Array<Tuple<SPICE::Object, File, double, double, double, double, Array<Kernel>>> referenceScenarios = {
             {SPICE::Object::Earth,
              File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Earth.csv"
@@ -159,10 +157,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
         {
             const SPICE::Object object = std::get<0>(referenceScenario);
             const File referenceDataFile = std::get<1>(referenceScenario);
-            const Real positionTolerance_m = std::get<2>(referenceScenario);
-            const Real velocityTolerance_meterPerSec = std::get<3>(referenceScenario);
-            const Real orientation_asec = std::get<4>(referenceScenario);
-            const Real angularVelocityTolerance_radPerSec = std::get<5>(referenceScenario);
+            const double positionTolerance_m = std::get<2>(referenceScenario);
+            const double velocityTolerance_meterPerSec = std::get<3>(referenceScenario);
+            const double orientation_asec = std::get<4>(referenceScenario);
+            const double angularVelocityTolerance_radPerSec = std::get<5>(referenceScenario);
             const Array<Kernel> kernels = std::get<6>(referenceScenario);
 
             manager_.setMode(Manager::Mode::Manual);

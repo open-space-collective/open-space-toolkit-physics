@@ -8,7 +8,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
 {
     using namespace pybind11;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
 
     using ostk::physics::coordinate::Frame;
@@ -51,12 +50,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
         .def(
             init<
                 const NRLMSISE00::InputDataType&,
-                const Real&,
-                const Real&,
-                const Real&,
+                double,
+                double,
+                double,
                 const Shared<const Frame>&,
                 const Length&,
-                const Real&,
+                double,
                 const Shared<Celestial>&>(),
             arg("input_data_type") = NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
             arg("f107_constant_value") = EarthAtmosphericModel::defaultF107ConstantValue,

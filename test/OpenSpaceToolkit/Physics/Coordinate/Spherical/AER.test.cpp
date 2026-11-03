@@ -1,17 +1,19 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -20,7 +22,6 @@ using ostk::core::container::Table;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -37,6 +38,7 @@ using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using ostk::physics::utility::DoubleToString;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test
 {
@@ -302,50 +304,50 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
                 const AER aer = AER::FromPositionToPosition(fromPosition_NED, toPosition_NED);
 
                 {
-                    const Real reference_azimuth_deg = reference_azimuth.inDegrees();
-                    const Real azimuth_deg = aer.getAzimuth().inDegrees();
-                    const Real tolerance_deg = toleranceAngle.inDegrees();
+                    const double reference_azimuth_deg = reference_azimuth.inDegrees();
+                    const double azimuth_deg = aer.getAzimuth().inDegrees();
+                    const double tolerance_deg = toleranceAngle.inDegrees();
 
-                    const Real error_deg = (azimuth_deg - reference_azimuth_deg).abs();
+                    const double error_deg = std::abs(azimuth_deg - reference_azimuth_deg);
 
-                    ASSERT_TRUE(azimuth_deg.isNear(reference_azimuth_deg, tolerance_deg)) << String::Format(
+                    ASSERT_TRUE(std::abs(azimuth_deg - reference_azimuth_deg) <= tolerance_deg) << String::Format(
                         "{} - {} [deg] ~ {} [deg] ? {} [deg]",
                         instant.toString(),
-                        reference_azimuth_deg.toString(),
-                        azimuth_deg.toString(),
-                        error_deg.toString()
+                        DoubleToString(reference_azimuth_deg),
+                        DoubleToString(azimuth_deg),
+                        DoubleToString(error_deg)
                     );
                 }
 
                 {
-                    const Real reference_elevation_deg = reference_elevation.inDegrees();
-                    const Real elevation_deg = aer.getElevation().inDegrees();
-                    const Real tolerance_deg = toleranceAngle.inDegrees();
+                    const double reference_elevation_deg = reference_elevation.inDegrees();
+                    const double elevation_deg = aer.getElevation().inDegrees();
+                    const double tolerance_deg = toleranceAngle.inDegrees();
 
-                    const Real error_deg = (elevation_deg - reference_elevation_deg).abs();
+                    const double error_deg = std::abs(elevation_deg - reference_elevation_deg);
 
-                    ASSERT_TRUE(elevation_deg.isNear(reference_elevation_deg, tolerance_deg)) << String::Format(
+                    ASSERT_TRUE(std::abs(elevation_deg - reference_elevation_deg) <= tolerance_deg) << String::Format(
                         "{} - {} [deg] ~ {} [deg] ? {} [deg]",
                         instant.toString(),
-                        reference_elevation_deg.toString(),
-                        elevation_deg.toString(),
-                        error_deg.toString()
+                        DoubleToString(reference_elevation_deg),
+                        DoubleToString(elevation_deg),
+                        DoubleToString(error_deg)
                     );
                 }
 
                 {
-                    const Real reference_range_m = reference_range.inMeters();
-                    const Real range_m = aer.getRange().inMeters();
-                    const Real tolerance_m = toleranceLength.inMeters();
+                    const double reference_range_m = reference_range.inMeters();
+                    const double range_m = aer.getRange().inMeters();
+                    const double tolerance_m = toleranceLength.inMeters();
 
-                    const Real error_m = (range_m - reference_range_m).abs();
+                    const double error_m = std::abs(range_m - reference_range_m);
 
-                    ASSERT_TRUE(range_m.isNear(reference_range_m, tolerance_m)) << String::Format(
+                    ASSERT_TRUE(std::abs(range_m - reference_range_m) <= tolerance_m) << String::Format(
                         "{} - {} [m] ~ {} [m] ? {} [m]",
                         instant.toString(),
-                        reference_range_m.toString(),
-                        range_m.toString(),
-                        error_m.toString()
+                        DoubleToString(reference_range_m),
+                        DoubleToString(range_m),
+                        DoubleToString(error_m)
                     );
                 }
             }

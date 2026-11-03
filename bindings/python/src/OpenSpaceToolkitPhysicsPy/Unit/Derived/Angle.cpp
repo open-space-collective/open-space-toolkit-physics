@@ -6,9 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
-
     using ostk::mathematics::object::Vector2d;
     using ostk::mathematics::object::Vector3d;
 
@@ -37,14 +34,14 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
     // Define constructor
     angle
         .def(
-            init<const Real&, const Angle::Unit&>(),
+            init<double, const Angle::Unit&>(),
             arg("value"),
             arg("unit"),
             R"doc(
                 Constructor.
 
                 Args:
-                    value (Real): A value.
+                    value (float): A value.
                     unit (Unit): An angle unit.
             )doc"
         )
@@ -71,7 +68,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
 
         .def(
             "__mul__",
-            [](const Angle& anAngle, Real aReal)
+            [](const Angle& anAngle, double aReal)
             {
                 return anAngle * aReal;
             },
@@ -79,7 +76,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "__truediv__",
-            [](const Angle& anAngle, Real aReal)
+            [](const Angle& anAngle, double aReal)
             {
                 return anAngle / aReal;
             },
@@ -87,7 +84,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "__imul__",
-            [](const Angle& anAngle, Real aReal)
+            [](const Angle& anAngle, double aReal)
             {
                 return anAngle * aReal;
             },
@@ -95,7 +92,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "__itruediv__",
-            [](const Angle& anAngle, Real aReal)
+            [](const Angle& anAngle, double aReal)
             {
                 return anAngle / aReal;
             },
@@ -171,15 +168,15 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "in_radians",
-            overload_cast<const Real&, const Real&>(&Angle::inRadians, const_),
+            overload_cast<double, double>(&Angle::inRadians, const_),
             arg("lower_bound"),
             arg("upper_bound"),
             R"doc(
                 Get the angle in radians.
 
                 Args:
-                    lower_bound (Real): A lower bound.
-                    upper_bound (Real): An upper bound.
+                    lower_bound (float): A lower bound.
+                    upper_bound (float): An upper bound.
 
                 Returns:
                     float: The angle in radians.
@@ -197,15 +194,15 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "in_degrees",
-            overload_cast<const Real&, const Real&>(&Angle::inDegrees, const_),
+            overload_cast<double, double>(&Angle::inDegrees, const_),
             arg("lower_bound"),
             arg("upper_bound"),
             R"doc(
                 Get the angle in degrees.
 
                 Args:
-                    lower_bound (Real): A lower bound.
-                    upper_bound (Real): An upper bound.
+                    lower_bound (float): A lower bound.
+                    upper_bound (float): An upper bound.
 
                 Returns:
                     float: The angle in degrees.
@@ -223,15 +220,15 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "in_arcminutes",
-            overload_cast<const Real&, const Real&>(&Angle::inArcminutes, const_),
+            overload_cast<double, double>(&Angle::inArcminutes, const_),
             arg("lower_bound"),
             arg("upper_bound"),
             R"doc(
                 Get the angle in arcminutes.
 
                 Args:
-                    lower_bound (Real): A lower bound.
-                    upper_bound (Real): An upper bound.
+                    lower_bound (float): A lower bound.
+                    upper_bound (float): An upper bound.
 
                 Returns:
                     float: The angle in arcminutes.
@@ -249,15 +246,15 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
         .def(
             "in_arcseconds",
-            overload_cast<const Real&, const Real&>(&Angle::inArcseconds, const_),
+            overload_cast<double, double>(&Angle::inArcseconds, const_),
             arg("lower_bound"),
             arg("upper_bound"),
             R"doc(
                 Get the angle in arcseconds.
 
                 Args:
-                    lower_bound (Real): A lower bound.
-                    upper_bound (Real): An upper bound.
+                    lower_bound (float): A lower bound.
+                    upper_bound (float): An upper bound.
 
                 Returns:
                     float: The angle in arcseconds.
@@ -276,7 +273,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         .def(
             "to_string",
             &Angle::toString,
-            arg_v("precision", Integer::Undefined(), "Integer.undefined()"),
+            arg_v("precision", -1, "-1"),
             R"doc(
                 Get the string representation of the angle.
 
@@ -347,7 +344,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                 Create an angle in radians.
 
                 Args:
-                    value (Real): A value.
+                    value (float): A value.
 
                 Returns:
                     Angle: An angle in radians.
@@ -361,7 +358,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                 Create an angle in degrees.
 
                 Args:
-                    value (Real): A value.
+                    value (float): A value.
 
                 Returns:
                     Angle: An angle in degrees.
@@ -375,7 +372,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                 Create an angle in arcminutes.
 
                 Args:
-                    value (Real): A value.
+                    value (float): A value.
 
                 Returns:
                     Angle: An angle in arcminutes.
@@ -389,7 +386,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                 Create an angle in arcseconds.
 
                 Args:
-                    value (Real): A value.
+                    value (float): A value.
 
                 Returns:
                     Angle: An angle in arcseconds.
@@ -403,7 +400,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
                 Create an angle in revolutions.
 
                 Args:
-                    value (Real): A value.
+                    value (float): A value.
 
                 Returns:
                     Angle: An angle in revolutions.

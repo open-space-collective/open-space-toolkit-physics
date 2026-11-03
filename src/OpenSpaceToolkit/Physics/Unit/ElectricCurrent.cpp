@@ -1,9 +1,12 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +15,9 @@ namespace physics
 namespace unit
 {
 
-ElectricCurrent::ElectricCurrent(const Real& aValue, const ElectricCurrent::Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+ElectricCurrent::ElectricCurrent(double aValue, const ElectricCurrent::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::ElectricCurrent, aValue),
       unit_(aUnit)
 {
@@ -33,11 +38,11 @@ ElectricCurrent::Unit ElectricCurrent::getUnit() const
     return unit_;
 }
 
-Real ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
+double ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
 {
     if (!this->isDefined())
     {
-        return Real::Undefined();
+        return std::numeric_limits<double>::quiet_NaN();
     }
 
     if (unit_ == aUnit)
@@ -48,27 +53,27 @@ Real ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
     return this->accessValue() * ElectricCurrent::SIRatio(unit_) / ElectricCurrent::SIRatio(aUnit);
 }
 
-Real ElectricCurrent::inAmperes() const
+double ElectricCurrent::inAmperes() const
 {
     return this->in(ElectricCurrent::Unit::Ampere);
 }
 
-String ElectricCurrent::toString(const Integer& aPrecision) const
+String ElectricCurrent::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Electric current");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->accessValue(), aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
 }
 
 ElectricCurrent ElectricCurrent::Undefined()
 {
-    return {Real::Undefined(), ElectricCurrent::Unit::Undefined};
+    return {std::numeric_limits<double>::quiet_NaN(), ElectricCurrent::Unit::Undefined};
 }
 
-ElectricCurrent ElectricCurrent::Amperes(const Real& aValue)
+ElectricCurrent ElectricCurrent::Amperes(double aValue)
 {
     return {aValue, ElectricCurrent::Unit::Ampere};
 }
@@ -111,7 +116,7 @@ String ElectricCurrent::SymbolFromUnit(const ElectricCurrent::Unit& aUnit)
     return String::Empty();
 }
 
-Real ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
+double ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -123,7 +128,7 @@ Real ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
             break;
     }
 
-    return Real::Undefined();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
 }  // namespace unit

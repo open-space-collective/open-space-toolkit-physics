@@ -8,9 +8,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
-
     using ostk::physics::unit::ElectricCurrent;
 
     class_<ElectricCurrent> elec_current(
@@ -25,12 +22,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
 
     elec_current
         .def(
-            init<Real, ElectricCurrent::Unit>(),
+            init<double, ElectricCurrent::Unit>(),
             R"doc(
                 Constructor.
 
                 Args:
-                    aReal (Real): A real number.
+                    aReal (float): A real number.
                     aUnit (ElectricCurrent.Unit): An electric current unit.
             )doc"
         )
@@ -49,11 +46,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         // .def(self += self)
         // .def(self -= self)
 
-        // .def("__mul__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent * aReal;},
-        // is_operator()) .def("__truediv__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return
-        // anElectricCurrent / aReal;}, is_operator()) .def("__imul__", [](const ElectricCurrent &anElectricCurrent,
-        // Real aReal) {return anElectricCurrent * aReal;}, is_operator()) .def("__itruediv__", [](const ElectricCurrent
-        // &anElectricCurrent, Real aReal) {return anElectricCurrent / aReal;}, is_operator())
+        // .def("__mul__", [](const ElectricCurrent &anElectricCurrent, double aReal) {return anElectricCurrent *
+        // aReal;}, is_operator()) .def("__truediv__", [](const ElectricCurrent &anElectricCurrent, double aReal)
+        // {return anElectricCurrent / aReal;}, is_operator()) .def("__imul__", [](const ElectricCurrent
+        // &anElectricCurrent, double aReal) {return anElectricCurrent * aReal;}, is_operator()) .def("__itruediv__",
+        // [](const ElectricCurrent &anElectricCurrent, double aReal) {return anElectricCurrent / aReal;},
+        // is_operator())
 
         // .def("__str__", &(shiftToString<ElectricCurrent>))
         .def(
@@ -108,7 +106,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         .def(
             "to_string",
             &ElectricCurrent::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Get the string representation of the electric current.
 

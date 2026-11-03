@@ -92,7 +92,7 @@ Vector Vector::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anI
     return {frameSPtr_->getTransformTo(aFrameSPtr, anInstant).applyToVector(value_), unit_, aFrameSPtr};
 }
 
-String Vector::toString(const Integer& aPrecision) const
+String Vector::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {

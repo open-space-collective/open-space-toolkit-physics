@@ -15,7 +15,6 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 

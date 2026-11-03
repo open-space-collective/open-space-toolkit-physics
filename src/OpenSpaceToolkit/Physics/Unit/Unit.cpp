@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
@@ -15,7 +17,7 @@ namespace physics
 namespace unit
 {
 
-Unit::Unit(const Unit::Type& aType, const Real& aValue)
+Unit::Unit(const Unit::Type& aType, double aValue)
     : type_(aType),
       value_(aValue)
 {
@@ -45,15 +47,15 @@ bool Unit::operator!=(const Unit& aUnit) const
 
 bool Unit::isDefined() const
 {
-    return (type_ != Unit::Type::Undefined) && value_.isDefined();
+    return (type_ != Unit::Type::Undefined) && !std::isnan(value_);
 }
 
 bool Unit::isZero() const
 {
-    return (type_ != Unit::Type::Undefined) && value_.isZero();
+    return (type_ != Unit::Type::Undefined) && (value_ == 0.0);
 }
 
-const Real& Unit::accessValue() const
+const double& Unit::accessValue() const
 {
     return value_;
 }
@@ -63,22 +65,22 @@ Unit::Type Unit::getType() const
     return type_;
 }
 
-Real Unit::getValue() const
+double Unit::getValue() const
 {
     return value_;
 }
 
-Real& Unit::accessValue()
+double& Unit::accessValue()
 {
     return value_;
 }
 
-void Unit::setValue(const Real& aValue)
+void Unit::setValue(double aValue)
 {
     value_ = aValue;
 }
 
-Pair<Real, String> Unit::ParseString(const String& aString)
+Pair<double, String> Unit::ParseString(const String& aString)
 {
     if (aString.isEmpty())
     {
@@ -89,7 +91,7 @@ Pair<Real, String> Unit::ParseString(const String& aString)
 
     if (boost::regex_match(aString, match, boost::regex("^([-+\\de.]+) \\[([\\w\\/^\\.]+)\\]$")))
     {
-        const Real value = boost::lexical_cast<double>(match[1]);
+        const double value = boost::lexical_cast<double>(match[1]);
         const String unit = String(match[2]);
 
         return {value, unit};

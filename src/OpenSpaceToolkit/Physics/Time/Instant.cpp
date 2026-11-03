@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <chrono>
+#include <cmath>
 #include <cstdint>
 #include <iomanip>
 #include <stdlib.h>
@@ -318,12 +319,12 @@ time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
     return time::DateTime(year, month, day, hours, minutes, seconds, milliseconds, microseconds, nanoseconds);
 }
 
-Real Instant::getJulianDate(const Scale& aTimeScale) const
+double Instant::getJulianDate(const Scale& aTimeScale) const
 {
     return this->getModifiedJulianDate(aTimeScale) + 2400000.5;
 }
 
-Real Instant::getModifiedJulianDate(const Scale& aTimeScale) const
+double Instant::getModifiedJulianDate(const Scale& aTimeScale) const
 {
     using ostk::core::type::Uint64;
 
@@ -486,9 +487,9 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
     return Instant(count_TT, Scale::TT);
 }
 
-Instant Instant::JulianDate(const Real& aJulianDate, const Scale& aTimeScale)
+Instant Instant::JulianDate(double aJulianDate, const Scale& aTimeScale)
 {
-    if (!aJulianDate.isDefined())
+    if (std::isnan(aJulianDate))
     {
         throw ostk::core::error::runtime::Wrong("Julian Date");
     }
@@ -501,9 +502,9 @@ Instant Instant::JulianDate(const Real& aJulianDate, const Scale& aTimeScale)
     return Instant::DateTime(DateTime::JulianDate(aJulianDate), aTimeScale);
 }
 
-Instant Instant::ModifiedJulianDate(const Real& aModifiedJulianDate, const Scale& aTimeScale)
+Instant Instant::ModifiedJulianDate(double aModifiedJulianDate, const Scale& aTimeScale)
 {
-    if (!aModifiedJulianDate.isDefined())
+    if (std::isnan(aModifiedJulianDate))
     {
         throw ostk::core::error::runtime::Wrong("Modified Julian Date");
     }
@@ -1043,8 +1044,6 @@ Instant::Count Instant::Count::operator-(Int64 aNanosecondDisplacement) const
 
 String Instant::Count::toString() const
 {
-    using ostk::core::type::Integer;
-
     return postEpoch_ ? ("+" + std::to_string(countFromEpoch_)) : ("-" + std::to_string(countFromEpoch_));
 }
 

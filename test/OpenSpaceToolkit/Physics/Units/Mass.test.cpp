@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Physics/Unit/Mass.hpp>
 
@@ -8,18 +9,17 @@
 
 TEST(OpenSpaceToolkit_Physics_Unit_Mass, Constructor)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Mass;
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Mass::Unit unit = Mass::Unit::Kilogram;
 
         EXPECT_NO_THROW(Mass(value, unit));
     }
 
     {
-        const Real value = Real::Undefined();
+        const double value = std::numeric_limits<double>::quiet_NaN();
         const Mass::Unit unit = Mass::Unit::Undefined;
 
         EXPECT_NO_THROW(Mass(value, unit));
@@ -28,7 +28,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Mass, IsDefined)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Mass;
 
     {
@@ -41,7 +40,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, IsDefined)
 
     {
         EXPECT_FALSE(Mass::Undefined().isDefined());
-        EXPECT_FALSE(Mass(Real::Undefined(), Mass::Unit::Kilogram).isDefined());
+        EXPECT_FALSE(Mass(std::numeric_limits<double>::quiet_NaN(), Mass::Unit::Kilogram).isDefined());
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Undefined).isDefined());
     }
 }
@@ -67,7 +66,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, In)
     }
 
     {
-        EXPECT_FALSE(Mass::Undefined().in(Mass::Unit::Kilogram).isDefined());
+        EXPECT_TRUE(std::isnan(Mass::Undefined().in(Mass::Unit::Kilogram)));
     }
 }
 
@@ -80,7 +79,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, InKilograms)
     }
 
     {
-        EXPECT_FALSE(Mass::Undefined().inKilograms().isDefined());
+        EXPECT_TRUE(std::isnan(Mass::Undefined().inKilograms()));
     }
 }
 

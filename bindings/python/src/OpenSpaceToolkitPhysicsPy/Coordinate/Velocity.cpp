@@ -6,7 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
     using ostk::core::type::Shared;
 
     using ostk::mathematics::object::Vector3d;
@@ -144,7 +143,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def(
             "to_string",
             &Velocity::toString,
-            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
+            arg_v("precision", -1, "-1"),
             R"doc(
                 Convert to string.
 

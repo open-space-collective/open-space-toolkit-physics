@@ -1,9 +1,13 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -14,13 +18,15 @@ namespace environment
 namespace gravitational
 {
 
+using ostk::physics::utility::DoubleToString;
+
 // TBM: make C30 term mandatory
 Model::Parameters::Parameters(
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aC20,
-    const Real& aC40
+    double aFlattening,
+    double aC20,
+    double aC40
 )
     : gravitationalParameter_(aGravitationalParameter),
       equatorialRadius_(anEquatorialRadius),
@@ -28,19 +34,19 @@ Model::Parameters::Parameters(
       C20_(aC20),
       C30_(0.0),
       C40_(aC40),
-      J2_(aC20.isDefined() ? -aC20 * std::sqrt(5.0) : Real::Undefined()),
+      J2_(!std::isnan(aC20) ? -aC20 * std::sqrt(5.0) : std::numeric_limits<double>::quiet_NaN()),
       J3_(0.0),
-      J4_(aC40.isDefined() ? -aC40 * std::sqrt(9.0) : Real::Undefined())
+      J4_(!std::isnan(aC40) ? -aC40 * std::sqrt(9.0) : std::numeric_limits<double>::quiet_NaN())
 {
 }
 
 Model::Parameters::Parameters(
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aC20,
-    const Real& aC30,
-    const Real& aC40
+    double aFlattening,
+    double aC20,
+    double aC30,
+    double aC40
 )
     : gravitationalParameter_(aGravitationalParameter),
       equatorialRadius_(anEquatorialRadius),
@@ -48,9 +54,9 @@ Model::Parameters::Parameters(
       C20_(aC20),
       C30_(aC30),
       C40_(aC40),
-      J2_(aC20.isDefined() ? -aC20 * std::sqrt(5.0) : Real::Undefined()),
-      J3_(aC30.isDefined() ? -aC30 * std::sqrt(7.0) : Real::Undefined()),
-      J4_(aC40.isDefined() ? -aC40 * std::sqrt(9.0) : Real::Undefined())
+      J2_(!std::isnan(aC20) ? -aC20 * std::sqrt(5.0) : std::numeric_limits<double>::quiet_NaN()),
+      J3_(!std::isnan(aC30) ? -aC30 * std::sqrt(7.0) : std::numeric_limits<double>::quiet_NaN()),
+      J4_(!std::isnan(aC40) ? -aC40 * std::sqrt(9.0) : std::numeric_limits<double>::quiet_NaN())
 {
 }
 
@@ -59,19 +65,19 @@ Model::Parameters Model::Parameters::Undefined()
     return {
         Derived::Undefined(),
         Length::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
+        std::numeric_limits<double>::quiet_NaN(),
+        std::numeric_limits<double>::quiet_NaN(),
+        std::numeric_limits<double>::quiet_NaN(),
+        std::numeric_limits<double>::quiet_NaN(),
     };
 }
 
 bool Model::Parameters::isDefined() const
 {
     return (
-        gravitationalParameter_.isDefined() && equatorialRadius_.isDefined() && flattening_.isDefined() &&
-        J2_.isDefined() && J3_.isDefined() && J4_.isDefined() && C20_.isDefined() && C30_.isDefined() &&
-        C40_.isDefined()
+        gravitationalParameter_.isDefined() && equatorialRadius_.isDefined() && !std::isnan(flattening_) &&
+        !std::isnan(J2_) && !std::isnan(J3_) && !std::isnan(J4_) && !std::isnan(C20_) && !std::isnan(C30_) &&
+        !std::isnan(C40_)
     );
 }
 
@@ -106,21 +112,13 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Equatorial Radius:"
         << (aParameterSet.equatorialRadius_.isDefined() ? aParameterSet.equatorialRadius_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Flattening:"
-        << (aParameterSet.flattening_.isDefined() ? aParameterSet.flattening_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "C20:" << (aParameterSet.C20_.isDefined() ? aParameterSet.C20_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "C30:" << (aParameterSet.C30_.isDefined() ? aParameterSet.C30_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "C40:" << (aParameterSet.C40_.isDefined() ? aParameterSet.C40_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "J2:" << (aParameterSet.J2_.isDefined() ? aParameterSet.J2_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "J3:" << (aParameterSet.J3_.isDefined() ? aParameterSet.J3_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "J4:" << (aParameterSet.J4_.isDefined() ? aParameterSet.J4_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Flattening:" << DoubleToString(aParameterSet.flattening_);
+    ostk::core::utils::Print::Line(anOutputStream) << "C20:" << DoubleToString(aParameterSet.C20_);
+    ostk::core::utils::Print::Line(anOutputStream) << "C30:" << DoubleToString(aParameterSet.C30_);
+    ostk::core::utils::Print::Line(anOutputStream) << "C40:" << DoubleToString(aParameterSet.C40_);
+    ostk::core::utils::Print::Line(anOutputStream) << "J2:" << DoubleToString(aParameterSet.J2_);
+    ostk::core::utils::Print::Line(anOutputStream) << "J3:" << DoubleToString(aParameterSet.J3_);
+    ostk::core::utils::Print::Line(anOutputStream) << "J4:" << DoubleToString(aParameterSet.J4_);
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -134,19 +132,19 @@ Length Model::Parameters::computeGeocentricRadiusAt(const Angle& aLatitude) cons
         throw ostk::core::error::runtime::Undefined("Parameters");
     }
 
-    const Real equatorialRadius_Meters = equatorialRadius_.inMeters();
-    const Real polarRadius_Meters = equatorialRadius_Meters * (1.0 - flattening_);
+    const double equatorialRadius_Meters = equatorialRadius_.inMeters();
+    const double polarRadius_Meters = equatorialRadius_Meters * (1.0 - flattening_);
 
-    const Real latitude_Radians = aLatitude.inRadians();
-    const Real cosLatitude = std::cos(latitude_Radians);
-    const Real sinLatitude = std::sin(latitude_Radians);
+    const double latitude_Radians = aLatitude.inRadians();
+    const double cosLatitude = std::cos(latitude_Radians);
+    const double sinLatitude = std::sin(latitude_Radians);
 
-    const Real polarRadiusSquared = polarRadius_Meters * polarRadius_Meters;
-    const Real equatorialRadiusSquared = equatorialRadius_Meters * equatorialRadius_Meters;
+    const double polarRadiusSquared = polarRadius_Meters * polarRadius_Meters;
+    const double equatorialRadiusSquared = equatorialRadius_Meters * equatorialRadius_Meters;
 
-    const Real numerator =
+    const double numerator =
         std::pow((equatorialRadiusSquared * cosLatitude), 2) + std::pow((polarRadiusSquared * sinLatitude), 2);
-    const Real denominator =
+    const double denominator =
         std::pow((equatorialRadius_Meters * cosLatitude), 2) + std::pow((polarRadius_Meters * sinLatitude), 2);
 
     return Length::Meters(std::sqrt(numerator / denominator));

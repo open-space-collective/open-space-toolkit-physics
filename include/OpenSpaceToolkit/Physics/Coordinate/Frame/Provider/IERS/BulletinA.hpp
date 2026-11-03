@@ -5,8 +5,6 @@
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -30,8 +28,6 @@ namespace filesystem = ostk::core::filesystem;
 
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::Duration;
@@ -65,33 +61,33 @@ class BulletinA
    public:
     struct Observation
     {
-        Integer year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
-        Integer month;  ///< Month number
-        Integer day;    ///< Day of month
+        int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+        int month;  ///< Month number
+        int day;    ///< Day of month
 
-        Real mjd;  ///< Modified Julian Day
+        double mjd;  ///< Modified Julian Day
 
-        Real x;       ///< [asec] PM-x
-        Real xError;  ///< [asec] Error in PM-x
-        Real y;       ///< [asec] PM-y
-        Real yError;  ///< [asec] Error in PM-y
+        double x;       ///< [asec] PM-x
+        double xError;  ///< [asec] Error in PM-x
+        double y;       ///< [asec] PM-y
+        double yError;  ///< [asec] Error in PM-y
 
-        Real ut1MinusUtc;       ///< [s] UT1-UTC
-        Real ut1MinusUtcError;  ///< [s] Error in UT1-UTC
+        double ut1MinusUtc;       ///< [s] UT1-UTC
+        double ut1MinusUtcError;  ///< [s] Error in UT1-UTC
     };
 
     struct Prediction
     {
-        Integer year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
-        Integer month;  ///< Month number
-        Integer day;    ///< Day of month
+        int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+        int month;  ///< Month number
+        int day;    ///< Day of month
 
-        Real mjd;  ///< Modified Julian Day
+        double mjd;  ///< Modified Julian Day
 
-        Real x;  ///< [asec] PM-x
-        Real y;  ///< [asec] PM-y
+        double x;  ///< [asec] PM-x
+        double y;  ///< [asec] PM-y
 
-        Real ut1MinusUtc;  ///< [s] UT1-UTC
+        double ut1MinusUtc;  ///< [s] UT1-UTC
     };
 
     /// @brief Output stream operator.
@@ -260,10 +256,10 @@ class BulletinA
     Instant taiMinusUtcEpoch_;
 
     Interval observationInterval_;
-    Map<Integer, BulletinA::Observation> observations_;
+    Map<int, BulletinA::Observation> observations_;
 
     Interval predictionInterval_;
-    Map<Integer, BulletinA::Prediction> predictions_;
+    Map<int, BulletinA::Prediction> predictions_;
 
     BulletinA();
 };

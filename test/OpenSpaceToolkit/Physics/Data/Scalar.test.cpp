@@ -4,8 +4,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
-
 using ostk::physics::data::Scalar;
 using ostk::physics::Unit;
 using ostk::physics::unit::Length;
@@ -14,7 +12,7 @@ class OpenSpaceToolkit_Physics_Data_Scalar : public ::testing::Test
 {
    protected:
     const Unit unit_ = Unit::Length(Length::Unit::Meter);
-    const Real value_ = 5.0;
+    const double value_ = 5.0;
     const Scalar scalar_ = {value_, unit_};
 };
 
