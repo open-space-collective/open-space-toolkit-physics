@@ -1963,7 +1963,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
 
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         // Standard
@@ -2256,6 +2256,28 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
         EXPECT_ANY_THROW(Instant::Parse("10000-01-01T00:00:00", Scale::UTC).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:56.123.456", Scale::UTC).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:56.123.456.789", Scale::UTC).getDateTime(Scale::UTC));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, ParseWithoutFormat)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    {
+        EXPECT_EQ(
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, DateTime::Format::ISO8601),
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC)
+        );
+        EXPECT_EQ(
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, DateTime::Format::ISO8601),
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Instant::Parse("abc", Scale::UTC, std::nullopt));
     }
 }
 

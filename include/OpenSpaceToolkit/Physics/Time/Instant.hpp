@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Time_Instant__
 
 #include <functional>
+#include <optional>
 
 #include <boost/functional/hash.hpp>
 
@@ -353,10 +354,10 @@ class Instant
     ///
     /// @param [in] aString A string
     /// @param [in] aTimeScale A time scale
-    /// @param [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @param [in] aFormat A date-time format (default: std::nullopt, which detects the format)
     /// @return Instant
     static Instant Parse(
-        const String& aString, const Scale& aTimeScale, const DateTime::Format& aFormat = DateTime::Format::Undefined
+        const String& aString, const Scale& aTimeScale, const std::optional<DateTime::Format>& aFormat = std::nullopt
     );
 
    private:

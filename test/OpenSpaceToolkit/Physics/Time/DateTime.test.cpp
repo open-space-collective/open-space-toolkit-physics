@@ -343,7 +343,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ToString)
 
     {
         EXPECT_ANY_THROW(DateTime::Undefined().toString());
-        EXPECT_ANY_THROW(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Undefined));
     }
 }
 
@@ -426,7 +425,7 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
 {
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         // Standard
@@ -651,5 +650,36 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
         EXPECT_ANY_THROW(DateTime::Parse("10000-01-01T00:00:00"));
         EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456"));
         EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456.789"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_DateTime, ParseWithoutFormat)
+{
+    using ostk::physics::time::DateTime;
+
+    {
+        EXPECT_EQ(
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789", DateTime::Format::Standard),
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789")
+        );
+        EXPECT_EQ(
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789", DateTime::Format::Standard),
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789", std::nullopt)
+        );
+
+        EXPECT_EQ(
+            DateTime::Parse("2018-01-02T12:34:56.123456789", DateTime::Format::ISO8601),
+            DateTime::Parse("2018-01-02T12:34:56.123456789", std::nullopt)
+        );
+
+        EXPECT_EQ(
+            DateTime::Parse("2 Jan 2018 12:34:56.123456789", DateTime::Format::STK),
+            DateTime::Parse("2 Jan 2018 12:34:56.123456789", std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(DateTime::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(DateTime::Parse("", std::nullopt));
     }
 }

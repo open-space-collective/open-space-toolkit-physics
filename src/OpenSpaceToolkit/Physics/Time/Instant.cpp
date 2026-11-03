@@ -517,7 +517,7 @@ Instant Instant::ModifiedJulianDate(double aModifiedJulianDate, const Scale& aTi
     return Instant::DateTime(DateTime::ModifiedJulianDate(aModifiedJulianDate), aTimeScale);
 }
 
-Instant Instant::Parse(const String& aString, const Scale& aTimeScale, const DateTime::Format& aFormat)
+Instant Instant::Parse(const String& aString, const Scale& aTimeScale, const std::optional<DateTime::Format>& aFormat)
 {
     return Instant::DateTime(DateTime::Parse(aString, aFormat), aTimeScale);
 }

@@ -2,6 +2,8 @@
 
 import datetime
 
+import pytest
+
 from ostk.core.type import String
 
 from ostk.physics.time import Date
@@ -161,13 +163,30 @@ class TestDateTime:
         assert date_time is not None
         assert isinstance(date_time, datetime.datetime)
 
-    def test_parse_success_str_format_undefined(self):
+    def test_parse_success_str_format_none(self):
         date_time = DateTime.parse("2018-01-01 00:00:00")
 
         assert date_time is not None
         assert isinstance(date_time, datetime.datetime)
         assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
         assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
+
+    def test_parse_without_format(self):
+        assert DateTime.parse("2018-01-01T00:00:00") == DateTime.parse(
+            "2018-01-01T00:00:00", DateTime.Format.ISO8601
+        )
+        assert DateTime.parse("2018-01-01T00:00:00", format=None) == DateTime.parse(
+            "2018-01-01T00:00:00", DateTime.Format.ISO8601
+        )
+        assert DateTime.parse("1 Jan 2018 00:00:00", format=None) == DateTime.parse(
+            "1 Jan 2018 00:00:00", DateTime.Format.STK
+        )
+
+        with pytest.raises(RuntimeError):
+            DateTime.parse("abc", format=None)
+
+    def test_format_has_no_undefined(self):
+        assert not hasattr(DateTime.Format, "Undefined")
 
     def test_parse_success_str_format_standard(self):
         date_time = DateTime.parse("2018-01-01 00:00:00", DateTime.Format.Standard)
@@ -193,7 +212,7 @@ class TestDateTime:
         assert date_time == datetime.datetime(2018, 1, 1, 0, 0)
         assert date_time == DateTime(2018, 1, 1, 0, 0, 0)
 
-    def test_parse_success_string_format_undefined(self):
+    def test_parse_success_string_format_none(self):
         date_time = DateTime.parse(String("2018-01-01 00:00:00"))
 
         assert date_time is not None

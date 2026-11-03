@@ -423,34 +423,34 @@ DateTime DateTime::ModifiedJulianDate(double aModifiedJulianDate)
     return DateTime::JulianDate(DateTime::JulianDateFromModifiedJulianDate(aModifiedJulianDate));
 }
 
-DateTime DateTime::Parse(const String& aString, const DateTime::Format& aFormat)
+DateTime DateTime::Parse(const String& aString, const std::optional<DateTime::Format>& aFormat)
 {
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
     }
 
-    switch (aFormat)
+    if (!aFormat.has_value())
     {
-        case DateTime::Format::Undefined:  // Automatic format detection
+        // Automatic format detection
+
+        if (aString.match(boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?"
+                                       ")(?:\\+[0-9]{4})?(?:Z)?$")))
         {
-            if (aString.match(
-                    boost::regex("^([-]?[0-9]+-[0-9]{2}-[0-9]{2})T([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?"
-                                 ")(?:\\+[0-9]{4})?(?:Z)?$")
-                ))
-            {
-                return DateTime::Parse(aString, DateTime::Format::ISO8601);
-            }
-
-            if (aString.match(boost::regex("^([\\d]{1,2} [\\w]{3} [\\d]{4}) "
-                                           "([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)(?:\\+[0-9]{4})?(?:Z)?$")))
-            {
-                return DateTime::Parse(aString, DateTime::Format::STK);
-            }
-
-            return DateTime::Parse(aString, DateTime::Format::Standard);
+            return DateTime::Parse(aString, DateTime::Format::ISO8601);
         }
 
+        if (aString.match(boost::regex("^([\\d]{1,2} [\\w]{3} [\\d]{4}) "
+                                       "([0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,9})?)(?:\\+[0-9]{4})?(?:Z)?$")))
+        {
+            return DateTime::Parse(aString, DateTime::Format::STK);
+        }
+
+        return DateTime::Parse(aString, DateTime::Format::Standard);
+    }
+
+    switch (aFormat.value())
+    {
         case DateTime::Format::Standard:
         {
             boost::smatch match;
