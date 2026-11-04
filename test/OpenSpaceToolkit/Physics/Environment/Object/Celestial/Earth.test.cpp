@@ -117,19 +117,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GetFrameAt)
             for (const auto& referenceNedItrfRow : referenceNedItrfData)
             {
                 const Instant instant =
-                    Instant::DateTime(DateTime::Parse(referenceNedItrfRow[0].accessString()), Scale::UTC);
+                    Instant::DateTime(DateTime::Parse(referenceNedItrfRow[0].getString()), Scale::UTC);
 
                 const Quaternion q_NED_ITRF_ref = Quaternion::XYZS(
-                                                      referenceNedItrfRow[1].accessReal(),
-                                                      referenceNedItrfRow[2].accessReal(),
-                                                      referenceNedItrfRow[3].accessReal(),
-                                                      referenceNedItrfRow[4].accessReal()
+                                                      referenceNedItrfRow[1].getReal(),
+                                                      referenceNedItrfRow[2].getReal(),
+                                                      referenceNedItrfRow[3].getReal(),
+                                                      referenceNedItrfRow[4].getReal()
                 )
                                                       .normalize();
                 const Vector3d w_NED_ITRF_in_NED_ref = {
-                    referenceNedItrfRow[5].accessReal(),
-                    referenceNedItrfRow[6].accessReal(),
-                    referenceNedItrfRow[7].accessReal()
+                    referenceNedItrfRow[5].getReal(), referenceNedItrfRow[6].getReal(), referenceNedItrfRow[7].getReal()
                 };
 
                 const Quaternion q_ITRF_NED_ref = q_NED_ITRF_ref.toConjugate();
@@ -143,7 +141,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GetFrameAt)
                     "{} / {} ? {} [asec]",
                     q_ITRF_NED_ref.toString(),
                     q_ITRF_NED.toString(),
-                    q_ITRF_NED.angularDifferenceWith(q_ITRF_NED_ref).inArcseconds().toString()
+                    q_ITRF_NED.angularDifferenceWith(q_ITRF_NED_ref).inArcseconds()
                 );
                 EXPECT_TRUE(w_ITRF_NED_in_ITRF.isNear(w_ITRF_NED_in_ITRF_ref, 1e-12)) << String::Format(
                     "{} - {} ? {} [rad/s]",
@@ -156,19 +154,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GetFrameAt)
             for (const auto& referenceNedGcrfRow : referenceNedGcrfData)
             {
                 const Instant instant =
-                    Instant::DateTime(DateTime::Parse(referenceNedGcrfRow[0].accessString()), Scale::UTC);
+                    Instant::DateTime(DateTime::Parse(referenceNedGcrfRow[0].getString()), Scale::UTC);
 
                 const Quaternion q_NED_GCRF_ref = Quaternion::XYZS(
-                                                      referenceNedGcrfRow[1].accessReal(),
-                                                      referenceNedGcrfRow[2].accessReal(),
-                                                      referenceNedGcrfRow[3].accessReal(),
-                                                      referenceNedGcrfRow[4].accessReal()
+                                                      referenceNedGcrfRow[1].getReal(),
+                                                      referenceNedGcrfRow[2].getReal(),
+                                                      referenceNedGcrfRow[3].getReal(),
+                                                      referenceNedGcrfRow[4].getReal()
                 )
                                                       .normalize();
                 const Vector3d w_NED_GCRF_in_NED_ref = {
-                    referenceNedGcrfRow[5].accessReal(),
-                    referenceNedGcrfRow[6].accessReal(),
-                    referenceNedGcrfRow[7].accessReal()
+                    referenceNedGcrfRow[5].getReal(), referenceNedGcrfRow[6].getReal(), referenceNedGcrfRow[7].getReal()
                 };
 
                 const Quaternion q_GCRF_NED_ref = q_NED_GCRF_ref.toConjugate();
@@ -182,7 +178,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GetFrameAt)
                     "{} / {} ? {} [asec]",
                     q_GCRF_NED_ref.toString(),
                     q_GCRF_NED.toString(),
-                    q_GCRF_NED.angularDifferenceWith(q_GCRF_NED_ref).inArcseconds().toString()
+                    q_GCRF_NED.angularDifferenceWith(q_GCRF_NED_ref).inArcseconds()
                 );
                 EXPECT_TRUE(w_GCRF_NED_in_GCRF.isNear(w_GCRF_NED_in_GCRF_ref, 1e-12)) << String::Format(
                     "{} - {} ? {} [rad/s]",
@@ -323,7 +319,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, DoubleFreeErro
 
         // This gets deallocated, which deletes the Geographiclib::GravityModel
         const EarthGravitationalModel grav =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 20, 20);
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, std::nullopt, 20, 20);
         const EarthAtmosphericModel atm = EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00);
 
         // This gets deallocated, which again tries to delete the model

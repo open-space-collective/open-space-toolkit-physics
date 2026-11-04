@@ -81,17 +81,17 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
                 const Quaternion reference_q_ITRF_GCRF = Quaternion::XYZS(
-                                                             referenceRow[1].accessReal(),
-                                                             referenceRow[2].accessReal(),
-                                                             referenceRow[3].accessReal(),
-                                                             referenceRow[4].accessReal()
+                                                             referenceRow[1].getReal(),
+                                                             referenceRow[2].getReal(),
+                                                             referenceRow[3].getReal(),
+                                                             referenceRow[4].getReal()
                 )
                                                              .normalize();
                 const Vector3d reference_w_ITRF_GCRF_in_ITRF = {
-                    referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal()
+                    referenceRow[5].getReal(), referenceRow[6].getReal(), referenceRow[7].getReal()
                 };
 
                 // ITRF -> GCRF

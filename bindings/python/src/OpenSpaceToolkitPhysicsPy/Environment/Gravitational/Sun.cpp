@@ -26,7 +26,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
         sun_class
 
             .def(
-                init<const Sun::Type&, const Directory&>(),
+                init<const Sun::Type&, const std::optional<Directory>&>(),
                 arg("type"),
                 arg("directory"),
                 R"doc(
@@ -34,7 +34,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
                     Args:
                         type (Sun.Type): Sun model type.
-                        directory (Directory): Directory containing the gravity model data files.
+                        directory (Directory | None): Directory containing the gravity model data files.
                 )doc"
             )
 

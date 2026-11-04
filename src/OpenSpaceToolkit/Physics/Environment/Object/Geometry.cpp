@@ -212,7 +212,7 @@ Geometry Geometry::intersectionWith(const Geometry& aGeometry) const
         return {Composite::Empty(), frameSPtr_};
     }
 
-    return {intersection.accessComposite(), frameSPtr_};
+    return {intersection.getComposite(), frameSPtr_};
 }
 
 }  // namespace object

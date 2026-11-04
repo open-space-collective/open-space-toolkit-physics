@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
+#include <optional>
 #include <string>
 #include <thread>
 
@@ -55,11 +56,6 @@ URL Manager::getRemoteUrl() const
 
 void Manager::setRemoteUrl(const URL& aRemoteUrl)
 {
-    if (!aRemoteUrl.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("URL");
-    }
-
     remoteUrl_ = aRemoteUrl;
 }
 
@@ -214,12 +210,11 @@ File Manager::fetchLatestManifestFile_() const
 
     const URL latestDataManifestUrl = URL::Parse(remoteUrlString);
 
-    File latestDataManifestFile = File::Undefined();
-    Directory destinationDirectory = Directory::Undefined();
+    std::optional<File> latestDataManifestFile;
 
     try
     {
-        destinationDirectory = localRepository_;
+        Directory destinationDirectory = localRepository_;
 
         if (!destinationDirectory.exists())
         {
@@ -240,11 +235,11 @@ File Manager::fetchLatestManifestFile_() const
 
         latestDataManifestFile = Client::Fetch(latestDataManifestUrl, temporaryDirectory, 2);
 
-        if (!latestDataManifestFile.exists())
+        if (!latestDataManifestFile->exists())
         {
             throw ostk::core::error::RuntimeError(
                 "Cannot fetch Data Manifest [{}] from [{}].",
-                latestDataManifestFile.toString(),
+                latestDataManifestFile->toString(),
                 latestDataManifestUrl.toString()
             );
         }
@@ -253,7 +248,7 @@ File Manager::fetchLatestManifestFile_() const
             // Check that file size is not zero
 
             std::uintmax_t latestDataManifestFileSize =
-                std::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));
+                std::filesystem::file_size(std::string(latestDataManifestFile->getPath().toString()));
 
             if (latestDataManifestFileSize == 0)
             {
@@ -263,7 +258,7 @@ File Manager::fetchLatestManifestFile_() const
             }
         }
 
-        latestDataManifestFile.moveToDirectory(destinationDirectory);
+        latestDataManifestFile->moveToDirectory(destinationDirectory);
 
         temporaryDirectory.remove();
 
@@ -271,7 +266,7 @@ File Manager::fetchLatestManifestFile_() const
 
         std::cout << String::Format(
                          "Data Manifest [{}] has been successfully fetched from [{}].",
-                         latestDataManifestFile.toString(),
+                         latestDataManifestFile->toString(),
                          latestDataManifestUrl.toString()
                      )
                   << std::endl;
@@ -285,13 +280,12 @@ File Manager::fetchLatestManifestFile_() const
                      )
                   << std::endl;
 
-        if (latestDataManifestFile.isDefined() && latestDataManifestFile.exists())
+        if (latestDataManifestFile.has_value() && latestDataManifestFile->exists())
         {
-            latestDataManifestFile.remove();
-            latestDataManifestFile = File::Undefined();
+            latestDataManifestFile->remove();
         }
 
-        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
+        if (temporaryDirectory.exists())
         {
             temporaryDirectory.remove();
         }
@@ -301,7 +295,7 @@ File Manager::fetchLatestManifestFile_() const
         throw;
     }
 
-    return latestDataManifestFile;
+    return latestDataManifestFile.value();
 }
 
 Duration Manager::DataRefreshRate_()

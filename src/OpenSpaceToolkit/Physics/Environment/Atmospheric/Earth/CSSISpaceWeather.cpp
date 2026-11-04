@@ -422,11 +422,6 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getLastReadingWhere(
 
 CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 {
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
-
     if (!aFile.exists())
     {
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
@@ -449,10 +444,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         if (!obj.isString())
             return std::nullopt;
 
-        if (obj.getString().trim().empty())
+        if (String(obj.getString()).trim().empty())
             return std::nullopt;
 
-        return ParseInt(obj.getString().trim());
+        return ParseInt(String(obj.getString()).trim());
     };
 
     const auto parseOptionalRealCell = [](const Object& obj) -> std::optional<double>
@@ -469,10 +464,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         if (!obj.isString())
             return std::nullopt;
 
-        if (obj.getString().trim().empty())
+        if (String(obj.getString()).trim().empty())
             return std::nullopt;
 
-        return ParseDouble(obj.getString().trim());
+        return ParseDouble(String(obj.getString()).trim());
     };
 
     for (const auto& row : spaceWeatherTable)
@@ -649,11 +644,6 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;
-
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
 
     if (!aFile.exists())
     {

@@ -139,7 +139,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM2008,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -149,7 +149,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM96,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -159,7 +159,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM84,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -169,7 +169,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.WGS84_EGM96,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -179,13 +179,13 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.WGS84,
-                    Directory.undefined(),
+                    None,
                 ),
                 (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
-                (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
+                (EarthGravitationalModel.Type.Spherical, None),
                 (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),

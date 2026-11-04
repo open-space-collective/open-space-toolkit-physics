@@ -204,12 +204,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
         Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/New"));
         manager_.setLocalRepository(directory);
 
-        File bulletinAFile = File::Undefined();
+        std::optional<File> bulletinAFile;
         EXPECT_NO_THROW(bulletinAFile = manager_.fetchLatestBulletinA());
 
-        BulletinA bulletinA = BulletinA::Load(bulletinAFile);
+        BulletinA bulletinA = BulletinA::Load(bulletinAFile.value());
 
-        bulletinAFile.remove();
+        bulletinAFile->remove();
 
         EXPECT_NO_THROW(manager_.getBulletinA());
 
@@ -294,9 +294,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
-                const Vector2d referencePolarMotion_rad = {referenceRow[1].accessReal(), referenceRow[2].accessReal()};
+                const Vector2d referencePolarMotion_rad = {referenceRow[1].getReal(), referenceRow[2].getReal()};
 
                 const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant) * (M_PI / 180.0 / 3600.0);
 
@@ -373,9 +373,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
-                const double referenceDUT1 = {referenceRow[3].accessReal()};
+                const double referenceDUT1 = {referenceRow[3].getReal()};
 
                 const double dUT1 = manager_.getUt1MinusUtcAt(instant).value();
 

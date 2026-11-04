@@ -26,7 +26,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
         moon_class
 
             .def(
-                init<const Moon::Type&, const Directory&>(),
+                init<const Moon::Type&, const std::optional<Directory>&>(),
                 arg("type"),
                 arg("directory"),
                 R"doc(
@@ -34,7 +34,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
                     Args:
                         type (Moon.Type): Moon model type.
-                        directory (Directory): Directory containing the gravity model data files.
+                        directory (Directory | None): Directory containing the gravity model data files.
                 )doc"
             )
 

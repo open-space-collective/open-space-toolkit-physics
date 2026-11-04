@@ -309,11 +309,6 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;
 
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
-
     if (!aFile.exists())
     {
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());

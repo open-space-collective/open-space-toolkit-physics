@@ -52,11 +52,6 @@ const filesystem::File& Kernel::getFile() const
 
 Kernel Kernel::File(const filesystem::File& aFile)
 {
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
-
     const std::optional<Kernel::Type> type = Kernel::TypeFromFileExtension(aFile.getExtension());
 
     if (!type.has_value())

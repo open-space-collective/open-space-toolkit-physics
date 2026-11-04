@@ -228,14 +228,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
         // Test exact match: latest_leapseconds.tls
         Array<Path> paths = manager_.findKernelPaths("latest_leapseconds.tls");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("latest_leapseconds.tls") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("latest_leapseconds.tls") != String::npos);
     }
 
     {
         // Test exact match: de430.bsp
         Array<Path> paths = manager_.findKernelPaths("de430.bsp");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("de430.bsp") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("de430.bsp") != String::npos);
     }
 
     {
@@ -263,35 +263,35 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernelP
         // Test exact match: earth_assoc_itrf93.tf
         Array<Path> paths = manager_.findKernelPaths("earth_assoc_itrf93.tf");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("earth_assoc_itrf93.tf") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("earth_assoc_itrf93.tf") != String::npos);
     }
 
     {
         // Test regex pattern: earth_latest_high_prec.bpc
         Array<Path> paths = manager_.findKernelPaths("earth_latest_high_prec.bpc");
         EXPECT_GE(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("earth_latest_high_prec.bpc") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("earth_latest_high_prec.bpc") != String::npos);
     }
 
     {
         // Test exact match: moon_080317.tf
         Array<Path> paths = manager_.findKernelPaths("moon_080317.tf");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("moon_080317.tf") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("moon_080317.tf") != String::npos);
     }
 
     {
         // Test exact match: moon_assoc_me.tf
         Array<Path> paths = manager_.findKernelPaths("moon_assoc_me.tf");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("moon_assoc_me.tf") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("moon_assoc_me.tf") != String::npos);
     }
 
     {
         // Test exact match: moon_pa_de421_1900-2050.bpc
         Array<Path> paths = manager_.findKernelPaths("moon_pa_de421_1900-2050.bpc");
         EXPECT_EQ(paths.getSize(), 1);
-        EXPECT_TRUE(paths.accessFirst().toString().find("moon_pa_de421_1900-2050.bpc") != String::npos);
+        EXPECT_TRUE(paths.getFirst().toString().find("moon_pa_de421_1900-2050.bpc") != String::npos);
     }
 
     {

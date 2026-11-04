@@ -4,7 +4,6 @@
 #include <limits>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
@@ -165,42 +164,42 @@ Earth Earth::FromModels(
 Earth Earth::EGM2008(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        EarthGravitationalModel::Type::EGM2008, std::nullopt, aGravityModelDegree, aGravityModelOrder
     ));
 }
 
 Earth Earth::WGS84_EGM96(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::WGS84_EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        EarthGravitationalModel::Type::WGS84_EGM96, std::nullopt, aGravityModelDegree, aGravityModelOrder
     ));
 }
 
 Earth Earth::EGM96(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        EarthGravitationalModel::Type::EGM96, std::nullopt, aGravityModelDegree, aGravityModelOrder
     ));
 }
 
 Earth Earth::EGM84(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::EGM84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        EarthGravitationalModel::Type::EGM84, std::nullopt, aGravityModelDegree, aGravityModelOrder
     ));
 }
 
 Earth Earth::WGS84(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
-        EarthGravitationalModel::Type::WGS84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
+        EarthGravitationalModel::Type::WGS84, std::nullopt, aGravityModelDegree, aGravityModelOrder
     ));
 }
 
 Earth Earth::Spherical()
 {
     return Earth::GravitationalOnly(
-        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, Directory::Undefined())
+        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, std::nullopt)
     );
 }
 
@@ -208,27 +207,14 @@ Object::Geometry Earth::Geometry(
     const Length& anEquatorialRadius, double aFlattening, const Shared<const Frame>& aFrameSPtr
 )
 {
-    using ostk::core::type::Real;
-
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
-
-    // Ellipsoid still takes ostk::core::type::Real, which treats NaN as a defined value: map NaN to Real::Undefined()
-    // so that an undefined radius or flattening still yields an undefined ellipsoid.
-    const auto toReal = [](double aValue) -> Real
-    {
-        return std::isnan(aValue) ? Real::Undefined() : Real(aValue);
-    };
 
     const double equatorialRadius_m = anEquatorialRadius.inMeters();
     const double polarRadius_m = equatorialRadius_m * (1.0 - aFlattening);
 
     const Ellipsoid ellipsoid = {
-        Point::Origin(),
-        toReal(equatorialRadius_m),
-        toReal(equatorialRadius_m),
-        toReal(polarRadius_m),
-        Quaternion::Unit()
+        Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit()
     };
 
     return {ellipsoid, aFrameSPtr};

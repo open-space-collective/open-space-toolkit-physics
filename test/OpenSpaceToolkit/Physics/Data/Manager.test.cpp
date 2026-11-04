@@ -345,8 +345,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetRemoteUrl)
         manager_.setRemoteUrl(URL::Parse("http://fake.com"));
 
         EXPECT_EQ("http://fake.com", manager_.getRemoteUrl().toString());
-
-        EXPECT_ANY_THROW(manager_.setRemoteUrl(URL::Undefined()));
     }
 }
 

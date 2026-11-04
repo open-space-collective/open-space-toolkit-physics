@@ -45,7 +45,7 @@ const Instant& Interval::getStart() const
         throw ostk::core::error::runtime::Undefined("Interval");
     }
 
-    return this->accessLowerBound();
+    return this->getLowerBound();
 }
 
 const Instant& Interval::getEnd() const
@@ -55,7 +55,7 @@ const Instant& Interval::getEnd() const
         throw ostk::core::error::runtime::Undefined("Interval");
     }
 
-    return this->accessUpperBound();
+    return this->getUpperBound();
 }
 
 Duration Interval::getDuration() const
@@ -65,7 +65,7 @@ Duration Interval::getDuration() const
         throw ostk::core::error::runtime::Undefined("Interval");
     }
 
-    return Duration::Between(this->accessLowerBound(), this->accessUpperBound());
+    return Duration::Between(this->getLowerBound(), this->getUpperBound());
 }
 
 Instant Interval::getCenter() const
@@ -75,7 +75,7 @@ Instant Interval::getCenter() const
         throw ostk::core::error::runtime::Undefined("Interval");
     }
 
-    return this->accessLowerBound() + this->getDuration() / 2.0;
+    return this->getLowerBound() + this->getDuration() / 2.0;
 }
 
 Interval Interval::getIntersectionWith(const Interval& anInterval) const
@@ -102,32 +102,32 @@ String Interval::toString(const Scale& aTimeScale) const
         case Interval::Type::Closed:
             return String::Format(
                 "[{0} - {1}] [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
         case Interval::Type::Open:
             return String::Format(
                 "]{0} - {1}[ [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
         case Interval::Type::HalfOpenLeft:
             return String::Format(
                 "]{0} - {1}] [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
         case Interval::Type::HalfOpenRight:
             return String::Format(
                 "[{0} - {1}[ [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
@@ -158,14 +158,14 @@ Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 
     if (aTimeStep.isPositive())
     {
-        Instant instant = this->accessLowerBound();
+        Instant instant = this->getLowerBound();
 
         if ((type == Interval::Type::Open) || (type == Interval::Type::HalfOpenLeft))
         {
             instant += aTimeStep;
         }
 
-        while (instant < this->accessUpperBound())
+        while (instant < this->getUpperBound())
         {
             grid.add(instant);
 
@@ -174,19 +174,19 @@ Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 
         if ((type == Interval::Type::Closed) || (type == Interval::Type::HalfOpenLeft))
         {
-            grid.add(this->accessUpperBound());
+            grid.add(this->getUpperBound());
         }
     }
     else
     {
-        Instant instant = this->accessUpperBound();
+        Instant instant = this->getUpperBound();
 
         if ((type == Interval::Type::Open) || (type == Interval::Type::HalfOpenRight))
         {
             instant += aTimeStep;
         }
 
-        while (instant > this->accessLowerBound())
+        while (instant > this->getLowerBound())
         {
             grid.add(instant);
 
@@ -195,7 +195,7 @@ Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 
         if ((type == Interval::Type::Closed) || (type == Interval::Type::HalfOpenRight))
         {
-            grid.add(this->accessLowerBound());
+            grid.add(this->getLowerBound());
         }
     }
 

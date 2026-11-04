@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -63,7 +65,7 @@ class Earth : public Model
     ///
     /// @param [in] aType A magnetic model type
     /// @param [in] (optional) aDataDirectory A magnetic model data directory
-    Earth(const Earth::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+    Earth(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory = std::nullopt);
 
     /// @brief Copy constructor
     ///

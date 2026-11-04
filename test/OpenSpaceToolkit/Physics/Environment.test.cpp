@@ -33,7 +33,6 @@
 
 using ostk::core::container::Array;
 using ostk::core::container::Map;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -170,15 +169,15 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, HasCentralCelestial)
 TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
 {
     {
-        // for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters(),
-        // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
+        // for (const auto& y_ECI : Interval<double>::Closed(-Earth::EquatorialRadius.inMeters(),
+        // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(1000.0))
         for (const auto& y_ECI :
-             Interval<Real>::Closed(
+             Interval<double>::Closed(
                  -EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters() + 1.0,
                  +EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters() - 1.0
              )
-                 .generateArrayWithStep(Real(1000.0)))  // [TBI] Precision issues are preventing the tangential rays to
-                                                        // be recognised as intersecting, hence the 1.0 [m] offset
+                 .generateArrayWithStep(1000.0))  // [TBI] Precision issues are preventing the tangential rays to
+                                                  // be recognised as intersecting, hence the 1.0 [m] offset
         {
             const Segment segment = {{-10000e3, y_ECI, 0.0}, {+10000e3, y_ECI, 0.0}};
 
@@ -455,12 +454,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
 
     const Intersection intersection = pyramid.intersectionWith(ellipsoid, true, 32);
 
-    EXPECT_TRUE(intersection.isDefined()) << intersection;
     EXPECT_FALSE(intersection.isEmpty()) << intersection;
 
     // Project intersection
 
-    const LineString intersectionLineString = intersection.accessComposite().as<LineString>();
+    const LineString intersectionLineString = intersection.getComposite().as<LineString>();
 
     Array<Point2d> intersectionPoints2d = Array<Point2d>::Empty();
 

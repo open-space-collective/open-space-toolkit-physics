@@ -158,9 +158,7 @@ Interval Eclipse::getInterval(const bool& includePenumbra) const
 {
     if (includePenumbra)
     {
-        return Interval::Closed(
-            phases_.accessFirst().getInterval().getStart(), phases_.accessLast().getInterval().getEnd()
-        );
+        return Interval::Closed(phases_.getFirst().getInterval().getStart(), phases_.getLast().getInterval().getEnd());
     }
 
     Array<Interval> umbras = Array<Interval>::Empty();

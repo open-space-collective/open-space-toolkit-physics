@@ -341,13 +341,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 
         EXPECT_EQ(2, intersectionGeometry_ITRF.getComposite().getObjectCount());
 
-        EXPECT_TRUE(intersectionGeometry_ITRF.getComposite().accessObjectAt(0).is<LineString>());
-        EXPECT_TRUE(intersectionGeometry_ITRF.getComposite().accessObjectAt(1).is<LineString>());
+        EXPECT_TRUE(intersectionGeometry_ITRF.getComposite().getObjectAt(0).is<LineString>());
+        EXPECT_TRUE(intersectionGeometry_ITRF.getComposite().getObjectAt(1).is<LineString>());
 
         const LineString firstIntersectionLineString_ITRF =
-            intersectionGeometry_ITRF.getComposite().accessObjectAt(0).as<LineString>();
+            intersectionGeometry_ITRF.getComposite().getObjectAt(0).as<LineString>();
         const LineString secondIntersectionLineString_ITRF =
-            intersectionGeometry_ITRF.getComposite().accessObjectAt(1).as<LineString>();
+            intersectionGeometry_ITRF.getComposite().getObjectAt(1).as<LineString>();
 
         EXPECT_TRUE(firstIntersectionLineString_ITRF.isDefined());
         EXPECT_TRUE(secondIntersectionLineString_ITRF.isDefined());

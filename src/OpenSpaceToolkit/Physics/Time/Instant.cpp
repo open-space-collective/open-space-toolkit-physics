@@ -695,9 +695,9 @@ Int64 Instant::dAT_UTC(const Instant::Count& aCount_UTC)
             // Epoch            >   December 2005   : dAT =   32 [s]
         };
 
-        if (dATMap.accessFirst().first <= aCount_UTC.countFromEpoch_)
+        if (dATMap.getFirst().first <= aCount_UTC.countFromEpoch_)
         {
-            return dATMap.accessFirst().third;
+            return dATMap.getFirst().third;
         }
 
         for (const auto& dATIt : dATMap)
@@ -799,9 +799,9 @@ Int64 Instant::dAT_TAI(const Instant::Count& aCount_TAI)
             // Epoch            >   Epoch - 31 [s]  : dAT =   32 [s]
         };
 
-        if (dATMap.accessFirst().first <= aCount_TAI.countFromEpoch_)
+        if (dATMap.getFirst().first <= aCount_TAI.countFromEpoch_)
         {
-            return dATMap.accessFirst().third;
+            return dATMap.getFirst().third;
         }
 
         for (const auto& dATIt : dATMap)

@@ -465,7 +465,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load)
 {
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Load(File::Undefined()));
         EXPECT_ANY_THROW(CSSISpaceWeather::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
 }
@@ -608,7 +607,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, LoadLegacy)
 {
     {
-        EXPECT_ANY_THROW(CSSISpaceWeather::LoadLegacy(File::Undefined()));
         EXPECT_ANY_THROW(CSSISpaceWeather::LoadLegacy(File::Path(Path::Parse("/does/not/exist"))));
     }
 

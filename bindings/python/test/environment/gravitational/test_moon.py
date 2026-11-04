@@ -29,7 +29,7 @@ class TestMoon:
 
     def test_constructor_success_with_directory(self):
         moon_gravitational_model = MoonGravitationalModel(
-            MoonGravitationalModel.Type.Spherical, Directory.undefined()
+            MoonGravitationalModel.Type.Spherical, None
         )
 
         assert isinstance(moon_gravitational_model, MoonGravitationalModel)

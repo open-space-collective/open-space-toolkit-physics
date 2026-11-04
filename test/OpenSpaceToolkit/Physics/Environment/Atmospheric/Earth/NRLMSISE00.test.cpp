@@ -233,33 +233,32 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::Standard);
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
             Unique<NRLMSISE00Public::ap_array> apArray = nrlmsise.computeApArray(instant);
 
-            EXPECT_TRUE(referenceData(i, "AP_0").accessReal().isNear(apArray->a[0], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_0").accessReal(), apArray->a[0], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_0").getReal(), apArray->a[0], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_0").getReal(), apArray->a[0], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_1").accessReal().isNear(apArray->a[1], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_1").accessReal(), apArray->a[1], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_1").getReal(), apArray->a[1], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_1").getReal(), apArray->a[1], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_2").accessReal().isNear(apArray->a[2], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_2").accessReal(), apArray->a[2], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_2").getReal(), apArray->a[2], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_2").getReal(), apArray->a[2], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_3").accessReal().isNear(apArray->a[3], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_3").accessReal(), apArray->a[3], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_3").getReal(), apArray->a[3], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_3").getReal(), apArray->a[3], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_4").accessReal().isNear(apArray->a[4], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_4").accessReal(), apArray->a[4], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_4").getReal(), apArray->a[4], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_4").getReal(), apArray->a[4], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_5").accessReal().isNear(apArray->a[5], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_5").accessReal(), apArray->a[5], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_5").getReal(), apArray->a[5], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_5").getReal(), apArray->a[5], datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AP_6").accessReal().isNear(apArray->a[6], 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AP_6").accessReal(), apArray->a[6], datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AP_6").getReal(), apArray->a[6], 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AP_6").getReal(), apArray->a[6], datetime.toString()
             );
         }
     }
@@ -281,7 +280,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
 
 //         for (Index i =48; i < rowCount; i++) {
 
-//             const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").accessString(),
+//             const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(),
 //             DateTime::Format::Standard);
 
 //             Instant instant = Instant::DateTime(datetime, Scale::UTC);
@@ -292,28 +291,28 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
 //             Array<double> apArrayReal = Array<double>(apArray, apArray+7);
 
 //             std::cout << "calc <> Orekit" << std::endl;
-//             std::cout << apArrayReal[0] << " <> " << referenceData(i, "AP_0").accessReal() << std::endl;
-//             std::cout << apArrayReal[1] << " <> " << referenceData(i, "AP_1").accessReal() << std::endl;
-//             std::cout << apArrayReal[2] << " <> " << referenceData(i, "AP_2").accessReal() << std::endl;
-//             std::cout << apArrayReal[3] << " <> " << referenceData(i, "AP_3").accessReal() << std::endl;
-//             std::cout << apArrayReal[4] << " <> " << referenceData(i, "AP_4").accessReal() << std::endl;
-//             std::cout << apArrayReal[5] << " <> " << referenceData(i, "AP_5").accessReal() << std::endl;
-//             std::cout << apArrayReal[6] << " <> " << referenceData(i, "AP_6").accessReal() << std::endl;
+//             std::cout << apArrayReal[0] << " <> " << referenceData(i, "AP_0").getReal() << std::endl;
+//             std::cout << apArrayReal[1] << " <> " << referenceData(i, "AP_1").getReal() << std::endl;
+//             std::cout << apArrayReal[2] << " <> " << referenceData(i, "AP_2").getReal() << std::endl;
+//             std::cout << apArrayReal[3] << " <> " << referenceData(i, "AP_3").getReal() << std::endl;
+//             std::cout << apArrayReal[4] << " <> " << referenceData(i, "AP_4").getReal() << std::endl;
+//             std::cout << apArrayReal[5] << " <> " << referenceData(i, "AP_5").getReal() << std::endl;
+//             std::cout << apArrayReal[6] << " <> " << referenceData(i, "AP_6").getReal() << std::endl;
 
-//             EXPECT_TRUE(referenceData(i,"AP_0").accessReal().isNear(apArray[0], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_0").accessReal(), apArray[0], datetime.toString());
-//             EXPECT_TRUE(referenceData(i,"AP_1").accessReal().isNear(apArray[1], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_1").accessReal(), apArray[1], datetime.toString());
-//             EXPECT_TRUE(referenceData(i,"AP_2").accessReal().isNear(apArray[2], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_2").accessReal(), apArray[2], datetime.toString());
-//             EXPECT_TRUE(referenceData(i,"AP_3").accessReal().isNear(apArray[3], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_3").accessReal(), apArray[3], datetime.toString());
-//             EXPECT_TRUE(referenceData(i,"AP_4").accessReal().isNear(apArray[4], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_4").accessReal(), apArray[4], datetime.toString());
-//             EXPECT_TRUE(referenceData(i,"AP_5").accessReal().isNear(apArray[5], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_5").accessReal(), apArray[5], datetime.toString());
-//             EXPECT_TRUE(referenceData(i,"AP_6").accessReal().isNear(apArray[6], 0.001)) << String::Format(
-//             "{} != {} on {}", referenceData(i,"AP_6").accessReal(), apArray[6], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_0").getReal().isNear(apArray[0], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_0").getReal(), apArray[0], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_1").getReal().isNear(apArray[1], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_1").getReal(), apArray[1], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_2").getReal().isNear(apArray[2], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_2").getReal(), apArray[2], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_3").getReal().isNear(apArray[3], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_3").getReal(), apArray[3], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_4").getReal().isNear(apArray[4], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_4").getReal(), apArray[4], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_5").getReal().isNear(apArray[5], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_5").getReal(), apArray[5], datetime.toString());
+//             EXPECT_TRUE(referenceData(i,"AP_6").getReal().isNear(apArray[6], 0.001)) << String::Format(
+//             "{} != {} on {}", referenceData(i,"AP_6").getReal(), apArray[6], datetime.toString());
 
 //         }
 //     }
@@ -336,8 +335,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::Standard);
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
@@ -346,11 +344,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
             Unique<NRLMSISE00Public::nrlmsise_input> input =
                 nrlmsise.computeNRLMSISE00Input(nrlmsise.computeApArray(instant), lla, instant);
 
-            EXPECT_TRUE(referenceData(i, "DAILY_FLUX").accessReal().isNear(input->f107, 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "DAILY_FLUX").accessReal(), input->f107, datetime.toString()
+            EXPECT_NEAR(referenceData(i, "DAILY_FLUX").getReal(), input->f107, 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "DAILY_FLUX").getReal(), input->f107, datetime.toString()
             );
-            EXPECT_TRUE(referenceData(i, "AVG_FLUX").accessReal().isNear(input->f107A, 0.001)) << String::Format(
-                "{} != {} on {}", referenceData(i, "AVG_FLUX").accessReal(), input->f107A, datetime.toString()
+            EXPECT_NEAR(referenceData(i, "AVG_FLUX").getReal(), input->f107A, 0.001) << String::Format(
+                "{} != {} on {}", referenceData(i, "AVG_FLUX").getReal(), input->f107A, datetime.toString()
             );
         }
     }
@@ -375,12 +373,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::Standard);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
 
@@ -448,12 +445,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::Standard);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
 
@@ -510,12 +506,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::Standard);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
 
@@ -584,12 +579,11 @@ TEST_F(
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::Standard);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
 
@@ -656,12 +650,11 @@ TEST_F(
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::ISO8601);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Meters(altitude));
 
@@ -704,22 +697,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
     {
         for (Index i = 0; i < rowCount; i++)
         {
-            const int doy = referenceData(i, "DOY").accessInteger();
-            const double sec = referenceData(i, "SEC").accessReal();
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double lst = referenceData(i, "LST").accessReal();
-            const double avgFlux = referenceData(i, "AVG_FLUX").accessReal();
-            const double dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
-            const double ap1 = referenceData(i, "AP1").accessReal();
-            const double ap2 = referenceData(i, "AP2").accessReal();
-            const double ap3 = referenceData(i, "AP3").accessReal();
-            const double ap4 = referenceData(i, "AP4").accessReal();
-            const double ap5 = referenceData(i, "AP5").accessReal();
-            const double ap6 = referenceData(i, "AP6").accessReal();
-            const double ap7 = referenceData(i, "AP7").accessReal();
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const int doy = referenceData(i, "DOY").getInteger();
+            const double sec = referenceData(i, "SEC").getReal();
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double lst = referenceData(i, "LST").getReal();
+            const double avgFlux = referenceData(i, "AVG_FLUX").getReal();
+            const double dailyFlux = referenceData(i, "DAILY_FLUX").getReal();
+            const double ap1 = referenceData(i, "AP1").getReal();
+            const double ap2 = referenceData(i, "AP2").getReal();
+            const double ap3 = referenceData(i, "AP3").getReal();
+            const double ap4 = referenceData(i, "AP4").getReal();
+            const double ap5 = referenceData(i, "AP5").getReal();
+            const double ap6 = referenceData(i, "AP6").getReal();
+            const double ap7 = referenceData(i, "AP7").getReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
 
             NRLMSISE00Public::ap_array apArray;
             apArray.a[0] = ap1;
@@ -785,23 +778,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const int doy = referenceData(i, "DOY").accessInteger();
-            const double sec = referenceData(i, "SEC").accessReal();
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double lst = referenceData(i, "LST").accessReal();
-            const double avgFlux = referenceData(i, "AVG_FLUX").accessReal();
-            const double dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
-            const double ap1 = referenceData(i, "AP1").accessReal();
-            const double ap2 = referenceData(i, "AP2").accessReal();
-            const double ap3 = referenceData(i, "AP3").accessReal();
-            const double ap4 = referenceData(i, "AP4").accessReal();
-            const double ap5 = referenceData(i, "AP5").accessReal();
-            const double ap6 = referenceData(i, "AP6").accessReal();
-            const double ap7 = referenceData(i, "AP7").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
+            const int doy = referenceData(i, "DOY").getInteger();
+            const double sec = referenceData(i, "SEC").getReal();
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double lst = referenceData(i, "LST").getReal();
+            const double avgFlux = referenceData(i, "AVG_FLUX").getReal();
+            const double dailyFlux = referenceData(i, "DAILY_FLUX").getReal();
+            const double ap1 = referenceData(i, "AP1").getReal();
+            const double ap2 = referenceData(i, "AP2").getReal();
+            const double ap3 = referenceData(i, "AP3").getReal();
+            const double ap4 = referenceData(i, "AP4").getReal();
+            const double ap5 = referenceData(i, "AP5").getReal();
+            const double ap6 = referenceData(i, "AP6").getReal();
+            const double ap7 = referenceData(i, "AP7").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::ISO8601);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Kilometers(altitude));
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
@@ -869,23 +861,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const int doy = referenceData(i, "DOY").accessInteger();
-            const double sec = referenceData(i, "SEC").accessReal();
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
-            const double lst = referenceData(i, "LST").accessReal();
-            const double avgFlux = referenceData(i, "AVG_FLUX").accessReal();
-            const double dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
-            const double ap1 = referenceData(i, "AP1").accessReal();
-            const double ap2 = referenceData(i, "AP2").accessReal();
-            const double ap3 = referenceData(i, "AP3").accessReal();
-            const double ap4 = referenceData(i, "AP4").accessReal();
-            const double ap5 = referenceData(i, "AP5").accessReal();
-            const double ap6 = referenceData(i, "AP6").accessReal();
-            const double ap7 = referenceData(i, "AP7").accessReal();
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
+            const int doy = referenceData(i, "DOY").getInteger();
+            const double sec = referenceData(i, "SEC").getReal();
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
+            const double lst = referenceData(i, "LST").getReal();
+            const double avgFlux = referenceData(i, "AVG_FLUX").getReal();
+            const double dailyFlux = referenceData(i, "DAILY_FLUX").getReal();
+            const double ap1 = referenceData(i, "AP1").getReal();
+            const double ap2 = referenceData(i, "AP2").getReal();
+            const double ap3 = referenceData(i, "AP3").getReal();
+            const double ap4 = referenceData(i, "AP4").getReal();
+            const double ap5 = referenceData(i, "AP5").getReal();
+            const double ap6 = referenceData(i, "AP6").getReal();
+            const double ap7 = referenceData(i, "AP7").getReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::ISO8601);
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Kilometers(altitude));
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
@@ -950,13 +941,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const DateTime datetime =
-                DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
-            const double latitude = referenceData(i, "LAT").accessReal();
-            const double longitude = referenceData(i, "LON").accessReal();
-            const double altitude = referenceData(i, "ALT").accessReal();
+            const DateTime datetime = DateTime::Parse(referenceData(i, "DATE").getString(), DateTime::Format::ISO8601);
+            const double latitude = referenceData(i, "LAT").getReal();
+            const double longitude = referenceData(i, "LON").getReal();
+            const double altitude = referenceData(i, "ALT").getReal();
 
-            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").getReal();
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Kilometers(altitude));
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);

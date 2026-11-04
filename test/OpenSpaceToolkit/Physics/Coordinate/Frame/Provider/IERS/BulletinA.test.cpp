@@ -415,7 +415,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
     }
 
     {
-        EXPECT_ANY_THROW(BulletinA::Load(File::Undefined()));
         EXPECT_ANY_THROW(BulletinA::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
 }

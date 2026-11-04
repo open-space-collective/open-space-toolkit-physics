@@ -86,7 +86,7 @@ Vector3d Sun::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const In
     return sphericalModel_.getFieldValueAt(aPosition, anInstant);
 }
 
-Sun::Sun(const Sun::Type& aType, const Directory& aDataDirectory)
+Sun::Sun(const Sun::Type& aType, const std::optional<Directory>& aDataDirectory)
     : Model(Sun::ParametersFromType(aType)),
       implUPtr_(Sun::ImplFromType(aType, aDataDirectory))
 {
@@ -146,7 +146,7 @@ Model::Parameters Sun::ParametersFromType(const Sun::Type& aType)
     }
 }
 
-Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const Directory& aDataDirectory)
+Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const std::optional<Directory>& aDataDirectory)
 {
     (void)aDataDirectory;  // Temporary
 

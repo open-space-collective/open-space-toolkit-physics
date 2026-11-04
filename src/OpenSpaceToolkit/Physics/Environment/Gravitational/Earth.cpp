@@ -180,7 +180,7 @@ class Earth::ExternalImpl : public Earth::Impl
    public:
     ExternalImpl(
         const Earth::Type& aType,
-        const Directory& aDataDirectory,
+        const std::optional<Directory>& aDataDirectory,
         const std::optional<int>& aGravityModelDegree,
         const std::optional<int>& aGravityModelOrder
     );
@@ -195,19 +195,19 @@ class Earth::ExternalImpl : public Earth::Impl
 
     virtual std::optional<int> getOrder() const override;
 
-    virtual Directory getDataDirectory() const;
+    virtual std::optional<Directory> getDataDirectory() const;
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
     std::optional<int> gravityModelDegree_;
     std::optional<int> gravityModelOrder_;
-    Directory dataDirectory_;
+    std::optional<Directory> dataDirectory_;
     Unique<GravityModel> gravityModelUPtr_;
 
     static Unique<GravityModel> GravityModelFromType(
         const Earth::Type& aType,
-        const Directory& aDataDirectory,
+        const std::optional<Directory>& aDataDirectory,
         const std::optional<int>& aGravityModelDegree,
         const std::optional<int>& aGravityModelOrder
     );
@@ -215,7 +215,7 @@ class Earth::ExternalImpl : public Earth::Impl
 
 Earth::ExternalImpl::ExternalImpl(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
+    const std::optional<Directory>& aDataDirectory,
     const std::optional<int>& aGravityModelDegree,
     const std::optional<int>& aGravityModelOrder
 )
@@ -262,7 +262,7 @@ std::optional<int> Earth::ExternalImpl::getOrder() const
     return gravityModelOrder_;
 }
 
-Directory Earth::ExternalImpl::getDataDirectory() const
+std::optional<Directory> Earth::ExternalImpl::getDataDirectory() const
 {
     return dataDirectory_;
 }
@@ -282,7 +282,7 @@ Vector3d Earth::ExternalImpl::getFieldValueAt(const Vector3d& aPosition, const I
 
 Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
+    const std::optional<Directory>& aDataDirectory,
     const std::optional<int>& aGravityModelDegree,
     const std::optional<int>& aGravityModelOrder
 )
@@ -298,14 +298,14 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
 
     String dataPath = "";
 
-    if (aDataDirectory.isDefined())
+    if (aDataDirectory.has_value())
     {
-        if (!aDataDirectory.exists())
+        if (!aDataDirectory->exists())
         {
-            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString());
+            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory->toString());
         }
 
-        dataPath = aDataDirectory.getPath().toString();
+        dataPath = aDataDirectory->getPath().toString();
     }
     else
     {
@@ -423,7 +423,7 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
 
 Earth::Earth(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
+    const std::optional<Directory>& aDataDirectory,
     const std::optional<int>& aGravityModelDegree,
     const std::optional<int>& aGravityModelOrder
 )
@@ -437,7 +437,7 @@ Earth::Earth(
     const std::optional<int>& aGravityModelDegree,
     const std::optional<int>& aGravityModelOrder
 )
-    : Earth(aType, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder)
+    : Earth(aType, std::nullopt, aGravityModelDegree, aGravityModelOrder)
 {
 }
 
@@ -497,7 +497,7 @@ Vector3d Earth::getFieldValueAt(const Vector3d& aPosition, const Instant& anInst
 
 Unique<Earth::Impl> Earth::ImplFromType(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
+    const std::optional<Directory>& aDataDirectory,
     const std::optional<int>& aGravityModelDegree,
     const std::optional<int>& aGravityModelOrder
 )

@@ -28,7 +28,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
     earth_magnetic_class
         .def(
-            init<const Earth::Type&, const Directory&>(),
+            init<const Earth::Type&, const std::optional<Directory>&>(),
             arg("type"),
             arg("directory"),
             R"doc(
@@ -36,7 +36,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
                 Args:
                     type (Earth.Type): Earth model type.
-                    directory (Directory): Directory containing the magnetic model data files.
+                    directory (Directory | None): Directory containing the magnetic model data files.
             )doc"
         )
 

@@ -27,9 +27,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, Constructor)
 {
     {
         EXPECT_NO_THROW(SunGravitationalModel sunGravitationalModel(SunGravitationalModel::Type::Spherical));
-        EXPECT_NO_THROW(
-            std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical, Directory::Undefined())
-        );
+        EXPECT_NO_THROW(std::make_shared<SunGravitationalModel>(SunGravitationalModel::Type::Spherical, std::nullopt));
     }
 }
 

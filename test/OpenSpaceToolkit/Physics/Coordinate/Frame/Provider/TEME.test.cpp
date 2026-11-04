@@ -65,21 +65,21 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Quaternion referenceOrientation_ITRF_TEME = Quaternion::XYZS(
-                                                                      referenceRow[1].accessReal(),
-                                                                      referenceRow[2].accessReal(),
-                                                                      referenceRow[3].accessReal(),
-                                                                      referenceRow[4].accessReal()
+                                                                      referenceRow[1].getReal(),
+                                                                      referenceRow[2].getReal(),
+                                                                      referenceRow[3].getReal(),
+                                                                      referenceRow[4].getReal()
                 )
                                                                       .normalize()
                                                                       .conjugate();
                 const Quaternion referenceOrientation_GCRF_TEME = Quaternion::XYZS(
-                                                                      referenceRow[9].accessReal(),
-                                                                      referenceRow[10].accessReal(),
-                                                                      referenceRow[11].accessReal(),
-                                                                      referenceRow[12].accessReal()
+                                                                      referenceRow[9].getReal(),
+                                                                      referenceRow[10].getReal(),
+                                                                      referenceRow[11].getReal(),
+                                                                      referenceRow[12].getReal()
                 )
                                                                       .normalize();
 
@@ -102,7 +102,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
                 // Angular velocity test
 
                 const Vector3d referenceAngularVelocity_ITRF_TEME_in_TEME = {
-                    referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal()
+                    referenceRow[5].getReal(), referenceRow[6].getReal(), referenceRow[7].getReal()
                 };
                 const Vector3d referenceAngularVelocity_TEME_ITRF_in_TEME = -referenceAngularVelocity_ITRF_TEME_in_TEME;
 
