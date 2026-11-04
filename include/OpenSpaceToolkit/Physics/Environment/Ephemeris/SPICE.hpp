@@ -38,7 +38,6 @@ class SPICE : public Ephemeris
     enum class Object
     {
 
-        Undefined,
         Sun,
         Mercury,
         Venus,
@@ -79,7 +78,7 @@ class SPICE : public Ephemeris
     ///     spice.isDefined(); // True
     /// @endcode
     ///
-    /// @return True if SPICE is defined
+    /// @return True (a SPICE ephemeris is always defined)
 
     virtual bool isDefined() const override;
 

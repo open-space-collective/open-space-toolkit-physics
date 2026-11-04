@@ -30,7 +30,7 @@ SPICE* SPICE::clone() const
 
 bool SPICE::isDefined() const
 {
-    return object_ != SPICE::Object::Undefined;
+    return true;
 }
 
 Shared<const Frame> SPICE::accessFrame() const
@@ -45,7 +45,6 @@ String SPICE::StringFromObject(const SPICE::Object& anObject)
     using ostk::core::container::Map;
 
     static const Map<SPICE::Object, String> objectStringMap = {
-        {SPICE::Object::Undefined, "Undefined"},
         {SPICE::Object::Sun, "Sun"},
         {SPICE::Object::Mercury, "Mercury"},
         {SPICE::Object::Venus, "Venus"},
