@@ -40,21 +40,11 @@ DateTime::DateTime(
 
 bool DateTime::operator==(const DateTime& aDateTime) const
 {
-    if ((!this->isDefined()) || (!aDateTime.isDefined()))
-    {
-        return false;
-    }
-
     return (date_ == aDateTime.date_) && (time_ == aDateTime.time_);
 }
 
 bool DateTime::operator!=(const DateTime& aDateTime) const
 {
-    if ((!this->isDefined()) || (!aDateTime.isDefined()))
-    {
-        return true;
-    }
-
     return (date_ != aDateTime.date_) || (time_ != aDateTime.time_);
 }
 
@@ -62,76 +52,42 @@ std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime
 {
     ostk::core::utils::Print::Header(anOutputStream, "DateTime");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Year:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getYear()) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Month:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getMonth()) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Day:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.date_.getDay()) : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Year:" << String::Format("{:d}", aDateTime.date_.getYear());
+    ostk::core::utils::Print::Line(anOutputStream) << "Month:" << String::Format("{:d}", aDateTime.date_.getMonth());
+    ostk::core::utils::Print::Line(anOutputStream) << "Day:" << String::Format("{:d}", aDateTime.date_.getDay());
 
+    ostk::core::utils::Print::Line(anOutputStream) << "Hour:" << String::Format("{:d}", aDateTime.time_.getHour());
+    ostk::core::utils::Print::Line(anOutputStream) << "Minute:" << String::Format("{:d}", aDateTime.time_.getMinute());
+    ostk::core::utils::Print::Line(anOutputStream) << "Second:" << String::Format("{:d}", aDateTime.time_.getSecond());
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Hour:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getHour()) : "Undefined");
+        << "Millisecond:" << String::Format("{:d}", aDateTime.time_.getMillisecond());
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Minute:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMinute()) : "Undefined");
+        << "Microsecond:" << String::Format("{:d}", aDateTime.time_.getMicrosecond());
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Second:" << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getSecond()) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Millisecond:"
-        << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMillisecond()) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Microsecond:"
-        << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getMicrosecond()) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Nanosecond:"
-        << (aDateTime.isDefined() ? String::Format("{:d}", aDateTime.time_.getNanosecond()) : "Undefined");
+        << "Nanosecond:" << String::Format("{:d}", aDateTime.time_.getNanosecond());
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool DateTime::isDefined() const
-{
-    return date_.isDefined() && time_.isDefined();
-}
-
 const Date& DateTime::accessDate() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
-
     return date_;
 }
 
 Time DateTime::getTime() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
-
     return time_;
 }
 
 Date DateTime::getDate() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
-
     return date_;
 }
 
 const Time& DateTime::accessTime() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
-
     return time_;
 }
 
@@ -139,11 +95,6 @@ double DateTime::getJulianDate() const
 {
     using ostk::core::type::Int16;
     using ostk::core::type::Int32;
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
 
     const Uint16 year = date_.getYear();
     const Uint8 month = date_.getMonth();
@@ -171,11 +122,6 @@ double DateTime::getModifiedJulianDate() const
 {
     using ostk::core::type::Int16;
     using ostk::core::type::Int32;
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
 
     // Computed directly from the calendar fields rather than as getJulianDate() - 2400000.5:
     // differencing through a ~2.4e6-magnitude double quantizes the result to ~40 us of time,
@@ -208,11 +154,6 @@ double DateTime::getModifiedJulianDate() const
 
 String DateTime::toString(const DateTime::Format& aFormat) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("DateTime");
-    }
-
     switch (aFormat)
     {
         case DateTime::Format::Standard:
@@ -230,11 +171,6 @@ String DateTime::toString(const DateTime::Format& aFormat) const
     }
 
     return String::Empty();
-}
-
-DateTime DateTime::Undefined()
-{
-    return {Date::Undefined(), Time::Undefined()};
 }
 
 DateTime DateTime::J2000()
@@ -522,7 +458,7 @@ DateTime DateTime::Parse(const String& aString, const std::optional<DateTime::Fo
             break;
     }
 
-    return DateTime::Undefined();
+    throw ostk::core::error::runtime::Wrong("Format");
 }
 
 double DateTime::ModifiedJulianDateFromJulianDate(double aJulianDate)

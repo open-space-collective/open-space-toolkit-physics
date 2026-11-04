@@ -442,11 +442,6 @@ Instant Instant::GPSEpoch()
 
 Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeScale)
 {
-    if (!aDateTime.isDefined())
-    {
-        throw ostk::core::error::runtime::Wrong("DateTime");
-    }
-
     if (aTimeScale == Scale::Undefined)
     {
         throw ostk::core::error::runtime::Wrong("Scale");

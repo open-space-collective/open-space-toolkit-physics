@@ -117,10 +117,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, EqualToOperator)
             DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) == DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 790)
         );
     }
-
-    {
-        EXPECT_FALSE(DateTime::Undefined() == DateTime::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
@@ -149,10 +145,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
             DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789)
         );
     }
-
-    {
-        EXPECT_TRUE(DateTime::Undefined() != DateTime::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
@@ -166,26 +158,10 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, IsDefined)
-{
-    {
-        EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56).isDefined());
-        EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(DateTime::Undefined().isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessDate)
 {
     {
         EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessDate());
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().accessDate());
     }
 }
 
@@ -194,10 +170,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessTime)
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessTime());
     }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().accessTime());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
@@ -205,20 +177,12 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
     {
         EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getDate());
     }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().getDate());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetTime)
 {
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getTime());
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().getTime());
     }
 }
 
@@ -230,10 +194,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetJulianDate)
         EXPECT_EQ(2451545.50, DateTime(2000, 1, 2, 0, 0, 0).getJulianDate());
         EXPECT_EQ(2451545.75, DateTime(2000, 1, 2, 6, 0, 0).getJulianDate());
         EXPECT_EQ(2451546.0, DateTime(2000, 1, 2, 12, 0, 0).getJulianDate());
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().getJulianDate());
     }
 }
 
@@ -252,10 +212,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetModifiedJulianDate)
         EXPECT_EQ(59945.25, DateTime(2023, 1, 1, 6, 0, 0).getModifiedJulianDate());
         EXPECT_NEAR(59945.0 + 1e-6 / 86400.0, DateTime(2023, 1, 1, 0, 0, 0, 0, 1, 0).getModifiedJulianDate(), 1e-12);
         EXPECT_NEAR(59945.5 + 1.0 / 86400.0, DateTime(2023, 1, 1, 12, 0, 1).getModifiedJulianDate(), 1e-11);
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().getModifiedJulianDate());
     }
 }
 
@@ -339,19 +295,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ToString)
             "31 Dec 9999 12:34:56.123456789",
             DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::STK)
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().toString());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, Undefined)
-{
-    {
-        EXPECT_NO_THROW(DateTime::Undefined());
-
-        EXPECT_FALSE(DateTime::Undefined().isDefined());
     }
 }
 

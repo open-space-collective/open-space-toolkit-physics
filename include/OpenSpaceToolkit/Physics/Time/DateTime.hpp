@@ -117,15 +117,6 @@ class DateTime
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime);
 
-    /// @brief Check if date-time is defined
-    ///
-    /// @code
-    ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if date-time is defined
-    bool isDefined() const;
-
     /// @brief Get reference to date
     ///
     /// @code
@@ -191,16 +182,6 @@ class DateTime
     ///
     /// @return Serialized date-time
     String toString(const DateTime::Format& aFormat = DateTime::Format::Standard) const;
-
-    /// @brief Constructs an undefined date-time
-    ///
-    /// @code
-    ///     DateTime dateTime = DateTime::Undefined();
-    ///     dateTime.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined date-time
-    static DateTime Undefined();
 
     /// @brief J2000 epoch (2000-01-01 12:00:00.000.000.00)
     ///

@@ -27,7 +27,6 @@ class TestDateTime:
 
         assert date_time is not None
         assert isinstance(date_time, DateTime)
-        assert date_time.is_defined()
 
     def test_constructor_success_partial(self):
         date_time = DateTime(
@@ -41,7 +40,6 @@ class TestDateTime:
 
         assert date_time is not None
         assert isinstance(date_time, DateTime)
-        assert date_time.is_defined()
 
     def test_constructor_success_date_time(self):
         date_time = DateTime(
@@ -51,7 +49,6 @@ class TestDateTime:
 
         assert date_time is not None
         assert isinstance(date_time, DateTime)
-        assert date_time.is_defined()
 
     # def test_constructor_success_python_datetime (self):
 
@@ -88,12 +85,6 @@ class TestDateTime:
         assert date_time_2 == date_time_2
         assert (date_time_1 != date_time_1) is False
 
-    def test_is_defined_success(self):
-        date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
-
-        assert date_time is not None
-        assert date_time.is_defined()
-
     def test_get_date_success(self):
         date_time = DateTime(2018, 1, 1, 0, 0, 0, 0, 0, 0)
 
@@ -124,8 +115,9 @@ class TestDateTime:
         assert date_time.to_string(DateTime.Format.ISO8601)
         assert date_time.to_string(DateTime.Format.STK)
 
-    def test_undefined_success(self):
-        assert DateTime.undefined() is None
+    def test_has_no_undefined(self):
+        assert not hasattr(DateTime, "undefined")
+        assert not hasattr(DateTime, "is_defined")
 
     def test_J2000_success(self):
         date_time = DateTime.J2000()
