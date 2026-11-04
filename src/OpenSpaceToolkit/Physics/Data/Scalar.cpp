@@ -44,8 +44,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar)
     ostk::core::utils::Print::Header(anOutputStream, "Scalar");
 
     ostk::core::utils::Print::Line(anOutputStream) << "Value:" << DoubleToString(aScalar.value_);
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Unit:" << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aScalar.unit_.toString();
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -54,7 +53,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar)
 
 bool Scalar::isDefined() const
 {
-    return !std::isnan(value_) && unit_.isDefined();
+    return !std::isnan(value_);
 }
 
 double Scalar::getValue() const
@@ -89,7 +88,7 @@ String Scalar::toString(int aPrecision) const
 
 Scalar Scalar::Undefined()
 {
-    return {std::numeric_limits<double>::quiet_NaN(), Unit::Undefined()};
+    return {std::numeric_limits<double>::quiet_NaN(), Unit::None()};
 }
 
 }  // namespace data

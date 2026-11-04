@@ -34,7 +34,6 @@ class Unit
     enum class Type
     {
 
-        Undefined,
         None,
         Length,
         Mass,
@@ -104,16 +103,6 @@ class Unit
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Unit& aUnit);
 
-    /// @brief Check if the unit is defined.
-    ///
-    /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    bool isDefined() const;
-
     /// @brief Check if the unit is none.
     ///
     /// @code
@@ -154,16 +143,6 @@ class Unit
     /// @return A string representation
 
     String toString() const;
-
-    /// @brief Construct an undefined unit.
-    ///
-    /// @code
-    ///     Unit unit = Unit::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined unit
-
-    static Unit Undefined();
 
     /// @brief Construct a dimensionless (none) unit.
     ///

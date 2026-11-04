@@ -40,8 +40,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector)
 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Value:" << (aVector.value_.isDefined() ? aVector.value_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Unit:" << (aVector.unit_.isDefined() ? aVector.unit_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aVector.unit_.toString();
     ostk::core::utils::Print::Line(anOutputStream)
         << "Frame:"
         << (((aVector.frameSPtr_ != nullptr) && (aVector.frameSPtr_->isDefined())) ? aVector.frameSPtr_->getName()
@@ -54,7 +53,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector)
 
 bool Vector::isDefined() const
 {
-    return value_.isDefined() && unit_.isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined();
+    return value_.isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined();
 }
 
 Vector3d Vector::getValue() const
@@ -104,7 +103,7 @@ String Vector::toString(int aPrecision) const
 
 Vector Vector::Undefined()
 {
-    return {Vector3d::Undefined(), Unit::Undefined(), Frame::Undefined()};
+    return {Vector3d::Undefined(), Unit::None(), Frame::Undefined()};
 }
 
 }  // namespace data

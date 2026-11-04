@@ -32,11 +32,6 @@ Unit& Unit::operator=(const Unit& aUnit)
 
 bool Unit::operator==(const Unit& aUnit) const
 {
-    if ((!this->isDefined()) || (!aUnit.isDefined()))
-    {
-        return false;
-    }
-
     if (type_ == aUnit.type_)
     {
         switch (type_)
@@ -93,43 +88,18 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Unit& aUnit)
     return anOutputStream;
 }
 
-bool Unit::isDefined() const
-{
-    return type_ != Unit::Type::Undefined;
-}
-
 bool Unit::isNone() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     return type_ == Unit::Type::None;
 }
 
 Unit::Type Unit::getType() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     return type_;
 }
 
 double Unit::ratioTo(const Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
-    if (!aUnit.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     if (type_ != aUnit.type_)
     {
         throw ostk::core::error::RuntimeError(
@@ -167,11 +137,6 @@ double Unit::ratioTo(const Unit& aUnit) const
 
 String Unit::toString() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     switch (type_)
     {
         case Unit::Type::None:
@@ -204,11 +169,6 @@ String Unit::toString() const
     return String::Empty();
 }
 
-Unit Unit::Undefined()
-{
-    return {Unit::Type::Undefined, nullptr};
-}
-
 Unit Unit::None()
 {
     return {Unit::Type::None, nullptr};
@@ -229,7 +189,6 @@ String Unit::StringFromType(const Unit::Type& aType)
     using ostk::core::container::Map;
 
     static const Map<Unit::Type, String> typeStringMap = {
-        {Unit::Type::Undefined, "Undefined"},
         {Unit::Type::None, "None"},
         {Unit::Type::Length, "Length"},
         {Unit::Type::Mass, "Mass"},

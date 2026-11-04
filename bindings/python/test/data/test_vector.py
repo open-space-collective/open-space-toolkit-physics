@@ -52,7 +52,7 @@ class TestVector:
         assert np.all(vector.get_value() == value)
 
     def test_get_unit(self, vector: Vector):
-        assert vector.get_unit().is_defined()
+        assert vector.get_unit() is not None
 
     def test_get_frame(self, vector: Vector, frame: Frame):
         assert vector.get_frame() == frame

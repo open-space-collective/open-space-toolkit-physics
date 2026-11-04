@@ -31,13 +31,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
 
     enum_<Unit::Type>(unit_class, "Type")
         .value(
-            "Undefined",
-            Unit::Type::Undefined,
-            R"doc(
-                Undefined unit type.
-            )doc"
-        )
-        .value(
             "None_",
             Unit::Type::None,
             R"doc(
@@ -104,16 +97,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Unit>))
         .def("__repr__", &(shiftToString<Unit>))
         .def(
-            "is_defined",
-            &Unit::isDefined,
-            R"doc(
-                Check if the unit is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_none",
             &Unit::isNone,
             R"doc(
@@ -155,16 +138,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
 
                 Returns:
                     str: String representation.
-            )doc"
-        )
-        .def_static(
-            "undefined",
-            &Unit::Undefined,
-            R"doc(
-                Create an undefined unit.
-
-                Returns:
-                    Unit: Undefined unit.
             )doc"
         )
         .def_static(

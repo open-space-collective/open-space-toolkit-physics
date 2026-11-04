@@ -42,7 +42,7 @@ class TestScalar:
         assert scalar.get_value() == value
 
     def test_get_unit(self, scalar: Scalar):
-        assert scalar.get_unit().is_defined()
+        assert scalar.get_unit() is not None
 
     def test_in_unit(self, scalar: Scalar):
         assert scalar.in_unit(Unit.length(Length.Unit.Foot)) is not None
