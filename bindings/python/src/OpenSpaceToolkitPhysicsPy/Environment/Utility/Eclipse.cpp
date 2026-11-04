@@ -144,7 +144,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
 
         .def(
             "get_occulted_celestial_object",
-            &Eclipse::accessOccultedCelestialObject,
+            &Eclipse::getOccultedCelestialObject,
             return_value_policy::reference_internal,
             R"doc(
                 Get the occulted celestial object.
@@ -156,7 +156,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
 
         .def(
             "get_occulting_celestial_object",
-            &Eclipse::accessOccultingCelestialObject,
+            &Eclipse::getOccultingCelestialObject,
             return_value_policy::reference_internal,
             R"doc(
                 Get the occulting celestial object.

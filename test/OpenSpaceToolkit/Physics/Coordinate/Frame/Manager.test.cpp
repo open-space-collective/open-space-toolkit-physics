@@ -118,11 +118,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, HasFrameWithName)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessFrameWithName)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, GetFrameWithName)
 {
     {
         // Access GCRF
-        const Shared<const Frame> gcrfSPtr = manager_->accessFrameWithName("GCRF");
+        const Shared<const Frame> gcrfSPtr = manager_->getFrameWithName("GCRF");
 
         EXPECT_NE(nullptr, gcrfSPtr);
         EXPECT_EQ("GCRF", gcrfSPtr->getName());
@@ -130,7 +130,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessFrameWithName)
 
     {
         // Access non-existent frame returns nullptr
-        const Shared<const Frame> frameSPtr = manager_->accessFrameWithName("NonExistentFrame");
+        const Shared<const Frame> frameSPtr = manager_->getFrameWithName("NonExistentFrame");
 
         EXPECT_EQ(nullptr, frameSPtr);
     }
@@ -139,7 +139,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessFrameWithName)
         // Create and access custom frame
         const Shared<const Frame> createdFrameSPtr = Frame::Construct("TestFrame", true, Frame::GCRF(), providerSPtr_);
 
-        const Shared<const Frame> accessedFrameSPtr = manager_->accessFrameWithName("TestFrame");
+        const Shared<const Frame> accessedFrameSPtr = manager_->getFrameWithName("TestFrame");
 
         EXPECT_NE(nullptr, accessedFrameSPtr);
         EXPECT_EQ("TestFrame", accessedFrameSPtr->getName());
@@ -239,7 +239,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, ClearAllFrames)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessCachedTransform)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, GetCachedTransform)
 {
     {
         // Access of a transform that is not cached returns std::nullopt
@@ -247,7 +247,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessCachedTransform)
         const Shared<const Frame> itrfSPtr = Frame::ITRF();
         const Instant instant = Instant::J2000();
 
-        const std::optional<Transform> transform = manager_->accessCachedTransform(gcrfSPtr, itrfSPtr, instant);
+        const std::optional<Transform> transform = manager_->getCachedTransform(gcrfSPtr, itrfSPtr, instant);
 
         // Transform may or may not be defined depending on whether it was previously cached
         // We just verify no crash occurs
@@ -270,11 +270,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AddCachedTransform)
         manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant, transform);
 
         // Verify forward transform is cached
-        const std::optional<Transform> cachedForward = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instant);
+        const std::optional<Transform> cachedForward = manager_->getCachedTransform(frameSPtr1, frameSPtr2, instant);
         EXPECT_TRUE(cachedForward.has_value());
 
         // Verify reverse transform is also cached (eager caching)
-        const std::optional<Transform> cachedReverse = manager_->accessCachedTransform(frameSPtr2, frameSPtr1, instant);
+        const std::optional<Transform> cachedReverse = manager_->getCachedTransform(frameSPtr2, frameSPtr1, instant);
         EXPECT_TRUE(cachedReverse.has_value());
     }
 }
@@ -293,7 +293,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AddCachedTransform_Rev
         manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant, transform);
 
         // Get the cached reverse transform
-        const std::optional<Transform> cachedReverse = manager_->accessCachedTransform(frameSPtr2, frameSPtr1, instant);
+        const std::optional<Transform> cachedReverse = manager_->getCachedTransform(frameSPtr2, frameSPtr1, instant);
         EXPECT_TRUE(cachedReverse.has_value());
 
         // The reverse transform should be the inverse of the original
@@ -318,7 +318,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, RemoveFrameWithName_Cl
 
         manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant, transform);
 
-        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instant).has_value());
+        EXPECT_TRUE(manager_->getCachedTransform(frameSPtr1, frameSPtr2, instant).has_value());
 
         manager_->removeFrameWithName("TestFrame1");
 
@@ -352,9 +352,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, MultipleInstants)
         manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant3, transform3);
 
         // Each instant should have its own cached transform
-        const std::optional<Transform> cached1 = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instant1);
-        const std::optional<Transform> cached2 = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instant2);
-        const std::optional<Transform> cached3 = manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instant3);
+        const std::optional<Transform> cached1 = manager_->getCachedTransform(frameSPtr1, frameSPtr2, instant1);
+        const std::optional<Transform> cached2 = manager_->getCachedTransform(frameSPtr1, frameSPtr2, instant2);
+        const std::optional<Transform> cached3 = manager_->getCachedTransform(frameSPtr1, frameSPtr2, instant3);
 
         EXPECT_TRUE(cached1.has_value());
         EXPECT_TRUE(cached2.has_value());
@@ -366,7 +366,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, MultipleInstants)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessCachedTransform_MissedCache)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, GetCachedTransform_MissedCache)
 {
     {
         const Shared<const Frame> frameSPtr1 = Frame::Construct("TestFrame1", true, Frame::GCRF(), providerSPtr_);
@@ -383,13 +383,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, AccessCachedTransform_
         manager_->addCachedTransform(frameSPtr1, frameSPtr2, instant, transform);
 
         // Access non-cached frame pair should return std::nullopt
-        const std::optional<Transform> cachedMiss1 = manager_->accessCachedTransform(frameSPtr1, frameSPtr3, instant);
+        const std::optional<Transform> cachedMiss1 = manager_->getCachedTransform(frameSPtr1, frameSPtr3, instant);
         EXPECT_FALSE(cachedMiss1.has_value());
 
         // Access non-cached instant should return std::nullopt
         const Instant differentInstant = Instant::DateTime(DateTime(2025, 1, 1, 0, 0, 0), Scale::UTC);
         const std::optional<Transform> cachedMiss2 =
-            manager_->accessCachedTransform(frameSPtr1, frameSPtr2, differentInstant);
+            manager_->getCachedTransform(frameSPtr1, frameSPtr2, differentInstant);
         EXPECT_FALSE(cachedMiss2.has_value());
     }
 }
@@ -429,7 +429,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, MaxTransformCacheSize)
             cacheTransformAt(firstInstant + Duration::Seconds(static_cast<double>(i)));
         }
 
-        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, firstInstant).has_value());
+        EXPECT_TRUE(manager_->getCachedTransform(frameSPtr1, frameSPtr2, firstInstant).has_value());
 
         // One instant past the bound drops everything cached for the pair, so the earliest is gone and only the
         // instant that triggered the drop remains.
@@ -437,20 +437,20 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Manager, MaxTransformCacheSize)
 
         cacheTransformAt(instantPastTheBound);
 
-        EXPECT_FALSE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, firstInstant).has_value());
-        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).has_value());
+        EXPECT_FALSE(manager_->getCachedTransform(frameSPtr1, frameSPtr2, firstInstant).has_value());
+        EXPECT_TRUE(manager_->getCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).has_value());
 
         // Raising the bound keeps what is already cached.
         manager_->setMaxTransformCacheSize(64);
 
-        EXPECT_TRUE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).has_value());
+        EXPECT_TRUE(manager_->getCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).has_value());
 
         // Lowering it below what a pair already holds drops that pair immediately.
         cacheTransformAt(firstInstant + Duration::Seconds(10.0));
 
         manager_->setMaxTransformCacheSize(1);
 
-        EXPECT_FALSE(manager_->accessCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).has_value());
+        EXPECT_FALSE(manager_->getCachedTransform(frameSPtr1, frameSPtr2, instantPastTheBound).has_value());
 
         manager_->removeFrameWithName("CacheSizeFrame1");
         manager_->removeFrameWithName("CacheSizeFrame2");

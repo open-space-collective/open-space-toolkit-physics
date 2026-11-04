@@ -52,12 +52,12 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinal
     return anOutputStream;
 }
 
-const Instant& Finals2000A::accessLastModifiedTimestamp() const
+const Instant& Finals2000A::getLastModifiedTimestamp() const
 {
     return lastModifiedTimestamp_;
 }
 
-Interval Finals2000A::getInterval() const
+const Interval& Finals2000A::getInterval() const
 {
     return span_;
 }

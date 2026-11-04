@@ -71,7 +71,7 @@ def test_coordinate_velocity_access_frame():
 
     velocity: Velocity = Velocity(vector, unit, frame)
 
-    ans_frame = velocity.access_frame()
+    ans_frame = velocity.get_frame()
 
     assert ans_frame is not None
     assert isinstance(ans_frame, Frame)

@@ -65,48 +65,46 @@ bool Angle::operator==(const Angle& anAngle) const
     switch (unit_)
     {
         case Angle::Unit::Radian:
-            return this->accessValue() ==
+            return this->getValue() ==
                    Angle::ReduceRange(
-                       ((anAngle.unit_ == Angle::Unit::Radian) ? anAngle.accessValue() : anAngle.in(Angle::Unit::Radian)
-                       ),
-                       this->accessValue(),
-                       this->accessValue() + 2.0 * M_PI
+                       ((anAngle.unit_ == Angle::Unit::Radian) ? anAngle.getValue() : anAngle.in(Angle::Unit::Radian)),
+                       this->getValue(),
+                       this->getValue() + 2.0 * M_PI
                    );
 
         case Angle::Unit::Degree:
-            return this->accessValue() ==
+            return this->getValue() ==
                    Angle::ReduceRange(
-                       ((anAngle.unit_ == Angle::Unit::Degree) ? anAngle.accessValue() : anAngle.in(Angle::Unit::Degree)
-                       ),
-                       this->accessValue(),
-                       this->accessValue() + 360.0
+                       ((anAngle.unit_ == Angle::Unit::Degree) ? anAngle.getValue() : anAngle.in(Angle::Unit::Degree)),
+                       this->getValue(),
+                       this->getValue() + 360.0
                    );
 
         case Angle::Unit::Arcminute:
-            return this->accessValue() ==
+            return this->getValue() ==
                    Angle::ReduceRange(
-                       ((anAngle.unit_ == Angle::Unit::Arcminute) ? anAngle.accessValue()
+                       ((anAngle.unit_ == Angle::Unit::Arcminute) ? anAngle.getValue()
                                                                   : anAngle.in(Angle::Unit::Arcminute)),
-                       this->accessValue(),
-                       this->accessValue() + 21600.0
+                       this->getValue(),
+                       this->getValue() + 21600.0
                    );
 
         case Angle::Unit::Arcsecond:
-            return this->accessValue() ==
+            return this->getValue() ==
                    Angle::ReduceRange(
-                       ((anAngle.unit_ == Angle::Unit::Arcsecond) ? anAngle.accessValue()
+                       ((anAngle.unit_ == Angle::Unit::Arcsecond) ? anAngle.getValue()
                                                                   : anAngle.in(Angle::Unit::Arcsecond)),
-                       this->accessValue(),
-                       this->accessValue() + 1296000.0
+                       this->getValue(),
+                       this->getValue() + 1296000.0
                    );
 
         case Angle::Unit::Revolution:
-            return this->accessValue() ==
+            return this->getValue() ==
                    Angle::ReduceRange(
-                       ((anAngle.unit_ == Angle::Unit::Revolution) ? anAngle.accessValue()
+                       ((anAngle.unit_ == Angle::Unit::Revolution) ? anAngle.getValue()
                                                                    : anAngle.in(Angle::Unit::Revolution)),
-                       this->accessValue(),
-                       this->accessValue() + 1.0
+                       this->getValue(),
+                       this->getValue() + 1.0
                    );
 
         default:
@@ -124,12 +122,12 @@ bool Angle::operator!=(const Angle& anAngle) const
 
 Angle Angle::operator+(const Angle& anAngle) const
 {
-    return Angle((this->accessValue() + ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_))), unit_);
+    return Angle((this->getValue() + ((unit_ == anAngle.unit_) ? anAngle.getValue() : anAngle.in(unit_))), unit_);
 }
 
 Angle Angle::operator-(const Angle& anAngle) const
 {
-    return Angle((this->accessValue() - ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_))), unit_);
+    return Angle((this->getValue() - ((unit_ == anAngle.unit_) ? anAngle.getValue() : anAngle.in(unit_))), unit_);
 }
 
 Angle Angle::operator*(double aReal) const
@@ -139,7 +137,7 @@ Angle Angle::operator*(double aReal) const
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    return Angle((this->accessValue() * aReal), unit_);
+    return Angle((this->getValue() * aReal), unit_);
 }
 
 Angle Angle::operator/(double aReal) const
@@ -154,19 +152,19 @@ Angle Angle::operator/(double aReal) const
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
 
-    return Angle((this->accessValue() / aReal), unit_);
+    return Angle((this->getValue() / aReal), unit_);
 }
 
 Angle& Angle::operator+=(const Angle& anAngle)
 {
-    this->accessValue() += ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_));
+    this->accessValue() += ((unit_ == anAngle.unit_) ? anAngle.getValue() : anAngle.in(unit_));
 
     return *this;
 }
 
 Angle& Angle::operator-=(const Angle& anAngle)
 {
-    this->accessValue() -= ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_));
+    this->accessValue() -= ((unit_ == anAngle.unit_) ? anAngle.getValue() : anAngle.in(unit_));
 
     return *this;
 }
@@ -207,17 +205,17 @@ Angle operator*(double aReal, const Angle& anAngle)
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    return Angle((anAngle.accessValue() * aReal), anAngle.unit_);
+    return Angle((anAngle.getValue() * aReal), anAngle.unit_);
 }
 
 Angle Angle::operator+() const
 {
-    return Angle(this->accessValue(), unit_);
+    return Angle(this->getValue(), unit_);
 }
 
 Angle Angle::operator-() const
 {
-    return Angle(-this->accessValue(), unit_);
+    return Angle(-this->getValue(), unit_);
 }
 
 Angle::operator ostk::mathematics::geometry::Angle() const
@@ -226,27 +224,27 @@ Angle::operator ostk::mathematics::geometry::Angle() const
     {
         case Angle::Unit::Radian:
             return ostk::mathematics::geometry::Angle(
-                this->accessValue(), ostk::mathematics::geometry::Angle::Unit::Radian
+                this->getValue(), ostk::mathematics::geometry::Angle::Unit::Radian
             );
 
         case Angle::Unit::Degree:
             return ostk::mathematics::geometry::Angle(
-                this->accessValue(), ostk::mathematics::geometry::Angle::Unit::Degree
+                this->getValue(), ostk::mathematics::geometry::Angle::Unit::Degree
             );
 
         case Angle::Unit::Arcminute:
             return ostk::mathematics::geometry::Angle(
-                this->accessValue(), ostk::mathematics::geometry::Angle::Unit::Arcminute
+                this->getValue(), ostk::mathematics::geometry::Angle::Unit::Arcminute
             );
 
         case Angle::Unit::Arcsecond:
             return ostk::mathematics::geometry::Angle(
-                this->accessValue(), ostk::mathematics::geometry::Angle::Unit::Arcsecond
+                this->getValue(), ostk::mathematics::geometry::Angle::Unit::Arcsecond
             );
 
         case Angle::Unit::Revolution:
             return ostk::mathematics::geometry::Angle(
-                this->accessValue(), ostk::mathematics::geometry::Angle::Unit::Revolution
+                this->getValue(), ostk::mathematics::geometry::Angle::Unit::Revolution
             );
 
         default:
@@ -261,7 +259,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Angle");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << anAngle.accessValue();
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << anAngle.getValue();
     ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Angle::StringFromUnit(anAngle.unit_);
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -271,7 +269,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle)
 
 bool Angle::isZero() const
 {
-    return this->accessValue() == 0.0;
+    return this->getValue() == 0.0;
 }
 
 Angle::Unit Angle::getUnit() const
@@ -283,10 +281,10 @@ double Angle::in(const Angle::Unit& aUnit) const
 {
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * Angle::SIRatio(unit_) / Angle::SIRatio(aUnit);
+    return this->getValue() * Angle::SIRatio(unit_) / Angle::SIRatio(aUnit);
 }
 
 double Angle::inRadians() const
@@ -396,7 +394,7 @@ double Angle::inRevolutions() const
 
 String Angle::toString(int aPrecision) const
 {
-    return DoubleToString(this->accessValue(), aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]";
 }
 
 Angle Angle::Zero()

@@ -76,23 +76,23 @@ class TestManager:
 
         assert manager.has_frame_with_name("TestFrame") is False
 
-    def test_access_frame_with_name_success(self, manager: Manager):
-        gcrf = manager.access_frame_with_name("GCRF")
+    def test_get_frame_with_name_success(self, manager: Manager):
+        gcrf = manager.get_frame_with_name("GCRF")
 
         assert gcrf is not None
         assert gcrf.get_name() == "GCRF"
 
-    def test_access_frame_with_name_not_found(self, manager: Manager):
-        frame = manager.access_frame_with_name("NonExistentFrame")
+    def test_get_frame_with_name_not_found(self, manager: Manager):
+        frame = manager.get_frame_with_name("NonExistentFrame")
 
         assert frame is None
 
-    def test_access_frame_with_name_custom_frame(
+    def test_get_frame_with_name_custom_frame(
         self, manager: Manager, static_provider: Static
     ):
         Frame.construct("TestFrame", True, Frame.GCRF(), static_provider)
 
-        accessed_frame = manager.access_frame_with_name("TestFrame")
+        accessed_frame = manager.get_frame_with_name("TestFrame")
 
         assert accessed_frame is not None
         assert accessed_frame.get_name() == "TestFrame"
@@ -146,7 +146,7 @@ class TestManager:
         assert manager.has_frame_with_name("TestFrame1") is False
         assert manager.has_frame_with_name("TestFrame2") is False
 
-    def test_access_cached_transform_not_found(
+    def test_get_cached_transform_not_found(
         self,
         manager: Manager,
     ):
@@ -154,7 +154,7 @@ class TestManager:
         itrf = Frame.ITRF()
         instant = Instant.J2000()
 
-        transform = manager.access_cached_transform(gcrf, itrf, instant)
+        transform = manager.get_cached_transform(gcrf, itrf, instant)
 
         # Should return None when not cached
         assert transform is None
@@ -178,11 +178,11 @@ class TestManager:
 
         manager.add_cached_transform(frame1, frame2, instant, transform)
 
-        cached_forward = manager.access_cached_transform(frame1, frame2, instant)
+        cached_forward = manager.get_cached_transform(frame1, frame2, instant)
         assert cached_forward is not None
 
         # Reverse transform should also be cached (eager caching)
-        cached_reverse = manager.access_cached_transform(frame2, frame1, instant)
+        cached_reverse = manager.get_cached_transform(frame2, frame1, instant)
         assert cached_reverse is not None
 
     def test_max_transform_cache_size(self, manager: Manager):

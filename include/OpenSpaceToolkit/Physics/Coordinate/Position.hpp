@@ -126,32 +126,23 @@ class Position
     /// @return True if position is near the other position within the tolerance
     bool isNear(const Position& aPosition, const Length& aTolerance) const;
 
-    /// @brief Access coordinates
-    ///
-    /// @code
-    ///     position.accessCoordinates();
-    /// @endcode
-    ///
-    /// @return Reference to coordinates
-    const Vector3d& accessCoordinates() const;
-
-    /// @brief Access frame
-    ///
-    /// @code
-    ///     position.accessFrame();
-    /// @endcode
-    ///
-    /// @return Shared pointer to frame
-    Shared<const Frame> accessFrame() const;
-
     /// @brief Get coordinates
     ///
     /// @code
     ///     position.getCoordinates();
     /// @endcode
     ///
-    /// @return Coordinates
-    Vector3d getCoordinates() const;
+    /// @return Const reference to coordinates
+    const Vector3d& getCoordinates() const;
+
+    /// @brief Get frame
+    ///
+    /// @code
+    ///     position.getFrame();
+    /// @endcode
+    ///
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Get the distance to the Position Frame origin.
     ///

@@ -77,14 +77,13 @@ class type_caster<DateTime> : public type_caster_base<DateTime>
             PyDateTime_IMPORT;
         }
 
-        const int year = static_cast<int>(aDateTime.accessDate().getYear());
-        const int month = static_cast<int>(aDateTime.accessDate().getMonth());
-        const int day = static_cast<int>(aDateTime.accessDate().getDay());
-        const int hour = static_cast<int>(aDateTime.accessTime().getHour());
-        const int minute = static_cast<int>(aDateTime.accessTime().getMinute());
-        const int second = static_cast<int>(aDateTime.accessTime().getSecond());
-        const int microseconds =
-            (aDateTime.accessTime().getMillisecond() * 1000) + aDateTime.accessTime().getMicrosecond();
+        const int year = static_cast<int>(aDateTime.getDate().getYear());
+        const int month = static_cast<int>(aDateTime.getDate().getMonth());
+        const int day = static_cast<int>(aDateTime.getDate().getDay());
+        const int hour = static_cast<int>(aDateTime.getTime().getHour());
+        const int minute = static_cast<int>(aDateTime.getTime().getMinute());
+        const int second = static_cast<int>(aDateTime.getTime().getSecond());
+        const int microseconds = (aDateTime.getTime().getMillisecond() * 1000) + aDateTime.getTime().getMicrosecond();
 
         return PyDateTime_FromDateAndTime(year, month, day, hour, minute, second, microseconds);
     }

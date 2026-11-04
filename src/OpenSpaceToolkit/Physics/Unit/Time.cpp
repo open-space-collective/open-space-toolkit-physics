@@ -36,10 +36,10 @@ double Time::in(const Time::Unit& aUnit) const
 {
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * Time::SIRatio(unit_) / Time::SIRatio(aUnit);
+    return this->getValue() * Time::SIRatio(unit_) / Time::SIRatio(aUnit);
 }
 
 double Time::inSeconds() const
@@ -49,7 +49,7 @@ double Time::inSeconds() const
 
 String Time::toString(int aPrecision) const
 {
-    return DoubleToString(this->accessValue(), aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
 }
 
 Time Time::Seconds(double aValue)

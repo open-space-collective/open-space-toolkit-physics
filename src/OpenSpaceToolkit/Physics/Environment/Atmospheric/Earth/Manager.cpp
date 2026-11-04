@@ -114,11 +114,11 @@ Array<int> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
         );
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     const Array<std::optional<int>> kpArray =
         outputIsDefined(reading) ? getKpArray(reading)
-                                 : getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+                                 : getKpArray(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
 
     Array<int> kpIndices = Array<int>::Empty();
     kpIndices.reserve(kpArray.size());
@@ -163,11 +163,11 @@ Array<int> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
         );
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     const Array<std::optional<int>> apArray =
         outputIsDefined(reading) ? getApArray(reading)
-                                 : getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+                                 : getApArray(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
 
     Array<int> apIndices = Array<int>::Empty();
     apIndices.reserve(apArray.size());
@@ -195,7 +195,7 @@ int Manager::getApDailyIndexAt(const Instant& anInstant) const
         return aReading.ApAvg.has_value();
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -203,7 +203,7 @@ int Manager::getApDailyIndexAt(const Instant& anInstant) const
     }
     else
     {
-        return getApDaily(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getApDaily(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -222,7 +222,7 @@ double Manager::getF107SolarFluxAt(const Instant& anInstant) const
         return aReading.F107Obs.has_value();
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -230,7 +230,7 @@ double Manager::getF107SolarFluxAt(const Instant& anInstant) const
     }
     else
     {
-        return getF107Obs(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getF107Obs(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -249,7 +249,7 @@ double Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
         return aReading.F107ObsCenter81.has_value();
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -257,7 +257,7 @@ double Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
     }
     else
     {
-        return getF107ObsCenter81(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getF107ObsCenter81(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
@@ -312,9 +312,9 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
     // Try currently loaded
     if (CSSISpaceWeather_.has_value())
     {
-        if (CSSISpaceWeather_->accessObservationInterval().contains(anInstant) ||
-            CSSISpaceWeather_->accessDailyPredictionInterval().contains(anInstant) ||
-            CSSISpaceWeather_->accessMonthlyPredictionInterval().contains(anInstant))
+        if (CSSISpaceWeather_->getObservationInterval().contains(anInstant) ||
+            CSSISpaceWeather_->getDailyPredictionInterval().contains(anInstant) ||
+            CSSISpaceWeather_->getMonthlyPredictionInterval().contains(anInstant))
         {
             return &CSSISpaceWeather_.value();
         }
@@ -398,7 +398,7 @@ File Manager::getLatestCSSISpaceWeatherFile_() const
     const Instant remoteUpdateTimestamp = manifestManager.getLastUpdateTimestampFor(CSSISpaceWeatherManifestName);
 
     // Get when the local file was last modified
-    const Instant localUpdateTimestamp = localSpaceWeather.accessLastModifiedTimestamp();
+    const Instant localUpdateTimestamp = localSpaceWeather.getLastModifiedTimestamp();
 
     // If remote is newer, fetch it
     if (remoteUpdateTimestamp > localUpdateTimestamp)

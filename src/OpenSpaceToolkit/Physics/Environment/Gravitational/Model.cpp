@@ -128,7 +128,7 @@ bool Model::isPointMass() const
     return false;
 }
 
-Model::Parameters Model::getParameters() const
+const Model::Parameters& Model::getParameters() const
 {
     return parameters_;
 }

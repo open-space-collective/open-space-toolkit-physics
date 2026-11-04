@@ -122,12 +122,17 @@ bool Geometry::contains(const Geometry& aGeometry) const
     return false;
 }
 
-const Composite& Geometry::accessComposite() const
+const Composite& Geometry::getComposite() const&
 {
     return composite_;
 }
 
-Shared<const Frame> Geometry::accessFrame() const
+Composite Geometry::getComposite() &&
+{
+    return this->getComposite();
+}
+
+const Shared<const Frame>& Geometry::getFrame() const
 {
     return frameSPtr_;
 }

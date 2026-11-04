@@ -47,17 +47,17 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector)
     return anOutputStream;
 }
 
-Vector3d Vector::getValue() const
+const Vector3d& Vector::getValue() const
 {
     return value_;
 }
 
-Unit Vector::getUnit() const
+const Unit& Vector::getUnit() const
 {
     return unit_;
 }
 
-Shared<const Frame> Vector::getFrame() const
+const Shared<const Frame>& Vector::getFrame() const
 {
     return frameSPtr_;
 }

@@ -66,32 +66,14 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @return True if defined.
     bool isDefined() const;
 
-    /// @brief Access the start instant.
-    ///
-    /// @code
-    ///     const Instant& start = Interval::Closed(Instant::J2000(), Instant::Now()).accessStart();
-    /// @endcode
-    ///
-    /// @return Start instant.
-    const Instant& accessStart() const;
-
-    /// @brief Access the end instant.
-    ///
-    /// @code
-    ///     const Instant& end = Interval::Closed(Instant::J2000(), Instant::Now()).accessEnd();
-    /// @endcode
-    ///
-    /// @return End instant.
-    const Instant& accessEnd() const;
-
     /// @brief Get the start instant.
     ///
     /// @code
     ///     Instant start = Interval::Closed(Instant::J2000(), Instant::Now()).getStart();
     /// @endcode
     ///
-    /// @return Start instant.
-    Instant getStart() const;
+    /// @return Const reference to the start instant.
+    const Instant& getStart() const;
 
     /// @brief Get the end instant.
     ///
@@ -99,8 +81,8 @@ class Interval : public mathematics::object::Interval<Instant>
     ///     Instant end = Interval::Closed(Instant::J2000(), Instant::Now()).getEnd();
     /// @endcode
     ///
-    /// @return End instant.
-    Instant getEnd() const;
+    /// @return Const reference to the end instant.
+    const Instant& getEnd() const;
 
     /// @brief Get the duration.
     ///
@@ -366,8 +348,8 @@ struct hash<ostk::physics::time::Interval>
         }
 
         size_t seed = 0;
-        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.accessStart()));
-        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.accessEnd()));
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.getStart()));
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.getEnd()));
         boost::hash_combine(seed, static_cast<int>(anInterval.getType()));
         return seed;
     }

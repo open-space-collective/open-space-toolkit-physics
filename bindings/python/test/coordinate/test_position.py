@@ -27,7 +27,7 @@ def frame() -> Frame:
 
 @pytest.fixture
 def earth():
-    return Environment.default().access_celestial_object_with_name("Earth")
+    return Environment.default().get_celestial_object_with_name("Earth")
 
 
 @pytest.fixture
@@ -89,12 +89,12 @@ class TestPosition:
         assert position_1.is_near(position_2, Length.Unit.Meter)
         assert position_2.is_near(position_1, Length.Unit.Meter)
 
-    def test_access_frame(self, unit: Length.Unit, frame: Frame):
+    def test_get_frame(self, unit: Length.Unit, frame: Frame):
         vector = [1000.0, 0.0, 0.0]
 
         position: Position = Position(vector, unit, frame)
 
-        ans_frame = position.access_frame()
+        ans_frame = position.get_frame()
 
         assert ans_frame is not None
         assert isinstance(ans_frame, Frame)

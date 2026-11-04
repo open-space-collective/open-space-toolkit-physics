@@ -32,10 +32,10 @@ Transform Static::getTransformAt(const Instant& anInstant) const
 {
     return {
         anInstant,
-        transform_.accessTranslation(),
-        transform_.accessVelocity(),
-        transform_.accessOrientation(),
-        transform_.accessAngularVelocity(),
+        transform_.getTranslation(),
+        transform_.getVelocity(),
+        transform_.getOrientation(),
+        transform_.getAngularVelocity(),
         Transform::Type::Passive
     };
 }

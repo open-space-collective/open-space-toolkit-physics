@@ -47,19 +47,14 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Velocity& aVelocity
     return anOutputStream;
 }
 
-const Vector3d& Velocity::accessCoordinates() const
+const Vector3d& Velocity::getCoordinates() const
 {
     return coordinates_;
 }
 
-Shared<const Frame> Velocity::accessFrame() const
+const Shared<const Frame>& Velocity::getFrame() const
 {
     return frameSPtr_;
-}
-
-Vector3d Velocity::getCoordinates() const
-{
-    return coordinates_;
 }
 
 Velocity::Unit Velocity::getUnit() const
@@ -85,7 +80,7 @@ Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>&
 
     return {
         frameSPtr_->getTransformTo(aFrameSPtr, anInstant)
-            .applyToVelocity(aPosition.inFrame(frameSPtr_, anInstant).inMeters().accessCoordinates(), coordinates_),
+            .applyToVelocity(aPosition.inFrame(frameSPtr_, anInstant).inMeters().getCoordinates(), coordinates_),
         unit_,
         aFrameSPtr
     };

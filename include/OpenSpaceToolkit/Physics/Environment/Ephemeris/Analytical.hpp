@@ -33,7 +33,7 @@ class Analytical : public Ephemeris
 
     virtual Analytical* clone() const override;
 
-    virtual Shared<const Frame> accessFrame() const override;
+    virtual Shared<const Frame> getFrame() const override;
 
    private:
     Shared<const Frame> frameSPtr_;

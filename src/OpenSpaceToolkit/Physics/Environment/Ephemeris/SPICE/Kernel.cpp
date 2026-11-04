@@ -45,7 +45,7 @@ String Kernel::getName() const
     return file_.getName();
 }
 
-filesystem::File Kernel::getFile() const
+const filesystem::File& Kernel::getFile() const
 {
     return file_;
 }

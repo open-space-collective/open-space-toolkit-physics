@@ -20,17 +20,16 @@ Direction Nadir(const Position& aPosition, const Celestial& aCelestialObject, co
     using ostk::physics::coordinate::spherical::LLA;
 
     const LLA lla = LLA::Cartesian(
-        aPosition.inFrame(aCelestialObject.accessFrame(), anEnvironment.getInstant()).getCoordinates(),
+        aPosition.inFrame(aCelestialObject.getFrame(), anEnvironment.getInstant()).getCoordinates(),
         aCelestialObject.getEquatorialRadius(),
         aCelestialObject.getFlattening()
     );
 
     const Shared<const Frame> nedFrameSPtr = aCelestialObject.getFrameAt(lla, Celestial::FrameType::NED);
 
-    const Vector3d z_NED_FIXED =
-        nedFrameSPtr->getAxesIn(aCelestialObject.accessFrame(), anEnvironment.getInstant()).z();
+    const Vector3d z_NED_FIXED = nedFrameSPtr->getAxesIn(aCelestialObject.getFrame(), anEnvironment.getInstant()).z();
 
-    return {z_NED_FIXED, aCelestialObject.accessFrame()};
+    return {z_NED_FIXED, aCelestialObject.getFrame()};
 }
 
 }  // namespace provider

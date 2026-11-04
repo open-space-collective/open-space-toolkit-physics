@@ -82,10 +82,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         )
 
         .def(
-            "access_frame",
-            &Position::accessFrame,
+            "get_frame",
+            &Position::getFrame,
             R"doc(
-                Access the frame of reference.
+                Get the frame of reference.
 
                 Returns:
                     Frame: Frame of reference.

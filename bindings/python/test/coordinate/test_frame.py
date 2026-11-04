@@ -29,14 +29,14 @@ class TestFrame:
     def test_has_parent(self, frame: Frame):
         assert frame.has_parent() is True
 
-    def test_access_parent(self, frame: Frame):
-        assert frame.access_parent() is not None
+    def test_get_parent(self, frame: Frame):
+        assert frame.get_parent() is not None
 
-    def test_access_ancestor(self, frame: Frame):
-        assert frame.access_ancestor(ancestor_degree=1) is not None
+    def test_get_ancestor(self, frame: Frame):
+        assert frame.get_ancestor(ancestor_degree=1) is not None
 
-    def test_access_provider(self, frame: Frame):
-        assert frame.access_provider()
+    def test_get_provider(self, frame: Frame):
+        assert frame.get_provider()
 
     def test_get_name(self, frame: Frame):
         assert frame.get_name() == "ITRF"

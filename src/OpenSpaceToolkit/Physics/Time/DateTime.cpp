@@ -71,22 +71,12 @@ std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime
     return anOutputStream;
 }
 
-const Date& DateTime::accessDate() const
+const Date& DateTime::getDate() const
 {
     return date_;
 }
 
-Time DateTime::getTime() const
-{
-    return time_;
-}
-
-Date DateTime::getDate() const
-{
-    return date_;
-}
-
-const Time& DateTime::accessTime() const
+const Time& DateTime::getTime() const
 {
     return time_;
 }

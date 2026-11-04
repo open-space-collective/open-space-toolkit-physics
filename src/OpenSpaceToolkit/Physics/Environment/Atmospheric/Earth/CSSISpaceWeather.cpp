@@ -210,7 +210,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
     return anOutputStream;
 }
 
-const Date& CSSISpaceWeather::accessLastObservationDate() const
+const Date& CSSISpaceWeather::getLastObservationDate() const
 {
     if (!lastObservationDate_.has_value())
     {
@@ -220,17 +220,17 @@ const Date& CSSISpaceWeather::accessLastObservationDate() const
     return lastObservationDate_.value();
 }
 
-const Instant& CSSISpaceWeather::accessLastModifiedTimestamp() const
+const Instant& CSSISpaceWeather::getLastModifiedTimestamp() const
 {
     return lastModifiedTimestamp_;
 }
 
-const Interval& CSSISpaceWeather::accessObservationInterval() const
+const Interval& CSSISpaceWeather::getObservationInterval() const
 {
     return observationInterval_;
 }
 
-const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Instant& anInstant) const
+const CSSISpaceWeather::Reading& CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -242,8 +242,8 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of observation range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            observationInterval_.accessStart().toString(Scale::UTC),
-            observationInterval_.accessEnd().toString(Scale::UTC)
+            observationInterval_.getStart().toString(Scale::UTC),
+            observationInterval_.getEnd().toString(Scale::UTC)
         );
     }
 
@@ -263,12 +263,12 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
     throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC));
 }
 
-const Interval& CSSISpaceWeather::accessDailyPredictionInterval() const
+const Interval& CSSISpaceWeather::getDailyPredictionInterval() const
 {
     return dailyPredictionInterval_;
 }
 
-const CSSISpaceWeather::Reading& CSSISpaceWeather::accessDailyPredictionAt(const Instant& anInstant) const
+const CSSISpaceWeather::Reading& CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -280,8 +280,8 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessDailyPredictionAt(const
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            dailyPredictionInterval_.accessStart().toString(Scale::UTC),
-            dailyPredictionInterval_.accessEnd().toString(Scale::UTC)
+            dailyPredictionInterval_.getStart().toString(Scale::UTC),
+            dailyPredictionInterval_.getEnd().toString(Scale::UTC)
         );
     }
 
@@ -301,12 +301,12 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessDailyPredictionAt(const
     throw ostk::core::error::RuntimeError("Cannot find daily prediction at [{}].", anInstant.toString(Scale::UTC));
 }
 
-const Interval& CSSISpaceWeather::accessMonthlyPredictionInterval() const
+const Interval& CSSISpaceWeather::getMonthlyPredictionInterval() const
 {
     return monthlyPredictionInterval_;
 }
 
-const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(const Instant& anInstant) const
+const CSSISpaceWeather::Reading& CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -318,8 +318,8 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            monthlyPredictionInterval_.accessStart().toString(Scale::UTC),
-            monthlyPredictionInterval_.accessEnd().toString(Scale::UTC)
+            monthlyPredictionInterval_.getStart().toString(Scale::UTC),
+            monthlyPredictionInterval_.getEnd().toString(Scale::UTC)
         );
     }
 
@@ -340,30 +340,30 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
     throw ostk::core::error::RuntimeError("Cannot find monthly prediction at [{}].", anInstant.toString(Scale::UTC));
 }
 
-const CSSISpaceWeather::Reading& CSSISpaceWeather::accessReadingAt(const Instant& anInstant) const
+const CSSISpaceWeather::Reading& CSSISpaceWeather::getReadingAt(const Instant& anInstant) const
 {
     if (observationInterval_.contains(anInstant))
     {
-        return this->accessObservationAt(anInstant);
+        return this->getObservationAt(anInstant);
     }
     if (dailyPredictionInterval_.contains(anInstant))
     {
-        return this->accessDailyPredictionAt(anInstant);
+        return this->getDailyPredictionAt(anInstant);
     }
     if (monthlyPredictionInterval_.contains(anInstant))
     {
-        return this->accessMonthlyPredictionAt(anInstant);
+        return this->getMonthlyPredictionAt(anInstant);
     }
 
     throw ostk::core::error::RuntimeError(
         "Instant [{}] out of range [{} - {}].",
         anInstant.toString(Scale::UTC),
-        observationInterval_.accessStart().toString(Scale::UTC),
-        monthlyPredictionInterval_.accessEnd().toString(Scale::UTC)
+        observationInterval_.getStart().toString(Scale::UTC),
+        monthlyPredictionInterval_.getEnd().toString(Scale::UTC)
     );
 }
 
-const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
+const CSSISpaceWeather::Reading& CSSISpaceWeather::getLastReadingWhere(
     const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
 ) const
 {
@@ -375,9 +375,9 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
     Instant searchInstant = anInstant - Duration::Days(1);
 
     // Search monthly data backwards, skips if not relevant
-    while (monthlyPredictionInterval_.contains(searchInstant) && searchInstant > dailyPredictionInterval_.accessEnd())
+    while (monthlyPredictionInterval_.contains(searchInstant) && searchInstant > dailyPredictionInterval_.getEnd())
     {
-        const CSSISpaceWeather::Reading& reading = this->accessMonthlyPredictionAt(searchInstant);
+        const CSSISpaceWeather::Reading& reading = this->getMonthlyPredictionAt(searchInstant);
 
         if (aPredicate(reading))
         {
@@ -386,13 +386,13 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
 
         // Go back in time by approximately 1 month at a time, but not past the last daily prediction
         searchInstant =
-            std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.accessEnd() - Duration::Days(1));
+            std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.getEnd() - Duration::Days(1));
     }
 
     // Search daily predicton data backwards, skips if not relevant
     while (dailyPredictionInterval_.contains(searchInstant))
     {
-        const CSSISpaceWeather::Reading& reading = this->accessDailyPredictionAt(searchInstant);
+        const CSSISpaceWeather::Reading& reading = this->getDailyPredictionAt(searchInstant);
 
         if (aPredicate(reading))
         {
@@ -405,7 +405,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessLastReadingWhere(
     // Search observation data backwards, skips if not relevant
     while (observationInterval_.contains(searchInstant))
     {
-        const CSSISpaceWeather::Reading& reading = this->accessObservationAt(searchInstant);
+        const CSSISpaceWeather::Reading& reading = this->getObservationAt(searchInstant);
 
         if (aPredicate(reading))
         {

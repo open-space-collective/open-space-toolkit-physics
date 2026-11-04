@@ -266,9 +266,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, Spherical)
 {
     const Earth earth = Earth::Spherical();
 
-    EXPECT_NE(nullptr, earth.accessGravitationalModel());
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_NE(nullptr, earth.getGravitationalModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GravitationalOnly)

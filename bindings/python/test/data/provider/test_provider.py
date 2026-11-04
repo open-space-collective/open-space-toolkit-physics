@@ -16,7 +16,7 @@ def environment() -> Environment:
 
 @pytest.fixture
 def celestial(environment: Environment) -> Celestial:
-    return environment.access_celestial_object_with_name("Earth")
+    return environment.get_celestial_object_with_name("Earth")
 
 
 @pytest.fixture

@@ -109,107 +109,106 @@ class CSSISpaceWeather
     /// @brief Access last observation Date. File publication date is the day following the last observation.
     ///
     /// @code
-    ///     const Date& date = cssiSpaceWeather.accessLastObservationDate();
+    ///     const Date& date = cssiSpaceWeather.getLastObservationDate();
     /// @endcode
     ///
     /// @return Last observation Date.
 
-    const Date& accessLastObservationDate() const;
+    const Date& getLastObservationDate() const;
 
-    /// @brief Access timestamp at which the CSSISpaceWeather file was last modified
+    /// @brief Get timestamp at which the CSSISpaceWeather file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = cssiSpaceWeather.accessLastModifiedTimestamp();
+    ///     const Instant& timestamp = cssiSpaceWeather.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
 
-    const Instant& accessLastModifiedTimestamp() const;
+    const Instant& getLastModifiedTimestamp() const;
 
-    /// @brief Access observation Interval.
+    /// @brief Get observation Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessObservationInterval();
+    ///     const Interval& interval = cssiSpaceWeather.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants.
 
-    const Interval& accessObservationInterval() const;
+    const Interval& getObservationInterval() const;
 
-    /// @brief Access daily prediction Interval.
+    /// @brief Get daily prediction Interval.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessObservationAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getObservationAt(instant);
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
 
-    const Reading& accessObservationAt(const Instant& anInstant) const;
+    const Reading& getObservationAt(const Instant& anInstant) const;
 
-    /// @brief Access daily prediction Interval.
+    /// @brief Get daily prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessDailyPredictionInterval();
+    ///     const Interval& interval = cssiSpaceWeather.getDailyPredictionInterval();
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
 
-    const Interval& accessDailyPredictionInterval() const;
+    const Interval& getDailyPredictionInterval() const;
 
-    /// @brief Access daily prediction at Instant.
+    /// @brief Get daily prediction at Instant.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessDailyPredictionAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getDailyPredictionAt(instant);
     /// @endcode
     ///
     /// @return Daily prediction at Instant.
 
-    const Reading& accessDailyPredictionAt(const Instant& anInstant) const;
+    const Reading& getDailyPredictionAt(const Instant& anInstant) const;
 
-    /// @brief Access monthly prediction Interval.
+    /// @brief Get monthly prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessMonthlyPredictionInterval();
+    ///     const Interval& interval = cssiSpaceWeather.getMonthlyPredictionInterval();
     /// @endcode
     ///
     /// @return Monthly prediction Interval of Instants.
 
-    const Interval& accessMonthlyPredictionInterval() const;
+    const Interval& getMonthlyPredictionInterval() const;
 
-    /// @brief Access monthly prediction at Instant.
+    /// @brief Get monthly prediction at Instant.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessMonthlyPredictionAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getMonthlyPredictionAt(instant);
     /// @endcode
     ///
     /// @return Monthly prediction at Instant.
 
-    const Reading& accessMonthlyPredictionAt(const Instant& anInstant) const;
+    const Reading& getMonthlyPredictionAt(const Instant& anInstant) const;
 
-    /// @brief Access reading at Instant.
+    /// @brief Get reading at Instant.
     /// Look first in observations, then in daily predictions, then monthly predictions.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessReadingAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getReadingAt(instant);
     /// @endcode
     ///
     /// @return Reading prediction at Instant.
 
-    const Reading& accessReadingAt(const Instant& anInstant) const;
+    const Reading& getReadingAt(const Instant& anInstant) const;
 
-    /// @brief Access last reading before anInstant where aPredicate is true.
+    /// @brief Get last reading before anInstant where aPredicate is true.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessLastReadingWhere(predicate, instant);
+    ///     const Reading& reading = cssiSpaceWeather.getLastReadingWhere(predicate, instant);
     /// @endcode
     ///
     /// @param [in] aPredicate A predicate.
     /// @param [in] anInstant An Instant.
     /// @return Last Reading satisfying predicate.
 
-    const Reading& accessLastReadingWhere(
-        const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
-    ) const;
+    const Reading& getLastReadingWhere(const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant)
+        const;
 
     /// @brief Load CSSI Space Weather file in csv format.
     ///

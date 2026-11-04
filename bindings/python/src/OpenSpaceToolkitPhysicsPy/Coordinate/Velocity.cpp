@@ -67,10 +67,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def("__repr__", &(shiftToString<Velocity>))
 
         .def(
-            "access_frame",
-            &Velocity::accessFrame,
+            "get_frame",
+            &Velocity::getFrame,
             R"doc(
-                Access the frame of reference.
+                Get the frame of reference.
 
                 Returns:
                     Frame: Frame of reference.

@@ -139,23 +139,23 @@ class Eclipse
         const Array<EclipsePhase>& somePhases
     );
 
-    /// @brief Access the occulted celestial object
+    /// @brief Get the occulted celestial object
     ///
     /// @code
-    ///     const Celestial& occulted = eclipse.accessOccultedCelestialObject();
+    ///     const Celestial& occulted = eclipse.getOccultedCelestialObject();
     /// @endcode
     ///
     /// @return The occulted celestial object
-    const Celestial& accessOccultedCelestialObject() const;
+    const Celestial& getOccultedCelestialObject() const;
 
-    /// @brief Access the occulting celestial object
+    /// @brief Get the occulting celestial object
     ///
     /// @code
-    ///     const Celestial& occulting = eclipse.accessOccultingCelestialObject();
+    ///     const Celestial& occulting = eclipse.getOccultingCelestialObject();
     /// @endcode
     ///
     /// @return The occulting celestial object
-    const Celestial& accessOccultingCelestialObject() const;
+    const Celestial& getOccultingCelestialObject() const;
 
     /// @brief Get the phases of the eclipse
     ///

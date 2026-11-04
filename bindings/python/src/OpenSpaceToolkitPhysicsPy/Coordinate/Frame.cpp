@@ -78,21 +78,21 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
         )
 
         .def(
-            "access_parent",
-            &Frame::accessParent,
+            "get_parent",
+            &Frame::getParent,
             R"doc(
-                Access the parent frame.
+                Get the parent frame.
 
                 Returns:
                     Frame: Parent frame.
             )doc"
         )
         .def(
-            "access_ancestor",
-            &Frame::accessAncestor,
+            "get_ancestor",
+            &Frame::getAncestor,
             arg("ancestor_degree"),
             R"doc(
-                Access the ancestor frame.
+                Get the ancestor frame.
 
                 Args:
                     ancestor_degree (int): Ancestor degree.
@@ -102,10 +102,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
         .def(
-            "access_provider",
-            &Frame::accessProvider,
+            "get_provider",
+            &Frame::getProvider,
             R"doc(
-                Access the provider.
+                Get the provider.
 
                 Returns:
                     Provider: Provider.

@@ -66,7 +66,7 @@ const Vector3d& Axes::z() const
     return z_;
 }
 
-Shared<const Frame> Axes::getFrame() const
+const Shared<const Frame>& Axes::getFrame() const
 {
     return frameSPtr_;
 }

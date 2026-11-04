@@ -296,14 +296,14 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
 
         .def("is_compatible_with", &Derived::Unit::isCompatibleWith)
 
-        // .def("access_length_unit", &Derived::Unit::accessLengthUnit, return_value_policy::reference)
-        // .def("access_length_order", &Derived::Unit::accessLengthOrder, return_value_policy::reference)
-        // .def("access_mass_unit", &Derived::Unit::accessMassUnit, return_value_policy::reference)
-        // .def("access_mass_order", &Derived::Unit::accessMassOrder, return_value_policy::reference)
-        // .def("access_time_unit", &Derived::Unit::accessTimeUnit, return_value_policy::reference)
-        // .def("access_time_order", &Derived::Unit::accessTimeOrder, return_value_policy::reference)
-        // .def("access_angle_unit", &Derived::Unit::accessAngleUnit, return_value_policy::reference)
-        // .def("access_angle_order", &Derived::Unit::accessAngleOrder, return_value_policy::reference)
+        // .def("get_length_unit", &Derived::Unit::getLengthUnit, return_value_policy::reference)
+        // .def("get_length_order", &Derived::Unit::getLengthOrder, return_value_policy::reference)
+        // .def("get_mass_unit", &Derived::Unit::getMassUnit, return_value_policy::reference)
+        // .def("get_mass_order", &Derived::Unit::getMassOrder, return_value_policy::reference)
+        // .def("get_time_unit", &Derived::Unit::getTimeUnit, return_value_policy::reference)
+        // .def("get_time_order", &Derived::Unit::getTimeOrder, return_value_policy::reference)
+        // .def("get_angle_unit", &Derived::Unit::getAngleUnit, return_value_policy::reference)
+        // .def("get_angle_order", &Derived::Unit::getAngleOrder, return_value_policy::reference)
         .def(
             "to_string",
             &Derived::Unit::toString,

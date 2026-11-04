@@ -75,12 +75,12 @@ class SPICE : public Ephemeris
     ///
     /// @code
     ///     SPICE spice = SPICE(SPICE::Object::Earth);
-    ///     Shared<const Frame> frame = spice.accessFrame();
+    ///     Shared<const Frame> frame = spice.getFrame();
     /// @endcode
     ///
     /// @return Shared pointer to frame
 
-    virtual Shared<const Frame> accessFrame() const override;
+    virtual Shared<const Frame> getFrame() const override;
 
     /// @brief Convert SPICE object to string
     ///

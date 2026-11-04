@@ -21,7 +21,7 @@ bool Manager::hasFrameWithName(const String& aFrameName) const
     return frameMap_.find(aFrameName) != frameMap_.end();
 }
 
-Shared<const Frame> Manager::accessFrameWithName(const String& aFrameName) const
+Shared<const Frame> Manager::getFrameWithName(const String& aFrameName) const
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
@@ -50,7 +50,7 @@ Array<String> Manager::getAllFrameNames() const
     return frameNames;
 }
 
-const std::optional<Transform> Manager::accessCachedTransform(
+const std::optional<Transform> Manager::getCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
 ) const
 {

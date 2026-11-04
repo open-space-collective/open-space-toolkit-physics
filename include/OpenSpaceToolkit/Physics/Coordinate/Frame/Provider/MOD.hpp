@@ -62,11 +62,11 @@ class MOD : public Provider
     /// @brief Get the epoch.
     ///
     /// @code
-    ///     Instant epoch = provider.getEpoch();
+    ///     const Instant& epoch = provider.getEpoch();
     /// @endcode
     ///
-    /// @return The epoch instant
-    Instant getEpoch() const;
+    /// @return Const reference to the epoch instant
+    const Instant& getEpoch() const;
 
     /// @brief Get the transform at a given instant.
     ///

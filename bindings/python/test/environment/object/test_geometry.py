@@ -23,14 +23,14 @@ def geometry(composite: Composite) -> Geometry:
 
 
 class TestGeometry:
-    def test_access_composite_success(self, geometry: Geometry, composite: Composite):
-        assert geometry.access_composite() == composite
+    def test_get_composite_success(self, geometry: Geometry, composite: Composite):
+        assert geometry.get_composite() == composite
 
-    def test_access_composite_outlives_temporary_parent_success(
+    def test_get_composite_outlives_temporary_parent_success(
         self,
         composite: Composite,
     ):
-        accessed = Geometry(composite, Frame.GCRF()).access_composite()
+        accessed = Geometry(composite, Frame.GCRF()).get_composite()
 
         gc.collect()
 

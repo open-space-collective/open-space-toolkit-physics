@@ -40,29 +40,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
         )doc")
 
         .def(
-            "access_name",
-            &Object::accessName,
-            return_value_policy::reference,
-            R"doc(
-                Accesses the name of the Object.
-
-                Returns:
-                    str: The name of the Object.
-            )doc"
-        )
-
-        .def(
-            "access_frame",
-            &Object::accessFrame,
-            R"doc(
-                Accesses the frame of the Object.
-
-                Returns:
-                    Frame: The frame of the Object.
-            )doc"
-        )
-
-        .def(
             "get_name",
             &Object::getName,
             R"doc(

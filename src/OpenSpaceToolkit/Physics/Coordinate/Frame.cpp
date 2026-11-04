@@ -81,7 +81,7 @@ bool Frame::hasParent() const
     return parentFrameSPtr_ != nullptr;
 }
 
-Shared<const Frame> Frame::accessParent() const
+const Shared<const Frame>& Frame::getParent() const
 {
     if (parentFrameSPtr_ == nullptr)
     {
@@ -91,7 +91,7 @@ Shared<const Frame> Frame::accessParent() const
     return parentFrameSPtr_;
 }
 
-Shared<const Frame> Frame::accessAncestor(const Uint8 anAncestorDegree) const
+Shared<const Frame> Frame::getAncestor(const Uint8 anAncestorDegree) const
 {
     if (anAncestorDegree == 0)
     {
@@ -109,18 +109,18 @@ Shared<const Frame> Frame::accessAncestor(const Uint8 anAncestorDegree) const
 
     for (Uint8 degree = 0; degree < anAncestorDegree; ++degree)
     {
-        frameSPtr = frameSPtr->accessParent();
+        frameSPtr = frameSPtr->getParent();
     }
 
     return frameSPtr;
 }
 
-Shared<const Provider> Frame::accessProvider() const
+const Shared<const Provider>& Frame::getProvider() const
 {
     return providerSPtr_;
 }
 
-String Frame::getName() const
+const String& Frame::getName() const
 {
     return name_;
 }
@@ -202,7 +202,7 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
     const Shared<const Frame> thisSPtr = this->shared_from_this();
 
     const std::optional<Transform> cachedTransform =
-        FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant);
+        FrameManager::Get().getCachedTransform(thisSPtr, aFrameSPtr, anInstant);
 
     if (cachedTransform.has_value())
     {
@@ -224,19 +224,18 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     Transform transform_origin_common = Transform::Identity(anInstant);
 
-    for (auto framePtr = this; (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->accessParent().get())
+    for (auto framePtr = this; (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->getParent().get())
     {
-        transform_origin_common *= framePtr->accessProvider()->getTransformAt(anInstant);
+        transform_origin_common *= framePtr->getProvider()->getTransformAt(anInstant);
     }
 
     // Compute transform from destination to common ancestor
 
     Transform transform_destination_common = Transform::Identity(anInstant);
 
-    for (auto framePtr = aFrameSPtr.get(); (*framePtr) != (*commonAncestorSPtr);
-         framePtr = framePtr->accessParent().get())
+    for (auto framePtr = aFrameSPtr.get(); (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->getParent().get())
     {
-        transform_destination_common *= framePtr->accessProvider()->getTransformAt(anInstant);
+        transform_destination_common *= framePtr->getProvider()->getTransformAt(anInstant);
     }
 
     // Compute transform from origin to destination
@@ -351,7 +350,7 @@ Shared<const Frame> Frame::WithName(const String& aName)
         throw ostk::core::error::runtime::Undefined("Name");
     }
 
-    if (const auto frameSPtr = FrameManager::Get().accessFrameWithName(aName))
+    if (const auto frameSPtr = FrameManager::Get().getFrameWithName(aName))
     {
         return frameSPtr;
     }
@@ -442,7 +441,7 @@ Uint8 Frame::getDepth() const
 
         depth++;
 
-        frameSPtr = frameSPtr->accessParent();
+        frameSPtr = frameSPtr->getParent();
     }
 
     return depth;
@@ -455,7 +454,7 @@ Shared<const Frame> Frame::Emplace(
     const Shared<const Provider>& aProvider
 )
 {
-    if (const auto frameSPtr = FrameManager::Get().accessFrameWithName(aName))
+    if (const auto frameSPtr = FrameManager::Get().getFrameWithName(aName))
     {
         return frameSPtr;
     }
@@ -476,16 +475,16 @@ Shared<const Frame> Frame::FindCommonAncestor(
     const Uint8 secondFrameDepth = aSecondFrameSPtr->getDepth();
 
     Shared<const Frame> currentFSPtr = (firstFrameDepth > secondFrameDepth)
-                                         ? aFirstFrameSPtr->accessAncestor(firstFrameDepth - secondFrameDepth)
+                                         ? aFirstFrameSPtr->getAncestor(firstFrameDepth - secondFrameDepth)
                                          : aFirstFrameSPtr;
     Shared<const Frame> currentTSPtr = (firstFrameDepth > secondFrameDepth)
                                          ? aSecondFrameSPtr
-                                         : aSecondFrameSPtr->accessAncestor(secondFrameDepth - firstFrameDepth);
+                                         : aSecondFrameSPtr->getAncestor(secondFrameDepth - firstFrameDepth);
 
     while ((*currentFSPtr) != (*currentTSPtr))
     {
-        currentFSPtr = currentFSPtr->accessParent();
-        currentTSPtr = currentTSPtr->accessParent();
+        currentFSPtr = currentFSPtr->getParent();
+        currentTSPtr = currentTSPtr->getParent();
     }
 
     return currentFSPtr;

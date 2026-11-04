@@ -36,7 +36,7 @@ TOD* TOD::clone() const
     return new TOD(*this);
 }
 
-Instant TOD::getEpoch() const
+const Instant& TOD::getEpoch() const
 {
     return this->epoch_;
 }

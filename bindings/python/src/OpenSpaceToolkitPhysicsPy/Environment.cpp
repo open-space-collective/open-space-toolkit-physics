@@ -110,23 +110,25 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
         )
 
         .def(
-            "access_objects",
-            &Environment::accessObjects,
-            return_value_policy::reference,
+            "get_objects",
+            [](const Environment& self) -> Array<Shared<const Object>>
+            {
+                return self.getObjects();
+            },
             R"doc(
-                Access the objects in the environment.
+                Get the objects in the environment.
 
                 Returns:
                     list(Object): The list of objects.
             )doc"
         )
         .def(
-            "access_object_with_name",
-            &Environment::accessObjectWithName,
+            "get_object_with_name",
+            &Environment::getObjectWithName,
             arg("name"),
             return_value_policy::reference,
             R"doc(
-                Access an object with a given name.
+                Get an object with a given name.
 
                 Args:
                     name (str): An object name.
@@ -136,12 +138,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             )doc"
         )
         .def(
-            "access_celestial_object_with_name",
-            &Environment::accessCelestialObjectWithName,
+            "get_celestial_object_with_name",
+            &Environment::getCelestialObjectWithName,
             arg("name"),
             return_value_policy::reference,
             R"doc(
-                Access celestial object with a given name.
+                Get celestial object with a given name.
 
                 Args:
                     name (str): The name of the celestial object.
@@ -151,11 +153,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             )doc"
         )
         .def(
-            "access_central_celestial_object",
-            &Environment::accessCentralCelestialObject,
+            "get_central_celestial_object",
+            &Environment::getCentralCelestialObject,
             return_value_policy::reference,
             R"doc(
-                Access the central celestial object.
+                Get the central celestial object.
 
                 Returns:
                     Celestial: The central celestial object.

@@ -56,15 +56,11 @@ class Object
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Object& anObject);
 
-    const String& accessName() const;
+    const String& getName() const;
 
-    virtual Shared<const Frame> accessFrame() const = 0;
+    virtual Shared<const Frame> getFrame() const = 0;
 
-    const std::optional<Object::Geometry>& accessGeometry() const;
-
-    String getName() const;
-
-    std::optional<Object::Geometry> getGeometry() const;
+    const std::optional<Object::Geometry>& getGeometry() const;
 
     virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 

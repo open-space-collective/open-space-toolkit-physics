@@ -36,10 +36,10 @@ double Mass::in(const Mass::Unit& aUnit) const
 {
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * Mass::SIRatio(unit_) / Mass::SIRatio(aUnit);
+    return this->getValue() * Mass::SIRatio(unit_) / Mass::SIRatio(aUnit);
 }
 
 double Mass::inKilograms() const
@@ -49,7 +49,7 @@ double Mass::inKilograms() const
 
 String Mass::toString(int aPrecision) const
 {
-    return DoubleToString(this->accessValue(), aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]";
 }
 
 Mass Mass::Kilograms(double aValue)

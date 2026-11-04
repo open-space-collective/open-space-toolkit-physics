@@ -54,16 +54,16 @@ class Manager
 
     bool hasFrameWithName(const String& aFrameName) const;
 
-    /// @brief Access frame with the given name.
+    /// @brief Get frame with the given name.
     ///
     /// @code
-    ///     Shared<const Frame> frameSPtr = Manager::Get().accessFrameWithName("GCRF");
+    ///     Shared<const Frame> frameSPtr = Manager::Get().getFrameWithName("GCRF");
     /// @endcode
     ///
     /// @param [in] aFrameName A frame name
     /// @return Shared pointer to the frame
 
-    Shared<const Frame> accessFrameWithName(const String& aFrameName) const;
+    Shared<const Frame> getFrameWithName(const String& aFrameName) const;
 
     /// @brief Get names of all registered frames.
     ///
@@ -75,10 +75,10 @@ class Manager
 
     Array<String> getAllFrameNames() const;
 
-    /// @brief Access a cached transform between two frames at a given instant.
+    /// @brief Get a cached transform between two frames at a given instant.
     ///
     /// @code
-    ///     std::optional<Transform> transform = Manager::Get().accessCachedTransform(fromFrameSPtr, toFrameSPtr,
+    ///     std::optional<Transform> transform = Manager::Get().getCachedTransform(fromFrameSPtr, toFrameSPtr,
     ///     instant);
     /// @endcode
     ///
@@ -87,7 +87,7 @@ class Manager
     /// @param [in] anInstant An instant
     /// @return The cached transform, or std::nullopt if there is none
 
-    const std::optional<Transform> accessCachedTransform(
+    const std::optional<Transform> getCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
     ) const;
 

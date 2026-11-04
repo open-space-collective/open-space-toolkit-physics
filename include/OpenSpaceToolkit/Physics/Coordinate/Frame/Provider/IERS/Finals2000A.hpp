@@ -101,20 +101,20 @@ class Finals2000A
     /// @brief Access timestamp at which the BulletinA file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = finals2000A.accessLastModifiedTimestamp();
+    ///     const Instant& timestamp = finals2000A.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
-    const Instant& accessLastModifiedTimestamp() const;
+    const Instant& getLastModifiedTimestamp() const;
 
     /// @brief Get data interval
     ///
     /// @code
-    ///     Interval interval = finals2000A.getInterval();
+    ///     const Interval& interval = finals2000A.getInterval();
     /// @endcode
     ///
-    /// @return Data Intervalt of Instants
-    Interval getInterval() const;
+    /// @return Const reference to data Interval of Instants
+    const Interval& getInterval() const;
 
     /// @brief Get polar motion at Instant
     ///

@@ -84,32 +84,23 @@ class Velocity
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Velocity& aVelocity);
 
-    /// @brief Access coordinates
-    ///
-    /// @code
-    ///     velocity.accessCoordinates();
-    /// @endcode
-    ///
-    /// @return Reference to coordinates
-    const Vector3d& accessCoordinates() const;
-
-    /// @brief Access frame
-    ///
-    /// @code
-    ///     velocity.accessFrame();
-    /// @endcode
-    ///
-    /// @return Shared pointer to the frame
-    Shared<const Frame> accessFrame() const;
-
     /// @brief Get coordinates
     ///
     /// @code
     ///     velocity.getCoordinates();
     /// @endcode
     ///
-    /// @return Coordinates
-    Vector3d getCoordinates() const;
+    /// @return Const reference to coordinates
+    const Vector3d& getCoordinates() const;
+
+    /// @brief Get frame
+    ///
+    /// @code
+    ///     velocity.getFrame();
+    /// @endcode
+    ///
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Get the velocity unit
     ///

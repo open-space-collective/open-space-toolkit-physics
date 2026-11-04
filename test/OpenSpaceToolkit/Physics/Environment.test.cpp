@@ -189,21 +189,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjects)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetObjects)
 {
     {
-        ASSERT_EQ(1, environment_.accessObjects().getSize());
+        ASSERT_EQ(1, environment_.getObjects().getSize());
 
-        EXPECT_EQ("Earth", environment_.accessObjects()[0]->getName());
+        EXPECT_EQ("Earth", environment_.getObjects()[0]->getName());
+        EXPECT_EQ(&environment_.getObjects(), &environment_.getObjects());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetObjectWithName)
 {
     {
-        EXPECT_NO_THROW(environment_.accessObjectWithName("Earth"));
+        EXPECT_NO_THROW(environment_.getObjectWithName("Earth"));
 
-        const Shared<const Object> objectSPtr = environment_.accessObjectWithName("Earth");
+        const Shared<const Object> objectSPtr = environment_.getObjectWithName("Earth");
 
         EXPECT_TRUE(objectSPtr);
 
@@ -211,16 +212,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
     }
 
     {
-        EXPECT_ANY_THROW(Environment::Default().accessObjectWithName(""));
+        EXPECT_ANY_THROW(Environment::Default().getObjectWithName(""));
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetCelestialObjectWithName)
 {
     {
-        EXPECT_NO_THROW(environment_.accessCelestialObjectWithName("Earth"));
+        EXPECT_NO_THROW(environment_.getCelestialObjectWithName("Earth"));
 
-        const Shared<const Object> objectSPtr = environment_.accessCelestialObjectWithName("Earth");
+        const Shared<const Object> objectSPtr = environment_.getCelestialObjectWithName("Earth");
 
         EXPECT_TRUE(objectSPtr);
 
@@ -228,21 +229,21 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
     }
 
     {
-        EXPECT_ANY_THROW(Environment::Default().accessCelestialObjectWithName(""));
+        EXPECT_ANY_THROW(Environment::Default().getCelestialObjectWithName(""));
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCentralCelestial)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetCentralCelestial)
 {
     {
-        EXPECT_THROW(environment_.accessCentralCelestialObject(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(environment_.getCentralCelestialObject(), ostk::core::error::RuntimeError);
     }
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::Default());
 
         const Environment environment = {earthSPtr, {}};
-        EXPECT_NO_THROW(environment.accessCentralCelestialObject());
+        EXPECT_NO_THROW(environment.getCentralCelestialObject());
     }
 }
 
@@ -382,8 +383,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
     Environment environment = {startInstant, objects};
 
     const Shared<const Earth> earthSPtr =
-        std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
-    const Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.accessObjectWithName("Moon"));
+        std::dynamic_pointer_cast<const Earth>(environment.getObjectWithName("Earth"));
+    const Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.getObjectWithName("Moon"));
 
     for (const auto& instant : TimeInterval::Closed(startInstant, endInstant).generateGrid(step))
     {
@@ -432,11 +433,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
     Environment environment = {startInstant, objects};
 
     const Shared<const Earth> earthSPtr =
-        std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
+        std::dynamic_pointer_cast<const Earth>(environment.getObjectWithName("Earth"));
 
     const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF(), startInstant).value();
 
-    const Ellipsoid& ellipsoid = earthGeometry.accessComposite().as<Ellipsoid>();
+    const Ellipsoid& ellipsoid = earthGeometry.getComposite().as<Ellipsoid>();
 
     // Setup observer
 
@@ -546,7 +547,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
         const Duration stepDuration = Duration::Hours(1.0);
 
         const Shared<const Earth> earthSPtr =
-            std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
+            std::dynamic_pointer_cast<const Earth>(environment.getObjectWithName("Earth"));
 
         const Length earthEquatorialRadius = earthSPtr->getEquatorialRadius();
 
@@ -559,7 +560,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
             const Quaternion referenceOrientation = referenceData.at(instant).toConjugate();
 
             const Quaternion orientation =
-                earthSPtr->accessFrame()->getTransformTo(Frame::GCRF(), instant).getOrientation();
+                earthSPtr->getFrame()->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
             const Length errorAtSurface =
                 earthEquatorialRadius *

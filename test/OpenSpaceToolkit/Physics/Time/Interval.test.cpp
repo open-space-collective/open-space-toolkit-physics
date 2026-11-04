@@ -154,40 +154,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, IsDefined)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessStart)
-{
-    {
-        const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
-        const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT);
-
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::Closed).accessStart());
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::Open).accessStart());
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).accessStart());
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).accessStart());
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().accessStart());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessEnd)
-{
-    {
-        const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
-        const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT);
-
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::Closed).accessEnd());
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::Open).accessEnd());
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).accessEnd());
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).accessEnd());
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().accessEnd());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
 {
     {
@@ -198,6 +164,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
         EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::Open).getStart());
         EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getStart());
         EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getStart());
+
+        const Interval interval = Interval(startInstant, endInstant, Interval::Type::Closed);
+
+        EXPECT_EQ(&interval.getStart(), &interval.getStart());
     }
 
     {
@@ -215,6 +185,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetEnd)
         EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::Open).getEnd());
         EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getEnd());
         EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getEnd());
+
+        const Interval interval = Interval(startInstant, endInstant, Interval::Type::Closed);
+
+        EXPECT_EQ(&interval.getEnd(), &interval.getEnd());
     }
 
     {

@@ -423,25 +423,23 @@ Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeSca
     }
 
     // Limit the year based on the max number of nanoseconds we can store with a UInt64
-    if ((aDateTime.accessDate().getYear() < 1970) || (aDateTime.accessDate().getYear() > 2554))
+    if ((aDateTime.getDate().getYear() < 1970) || (aDateTime.getDate().getYear() > 2554))
     {
         throw ostk::core::error::RuntimeError(
-            "DateTime year {} out of supported range [{} - {}]", aDateTime.accessDate().getYear(), 1970, 2554
+            "DateTime year {} out of supported range [{} - {}]", aDateTime.getDate().getYear(), 1970, 2554
         );
     }
 
     // Days from 2000-01-01, then signed nanosecond offset from the J2000 epoch (2000-01-01 12:00:00)
 
     const std::int64_t dayCount =
-        daysFromCivil(
-            aDateTime.accessDate().getYear(), aDateTime.accessDate().getMonth(), aDateTime.accessDate().getDay()
-        ) -
+        daysFromCivil(aDateTime.getDate().getYear(), aDateTime.getDate().getMonth(), aDateTime.getDate().getDay()) -
         daysFromUnixEpochTo2000;
 
     const std::int64_t timeOfDay =
-        aDateTime.accessTime().getHour() * 3600000000000LL + aDateTime.accessTime().getMinute() * 60000000000LL +
-        aDateTime.accessTime().getSecond() * 1000000000LL + aDateTime.accessTime().getMillisecond() * 1000000LL +
-        aDateTime.accessTime().getMicrosecond() * 1000LL + aDateTime.accessTime().getNanosecond();
+        aDateTime.getTime().getHour() * 3600000000000LL + aDateTime.getTime().getMinute() * 60000000000LL +
+        aDateTime.getTime().getSecond() * 1000000000LL + aDateTime.getTime().getMillisecond() * 1000000LL +
+        aDateTime.getTime().getMicrosecond() * 1000LL + aDateTime.getTime().getNanosecond();
 
     const __int128 offset = static_cast<__int128>(dayCount) * nanosecondsPerDay + timeOfDay - nanosecondsPerHalfDay;
 

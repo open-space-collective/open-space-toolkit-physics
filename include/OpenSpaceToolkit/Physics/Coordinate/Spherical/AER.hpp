@@ -82,7 +82,7 @@ class AER
     /// @endcode
     ///
     /// @return Azimuth angle
-    Angle getAzimuth() const;
+    const Angle& getAzimuth() const;
 
     /// @brief Get the elevation angle
     ///
@@ -91,7 +91,7 @@ class AER
     /// @endcode
     ///
     /// @return Elevation angle
-    Angle getElevation() const;
+    const Angle& getElevation() const;
 
     /// @brief Get the range
     ///
@@ -100,7 +100,7 @@ class AER
     /// @endcode
     ///
     /// @return Range
-    Length getRange() const;
+    const Length& getRange() const;
 
     /// @brief Convert AER to a 3D vector (azimuth, elevation, range)
     ///

@@ -16,6 +16,6 @@ class TestAnalytical:
         assert analytical is not None
 
     def test_access_frame_success(self, analytical: Analytical):
-        accessed_frame = analytical.access_frame()
+        accessed_frame = analytical.get_frame()
 
         assert accessed_frame is not None

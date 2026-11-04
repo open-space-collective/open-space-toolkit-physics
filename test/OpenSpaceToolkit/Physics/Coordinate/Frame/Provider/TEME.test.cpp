@@ -106,7 +106,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
                 };
                 const Vector3d referenceAngularVelocity_TEME_ITRF_in_TEME = -referenceAngularVelocity_ITRF_TEME_in_TEME;
 
-                const Vector3d w_TEME_ITRF_in_TEME = transform_TEME_ITRF.accessAngularVelocity();
+                const Vector3d w_TEME_ITRF_in_TEME = transform_TEME_ITRF.getAngularVelocity();
 
                 const double dw = referenceScenario.third;
 

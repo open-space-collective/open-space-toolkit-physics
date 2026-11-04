@@ -114,62 +114,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            "access_instant",
-            &Transform::accessInstant,
-            return_value_policy::reference,
-            R"doc(
-                Access the instant.
-
-                Returns:
-                    Instant: Instant.
-            )doc"
-        )
-        .def(
-            "access_translation",
-            &Transform::accessTranslation,
-            return_value_policy::reference,
-            R"doc(
-                Access the translation.
-
-                Returns:
-                    np.ndarray: Translation.
-            )doc"
-        )
-        .def(
-            "access_velocity",
-            &Transform::accessVelocity,
-            return_value_policy::reference,
-            R"doc(
-                Access the velocity.
-
-                Returns:
-                    np.ndarray: Velocity.
-            )doc"
-        )
-        .def(
-            "access_orientation",
-            &Transform::accessOrientation,
-            return_value_policy::reference,
-            R"doc(
-                Access the orientation.
-
-                Returns:
-                    Quaternion: Orientation.
-            )doc"
-        )
-        .def(
-            "access_angular_velocity",
-            &Transform::accessAngularVelocity,
-            return_value_policy::reference,
-            R"doc(
-                Access the angular velocity.
-
-                Returns:
-                    np.ndarray: Angular velocity.
-            )doc"
-        )
-
-        .def(
             "get_instant",
             &Transform::getInstant,
             R"doc(
