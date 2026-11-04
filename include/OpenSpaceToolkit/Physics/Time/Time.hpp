@@ -86,15 +86,6 @@ class Time
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Time& aTime);
 
-    /// @brief Check if time is defined
-    ///
-    /// @code
-    ///     Time { 12, 34, 56 } .isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if time is defined
-    bool isDefined() const;
-
     /// @brief Get hour (0 - 23)
     ///
     /// @code
@@ -281,16 +272,6 @@ class Time
     [[deprecated("Use Time::replace(anHour, aMinute, aSecond, aMillisecond, aMicrosecond, aNanosecond) instead.")]]
     void setNanosecond(Uint16 aNanosecond);
 
-    /// @brief Constructs an undefined time
-    ///
-    /// @code
-    ///     Time time = Time::Undefined();
-    ///     time.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined time
-    static Time Undefined();
-
     /// @brief Constructs a time at midnight
     ///
     /// @code
@@ -346,16 +327,12 @@ class Time
     static Time Seconds(double aReal);
 
    private:
-    bool defined_;
-
     Uint8 hour_;
     Uint8 minute_;
     Uint8 second_;
     Uint16 millisecond_;
     Uint16 microsecond_;
     Uint16 nanosecond_;
-
-    Time();
 
     static void ValidateHour(int anHour);
     static void ValidateMinute(int aMinute);

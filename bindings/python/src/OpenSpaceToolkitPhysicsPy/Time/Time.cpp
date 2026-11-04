@@ -82,17 +82,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Time::isDefined,
-            R"doc(
-                Check if the time is defined.
-
-                Returns:
-                    bool: True if defined
-            )doc"
-        )
-
-        .def(
             "get_hour",
             &Time::getHour,
             R"doc(
@@ -364,17 +353,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Time(pybind11::module& aModule)
 
                 Returns:
                     str: String representation of time.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Time::Undefined,
-            R"doc(
-                Create an undefined time.
-
-                Returns:
-                    Time: Undefined time.
             )doc"
         )
         .def_static(

@@ -33,7 +33,6 @@ class TestTime:
 
         assert time is not None
         assert isinstance(time, Time)
-        assert time.is_defined()
 
     def test_parse_without_format(self) -> None:
         assert Time.parse("12:34:56.123.456") == Time.parse(
@@ -55,9 +54,6 @@ class TestTime:
     def test_operators(self, time: Time) -> None:
         assert (time == time) is not None
         assert (time != time) is not None
-
-    def test_is_defined(self, time: Time) -> None:
-        assert time.is_defined() is not None
 
     def test_get_hour(self, time: Time) -> None:
         assert time.get_hour() is not None
@@ -143,8 +139,9 @@ class TestTime:
 
         assert time.get_nanosecond() == 1
 
-    def test_undefined(self) -> None:
-        assert Time.undefined() is not None
+    def test_has_no_undefined(self) -> None:
+        assert not hasattr(Time, "undefined")
+        assert not hasattr(Time, "is_defined")
 
     def test_midnight(self) -> None:
         assert Time.midnight() is not None
