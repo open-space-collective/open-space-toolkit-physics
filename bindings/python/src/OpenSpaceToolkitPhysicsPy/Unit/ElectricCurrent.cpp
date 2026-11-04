@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::unit::ElectricCurrent;
 
@@ -32,8 +32,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const ElectricCurrent& self, const ElectricCurrent& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const ElectricCurrent& self, const ElectricCurrent& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         // .def(self < self)
         // .def(self <= self)

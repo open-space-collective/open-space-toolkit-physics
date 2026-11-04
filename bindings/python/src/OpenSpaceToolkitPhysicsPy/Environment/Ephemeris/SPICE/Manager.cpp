@@ -3,9 +3,9 @@
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Manager.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Manager(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::filesystem::Path;
@@ -97,7 +97,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Manager(pybind
         .def_static(
             "get",
             &Manager::Get,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Get the manager singleton.
 

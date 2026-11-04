@@ -1,12 +1,10 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -23,7 +21,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
     using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 
     {
-        class_<Earth, Celestial, Shared<Earth>>(
+        class_<Earth, Celestial>(
             aModule,
             "Earth",
             R"doc(
@@ -49,8 +47,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                 arg("J4_parameter_value"),
                 arg("ephemeris"),
                 arg("gravitational_model"),
-                arg("magnetic_model"),
-                arg("atmospheric_model"),
+                arg("magnetic_model").none(),
+                arg("atmospheric_model").none(),
                 R"doc(
                     Constructor
 
@@ -75,9 +73,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                     const Shared<EarthMagneticModel>&,
                     const Shared<EarthAtmosphericModel>&>(),
                 arg("ephemeris"),
-                arg("gravitational_model") = pybind11::none(),
-                arg("magnetic_model") = pybind11::none(),
-                arg("atmospheric_model") = pybind11::none(),
+                arg("gravitational_model") = nanobind::none(),
+                arg("magnetic_model") = nanobind::none(),
+                arg("atmospheric_model") = nanobind::none(),
                 R"doc(
                     Constructor
 
@@ -246,8 +244,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(pybind1
                 "from_models",
                 &Earth::FromModels,
                 arg("gravity_model"),
-                arg("magnetic_model"),
-                arg("atmospheric_model"),
+                arg("magnetic_model").none(),
+                arg("atmospheric_model").none(),
                 R"doc(
                     Create earth from specified models.
 

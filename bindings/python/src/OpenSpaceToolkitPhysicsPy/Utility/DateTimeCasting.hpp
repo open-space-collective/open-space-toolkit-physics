@@ -1,80 +1,123 @@
 /// Apache License 2.0
 
 #include <datetime.h>
+#include <optional>
+#include <type_traits>
 
-#include <pybind11/pybind11.h>
+#include <nanobind/nanobind.h>
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
-// https://github.com/pybind/pybind11/issues/1176 (MAIN)
-// https://pybind11.readthedocs.io/en/stable/advanced/cast/custom.html
-// https://github.com/pybind/pybind11/blob/master/include/pybind11/chrono.h
+// https://nanobind.readthedocs.io/en/latest/porting.html#type-casters
 // https://docs.python.org/3/c-api/datetime.html
-// https://en.cppreference.com/w/cpp/chrono/system_clock/to_time_t
-// https://github.com/pybind/pybind11/issues/2417
 
 using ostk::physics::time::DateTime;
 
-namespace pybind11
+namespace nanobind
 {
 namespace detail
 {
 
-template <>
-class type_caster<DateTime> : public type_caster_base<DateTime>
-{
-    using type = DateTime;
-    using base = type_caster_base<DateTime>;
+/// @brief                      Type caster for DateTime
+///
+///                             DateTime is a bound class, and this caster keeps accepting its instances (by
+///                             reference, like nanobind's own class caster). It also accepts a Python
+///                             `datetime.datetime`, and it returns every C++ DateTime to Python as a
+///                             `datetime.datetime`. This is the behaviour of the former pybind11 caster.
+///
+///                             It derives from `type_caster_base_tag`, so that nanobind still treats DateTime as a
+///                             bound class (`class_<DateTime>` requires it), like `type_caster_base<DateTime>`.
 
-   public:
-    // datetime.datetime (Python) -> DateTime (C++)
-    bool load(handle src, bool convert)
+template <>
+struct type_caster<DateTime> : type_caster_base_tag
+{
+    using Value = DateTime;
+
+    static constexpr auto Name = const_name<DateTime>();
+
+    template <typename T_>
+    using Cast = precise_cast_t<T_>;
+
+    template <typename T_>
+    bool can_cast() const noexcept
     {
+        return std::is_pointer_v<T_> || (valuePtr_ != nullptr);
+    }
+
+    // datetime.datetime (Python) -> DateTime (C++)
+    bool from_python(handle src, uint32_t flags, cleanup_list* cleanup) noexcept
+    {
+        if (src.is_none())
+        {
+            return false;
+        }
+
+        type_caster_base<DateTime> baseCaster;
+
+        if (baseCaster.from_python(src, flags, cleanup))
+        {
+            valuePtr_ = baseCaster.operator DateTime*();
+            return valuePtr_ != nullptr;
+        }
+
         // Lazy initialise the PyDateTime import
         if (!PyDateTimeAPI)
         {
             PyDateTime_IMPORT;
+
+            if (!PyDateTimeAPI)
+            {
+                PyErr_Clear();
+                return false;
+            }
         }
 
-        if (!src)
+        if (!PyDateTime_Check(src.ptr()))
+        {
             return false;
-
-        if (base::load(src, convert))
-        {
-            return true;
         }
-        else if (PyDateTime_Check(src.ptr()))
+
+        const int year = PyDateTime_GET_YEAR(src.ptr());
+        const int month = PyDateTime_GET_MONTH(src.ptr());
+        const int day = PyDateTime_GET_DAY(src.ptr());
+
+        const int hour = PyDateTime_DATE_GET_HOUR(src.ptr());
+        const int minute = PyDateTime_DATE_GET_MINUTE(src.ptr());
+        const int second = PyDateTime_DATE_GET_SECOND(src.ptr());
+
+        const int microseconds = PyDateTime_DATE_GET_MICROSECOND(src.ptr());
+
+        const int millisecond = microseconds / 1000;
+        const int microsecond = microseconds - millisecond * 1000;
+
+        try
         {
-            const int year = PyDateTime_GET_YEAR(src.ptr());
-            const int month = PyDateTime_GET_MONTH(src.ptr());
-            const int day = PyDateTime_GET_DAY(src.ptr());
-
-            const int hour = PyDateTime_DATE_GET_HOUR(src.ptr());
-            const int minute = PyDateTime_DATE_GET_MINUTE(src.ptr());
-            const int second = PyDateTime_DATE_GET_SECOND(src.ptr());
-
-            int microseconds = PyDateTime_DATE_GET_MICROSECOND(src.ptr());
-
-            const int millisecond = microseconds / 1000;
-            const int microsecond = microseconds - millisecond * 1000;
-
-            value = new DateTime(year, month, day, hour, minute, second, millisecond, microsecond);
-
-            return true;
+            value_.emplace(year, month, day, hour, minute, second, millisecond, microsecond);
         }
+        catch (...)
+        {
+            return false;
+        }
+
+        valuePtr_ = &(*value_);
 
         // Possibility to add conditions to convert datetime.date and datetime.time
 
-        return false;
+        return true;
     }
 
     // DateTime (C++) -> datetime.datetime (Python)
-    static handle cast(const DateTime& aDateTime, return_value_policy /* policy */, handle /* parent */)
+    static handle from_cpp(const DateTime& aDateTime, rv_policy /* policy */, cleanup_list* /* cleanup */) noexcept
     {
         // Lazy initialise the PyDateTime import
         if (!PyDateTimeAPI)
         {
             PyDateTime_IMPORT;
+
+            if (!PyDateTimeAPI)
+            {
+                return handle();
+            }
         }
 
         const int year = static_cast<int>(aDateTime.getDate().getYear());
@@ -87,7 +130,36 @@ class type_caster<DateTime> : public type_caster_base<DateTime>
 
         return PyDateTime_FromDateAndTime(year, month, day, hour, minute, second, microseconds);
     }
+
+    static handle from_cpp(const DateTime* aDateTimePtr, rv_policy aPolicy, cleanup_list* aCleanup) noexcept
+    {
+        if (aDateTimePtr == nullptr)
+        {
+            return none().release();
+        }
+
+        return from_cpp(*aDateTimePtr, aPolicy, aCleanup);
+    }
+
+    explicit operator DateTime*()
+    {
+        return valuePtr_;
+    }
+
+    explicit operator DateTime&()
+    {
+        return *valuePtr_;
+    }
+
+    explicit operator DateTime&&()
+    {
+        return (DateTime&&)*valuePtr_;
+    }
+
+   private:
+    DateTime* valuePtr_ = nullptr;
+    std::optional<DateTime> value_;
 };
 
 }  // namespace detail
-}  // namespace pybind11
+}  // namespace nanobind

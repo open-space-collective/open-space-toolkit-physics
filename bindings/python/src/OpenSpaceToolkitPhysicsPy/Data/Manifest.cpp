@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Manifest.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Manifest(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Manifest(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::data::Manifest;
 

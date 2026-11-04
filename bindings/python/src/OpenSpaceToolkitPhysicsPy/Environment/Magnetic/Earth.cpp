@@ -5,9 +5,9 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth/Manager.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::Directory;
     using ostk::core::type::Shared;
@@ -16,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
     using ostk::physics::environment::magnetic::earth::Manager;
     using ostk::physics::unit::Derived;
 
-    class_<Earth, Shared<Earth>> earth_magnetic_class(
+    class_<Earth> earth_magnetic_class(
         aModule,
         "Earth",
         R"doc(

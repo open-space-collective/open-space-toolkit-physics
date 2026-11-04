@@ -2,12 +2,16 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Utility/ArrayCasting.hpp>
 #include <OpenSpaceToolkitPhysicsPy/Utility/DateTimeCasting.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utility/EigenCasting.hpp>
+#include <OpenSpaceToolkitPhysicsPy/Utility/Hash.hpp>
 #include <OpenSpaceToolkitPhysicsPy/Utility/ShiftToString.hpp>
-#include <pybind11/chrono.h>
-#include <pybind11/eigen.h>
-#include <pybind11/numpy.h>
-#include <pybind11/operators.h>
-#include <pybind11/pybind11.h>
+#include <nanobind/eigen/dense.h>
+#include <nanobind/nanobind.h>
+#include <nanobind/stl/chrono.h>
+#include <nanobind/stl/function.h>
+#include <nanobind/trampoline.h>
+
+using namespace nanobind::literals;
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data.cpp>
@@ -16,7 +20,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Time.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Unit.cpp>
 
-PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
+NB_MODULE(OpenSpaceToolkitPhysicsPy, m)
 {
     // Add optional docstring for package OpenSpaceToolkitPhysicsPy
     m.doc() = "Physical units, time, reference frames, environment modeling for OpenSpaceToolkit";
@@ -38,4 +42,7 @@ PYBIND11_MODULE(OpenSpaceToolkitPhysicsPy, m)
     OpenSpaceToolkitPhysicsPy_Coordinate(m);
     OpenSpaceToolkitPhysicsPy_Environment(m);
     OpenSpaceToolkitPhysicsPy_Data(m);
+
+    // Restore pybind11's (and Python's) rule: a class that defines __eq__ without __hash__ is unhashable
+    disableHashOnEquality(m);
 }

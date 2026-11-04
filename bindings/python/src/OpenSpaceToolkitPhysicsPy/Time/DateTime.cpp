@@ -2,13 +2,11 @@
 
 #include <datetime.h>
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -66,8 +64,22 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const DateTime& self, const DateTime& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const DateTime& self, const DateTime& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<DateTime>))
         .def(

@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::coordinate::spherical::LLA;
     using ostk::physics::unit::Angle;
@@ -39,7 +39,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const LLA& self, const LLA& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -51,7 +56,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const LLA& self, const LLA& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -413,7 +423,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     LLA: LLA.
             )doc",
             arg("position"),
-            arg_v("celestial", nullptr, "None")
+            arg("celestial") = nullptr
         )
 
         ;

@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
@@ -49,7 +49,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -61,7 +66,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -74,7 +84,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self * self,
+            "__mul__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self * other;
+            },
+            is_operator(),
             R"doc(
                 Multiplication operator.
 
@@ -87,7 +102,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self *= self,
+            "__imul__",
+            [](Transform& self, const Transform& other) -> Transform&
+            {
+                self *= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator(),
             R"doc(
                 Multiplication assignment operator.
 

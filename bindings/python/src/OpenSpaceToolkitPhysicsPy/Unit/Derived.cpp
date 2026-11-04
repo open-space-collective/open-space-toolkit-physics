@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::unit::Angle;
     using ostk::physics::unit::Derived;
@@ -37,8 +37,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Derived& self, const Derived& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Derived& self, const Derived& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Derived>))
         .def(
@@ -144,8 +158,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Derived::Order& self, const Derived::Order& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Derived::Order& self, const Derived::Order& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def(
             "is_zero",
@@ -291,19 +319,33 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Derived::Unit& self, const Derived::Unit& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Derived::Unit& self, const Derived::Unit& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("is_compatible_with", &Derived::Unit::isCompatibleWith)
 
-        // .def("get_length_unit", &Derived::Unit::getLengthUnit, return_value_policy::reference)
-        // .def("get_length_order", &Derived::Unit::getLengthOrder, return_value_policy::reference)
-        // .def("get_mass_unit", &Derived::Unit::getMassUnit, return_value_policy::reference)
-        // .def("get_mass_order", &Derived::Unit::getMassOrder, return_value_policy::reference)
-        // .def("get_time_unit", &Derived::Unit::getTimeUnit, return_value_policy::reference)
-        // .def("get_time_order", &Derived::Unit::getTimeOrder, return_value_policy::reference)
-        // .def("get_angle_unit", &Derived::Unit::getAngleUnit, return_value_policy::reference)
-        // .def("get_angle_order", &Derived::Unit::getAngleOrder, return_value_policy::reference)
+        // .def("get_length_unit", &Derived::Unit::getLengthUnit, rv_policy::reference)
+        // .def("get_length_order", &Derived::Unit::getLengthOrder, rv_policy::reference)
+        // .def("get_mass_unit", &Derived::Unit::getMassUnit, rv_policy::reference)
+        // .def("get_mass_order", &Derived::Unit::getMassOrder, rv_policy::reference)
+        // .def("get_time_unit", &Derived::Unit::getTimeUnit, rv_policy::reference)
+        // .def("get_time_order", &Derived::Unit::getTimeOrder, rv_policy::reference)
+        // .def("get_angle_unit", &Derived::Unit::getAngleUnit, rv_policy::reference)
+        // .def("get_angle_order", &Derived::Unit::getAngleOrder, rv_policy::reference)
         .def(
             "to_string",
             &Derived::Unit::toString,

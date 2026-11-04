@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -37,7 +37,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Position& self, const Position& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -49,7 +54,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Position& self, const Position& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -160,7 +170,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def(
             "to_string",
             &Position::toString,
-            arg_v("precision", -1, "-1"),
+            arg("precision").sig("-1") = -1,
             R"doc(
                 Create a string representation.
 

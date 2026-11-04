@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -39,8 +39,22 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Interval& self, const Interval& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Interval& self, const Interval& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Interval>))
         .def(
@@ -423,11 +437,36 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     list[Interval]: Merged intervals.
             )doc"
         )
+        // An Interval default value inside Interval's own methods is a self-referential default (the function
+        // record holds an Interval instance, which nanobind reports as leaked at shutdown), so the default is
+        // a separate overload that leaves it to the C++ signature.
+        .def_static(
+            "get_gaps",
+            [](const ostk::core::container::Array<Interval>& anIntervalArray) -> ostk::core::container::Array<Interval>
+            {
+                return Interval::GetGaps(anIntervalArray);
+            },
+            arg("intervals"),
+            R"doc(
+                Creates a list of intervals gaps.
+
+                ```
+                intervals = [[1, 3], [5, 7], [9, 11]]
+                output = [[3, 5], [7, 9]]
+                ```
+
+                Args:
+                    intervals (list[Interval]): A list of intervals.
+
+                Returns:
+                    list[Interval]: Intervals gaps.
+            )doc"
+        )
         .def_static(
             "get_gaps",
             &Interval::GetGaps,
             arg("intervals"),
-            arg_v("interval", Interval::Undefined(), "Interval::Undefined()"),
+            arg("interval"),
             R"doc(
                 Creates a list of intervals gaps.
 
@@ -439,7 +478,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Args:
                     intervals (list[Interval]): A list of intervals.
-                    interval (Interval): The analysis interval. Used to compute gaps for the first and last interval. Defaults to Undefined.
+                    interval (Interval): The analysis interval. Used to compute gaps for the first and last interval.
 
                 Returns:
                     list[Interval]: Intervals gaps.
@@ -510,47 +549,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
         ;
 
-    // https://github.com/pybind/pybind11/pull/949 locally to avoid conflicts with other potential objects in other ostk
-    // modules
-    enum_<Interval::Type>(interval_class, "Type", pybind11::module_local())
-
-        .value(
-            "Undefined",
-            Interval::Type::Undefined,
-            R"doc(
-                Undefined interval type.
-            )doc"
-        )
-        .value(
-            "Closed",
-            Interval::Type::Closed,
-            R"doc(
-                Closed interval type.
-            )doc"
-        )
-        .value(
-            "Open",
-            Interval::Type::Open,
-            R"doc(
-                Open interval type.
-            )doc"
-        )
-        .value(
-            "HalfOpenLeft",
-            Interval::Type::HalfOpenLeft,
-            R"doc(
-                Half-open left interval type.
-            )doc"
-        )
-        .value(
-            "HalfOpenRight",
-            Interval::Type::HalfOpenRight,
-            R"doc(
-                Half-open right interval type.
-            )doc"
-        )
-
-        ;
+    // Interval::Type is mathematics' IntervalBase::Type, which ostk.mathematics already binds as RealInterval.Type.
+    // pybind11 bound a module-local copy here; nanobind keeps one Python type per C++ type, so expose that one.
+    interval_class.attr("Type") = module_::import_("ostk.mathematics.object").attr("RealInterval").attr("Type");
 
     implicitly_convertible<ostk::mathematics::object::Interval<ostk::physics::time::Instant>, Interval>();
 }

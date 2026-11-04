@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::mathematics::object::Vector2d;
     using ostk::mathematics::object::Vector3d;
@@ -12,14 +12,21 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
     using ostk::physics::unit::Angle;
 
     // Extend the mathematics module constructor
-    module math_module = module::import("ostk.mathematics.geometry");
+    module_ math_module = module_::import_("ostk.mathematics.geometry");
 
     // Get the Mathematics Angle class
-    class_<ostk::mathematics::geometry::Angle> math_angle =
-        math_module.attr("Angle").cast<class_<ostk::mathematics::geometry::Angle>>();
+    object math_angle = math_module.attr("Angle");
 
-    // Add a new constructor to the Mathematics Angle class
-    math_angle.def(init<const ostk::physics::unit::Angle&>());
+    // Add a new constructor to the Mathematics Angle class (nanobind appends it to the existing __init__ overloads)
+    cpp_function_def(
+        [](ostk::mathematics::geometry::Angle* self, const ostk::physics::unit::Angle& anAngle)
+        {
+            new (self) ostk::mathematics::geometry::Angle(anAngle);
+        },
+        scope(math_angle),
+        name("__init__"),
+        is_method()
+    );
 
     class_<Angle> angle(
         aModule,
@@ -57,14 +64,56 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
 
         // Define methods
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
-        .def(self + self)
-        .def(self - self)
+        .def(
+            "__add__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self + other;
+            },
+            is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Angle& self, const Angle& other)
+            {
+                return self - other;
+            },
+            is_operator()
+        )
 
-        .def(+self)
-        .def(-self)
+        .def(
+            "__pos__",
+            [](const Angle& self)
+            {
+                return +self;
+            },
+            is_operator()
+        )
+        .def(
+            "__neg__",
+            [](const Angle& self)
+            {
+                return -self;
+            },
+            is_operator()
+        )
 
         .def(
             "__mul__",
@@ -99,8 +148,26 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
             is_operator()
         )
 
-        .def(self += self)
-        .def(self -= self)
+        .def(
+            "__iadd__",
+            [](Angle& self, const Angle& other) -> Angle&
+            {
+                self += other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Angle& self, const Angle& other) -> Angle&
+            {
+                self -= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Angle>))
         .def(
@@ -263,7 +330,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         .def(
             "to_string",
             &Angle::toString,
-            arg_v("precision", -1, "-1"),
+            arg("precision").sig("-1") = -1,
             R"doc(
                 Get the string representation of the angle.
 

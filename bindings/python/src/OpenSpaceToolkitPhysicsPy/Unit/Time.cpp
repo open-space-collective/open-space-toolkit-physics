@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Time(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::unit::Time;
 
@@ -29,8 +29,22 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         )doc"
     )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Time& self, const Time& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Time& self, const Time& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         // .def(self < self)
         // .def(self <= self)
