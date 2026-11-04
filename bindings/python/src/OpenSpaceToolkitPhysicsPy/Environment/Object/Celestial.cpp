@@ -471,13 +471,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
     enum_<Celestial::FrameType>(celestial_class, "FrameType")
 
         .value(
-            "Undefined",
-            Celestial::FrameType::Undefined,
-            R"doc(
-                Undefined frame.
-            )doc"
-        )
-        .value(
             "NED",
             Celestial::FrameType::NED,
             R"doc(

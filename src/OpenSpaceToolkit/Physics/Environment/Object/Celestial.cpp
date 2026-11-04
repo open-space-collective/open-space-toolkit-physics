@@ -457,9 +457,6 @@ String Celestial::StringFromFrameType(const Celestial::FrameType& aFrameType)
 {
     switch (aFrameType)
     {
-        case Celestial::FrameType::Undefined:
-            return "Undefined";
-
         case Celestial::FrameType::NED:
             return "NED";
 

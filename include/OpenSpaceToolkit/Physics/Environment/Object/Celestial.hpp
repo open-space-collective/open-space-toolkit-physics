@@ -75,8 +75,7 @@ class Celestial : public Object
     enum class FrameType
     {
 
-        Undefined,  ///< Undefined frame
-        NED,        ///< North-East-Down (NED) frame
+        NED,  ///< North-East-Down (NED) frame
 
     };
 

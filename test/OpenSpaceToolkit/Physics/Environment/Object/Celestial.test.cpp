@@ -563,3 +563,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetAtmosphericDensit
         }
     }
 }
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, StringFromFrameType)
+{
+    using ostk::physics::environment::object::Celestial;
+
+    {
+        EXPECT_EQ("NED", Celestial::StringFromFrameType(Celestial::FrameType::NED));
+    }
+}
