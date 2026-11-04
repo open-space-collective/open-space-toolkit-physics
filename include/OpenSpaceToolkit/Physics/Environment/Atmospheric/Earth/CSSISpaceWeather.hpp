@@ -254,7 +254,7 @@ class CSSISpaceWeather
     static CSSISpaceWeather LoadLegacy(const File& aFile);
 
    private:
-    Date lastObservationDate_;
+    std::optional<Date> lastObservationDate_;
     Instant lastModifiedTimestamp_;
 
     Interval observationInterval_;

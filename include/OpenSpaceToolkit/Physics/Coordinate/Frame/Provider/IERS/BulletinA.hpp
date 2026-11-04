@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 
@@ -249,7 +251,7 @@ class BulletinA
     static BulletinA Load(const filesystem::File& aFile);
 
    private:
-    Date releaseDate_;
+    std::optional<Date> releaseDate_;
     Instant lastModifiedTimestamp_;
 
     Duration taiMinusUtc_;

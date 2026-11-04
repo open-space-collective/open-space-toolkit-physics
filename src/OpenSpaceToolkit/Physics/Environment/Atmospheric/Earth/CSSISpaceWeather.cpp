@@ -222,7 +222,7 @@ const Date& CSSISpaceWeather::accessLastObservationDate() const
         throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
     }
 
-    return lastObservationDate_;
+    return lastObservationDate_.value();
 }
 
 const Instant& CSSISpaceWeather::accessLastModifiedTimestamp() const
@@ -972,7 +972,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 }
 
 CSSISpaceWeather::CSSISpaceWeather()
-    : lastObservationDate_(Date::Undefined()),
+    : lastObservationDate_(std::nullopt),
       lastModifiedTimestamp_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),
       observations_(Map<int, CSSISpaceWeather::Reading>()),

@@ -74,15 +74,6 @@ class Date
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Date& aDate);
 
-    /// @brief Check if date is defined
-    ///
-    /// @code
-    ///     Date(2018, 1, 2).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if date is defined
-    bool isDefined() const;
-
     /// @brief Get year (1400 - 9999)
     ///
     /// @code
@@ -177,16 +168,6 @@ class Date
     [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setDay(Uint8 aDay);
 
-    /// @brief Constructs an undefined date
-    ///
-    /// @code
-    ///     Date date = Date::Undefined();
-    ///     date.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined date
-    static Date Undefined();
-
     /// @brief J2000 epoch (2000-01-01)
     ///
     /// @code
@@ -243,13 +224,9 @@ class Date
     static Date Parse(const String& aString, const std::optional<Date::Format>& aFormat = std::nullopt);
 
    private:
-    bool defined_;
-
     Uint16 year_;
     Uint8 month_;
     Uint8 day_;
-
-    Date();
 
     static void ValidateDate(int aYear, int aMonth, int aDay);
 };

@@ -370,9 +370,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         // calling Undefined Space Weather
         EXPECT_THROW(
             CSSISpaceWeather::Undefined().accessLastReadingWhere(
-                [](const CSSISpaceWeather::Reading& reading) -> bool
+                []([[maybe_unused]] const CSSISpaceWeather::Reading& reading) -> bool
                 {
-                    return reading.date.isDefined();
+                    return true;
                 },
                 Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
             ),
@@ -384,9 +384,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         // calling Space Weather with Undefined Instant
         EXPECT_THROW(
             CSSISpaceWeather_.accessLastReadingWhere(
-                [](const CSSISpaceWeather::Reading& reading) -> bool
+                []([[maybe_unused]] const CSSISpaceWeather::Reading& reading) -> bool
                 {
-                    return reading.date.isDefined();
+                    return true;
                 },
                 Instant::Undefined()
             ),
@@ -398,9 +398,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         // calling with Instant that starts before observations
         EXPECT_THROW(
             CSSISpaceWeather_.accessLastReadingWhere(
-                [](const CSSISpaceWeather::Reading& reading) -> bool
+                []([[maybe_unused]] const CSSISpaceWeather::Reading& reading) -> bool
                 {
-                    return reading.date.isDefined();
+                    return true;
                 },
                 Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
             ),

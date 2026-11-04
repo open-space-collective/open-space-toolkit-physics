@@ -41,7 +41,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
     ostk::core::utils::Print::Header(anOutputStream, "Bulletin A");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Release date:" << (aBulletinA.releaseDate_.isDefined() ? aBulletinA.releaseDate_.toString() : "Undefined");
+        << "Release date:" << (aBulletinA.releaseDate_.has_value() ? aBulletinA.releaseDate_->toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "TAI - UTC:"
         << (aBulletinA.taiMinusUtc_.isDefined()
@@ -104,7 +104,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
 
 bool BulletinA::isDefined() const
 {
-    return releaseDate_.isDefined() && taiMinusUtc_.isDefined() && taiMinusUtcEpoch_.isDefined() &&
+    return releaseDate_.has_value() && taiMinusUtc_.isDefined() && taiMinusUtcEpoch_.isDefined() &&
            observationInterval_.isDefined() && (!observations_.empty()) && predictionInterval_.isDefined() &&
            (!predictions_.empty());
 }
@@ -116,7 +116,7 @@ const Date& BulletinA::accessReleaseDate() const
         throw ostk::core::error::runtime::Undefined("Bulletin A");
     }
 
-    return releaseDate_;
+    return releaseDate_.value();
 }
 
 const Instant& BulletinA::accessLastModifiedTimestamp() const
@@ -493,7 +493,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
 
     while (std::getline(fileStream, line))
     {
-        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) &&
+        if ((lineIndex < 10) && (!bulletin.releaseDate_.has_value()) &&
             boost::regex_match(line, match, releaseDateRegex))
         {
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
@@ -598,7 +598,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
 }
 
 BulletinA::BulletinA()
-    : releaseDate_(Date::Undefined()),
+    : releaseDate_(std::nullopt),
       lastModifiedTimestamp_(Instant::Undefined()),
       taiMinusUtc_(Duration::Undefined()),
       taiMinusUtcEpoch_(Instant::Undefined()),

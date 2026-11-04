@@ -38,17 +38,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Date::isDefined,
-            R"doc(
-                Check if the date is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_year",
             &Date::getYear,
             R"doc(
@@ -168,17 +157,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
                     day (int): Day (1 - 31).
             )doc",
             arg("day")
-        )
-
-        .def_static(
-            "undefined",
-            &Date::Undefined,
-            R"doc(
-                Create an undefined date.
-
-                Returns:
-                    Date: Undefined date.
-            )doc"
         )
         .def_static(
             "J2000",
