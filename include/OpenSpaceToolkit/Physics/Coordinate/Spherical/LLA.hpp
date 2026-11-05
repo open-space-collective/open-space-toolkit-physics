@@ -3,7 +3,7 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA__
 
-#include <limits>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Pair.hpp>
@@ -171,7 +171,7 @@ class LLA
     Length calculateDistanceTo(
         const LLA& aLLA,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
     /// @brief Calculate the azimuth angles between this LLA coordinate and another LLA coordinate.
@@ -190,7 +190,7 @@ class LLA
     Pair<Angle, Angle> calculateAzimuthTo(
         const LLA& aLLA,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
     /// @brief Calculate a point between this LLA coordinate and another LLA coordinate. The altitude
@@ -213,7 +213,7 @@ class LLA
         const LLA& aLLA,
         double aRatio,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
     /// @brief Propagate this LLA coordinate in provided direction and distance. The altitude of this
@@ -234,7 +234,7 @@ class LLA
         const Angle& aDirection,
         const Length& aDistance,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
     /// @brief Generate LLAs between this LLA coordinate and another LLA coordinate at a given
@@ -256,7 +256,7 @@ class LLA
         const LLA& aLLA,
         const Size& aNumberOfPoints,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
     /// @brief Converts the LLA (Latitude, Longitude, Altitude) object to a 3D vector.
@@ -299,7 +299,7 @@ class LLA
     /// @return 3D vector representing the Cartesian coordinates.
     Vector3d toCartesian(
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
     /// @brief Converts the LLA (Latitude, Longitude, Altitude) object to a string representation.
@@ -343,7 +343,7 @@ class LLA
     static LLA Cartesian(
         const Vector3d& aCartesianCoordinateSet,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
     /// @brief Calculate the distance between two LLA coordinates. Will use
@@ -363,7 +363,7 @@ class LLA
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
     /// @brief Calculate the azimuth angles between two LLA coordinates. Will use
@@ -383,7 +383,7 @@ class LLA
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
     /// @brief Calculate a point between two LLA coordinates. The altitude of the returned coordinate
@@ -407,7 +407,7 @@ class LLA
         const LLA& aSecondLLA,
         double aRatio,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
     /// @brief Propagate LLA coordinates in provided direction and distance. The altitude of the
@@ -430,7 +430,7 @@ class LLA
         const Angle& aDirection,
         const Length& aDistance,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
     /// @brief Generate equidistant LLAs between two LLA coordinates for the specified number of
@@ -455,7 +455,7 @@ class LLA
         const LLA& aSecondLLA,
         const Size& aNumberOfPoints,
         const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
-        double anEllipsoidFlattening = std::numeric_limits<double>::quiet_NaN()
+        const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
     /// @brief Constructs an LLA from a Position. If a celestial object is not provided, the

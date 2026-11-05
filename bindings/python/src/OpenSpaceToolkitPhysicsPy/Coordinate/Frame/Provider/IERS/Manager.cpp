@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
 
 #include <OpenSpaceToolkit/Physics/Manager.cpp>
@@ -100,7 +102,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
                     instant (Instant): Instant.
 
                 Returns:
-                    float: UT1 - UTC [sec].
+                    float | None: UT1 - UTC [sec], or None if it is not tabulated at the instant.
             )doc"
         )
         .def(
@@ -114,7 +116,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
                     instant (Instant): Instant.
 
                 Returns:
-                    float: Length of day [ms].
+                    float | None: Length of day [ms], or None if it is not tabulated at the instant.
             )doc"
         )
 

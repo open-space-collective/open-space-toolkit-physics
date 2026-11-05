@@ -51,15 +51,16 @@ using ostk::physics::utility::ParseInt;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    // Missing integer cells are std::nullopt; printing them throws, as printing an undefined Integer did.
-    const auto integerValue = [](const std::optional<int>& anInteger) -> int
+    // Empty integer cells are printed as "-"
+    const auto integerValue = [](const std::optional<int>& anInteger) -> std::string
     {
-        if (!anInteger.has_value())
-        {
-            throw ostk::core::error::runtime::Undefined("Integer");
-        }
+        return anInteger.has_value() ? std::to_string(anInteger.value()) : std::string("-");
+    };
 
-        return anInteger.value();
+    // Empty cells are printed as NaN
+    const auto realValue = [](const std::optional<double>& aReal) -> double
+    {
+        return aReal.value_or(std::numeric_limits<double>::quiet_NaN());
     };
 
     Print::Header(anOutputStream, "CSSI Space Weather");
@@ -90,8 +91,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::Reading& observation = observationIt.second;
 
         Print::Line(anOutputStream) << String::Format(
-            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d} "
-            " {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  "
+            "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>4} "
+            " {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:.2f}  {:>2}  {:>4}  {:6.2f}  "
             "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
             observation.date.getYear(),
             observation.date.getMonth(),
@@ -116,16 +117,16 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
             integerValue(observation.Ap7),
             integerValue(observation.Ap8),
             integerValue(observation.ApAvg),
-            observation.Cp,
+            realValue(observation.Cp),
             integerValue(observation.C9),
             integerValue(observation.ISN),
-            observation.F107Obs,
-            observation.F107Adj,
+            realValue(observation.F107Obs),
+            realValue(observation.F107Adj),
             observation.F107DataType,
-            observation.F107ObsCenter81,
-            observation.F107ObsLast81,
-            observation.F107AdjCenter81,
-            observation.F107AdjLast81
+            realValue(observation.F107ObsCenter81),
+            realValue(observation.F107ObsLast81),
+            realValue(observation.F107AdjCenter81),
+            realValue(observation.F107AdjLast81)
         );
     }
 
@@ -137,8 +138,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::Reading& dailyPrediction = dailyPredictionIt.second;
 
         Print::Line(anOutputStream) << String::Format(
-            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>4d} "
-            " {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:>2d}  {:.2f}  {:>2d}  {:>4d}  {:6.2f}  "
+            "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>4} "
+            " {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:.2f}  {:>2}  {:>4}  {:6.2f}  "
             "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
             dailyPrediction.date.getYear(),
             dailyPrediction.date.getMonth(),
@@ -163,16 +164,16 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
             integerValue(dailyPrediction.Ap7),
             integerValue(dailyPrediction.Ap8),
             integerValue(dailyPrediction.ApAvg),
-            dailyPrediction.Cp,
+            realValue(dailyPrediction.Cp),
             integerValue(dailyPrediction.C9),
             integerValue(dailyPrediction.ISN),
-            dailyPrediction.F107Obs,
-            dailyPrediction.F107Adj,
+            realValue(dailyPrediction.F107Obs),
+            realValue(dailyPrediction.F107Adj),
             dailyPrediction.F107DataType,
-            dailyPrediction.F107ObsCenter81,
-            dailyPrediction.F107ObsLast81,
-            dailyPrediction.F107AdjCenter81,
-            dailyPrediction.F107AdjLast81
+            realValue(dailyPrediction.F107ObsCenter81),
+            realValue(dailyPrediction.F107ObsLast81),
+            realValue(dailyPrediction.F107AdjCenter81),
+            realValue(dailyPrediction.F107AdjLast81)
         );
     }
 
@@ -187,20 +188,20 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::Reading& monthlyPrediction = monthlyPredictionIt.second;
 
         Print::Line(anOutputStream) << String::Format(
-            "{:04}-{:02}-{:02}  {:>4d}  {:>2d}  {:>4d}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>4}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
             monthlyPrediction.date.getYear(),
             monthlyPrediction.date.getMonth(),
             monthlyPrediction.date.getDay(),
             integerValue(monthlyPrediction.BSRN),
             integerValue(monthlyPrediction.ND),
             integerValue(monthlyPrediction.ISN),
-            monthlyPrediction.F107Obs,
-            monthlyPrediction.F107Adj,
+            realValue(monthlyPrediction.F107Obs),
+            realValue(monthlyPrediction.F107Adj),
             monthlyPrediction.F107DataType,
-            monthlyPrediction.F107ObsCenter81,
-            monthlyPrediction.F107ObsLast81,
-            monthlyPrediction.F107AdjCenter81,
-            monthlyPrediction.F107AdjLast81
+            realValue(monthlyPrediction.F107ObsCenter81),
+            realValue(monthlyPrediction.F107ObsLast81),
+            realValue(monthlyPrediction.F107AdjCenter81),
+            realValue(monthlyPrediction.F107AdjLast81)
         );
     }
 
@@ -505,10 +506,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         return ParseInt(obj.getString().trim());
     };
 
-    const auto parseOptionalRealCell = [](const Object& obj) -> double
+    const auto parseOptionalRealCell = [](const Object& obj) -> std::optional<double>
     {
         if (!obj.isDefined())
-            return std::numeric_limits<double>::quiet_NaN();
+            return std::nullopt;
 
         if (obj.isReal())
             return obj.getReal();
@@ -517,10 +518,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
             return static_cast<double>(obj.getInteger());
 
         if (!obj.isString())
-            return std::numeric_limits<double>::quiet_NaN();
+            return std::nullopt;
 
         if (obj.getString().trim().empty())
-            return std::numeric_limits<double>::quiet_NaN();
+            return std::nullopt;
 
         return ParseDouble(obj.getString().trim());
     };
@@ -562,16 +563,16 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         const std::optional<int> Ap7 = parseOptionalIntegerCell(row[18]);
         const std::optional<int> Ap8 = parseOptionalIntegerCell(row[19]);
         const std::optional<int> ApAvg = parseOptionalIntegerCell(row[20]);
-        const double Cp = parseOptionalRealCell(row[21]);
+        const std::optional<double> Cp = parseOptionalRealCell(row[21]);
         const std::optional<int> C9 = parseOptionalIntegerCell(row[22]);
         const std::optional<int> ISN = parseOptionalIntegerCell(row[23]);
-        const double F107Obs = parseOptionalRealCell(row[24]);
-        const double F107Adj = parseOptionalRealCell(row[25]);
+        const std::optional<double> F107Obs = parseOptionalRealCell(row[24]);
+        const std::optional<double> F107Adj = parseOptionalRealCell(row[25]);
         const String F107DataType = row[26].getString();
-        const double F107ObsCenter81 = parseOptionalRealCell(row[27]);
-        const double F107ObsLast81 = parseOptionalRealCell(row[28]);
-        const double F107AdjCenter81 = parseOptionalRealCell(row[29]);
-        const double F107AdjLast81 = parseOptionalRealCell(row[30]);
+        const std::optional<double> F107ObsCenter81 = parseOptionalRealCell(row[27]);
+        const std::optional<double> F107ObsLast81 = parseOptionalRealCell(row[28]);
+        const std::optional<double> F107AdjCenter81 = parseOptionalRealCell(row[29]);
+        const std::optional<double> F107AdjLast81 = parseOptionalRealCell(row[30]);
 
         const CSSISpaceWeather::Reading reading = {
             date,

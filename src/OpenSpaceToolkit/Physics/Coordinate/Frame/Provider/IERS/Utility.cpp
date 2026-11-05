@@ -51,11 +51,6 @@ double interpolateUt1MinusUtc(
     const Instant& anInstant
 )
 {
-    if (std::isnan(aPreviousUt1MinusUtc) || std::isnan(aNextUt1MinusUtc))
-    {
-        return std::numeric_limits<double>::quiet_NaN();
-    }
-
     // UT1 - UTC changes by a few milliseconds per day: a step larger than half a second can only be a leap second
 
     if (std::abs(aNextUt1MinusUtc - aPreviousUt1MinusUtc) < 0.5)

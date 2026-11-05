@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Finals2000A__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Finals2000A__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
@@ -49,6 +51,7 @@ using ostk::physics::time::Interval;
 class Finals2000A
 {
    public:
+    /// @brief One line of the file. Real-valued fields that are empty in the file are std::nullopt.
     struct Data
     {
         int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
@@ -59,29 +62,29 @@ class Finals2000A
 
         char polarMotionflag;  ///< IERS (I) or Prediction (P) flag for Bulletin A polar motion values
 
-        double x_A;       ///< [asec] Bulletin A PM-x
-        double xError_A;  ///< [asec] Error in PM-x
-        double y_A;       ///< [asec] Bulletin A PM-y
-        double yError_A;  ///< [asec] Error in PM-y
+        std::optional<double> x_A;       ///< [asec] Bulletin A PM-x
+        std::optional<double> xError_A;  ///< [asec] Error in PM-x
+        std::optional<double> y_A;       ///< [asec] Bulletin A PM-y
+        std::optional<double> yError_A;  ///< [asec] Error in PM-y
 
         char ut1MinusUtcFlag;  ///< IERS (I) or Prediction (P) flag for Bulletin A UT1-UTC values
 
-        double ut1MinusUtc_A;       ///< [s] Bulletin A UT1-UTC
-        double ut1MinusUtcError_A;  ///< [s] Error in UT1-UTC
-        double lod_A;               ///< [ms] Bulletin A LOD (not always filled)
-        double lodError_A;          ///< [ms] Error in LOD (not always filled)
+        std::optional<double> ut1MinusUtc_A;       ///< [s] Bulletin A UT1-UTC
+        std::optional<double> ut1MinusUtcError_A;  ///< [s] Error in UT1-UTC
+        std::optional<double> lod_A;               ///< [ms] Bulletin A LOD (not always filled)
+        std::optional<double> lodError_A;          ///< [ms] Error in LOD (not always filled)
 
         char nutationFlag;  ///< IERS (I) or Prediction (P) flag for Bulletin A nutation values
 
-        double dx_A;           ///< [amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed
-        double dxError_A;      ///< [amsec] Error in dX
-        double dy_A;           ///< [amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed
-        double dyError_A;      ///< [amsec] Error in dY
-        double x_B;            ///< [asec] Bulletin B PM-x
-        double y_B;            ///< [asec] Bulletin B PM-y
-        double ut1MinusUtc_B;  ///< [s] Bulletin B UT1-UTC
-        double dx_B;           ///< [amsec] Bulletin B dX wrt IAU2000A Nutation
-        double dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
+        std::optional<double> dx_A;  ///< [amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed
+        std::optional<double> dxError_A;  ///< [amsec] Error in dX
+        std::optional<double> dy_A;  ///< [amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed
+        std::optional<double> dyError_A;      ///< [amsec] Error in dY
+        std::optional<double> x_B;            ///< [asec] Bulletin B PM-x
+        std::optional<double> y_B;            ///< [asec] Bulletin B PM-y
+        std::optional<double> ut1MinusUtc_B;  ///< [s] Bulletin B UT1-UTC
+        std::optional<double> dx_B;           ///< [amsec] Bulletin B dX wrt IAU2000A Nutation
+        std::optional<double> dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
     };
 
     /// @brief Output stream operator.
@@ -135,22 +138,22 @@ class Finals2000A
     /// @brief Get UT1-UTC at Instant
     ///
     /// @code
-    ///     double ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
+    ///     std::optional<double> ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
-    /// @return UT1-UTC
-    double getUt1MinusUtcAt(const Instant& anInstant) const;
+    /// @return UT1-UTC [s], or std::nullopt if it is not tabulated at the Instant
+    std::optional<double> getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief Get LOD (Length Of Day) at Instant
     ///
     /// @code
-    ///     double lod = finals2000A.getLodAt(anInstant);
+    ///     std::optional<double> lod = finals2000A.getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
-    /// @return LOD
-    double getLodAt(const Instant& anInstant) const;
+    /// @return LOD [ms], or std::nullopt if it is not tabulated at the Instant
+    std::optional<double> getLodAt(const Instant& anInstant) const;
 
     /// @brief Get Data reading at instant
     ///

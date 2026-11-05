@@ -50,7 +50,7 @@ class CSSISpaceWeather
    public:
     /// @brief A daily reading
     ///
-    /// Integer-valued fields are std::nullopt, and real-valued fields are NaN, when the cell is empty in the file.
+    /// Numeric fields are std::nullopt when the cell is empty in the file.
     struct Reading
     {
         Date date;                /// UTC day of reading.
@@ -75,23 +75,23 @@ class CSSISpaceWeather
         std::optional<int> Ap7;    /// Planetary Equivalent Amplitude (Ap) for 1800-2100 UT.
         std::optional<int> Ap8;    /// Planetary Equivalent Amplitude (Ap) for 2100-0000 UT.
         std::optional<int> ApAvg;  /// Arithmetic average of the 8 Ap indices for the day.
-        double Cp;  /// Cp or Planetary Daily Character Figure. A qualitative estimate of overall level of magnetic
-                    /// activity for the day determined from the sum of the 8 Ap indices. Cp ranges, in steps of
-                    /// one-tenth, from 0 (quiet) to 2.5 (highly disturbed).
+        std::optional<double> Cp;  /// Cp or Planetary Daily Character Figure. A qualitative estimate of overall level
+                                   /// of magnetic activity for the day determined from the sum of the 8 Ap indices. Cp
+                                   /// ranges, in steps of one-tenth, from 0 (quiet) to 2.5 (highly disturbed).
         std::optional<int> C9;  /// C9. A conversion of the 0-to-2.5 range of the Cp index to one digit between 0 and 9.
         std::optional<int> ISN;  /// International Sunspot Number. Records contain the Zurich number through 1980 Dec 31
                                  /// and the International Brussels number thereafter.
-        double F107Obs;  /// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947
-                         /// Feb 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on.
-                         /// Expressed in units of 10-22 W/m2/Hz.
-        double F107Adj;  /// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
-        String F107DataType;     /// Flux Qualifier.
-                                 /// OBS: Observed flux measurement INT: CelesTrak linear interpolation of missing data
-                                 /// PRD: 45-Day predicted flux PRM: Monthly predicted flux
-        double F107ObsCenter81;  /// Centered 81-day arithmetic average of F107 (observed).
-        double F107ObsLast81;    /// Last 81-day arithmetic average of F107 (observed).
-        double F107AdjCenter81;  /// Centered 81-day arithmetic average of F10.7 (adjusted).
-        double F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
+        std::optional<double> F107Obs;  /// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT
+                                        /// daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000
+                                        /// UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
+        std::optional<double> F107Adj;  /// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
+        String F107DataType;            /// Flux Qualifier.
+                              /// OBS: Observed flux measurement INT: CelesTrak linear interpolation of missing data
+                              /// PRD: 45-Day predicted flux PRM: Monthly predicted flux
+        std::optional<double> F107ObsCenter81;  /// Centered 81-day arithmetic average of F107 (observed).
+        std::optional<double> F107ObsLast81;    /// Last 81-day arithmetic average of F107 (observed).
+        std::optional<double> F107AdjCenter81;  /// Centered 81-day arithmetic average of F10.7 (adjusted).
+        std::optional<double> F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
     };
 
     /// @brief Output stream operator.

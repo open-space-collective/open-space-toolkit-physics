@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A(pybind11::module& aModule)
@@ -76,7 +78,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
                     instant (Instant): Instant.
 
                 Returns:
-                    float: UT1-UTC.
+                    float | None: UT1-UTC [s], or None if it is not tabulated at the instant.
             )doc"
         )
         .def(
@@ -90,7 +92,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
                     instant (Instant): Instant.
 
                 Returns:
-                    float: LOD.
+                    float | None: LOD [ms], or None if it is not tabulated at the instant.
             )doc"
         )
         .def(

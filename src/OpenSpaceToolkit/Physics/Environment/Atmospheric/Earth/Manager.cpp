@@ -215,12 +215,12 @@ double Manager::getF107SolarFluxAt(const Instant& anInstant) const
 
     static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> double
     {
-        return aReading.F107Obs;
+        return aReading.F107Obs.value();
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return !std::isnan(aReading.F107Obs);
+        return aReading.F107Obs.has_value();
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
@@ -242,12 +242,12 @@ double Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 
     static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> double
     {
-        return aReading.F107ObsCenter81;
+        return aReading.F107ObsCenter81.value();
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return !std::isnan(aReading.F107ObsCenter81);
+        return aReading.F107ObsCenter81.has_value();
     };
 
     const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);

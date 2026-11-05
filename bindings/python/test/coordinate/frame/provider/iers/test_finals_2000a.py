@@ -1,6 +1,5 @@
 # Apache License 2.0
 
-import math
 
 from datetime import datetime
 
@@ -49,10 +48,11 @@ class TestFinals2000A:
             )
             == 1.5646
         )
-        assert math.isnan(
+        assert (
             finals_2000a.get_lod_at(
                 Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)
             )
+            is None
         )
 
     def test_get_data_at_success(self, finals_2000a: Finals2000A):
@@ -74,18 +74,18 @@ class TestFinals2000A:
         assert data.ut1_minus_utc_flag == "P"
         assert data.ut1_minus_utc_a == -0.17524010000000001
         assert data.ut1_minus_utc_error_a == 0.0002041
-        assert math.isnan(data.lod_a)
-        assert math.isnan(data.lod_error_a)
+        assert data.lod_a is None
+        assert data.lod_error_a is None
         assert data.nutation_flag == "P"
         assert data.dx_a == 0.021999999999999999
         assert data.dx_error_a == 0.128
         assert data.dy_a == 0.17899999999999999
         assert data.dy_error_a == 0.16
-        assert math.isnan(data.x_b)
-        assert math.isnan(data.y_b)
-        assert math.isnan(data.ut1_minus_utc_b)
-        assert math.isnan(data.dx_b)
-        assert math.isnan(data.dy_b)
+        assert data.x_b is None
+        assert data.y_b is None
+        assert data.ut1_minus_utc_b is None
+        assert data.dx_b is None
+        assert data.dy_b is None
 
     def test_undefined_success(self):
         assert Finals2000A.undefined() is not None

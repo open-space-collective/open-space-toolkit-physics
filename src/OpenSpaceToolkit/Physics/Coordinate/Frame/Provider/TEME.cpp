@@ -82,8 +82,14 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
 
     // UT1 - UTC (s)
 
-    const double dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
-    const double tut = time + dut1 / DAYSEC;
+    const std::optional<double> dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+
+    if (!dut1.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
+    }
+
+    const double tut = time + *dut1 / DAYSEC;
 
     // UT1 as a 2-part Julian Date
 

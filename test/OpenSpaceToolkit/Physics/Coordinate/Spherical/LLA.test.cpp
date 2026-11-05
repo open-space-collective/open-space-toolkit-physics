@@ -620,7 +620,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
     }
 
     {
-        EXPECT_ANY_THROW(LLA::Undefined().toCartesian(Length::Undefined(), std::numeric_limits<double>::quiet_NaN()));
+        EXPECT_ANY_THROW(LLA::Undefined().toCartesian(Length::Undefined(), std::nullopt));
     }
 
     {
@@ -757,9 +757,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
     }
 
     {
-        EXPECT_ANY_THROW(
-            LLA::Cartesian(Vector3d::Undefined(), Length::Undefined(), std::numeric_limits<double>::quiet_NaN())
-        );
+        EXPECT_ANY_THROW(LLA::Cartesian(Vector3d::Undefined(), Length::Undefined(), std::nullopt));
     }
 
     {

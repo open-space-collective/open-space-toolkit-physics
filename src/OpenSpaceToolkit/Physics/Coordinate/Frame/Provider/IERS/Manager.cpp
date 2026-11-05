@@ -144,7 +144,7 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
     return Vector2d::Undefined();
 }
 
-double Manager::getUt1MinusUtcAt(const Instant& anInstant) const
+std::optional<double> Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -186,11 +186,9 @@ double Manager::getUt1MinusUtcAt(const Instant& anInstant) const
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 
-double Manager::getLodAt(const Instant& anInstant) const
+std::optional<double> Manager::getLodAt(const Instant& anInstant) const
 {
     if (!anInstant.isDefined())
     {
@@ -207,8 +205,6 @@ double Manager::getLodAt(const Instant& anInstant) const
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain LOD at [{}].", anInstant.toString());
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 
 void Manager::loadBulletinA(const BulletinA& aBulletinA)

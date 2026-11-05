@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <cmath>
+#include <sstream>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
@@ -40,6 +41,24 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, StreamOperator_EmptyCells)
+{
+    // The monthly predictions of this file have many empty integer cells: they print as "-"
+
+    const File file =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "NRLMSISE00/SW-Last5Years-Regression-PR366.csv"));
+
+    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+
+    std::ostringstream stream;
+
+    EXPECT_NO_THROW(stream << spaceWeather);
+
+    EXPECT_NE(std::string::npos, stream.str().find("2026-06-01"));
+    EXPECT_NE(std::string::npos, stream.str().find(" -"));
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, IsDefined)
@@ -96,8 +115,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(10, firstObservation.ApAvg);
         EXPECT_EQ("OBS", firstObservation.F107DataType);
 
-        EXPECT_NEAR(69.1, firstObservation.F107Obs, 1e-15);
-        EXPECT_NEAR(71.4, firstObservation.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(69.1, firstObservation.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(71.4, firstObservation.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -180,8 +199,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(9, firstDailyPrediction.ApAvg);
         EXPECT_EQ("PRD", firstDailyPrediction.F107DataType);
 
-        EXPECT_NEAR(164.6, firstDailyPrediction.F107Obs, 1e-15);
-        EXPECT_NEAR(160.2, firstDailyPrediction.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(164.6, firstDailyPrediction.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(160.2, firstDailyPrediction.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -263,8 +282,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(11, firstMonthlyPrediction.ND);
         EXPECT_EQ("PRM", firstMonthlyPrediction.F107DataType);
 
-        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107Obs, 1e-15);
-        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -319,8 +338,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(10, reading.ApAvg);
         EXPECT_EQ("OBS", reading.F107DataType);
 
-        EXPECT_NEAR(69.1, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(71.4, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(69.1, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(71.4, reading.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -334,8 +353,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(9, reading.ApAvg);
         EXPECT_EQ("PRD", reading.F107DataType);
 
-        EXPECT_NEAR(164.6, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(160.2, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(164.6, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(160.2, reading.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -347,8 +366,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(11, reading.ND);
         EXPECT_EQ("PRM", reading.F107DataType);
 
-        EXPECT_NEAR(151.3, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(154.2, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(151.3, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(154.2, reading.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -438,7 +457,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return !std::isnan(reading.F107Obs);
+                return reading.F107Obs.has_value();
             },
             Instant::DateTime(DateTime::Parse("2018-01-03 00:00:00"), Scale::UTC)
         );
@@ -535,16 +554,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(4, reading.Ap7);
         EXPECT_EQ(4, reading.Ap8);
         EXPECT_EQ(4, reading.ApAvg);
-        EXPECT_NEAR(0.1, reading.Cp, 1e-15);
+        EXPECT_NEAR(0.1, reading.Cp.value(), 1e-15);
         EXPECT_EQ(0, reading.C9);
         EXPECT_EQ(102, reading.ISN);
-        EXPECT_NEAR(114.2, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(115.0, reading.F107Adj, 1e-15);
+        EXPECT_NEAR(114.2, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(115.0, reading.F107Adj.value(), 1e-15);
         EXPECT_EQ("PRD", reading.F107DataType);
-        EXPECT_NEAR(121.6, reading.F107ObsCenter81, 1e-15);
-        EXPECT_NEAR(128.2, reading.F107ObsLast81, 1e-15);
-        EXPECT_NEAR(122.4, reading.F107AdjCenter81, 1e-15);
-        EXPECT_NEAR(126.3, reading.F107AdjLast81, 1e-15);
+        EXPECT_NEAR(121.6, reading.F107ObsCenter81.value(), 1e-15);
+        EXPECT_NEAR(128.2, reading.F107ObsLast81.value(), 1e-15);
+        EXPECT_NEAR(122.4, reading.F107AdjCenter81.value(), 1e-15);
+        EXPECT_NEAR(126.3, reading.F107AdjLast81.value(), 1e-15);
     }
 
     {
@@ -573,16 +592,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_FALSE(reading.Ap7.has_value());
         EXPECT_FALSE(reading.Ap8.has_value());
         EXPECT_FALSE(reading.ApAvg.has_value());
-        EXPECT_TRUE(std::isnan(reading.Cp));
+        EXPECT_FALSE(reading.Cp.has_value());
         EXPECT_FALSE(reading.C9.has_value());
         EXPECT_EQ(98, reading.ISN);
-        EXPECT_NEAR(125.8, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(129.3, reading.F107Adj, 1e-15);
+        EXPECT_NEAR(125.8, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(129.3, reading.F107Adj.value(), 1e-15);
         EXPECT_EQ("PRM", reading.F107DataType);
-        EXPECT_NEAR(125.1, reading.F107ObsCenter81, 1e-15);
-        EXPECT_NEAR(121.6, reading.F107ObsLast81, 1e-15);
-        EXPECT_NEAR(128.3, reading.F107AdjCenter81, 1e-15);
-        EXPECT_NEAR(122.8, reading.F107AdjLast81, 1e-15);
+        EXPECT_NEAR(125.1, reading.F107ObsCenter81.value(), 1e-15);
+        EXPECT_NEAR(121.6, reading.F107ObsLast81.value(), 1e-15);
+        EXPECT_NEAR(128.3, reading.F107AdjCenter81.value(), 1e-15);
+        EXPECT_NEAR(122.8, reading.F107AdjLast81.value(), 1e-15);
     }
 }
 
@@ -613,7 +632,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_EQ(Date::Parse("2026-05-09", Date::Format::Standard), reading.date);
         EXPECT_EQ("PRM", reading.F107DataType);  // tag is preserved on the row
-        EXPECT_NEAR(127.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(127.8, reading.F107Obs.value(), 1e-15);
     }
 
     {
@@ -622,7 +641,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             spaceWeather.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2026-05-09 12:50:01"), Scale::UTC));
 
         EXPECT_EQ(Date::Parse("2026-05-09", Date::Format::Standard), reading.date);
-        EXPECT_NEAR(127.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(127.8, reading.F107Obs.value(), 1e-15);
     }
 
     {
@@ -633,7 +652,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_EQ(Date::Parse("2026-07-01", Date::Format::Standard), reading.date);
         EXPECT_EQ("PRM", reading.F107DataType);
-        EXPECT_NEAR(121.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(121.8, reading.F107Obs.value(), 1e-15);
     }
 }
 
