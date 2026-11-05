@@ -14,7 +14,6 @@ namespace physics
 {
 namespace unit
 {
-
 using ostk::physics::utility::DoubleToString;
 
 Mass::Mass(double aValue, const Mass::Unit& aUnit)
@@ -28,11 +27,6 @@ Mass* Mass::clone() const
     return new Mass(*this);
 }
 
-bool Mass::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != Mass::Unit::Undefined);
-}
-
 Mass::Unit Mass::getUnit() const
 {
     return unit_;
@@ -40,11 +34,6 @@ Mass::Unit Mass::getUnit() const
 
 double Mass::in(const Mass::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return std::numeric_limits<double>::quiet_NaN();
-    }
-
     if (unit_ == aUnit)
     {
         return this->accessValue();
@@ -60,17 +49,7 @@ double Mass::inKilograms() const
 
 String Mass::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Mass");
-    }
-
     return DoubleToString(this->accessValue(), aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]";
-}
-
-Mass Mass::Undefined()
-{
-    return {std::numeric_limits<double>::quiet_NaN(), Mass::Unit::Undefined};
 }
 
 Mass Mass::Kilograms(double aValue)
@@ -89,9 +68,6 @@ String Mass::StringFromUnit(const Mass::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case Mass::Unit::Undefined:
-            return "Undefined";
-
         case Mass::Unit::Kilogram:
             return "Kilogram";
 
@@ -148,7 +124,6 @@ double Mass::SIRatio(const Mass::Unit& aUnit)
 
     return std::numeric_limits<double>::quiet_NaN();
 }
-
 }  // namespace unit
 }  // namespace physics
 }  // namespace ostk

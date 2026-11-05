@@ -71,8 +71,8 @@ class Geometry
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Geometry geometryA = Geometry::Undefined();
-    ///     Geometry geometryB = Geometry::Undefined();
+    ///     Geometry geometryA = {composite, Frame::GCRF()};
+    ///     Geometry geometryB = {composite, Frame::GCRF()};
     ///     geometryA == geometryB;
     /// @endcode
     ///
@@ -84,8 +84,8 @@ class Geometry
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Geometry geometryA = Geometry::Undefined();
-    ///     Geometry geometryB = Geometry::Undefined();
+    ///     Geometry geometryA = {composite, Frame::GCRF()};
+    ///     Geometry geometryB = {composite, Frame::ITRF()};
     ///     geometryA != geometryB;
     /// @endcode
     ///
@@ -99,16 +99,6 @@ class Geometry
     /// @param [in] aGeometry A geometry
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry);
-
-    /// @brief Check if geometry is defined
-    ///
-    /// @code
-    ///     Geometry geometry = Geometry::Undefined();
-    ///     geometry.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if geometry is defined
-    bool isDefined() const;
 
     /// @brief Print geometry to output stream
     ///
@@ -179,15 +169,6 @@ class Geometry
     /// @param [in] aGeometry A geometry
     /// @return Intersection of geometry with another geometry
     Geometry intersectionWith(const Geometry& aGeometry) const;
-
-    /// @brief Constructs an undefined geometry
-    ///
-    /// @code
-    ///     Geometry geometry = Geometry::Undefined(); // Undefined
-    /// @endcode
-    ///
-    /// @return Undefined geometry
-    static Geometry Undefined();
 
    private:
     Composite composite_;

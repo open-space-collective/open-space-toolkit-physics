@@ -46,11 +46,6 @@ void Manager::fetchKernel(const Kernel& aKernel) const
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const File kernelFile = aKernel.getFile();
 
     if (kernelFile.exists())
@@ -145,9 +140,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
                      )
                   << std::endl;
 
-        const Kernel fetchedKernel = {
-            Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile
-        };
+        const Kernel fetchedKernel = Kernel::File(fetchedKernelFile);
 
         matchingKernels.add(fetchedKernel);
     }

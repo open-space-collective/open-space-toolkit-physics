@@ -26,10 +26,9 @@ class Mass : public Unit
     enum class Unit
     {
 
-        Undefined,  ///< Undefined
-        Kilogram,   ///< Kilogram (SI)
-        Tonne,      ///< Tonne
-        Pound       ///< Pound
+        Kilogram,  ///< Kilogram (SI)
+        Tonne,     ///< Tonne
+        Pound      ///< Pound
 
     };
 
@@ -53,16 +52,6 @@ class Mass : public Unit
     /// @return A pointer to a dynamically allocated clone of this mass
 
     virtual Mass* clone() const override;
-
-    /// @brief Check if the mass is defined.
-    ///
-    /// @code
-    ///     Mass::Kilograms(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    virtual bool isDefined() const override;
 
     /// @brief Get the mass unit.
     ///
@@ -105,16 +94,6 @@ class Mass : public Unit
     /// @return A string representation
 
     virtual String toString(int aPrecision = -1) const override;
-
-    /// @brief Construct an undefined mass.
-    ///
-    /// @code
-    ///     Mass mass = Mass::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined mass
-
-    static Mass Undefined();
 
     /// @brief Construct a mass from a value in kilograms.
     ///

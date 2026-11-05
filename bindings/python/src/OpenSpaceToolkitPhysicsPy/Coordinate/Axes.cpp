@@ -69,17 +69,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
         .def("__repr__", &(shiftToString<Axes>))
 
         .def(
-            "is_defined",
-            &Axes::isDefined,
-            R"doc(
-                Check if defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "x",
             +[](const Axes& anAxes) -> Vector3d
             {
@@ -144,17 +133,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
 
                 Returns:
                     Axes: Axes in the other frame of reference.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Axes::Undefined,
-            R"doc(
-                Get undefined axes.
-
-                Returns:
-                    Axes: Undefined axes.
             )doc"
         )
 

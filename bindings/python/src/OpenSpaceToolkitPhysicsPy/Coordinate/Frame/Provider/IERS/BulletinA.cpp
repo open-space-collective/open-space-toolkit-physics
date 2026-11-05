@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(pybind11::module& aModule)
@@ -47,16 +49,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
         .def("__repr__", &(shiftToString<BulletinA>))
 
         .def(
-            "is_defined",
-            &BulletinA::isDefined,
-            R"doc(
-                Returns true if the bulletin is defined.
-
-                Returns:
-                    bool: True if the bulletin is defined.
-            )doc"
-        )
-        .def(
             "access_release_date",
             &BulletinA::accessReleaseDate,
             R"doc(
@@ -73,7 +65,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
                 Access the TAI-UTC.
 
                 Returns:
-                    Duration: The TAI-UTC.
+                    Duration | None: The TAI-UTC, or None if the bulletin does not hold it.
             )doc"
         )
         .def(
@@ -124,7 +116,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
                 Get TAI-UTC.
 
                 Returns:
-                    Duration: TAI-UTC.
+                    Duration | None: TAI-UTC, or None if the bulletin does not hold it.
             )doc"
         )
         .def(
@@ -186,16 +178,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &BulletinA::Undefined,
-            R"doc(
-                Undefined factory function.
-
-                Returns:
-                    BulletinA: An undefined Bulletin A object.
-            )doc"
-        )
         .def_static(
             "load",
             &BulletinA::Load,

@@ -539,12 +539,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
 
     {
         EXPECT_ANY_THROW(Interval::Undefined().generateGrid(Duration::Seconds(1.0)));
-        EXPECT_ANY_THROW(Interval(
-                             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-                             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                             Interval::Type::Closed
-        )
-                             .generateGrid(Duration::Undefined()));
     }
 
     {
@@ -748,7 +742,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Centered)
 
     {
         EXPECT_ANY_THROW(Interval::Centered(Instant::Undefined(), Duration::Minutes(1.0), Interval::Type::Closed));
-        EXPECT_ANY_THROW(Interval::Centered(Instant::J2000(), Duration::Undefined(), Interval::Type::Closed));
         EXPECT_ANY_THROW(Interval::Centered(Instant::J2000(), Duration::Minutes(1.0), Interval::Type::Undefined));
     }
 }

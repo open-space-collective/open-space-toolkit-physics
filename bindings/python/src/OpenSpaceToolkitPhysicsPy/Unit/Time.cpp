@@ -62,17 +62,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Time::isDefined,
-            R"doc(
-                Check if the time is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "to_string",
             &Time::toString,
             "aPrecision"_a = -1,
@@ -87,16 +76,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Time::Undefined,
-            R"doc(
-                Create an undefined time.
-
-                Returns:
-                    Time: An undefined time.
-            )doc"
-        )
         .def_static(
             "string_from_unit",
             &Time::StringFromUnit,
@@ -128,13 +107,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
 
     enum_<Time::Unit>(time, "Unit")
 
-        .value(
-            "Undefined",
-            Time::Unit::Undefined,
-            R"doc(
-                Undefined time unit.
-            )doc"
-        )
         .value(
             "Nanosecond",
             Time::Unit::Nanosecond,

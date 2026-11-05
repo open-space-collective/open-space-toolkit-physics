@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit_Derived__
 #define __OpenSpaceToolkit_Physics_Unit_Derived__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -196,15 +198,15 @@ class Derived : public Unit
         /// @param [in] anAngleOrder The order of the angle unit
 
         Unit(
-            const Length::Unit& aLengthUnit,
+            const std::optional<Length::Unit>& aLengthUnit,
             const Order& aLengthOrder,
-            const Mass::Unit& aMassUnit,
+            const std::optional<Mass::Unit>& aMassUnit,
             const Order& aMassOrder,
-            const Time::Unit& aTimeUnit,
+            const std::optional<Time::Unit>& aTimeUnit,
             const Order& aTimeOrder,
-            const ElectricCurrent::Unit& anElectricCurrentUnit,
+            const std::optional<ElectricCurrent::Unit>& anElectricCurrentUnit,
             const Order& anElectricCurrentOrder,
-            const Angle::Unit& anAngleUnit,
+            const std::optional<Angle::Unit>& anAngleUnit,
             const Order& anAngleOrder
         );
 
@@ -230,16 +232,6 @@ class Derived : public Unit
 
         bool operator!=(const Unit& aUnit) const;
 
-        /// @brief Check if the unit is defined.
-        ///
-        /// @code
-        ///     Derived::Unit::MeterPerSecond().isDefined(); // True
-        /// @endcode
-        ///
-        /// @return True if defined
-
-        bool isDefined() const;
-
         /// @brief Check if this unit is compatible with another unit (same dimension orders).
         ///
         /// @code
@@ -259,7 +251,7 @@ class Derived : public Unit
         ///
         /// @return A const reference to the length unit
 
-        const Length::Unit& accessLengthUnit() const;
+        const std::optional<Length::Unit>& accessLengthUnit() const;
 
         /// @brief Access the length order.
         ///
@@ -279,7 +271,7 @@ class Derived : public Unit
         ///
         /// @return A const reference to the mass unit
 
-        const Mass::Unit& accessMassUnit() const;
+        const std::optional<Mass::Unit>& accessMassUnit() const;
 
         /// @brief Access the mass order.
         ///
@@ -299,7 +291,7 @@ class Derived : public Unit
         ///
         /// @return A const reference to the time unit
 
-        const Time::Unit& accessTimeUnit() const;
+        const std::optional<Time::Unit>& accessTimeUnit() const;
 
         /// @brief Access the time order.
         ///
@@ -319,7 +311,7 @@ class Derived : public Unit
         ///
         /// @return A const reference to the electric current unit
 
-        const ElectricCurrent::Unit& accessElectricCurrentUnit() const;
+        const std::optional<ElectricCurrent::Unit>& accessElectricCurrentUnit() const;
 
         /// @brief Access the electric current order.
         ///
@@ -339,7 +331,7 @@ class Derived : public Unit
         ///
         /// @return A const reference to the angle unit
 
-        const Angle::Unit& accessAngleUnit() const;
+        const std::optional<Angle::Unit>& accessAngleUnit() const;
 
         /// @brief Access the angle order.
         ///
@@ -581,34 +573,24 @@ class Derived : public Unit
 
         static Unit MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit);
 
-        /// @brief Construct an undefined derived unit.
-        ///
-        /// @code
-        ///     Derived::Unit unit = Derived::Unit::Undefined();
-        /// @endcode
-        ///
-        /// @return An undefined derived unit
-
-        static Unit Undefined();
-
         // static Unit Parse(const String& aString);
 
        private:
         // S.I.
 
-        Length::Unit lengthUnit_;
+        std::optional<Length::Unit> lengthUnit_;
         Order lengthOrder_;
 
-        Mass::Unit massUnit_;
+        std::optional<Mass::Unit> massUnit_;
         Order massOrder_;
 
-        Time::Unit timeUnit_;
+        std::optional<Time::Unit> timeUnit_;
         Order timeOrder_;
 
         // Temperature::Unit temperatureUnit_;
         // Order           temperatureOrder_;
 
-        ElectricCurrent::Unit electricCurrentUnit_;
+        std::optional<ElectricCurrent::Unit> electricCurrentUnit_;
         Order electricCurrentOrder_;
 
         // LuminousIntensity::Unit luminousIntensityUnit_;
@@ -616,7 +598,7 @@ class Derived : public Unit
 
         // Derived
 
-        Angle::Unit angleUnit_;
+        std::optional<Angle::Unit> angleUnit_;
         Order angleOrder_;
     };
 
@@ -676,16 +658,6 @@ class Derived : public Unit
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUnit);
 
-    /// @brief Check if the derived unit is defined.
-    ///
-    /// @code
-    ///     Derived(1.0, Derived::Unit::MeterPerSecond()).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    virtual bool isDefined() const override;
-
     /// @brief Get the derived unit.
     ///
     /// @code
@@ -717,16 +689,6 @@ class Derived : public Unit
     /// @return A string representation
 
     virtual String toString(int aPrecision = -1) const override;
-
-    /// @brief Construct an undefined derived unit.
-    ///
-    /// @code
-    ///     Derived derived = Derived::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined derived unit
-
-    static Derived Undefined();
 
     /// @brief Parse a derived unit from a string.
     ///

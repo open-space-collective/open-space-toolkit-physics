@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Data_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 
@@ -97,11 +98,11 @@ class Manager : public BaseManager
     /// @brief Get a copy of the current manifest file.
     ///
     /// @code
-    ///     Manifest manifest = Manager::Get().getManifest();
+    ///     std::optional<Manifest> manifest = Manager::Get().getManifest();
     /// @endcode
     ///
-    /// @return Manifest file
-    const Manifest getManifest() const;
+    /// @return Manifest file, or std::nullopt if no manifest is loaded
+    const std::optional<Manifest> getManifest() const;
 
     /// @brief Load a new manifest file.
     ///
@@ -151,7 +152,7 @@ class Manager : public BaseManager
    protected:
     URL remoteUrl_;
 
-    mutable Manifest manifest_;
+    mutable std::optional<Manifest> manifest_;
 
     /// @brief Default constructor.
     ///

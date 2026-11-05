@@ -1,6 +1,5 @@
 /// Apache License 2.0
 
-#include <cmath>
 #include <limits>
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
@@ -20,33 +19,9 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, Constructor)
 
     {
         const double value = std::numeric_limits<double>::quiet_NaN();
-        const Time::Unit unit = Time::Unit::Undefined;
+        const Time::Unit unit = Time::Unit::Second;
 
         EXPECT_NO_THROW(Time(value, unit));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Unit_Time, IsDefined)
-{
-    using ostk::physics::unit::Time;
-
-    {
-        EXPECT_TRUE(Time(0.0, Time::Unit::Second).isDefined());
-
-        EXPECT_TRUE(Time(1.0, Time::Unit::Nanosecond).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Microsecond).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Millisecond).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Second).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Minute).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Hour).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Day).isDefined());
-        EXPECT_TRUE(Time(1.0, Time::Unit::Week).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Time::Undefined().isDefined());
-        EXPECT_FALSE(Time(std::numeric_limits<double>::quiet_NaN(), Time::Unit::Second).isDefined());
-        EXPECT_FALSE(Time(1.0, Time::Unit::Undefined).isDefined());
     }
 }
 
@@ -55,7 +30,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, GetUnit)
     using ostk::physics::unit::Time;
 
     {
-        EXPECT_EQ(Time::Unit::Undefined, Time(1.0, Time::Unit::Undefined).getUnit());
         EXPECT_EQ(Time::Unit::Nanosecond, Time(1.0, Time::Unit::Nanosecond).getUnit());
         EXPECT_EQ(Time::Unit::Microsecond, Time(1.0, Time::Unit::Microsecond).getUnit());
         EXPECT_EQ(Time::Unit::Millisecond, Time(1.0, Time::Unit::Millisecond).getUnit());
@@ -92,17 +66,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, In)
         EXPECT_EQ(24.0 * 60.0 * 60.0, Time(1.0, Time::Unit::Day).in(Time::Unit::Second));
         EXPECT_EQ(7.0 * 24.0 * 60.0 * 60.0, Time(1.0, Time::Unit::Week).in(Time::Unit::Second));
     }
-
-    {
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Nanosecond)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Microsecond)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Millisecond)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Second)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Minute)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Hour)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Day)));
-        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Week)));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Time, InSeconds)
@@ -111,10 +74,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, InSeconds)
 
     {
         EXPECT_EQ(123.456, Time(123.456, Time::Unit::Second).inSeconds());
-    }
-
-    {
-        EXPECT_TRUE(std::isnan(Time::Undefined().inSeconds()));
     }
 }
 
@@ -179,22 +138,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, ToString)
         EXPECT_EQ("123.456 [day]", Time(123.456123, Time::Unit::Day).toString(3));
         EXPECT_EQ("123.456 [week]", Time(123.456123, Time::Unit::Week).toString(3));
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().toString());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Unit_Time, Undefined)
-{
-    using ostk::physics::unit::Time;
-
-    {
-        EXPECT_NO_THROW(Time::Undefined());
-        EXPECT_FALSE(Time::Undefined().isDefined());
-
-        // EXPECT_NO_THROW(Time::Undefined().in(Time::Unit::Second)) ;
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Time, Seconds)
@@ -203,7 +146,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, Seconds)
 
     {
         EXPECT_NO_THROW(Time::Seconds(123.456));
-        EXPECT_TRUE(Time::Seconds(123.456).isDefined());
 
         EXPECT_EQ(123.456, Time::Seconds(123.456).in(Time::Unit::Second));
     }
@@ -214,7 +156,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, StringFromUnit)
     using ostk::physics::unit::Time;
 
     {
-        EXPECT_EQ("Undefined", Time::StringFromUnit(Time::Unit::Undefined));
         EXPECT_EQ("Nanosecond", Time::StringFromUnit(Time::Unit::Nanosecond));
         EXPECT_EQ("Microsecond", Time::StringFromUnit(Time::Unit::Microsecond));
         EXPECT_EQ("Millisecond", Time::StringFromUnit(Time::Unit::Millisecond));

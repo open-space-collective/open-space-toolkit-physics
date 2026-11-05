@@ -13,7 +13,6 @@ def environment() -> Environment:
 
 
 class TestEnvironment:
-
     def test_constructors(self):
         instant = Instant.date_time(DateTime(2019, 1, 1, 0, 0, 0), Scale.UTC)
         objects = []
@@ -28,16 +27,9 @@ class TestEnvironment:
         assert env is not None
         assert isinstance(env, Environment)
 
-    def test_undefined(self):
-        assert Environment.undefined() is not None
-        assert Environment.undefined().is_defined() is False
-
     def test_default(self):
         assert Environment.default() is not None
         assert Environment.default(set_global_instance=True) is not None
-
-    def test_is_defined(self, environment: Environment):
-        assert environment.is_defined() is not None
 
     def test_has_object_with_name(self, environment: Environment):
         assert environment.has_object_with_name("Earth") is not None

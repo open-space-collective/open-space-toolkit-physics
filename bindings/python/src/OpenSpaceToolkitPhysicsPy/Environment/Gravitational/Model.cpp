@@ -116,17 +116,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
             .def("__repr__", &(shiftToString<Model::Parameters>))
 
             .def(
-                "is_defined",
-                &Model::Parameters::isDefined,
-                R"doc(
-                    Check if the parameters are defined.
-
-                    Returns:
-                        bool: True if defined.
-                )doc"
-            )
-
-            .def(
                 "compute_geocentric_radius_at",
                 &Model::Parameters::computeGeocentricRadiusAt,
                 arg("latitude"),
@@ -202,17 +191,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                 &Model::Parameters::C40_,
                 R"doc(
                     C40.
-                )doc"
-            )
-
-            .def_static(
-                "undefined",
-                &Model::Parameters::Undefined,
-                R"doc(
-                    Get undefined parameters.
-
-                    Returns:
-                        GravitationalParameters: Undefined parameters.
                 )doc"
             )
 

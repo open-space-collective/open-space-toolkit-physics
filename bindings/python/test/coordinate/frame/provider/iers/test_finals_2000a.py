@@ -17,9 +17,6 @@ class TestFinals2000A:
     def test_repr_success(self, finals_2000a: Finals2000A):
         assert repr(finals_2000a).startswith("-- Finals 2000A --")
 
-    def test_is_defined_success(self, finals_2000a: Finals2000A):
-        assert finals_2000a.is_defined() is True
-
     def test_get_interval_success(self, finals_2000a: Finals2000A):
         assert (
             finals_2000a.get_interval().to_string()
@@ -86,9 +83,6 @@ class TestFinals2000A:
         assert data.ut1_minus_utc_b is None
         assert data.dx_b is None
         assert data.dy_b is None
-
-    def test_undefined_success(self):
-        assert Finals2000A.undefined() is not None
 
     def test_load_success(self, finals_2000a_file: File):
         assert Finals2000A.load(finals_2000a_file) is not None

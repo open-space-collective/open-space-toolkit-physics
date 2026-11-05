@@ -40,8 +40,7 @@ class Sun : public Model
 
     enum class Type
     {
-        Undefined,  /// Undefined
-        Spherical   /// The spherical gravity originating from a point source at the center of the Sun
+        Spherical  /// The spherical gravity originating from a point source at the center of the Sun
     };
 
     /// @brief Constructor
@@ -84,15 +83,6 @@ class Sun : public Model
     ///
     /// @return Pointer to Sun gravitational model
     virtual Sun* clone() const override;
-
-    /// @brief Check if the Sun gravitational model is defined
-    ///
-    /// @code
-    ///     bool isDefined = sunGrav.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the Sun gravitational model is defined
-    virtual bool isDefined() const override;
 
     /// @brief Returns true if the gravitational model is a point mass model
     ///

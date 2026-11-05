@@ -146,12 +146,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
             Frame::TEMEOfEpoch(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 1), Scale::UTC))
         );
     }
-
-    {
-        EXPECT_FALSE(Frame::Undefined() == Frame::Undefined());
-        EXPECT_FALSE(Frame::GCRF() == Frame::Undefined());
-        EXPECT_FALSE(Frame::Undefined() == Frame::GCRF());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
@@ -240,12 +234,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
             Frame::TEMEOfEpoch(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 1), Scale::UTC))
         );
     }
-
-    {
-        EXPECT_TRUE(Frame::Undefined() != Frame::Undefined());
-        EXPECT_TRUE(Frame::GCRF() != Frame::Undefined());
-        EXPECT_TRUE(Frame::Undefined() != Frame::GCRF());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
@@ -256,29 +244,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
         EXPECT_NO_THROW(std::cout << (*customFrameSPtr_) << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
-{
-    {
-        EXPECT_TRUE(customFrameSPtr_->isDefined());
-    }
-
-    {
-        EXPECT_TRUE(Frame::GCRF()->isDefined());
-        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isDefined());
-        EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined());
-        EXPECT_TRUE(Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006)->isDefined());
-        EXPECT_TRUE(Frame::TEME()->isDefined());
-        EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined());
-        EXPECT_TRUE(Frame::CIRF()->isDefined());
-        EXPECT_TRUE(Frame::TIRF()->isDefined());
-        EXPECT_TRUE(Frame::ITRF()->isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Frame::Undefined()->isDefined());
     }
 }
 
@@ -299,10 +264,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
         EXPECT_FALSE(Frame::TIRF()->isQuasiInertial());
         EXPECT_FALSE(Frame::ITRF()->isQuasiInertial());
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->isQuasiInertial());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
@@ -322,10 +283,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
         EXPECT_TRUE(Frame::TIRF()->hasParent());
         EXPECT_TRUE(Frame::ITRF()->hasParent());
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->hasParent());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
@@ -344,10 +301,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
         EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->accessParent());
         EXPECT_EQ(Frame::CIRF(), Frame::TIRF()->accessParent());
         EXPECT_EQ(Frame::TIRF(), Frame::ITRF()->accessParent());
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->accessParent());
     }
 }
 
@@ -369,10 +322,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
         EXPECT_EQ("CIRF", Frame::CIRF()->getName());
         EXPECT_EQ("TIRF", Frame::TIRF()->getName());
         EXPECT_EQ("ITRF", Frame::ITRF()->getName());
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getName());
     }
 }
 
@@ -440,10 +389,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getOriginIn(Frame::Undefined(), Instant::J2000()));
     }
 }
 
@@ -513,10 +458,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getVelocityIn(Frame::Undefined(), Instant::J2000()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
@@ -579,10 +520,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getAxesIn(Frame::Undefined(), Instant::J2000()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
@@ -615,80 +552,73 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
     }
 
     {
-        EXPECT_ANY_THROW(Frame::Undefined()->getTransformTo(Frame::GCRF(), Instant::J2000()));
-        EXPECT_ANY_THROW(Frame::GCRF()->getTransformTo(Frame::Undefined(), Instant::J2000()));
         EXPECT_ANY_THROW(Frame::GCRF()->getTransformTo(Frame::GCRF(), Instant::Undefined()));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Undefined)
-{
-    {
-        EXPECT_FALSE(Frame::Undefined()->isDefined());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GCRF)
 {
     {
-        EXPECT_TRUE(Frame::GCRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::GCRF());
+        EXPECT_EQ("GCRF", Frame::GCRF()->getName());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, J2000)
 {
     {
-        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2000A)->isDefined());
-        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isDefined());
+        EXPECT_NE(nullptr, Frame::J2000(iau::Theory::IAU_2000A));
+        EXPECT_NE(nullptr, Frame::J2000(iau::Theory::IAU_2006));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
 {
     {
-        EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined());
+        EXPECT_NE(nullptr, Frame::MOD(Instant::J2000()));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TOD)
 {
     {
-        EXPECT_TRUE(Frame::TOD(Instant::J2000(), iau::Theory::IAU_2000A)->isDefined());
+        EXPECT_NE(nullptr, Frame::TOD(Instant::J2000(), iau::Theory::IAU_2000A));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TEME)
 {
     {
-        EXPECT_TRUE(Frame::TEME()->isDefined());
+        EXPECT_NE(nullptr, Frame::TEME());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TEMEOfEpoch)
 {
     {
-        EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined());
+        EXPECT_NE(nullptr, Frame::TEMEOfEpoch(Instant::J2000()));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, CIRF)
 {
     {
-        EXPECT_TRUE(Frame::CIRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::CIRF());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TIRF)
 {
     {
-        EXPECT_TRUE(Frame::TIRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::TIRF());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, ITRF)
 {
     {
-        EXPECT_TRUE(Frame::ITRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::ITRF());
+        EXPECT_EQ("ITRF", Frame::ITRF()->getName());
     }
 }
 
@@ -700,7 +630,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, WithName)
             Frame::ITRF();
         }
 
-        EXPECT_TRUE(Frame::WithName("ITRF")->isDefined());
+        EXPECT_NE(nullptr, Frame::WithName("ITRF"));
+        EXPECT_EQ("ITRF", Frame::WithName("ITRF")->getName());
     }
 }
 
@@ -749,7 +680,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
         // Create first frame
         const Shared<const Frame> firstFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_);
-        EXPECT_TRUE(firstFrameSPtr->isDefined());
 
         // Attempt to create another frame with same name without overwrite - should throw
         EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial_, Frame::ITRF(), providerSPtr_, false));
@@ -757,7 +687,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
         // Create another frame with same name with overwrite - should succeed
         const Shared<const Frame> secondFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::ITRF(), providerSPtr_, true);
-        EXPECT_TRUE(secondFrameSPtr->isDefined());
 
         // Verify the new frame has the expected parent (ITRF instead of GCRF)
         EXPECT_TRUE(Manager::Get().hasFrameWithName(name));
@@ -796,8 +725,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
-
-        EXPECT_TRUE(customFrameSPtr->isDefined());
 
         // Position
 
@@ -850,8 +777,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -903,8 +828,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -952,8 +875,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -998,8 +919,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
-
-        EXPECT_TRUE(customFrameSPtr->isDefined());
 
         // Position
 
@@ -1049,8 +968,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
-
-        EXPECT_TRUE(customFrameSPtr_->isDefined());
 
         // Position
 

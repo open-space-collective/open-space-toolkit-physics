@@ -52,18 +52,12 @@ using ostk::physics::unit::Length;
 class OpenSpaceToolkit_Physics_Environment_Object_Geometry : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        pyramid_ = {base_, apex_};
-        geometry_ = {pyramid_, Frame::GCRF()};
-    }
-
     const Polygon base_ = {
         {{{0.0, 0.0}, {1.0, 0.0}, {1.0, 1.0}, {0.0, 1.0}}}, {0.0, 0.0, 2.0}, {1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}
     };
     const Point apex_ = {0.0, 0.0, 1.0};
-    Pyramid pyramid_ = Pyramid::Undefined();
-    Geometry geometry_ = Geometry::Undefined();
+    Pyramid pyramid_ = {base_, apex_};
+    Geometry geometry_ = {pyramid_, Frame::GCRF()};
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Constructor)
@@ -84,13 +78,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, EqualToOperator)
         const Geometry secondGeometry = {pyramid_, Frame::ITRF()};
 
         EXPECT_FALSE(firstGeometry == secondGeometry);
-
-        EXPECT_FALSE(firstGeometry == Geometry::Undefined());
-        EXPECT_FALSE(Geometry::Undefined() == firstGeometry);
-    }
-
-    {
-        EXPECT_FALSE(Geometry::Undefined() == Geometry::Undefined());
     }
 }
 
@@ -105,13 +92,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, NotEqualToOperator)
         const Geometry secondGeometry = {pyramid_, Frame::ITRF()};
 
         EXPECT_TRUE(firstGeometry != secondGeometry);
-
-        EXPECT_TRUE(firstGeometry != Geometry::Undefined());
-        EXPECT_TRUE(Geometry::Undefined() != firstGeometry);
-    }
-
-    {
-        EXPECT_TRUE(Geometry::Undefined() != Geometry::Undefined());
     }
 }
 
@@ -136,17 +116,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Print)
 
         const String capturedStdout = testing::internal::GetCapturedStdout();
         EXPECT_FALSE(capturedStdout.empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
-{
-    {
-        EXPECT_TRUE(geometry_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Geometry::Undefined().isDefined());
     }
 }
 
@@ -182,10 +151,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IsDefined)
 
 //         const Geometry geometry = { pyramid, Frame::GCRF() } ;
 
-//         EXPECT_ANY_THROW(Geometry::Undefined().intersects(Geometry::Undefined())) ;
-//         EXPECT_ANY_THROW(geometry.intersects(Geometry::Undefined())) ;
-//         EXPECT_ANY_THROW(Geometry::Undefined().intersects(geometry)) ;
-
 //     }
 
 // }
@@ -208,20 +173,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessComposite)
     {
         EXPECT_EQ(Composite(pyramid_), geometry_.accessComposite());
     }
-
-    {
-        EXPECT_ANY_THROW(Geometry::Undefined().accessComposite());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessFrame)
 {
     {
         EXPECT_EQ(Frame::GCRF(), geometry_.accessFrame());
-    }
-
-    {
-        EXPECT_ANY_THROW(Geometry::Undefined().accessFrame());
     }
 }
 
@@ -351,10 +308,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
         ) << referencePyramid.getApex().toString()
           << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString();
     }
-
-    {
-        EXPECT_ANY_THROW(Geometry::Undefined().in(Frame::ITRF(), Instant::J2000()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
@@ -385,11 +338,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 
         const Geometry observerGeometry_ITRF = observerGeometry_NED.in(itrfFrameSPtr, instant);
 
-        const Geometry earthGeometry_ITRF = earthSPtr->getGeometryIn(itrfFrameSPtr, instant);
+        const Geometry earthGeometry_ITRF = earthSPtr->getGeometryIn(itrfFrameSPtr, instant).value();
 
         const Geometry intersectionGeometry_ITRF = observerGeometry_ITRF.intersectionWith(earthGeometry_ITRF);
-
-        EXPECT_TRUE(intersectionGeometry_ITRF.isDefined());
 
         EXPECT_EQ(2, intersectionGeometry_ITRF.accessComposite().getObjectCount());
 
@@ -588,16 +539,5 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 
         EXPECT_TRUE(firstIntersectionLineString_ITRF.isNear(firstIntersectionLineString_ITRF_reference, 1e-8));
         EXPECT_TRUE(secondIntersectionLineString_ITRF.isNear(secondIntersectionLineString_ITRF_reference, 1e-8));
-    }
-
-    {
-        EXPECT_ANY_THROW(Geometry::Undefined().intersectionWith(Geometry::Undefined()));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Geometry::Undefined());
     }
 }

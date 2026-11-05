@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Manager.hpp>
 
@@ -45,7 +47,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Manager(pybi
                 Get currently loaded CSSI Space Weather file.
 
                 Returns:
-                    CSSISpaceWeather: Currently loaded CSSI Space Weather file.
+                    CSSISpaceWeather | None: Currently loaded CSSI Space Weather file, or None if none is loaded.
             )doc"
         )
         .def(

@@ -34,11 +34,6 @@ Exponential* Exponential::clone() const
     return new Exponential(*this);
 }
 
-bool Exponential::isDefined() const
-{
-    return true;
-}
-
 double Exponential::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     (void)anInstant;  // temporal invariance

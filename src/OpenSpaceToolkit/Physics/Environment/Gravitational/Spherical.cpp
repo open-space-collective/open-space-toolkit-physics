@@ -36,11 +36,6 @@ Spherical* Spherical::clone() const
     return new Spherical(*this);
 }
 
-bool Spherical::isDefined() const
-{
-    return !std::isnan(gravitationalParameter_SI_);
-}
-
 bool Spherical::isPointMass() const
 {
     return true;

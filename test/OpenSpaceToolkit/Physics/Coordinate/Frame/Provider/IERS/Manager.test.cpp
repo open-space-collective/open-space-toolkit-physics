@@ -66,9 +66,6 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         copyFileToDirectory(bulletinAFile_, manager_.getBulletinADirectory());
         copyFileToDirectory(finals2000AFile_, manager_.getFinals2000ADirectory());
 
-        this->bulletinA_ = BulletinA::Load(bulletinAFile_);
-        this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
-
         // cache current directory environment variables
         localRepositoryPath = std::getenv(localRepositoryVarName_);
         fullDataPath_ = std::getenv(fullDataVarName_);
@@ -120,8 +117,8 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/finals2000A.data")
     );
 
-    BulletinA bulletinA_ = BulletinA::Undefined();
-    Finals2000A finals2000A_ = Finals2000A::Undefined();
+    BulletinA bulletinA_ = BulletinA::Load(bulletinAFile_);
+    Finals2000A finals2000A_ = Finals2000A::Load(finals2000AFile_);
 
     Manager& manager_ = Manager::Get();
 
@@ -541,7 +538,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadBull
         manager_.reset();
 
         EXPECT_NO_THROW(manager_.loadBulletinA(bulletinA_));
-        EXPECT_ANY_THROW(manager_.loadBulletinA(BulletinA::Undefined()));
     }
 }
 
@@ -558,7 +554,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadFina
         manager_.loadFinals2000A(finals2000a);
 
         EXPECT_NO_THROW(manager_.loadFinals2000A(finals2000a));
-        EXPECT_ANY_THROW(manager_.loadFinals2000A(Finals2000A::Undefined()));
     }
 }
 
@@ -605,9 +600,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
 {
     {
         manager_.loadBulletinA(bulletinA_);
-
-        EXPECT_TRUE(manager_.getBulletinA().isDefined());
-        EXPECT_TRUE(manager_.getFinals2000A().isDefined());
 
         EXPECT_NO_THROW(manager_.reset());
     }

@@ -164,7 +164,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         // kernel file doesn't exist, so it should fetch
         const Kernel fetchedKernel = manager_.findKernel(".*leapseconds.*");
-        EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
 
@@ -177,7 +176,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
 
         const Kernel foundKernel = manager_.findKernel(".*leapseconds.*");
 
-        EXPECT_TRUE(foundKernel.isDefined());
         EXPECT_EQ(
             expectedKernelFile.getPath().getNormalizedPath(), foundKernel.getFile().getPath().getNormalizedPath()
         );
@@ -191,7 +189,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Manager, FindKernel)
         EXPECT_FALSE(expectedKernelFile.exists());
 
         const Kernel fetchedKernel = manager_.findKernel("earth_assoc_itrf93.tf");
-        EXPECT_TRUE(fetchedKernel.isDefined());
         EXPECT_TRUE(fetchedKernel.getFile().exists());
     }
 

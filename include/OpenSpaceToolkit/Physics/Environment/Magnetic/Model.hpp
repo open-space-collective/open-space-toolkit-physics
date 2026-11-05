@@ -39,11 +39,6 @@ class Model
     /// @return Pointer to magnetic model
     virtual Model* clone() const = 0;
 
-    /// @brief Check if the magnetic model is defined (pure virtual)
-    ///
-    /// @return True if the magnetic model is defined
-    virtual bool isDefined() const = 0;
-
     /// @brief Get the magnetic field value at a given position and instant (pure virtual)
     ///
     /// @param [in] aPosition A position, expressed in the magnetic object frame [m]

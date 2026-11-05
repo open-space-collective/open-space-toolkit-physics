@@ -246,7 +246,7 @@ class Length : public Unit
     /// @endcode
     ///
     /// @return True if defined
-    virtual bool isDefined() const override;
+    bool isDefined() const;
 
     /// @brief Check if the length value is zero.
     ///

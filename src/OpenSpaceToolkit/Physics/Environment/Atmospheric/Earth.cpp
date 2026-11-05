@@ -293,11 +293,6 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
-bool Earth::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();
@@ -330,11 +325,7 @@ Unique<Earth::Impl> Earth::ImplFromType(
     const Shared<Celestial>& aSunCelestialSPtr
 )
 {
-    if (aType == Earth::Type::Undefined)
-    {
-        return nullptr;
-    }
-    else if (aType == Earth::Type::Exponential)
+    if (aType == Earth::Type::Exponential)
     {
         return std::make_unique<ExponentialImpl>(
             aType, anInputDataType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening
@@ -342,8 +333,7 @@ Unique<Earth::Impl> Earth::ImplFromType(
     }
     else if (aType == Earth::Type::NRLMSISE00)
     {
-        if (anInputDataType == Earth::InputDataType::Undefined ||
-            anInputDataType == Earth::InputDataType::CSSISpaceWeatherFile)
+        if (anInputDataType == Earth::InputDataType::CSSISpaceWeatherFile)
         {
             return std::make_unique<NRLMSISE00Impl>(
                 aType,

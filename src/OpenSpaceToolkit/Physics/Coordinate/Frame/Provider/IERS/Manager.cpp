@@ -3,7 +3,6 @@
 #include <chrono>
 #include <cstdlib>
 #include <fstream>
-#include <limits>
 #include <numeric>
 #include <thread>
 
@@ -209,11 +208,6 @@ std::optional<double> Manager::getLodAt(const Instant& anInstant) const
 
 void Manager::loadBulletinA(const BulletinA& aBulletinA)
 {
-    if (!aBulletinA.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->loadBulletinA_(aBulletinA);
@@ -221,11 +215,6 @@ void Manager::loadBulletinA(const BulletinA& aBulletinA)
 
 void Manager::loadFinals2000A(const Finals2000A& aFinals2000A)
 {
-    if (!aFinals2000A.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->loadFinals2000A_(aFinals2000A);
@@ -249,8 +238,8 @@ void Manager::reset()
 {
     BaseManager::reset();
 
-    bulletinA_ = BulletinA::Undefined();
-    finals2000A_ = Finals2000A::Undefined();
+    bulletinA_ = std::nullopt;
+    finals2000A_ = std::nullopt;
 }
 
 void Manager::clearLocalRepository()
@@ -275,8 +264,8 @@ Manager::Manager()
           Path::Parse("coordinate/frame/provider/iers"),
           "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
       ),
-      bulletinA_(BulletinA::Undefined()),
-      finals2000A_(Finals2000A::Undefined())
+      bulletinA_(std::nullopt),
+      finals2000A_(std::nullopt)
 {
     this->setup_();
 }
@@ -309,9 +298,9 @@ void Manager::loadFinals2000A_(const Finals2000A& aFinals2000A) const
 const BulletinA* Manager::accessBulletinA_() const
 {
     // If we've loaded a file, simply return it
-    if (bulletinA_.isDefined())
+    if (bulletinA_.has_value())
     {
-        return &bulletinA_;
+        return &bulletinA_.value();
     }
 
     // If set to automatic, try to load or fetch the latest file
@@ -353,7 +342,7 @@ const BulletinA* Manager::accessBulletinA_() const
 
             this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
 
-            return &bulletinA_;
+            return &bulletinA_.value();
         }
 
         case Manager::Mode::Manual:
@@ -368,7 +357,7 @@ const BulletinA* Manager::accessBulletinA_() const
 
             this->loadBulletinA_(BulletinA::Load(localBulletinAFile));
 
-            return &bulletinA_;
+            return &bulletinA_.value();
         }
 
         default:
@@ -382,9 +371,9 @@ const BulletinA* Manager::accessBulletinA_() const
 const Finals2000A* Manager::accessFinals2000A_() const
 {
     // If we've loaded a file, simply return it
-    if (finals2000A_.isDefined())
+    if (finals2000A_.has_value())
     {
-        return &finals2000A_;
+        return &finals2000A_.value();
     }
 
     // If set to automatic, try to load or fetch the latest file
@@ -426,7 +415,7 @@ const Finals2000A* Manager::accessFinals2000A_() const
 
             this->loadFinals2000A_(Finals2000A::Load(localFinals2000AFile));
 
-            return &finals2000A_;
+            return &finals2000A_.value();
         }
         case Manager::Mode::Manual:
         {
@@ -442,7 +431,7 @@ const Finals2000A* Manager::accessFinals2000A_() const
 
             this->loadFinals2000A_(finals2000A);
 
-            return &finals2000A_;
+            return &finals2000A_.value();
         }
         default:
             return nullptr;

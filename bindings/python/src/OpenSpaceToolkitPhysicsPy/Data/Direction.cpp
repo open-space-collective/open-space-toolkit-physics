@@ -66,16 +66,5 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Direction(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Direction>))
         .def("__repr__", &(shiftToString<Direction>))
 
-        .def_static(
-            "undefined",
-            &Direction::Undefined,
-            R"doc(
-                Create an undefined direction.
-
-                Returns:
-                    Direction: Undefined direction.
-            )doc"
-        )
-
         ;
 }

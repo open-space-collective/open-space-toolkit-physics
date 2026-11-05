@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Data/Manager.hpp>
 #include <OpenSpaceToolkit/Physics/Manager.hpp>
 
@@ -67,7 +69,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manager(pybind11::module& aModule)
                 Get a copy of the current manifest file.
 
                 Returns:
-                    Manifest: Manifest.
+                    Manifest | None: Manifest, or None if no manifest is loaded.
             )doc"
         )
 

@@ -15,7 +15,6 @@ namespace physics
 {
 namespace unit
 {
-
 using ostk::physics::utility::DoubleToString;
 
 Angle::Angle(double aValue, const Angle::Unit& aUnit)
@@ -26,7 +25,7 @@ Angle::Angle(double aValue, const Angle::Unit& aUnit)
 
 Angle::Angle(const ostk::mathematics::geometry::Angle& anAngle)
     : unit::Unit(unit::Unit::Type::Derived, anAngle.in(anAngle.getUnit())),
-      unit_(Angle::Unit::Undefined)
+      unit_(Angle::Unit::Radian)
 {
     switch (anAngle.getUnit())
     {
@@ -63,11 +62,6 @@ Angle* Angle::clone() const
 
 bool Angle::operator==(const Angle& anAngle) const
 {
-    if ((unit_ == Angle::Unit::Undefined) || (anAngle.unit_ == Angle::Unit::Undefined))
-    {
-        return false;
-    }
-
     switch (unit_)
     {
         case Angle::Unit::Radian:
@@ -130,31 +124,16 @@ bool Angle::operator!=(const Angle& anAngle) const
 
 Angle Angle::operator+(const Angle& anAngle) const
 {
-    if ((unit_ == Angle::Unit::Undefined) || (anAngle.unit_ == Angle::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return Angle((this->accessValue() + ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_))), unit_);
 }
 
 Angle Angle::operator-(const Angle& anAngle) const
 {
-    if ((unit_ == Angle::Unit::Undefined) || (anAngle.unit_ == Angle::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return Angle((this->accessValue() - ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_))), unit_);
 }
 
 Angle Angle::operator*(double aReal) const
 {
-    if (unit_ == Angle::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
@@ -165,11 +144,6 @@ Angle Angle::operator*(double aReal) const
 
 Angle Angle::operator/(double aReal) const
 {
-    if (unit_ == Angle::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
@@ -185,11 +159,6 @@ Angle Angle::operator/(double aReal) const
 
 Angle& Angle::operator+=(const Angle& anAngle)
 {
-    if ((unit_ == Angle::Unit::Undefined) || (anAngle.unit_ == Angle::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     this->accessValue() += ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_));
 
     return *this;
@@ -197,11 +166,6 @@ Angle& Angle::operator+=(const Angle& anAngle)
 
 Angle& Angle::operator-=(const Angle& anAngle)
 {
-    if ((unit_ == Angle::Unit::Undefined) || (anAngle.unit_ == Angle::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     this->accessValue() -= ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_));
 
     return *this;
@@ -209,11 +173,6 @@ Angle& Angle::operator-=(const Angle& anAngle)
 
 Angle& Angle::operator*=(double aReal)
 {
-    if (unit_ == Angle::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
@@ -226,11 +185,6 @@ Angle& Angle::operator*=(double aReal)
 
 Angle& Angle::operator/=(double aReal)
 {
-    if (unit_ == Angle::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
@@ -253,41 +207,21 @@ Angle operator*(double aReal, const Angle& anAngle)
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    if (anAngle.unit_ == Angle::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return Angle((anAngle.accessValue() * aReal), anAngle.unit_);
 }
 
 Angle Angle::operator+() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return Angle(this->accessValue(), unit_);
 }
 
 Angle Angle::operator-() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return Angle(-this->accessValue(), unit_);
 }
 
 Angle::operator ostk::mathematics::geometry::Angle() const
 {
-    if (!this->isDefined())
-    {
-        return ostk::mathematics::geometry::Angle::Undefined();
-    }
-
     switch (unit_)
     {
         case Angle::Unit::Radian:
@@ -335,38 +269,18 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle)
     return anOutputStream;
 }
 
-bool Angle::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != Angle::Unit::Undefined);
-}
-
 bool Angle::isZero() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return this->accessValue() == 0.0;
 }
 
 Angle::Unit Angle::getUnit() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return unit_;
 }
 
 double Angle::in(const Angle::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     if (unit_ == aUnit)
     {
         return this->accessValue();
@@ -482,17 +396,7 @@ double Angle::inRevolutions() const
 
 String Angle::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Angle");
-    }
-
     return DoubleToString(this->accessValue(), aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]";
-}
-
-Angle Angle::Undefined()
-{
-    return Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Undefined);
 }
 
 Angle Angle::Zero()
@@ -542,16 +446,6 @@ Angle Angle::Revolutions(double aValue)
 
 Angle Angle::Between(const Angle& aFirstAngle, const Angle& aSecondAngle)
 {
-    if (!aFirstAngle.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("First angle");
-    }
-
-    if (!aSecondAngle.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Second angle");
-    }
-
     const double firstRadians = aFirstAngle.inRadians();
     const double secondRadians = aSecondAngle.inRadians();
 
@@ -645,9 +539,6 @@ String Angle::StringFromUnit(const Angle::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case Angle::Unit::Undefined:
-            return "Undefined";
-
         case Angle::Unit::Radian:
             return "Radian";
 
@@ -787,7 +678,6 @@ double Angle::ReduceRange(double aValue, double aRangeLowerBound, double aRangeU
 
     return value;
 }
-
 }  // namespace unit
 }  // namespace physics
 }  // namespace ostk

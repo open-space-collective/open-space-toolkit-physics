@@ -106,16 +106,6 @@ class CSSISpaceWeather
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief true if defined
-    ///
-    /// @code
-    ///     cssiSpaceWeather.isDefined();
-    /// @endcode
-    ///
-    /// @return True if defined.
-
-    bool isDefined() const;
-
     /// @brief Access last observation Date. File publication date is the day following the last observation.
     ///
     /// @code
@@ -220,16 +210,6 @@ class CSSISpaceWeather
     const Reading& accessLastReadingWhere(
         const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
     ) const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined CSSI Space Weather object.
-
-    static CSSISpaceWeather Undefined();
 
     /// @brief Load CSSI Space Weather file in csv format.
     ///

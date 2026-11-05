@@ -32,7 +32,7 @@ def earth_atmospheric_model() -> EarthAtmosphericModel:
 
 @pytest.fixture
 def earth_magnetic_model() -> EarthMagneticModel:
-    return EarthMagneticModel(EarthMagneticModel.Type.Undefined)
+    return EarthMagneticModel(EarthMagneticModel.Type.Dipole)
 
 
 class TestEarth:
@@ -202,17 +202,26 @@ class TestEarth:
             EarthMagneticModel(*mag_model_parameters),
             EarthAtmosphericModel(*atmos_model_parameters),
         )
-        assert earth.is_defined()
+
+        assert earth is not None
+        assert isinstance(earth, Earth)
 
     def test_singular_model_static_constructors(self):
-        assert Earth.gravitational_only(
-            EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
-        ).is_defined()
-        assert Earth.atmospheric_only(
-            EarthAtmosphericModel(
-                EarthAtmosphericModel.Type.Exponential,
-            )
-        ).is_defined()
-        assert Earth.magnetic_only(
-            EarthMagneticModel(EarthMagneticModel.Type.WMM2010)
-        ).is_defined()
+        assert isinstance(
+            Earth.gravitational_only(
+                EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
+            ),
+            Earth,
+        )
+        assert isinstance(
+            Earth.atmospheric_only(
+                EarthAtmosphericModel(
+                    EarthAtmosphericModel.Type.Exponential,
+                )
+            ),
+            Earth,
+        )
+        assert isinstance(
+            Earth.magnetic_only(EarthMagneticModel(EarthMagneticModel.Type.WMM2010)),
+            Earth,
+        )

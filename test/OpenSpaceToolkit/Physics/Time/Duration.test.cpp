@@ -52,12 +52,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, EqualToOperator)
         EXPECT_FALSE(Duration(0) == Duration(-1));
         EXPECT_FALSE(Duration(0) == Duration(+1));
     }
-
-    {
-        EXPECT_FALSE(Duration::Undefined() == Duration::Undefined());
-        EXPECT_FALSE(Duration::Undefined() == Duration(0));
-        EXPECT_FALSE(Duration(0) == Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, NoEqualToOperator)
@@ -68,12 +62,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, NoEqualToOperator)
 
         EXPECT_TRUE(Duration(0) != Duration(-1));
         EXPECT_TRUE(Duration(0) != Duration(+1));
-    }
-
-    {
-        EXPECT_TRUE(Duration::Undefined() != Duration::Undefined());
-        EXPECT_TRUE(Duration::Undefined() != Duration(0));
-        EXPECT_TRUE(Duration(0) != Duration::Undefined());
     }
 
     {
@@ -97,12 +85,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOperator)
         EXPECT_FALSE(Duration(+1) < Duration(-1));
         EXPECT_FALSE(Duration(0) < Duration(-1));
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() < Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() < Duration(0));
-        EXPECT_ANY_THROW(Duration(0) < Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOrEqualToOperator)
@@ -119,12 +101,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, LessThanOrEqualToOperator)
         EXPECT_FALSE(Duration(+1) <= Duration(0));
         EXPECT_FALSE(Duration(+1) <= Duration(-1));
         EXPECT_FALSE(Duration(0) <= Duration(-1));
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() <= Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() <= Duration(0));
-        EXPECT_ANY_THROW(Duration(0) <= Duration::Undefined());
     }
 }
 
@@ -143,12 +119,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOperator)
         EXPECT_FALSE(Duration(0) > Duration(+1));
         EXPECT_FALSE(Duration(-1) > Duration(+1));
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() > Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() > Duration(0));
-        EXPECT_ANY_THROW(Duration(0) > Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOrEqualToOperator)
@@ -166,12 +136,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GreaterThanOrEqualToOperator)
         EXPECT_FALSE(Duration(0) >= Duration(+1));
         EXPECT_FALSE(Duration(-1) >= Duration(+1));
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() >= Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() >= Duration(0));
-        EXPECT_ANY_THROW(Duration(0) >= Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionOperator)
@@ -186,12 +150,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionOperator)
         EXPECT_EQ(Duration(-1), Duration(0) + Duration(-1));
         EXPECT_EQ(Duration(-2), Duration(-1) + Duration(-1));
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() + Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() + Duration(0));
-        EXPECT_ANY_THROW(Duration(0) + Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionOperator)
@@ -205,12 +163,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionOperator)
         EXPECT_EQ(Duration(-1), Duration(-1) - Duration(0));
         EXPECT_EQ(Duration(+1), Duration(0) - Duration(-1));
         EXPECT_EQ(Duration(0), Duration(-1) - Duration(-1));
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() - Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() - Duration(0));
-        EXPECT_ANY_THROW(Duration(0) - Duration::Undefined());
     }
 }
 
@@ -272,14 +224,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, MultiplicationOperator)
         EXPECT_EQ(Duration(+123456), Duration(1000) * +123.456);
         EXPECT_EQ(Duration(-123456), Duration(1000) * -123.456);
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() * std::numeric_limits<double>::quiet_NaN());
-        EXPECT_ANY_THROW(Duration::Undefined() * 0);
-        EXPECT_ANY_THROW(Duration::Undefined() * 0.0);
-        EXPECT_ANY_THROW(0 * Duration::Undefined());
-        EXPECT_ANY_THROW(0.0 * Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionOperator)
@@ -313,12 +257,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Duration::Undefined() / std::numeric_limits<double>::quiet_NaN());
-        EXPECT_ANY_THROW(Duration::Undefined() / 1);
-        EXPECT_ANY_THROW(Duration::Undefined() / 1.0);
-        EXPECT_ANY_THROW(Duration::Undefined() / 0);
-        EXPECT_ANY_THROW(Duration::Undefined() / 0.0);
-
         EXPECT_ANY_THROW(Duration(123) / std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(Duration(123) / 0);
         EXPECT_ANY_THROW(Duration(123) / 0.0);
@@ -337,12 +275,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, AdditionAssignementOperator)
         EXPECT_EQ(Duration(-1), Duration(0) += Duration(-1));
         EXPECT_EQ(Duration(-2), Duration(-1) += Duration(-1));
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() += Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() += Duration(0));
-        EXPECT_ANY_THROW(Duration(0) += Duration::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionAssignementOperator)
@@ -356,12 +288,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, SubtractionAssignementOperator)
         EXPECT_EQ(Duration(-1), Duration(-1) -= Duration(0));
         EXPECT_EQ(Duration(+1), Duration(0) -= Duration(-1));
         EXPECT_EQ(Duration(0), Duration(-1) -= Duration(-1));
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() -= Duration::Undefined());
-        EXPECT_ANY_THROW(Duration::Undefined() -= Duration(0));
-        EXPECT_ANY_THROW(Duration(0) -= Duration::Undefined());
     }
 }
 
@@ -397,12 +323,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, MultiplicationAssignementOperator)
         EXPECT_EQ(Duration(+123456), Duration(1000) *= +123.456);
         EXPECT_EQ(Duration(-123456), Duration(1000) *= -123.456);
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined() *= std::numeric_limits<double>::quiet_NaN());
-        EXPECT_ANY_THROW(Duration::Undefined() *= 0);
-        EXPECT_ANY_THROW(Duration::Undefined() *= 0.0);
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionAssignementOperator)
@@ -436,12 +356,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, DivisionAssignementOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Duration::Undefined() /= std::numeric_limits<double>::quiet_NaN());
-        EXPECT_ANY_THROW(Duration::Undefined() /= 1);
-        EXPECT_ANY_THROW(Duration::Undefined() /= 1.0);
-        EXPECT_ANY_THROW(Duration::Undefined() /= 0);
-        EXPECT_ANY_THROW(Duration::Undefined() /= 0.0);
-
         EXPECT_ANY_THROW(Duration(123) /= std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(Duration(123) /= 0);
         EXPECT_ANY_THROW(Duration(123) /= 0.0);
@@ -459,20 +373,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_Duration, IsDefined)
-{
-    {
-        EXPECT_TRUE(Duration(0).isDefined());
-
-        EXPECT_TRUE(Duration(+1).isDefined());
-        EXPECT_TRUE(Duration(-1).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Duration::Undefined().isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsZero)
 {
     {
@@ -482,10 +382,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsZero)
     {
         EXPECT_FALSE(Duration(+1).isZero());
         EXPECT_FALSE(Duration(-1).isZero());
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().isZero());
     }
 }
 
@@ -499,10 +395,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsPositive)
     {
         EXPECT_FALSE(Duration(-1).isPositive());
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().isPositive());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, IsStrictlyPositive)
@@ -514,10 +406,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsStrictlyPositive)
     {
         EXPECT_FALSE(Duration(0).isStrictlyPositive());
         EXPECT_FALSE(Duration(-1).isStrictlyPositive());
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().isStrictlyPositive());
     }
 }
 
@@ -542,13 +430,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, IsNear)
 
         EXPECT_FALSE(Duration::Seconds(-1.0).isNear(Duration::Seconds(-3.0), Duration::Seconds(1.0)));
         EXPECT_FALSE(Duration::Seconds(+1.0).isNear(Duration::Seconds(+3.0), Duration::Seconds(1.0)));
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().isNear(Duration::Undefined(), Duration::Undefined()));
-        EXPECT_ANY_THROW(Duration::Undefined().isNear(Duration::Zero(), Duration::Zero()));
-        EXPECT_ANY_THROW(Duration::Zero().isNear(Duration::Undefined(), Duration::Zero()));
-        EXPECT_ANY_THROW(Duration::Zero().isNear(Duration::Zero(), Duration::Undefined()));
     }
 }
 
@@ -593,10 +474,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetNanoseconds)
             EXPECT_LE(0, duration.getNanoseconds());
             EXPECT_GE(999, duration.getNanoseconds());
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getNanoseconds());
     }
 }
 
@@ -651,10 +528,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMicroseconds)
             EXPECT_LE(0, duration.getMicroseconds());
             EXPECT_GE(999, duration.getMicroseconds());
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getMicroseconds());
     }
 }
 
@@ -717,10 +590,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMilliseconds)
             EXPECT_LE(0, duration.getMilliseconds());
             EXPECT_GE(999, duration.getMilliseconds());
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getMilliseconds());
     }
 }
 
@@ -800,10 +669,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetSeconds)
             EXPECT_GE(59, duration.getSeconds());
         }
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getSeconds());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMinutes)
@@ -847,10 +712,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetMinutes)
             EXPECT_LE(0, duration.getMinutes());
             EXPECT_GE(59, duration.getMinutes());
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getMinutes());
     }
 }
 
@@ -896,10 +757,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetHours)
             EXPECT_GE(23, duration.getHours());
         }
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getHours());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetDays)
@@ -942,10 +799,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetDays)
 
             EXPECT_LE(0, duration.getDays());
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getDays());
     }
 }
 
@@ -990,10 +843,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetWeeks)
             EXPECT_LE(0, duration.getWeeks());
         }
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getWeeks());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InNanoseconds)
@@ -1020,10 +869,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InNanoseconds)
             Duration(Int64(100) * 365 * 24 * 60 * 60 * 1000000000).inNanoseconds(),
             1e-15
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inNanoseconds());
     }
 }
 
@@ -1052,10 +897,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InMicroseconds)
             1e-15
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inMicroseconds());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InMilliseconds)
@@ -1079,10 +920,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InMilliseconds)
             1e-15
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inMilliseconds());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InSeconds)
@@ -1104,10 +941,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InSeconds)
             1e-15
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inSeconds());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InMinutes)
@@ -1127,10 +960,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InMinutes)
             (100.0 * 365.0 * 24.0 * 60.0), Duration(Int64(100) * 365 * 24 * 60 * 60 * 1000000000).inMinutes(), 1e-15
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inMinutes());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InHours)
@@ -1147,10 +976,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InHours)
         EXPECT_NEAR(24.0, Duration(Int64(24) * 60 * 60 * 1000000000).inHours(), 1e-15);
         EXPECT_NEAR((7.0 * 24.0), Duration(Int64(7) * 24 * 60 * 60 * 1000000000).inHours(), 1e-15);
         EXPECT_NEAR((100.0 * 365.0 * 24.0), Duration(Int64(100) * 365 * 24 * 60 * 60 * 1000000000).inHours(), 1e-15);
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inHours());
     }
 }
 
@@ -1169,10 +994,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InDays)
         EXPECT_NEAR((7.0), Duration(Int64(7) * 24 * 60 * 60 * 1000000000).inDays(), 1e-15);
         EXPECT_NEAR((100.0 * 365.0), Duration(Int64(100) * 365 * 24 * 60 * 60 * 1000000000).inDays(), 1e-15);
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inDays());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, InWeeks)
@@ -1189,10 +1010,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, InWeeks)
         EXPECT_NEAR((1.0 / 7.0), Duration(Int64(24) * 60 * 60 * 1000000000).inWeeks(), 1e-15);
         EXPECT_NEAR(1.0, Duration(Int64(7) * 24 * 60 * 60 * 1000000000).inWeeks(), 1e-15);
         EXPECT_NEAR((100.0 * 365.0 / 7.0), Duration(Int64(100) * 365 * 24 * 60 * 60 * 1000000000).inWeeks(), 1e-15);
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().inWeeks());
     }
 }
 
@@ -1232,10 +1049,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, In)
             (100.0 * 365.0 / 7.0), Duration(Int64(100) * 365 * 24 * 60 * 60 * 1000000000).in(Time::Unit::Week), 1e-15
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().in(Time::Unit::Nanosecond));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, GetAbsolute)
@@ -1244,10 +1057,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, GetAbsolute)
         EXPECT_EQ(Duration(0), Duration(0).getAbsolute());
         EXPECT_EQ(Duration(+1), Duration(+1).getAbsolute());
         EXPECT_EQ(Duration(+1), Duration(-1).getAbsolute());
-    }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().getAbsolute());
     }
 }
 
@@ -1555,25 +1364,12 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, ToString)
                 .toString(Duration::Format::ISO8601)
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Undefined().toString(Duration::Format::Standard));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Duration, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Duration::Undefined());
-        EXPECT_FALSE(Duration::Undefined().isDefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Zero)
 {
     {
         EXPECT_NO_THROW(Duration::Zero());
-        EXPECT_TRUE(Duration::Zero().isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Zero());
     }
@@ -1583,7 +1379,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Nanoseconds)
 {
     {
         EXPECT_NO_THROW(Duration::Nanoseconds(0));
-        EXPECT_TRUE(Duration::Nanoseconds(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Nanoseconds(0));
         EXPECT_EQ(Duration(123), Duration::Nanoseconds(123));
@@ -1598,7 +1393,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Microseconds)
 {
     {
         EXPECT_NO_THROW(Duration::Microseconds(0));
-        EXPECT_TRUE(Duration::Microseconds(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Microseconds(0));
         EXPECT_EQ(Duration(123 * 1e3), Duration::Microseconds(123));
@@ -1613,7 +1407,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Milliseconds)
 {
     {
         EXPECT_NO_THROW(Duration::Milliseconds(0));
-        EXPECT_TRUE(Duration::Milliseconds(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Milliseconds(0));
         EXPECT_EQ(Duration(123 * 1e6), Duration::Milliseconds(123));
@@ -1628,7 +1421,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Seconds)
 {
     {
         EXPECT_NO_THROW(Duration::Seconds(0));
-        EXPECT_TRUE(Duration::Seconds(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Seconds(0));
         EXPECT_EQ(Duration(123 * 1e9), Duration::Seconds(123));
@@ -1643,7 +1435,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Minutes)
 {
     {
         EXPECT_NO_THROW(Duration::Minutes(0));
-        EXPECT_TRUE(Duration::Minutes(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Minutes(0));
         EXPECT_EQ(Duration(123 * 60 * 1e9), Duration::Minutes(123));
@@ -1658,7 +1449,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Hours)
 {
     {
         EXPECT_NO_THROW(Duration::Hours(0));
-        EXPECT_TRUE(Duration::Hours(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Hours(0));
         EXPECT_EQ(Duration(123 * 60 * 60 * 1e9), Duration::Hours(123));
@@ -1673,7 +1463,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Days)
 {
     {
         EXPECT_NO_THROW(Duration::Days(0));
-        EXPECT_TRUE(Duration::Days(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Days(0));
         EXPECT_EQ(Duration(123 * 24 * 60 * 60 * 1e9), Duration::Days(123));
@@ -1688,7 +1477,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Weeks)
 {
     {
         EXPECT_NO_THROW(Duration::Weeks(0));
-        EXPECT_TRUE(Duration::Weeks(0).isDefined());
 
         EXPECT_EQ(Duration(0), Duration::Weeks(0));
         EXPECT_EQ(Duration(123 * 7 * 24 * 60 * 60 * 1e9), Duration::Weeks(123));

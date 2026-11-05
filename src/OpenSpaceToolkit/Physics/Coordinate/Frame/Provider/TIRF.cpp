@@ -39,11 +39,6 @@ TIRF* TIRF::clone() const
     return new TIRF(*this);
 }
 
-bool TIRF::isDefined() const
-{
-    return true;
-}
-
 Transform TIRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -54,11 +49,6 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TIRF");
     }
 
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf

@@ -50,17 +50,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
             )
 
             .def(
-                "is_defined",
-                &Sun::isDefined,
-                R"doc(
-                    Check if the Sun model is defined.
-
-                    Returns:
-                        bool: True if defined.
-                )doc"
-            )
-
-            .def(
                 "is_point_mass",
                 &Sun::isPointMass,
                 R"doc(
@@ -104,13 +93,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
         enum_<Sun::Type>(sun_class, "Type")
 
-            .value(
-                "Undefined",
-                Sun::Type::Undefined,
-                R"doc(
-                    Undefined.
-                )doc"
-            )
             .value(
                 "Spherical",
                 Sun::Type::Spherical,

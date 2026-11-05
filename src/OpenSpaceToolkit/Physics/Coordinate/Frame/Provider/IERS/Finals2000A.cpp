@@ -4,7 +4,6 @@
 #include <fstream>
 #include <iostream>
 #include <iterator>
-#include <limits>
 #include <sstream>
 
 #include <boost/lexical_cast.hpp>
@@ -53,28 +52,13 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinal
     return anOutputStream;
 }
 
-bool Finals2000A::isDefined() const
-{
-    return !data_.empty();
-}
-
 const Instant& Finals2000A::accessLastModifiedTimestamp() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
-    }
-
     return lastModifiedTimestamp_;
 }
 
 Interval Finals2000A::getInterval() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
-    }
-
     return span_;
 }
 
@@ -85,11 +69,6 @@ Vector2d Finals2000A::getPolarMotionAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
     }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
@@ -129,11 +108,6 @@ std::optional<double> Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) co
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
-    }
-
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
 
     if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
@@ -171,11 +145,6 @@ std::optional<double> Finals2000A::getLodAt(const Instant& anInstant) const
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
-    }
-
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
 
     if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
@@ -209,11 +178,6 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Finals 2000A");
     }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
@@ -331,11 +295,6 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
     }
 
     throw ostk::core::error::RuntimeError("Cannot get data at [{}].", anInstant.toString(Scale::UTC));
-}
-
-Finals2000A Finals2000A::Undefined()
-{
-    return Finals2000A();
 }
 
 Finals2000A Finals2000A::Load(const filesystem::File& aFile)

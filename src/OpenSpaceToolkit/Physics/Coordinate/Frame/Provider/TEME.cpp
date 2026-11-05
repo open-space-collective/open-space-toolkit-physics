@@ -40,11 +40,6 @@ TEME* TEME::clone() const
     return new TEME(*this);
 }
 
-bool TEME::isDefined() const
-{
-    return true;
-}
-
 Transform TEME::getTransformAt(const Instant& anInstant) const
 {
     // Seago, J., & Vallado, D. A. (2000, August). Coordinate frames of the U.S. Space Object Catalogs (AIAA Paper
@@ -65,11 +60,6 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TEME");
     }
 
     // Time (UTC)

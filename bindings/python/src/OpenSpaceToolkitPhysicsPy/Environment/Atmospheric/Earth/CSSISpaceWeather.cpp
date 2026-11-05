@@ -34,17 +34,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         .def("__repr__", &(shiftToString<CSSISpaceWeather>))
 
         .def(
-            "is_defined",
-            &CSSISpaceWeather::isDefined,
-            R"doc(
-                Check if the CSSI Space Weather data is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "access_last_observation_date",
             &CSSISpaceWeather::accessLastObservationDate,
             R"doc(
@@ -157,16 +146,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &CSSISpaceWeather::Undefined,
-            R"doc(
-                Create an undefined CSSI Space Weather object.
-
-                Returns:
-                    CSSISpaceWeather: Undefined CSSI Space Weather object.
-            )doc"
-        )
         .def_static(
             "load",
             &CSSISpaceWeather::Load,

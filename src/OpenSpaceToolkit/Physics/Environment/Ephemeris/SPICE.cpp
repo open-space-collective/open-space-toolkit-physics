@@ -28,11 +28,6 @@ SPICE* SPICE::clone() const
     return new SPICE(*this);
 }
 
-bool SPICE::isDefined() const
-{
-    return true;
-}
-
 Shared<const Frame> SPICE::accessFrame() const
 {
     using ostk::physics::environment::ephemeris::spice::Engine;

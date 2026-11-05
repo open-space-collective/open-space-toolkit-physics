@@ -43,16 +43,11 @@ using ostk::physics::utility::DoubleToString;
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        aer_ = AER(azimuth_, elevation_, range_);
-    }
-
     const Angle azimuth_ = Angle::Degrees(10.0);
     const Angle elevation_ = Angle::Degrees(20.0);
     const Length range_ = Length::Meters(30.0);
 
-    AER aer_ = AER::Undefined();
+    AER aer_ = AER(azimuth_, elevation_, range_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Constructor)
@@ -80,12 +75,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, EqualToOperator)
             AER(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        EXPECT_FALSE(AER::Undefined() == AER::Undefined());
-        EXPECT_FALSE(aer_ == AER::Undefined());
-        EXPECT_FALSE(AER::Undefined() == aer_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
@@ -100,12 +89,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
             AER(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        EXPECT_TRUE(AER::Undefined() != AER::Undefined());
-        EXPECT_TRUE(aer_ != AER::Undefined());
-        EXPECT_TRUE(AER::Undefined() != aer_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
@@ -119,25 +102,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, IsDefined)
-{
-    {
-        EXPECT_TRUE(aer_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(AER::Undefined().isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetAzimuth)
 {
     {
         EXPECT_EQ(azimuth_, aer_.getAzimuth());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().getAzimuth());
     }
 }
 
@@ -146,20 +114,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetElevation)
     {
         EXPECT_EQ(elevation_, aer_.getElevation());
     }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().getElevation());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
 {
     {
         EXPECT_EQ(range_, aer_.getRange());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().getRange());
     }
 }
 
@@ -169,10 +129,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 
     {
         EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), aer_.toVector());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().toVector());
     }
 }
 
@@ -198,8 +154,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 
 //     {
 
-//         EXPECT_ANY_THROW(AER::Undefined().toCartesian()) ;
-
 //     }
 
 // }
@@ -208,17 +162,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToString)
 {
     {
         EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", aer_.toString());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().toString());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Undefined)
-{
-    {
-        EXPECT_NO_THROW(AER::Undefined());
     }
 }
 
@@ -385,9 +328,5 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
         const AER referenceAer = {Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0)};
 
         EXPECT_EQ(referenceAer, aer);
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::FromPositionToPosition(Position::Undefined(), Position::Undefined()));
     }
 }

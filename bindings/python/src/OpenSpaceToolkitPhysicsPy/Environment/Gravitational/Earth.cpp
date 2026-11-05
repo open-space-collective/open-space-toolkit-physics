@@ -90,17 +90,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             )
 
             .def(
-                "is_defined",
-                &Earth::isDefined,
-                R"doc(
-                    Check if the Earth model is defined.
-
-                    Returns:
-                        bool: True if the model is defined.
-                )doc"
-            )
-
-            .def(
                 "is_point_mass",
                 &Earth::isPointMass,
                 R"doc(
@@ -215,13 +204,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
         enum_<Earth::Type>(earth_class, "Type")
 
-            .value(
-                "Undefined",
-                Earth::Type::Undefined,
-                R"doc(
-                    Undefined.
-                )doc"
-            )
             .value(
                 "Spherical",
                 Earth::Type::Spherical,

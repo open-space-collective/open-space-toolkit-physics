@@ -50,15 +50,6 @@ class Direction : public Vector
     /// @param [in] aDirection A direction
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Direction& aDirection);
-
-    /// @brief Construct an undefined direction.
-    ///
-    /// @code
-    ///     Direction direction = Direction::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined direction
-    static Direction Undefined();
 };
 
 }  // namespace data

@@ -37,7 +37,6 @@ class Transform
     enum class Type
     {
 
-        Undefined,
         Active,
         Passive
 
@@ -115,15 +114,6 @@ class Transform
     /// @param [in] aTransform A transform
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Transform& aTransform);
-
-    /// @brief Check if the transform is defined
-    ///
-    /// @code
-    ///     Transform::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the transform is defined
-    bool isDefined() const;
 
     /// @brief Check if the transform is the identity transform
     ///
@@ -263,15 +253,6 @@ class Transform
     /// @param [in] aVector A vector
     /// @return Rotated vector
     Vector3d applyToVector(const Vector3d& aVector) const;
-
-    /// @brief Construct an undefined transform
-    ///
-    /// @code
-    ///     Transform transform = Transform::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined transform
-    static Transform Undefined();
 
     /// @brief Construct an identity transform at a given instant
     ///

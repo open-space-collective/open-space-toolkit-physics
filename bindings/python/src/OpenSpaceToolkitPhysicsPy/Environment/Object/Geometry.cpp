@@ -57,16 +57,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         .def("__repr__", &(shiftToString<Geometry>))
 
         .def(
-            "is_defined",
-            &Geometry::isDefined,
-            R"doc(
-                Check if the geometry is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "intersects",
             &Geometry::intersects,
             R"doc(
@@ -146,17 +136,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
 
                 Returns:
                     Geometry: Intersection of geometry with another geometry.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Geometry::Undefined,
-            R"doc(
-                Constructs an undefined geometry.
-
-                Returns:
-                    Geometry: Undefined geometry.
             )doc"
         )
 

@@ -179,28 +179,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, IsDefined)
-{
-    {
-        EarthMagneticModelManager::Get().setLocalRepository(
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-        );
-
-        EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
-
-        EXPECT_FALSE(EarthMagneticModel(EarthMagneticModel::Type::Undefined).isDefined());
-        EXPECT_FALSE(EarthMagneticModel(EarthMagneticModel::Type::Dipole).isDefined());
-
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::EMM2010).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::EMM2015).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::EMM2017).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::IGRF11).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::IGRF12).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2010).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2015).isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 {
     {

@@ -98,15 +98,6 @@ class Finals2000A
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A);
 
-    /// @brief true if defined
-    ///
-    /// @code
-    ///     finals2000A.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-    bool isDefined() const;
-
     /// @brief Access timestamp at which the BulletinA file was last modified
     ///
     /// @code
@@ -164,15 +155,6 @@ class Finals2000A
     /// @param [in] anInstant An Instant
     /// @return Data reading
     Finals2000A::Data getDataAt(const Instant& anInstant) const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     Finals2000A finals2000A = Finals2000A::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined Finals2000A object
-    static Finals2000A Undefined();
 
     /// @brief Load Finals2000A from file
     ///

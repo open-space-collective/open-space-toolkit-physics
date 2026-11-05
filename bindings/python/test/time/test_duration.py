@@ -55,9 +55,6 @@ class TestDuration:
         duration_A *= 2.0
         duration_A /= 2.0
 
-    def test_is_defined_success(self):
-        assert Duration.seconds(123.0).is_defined() is not None
-
     def test_is_zero_success(self):
         assert Duration.seconds(123.0).is_zero() is not None
 
@@ -144,9 +141,6 @@ class TestDuration:
         assert Duration.hours(1.0).to_timedelta() == timedelta(hours=1.0)
         assert Duration.days(1.0).to_timedelta() == timedelta(days=1.0)
 
-    def test_undefined_success(self):
-        assert Duration.undefined() is not None
-
     def test_zero_success(self):
         assert Duration.zero() is not None
 
@@ -183,21 +177,18 @@ class TestDuration:
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.Standard
         duration = Duration.parse("02:03.456.000.000", Duration.Format.Standard)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.ISO8601
         duration = Duration.parse("PT2M3.456S", Duration.Format.ISO8601)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
     def test_parse_without_format(self):
         assert Duration.parse("02:03.456.000.000") == Duration.parse(
@@ -222,21 +213,18 @@ class TestDuration:
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.Standard
         duration = Duration.parse(String("02:03.456.000.000"), Duration.Format.Standard)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.ISO8601
         duration = Duration.parse(String("PT2M3.456S"), Duration.Format.ISO8601)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
     def test_hash(self):
         duration_a = Duration.seconds(1.0)

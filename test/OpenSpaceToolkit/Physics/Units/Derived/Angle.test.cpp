@@ -22,7 +22,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Constructor)
 
     {
         const double value = std::numeric_limits<double>::quiet_NaN();
-        const Angle::Unit unit = Angle::Unit::Undefined;
+        const Angle::Unit unit = Angle::Unit::Radian;
 
         EXPECT_NO_THROW(Angle(value, unit));
     }
@@ -70,9 +70,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, EqualToOperator)
     {
         EXPECT_FALSE(Angle(1.0, Angle::Unit::Radian) == Angle(2.0, Angle::Unit::Radian));
         EXPECT_FALSE(Angle(+1.0, Angle::Unit::Radian) == Angle(-1.0, Angle::Unit::Radian));
-        EXPECT_FALSE(Angle::Undefined() == Angle(1.0, Angle::Unit::Radian));
-        EXPECT_FALSE(Angle(1.0, Angle::Unit::Radian) == Angle::Undefined());
-        EXPECT_FALSE(Angle::Undefined() == Angle::Undefined());
     }
 
     {
@@ -90,9 +87,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, NotEqualToOperator)
     {
         EXPECT_TRUE(Angle(1.0, Angle::Unit::Radian) != Angle(2.0, Angle::Unit::Radian));
         EXPECT_TRUE(Angle(+1.0, Angle::Unit::Radian) != Angle(-1.0, Angle::Unit::Radian));
-        EXPECT_TRUE(Angle::Undefined() != Angle(1.0, Angle::Unit::Radian));
-        EXPECT_TRUE(Angle(1.0, Angle::Unit::Radian) != Angle::Undefined());
-        EXPECT_TRUE(Angle::Undefined() != Angle::Undefined());
     }
 
     {
@@ -208,12 +202,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, AdditionOperator)
             Angle(123.456, Angle::Unit::Radian) + Angle(1.0, Angle::Unit::Revolution)
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) + Angle::Undefined());
-        EXPECT_ANY_THROW(Angle::Undefined() + Angle(1.0, Angle::Unit::Radian));
-        EXPECT_ANY_THROW(Angle::Undefined() + Angle::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, SubtractionOperator)
@@ -289,12 +277,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, SubtractionOperator)
             Angle(123.456, Angle::Unit::Radian),
             Angle(123.456, Angle::Unit::Radian) - Angle(1.0, Angle::Unit::Revolution)
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) - Angle::Undefined());
-        EXPECT_ANY_THROW(Angle::Undefined() - Angle(1.0, Angle::Unit::Radian));
-        EXPECT_ANY_THROW(Angle::Undefined() - Angle::Undefined());
     }
 }
 
@@ -468,12 +450,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, AdditionAssignmentOperator)
             Angle(123.456, Angle::Unit::Radian) += Angle(1.0, Angle::Unit::Revolution)
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) += Angle::Undefined());
-        EXPECT_ANY_THROW(Angle::Undefined() += Angle(1.0, Angle::Unit::Radian));
-        EXPECT_ANY_THROW(Angle::Undefined() += Angle::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, SubtractionAssignmentOperator)
@@ -550,12 +526,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, SubtractionAssignmentOperator)
             Angle(123.456, Angle::Unit::Radian),
             Angle(123.456, Angle::Unit::Radian) -= Angle(1.0, Angle::Unit::Revolution)
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Radian) -= Angle::Undefined());
-        EXPECT_ANY_THROW(Angle::Undefined() -= Angle(1.0, Angle::Unit::Radian));
-        EXPECT_ANY_THROW(Angle::Undefined() -= Angle::Undefined());
     }
 }
 
@@ -639,10 +609,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, UnaryAdditionOperator)
         EXPECT_EQ(Angle(-123.456, Angle::Unit::Arcsecond), +Angle(-123.456, Angle::Unit::Arcsecond));
         EXPECT_EQ(Angle(-123.456, Angle::Unit::Revolution), +Angle(-123.456, Angle::Unit::Revolution));
     }
-
-    {
-        EXPECT_ANY_THROW(+Angle::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, UnarySubtractionOperator)
@@ -664,10 +630,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, UnarySubtractionOperator)
         EXPECT_EQ(Angle(123.456, Angle::Unit::Arcsecond), -Angle(-123.456, Angle::Unit::Arcsecond));
         EXPECT_EQ(Angle(123.456, Angle::Unit::Revolution), -Angle(-123.456, Angle::Unit::Revolution));
     }
-
-    {
-        EXPECT_ANY_THROW(-Angle::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, AngleConversionOperator)
@@ -679,10 +641,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, AngleConversionOperator)
             ostk::mathematics::geometry::Angle(+1.0, ostk::mathematics::geometry::Angle::Unit::Radian),
             Angle(+1.0, Angle::Unit::Radian)
         );
-    }
-
-    {
-        EXPECT_NO_THROW(ostk::mathematics::geometry::Angle angle = Angle::Undefined(); (void)angle;);
     }
 }
 
@@ -696,27 +654,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, StreamOperator)
         EXPECT_NO_THROW(std::cout << Angle(0.5, Angle::Unit::Degree) << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, IsDefined)
-{
-    using ostk::physics::unit::Angle;
-
-    {
-        EXPECT_TRUE(Angle(0.0, Angle::Unit::Radian).isDefined());
-
-        EXPECT_TRUE(Angle(1.0, Angle::Unit::Radian).isDefined());
-        EXPECT_TRUE(Angle(1.0, Angle::Unit::Degree).isDefined());
-        EXPECT_TRUE(Angle(1.0, Angle::Unit::Arcminute).isDefined());
-        EXPECT_TRUE(Angle(1.0, Angle::Unit::Arcsecond).isDefined());
-        EXPECT_TRUE(Angle(1.0, Angle::Unit::Revolution).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Angle::Undefined().isDefined());
-        EXPECT_FALSE(Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Radian).isDefined());
-        EXPECT_FALSE(Angle(1.0, Angle::Unit::Undefined).isDefined());
     }
 }
 
@@ -742,9 +679,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, IsZero)
     }
 
     {
-        EXPECT_ANY_THROW(Angle::Undefined().isZero());
-        EXPECT_ANY_THROW(Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Radian).isZero());
-        EXPECT_ANY_THROW(Angle(1.0, Angle::Unit::Undefined).isZero());
+        EXPECT_FALSE(Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Radian).isZero());
     }
 }
 
@@ -759,10 +694,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, GetUnit)
         EXPECT_EQ(Angle::Unit::Arcsecond, Angle(1.0, Angle::Unit::Arcsecond).getUnit());
         EXPECT_EQ(Angle::Unit::Revolution, Angle(1.0, Angle::Unit::Revolution).getUnit());
     }
-
-    {
-        EXPECT_ANY_THROW(Angle::Undefined().getUnit());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, In)
@@ -775,10 +706,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, In)
         EXPECT_EQ(1.0, Angle(1.0, Angle::Unit::Arcminute).in(Angle::Unit::Arcminute));
         EXPECT_EQ(1.0, Angle(1.0, Angle::Unit::Arcsecond).in(Angle::Unit::Arcsecond));
         EXPECT_EQ(1.0, Angle(1.0, Angle::Unit::Revolution).in(Angle::Unit::Revolution));
-    }
-
-    {
-        EXPECT_ANY_THROW(Angle::Undefined().in(Angle::Unit::Radian));
     }
 }
 
@@ -816,10 +743,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InRadians)
         EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
         EXPECT_EQ(-M_PI, Angle(-3.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
         EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inRadians(-M_PI, M_PI));
-    }
-
-    {
-        EXPECT_ANY_THROW(Angle::Undefined().inRadians());
     }
 
     {
@@ -866,10 +789,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InDegrees)
     }
 
     {
-        EXPECT_ANY_THROW(Angle::Undefined().inDegrees());
-    }
-
-    {
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0));
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0));
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0, -180.0));
@@ -910,10 +829,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InArcminutes)
         EXPECT_EQ(0.0, Angle(-2.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
         EXPECT_EQ(-180.0 * 60.0, Angle(-3.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
         EXPECT_EQ(0.0, Angle(-4.0 * M_PI, Angle::Unit::Radian).inArcminutes(-180.0 * 60.0, +180.0 * 60.0));
-    }
-
-    {
-        EXPECT_ANY_THROW(Angle::Undefined().inArcminutes());
     }
 
     {
@@ -964,10 +879,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InArcseconds)
     }
 
     {
-        EXPECT_ANY_THROW(Angle::Undefined().inArcseconds());
-    }
-
-    {
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 0.0));
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(0.0, 180.0 * 3600.0));
         EXPECT_ANY_THROW(Angle(0.0, Angle::Unit::Radian).inDegrees(+180.0 * 3600.0, -180.0 * 3600.0));
@@ -980,10 +891,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, InRevolutions)
 
     {
         EXPECT_EQ(1.0, Angle(2.0 * M_PI, Angle::Unit::Radian).inRevolutions());
-    }
-
-    {
-        EXPECT_ANY_THROW(Angle::Undefined().inRevolutions());
     }
 }
 
@@ -1030,20 +937,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, ToString)
         EXPECT_EQ("123.456 [asec]", Angle(123.456123, Angle::Unit::Arcsecond).toString(3));
         EXPECT_EQ("123.456 [rev]", Angle(123.456123, Angle::Unit::Revolution).toString(3));
     }
-
-    {
-        EXPECT_ANY_THROW(Angle::Undefined().toString());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Undefined)
-{
-    using ostk::physics::unit::Angle;
-
-    {
-        EXPECT_NO_THROW(Angle::Undefined());
-        EXPECT_FALSE(Angle::Undefined().isDefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Radians)
@@ -1052,7 +945,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Radians)
 
     {
         EXPECT_NO_THROW(Angle::Radians(123.456));
-        EXPECT_TRUE(Angle::Radians(123.456).isDefined());
 
         EXPECT_EQ(123.456, Angle::Radians(123.456).in(Angle::Unit::Radian));
     }
@@ -1064,7 +956,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Degrees)
 
     {
         EXPECT_NO_THROW(Angle::Degrees(123.456));
-        EXPECT_TRUE(Angle::Degrees(123.456).isDefined());
 
         EXPECT_EQ(123.456, Angle::Degrees(123.456).in(Angle::Unit::Degree));
     }
@@ -1076,7 +967,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Arcminutes)
 
     {
         EXPECT_NO_THROW(Angle::Arcminutes(123.456));
-        EXPECT_TRUE(Angle::Arcminutes(123.456).isDefined());
 
         EXPECT_EQ(123.456, Angle::Arcminutes(123.456).in(Angle::Unit::Arcminute));
     }
@@ -1088,7 +978,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Arcseconds)
 
     {
         EXPECT_NO_THROW(Angle::Arcseconds(123.456));
-        EXPECT_TRUE(Angle::Arcseconds(123.456).isDefined());
 
         EXPECT_EQ(123.456, Angle::Arcseconds(123.456).in(Angle::Unit::Arcsecond));
     }
@@ -1100,7 +989,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Revolutions)
 
     {
         EXPECT_NO_THROW(Angle::Revolutions(123.456));
-        EXPECT_TRUE(Angle::Revolutions(123.456).isDefined());
 
         EXPECT_EQ(123.456, Angle::Revolutions(123.456).in(Angle::Unit::Revolution));
     }
@@ -1203,13 +1091,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, Between_Angles)
         EXPECT_EQ(result.getUnit(), Angle::Unit::Radian);
         EXPECT_NEAR(result.inRadians(), M_PI / 2.0, 1e-10);
     }
-
-    // Undefined input handling
-    {
-        EXPECT_ANY_THROW(Angle::Between(Angle::Undefined(), Angle::Degrees(0.0)));
-        EXPECT_ANY_THROW(Angle::Between(Angle::Degrees(0.0), Angle::Undefined()));
-        EXPECT_ANY_THROW(Angle::Between(Angle::Undefined(), Angle::Undefined()));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, StringFromUnit)
@@ -1217,7 +1098,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Angle, StringFromUnit)
     using ostk::physics::unit::Angle;
 
     {
-        EXPECT_EQ("Undefined", Angle::StringFromUnit(Angle::Unit::Undefined));
         EXPECT_EQ("Radian", Angle::StringFromUnit(Angle::Unit::Radian));
         EXPECT_EQ("Degree", Angle::StringFromUnit(Angle::Unit::Degree));
         EXPECT_EQ("Arcminute", Angle::StringFromUnit(Angle::Unit::Arcminute));

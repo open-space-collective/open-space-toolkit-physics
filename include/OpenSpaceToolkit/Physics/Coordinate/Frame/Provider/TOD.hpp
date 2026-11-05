@@ -57,15 +57,6 @@ class TOD : public Provider
     /// @return A pointer to the cloned TOD provider
     virtual TOD* clone() const override;
 
-    /// @brief Check if the TOD provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the TOD provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the epoch.
     ///
     /// @code

@@ -84,16 +84,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Duration::isDefined,
-            R"doc(
-                Check if the duration is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_zero",
             &Duration::isZero,
             R"doc(
@@ -344,16 +334,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             }
         )
 
-        .def_static(
-            "undefined",
-            &Duration::Undefined,
-            R"doc(
-                Create an undefined duration.
-
-                Returns:
-                    Duration: Undefined duration.
-            )doc"
-        )
         .def_static(
             "zero",
             &Duration::Zero,

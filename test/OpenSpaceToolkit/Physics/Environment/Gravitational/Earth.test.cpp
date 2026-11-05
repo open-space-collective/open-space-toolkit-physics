@@ -173,23 +173,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
-{
-    {
-        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isDefined());
-
-        EXPECT_TRUE(EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsPointMass)
 {
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
-
-        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isPointMass());
 
         EXPECT_TRUE(EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).isPointMass());
 
@@ -889,15 +878,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ComputeGeocentric
                 EXPECT_LT(radius.inMeters(), parameters.equatorialRadius_.inMeters());
             }
         }
-    }
-
-    // Test undefined parameters
-    {
-        const EarthGravitationalModel::Parameters undefinedParameters =
-            EarthGravitationalModel::Parameters::Undefined();
-        const Angle latitude = Angle::Degrees(45.0);
-
-        EXPECT_THROW(undefinedParameters.computeGeocentricRadiusAt(latitude), ostk::core::error::runtime::Undefined);
     }
 
     // Test specific values for WGS84

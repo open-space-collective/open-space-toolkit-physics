@@ -92,9 +92,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, HasDataFiles
 {
     {
         EXPECT_TRUE(manager_.hasDataFilesForType(EarthMagneticModel::Type::EMM2010));
-        EXPECT_THROW(
-            manager_.hasDataFilesForType(EarthMagneticModel::Type::Undefined), ostk::core::error::runtime::Wrong
-        );
     }
 }
 
@@ -143,9 +140,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth_Manager, FetchDataFil
         );
 
         // No files for this exist remotely
-        EXPECT_THROW(
-            manager_.fetchDataFilesForType(EarthMagneticModel::Type::Undefined), ostk::core::error::RuntimeError
-        );
     }
 
     {

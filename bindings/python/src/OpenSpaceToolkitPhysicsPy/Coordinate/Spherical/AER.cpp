@@ -63,17 +63,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
         .def("__repr__", &(shiftToString<AER>))
 
         .def(
-            "is_defined",
-            &AER::isDefined,
-            R"doc(
-                Check if defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_azimuth",
             &AER::getAzimuth,
             R"doc(
@@ -124,16 +113,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_AER(pybind11::module&
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &AER::Undefined,
-            R"doc(
-                Undefined AER.
-
-                Returns:
-                    AER: Undefined AER.
-            )doc"
-        )
         .def_static(
             "vector",
             &AER::Vector,

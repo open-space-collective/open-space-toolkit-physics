@@ -70,12 +70,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
-        ));
-    }
-
-    {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00));
     }
 
@@ -109,13 +103,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
             EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
-        ));
-    }
-
-    {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
         ));
     }
 }
@@ -170,22 +157,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
         );
     }
 
-    {
-        const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Undefined, Frame::ITRF()};
-
-        EXPECT_FALSE(earthAtmosphericModel.isDefined());
-    }
-
-    {
-        const EarthAtmosphericModel earthAtmosphericModel = {
-            EarthAtmosphericModel::Type::NRLMSISE00, Frame::ITRF(), EarthAtmosphericModel::InputDataType::Undefined
-        };
-
-        EXPECT_TRUE(earthAtmosphericModel.isDefined());
-        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
-        EXPECT_EQ(EarthAtmosphericModel::InputDataType::Undefined, earthAtmosphericModel.getInputDataType());
-    }
-
     // The Earth frame defaults to CSSISpaceWeatherFile as input data type
     {
         const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::NRLMSISE00, Frame::ITRF()};
@@ -201,7 +172,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
         static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant>>
             testCases = {
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(500.0)),
                  Instant::J2000()},
                 {EarthAtmosphericModel::Type::NRLMSISE00,
@@ -352,16 +323,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
 {
     {
         EXPECT_EQ(
-            EarthAtmosphericModel::InputDataType::Undefined,
-            EarthAtmosphericModel(
-                EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
-            )
-                .getInputDataType()
-        );
-    }
-
-    {
-        EXPECT_EQ(
             EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
             EarthAtmosphericModel(
                 EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
@@ -378,17 +339,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
             )
                 .getInputDataType()
         );
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
-{
-    {
-        EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
-
-        EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).isDefined());
-
-        EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).isDefined());
     }
 }
 
@@ -537,22 +487,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Fram
             Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, double>>
             testCases = {
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
                  Instant::J2000(),
                  1e-13},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
                  Instant::J2000(),
                  1e-15},

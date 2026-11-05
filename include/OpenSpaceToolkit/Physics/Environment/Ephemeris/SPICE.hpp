@@ -71,17 +71,6 @@ class SPICE : public Ephemeris
 
     virtual SPICE* clone() const override;
 
-    /// @brief Returns true if SPICE is defined
-    ///
-    /// @code
-    ///     SPICE spice = SPICE(SPICE::Object::Earth);
-    ///     spice.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True (a SPICE ephemeris is always defined)
-
-    virtual bool isDefined() const override;
-
     /// @brief Access frame of SPICE object
     ///
     /// @code

@@ -23,9 +23,6 @@ def frame() -> Frame:
 
 
 class TestFrame:
-    def test_is_defined(self, frame: Frame):
-        assert frame.is_defined() is True
-
     def test_is_quasi_inertial(self, frame: Frame):
         assert frame.is_quasi_inertial() is False
 
@@ -55,9 +52,6 @@ class TestFrame:
 
     def test_get_transform_to(self, epoch: Instant, frame: Frame):
         assert frame.get_transform_to(frame=frame, instant=epoch) is not None
-
-    def test_undefined(self):
-        assert Frame.undefined() is not None
 
     def test_GCRF(self):
         assert Frame.GCRF() is not None

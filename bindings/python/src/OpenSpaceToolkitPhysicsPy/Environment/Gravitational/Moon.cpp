@@ -50,17 +50,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
             )
 
             .def(
-                "is_defined",
-                &Moon::isDefined,
-                R"doc(
-                    Check if the Moon model is defined.
-
-                    Returns:
-                        bool: True if defined.
-                )doc"
-            )
-
-            .def(
                 "is_point_mass",
                 &Moon::isPointMass,
                 R"doc(
@@ -111,13 +100,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
         enum_<Moon::Type>(moon_class, "Type")
 
-            .value(
-                "Undefined",
-                Moon::Type::Undefined,
-                R"doc(
-                    Undefined Moon model type.
-                )doc"
-            )
             .value(
                 "Spherical",
                 Moon::Type::Spherical,

@@ -42,15 +42,6 @@ class Spherical : public Model
     /// @return Pointer to spherical gravitational model
     virtual Spherical* clone() const override;
 
-    /// @brief Check if the spherical gravitational model is defined
-    ///
-    /// @code
-    ///     bool isDefined = model.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the spherical gravitational model is defined
-    virtual bool isDefined() const override;
-
     /// @brief Returns true if the gravitational model is a point mass model
     ///
     /// @code

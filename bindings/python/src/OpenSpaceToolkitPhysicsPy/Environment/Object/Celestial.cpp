@@ -129,17 +129,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         .def("__repr__", &(shiftToString<Celestial>))
 
         .def(
-            "is_defined",
-            &Celestial::isDefined,
-            R"doc(
-                Check if the celestial object is defined.
-
-                Returns:
-                    bool: True if the celestial object is defined, false otherwise.
-            )doc"
-        )
-
-        .def(
             "access_ephemeris",
             &Celestial::accessEphemeris,
             R"doc(
@@ -387,17 +376,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         )
 
         .def_static(
-            "undefined",
-            &Celestial::Undefined,
-            R"doc(
-                Create an undefined celestial object.
-
-                Returns:
-                    Celestial: Undefined celestial object.
-            )doc"
-        )
-
-        .def_static(
             "string_from_frame_type",
             &Celestial::StringFromFrameType,
             arg("frame_type"),
@@ -416,13 +394,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
     enum_<Celestial::Type>(celestial_class, "CelestialType")
 
-        .value(
-            "Undefined",
-            Celestial::Type::Undefined,
-            R"doc(
-                Undefined celestial object.
-            )doc"
-        )
         .value(
             "Sun",
             Celestial::Type::Sun,

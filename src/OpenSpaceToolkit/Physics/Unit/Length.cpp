@@ -251,7 +251,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Length& aLength)
 
 bool Length::isDefined() const
 {
-    return unit::Unit::isDefined() && (unit_ != Length::Unit::Undefined);
+    return !std::isnan(this->accessValue()) && (unit_ != Length::Unit::Undefined);
 }
 
 bool Length::isZero() const

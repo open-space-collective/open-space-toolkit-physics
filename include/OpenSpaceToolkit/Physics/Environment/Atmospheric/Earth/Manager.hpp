@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
@@ -72,12 +73,12 @@ class Manager : public BaseManager
     /// @brief Get currently loaded CSSI Space Weather file
     ///
     /// @code
-    ///     CSSISpaceWeather sw = Manager::Get().getLoadedCSSISpaceWeather();
+    ///     std::optional<CSSISpaceWeather> sw = Manager::Get().getLoadedCSSISpaceWeather();
     /// @endcode
     ///
     /// @return Currently loaded CSSI Space Weather file
 
-    CSSISpaceWeather getLoadedCSSISpaceWeather() const;
+    std::optional<CSSISpaceWeather> getLoadedCSSISpaceWeather() const;
 
     /// @brief Get CSSI Space Weather at instant
     ///
@@ -186,7 +187,7 @@ class Manager : public BaseManager
     static Manager& Get();
 
    private:
-    CSSISpaceWeather CSSISpaceWeather_;
+    std::optional<CSSISpaceWeather> CSSISpaceWeather_;
 
     Manager();
 

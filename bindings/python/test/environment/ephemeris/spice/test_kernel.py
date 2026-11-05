@@ -13,12 +13,6 @@ def kernel() -> Kernel:
 
 
 class TestKernel:
-    def test_undefined_success(self):
-        kernel = Kernel.undefined()
-
-        assert kernel is not None
-        assert kernel.is_defined() is False
-
     def test_string_from_type_success(self):
         assert Kernel.string_from_type(Kernel.Type.SPK) == "SPK"
         assert Kernel.string_from_type(Kernel.Type.LSK) == "LSK"

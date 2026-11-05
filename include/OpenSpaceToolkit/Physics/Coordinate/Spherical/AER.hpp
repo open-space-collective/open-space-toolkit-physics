@@ -75,15 +75,6 @@ class AER
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const AER& anAER);
 
-    /// @brief Check if the AER object is defined
-    ///
-    /// @code
-    ///     AER::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the AER object is defined
-    bool isDefined() const;
-
     /// @brief Get the azimuth angle
     ///
     /// @code
@@ -137,15 +128,6 @@ class AER
     ///
     /// @return String representation of the AER object
     String toString() const;
-
-    /// @brief Construct an undefined AER object
-    ///
-    /// @code
-    ///     AER aer = AER::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined AER
-    static AER Undefined();
 
     /// @brief Construct an AER object from a 3D vector
     ///

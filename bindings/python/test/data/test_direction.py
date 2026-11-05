@@ -35,6 +35,3 @@ class TestDirection:
 
     def test_not_equals(self, direction: Direction):
         assert (direction != direction) is False
-
-    def test_undefined(self):
-        assert Direction.undefined() is not None

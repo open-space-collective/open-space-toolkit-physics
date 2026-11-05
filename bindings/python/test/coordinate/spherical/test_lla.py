@@ -155,13 +155,6 @@ class TestLLA:
         assert lla_point_equator_2 == lla_point_equator_2
         assert lla_point_equator_1 != lla_point_equator_2
 
-    def test_is_defined(
-        self,
-        lla: LLA,
-    ):
-        assert lla.is_defined()
-        assert lla.undefined().is_defined() is False
-
     def test_getters(
         self,
         latitude: Angle,
@@ -504,10 +497,6 @@ class TestLLA:
             abs(float(lla.get_longitude().in_degrees())) < 1e-10
         )  # Should be at prime meridian
         assert abs(float(lla.get_altitude().in_meters())) < 1e-6  # Should be near surface
-
-        # Test with undefined position
-        with pytest.raises(RuntimeError):
-            LLA.from_position(Position.undefined())
 
         # Test with global environment
         lla = LLA.from_position(position)

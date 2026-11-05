@@ -13,9 +13,9 @@ Unit = Mass.Unit
 def test_unit_mass_unit():
     enum_members = Unit.__members__
 
-    list_keys = ["Undefined", "Kilogram", "Pound", "Tonne"]
+    list_keys = ["Kilogram", "Pound", "Tonne"]
 
-    list_values = [Unit.Undefined, Unit.Kilogram, Unit.Pound, Unit.Tonne]
+    list_values = [Unit.Kilogram, Unit.Pound, Unit.Tonne]
 
     assert enum_members is not None
     assert list(enum_members.keys()) == list_keys
@@ -27,19 +27,16 @@ def test_unit_mass_constructors():
 
     assert mass is not None
     assert isinstance(mass, Mass)
-    assert mass.is_defined()
 
     mass: Mass = Mass(4.0, Unit.Pound)
 
     assert mass is not None
     assert isinstance(mass, Mass)
-    assert mass.is_defined()
 
     mass: Mass = Mass(4.0, Unit.Tonne)
 
     assert mass is not None
     assert isinstance(mass, Mass)
-    assert mass.is_defined()
 
 
 def test_unit_mass_comparators():
@@ -49,13 +46,6 @@ def test_unit_mass_comparators():
     assert mass_1 == mass_1
     assert mass_2 == mass_2
     assert mass_1 != mass_2
-
-
-def test_unit_mass_is_defined():
-    mass: Mass = Mass(4.0, Unit.Kilogram)
-
-    assert mass.is_defined() is True
-    assert mass.undefined().is_defined() is False
 
 
 def test_unit_mass_get_unit():

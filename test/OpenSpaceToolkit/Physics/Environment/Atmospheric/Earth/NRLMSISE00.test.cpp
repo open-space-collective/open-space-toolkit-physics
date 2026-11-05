@@ -132,15 +132,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Clone)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, IsDefined)
-{
-    {
-        const NRLMSISE00 nrlmsise = {};
-
-        EXPECT_TRUE(nrlmsise.isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getters)
 {
     {

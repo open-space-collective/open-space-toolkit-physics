@@ -189,8 +189,8 @@ class Manager : public BaseManager
     static Manager& Get();
 
    private:
-    mutable BulletinA bulletinA_;
-    mutable Finals2000A finals2000A_;
+    mutable std::optional<BulletinA> bulletinA_;
+    mutable std::optional<Finals2000A> finals2000A_;
 
     Manager();
 

@@ -73,16 +73,6 @@ class Environment
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvironment);
 
-    /// @brief Check if environment is defined
-    ///
-    /// @code
-    ///     Environment env = Environment::Default();
-    ///     env.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if environment is defined
-    bool isDefined() const;
-
     /// @brief Returns true if environment contains objects with a given name
     ///
     /// @code
@@ -203,16 +193,6 @@ class Environment
         const Array<Shared<const Object>>& anObjectToIgnoreArray = Array<Shared<const Object>>::Empty()
     ) const;
 
-    /// @brief Constructs an undefined environment
-    ///
-    /// @code
-    ///     Environment environment = Environment::Undefined();
-    ///     environment.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined environment
-    static Environment Undefined();
-
     /// @brief Constructs a default environment
     ///
     /// Contains Earth, Sun and Moon, with SPICE-based ephemeris.
@@ -222,7 +202,7 @@ class Environment
     /// @endcode
     /// @param [in] setGlobalInstance True if the global environment instance should be set with the default
     ///
-    /// @return Undefined environment
+    /// @return Default environment
     static Environment Default(const bool& setGlobalInstance = false);
 
     /// @brief Reset the singleton instance of the environment to null

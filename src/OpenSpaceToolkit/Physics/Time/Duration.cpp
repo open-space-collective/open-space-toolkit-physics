@@ -20,98 +20,52 @@ namespace time
 {
 
 Duration::Duration(Int64 aNanosecondCount)
-    : defined_(true),
-      count_(aNanosecondCount)
+    : count_(aNanosecondCount)
 {
 }
 
 bool Duration::operator==(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        return false;
-    }
-
     return count_ == aDuration.count_;
 }
 
 bool Duration::operator!=(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        return true;
-    }
-
     return count_ != aDuration.count_;
 }
 
 bool Duration::operator<(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ < aDuration.count_;
 }
 
 bool Duration::operator<=(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ <= aDuration.count_;
 }
 
 bool Duration::operator>(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ > aDuration.count_;
 }
 
 bool Duration::operator>=(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ >= aDuration.count_;
 }
 
 Duration Duration::operator+(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return Duration(count_ + aDuration.count_);
 }
 
 Duration Duration::operator-(const Duration& aDuration) const
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return Duration(count_ - aDuration.count_);
 }
 
 Duration Duration::operator*(double aMultiplier) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     if (std::isnan(aMultiplier))
     {
         throw ostk::core::error::runtime::Undefined("Multiplier");
@@ -122,11 +76,6 @@ Duration Duration::operator*(double aMultiplier) const
 
 Duration Duration::operator/(double aDivider) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     if (std::isnan(aDivider))
     {
         throw ostk::core::error::runtime::Undefined("Divider");
@@ -142,31 +91,16 @@ Duration Duration::operator/(double aDivider) const
 
 Duration Duration::operator+() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return *this;
 }
 
 Duration Duration::operator-() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return Duration(-count_);
 }
 
 Duration& Duration::operator+=(const Duration& aDuration)
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     count_ += aDuration.count_;
 
     return *this;
@@ -174,11 +108,6 @@ Duration& Duration::operator+=(const Duration& aDuration)
 
 Duration& Duration::operator-=(const Duration& aDuration)
 {
-    if ((!this->isDefined()) || (!aDuration.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     count_ -= aDuration.count_;
 
     return *this;
@@ -186,11 +115,6 @@ Duration& Duration::operator-=(const Duration& aDuration)
 
 Duration& Duration::operator*=(double aMultiplier)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     if (std::isnan(aMultiplier))
     {
         throw ostk::core::error::runtime::Undefined("Multiplier");
@@ -203,11 +127,6 @@ Duration& Duration::operator*=(double aMultiplier)
 
 Duration& Duration::operator/=(double aDivider)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     if (std::isnan(aDivider))
     {
         throw ostk::core::error::runtime::Undefined("Divider");
@@ -225,11 +144,6 @@ Duration& Duration::operator/=(double aDivider)
 
 Duration operator*(double aMultiplier, const Duration& aDuration)
 {
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return Duration(aMultiplier * aDuration.count_);
 }
 
@@ -237,68 +151,33 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Duration& aDuration
 {
     ostk::core::utils::Print::Header(anOutputStream, "Duration");
 
-    ostk::core::utils::Print::Line(anOutputStream) << (aDuration.isDefined() ? aDuration.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << aDuration.toString();
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Duration::isDefined() const
-{
-    return defined_;
-}
-
 bool Duration::isZero() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ == 0;
 }
 
 bool Duration::isPositive() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ >= 0;
 }
 
 bool Duration::isStrictlyPositive() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return count_ > 0;
 }
 
 bool Duration::isNear(const Duration& aDuration, const Duration& aTolerance) const
 {
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
-    if (!aTolerance.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Tolerance");
-    }
-
     if (!aTolerance.isPositive())
     {
         throw ostk::core::error::RuntimeError("Tolerance is not positive.");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
     }
 
     return std::abs(count_ - aDuration.count_) <= aTolerance.count_;
@@ -306,181 +185,91 @@ bool Duration::isNear(const Duration& aDuration, const Duration& aTolerance) con
 
 int Duration::getNanoseconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>(std::abs(count_) % 1000);
 }
 
 int Duration::getMicroseconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>((std::abs(count_) / 1000) % 1000);
 }
 
 int Duration::getMilliseconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>((std::abs(count_) / 1000000) % 1000);
 }
 
 int Duration::getSeconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>((std::abs(count_) / 1000000000) % 60);
 }
 
 int Duration::getMinutes() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>((std::abs(count_) / 60000000000) % 60);
 }
 
 int Duration::getHours() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>((std::abs(count_) / 3600000000000) % 24);
 }
 
 int Duration::getDays() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>(std::abs(count_) / 86400000000000);
 }
 
 int Duration::getWeeks() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return static_cast<int>(std::abs(count_) / 604800000000000);
 }
 
 Duration Duration::getAbsolute() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return Duration(std::abs(count_));
 }
 
 double Duration::inNanoseconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_);
 }
 
 double Duration::inMicroseconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 1e3);
 }
 
 double Duration::inMilliseconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 1e6);
 }
 
 double Duration::inSeconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 1e9);
 }
 
 double Duration::inMinutes() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 60000000000.0);
 }
 
 double Duration::inHours() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 3600000000000.0);
 }
 
 double Duration::inDays() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 86400000000000.0);
 }
 
 double Duration::inWeeks() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return double(count_ / 604800000000000.0);
 }
 
 double Duration::in(const unit::Time::Unit& aTimeUnit) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     switch (aTimeUnit)
     {
         case unit::Time::Unit::Nanosecond:
@@ -517,11 +306,6 @@ double Duration::in(const unit::Time::Unit& aTimeUnit) const
 
 String Duration::toString(const Duration::Format& aFormat) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     const int nanoseconds = this->getNanoseconds();
     const int microseconds = this->getMicroseconds();
     const int milliseconds = this->getMilliseconds();
@@ -671,11 +455,6 @@ String Duration::toString(const Duration::Format& aFormat) const
     }
 
     return String::Empty();
-}
-
-Duration Duration::Undefined()
-{
-    return Duration();
 }
 
 Duration Duration::Zero()
@@ -944,14 +723,6 @@ Duration Duration::Parse(const String& aString, const std::optional<Duration::Fo
             throw ostk::core::error::runtime::Wrong("Format");
             break;
     }
-
-    return Duration::Undefined();
-}
-
-Duration::Duration()
-    : defined_(false),
-      count_(0)
-{
 }
 
 }  // namespace time

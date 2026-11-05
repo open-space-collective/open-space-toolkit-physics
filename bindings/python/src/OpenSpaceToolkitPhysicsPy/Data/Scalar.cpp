@@ -65,16 +65,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def("__repr__", &(shiftToString<Scalar>))
 
         .def(
-            "is_defined",
-            &Scalar::isDefined,
-            R"doc(
-                Check if the scalar is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "get_value",
             &Scalar::getValue,
             R"doc(
@@ -120,17 +110,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
 
                 Returns:
                     str: String representation.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Scalar::Undefined,
-            R"doc(
-                Create an undefined scalar.
-
-                Returns:
-                    Scalar: Undefined scalar.
             )doc"
         )
 

@@ -35,9 +35,6 @@ class TestScalar:
     def test_not_equals(self, scalar: Scalar):
         assert (scalar != scalar) is False
 
-    def test_is_defined(self, scalar: Scalar):
-        assert scalar.is_defined()
-
     def test_get_value(self, scalar: Scalar, value: float):
         assert scalar.get_value() == value
 
@@ -49,6 +46,3 @@ class TestScalar:
 
     def test_to_string(self, scalar: Scalar):
         assert scalar.to_string() is not None
-
-    def test_undefined(self):
-        assert Scalar.undefined() is not None

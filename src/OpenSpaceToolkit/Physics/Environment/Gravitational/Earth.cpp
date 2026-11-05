@@ -470,14 +470,9 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
-bool Earth::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 bool Earth::isPointMass() const
 {
-    return this->isDefined() && (this->getType() == Earth::Type::Spherical);
+    return this->getType() == Earth::Type::Spherical;
 }
 
 Earth::Type Earth::getType() const
@@ -507,10 +502,6 @@ Unique<Earth::Impl> Earth::ImplFromType(
     const std::optional<int>& aGravityModelOrder
 )
 {
-    if (aType == Earth::Type::Undefined)
-    {
-        return nullptr;
-    }
     if (aType == Earth::Type::Spherical)
     {
         return std::make_unique<Earth::SphericalImpl>(aType);
@@ -540,9 +531,6 @@ Model::Parameters Earth::ParametersFromType(const Earth::Type& aType)
 
         case Earth::Type::EGM2008:
             return Earth::EGM2008;
-
-        case Earth::Type::Undefined:
-            return Earth::Parameters::Undefined();
 
         default:
             throw ostk::core::error::runtime::Wrong("Type");

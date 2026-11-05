@@ -41,8 +41,7 @@ class Moon : public Model
 
     enum class Type
     {
-        Undefined,  /// Undefined
-        Spherical   /// The spherical gravity originating from a point source at the center of the Moon
+        Spherical  /// The spherical gravity originating from a point source at the center of the Moon
     };
 
     /// @brief Constructor
@@ -85,15 +84,6 @@ class Moon : public Model
     ///
     /// @return Pointer to Moon gravitational model
     virtual Moon* clone() const override;
-
-    /// @brief Check if the Moon gravitational model is defined
-    ///
-    /// @code
-    ///     bool isDefined = moonGrav.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the Moon gravitational model is defined
-    virtual bool isDefined() const override;
 
     /// @brief Returns true if the gravitational model is a point mass model
     ///

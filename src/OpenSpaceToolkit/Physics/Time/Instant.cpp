@@ -127,11 +127,6 @@ Instant Instant::operator+(const Duration& aDuration) const
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     return Instant(count_ + aDuration.count_, scale_);
 }
 
@@ -140,11 +135,6 @@ Instant Instant::operator-(const Duration& aDuration) const
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
     }
 
     return Instant(count_ - aDuration.count_, scale_);
@@ -187,11 +177,6 @@ Instant& Instant::operator+=(const Duration& aDuration)
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
-    }
-
     count_ = count_ + aDuration.count_;
 
     return *this;
@@ -202,11 +187,6 @@ Instant& Instant::operator-=(const Duration& aDuration)
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
     }
 
     count_ = count_ - aDuration.count_;
@@ -247,11 +227,6 @@ bool Instant::isNear(const Instant& anInstant, const Duration& aTolerance) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!aTolerance.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Tolerance");
     }
 
     if (!aTolerance.isPositive())

@@ -90,15 +90,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, IsDefined)
-{
-    {
-        const SPICE spice = {SPICE::Object::Earth};
-
-        EXPECT_TRUE(spice.isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
 {
     {
@@ -308,21 +299,15 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 
         const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC);
 
-        Position sunPosition = Position::Undefined();
-
-        EXPECT_NO_THROW({ sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); });
+        EXPECT_NO_THROW(sunFrameSPtr->getOriginIn(Frame::GCRF(), instant));
 
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de430.bsp"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./pck00010.tpc"))));
 
-        EXPECT_NO_THROW(
+        const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant);
 
-            { sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); }
-
-        );
-
-        EXPECT_TRUE(sunPosition.isDefined());
+        EXPECT_EQ(Frame::GCRF(), sunPosition.accessFrame());
     }
 }
 
@@ -339,14 +324,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 
         const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC);
 
-        Position sunPosition = Position::Undefined();
+        const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant);
 
-        EXPECT_NO_THROW(
-
-            { sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); }
-
-        );
-
-        EXPECT_TRUE(sunPosition.isDefined());
+        EXPECT_EQ(Frame::GCRF(), sunPosition.accessFrame());
     }
 }

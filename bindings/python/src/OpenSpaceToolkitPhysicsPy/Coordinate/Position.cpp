@@ -65,16 +65,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def("__repr__", &(shiftToString<Position>))
 
         .def(
-            "is_defined",
-            &Position::isDefined,
-            R"doc(
-                Check if the Position is defined.
-
-                Returns:
-                    bool: True if the Position is defined.
-            )doc"
-        )
-        .def(
             "is_near",
             &Position::isNear,
             arg("position"),
@@ -182,16 +172,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Position::Undefined,
-            R"doc(
-                Get undefined Position.
-
-                Returns:
-                    Position: Undefined Position.
-            )doc"
-        )
         .def_static(
             "meters",
             &Position::Meters,

@@ -18,9 +18,6 @@ class TestCSSISpaceWeather:
     def test_repr_success(self, cssi_space_weather: CSSISpaceWeather):
         assert repr(cssi_space_weather).startswith("-- CSSI Space Weather --")
 
-    def test_is_defined_success(self, cssi_space_weather: CSSISpaceWeather):
-        assert cssi_space_weather.is_defined() is True
-
     def test_access_last_observation_date_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
@@ -122,9 +119,6 @@ class TestCSSISpaceWeather:
                 lambda reading: reading.f107_data_type == "FAKE",
                 Instant.date_time(datetime(2029, 1, 1, 0, 0, 0), Scale.UTC),
             )
-
-    def test_undefined_success(self):
-        assert CSSISpaceWeather.undefined() is not None
 
     def test_load_success(self, cssi_space_weather_file: File):
         assert CSSISpaceWeather.load(cssi_space_weather_file) is not None

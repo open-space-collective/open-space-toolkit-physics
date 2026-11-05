@@ -27,11 +27,6 @@ Kernel::Kernel(const Kernel::Type& aType, const filesystem::File& aFile)
 
 bool Kernel::operator==(const Kernel& aKernel) const
 {
-    if ((!this->isDefined()) || (!aKernel.isDefined()))
-    {
-        return false;
-    }
-
     return (type_ == aKernel.type_) && (file_ == aKernel.file_);
 }
 
@@ -40,44 +35,19 @@ bool Kernel::operator!=(const Kernel& aKernel) const
     return !((*this) == aKernel);
 }
 
-bool Kernel::isDefined() const
-{
-    return (type_ != Kernel::Type::Undefined) && file_.isDefined();
-}
-
 Kernel::Type Kernel::getType() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     return type_;
 }
 
 String Kernel::getName() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     return file_.getName();
 }
 
 filesystem::File Kernel::getFile() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     return file_;
-}
-
-Kernel Kernel::Undefined()
-{
-    return {Kernel::Type::Undefined, filesystem::File::Undefined()};
 }
 
 Kernel Kernel::File(const filesystem::File& aFile)
@@ -87,7 +57,14 @@ Kernel Kernel::File(const filesystem::File& aFile)
         throw ostk::core::error::runtime::Undefined("File");
     }
 
-    return {Kernel::TypeFromFileExtension(aFile.getExtension()), aFile};
+    const std::optional<Kernel::Type> type = Kernel::TypeFromFileExtension(aFile.getExtension());
+
+    if (!type.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot determine the kernel type of [{}].", aFile.toString());
+    }
+
+    return {type.value(), aFile};
 }
 
 Kernel::Type Kernel::TypeFromString(const String& aString)
@@ -95,7 +72,6 @@ Kernel::Type Kernel::TypeFromString(const String& aString)
     using ostk::core::container::Map;
 
     static const Map<String, Kernel::Type> stringTypeMap = {
-        {"Undefined", Kernel::Type::Undefined},
         {"SCLK", Kernel::Type::SCLK},
         {"LSK", Kernel::Type::LSK},
         {"PCK", Kernel::Type::PCK},
@@ -117,7 +93,6 @@ String Kernel::StringFromType(const Kernel::Type& aType)
     using ostk::core::container::Map;
 
     static const Map<Kernel::Type, String> typeStringMap = {
-        {Kernel::Type::Undefined, "Undefined"},
         {Kernel::Type::SCLK, "SCLK"},
         {Kernel::Type::LSK, "LSK"},
         {Kernel::Type::PCK, "PCK"},
@@ -134,7 +109,7 @@ String Kernel::StringFromType(const Kernel::Type& aType)
     return typeStringMap.at(aType);
 }
 
-Kernel::Type Kernel::TypeFromFileExtension(const String& aFileExtension)
+std::optional<Kernel::Type> Kernel::TypeFromFileExtension(const String& aFileExtension)
 {
     // https://naif.jpl.nasa.gov/pub/naif/self_training/individual_docs/03_conventions.pdf
 
@@ -200,7 +175,7 @@ Kernel::Type Kernel::TypeFromFileExtension(const String& aFileExtension)
         return Kernel::Type::BEK;
     }
 
-    return Kernel::Type::Undefined;
+    return std::nullopt;
 }
 
 }  // namespace spice

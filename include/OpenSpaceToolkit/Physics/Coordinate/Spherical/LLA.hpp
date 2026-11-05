@@ -105,16 +105,6 @@ class LLA
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const LLA& aLLA);
 
-    /// @brief Checks if the LLA object is defined.
-    ///
-    /// @code
-    ///     LLA::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the LLA object is defined.
-
-    bool isDefined() const;
-
     /// @brief Gets the latitude angle.
     ///
     /// @code
@@ -170,7 +160,7 @@ class LLA
 
     Length calculateDistanceTo(
         const LLA& aLLA,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
@@ -189,7 +179,7 @@ class LLA
 
     Pair<Angle, Angle> calculateAzimuthTo(
         const LLA& aLLA,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
@@ -212,7 +202,7 @@ class LLA
     LLA calculateIntermediateTo(
         const LLA& aLLA,
         double aRatio,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
@@ -233,7 +223,7 @@ class LLA
     LLA calculateForward(
         const Angle& aDirection,
         const Length& aDistance,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
@@ -255,7 +245,7 @@ class LLA
     Array<LLA> calculateLinspaceTo(
         const LLA& aLLA,
         const Size& aNumberOfPoints,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
@@ -298,7 +288,7 @@ class LLA
     /// @param [in] anEllipsoidFlattening Flattening of the ellipsoid
     /// @return 3D vector representing the Cartesian coordinates.
     Vector3d toCartesian(
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     ) const;
 
@@ -310,15 +300,6 @@ class LLA
     ///
     /// @return String representation of the LLA object.
     String toString() const;
-
-    /// @brief Constructs an undefined LLA (Latitude, Longitude, Altitude) object.
-    ///
-    /// @code
-    ///     LLA lla = LLA::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined LLA object.
-    static LLA Undefined();
 
     /// @brief Constructs an LLA (Latitude, Longitude, Altitude) object from a 3D vector.
     ///
@@ -342,7 +323,7 @@ class LLA
     /// @return LLA object constructed from the Cartesian coordinates.
     static LLA Cartesian(
         const Vector3d& aCartesianCoordinateSet,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
@@ -362,7 +343,7 @@ class LLA
     static Length DistanceBetween(
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
@@ -382,7 +363,7 @@ class LLA
     static Pair<Angle, Angle> AzimuthBetween(
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
@@ -406,7 +387,7 @@ class LLA
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         double aRatio,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
@@ -429,7 +410,7 @@ class LLA
         const LLA& aLLA,
         const Angle& aDirection,
         const Length& aDistance,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 
@@ -454,7 +435,7 @@ class LLA
         const LLA& aFirstLLA,
         const LLA& aSecondLLA,
         const Size& aNumberOfPoints,
-        const Length& anEllipsoidEquatorialRadius = Length::Undefined(),
+        const std::optional<Length>& anEllipsoidEquatorialRadius = std::nullopt,
         const std::optional<double>& anEllipsoidFlattening = std::nullopt
     );
 

@@ -103,15 +103,6 @@ class BulletinA
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA);
 
-    /// @brief true if defined
-    ///
-    /// @code
-    ///     bulletinA.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return true if defined
-    bool isDefined() const;
-
     /// @brief Access release Date
     ///
     /// @code
@@ -133,11 +124,11 @@ class BulletinA
     /// @brief Access TAI-UTC
     ///
     /// @code
-    ///     const Duration& taiMinusUtc = bulletinA.accessTAIMinusUTC();
+    ///     const std::optional<Duration>& taiMinusUtc = bulletinA.accessTAIMinusUTC();
     /// @endcode
     ///
     /// @return TAI-UTC
-    const Duration& accessTAIMinusUTC() const;
+    const std::optional<Duration>& accessTAIMinusUTC() const;
 
     /// @brief Access TAI-UTC epoch
     ///
@@ -178,11 +169,11 @@ class BulletinA
     /// @brief Get TAI-UTC
     ///
     /// @code
-    ///     Duration taiMinusUtc = bulletinA.getTAIMinusUTC();
+    ///     std::optional<Duration> taiMinusUtc = bulletinA.getTAIMinusUTC();
     /// @endcode
     ///
     /// @return TAI-UTC
-    Duration getTAIMinusUTC() const;
+    std::optional<Duration> getTAIMinusUTC() const;
 
     /// @brief Get TAI-UTC epoch
     ///
@@ -231,15 +222,6 @@ class BulletinA
     /// @return Prediction at Instant
     BulletinA::Prediction getPredictionAt(const Instant& anInstant) const;
 
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     BulletinA bulletinA = BulletinA::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined Bulletin A object
-    static BulletinA Undefined();
-
     /// @brief Load Bulletin A from file
     ///
     /// @code
@@ -254,7 +236,7 @@ class BulletinA
     std::optional<Date> releaseDate_;
     Instant lastModifiedTimestamp_;
 
-    Duration taiMinusUtc_;
+    std::optional<Duration> taiMinusUtc_;
     Instant taiMinusUtcEpoch_;
 
     Interval observationInterval_;

@@ -1121,10 +1121,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsNear)
     }
 
     {
-        EXPECT_ANY_THROW(Instant::Undefined().isNear(Instant::Undefined(), Duration::Undefined()));
         EXPECT_ANY_THROW(Instant::Undefined().isNear(Instant::J2000(), Duration::Zero()));
         EXPECT_ANY_THROW(Instant::J2000().isNear(Instant::Undefined(), Duration::Zero()));
-        EXPECT_ANY_THROW(Instant::J2000().isNear(Instant::J2000(), Duration::Undefined()));
     }
 }
 

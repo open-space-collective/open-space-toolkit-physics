@@ -25,7 +25,6 @@ def test_coordinate_axes_constructors():
 
     assert axes is not None
     assert isinstance(axes, Axes)
-    assert axes.is_defined() is True
 
     # Construction using python tuples
     vector_1 = (1.0, 0.0, 0.0)
@@ -36,7 +35,6 @@ def test_coordinate_axes_constructors():
 
     assert axes is not None
     assert isinstance(axes, Axes)
-    assert axes.is_defined() is True
 
     # Construction using python numpy arrays
     vector_1 = np.array(vector_1)
@@ -47,15 +45,6 @@ def test_coordinate_axes_constructors():
 
     assert axes is not None
     assert isinstance(axes, Axes)
-    assert axes.is_defined() is True
-
-    # Construction using undefined method
-
-    axes: Axes = Axes.undefined()
-
-    assert axes is not None
-    assert isinstance(axes, Axes)
-    assert axes.is_defined() is False
 
 
 def test_coordinate_axes_xyz():

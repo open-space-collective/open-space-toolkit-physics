@@ -92,9 +92,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, HasData
 {
     {
         EXPECT_TRUE(manager_.hasDataFilesForType(EarthGravitationalModel::Type::EGM2008));
-        EXPECT_THROW(
-            manager_.hasDataFilesForType(EarthGravitationalModel::Type::Undefined), ostk::core::error::runtime::Wrong
-        );
     }
 }
 
@@ -125,9 +122,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, FetchDa
         );
 
         // No files for this exist remotely
-        EXPECT_THROW(
-            manager_.fetchDataFilesForType(EarthGravitationalModel::Type::Undefined), ostk::core::error::RuntimeError
-        );
     }
 
     {

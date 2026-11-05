@@ -26,8 +26,7 @@ class ElectricCurrent : public Unit
     enum class Unit
     {
 
-        Undefined,  ///< Undefined
-        Ampere      ///< Ampere (SI)
+        Ampere  ///< Ampere (SI)
 
     };
 
@@ -52,16 +51,6 @@ class ElectricCurrent : public Unit
     /// @return A pointer to a dynamically allocated clone of this electric current
 
     virtual ElectricCurrent* clone() const override;
-
-    /// @brief Check if the electric current is defined.
-    ///
-    /// @code
-    ///     ElectricCurrent::Amperes(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    virtual bool isDefined() const override;
 
     /// @brief Get the electric current unit.
     ///
@@ -104,16 +93,6 @@ class ElectricCurrent : public Unit
     /// @return A string representation
 
     virtual String toString(int aPrecision = -1) const override;
-
-    /// @brief Construct an undefined electric current.
-    ///
-    /// @code
-    ///     ElectricCurrent current = ElectricCurrent::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined electric current
-
-    static ElectricCurrent Undefined();
 
     /// @brief Construct an electric current from a value in amperes.
     ///

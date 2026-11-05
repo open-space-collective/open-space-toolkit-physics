@@ -53,15 +53,6 @@ class J2000 : public Provider
     /// @return A pointer to the cloned J2000 provider
     virtual J2000* clone() const override;
 
-    /// @brief Check if the J2000 provider is defined.
-    ///
-    /// @code
-    ///     bool isDefined = provider.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the J2000 provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the IAU theory.
     ///
     /// @code

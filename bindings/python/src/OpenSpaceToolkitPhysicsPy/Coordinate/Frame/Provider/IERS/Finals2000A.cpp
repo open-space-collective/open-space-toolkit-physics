@@ -33,17 +33,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
         .def("__repr__", &(shiftToString<Finals2000A>))
 
         .def(
-            "is_defined",
-            &Finals2000A::isDefined,
-            R"doc(
-                Returns true if defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_interval",
             &Finals2000A::getInterval,
             R"doc(
@@ -110,16 +99,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Finals2000A::Undefined,
-            R"doc(
-                Undefined factory function.
-
-                Returns:
-                    Finals2000A: Undefined Finals2000A object.
-            )doc"
-        )
         .def_static(
             "load",
             &Finals2000A::Load,

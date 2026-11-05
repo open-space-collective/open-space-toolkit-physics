@@ -12,7 +12,6 @@ namespace ostk
 {
 namespace physics
 {
-
 Unit::Unit(const Unit& aUnit)
     : type_(aUnit.type_),
       unitUPtr_((aUnit.unitUPtr_ != nullptr) ? aUnit.unitUPtr_->clone() : nullptr)
@@ -80,8 +79,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Unit& aUnit)
 
     ostk::core::utils::Print::Line(anOutputStream) << "Type:" << Unit::StringFromType(aUnit.type_);
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Value:"
-        << (((aUnit.unitUPtr_ != nullptr) && aUnit.unitUPtr_->isDefined()) ? aUnit.unitUPtr_->toString() : "Undefined");
+        << "Value:" << ((aUnit.unitUPtr_ != nullptr) ? aUnit.unitUPtr_->toString() : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -207,6 +205,5 @@ Unit::Unit(const Unit::Type& aType, const Unique<unit::Unit>& aUnitUPtr)
       unitUPtr_((aUnitUPtr != nullptr) ? aUnitUPtr->clone() : nullptr)
 {
 }
-
 }  // namespace physics
 }  // namespace ostk

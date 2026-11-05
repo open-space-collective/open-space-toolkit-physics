@@ -26,11 +26,6 @@ Analytical* Analytical::clone() const
     return new Analytical(*this);
 }
 
-bool Analytical::isDefined() const
-{
-    return (frameSPtr_ != nullptr) && frameSPtr_->isDefined();
-}
-
 Shared<const Frame> Analytical::accessFrame() const
 {
     return frameSPtr_;

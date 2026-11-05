@@ -1,7 +1,6 @@
 /// Apache License 2.0
 
 #include <chrono>
-#include <cmath>
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
@@ -62,7 +61,7 @@ Directory Manager::getCSSISpaceWeatherDirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("CSSISpaceWeather"));
 }
 
-CSSISpaceWeather Manager::getLoadedCSSISpaceWeather() const
+std::optional<CSSISpaceWeather> Manager::getLoadedCSSISpaceWeather() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
@@ -264,11 +263,6 @@ double Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 
 void Manager::loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    if (!aCSSISpaceWeather.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->loadCSSISpaceWeather_(aCSSISpaceWeather);
@@ -285,7 +279,7 @@ void Manager::reset()
 {
     BaseManager::reset();
 
-    CSSISpaceWeather_ = CSSISpaceWeather::Undefined();
+    CSSISpaceWeather_ = std::nullopt;
 }
 
 Manager& Manager::Get()
@@ -303,7 +297,7 @@ Manager::Manager()
           Path::Parse("environment/atmospheric/earth"),
           "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
       ),
-      CSSISpaceWeather_(CSSISpaceWeather::Undefined())
+      CSSISpaceWeather_(std::nullopt)
 {
     this->setup_();
 }
@@ -316,13 +310,13 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
     }
 
     // Try currently loaded
-    if (CSSISpaceWeather_.isDefined())
+    if (CSSISpaceWeather_.has_value())
     {
-        if (CSSISpaceWeather_.accessObservationInterval().contains(anInstant) ||
-            CSSISpaceWeather_.accessDailyPredictionInterval().contains(anInstant) ||
-            CSSISpaceWeather_.accessMonthlyPredictionInterval().contains(anInstant))
+        if (CSSISpaceWeather_->accessObservationInterval().contains(anInstant) ||
+            CSSISpaceWeather_->accessDailyPredictionInterval().contains(anInstant) ||
+            CSSISpaceWeather_->accessMonthlyPredictionInterval().contains(anInstant))
         {
-            return &CSSISpaceWeather_;
+            return &CSSISpaceWeather_.value();
         }
 
         throw ostk::core::error::RuntimeError(
@@ -347,7 +341,7 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
 
             const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(latestCSSISpaceWeatherFile));
 
-            return &CSSISpaceWeather_;
+            return &CSSISpaceWeather_.value();
         }
 
         case Manager::Mode::Manual:
@@ -372,7 +366,7 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
 
             const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(localCSSISpaceWeatherFile));
 
-            return &CSSISpaceWeather_;
+            return &CSSISpaceWeather_.value();
         }
 
         default:

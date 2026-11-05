@@ -12,21 +12,19 @@ namespace physics
 {
 namespace coordinate
 {
-
 Velocity::Velocity(const Vector3d& aCoordinateSet, const Velocity::Unit& aUnit, const Shared<const Frame>& aFrameSPtr)
     : coordinates_(aCoordinateSet),
       unit_(aUnit),
       frameSPtr_(aFrameSPtr)
 {
+    if (aFrameSPtr == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Frame");
+    }
 }
 
 bool Velocity::operator==(const Velocity& aVelocity) const
 {
-    if ((!this->isDefined()) || (!aVelocity.isDefined()))
-    {
-        return false;
-    }
-
     return (coordinates_ == aVelocity.coordinates_) && (unit_ == aVelocity.unit_) &&
            ((*frameSPtr_) == (*aVelocity.frameSPtr_));
 }
@@ -40,78 +38,37 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Velocity& aVelocity
 {
     ostk::core::utils::Print::Header(anOutputStream, "Velocity");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Coordinates:" << (aVelocity.isDefined() ? aVelocity.coordinates_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Unit:" << (aVelocity.isDefined() ? Velocity::StringFromUnit(aVelocity.unit_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Frame:"
-        << (((aVelocity.frameSPtr_ != nullptr) && aVelocity.frameSPtr_->isDefined()) ? aVelocity.frameSPtr_->getName()
-                                                                                     : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Coordinates:" << aVelocity.coordinates_.toString();
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Velocity::StringFromUnit(aVelocity.unit_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << aVelocity.frameSPtr_->getName();
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Velocity::isDefined() const
-{
-    return coordinates_.isDefined() && (unit_ != Velocity::Unit::Undefined) && (frameSPtr_ != nullptr) &&
-           frameSPtr_->isDefined();
-}
-
 const Vector3d& Velocity::accessCoordinates() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     return coordinates_;
 }
 
 Shared<const Frame> Velocity::accessFrame() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     return frameSPtr_;
 }
 
 Vector3d Velocity::getCoordinates() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     return coordinates_;
 }
 
 Velocity::Unit Velocity::getUnit() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     return unit_;
 }
 
 Velocity Velocity::inUnit(const Velocity::Unit& aUnit) const
 {
-    if (aUnit == Velocity::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     const double conversionFactor =
         Derived(1.0, Velocity::DerivedUnitFromVelocityUnit(unit_)).in(Velocity::DerivedUnitFromVelocityUnit(aUnit));
 
@@ -121,14 +78,9 @@ Velocity Velocity::inUnit(const Velocity::Unit& aUnit) const
 Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>& aFrameSPtr, const Instant& anInstant)
     const
 {
-    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
     }
 
     return {
@@ -141,22 +93,12 @@ Velocity Velocity::inFrame(const Position& aPosition, const Shared<const Frame>&
 
 String Velocity::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     return String::Format(
         "{} [{}] @ {}",
         ((aPrecision >= 0) ? coordinates_.toString(aPrecision) : coordinates_.toString()),
         Velocity::StringFromUnit(unit_),
         frameSPtr_->getName()
     );
-}
-
-Velocity Velocity::Undefined()
-{
-    return {Vector3d::Undefined(), Velocity::Unit::Undefined, nullptr};
 }
 
 Velocity Velocity::MetersPerSecond(const Vector3d& aCoordinateSet, const Shared<const Frame>& aFrameSPtr)
@@ -168,9 +110,6 @@ String Velocity::StringFromUnit(const Velocity::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case Velocity::Unit::Undefined:
-            return "Undefined";
-
         case Velocity::Unit::MeterPerSecond:
             return "m/s";
 
@@ -189,9 +128,6 @@ Derived::Unit Velocity::DerivedUnitFromVelocityUnit(const Velocity::Unit& aUnit)
 
     switch (aUnit)
     {
-        case Velocity::Unit::Undefined:
-            return Derived::Unit::Undefined();
-
         case Velocity::Unit::MeterPerSecond:
             return Derived::Unit::Velocity(Length::Unit::Meter, Time::Unit::Second);
 
@@ -199,10 +135,7 @@ Derived::Unit Velocity::DerivedUnitFromVelocityUnit(const Velocity::Unit& aUnit)
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return Derived::Unit::Undefined();
 }
-
 }  // namespace coordinate
 }  // namespace physics
 }  // namespace ostk

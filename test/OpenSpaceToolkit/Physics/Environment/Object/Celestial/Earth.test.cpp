@@ -197,9 +197,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, StaticMethods)
     EXPECT_NO_THROW(Earth::Default());
 
     const Earth earth = Earth::Default();
-
-    EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
-    EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM2008)
@@ -216,9 +213,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM96)
     EXPECT_ANY_THROW(Earth::EGM96(3000, 3000));
 
     const Earth earth = Earth::EGM96();
-
-    EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
-    EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
@@ -230,9 +224,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
     EXPECT_ANY_THROW(Earth::EGM84(3000, std::nullopt));
 
     const Earth earth = Earth::EGM84();
-
-    EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
-    EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84_EGM96)
@@ -242,9 +233,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84_EGM96)
     EXPECT_ANY_THROW(Earth::WGS84_EGM96(3000, 3000));
 
     const Earth earth = Earth::WGS84_EGM96();
-
-    EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
-    EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84)
@@ -254,25 +242,21 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84)
     EXPECT_ANY_THROW(Earth::WGS84(3000, 3000));
 
     const Earth earth = Earth::WGS84();
-
-    EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
-    EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, Spherical)
 {
     const Earth earth = Earth::Spherical();
-    EXPECT_TRUE(earth.isDefined());
 
-    EXPECT_FALSE(earth.accessAtmosphericModel()->isDefined());
-    EXPECT_FALSE(earth.accessMagneticModel()->isDefined());
+    EXPECT_NE(nullptr, earth.accessGravitationalModel());
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GravitationalOnly)
 {
     const Earth earth =
         Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008));
-    EXPECT_TRUE(earth.isDefined());
 
     EXPECT_TRUE(earth.gravitationalModelIsDefined());
     EXPECT_FALSE(earth.magneticModelIsDefined());
@@ -282,7 +266,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, GravitationalO
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, MagneticOnly)
 {
     const Earth earth = Earth::MagneticOnly(std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::EMM2017));
-    EXPECT_TRUE(earth.isDefined());
 
     EXPECT_FALSE(earth.gravitationalModelIsDefined());
     EXPECT_TRUE(earth.magneticModelIsDefined());
@@ -293,7 +276,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, AtmosphericOnl
 {
     const Earth earth =
         Earth::AtmosphericOnly(std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential));
-    EXPECT_TRUE(earth.isDefined());
 
     EXPECT_FALSE(earth.gravitationalModelIsDefined());
     EXPECT_FALSE(earth.magneticModelIsDefined());
@@ -307,7 +289,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, FromModels)
         std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::EMM2017),
         std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential)
     );
-    EXPECT_TRUE(earth.isDefined());
 
     EXPECT_TRUE(earth.gravitationalModelIsDefined());
     EXPECT_TRUE(earth.magneticModelIsDefined());
@@ -325,14 +306,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, DoubleFreeErro
         // This gets deallocated, which deletes the Geographiclib::GravityModel
         const EarthGravitationalModel grav =
             EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 20, 20);
-        const EarthMagneticModel mag = EarthMagneticModel(EarthMagneticModel::Type::Undefined);
         const EarthAtmosphericModel atm = EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00);
 
         // This gets deallocated, which again tries to delete the model
         const Earth earth = Earth::FromModels(
-            std::make_shared<EarthGravitationalModel>(grav),
-            std::make_shared<EarthMagneticModel>(mag),
-            std::make_shared<EarthAtmosphericModel>(atm)
+            std::make_shared<EarthGravitationalModel>(grav), nullptr, std::make_shared<EarthAtmosphericModel>(atm)
         );
     }
 }

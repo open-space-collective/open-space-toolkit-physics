@@ -35,7 +35,6 @@ class Angle : public Unit
     enum class Unit
     {
 
-        Undefined,  ///< Undefined
         Radian,     ///< Radian
         Degree,     ///< Degree
         Arcminute,  ///< Arcminute
@@ -226,15 +225,6 @@ class Angle : public Unit
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle);
 
-    /// @brief Check if the angle is defined.
-    ///
-    /// @code
-    ///     Angle::Degrees(90.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-    virtual bool isDefined() const override;
-
     /// @brief Check if the angle value is zero.
     ///
     /// @code
@@ -361,15 +351,6 @@ class Angle : public Unit
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
     virtual String toString(int aPrecision = -1) const override;
-
-    /// @brief Construct an undefined angle.
-    ///
-    /// @code
-    ///     Angle angle = Angle::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined angle
-    static Angle Undefined();
 
     /// @brief Construct a zero angle.
     ///

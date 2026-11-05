@@ -14,7 +14,6 @@ namespace physics
 {
 namespace unit
 {
-
 using ostk::physics::utility::DoubleToString;
 
 ElectricCurrent::ElectricCurrent(double aValue, const ElectricCurrent::Unit& aUnit)
@@ -28,11 +27,6 @@ ElectricCurrent* ElectricCurrent::clone() const
     return new ElectricCurrent(*this);
 }
 
-bool ElectricCurrent::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != ElectricCurrent::Unit::Undefined);
-}
-
 ElectricCurrent::Unit ElectricCurrent::getUnit() const
 {
     return unit_;
@@ -40,11 +34,6 @@ ElectricCurrent::Unit ElectricCurrent::getUnit() const
 
 double ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return std::numeric_limits<double>::quiet_NaN();
-    }
-
     if (unit_ == aUnit)
     {
         return this->accessValue();
@@ -60,17 +49,7 @@ double ElectricCurrent::inAmperes() const
 
 String ElectricCurrent::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Electric current");
-    }
-
     return DoubleToString(this->accessValue(), aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
-}
-
-ElectricCurrent ElectricCurrent::Undefined()
-{
-    return {std::numeric_limits<double>::quiet_NaN(), ElectricCurrent::Unit::Undefined};
 }
 
 ElectricCurrent ElectricCurrent::Amperes(double aValue)
@@ -80,16 +59,12 @@ ElectricCurrent ElectricCurrent::Amperes(double aValue)
 
 // ElectricCurrent                 ElectricCurrent::Parse                      (   const   String& aString )
 // {
-
 // }
 
 String ElectricCurrent::StringFromUnit(const ElectricCurrent::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case ElectricCurrent::Unit::Undefined:
-            return "Undefined";
-
         case ElectricCurrent::Unit::Ampere:
             return "Ampere";
 
@@ -130,7 +105,6 @@ double ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
 
     return std::numeric_limits<double>::quiet_NaN();
 }
-
 }  // namespace unit
 }  // namespace physics
 }  // namespace ostk

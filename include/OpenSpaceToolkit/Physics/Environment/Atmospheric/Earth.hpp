@@ -43,14 +43,12 @@ class Earth : public Model
    public:
     enum class Type
     {
-        Undefined,    ///< Undefined
         Exponential,  ///< Exponential atmospheric density model, valid up to 1000 km
         NRLMSISE00,   ///< Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000
     };
 
     enum class InputDataType
     {
-        Undefined,              ///< Undefined
         ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
         CSSISpaceWeatherFile,   ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input
                                 ///< parameters from CSSI
@@ -143,15 +141,6 @@ class Earth : public Model
     ///
     /// @return Pointer to Earth atmospheric model
     virtual Earth* clone() const override;
-
-    /// @brief Check if the Earth atmospheric model is defined
-    ///
-    /// @code
-    ///     earthAtmo.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the Earth atmospheric model is defined
-    virtual bool isDefined() const override;
 
     /// @brief Get atmospheric model type
     ///

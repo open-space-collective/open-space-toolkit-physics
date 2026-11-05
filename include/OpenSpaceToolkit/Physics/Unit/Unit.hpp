@@ -30,7 +30,6 @@ class Unit
     enum class Type
     {
 
-        Undefined,
         Length,
         Mass,
         Time,
@@ -78,15 +77,6 @@ class Unit
     /// @param [in] aUnit A unit to compare with
     /// @return True if units are not equal
     bool operator!=(const Unit& aUnit) const;
-
-    /// @brief Check if the unit is defined.
-    ///
-    /// @code
-    ///     Unit(Unit::Type::Length, 1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-    virtual bool isDefined() const;
 
     /// @brief Check if the value is zero.
     ///

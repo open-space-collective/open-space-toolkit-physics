@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(pybind11::module& aModule)
@@ -28,13 +30,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(pybind1
 
     enum_<Kernel::Type>(kernel_class, "Type")
 
-        .value(
-            "Undefined",
-            Kernel::Type::Undefined,
-            R"doc(
-                Undefined kernel type.
-            )doc"
-        )
         .value(
             "SCLK",
             Kernel::Type::SCLK,
@@ -146,16 +141,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(pybind1
         )
 
         .def(
-            "is_defined",
-            &Kernel::isDefined,
-            R"doc(
-                Check if the kernel is defined.
-
-                Returns:
-                    bool: True if the kernel is defined, False otherwise.
-            )doc"
-        )
-        .def(
             "get_type",
             &Kernel::getType,
             R"doc(
@@ -186,16 +171,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(pybind1
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Kernel::Undefined,
-            R"doc(
-                Create an undefined kernel.
-
-                Returns:
-                    Kernel: An undefined kernel.
-            )doc"
-        )
         .def_static(
             "file",
             &Kernel::File,
@@ -251,7 +226,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(pybind1
                     file_extension (str): The file extension.
 
                 Returns:
-                    Kernel.Type: The kernel type.
+                    Kernel.Type | None: The kernel type, or None if the extension is not a known kernel extension.
             )doc"
         )
 

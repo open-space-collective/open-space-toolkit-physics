@@ -36,28 +36,13 @@ TOD* TOD::clone() const
     return new TOD(*this);
 }
 
-bool TOD::isDefined() const
-{
-    return this->epoch_.isDefined();
-}
-
 Instant TOD::getEpoch() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TOD");
-    }
-
     return this->epoch_;
 }
 
 iau::Theory TOD::getTheory() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TOD");
-    }
-
     return this->theory_;
 }
 
@@ -68,11 +53,6 @@ Transform TOD::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TOD");
     }
 
     const double date1 = 2400000.5;
