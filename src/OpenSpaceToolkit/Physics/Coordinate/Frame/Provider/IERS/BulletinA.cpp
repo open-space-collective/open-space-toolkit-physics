@@ -12,6 +12,7 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 
 namespace ostk
@@ -27,6 +28,7 @@ namespace provider
 namespace iers
 {
 
+using ostk::physics::coordinate::frame::provider::iers::utilities::interpolateUt1MinusUtc;
 using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA)
@@ -257,8 +259,9 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
             const Real xError = observation1.xError + ratio * (observation2.xError - observation1.xError);
             const Real y = observation1.y + ratio * (observation2.y - observation1.y);
             const Real yError = observation1.yError + ratio * (observation2.yError - observation1.yError);
-            const Real ut1MinusUtc =
-                observation1.ut1MinusUtc + ratio * (observation2.ut1MinusUtc - observation1.ut1MinusUtc);
+            const Real ut1MinusUtc = interpolateUt1MinusUtc(
+                observation1.ut1MinusUtc, observation1.mjd, observation2.ut1MinusUtc, observation2.mjd, ratio, anInstant
+            );
             const Real ut1MinusUtcError =
                 observation1.ut1MinusUtcError + ratio * (observation2.ut1MinusUtcError - observation1.ut1MinusUtcError);
 
@@ -338,8 +341,14 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
 
                 const Real x = previousPrediction.x + ratio * (nextPrediction.x - previousPrediction.x);
                 const Real y = previousPrediction.y + ratio * (nextPrediction.y - previousPrediction.y);
-                const Real ut1MinusUtc = previousPrediction.ut1MinusUtc +
-                                         ratio * (nextPrediction.ut1MinusUtc - previousPrediction.ut1MinusUtc);
+                const Real ut1MinusUtc = interpolateUt1MinusUtc(
+                    previousPrediction.ut1MinusUtc,
+                    previousPrediction.mjd,
+                    nextPrediction.ut1MinusUtc,
+                    nextPrediction.mjd,
+                    ratio,
+                    anInstant
+                );
 
                 const BulletinA::Prediction prediction = {year, month, day, mjd, x, y, ut1MinusUtc};
 

@@ -12,6 +12,7 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 
 namespace ostk
@@ -27,6 +28,7 @@ namespace provider
 namespace iers
 {
 
+using ostk::physics::coordinate::frame::provider::iers::utilities::interpolateUt1MinusUtc;
 using ostk::physics::data::utilities::getFileModifiedInstant;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A)
@@ -140,10 +142,9 @@ Real Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) const
 
             const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
 
-            const Real ut1MinusUtc_A =
-                previousData.ut1MinusUtc_A + ratio * (nextData.ut1MinusUtc_A - previousData.ut1MinusUtc_A);
-            // const Real ut1MinusUtc_B = previousData.ut1MinusUtc_B + ratio * (nextData.ut1MinusUtc_B -
-            // previousData.ut1MinusUtc_B) ;
+            const Real ut1MinusUtc_A = interpolateUt1MinusUtc(
+                previousData.ut1MinusUtc_A, previousData.mjd, nextData.ut1MinusUtc_A, nextData.mjd, ratio, anInstant
+            );
 
             return ut1MinusUtc_A;
         }
@@ -253,7 +254,9 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
         const char ut1MinusUtcFlag =
             (previousData.ut1MinusUtcFlag == nextData.ut1MinusUtcFlag) ? previousData.ut1MinusUtcFlag : '?';
 
-        const Real ut1MinusUtc_A = interpolate(previousData.ut1MinusUtc_A, nextData.ut1MinusUtc_A, ratio);
+        const Real ut1MinusUtc_A = interpolateUt1MinusUtc(
+            previousData.ut1MinusUtc_A, previousData.mjd, nextData.ut1MinusUtc_A, nextData.mjd, ratio, anInstant
+        );
         const Real ut1MinusUtcError_A =
             interpolate(previousData.ut1MinusUtcError_A, nextData.ut1MinusUtcError_A, ratio);
         const Real lod_A = interpolate(previousData.lod_A, nextData.lod_A, ratio);
@@ -268,7 +271,9 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
         const Real dyError_A = interpolate(previousData.dyError_A, nextData.dyError_A, ratio);
         const Real x_B = interpolate(previousData.x_B, nextData.x_B, ratio);
         const Real y_B = interpolate(previousData.y_B, nextData.y_B, ratio);
-        const Real ut1MinusUtc_B = interpolate(previousData.ut1MinusUtc_B, nextData.ut1MinusUtc_B, ratio);
+        const Real ut1MinusUtc_B = interpolateUt1MinusUtc(
+            previousData.ut1MinusUtc_B, previousData.mjd, nextData.ut1MinusUtc_B, nextData.mjd, ratio, anInstant
+        );
         const Real dx_B = interpolate(previousData.dx_B, nextData.dx_B, ratio);
         const Real dy_B = interpolate(previousData.dy_B, nextData.dy_B, ratio);
 
