@@ -26,8 +26,8 @@ using ostk::physics::coordinate::Frame;
 namespace
 {
 
-// An Earth without a gravitational model has no gravitational parameters: they are NaN (and the equatorial radius is
-// an undefined length).
+// An Earth without a gravitational model has no gravitational parameters (NaN) but keeps a shape: it falls back to the
+// WGS84 equatorial radius and flattening, so that geometries and LLA conversions on it are not NaN.
 EarthGravitationalModel::Parameters ParametersFromModel(const Shared<EarthGravitationalModel>& aGravitationalModel)
 {
     using ostk::physics::unit::Derived;
@@ -43,12 +43,23 @@ EarthGravitationalModel::Parameters ParametersFromModel(const Shared<EarthGravit
 
     return {
         Derived(nan, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)),
-        Length::Undefined(),
+        EarthGravitationalModel::WGS84.equatorialRadius_,
+        EarthGravitationalModel::WGS84.flattening_,
         nan,
         nan,
         nan,
-        nan
     };
+}
+
+// The Celestial constructor rejects a null ephemeris, but the Earth geometry dereferences it first.
+Shared<const Frame> EphemerisFrame(const Shared<Ephemeris>& anEphemeris)
+{
+    if (anEphemeris == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Ephemeris");
+    }
+
+    return anEphemeris->accessFrame();
 }
 
 }  // namespace
@@ -76,7 +87,7 @@ Earth::Earth(
           aGravitationalModel,
           aMagneticModel,
           anAtmosphericModel,
-          Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
+          Earth::Geometry(anEquatorialRadius, aFlattening, EphemerisFrame(anEphemeris))
       )
 {
 }
@@ -102,7 +113,7 @@ Earth::Earth(
           Earth::Geometry(
               ParametersFromModel(aGravitationalModel).equatorialRadius_,
               ParametersFromModel(aGravitationalModel).flattening_,
-              anEphemeris->accessFrame()
+              EphemerisFrame(anEphemeris)
           )
       )
 {

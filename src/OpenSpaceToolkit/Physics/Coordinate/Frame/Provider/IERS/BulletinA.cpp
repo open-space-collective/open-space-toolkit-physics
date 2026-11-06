@@ -104,6 +104,11 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
 
 const Date& BulletinA::accessReleaseDate() const
 {
+    if (!releaseDate_.has_value())
+    {
+        throw ostk::core::error::runtime::Undefined("Release date");
+    }
+
     return releaseDate_.value();
 }
 

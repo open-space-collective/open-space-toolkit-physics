@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
 
 #include <Global.test.hpp>
@@ -93,4 +95,9 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Vector, ToString)
     {
         EXPECT_EQ(vector_.toString(1), "[1.0, 2.0, 3.0] [m] @ GCRF");
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Data_Vector, Constructor_NullFrame)
+{
+    EXPECT_THROW(Vector(value_, unit_, nullptr), ostk::core::error::runtime::Undefined);
 }

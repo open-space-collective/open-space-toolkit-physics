@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
@@ -30,4 +32,11 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Velocity, InFrame)
         EXPECT_TRUE(velocity_ITRF_fromFeet.getCoordinates().isNear(velocity_ITRF.getCoordinates(), 1e-9))
             << velocity_ITRF_fromFeet << " ~ " << velocity_ITRF;
     }
+}
+
+TEST(OpenSpaceToolkit_Physics_Coordinate_Velocity, Constructor_NullFrame)
+{
+    EXPECT_THROW(
+        Velocity({0.0, 0.0, 0.0}, Velocity::Unit::MeterPerSecond, nullptr), ostk::core::error::runtime::Undefined
+    );
 }

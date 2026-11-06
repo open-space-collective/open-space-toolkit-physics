@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
@@ -1005,4 +1007,31 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
 
         Frame::Destruct(name);
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Constructor_InvalidArguments)
+{
+    {
+        EXPECT_THROW(
+            Frame::Construct("", isQuasiInertial_, Frame::GCRF(), providerSPtr_), ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        EXPECT_THROW(
+            Frame::Construct("Frame Without Provider", isQuasiInertial_, Frame::GCRF(), nullptr),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        EXPECT_THROW(Frame::Destruct(""), ostk::core::error::RuntimeError);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn_NullFrame)
+{
+    EXPECT_THROW(Frame::GCRF()->getOriginIn(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
+    EXPECT_THROW(Frame::GCRF()->getVelocityIn(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
+    EXPECT_THROW(Frame::GCRF()->getAxesIn(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
 }

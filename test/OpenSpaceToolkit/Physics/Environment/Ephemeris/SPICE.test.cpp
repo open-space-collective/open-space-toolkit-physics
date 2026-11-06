@@ -3,6 +3,7 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -328,4 +329,17 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 
         EXPECT_EQ(Frame::GCRF(), sunPosition.accessFrame());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Kernel_UnknownFileExtension)
+{
+    using ostk::core::filesystem::File;
+    using ostk::core::filesystem::Path;
+
+    using ostk::physics::environment::ephemeris::spice::Kernel;
+
+    EXPECT_FALSE(Kernel::TypeFromFileExtension("unknown").has_value());
+    EXPECT_TRUE(Kernel::TypeFromFileExtension("bsp").has_value());
+
+    EXPECT_THROW(Kernel::File(File::Path(Path::Parse("/tmp/kernel.unknown"))), ostk::core::error::RuntimeError);
 }

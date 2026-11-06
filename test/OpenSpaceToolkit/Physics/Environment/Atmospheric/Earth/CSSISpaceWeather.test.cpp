@@ -1,6 +1,9 @@
 /// Apache License 2.0
 
+#include <fstream>
 #include <sstream>
+#include <string>
+#include <vector>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
@@ -40,20 +43,79 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, StreamOperator_EmptyCells)
 {
-    // The monthly predictions of this file have many empty integer cells: they print as "-"
+    // Empty integer cells print as "-" (they used to throw): blank the Kp1 and Kp2 cells of the first observation of a
+    // copy of the regression file
 
-    const File file =
-        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                               "NRLMSISE00/SW-Last5Years-Regression-PR366.csv"));
+    const std::string sourcePath =
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+        "SW-Last5Years-Regression-PR366.csv";
+    const std::string modifiedPath = "/tmp/ostk-physics-test-cssi-empty-cells.csv";
 
-    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
+    {
+        std::ifstream input(sourcePath);
+        std::ofstream output(modifiedPath);
+
+        std::string line;
+        bool isHeader = true;
+        bool isFirstReading = true;
+
+        while (std::getline(input, line))
+        {
+            if (!isHeader && isFirstReading)
+            {
+                // DATE,BSRN,ND,KP1,KP2,...: blank KP1 and KP2
+                std::vector<std::string> cells;
+                std::istringstream lineStream(line);
+                std::string cell;
+
+                while (std::getline(lineStream, cell, ','))
+                {
+                    cells.push_back(cell);
+                }
+
+                cells[3] = "";
+                cells[4] = "";
+
+                line.clear();
+
+                for (size_t index = 0; index < cells.size(); ++index)
+                {
+                    line += (index == 0 ? "" : ",") + cells[index];
+                }
+
+                isFirstReading = false;
+            }
+
+            isHeader = false;
+
+            output << line << "\n";
+        }
+    }
+
+    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(File::Path(Path::Parse(modifiedPath)));
 
     std::ostringstream stream;
 
     EXPECT_NO_THROW(stream << spaceWeather);
 
-    EXPECT_NE(std::string::npos, stream.str().find("2026-06-01"));
-    EXPECT_NE(std::string::npos, stream.str().find(" -"));
+    // Check the row of the reading, not the whole output: the header and footer are made of dashes
+    std::istringstream lines(stream.str());
+    std::string line;
+    bool foundReadingRow = false;
+
+    while (std::getline(lines, line))
+    {
+        if (line.find("2021-01-01  2556") != std::string::npos)
+        {
+            foundReadingRow = true;
+
+            EXPECT_NE(std::string::npos, line.find("  -   -  ")) << line;
+        }
+    }
+
+    EXPECT_TRUE(foundReadingRow);
+
+    std::remove(modifiedPath.c_str());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastObservationDate)

@@ -212,6 +212,11 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
 const Date& CSSISpaceWeather::accessLastObservationDate() const
 {
+    if (!lastObservationDate_.has_value())
+    {
+        throw ostk::core::error::runtime::Undefined("Last observation date");
+    }
+
     return lastObservationDate_.value();
 }
 

@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -569,4 +570,70 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
             EXPECT_GE(Length::Millimeters(1.0), errorAtSurface) << errorAtSurface;
         }
     }
+}
+
+namespace
+{
+
+class ObjectWithoutGeometry : public Object
+{
+   public:
+    ObjectWithoutGeometry()
+        : Object("Without geometry")
+    {
+    }
+
+    ObjectWithoutGeometry* clone() const override
+    {
+        return new ObjectWithoutGeometry(*this);
+    }
+
+    Shared<const Frame> accessFrame() const override
+    {
+        return Frame::GCRF();
+    }
+
+    ostk::physics::coordinate::Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant&)
+        const override
+    {
+        return ostk::physics::coordinate::Position::Meters({0.0, 0.0, 0.0}, aFrameSPtr);
+    }
+
+    Velocity getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant&) const override
+    {
+        return {{0.0, 0.0, 0.0}, Velocity::Unit::MeterPerSecond, aFrameSPtr};
+    }
+
+    Transform getTransformTo(const Shared<const Frame>&, const Instant& anInstant) const override
+    {
+        return Transform::Identity(anInstant);
+    }
+
+    Axes getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant&) const override
+    {
+        return {Vector3d::X(), Vector3d::Y(), Vector3d::Z(), aFrameSPtr};
+    }
+};
+
+}  // namespace
+
+TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects_ObjectWithoutGeometry)
+{
+    const Shared<const Object> objectSPtr = std::make_shared<ObjectWithoutGeometry>();
+
+    EXPECT_FALSE(objectSPtr->accessGeometry().has_value());
+    EXPECT_FALSE(objectSPtr->getGeometry().has_value());
+    EXPECT_FALSE(objectSPtr->getGeometryIn(Frame::GCRF(), instant_).has_value());
+
+    const Environment environment = {instant_, {std::make_shared<Earth>(Earth::Default()), objectSPtr}};
+
+    const Object::Geometry farAwayGeometry = {
+        Segment({1.0e12, 1.0e12, 1.0e12}, {1.0e12, 2.0e12, 1.0e12}), Frame::GCRF()
+    };
+    const Object::Geometry throughEarthGeometry = {Segment({-10000e3, 0.0, 0.0}, {+10000e3, 0.0, 0.0}), Frame::GCRF()};
+
+    // An object without a geometry never intersects (and no longer throws)
+    EXPECT_NO_THROW(environment.intersects(farAwayGeometry));
+    EXPECT_FALSE(environment.intersects(farAwayGeometry));
+    EXPECT_TRUE(environment.intersects(throughEarthGeometry));
 }

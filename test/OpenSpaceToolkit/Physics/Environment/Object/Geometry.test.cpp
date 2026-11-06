@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Weak.hpp>
@@ -540,4 +541,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
         EXPECT_TRUE(firstIntersectionLineString_ITRF.isNear(firstIntersectionLineString_ITRF_reference, 1e-8));
         EXPECT_TRUE(secondIntersectionLineString_ITRF.isNear(secondIntersectionLineString_ITRF_reference, 1e-8));
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Constructor_NullFrame)
+{
+    EXPECT_THROW(Geometry(pyramid_, nullptr), ostk::core::error::runtime::Undefined);
 }

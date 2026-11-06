@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
@@ -21,6 +23,7 @@ using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
 
 class OpenSpaceToolkit_Physics_Coordinate_Position : public ::testing::Test
@@ -289,4 +292,16 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, FromLLA)
 
         Environment::ResetGlobalInstance();
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Constructor_NullFrame)
+{
+    EXPECT_THROW(Position({0.0, 0.0, 0.0}, Position::Unit::Meter, nullptr), ostk::core::error::runtime::Undefined);
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame_NullFrame)
+{
+    const Position position = Position::Meters({1.0, 2.0, 3.0}, Frame::GCRF());
+
+    EXPECT_THROW(position.inFrame(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
 }

@@ -3,6 +3,7 @@
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Triple.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Weak.hpp>
@@ -53,7 +54,9 @@ using ostk::physics::time::Duration;
 using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
+using ostk::physics::unit::Derived;
 using ostk::physics::unit::Length;
+using ostk::physics::unit::Time;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using EarthMagneticModel = ostk::physics::environment::magnetic::Earth;
@@ -197,6 +200,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, StaticMethods)
     EXPECT_NO_THROW(Earth::Default());
 
     const Earth earth = Earth::Default();
+
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM2008)
@@ -213,6 +219,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM96)
     EXPECT_ANY_THROW(Earth::EGM96(3000, 3000));
 
     const Earth earth = Earth::EGM96();
+
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
@@ -224,6 +233,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
     EXPECT_ANY_THROW(Earth::EGM84(3000, std::nullopt));
 
     const Earth earth = Earth::EGM84();
+
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84_EGM96)
@@ -233,6 +245,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84_EGM96)
     EXPECT_ANY_THROW(Earth::WGS84_EGM96(3000, 3000));
 
     const Earth earth = Earth::WGS84_EGM96();
+
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84)
@@ -242,6 +257,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84)
     EXPECT_ANY_THROW(Earth::WGS84(3000, 3000));
 
     const Earth earth = Earth::WGS84();
+
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, Spherical)
@@ -313,4 +331,59 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, DoubleFreeErro
             std::make_shared<EarthGravitationalModel>(grav), nullptr, std::make_shared<EarthAtmosphericModel>(atm)
         );
     }
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, AtmosphericOnly_Shape)
+{
+    const Earth earth =
+        Earth::AtmosphericOnly(std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential));
+
+    EXPECT_EQ(nullptr, earth.accessGravitationalModel());
+    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_NE(nullptr, earth.accessAtmosphericModel());
+
+    // Without a gravitational model the gravitational constants are NaN, but the shape falls back to WGS84.
+    EXPECT_TRUE(std::isnan(earth.getGravitationalParameter().in(
+        Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+    )));
+    EXPECT_DOUBLE_EQ(
+        EarthGravitationalModel::WGS84.equatorialRadius_.inMeters(), earth.getEquatorialRadius().inMeters()
+    );
+    EXPECT_DOUBLE_EQ(EarthGravitationalModel::WGS84.flattening_, earth.getFlattening());
+    EXPECT_FALSE(std::isnan(earth.getEquatorialRadius().inMeters()));
+    EXPECT_TRUE(earth.getGeometryIn(Frame::GCRF(), Instant::J2000()).has_value());
+
+    const Shared<const Frame> nedSPtr =
+        earth.getFrameAt(LLA(Angle::Degrees(10.0), Angle::Degrees(20.0), Length::Meters(0.0)), Earth::FrameType::NED);
+
+    EXPECT_FALSE(nedSPtr->getOriginIn(Frame::ITRF(), Instant::J2000()).accessCoordinates().hasNaN());
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, MagneticOnly_Shape)
+{
+    const Earth earth = Earth::MagneticOnly(std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Dipole));
+
+    EXPECT_EQ(nullptr, earth.accessGravitationalModel());
+    EXPECT_NE(nullptr, earth.accessMagneticModel());
+    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+
+    EXPECT_DOUBLE_EQ(
+        EarthGravitationalModel::WGS84.equatorialRadius_.inMeters(), earth.getEquatorialRadius().inMeters()
+    );
+    EXPECT_DOUBLE_EQ(EarthGravitationalModel::WGS84.flattening_, earth.getFlattening());
+}
+
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, Constructor_NullEphemeris)
+{
+    using ostk::physics::environment::Ephemeris;
+
+    EXPECT_THROW(
+        Earth(
+            Shared<Ephemeris>(nullptr),
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical),
+            nullptr,
+            nullptr
+        ),
+        ostk::core::error::runtime::Undefined
+    );
 }

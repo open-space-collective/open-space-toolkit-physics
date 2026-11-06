@@ -13,6 +13,8 @@
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp>
 
 #include <Global.test.hpp>
 
@@ -622,4 +624,30 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Get)
     {
         EXPECT_NO_THROW(Manager::Get());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt_NotTabulated)
+{
+    using ostk::physics::coordinate::frame::provider::TEME;
+    using ostk::physics::coordinate::frame::provider::TIRF;
+
+    manager_.loadFinals2000A(finals2000A_);
+
+    // The test file tabulates UT1 - UTC until 2025-10-04, and then has predictions rows without any value until
+    // 2025-11-23: the instant is in the span of the file, but not tabulated
+
+    const Instant instantInBlankTail = Instant::DateTime(DateTime(2025, 10, 15, 0, 0, 0), Scale::UTC);
+
+    EXPECT_FALSE(manager_.getUt1MinusUtcAt(instantInBlankTail).has_value());
+
+    EXPECT_THROW(TIRF().getTransformAt(instantInBlankTail), ostk::core::error::RuntimeError);
+    EXPECT_THROW(TEME().getTransformAt(instantInBlankTail), ostk::core::error::RuntimeError);
+
+    // LOD is not tabulated for the latest predictions: TIRF falls back to a LOD of 0
+
+    const Instant instantWithoutLod = Instant::DateTime(DateTime(2025, 3, 1, 0, 0, 0), Scale::UTC);
+
+    EXPECT_TRUE(manager_.getUt1MinusUtcAt(instantWithoutLod).has_value());
+    EXPECT_FALSE(manager_.getLodAt(instantWithoutLod).has_value());
+    EXPECT_NO_THROW(TIRF().getTransformAt(instantWithoutLod));
 }

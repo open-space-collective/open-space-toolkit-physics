@@ -145,27 +145,39 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 Access the gravitational model.
 
                 Returns:
-                    Gravitational: Gravitational model.
+                    Gravitational | None: Gravitational model, or None if the object has none.
             )doc"
         )
         .def(
             "access_magnetic_model",
-            &Celestial::accessMagneticModel,
+            +[](const Celestial& aCelestial) -> pybind11::object
+            {
+                // The magnetic model base class is not bound: return None explicitly when the object has no model
+                const auto modelSPtr = aCelestial.accessMagneticModel();
+
+                return modelSPtr != nullptr ? pybind11::cast(modelSPtr) : pybind11::none();
+            },
             R"doc(
                 Access the magnetic model.
 
                 Returns:
-                    Magnetic: Magnetic model.
+                    Magnetic | None: Magnetic model, or None if the object has none.
             )doc"
         )
         .def(
             "access_atmospheric_model",
-            &Celestial::accessAtmosphericModel,
+            +[](const Celestial& aCelestial) -> pybind11::object
+            {
+                // The atmospheric model base class is not bound: return None explicitly when the object has no model
+                const auto modelSPtr = aCelestial.accessAtmosphericModel();
+
+                return modelSPtr != nullptr ? pybind11::cast(modelSPtr) : pybind11::none();
+            },
             R"doc(
                 Access the atmospheric model.
 
                 Returns:
-                    Atmospheric: Atmospheric model.
+                    Atmospheric | None: Atmospheric model, or None if the object has none.
             )doc"
         )
 

@@ -19,6 +19,10 @@ namespace provider
 Dynamic::Dynamic(const Dynamic::Generator& aGenerator)
     : generator_(aGenerator)
 {
+    if (!generator_)
+    {
+        throw ostk::core::error::runtime::Undefined("Generator");
+    }
 }
 
 Dynamic::~Dynamic() {}

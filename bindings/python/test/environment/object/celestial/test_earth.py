@@ -225,3 +225,31 @@ class TestEarth:
             Earth.magnetic_only(EarthMagneticModel(EarthMagneticModel.Type.WMM2010)),
             Earth,
         )
+
+
+class TestEarthWithoutModels:
+    def test_from_models_accepts_none(
+        self, earth_gravitational_model: EarthGravitationalModel
+    ):
+        earth = Earth.from_models(earth_gravitational_model, None, None)
+
+        assert earth.access_gravitational_model() is not None
+        assert earth.access_magnetic_model() is None
+        assert earth.access_atmospheric_model() is None
+
+    def test_from_models_without_gravitational_model(
+        self, earth_atmospheric_model: EarthAtmosphericModel
+    ):
+        earth = Earth.from_models(None, None, earth_atmospheric_model)
+
+        assert earth.access_gravitational_model() is None
+        assert earth.access_atmospheric_model() is not None
+
+    def test_atmospheric_only_keeps_a_shape(
+        self, earth_atmospheric_model: EarthAtmosphericModel
+    ):
+        earth = Earth.atmospheric_only(earth_atmospheric_model)
+
+        assert earth.access_gravitational_model() is None
+        assert earth.get_equatorial_radius().in_meters() == pytest.approx(6378137.0)
+        assert earth.get_flattening() == pytest.approx(1.0 / 298.257223563)

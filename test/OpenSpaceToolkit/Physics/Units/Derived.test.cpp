@@ -828,6 +828,42 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 // }
 
+TEST(OpenSpaceToolkit_Physics_Unit_Derived, In)
+{
+    {
+        // Same unit
+        const Derived::Unit squareMeter = Derived::Unit::SquareMeter();
+
+        EXPECT_DOUBLE_EQ(2.0, Derived(2.0, squareMeter).in(squareMeter));
+    }
+
+    {
+        // Compatible units are converted
+        EXPECT_NEAR(
+            2.0 / (0.3048 * 0.3048 * 0.3048),
+            Derived(2.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second))
+                .in(Derived::Unit::GravitationalParameter(Length::Unit::Foot, Time::Unit::Second)),
+            1e-9
+        );
+    }
+
+    {
+        // NaN values convert to NaN
+        EXPECT_TRUE(std::isnan(Derived(
+                                   std::numeric_limits<double>::quiet_NaN(),
+                                   Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        )
+                                   .in(Derived::Unit::GravitationalParameter(Length::Unit::Foot, Time::Unit::Second))));
+    }
+
+    {
+        // Incompatible units throw
+        EXPECT_THROW(
+            Derived(2.0, Derived::Unit::SquareMeter()).in(Derived::Unit::CubicMeter()), ostk::core::error::RuntimeError
+        );
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, SquareMeter)
 {
     {

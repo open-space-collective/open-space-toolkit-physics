@@ -48,6 +48,7 @@ SENTINEL_FREE_CLASSES = [
 ]
 
 SENTINEL_FREE_ENUMS = [
+    physics.Unit.Type,
     physics.unit.Mass.Unit,
     physics.unit.ElectricCurrent.Unit,
     physics.unit.Time.Unit,
