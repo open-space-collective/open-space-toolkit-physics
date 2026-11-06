@@ -172,10 +172,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
 
         EXPECT_EQ(aer_, AER::Vector(vector));
     }
-
-    {
-        EXPECT_ANY_THROW(AER::Vector(Vector3d::Undefined()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition)

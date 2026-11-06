@@ -163,6 +163,27 @@ class TestEclipse:
         assert isinstance(str(eclipse), str)
         assert isinstance(repr(eclipse), str)
 
+    def test_get_interval_without_umbra_returns_none(
+        self,
+        sun: Celestial,
+        earth: Celestial,
+        interval: Interval,
+    ):
+        eclipse: Eclipse = Eclipse(
+            occulted_celestial_object=sun,
+            occulting_celestial_object=earth,
+            phases=[
+                EclipsePhase(
+                    region=EclipsePhase.Region.Penumbra,
+                    interval=interval,
+                    is_complete=True,
+                )
+            ],
+        )
+
+        assert eclipse.get_interval(include_penumbra=True) == interval
+        assert eclipse.get_interval(include_penumbra=False) is None
+
 
 class TestEclipseUtilityFunctions:
     def test_eclipse_intervals_at_position_basic(
@@ -183,7 +204,6 @@ class TestEclipseUtilityFunctions:
         assert len(eclipse_intervals) > 0
         for interval in eclipse_intervals:
             assert isinstance(interval, Interval)
-            assert interval.is_defined()
 
     def test_montenbruck_gill_shadow_function_various_positions(
         self,

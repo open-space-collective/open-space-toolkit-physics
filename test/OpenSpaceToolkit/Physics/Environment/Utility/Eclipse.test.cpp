@@ -166,10 +166,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(3.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[2].getEnd()));
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[1]);
     }
 
@@ -185,10 +185,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(2.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[1].getEnd()));
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[0]);
     }
 
@@ -204,10 +204,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(2.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[1].getEnd()));
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[1]);
     }
 
@@ -220,10 +220,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(1.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, intervals[0]);
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[0]);
     }
 
@@ -236,11 +236,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(1.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(0.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, intervals[0]);
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
-        EXPECT_FALSE(intervalWithoutPenumbra.isDefined());
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
+        EXPECT_FALSE(intervalWithoutPenumbra.has_value());
     }
 }
 
@@ -363,7 +363,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseMultipleUmbas)
     EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(3.0));
     EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(2.0));
 
-    const Interval intervalWithPenumbra = eclipse.getInterval(true);
+    const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
     EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[2].getEnd()));
 
     EXPECT_THROW({ eclipse.getInterval(false); }, ostk::core::error::RuntimeError);
@@ -388,11 +388,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseNoUmbras)
     EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(1.0));
     EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(0.0));
 
-    const Interval intervalWithPenumbra = eclipse.getInterval(true);
+    const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
     EXPECT_EQ(intervalWithPenumbra, Interval::Closed(referenceEpoch, referenceEpoch + Duration::Minutes(1.0)));
 
-    const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
-    EXPECT_FALSE(intervalWithoutPenumbra.isDefined());
+    const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
+    EXPECT_FALSE(intervalWithoutPenumbra.has_value());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPosition)

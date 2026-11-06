@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Utility_Eclipse__
 #define __OpenSpaceToolkit_Physics_Environment_Utility_Eclipse__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -183,11 +185,11 @@ class Eclipse
     /// @endcode
     ///
     /// @param [in] includePenumbra Whether to include the penumbra phases. Defaults to true
-    /// @return The interval of the eclipse. Returns Interval::Undefined() if there are no umbra phases
+    /// @return The interval of the eclipse. Returns std::nullopt if there are no umbra phases
     /// and penumbras are not included
     ///
     /// @throw ostk::core::error::RuntimeError If there are multiple umbra phases and penumbras are not included
-    Interval getInterval(const bool& includePenumbra = true) const;
+    std::optional<Interval> getInterval(const bool& includePenumbra = true) const;
 
     /// @brief Output stream operator
     ///

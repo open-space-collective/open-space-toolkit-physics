@@ -86,7 +86,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(nan
                     instant (Instant): Instant.
 
                 Returns:
-                    np.ndarray: Polar motion.
+                    np.ndarray | None: Polar motion, or None if it is not tabulated at the instant.
+
+                Raises:
+                    RuntimeError: If the instant is outside the span of the data.
             )doc"
         )
         .def(

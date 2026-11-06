@@ -584,10 +584,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
 
         EXPECT_EQ(lla_, LLA::Vector(vector));
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Vector(Vector3d::Undefined()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
@@ -680,10 +676,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
                 }
             }
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Cartesian(Vector3d::Undefined(), std::nullopt, std::nullopt));
     }
 
     {

@@ -34,38 +34,39 @@ Transform NorthEastDownTransformAt(
     const double latitude_rad = aLLA.getLatitude().inRadians();
     const double longitude_rad = aLLA.getLongitude().inRadians();
 
-    Quaternion q_NED_ECEF = Quaternion::Undefined();
-
-    if (latitude_rad == M_PI / 2.0)
+    const Quaternion q_NED_ECEF = [&]() -> Quaternion
     {
-        q_NED_ECEF = Quaternion::XYZS(0.0, 1.0, 0.0, 0.0);
-    }
-    else if (latitude_rad == -M_PI / 2.0)
-    {
-        q_NED_ECEF = Quaternion::XYZS(0.0, 0.0, 0.0, 1.0);
-    }
-    else
-    {
-        const double cos_lat = std::cos(latitude_rad);
-        const double sin_lat = std::sin(latitude_rad);
+        if (latitude_rad == M_PI / 2.0)
+        {
+            return Quaternion::XYZS(0.0, 1.0, 0.0, 0.0);
+        }
+        else if (latitude_rad == -M_PI / 2.0)
+        {
+            return Quaternion::XYZS(0.0, 0.0, 0.0, 1.0);
+        }
+        else
+        {
+            const double cos_lat = std::cos(latitude_rad);
+            const double sin_lat = std::sin(latitude_rad);
 
-        const double cos_lon = std::cos(longitude_rad);
-        const double sin_lon = std::sin(longitude_rad);
+            const double cos_lon = std::cos(longitude_rad);
+            const double sin_lon = std::sin(longitude_rad);
 
-        const RotationMatrix dcm_NED_ECEF = {
-            -sin_lat * cos_lon,
-            -sin_lat * sin_lon,
-            +cos_lat,
-            -sin_lon,
-            +cos_lon,
-            0.0,
-            -cos_lat * cos_lon,
-            -cos_lat * sin_lon,
-            -sin_lat
-        };
+            const RotationMatrix dcm_NED_ECEF = {
+                -sin_lat * cos_lon,
+                -sin_lat * sin_lon,
+                +cos_lat,
+                -sin_lon,
+                +cos_lon,
+                0.0,
+                -cos_lat * cos_lon,
+                -cos_lat * sin_lon,
+                -sin_lat
+            };
 
-        q_NED_ECEF = Quaternion::RotationMatrix(dcm_NED_ECEF).rectify();
-    }
+            return Quaternion::RotationMatrix(dcm_NED_ECEF).rectify();
+        }
+    }();
 
     const Vector3d w_NED_ECEF_in_NED = {0.0, 0.0, 0.0};
 

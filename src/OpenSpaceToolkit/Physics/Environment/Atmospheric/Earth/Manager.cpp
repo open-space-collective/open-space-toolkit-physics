@@ -312,9 +312,14 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
     // Try currently loaded
     if (CSSISpaceWeather_.has_value())
     {
-        if (CSSISpaceWeather_->getObservationInterval().contains(anInstant) ||
-            CSSISpaceWeather_->getDailyPredictionInterval().contains(anInstant) ||
-            CSSISpaceWeather_->getMonthlyPredictionInterval().contains(anInstant))
+        const auto contains = [&anInstant](const std::optional<Interval>& anInterval) -> bool
+        {
+            return anInterval.has_value() && anInterval->contains(anInstant);
+        };
+
+        if (contains(CSSISpaceWeather_->getObservationInterval()) ||
+            contains(CSSISpaceWeather_->getDailyPredictionInterval()) ||
+            contains(CSSISpaceWeather_->getMonthlyPredictionInterval()))
         {
             return &CSSISpaceWeather_.value();
         }

@@ -88,11 +88,6 @@ String AER::toString() const
 
 AER AER::Vector(const Vector3d& aVector)
 {
-    if (!aVector.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Vector");
-    }
-
     return {Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z())};
 }
 

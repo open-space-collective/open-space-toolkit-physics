@@ -23,10 +23,6 @@ Dipole::Dipole(const Vector3d& aMagneticMoment)
     : Model(),
       magneticMoment_SI_(aMagneticMoment)
 {
-    if (!magneticMoment_SI_.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Magnetic moment");
-    }
 }
 
 Dipole* Dipole::clone() const

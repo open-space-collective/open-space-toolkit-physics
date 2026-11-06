@@ -251,8 +251,6 @@ Angle::operator ostk::mathematics::geometry::Angle() const
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return ostk::mathematics::geometry::Angle::Undefined();
 }
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Angle& anAngle)
@@ -454,11 +452,6 @@ Angle Angle::Between(const Angle& aFirstAngle, const Angle& aSecondAngle)
 
 Angle Angle::Between(const Vector2d& aFirstVector, const Vector2d& aSecondVector)
 {
-    if ((!aFirstVector.isDefined()) || (!aSecondVector.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Vector");
-    }
-
     if ((aFirstVector.squaredNorm() < 1e-15) || (aSecondVector.squaredNorm() < 1e-15))
     {
         throw ostk::core::error::RuntimeError("Vector norm is too small.");
@@ -491,11 +484,6 @@ Angle Angle::Between(const Vector2d& aFirstVector, const Vector2d& aSecondVector
 
 Angle Angle::Between(const Vector3d& aFirstVector, const Vector3d& aSecondVector)
 {
-    if ((!aFirstVector.isDefined()) || (!aSecondVector.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Vector");
-    }
-
     if ((aFirstVector.squaredNorm() < 1e-15) || (aSecondVector.squaredNorm() < 1e-15))
     {
         throw ostk::core::error::RuntimeError("Vector norm is too small.");

@@ -36,6 +36,17 @@ namespace provider
 namespace iers
 {
 
+namespace
+{
+
+// An absent interval contains nothing
+bool Contains(const std::optional<Interval>& anInterval, const Instant& anInstant)
+{
+    return anInterval.has_value() && anInterval->contains(anInstant);
+}
+
+}  // namespace
+
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::Path;
 using ostk::core::type::String;
@@ -91,13 +102,8 @@ Finals2000A Manager::getFinals2000A() const
     throw ostk::core::error::RuntimeError("Cannot obtain Finals 2000A.");
 }
 
-Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
+std::optional<Vector2d> Manager::getPolarMotionAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     // Try data in this order:
@@ -111,17 +117,17 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
     if (bulletinAPtr != nullptr)
     {
-        if (bulletinAPtr->getObservationInterval().contains(anInstant))
+        if (Contains(bulletinAPtr->getObservationInterval(), anInstant))
         {
             const BulletinA::Observation observation = bulletinAPtr->getObservationAt(anInstant);
 
-            return {observation.x, observation.y};
+            return Vector2d(observation.x, observation.y);
         }
-        else if (bulletinAPtr->getPredictionInterval().contains(anInstant))
+        else if (Contains(bulletinAPtr->getPredictionInterval(), anInstant))
         {
             const BulletinA::Prediction prediction = bulletinAPtr->getPredictionAt(anInstant);
 
-            return {prediction.x, prediction.y};
+            return Vector2d(prediction.x, prediction.y);
         }
     }
 
@@ -129,28 +135,15 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
     if (finals2000aPtr != nullptr)
     {
-        const Vector2d polarMotion = finals2000aPtr->getPolarMotionAt(anInstant);
-        if (!polarMotion.isDefined())
-        {
-            throw ostk::core::error::RuntimeError(
-                "Cannot obtain polar motion from Finals2000a at [{}].", anInstant.toString()
-            );
-        }
+        const std::optional<Vector2d> polarMotion = finals2000aPtr->getPolarMotionAt(anInstant);
         return polarMotion;
     }
 
     throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString());
-
-    return Vector2d::Undefined();
 }
 
 std::optional<double> Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     // Try data in this order:
@@ -164,13 +157,13 @@ std::optional<double> Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
     if (bulletinAPtr != nullptr)
     {
-        if (bulletinAPtr->getObservationInterval().contains(anInstant))
+        if (Contains(bulletinAPtr->getObservationInterval(), anInstant))
         {
             const BulletinA::Observation observation = bulletinAPtr->getObservationAt(anInstant);
 
             return observation.ut1MinusUtc;
         }
-        else if (bulletinAPtr->getPredictionInterval().contains(anInstant))
+        else if (Contains(bulletinAPtr->getPredictionInterval(), anInstant))
         {
             const BulletinA::Prediction prediction = bulletinAPtr->getPredictionAt(anInstant);
 
@@ -190,11 +183,6 @@ std::optional<double> Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
 std::optional<double> Manager::getLodAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     const Finals2000A* finals2000aPtr = this->accessFinals2000A_();

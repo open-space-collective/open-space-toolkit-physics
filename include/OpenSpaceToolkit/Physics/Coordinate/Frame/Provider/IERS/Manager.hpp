@@ -98,12 +98,13 @@ class Manager : public BaseManager
     /// @brief Get polar motion at instant
     ///
     /// @code
-    ///     Vector2d polarMotion = Manager::Get().getPolarMotionAt(anInstant);
+    ///     std::optional<Vector2d> polarMotion = Manager::Get().getPolarMotionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return [asec] Polar motion
-    Vector2d getPolarMotionAt(const Instant& anInstant) const;
+    /// @return [asec] Polar motion, or std::nullopt if it is not tabulated at the instant (it throws if the instant
+    ///         is outside the span of the data)
+    std::optional<Vector2d> getPolarMotionAt(const Instant& anInstant) const;
 
     /// @brief Get UT1 - UTC at instant
     ///

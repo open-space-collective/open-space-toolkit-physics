@@ -73,16 +73,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
         )
 
         .def(
-            "is_defined",
-            &Interval::isDefined,
-            R"doc(
-                Check if the interval is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_degenerate",
             &Interval::isDegenerate,
             R"doc(
@@ -225,7 +215,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
                     (Interval): Another interval.
 
                 Returns:
-                    Interval: Intersection interval (Undefined if there is no intersection).
+                    Interval | None: Intersection interval, or None if there is no intersection.
             )doc"
         )
         .def(
@@ -238,7 +228,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
                     (Interval): Another interval.
 
                 Returns:
-                    Interval: Union interval (Undefined if there is no single-interval union).
+                    Interval | None: Union interval, or None if there is no single-interval union.
             )doc"
         )
         .def(
@@ -286,16 +276,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
             arg("scale") = Scale::UTC
         )
 
-        .def_static(
-            "undefined",
-            &Interval::Undefined,
-            R"doc(
-                Create an undefined interval.
-
-                Returns:
-                    Interval: Undefined interval.
-            )doc"
-        )
         .def_static(
             "closed",
             &Interval::Closed,
@@ -437,36 +417,11 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
                     list[Interval]: Merged intervals.
             )doc"
         )
-        // An Interval default value inside Interval's own methods is a self-referential default (the function
-        // record holds an Interval instance, which nanobind reports as leaked at shutdown), so the default is
-        // a separate overload that leaves it to the C++ signature.
-        .def_static(
-            "get_gaps",
-            [](const ostk::core::container::Array<Interval>& anIntervalArray) -> ostk::core::container::Array<Interval>
-            {
-                return Interval::GetGaps(anIntervalArray);
-            },
-            arg("intervals"),
-            R"doc(
-                Creates a list of intervals gaps.
-
-                ```
-                intervals = [[1, 3], [5, 7], [9, 11]]
-                output = [[3, 5], [7, 9]]
-                ```
-
-                Args:
-                    intervals (list[Interval]): A list of intervals.
-
-                Returns:
-                    list[Interval]: Intervals gaps.
-            )doc"
-        )
         .def_static(
             "get_gaps",
             &Interval::GetGaps,
             arg("intervals"),
-            arg("interval"),
+            arg("interval") = none(),
             R"doc(
                 Creates a list of intervals gaps.
 
@@ -478,7 +433,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
 
                 Args:
                     intervals (list[Interval]): A list of intervals.
-                    interval (Interval): The analysis interval. Used to compute gaps for the first and last interval.
+                    interval (Interval | None): The analysis interval. Used to compute gaps for the first and last interval. Defaults to None.
 
                 Returns:
                     list[Interval]: Intervals gaps.

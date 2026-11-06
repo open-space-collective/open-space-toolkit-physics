@@ -349,9 +349,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
         const LineString secondIntersectionLineString_ITRF =
             intersectionGeometry_ITRF.getComposite().getObjectAt(1).as<LineString>();
 
-        EXPECT_TRUE(firstIntersectionLineString_ITRF.isDefined());
-        EXPECT_TRUE(secondIntersectionLineString_ITRF.isDefined());
-
         // WGS84 + EGM96
 
         const LineString firstIntersectionLineString_ITRF_reference = {

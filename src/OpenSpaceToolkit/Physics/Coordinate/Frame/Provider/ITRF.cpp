@@ -66,10 +66,15 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
 
     // Polar motion
 
-    const Vector2d polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
+    const std::optional<Vector2d> polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
 
-    const double xp = polarMotion.x() * DAS2R;  // [rad]
-    const double yp = polarMotion.y() * DAS2R;  // [rad]
+    if (!polarMotion.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString());
+    }
+
+    const double xp = polarMotion->x() * DAS2R;  // [rad]
+    const double yp = polarMotion->y() * DAS2R;  // [rad]
 
     // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator.
     // It is obtained from polar motion observations by numerical integration, and so is in essence unpredictable.

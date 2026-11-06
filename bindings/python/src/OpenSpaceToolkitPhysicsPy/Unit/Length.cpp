@@ -423,16 +423,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
         )
 
         .def(
-            "is_defined",
-            &Interval<Length>::isDefined,
-            R"doc(
-                Check if the interval is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_degenerate",
             &Interval<Length>::isDegenerate,
             R"doc(
@@ -506,16 +496,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Interval<Length>::Undefined,
-            R"doc(
-                Get an undefined interval.
-
-                Returns:
-                    Interval: An undefined interval.
-            )doc"
-        )
         .def_static(
             "closed",
             &Interval<Length>::Closed,

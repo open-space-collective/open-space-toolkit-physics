@@ -73,7 +73,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(n
                 Get TAI-UTC epoch.
 
                 Returns:
-                    Instant: TAI-UTC epoch.
+                    Instant | None: TAI-UTC epoch, or None if the bulletin does not hold it.
             )doc"
         )
         .def(
@@ -83,7 +83,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(n
                 Get observation interval.
 
                 Returns:
-                    Interval: Observation Interval of Instants.
+                    Interval | None: Observation Interval of Instants, or None if there are no observations.
             )doc"
         )
         .def(
@@ -107,7 +107,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(n
                 Get prediction interval.
 
                 Returns:
-                    Interval: Prediction Interval of Instants.
+                    Interval | None: Prediction Interval of Instants, or None if there are no predictions.
             )doc"
         )
         .def(

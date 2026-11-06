@@ -44,18 +44,18 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
         << "Release date:" << (aBulletinA.releaseDate_.has_value() ? aBulletinA.releaseDate_->toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "TAI - UTC:"
-        << (aBulletinA.taiMinusUtc_.has_value()
+        << ((aBulletinA.taiMinusUtc_.has_value() && aBulletinA.taiMinusUtcEpoch_.has_value())
                 ? String::Format(
-                      "{} @ {}", aBulletinA.taiMinusUtc_->toString(), aBulletinA.taiMinusUtcEpoch_.toString(Scale::UTC)
+                      "{} @ {}", aBulletinA.taiMinusUtc_->toString(), aBulletinA.taiMinusUtcEpoch_->toString(Scale::UTC)
                   )
                 : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "Observation interval:"
-        << (aBulletinA.observationInterval_.isDefined() ? aBulletinA.observationInterval_.toString(Scale::UTC)
+        << (aBulletinA.observationInterval_.has_value() ? aBulletinA.observationInterval_->toString(Scale::UTC)
                                                         : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "Predictiom interval:"
-        << (aBulletinA.predictionInterval_.isDefined() ? aBulletinA.predictionInterval_.toString(Scale::UTC)
+        << (aBulletinA.predictionInterval_.has_value() ? aBulletinA.predictionInterval_->toString(Scale::UTC)
                                                        : "Undefined");
 
     ostk::core::utils::Print::Separator(anOutputStream, "Observation");
@@ -122,17 +122,17 @@ const std::optional<Duration>& BulletinA::getTAIMinusUTC() const
     return taiMinusUtc_;
 }
 
-const Instant& BulletinA::getTAIMinusUTCEpoch() const
+const std::optional<Instant>& BulletinA::getTAIMinusUTCEpoch() const
 {
     return taiMinusUtcEpoch_;
 }
 
-const Interval& BulletinA::getObservationInterval() const
+const std::optional<Interval>& BulletinA::getObservationInterval() const
 {
     return observationInterval_;
 }
 
-const Interval& BulletinA::getPredictionInterval() const
+const std::optional<Interval>& BulletinA::getPredictionInterval() const
 {
     return predictionInterval_;
 }
@@ -141,18 +141,18 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
 {
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
+    if (!observationInterval_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Instant");
+        throw ostk::core::error::RuntimeError("Bulletin A has no observations.");
     }
 
-    if (!observationInterval_.contains(anInstant))
+    if (!observationInterval_->contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of observation range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            observationInterval_.getStart().toString(Scale::UTC),
-            observationInterval_.getEnd().toString(Scale::UTC)
+            observationInterval_->getStart().toString(Scale::UTC),
+            observationInterval_->getEnd().toString(Scale::UTC)
         );
     }
 
@@ -226,18 +226,18 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
+    if (!predictionInterval_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Instant");
+        throw ostk::core::error::RuntimeError("Bulletin A has no predictions.");
     }
 
-    if (!predictionInterval_.contains(anInstant))
+    if (!predictionInterval_->contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            predictionInterval_.getStart().toString(Scale::UTC),
-            predictionInterval_.getEnd().toString(Scale::UTC)
+            predictionInterval_->getStart().toString(Scale::UTC),
+            predictionInterval_->getEnd().toString(Scale::UTC)
         );
     }
 
@@ -386,9 +386,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
         return 0;
     };
 
-    BulletinA bulletin;
-
-    bulletin.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+    BulletinA bulletin(getFileModifiedInstant(aFile));
 
     std::ifstream fileStream {aFile.getPath().toString()};
 
@@ -426,7 +424,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
             bulletin.releaseDate_ = Date(year, month, day);
         }
 
-        if ((lineIndex < 30) && (!bulletin.taiMinusUtcEpoch_.isDefined()) &&
+        if ((lineIndex < 30) && (!bulletin.taiMinusUtcEpoch_.has_value()) &&
             boost::regex_match(line, match, taiMinusUtcEpochRegex))
         {
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
@@ -520,14 +518,14 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
     return bulletin;
 }
 
-BulletinA::BulletinA()
+BulletinA::BulletinA(const Instant& aLastModifiedTimestamp)
     : releaseDate_(std::nullopt),
-      lastModifiedTimestamp_(Instant::Undefined()),
+      lastModifiedTimestamp_(aLastModifiedTimestamp),
       taiMinusUtc_(std::nullopt),
-      taiMinusUtcEpoch_(Instant::Undefined()),
-      observationInterval_(Interval::Undefined()),
+      taiMinusUtcEpoch_(std::nullopt),
+      observationInterval_(std::nullopt),
       observations_(Map<int, BulletinA::Observation>()),
-      predictionInterval_(Interval::Undefined()),
+      predictionInterval_(std::nullopt),
       predictions_(Map<int, BulletinA::Prediction>())
 {
 }

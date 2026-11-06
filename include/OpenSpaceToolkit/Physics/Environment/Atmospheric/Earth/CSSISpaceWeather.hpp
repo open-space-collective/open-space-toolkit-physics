@@ -129,12 +129,12 @@ class CSSISpaceWeather
     /// @brief Get observation Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.getObservationInterval();
+    ///     const std::optional<Interval>& interval = cssiSpaceWeather.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants.
 
-    const Interval& getObservationInterval() const;
+    const std::optional<Interval>& getObservationInterval() const;
 
     /// @brief Get daily prediction Interval.
     ///
@@ -149,12 +149,12 @@ class CSSISpaceWeather
     /// @brief Get daily prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.getDailyPredictionInterval();
+    ///     const std::optional<Interval>& interval = cssiSpaceWeather.getDailyPredictionInterval();
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
 
-    const Interval& getDailyPredictionInterval() const;
+    const std::optional<Interval>& getDailyPredictionInterval() const;
 
     /// @brief Get daily prediction at Instant.
     ///
@@ -169,12 +169,12 @@ class CSSISpaceWeather
     /// @brief Get monthly prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.getMonthlyPredictionInterval();
+    ///     const std::optional<Interval>& interval = cssiSpaceWeather.getMonthlyPredictionInterval();
     /// @endcode
     ///
     /// @return Monthly prediction Interval of Instants.
 
-    const Interval& getMonthlyPredictionInterval() const;
+    const std::optional<Interval>& getMonthlyPredictionInterval() const;
 
     /// @brief Get monthly prediction at Instant.
     ///
@@ -236,16 +236,16 @@ class CSSISpaceWeather
     std::optional<Date> lastObservationDate_;
     Instant lastModifiedTimestamp_;
 
-    Interval observationInterval_;
+    std::optional<Interval> observationInterval_;
     Map<int, CSSISpaceWeather::Reading> observations_;
 
-    Interval dailyPredictionInterval_;
+    std::optional<Interval> dailyPredictionInterval_;
     Map<int, CSSISpaceWeather::Reading> dailyPredictions_;
 
-    Interval monthlyPredictionInterval_;
+    std::optional<Interval> monthlyPredictionInterval_;
     Map<int, CSSISpaceWeather::Reading> monthlyPredictions_;
 
-    CSSISpaceWeather();
+    CSSISpaceWeather(const Instant& aLastModifiedTimestamp);
 };
 
 }  // namespace earth

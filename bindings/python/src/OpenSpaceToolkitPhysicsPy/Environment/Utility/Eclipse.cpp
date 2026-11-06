@@ -214,7 +214,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(nanobind::modu
                     include_penumbra (bool, optional): Whether to include the penumbra phases. Defaults to True.
 
                 Returns:
-                    Interval: The interval of the eclipse. Returns Interval::Undefined() if there are no umbra phases
+                    Interval | None: The interval of the eclipse. Returns None if there are no umbra phases
                             and penumbras are not included.
 
                 Raises:

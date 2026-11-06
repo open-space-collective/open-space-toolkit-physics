@@ -400,9 +400,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 
         const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
-        EXPECT_TRUE(earthOrientation.isDefined());
-
         const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF(), instant);
+
+        EXPECT_EQ(Frame::GCRF(), earthPosition.getFrame());
+        EXPECT_EQ(Frame::GCRF(), earthVelocity.getFrame());
+        EXPECT_FALSE(earthPosition.getCoordinates().hasNaN());
+        EXPECT_FALSE(earthVelocity.getCoordinates().hasNaN());
+        EXPECT_FALSE(earthOrientation.toVector().hasNaN());
+        EXPECT_FALSE(earthAxes.x().hasNaN());
+        EXPECT_FALSE(earthAxes.y().hasNaN());
+        EXPECT_FALSE(earthAxes.z().hasNaN());
 
         // Moon
 
@@ -415,9 +422,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 
         const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
-        EXPECT_TRUE(moonOrientation.isDefined());
-
         const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF(), instant);
+
+        EXPECT_EQ(Frame::GCRF(), moonPosition.getFrame());
+        EXPECT_EQ(Frame::GCRF(), moonVelocity.getFrame());
+        EXPECT_FALSE(moonPosition.getCoordinates().hasNaN());
+        EXPECT_FALSE(moonVelocity.getCoordinates().hasNaN());
+        EXPECT_FALSE(moonOrientation.toVector().hasNaN());
+        EXPECT_FALSE(moonAxes.x().hasNaN());
+        EXPECT_FALSE(moonAxes.y().hasNaN());
+        EXPECT_FALSE(moonAxes.z().hasNaN());
     }
 }
 
@@ -477,9 +491,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
         intersectionPoints2d.add(intersectionPoint2d);
     }
 
+    EXPECT_GT(intersectionPoints2d.getSize(), 2u);
+
     const Polygon2d intersectionPolygon2d = {intersectionPoints2d};
 
-    EXPECT_TRUE(intersectionPolygon2d.isDefined()) << intersectionPolygon2d;
+    EXPECT_GT(intersectionPolygon2d.getVertexCount(), 2u);
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)

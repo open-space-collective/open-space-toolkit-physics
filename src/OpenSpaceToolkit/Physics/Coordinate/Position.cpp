@@ -63,8 +63,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition
 {
     ostk::core::utils::Print::Header(anOutputStream, "Position");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Coordinates:" << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Coordinates:" << (aPosition.coordinates_.toString());
     ostk::core::utils::Print::Line(anOutputStream)
         << "Unit:"
         << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined");

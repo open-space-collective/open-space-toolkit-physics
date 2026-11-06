@@ -5,6 +5,7 @@
 #include <string>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
@@ -88,8 +89,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, IntervalOverlap)
 {
-    const Interval observationInterval = bulletinA_.getObservationInterval();
-    const Interval predictionInterval = bulletinA_.getPredictionInterval();
+    const Interval observationInterval = bulletinA_.getObservationInterval().value();
+    const Interval predictionInterval = bulletinA_.getPredictionInterval().value();
 
     {
         EXPECT_EQ(observationInterval.getEnd(), predictionInterval.getStart());
@@ -417,4 +418,71 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
     {
         EXPECT_ANY_THROW(BulletinA::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
+}
+
+namespace
+{
+
+// Writes the first aLineCount lines of the Bulletin A test file to a temporary file
+File WriteTruncatedBulletinA(
+    const std::string& aSourcePath, const std::string& aDestinationPath, const size_t aLineCount
+)
+{
+    std::ifstream input(aSourcePath);
+    std::ofstream output(aDestinationPath);
+
+    std::string line;
+    size_t lineIndex = 0;
+
+    while ((lineIndex < aLineCount) && std::getline(input, line))
+    {
+        output << line << "\n";
+        ++lineIndex;
+    }
+
+    return File::Path(Path::Parse(aDestinationPath));
+}
+
+}  // namespace
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load_WithoutPredictions)
+{
+    // The "PREDICTIONS:" section starts at line 78 of the test file
+
+    const std::string destinationPath = "/tmp/ostk-physics-test-bulletin-a-without-predictions.dat";
+
+    const BulletinA bulletinA = BulletinA::Load(WriteTruncatedBulletinA(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat", destinationPath, 77
+    ));
+
+    EXPECT_TRUE(bulletinA.getObservationInterval().has_value());
+    EXPECT_FALSE(bulletinA.getPredictionInterval().has_value());
+
+    const Instant instant = bulletinA.getObservationInterval()->getStart();
+
+    EXPECT_NO_THROW(bulletinA.getObservationAt(instant));
+    EXPECT_THROW(bulletinA.getPredictionAt(instant), ostk::core::error::RuntimeError);
+
+    std::remove(destinationPath.c_str());
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load_WithoutObservations)
+{
+    // The "COMBINED EARTH ORIENTATION PARAMETERS:" section starts at line 63 of the test file
+
+    const std::string destinationPath = "/tmp/ostk-physics-test-bulletin-a-without-observations.dat";
+
+    const BulletinA bulletinA = BulletinA::Load(WriteTruncatedBulletinA(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat", destinationPath, 62
+    ));
+
+    EXPECT_FALSE(bulletinA.getObservationInterval().has_value());
+    EXPECT_FALSE(bulletinA.getPredictionInterval().has_value());
+
+    const Instant instant = Instant::DateTime(DateTime(2018, 6, 20, 0, 0, 0), Scale::UTC);
+
+    EXPECT_THROW(bulletinA.getObservationAt(instant), ostk::core::error::RuntimeError);
+    EXPECT_THROW(bulletinA.getPredictionAt(instant), ostk::core::error::RuntimeError);
+
+    std::remove(destinationPath.c_str());
 }

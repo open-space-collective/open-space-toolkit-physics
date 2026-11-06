@@ -242,11 +242,6 @@ String LLA::toString() const
 
 LLA LLA::Vector(const Vector3d& aVector)
 {
-    if (!aVector.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Vector");
-    }
-
     return {Angle::Degrees(aVector.x()), Angle::Degrees(aVector.y()), Length::Meters(aVector.z())};
 }
 
@@ -256,11 +251,6 @@ LLA LLA::Cartesian(
     const std::optional<double>& anEllipsoidFlattening
 )
 {
-    if (!aCartesianCoordinateSet.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Cartesian coordinates");
-    }
-
     const Length ellipsoidEquatorialRadius =
         anEllipsoidEquatorialRadius.has_value()
             ? anEllipsoidEquatorialRadius.value()

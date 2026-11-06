@@ -133,29 +133,29 @@ class BulletinA
     /// @brief Get TAI-UTC epoch
     ///
     /// @code
-    ///     const Instant& epoch = bulletinA.getTAIMinusUTCEpoch();
+    ///     const std::optional<Instant>& epoch = bulletinA.getTAIMinusUTCEpoch();
     /// @endcode
     ///
     /// @return TAI-UTC epoch
-    const Instant& getTAIMinusUTCEpoch() const;
+    const std::optional<Instant>& getTAIMinusUTCEpoch() const;
 
     /// @brief Get observation Interval
     ///
     /// @code
-    ///     const Interval& interval = bulletinA.getObservationInterval();
+    ///     const std::optional<Interval>& interval = bulletinA.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants
-    const Interval& getObservationInterval() const;
+    const std::optional<Interval>& getObservationInterval() const;
 
     /// @brief Get prediction Interval
     ///
     /// @code
-    ///     const Interval& interval = bulletinA.getPredictionInterval();
+    ///     const std::optional<Interval>& interval = bulletinA.getPredictionInterval();
     /// @endcode
     ///
     /// @return Prediction Interval of Instants
-    const Interval& getPredictionInterval() const;
+    const std::optional<Interval>& getPredictionInterval() const;
 
     /// @brief Get observation at Instant
     ///
@@ -192,15 +192,15 @@ class BulletinA
     Instant lastModifiedTimestamp_;
 
     std::optional<Duration> taiMinusUtc_;
-    Instant taiMinusUtcEpoch_;
+    std::optional<Instant> taiMinusUtcEpoch_;
 
-    Interval observationInterval_;
+    std::optional<Interval> observationInterval_;
     Map<int, BulletinA::Observation> observations_;
 
-    Interval predictionInterval_;
+    std::optional<Interval> predictionInterval_;
     Map<int, BulletinA::Prediction> predictions_;
 
-    BulletinA();
+    BulletinA(const Instant& aLastModifiedTimestamp);
 };
 
 }  // namespace iers

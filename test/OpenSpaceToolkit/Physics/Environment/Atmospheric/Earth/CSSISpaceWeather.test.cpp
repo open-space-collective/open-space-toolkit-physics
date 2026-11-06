@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 #include <Global.test.hpp>
@@ -159,7 +161,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     {
         // access observation 1 nanosecond before end of interval
         // Regression test for #393
-        const Instant instantNearEnd = CSSISpaceWeather_.getObservationInterval().getEnd() - Duration::Nanoseconds(1.0);
+        const Instant instantNearEnd =
+            CSSISpaceWeather_.getObservationInterval()->getEnd() - Duration::Nanoseconds(1.0);
 
         const CSSISpaceWeather::Reading& observation = CSSISpaceWeather_.getObservationAt(instantNearEnd);
 
@@ -219,7 +222,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         // access daily prediction 1 nanosecond before end of interval
         // Regression test for #393
         const Instant instantNearEnd =
-            CSSISpaceWeather_.getDailyPredictionInterval().getEnd() - Duration::Nanoseconds(1.0);
+            CSSISpaceWeather_.getDailyPredictionInterval()->getEnd() - Duration::Nanoseconds(1.0);
 
         const CSSISpaceWeather::Reading& prediction = CSSISpaceWeather_.getDailyPredictionAt(instantNearEnd);
 
@@ -354,20 +357,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                "CSSISpaceWeather/SW-Last5Years_missing_data.test.csv"));
     this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
-
-    {
-        // calling Space Weather with Undefined Instant
-        EXPECT_THROW(
-            CSSISpaceWeather_.getLastReadingWhere(
-                []([[maybe_unused]] const CSSISpaceWeather::Reading& reading) -> bool
-                {
-                    return true;
-                },
-                Instant::Undefined()
-            ),
-            ostk::core::error::runtime::Undefined
-        );
-    }
 
     {
         // calling with Instant that starts before observations
@@ -656,7 +645,54 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         const Instant timestamp = spaceWeather.getLastModifiedTimestamp();
 
-        EXPECT_TRUE(timestamp.isDefined());
         EXPECT_NO_THROW(timestamp.toString());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load_OnlyObservations)
+{
+    // Keep the header and the observations (the first 5 rows) of the test file: there are no predictions
+
+    const std::string sourcePath =
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather/SW-Last5Years.test.csv";
+    const std::string truncatedPath = "/tmp/ostk-physics-test-cssi-only-observations.csv";
+
+    {
+        std::ifstream input(sourcePath);
+        std::ofstream output(truncatedPath);
+
+        std::string line;
+        size_t lineCount = 0;
+
+        while ((lineCount < 6) && std::getline(input, line))
+        {
+            output << line << "\n";
+            ++lineCount;
+        }
+    }
+
+    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(File::Path(Path::Parse(truncatedPath)));
+
+    EXPECT_TRUE(spaceWeather.getObservationInterval().has_value());
+    EXPECT_FALSE(spaceWeather.getDailyPredictionInterval().has_value());
+    EXPECT_FALSE(spaceWeather.getMonthlyPredictionInterval().has_value());
+
+    const Instant observedInstant = Instant::DateTime(DateTime::Parse("2018-01-01 12:00:00"), Scale::UTC);
+    const Instant laterInstant = Instant::DateTime(DateTime::Parse("2030-01-01 12:00:00"), Scale::UTC);
+
+    EXPECT_NO_THROW(spaceWeather.getObservationAt(observedInstant));
+    EXPECT_THROW(spaceWeather.getDailyPredictionAt(laterInstant), ostk::core::error::RuntimeError);
+    EXPECT_THROW(spaceWeather.getMonthlyPredictionAt(laterInstant), ostk::core::error::RuntimeError);
+    EXPECT_THROW(spaceWeather.getReadingAt(laterInstant), ostk::core::error::RuntimeError);
+
+    // The last reading is found among the observations when there are no predictions
+    EXPECT_NO_THROW(spaceWeather.getLastReadingWhere(
+        [](const CSSISpaceWeather::Reading&) -> bool
+        {
+            return true;
+        },
+        spaceWeather.getObservationInterval()->getEnd() + Duration::Hours(12.0)
+    ));
+
+    std::remove(truncatedPath.c_str());
 }

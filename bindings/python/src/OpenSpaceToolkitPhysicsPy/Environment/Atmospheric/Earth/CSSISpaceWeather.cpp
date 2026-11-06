@@ -47,7 +47,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                 Get observation interval.
 
                 Returns:
-                    Interval: Observation interval.
+                    Interval | None: Observation interval, or None if there are no observations.
             )doc"
         )
         .def(
@@ -71,7 +71,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                 Get daily prediction interval.
 
                 Returns:
-                    Interval: Daily prediction interval.
+                    Interval | None: Daily prediction interval, or None if there are no daily predictions.
             )doc"
         )
         .def(
@@ -95,7 +95,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
                 Get monthly prediction interval.
 
                 Returns:
-                    Interval: Monthly prediction interval.
+                    Interval | None: Monthly prediction interval, or None if there are no monthly predictions.
             )doc"
         )
         .def(
