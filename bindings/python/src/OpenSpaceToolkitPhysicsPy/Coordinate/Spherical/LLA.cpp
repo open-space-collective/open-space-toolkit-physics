@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(nanobind::module_& aModule)

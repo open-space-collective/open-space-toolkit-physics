@@ -16,16 +16,16 @@ namespace detail
 /// @brief                      Type caster for dense Eigen::Matrix types that also accepts Python sequences
 ///
 ///                             nanobind's own caster (nanobind/eigen/dense.h) only accepts inputs that implement
-///                             DLPack or the buffer protocol (NumPy arrays and friends). pybind11's Eigen caster
-///                             also accepted any sequence that NumPy can convert (for example a list of floats)
-///                             when implicit conversions are allowed, and OSTk code relies on that
+///                             DLPack or the buffer protocol (NumPy arrays and friends). OSTk code also passes any
+///                             sequence that NumPy can convert (for example a list of floats) when implicit
+///                             conversions are allowed, and relies on that
 ///                             (`Point.vector([1.0, 2.0, 3.0])`, `Linear([0.0, 1.0], [0.0, 2.0])`, ...).
 ///
 ///                             For array inputs it behaves exactly like nanobind's caster. It adds a fallback: when
 ///                             implicit conversions are allowed and nanobind's conversion fails, a non-string input
 ///                             is first converted with `numpy.asarray(input)` and then loaded like an array, which
-///                             also converts the dtype (int -> float) and the memory order. As with pybind11, an
-///                             (N, 1) array is accepted for a column vector of size N.
+///                             also converts the dtype (int -> float) and the memory order. An (N, 1) array
+///                             is accepted for a column vector of size N.
 ///
 ///                             Return values follow nanobind's policies, with one change: a copy (or a move) is
 ///                             made into a heap object owned by a capsule and handed to NumPy as a view
@@ -64,7 +64,7 @@ struct eigen_sequence_caster
         {
             object array = module_::import_("numpy").attr("asarray")(src);
 
-            // Like pybind11, accept an (N, 1) array for a column vector of size N.
+            // Accept an (N, 1) array for a column vector of size N.
             if constexpr ((ndim_v<T> == 1) && (T::ColsAtCompileTime == 1))
             {
                 const nanobind::tuple shape = nanobind::cast<nanobind::tuple>(array.attr("shape"));

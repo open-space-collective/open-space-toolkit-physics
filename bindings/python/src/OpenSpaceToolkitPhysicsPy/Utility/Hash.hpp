@@ -8,10 +8,10 @@
 /// @brief                      Make the classes that define `__eq__` unhashable, recursively
 ///
 ///                             Python sets `__hash__ = None` on a class whose body defines `__eq__` without
-///                             `__hash__`, and pybind11 did the same for bound classes. nanobind adds methods after
-///                             the type is created, so its classes keep `object.__hash__` (identity), which breaks
-///                             the hash / equality contract for these value types. This restores pybind11's
-///                             behaviour for every nanobind class reachable from the given scope.
+///                             `__hash__`. nanobind adds methods after the type is created, so its classes keep
+///                             `object.__hash__` (identity), which breaks the hash / equality contract for these
+///                             value types. This applies Python's rule to every nanobind class reachable from the
+///                             given scope.
 
 inline void disableHashOnEquality(nanobind::handle aScope)
 {

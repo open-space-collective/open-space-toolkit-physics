@@ -23,7 +23,7 @@ namespace detail
 ///                             DateTime is a bound class, and this caster keeps accepting its instances (by
 ///                             reference, like nanobind's own class caster). It also accepts a Python
 ///                             `datetime.datetime`, and it returns every C++ DateTime to Python as a
-///                             `datetime.datetime`. This is the behaviour of the former pybind11 caster.
+///                             `datetime.datetime`.
 ///
 ///                             It derives from `type_caster_base_tag`, so that nanobind still treats DateTime as a
 ///                             bound class (`class_<DateTime>` requires it), like `type_caster_base<DateTime>`.

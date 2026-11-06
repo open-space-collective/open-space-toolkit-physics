@@ -244,8 +244,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(nanobind::module_& aModule)
 
         ;
 
-    // https://pybind11.readthedocs.io/en/stable/advanced/functions.html#default-arguments-revisited
-    // "default arguments are converted to Python objects right at declaration time"
+    // Default arguments are converted to Python objects right at declaration time
     // The following parsing function requires DateTime::Format to be binded for proper declaration
     datetime_class.def_static("parse", &DateTime::Parse, arg("string"), arg("format") = none());
 }

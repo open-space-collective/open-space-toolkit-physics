@@ -1,6 +1,6 @@
 # Apache License 2.0
 
-"""Classes that define __eq__ without __hash__ are unhashable, as with the former pybind11 bindings."""
+"""Classes that define __eq__ without __hash__ are unhashable."""
 
 import pytest
 

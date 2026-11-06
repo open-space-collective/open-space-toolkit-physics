@@ -3,7 +3,7 @@
 """Round trips of the Eigen types (Vector2d, Vector3d) that cross the Python boundary.
 
 ostk.physics binds Vector2d (arguments) and Vector3d (arguments and return values). These tests pin how
-arrays, lists and tuples are converted, so that they behave like the former pybind11 bindings.
+arrays, lists and tuples are converted.
 """
 
 import numpy as np

@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial.cpp>

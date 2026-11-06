@@ -53,9 +53,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
             arg("J2_parameter_value"),
             arg("J4_parameter_value"),
             arg("ephemeris"),
-            arg("gravitational_model"),
-            arg("magnetic_model"),
-            arg("atmospheric_model"),
+            arg("gravitational_model").none(),
+            arg("magnetic_model").none(),
+            arg("atmospheric_model").none(),
             R"doc(
                 Constructor
 
@@ -68,9 +68,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
                     J2_parameter_value (float): J2 parameter value.
                     J4_parameter_value (float): J4 parameter value.
                     ephemeris (Ephemeris): Ephemeris.
-                    gravitational_model (GravitationalModel): Gravitational model.
-                    magnetic_model (MagneticModel): Magnetic model.
-                    atmospheric_model (AtmosphericModel): Atmospheric model.
+                    gravitational_model (GravitationalModel | None): Gravitational model, or None if absent.
+                    magnetic_model (MagneticModel | None): Magnetic model, or None if absent.
+                    atmospheric_model (AtmosphericModel | None): Atmospheric model, or None if absent.
             )doc"
         )
 
@@ -96,9 +96,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
             arg("J2_parameter_value"),
             arg("J4_parameter_value"),
             arg("ephemeris"),
-            arg("gravitational_model"),
-            arg("magnetic_model"),
-            arg("atmospheric_model"),
+            arg("gravitational_model").none(),
+            arg("magnetic_model").none(),
+            arg("atmospheric_model").none(),
             arg("geometry"),
             R"doc(
                 Constructor
@@ -112,9 +112,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
                     J2_parameter_value (float): J2 parameter value.
                     J4_parameter_value (float): J4 parameter value.
                     ephemeris (Ephemeris): Ephemeris
-                    gravitational_model (GravitationalModel): Gravitational model.
-                    magnetic_model (MagneticModel): Magnetic model.
-                    atmospheric_model (AtmosphericModel): Atmospheric model.
+                    gravitational_model (GravitationalModel | None): Gravitational model, or None if absent.
+                    magnetic_model (MagneticModel | None): Magnetic model, or None if absent.
+                    atmospheric_model (AtmosphericModel | None): Atmospheric model, or None if absent.
                     geometry (Object.Geometry): Geometry.
             )doc"
         )
@@ -150,13 +150,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
         )
         .def(
             "get_magnetic_model",
-            +[](const Celestial& aCelestial) -> pybind11::object
-            {
-                // The magnetic model base class is not bound: return None explicitly when the object has no model
-                const auto modelSPtr = aCelestial.getMagneticModel();
-
-                return modelSPtr != nullptr ? pybind11::cast(modelSPtr) : pybind11::none();
-            },
+            &Celestial::getMagneticModel,
             R"doc(
                 Get the magnetic model.
 
@@ -166,13 +160,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
         )
         .def(
             "get_atmospheric_model",
-            +[](const Celestial& aCelestial) -> pybind11::object
-            {
-                // The atmospheric model base class is not bound: return None explicitly when the object has no model
-                const auto modelSPtr = aCelestial.getAtmosphericModel();
-
-                return modelSPtr != nullptr ? pybind11::cast(modelSPtr) : pybind11::none();
-            },
+            &Celestial::getAtmosphericModel,
             R"doc(
                 Get the atmospheric model.
 

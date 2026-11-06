@@ -43,6 +43,6 @@ NB_MODULE(OpenSpaceToolkitPhysicsPy, m)
     OpenSpaceToolkitPhysicsPy_Environment(m);
     OpenSpaceToolkitPhysicsPy_Data(m);
 
-    // Restore pybind11's (and Python's) rule: a class that defines __eq__ without __hash__ is unhashable
+    // Follow Python's rule: a class that defines __eq__ without __hash__ is unhashable
     disableHashOnEquality(m);
 }

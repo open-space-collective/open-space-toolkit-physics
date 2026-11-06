@@ -71,7 +71,7 @@ ENDMACRO ()
 
 ### Function stripping a built python module
 
-# Replaces pybind11's `pybind11_strip`, which nanobind has no equivalent of.
+# Strips the symbols of the built module (nanobind has no built-in strip helper).
 
 FUNCTION (PY_STRIP name)
     IF (CMAKE_STRIP)

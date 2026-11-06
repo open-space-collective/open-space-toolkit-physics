@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(nanobind::module_& aModule)

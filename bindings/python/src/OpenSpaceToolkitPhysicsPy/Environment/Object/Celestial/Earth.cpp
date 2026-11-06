@@ -46,7 +46,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(nanobin
                 arg("J2_parameter_value"),
                 arg("J4_parameter_value"),
                 arg("ephemeris"),
-                arg("gravitational_model"),
+                arg("gravitational_model").none(),
                 arg("magnetic_model").none(),
                 arg("atmospheric_model").none(),
                 R"doc(
@@ -59,9 +59,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(nanobin
                         J2_parameter_value (float): J2 parameter value.
                         J4_parameter_value (float): J4 parameter value.
                         ephemeris (Ephemeris): Ephemeris.
-                        gravitational_model (EarthGravitationalModel): Gravitational model.
-                        magnetic_model (EarthMagneticModel): Magnetic model.
-                        atmospheric_model (EarthAtmosphericModel): Atmospheric model.
+                        gravitational_model (EarthGravitationalModel | None): Gravitational model, or None if absent.
+                        magnetic_model (EarthMagneticModel | None): Magnetic model, or None if absent.
+                        atmospheric_model (EarthAtmosphericModel | None): Atmospheric model, or None if absent.
 
                 )doc"
             )
@@ -243,16 +243,16 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial_Earth(nanobin
             .def_static(
                 "from_models",
                 &Earth::FromModels,
-                arg("gravity_model"),
+                arg("gravity_model").none(),
                 arg("magnetic_model").none(),
                 arg("atmospheric_model").none(),
                 R"doc(
                     Create earth from specified models.
 
                     Args:
-                        gravity_model (EarthGravitationalModel): Gravitational model.
-                        magnetic_model (EarthMagneticModel): Magnetic model.
-                        atmospheric_model (EarthAtmosphericModel): Atmospheric model.
+                        gravity_model (EarthGravitationalModel | None): Gravitational model, or None if absent.
+                        magnetic_model (EarthMagneticModel | None): Magnetic model, or None if absent.
+                        atmospheric_model (EarthAtmosphericModel | None): Atmospheric model, or None if absent.
 
                     Returns:
                         Earth: Earth.
