@@ -247,11 +247,6 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf
 
     // Time (TT)

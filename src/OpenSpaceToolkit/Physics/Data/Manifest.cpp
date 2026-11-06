@@ -121,17 +121,16 @@ Manifest Manifest::Load(const File& aFile)
         throw ostk::core::error::RuntimeError("Manifest file [{}] does not exist.", aFile.toString());
     }
 
-    Manifest manifest;
+    Manifest manifest(getFileModifiedInstant(aFile));
 
     manifest.dictionary_ = Object::Load(aFile, Object::Format::JSON).getDictionary();
-    manifest.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
 
     return manifest;
 }
 
-Manifest::Manifest()
+Manifest::Manifest(const Instant& aLastModifiedTimestamp)
     : dictionary_(Dictionary::Empty()),
-      lastModifiedTimestamp_(Instant::Undefined())
+      lastModifiedTimestamp_(aLastModifiedTimestamp)
 {
 }
 

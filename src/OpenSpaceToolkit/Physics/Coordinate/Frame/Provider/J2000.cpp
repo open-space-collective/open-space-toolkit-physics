@@ -48,11 +48,6 @@ Transform J2000::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     double rb[3][3];
 
     switch (this->theory_)

@@ -553,10 +553,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
             Vector3d(1.96489918038813e-09, 2.04221635598212e-09, -7.29211506735101e-05), 1e-15
         ));
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::GCRF()->getTransformTo(Frame::GCRF(), Instant::Undefined()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GCRF)

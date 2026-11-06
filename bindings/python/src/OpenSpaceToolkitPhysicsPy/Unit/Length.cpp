@@ -191,16 +191,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
         )
 
         .def(
-            "is_defined",
-            &Length::isDefined,
-            R"doc(
-                Check if the length is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_zero",
             &Length::isZero,
             R"doc(
@@ -266,16 +256,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Length::Undefined,
-            R"doc(
-                Get an undefined length.
-
-                Returns:
-                    Length: An undefined length.
-            )doc"
-        )
         .def_static(
             "millimeters",
             &Length::Millimeters,
@@ -344,13 +324,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
 
     enum_<Length::Unit>(length, "Unit")
 
-        .value(
-            "Undefined",
-            Length::Unit::Undefined,
-            R"doc(
-                Undefined length unit.
-            )doc"
-        )
         .value(
             "Meter",
             Length::Unit::Meter,

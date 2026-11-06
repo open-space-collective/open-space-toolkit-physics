@@ -64,9 +64,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition
     ostk::core::utils::Print::Header(anOutputStream, "Position");
 
     ostk::core::utils::Print::Line(anOutputStream) << "Coordinates:" << (aPosition.coordinates_.toString());
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Unit:"
-        << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Length::StringFromUnit(aPosition.unit_);
     ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << aPosition.frameSPtr_->getName();
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -76,11 +74,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition
 
 bool Position::isNear(const Position& aPosition, const Length& aTolerance) const
 {
-    if (!aTolerance.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
     if ((*frameSPtr_) != (*aPosition.frameSPtr_))
     {
         throw ostk::core::error::RuntimeError("Position are expressed in different frames.");
@@ -120,11 +113,6 @@ Position::Unit Position::getUnit() const
 
 Position Position::inUnit(const Position::Unit& aUnit) const
 {
-    if (aUnit == Position::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     return {coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr_};
 }
 

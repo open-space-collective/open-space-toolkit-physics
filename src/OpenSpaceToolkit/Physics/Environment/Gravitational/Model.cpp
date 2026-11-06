@@ -81,8 +81,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Gravitational Parameter:" << aParameterSet.gravitationalParameter_.toString();
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Equatorial Radius:"
-        << (aParameterSet.equatorialRadius_.isDefined() ? aParameterSet.equatorialRadius_.toString() : "Undefined");
+        << "Equatorial Radius:" << (aParameterSet.equatorialRadius_.toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Flattening:" << DoubleToString(aParameterSet.flattening_);
     ostk::core::utils::Print::Line(anOutputStream) << "C20:" << DoubleToString(aParameterSet.C20_);
     ostk::core::utils::Print::Line(anOutputStream) << "C30:" << DoubleToString(aParameterSet.C30_);

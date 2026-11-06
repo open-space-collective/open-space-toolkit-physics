@@ -127,11 +127,6 @@ const String& Frame::getName() const
 
 Position Frame::getOriginIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
@@ -144,11 +139,6 @@ Position Frame::getOriginIn(const Shared<const Frame>& aFrameSPtr, const Instant
 
 Velocity Frame::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
@@ -163,11 +153,6 @@ Velocity Frame::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Insta
 
 Axes Frame::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
@@ -184,11 +169,6 @@ Axes Frame::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
 
 Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");

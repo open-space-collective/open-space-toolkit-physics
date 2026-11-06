@@ -47,11 +47,6 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     // Time (TT)
 
     static const double djmjd0 = 2400000.5;

@@ -155,11 +155,6 @@ Geometry Geometry::in(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     if ((*frameSPtr_) == (*aFrameSPtr))
     {
         return *this;

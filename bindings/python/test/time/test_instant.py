@@ -9,10 +9,6 @@ from ostk.physics.time import Duration
 from ostk.physics.time import DateTime
 
 
-def test_instant_undefined():
-    assert Instant.undefined() is not None
-
-
 def test_instant_now():
     assert Instant.now() is not None
 
@@ -87,10 +83,6 @@ def test_instant_operators():
 
     instant += Duration.seconds(1.0)
     instant -= Duration.seconds(1.0)
-
-
-def test_instant_is_defined():
-    assert Instant.J2000().is_defined() is not None
 
 
 def test_instant_is_post_epoch():

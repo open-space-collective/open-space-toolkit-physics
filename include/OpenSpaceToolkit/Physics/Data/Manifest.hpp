@@ -111,7 +111,7 @@ class Manifest
     Dictionary dictionary_;
     Instant lastModifiedTimestamp_;
 
-    Manifest();
+    Manifest(const Instant& aLastModifiedTimestamp);
 };
 
 }  // namespace data

@@ -304,11 +304,6 @@ Manager::Manager()
 
 const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     // Try currently loaded
     if (CSSISpaceWeather_.has_value())
     {

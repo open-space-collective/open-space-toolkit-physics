@@ -134,16 +134,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(nanobind::module_& aModule)
         )
 
         .def(
-            "is_defined",
-            &Instant::isDefined,
-            R"doc(
-                Check if the instant is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_post_epoch",
             &Instant::isPostEpoch,
             R"doc(
@@ -221,16 +211,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(nanobind::module_& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Instant::Undefined,
-            R"doc(
-                Create an undefined instant.
-
-                Returns:
-                    Instant: Undefined instant.
-            )doc"
-        )
         .def_static(
             "now",
             &Instant::Now,

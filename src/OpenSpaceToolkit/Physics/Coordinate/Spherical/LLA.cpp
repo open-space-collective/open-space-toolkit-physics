@@ -57,8 +57,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const LLA& aLLA)
 
     ostk::core::utils::Print::Line(anOutputStream) << "Latitude:" << aLLA.latitude_.toString();
     ostk::core::utils::Print::Line(anOutputStream) << "Longitude:" << aLLA.longitude_.toString();
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Altitude:" << (aLLA.altitude_.isDefined() ? aLLA.altitude_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Altitude:" << (aLLA.altitude_.toString());
 
     ostk::core::utils::Print::Footer(anOutputStream);
 

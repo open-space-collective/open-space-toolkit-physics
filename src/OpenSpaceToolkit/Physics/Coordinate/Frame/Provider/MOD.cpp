@@ -77,11 +77,6 @@ Transform MOD::getTransformAt(const Instant& anInstant) const
     using ostk::physics::time::Scale;
     using ostk::physics::unit::Angle;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     const auto& [zeta, theta, z] = computeFK5Precession(epoch_);
 
     const RotationMatrix dcm_GCRF_MOD = RotationMatrix::RZ(zeta) * RotationMatrix::RY(-theta) * RotationMatrix::RZ(z);
