@@ -18,6 +18,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
     "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
 ]
 requires-python = ">=3.9"
 
@@ -48,5 +49,5 @@ ext-modules = [
 include = ["ostk.physics", "ostk.physics.*"]
 
 [tool.setuptools.package-data]
-"ostk.physics" = ["${SHARED_LIBRARY_TARGET}.${PROJECT_VERSION_MAJOR}", "${LIBRARY_TARGET}.*${EXTENSION}*.so"]
+"ostk.physics" = ["${BUNDLED_LIBRARY}", "${LIBRARY_TARGET}.*${EXTENSION}*.so"]
 "*" = ["*/data/*"]
