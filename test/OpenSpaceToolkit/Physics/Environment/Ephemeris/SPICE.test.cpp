@@ -80,7 +80,7 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE : public ::testing::T
         engine_.reset();
     }
 
-    Directory localRepository_ = Directory::Undefined();
+    Directory localRepository_ = Manager::Get().getLocalRepository();
     Manager::Mode mode_ = Manager::Mode::Automatic;
 };
 
@@ -173,24 +173,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame)
             for (const auto& referenceDataRow : referenceData)
             {
                 const Instant instant_reference =
-                    Instant::DateTime(DateTime::Parse(referenceDataRow[0].accessString()), Scale::UTC);
+                    Instant::DateTime(DateTime::Parse(referenceDataRow[0].getString()), Scale::UTC);
                 const Vector3d x_GCRF_reference = {
-                    referenceDataRow[1].accessReal(), referenceDataRow[2].accessReal(), referenceDataRow[3].accessReal()
+                    referenceDataRow[1].getReal(), referenceDataRow[2].getReal(), referenceDataRow[3].getReal()
                 };
                 const Vector3d v_GCRF_reference = {
-                    referenceDataRow[4].accessReal(), referenceDataRow[5].accessReal(), referenceDataRow[6].accessReal()
+                    referenceDataRow[4].getReal(), referenceDataRow[5].getReal(), referenceDataRow[6].getReal()
                 };
                 const Quaternion q_OBJECT_GCRF_reference = Quaternion::XYZS(
-                                                               referenceDataRow[7].accessReal(),
-                                                               referenceDataRow[8].accessReal(),
-                                                               referenceDataRow[9].accessReal(),
-                                                               referenceDataRow[10].accessReal()
+                                                               referenceDataRow[7].getReal(),
+                                                               referenceDataRow[8].getReal(),
+                                                               referenceDataRow[9].getReal(),
+                                                               referenceDataRow[10].getReal()
                 )
                                                                .toNormalized();
                 const Vector3d w_OBJECT_GCRF_in_OBJECT_reference = {
-                    referenceDataRow[11].accessReal(),
-                    referenceDataRow[12].accessReal(),
-                    referenceDataRow[13].accessReal()
+                    referenceDataRow[11].getReal(), referenceDataRow[12].getReal(), referenceDataRow[13].getReal()
                 };
 
                 const Vector3d x_GCRF = frameSPtr->getOriginIn(Frame::GCRF(), instant_reference).getCoordinates();
@@ -220,7 +218,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame)
                            instant_reference.toString(),
                            q_OBJECT_GCRF.toString(),
                            q_OBJECT_GCRF_reference.toString(),
-                           q_OBJECT_GCRF.angularDifferenceWith(q_OBJECT_GCRF_reference).inArcseconds().toString()
+                           q_OBJECT_GCRF.angularDifferenceWith(q_OBJECT_GCRF_reference).inArcseconds()
                        );
                 ASSERT_TRUE(w_OBJECT_GCRF_in_OBJECT.isNear(
                     w_OBJECT_GCRF_in_OBJECT_reference, angularVelocityTolerance_radPerSec

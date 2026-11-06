@@ -186,11 +186,6 @@ Transform Transform::getInverse() const
 
 Vector3d Transform::applyToPosition(const Vector3d& aPosition) const
 {
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     // x_B = q_B_A * (x_A + t_B_A_in_A)
 
     return orientation_ * (aPosition + translation_);
@@ -198,16 +193,6 @@ Vector3d Transform::applyToPosition(const Vector3d& aPosition) const
 
 Vector3d Transform::applyToVelocity(const Vector3d& aPosition, const Vector3d& aVelocity) const
 {
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!aVelocity.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Velocity");
-    }
-
     // v_B_in_B = q_B_A * (v_A_in_A + v_B_A_in_A) - Ω_B_A_in_B x (q_B_A * (x_A + t_B_A_in_A))
 
     return orientation_ * (aVelocity + velocity_) - angularVelocity_.cross(orientation_ * (aPosition + translation_));
@@ -215,11 +200,6 @@ Vector3d Transform::applyToVelocity(const Vector3d& aPosition, const Vector3d& a
 
 Vector3d Transform::applyToVector(const Vector3d& aVector) const
 {
-    if (!aVector.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Vector");
-    }
-
     return orientation_ * aVector;
 }
 

@@ -1,15 +1,13 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::String;
@@ -18,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
     using ostk::physics::time::Instant;
 
     // Binding class "Object"
-    class_<Object, Shared<Object>>(
+    class_<Object>(
         aModule,
         "Object",
         R"doc(

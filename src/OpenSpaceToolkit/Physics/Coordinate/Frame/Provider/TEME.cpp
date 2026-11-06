@@ -107,10 +107,15 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
 
     // Polar motion matrix using the IAU 1980 model
 
-    const Vector2d polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
+    const std::optional<Vector2d> polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
 
-    const double xp = polarMotion.x() * DAS2R;  // [rad]
-    const double yp = polarMotion.y() * DAS2R;  // [rad]
+    if (!polarMotion.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString());
+    }
+
+    const double xp = polarMotion->x() * DAS2R;  // [rad]
+    const double yp = polarMotion->y() * DAS2R;  // [rad]
 
     const double cos_xp = std::cos(xp);
     const double sin_xp = std::sin(xp);

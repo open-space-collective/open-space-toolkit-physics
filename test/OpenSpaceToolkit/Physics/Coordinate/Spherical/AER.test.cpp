@@ -172,10 +172,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
 
         EXPECT_EQ(aer_, AER::Vector(vector));
     }
-
-    {
-        EXPECT_ANY_THROW(AER::Vector(Vector3d::Undefined()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition)
@@ -208,27 +204,27 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Vector3d reference_fromPosition_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                    referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
                 };
                 const Vector3d reference_fromPosition_LLA = {
-                    referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+                    referenceRow[4].getReal(), referenceRow[5].getReal(), referenceRow[6].getReal()
                 };
                 const Vector3d reference_toPosition_ITRF = {
-                    referenceRow[7].accessReal(), referenceRow[8].accessReal(), referenceRow[9].accessReal()
+                    referenceRow[7].getReal(), referenceRow[8].getReal(), referenceRow[9].getReal()
                 };
                 const Vector3d reference_toPosition_LLA = {
-                    referenceRow[10].accessReal(), referenceRow[11].accessReal(), referenceRow[12].accessReal()
+                    referenceRow[10].getReal(), referenceRow[11].getReal(), referenceRow[12].getReal()
                 };
 
                 (void)reference_fromPosition_LLA;
                 (void)reference_toPosition_LLA;
 
-                const Angle reference_azimuth = Angle::Degrees(referenceRow[13].accessReal());
-                const Angle reference_elevation = Angle::Degrees(referenceRow[14].accessReal());
-                const Length reference_range = Length::Meters(referenceRow[15].accessReal());
+                const Angle reference_azimuth = Angle::Degrees(referenceRow[13].getReal());
+                const Angle reference_elevation = Angle::Degrees(referenceRow[14].getReal());
+                const Length reference_range = Length::Meters(referenceRow[15].getReal());
 
                 const Position fromPosition_ITRF = Position::Meters(reference_fromPosition_ITRF, Frame::ITRF());
                 const Position toPosition_ITRF = Position::Meters(reference_toPosition_ITRF, Frame::ITRF());

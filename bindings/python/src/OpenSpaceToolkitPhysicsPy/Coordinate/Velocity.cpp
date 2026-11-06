@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -39,7 +39,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Velocity& self, const Velocity& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -51,7 +56,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Velocity& self, const Velocity& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -132,7 +142,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def(
             "to_string",
             &Velocity::toString,
-            arg_v("precision", -1, "-1"),
+            arg("precision").sig("-1") = -1,
             R"doc(
                 Convert to string.
 

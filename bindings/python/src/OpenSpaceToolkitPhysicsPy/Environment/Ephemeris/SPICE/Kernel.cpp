@@ -1,12 +1,10 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Kernel(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::File;
 

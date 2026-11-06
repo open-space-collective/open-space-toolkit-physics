@@ -44,8 +44,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinal
     ostk::core::utils::Print::Header(anOutputStream, "Finals 2000A");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Interval:"
-        << (aFinals2000A.getInterval().isDefined() ? aFinals2000A.getInterval().toString(Scale::UTC) : "Undefined");
+        << "Interval:" << (aFinals2000A.span_.has_value() ? aFinals2000A.span_->toString(Scale::UTC) : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -57,19 +56,14 @@ const Instant& Finals2000A::getLastModifiedTimestamp() const
     return lastModifiedTimestamp_;
 }
 
-const Interval& Finals2000A::getInterval() const
+const std::optional<Interval>& Finals2000A::getInterval() const
 {
     return span_;
 }
 
-Vector2d Finals2000A::getPolarMotionAt(const Instant& anInstant) const
+std::optional<Vector2d> Finals2000A::getPolarMotionAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
-
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
 
@@ -88,11 +82,11 @@ Vector2d Finals2000A::getPolarMotionAt(const Instant& anInstant) const
             const double x_A = *previousData.x_A + ratio * (*nextData.x_A - *previousData.x_A);
             const double y_A = *previousData.y_A + ratio * (*nextData.y_A - *previousData.y_A);
 
-            return {x_A, y_A};
+            return Vector2d(x_A, y_A);
         }
         else
         {
-            return Vector2d::Undefined();
+            return std::nullopt;
         }
     }
 
@@ -102,11 +96,6 @@ Vector2d Finals2000A::getPolarMotionAt(const Instant& anInstant) const
 std::optional<double> Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
-
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
 
@@ -140,11 +129,6 @@ std::optional<double> Finals2000A::getLodAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
 
     if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
@@ -174,11 +158,6 @@ std::optional<double> Finals2000A::getLodAt(const Instant& anInstant) const
 Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
-
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
 
     const Pair<const Finals2000A::Data*, const Finals2000A::Data*> dataRange = this->accessDataRange(anInstant);
 
@@ -309,19 +288,12 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;
 
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
-
     if (!aFile.exists())
     {
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
-    Finals2000A finals2000a;
-
-    finals2000a.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+    Finals2000A finals2000a(getFileModifiedInstant(aFile));
 
     std::ifstream fileStream(aFile.getPath().toString());
 
@@ -428,9 +400,9 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
     return finals2000a;
 }
 
-Finals2000A::Finals2000A()
-    : lastModifiedTimestamp_(Instant::Undefined()),
-      span_(Interval::Undefined()),
+Finals2000A::Finals2000A(const Instant& aLastModifiedTimestamp)
+    : lastModifiedTimestamp_(aLastModifiedTimestamp),
+      span_(std::nullopt),
       data_(Map<double, Finals2000A::Data>())
 {
 }

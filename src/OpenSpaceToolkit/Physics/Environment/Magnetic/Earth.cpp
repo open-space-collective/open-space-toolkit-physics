@@ -43,27 +43,29 @@ static const Dipole EarthDipole = {EarthMagneticMoment};
 class Earth::Impl
 {
    public:
-    Impl(const Earth::Type& aType, const Directory& aDataDirectory);
+    Impl(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory);
 
     Impl(const Impl& anImpl);
 
     ~Impl();
 
     Earth::Type getType() const;
-    Directory getDataDirectory() const;
+    std::optional<Directory> getDataDirectory() const;
 
     Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const;
 
    private:
     Earth::Type type_;
-    Directory dataDirectory_;
+    std::optional<Directory> dataDirectory_;
 
     Unique<MagneticModel> magneticModelUPtr_;
 
-    static Unique<MagneticModel> MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory);
+    static Unique<MagneticModel> MagneticModelFromType(
+        const Earth::Type& aType, const std::optional<Directory>& aDataDirectory
+    );
 };
 
-Earth::Impl::Impl(const Earth::Type& aType, const Directory& aDataDirectory)
+Earth::Impl::Impl(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory)
     : type_(aType),
       dataDirectory_(aDataDirectory),
       magneticModelUPtr_(Earth::Impl::MagneticModelFromType(aType, aDataDirectory))
@@ -84,7 +86,7 @@ Earth::Type Earth::Impl::getType() const
     return type_;
 }
 
-Directory Earth::Impl::getDataDirectory() const
+std::optional<Directory> Earth::Impl::getDataDirectory() const
 {
     return dataDirectory_;
 }
@@ -154,7 +156,9 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
     return magneticField;
 }
 
-Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory)
+Unique<MagneticModel> Earth::Impl::MagneticModelFromType(
+    const Earth::Type& aType, const std::optional<Directory>& aDataDirectory
+)
 {
     using ostk::core::type::String;
 
@@ -168,14 +172,14 @@ Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aTyp
 
     String dataPath = "";
 
-    if (aDataDirectory.isDefined())
+    if (aDataDirectory.has_value())
     {
-        if (!aDataDirectory.exists())
+        if (!aDataDirectory->exists())
         {
-            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString());
+            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory->toString());
         }
 
-        dataPath = aDataDirectory.getPath().toString();
+        dataPath = aDataDirectory->getPath().toString();
     }
     else
     {
@@ -238,7 +242,7 @@ Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aTyp
     return nullptr;
 }
 
-Earth::Earth(const Earth::Type& aType, const Directory& aDataDirectory)
+Earth::Earth(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory)
     : Model(),
       implUPtr_(std::make_unique<Earth::Impl>(aType, aDataDirectory))
 {

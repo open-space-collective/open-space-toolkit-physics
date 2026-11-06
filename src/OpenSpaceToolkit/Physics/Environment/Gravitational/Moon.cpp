@@ -86,7 +86,7 @@ Vector3d Moon::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const I
     return sphericalModel_.getFieldValueAt(aPosition, anInstant);
 }
 
-Moon::Moon(const Moon::Type& aType, const Directory& aDataDirectory)
+Moon::Moon(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory)
     : Model(Moon::ParametersFromType(aType)),
       implUPtr_(Moon::ImplFromType(aType, aDataDirectory))
 {
@@ -146,7 +146,7 @@ Model::Parameters Moon::ParametersFromType(const Moon::Type& aType)
     }
 }
 
-Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const Directory& aDataDirectory)
+Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory)
 {
     (void)aDataDirectory;  // Temporary
 

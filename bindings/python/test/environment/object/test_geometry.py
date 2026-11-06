@@ -39,4 +39,4 @@ class TestGeometry:
         del ballast
 
         assert accessed.get_object_count() == 1
-        assert accessed.access_object_at(0).is_sphere()
+        assert accessed.get_object_at(0).is_sphere()

@@ -46,15 +46,14 @@ const Instant& Manifest::getLastModifiedTimestamp() const
 Instant Manifest::getLastUpdateTimestampFor(const String& aDataName) const
 {
     return Instant::DateTime(
-        DateTime::Parse(dictionary_[aDataName]["last_update"].accessString(), DateTime::Format::ISO8601), Scale::UTC
+        DateTime::Parse(dictionary_[aDataName]["last_update"].getString(), DateTime::Format::ISO8601), Scale::UTC
     );
 }
 
 Instant Manifest::getNextUpdateCheckTimestampFor(const String& aDataName) const
 {
     return Instant::DateTime(
-        DateTime::Parse(dictionary_[aDataName]["next_update_check"].accessString(), DateTime::Format::ISO8601),
-        Scale::UTC
+        DateTime::Parse(dictionary_[aDataName]["next_update_check"].getString(), DateTime::Format::ISO8601), Scale::UTC
     );
 }
 
@@ -64,17 +63,17 @@ Array<URL> Manifest::getRemoteDataUrls(const URL& aBaseUrl, const String& aDataN
 
     for (const auto& dictionaryIt : dictionary_)
     {
-        if (dictionaryIt.accessKey() == aDataName)
+        if (dictionaryIt.getKey() == aDataName)
         {
-            Object filenamesDictValue = dictionaryIt.accessValue()["filenames"];
+            Object filenamesDictValue = dictionaryIt.getValue()["filenames"];
 
             const Array<Object> filenames =
-                filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.accessArray();
+                filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.getArray();
 
             for (const auto& filename : filenames)
             {
                 const URL url =
-                    aBaseUrl + "/" + dictionaryIt.accessValue()["path"].accessString() + "/" + filename.accessString();
+                    aBaseUrl + "/" + dictionaryIt.getValue()["path"].getString() + "/" + filename.getString();
                 urls.add(url);
             }
         }
@@ -91,17 +90,17 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aData
 
     for (const auto& dictionaryIt : dictionary_)
     {
-        if (dictionaryIt.accessKey().match(aDataNameRegex))
+        if (dictionaryIt.getKey().match(aDataNameRegex))
         {
-            Object filenamesDictValue = dictionaryIt.accessValue()["filenames"];
+            Object filenamesDictValue = dictionaryIt.getValue()["filenames"];
 
             const Array<Object> filenames =
-                filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.accessArray();
+                filenamesDictValue.isString() ? Array<Object>({filenamesDictValue}) : filenamesDictValue.getArray();
 
             for (const auto& filename : filenames)
             {
                 const URL url =
-                    aBaseUrl + "/" + dictionaryIt.accessValue()["path"].accessString() + "/" + filename.accessString();
+                    aBaseUrl + "/" + dictionaryIt.getValue()["path"].getString() + "/" + filename.getString();
                 urls.add(url);
             }
         }

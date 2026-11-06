@@ -139,7 +139,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM2008,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -149,7 +149,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM96,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -159,7 +159,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM84,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -169,7 +169,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.WGS84_EGM96,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -179,13 +179,13 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.WGS84,
-                    Directory.undefined(),
+                    None,
                 ),
                 (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
-                (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
+                (EarthGravitationalModel.Type.Spherical, None),
                 (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -253,3 +253,10 @@ class TestEarthWithoutModels:
         assert earth.get_gravitational_model() is None
         assert earth.get_equatorial_radius().in_meters() == pytest.approx(6378137.0)
         assert earth.get_flattening() == pytest.approx(1.0 / 298.257223563)
+
+    def test_constructor_accepts_none_models(self):
+        earth = Earth(Analytical(Frame.ITRF()), None, None, None)
+
+        assert earth.get_gravitational_model() is None
+        assert earth.get_magnetic_model() is None
+        assert earth.get_atmospheric_model() is None

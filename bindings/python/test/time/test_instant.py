@@ -33,6 +33,19 @@ def test_instant_datetime():
     assert Instant.date_time(datetime.datetime.now(), Scale.UTC)
 
 
+def test_instant_date_time_round_trip():
+    # DateTime arguments accept DateTime and datetime.datetime; DateTime return values are datetime.datetime
+    date_time = Instant.date_time(
+        datetime.datetime(2018, 1, 2, 3, 4, 5, 6007), Scale.UTC
+    ).get_date_time(Scale.UTC)
+
+    assert type(date_time) is datetime.datetime
+    assert date_time == datetime.datetime(2018, 1, 2, 3, 4, 5, 6007)
+    assert Instant.date_time(
+        DateTime(2018, 1, 2, 3, 4, 5, 6, 7, 0), Scale.UTC
+    ) == Instant.date_time(date_time, Scale.UTC)
+
+
 def test_instant_julian_date():
     assert Instant.julian_date(2458119.5, Scale.UTC) is not None
 

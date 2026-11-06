@@ -63,21 +63,20 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         return aReal.value_or(std::numeric_limits<double>::quiet_NaN());
     };
 
+    // Missing sections have no interval
+    const auto intervalString = [](const std::optional<Interval>& anInterval) -> String
+    {
+        return anInterval.has_value() ? anInterval->toString(Scale::UTC) : String("Undefined");
+    };
+
     Print::Header(anOutputStream, "CSSI Space Weather");
 
-    Print::Line(anOutputStream) << "Observation interval:"
-                                << (aCSSISpaceWeather.observationInterval_.isDefined()
-                                        ? aCSSISpaceWeather.observationInterval_.toString(Scale::UTC)
-                                        : "Undefined");
+    Print::Line(anOutputStream) << "Observation interval:" << intervalString(aCSSISpaceWeather.observationInterval_);
     Print::Line(anOutputStream) << "Daily prediction interval:"
-                                << (aCSSISpaceWeather.dailyPredictionInterval_.isDefined()
-                                        ? aCSSISpaceWeather.dailyPredictionInterval_.toString(Scale::UTC)
-                                        : "Undefined");
+                                << intervalString(aCSSISpaceWeather.dailyPredictionInterval_);
 
     Print::Line(anOutputStream) << "Monthly prediction interval:"
-                                << (aCSSISpaceWeather.monthlyPredictionInterval_.isDefined()
-                                        ? aCSSISpaceWeather.monthlyPredictionInterval_.toString(Scale::UTC)
-                                        : "Undefined");
+                                << intervalString(aCSSISpaceWeather.monthlyPredictionInterval_);
 
     const String dataHeader = String(
         "DATE,BSRN,ND,Kp1,Kp2,Kp3,Kp4,Kp5,Kp6,Kp7,Kp8,KpSum,Ap1,Ap2,Ap3,Ap4,Ap5,Ap6,Ap7,Ap8,ApAvg,Cp,C9,ISN,F10.7_"
@@ -225,25 +224,25 @@ const Instant& CSSISpaceWeather::getLastModifiedTimestamp() const
     return lastModifiedTimestamp_;
 }
 
-const Interval& CSSISpaceWeather::getObservationInterval() const
+const std::optional<Interval>& CSSISpaceWeather::getObservationInterval() const
 {
     return observationInterval_;
 }
 
 const CSSISpaceWeather::Reading& CSSISpaceWeather::getObservationAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
+    if (!observationInterval_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Instant");
+        throw ostk::core::error::RuntimeError("CSSI Space Weather has no observations.");
     }
 
-    if (!observationInterval_.contains(anInstant))
+    if (!observationInterval_->contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of observation range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            observationInterval_.getStart().toString(Scale::UTC),
-            observationInterval_.getEnd().toString(Scale::UTC)
+            observationInterval_->getStart().toString(Scale::UTC),
+            observationInterval_->getEnd().toString(Scale::UTC)
         );
     }
 
@@ -263,25 +262,25 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getObservationAt(const Instan
     throw ostk::core::error::RuntimeError("Cannot find observation at [{}].", anInstant.toString(Scale::UTC));
 }
 
-const Interval& CSSISpaceWeather::getDailyPredictionInterval() const
+const std::optional<Interval>& CSSISpaceWeather::getDailyPredictionInterval() const
 {
     return dailyPredictionInterval_;
 }
 
 const CSSISpaceWeather::Reading& CSSISpaceWeather::getDailyPredictionAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
+    if (!dailyPredictionInterval_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Instant");
+        throw ostk::core::error::RuntimeError("CSSI Space Weather has no daily predictions.");
     }
 
-    if (!dailyPredictionInterval_.contains(anInstant))
+    if (!dailyPredictionInterval_->contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            dailyPredictionInterval_.getStart().toString(Scale::UTC),
-            dailyPredictionInterval_.getEnd().toString(Scale::UTC)
+            dailyPredictionInterval_->getStart().toString(Scale::UTC),
+            dailyPredictionInterval_->getEnd().toString(Scale::UTC)
         );
     }
 
@@ -301,25 +300,25 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getDailyPredictionAt(const In
     throw ostk::core::error::RuntimeError("Cannot find daily prediction at [{}].", anInstant.toString(Scale::UTC));
 }
 
-const Interval& CSSISpaceWeather::getMonthlyPredictionInterval() const
+const std::optional<Interval>& CSSISpaceWeather::getMonthlyPredictionInterval() const
 {
     return monthlyPredictionInterval_;
 }
 
 const CSSISpaceWeather::Reading& CSSISpaceWeather::getMonthlyPredictionAt(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
+    if (!monthlyPredictionInterval_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Instant");
+        throw ostk::core::error::RuntimeError("CSSI Space Weather has no monthly predictions.");
     }
 
-    if (!monthlyPredictionInterval_.contains(anInstant))
+    if (!monthlyPredictionInterval_->contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            monthlyPredictionInterval_.getStart().toString(Scale::UTC),
-            monthlyPredictionInterval_.getEnd().toString(Scale::UTC)
+            monthlyPredictionInterval_->getStart().toString(Scale::UTC),
+            monthlyPredictionInterval_->getEnd().toString(Scale::UTC)
         );
     }
 
@@ -342,24 +341,31 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getMonthlyPredictionAt(const 
 
 const CSSISpaceWeather::Reading& CSSISpaceWeather::getReadingAt(const Instant& anInstant) const
 {
-    if (observationInterval_.contains(anInstant))
+    if (observationInterval_.has_value() && observationInterval_->contains(anInstant))
     {
         return this->getObservationAt(anInstant);
     }
-    if (dailyPredictionInterval_.contains(anInstant))
+    if (dailyPredictionInterval_.has_value() && dailyPredictionInterval_->contains(anInstant))
     {
         return this->getDailyPredictionAt(anInstant);
     }
-    if (monthlyPredictionInterval_.contains(anInstant))
+    if (monthlyPredictionInterval_.has_value() && monthlyPredictionInterval_->contains(anInstant))
     {
         return this->getMonthlyPredictionAt(anInstant);
+    }
+
+    if (!observationInterval_.has_value() || !monthlyPredictionInterval_.has_value())
+    {
+        throw ostk::core::error::RuntimeError(
+            "Instant [{}] out of range: CSSI Space Weather is missing a section.", anInstant.toString(Scale::UTC)
+        );
     }
 
     throw ostk::core::error::RuntimeError(
         "Instant [{}] out of range [{} - {}].",
         anInstant.toString(Scale::UTC),
-        observationInterval_.getStart().toString(Scale::UTC),
-        monthlyPredictionInterval_.getEnd().toString(Scale::UTC)
+        observationInterval_->getStart().toString(Scale::UTC),
+        monthlyPredictionInterval_->getEnd().toString(Scale::UTC)
     );
 }
 
@@ -367,15 +373,11 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getLastReadingWhere(
     const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
 ) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     Instant searchInstant = anInstant - Duration::Days(1);
 
     // Search monthly data backwards, skips if not relevant
-    while (monthlyPredictionInterval_.contains(searchInstant) && searchInstant > dailyPredictionInterval_.getEnd())
+    while (monthlyPredictionInterval_.has_value() && monthlyPredictionInterval_->contains(searchInstant) &&
+           (!dailyPredictionInterval_.has_value() || searchInstant > dailyPredictionInterval_->getEnd()))
     {
         const CSSISpaceWeather::Reading& reading = this->getMonthlyPredictionAt(searchInstant);
 
@@ -386,11 +388,13 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getLastReadingWhere(
 
         // Go back in time by approximately 1 month at a time, but not past the last daily prediction
         searchInstant =
-            std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_.getEnd() - Duration::Days(1));
+            dailyPredictionInterval_.has_value()
+                ? std::max(searchInstant - Duration::Days(30), dailyPredictionInterval_->getEnd() - Duration::Days(1))
+                : searchInstant - Duration::Days(30);
     }
 
     // Search daily predicton data backwards, skips if not relevant
-    while (dailyPredictionInterval_.contains(searchInstant))
+    while (dailyPredictionInterval_.has_value() && dailyPredictionInterval_->contains(searchInstant))
     {
         const CSSISpaceWeather::Reading& reading = this->getDailyPredictionAt(searchInstant);
 
@@ -403,7 +407,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getLastReadingWhere(
     }
 
     // Search observation data backwards, skips if not relevant
-    while (observationInterval_.contains(searchInstant))
+    while (observationInterval_.has_value() && observationInterval_->contains(searchInstant))
     {
         const CSSISpaceWeather::Reading& reading = this->getObservationAt(searchInstant);
 
@@ -422,18 +426,12 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::getLastReadingWhere(
 
 CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 {
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
-
     if (!aFile.exists())
     {
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
-    CSSISpaceWeather spaceWeather;
-    spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+    CSSISpaceWeather spaceWeather(getFileModifiedInstant(aFile));
 
     Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
@@ -449,10 +447,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         if (!obj.isString())
             return std::nullopt;
 
-        if (obj.getString().trim().empty())
+        if (String(obj.getString()).trim().empty())
             return std::nullopt;
 
-        return ParseInt(obj.getString().trim());
+        return ParseInt(String(obj.getString()).trim());
     };
 
     const auto parseOptionalRealCell = [](const Object& obj) -> std::optional<double>
@@ -469,10 +467,10 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         if (!obj.isString())
             return std::nullopt;
 
-        if (obj.getString().trim().empty())
+        if (String(obj.getString()).trim().empty())
             return std::nullopt;
 
-        return ParseDouble(obj.getString().trim());
+        return ParseDouble(String(obj.getString()).trim());
     };
 
     for (const auto& row : spaceWeatherTable)
@@ -650,19 +648,12 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
     using ostk::physics::time::Scale;
     using ostk::physics::time::Time;
 
-    if (!aFile.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("File");
-    }
-
     if (!aFile.exists())
     {
         throw ostk::core::error::RuntimeError("File [{}] does not exist.", aFile.toString());
     }
 
-    CSSISpaceWeather spaceWeather;
-
-    spaceWeather.lastModifiedTimestamp_ = getFileModifiedInstant(aFile);
+    CSSISpaceWeather spaceWeather(getFileModifiedInstant(aFile));
 
     std::ifstream fileStream {aFile.getPath().toString()};
 
@@ -921,16 +912,16 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
     return spaceWeather;
 }
 
-CSSISpaceWeather::CSSISpaceWeather()
+CSSISpaceWeather::CSSISpaceWeather(const Instant& aLastModifiedTimestamp)
     : lastObservationDate_(std::nullopt),
-      lastModifiedTimestamp_(Instant::Undefined()),
-      observationInterval_(Interval::Undefined()),
+      lastModifiedTimestamp_(aLastModifiedTimestamp),
+      observationInterval_(std::nullopt),
       observations_(Map<int, CSSISpaceWeather::Reading>()),
 
-      dailyPredictionInterval_(Interval::Undefined()),
+      dailyPredictionInterval_(std::nullopt),
       dailyPredictions_(Map<int, CSSISpaceWeather::Reading>()),
 
-      monthlyPredictionInterval_(Interval::Undefined()),
+      monthlyPredictionInterval_(std::nullopt),
       monthlyPredictions_(Map<int, CSSISpaceWeather::Reading>())
 {
 }

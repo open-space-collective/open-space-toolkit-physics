@@ -33,7 +33,6 @@
 
 using ostk::core::container::Array;
 using ostk::core::container::Map;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -170,15 +169,15 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, HasCentralCelestial)
 TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
 {
     {
-        // for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters(),
-        // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
+        // for (const auto& y_ECI : Interval<double>::Closed(-Earth::EquatorialRadius.inMeters(),
+        // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(1000.0))
         for (const auto& y_ECI :
-             Interval<Real>::Closed(
+             Interval<double>::Closed(
                  -EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters() + 1.0,
                  +EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters() - 1.0
              )
-                 .generateArrayWithStep(Real(1000.0)))  // [TBI] Precision issues are preventing the tangential rays to
-                                                        // be recognised as intersecting, hence the 1.0 [m] offset
+                 .generateArrayWithStep(1000.0))  // [TBI] Precision issues are preventing the tangential rays to
+                                                  // be recognised as intersecting, hence the 1.0 [m] offset
         {
             const Segment segment = {{-10000e3, y_ECI, 0.0}, {+10000e3, y_ECI, 0.0}};
 
@@ -401,9 +400,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 
         const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
-        EXPECT_TRUE(earthOrientation.isDefined());
-
         const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF(), instant);
+
+        EXPECT_EQ(Frame::GCRF(), earthPosition.getFrame());
+        EXPECT_EQ(Frame::GCRF(), earthVelocity.getFrame());
+        EXPECT_FALSE(earthPosition.getCoordinates().hasNaN());
+        EXPECT_FALSE(earthVelocity.getCoordinates().hasNaN());
+        EXPECT_FALSE(earthOrientation.toVector().hasNaN());
+        EXPECT_FALSE(earthAxes.x().hasNaN());
+        EXPECT_FALSE(earthAxes.y().hasNaN());
+        EXPECT_FALSE(earthAxes.z().hasNaN());
 
         // Moon
 
@@ -416,9 +422,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 
         const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
-        EXPECT_TRUE(moonOrientation.isDefined());
-
         const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF(), instant);
+
+        EXPECT_EQ(Frame::GCRF(), moonPosition.getFrame());
+        EXPECT_EQ(Frame::GCRF(), moonVelocity.getFrame());
+        EXPECT_FALSE(moonPosition.getCoordinates().hasNaN());
+        EXPECT_FALSE(moonVelocity.getCoordinates().hasNaN());
+        EXPECT_FALSE(moonOrientation.toVector().hasNaN());
+        EXPECT_FALSE(moonAxes.x().hasNaN());
+        EXPECT_FALSE(moonAxes.y().hasNaN());
+        EXPECT_FALSE(moonAxes.z().hasNaN());
     }
 }
 
@@ -455,12 +468,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
 
     const Intersection intersection = pyramid.intersectionWith(ellipsoid, true, 32);
 
-    EXPECT_TRUE(intersection.isDefined()) << intersection;
     EXPECT_FALSE(intersection.isEmpty()) << intersection;
 
     // Project intersection
 
-    const LineString intersectionLineString = intersection.accessComposite().as<LineString>();
+    const LineString intersectionLineString = intersection.getComposite().as<LineString>();
 
     Array<Point2d> intersectionPoints2d = Array<Point2d>::Empty();
 
@@ -479,9 +491,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
         intersectionPoints2d.add(intersectionPoint2d);
     }
 
+    EXPECT_GT(intersectionPoints2d.getSize(), 2u);
+
     const Polygon2d intersectionPolygon2d = {intersectionPoints2d};
 
-    EXPECT_TRUE(intersectionPolygon2d.isDefined()) << intersectionPolygon2d;
+    EXPECT_GT(intersectionPolygon2d.getVertexCount(), 2u);
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)

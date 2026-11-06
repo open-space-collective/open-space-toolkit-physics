@@ -298,7 +298,7 @@ Or to run them manually:
 
 | Name          | Version        | License                                                 | Link                                                                                                                                    |
 | ------------- | -------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Pybind11      | `2.10.1`     | BSD-3-Clause                                            | [github.com/pybind/pybind11](https://github.com/pybind/pybind11)                                                                           |
+| nanobind      | `3.1.0`      | BSD-3-Clause                                            | [github.com/wjakob/nanobind](https://github.com/wjakob/nanobind)                                                                     |
 | {fmt}         | `5.2.0`      | BSD-2-Clause                                            | [github.com/fmtlib/fmt](https://github.com/fmtlib/fmt)                                                                                     |
 | ordered-map   | `0.6.0`      | MIT                                                     | [github.com/Tessil/ordered-map](https://github.com/Tessil/ordered-map)                                                                     |
 | Eigen         | `3.3.7`      | MPL2                                                    | [eigen.tuxfamily.org](http://eigen.tuxfamily.org/index.php)                                                                                |

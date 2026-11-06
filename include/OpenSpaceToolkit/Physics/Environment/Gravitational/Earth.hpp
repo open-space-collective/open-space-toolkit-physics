@@ -73,7 +73,7 @@ class Earth : public Model
     /// order of the model)
     Earth(
         const Earth::Type& aType,
-        const Directory& aDataDirectory = Directory::Undefined(),
+        const std::optional<Directory>& aDataDirectory = std::nullopt,
         const std::optional<int>& aGravityModelDegree = std::nullopt,
         const std::optional<int>& aGravityModelOrder = std::nullopt
     );
@@ -195,7 +195,7 @@ class Earth : public Model
 
     static Unique<Impl> ImplFromType(
         const Earth::Type& aType,
-        const Directory& aDataDirectory,
+        const std::optional<Directory>& aDataDirectory,
         const std::optional<int>& aGravityModelDegree,
         const std::optional<int>& aGravityModelOrder
     );

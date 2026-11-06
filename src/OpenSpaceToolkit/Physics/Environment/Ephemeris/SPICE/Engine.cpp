@@ -363,7 +363,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
                 const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthLatestHighPrecisionKernel);
                 if (!earthKernels.isEmpty())
                 {
-                    const_cast<Engine*>(this)->loadKernel(earthKernels.accessFirst());  // Should only be one
+                    const_cast<Engine*>(this)->loadKernel(earthKernels.getFirst());  // Should only be one
                 }
                 else
                 {

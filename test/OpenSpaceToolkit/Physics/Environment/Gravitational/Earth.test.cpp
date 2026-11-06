@@ -62,20 +62,20 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(
-            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, Directory::Undefined())
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, std::nullopt)
         );
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 20, 0
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 180, 180
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 360, 360
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 2190, 2160
-        ));
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, std::nullopt, 20, 0)
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM84, std::nullopt, 180, 180)
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, std::nullopt, 360, 360)
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008, std::nullopt, 2190, 2160)
+        );
 
         EarthGravitationalModelManager::Get().reset();
     }
@@ -90,21 +90,21 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::Spherical, Directory::Undefined(), 3000, 3000
+            EarthGravitationalModel::Type::Spherical, std::nullopt, 3000, 3000
         ));
 
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 3000, 3000
-        ));
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, std::nullopt, 3000, 3000)
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM84, std::nullopt, 3000, 3000)
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, std::nullopt, 3000, 3000)
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008, std::nullopt, 3000, 3000)
+        );
 
         EarthGravitationalModelManager::Get().reset();
     }
@@ -424,8 +424,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
     }
 
     {
-        EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, std::nullopt, std::nullopt);
+        EarthGravitationalModel earthGravitationalModel = EarthGravitationalModel(
+            EarthGravitationalModel::Type::EGM84, std::optional<int>(std::nullopt), std::optional<int>(std::nullopt)
+        );
 
         EXPECT_FALSE(earthGravitationalModel.getDegree().has_value());
         EXPECT_FALSE(earthGravitationalModel.getOrder().has_value());
@@ -444,7 +445,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
         const int order = 51;
 
         EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, Directory::Undefined(), degree, order);
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, std::nullopt, degree, order);
 
         EXPECT_EQ(std::optional<int>(degree), earthGravitationalModel.getDegree());
         EXPECT_EQ(std::optional<int>(order), earthGravitationalModel.getOrder());
@@ -455,7 +456,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
         const int order = 51;
 
         EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), degree, order);
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, std::nullopt, degree, order);
 
         EXPECT_EQ(std::optional<int>(degree), earthGravitationalModel.getDegree());
         EXPECT_EQ(std::optional<int>(order), earthGravitationalModel.getOrder());
@@ -466,7 +467,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
         const int order = 51;
 
         EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), degree, order);
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008, std::nullopt, degree, order);
 
         EXPECT_EQ(std::optional<int>(degree), earthGravitationalModel.getDegree());
         EXPECT_EQ(std::optional<int>(order), earthGravitationalModel.getOrder());
@@ -720,7 +721,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
         for (const auto& testCase : testCases)
         {
             const EarthGravitationalModel earthGravitationalModel = {
-                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)
+                std::get<0>(testCase), std::nullopt, std::get<1>(testCase), std::get<2>(testCase)
             };
 
             const Vector3d position = std::get<3>(testCase);
@@ -790,7 +791,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
         for (const auto& testCase : testCases)
         {
             const EarthGravitationalModel earthGravitationalModel = {
-                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)
+                std::get<0>(testCase), std::nullopt, std::get<1>(testCase), std::get<2>(testCase)
             };
 
             const Instant instant = Instant::DateTime(DateTime::Parse(std::get<3>(testCase)), Scale::UTC);

@@ -27,8 +27,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, Constructor)
 {
     {
         EXPECT_NO_THROW(MoonGravitationalModel moonGravitationalModel(MoonGravitationalModel::Type::Spherical));
-        EXPECT_NO_THROW(
-            std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical, Directory::Undefined())
+        EXPECT_NO_THROW(std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical, std::nullopt)
         );
     }
 }

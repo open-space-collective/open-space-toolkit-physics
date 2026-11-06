@@ -30,8 +30,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Direction& aDirecti
 {
     ostk::core::utils::Print::Header(anOutputStream, "Direction");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Value:" << (aDirection.getValue().isDefined() ? aDirection.getValue().toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << (aDirection.getValue().toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << aDirection.getFrame()->getName();
 
     ostk::core::utils::Print::Footer(anOutputStream);

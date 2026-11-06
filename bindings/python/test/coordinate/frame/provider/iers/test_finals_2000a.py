@@ -3,6 +3,8 @@
 
 from datetime import datetime
 
+import pytest
+
 from ostk.core.filesystem import File
 
 from ostk.physics.time import Scale
@@ -29,6 +31,23 @@ class TestFinals2000A:
                 Instant.date_time(datetime(2020, 10, 31, 0, 0, 0), Scale.UTC)
             )
         ) == [0.160621, 0.297128]
+
+    def test_get_polar_motion_at_not_tabulated_returns_none(
+        self, finals_2000a: Finals2000A
+    ):
+        # The test file has rows without any value after 2021-11-06 (until 2021-12-26)
+        assert (
+            finals_2000a.get_polar_motion_at(
+                Instant.date_time(datetime(2021, 11, 20, 0, 0, 0), Scale.UTC)
+            )
+            is None
+        )
+
+    def test_get_polar_motion_at_outside_the_data_raises(self, finals_2000a: Finals2000A):
+        with pytest.raises(RuntimeError):
+            finals_2000a.get_polar_motion_at(
+                Instant.date_time(datetime(2030, 1, 1, 0, 0, 0), Scale.UTC)
+            )
 
     def test_get_ut1_minus_utc_at_success(self, finals_2000a: Finals2000A):
         assert (

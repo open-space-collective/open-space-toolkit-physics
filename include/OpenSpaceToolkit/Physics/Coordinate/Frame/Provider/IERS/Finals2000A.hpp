@@ -110,21 +110,22 @@ class Finals2000A
     /// @brief Get data interval
     ///
     /// @code
-    ///     const Interval& interval = finals2000A.getInterval();
+    ///     const std::optional<Interval>& interval = finals2000A.getInterval();
     /// @endcode
     ///
     /// @return Const reference to data Interval of Instants
-    const Interval& getInterval() const;
+    const std::optional<Interval>& getInterval() const;
 
     /// @brief Get polar motion at Instant
     ///
     /// @code
-    ///     Vector2d polarMotion = finals2000A.getPolarMotionAt(anInstant);
+    ///     std::optional<Vector2d> polarMotion = finals2000A.getPolarMotionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
-    /// @return Polar motion
-    Vector2d getPolarMotionAt(const Instant& anInstant) const;
+    /// @return Polar motion, or std::nullopt if it is not tabulated at the Instant (it throws if the Instant is
+    ///         outside the span of the data)
+    std::optional<Vector2d> getPolarMotionAt(const Instant& anInstant) const;
 
     /// @brief Get UT1-UTC at Instant
     ///
@@ -168,10 +169,10 @@ class Finals2000A
 
    private:
     Instant lastModifiedTimestamp_;
-    Interval span_;
+    std::optional<Interval> span_;
     Map<double, Finals2000A::Data> data_;
 
-    Finals2000A();
+    Finals2000A(const Instant& aLastModifiedTimestamp);
 
     Pair<const Finals2000A::Data*, const Finals2000A::Data*> accessDataRange(const Instant& anInstant) const;
 };

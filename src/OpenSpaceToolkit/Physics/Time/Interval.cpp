@@ -23,111 +23,93 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Interval& anInterva
 {
     ostk::core::utils::Print::Header(anOutputStream, "Interval");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Start:" << (anInterval.isDefined() ? anInterval.getStart().toString(Scale::UTC) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "End:" << (anInterval.isDefined() ? anInterval.getEnd().toString(Scale::UTC) : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Start:" << (anInterval.getStart().toString(Scale::UTC));
+    ostk::core::utils::Print::Line(anOutputStream) << "End:" << (anInterval.getEnd().toString(Scale::UTC));
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Interval::isDefined() const
-{
-    return mathematics::object::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
-}
-
 const Instant& Interval::getStart() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Interval");
-    }
-
-    return this->accessLowerBound();
+    return this->getLowerBound();
 }
 
 const Instant& Interval::getEnd() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Interval");
-    }
-
-    return this->accessUpperBound();
+    return this->getUpperBound();
 }
 
 Duration Interval::getDuration() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Interval");
-    }
-
-    return Duration::Between(this->accessLowerBound(), this->accessUpperBound());
+    return Duration::Between(this->getLowerBound(), this->getUpperBound());
 }
 
 Instant Interval::getCenter() const
 {
-    if (!this->isDefined())
+    return this->getLowerBound() + this->getDuration() / 2.0;
+}
+
+std::optional<Interval> Interval::getIntersectionWith(const Interval& anInterval) const
+{
+    const auto intersection = Interval::ToBase(*this).getIntersectionWith(Interval::ToBase(anInterval));
+
+    if (!intersection.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Interval");
+        return std::nullopt;
     }
 
-    return this->accessLowerBound() + this->getDuration() / 2.0;
+    return Interval::FromBase(intersection.value());
 }
 
-Interval Interval::getIntersectionWith(const Interval& anInterval) const
+std::optional<Interval> Interval::getUnionWith(const Interval& anInterval) const
 {
-    return Interval::FromBase(Interval::ToBase(*this).getIntersectionWith(Interval::ToBase(anInterval)));
-}
+    const auto unionInterval = Interval::ToBase(*this).getUnionWith(Interval::ToBase(anInterval));
 
-Interval Interval::getUnionWith(const Interval& anInterval) const
-{
-    return Interval::FromBase(Interval::ToBase(*this).getUnionWith(Interval::ToBase(anInterval)));
+    if (!unionInterval.has_value())
+    {
+        return std::nullopt;
+    }
+
+    return Interval::FromBase(unionInterval.value());
 }
 
 String Interval::toString(const Scale& aTimeScale) const
 {
     using ostk::physics::time::DateTime;
 
-    if (!this->isDefined())
-    {
-        return String("Undefined");
-    }
-
     switch (this->getType())
     {
         case Interval::Type::Closed:
             return String::Format(
                 "[{0} - {1}] [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
         case Interval::Type::Open:
             return String::Format(
                 "]{0} - {1}[ [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
         case Interval::Type::HalfOpenLeft:
             return String::Format(
                 "]{0} - {1}] [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
         case Interval::Type::HalfOpenRight:
             return String::Format(
                 "[{0} - {1}[ [{2}]",
-                this->accessLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
-                this->accessUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getLowerBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
+                this->getUpperBound().getDateTime(aTimeScale).toString(DateTime::Format::Standard),
                 StringFromScale(aTimeScale)
             );
 
@@ -142,128 +124,26 @@ String Interval::toString(const Scale& aTimeScale) const
 
 Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Interval");
-    }
-
-    if (aTimeStep.isZero())
-    {
-        throw ostk::core::error::RuntimeError("Step is zero.");
-    }
-
-    const Interval::Type type = this->getType();
-
-    Array<Instant> grid = Array<Instant>::Empty();
-
-    if (aTimeStep.isPositive())
-    {
-        Instant instant = this->accessLowerBound();
-
-        if ((type == Interval::Type::Open) || (type == Interval::Type::HalfOpenLeft))
-        {
-            instant += aTimeStep;
-        }
-
-        while (instant < this->accessUpperBound())
-        {
-            grid.add(instant);
-
-            instant += aTimeStep;
-        }
-
-        if ((type == Interval::Type::Closed) || (type == Interval::Type::HalfOpenLeft))
-        {
-            grid.add(this->accessUpperBound());
-        }
-    }
-    else
-    {
-        Instant instant = this->accessUpperBound();
-
-        if ((type == Interval::Type::Open) || (type == Interval::Type::HalfOpenRight))
-        {
-            instant += aTimeStep;
-        }
-
-        while (instant > this->accessLowerBound())
-        {
-            grid.add(instant);
-
-            instant += aTimeStep;
-        }
-
-        if ((type == Interval::Type::Closed) || (type == Interval::Type::HalfOpenRight))
-        {
-            grid.add(this->accessLowerBound());
-        }
-    }
-
-    return grid;
-}
-
-Interval Interval::Undefined()
-{
-    return Interval(Instant::Undefined(), Instant::Undefined(), Interval::Type::Undefined);
+    return this->generateArrayWithStep(aTimeStep);
 }
 
 Interval Interval::Closed(const Instant& aLowerBound, const Instant& anUpperBound)
 {
-    if (!aLowerBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Lower bound");
-    }
-
-    if (!anUpperBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Upper bound");
-    }
-
     return Interval(aLowerBound, anUpperBound, Interval::Type::Closed);
 }
 
 Interval Interval::Open(const Instant& aLowerBound, const Instant& anUpperBound)
 {
-    if (!aLowerBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Lower bound");
-    }
-
-    if (!anUpperBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Upper bound");
-    }
-
     return Interval(aLowerBound, anUpperBound, Interval::Type::Open);
 }
 
 Interval Interval::HalfOpenLeft(const Instant& aLowerBound, const Instant& anUpperBound)
 {
-    if (!aLowerBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Lower bound");
-    }
-
-    if (!anUpperBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Upper bound");
-    }
-
     return Interval(aLowerBound, anUpperBound, Interval::Type::HalfOpenLeft);
 }
 
 Interval Interval::HalfOpenRight(const Instant& aLowerBound, const Instant& anUpperBound)
 {
-    if (!aLowerBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Lower bound");
-    }
-
-    if (!anUpperBound.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Upper bound");
-    }
-
     return Interval(aLowerBound, anUpperBound, Interval::Type::HalfOpenRight);
 }
 
@@ -271,19 +151,9 @@ Interval Interval::Centered(
     const Instant& aCentralInstant, const Duration& aDuration, const Interval::Type& anIntervalType
 )
 {
-    if (!aCentralInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Central instant");
-    }
-
     if (!aDuration.isPositive())
     {
         throw ostk::core::error::RuntimeError("Duration is negative.");
-    }
-
-    if (anIntervalType == Interval::Type::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Interval type");
     }
 
     return Interval((aCentralInstant - aDuration / 2.0), (aCentralInstant + aDuration / 2.0), anIntervalType);
@@ -308,9 +178,13 @@ Array<Interval> Interval::Merge(const Array<Interval>& anIntervalArray)
     return FromBaseArray(baseMerge);
 }
 
-Array<Interval> Interval::GetGaps(const Array<Interval>& anIntervalArray, const Interval& anInterval)
+Array<Interval> Interval::GetGaps(const Array<Interval>& anIntervalArray, const std::optional<Interval>& anInterval)
 {
-    const auto& baseGetGaps = mathematics::object::Interval<Instant>::GetGaps(ToBaseArray(anIntervalArray), anInterval);
+    const auto& baseGetGaps = mathematics::object::Interval<Instant>::GetGaps(
+        ToBaseArray(anIntervalArray),
+        anInterval.has_value() ? std::optional<mathematics::object::Interval<Instant>>(ToBase(anInterval.value()))
+                               : std::nullopt
+    );
     return FromBaseArray(baseGetGaps);
 }
 
@@ -363,7 +237,7 @@ Interval Interval::Parse(const String& aString)
         const Instant startInstant = Instant::DateTime(DateTime::Parse(startInstantString, std::nullopt), timeScale);
         const Instant endInstant = Instant::DateTime(DateTime::Parse(endInstantString, std::nullopt), timeScale);
 
-        Interval::Type type = Interval::Type::Undefined;
+        Interval::Type type = Interval::Type::Closed;
 
         if ((openingBracket == "[") && (closingBracket == "]"))
         {
@@ -392,8 +266,6 @@ Interval Interval::Parse(const String& aString)
     {
         throw ostk::core::error::RuntimeError("Cannot parse interval string [{}].", aString);
     }
-
-    return Interval::Undefined();
 }
 
 mathematics::object::Interval<Instant> Interval::ToBase(const Interval& derived)

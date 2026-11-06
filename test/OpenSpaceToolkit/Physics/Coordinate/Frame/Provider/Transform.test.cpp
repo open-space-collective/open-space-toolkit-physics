@@ -285,7 +285,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
     for (const auto& referenceRow : referenceData)
     {
-        const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+        const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
         Shared<const Frame> frame1 = Frame::GCRF();
         Shared<const Frame> frame2 = Frame::GCRF();
@@ -333,7 +333,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
             };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
@@ -363,7 +363,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+                referenceRow[4].getReal(), referenceRow[5].getReal(), referenceRow[6].getReal()
             };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
@@ -393,10 +393,10 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Quaternion referenceOrientationToFrame2 = Quaternion::XYZS(
-                                                                referenceRow[7].accessReal(),
-                                                                referenceRow[8].accessReal(),
-                                                                referenceRow[9].accessReal(),
-                                                                referenceRow[10].accessReal()
+                                                                referenceRow[7].getReal(),
+                                                                referenceRow[8].getReal(),
+                                                                referenceRow[9].getReal(),
+                                                                referenceRow[10].getReal()
             )
                                                                 .normalize();
 
@@ -477,7 +477,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[11].accessReal(), referenceRow[12].accessReal(), referenceRow[13].accessReal()
+                referenceRow[11].getReal(), referenceRow[12].getReal(), referenceRow[13].getReal()
             };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 

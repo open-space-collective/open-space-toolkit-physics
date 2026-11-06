@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::String;
@@ -54,7 +54,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const EclipsePhase& self, const EclipsePhase& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -66,7 +71,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const EclipsePhase& self, const EclipsePhase& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -84,7 +94,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
         .def(
             "get_region",
             &EclipsePhase::getRegion,
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
                 The region of the eclipse phase (Umbra or Penumbra).
             )doc"
@@ -93,7 +103,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
         .def(
             "get_interval",
             &EclipsePhase::getInterval,
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
                 The time interval of the phase.
             )doc"
@@ -145,7 +155,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
         .def(
             "get_occulted_celestial_object",
             &Eclipse::getOccultedCelestialObject,
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
                 Get the occulted celestial object.
 
@@ -157,7 +167,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
         .def(
             "get_occulting_celestial_object",
             &Eclipse::getOccultingCelestialObject,
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
                 Get the occulting celestial object.
 
@@ -169,7 +179,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
         .def(
             "get_phases",
             &Eclipse::getPhases,
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
                 Get the phases of the eclipse.
 
@@ -204,7 +214,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Utility_Eclipse(pybind11::modu
                     include_penumbra (bool, optional): Whether to include the penumbra phases. Defaults to True.
 
                 Returns:
-                    Interval: The interval of the eclipse. Returns Interval::Undefined() if there are no umbra phases
+                    Interval | None: The interval of the eclipse. Returns None if there are no umbra phases
                             and penumbras are not included.
 
                 Raises:

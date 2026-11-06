@@ -102,7 +102,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, GetFrameOf)
         EXPECT_EQ(earthFrame->getName(), "Earth (SPICE)");
 
         EXPECT_EQ(engine_.getKernels().getSize(), 1);
-        EXPECT_EQ(engine_.getKernels().accessFirst().getName(), "earth_latest_high_prec.bpc");
+        EXPECT_EQ(engine_.getKernels().getFirst().getName(), "earth_latest_high_prec.bpc");
 
         Frame::Destruct("Earth (SPICE)");
     }
@@ -172,7 +172,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, DefaultKerne
 
     for (const auto& kernel : kernels)
     {
-        EXPECT_TRUE(kernel.getFile().isDefined());
         EXPECT_FALSE(kernel.getName().isEmpty());
     }
 }

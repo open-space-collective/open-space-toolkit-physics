@@ -528,15 +528,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Vector3d reference_position_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                    referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
                 };
 
-                const Angle reference_latitude = Angle::Degrees(referenceRow[4].accessReal());
-                const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());
-                const Length reference_altitude = Length::Meters(referenceRow[6].accessReal());
+                const Angle reference_latitude = Angle::Degrees(referenceRow[4].getReal());
+                const Angle reference_longitude = Angle::Degrees(referenceRow[5].getReal());
+                const Length reference_altitude = Length::Meters(referenceRow[6].getReal());
 
                 const LLA lla = {reference_latitude, reference_longitude, reference_altitude};
 
@@ -584,10 +584,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
 
         EXPECT_EQ(lla_, LLA::Vector(vector));
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Vector(Vector3d::Undefined()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
@@ -615,15 +611,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Vector3d reference_position_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                    referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
                 };
 
-                const Angle reference_latitude = Angle::Degrees(referenceRow[4].accessReal());
-                const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());
-                const Length reference_altitude = Length::Meters(referenceRow[6].accessReal());
+                const Angle reference_latitude = Angle::Degrees(referenceRow[4].getReal());
+                const Angle reference_longitude = Angle::Degrees(referenceRow[5].getReal());
+                const Length reference_altitude = Length::Meters(referenceRow[6].getReal());
 
                 const LLA lla = LLA::Cartesian(
                     reference_position_ITRF,
@@ -680,10 +676,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
                 }
             }
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Cartesian(Vector3d::Undefined(), std::nullopt, std::nullopt));
     }
 
     {

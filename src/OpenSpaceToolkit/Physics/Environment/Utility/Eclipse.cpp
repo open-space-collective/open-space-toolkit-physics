@@ -62,9 +62,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const EclipsePhase& anEcl
 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Region:" << (anEclipsePhase.getRegion() == EclipsePhase::Region::Umbra ? "Umbra" : "Penumbra");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Interval:"
-        << (anEclipsePhase.getInterval().isDefined() ? anEclipsePhase.getInterval().toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Interval:" << (anEclipsePhase.getInterval().toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Complete:" << (anEclipsePhase.isComplete() ? "True" : "False");
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -154,13 +152,11 @@ Duration Eclipse::getDuration(const bool& includePenumbra) const
     return duration;
 }
 
-Interval Eclipse::getInterval(const bool& includePenumbra) const
+std::optional<Interval> Eclipse::getInterval(const bool& includePenumbra) const
 {
     if (includePenumbra)
     {
-        return Interval::Closed(
-            phases_.accessFirst().getInterval().getStart(), phases_.accessLast().getInterval().getEnd()
-        );
+        return Interval::Closed(phases_.getFirst().getInterval().getStart(), phases_.getLast().getInterval().getEnd());
     }
 
     Array<Interval> umbras = Array<Interval>::Empty();
@@ -174,7 +170,7 @@ Interval Eclipse::getInterval(const bool& includePenumbra) const
 
     if (umbras.isEmpty())
     {
-        return Interval::Undefined();
+        return std::nullopt;
     }
 
     if (umbras.getSize() == 1)
@@ -195,15 +191,15 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Eclipse& anEclipse)
         << "Occulting Object:" << anEclipse.getOccultingCelestialObject().getName();
     ostk::core::utils::Print::Line(anOutputStream) << "Number of Phases:" << anEclipse.getPhases().getSize();
 
-    const Interval intervalWithPenumbra = anEclipse.getInterval(true);
+    const std::optional<Interval> intervalWithPenumbra = anEclipse.getInterval(true);
     ostk::core::utils::Print::Line(anOutputStream)
         << "Interval (with penumbra):"
-        << (intervalWithPenumbra.isDefined() ? intervalWithPenumbra.toString() : "Undefined");
+        << (intervalWithPenumbra.has_value() ? intervalWithPenumbra->toString() : "Undefined");
 
-    const Interval intervalWithoutPenumbra = anEclipse.getInterval(false);
+    const std::optional<Interval> intervalWithoutPenumbra = anEclipse.getInterval(false);
     ostk::core::utils::Print::Line(anOutputStream)
         << "Interval (umbra only):"
-        << (intervalWithoutPenumbra.isDefined() ? intervalWithoutPenumbra.toString() : "Undefined");
+        << (intervalWithoutPenumbra.has_value() ? intervalWithoutPenumbra->toString() : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -300,17 +296,15 @@ Array<Interval> eclipseIntervalsAtPosition(
     const Duration& timeStep
 )
 {
-    if (!anAnalysisInterval.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Analysis interval");
-    }
-
     Environment environment = anEnvironment;
 
     Array<Interval> eclipseIntervals = Array<Interval>::Empty();
 
-    Instant eclipseStartInstant = Instant::Undefined();
-    Instant eclipseEndInstant = Instant::Undefined();
+    std::optional<Instant> eclipseStartInstant = std::nullopt;
+
+    // The previous grid instant: the last instant of an eclipse that has just ended. It is only read once an eclipse
+    // has started, i.e. after at least one iteration has set it.
+    Instant previousInstant = anAnalysisInterval.getStart();
 
     for (const auto& instant : anAnalysisInterval.generateGrid(timeStep))
     {
@@ -318,24 +312,23 @@ Array<Interval> eclipseIntervalsAtPosition(
 
         const bool inEclipse = environment.isPositionInEclipse(aPosition, includePenumbra);
 
-        if (inEclipse && (!eclipseStartInstant.isDefined()))
+        if (inEclipse && (!eclipseStartInstant.has_value()))
         {
             eclipseStartInstant = instant;
         }
-        else if ((!inEclipse) && eclipseStartInstant.isDefined())
+        else if ((!inEclipse) && eclipseStartInstant.has_value())
         {
-            eclipseIntervals.add(Interval::Closed(eclipseStartInstant, eclipseEndInstant));
+            eclipseIntervals.add(Interval::Closed(eclipseStartInstant.value(), previousInstant));
 
-            eclipseStartInstant = Instant::Undefined();
-            eclipseEndInstant = Instant::Undefined();
+            eclipseStartInstant = std::nullopt;
         }
 
-        eclipseEndInstant = instant;
+        previousInstant = instant;
     }
 
-    if (eclipseStartInstant.isDefined())
+    if (eclipseStartInstant.has_value())
     {
-        eclipseIntervals.add(Interval::Closed(eclipseStartInstant, eclipseEndInstant));
+        eclipseIntervals.add(Interval::Closed(eclipseStartInstant.value(), previousInstant));
     }
 
     return eclipseIntervals;

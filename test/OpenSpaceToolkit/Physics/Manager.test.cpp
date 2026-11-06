@@ -39,7 +39,7 @@ class OpenSpaceToolkit_Physics_Manager : public ::testing::Test
     void TearDown() override
     {
         // Clean up any created directories
-        if (localRepository_.isDefined() && localRepository_.exists())
+        if (localRepository_.exists())
         {
             localRepository_.remove();
         }
@@ -83,8 +83,7 @@ TEST_F(OpenSpaceToolkit_Physics_Manager, GetSetLocalRepository)
     ManagerMock manager(modeEnvVar_, localRepository_, localRepositoryEnvVar_, localPath_, lockTimeoutEnvVar_);
 
     // Default local repository
-    Directory defaultLocalRepository = manager.getLocalRepository();
-    EXPECT_TRUE(defaultLocalRepository.isDefined());
+    EXPECT_NO_THROW(manager.getLocalRepository());
 
     // Set a new local repository
     localRepository_ = Directory::Path(Path::Parse("/tmp/test_manager_new_local_repository"));

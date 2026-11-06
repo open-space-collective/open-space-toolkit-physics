@@ -9,7 +9,11 @@ from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.frame.provider import iau
+from ostk.physics.coordinate import Transform
 from ostk.physics.coordinate.frame.provider import Dynamic
+from ostk.physics.coordinate.frame.provider import Static
+
+from ostk.mathematics.geometry.d3.transformation.rotation import Quaternion
 
 
 @pytest.fixture
@@ -99,3 +103,23 @@ class TestFrame:
         Frame.destruct(custom_frame.get_name())
 
         assert Frame.exists(name="Custom Frame") is False
+
+
+class TestFrameWithoutParent:
+    def test_construct_root_frame_without_parent(self):
+        provider = Static(
+            Transform.passive(
+                Instant.J2000(),
+                [1.0, 0.0, 0.0],
+                [0.0, 0.0, 0.0],
+                Quaternion.unit(),
+                [0.0, 0.0, 0.0],
+            )
+        )
+
+        root = Frame.construct("TestRootFrame", True, None, provider)
+
+        try:
+            assert root.has_parent() is False
+        finally:
+            Frame.destruct("TestRootFrame")

@@ -26,7 +26,7 @@ class TestEarth:
     def test_constructor_success_with_directory(self):
         earth_magnetic_model = EarthMagneticModel(
             EarthMagneticModel.Type.EMM2010,
-            Directory.undefined(),
+            None,
         )
 
         assert isinstance(earth_magnetic_model, EarthMagneticModel)

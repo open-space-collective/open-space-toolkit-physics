@@ -5,15 +5,17 @@ import pytest
 import ostk.physics as physics
 
 # `None` replaces the "undefined" value: the Undefined() / isDefined() sentinel pattern is gone from these classes.
-# (Instant, Length, Interval and Scale keep it: Mathematics 4 intervals need it.)
+# (Instant, Length and Scale keep it.)
 
 SENTINEL_FREE_CLASSES = [
+    physics.unit.Interval,
     physics.unit.Mass,
     physics.unit.ElectricCurrent,
     physics.unit.Time,
     physics.unit.Angle,
     physics.unit.Derived,
     physics.unit.Derived.Unit,
+    physics.time.Interval,
     physics.time.Duration,
     physics.coordinate.Axes,
     physics.coordinate.Position,
@@ -49,6 +51,7 @@ SENTINEL_FREE_CLASSES = [
 
 SENTINEL_FREE_ENUMS = [
     physics.Unit.Type,
+    physics.time.Interval.Type,
     physics.unit.Mass.Unit,
     physics.unit.ElectricCurrent.Unit,
     physics.unit.Time.Unit,

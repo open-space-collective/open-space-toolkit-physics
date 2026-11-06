@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -134,7 +134,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE_Engine(pybind1
         .def_static(
             "get",
             &Engine::Get,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Get the engine singleton.
 

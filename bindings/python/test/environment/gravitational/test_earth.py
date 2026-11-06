@@ -41,7 +41,7 @@ class TestEarth:
 
     def test_constructor_success_with_directory(self):
         earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.Type.EGM2008, Directory.undefined()
+            EarthGravitationalModel.Type.EGM2008, None
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
@@ -49,7 +49,7 @@ class TestEarth:
 
     def test_constructor_success_with_degree_and_order(self):
         earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.Type.EGM2008, Directory.undefined(), 2, 2
+            EarthGravitationalModel.Type.EGM2008, None, 2, 2
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
@@ -82,7 +82,7 @@ class TestEarth:
 
     def test_get_degree_order_success(self):
         egm_earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.Type.EGM2008, Directory.undefined(), 51, 50
+            EarthGravitationalModel.Type.EGM2008, None, 51, 50
         )
 
         assert egm_earth_gravitational_model.get_degree() == 51

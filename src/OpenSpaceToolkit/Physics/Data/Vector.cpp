@@ -37,8 +37,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Vector");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Value:" << (aVector.value_.isDefined() ? aVector.value_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << (aVector.value_.toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aVector.unit_.toString();
     ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << aVector.frameSPtr_->getName();
 

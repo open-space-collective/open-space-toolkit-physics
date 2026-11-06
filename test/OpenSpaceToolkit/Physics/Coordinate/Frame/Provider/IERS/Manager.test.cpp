@@ -13,6 +13,7 @@
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp>
 
@@ -204,12 +205,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
         Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/New"));
         manager_.setLocalRepository(directory);
 
-        File bulletinAFile = File::Undefined();
+        std::optional<File> bulletinAFile;
         EXPECT_NO_THROW(bulletinAFile = manager_.fetchLatestBulletinA());
 
-        BulletinA bulletinA = BulletinA::Load(bulletinAFile);
+        BulletinA bulletinA = BulletinA::Load(bulletinAFile.value());
 
-        bulletinAFile.remove();
+        bulletinAFile->remove();
 
         EXPECT_NO_THROW(manager_.getBulletinA());
 
@@ -294,11 +295,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
-                const Vector2d referencePolarMotion_rad = {referenceRow[1].accessReal(), referenceRow[2].accessReal()};
+                const Vector2d referencePolarMotion_rad = {referenceRow[1].getReal(), referenceRow[2].getReal()};
 
-                const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant) * (M_PI / 180.0 / 3600.0);
+                const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant).value() * (M_PI / 180.0 / 3600.0);
 
                 EXPECT_TRUE(polarMotion_rad.isNear(referencePolarMotion_rad, tolerance)) << String::Format(
                     "{} - {} ~ {}",
@@ -313,6 +314,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Future)
 {
+    // Needs the live Finals 2000A file. See GetPolarMotionAt_NotTabulated for the deterministic coverage of the
+    // instants that are not tabulated.
+
     Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/Temp"));
     manager_.setLocalRepository(directory);
     const File latestFinals2000A = manager_.fetchLatestFinals2000A();
@@ -320,18 +324,53 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
     manager_.loadFinals2000A(finals2000A);
 
     {
+        // The file has predictions about a year ahead
         const Instant instant = Instant::Now() + Duration::Weeks(12.0);
 
-        manager_.getPolarMotionAt(instant);
+        EXPECT_TRUE(manager_.getPolarMotionAt(instant).has_value());
     }
 
     {
-        const Instant instant = Instant::Now() + Duration::Weeks(55.0);
+        // Far beyond the end of the file
+        const Instant instant = Instant::Now() + Duration::Weeks(200.0);
 
         EXPECT_THROW(manager_.getPolarMotionAt(instant), ostk::core::error::RuntimeError);
     }
 
     directory.remove();
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_NotTabulated)
+{
+    // The test file tabulates the polar motion until 2025-10-04, and then has rows without any value until
+    // 2025-11-23: such an instant is in the span of the file, but not tabulated
+
+    manager_.loadFinals2000A(finals2000A_);
+
+    const Instant tabulatedInstant = Instant::DateTime(DateTime(2025, 9, 15, 0, 0, 0), Scale::UTC);
+    const Instant instantInBlankTail = Instant::DateTime(DateTime(2025, 10, 15, 0, 0, 0), Scale::UTC);
+    const Instant instantAfterTheFile = Instant::DateTime(DateTime(2025, 12, 15, 0, 0, 0), Scale::UTC);
+
+    EXPECT_TRUE(finals2000A_.getPolarMotionAt(tabulatedInstant).has_value());
+    EXPECT_FALSE(finals2000A_.getPolarMotionAt(instantInBlankTail).has_value());
+    EXPECT_THROW(finals2000A_.getPolarMotionAt(instantAfterTheFile), ostk::core::error::RuntimeError);
+
+    EXPECT_TRUE(manager_.getPolarMotionAt(tabulatedInstant).has_value());
+    EXPECT_FALSE(manager_.getPolarMotionAt(instantInBlankTail).has_value());
+    EXPECT_THROW(manager_.getPolarMotionAt(instantAfterTheFile), ostk::core::error::RuntimeError);
+
+    // The ITRF provider refuses to build a transform without polar motion
+
+    try
+    {
+        ostk::physics::coordinate::frame::provider::ITRF().getTransformAt(instantInBlankTail);
+
+        FAIL() << "Expected a RuntimeError";
+    }
+    catch (const ostk::core::error::RuntimeError& error)
+    {
+        EXPECT_NE(std::string::npos, std::string(error.what()).find("Cannot obtain polar motion"));
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt)
@@ -373,9 +412,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
-                const double referenceDUT1 = {referenceRow[3].accessReal()};
+                const double referenceDUT1 = {referenceRow[3].getReal()};
 
                 const double dUT1 = manager_.getUt1MinusUtcAt(instant).value();
 

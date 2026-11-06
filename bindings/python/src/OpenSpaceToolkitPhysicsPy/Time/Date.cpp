@@ -1,12 +1,10 @@
 /// Apache License 2.0
 
-#include <pybind11/stl.h>
-
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Date(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
@@ -25,8 +23,22 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
     date_class
         .def(init<int, int, int>())
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Date& self, const Date& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Date& self, const Date& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Date>))
         .def(
@@ -208,7 +220,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
 
         );
 
-    enum_<Date::Format>(date_class, "Format", pybind11::module_local())
+    enum_<Date::Format>(date_class, "Format")
 
         .value(
             "Standard",

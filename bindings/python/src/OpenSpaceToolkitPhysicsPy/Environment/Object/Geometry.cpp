@@ -14,9 +14,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::Unique;
@@ -50,8 +50,22 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
         .def(init<const Composite&, const Shared<const Frame>&>())
         .def(init<const Geometry::Object&, const Shared<const Frame>&>())
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Geometry& self, const Geometry& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Geometry& self, const Geometry& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Geometry>))
         .def("__repr__", &(shiftToString<Geometry>))
@@ -93,7 +107,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Geometry(pybind11::modu
             // returned composite to that of its parent geometry. With a bare `reference`,
             // `geometry.intersection_with(earth).get_composite()` hands back a
             // reference into a geometry that Python is free to collect straight away.
-            return_value_policy::reference_internal,
+            rv_policy::reference_internal,
             R"doc(
                 Get composite.
 

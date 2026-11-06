@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -52,7 +54,7 @@ class Moon : public Model
     ///
     /// @param [in] aType A gravitational model type
     /// @param [in] (optional) aDataDirectory A gravitational model data directory
-    Moon(const Moon::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+    Moon(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory = std::nullopt);
 
     /// @brief Copy constructor
     ///
@@ -130,7 +132,7 @@ class Moon : public Model
 
     Unique<Impl> implUPtr_;
 
-    static Unique<Impl> ImplFromType(const Moon::Type& aType, const Directory& aDataDirectory);
+    static Unique<Impl> ImplFromType(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory);
 };
 
 }  // namespace gravitational

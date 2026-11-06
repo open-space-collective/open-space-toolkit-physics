@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Sun__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Sun__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -51,7 +53,7 @@ class Sun : public Model
     ///
     /// @param [in] aType A gravitational model type
     /// @param [in] (optional) aDataDirectory A gravitational model data directory
-    Sun(const Sun::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+    Sun(const Sun::Type& aType, const std::optional<Directory>& aDataDirectory = std::nullopt);
 
     /// @brief Copy constructor
     ///
@@ -129,7 +131,7 @@ class Sun : public Model
 
     Unique<Impl> implUPtr_;
 
-    static Unique<Impl> ImplFromType(const Sun::Type& aType, const Directory& aDataDirectory);
+    static Unique<Impl> ImplFromType(const Sun::Type& aType, const std::optional<Directory>& aDataDirectory);
 };
 
 }  // namespace gravitational

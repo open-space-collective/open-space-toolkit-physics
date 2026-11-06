@@ -20,10 +20,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Constructor)
 
         EXPECT_NO_THROW(Dipole dipole(magneticMoment));
     }
-
-    {
-        EXPECT_ANY_THROW(Dipole dipole(Vector3d::Undefined()));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole, Clone)

@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Interval.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Interval(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -39,8 +39,22 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Interval& self, const Interval& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Interval& self, const Interval& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Interval>))
         .def(
@@ -58,16 +72,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             }
         )
 
-        .def(
-            "is_defined",
-            &Interval::isDefined,
-            R"doc(
-                Check if the interval is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "is_degenerate",
             &Interval::isDegenerate,
@@ -211,7 +215,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     (Interval): Another interval.
 
                 Returns:
-                    Interval: Intersection interval (Undefined if there is no intersection).
+                    Interval | None: Intersection interval, or None if there is no intersection.
             )doc"
         )
         .def(
@@ -224,7 +228,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
                     (Interval): Another interval.
 
                 Returns:
-                    Interval: Union interval (Undefined if there is no single-interval union).
+                    Interval | None: Union interval, or None if there is no single-interval union.
             )doc"
         )
         .def(
@@ -272,16 +276,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             arg("scale") = Scale::UTC
         )
 
-        .def_static(
-            "undefined",
-            &Interval::Undefined,
-            R"doc(
-                Create an undefined interval.
-
-                Returns:
-                    Interval: Undefined interval.
-            )doc"
-        )
         .def_static(
             "closed",
             &Interval::Closed,
@@ -427,7 +421,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
             "get_gaps",
             &Interval::GetGaps,
             arg("intervals"),
-            arg_v("interval", Interval::Undefined(), "Interval::Undefined()"),
+            arg("interval") = none(),
             R"doc(
                 Creates a list of intervals gaps.
 
@@ -439,7 +433,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
                 Args:
                     intervals (list[Interval]): A list of intervals.
-                    interval (Interval): The analysis interval. Used to compute gaps for the first and last interval. Defaults to Undefined.
+                    interval (Interval | None): The analysis interval. Used to compute gaps for the first and last interval. Defaults to None.
 
                 Returns:
                     list[Interval]: Intervals gaps.
@@ -510,47 +504,9 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Interval(pybind11::module& aModule)
 
         ;
 
-    // https://github.com/pybind/pybind11/pull/949 locally to avoid conflicts with other potential objects in other ostk
-    // modules
-    enum_<Interval::Type>(interval_class, "Type", pybind11::module_local())
-
-        .value(
-            "Undefined",
-            Interval::Type::Undefined,
-            R"doc(
-                Undefined interval type.
-            )doc"
-        )
-        .value(
-            "Closed",
-            Interval::Type::Closed,
-            R"doc(
-                Closed interval type.
-            )doc"
-        )
-        .value(
-            "Open",
-            Interval::Type::Open,
-            R"doc(
-                Open interval type.
-            )doc"
-        )
-        .value(
-            "HalfOpenLeft",
-            Interval::Type::HalfOpenLeft,
-            R"doc(
-                Half-open left interval type.
-            )doc"
-        )
-        .value(
-            "HalfOpenRight",
-            Interval::Type::HalfOpenRight,
-            R"doc(
-                Half-open right interval type.
-            )doc"
-        )
-
-        ;
+    // Interval::Type is mathematics' IntervalBase::Type, which ostk.mathematics already binds as RealInterval.Type.
+    // nanobind keeps one Python type per C++ type, so expose that one.
+    interval_class.attr("Type") = module_::import_("ostk.mathematics.object").attr("RealInterval").attr("Type");
 
     implicitly_convertible<ostk::mathematics::object::Interval<ostk::physics::time::Instant>, Interval>();
 }

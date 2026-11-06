@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::Directory;
     using ostk::core::type::Shared;
@@ -13,7 +13,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
     using ostk::physics::environment::gravitational::Moon;
 
     {
-        class_<Moon, Shared<Moon>, Model> moon_class(
+        class_<Moon, Model> moon_class(
             aModule,
             "Moon",
             R"doc(
@@ -26,7 +26,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
         moon_class
 
             .def(
-                init<const Moon::Type&, const Directory&>(),
+                init<const Moon::Type&, const std::optional<Directory>&>(),
                 arg("type"),
                 arg("directory"),
                 R"doc(
@@ -34,7 +34,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
 
                     Args:
                         type (Moon.Type): Moon model type.
-                        directory (Directory): Directory containing the gravity model data files.
+                        directory (Directory | None): Directory containing the gravity model data files.
                 )doc"
             )
 
@@ -88,7 +88,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Moon(pybind11::m
                 )doc"
             )
 
-            .def_readonly_static(
+            .def_ro_static(
                 "spherical",
                 &Moon::Spherical,
                 R"doc(
