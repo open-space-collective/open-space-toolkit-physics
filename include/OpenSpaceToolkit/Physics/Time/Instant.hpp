@@ -209,6 +209,8 @@ class Instant
 
     /// @brief Get date-time expressed in given time scale
     ///
+    /// In UTC, an instant within a leap second is expressed with a second of 60 (e.g. 2016-12-31 23:59:60).
+    ///
     /// @code
     ///     Instant::J2000().getDateTime(Scale::TT); // 2000-01-01 12:00:00
     /// @endcode
@@ -308,6 +310,8 @@ class Instant
     static Instant GPSEpoch();
 
     /// @brief Constructs instant from date-time
+    ///
+    /// In UTC, a second of 60 is the leap second following second 59 (e.g. 2016-12-31 23:59:60).
     ///
     /// @code
     ///     Instant instant = Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT); //
