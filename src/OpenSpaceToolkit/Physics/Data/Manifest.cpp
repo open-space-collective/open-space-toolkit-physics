@@ -38,7 +38,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest
     return anOutputStream;
 }
 
-Instant Manifest::getLastModifiedTimestamp() const
+const Instant& Manifest::getLastModifiedTimestamp() const
 {
     return this->lastModifiedTimestamp_;
 }

@@ -99,19 +99,14 @@ bool Position::isNear(const Position& aPosition, const Length& aTolerance) const
     return false;
 }
 
-const Vector3d& Position::accessCoordinates() const
+const Vector3d& Position::getCoordinates() const
 {
     return coordinates_;
 }
 
-Shared<const Frame> Position::accessFrame() const
+const Shared<const Frame>& Position::getFrame() const
 {
     return frameSPtr_;
-}
-
-Vector3d Position::getCoordinates() const
-{
-    return coordinates_;
 }
 
 Length Position::getNorm() const
@@ -155,7 +150,7 @@ Position Position::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant&
         return {transform.applyToPosition(coordinates_), unit_, aFrameSPtr};
     }
 
-    return Position::Meters(transform.applyToPosition(this->inMeters().accessCoordinates()), aFrameSPtr).inUnit(unit_);
+    return Position::Meters(transform.applyToPosition(this->inMeters().getCoordinates()), aFrameSPtr).inUnit(unit_);
 }
 
 String Position::toString(int aPrecision) const
@@ -178,7 +173,7 @@ Position Position::FromLLA(
 )
 {
     Shared<const environment::object::Celestial> celestialSPtr =
-        aCelestialSPtr == nullptr ? ostk::physics::Environment::AccessGlobalInstance()->accessCentralCelestialObject()
+        aCelestialSPtr == nullptr ? ostk::physics::Environment::AccessGlobalInstance()->getCentralCelestialObject()
                                   : aCelestialSPtr;
 
     if (celestialSPtr == nullptr)
@@ -188,7 +183,7 @@ Position Position::FromLLA(
 
     return Position::Meters(
         aLLA.toCartesian(celestialSPtr->getEquatorialRadius(), celestialSPtr->getFlattening()),
-        celestialSPtr->accessFrame()
+        celestialSPtr->getFrame()
     );
 }
 

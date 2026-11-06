@@ -55,24 +55,14 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Object& anObject)
     return anOutputStream;
 }
 
-const String& Object::accessName() const
+const String& Object::getName() const
 {
     return name_;
 }
 
-const std::optional<Object::Geometry>& Object::accessGeometry() const
+const std::optional<Object::Geometry>& Object::getGeometry() const
 {
     return geometry_;
-}
-
-String Object::getName() const
-{
-    return this->accessName();
-}
-
-std::optional<Object::Geometry> Object::getGeometry() const
-{
-    return this->accessGeometry();
 }
 
 std::optional<Object::Geometry> Object::getGeometryIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant)

@@ -103,95 +103,59 @@ class BulletinA
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA);
 
-    /// @brief Access release Date
+    /// @brief Get release Date
     ///
     /// @code
-    ///     const Date& date = bulletinA.accessReleaseDate();
+    ///     const Date& date = bulletinA.getReleaseDate();
     /// @endcode
     ///
     /// @return Release Date
-    const Date& accessReleaseDate() const;
+    const Date& getReleaseDate() const;
 
-    /// @brief Access timestamp at which the BulletinA file was last modified
+    /// @brief Get timestamp at which the BulletinA file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = bulletinA.accessLastModifiedTimestamp();
+    ///     const Instant& timestamp = bulletinA.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
-    const Instant& accessLastModifiedTimestamp() const;
-
-    /// @brief Access TAI-UTC
-    ///
-    /// @code
-    ///     const std::optional<Duration>& taiMinusUtc = bulletinA.accessTAIMinusUTC();
-    /// @endcode
-    ///
-    /// @return TAI-UTC
-    const std::optional<Duration>& accessTAIMinusUTC() const;
-
-    /// @brief Access TAI-UTC epoch
-    ///
-    /// @code
-    ///     const Instant& epoch = bulletinA.accessTAIMinusUTCEpoch();
-    /// @endcode
-    ///
-    /// @return TAI-UTC epoch
-    const Instant& accessTAIMinusUTCEpoch() const;
-
-    /// @brief Access observation Interval
-    ///
-    /// @code
-    ///     const Interval& interval = bulletinA.accessObservationInterval();
-    /// @endcode
-    ///
-    /// @return Observation Interval of Instants
-    const Interval& accessObservationInterval() const;
-
-    /// @brief Access prediction Interval
-    ///
-    /// @code
-    ///     const Interval& interval = bulletinA.accessPredictionInterval();
-    /// @endcode
-    ///
-    /// @return Prediction Interval of Instants
-    const Interval& accessPredictionInterval() const;
-
-    /// @brief Get release Date of Bulletin A
-    ///
-    /// @code
-    ///     Date date = bulletinA.getReleaseDate();
-    /// @endcode
-    ///
-    /// @return Release Date of Bulletin A
-    Date getReleaseDate() const;
+    const Instant& getLastModifiedTimestamp() const;
 
     /// @brief Get TAI-UTC
     ///
     /// @code
-    ///     std::optional<Duration> taiMinusUtc = bulletinA.getTAIMinusUTC();
+    ///     const std::optional<Duration>& taiMinusUtc = bulletinA.getTAIMinusUTC();
     /// @endcode
     ///
     /// @return TAI-UTC
-    std::optional<Duration> getTAIMinusUTC() const;
+    const std::optional<Duration>& getTAIMinusUTC() const;
 
     /// @brief Get TAI-UTC epoch
     ///
     /// @code
-    ///     Instant epoch = bulletinA.getTAIMinusUTCEpoch();
+    ///     const Instant& epoch = bulletinA.getTAIMinusUTCEpoch();
     /// @endcode
     ///
-    /// @return TAI-UTC epoch Instant
-    Instant getTAIMinusUTCEpoch() const;
+    /// @return TAI-UTC epoch
+    const Instant& getTAIMinusUTCEpoch() const;
 
     /// @brief Get observation Interval
     ///
     /// @code
-    ///     Interval interval = bulletinA.getObservationInterval();
+    ///     const Interval& interval = bulletinA.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants
-    Interval getObservationInterval() const;
+    const Interval& getObservationInterval() const;
+
+    /// @brief Get prediction Interval
+    ///
+    /// @code
+    ///     const Interval& interval = bulletinA.getPredictionInterval();
+    /// @endcode
+    ///
+    /// @return Prediction Interval of Instants
+    const Interval& getPredictionInterval() const;
 
     /// @brief Get observation at Instant
     ///
@@ -202,15 +166,6 @@ class BulletinA
     /// @param [in] anInstant An Instant
     /// @return Observation at Instant
     BulletinA::Observation getObservationAt(const Instant& anInstant) const;
-
-    /// @brief Get prediction Interval
-    ///
-    /// @code
-    ///     Interval interval = bulletinA.getPredictionInterval();
-    /// @endcode
-    ///
-    /// @return Prediction Interval of Instants
-    Interval getPredictionInterval() const;
 
     /// @brief Get prediction at Instant
     ///

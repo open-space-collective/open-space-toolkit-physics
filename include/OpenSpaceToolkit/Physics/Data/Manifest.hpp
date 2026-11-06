@@ -53,7 +53,7 @@ class Manifest
     /// @endcode
     ///
     /// @return Instant indicating when the manifest was last updated based on file modification time
-    Instant getLastModifiedTimestamp() const;
+    const Instant& getLastModifiedTimestamp() const;
 
     /// @brief Get last update timestamp for data
     ///

@@ -36,10 +36,10 @@ double ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
 {
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * ElectricCurrent::SIRatio(unit_) / ElectricCurrent::SIRatio(aUnit);
+    return this->getValue() * ElectricCurrent::SIRatio(unit_) / ElectricCurrent::SIRatio(aUnit);
 }
 
 double ElectricCurrent::inAmperes() const
@@ -49,7 +49,7 @@ double ElectricCurrent::inAmperes() const
 
 String ElectricCurrent::toString(int aPrecision) const
 {
-    return DoubleToString(this->accessValue(), aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
 }
 
 ElectricCurrent ElectricCurrent::Amperes(double aValue)

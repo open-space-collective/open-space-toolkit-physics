@@ -87,15 +87,6 @@ class Unit
     /// @return True if zero
     bool isZero() const;
 
-    /// @brief Access the value by const reference.
-    ///
-    /// @code
-    ///     const double& value = Unit(Unit::Type::Length, 1.0).accessValue();
-    /// @endcode
-    ///
-    /// @return A const reference to the value
-    const double& accessValue() const;
-
     /// @brief Get the unit type.
     ///
     /// @code

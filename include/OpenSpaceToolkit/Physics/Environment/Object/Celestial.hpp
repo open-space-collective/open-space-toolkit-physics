@@ -128,21 +128,21 @@ class Celestial : public Object
 
     bool atmosphericModelIsDefined() const;
 
-    Shared<const Ephemeris> accessEphemeris() const;
+    const Shared<const Ephemeris>& getEphemeris() const;
 
-    Shared<const GravitationalModel> accessGravitationalModel() const;
+    const Shared<const GravitationalModel>& getGravitationalModel() const;
 
-    Shared<const MagneticModel> accessMagneticModel() const;
+    const Shared<const MagneticModel>& getMagneticModel() const;
 
-    Shared<const AtmosphericModel> accessAtmosphericModel() const;
+    const Shared<const AtmosphericModel>& getAtmosphericModel() const;
 
-    virtual Shared<const Frame> accessFrame() const override;
+    virtual Shared<const Frame> getFrame() const override;
 
     Celestial::Type getType() const;
 
-    Derived getGravitationalParameter() const;
+    const Derived& getGravitationalParameter() const;
 
-    Length getEquatorialRadius() const;
+    const Length& getEquatorialRadius() const;
 
     double getFlattening() const;
 
@@ -177,10 +177,10 @@ class Celestial : public Object
     double flattening_;
     double j2_;
     double j4_;
-    Shared<Ephemeris> ephemeris_;
-    Shared<GravitationalModel> gravitationalModelSPtr_;
-    Shared<MagneticModel> magneticModelSPtr_;
-    Shared<AtmosphericModel> atmosphericModelSPtr_;
+    Shared<const Ephemeris> ephemeris_;
+    Shared<const GravitationalModel> gravitationalModelSPtr_;
+    Shared<const MagneticModel> magneticModelSPtr_;
+    Shared<const AtmosphericModel> atmosphericModelSPtr_;
 };
 
 }  // namespace object

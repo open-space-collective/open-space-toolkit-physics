@@ -143,8 +143,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
 
                                                 if (scale != Scale::UTC)
                                                 {
-                                                    if ((scale == Scale::GPST) && (dateTime.accessDate().getYear() ==
-                                                                                   1981))  // Because GPST == UTC @ 1981
+                                                    if ((scale == Scale::GPST) && (dateTime.getDate().getYear() == 1981
+                                                                                  ))  // Because GPST == UTC @ 1981
                                                     {
                                                         continue;
                                                     }
@@ -281,8 +281,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
 
                                                 if (scale != Scale::UTC)
                                                 {
-                                                    if ((scale == Scale::GPST) && (dateTime.accessDate().getYear() ==
-                                                                                   1981))  // Because GPST == UTC @ 1981
+                                                    if ((scale == Scale::GPST) && (dateTime.getDate().getYear() == 1981
+                                                                                  ))  // Because GPST == UTC @ 1981
                                                     {
                                                         continue;
                                                     }

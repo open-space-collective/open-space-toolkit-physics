@@ -114,12 +114,12 @@ class Kernel
     ///
     /// @code
     ///     Kernel kernel = Kernel::File(aFile);
-    ///     filesystem::File file = kernel.getFile();
+    ///     const filesystem::File& file = kernel.getFile();
     /// @endcode
     ///
-    /// @return Kernel file
+    /// @return Const reference to kernel file
 
-    filesystem::File getFile() const;
+    const filesystem::File& getFile() const;
 
     /// @brief Constructs a kernel from a file
     ///

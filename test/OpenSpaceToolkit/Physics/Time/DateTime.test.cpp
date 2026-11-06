@@ -158,24 +158,16 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessDate)
-{
-    {
-        EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessDate());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessTime)
-{
-    {
-        EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessTime());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
 {
     {
         EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getDate());
+    }
+
+    {
+        const DateTime dateTime = DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789);
+
+        EXPECT_EQ(&dateTime.getDate(), &dateTime.getDate());
     }
 }
 
@@ -183,6 +175,12 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetTime)
 {
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).getTime());
+    }
+
+    {
+        const DateTime dateTime = DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789);
+
+        EXPECT_EQ(&dateTime.getTime(), &dateTime.getTime());
     }
 }
 

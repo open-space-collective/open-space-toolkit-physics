@@ -47,35 +47,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Stream
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessReleaseDate)
-{
-    SUCCEED();  // See: GetReleaseDate
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTC)
-{
-    SUCCEED();  // See: GetTAIMinusUTC
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTCEpoch)
-{
-    SUCCEED();  // See: GetTAIMinusUTCEpoch
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessObservationInterval)
-{
-    SUCCEED();  // See: GetObservationInterval
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessPredictionInterval)
-{
-    SUCCEED();  // See: GetPredictionInterval
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetReleaseDate)
 {
     {
         EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
+        EXPECT_EQ(&bulletinA_.getReleaseDate(), &bulletinA_.getReleaseDate());
     }
 }
 
@@ -83,6 +59,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAI
 {
     {
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
+        EXPECT_EQ(&bulletinA_.getTAIMinusUTC(), &bulletinA_.getTAIMinusUTC());
     }
 }
 
@@ -115,15 +92,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Interv
     const Interval predictionInterval = bulletinA_.getPredictionInterval();
 
     {
-        EXPECT_EQ(observationInterval.accessEnd(), predictionInterval.accessStart());
+        EXPECT_EQ(observationInterval.getEnd(), predictionInterval.getStart());
     }
 
     {
-        EXPECT_FALSE(observationInterval.contains(predictionInterval.accessStart()));
+        EXPECT_FALSE(observationInterval.contains(predictionInterval.getStart()));
     }
 
     {
-        EXPECT_TRUE(predictionInterval.contains(observationInterval.accessEnd()));
+        EXPECT_TRUE(predictionInterval.contains(observationInterval.getEnd()));
     }
 }
 

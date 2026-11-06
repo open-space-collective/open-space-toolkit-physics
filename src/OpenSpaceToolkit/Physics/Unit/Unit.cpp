@@ -38,11 +38,6 @@ bool Unit::isZero() const
     return value_ == 0.0;
 }
 
-const double& Unit::accessValue() const
-{
-    return value_;
-}
-
 Unit::Type Unit::getType() const
 {
     return type_;

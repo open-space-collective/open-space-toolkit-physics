@@ -287,22 +287,23 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetParent)
 {
     {
-        EXPECT_EQ(Frame::GCRF(), customFrameSPtr_->accessParent());
+        EXPECT_EQ(Frame::GCRF(), customFrameSPtr_->getParent());
+        EXPECT_EQ(&customFrameSPtr_->getParent(), &customFrameSPtr_->getParent());
     }
 
     {
-        EXPECT_ANY_THROW(Frame::GCRF()->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::J2000(iau::Theory::IAU_2006)->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::MOD(Instant::J2000())->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006)->accessParent());
-        EXPECT_EQ(Frame::ITRF(), Frame::TEME()->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::TEMEOfEpoch(Instant::J2000())->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->accessParent());
-        EXPECT_EQ(Frame::CIRF(), Frame::TIRF()->accessParent());
-        EXPECT_EQ(Frame::TIRF(), Frame::ITRF()->accessParent());
+        EXPECT_ANY_THROW(Frame::GCRF()->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::J2000(iau::Theory::IAU_2006)->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::MOD(Instant::J2000())->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006)->getParent());
+        EXPECT_EQ(Frame::ITRF(), Frame::TEME()->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::TEMEOfEpoch(Instant::J2000())->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->getParent());
+        EXPECT_EQ(Frame::CIRF(), Frame::TIRF()->getParent());
+        EXPECT_EQ(Frame::TIRF(), Frame::ITRF()->getParent());
     }
 }
 

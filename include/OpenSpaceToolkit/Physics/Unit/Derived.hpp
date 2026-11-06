@@ -243,105 +243,105 @@ class Derived : public Unit
 
         bool isCompatibleWith(const Unit& aUnit) const;
 
-        /// @brief Access the length unit.
+        /// @brief Get the length unit.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessLengthUnit(); // Length::Unit::Meter
+        ///     Derived::Unit::MeterPerSecond().getLengthUnit(); // Length::Unit::Meter
         /// @endcode
         ///
-        /// @return A const reference to the length unit
+        /// @return The length unit
 
-        const std::optional<Length::Unit>& accessLengthUnit() const;
+        const std::optional<Length::Unit>& getLengthUnit() const;
 
-        /// @brief Access the length order.
+        /// @brief Get the length order.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessLengthOrder();
+        ///     Derived::Unit::MeterPerSecond().getLengthOrder();
         /// @endcode
         ///
         /// @return A const reference to the length order
 
-        const Order& accessLengthOrder() const;
+        const Derived::Order& getLengthOrder() const;
 
-        /// @brief Access the mass unit.
+        /// @brief Get the mass unit.
         ///
         /// @code
-        ///     Derived::Unit::Newton().accessMassUnit(); // Mass::Unit::Kilogram
+        ///     Derived::Unit::Newton().getMassUnit(); // Mass::Unit::Kilogram
         /// @endcode
         ///
-        /// @return A const reference to the mass unit
+        /// @return The mass unit
 
-        const std::optional<Mass::Unit>& accessMassUnit() const;
+        const std::optional<Mass::Unit>& getMassUnit() const;
 
-        /// @brief Access the mass order.
+        /// @brief Get the mass order.
         ///
         /// @code
-        ///     Derived::Unit::Newton().accessMassOrder();
+        ///     Derived::Unit::Newton().getMassOrder();
         /// @endcode
         ///
         /// @return A const reference to the mass order
 
-        const Derived::Order& accessMassOrder() const;
+        const Derived::Order& getMassOrder() const;
 
-        /// @brief Access the time unit.
+        /// @brief Get the time unit.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessTimeUnit(); // Time::Unit::Second
+        ///     Derived::Unit::MeterPerSecond().getTimeUnit(); // Time::Unit::Second
         /// @endcode
         ///
-        /// @return A const reference to the time unit
+        /// @return The time unit
 
-        const std::optional<Time::Unit>& accessTimeUnit() const;
+        const std::optional<Time::Unit>& getTimeUnit() const;
 
-        /// @brief Access the time order.
+        /// @brief Get the time order.
         ///
         /// @code
-        ///     Derived::Unit::MeterPerSecond().accessTimeOrder();
+        ///     Derived::Unit::MeterPerSecond().getTimeOrder();
         /// @endcode
         ///
         /// @return A const reference to the time order
 
-        const Derived::Order& accessTimeOrder() const;
+        const Derived::Order& getTimeOrder() const;
 
-        /// @brief Access the electric current unit.
+        /// @brief Get the electric current unit.
         ///
         /// @code
-        ///     Derived::Unit::Tesla().accessElectricCurrentUnit();
+        ///     Derived::Unit::Tesla().getElectricCurrentUnit();
         /// @endcode
         ///
-        /// @return A const reference to the electric current unit
+        /// @return The electric current unit
 
-        const std::optional<ElectricCurrent::Unit>& accessElectricCurrentUnit() const;
+        const std::optional<ElectricCurrent::Unit>& getElectricCurrentUnit() const;
 
-        /// @brief Access the electric current order.
+        /// @brief Get the electric current order.
         ///
         /// @code
-        ///     Derived::Unit::Tesla().accessElectricCurrentOrder();
+        ///     Derived::Unit::Tesla().getElectricCurrentOrder();
         /// @endcode
         ///
         /// @return A const reference to the electric current order
 
-        const Derived::Order& accessElectricCurrentOrder() const;
+        const Derived::Order& getElectricCurrentOrder() const;
 
-        /// @brief Access the angle unit.
+        /// @brief Get the angle unit.
         ///
         /// @code
-        ///     Derived::Unit::RadianPerSecond().accessAngleUnit(); // Angle::Unit::Radian
+        ///     Derived::Unit::RadianPerSecond().getAngleUnit(); // Angle::Unit::Radian
         /// @endcode
         ///
-        /// @return A const reference to the angle unit
+        /// @return The angle unit
 
-        const std::optional<Angle::Unit>& accessAngleUnit() const;
+        const std::optional<Angle::Unit>& getAngleUnit() const;
 
-        /// @brief Access the angle order.
+        /// @brief Get the angle order.
         ///
         /// @code
-        ///     Derived::Unit::RadianPerSecond().accessAngleOrder();
+        ///     Derived::Unit::RadianPerSecond().getAngleOrder();
         /// @endcode
         ///
         /// @return A const reference to the angle order
 
-        const Derived::Order& accessAngleOrder() const;
+        const Derived::Order& getAngleOrder() const;
 
         /// @brief Convert to string representation.
         ///
@@ -666,7 +666,7 @@ class Derived : public Unit
     ///
     /// @return The derived unit
 
-    Derived::Unit getUnit() const;
+    const Derived::Unit& getUnit() const;
 
     /// @brief Get the value in the specified unit.
     ///

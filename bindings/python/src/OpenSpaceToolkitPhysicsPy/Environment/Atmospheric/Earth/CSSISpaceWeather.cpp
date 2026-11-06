@@ -34,31 +34,31 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         .def("__repr__", &(shiftToString<CSSISpaceWeather>))
 
         .def(
-            "access_last_observation_date",
-            &CSSISpaceWeather::accessLastObservationDate,
+            "get_last_observation_date",
+            &CSSISpaceWeather::getLastObservationDate,
             R"doc(
-                Access last observation Date. File publication date is the day following the last observation.
+                Get last observation Date. File publication date is the day following the last observation.
 
                 Returns:
                     Date: Last observation Date.
             )doc"
         )
         .def(
-            "access_observation_interval",
-            &CSSISpaceWeather::accessObservationInterval,
+            "get_observation_interval",
+            &CSSISpaceWeather::getObservationInterval,
             R"doc(
-                Access observation interval.
+                Get observation interval.
 
                 Returns:
                     Interval: Observation interval.
             )doc"
         )
         .def(
-            "access_observation_at",
-            &CSSISpaceWeather::accessObservationAt,
+            "get_observation_at",
+            &CSSISpaceWeather::getObservationAt,
             arg("instant"),
             R"doc(
-                Access observation at instant.
+                Get observation at instant.
 
                 Args:
                     instant (Instant): An instant.
@@ -68,21 +68,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             )doc"
         )
         .def(
-            "access_daily_prediction_interval",
-            &CSSISpaceWeather::accessDailyPredictionInterval,
+            "get_daily_prediction_interval",
+            &CSSISpaceWeather::getDailyPredictionInterval,
             R"doc(
-                Access daily prediction interval.
+                Get daily prediction interval.
 
                 Returns:
                     Interval: Daily prediction interval.
             )doc"
         )
         .def(
-            "access_daily_prediction_at",
-            &CSSISpaceWeather::accessDailyPredictionAt,
+            "get_daily_prediction_at",
+            &CSSISpaceWeather::getDailyPredictionAt,
             arg("instant"),
             R"doc(
-                Access daily prediction at instant.
+                Get daily prediction at instant.
 
                 Args:
                     instant (Instant): An instant.
@@ -92,21 +92,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             )doc"
         )
         .def(
-            "access_monthly_prediction_interval",
-            &CSSISpaceWeather::accessMonthlyPredictionInterval,
+            "get_monthly_prediction_interval",
+            &CSSISpaceWeather::getMonthlyPredictionInterval,
             R"doc(
-                Access monthly prediction interval.
+                Get monthly prediction interval.
 
                 Returns:
                     Interval: Monthly prediction interval.
             )doc"
         )
         .def(
-            "access_monthly_prediction_at",
-            &CSSISpaceWeather::accessMonthlyPredictionAt,
+            "get_monthly_prediction_at",
+            &CSSISpaceWeather::getMonthlyPredictionAt,
             arg("instant"),
             R"doc(
-                Access monthly prediction at instant.
+                Get monthly prediction at instant.
 
                 Args:
                     instant (Instant): An instant.
@@ -116,11 +116,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             )doc"
         )
         .def(
-            "access_reading_at",
-            &CSSISpaceWeather::accessReadingAt,
+            "get_reading_at",
+            &CSSISpaceWeather::getReadingAt,
             arg("instant"),
             R"doc(
-                Access reading at Instant. Look first in observations, then in daily predictions, then monthly predictions.
+                Get reading at Instant. Look first in observations, then in daily predictions, then monthly predictions.
 
                 Args:
                     instant (Instant): An instant.
@@ -130,12 +130,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
             )doc"
         )
         .def(
-            "access_last_reading_where",
-            &CSSISpaceWeather::accessLastReadingWhere,
+            "get_last_reading_where",
+            &CSSISpaceWeather::getLastReadingWhere,
             arg("predicate"),
             arg("instant"),
             R"doc(
-                Access last reading before an Instant where a Predicate is true.
+                Get last reading before an Instant where a Predicate is true.
 
                 Args:
                     predicate (Predicate): A predicate.

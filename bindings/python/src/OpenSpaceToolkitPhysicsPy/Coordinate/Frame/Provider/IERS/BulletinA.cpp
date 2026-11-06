@@ -49,57 +49,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
         .def("__repr__", &(shiftToString<BulletinA>))
 
         .def(
-            "access_release_date",
-            &BulletinA::accessReleaseDate,
-            R"doc(
-                Access the release date.
-
-                Returns:
-                    Date: The release date.
-            )doc"
-        )
-        .def(
-            "access_tai_minus_utc",
-            &BulletinA::accessTAIMinusUTC,
-            R"doc(
-                Access the TAI-UTC.
-
-                Returns:
-                    Duration | None: The TAI-UTC, or None if the bulletin does not hold it.
-            )doc"
-        )
-        .def(
-            "access_tai_minus_utc_epoch",
-            &BulletinA::accessTAIMinusUTCEpoch,
-            R"doc(
-                Access the TAI-UTC epoch.
-
-                Returns:
-                    Instant: The TAI-UTC epoch.
-            )doc"
-        )
-        .def(
-            "access_observation_interval",
-            &BulletinA::accessObservationInterval,
-            R"doc(
-                Access the observation interval.
-
-                Returns:
-                    Interval: The observation Interval of Instants.
-            )doc"
-        )
-        .def(
-            "access_prediction_interval",
-            &BulletinA::accessPredictionInterval,
-            R"doc(
-                Access the prediction interval.
-
-                Returns:
-                    Interval: The prediction Interval of Instants.
-            )doc"
-        )
-
-        .def(
             "get_release_date",
             &BulletinA::getReleaseDate,
             R"doc(

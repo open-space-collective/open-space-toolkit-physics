@@ -111,22 +111,21 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Transform& aTransfo
 
     ostk::core::utils::Print::Header(anOutputStream, "Transform");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Instant:" << aTransform.accessInstant().toString(Scale::UTC);
+    ostk::core::utils::Print::Line(anOutputStream) << "Instant:" << aTransform.getInstant().toString(Scale::UTC);
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Translation:" << (aTransform.accessTranslation().toString() + " [m]");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Velocity:" << (aTransform.accessVelocity().toString() + " [m/s]");
+        << "Translation:" << (aTransform.getTranslation().toString() + " [m]");
+    ostk::core::utils::Print::Line(anOutputStream) << "Velocity:" << (aTransform.getVelocity().toString() + " [m/s]");
 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Orientation:"
         << String::Format(
                "{} == {}",
-               aTransform.accessOrientation().toString(),
-               RotationVector::Quaternion(aTransform.accessOrientation()).toString()
+               aTransform.getOrientation().toString(),
+               RotationVector::Quaternion(aTransform.getOrientation()).toString()
            );
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Angular Velocity:" << (aTransform.accessAngularVelocity().toString() + " [rad/s]");
+        << "Angular Velocity:" << (aTransform.getAngularVelocity().toString() + " [rad/s]");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -139,52 +138,27 @@ bool Transform::isIdentity() const
            (orientation_ == Quaternion::Unit()) && (angularVelocity_ == Vector3d::Zero());
 }
 
-const Instant& Transform::accessInstant() const
+const Instant& Transform::getInstant() const
 {
     return instant_;
 }
 
-const Vector3d& Transform::accessTranslation() const
+const Vector3d& Transform::getTranslation() const
 {
     return translation_;
 }
 
-const Vector3d& Transform::accessVelocity() const
+const Vector3d& Transform::getVelocity() const
 {
     return velocity_;
 }
 
-const Quaternion& Transform::accessOrientation() const
+const Quaternion& Transform::getOrientation() const
 {
     return orientation_;
 }
 
-const Vector3d& Transform::accessAngularVelocity() const
-{
-    return angularVelocity_;
-}
-
-Instant Transform::getInstant() const
-{
-    return instant_;
-}
-
-Vector3d Transform::getTranslation() const
-{
-    return translation_;
-}
-
-Vector3d Transform::getVelocity() const
-{
-    return velocity_;
-}
-
-Quaternion Transform::getOrientation() const
-{
-    return orientation_;
-}
-
-Vector3d Transform::getAngularVelocity() const
+const Vector3d& Transform::getAngularVelocity() const
 {
     return angularVelocity_;
 }

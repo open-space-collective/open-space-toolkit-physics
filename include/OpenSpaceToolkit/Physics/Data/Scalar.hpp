@@ -85,7 +85,7 @@ class Scalar
     /// @endcode
     ///
     /// @return The physical unit
-    Unit getUnit() const;
+    const Unit& getUnit() const;
 
     /// @brief Convert the scalar to a different unit.
     ///

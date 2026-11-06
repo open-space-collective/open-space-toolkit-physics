@@ -199,16 +199,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
 
         // Comparison
 
-        EXPECT_GT(
-            1e-14, ((transform_C_B * transform_B_A).accessTranslation() - transform_C_A.accessTranslation()).norm()
-        );
+        EXPECT_GT(1e-14, ((transform_C_B * transform_B_A).getTranslation() - transform_C_A.getTranslation()).norm());
         EXPECT_GT(1e-14, ((transform_C_B * transform_B_A).getVelocity() - transform_C_A.getVelocity()).norm());
         EXPECT_TRUE((transform_C_B * transform_B_A)
-                        .accessOrientation()
-                        .isNear(transform_C_A.accessOrientation(), Angle::Degrees(1e-7)));
+                        .getOrientation()
+                        .isNear(transform_C_A.getOrientation(), Angle::Degrees(1e-7)));
         EXPECT_GT(
-            1e-14,
-            ((transform_C_B * transform_B_A).accessAngularVelocity() - transform_C_A.accessAngularVelocity()).norm()
+            1e-14, ((transform_C_B * transform_B_A).getAngularVelocity() - transform_C_A.getAngularVelocity()).norm()
         );
     }
 }
@@ -249,45 +246,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
-{
-    {
-        EXPECT_EQ(instant_, transformPassive_.accessInstant());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
-{
-    {
-        EXPECT_EQ(t_B_A_, transformPassive_.accessTranslation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
-{
-    {
-        EXPECT_EQ(v_B_A_, transformPassive_.accessVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
-{
-    {
-        EXPECT_EQ(q_B_A_, transformPassive_.accessOrientation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
-{
-    {
-        EXPECT_EQ(w_B_A_in_B_, transformPassive_.accessAngularVelocity());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
 {
     {
         EXPECT_EQ(instant_, transformPassive_.getInstant());
+        EXPECT_EQ(&transformPassive_.getInstant(), &transformPassive_.getInstant());
     }
 }
 
@@ -295,6 +258,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
 {
     {
         EXPECT_EQ(t_B_A_, transformPassive_.getTranslation());
+        EXPECT_EQ(&transformPassive_.getTranslation(), &transformPassive_.getTranslation());
     }
 }
 
@@ -302,6 +266,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
 {
     {
         EXPECT_EQ(v_B_A_, transformPassive_.getVelocity());
+        EXPECT_EQ(&transformPassive_.getVelocity(), &transformPassive_.getVelocity());
     }
 }
 
@@ -309,6 +274,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
 {
     {
         EXPECT_EQ(q_B_A_, transformPassive_.getOrientation());
+        EXPECT_EQ(&transformPassive_.getOrientation(), &transformPassive_.getOrientation());
     }
 }
 
@@ -316,6 +282,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
 {
     {
         EXPECT_EQ(w_B_A_in_B_, transformPassive_.getAngularVelocity());
+        EXPECT_EQ(&transformPassive_.getAngularVelocity(), &transformPassive_.getAngularVelocity());
     }
 }
 
@@ -340,16 +307,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
 
             const Transform transform = Transform::Passive(Instant::J2000(), t_A_B, v_A_B, q_B_A, w_B_A_in_B);
 
+            EXPECT_TRUE(transform.getInverse().getInverse().getTranslation().isNear(transform.getTranslation(), 1e-14));
+            EXPECT_TRUE(transform.getInverse().getInverse().getVelocity().isNear(transform.getVelocity(), 1e-14));
+            EXPECT_TRUE(transform.getInverse().getInverse().getOrientation().isNear(
+                transform.getOrientation(), Angle::Radians(1e-7)
+            ));
             EXPECT_TRUE(
-                transform.getInverse().getInverse().accessTranslation().isNear(transform.accessTranslation(), 1e-14)
+                transform.getInverse().getInverse().getAngularVelocity().isNear(transform.getAngularVelocity(), 1e-14)
             );
-            EXPECT_TRUE(transform.getInverse().getInverse().accessVelocity().isNear(transform.accessVelocity(), 1e-14));
-            EXPECT_TRUE(transform.getInverse().getInverse().accessOrientation().isNear(
-                transform.accessOrientation(), Angle::Radians(1e-7)
-            ));
-            EXPECT_TRUE(transform.getInverse().getInverse().accessAngularVelocity().isNear(
-                transform.accessAngularVelocity(), 1e-14
-            ));
         }
     }
 }

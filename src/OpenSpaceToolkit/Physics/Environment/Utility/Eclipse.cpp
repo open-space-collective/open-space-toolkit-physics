@@ -117,12 +117,12 @@ Eclipse::Eclipse(
     }
 }
 
-const Celestial& Eclipse::accessOccultedCelestialObject() const
+const Celestial& Eclipse::getOccultedCelestialObject() const
 {
     return occultedCelestialObject_;
 }
 
-const Celestial& Eclipse::accessOccultingCelestialObject() const
+const Celestial& Eclipse::getOccultingCelestialObject() const
 {
     return occultingCelestialObject_;
 }
@@ -190,9 +190,9 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Eclipse& anEclipse)
     ostk::core::utils::Print::Header(anOutputStream, "Eclipse");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Occulted Object:" << anEclipse.accessOccultedCelestialObject().getName();
+        << "Occulted Object:" << anEclipse.getOccultedCelestialObject().getName();
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Occulting Object:" << anEclipse.accessOccultingCelestialObject().getName();
+        << "Occulting Object:" << anEclipse.getOccultingCelestialObject().getName();
     ostk::core::utils::Print::Line(anOutputStream) << "Number of Phases:" << anEclipse.getPhases().getSize();
 
     const Interval intervalWithPenumbra = anEclipse.getInterval(true);
@@ -217,7 +217,7 @@ double montenbruckGillShadowFunction(
     const Celestial& anOccultingCelestialObject
 )
 {
-    const Shared<const Frame> frame = anOccultingCelestialObject.accessFrame();
+    const Shared<const Frame> frame = anOccultingCelestialObject.getFrame();
 
     // Get object position coordinates in the occulting object's frame
     const Position objectPositionInFrame = aPosition.inFrame(frame, anInstant);

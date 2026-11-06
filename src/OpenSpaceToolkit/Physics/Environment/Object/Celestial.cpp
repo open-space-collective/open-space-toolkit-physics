@@ -101,29 +101,29 @@ bool Celestial::atmosphericModelIsDefined() const
     return atmosphericModelSPtr_ != nullptr;
 }
 
-Shared<const Ephemeris> Celestial::accessEphemeris() const
+const Shared<const Ephemeris>& Celestial::getEphemeris() const
 {
     return ephemeris_;
 }
 
-Shared<const GravitationalModel> Celestial::accessGravitationalModel() const
+const Shared<const GravitationalModel>& Celestial::getGravitationalModel() const
 {
     return gravitationalModelSPtr_;
 }
 
-Shared<const MagneticModel> Celestial::accessMagneticModel() const
+const Shared<const MagneticModel>& Celestial::getMagneticModel() const
 {
     return magneticModelSPtr_;
 }
 
-Shared<const AtmosphericModel> Celestial::accessAtmosphericModel() const
+const Shared<const AtmosphericModel>& Celestial::getAtmosphericModel() const
 {
     return atmosphericModelSPtr_;
 }
 
-Shared<const Frame> Celestial::accessFrame() const
+Shared<const Frame> Celestial::getFrame() const
 {
-    return ephemeris_->accessFrame();
+    return ephemeris_->getFrame();
 }
 
 Celestial::Type Celestial::getType() const
@@ -131,12 +131,12 @@ Celestial::Type Celestial::getType() const
     return type_;
 }
 
-Derived Celestial::getGravitationalParameter() const
+const Derived& Celestial::getGravitationalParameter() const
 {
     return gravitationalParameter_;
 }
 
-Length Celestial::getEquatorialRadius() const
+const Length& Celestial::getEquatorialRadius() const
 {
     return equatorialRadius_;
 }
@@ -163,7 +163,7 @@ Position Celestial::getPositionIn(const Shared<const Frame>& aFrameSPtr, const I
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    return ephemeris_->accessFrame()->getOriginIn(aFrameSPtr, anInstant);
+    return ephemeris_->getFrame()->getOriginIn(aFrameSPtr, anInstant);
 }
 
 Velocity Celestial::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
@@ -180,7 +180,7 @@ Transform Celestial::getTransformTo(const Shared<const Frame>& aFrameSPtr, const
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    return ephemeris_->accessFrame()->getTransformTo(aFrameSPtr, anInstant);
+    return ephemeris_->getFrame()->getTransformTo(aFrameSPtr, anInstant);
 }
 
 Axes Celestial::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
@@ -190,7 +190,7 @@ Axes Celestial::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& 
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    return ephemeris_->accessFrame()->getAxesIn(aFrameSPtr, anInstant);
+    return ephemeris_->getFrame()->getAxesIn(aFrameSPtr, anInstant);
 }
 
 Vector Celestial::getGravitationalFieldAt(const Position& aPosition, const Instant& anInstant) const
@@ -203,14 +203,14 @@ Vector Celestial::getGravitationalFieldAt(const Position& aPosition, const Insta
         throw ostk::core::error::runtime::Undefined("Gravitational model");
     }
 
-    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->getFrame(), anInstant).getCoordinates();
 
     const Vector3d gravitationalFieldValue = gravitationalModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
 
     const static Unit gravitationalFieldUnit =
         Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second));
 
-    return {gravitationalFieldValue, gravitationalFieldUnit, ephemeris_->accessFrame()};
+    return {gravitationalFieldValue, gravitationalFieldUnit, ephemeris_->getFrame()};
 }
 
 Vector Celestial::getMagneticFieldAt(const Position& aPosition, const Instant& anInstant) const
@@ -223,13 +223,13 @@ Vector Celestial::getMagneticFieldAt(const Position& aPosition, const Instant& a
         throw ostk::core::error::runtime::Undefined("Magnetic model");
     }
 
-    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->getFrame(), anInstant).getCoordinates();
 
     const Vector3d magneticFieldValue = magneticModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
 
     const static Unit magneticFieldUnit = Unit::Derived(Derived::Unit::Tesla());
 
-    return {magneticFieldValue, magneticFieldUnit, ephemeris_->accessFrame()};
+    return {magneticFieldValue, magneticFieldUnit, ephemeris_->getFrame()};
 }
 
 Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant) const
@@ -258,7 +258,7 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
     {
         case Celestial::FrameType::NED:
         {
-            const String frameName = String::Format("{} NED @ {}", this->accessName(), aLla.toString());
+            const String frameName = String::Format("{} NED @ {}", this->getName(), aLla.toString());
 
             if (const auto frameSPtr = Frame::WithName(frameName))
             {
@@ -270,7 +270,7 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
             );
 
             const Shared<const Frame> nedSPtr = Frame::Construct(
-                frameName, false, ephemeris_->accessFrame(), std::make_shared<const StaticProvider>(transform)
+                frameName, false, ephemeris_->getFrame(), std::make_shared<const StaticProvider>(transform)
             );
 
             return nedSPtr;

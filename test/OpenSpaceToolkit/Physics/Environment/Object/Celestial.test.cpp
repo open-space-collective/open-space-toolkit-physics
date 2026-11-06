@@ -127,9 +127,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, accessModel)
             nullptr
         };
 
-        EXPECT_EQ(celestial.accessGravitationalModel(), nullptr);
-        EXPECT_EQ(celestial.accessMagneticModel(), nullptr);
-        EXPECT_EQ(celestial.accessAtmosphericModel(), nullptr);
+        EXPECT_EQ(celestial.getGravitationalModel(), nullptr);
+        EXPECT_EQ(celestial.getMagneticModel(), nullptr);
+        EXPECT_EQ(celestial.getAtmosphericModel(), nullptr);
     }
 
     {
@@ -152,9 +152,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, accessModel)
             atmosphericModel
         };
 
-        EXPECT_NO_THROW(celestial.accessGravitationalModel());
-        EXPECT_NO_THROW(celestial.accessMagneticModel());
-        EXPECT_NO_THROW(celestial.accessAtmosphericModel());
+        EXPECT_NO_THROW(celestial.getGravitationalModel());
+        EXPECT_NO_THROW(celestial.getMagneticModel());
+        EXPECT_NO_THROW(celestial.getAtmosphericModel());
     }
 }
 
@@ -289,7 +289,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetGravitationalFiel
         };
 
         {
-            const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
+            const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.getFrame()};
 
             const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position, instant);
 
@@ -302,7 +302,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetGravitationalFiel
         }
 
         {
-            const Position position = {{0.0, 0.0, 1.0}, Length::Unit::Meter, celestial.accessFrame()};
+            const Position position = {{0.0, 0.0, 1.0}, Length::Unit::Meter, celestial.getFrame()};
 
             const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position, instant);
 
@@ -315,7 +315,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetGravitationalFiel
         }
 
         {
-            const Position position = {{2.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
+            const Position position = {{2.0, 0.0, 0.0}, Length::Unit::Meter, celestial.getFrame()};
 
             const Vector gravitationalFieldValue = celestial.getGravitationalFieldAt(position, instant);
 
@@ -360,7 +360,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetMagneticFieldAt)
         };
 
         {
-            const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
+            const Position position = {{1.0, 0.0, 0.0}, Length::Unit::Meter, celestial.getFrame()};
 
             const Vector magneticFieldValue = celestial.getMagneticFieldAt(position, instant);
 
@@ -370,7 +370,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetMagneticFieldAt)
         }
 
         {
-            const Position position = {{0.0, 0.0, 1.0}, Length::Unit::Meter, celestial.accessFrame()};
+            const Position position = {{0.0, 0.0, 1.0}, Length::Unit::Meter, celestial.getFrame()};
 
             const Vector magneticFieldValue = celestial.getMagneticFieldAt(position, instant);
 
@@ -380,7 +380,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetMagneticFieldAt)
         }
 
         {
-            const Position position = {{2.0, 0.0, 0.0}, Length::Unit::Meter, celestial.accessFrame()};
+            const Position position = {{2.0, 0.0, 0.0}, Length::Unit::Meter, celestial.getFrame()};
 
             const Vector magneticFieldValue = celestial.getMagneticFieldAt(position, instant);
 

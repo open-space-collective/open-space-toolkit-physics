@@ -80,7 +80,7 @@ class Vector
     /// @endcode
     ///
     /// @return The 3D vector value
-    Vector3d getValue() const;
+    const Vector3d& getValue() const;
 
     /// @brief Get the vector unit.
     ///
@@ -89,7 +89,7 @@ class Vector
     /// @endcode
     ///
     /// @return The physical unit
-    Unit getUnit() const;
+    const Unit& getUnit() const;
 
     /// @brief Get the reference frame.
     ///
@@ -97,8 +97,8 @@ class Vector
     ///     Shared<const Frame> frameSPtr = vector.getFrame();
     /// @endcode
     ///
-    /// @return A shared pointer to the reference frame
-    Shared<const Frame> getFrame() const;
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Convert the vector to a different unit.
     ///

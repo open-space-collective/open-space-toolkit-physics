@@ -244,10 +244,10 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
         const Position sunPositionInFrame = sunCelestialSPtr_->getPositionIn(earthFrameSPtr_, anInstant);
 
         lst = (M_PI + std::atan2(
-                          sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[1] -
-                              sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[0],
-                          sunPositionInFrame.accessCoordinates()[0] * position.accessCoordinates()[0] +
-                              sunPositionInFrame.accessCoordinates()[1] * position.accessCoordinates()[1]
+                          sunPositionInFrame.getCoordinates()[0] * position.getCoordinates()[1] -
+                              sunPositionInFrame.getCoordinates()[1] * position.getCoordinates()[0],
+                          sunPositionInFrame.getCoordinates()[0] * position.getCoordinates()[0] +
+                              sunPositionInFrame.getCoordinates()[1] * position.getCoordinates()[1]
                       )) *
               12.0 / M_PI;
     }

@@ -61,17 +61,17 @@ std::ostream& operator<<(std::ostream& anOutputStream, const AER& anAER)
     return anOutputStream;
 }
 
-Angle AER::getAzimuth() const
+const Angle& AER::getAzimuth() const
 {
     return azimuth_;
 }
 
-Angle AER::getElevation() const
+const Angle& AER::getElevation() const
 {
     return elevation_;
 }
 
-Length AER::getRange() const
+const Length& AER::getRange() const
 {
     return range_;
 }
@@ -98,7 +98,7 @@ AER AER::Vector(const Vector3d& aVector)
 
 AER AER::FromPositionToPosition(const Position& aFromPosition, const Position& aToPosition, const bool isZNegative)
 {
-    if ((*aFromPosition.accessFrame()) != (*aToPosition.accessFrame()))
+    if ((*aFromPosition.getFrame()) != (*aToPosition.getFrame()))
     {
         throw ostk::core::error::RuntimeError("Positions should be given in the same frame.");
     }

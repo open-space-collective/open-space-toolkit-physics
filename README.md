@@ -45,7 +45,7 @@ from ostk.physics.coordinate import Frame # Reference frame class
 
 environment = Environment.default(set_global=True) # Bootstrap a default environment, and set it as the global environment
 
-moon = environment.access_object_with_name('Moon') # Access Moon
+moon = environment.get_object_with_name('Moon') # Get Moon
 
 instant = Instant.now()
 

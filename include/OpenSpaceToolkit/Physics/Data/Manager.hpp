@@ -55,7 +55,7 @@ class Manager : public BaseManager
     /// @param [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
     ///
     /// @return Instant indicating when the data was last updated on the remote, according to the manifest record.
-    const Instant getLastUpdateTimestampFor(const String& aDataName);
+    Instant getLastUpdateTimestampFor(const String& aDataName);
 
     /// @brief Get the remote URL. This points to the base URL for the OSTk input data.
     ///
@@ -64,7 +64,7 @@ class Manager : public BaseManager
     /// @endcode
     ///
     /// @return Remote URL
-    const URL getRemoteUrl() const;
+    URL getRemoteUrl() const;
 
     /// @brief Set the remote URL.
     ///
@@ -102,7 +102,7 @@ class Manager : public BaseManager
     /// @endcode
     ///
     /// @return Manifest file, or std::nullopt if no manifest is loaded
-    const std::optional<Manifest> getManifest() const;
+    std::optional<Manifest> getManifest() const;
 
     /// @brief Load a new manifest file.
     ///

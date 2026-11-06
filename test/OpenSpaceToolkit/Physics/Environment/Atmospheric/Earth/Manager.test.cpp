@@ -104,14 +104,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISp
             ostk::core::error::RuntimeError
         );
 
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessObservationInterval().accessStart()));
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessObservationInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.getObservationInterval().getStart()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.getObservationInterval().getEnd()));
 
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessDailyPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessDailyPredictionInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.getDailyPredictionInterval().getStart()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.getDailyPredictionInterval().getEnd()));
 
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessMonthlyPredictionInterval().accessStart()));
-        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.accessMonthlyPredictionInterval().accessEnd()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.getMonthlyPredictionInterval().getStart()));
+        EXPECT_NO_THROW(manager_.getCSSISpaceWeatherAt(spaceWeather_.getMonthlyPredictionInterval().getEnd()));
     }
 }
 

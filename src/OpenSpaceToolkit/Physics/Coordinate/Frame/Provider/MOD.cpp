@@ -63,7 +63,7 @@ MOD* MOD::clone() const
     return new MOD(*this);
 }
 
-Instant MOD::getEpoch() const
+const Instant& MOD::getEpoch() const
 {
     return epoch_;
 }

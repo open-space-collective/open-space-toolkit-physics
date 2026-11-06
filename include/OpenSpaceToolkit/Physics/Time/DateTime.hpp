@@ -117,41 +117,23 @@ class DateTime
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime);
 
-    /// @brief Get reference to date
-    ///
-    /// @code
-    ///     const Date& date = DateTime(2018, 1, 2, 12, 34, 56).accessDate();
-    /// @endcode
-    ///
-    /// @return Reference to date
-    const Date& accessDate() const;
-
-    /// @brief Get reference to time
-    ///
-    /// @code
-    ///     const Time& time = DateTime(2018, 1, 2, 12, 34, 56).accessTime();
-    /// @endcode
-    ///
-    /// @return Reference to time
-    const Time& accessTime() const;
-
     /// @brief Get date
     ///
     /// @code
-    ///     Date date = DateTime(2018, 1, 2, 12, 34, 56).getDate(); // 2018-01-02
+    ///     Date date = DateTime(2018, 1, 2, 12, 34, 56).getDate();
     /// @endcode
     ///
-    /// @return Date
-    Date getDate() const;
+    /// @return Const reference to date
+    const Date& getDate() const;
 
     /// @brief Get time
     ///
     /// @code
-    ///     Time time = DateTime(2018, 1, 2, 12, 34, 56).getTime(); // 12:34:56
+    ///     Time time = DateTime(2018, 1, 2, 12, 34, 56).getTime();
     /// @endcode
     ///
-    /// @return Time
-    Time getTime() const;
+    /// @return Const reference to time
+    const Time& getTime() const;
 
     /// @brief Get Julian Date
     ///

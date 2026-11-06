@@ -110,13 +110,13 @@ Vector2d Manager::getPolarMotionAt(const Instant& anInstant) const
 
     if (bulletinAPtr != nullptr)
     {
-        if (bulletinAPtr->accessObservationInterval().contains(anInstant))
+        if (bulletinAPtr->getObservationInterval().contains(anInstant))
         {
             const BulletinA::Observation observation = bulletinAPtr->getObservationAt(anInstant);
 
             return {observation.x, observation.y};
         }
-        else if (bulletinAPtr->accessPredictionInterval().contains(anInstant))
+        else if (bulletinAPtr->getPredictionInterval().contains(anInstant))
         {
             const BulletinA::Prediction prediction = bulletinAPtr->getPredictionAt(anInstant);
 
@@ -163,13 +163,13 @@ std::optional<double> Manager::getUt1MinusUtcAt(const Instant& anInstant) const
 
     if (bulletinAPtr != nullptr)
     {
-        if (bulletinAPtr->accessObservationInterval().contains(anInstant))
+        if (bulletinAPtr->getObservationInterval().contains(anInstant))
         {
             const BulletinA::Observation observation = bulletinAPtr->getObservationAt(anInstant);
 
             return observation.ut1MinusUtc;
         }
-        else if (bulletinAPtr->accessPredictionInterval().contains(anInstant))
+        else if (bulletinAPtr->getPredictionInterval().contains(anInstant))
         {
             const BulletinA::Prediction prediction = bulletinAPtr->getPredictionAt(anInstant);
 
@@ -326,7 +326,7 @@ const BulletinA* Manager::accessBulletinA_() const
                     manifestManager.getLastUpdateTimestampFor(bulletinAManifestName);
 
                 // When the file was last updated locally
-                const Instant bulletinALocalUpdateTimestamp = bulletinA.accessLastModifiedTimestamp();
+                const Instant bulletinALocalUpdateTimestamp = bulletinA.getLastModifiedTimestamp();
 
                 if (bulletinARemoteUpdateTimestamp > bulletinALocalUpdateTimestamp)
                 {
@@ -399,7 +399,7 @@ const Finals2000A* Manager::accessFinals2000A_() const
                     manifestManager.getLastUpdateTimestampFor(finals2000AManifestName);
 
                 // When the file was last updated locally
-                const Instant finals2000ALocalUpdateTimestamp = finals2000A.accessLastModifiedTimestamp();
+                const Instant finals2000ALocalUpdateTimestamp = finals2000A.getLastModifiedTimestamp();
 
                 if (finals2000ARemoteUpdateTimestamp > finals2000ALocalUpdateTimestamp)
                 {

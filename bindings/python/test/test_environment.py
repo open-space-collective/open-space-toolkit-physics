@@ -38,14 +38,14 @@ class TestEnvironment:
     def test_intersects(self, environment: Environment):
         assert environment.intersects() is not None
 
-    def test_access_objects(self, environment: Environment):
-        assert environment.access_objects() is not None
+    def test_get_objects(self, environment: Environment):
+        assert environment.get_objects() is not None
 
-    def test_access_object_with_name(self, environment: Environment):
-        assert environment.access_object_with_name("Earth") is not None
+    def test_get_object_with_name(self, environment: Environment):
+        assert environment.get_object_with_name("Earth") is not None
 
-    def test_access_celestial_object_with_name(self, environment: Environment):
-        assert environment.access_celestial_object_with_name("Earth") is not None
+    def test_get_celestial_object_with_name(self, environment: Environment):
+        assert environment.get_celestial_object_with_name("Earth") is not None
 
     def test_get_instant(self, environment: Environment):
         assert environment.get_instant() is not None

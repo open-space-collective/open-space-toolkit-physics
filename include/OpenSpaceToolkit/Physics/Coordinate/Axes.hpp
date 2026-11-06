@@ -105,8 +105,8 @@ class Axes
     ///     axes.getFrame();
     /// @endcode
     ///
-    /// @return Shared pointer to the reference frame
-    Shared<const Frame> getFrame() const;
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Convert axes to a different reference frame at a given instant
     ///

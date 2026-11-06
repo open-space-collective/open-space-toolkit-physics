@@ -100,33 +100,33 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @return True if the frame has a parent
     bool hasParent() const;
 
-    /// @brief Access the parent frame
+    /// @brief Get the parent frame
     ///
     /// @code
-    ///     Frame::ITRF()->accessParent();
+    ///     Frame::ITRF()->getParent();
     /// @endcode
     ///
-    /// @return Shared pointer to the parent frame
-    Shared<const Frame> accessParent() const;
+    /// @return Const reference to the shared pointer to the parent frame
+    const Shared<const Frame>& getParent() const;
 
-    /// @brief Access an ancestor frame at a given degree
+    /// @brief Get an ancestor frame at a given degree
     ///
     /// @code
-    ///     Frame::ITRF()->accessAncestor(2);
+    ///     Frame::ITRF()->getAncestor(2);
     /// @endcode
     ///
     /// @param [in] anAncestorDegree The ancestor degree (1 = parent, 2 = grandparent, etc.)
     /// @return Shared pointer to the ancestor frame
-    Shared<const Frame> accessAncestor(const Uint8 anAncestorDegree) const;
+    Shared<const Frame> getAncestor(const Uint8 anAncestorDegree) const;
 
-    /// @brief Access the transform provider
+    /// @brief Get the transform provider
     ///
     /// @code
-    ///     Frame::GCRF()->accessProvider();
+    ///     Frame::GCRF()->getProvider();
     /// @endcode
     ///
-    /// @return Shared pointer to the transform provider
-    Shared<const Provider> accessProvider() const;
+    /// @return Const reference to the shared pointer to the transform provider
+    const Shared<const Provider>& getProvider() const;
 
     /// @brief Get the name of the frame
     ///
@@ -134,8 +134,8 @@ class Frame : public std::enable_shared_from_this<Frame>
     ///     Frame::GCRF()->getName(); // "GCRF"
     /// @endcode
     ///
-    /// @return Frame name
-    String getName() const;
+    /// @return Const reference to the name of the frame
+    const String& getName() const;
 
     /// @brief Get the origin of this frame expressed in another frame at a given instant
     ///

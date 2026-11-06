@@ -179,23 +179,6 @@ def test_coordinate_transform_is_identity():
     assert transform.identity(instant).is_identity()
 
 
-# def test_coordinate_transform_accesses ():
-
-# access_instant
-
-
-# access_translation
-
-
-# access_velocity
-
-
-# access_orientation
-
-
-# access_angular_velocity
-
-
 def test_coordinate_transform_getters():
     # Construct arbitrary Instant
     instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)

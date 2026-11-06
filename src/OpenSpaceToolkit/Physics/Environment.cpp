@@ -98,7 +98,7 @@ bool Environment::hasObjectWithName(const String& aName) const
 
     for (const auto& objectSPtr : objects_)
     {
-        if (objectSPtr->accessName() == aName)
+        if (objectSPtr->getName() == aName)
         {
             return true;
         }
@@ -120,7 +120,7 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
 
     const Instant instant = this->getInstant();
 
-    const Shared<const Celestial> sunSPtr = this->accessCelestialObjectWithName("Sun");
+    const Shared<const Celestial> sunSPtr = this->getCelestialObjectWithName("Sun");
 
     for (const auto& objectSPtr : objects_)
     {
@@ -152,12 +152,17 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
     return false;
 }
 
-Array<Shared<const Object>> Environment::accessObjects() const
+const Array<Shared<const Object>>& Environment::getObjects() const&
 {
     return objects_;
 }
 
-Shared<const Object> Environment::accessObjectWithName(const String& aName) const
+Array<Shared<const Object>> Environment::getObjects() &&
+{
+    return this->getObjects();
+}
+
+Shared<const Object> Environment::getObjectWithName(const String& aName) const
 {
     if (aName.isEmpty())
     {
@@ -166,7 +171,7 @@ Shared<const Object> Environment::accessObjectWithName(const String& aName) cons
 
     for (const auto& objectSPtr : objects_)
     {
-        if (objectSPtr->accessName() == aName)
+        if (objectSPtr->getName() == aName)
         {
             return objectSPtr;
         }
@@ -177,9 +182,9 @@ Shared<const Object> Environment::accessObjectWithName(const String& aName) cons
     return nullptr;
 }
 
-Shared<const Celestial> Environment::accessCelestialObjectWithName(const String& aName) const
+Shared<const Celestial> Environment::getCelestialObjectWithName(const String& aName) const
 {
-    if (const auto objectSPtr = this->accessObjectWithName(aName))
+    if (const auto objectSPtr = this->getObjectWithName(aName))
     {
         if (const auto celestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr))
         {
@@ -192,7 +197,7 @@ Shared<const Celestial> Environment::accessCelestialObjectWithName(const String&
     return nullptr;
 }
 
-Shared<const Celestial> Environment::accessCentralCelestialObject() const
+Shared<const Celestial> Environment::getCentralCelestialObject() const
 {
     if (const auto centralCelestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(centralCelestialObject_))
     {
@@ -204,7 +209,7 @@ Shared<const Celestial> Environment::accessCentralCelestialObject() const
     return nullptr;
 }
 
-Instant Environment::getInstant() const
+const Instant& Environment::getInstant() const
 {
     return instant_;
 }
@@ -242,7 +247,7 @@ bool Environment::intersects(
         if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
             const std::optional<Object::Geometry> objectGeometry =
-                objectSPtr->getGeometryIn(aGeometry.accessFrame(), instant_);
+                objectSPtr->getGeometryIn(aGeometry.getFrame(), instant_);
 
             if (objectGeometry.has_value() && objectGeometry->intersects(aGeometry))
             {
@@ -320,7 +325,7 @@ void Environment::validateCelestialObjects()
         // Only check for duplicates amongst Celestial Objects. Non-Celestial Objects aren't checked.
         if (celestialSPtr != nullptr)
         {
-            const String& name = celestialSPtr->accessName();
+            const String& name = celestialSPtr->getName();
 
             if (celestialNames.contains(name))
             {

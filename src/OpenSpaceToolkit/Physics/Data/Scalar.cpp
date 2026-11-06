@@ -48,7 +48,7 @@ double Scalar::getValue() const
     return value_;
 }
 
-Unit Scalar::getUnit() const
+const Unit& Scalar::getUnit() const
 {
     return unit_;
 }

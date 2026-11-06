@@ -39,7 +39,7 @@ const String dataManifestFileName = "manifest.json";
 
 const String temporaryDirectoryName = "tmp";
 
-const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
+Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
@@ -48,7 +48,7 @@ const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
     return manifest_->getLastUpdateTimestampFor(aDataName);
 }
 
-const URL Manager::getRemoteUrl() const
+URL Manager::getRemoteUrl() const
 {
     return remoteUrl_;
 }
@@ -79,7 +79,7 @@ Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
     return manifest_->findRemoteDataUrls(remoteUrl_, aDataNameRegex);
 }
 
-const std::optional<Manifest> Manager::getManifest() const
+std::optional<Manifest> Manager::getManifest() const
 {
     return manifest_;
 }

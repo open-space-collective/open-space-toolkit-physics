@@ -169,17 +169,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, Print)
 
 // }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessComposite)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, GetComposite)
 {
     {
-        EXPECT_EQ(Composite(pyramid_), geometry_.accessComposite());
+        EXPECT_EQ(Composite(pyramid_), geometry_.getComposite());
+        EXPECT_EQ(&geometry_.getComposite(), &geometry_.getComposite());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, GetFrame)
 {
     {
-        EXPECT_EQ(Frame::GCRF(), geometry_.accessFrame());
+        EXPECT_EQ(Frame::GCRF(), geometry_.getFrame());
+        EXPECT_EQ(&geometry_.getFrame(), &geometry_.getFrame());
     }
 }
 
@@ -188,7 +190,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
     {
         const Environment environment = Environment::Default();
 
-        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Celestial> earthSPtr = environment.getCelestialObjectWithName("Earth");
 
         const Instant instant = Instant::J2000();
 
@@ -208,16 +210,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
 
         const Point referenceVertex = {earthSPtr->getEquatorialRadius().inMeters(), 0.0, 0.0};
 
-        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame());
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.getFrame());
 
-        EXPECT_TRUE(transformedGeometry.accessComposite().as<Point>().isNear(referenceVertex, 1e-8))
-            << referenceVertex.toString() << transformedGeometry.accessComposite().as<Point>().toString();
+        EXPECT_TRUE(transformedGeometry.getComposite().as<Point>().isNear(referenceVertex, 1e-8))
+            << referenceVertex.toString() << transformedGeometry.getComposite().as<Point>().toString();
     }
 
     {
         const Environment environment = Environment::Default();
 
-        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Celestial> earthSPtr = environment.getCelestialObjectWithName("Earth");
 
         const Instant instant = Instant::J2000();
 
@@ -250,22 +252,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
 
         const Pyramid referencePyramid = {referenceBase, referenceApex};
 
-        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame());
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.getFrame());
 
-        EXPECT_TRUE(
-            transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)
-        ) << referencePyramid.getBase()
-          << transformedGeometry.accessComposite().as<Pyramid>().getBase();
-        EXPECT_TRUE(
-            transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)
-        ) << referencePyramid.getApex().toString()
-          << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString();
+        EXPECT_TRUE(transformedGeometry.getComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8))
+            << referencePyramid.getBase() << transformedGeometry.getComposite().as<Pyramid>().getBase();
+        EXPECT_TRUE(transformedGeometry.getComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8))
+            << referencePyramid.getApex().toString()
+            << transformedGeometry.getComposite().as<Pyramid>().getApex().toString();
     }
 
     {
         const Environment environment = Environment::Default();
 
-        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Celestial> earthSPtr = environment.getCelestialObjectWithName("Earth");
 
         const Instant instant = Instant::J2000();
 
@@ -298,16 +297,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, In)
 
         const Pyramid referencePyramid = {referenceBase, referenceApex};
 
-        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.accessFrame());
+        EXPECT_EQ(itrfFrameSPtr, transformedGeometry.getFrame());
 
-        EXPECT_TRUE(
-            transformedGeometry.accessComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8)
-        ) << referencePyramid.getBase()
-          << transformedGeometry.accessComposite().as<Pyramid>().getBase();
-        EXPECT_TRUE(
-            transformedGeometry.accessComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8)
-        ) << referencePyramid.getApex().toString()
-          << transformedGeometry.accessComposite().as<Pyramid>().getApex().toString();
+        EXPECT_TRUE(transformedGeometry.getComposite().as<Pyramid>().getBase().isNear(referencePyramid.getBase(), 1e-8))
+            << referencePyramid.getBase() << transformedGeometry.getComposite().as<Pyramid>().getBase();
+        EXPECT_TRUE(transformedGeometry.getComposite().as<Pyramid>().getApex().isNear(referencePyramid.getApex(), 1e-8))
+            << referencePyramid.getApex().toString()
+            << transformedGeometry.getComposite().as<Pyramid>().getApex().toString();
     }
 }
 
@@ -316,7 +312,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
     {
         const Environment environment = Environment::Default();
 
-        const Shared<const Celestial> earthSPtr = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Celestial> earthSPtr = environment.getCelestialObjectWithName("Earth");
 
         const Instant instant = Instant::J2000();
 
@@ -343,15 +339,15 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Object_Geometry, IntersectionWith)
 
         const Geometry intersectionGeometry_ITRF = observerGeometry_ITRF.intersectionWith(earthGeometry_ITRF);
 
-        EXPECT_EQ(2, intersectionGeometry_ITRF.accessComposite().getObjectCount());
+        EXPECT_EQ(2, intersectionGeometry_ITRF.getComposite().getObjectCount());
 
-        EXPECT_TRUE(intersectionGeometry_ITRF.accessComposite().accessObjectAt(0).is<LineString>());
-        EXPECT_TRUE(intersectionGeometry_ITRF.accessComposite().accessObjectAt(1).is<LineString>());
+        EXPECT_TRUE(intersectionGeometry_ITRF.getComposite().accessObjectAt(0).is<LineString>());
+        EXPECT_TRUE(intersectionGeometry_ITRF.getComposite().accessObjectAt(1).is<LineString>());
 
         const LineString firstIntersectionLineString_ITRF =
-            intersectionGeometry_ITRF.accessComposite().accessObjectAt(0).as<LineString>();
+            intersectionGeometry_ITRF.getComposite().accessObjectAt(0).as<LineString>();
         const LineString secondIntersectionLineString_ITRF =
-            intersectionGeometry_ITRF.accessComposite().accessObjectAt(1).as<LineString>();
+            intersectionGeometry_ITRF.getComposite().accessObjectAt(1).as<LineString>();
 
         EXPECT_TRUE(firstIntersectionLineString_ITRF.isDefined());
         EXPECT_TRUE(secondIntersectionLineString_ITRF.isDefined());

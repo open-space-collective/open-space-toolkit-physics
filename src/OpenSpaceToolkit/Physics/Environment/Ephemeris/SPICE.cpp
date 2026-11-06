@@ -28,7 +28,7 @@ SPICE* SPICE::clone() const
     return new SPICE(*this);
 }
 
-Shared<const Frame> SPICE::accessFrame() const
+Shared<const Frame> SPICE::getFrame() const
 {
     using ostk::physics::environment::ephemeris::spice::Engine;
 

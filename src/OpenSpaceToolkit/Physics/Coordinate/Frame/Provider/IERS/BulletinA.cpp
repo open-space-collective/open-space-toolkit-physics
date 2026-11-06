@@ -102,7 +102,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
     return anOutputStream;
 }
 
-const Date& BulletinA::accessReleaseDate() const
+const Date& BulletinA::getReleaseDate() const
 {
     if (!releaseDate_.has_value())
     {
@@ -112,49 +112,29 @@ const Date& BulletinA::accessReleaseDate() const
     return releaseDate_.value();
 }
 
-const Instant& BulletinA::accessLastModifiedTimestamp() const
+const Instant& BulletinA::getLastModifiedTimestamp() const
 {
     return lastModifiedTimestamp_;
 }
 
-const std::optional<Duration>& BulletinA::accessTAIMinusUTC() const
+const std::optional<Duration>& BulletinA::getTAIMinusUTC() const
 {
     return taiMinusUtc_;
 }
 
-const Instant& BulletinA::accessTAIMinusUTCEpoch() const
+const Instant& BulletinA::getTAIMinusUTCEpoch() const
 {
     return taiMinusUtcEpoch_;
 }
 
-const Interval& BulletinA::accessObservationInterval() const
+const Interval& BulletinA::getObservationInterval() const
 {
     return observationInterval_;
 }
 
-const Interval& BulletinA::accessPredictionInterval() const
+const Interval& BulletinA::getPredictionInterval() const
 {
     return predictionInterval_;
-}
-
-Date BulletinA::getReleaseDate() const
-{
-    return this->accessReleaseDate();
-}
-
-std::optional<Duration> BulletinA::getTAIMinusUTC() const
-{
-    return this->accessTAIMinusUTC();
-}
-
-Instant BulletinA::getTAIMinusUTCEpoch() const
-{
-    return this->accessTAIMinusUTCEpoch();
-}
-
-Interval BulletinA::getObservationInterval() const
-{
-    return this->accessObservationInterval();
 }
 
 BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) const
@@ -171,8 +151,8 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of observation range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            observationInterval_.accessStart().toString(Scale::UTC),
-            observationInterval_.accessEnd().toString(Scale::UTC)
+            observationInterval_.getStart().toString(Scale::UTC),
+            observationInterval_.getEnd().toString(Scale::UTC)
         );
     }
 
@@ -242,11 +222,6 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
     }
 }
 
-Interval BulletinA::getPredictionInterval() const
-{
-    return this->accessPredictionInterval();
-}
-
 BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
@@ -261,8 +236,8 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
         throw ostk::core::error::RuntimeError(
             "Instant [{}] out of prediction range [{} - {}].",
             anInstant.toString(Scale::UTC),
-            predictionInterval_.accessStart().toString(Scale::UTC),
-            predictionInterval_.accessEnd().toString(Scale::UTC)
+            predictionInterval_.getStart().toString(Scale::UTC),
+            predictionInterval_.getEnd().toString(Scale::UTC)
         );
     }
 

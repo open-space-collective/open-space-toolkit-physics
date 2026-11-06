@@ -64,14 +64,14 @@ def test_coordinate_velocity_comparators():
     assert velocity_1 != velocity_2
 
 
-def test_coordinate_velocity_access_frame():
+def test_coordinate_velocity_get_frame():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
 
     velocity: Velocity = Velocity(vector, unit, frame)
 
-    ans_frame = velocity.access_frame()
+    ans_frame = velocity.get_frame()
 
     assert ans_frame is not None
     assert isinstance(ans_frame, Frame)

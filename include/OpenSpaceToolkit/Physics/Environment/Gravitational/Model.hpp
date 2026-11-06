@@ -168,7 +168,7 @@ class Model
     /// @endcode
     ///
     /// @return Gravitational model parameters
-    Parameters getParameters() const;
+    const Parameters& getParameters() const;
 
    private:
     Model::Parameters parameters_;

@@ -170,52 +170,52 @@ bool Derived::Unit::isCompatibleWith(const Unit& aUnit) const
            (angleOrder_ == aUnit.angleOrder_);
 }
 
-const std::optional<Length::Unit>& Derived::Unit::accessLengthUnit() const
+const std::optional<Length::Unit>& Derived::Unit::getLengthUnit() const
 {
     return lengthUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessLengthOrder() const
+const Derived::Order& Derived::Unit::getLengthOrder() const
 {
     return lengthOrder_;
 }
 
-const std::optional<Mass::Unit>& Derived::Unit::accessMassUnit() const
+const std::optional<Mass::Unit>& Derived::Unit::getMassUnit() const
 {
     return massUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessMassOrder() const
+const Derived::Order& Derived::Unit::getMassOrder() const
 {
     return massOrder_;
 }
 
-const std::optional<Time::Unit>& Derived::Unit::accessTimeUnit() const
+const std::optional<Time::Unit>& Derived::Unit::getTimeUnit() const
 {
     return timeUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessTimeOrder() const
+const Derived::Order& Derived::Unit::getTimeOrder() const
 {
     return timeOrder_;
 }
 
-const std::optional<ElectricCurrent::Unit>& Derived::Unit::accessElectricCurrentUnit() const
+const std::optional<ElectricCurrent::Unit>& Derived::Unit::getElectricCurrentUnit() const
 {
     return electricCurrentUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessElectricCurrentOrder() const
+const Derived::Order& Derived::Unit::getElectricCurrentOrder() const
 {
     return electricCurrentOrder_;
 }
 
-const std::optional<Angle::Unit>& Derived::Unit::accessAngleUnit() const
+const std::optional<Angle::Unit>& Derived::Unit::getAngleUnit() const
 {
     return angleUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessAngleOrder() const
+const Derived::Order& Derived::Unit::getAngleOrder() const
 {
     return angleOrder_;
 }
@@ -492,7 +492,7 @@ Derived* Derived::clone() const
 
 bool Derived::operator==(const Derived& aDerivedUnit) const
 {
-    return this->accessValue() == ((unit_ == aDerivedUnit.unit_) ? aDerivedUnit.accessValue() : aDerivedUnit.in(unit_));
+    return this->getValue() == ((unit_ == aDerivedUnit.unit_) ? aDerivedUnit.getValue() : aDerivedUnit.in(unit_));
 }
 
 bool Derived::operator!=(const Derived& aDerivedUnit) const
@@ -504,7 +504,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUn
 {
     ostk::core::utils::Print::Header(anOutputStream, "Derived");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue();
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.getValue();
     ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString();
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -512,7 +512,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUn
     return anOutputStream;
 }
 
-Derived::Unit Derived::getUnit() const
+const Derived::Unit& Derived::getUnit() const
 {
     return unit_;
 }
@@ -521,7 +521,7 @@ double Derived::in(const Derived::Unit& aUnit) const
 {
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
     if (!unit_.isCompatibleWith(aUnit))
@@ -531,12 +531,12 @@ double Derived::in(const Derived::Unit& aUnit) const
         );
     }
 
-    return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit);
+    return this->getValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit);
 }
 
 String Derived::toString(int aPrecision) const
 {
-    return DoubleToString(this->accessValue(), aPrecision) + " [" + unit_.getSymbol() + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + unit_.getSymbol() + "]";
 }
 
 // Derived                         Derived::Parse                               (   const   String& aString )
@@ -558,39 +558,37 @@ double Derived::SIRatio(const Derived::Unit& aUnit)
 {
     double ratio = 1.0;
 
-    if (!aUnit.accessLengthOrder().isZero())
+    if (!aUnit.getLengthOrder().isZero())
     {
         ratio *= std::pow(
-            Length(1.0, aUnit.accessLengthUnit().value()).in(Length::Unit::Meter), aUnit.accessLengthOrder().getValue()
+            Length(1.0, aUnit.getLengthUnit().value()).in(Length::Unit::Meter), aUnit.getLengthOrder().getValue()
         );
     }
 
-    if (!aUnit.accessMassOrder().isZero())
+    if (!aUnit.getMassOrder().isZero())
+    {
+        ratio *=
+            std::pow(Mass(1.0, aUnit.getMassUnit().value()).in(Mass::Unit::Kilogram), aUnit.getMassOrder().getValue());
+    }
+
+    if (!aUnit.getTimeOrder().isZero())
+    {
+        ratio *=
+            std::pow(Time(1.0, aUnit.getTimeUnit().value()).in(Time::Unit::Second), aUnit.getTimeOrder().getValue());
+    }
+
+    if (!aUnit.getElectricCurrentOrder().isZero())
     {
         ratio *= std::pow(
-            Mass(1.0, aUnit.accessMassUnit().value()).in(Mass::Unit::Kilogram), aUnit.accessMassOrder().getValue()
+            ElectricCurrent(1.0, aUnit.getElectricCurrentUnit().value()).in(ElectricCurrent::Unit::Ampere),
+            aUnit.getElectricCurrentOrder().getValue()
         );
     }
 
-    if (!aUnit.accessTimeOrder().isZero())
+    if (!aUnit.getAngleOrder().isZero())
     {
         ratio *= std::pow(
-            Time(1.0, aUnit.accessTimeUnit().value()).in(Time::Unit::Second), aUnit.accessTimeOrder().getValue()
-        );
-    }
-
-    if (!aUnit.accessElectricCurrentOrder().isZero())
-    {
-        ratio *= std::pow(
-            ElectricCurrent(1.0, aUnit.accessElectricCurrentUnit().value()).in(ElectricCurrent::Unit::Ampere),
-            aUnit.accessElectricCurrentOrder().getValue()
-        );
-    }
-
-    if (!aUnit.accessAngleOrder().isZero())
-    {
-        ratio *= std::pow(
-            Angle(1.0, aUnit.accessAngleUnit().value()).in(Angle::Unit::Radian), aUnit.accessAngleOrder().getValue()
+            Angle(1.0, aUnit.getAngleUnit().value()).in(Angle::Unit::Radian), aUnit.getAngleOrder().getValue()
         );
     }
 

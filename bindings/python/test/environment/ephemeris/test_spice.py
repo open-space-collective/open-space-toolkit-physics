@@ -19,8 +19,8 @@ class TestSPICE:
     def test_object_has_no_undefined(self):
         assert not hasattr(SPICE.Object, "Undefined")
 
-    def test_access_frame_success(self, spice: SPICE):
-        frame = spice.access_frame()
+    def test_get_frame_success(self, spice: SPICE):
+        frame = spice.get_frame()
 
         assert frame is not None
 

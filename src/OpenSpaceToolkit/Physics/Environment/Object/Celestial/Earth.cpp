@@ -59,7 +59,7 @@ Shared<const Frame> EphemerisFrame(const Shared<Ephemeris>& anEphemeris)
         throw ostk::core::error::runtime::Undefined("Ephemeris");
     }
 
-    return anEphemeris->accessFrame();
+    return anEphemeris->getFrame();
 }
 
 }  // namespace

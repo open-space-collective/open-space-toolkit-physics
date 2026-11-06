@@ -140,8 +140,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<Interval> intervals = {
@@ -160,8 +160,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
 
         const Eclipse eclipse(*sun, *earth, phases);
 
-        EXPECT_EQ(eclipse.accessOccultedCelestialObject().getName(), "Sun");
-        EXPECT_EQ(eclipse.accessOccultingCelestialObject().getName(), "Earth");
+        EXPECT_EQ(eclipse.getOccultedCelestialObject().getName(), "Sun");
+        EXPECT_EQ(eclipse.getOccultingCelestialObject().getName(), "Earth");
         EXPECT_EQ(eclipse.getPhases().getSize(), 3);
 
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(3.0));
@@ -251,8 +251,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseStreamOperator
 
     {
         const Environment environment = Environment::Default();
-        const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-        const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+        const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
         const Instant referenceEpoch = Instant::J2000();
         const Array<EclipsePhase> phases = {
             EclipsePhase(
@@ -280,8 +280,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseStreamOperator
 TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorFailureNoPhases)
 {
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Array<EclipsePhase> emptyPhases = {};
 
@@ -293,8 +293,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorFai
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<EclipsePhase> overlappingPhases = {
@@ -318,8 +318,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorFai
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<EclipsePhase> gappedPhases = {
@@ -343,8 +343,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseMultipleUmbas)
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<Interval> intervals = {
@@ -375,8 +375,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseNoUmbras)
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
 
@@ -606,8 +606,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
     using ostk::mathematics::object::Vector3d;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const double tolerance = 1e-3;
 

@@ -24,9 +24,9 @@ class PyEphemeris : public Ephemeris
         PYBIND11_OVERRIDE_PURE_NAME(Ephemeris*, Ephemeris, "clone", clone);
     }
 
-    Shared<const Frame> accessFrame() const override
+    Shared<const Frame> getFrame() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(Shared<const Frame>, Ephemeris, "access_frame", accessFrame);
+        PYBIND11_OVERRIDE_PURE_NAME(Shared<const Frame>, Ephemeris, "get_frame", getFrame);
     }
 };
 
@@ -49,10 +49,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(pybind11::module& aM
     )
 
         .def(
-            "access_frame",
-            &Ephemeris::accessFrame,
+            "get_frame",
+            &Ephemeris::getFrame,
             R"doc(
-                Access the reference frame associated with this ephemeris.
+                Get the reference frame associated with this ephemeris.
 
                 Returns:
                     Frame: The reference frame.

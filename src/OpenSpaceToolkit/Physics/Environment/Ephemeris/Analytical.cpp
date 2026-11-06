@@ -26,7 +26,7 @@ Analytical* Analytical::clone() const
     return new Analytical(*this);
 }
 
-Shared<const Frame> Analytical::accessFrame() const
+Shared<const Frame> Analytical::getFrame() const
 {
     return frameSPtr_;
 }

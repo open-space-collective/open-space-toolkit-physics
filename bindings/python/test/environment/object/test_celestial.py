@@ -15,3 +15,8 @@ class TestCelestial:
     def test_frame_type_has_no_undefined(self):
         assert Celestial.string_from_frame_type(Celestial.FrameType.NED) == "NED"
         assert not hasattr(Celestial.FrameType, "Undefined")
+
+    def test_get_frame_success(self):
+        earth = Earth.spherical()
+
+        assert earth.get_frame() is not None

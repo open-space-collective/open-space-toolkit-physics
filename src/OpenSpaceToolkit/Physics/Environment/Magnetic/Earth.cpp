@@ -102,7 +102,7 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
         return EarthDipole.getFieldValueAt(aPosition, anInstant);
     }
 
-    const int year = anInstant.getDateTime(Scale::UTC).accessDate().getYear();
+    const int year = anInstant.getDateTime(Scale::UTC).getDate().getYear();
 
     if (((year < static_cast<int>(magneticModelUPtr_->MinTime())) ||
          (year > static_cast<int>(magneticModelUPtr_->MaxTime()))))

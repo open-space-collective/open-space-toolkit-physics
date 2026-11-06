@@ -91,7 +91,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame)
 {
     {
         const Directory spiceLocalRepository =
@@ -166,7 +166,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
 
             const SPICE spice = {object};
 
-            const Shared<const Frame> frameSPtr = spice.accessFrame();
+            const Shared<const Frame> frameSPtr = spice.getFrame();
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -237,7 +237,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame_FarFromJ2000)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame_FarFromJ2000)
 {
     // A duration from J2000 only spans about 292 years: the ephemeris time must stay continuous across
     // 2292-04-11 11:47:16.854 TT, which is still covered by DE430
@@ -254,7 +254,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame_FarFrom
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))));
 
-        const Shared<const Frame> frameSPtr = SPICE(SPICE::Object::Sun).accessFrame();
+        const Shared<const Frame> frameSPtr = SPICE(SPICE::Object::Sun).getFrame();
 
         const Instant instantBefore = Instant::DateTime(DateTime(2292, 4, 11, 11, 47, 15), Scale::TT);
         const Instant instantAfter = Instant::DateTime(DateTime(2292, 4, 11, 11, 47, 18), Scale::TT);
@@ -296,7 +296,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 
         const SPICE spice = {SPICE::Object::Sun};
 
-        const Shared<const Frame> sunFrameSPtr = spice.accessFrame();
+        const Shared<const Frame> sunFrameSPtr = spice.getFrame();
 
         const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC);
 
@@ -308,7 +308,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 
         const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant);
 
-        EXPECT_EQ(Frame::GCRF(), sunPosition.accessFrame());
+        EXPECT_EQ(Frame::GCRF(), sunPosition.getFrame());
     }
 }
 
@@ -321,13 +321,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 
         const SPICE spice = {SPICE::Object::Sun};
 
-        const Shared<const Frame> sunFrameSPtr = spice.accessFrame();
+        const Shared<const Frame> sunFrameSPtr = spice.getFrame();
 
         const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC);
 
         const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant);
 
-        EXPECT_EQ(Frame::GCRF(), sunPosition.accessFrame());
+        EXPECT_EQ(Frame::GCRF(), sunPosition.getFrame());
     }
 }
 

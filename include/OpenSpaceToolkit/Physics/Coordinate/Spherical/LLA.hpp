@@ -113,7 +113,7 @@ class LLA
     ///
     /// @return Latitude angle.
 
-    Angle getLatitude() const;
+    const Angle& getLatitude() const;
 
     /// @brief Gets the longitude angle.
     ///
@@ -123,7 +123,7 @@ class LLA
     ///
     /// @return Longitude angle.
 
-    Angle getLongitude() const;
+    const Angle& getLongitude() const;
 
     /// @brief Gets the altitude length.
     ///
@@ -133,7 +133,7 @@ class LLA
     ///
     /// @return Altitude length.
 
-    Length getAltitude() const;
+    const Length& getAltitude() const;
 
     /// @brief Returns an LLA object representing the position on the surface.
     ///

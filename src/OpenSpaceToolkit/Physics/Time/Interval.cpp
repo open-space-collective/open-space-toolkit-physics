@@ -24,9 +24,9 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Interval& anInterva
     ostk::core::utils::Print::Header(anOutputStream, "Interval");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Start:" << (anInterval.isDefined() ? anInterval.accessStart().toString(Scale::UTC) : "Undefined");
+        << "Start:" << (anInterval.isDefined() ? anInterval.getStart().toString(Scale::UTC) : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
-        << "End:" << (anInterval.isDefined() ? anInterval.accessEnd().toString(Scale::UTC) : "Undefined");
+        << "End:" << (anInterval.isDefined() ? anInterval.getEnd().toString(Scale::UTC) : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
@@ -38,7 +38,7 @@ bool Interval::isDefined() const
     return mathematics::object::Interval<Instant>::isDefined() && (this->getType() != Interval::Type::Undefined);
 }
 
-const Instant& Interval::accessStart() const
+const Instant& Interval::getStart() const
 {
     if (!this->isDefined())
     {
@@ -48,27 +48,7 @@ const Instant& Interval::accessStart() const
     return this->accessLowerBound();
 }
 
-const Instant& Interval::accessEnd() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Interval");
-    }
-
-    return this->accessUpperBound();
-}
-
-Instant Interval::getStart() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Interval");
-    }
-
-    return this->accessLowerBound();
-}
-
-Instant Interval::getEnd() const
+const Instant& Interval::getEnd() const
 {
     if (!this->isDefined())
     {
