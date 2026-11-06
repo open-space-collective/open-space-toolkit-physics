@@ -15,7 +15,7 @@ class TestAnalytical:
     def test_constructor_success(self, analytical: Analytical):
         assert analytical is not None
 
-    def test_access_frame_success(self, analytical: Analytical):
+    def test_get_frame_success(self, analytical: Analytical):
         accessed_frame = analytical.get_frame()
 
         assert accessed_frame is not None

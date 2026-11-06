@@ -589,7 +589,7 @@ class ObjectWithoutGeometry : public Object
         return new ObjectWithoutGeometry(*this);
     }
 
-    Shared<const Frame> accessFrame() const override
+    Shared<const Frame> getFrame() const override
     {
         return Frame::GCRF();
     }
@@ -622,7 +622,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects_ObjectWithoutGeometry)
 {
     const Shared<const Object> objectSPtr = std::make_shared<ObjectWithoutGeometry>();
 
-    EXPECT_FALSE(objectSPtr->accessGeometry().has_value());
     EXPECT_FALSE(objectSPtr->getGeometry().has_value());
     EXPECT_FALSE(objectSPtr->getGeometryIn(Frame::GCRF(), instant_).has_value());
 

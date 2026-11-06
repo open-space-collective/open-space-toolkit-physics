@@ -201,8 +201,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, StaticMethods)
 
     const Earth earth = Earth::Default();
 
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM2008)
@@ -220,8 +220,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM96)
 
     const Earth earth = Earth::EGM96();
 
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
@@ -234,8 +234,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, EGM84)
 
     const Earth earth = Earth::EGM84();
 
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84_EGM96)
@@ -246,8 +246,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84_EGM96)
 
     const Earth earth = Earth::WGS84_EGM96();
 
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84)
@@ -258,8 +258,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, WGS84)
 
     const Earth earth = Earth::WGS84();
 
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, Spherical)
@@ -338,9 +338,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, AtmosphericOnl
     const Earth earth =
         Earth::AtmosphericOnly(std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Exponential));
 
-    EXPECT_EQ(nullptr, earth.accessGravitationalModel());
-    EXPECT_EQ(nullptr, earth.accessMagneticModel());
-    EXPECT_NE(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getGravitationalModel());
+    EXPECT_EQ(nullptr, earth.getMagneticModel());
+    EXPECT_NE(nullptr, earth.getAtmosphericModel());
 
     // Without a gravitational model the gravitational constants are NaN, but the shape falls back to WGS84.
     EXPECT_TRUE(std::isnan(earth.getGravitationalParameter().in(
@@ -356,16 +356,16 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, AtmosphericOnl
     const Shared<const Frame> nedSPtr =
         earth.getFrameAt(LLA(Angle::Degrees(10.0), Angle::Degrees(20.0), Length::Meters(0.0)), Earth::FrameType::NED);
 
-    EXPECT_FALSE(nedSPtr->getOriginIn(Frame::ITRF(), Instant::J2000()).accessCoordinates().hasNaN());
+    EXPECT_FALSE(nedSPtr->getOriginIn(Frame::ITRF(), Instant::J2000()).getCoordinates().hasNaN());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, MagneticOnly_Shape)
 {
     const Earth earth = Earth::MagneticOnly(std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Dipole));
 
-    EXPECT_EQ(nullptr, earth.accessGravitationalModel());
-    EXPECT_NE(nullptr, earth.accessMagneticModel());
-    EXPECT_EQ(nullptr, earth.accessAtmosphericModel());
+    EXPECT_EQ(nullptr, earth.getGravitationalModel());
+    EXPECT_NE(nullptr, earth.getMagneticModel());
+    EXPECT_EQ(nullptr, earth.getAtmosphericModel());
 
     EXPECT_DOUBLE_EQ(
         EarthGravitationalModel::WGS84.equatorialRadius_.inMeters(), earth.getEquatorialRadius().inMeters()

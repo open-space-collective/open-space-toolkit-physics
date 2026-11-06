@@ -87,7 +87,7 @@ class Manager
     /// @param [in] anInstant An instant
     /// @return The cached transform, or std::nullopt if there is none
 
-    const std::optional<Transform> getCachedTransform(
+    std::optional<Transform> getCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
     ) const;
 

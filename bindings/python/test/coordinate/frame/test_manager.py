@@ -159,7 +159,7 @@ class TestManager:
         # Should return None when not cached
         assert transform is None
 
-    def test_add_and_access_cached_transform_success(
+    def test_add_and_get_cached_transform_success(
         self,
         manager: Manager,
         static_provider: Static,

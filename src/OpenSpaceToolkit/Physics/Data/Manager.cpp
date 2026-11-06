@@ -79,7 +79,7 @@ Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
     return manifest_->findRemoteDataUrls(remoteUrl_, aDataNameRegex);
 }
 
-const std::optional<Manifest> Manager::getManifest() const
+std::optional<Manifest> Manager::getManifest() const
 {
     return manifest_;
 }

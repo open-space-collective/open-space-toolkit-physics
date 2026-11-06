@@ -103,7 +103,7 @@ class BulletinA
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA);
 
-    /// @brief Access release Date
+    /// @brief Get release Date
     ///
     /// @code
     ///     const Date& date = bulletinA.getReleaseDate();
@@ -121,7 +121,7 @@ class BulletinA
     /// @return Instant indicating when the file was last updated based on file modification time
     const Instant& getLastModifiedTimestamp() const;
 
-    /// @brief Access TAI-UTC
+    /// @brief Get TAI-UTC
     ///
     /// @code
     ///     const std::optional<Duration>& taiMinusUtc = bulletinA.getTAIMinusUTC();

@@ -64,7 +64,7 @@ def test_coordinate_velocity_comparators():
     assert velocity_1 != velocity_2
 
 
-def test_coordinate_velocity_access_frame():
+def test_coordinate_velocity_get_frame():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]

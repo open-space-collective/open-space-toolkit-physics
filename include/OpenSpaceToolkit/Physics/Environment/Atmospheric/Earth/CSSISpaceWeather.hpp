@@ -106,7 +106,7 @@ class CSSISpaceWeather
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief Access last observation Date. File publication date is the day following the last observation.
+    /// @brief Get last observation Date. File publication date is the day following the last observation.
     ///
     /// @code
     ///     const Date& date = cssiSpaceWeather.getLastObservationDate();

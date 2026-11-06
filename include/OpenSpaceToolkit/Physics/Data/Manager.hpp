@@ -102,7 +102,7 @@ class Manager : public BaseManager
     /// @endcode
     ///
     /// @return Manifest file, or std::nullopt if no manifest is loaded
-    const std::optional<Manifest> getManifest() const;
+    std::optional<Manifest> getManifest() const;
 
     /// @brief Load a new manifest file.
     ///

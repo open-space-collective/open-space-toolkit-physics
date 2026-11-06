@@ -246,41 +246,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
-{
-    {
-        EXPECT_EQ(instant_, transformPassive_.getInstant());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
-{
-    {
-        EXPECT_EQ(t_B_A_, transformPassive_.getTranslation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
-{
-    {
-        EXPECT_EQ(v_B_A_, transformPassive_.getVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
-{
-    {
-        EXPECT_EQ(q_B_A_, transformPassive_.getOrientation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
-{
-    {
-        EXPECT_EQ(w_B_A_in_B_, transformPassive_.getAngularVelocity());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
 {
     {

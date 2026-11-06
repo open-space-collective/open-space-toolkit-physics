@@ -71,7 +71,7 @@ class SPICE : public Ephemeris
 
     virtual SPICE* clone() const override;
 
-    /// @brief Access frame of SPICE object
+    /// @brief Get frame of SPICE object
     ///
     /// @code
     ///     SPICE spice = SPICE(SPICE::Object::Earth);

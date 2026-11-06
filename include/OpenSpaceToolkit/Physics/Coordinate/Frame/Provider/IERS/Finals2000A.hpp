@@ -98,7 +98,7 @@ class Finals2000A
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A);
 
-    /// @brief Access timestamp at which the BulletinA file was last modified
+    /// @brief Get timestamp at which the BulletinA file was last modified
     ///
     /// @code
     ///     const Instant& timestamp = finals2000A.getLastModifiedTimestamp();

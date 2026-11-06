@@ -99,13 +99,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetFrame)
         EXPECT_EQ(Frame::GCRF(), positionGCRF_.getFrame());
         EXPECT_EQ(&positionGCRF_.getFrame(), &positionGCRF_.getFrame());
     }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, AccessFrame)
-{
-    {
-        EXPECT_EQ(Frame::GCRF(), positionGCRF_.getFrame());
-    }
 
     {
         EXPECT_EQ(Frame::ITRF(), positionITRF_.getFrame());

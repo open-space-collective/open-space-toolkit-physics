@@ -47,31 +47,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Stream
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessReleaseDate)
-{
-    SUCCEED();  // See: GetReleaseDate
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTC)
-{
-    SUCCEED();  // See: GetTAIMinusUTC
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTCEpoch)
-{
-    SUCCEED();  // See: GetTAIMinusUTCEpoch
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessObservationInterval)
-{
-    SUCCEED();  // See: GetObservationInterval
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessPredictionInterval)
-{
-    SUCCEED();  // See: GetPredictionInterval
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetReleaseDate)
 {
     {

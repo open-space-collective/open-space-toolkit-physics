@@ -91,7 +91,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame)
 {
     {
         const Directory spiceLocalRepository =

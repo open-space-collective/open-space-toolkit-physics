@@ -40,6 +40,17 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
         )doc")
 
         .def(
+            "get_frame",
+            &Object::getFrame,
+            R"doc(
+                Gets the frame of the Object.
+
+                Returns:
+                    Frame: The frame of the Object.
+            )doc"
+        )
+
+        .def(
             "get_name",
             &Object::getName,
             R"doc(

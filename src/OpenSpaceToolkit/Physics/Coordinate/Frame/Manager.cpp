@@ -50,7 +50,7 @@ Array<String> Manager::getAllFrameNames() const
     return frameNames;
 }
 
-const std::optional<Transform> Manager::getCachedTransform(
+std::optional<Transform> Manager::getCachedTransform(
     const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
 ) const
 {

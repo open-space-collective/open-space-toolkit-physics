@@ -37,7 +37,7 @@ class Ephemeris
     /// @return Pointer to cloned ephemeris.
     virtual Ephemeris* clone() const = 0;
 
-    /// @brief Access the reference frame of the ephemeris.
+    /// @brief Get the reference frame of the ephemeris.
     ///
     /// @return Shared pointer to the reference frame.
     virtual Shared<const Frame> getFrame() const = 0;

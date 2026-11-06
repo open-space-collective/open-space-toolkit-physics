@@ -18,7 +18,7 @@ class TestCSSISpaceWeather:
     def test_repr_success(self, cssi_space_weather: CSSISpaceWeather):
         assert repr(cssi_space_weather).startswith("-- CSSI Space Weather --")
 
-    def test_access_last_observation_date_success(
+    def test_get_last_observation_date_success(
         self, cssi_space_weather: CSSISpaceWeather
     ):
         assert cssi_space_weather.get_last_observation_date().to_string() == "2023-06-19"
