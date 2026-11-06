@@ -6,9 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
-
     using ostk::physics::data::Scalar;
     using ostk::physics::Unit;
 
@@ -27,14 +24,14 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
     )
 
         .def(
-            init<const Real&, const Unit&>(),
+            init<double, const Unit&>(),
             arg("value"),
             arg("unit"),
             R"doc(
                 Construct a Scalar.
 
                 Args:
-                    value (Real): Value.
+                    value (float): Value.
                     unit (Unit): Unit.
             )doc"
         )
@@ -114,7 +111,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def(
             "to_string",
             &Scalar::toString,
-            arg_v("precision", Integer::Undefined(), "Integer.Undefined()"),
+            arg_v("precision", -1, "-1"),
             R"doc(
                 Convert to string.
 

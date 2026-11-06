@@ -1,9 +1,12 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Mass.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +15,9 @@ namespace physics
 namespace unit
 {
 
-Mass::Mass(const Real& aValue, const Mass::Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+Mass::Mass(double aValue, const Mass::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Mass, aValue),
       unit_(aUnit)
 {
@@ -33,11 +38,11 @@ Mass::Unit Mass::getUnit() const
     return unit_;
 }
 
-Real Mass::in(const Mass::Unit& aUnit) const
+double Mass::in(const Mass::Unit& aUnit) const
 {
     if (!this->isDefined())
     {
-        return Real::Undefined();
+        return std::numeric_limits<double>::quiet_NaN();
     }
 
     if (unit_ == aUnit)
@@ -48,27 +53,27 @@ Real Mass::in(const Mass::Unit& aUnit) const
     return this->accessValue() * Mass::SIRatio(unit_) / Mass::SIRatio(aUnit);
 }
 
-Real Mass::inKilograms() const
+double Mass::inKilograms() const
 {
     return this->in(Mass::Unit::Kilogram);
 }
 
-String Mass::toString(const Integer& aPrecision) const
+String Mass::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Mass");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->accessValue(), aPrecision) + " [" + Mass::SymbolFromUnit(unit_) + "]";
 }
 
 Mass Mass::Undefined()
 {
-    return {Real::Undefined(), Mass::Unit::Undefined};
+    return {std::numeric_limits<double>::quiet_NaN(), Mass::Unit::Undefined};
 }
 
-Mass Mass::Kilograms(const Real& aValue)
+Mass Mass::Kilograms(double aValue)
 {
     return {aValue, Mass::Unit::Kilogram};
 }
@@ -125,7 +130,7 @@ String Mass::SymbolFromUnit(const Mass::Unit& aUnit)
     return String::Empty();
 }
 
-Real Mass::SIRatio(const Mass::Unit& aUnit)
+double Mass::SIRatio(const Mass::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -141,7 +146,7 @@ Real Mass::SIRatio(const Mass::Unit& aUnit)
             break;
     }
 
-    return Real::Undefined();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
 }  // namespace unit

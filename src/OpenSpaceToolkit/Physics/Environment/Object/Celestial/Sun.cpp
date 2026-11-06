@@ -64,7 +64,7 @@ Object::Geometry Sun::Geometry(const Shared<const Frame>& aFrame)
     using ostk::mathematics::geometry::d3::object::Point;
 
     // [TBI] inherit from actual gravitational model if present
-    const Real equatorialRadius_m = SunGravitationalModel::Spherical.equatorialRadius_.inMeters();
+    const double equatorialRadius_m = SunGravitationalModel::Spherical.equatorialRadius_.inMeters();
 
     const Sphere sphere = {Point::Origin(), equatorialRadius_m};
 

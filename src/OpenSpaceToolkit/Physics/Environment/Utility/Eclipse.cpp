@@ -210,7 +210,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Eclipse& anEclipse)
     return anOutputStream;
 }
 
-Real montenbruckGillShadowFunction(
+double montenbruckGillShadowFunction(
     const Instant& anInstant,
     const Position& aPosition,
     const Celestial& anOccultedCelestialObject,
@@ -251,10 +251,10 @@ Real montenbruckGillShadowFunction(
 
     // Helper function to compute apparent angular radius
     auto computeApparentAngularRadius = [](const Celestial& celestialObject,
-                                           const Vector3d& objectToCelestialObjectPositionCoordinates) -> Real
+                                           const Vector3d& objectToCelestialObjectPositionCoordinates) -> double
     {
-        const Real equatorialRadius = celestialObject.getEquatorialRadius().inMeters();
-        const Real distance = objectToCelestialObjectPositionCoordinates.norm();
+        const double equatorialRadius = celestialObject.getEquatorialRadius().inMeters();
+        const double distance = objectToCelestialObjectPositionCoordinates.norm();
 
         if (distance <= equatorialRadius)
         {
@@ -265,13 +265,13 @@ Real montenbruckGillShadowFunction(
     };
 
     // Apparent angular radius of the occulted celestial object
-    const Real a = computeApparentAngularRadius(anOccultedCelestialObject, objectToOccultedPositionCoordinates);
+    const double a = computeApparentAngularRadius(anOccultedCelestialObject, objectToOccultedPositionCoordinates);
 
     // Apparent angular radius of the occulting celestial object
-    const Real b = computeApparentAngularRadius(anOccultingCelestialObject, objectToOccultingPositionCoordinates);
+    const double b = computeApparentAngularRadius(anOccultingCelestialObject, objectToOccultingPositionCoordinates);
 
     // Apparent angular separation between the occulted and occulting celestial objects
-    const Real c =
+    const double c =
         Angle::Between(objectToOccultedPositionCoordinates, objectToOccultingPositionCoordinates).inRadians();
 
     if (c >= a + b)
@@ -285,11 +285,11 @@ Real montenbruckGillShadowFunction(
     }
 
     // Penumbra calculation
-    const Real x = (c * c + a * a - b * b) / (2.0 * c);
-    const Real y = std::sqrt(a * a - x * x);
-    const Real A = a * a * std::acos(x / a) + b * b * std::acos((c - x) / b) - c * y;
+    const double x = (c * c + a * a - b * b) / (2.0 * c);
+    const double y = std::sqrt(a * a - x * x);
+    const double A = a * a * std::acos(x / a) + b * b * std::acos((c - x) / b) - c * y;
 
-    return std::clamp(1.0 - A / (M_PI * a * a), Real(0.0), Real(1.0));  // Penumbra
+    return std::clamp(1.0 - A / (M_PI * a * a), 0.0, 1.0);  // Penumbra
 }
 
 Array<Interval> eclipseIntervalsAtPosition(

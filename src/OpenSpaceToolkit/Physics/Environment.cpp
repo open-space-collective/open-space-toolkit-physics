@@ -150,7 +150,7 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
             const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
             if (celestialSPtr != nullptr)
             {
-                const Real shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
+                const double shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
 
                 if (includePenumbra)
                 {

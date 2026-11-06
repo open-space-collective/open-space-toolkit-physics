@@ -5,8 +5,6 @@
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -30,8 +28,6 @@ namespace filesystem = ostk::core::filesystem;
 
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::Duration;

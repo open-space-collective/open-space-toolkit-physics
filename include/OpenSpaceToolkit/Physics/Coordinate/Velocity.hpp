@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 #define __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -20,9 +19,6 @@ namespace physics
 namespace coordinate
 {
 
-#define DEFAULT_PRECISION Integer::Undefined()
-
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -164,7 +160,7 @@ class Velocity
     ///
     /// @param [in] aPrecision A precision
     /// @return String representation of the velocity
-    String toString(const Integer& aPrecision = DEFAULT_PRECISION) const;
+    String toString(int aPrecision = -1) const;
 
     /// @brief Construct an undefined velocity
     ///

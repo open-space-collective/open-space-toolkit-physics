@@ -213,7 +213,7 @@ Position Position::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant&
     return Position::Meters(transform.applyToPosition(this->inMeters().accessCoordinates()), aFrameSPtr).inUnit(unit_);
 }
 
-String Position::toString(const Integer& aPrecision) const
+String Position::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
@@ -222,7 +222,7 @@ String Position::toString(const Integer& aPrecision) const
 
     return String::Format(
         "{} [{}] @ {}",
-        (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()),
+        ((aPrecision >= 0) ? coordinates_.toString(aPrecision) : coordinates_.toString()),
         Length::SymbolFromUnit(unit_),
         frameSPtr_->getName()
     );

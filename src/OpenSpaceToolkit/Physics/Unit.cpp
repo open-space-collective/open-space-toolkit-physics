@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -116,7 +118,7 @@ Unit::Type Unit::getType() const
     return type_;
 }
 
-Real Unit::ratioTo(const Unit& aUnit) const
+double Unit::ratioTo(const Unit& aUnit) const
 {
     if (!this->isDefined())
     {
@@ -160,7 +162,7 @@ Real Unit::ratioTo(const Unit& aUnit) const
             break;
     }
 
-    return Real::Undefined();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
 String Unit::toString() const

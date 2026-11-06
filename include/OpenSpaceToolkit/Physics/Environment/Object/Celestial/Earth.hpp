@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp>
@@ -31,7 +30,6 @@ namespace celestial
 
 using ostk::core::filesystem::Directory;
 using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -69,9 +67,9 @@ class Earth : public Celestial
     Earth(
         const Derived& aGravitationalParameter,
         const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
+        double aFlattening,
+        double aJ2,
+        double aJ4,
         const Shared<Ephemeris>& anEphemeris,
         const Shared<EarthGravitationalModel>& aGravitationalModel,
         const Shared<EarthMagneticModel>& aMagneticModel,
@@ -239,7 +237,7 @@ class Earth : public Celestial
 
    private:
     static Object::Geometry Geometry(
-        const Length& anEquatorialRadius, const Real& aFlattening, const Shared<const Frame>& aFrameSPtr
+        const Length& anEquatorialRadius, double aFlattening, const Shared<const Frame>& aFrameSPtr
     );
 };
 

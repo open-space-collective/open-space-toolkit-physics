@@ -14,7 +14,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 {
     using namespace pybind11;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
 
     using ostk::physics::environment::atmospheric::Earth;
@@ -91,12 +90,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                 init<
                     const Earth::Type&,
                     const Earth::InputDataType&,
-                    const Real&,
-                    const Real&,
-                    const Real&,
+                    double,
+                    double,
+                    double,
                     const Shared<const Frame>&,
                     const Length&,
-                    const Real&,
+                    double,
                     const Shared<Celestial>&>(),
                 arg("type"),
                 arg("input_data_type") = Earth::InputDataType::Undefined,
@@ -113,12 +112,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                 Args:
                     type (Earth.Type): Earth atmospheric model type.
                     input_data_type (Earth.InputDataType, optional): Earth atmospheric model input data type. Defaults to Earth.InputDataType.Undefined.
-                    f107_constant_value (Real, optional): F10.7 constant value. Defaults to 150.0.
-                    f107_average_constant_value (Real, optional): F10.7a constant value. Defaults to 150.0.
-                    kp_constant_value (Real, optional): Kp constant value. Defaults to 3.0.
+                    f107_constant_value (float, optional): F10.7 constant value. Defaults to 150.0.
+                    f107_average_constant_value (float, optional): F10.7a constant value. Defaults to 150.0.
+                    kp_constant_value (float, optional): Kp constant value. Defaults to 3.0.
                     earth_frame (Frame, optional): Earth frame. Defaults to Frame.ITRF().
                     earth_radius (Length, optional): Earth radius [m]. Defaults to the WGS84 equatorial radius.
-                    earth_flattening (Real, optional): Earth flattening. Defaults to the WGS84 flattening.
+                    earth_flattening (float, optional): Earth flattening. Defaults to the WGS84 flattening.
                     sun_celestial (Celestial, optional): Sun celestial object. Defaults to None.
 
                 Returns:
@@ -131,11 +130,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                     const Earth::Type&,
                     const Shared<const Frame>&,
                     const Earth::InputDataType&,
-                    const Real&,
-                    const Real&,
-                    const Real&,
+                    double,
+                    double,
+                    double,
                     const Length&,
-                    const Real&,
+                    double,
                     const Shared<Celestial>&>(),
                 arg("type"),
                 arg("earth_frame"),
@@ -153,11 +152,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                     type (Earth.Type): Earth atmospheric model type.
                     earth_frame (Frame): Earth frame.
                     input_data_type (Earth.InputDataType, optional): Earth atmospheric model input data type. Defaults to Earth.InputDataType.CSSISpaceWeatherFile.
-                    f107_constant_value (Real, optional): F10.7 constant value. Defaults to 150.0.
-                    f107_average_constant_value (Real, optional): F10.7a constant value. Defaults to 150.0.
-                    kp_constant_value (Real, optional): Kp constant value. Defaults to 3.0.
+                    f107_constant_value (float, optional): F10.7 constant value. Defaults to 150.0.
+                    f107_average_constant_value (float, optional): F10.7a constant value. Defaults to 150.0.
+                    kp_constant_value (float, optional): Kp constant value. Defaults to 3.0.
                     earth_radius (Length, optional): Earth radius [m]. Defaults to the WGS84 equatorial radius.
-                    earth_flattening (Real, optional): Earth flattening. Defaults to the WGS84 flattening.
+                    earth_flattening (float, optional): Earth flattening. Defaults to the WGS84 flattening.
                     sun_celestial (Celestial, optional): Sun celestial object. Defaults to None.
 
                 Returns:

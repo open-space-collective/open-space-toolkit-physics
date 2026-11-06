@@ -1,12 +1,10 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <limits>
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 #include <Global.test.hpp>
-
-using ostk::core::type::Real;
 
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Derived;
@@ -18,7 +16,7 @@ using ostk::physics::unit::Time;
 TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
 {
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Derived::Unit unit = {
             Length::Unit::Meter,
             Derived::Order::One(),
@@ -36,7 +34,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
     }
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Derived::Unit unit = {
             Length::Unit::Meter,
             Derived::Order::Two(),
@@ -54,7 +52,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
     }
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Derived::Unit unit = {
             Length::Unit::Meter,
             {1, 2},
@@ -72,7 +70,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
     }
 
     {
-        const Real value = Real::Undefined();
+        const double value = std::numeric_limits<double>::quiet_NaN();
         const Derived::Unit unit = Derived::Unit::Undefined();
 
         EXPECT_NO_THROW(Derived(value, unit));
@@ -390,7 +388,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, MultiplicationOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -438,8 +436,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) * Real::Undefined()) ;
-//         EXPECT_ANY_THROW(Real::Undefined() * Derived(1.0, Derived::Unit::Meter)) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) * std::numeric_limits<double>::quiet_NaN()) ;
+//         EXPECT_ANY_THROW(std::numeric_limits<double>::quiet_NaN() * Derived(1.0, Derived::Unit::Meter)) ;
 
 //     }
 
@@ -448,7 +446,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, DivisionOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -478,8 +476,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / Real::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / Real::Zero()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / std::numeric_limits<double>::quiet_NaN()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / 0.0) ;
 
 //     }
 
@@ -552,7 +550,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, MultiplicationAssignmentOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -582,7 +580,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) *= Real::Undefined()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) *= std::numeric_limits<double>::quiet_NaN()) ;
 
 //     }
 
@@ -591,7 +589,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, DivisionAssignmentOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -621,8 +619,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= Real::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= Real::Zero()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= std::numeric_limits<double>::quiet_NaN()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= 0.0) ;
 
 //     }
 
@@ -646,7 +644,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, IsDefined)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -663,7 +661,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 //     {
 
 //         EXPECT_FALSE(Derived::Undefined().isDefined()) ;
-//         EXPECT_FALSE(Derived(Real::Undefined(), Derived::Unit::Meter).isDefined()) ;
+//         EXPECT_FALSE(Derived(std::numeric_limits<double>::quiet_NaN(), Derived::Unit::Meter).isDefined()) ;
 //         EXPECT_FALSE(Derived(1.0, Derived::Unit::Undefined).isDefined()) ;
 
 //     }

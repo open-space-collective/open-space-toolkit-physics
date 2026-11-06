@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -72,38 +74,38 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
 
     // Time (UTC)
 
-    static const Real djmjd0 = 2400000.5;
-    const Real utc = anInstant.getModifiedJulianDate(Scale::UTC);
+    static const double djmjd0 = 2400000.5;
+    const double utc = anInstant.getModifiedJulianDate(Scale::UTC);
 
-    const Real date = std::floor(utc);
-    const Real time = utc - date;
+    const double date = std::floor(utc);
+    const double time = utc - date;
 
     // UT1 - UTC (s)
 
-    const Real dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
-    const Real tut = time + dut1 / DAYSEC;
+    const double dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+    const double tut = time + dut1 / DAYSEC;
 
     // UT1 as a 2-part Julian Date
 
-    const Real uta = djmjd0 + date;
-    const Real utb = tut;
+    const double uta = djmjd0 + date;
+    const double utb = tut;
 
     // Julian centuries since fundamental epoch
 
-    static const Real dj00 = 2451545.0;
-    const Real t = (uta + (utb - dj00)) / DJC;
+    static const double dj00 = 2451545.0;
+    const double t = (uta + (utb - dj00)) / DJC;
 
     // Greenwich apparent sidereal time (consistent with IAU 1982/94 resolutions)
 
-    static const Real a = 24110.54841 - DAYSEC / 2.0;
-    static const Real b = 8640184.812866;
-    static const Real c = 0.093104;
-    static const Real d = -6.2e-6;
+    static const double a = 24110.54841 - DAYSEC / 2.0;
+    static const double b = 8640184.812866;
+    static const double c = 0.093104;
+    static const double d = -6.2e-6;
 
-    const Real f = DAYSEC * (fmod(uta, 1.0) + fmod(utb, 1.0));
+    const double f = DAYSEC * (fmod(uta, 1.0) + fmod(utb, 1.0));
 
-    const Real gmst_1982 = ((a + (b * t) + (c * t * t) + (d * t * t * t)) + f) * DS2R;
-    const Real dgmst_1982 = ((b + (2.0 * c * t) + (3.0 * d * t * t)) / (DAYSEC * DJC) + 1.0) * DS2R;
+    const double gmst_1982 = ((a + (b * t) + (c * t * t) + (d * t * t * t)) + f) * DS2R;
+    const double dgmst_1982 = ((b + (2.0 * c * t) + (3.0 * d * t * t)) / (DAYSEC * DJC) + 1.0) * DS2R;
 
     const RotationMatrix R_3 = RotationMatrix::RZ(Angle::Radians(gmst_1982));  // dcm_PEF_TEME
 
@@ -111,14 +113,14 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
 
     const Vector2d polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
 
-    const Real xp = polarMotion.x() * DAS2R;  // [rad]
-    const Real yp = polarMotion.y() * DAS2R;  // [rad]
+    const double xp = polarMotion.x() * DAS2R;  // [rad]
+    const double yp = polarMotion.y() * DAS2R;  // [rad]
 
-    const Real cos_xp = std::cos(xp);
-    const Real sin_xp = std::sin(xp);
+    const double cos_xp = std::cos(xp);
+    const double sin_xp = std::sin(xp);
 
-    const Real cos_yp = std::cos(yp);
-    const Real sin_yp = std::sin(yp);
+    const double cos_yp = std::cos(yp);
+    const double sin_yp = std::sin(yp);
 
     const RotationMatrix W_1980 = RotationMatrix::Rows(
         {+cos_xp, +sin_xp * sin_yp, +sin_xp * cos_yp},

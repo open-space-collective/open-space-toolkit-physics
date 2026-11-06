@@ -15,7 +15,6 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Integer;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -135,9 +134,9 @@ class Date
     /// @param [in] (optional) aDay A day (1 - 31)
     /// @return Date
     Date replace(
-        const std::optional<Integer>& aYear = std::nullopt,
-        const std::optional<Integer>& aMonth = std::nullopt,
-        const std::optional<Integer>& aDay = std::nullopt
+        const std::optional<int>& aYear = std::nullopt,
+        const std::optional<int>& aMonth = std::nullopt,
+        const std::optional<int>& aDay = std::nullopt
     ) const;
 
     /// @brief Set year
@@ -253,7 +252,7 @@ class Date
 
     Date();
 
-    static void ValidateDate(const Integer& aYear, const Integer& aMonth, const Integer& aDay);
+    static void ValidateDate(int aYear, int aMonth, int aDay);
 };
 
 }  // namespace time

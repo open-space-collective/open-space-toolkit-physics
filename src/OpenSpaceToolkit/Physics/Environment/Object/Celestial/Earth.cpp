@@ -1,6 +1,9 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
@@ -22,9 +25,9 @@ using ostk::physics::coordinate::Frame;
 Earth::Earth(
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aJ2,
-    const Real& aJ4,
+    double aFlattening,
+    double aJ2,
+    double aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<EarthGravitationalModel>& aGravitationalModel,
     const Shared<EarthMagneticModel>& aMagneticModel,
@@ -172,17 +175,30 @@ Earth Earth::Spherical()
 }
 
 Object::Geometry Earth::Geometry(
-    const Length& anEquatorialRadius, const Real& aFlattening, const Shared<const Frame>& aFrameSPtr
+    const Length& anEquatorialRadius, double aFlattening, const Shared<const Frame>& aFrameSPtr
 )
 {
+    using ostk::core::type::Real;
+
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
-    const Real equatorialRadius_m = anEquatorialRadius.inMeters();
-    const Real polarRadius_m = equatorialRadius_m * (1.0 - aFlattening);
+    // Ellipsoid still takes ostk::core::type::Real, which treats NaN as a defined value: map NaN to Real::Undefined()
+    // so that an undefined radius or flattening still yields an undefined ellipsoid.
+    const auto toReal = [](double aValue) -> Real
+    {
+        return std::isnan(aValue) ? Real::Undefined() : Real(aValue);
+    };
+
+    const double equatorialRadius_m = anEquatorialRadius.inMeters();
+    const double polarRadius_m = equatorialRadius_m * (1.0 - aFlattening);
 
     const Ellipsoid ellipsoid = {
-        Point::Origin(), equatorialRadius_m, equatorialRadius_m, polarRadius_m, Quaternion::Unit()
+        Point::Origin(),
+        toReal(equatorialRadius_m),
+        toReal(equatorialRadius_m),
+        toReal(polarRadius_m),
+        Quaternion::Unit()
     };
 
     return {ellipsoid, aFrameSPtr};

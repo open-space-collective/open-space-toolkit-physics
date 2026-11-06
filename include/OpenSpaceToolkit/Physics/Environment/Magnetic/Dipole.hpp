@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Dipole__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
-
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
@@ -17,8 +15,6 @@ namespace environment
 {
 namespace magnetic
 {
-
-using ostk::core::type::Real;
 
 using ostk::physics::environment::magnetic::Model;
 using ostk::physics::time::Instant;

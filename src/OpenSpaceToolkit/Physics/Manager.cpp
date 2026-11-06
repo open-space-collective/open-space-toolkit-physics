@@ -11,7 +11,6 @@
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 

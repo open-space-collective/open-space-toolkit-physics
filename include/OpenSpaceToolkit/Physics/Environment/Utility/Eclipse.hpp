@@ -4,7 +4,6 @@
 #define __OpenSpaceToolkit_Physics_Environment_Utility_Eclipse__
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
@@ -26,7 +25,6 @@ namespace utilities
 {
 
 using ostk::core::container::Array;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
@@ -231,7 +229,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 /// Reference: Montenbruck and Gill, Satellite Orbits: Models, Methods, and Applications, 4th edition, Springer.
 ///
 /// @code
-///     Real shadowValue = montenbruckGillShadowFunction(anInstant, aPosition, sun, earth);
+///     double shadowValue = montenbruckGillShadowFunction(anInstant, aPosition, sun, earth);
 /// @endcode
 ///
 /// @param [in] anInstant The instant at which the shadow function is evaluated
@@ -241,7 +239,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 /// @return The value of the shadow function (0.0 for umbra, 1.0 for fully illuminated, and between
 /// 0.0 and 1.0 for penumbra)
 
-Real montenbruckGillShadowFunction(
+double montenbruckGillShadowFunction(
     const Instant& anInstant,
     const Position& aPosition,
     const Celestial& anOccultedCelestialObject,

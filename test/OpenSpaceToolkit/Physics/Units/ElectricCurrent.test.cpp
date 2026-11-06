@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
 
@@ -8,18 +9,17 @@
 
 TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Constructor)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::ElectricCurrent;
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const ElectricCurrent::Unit unit = ElectricCurrent::Unit::Ampere;
 
         EXPECT_NO_THROW(ElectricCurrent(value, unit));
     }
 
     {
-        const Real value = Real::Undefined();
+        const double value = std::numeric_limits<double>::quiet_NaN();
         const ElectricCurrent::Unit unit = ElectricCurrent::Unit::Undefined;
 
         EXPECT_NO_THROW(ElectricCurrent(value, unit));
@@ -28,11 +28,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Clone)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::ElectricCurrent;
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const ElectricCurrent::Unit unit = ElectricCurrent::Unit::Ampere;
 
         const ElectricCurrent electricCurrent = {value, unit};
@@ -44,7 +43,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, Clone)
 
 TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, IsDefined)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::ElectricCurrent;
 
     {
@@ -55,7 +53,9 @@ TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, IsDefined)
 
     {
         EXPECT_FALSE(ElectricCurrent::Undefined().isDefined());
-        EXPECT_FALSE(ElectricCurrent(Real::Undefined(), ElectricCurrent::Unit::Ampere).isDefined());
+        EXPECT_FALSE(
+            ElectricCurrent(std::numeric_limits<double>::quiet_NaN(), ElectricCurrent::Unit::Ampere).isDefined()
+        );
         EXPECT_FALSE(ElectricCurrent(1.0, ElectricCurrent::Unit::Undefined).isDefined());
     }
 }
@@ -79,7 +79,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, In)
     }
 
     {
-        EXPECT_FALSE(ElectricCurrent::Undefined().in(ElectricCurrent::Unit::Ampere).isDefined());
+        EXPECT_TRUE(std::isnan(ElectricCurrent::Undefined().in(ElectricCurrent::Unit::Ampere)));
     }
 }
 
@@ -92,7 +92,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_ElectricCurrent, InAmperes)
     }
 
     {
-        EXPECT_FALSE(ElectricCurrent::Undefined().inAmperes().isDefined());
+        EXPECT_TRUE(std::isnan(ElectricCurrent::Undefined().inAmperes()));
     }
 }
 

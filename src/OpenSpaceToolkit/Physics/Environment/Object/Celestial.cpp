@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -22,9 +24,9 @@ Celestial::Celestial(
     const Celestial::Type& aType,
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aJ2,
-    const Real& aJ4,
+    double aFlattening,
+    double aJ2,
+    double aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<GravitationalModel>& aGravitationalModel,
     const Shared<MagneticModel>& aMagneticModel,
@@ -49,9 +51,9 @@ Celestial::Celestial(
     const Celestial::Type& aType,
     const Derived& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aJ2,
-    const Real& aJ4,
+    double aFlattening,
+    double aJ2,
+    double aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<GravitationalModel>& aGravitationalModel,
     const Shared<MagneticModel>& aMagneticModel,
@@ -209,7 +211,7 @@ Length Celestial::getEquatorialRadius() const
     return equatorialRadius_;
 }
 
-Real Celestial::getFlattening() const
+double Celestial::getFlattening() const
 {
     if (!this->isDefined())
     {
@@ -219,7 +221,7 @@ Real Celestial::getFlattening() const
     return flattening_;
 }
 
-Real Celestial::getJ2() const
+double Celestial::getJ2() const
 {
     if (!this->isDefined())
     {
@@ -229,7 +231,7 @@ Real Celestial::getJ2() const
     return j2_;
 }
 
-Real Celestial::getJ4() const
+double Celestial::getJ4() const
 {
     if (!this->isDefined())
     {
@@ -370,7 +372,7 @@ Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Insta
         throw ostk::core::error::runtime::Undefined("Atmospheric model");
     }
 
-    const Real atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
+    const double atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
 
     const static Unit atmosphericDensityUnit =
         Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter));
@@ -441,9 +443,9 @@ Celestial Celestial::Undefined()
         Celestial::Type::Undefined,
         Derived::Undefined(),
         Length::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
+        std::numeric_limits<double>::quiet_NaN(),
+        std::numeric_limits<double>::quiet_NaN(),
+        std::numeric_limits<double>::quiet_NaN(),
         nullptr,
         nullptr,
         nullptr,

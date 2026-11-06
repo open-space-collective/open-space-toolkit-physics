@@ -5,7 +5,6 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp>
@@ -17,8 +16,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::io::URL;
@@ -122,7 +119,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISp
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3HourSolarIndicesAt)
 {
     {
-        const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
+        const Array<Tuple<String, Array<int>>> referenceScenarios = {
             {"2018-01-02 12:34:56", {17, 7, 3, 7, 17, 10, 20, 10}},
             {"2023-06-18 12:34:56", {27, 20, 13, 20, 17, 17, 27, 20}},
             {"2023-08-02 12:34:56", {13, 13, 13, 13, 13, 13, 13, 13}},
@@ -135,7 +132,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3Hou
 
             const Instant referenceInstant =
                 Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
-            const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
+            const Array<int> referenceIndices = std::get<1>(referenceScenario);
 
             // Test
             EXPECT_EQ(referenceIndices, manager_.getKp3HourSolarIndicesAt(referenceInstant));
@@ -166,7 +163,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3Hou
         // Reference data setup
 
         const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2023-06-20 12:34:56"), Scale::UTC);
-        const Array<Integer> referenceIndices {23, 17, 17, 13, 20, 27, 30, 30};
+        const Array<int> referenceIndices {23, 17, 17, 13, 20, 27, 30, 30};
 
         // Test
         EXPECT_EQ(referenceIndices, manager_.getKp3HourSolarIndicesAt(referenceInstant));
@@ -176,7 +173,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3Hou
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3HourSolarIndicesAt)
 {
     {
-        const Array<Tuple<String, Array<Integer>>> referenceScenarios = {
+        const Array<Tuple<String, Array<int>>> referenceScenarios = {
             {"2018-01-02 12:34:56", {6, 3, 2, 3, 6, 4, 7, 4}},
             {"2023-06-18 12:34:56", {12, 7, 5, 7, 6, 6, 12, 7}},
             {"2023-08-02 12:34:56", {5, 5, 5, 5, 5, 5, 5, 5}},
@@ -189,7 +186,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3Hou
 
             const Instant referenceInstant =
                 Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
-            const Array<Integer> referenceIndices = std::get<1>(referenceScenario);
+            const Array<int> referenceIndices = std::get<1>(referenceScenario);
 
             // Test
             EXPECT_EQ(referenceIndices, manager_.getAp3HourSolarIndicesAt(referenceInstant));
@@ -220,7 +217,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3Hou
         // Reference data setup
 
         const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2023-06-21 12:34:56"), Scale::UTC);
-        const Array<Integer> referenceIndices {12, 7, 4, 6, 7, 9, 4, 27};
+        const Array<int> referenceIndices {12, 7, 4, 6, 7, 9, 4, 27};
 
         // Test
         EXPECT_EQ(referenceIndices, manager_.getAp3HourSolarIndicesAt(referenceInstant));
@@ -230,7 +227,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3Hou
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDailySolarIndexAt)
 {
     {
-        const Array<Tuple<String, Integer>> referenceScenarios = {
+        const Array<Tuple<String, int>> referenceScenarios = {
             {"2018-01-02 12:34:56", 4},
             {"2023-06-18 12:34:56", 8},
             {"2023-08-02 12:34:56", 5},
@@ -243,7 +240,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDail
 
             const Instant referenceInstant =
                 Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
-            const Integer referenceIndex = std::get<1>(referenceScenario);
+            const int referenceIndex = std::get<1>(referenceScenario);
 
             // Test
             EXPECT_EQ(referenceIndex, manager_.getApDailyIndexAt(referenceInstant));
@@ -274,7 +271,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDail
         // Reference data setup
 
         const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2023-06-21 12:34:56"), Scale::UTC);
-        const Integer referenceIndex = 9;
+        const int referenceIndex = 9;
 
         // Test
         EXPECT_EQ(referenceIndex, manager_.getApDailyIndexAt(referenceInstant));
@@ -284,7 +281,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDail
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFluxAt)
 {
     {
-        const Array<Tuple<String, Real>> referenceScenarios = {
+        const Array<Tuple<String, double>> referenceScenarios = {
             {"2018-01-02 12:34:56", 69.5},  // observation
             {"2023-06-18 12:34:56", 164.1},
             {"2023-08-02 12:34:56", 165.0},  // daily prediction
@@ -299,7 +296,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
 
             const Instant referenceInstant =
                 Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
-            const Real referenceValue = std::get<1>(referenceScenario);
+            const double referenceValue = std::get<1>(referenceScenario);
 
             // Test
             EXPECT_EQ(referenceValue, manager_.getF107SolarFluxAt(referenceInstant));
@@ -330,7 +327,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
         // Reference data setup
 
         const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2018-01-03 12:34:56"), Scale::UTC);
-        const Real referenceValue = 69.1;
+        const double referenceValue = 69.1;
 
         // Test
         EXPECT_EQ(referenceValue, manager_.getF107SolarFluxAt(referenceInstant));
@@ -340,7 +337,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107SolarFlux81DayAvgAt)
 {
     {
-        const Array<Tuple<String, Real>> referenceScenarios = {
+        const Array<Tuple<String, double>> referenceScenarios = {
             {"2018-01-02 12:34:56", 71.5},  // observation
             {"2023-06-18 12:34:56", 160.4},
             {"2023-08-02 12:34:56", 157.5},  // daily prediction
@@ -355,7 +352,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
 
             const Instant referenceInstant =
                 Instant::DateTime(DateTime::Parse(std::get<0>(referenceScenario)), Scale::UTC);
-            const Real referenceValue = std::get<1>(referenceScenario);
+            const double referenceValue = std::get<1>(referenceScenario);
 
             // Test
             EXPECT_EQ(referenceValue, manager_.getF107SolarFlux81DayAvgAt(referenceInstant));
@@ -386,7 +383,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
         // Reference data setup
 
         const Instant referenceInstant = Instant::DateTime(DateTime::Parse("2018-01-03 12:34:56"), Scale::UTC);
-        const Real referenceValue = 71.5;
+        const double referenceValue = 71.5;
 
         // Test
         EXPECT_EQ(referenceValue, manager_.getF107SolarFlux81DayAvgAt(referenceInstant));

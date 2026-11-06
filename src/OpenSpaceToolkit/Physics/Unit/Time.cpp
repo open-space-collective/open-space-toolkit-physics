@@ -1,9 +1,12 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +15,9 @@ namespace physics
 namespace unit
 {
 
-Time::Time(const Real& aValue, const Time::Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+Time::Time(double aValue, const Time::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Time, aValue),
       unit_(aUnit)
 {
@@ -33,11 +38,11 @@ Time::Unit Time::getUnit() const
     return unit_;
 }
 
-Real Time::in(const Time::Unit& aUnit) const
+double Time::in(const Time::Unit& aUnit) const
 {
     if (!this->isDefined())
     {
-        return Real::Undefined();
+        return std::numeric_limits<double>::quiet_NaN();
     }
 
     if (unit_ == aUnit)
@@ -48,27 +53,27 @@ Real Time::in(const Time::Unit& aUnit) const
     return this->accessValue() * Time::SIRatio(unit_) / Time::SIRatio(aUnit);
 }
 
-Real Time::inSeconds() const
+double Time::inSeconds() const
 {
     return this->in(Time::Unit::Second);
 }
 
-String Time::toString(const Integer& aPrecision) const
+String Time::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Time");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->accessValue(), aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
 }
 
 Time Time::Undefined()
 {
-    return {Real::Undefined(), Time::Unit::Undefined};
+    return {std::numeric_limits<double>::quiet_NaN(), Time::Unit::Undefined};
 }
 
-Time Time::Seconds(const Real& aValue)
+Time Time::Seconds(double aValue)
 {
     return {aValue, Time::Unit::Second};
 }
@@ -153,7 +158,7 @@ String Time::SymbolFromUnit(const Time::Unit& aUnit)
     return String::Empty();
 }
 
-Real Time::SIRatio(const Time::Unit& aUnit)
+double Time::SIRatio(const Time::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -186,7 +191,7 @@ Real Time::SIRatio(const Time::Unit& aUnit)
             break;
     }
 
-    return Real::Undefined();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
 }  // namespace unit

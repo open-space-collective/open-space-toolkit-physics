@@ -6,7 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
 {
     using namespace pybind11;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
 
     using ostk::physics::coordinate::frame::Provider;

@@ -135,7 +135,7 @@ const Time& DateTime::accessTime() const
     return time_;
 }
 
-Real DateTime::getJulianDate() const
+double DateTime::getJulianDate() const
 {
     using ostk::core::type::Int16;
     using ostk::core::type::Int32;
@@ -160,14 +160,14 @@ Real DateTime::getJulianDate() const
     const Uint16 microsecond = time_.getMicrosecond();
     const Uint16 nanosecond = time_.getNanosecond();
 
-    const Real fractionalDay = ((hour - 12.0) + (minute / 60.0) + (second / 3600.0) +
-                                ((millisecond / 1e3) + (microsecond / 1e6) + (nanosecond / 1e9)) / 3600.0) /
-                               24.0;
+    const double fractionalDay = ((hour - 12.0) + (minute / 60.0) + (second / 3600.0) +
+                                  ((millisecond / 1e3) + (microsecond / 1e6) + (nanosecond / 1e9)) / 3600.0) /
+                                 24.0;
 
-    return Real(julianDate) + fractionalDay;
+    return double(julianDate) + fractionalDay;
 }
 
-Real DateTime::getModifiedJulianDate() const
+double DateTime::getModifiedJulianDate() const
 {
     using ostk::core::type::Int16;
     using ostk::core::type::Int32;
@@ -196,14 +196,14 @@ Real DateTime::getModifiedJulianDate() const
     const Uint16 microsecond = time_.getMicrosecond();
     const Uint16 nanosecond = time_.getNanosecond();
 
-    const Real fractionalDay = (hour + (minute / 60.0) + (second / 3600.0) +
-                                ((millisecond / 1e3) + (microsecond / 1e6) + (nanosecond / 1e9)) / 3600.0) /
-                               24.0;
+    const double fractionalDay = (hour + (minute / 60.0) + (second / 3600.0) +
+                                  ((millisecond / 1e3) + (microsecond / 1e6) + (nanosecond / 1e9)) / 3600.0) /
+                                 24.0;
 
     // The Julian Day Number refers to noon of the calendar day: the Modified Julian Date
     // (offset 2400000.5) at midnight of that day is JDN - 2400001.
 
-    return Real(julianDayNumber - 2400001) + fractionalDay;
+    return double(julianDayNumber - 2400001) + fractionalDay;
 }
 
 String DateTime::toString(const DateTime::Format& aFormat) const
@@ -257,14 +257,14 @@ DateTime DateTime::ModifiedJulianDateEpoch()
     return {Date::ModifiedJulianDateEpoch(), Time::Midnight()};
 }
 
-DateTime DateTime::JulianDate(const Real& aJulianDate)
+DateTime DateTime::JulianDate(double aJulianDate)
 {
     using ostk::core::type::Int32;
     using ostk::core::type::Int64;
     using ostk::core::type::Uint32;
     using ostk::core::type::Uint64;
 
-    if (!aJulianDate.isDefined())
+    if (std::isnan(aJulianDate))
     {
         throw ostk::core::error::runtime::Undefined("Julian Date");
     }
@@ -408,9 +408,9 @@ DateTime DateTime::JulianDate(const Real& aJulianDate)
     return DateTime(year, month, day, hours, minute, second, millisecond, microsecond, nanosecond);
 }
 
-DateTime DateTime::ModifiedJulianDate(const Real& aModifiedJulianDate)
+DateTime DateTime::ModifiedJulianDate(double aModifiedJulianDate)
 {
-    if (!aModifiedJulianDate.isDefined())
+    if (std::isnan(aModifiedJulianDate))
     {
         throw ostk::core::error::runtime::Undefined("Modified Julian Date");
     }
@@ -525,12 +525,12 @@ DateTime DateTime::Parse(const String& aString, const DateTime::Format& aFormat)
     return DateTime::Undefined();
 }
 
-Real DateTime::ModifiedJulianDateFromJulianDate(const Real& aJulianDate)
+double DateTime::ModifiedJulianDateFromJulianDate(double aJulianDate)
 {
     return aJulianDate - 2400000.5;  // MJD = JD - 2400000.5 [day]
 }
 
-Real DateTime::JulianDateFromModifiedJulianDate(const Real& aModifiedJulianDate)
+double DateTime::JulianDateFromModifiedJulianDate(double aModifiedJulianDate)
 {
     return aModifiedJulianDate + 2400000.5;  // JD = MJD + 2400000.5 [day]
 }

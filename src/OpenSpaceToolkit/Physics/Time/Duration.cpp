@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <cmath>
+#include <limits>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
@@ -104,14 +105,14 @@ Duration Duration::operator-(const Duration& aDuration) const
     return Duration(count_ - aDuration.count_);
 }
 
-Duration Duration::operator*(const Real& aMultiplier) const
+Duration Duration::operator*(double aMultiplier) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    if (!aMultiplier.isDefined())
+    if (std::isnan(aMultiplier))
     {
         throw ostk::core::error::runtime::Undefined("Multiplier");
     }
@@ -119,19 +120,19 @@ Duration Duration::operator*(const Real& aMultiplier) const
     return Duration(count_ * static_cast<double>(aMultiplier));
 }
 
-Duration Duration::operator/(const Real& aDivider) const
+Duration Duration::operator/(double aDivider) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    if (!aDivider.isDefined())
+    if (std::isnan(aDivider))
     {
         throw ostk::core::error::runtime::Undefined("Divider");
     }
 
-    if (aDivider.isZero())
+    if (aDivider == 0.0)
     {
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
@@ -183,14 +184,14 @@ Duration& Duration::operator-=(const Duration& aDuration)
     return *this;
 }
 
-Duration& Duration::operator*=(const Real& aMultiplier)
+Duration& Duration::operator*=(double aMultiplier)
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    if (!aMultiplier.isDefined())
+    if (std::isnan(aMultiplier))
     {
         throw ostk::core::error::runtime::Undefined("Multiplier");
     }
@@ -200,19 +201,19 @@ Duration& Duration::operator*=(const Real& aMultiplier)
     return *this;
 }
 
-Duration& Duration::operator/=(const Real& aDivider)
+Duration& Duration::operator/=(double aDivider)
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    if (!aDivider.isDefined())
+    if (std::isnan(aDivider))
     {
         throw ostk::core::error::runtime::Undefined("Divider");
     }
 
-    if (aDivider.isZero())
+    if (aDivider == 0.0)
     {
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
@@ -303,84 +304,84 @@ bool Duration::isNear(const Duration& aDuration, const Duration& aTolerance) con
     return std::abs(count_ - aDuration.count_) <= aTolerance.count_;
 }
 
-Integer Duration::getNanoseconds() const
+int Duration::getNanoseconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64(std::abs(count_) % 1000);
+    return static_cast<int>(std::abs(count_) % 1000);
 }
 
-Integer Duration::getMicroseconds() const
+int Duration::getMicroseconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64((std::abs(count_) / 1000) % 1000);
+    return static_cast<int>((std::abs(count_) / 1000) % 1000);
 }
 
-Integer Duration::getMilliseconds() const
+int Duration::getMilliseconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64((std::abs(count_) / 1000000) % 1000);
+    return static_cast<int>((std::abs(count_) / 1000000) % 1000);
 }
 
-Integer Duration::getSeconds() const
+int Duration::getSeconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64((std::abs(count_) / 1000000000) % 60);
+    return static_cast<int>((std::abs(count_) / 1000000000) % 60);
 }
 
-Integer Duration::getMinutes() const
+int Duration::getMinutes() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64((std::abs(count_) / 60000000000) % 60);
+    return static_cast<int>((std::abs(count_) / 60000000000) % 60);
 }
 
-Integer Duration::getHours() const
+int Duration::getHours() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64((std::abs(count_) / 3600000000000) % 24);
+    return static_cast<int>((std::abs(count_) / 3600000000000) % 24);
 }
 
-Integer Duration::getDays() const
+int Duration::getDays() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64(std::abs(count_) / 86400000000000);
+    return static_cast<int>(std::abs(count_) / 86400000000000);
 }
 
-Integer Duration::getWeeks() const
+int Duration::getWeeks() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Integer::Int64(std::abs(count_) / 604800000000000);
+    return static_cast<int>(std::abs(count_) / 604800000000000);
 }
 
 Duration Duration::getAbsolute() const
@@ -393,87 +394,87 @@ Duration Duration::getAbsolute() const
     return Duration(std::abs(count_));
 }
 
-Real Duration::inNanoseconds() const
+double Duration::inNanoseconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_);
+    return double(count_);
 }
 
-Real Duration::inMicroseconds() const
+double Duration::inMicroseconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 1e3);
+    return double(count_ / 1e3);
 }
 
-Real Duration::inMilliseconds() const
+double Duration::inMilliseconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 1e6);
+    return double(count_ / 1e6);
 }
 
-Real Duration::inSeconds() const
+double Duration::inSeconds() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 1e9);
+    return double(count_ / 1e9);
 }
 
-Real Duration::inMinutes() const
+double Duration::inMinutes() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 60000000000.0);
+    return double(count_ / 60000000000.0);
 }
 
-Real Duration::inHours() const
+double Duration::inHours() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 3600000000000.0);
+    return double(count_ / 3600000000000.0);
 }
 
-Real Duration::inDays() const
+double Duration::inDays() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 86400000000000.0);
+    return double(count_ / 86400000000000.0);
 }
 
-Real Duration::inWeeks() const
+double Duration::inWeeks() const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    return Real(count_ / 604800000000000.0);
+    return double(count_ / 604800000000000.0);
 }
 
-Real Duration::in(const unit::Time::Unit& aTimeUnit) const
+double Duration::in(const unit::Time::Unit& aTimeUnit) const
 {
     if (!this->isDefined())
     {
@@ -483,35 +484,35 @@ Real Duration::in(const unit::Time::Unit& aTimeUnit) const
     switch (aTimeUnit)
     {
         case unit::Time::Unit::Nanosecond:
-            return Real(count_);
+            return double(count_);
 
         case unit::Time::Unit::Microsecond:
-            return Real(count_ / 1e3);
+            return double(count_ / 1e3);
 
         case unit::Time::Unit::Millisecond:
-            return Real(count_ / 1e6);
+            return double(count_ / 1e6);
 
         case unit::Time::Unit::Second:
-            return Real(count_ / 1e9);
+            return double(count_ / 1e9);
 
         case unit::Time::Unit::Minute:
-            return Real(count_ / 60000000000.0);
+            return double(count_ / 60000000000.0);
 
         case unit::Time::Unit::Hour:
-            return Real(count_ / 3600000000000.0);
+            return double(count_ / 3600000000000.0);
 
         case unit::Time::Unit::Day:
-            return Real(count_ / 86400000000000.0);
+            return double(count_ / 86400000000000.0);
 
         case unit::Time::Unit::Week:
-            return Real(count_ / 604800000000000.0);
+            return double(count_ / 604800000000000.0);
 
         default:
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
 
-    return Real::Undefined();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
 String Duration::toString(const Duration::Format& aFormat) const
@@ -521,13 +522,13 @@ String Duration::toString(const Duration::Format& aFormat) const
         throw ostk::core::error::runtime::Undefined("Duration");
     }
 
-    const Integer nanoseconds = this->getNanoseconds();
-    const Integer microseconds = this->getMicroseconds();
-    const Integer milliseconds = this->getMilliseconds();
-    const Integer seconds = this->getSeconds();
-    const Integer minutes = this->getMinutes();
-    const Integer hours = this->getHours();
-    const Integer days = this->getDays();
+    const int nanoseconds = this->getNanoseconds();
+    const int microseconds = this->getMicroseconds();
+    const int milliseconds = this->getMilliseconds();
+    const int seconds = this->getSeconds();
+    const int minutes = this->getMinutes();
+    const int hours = this->getHours();
+    const int days = this->getDays();
 
     switch (aFormat)
     {
@@ -603,9 +604,9 @@ String Duration::toString(const Duration::Format& aFormat) const
 
             if ((milliseconds > 0) || (microseconds > 0) || (nanoseconds > 0))  // Floating seconds
             {
-                const Real floatingSeconds = Real::Integer(seconds) + (Real::Integer(milliseconds) / 1000.0) +
-                                             (Real::Integer(microseconds) / 1000000.0) +
-                                             (Real::Integer(nanoseconds) / 1000000000.0);
+                const double floatingSeconds =
+                    static_cast<double>(seconds) + (static_cast<double>(milliseconds) / 1000.0) +
+                    (static_cast<double>(microseconds) / 1000000.0) + (static_cast<double>(nanoseconds) / 1000000000.0);
 
                 // [TBM] Pretty ugly implementation, couldn't quickly find a better way... feel free to improve!
 
@@ -682,43 +683,83 @@ Duration Duration::Zero()
     return Duration(0);
 }
 
-Duration Duration::Nanoseconds(const Real& aNanosecondCount)
+Duration Duration::Nanoseconds(double aNanosecondCount)
 {
+    if (std::isnan(aNanosecondCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aNanosecondCount));
 }
 
-Duration Duration::Microseconds(const Real& aMicrosecondCount)
+Duration Duration::Microseconds(double aMicrosecondCount)
 {
+    if (std::isnan(aMicrosecondCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aMicrosecondCount * 1e3));
 }
 
-Duration Duration::Milliseconds(const Real& aMillisecondCount)
+Duration Duration::Milliseconds(double aMillisecondCount)
 {
+    if (std::isnan(aMillisecondCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aMillisecondCount * 1e6));
 }
 
-Duration Duration::Seconds(const Real& aSecondCount)
+Duration Duration::Seconds(double aSecondCount)
 {
+    if (std::isnan(aSecondCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aSecondCount * 1e9));
 }
 
-Duration Duration::Minutes(const Real& aMinuteCount)
+Duration Duration::Minutes(double aMinuteCount)
 {
+    if (std::isnan(aMinuteCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aMinuteCount * 60000000000.0));
 }
 
-Duration Duration::Hours(const Real& anHourCount)
+Duration Duration::Hours(double anHourCount)
 {
+    if (std::isnan(anHourCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(anHourCount * 3600000000000.0));
 }
 
-Duration Duration::Days(const Real& aDayCount)
+Duration Duration::Days(double aDayCount)
 {
+    if (std::isnan(aDayCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aDayCount * 86400000000000.0));
 }
 
-Duration Duration::Weeks(const Real& aWeekCount)
+Duration Duration::Weeks(double aWeekCount)
 {
+    if (std::isnan(aWeekCount))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
     return Duration(static_cast<Int64>(aWeekCount * 604800000000000.0));
 }
 

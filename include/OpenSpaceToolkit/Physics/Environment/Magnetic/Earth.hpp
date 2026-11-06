@@ -4,7 +4,6 @@
 #define __OpenSpaceToolkit_Physics_Environment_Magnetic_Earth__
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
@@ -23,7 +22,6 @@ namespace magnetic
 {
 
 using ostk::core::filesystem::Directory;
-using ostk::core::type::Real;
 using ostk::core::type::Unique;
 
 using ostk::io::URL;

@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 #include <optional>
 #include <string>
 #include <unordered_map>
@@ -1907,7 +1908,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 {
-    using ostk::core::type::Real;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
@@ -1926,7 +1926,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
     {
         for (auto const& scale : scales)
         {
-            EXPECT_ANY_THROW(Instant::JulianDate(Real::Undefined(), scale));
+            EXPECT_ANY_THROW(Instant::JulianDate(std::numeric_limits<double>::quiet_NaN(), scale));
         }
 
         EXPECT_ANY_THROW(Instant::JulianDate(0.0, Scale::Undefined));
@@ -1935,7 +1935,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 {
-    using ostk::core::type::Real;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
@@ -1951,7 +1950,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
     {
         for (auto const& scale : scales)
         {
-            EXPECT_ANY_THROW(Instant::ModifiedJulianDate(Real::Undefined(), scale));
+            EXPECT_ANY_THROW(Instant::ModifiedJulianDate(std::numeric_limits<double>::quiet_NaN(), scale));
         }
 
         EXPECT_ANY_THROW(Instant::ModifiedJulianDate(0.0, Scale::Undefined));

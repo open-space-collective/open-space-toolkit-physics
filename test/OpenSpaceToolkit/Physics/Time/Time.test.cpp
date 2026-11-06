@@ -1,10 +1,10 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
 #include <Global.test.hpp>
-
-using ostk::core::type::Integer;
 
 using ostk::physics::time::Time;
 
@@ -272,7 +272,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Replace)
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(24));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(-1));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(256));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(Integer::Undefined()));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, 60));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, 61));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, std::nullopt, 1000));
@@ -495,11 +494,19 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Seconds)
     {
         EXPECT_EQ(Time(12, 30, 15, 234, 456, 678), Time::Seconds(45015.234456678001));
     }
+
+    {
+        EXPECT_ANY_THROW(Time::Seconds(std::numeric_limits<double>::quiet_NaN()));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, Hours)
 {
     {
         EXPECT_EQ(Time(12, 30, 15, 234, 456, 678), Time::Hours(12.504231793521667));
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Hours(std::numeric_limits<double>::quiet_NaN()));
     }
 }

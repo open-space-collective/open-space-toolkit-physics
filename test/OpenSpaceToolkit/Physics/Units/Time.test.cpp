@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
 
@@ -8,18 +9,17 @@
 
 TEST(OpenSpaceToolkit_Physics_Unit_Time, Constructor)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Time;
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Time::Unit unit = Time::Unit::Second;
 
         EXPECT_NO_THROW(Time(value, unit));
     }
 
     {
-        const Real value = Real::Undefined();
+        const double value = std::numeric_limits<double>::quiet_NaN();
         const Time::Unit unit = Time::Unit::Undefined;
 
         EXPECT_NO_THROW(Time(value, unit));
@@ -28,7 +28,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, Constructor)
 
 TEST(OpenSpaceToolkit_Physics_Unit_Time, IsDefined)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Time;
 
     {
@@ -46,7 +45,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, IsDefined)
 
     {
         EXPECT_FALSE(Time::Undefined().isDefined());
-        EXPECT_FALSE(Time(Real::Undefined(), Time::Unit::Second).isDefined());
+        EXPECT_FALSE(Time(std::numeric_limits<double>::quiet_NaN(), Time::Unit::Second).isDefined());
         EXPECT_FALSE(Time(1.0, Time::Unit::Undefined).isDefined());
     }
 }
@@ -95,14 +94,14 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, In)
     }
 
     {
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Nanosecond).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Microsecond).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Millisecond).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Second).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Minute).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Hour).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Day).isDefined());
-        EXPECT_FALSE(Time::Undefined().in(Time::Unit::Week).isDefined());
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Nanosecond)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Microsecond)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Millisecond)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Second)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Minute)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Hour)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Day)));
+        EXPECT_TRUE(std::isnan(Time::Undefined().in(Time::Unit::Week)));
     }
 }
 
@@ -115,7 +114,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Time, InSeconds)
     }
 
     {
-        EXPECT_FALSE(Time::Undefined().inSeconds().isDefined());
+        EXPECT_TRUE(std::isnan(Time::Undefined().inSeconds()));
     }
 }
 

@@ -43,7 +43,7 @@ Vector3d Dipole::getFieldValueAt(const Vector3d& aPosition, const Instant& anIns
 {
     (void)anInstant;  // Temporal invariance
 
-    const Real r = aPosition.norm();  // [m]
+    const double r = aPosition.norm();  // [m]
 
     const Vector3d magneticField =
         1e-7 * (3.0 * (magneticMoment_SI_.dot(aPosition)) * aPosition - std::pow(r, 2.0) * magneticMoment_SI_) /

@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
 #include <Global.test.hpp>
@@ -436,7 +438,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return reading.F107Obs.isDefined();
+                return !std::isnan(reading.F107Obs);
             },
             Instant::DateTime(DateTime::Parse("2018-01-03 00:00:00"), Scale::UTC)
         );
@@ -571,7 +573,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_FALSE(reading.Ap7.isDefined());
         EXPECT_FALSE(reading.Ap8.isDefined());
         EXPECT_FALSE(reading.ApAvg.isDefined());
-        EXPECT_FALSE(reading.Cp.isDefined());
+        EXPECT_TRUE(std::isnan(reading.Cp));
         EXPECT_FALSE(reading.C9.isDefined());
         EXPECT_EQ(98, reading.ISN);
         EXPECT_NEAR(125.8, reading.F107Obs, 1e-15);

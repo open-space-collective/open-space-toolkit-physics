@@ -1,7 +1,9 @@
 /// Apache License 2.0
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <sstream>
 
 #include <boost/algorithm/string/trim.hpp>
@@ -16,6 +18,7 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -31,7 +34,7 @@ namespace earth
 using ostk::core::container::Object;
 using ostk::core::container::Table;
 using ostk::core::type::Index;
-using ostk::core::type::Real;
+using ostk::core::type::Integer;
 using ostk::core::type::Size;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
@@ -43,6 +46,7 @@ using ostk::physics::time::Scale;
 using ostk::physics::time::Time;
 
 using ostk::physics::data::utilities::getFileModifiedInstant;
+using ostk::physics::utility::ParseDouble;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather)
 {
@@ -255,7 +259,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessObservationAt(const Ins
     // the end of the observationInterval (within some nanoseconds) can have an MJD in the next day
     // due to floating-point rounding error.
     const Date date = anInstant.getDateTime(Scale::UTC).getDate();
-    const Integer mjd = DateTime(date, Time::Midnight()).getModifiedJulianDate().floor();
+    const int mjd = static_cast<int>(std::floor(DateTime(date, Time::Midnight()).getModifiedJulianDate()));
 
     const auto observationIt = observations_.find(mjd);
 
@@ -303,7 +307,7 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessDailyPredictionAt(const
     // the end of the dailyPredictionInterval (within some nanoseconds) can have an MJD in the next day
     // due to floating-point rounding error.
     const Date date = anInstant.getDateTime(Scale::UTC).getDate();
-    const Integer mjd = DateTime(date, Time::Midnight()).getModifiedJulianDate().floor();
+    const int mjd = static_cast<int>(std::floor(DateTime(date, Time::Midnight()).getModifiedJulianDate()));
 
     const auto predictionIt = dailyPredictions_.find(mjd);
 
@@ -349,12 +353,12 @@ const CSSISpaceWeather::Reading& CSSISpaceWeather::accessMonthlyPredictionAt(con
 
     const Date date = anInstant.getDateTime(Scale::UTC).getDate();
 
-    const Integer year = date.getYear();
-    const Integer month = date.getMonth();
+    const int year = date.getYear();
+    const int month = date.getMonth();
 
-    const Real monthMjd = DateTime(year, month, 1).getModifiedJulianDate();
+    const double monthMjd = DateTime(year, month, 1).getModifiedJulianDate();
 
-    const auto predictionIt = monthlyPredictions_.find(monthMjd.floor());
+    const auto predictionIt = monthlyPredictions_.find(static_cast<int>(std::floor(monthMjd)));
 
     if (predictionIt != monthlyPredictions_.end())
     {
@@ -471,7 +475,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 
     Table spaceWeatherTable = Table::Load(aFile, Table::Format::CSV, true);
 
-    // Helper functions to parse optional Integer/Real cells
+    // Helper functions to parse optional Integer/double cells
     const auto parseOptionalIntegerCell = [](const Object& obj) -> Integer
     {
         if (!obj.isDefined())
@@ -489,24 +493,24 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         return Integer::Parse(obj.getString().trim());
     };
 
-    const auto parseOptionalRealCell = [](const Object& obj) -> Real
+    const auto parseOptionalRealCell = [](const Object& obj) -> double
     {
         if (!obj.isDefined())
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
 
         if (obj.isReal())
             return obj.getReal();
 
         if (obj.isInteger())
-            return Real::Integer(obj.getInteger());
+            return static_cast<double>(obj.getInteger());
 
         if (!obj.isString())
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
 
         if (obj.getString().trim().empty())
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
 
-        return Real::Parse(obj.getString().trim());
+        return ParseDouble(obj.getString().trim());
     };
 
     for (const auto& row : spaceWeatherTable)
@@ -524,7 +528,7 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
             continue;
         }
 
-        const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
+        const int mjd = static_cast<int>(std::floor(DateTime(date, Time(0, 0, 0)).getModifiedJulianDate()));
 
         const Integer BSRN = parseOptionalIntegerCell(row[1]);
         const Integer ND = parseOptionalIntegerCell(row[2]);
@@ -546,16 +550,16 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         const Integer Ap7 = parseOptionalIntegerCell(row[18]);
         const Integer Ap8 = parseOptionalIntegerCell(row[19]);
         const Integer ApAvg = parseOptionalIntegerCell(row[20]);
-        const Real Cp = parseOptionalRealCell(row[21]);
+        const double Cp = parseOptionalRealCell(row[21]);
         const Integer C9 = parseOptionalIntegerCell(row[22]);
         const Integer ISN = parseOptionalIntegerCell(row[23]);
-        const Real F107Obs = parseOptionalRealCell(row[24]);
-        const Real F107Adj = parseOptionalRealCell(row[25]);
+        const double F107Obs = parseOptionalRealCell(row[24]);
+        const double F107Adj = parseOptionalRealCell(row[25]);
         const String F107DataType = row[26].getString();
-        const Real F107ObsCenter81 = parseOptionalRealCell(row[27]);
-        const Real F107ObsLast81 = parseOptionalRealCell(row[28]);
-        const Real F107AdjCenter81 = parseOptionalRealCell(row[29]);
-        const Real F107AdjLast81 = parseOptionalRealCell(row[30]);
+        const double F107ObsCenter81 = parseOptionalRealCell(row[27]);
+        const double F107ObsLast81 = parseOptionalRealCell(row[28]);
+        const double F107AdjCenter81 = parseOptionalRealCell(row[29]);
+        const double F107AdjLast81 = parseOptionalRealCell(row[30]);
 
         const CSSISpaceWeather::Reading reading = {
             date,
@@ -614,11 +618,11 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
 
         const Instant observationStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(static_cast<double>(spaceWeather.observations_.begin()->first), Scale::UTC);
 
         // End at the end of the day
         const Instant observationEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC) +
+            Instant::ModifiedJulianDate(static_cast<double>(spaceWeather.observations_.rbegin()->first), Scale::UTC) +
             Duration::Days(1);
 
         spaceWeather.observationInterval_ =
@@ -628,11 +632,13 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
     if (!spaceWeather.dailyPredictions_.empty())
     {
         const Instant dailyPredictionStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
+            Instant::ModifiedJulianDate(static_cast<double>(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
 
         // End at the end of the day
         const Instant dailyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC) +
+            Instant::ModifiedJulianDate(
+                static_cast<double>(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC
+            ) +
             Duration::Days(1);
 
         spaceWeather.dailyPredictionInterval_ =
@@ -648,18 +654,21 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
         overlapMonthlyReading.date = monthBeginningDate;
         overlapMonthlyReading.F107DataType = "PRM";
 
-        const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
+        const int monthMjd =
+            static_cast<int>(std::floor(DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate()));
         spaceWeather.monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});
     }
 
     if (!spaceWeather.monthlyPredictions_.empty())
     {
-        const Instant monthlyPredictionStartInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC);
+        const Instant monthlyPredictionStartInstant = Instant::ModifiedJulianDate(
+            static_cast<double>(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC
+        );
 
         // End at the end of the day
-        const Instant monthlyPredictionEndInstant =
-            Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC);
+        const Instant monthlyPredictionEndInstant = Instant::ModifiedJulianDate(
+            static_cast<double>(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC
+        );
 
         spaceWeather.monthlyPredictionInterval_ =
             Interval::Closed(monthlyPredictionStartInstant, monthlyPredictionEndInstant);
@@ -671,7 +680,6 @@ CSSISpaceWeather CSSISpaceWeather::Load(const File& aFile)
 CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
 {
     using ostk::core::type::Index;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
     using ostk::core::type::Uint8;
@@ -762,11 +770,13 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             spaceWeather.lastObservationDate_ = spaceWeather.observations_.rbegin()->second.date;
 
             const Instant observationStartInstant =
-                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.begin()->first), Scale::UTC);
+                Instant::ModifiedJulianDate(static_cast<double>(spaceWeather.observations_.begin()->first), Scale::UTC);
 
             // End at the end of the day
             const Instant observationEndInstant =
-                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.observations_.rbegin()->first), Scale::UTC) +
+                Instant::ModifiedJulianDate(
+                    static_cast<double>(spaceWeather.observations_.rbegin()->first), Scale::UTC
+                ) +
                 Duration::Days(1);
 
             spaceWeather.observationInterval_ =
@@ -779,12 +789,15 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
         {
             readingDailyPredicted = false;
 
-            const Instant dailyPredictionStartInstant =
-                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC);
+            const Instant dailyPredictionStartInstant = Instant::ModifiedJulianDate(
+                static_cast<double>(spaceWeather.dailyPredictions_.begin()->first), Scale::UTC
+            );
 
             // End at the end of the day
             const Instant dailyPredictionEndInstant =
-                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC) +
+                Instant::ModifiedJulianDate(
+                    static_cast<double>(spaceWeather.dailyPredictions_.rbegin()->first), Scale::UTC
+                ) +
                 Duration::Days(1);
 
             spaceWeather.dailyPredictionInterval_ =
@@ -800,7 +813,8 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
             overlapMonthlyReading.date = monthBeginningDate;
             overlapMonthlyReading.F107DataType = "PRM";
 
-            const Integer monthMjd = DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate().floor();
+            const int monthMjd =
+                static_cast<int>(std::floor(DateTime(monthBeginningDate, Time::Midnight()).getModifiedJulianDate()));
             spaceWeather.monthlyPredictions_.insert({monthMjd, overlapMonthlyReading});
 
             continue;
@@ -810,11 +824,12 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
         {
             readingMonthlyPredicted = false;
 
-            const Instant monthlyPredictionStartInstant =
-                Instant::ModifiedJulianDate(Real::Integer(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC);
+            const Instant monthlyPredictionStartInstant = Instant::ModifiedJulianDate(
+                static_cast<double>(spaceWeather.monthlyPredictions_.begin()->first), Scale::UTC
+            );
 
             const Instant monthlyPredictionEndInstant = Instant::ModifiedJulianDate(
-                Real::Integer(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC
+                static_cast<double>(spaceWeather.monthlyPredictions_.rbegin()->first), Scale::UTC
             );
 
             spaceWeather.monthlyPredictionInterval_ =
@@ -825,40 +840,40 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
         {
             try
             {
-                Integer DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
-                Integer DATE_MONT = boost::lexical_cast<int>(lineParts[1]);
-                Integer DATE_DAY = boost::lexical_cast<int>(lineParts[2]);
-                Integer BSRN = boost::lexical_cast<int>(lineParts[3]);
-                Integer ND = boost::lexical_cast<int>(lineParts[4]);
-                Integer Kp1 = boost::lexical_cast<int>(lineParts[5]);
-                Integer Kp2 = boost::lexical_cast<int>(lineParts[6]);
-                Integer Kp3 = boost::lexical_cast<int>(lineParts[7]);
-                Integer Kp4 = boost::lexical_cast<int>(lineParts[8]);
-                Integer Kp5 = boost::lexical_cast<int>(lineParts[9]);
-                Integer Kp6 = boost::lexical_cast<int>(lineParts[10]);
-                Integer Kp7 = boost::lexical_cast<int>(lineParts[11]);
-                Integer Kp8 = boost::lexical_cast<int>(lineParts[12]);
-                Integer KpSum = boost::lexical_cast<int>(lineParts[13]);
-                Integer Ap1 = boost::lexical_cast<int>(lineParts[14]);
-                Integer Ap2 = boost::lexical_cast<int>(lineParts[15]);
-                Integer Ap3 = boost::lexical_cast<int>(lineParts[16]);
-                Integer Ap4 = boost::lexical_cast<int>(lineParts[17]);
-                Integer Ap5 = boost::lexical_cast<int>(lineParts[18]);
-                Integer Ap6 = boost::lexical_cast<int>(lineParts[19]);
-                Integer Ap7 = boost::lexical_cast<int>(lineParts[20]);
-                Integer Ap8 = boost::lexical_cast<int>(lineParts[21]);
-                Integer ApAvg = boost::lexical_cast<int>(lineParts[22]);
-                Real Cp = boost::lexical_cast<double>(lineParts[23]);
-                Integer C9 = boost::lexical_cast<int>(lineParts[24]);
-                Integer ISN = boost::lexical_cast<int>(lineParts[25]);
-                Real F107Adj = boost::lexical_cast<double>(lineParts[26]);
-                // Real Q = boost::lexical_cast<double>(lineParts[27]); // This isn't in the CSV format, so let's ignore
-                // it
-                Real F107AdjCenter81 = boost::lexical_cast<double>(lineParts[28]);
-                Real F107AdjLast81 = boost::lexical_cast<double>(lineParts[29]);
-                Real F107Obs = boost::lexical_cast<double>(lineParts[30]);
-                Real F107ObsCenter81 = boost::lexical_cast<double>(lineParts[31]);
-                Real F107ObsLast81 = boost::lexical_cast<double>(lineParts[32]);
+                int DATE_YEAR = boost::lexical_cast<int>(lineParts[0]);
+                int DATE_MONT = boost::lexical_cast<int>(lineParts[1]);
+                int DATE_DAY = boost::lexical_cast<int>(lineParts[2]);
+                int BSRN = boost::lexical_cast<int>(lineParts[3]);
+                int ND = boost::lexical_cast<int>(lineParts[4]);
+                int Kp1 = boost::lexical_cast<int>(lineParts[5]);
+                int Kp2 = boost::lexical_cast<int>(lineParts[6]);
+                int Kp3 = boost::lexical_cast<int>(lineParts[7]);
+                int Kp4 = boost::lexical_cast<int>(lineParts[8]);
+                int Kp5 = boost::lexical_cast<int>(lineParts[9]);
+                int Kp6 = boost::lexical_cast<int>(lineParts[10]);
+                int Kp7 = boost::lexical_cast<int>(lineParts[11]);
+                int Kp8 = boost::lexical_cast<int>(lineParts[12]);
+                int KpSum = boost::lexical_cast<int>(lineParts[13]);
+                int Ap1 = boost::lexical_cast<int>(lineParts[14]);
+                int Ap2 = boost::lexical_cast<int>(lineParts[15]);
+                int Ap3 = boost::lexical_cast<int>(lineParts[16]);
+                int Ap4 = boost::lexical_cast<int>(lineParts[17]);
+                int Ap5 = boost::lexical_cast<int>(lineParts[18]);
+                int Ap6 = boost::lexical_cast<int>(lineParts[19]);
+                int Ap7 = boost::lexical_cast<int>(lineParts[20]);
+                int Ap8 = boost::lexical_cast<int>(lineParts[21]);
+                int ApAvg = boost::lexical_cast<int>(lineParts[22]);
+                double Cp = boost::lexical_cast<double>(lineParts[23]);
+                int C9 = boost::lexical_cast<int>(lineParts[24]);
+                int ISN = boost::lexical_cast<int>(lineParts[25]);
+                double F107Adj = boost::lexical_cast<double>(lineParts[26]);
+                // double Q = boost::lexical_cast<double>(lineParts[27]); // This isn't in the CSV format, so let's
+                // ignore it
+                double F107AdjCenter81 = boost::lexical_cast<double>(lineParts[28]);
+                double F107AdjLast81 = boost::lexical_cast<double>(lineParts[29]);
+                double F107Obs = boost::lexical_cast<double>(lineParts[30]);
+                double F107ObsCenter81 = boost::lexical_cast<double>(lineParts[31]);
+                double F107ObsLast81 = boost::lexical_cast<double>(lineParts[32]);
 
                 Date date = Date(DATE_YEAR, DATE_MONT, DATE_DAY);
 
@@ -868,7 +883,7 @@ CSSISpaceWeather CSSISpaceWeather::LoadLegacy(const File& aFile)
                     continue;
                 }
 
-                const Integer mjd = DateTime(date, Time(0, 0, 0)).getModifiedJulianDate().floor();
+                const int mjd = static_cast<int>(std::floor(DateTime(date, Time(0, 0, 0)).getModifiedJulianDate()));
 
                 String F107DataType;
 
@@ -948,13 +963,13 @@ CSSISpaceWeather::CSSISpaceWeather()
     : lastObservationDate_(Date::Undefined()),
       lastModifiedTimestamp_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),
-      observations_(Map<Integer, CSSISpaceWeather::Reading>()),
+      observations_(Map<int, CSSISpaceWeather::Reading>()),
 
       dailyPredictionInterval_(Interval::Undefined()),
-      dailyPredictions_(Map<Integer, CSSISpaceWeather::Reading>()),
+      dailyPredictions_(Map<int, CSSISpaceWeather::Reading>()),
 
       monthlyPredictionInterval_(Interval::Undefined()),
-      monthlyPredictions_(Map<Integer, CSSISpaceWeather::Reading>())
+      monthlyPredictions_(Map<int, CSSISpaceWeather::Reading>())
 {
 }
 

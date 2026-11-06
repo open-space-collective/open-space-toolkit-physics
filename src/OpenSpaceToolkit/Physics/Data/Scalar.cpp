@@ -1,9 +1,13 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +16,9 @@ namespace physics
 namespace data
 {
 
-Scalar::Scalar(const Real& aValue, const Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+Scalar::Scalar(double aValue, const Unit& aUnit)
     : value_(aValue),
       unit_(aUnit)
 {
@@ -37,8 +43,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Scalar");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Value:" << (aScalar.value_.isDefined() ? aScalar.value_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << DoubleToString(aScalar.value_);
     ostk::core::utils::Print::Line(anOutputStream)
         << "Unit:" << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined");
 
@@ -49,10 +54,10 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar)
 
 bool Scalar::isDefined() const
 {
-    return value_.isDefined() && unit_.isDefined();
+    return !std::isnan(value_) && unit_.isDefined();
 }
 
-Real Scalar::getValue() const
+double Scalar::getValue() const
 {
     return value_;
 }
@@ -72,19 +77,19 @@ Scalar Scalar::inUnit(const Unit& aUnit) const
     return {value_ * unit_.ratioTo(aUnit), aUnit};
 }
 
-String Scalar::toString(const Integer& aPrecision) const
+String Scalar::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Scalar");
     }
 
-    return String::Format("{} [{}]", value_.toString(aPrecision), unit_.toString());
+    return String::Format("{} [{}]", DoubleToString(value_, aPrecision), unit_.toString());
 }
 
 Scalar Scalar::Undefined()
 {
-    return {Real::Undefined(), Unit::Undefined()};
+    return {std::numeric_limits<double>::quiet_NaN(), Unit::Undefined()};
 }
 
 }  // namespace data

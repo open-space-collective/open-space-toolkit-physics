@@ -10,7 +10,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 {
     using namespace pybind11;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
     using ostk::core::type::String;
 
@@ -39,9 +38,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 const Celestial::Type&,
                 const Derived&,
                 const Length&,
-                const Real&,
-                const Real&,
-                const Real&,
+                double,
+                double,
+                double,
                 const Shared<Ephemeris>&,
                 const Shared<GravitationalModel>&,
                 const Shared<MagneticModel>&,
@@ -65,9 +64,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                     type (CelestialType): Type.
                     gravitational_parameter (Derived): Gravitational parameter [m³/s²].
                     equatorial_radius (Length): Equatorial radius [m].
-                    flattening (Real): Flattening.
-                    J2_parameter_value (Real): J2 parameter value.
-                    J4_parameter_value (Real): J4 parameter value.
+                    flattening (float): Flattening.
+                    J2_parameter_value (float): J2 parameter value.
+                    J4_parameter_value (float): J4 parameter value.
                     ephemeris (Ephemeris): Ephemeris.
                     gravitational_model (GravitationalModel): Gravitational model.
                     magnetic_model (MagneticModel): Magnetic model.
@@ -81,9 +80,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 const Celestial::Type&,
                 const Derived&,
                 const Length&,
-                const Real&,
-                const Real&,
-                const Real&,
+                double,
+                double,
+                double,
                 const Shared<Ephemeris>&,
                 const Shared<GravitationalModel>&,
                 const Shared<MagneticModel>&,
@@ -109,9 +108,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                     type (CelestialType): Type.
                     gravitational_parameter (Derived): Gravitational parameter [m³/s²].
                     equatorial_radius (Length): Equatorial radius [m].
-                    flattening (Real): Flattening.
-                    J2_parameter_value (Real): J2 parameter value.
-                    J4_parameter_value (Real): J4 parameter value.
+                    flattening (float): Flattening.
+                    J2_parameter_value (float): J2 parameter value.
+                    J4_parameter_value (float): J4 parameter value.
                     ephemeris (Ephemeris): Ephemeris
                     gravitational_model (GravitationalModel): Gravitational model.
                     magnetic_model (MagneticModel): Magnetic model.

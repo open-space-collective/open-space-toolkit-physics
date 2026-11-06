@@ -12,7 +12,6 @@
 
 namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -411,7 +410,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
             const Position referenceOrigin = Position::Meters({0.0, +1.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(Real::Epsilon()))) << origin;
+            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(1e-15))) << origin;
         }
 
         {
@@ -430,14 +429,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
             const Position referenceOrigin = Position::Meters({+1.0, 0.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(Real::Epsilon()))) << origin;
+            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(1e-15))) << origin;
         }
 
         const Position origin = Frame::WithName("Custom B")->getOriginIn(Frame::WithName("Custom A"), epoch);
 
         const Position referenceOrigin = Position::Meters({-1.0, -1.0, 0.0}, Frame::WithName("Custom A"));
 
-        EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(Real::Epsilon()))) << origin;
+        EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(1e-15))) << origin;
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
@@ -482,8 +481,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 
             const Velocity referenceVelocity = Velocity::MetersPerSecond({+1.0, 0.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon()))
-                << velocity;
+            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), 1e-15)) << velocity;
         }
 
         {
@@ -503,15 +501,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 
             const Velocity referenceVelocity = Velocity::MetersPerSecond({0.0, +1.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon()))
-                << velocity;
+            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), 1e-15)) << velocity;
         }
 
         const Velocity velocity = Frame::WithName("Custom B")->getVelocityIn(Frame::WithName("Custom A"), epoch);
 
         const Velocity referenceVelocity = Velocity::MetersPerSecond({+1.0, +1.0, 0.0}, Frame::WithName("Custom A"));
 
-        EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon())) << velocity;
+        EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), 1e-15)) << velocity;
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
@@ -544,9 +541,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 
             const Axes referenceAxes = Axes({0.0, +1.0, 0.0}, {-1.0, 0.0, 0.0}, {0.0, 0.0, +1.0}, Frame::GCRF());
 
-            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), Real::Epsilon())) << axes;
+            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), 1e-15)) << axes;
         }
 
         {
@@ -566,18 +563,18 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 
             const Axes referenceAxes = Axes({0.0, -1.0, 0.0}, {+1.0, 0.0, 0.0}, {0.0, 0.0, +1.0}, Frame::GCRF());
 
-            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), Real::Epsilon())) << axes;
+            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), 1e-15)) << axes;
         }
 
         const Axes axes = Frame::WithName("Custom B")->getAxesIn(Frame::WithName("Custom A"), epoch);
 
         const Axes referenceAxes = Axes({-1.0, 0.0, 0.0}, {0.0, -1.0, 0.0}, {0.0, 0.0, +1.0}, Frame::GCRF());
 
-        EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), Real::Epsilon())) << axes;
-        EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), Real::Epsilon())) << axes;
-        EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), Real::Epsilon())) << axes;
+        EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), 1e-15)) << axes;
+        EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), 1e-15)) << axes;
+        EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), 1e-15)) << axes;
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
@@ -606,14 +603,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
 
         EXPECT_EQ(instant, transform.getInstant());
 
-        EXPECT_TRUE(transform.getTranslation().isNear(Vector3d(+0.0, +0.0, +0.0), Real::Epsilon()));
-        EXPECT_TRUE(transform.getVelocity().isNear(Vector3d(+0.0, +0.0, +0.0), Real::Epsilon()));
+        EXPECT_TRUE(transform.getTranslation().isNear(Vector3d(+0.0, +0.0, +0.0), 1e-15));
+        EXPECT_TRUE(transform.getVelocity().isNear(Vector3d(+0.0, +0.0, +0.0), 1e-15));
         EXPECT_TRUE(transform.getOrientation().isNear(
             Quaternion::XYZS(-1.86147346436534e-05, 8.45983422546411e-07, 0.641490222201766, 0.767131210727542),
-            Angle::Degrees(Real::Epsilon())
+            Angle::Degrees(1e-15)
         ));
         EXPECT_TRUE(transform.getAngularVelocity().isNear(
-            Vector3d(1.96489918038813e-09, 2.04221635598212e-09, -7.29211506735101e-05), Real::Epsilon()
+            Vector3d(1.96489918038813e-09, 2.04221635598212e-09, -7.29211506735101e-05), 1e-15
         ));
     }
 
@@ -810,7 +807,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -822,7 +819,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -833,7 +830,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -863,7 +860,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -875,7 +872,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -886,7 +883,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -916,7 +913,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -928,7 +925,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -939,7 +936,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -965,7 +962,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -977,7 +974,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, -1.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, -1.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -988,7 +985,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -1012,7 +1009,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -1024,7 +1021,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(-4.0, +1.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(-4.0, +1.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -1035,7 +1032,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -1063,7 +1060,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -1075,7 +1072,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +4.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +4.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -1086,7 +1083,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         Frame::Destruct(name);

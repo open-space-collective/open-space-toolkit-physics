@@ -1,9 +1,13 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +16,9 @@ namespace physics
 namespace unit
 {
 
-Angle::Angle(const Real& aValue, const Angle::Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+Angle::Angle(double aValue, const Angle::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Derived, aValue),
       unit_(aUnit)
 {
@@ -70,7 +76,7 @@ bool Angle::operator==(const Angle& anAngle) const
                        ((anAngle.unit_ == Angle::Unit::Radian) ? anAngle.accessValue() : anAngle.in(Angle::Unit::Radian)
                        ),
                        this->accessValue(),
-                       this->accessValue() + Real::TwoPi()
+                       this->accessValue() + 2.0 * M_PI
                    );
 
         case Angle::Unit::Degree:
@@ -142,14 +148,14 @@ Angle Angle::operator-(const Angle& anAngle) const
     return Angle((this->accessValue() - ((unit_ == anAngle.unit_) ? anAngle.accessValue() : anAngle.in(unit_))), unit_);
 }
 
-Angle Angle::operator*(const Real& aReal) const
+Angle Angle::operator*(double aReal) const
 {
     if (unit_ == Angle::Unit::Undefined)
     {
         throw ostk::core::error::runtime::Undefined("Angle");
     }
 
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
@@ -157,19 +163,19 @@ Angle Angle::operator*(const Real& aReal) const
     return Angle((this->accessValue() * aReal), unit_);
 }
 
-Angle Angle::operator/(const Real& aReal) const
+Angle Angle::operator/(double aReal) const
 {
     if (unit_ == Angle::Unit::Undefined)
     {
         throw ostk::core::error::runtime::Undefined("Angle");
     }
 
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    if (aReal.isZero())
+    if (aReal == 0.0)
     {
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
@@ -201,14 +207,14 @@ Angle& Angle::operator-=(const Angle& anAngle)
     return *this;
 }
 
-Angle& Angle::operator*=(const Real& aReal)
+Angle& Angle::operator*=(double aReal)
 {
     if (unit_ == Angle::Unit::Undefined)
     {
         throw ostk::core::error::runtime::Undefined("Angle");
     }
 
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
@@ -218,19 +224,19 @@ Angle& Angle::operator*=(const Real& aReal)
     return *this;
 }
 
-Angle& Angle::operator/=(const Real& aReal)
+Angle& Angle::operator/=(double aReal)
 {
     if (unit_ == Angle::Unit::Undefined)
     {
         throw ostk::core::error::runtime::Undefined("Angle");
     }
 
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    if (aReal.isZero())
+    if (aReal == 0.0)
     {
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
@@ -240,9 +246,9 @@ Angle& Angle::operator/=(const Real& aReal)
     return *this;
 }
 
-Angle operator*(const Real& aReal, const Angle& anAngle)
+Angle operator*(double aReal, const Angle& anAngle)
 {
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
@@ -354,7 +360,7 @@ Angle::Unit Angle::getUnit() const
     return unit_;
 }
 
-Real Angle::in(const Angle::Unit& aUnit) const
+double Angle::in(const Angle::Unit& aUnit) const
 {
     if (!this->isDefined())
     {
@@ -369,24 +375,24 @@ Real Angle::in(const Angle::Unit& aUnit) const
     return this->accessValue() * Angle::SIRatio(unit_) / Angle::SIRatio(aUnit);
 }
 
-Real Angle::inRadians() const
+double Angle::inRadians() const
 {
     return this->in(Angle::Unit::Radian);
 }
 
-Real Angle::inRadians(const Real& aLowerBound, const Real& anUpperBound) const
+double Angle::inRadians(double aLowerBound, double anUpperBound) const
 {
-    if (!aLowerBound.isDefined())
+    if (std::isnan(aLowerBound))
     {
         throw ostk::core::error::runtime::Undefined("Lower bound");
     }
 
-    if (!anUpperBound.isDefined())
+    if (std::isnan(anUpperBound))
     {
         throw ostk::core::error::runtime::Undefined("Upper bound");
     }
 
-    if ((anUpperBound - aLowerBound) != Real::TwoPi())
+    if ((anUpperBound - aLowerBound) != 2.0 * M_PI)
     {
         throw ostk::core::error::runtime::Undefined("Range span is not [2π].");
     }
@@ -394,19 +400,19 @@ Real Angle::inRadians(const Real& aLowerBound, const Real& anUpperBound) const
     return Angle::ReduceRange(this->in(Angle::Unit::Radian), aLowerBound, anUpperBound);
 }
 
-Real Angle::inDegrees() const
+double Angle::inDegrees() const
 {
     return this->in(Angle::Unit::Degree);
 }
 
-Real Angle::inDegrees(const Real& aLowerBound, const Real& anUpperBound) const
+double Angle::inDegrees(double aLowerBound, double anUpperBound) const
 {
-    if (!aLowerBound.isDefined())
+    if (std::isnan(aLowerBound))
     {
         throw ostk::core::error::runtime::Undefined("Lower bound");
     }
 
-    if (!anUpperBound.isDefined())
+    if (std::isnan(anUpperBound))
     {
         throw ostk::core::error::runtime::Undefined("Upper bound");
     }
@@ -419,19 +425,19 @@ Real Angle::inDegrees(const Real& aLowerBound, const Real& anUpperBound) const
     return Angle::ReduceRange(this->in(Angle::Unit::Degree), aLowerBound, anUpperBound);
 }
 
-Real Angle::inArcminutes() const
+double Angle::inArcminutes() const
 {
     return this->in(Angle::Unit::Arcminute);
 }
 
-Real Angle::inArcminutes(const Real& aLowerBound, const Real& anUpperBound) const
+double Angle::inArcminutes(double aLowerBound, double anUpperBound) const
 {
-    if (!aLowerBound.isDefined())
+    if (std::isnan(aLowerBound))
     {
         throw ostk::core::error::runtime::Undefined("Lower bound");
     }
 
-    if (!anUpperBound.isDefined())
+    if (std::isnan(anUpperBound))
     {
         throw ostk::core::error::runtime::Undefined("Upper bound");
     }
@@ -444,19 +450,19 @@ Real Angle::inArcminutes(const Real& aLowerBound, const Real& anUpperBound) cons
     return Angle::ReduceRange(this->in(Angle::Unit::Arcminute), aLowerBound, anUpperBound);
 }
 
-Real Angle::inArcseconds() const
+double Angle::inArcseconds() const
 {
     return this->in(Angle::Unit::Arcsecond);
 }
 
-Real Angle::inArcseconds(const Real& aLowerBound, const Real& anUpperBound) const
+double Angle::inArcseconds(double aLowerBound, double anUpperBound) const
 {
-    if (!aLowerBound.isDefined())
+    if (std::isnan(aLowerBound))
     {
         throw ostk::core::error::runtime::Undefined("Lower bound");
     }
 
-    if (!anUpperBound.isDefined())
+    if (std::isnan(anUpperBound))
     {
         throw ostk::core::error::runtime::Undefined("Upper bound");
     }
@@ -469,29 +475,29 @@ Real Angle::inArcseconds(const Real& aLowerBound, const Real& anUpperBound) cons
     return Angle::ReduceRange(this->in(Angle::Unit::Arcsecond), aLowerBound, anUpperBound);
 }
 
-Real Angle::inRevolutions() const
+double Angle::inRevolutions() const
 {
     return this->in(Angle::Unit::Revolution);
 }
 
-String Angle::toString(const Integer& aPrecision) const
+String Angle::toString(int aPrecision) const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Angle");
     }
 
-    return this->accessValue().toString(aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->accessValue(), aPrecision) + " [" + Angle::SymbolFromUnit(unit_) + "]";
 }
 
 Angle Angle::Undefined()
 {
-    return Angle(Real::Undefined(), Angle::Unit::Undefined);
+    return Angle(std::numeric_limits<double>::quiet_NaN(), Angle::Unit::Undefined);
 }
 
 Angle Angle::Zero()
 {
-    return {Real::Zero(), Angle::Unit::Radian};
+    return {0.0, Angle::Unit::Radian};
 }
 
 Angle Angle::HalfPi()
@@ -509,27 +515,27 @@ Angle Angle::TwoPi()
     return {M_PI * 2.0, Angle::Unit::Radian};
 }
 
-Angle Angle::Radians(const Real& aValue)
+Angle Angle::Radians(double aValue)
 {
     return Angle(aValue, Angle::Unit::Radian);
 }
 
-Angle Angle::Degrees(const Real& aValue)
+Angle Angle::Degrees(double aValue)
 {
     return Angle(aValue, Angle::Unit::Degree);
 }
 
-Angle Angle::Arcminutes(const Real& aValue)
+Angle Angle::Arcminutes(double aValue)
 {
     return Angle(aValue, Angle::Unit::Arcminute);
 }
 
-Angle Angle::Arcseconds(const Real& aValue)
+Angle Angle::Arcseconds(double aValue)
 {
     return Angle(aValue, Angle::Unit::Arcsecond);
 }
 
-Angle Angle::Revolutions(const Real& aValue)
+Angle Angle::Revolutions(double aValue)
 {
     return Angle(aValue, Angle::Unit::Revolution);
 }
@@ -546,10 +552,10 @@ Angle Angle::Between(const Angle& aFirstAngle, const Angle& aSecondAngle)
         throw ostk::core::error::runtime::Undefined("Second angle");
     }
 
-    const Real firstRadians = aFirstAngle.inRadians();
-    const Real secondRadians = aSecondAngle.inRadians();
+    const double firstRadians = aFirstAngle.inRadians();
+    const double secondRadians = aSecondAngle.inRadians();
 
-    const Real delta = std::atan2(std::sin(secondRadians - firstRadians), std::cos(secondRadians - firstRadians));
+    const double delta = std::atan2(std::sin(secondRadians - firstRadians), std::cos(secondRadians - firstRadians));
 
     return Angle(delta * Angle::SIRatio(Angle::Unit::Radian) / Angle::SIRatio(aFirstAngle.unit_), aFirstAngle.unit_);
 }
@@ -561,7 +567,7 @@ Angle Angle::Between(const Vector2d& aFirstVector, const Vector2d& aSecondVector
         throw ostk::core::error::runtime::Undefined("Vector");
     }
 
-    if ((aFirstVector.squaredNorm() < Real::Epsilon()) || (aSecondVector.squaredNorm() < Real::Epsilon()))
+    if ((aFirstVector.squaredNorm() < 1e-15) || (aSecondVector.squaredNorm() < 1e-15))
     {
         throw ostk::core::error::RuntimeError("Vector norm is too small.");
     }
@@ -576,7 +582,7 @@ Angle Angle::Between(const Vector2d& aFirstVector, const Vector2d& aSecondVector
         return Angle::Pi();
     }
 
-    const Real dotProduct = aFirstVector.normalized().dot(aSecondVector.normalized());
+    const double dotProduct = aFirstVector.normalized().dot(aSecondVector.normalized());
 
     if (dotProduct >= 1.0)
     {
@@ -598,7 +604,7 @@ Angle Angle::Between(const Vector3d& aFirstVector, const Vector3d& aSecondVector
         throw ostk::core::error::runtime::Undefined("Vector");
     }
 
-    if ((aFirstVector.squaredNorm() < Real::Epsilon()) || (aSecondVector.squaredNorm() < Real::Epsilon()))
+    if ((aFirstVector.squaredNorm() < 1e-15) || (aSecondVector.squaredNorm() < 1e-15))
     {
         throw ostk::core::error::RuntimeError("Vector norm is too small.");
     }
@@ -613,7 +619,7 @@ Angle Angle::Between(const Vector3d& aFirstVector, const Vector3d& aSecondVector
         return Angle::Pi();
     }
 
-    const Real dotProduct = aFirstVector.normalized().dot(aSecondVector.normalized());
+    const double dotProduct = aFirstVector.normalized().dot(aSecondVector.normalized());
 
     if (dotProduct >= 1.0)
     {
@@ -721,7 +727,7 @@ Angle::Unit Angle::UnitFromSymbol(const String& aSymbol)
     throw ostk::core::error::runtime::Wrong("Symbol", aSymbol);
 }
 
-Real Angle::SIRatio(const Angle::Unit& aUnit)
+double Angle::SIRatio(const Angle::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -729,16 +735,16 @@ Real Angle::SIRatio(const Angle::Unit& aUnit)
             return 1.0;
 
         case Angle::Unit::Degree:
-            return Real::Pi() / 180.0;
+            return M_PI / 180.0;
 
         case Angle::Unit::Arcminute:
-            return Real::Pi() / 10800.0;
+            return M_PI / 10800.0;
 
         case Angle::Unit::Arcsecond:
-            return Real::Pi() / 648000.0;
+            return M_PI / 648000.0;
 
         case Angle::Unit::Revolution:
-            return Real::TwoPi();
+            return 2.0 * M_PI;
 
         default:
             break;
@@ -746,10 +752,10 @@ Real Angle::SIRatio(const Angle::Unit& aUnit)
 
     throw ostk::core::error::runtime::Wrong("Unit");
 
-    return Real::Undefined();
+    return std::numeric_limits<double>::quiet_NaN();
 }
 
-Real Angle::ReduceRange(const Real& aValue, const Real& aRangeLowerBound, const Real& aRangeUpperBound)
+double Angle::ReduceRange(double aValue, double aRangeLowerBound, double aRangeUpperBound)
 {
     if ((aValue >= aRangeLowerBound) && (aValue < aRangeUpperBound))  // Value already in range
     {
@@ -763,9 +769,9 @@ Real Angle::ReduceRange(const Real& aValue, const Real& aRangeLowerBound, const 
         );
     }
 
-    Real value = aValue;
+    double value = aValue;
 
-    const Real range = aRangeUpperBound - aRangeLowerBound;
+    const double range = aRangeUpperBound - aRangeLowerBound;
 
     while (value < aRangeLowerBound
     )  // [TBM] This is a STUPID implementation: just used as a logic placeholder... should be improved ASAP

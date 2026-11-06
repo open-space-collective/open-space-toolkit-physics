@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun__
 #define __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Sun__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Sphere.hpp>
@@ -26,7 +25,6 @@ namespace object
 namespace celestial
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 
 using ostk::mathematics::geometry::d3::object::Sphere;

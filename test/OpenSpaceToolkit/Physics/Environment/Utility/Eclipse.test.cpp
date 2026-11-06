@@ -609,7 +609,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
     const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
     const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
 
-    const Real tolerance = 1e-3;
+    const double tolerance = 1e-3;
 
     // Test cases with timestamps obtained using Orekit v12.2.1 EclipseDetector
     const Array<Tuple<Instant, Vector3d, Interval<Real>>> testCases = {
@@ -688,7 +688,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
 
         const Position position = Position::Meters(coordinates, Frame::GCRF());
 
-        const Real shadowValue = montenbruckGillShadowFunction(instant, position, *sun, *earth);
+        const double shadowValue = montenbruckGillShadowFunction(instant, position, *sun, *earth);
 
         EXPECT_TRUE(expectedShadowValueBoundaries.contains(shadowValue)) << String::Format(
             "Shadow value {} for coordinates {} is not within expected boundaries [{}, {}]",

@@ -1,8 +1,10 @@
 /// Apache License 2.0
 
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <limits>
 #include <sstream>
 
 #include <boost/lexical_cast.hpp>
@@ -14,6 +16,7 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp>
 #include <OpenSpaceToolkit/Physics/Data/Utility.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -30,6 +33,8 @@ namespace iers
 
 using ostk::physics::coordinate::frame::provider::iers::utilities::interpolateUt1MinusUtc;
 using ostk::physics::data::utilities::getFileModifiedInstant;
+using ostk::physics::utility::ParseDouble;
+using ostk::physics::utility::ParseInt;
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A)
 {
@@ -94,15 +99,15 @@ Vector2d Finals2000A::getPolarMotionAt(const Instant& anInstant) const
         const Finals2000A::Data& previousData = *(dataRange.first);
         const Finals2000A::Data& nextData = *(dataRange.second);
 
-        if (previousData.x_A.isDefined() && previousData.y_A.isDefined() && nextData.x_A.isDefined() &&
-            nextData.y_A.isDefined())
+        if (!std::isnan(previousData.x_A) && !std::isnan(previousData.y_A) && !std::isnan(nextData.x_A) &&
+            !std::isnan(nextData.y_A))
         {
-            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+            const double instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
 
-            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
+            const double ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
 
-            const Real x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A);
-            const Real y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A);
+            const double x_A = previousData.x_A + ratio * (nextData.x_A - previousData.x_A);
+            const double y_A = previousData.y_A + ratio * (nextData.y_A - previousData.y_A);
 
             return {x_A, y_A};
         }
@@ -115,7 +120,7 @@ Vector2d Finals2000A::getPolarMotionAt(const Instant& anInstant) const
     throw ostk::core::error::RuntimeError("Cannot get polar motion at [{}].", anInstant.toString(Scale::UTC));
 }
 
-Real Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) const
+double Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
 
@@ -136,13 +141,13 @@ Real Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) const
         const Finals2000A::Data& previousData = *(dataRange.first);
         const Finals2000A::Data& nextData = *(dataRange.second);
 
-        if (previousData.ut1MinusUtc_A.isDefined() && nextData.ut1MinusUtc_A.isDefined())
+        if (!std::isnan(previousData.ut1MinusUtc_A) && !std::isnan(nextData.ut1MinusUtc_A))
         {
-            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+            const double instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
 
-            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
+            const double ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
 
-            const Real ut1MinusUtc_A = interpolateUt1MinusUtc(
+            const double ut1MinusUtc_A = interpolateUt1MinusUtc(
                 previousData.ut1MinusUtc_A, previousData.mjd, nextData.ut1MinusUtc_A, nextData.mjd, ratio, anInstant
             );
 
@@ -150,14 +155,14 @@ Real Finals2000A::getUt1MinusUtcAt(const Instant& anInstant) const
         }
         else
         {
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
         }
     }
 
     throw ostk::core::error::RuntimeError("Cannot get UT1 - UTC at [{}].", anInstant.toString(Scale::UTC));
 }
 
-Real Finals2000A::getLodAt(const Instant& anInstant) const
+double Finals2000A::getLodAt(const Instant& anInstant) const
 {
     using ostk::physics::time::Scale;
 
@@ -178,19 +183,19 @@ Real Finals2000A::getLodAt(const Instant& anInstant) const
         const Finals2000A::Data& previousData = *(dataRange.first);
         const Finals2000A::Data& nextData = *(dataRange.second);
 
-        if (previousData.lod_A.isDefined() && nextData.lod_A.isDefined())
+        if (!std::isnan(previousData.lod_A) && !std::isnan(nextData.lod_A))
         {
-            const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+            const double instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
 
-            const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
+            const double ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
 
-            const Real lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A);
+            const double lod_A = previousData.lod_A + ratio * (nextData.lod_A - previousData.lod_A);
 
             return lod_A;
         }
         else
         {
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
         }
     }
 
@@ -215,67 +220,67 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
 
     if ((dataRange.first != nullptr) && (dataRange.second != nullptr))
     {
-        auto interpolate = [](const Real& aPreviousValue, const Real& aNextValue, const Real& aRatio) -> Real
+        auto interpolate = [](double aPreviousValue, double aNextValue, double aRatio) -> double
         {
-            if (!aRatio.isDefined())
+            if (std::isnan(aRatio))
             {
                 throw ostk::core::error::runtime::Undefined("Ratio");
             }
 
-            if (aPreviousValue.isDefined() && aNextValue.isDefined())
+            if (!std::isnan(aPreviousValue) && !std::isnan(aNextValue))
             {
                 return aPreviousValue + aRatio * (aNextValue - aPreviousValue);
             }
 
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
         };
 
         const Finals2000A::Data& previousData = *(dataRange.first);
         const Finals2000A::Data& nextData = *(dataRange.second);
 
-        const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+        const double instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
 
-        const Real ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
+        const double ratio = (instantMjd_UTC - previousData.mjd) / (nextData.mjd - previousData.mjd);
 
-        const Integer year = previousData.year;
-        const Integer month = previousData.month;
-        const Integer day = previousData.day;
+        const int year = previousData.year;
+        const int month = previousData.month;
+        const int day = previousData.day;
 
-        const Real mjd = interpolate(previousData.mjd, nextData.mjd, ratio);
+        const double mjd = interpolate(previousData.mjd, nextData.mjd, ratio);
 
         const char polarMotionflag =
             (previousData.polarMotionflag == nextData.polarMotionflag) ? previousData.polarMotionflag : '?';
 
-        const Real x_A = interpolate(previousData.x_A, nextData.x_A, ratio);
-        const Real xError_A = interpolate(previousData.xError_A, nextData.xError_A, ratio);
-        const Real y_A = interpolate(previousData.y_A, nextData.y_A, ratio);
-        const Real yError_A = interpolate(previousData.yError_A, nextData.yError_A, ratio);
+        const double x_A = interpolate(previousData.x_A, nextData.x_A, ratio);
+        const double xError_A = interpolate(previousData.xError_A, nextData.xError_A, ratio);
+        const double y_A = interpolate(previousData.y_A, nextData.y_A, ratio);
+        const double yError_A = interpolate(previousData.yError_A, nextData.yError_A, ratio);
 
         const char ut1MinusUtcFlag =
             (previousData.ut1MinusUtcFlag == nextData.ut1MinusUtcFlag) ? previousData.ut1MinusUtcFlag : '?';
 
-        const Real ut1MinusUtc_A = interpolateUt1MinusUtc(
+        const double ut1MinusUtc_A = interpolateUt1MinusUtc(
             previousData.ut1MinusUtc_A, previousData.mjd, nextData.ut1MinusUtc_A, nextData.mjd, ratio, anInstant
         );
-        const Real ut1MinusUtcError_A =
+        const double ut1MinusUtcError_A =
             interpolate(previousData.ut1MinusUtcError_A, nextData.ut1MinusUtcError_A, ratio);
-        const Real lod_A = interpolate(previousData.lod_A, nextData.lod_A, ratio);
-        const Real lodError_A = interpolate(previousData.lodError_A, nextData.lodError_A, ratio);
+        const double lod_A = interpolate(previousData.lod_A, nextData.lod_A, ratio);
+        const double lodError_A = interpolate(previousData.lodError_A, nextData.lodError_A, ratio);
 
         const char nutationFlag =
             (previousData.nutationFlag == nextData.nutationFlag) ? previousData.nutationFlag : '?';
 
-        const Real dx_A = interpolate(previousData.dx_A, nextData.dx_A, ratio);
-        const Real dxError_A = interpolate(previousData.dxError_A, nextData.dxError_A, ratio);
-        const Real dy_A = interpolate(previousData.dy_A, nextData.dy_A, ratio);
-        const Real dyError_A = interpolate(previousData.dyError_A, nextData.dyError_A, ratio);
-        const Real x_B = interpolate(previousData.x_B, nextData.x_B, ratio);
-        const Real y_B = interpolate(previousData.y_B, nextData.y_B, ratio);
-        const Real ut1MinusUtc_B = interpolateUt1MinusUtc(
+        const double dx_A = interpolate(previousData.dx_A, nextData.dx_A, ratio);
+        const double dxError_A = interpolate(previousData.dxError_A, nextData.dxError_A, ratio);
+        const double dy_A = interpolate(previousData.dy_A, nextData.dy_A, ratio);
+        const double dyError_A = interpolate(previousData.dyError_A, nextData.dyError_A, ratio);
+        const double x_B = interpolate(previousData.x_B, nextData.x_B, ratio);
+        const double y_B = interpolate(previousData.y_B, nextData.y_B, ratio);
+        const double ut1MinusUtc_B = interpolateUt1MinusUtc(
             previousData.ut1MinusUtc_B, previousData.mjd, nextData.ut1MinusUtc_B, nextData.mjd, ratio, anInstant
         );
-        const Real dx_B = interpolate(previousData.dx_B, nextData.dx_B, ratio);
-        const Real dy_B = interpolate(previousData.dy_B, nextData.dy_B, ratio);
+        const double dx_B = interpolate(previousData.dx_B, nextData.dx_B, ratio);
+        const double dy_B = interpolate(previousData.dy_B, nextData.dy_B, ratio);
 
         const Finals2000A::Data data = {
             year,
@@ -319,7 +324,6 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
 {
     using ostk::core::container::Array;
     using ostk::core::type::Index;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
     using ostk::core::type::Uint8;
@@ -347,13 +351,13 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
     Index lineIndex = 0;
     String line;
 
-    auto parseReal = [](const String& aLine, const Index& aStartColumnNumber, const Index& anEndColumnNumber) -> Real
+    auto parseReal = [](const String& aLine, const Index& aStartColumnNumber, const Index& anEndColumnNumber) -> double
     {
         String string = aLine.getSubstring(aStartColumnNumber - 1, anEndColumnNumber - aStartColumnNumber + 1).trim();
 
         if (string.isEmpty())
         {
-            return Real::Undefined();
+            return std::numeric_limits<double>::quiet_NaN();
         }
 
         if ((string.getLength() > 2) && (string.getHead(1) == "."))
@@ -366,42 +370,42 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
             string = "-0." + string.getTail(string.getLength() - 2);
         }
 
-        return Real::Parse(string);
+        return ParseDouble(string);
     };
 
     while (std::getline(fileStream, line))
     {
-        const Integer year = Integer::Parse(line.getSubstring(0, 2).trim());
-        const Integer month = Integer::Parse(line.getSubstring(2, 2).trim());
-        const Integer day = Integer::Parse(line.getSubstring(4, 2).trim());
+        const int year = ParseInt(line.getSubstring(0, 2).trim());
+        const int month = ParseInt(line.getSubstring(2, 2).trim());
+        const int day = ParseInt(line.getSubstring(4, 2).trim());
 
-        const Real mjd = parseReal(line, 8, 15);
+        const double mjd = parseReal(line, 8, 15);
 
         const char polarMotionflag = line.at(16);
 
-        const Real x_A = parseReal(line, 19, 27);
-        const Real xError_A = parseReal(line, 28, 36);
-        const Real y_A = parseReal(line, 38, 46);
-        const Real yError_A = parseReal(line, 47, 55);
+        const double x_A = parseReal(line, 19, 27);
+        const double xError_A = parseReal(line, 28, 36);
+        const double y_A = parseReal(line, 38, 46);
+        const double yError_A = parseReal(line, 47, 55);
 
         const char ut1MinusUtcFlag = line.at(57);
 
-        const Real ut1MinusUtc_A = parseReal(line, 59, 68);
-        const Real ut1MinusUtcError_A = parseReal(line, 69, 78);
-        const Real lod_A = parseReal(line, 80, 86);
-        const Real lodError_A = parseReal(line, 87, 93);
+        const double ut1MinusUtc_A = parseReal(line, 59, 68);
+        const double ut1MinusUtcError_A = parseReal(line, 69, 78);
+        const double lod_A = parseReal(line, 80, 86);
+        const double lodError_A = parseReal(line, 87, 93);
 
         const char nutationFlag = line.at(95);
 
-        const Real dx_A = parseReal(line, 98, 106);
-        const Real dxError_A = parseReal(line, 107, 115);
-        const Real dy_A = parseReal(line, 117, 125);
-        const Real dyError_A = parseReal(line, 126, 134);
-        const Real x_B = parseReal(line, 135, 144);
-        const Real y_B = parseReal(line, 145, 154);
-        const Real ut1MinusUtc_B = parseReal(line, 155, 165);
-        const Real dx_B = parseReal(line, 166, 175);
-        const Real dy_B = parseReal(line, 176, 185);
+        const double dx_A = parseReal(line, 98, 106);
+        const double dxError_A = parseReal(line, 107, 115);
+        const double dy_A = parseReal(line, 117, 125);
+        const double dyError_A = parseReal(line, 126, 134);
+        const double x_B = parseReal(line, 135, 144);
+        const double y_B = parseReal(line, 145, 154);
+        const double ut1MinusUtc_B = parseReal(line, 155, 165);
+        const double dx_B = parseReal(line, 166, 175);
+        const double dy_B = parseReal(line, 176, 185);
 
         const Finals2000A::Data data = {
             year,
@@ -449,7 +453,7 @@ Finals2000A Finals2000A::Load(const filesystem::File& aFile)
 Finals2000A::Finals2000A()
     : lastModifiedTimestamp_(Instant::Undefined()),
       span_(Interval::Undefined()),
-      data_(Map<Real, Finals2000A::Data>())
+      data_(Map<double, Finals2000A::Data>())
 {
 }
 
@@ -457,7 +461,7 @@ Pair<const Finals2000A::Data*, const Finals2000A::Data*> Finals2000A::accessData
 {
     using ostk::physics::time::Scale;
 
-    const Real instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
+    const double instantMjd_UTC = anInstant.getModifiedJulianDate(Scale::UTC);
 
     const auto nextDataIt = data_.lower_bound(instantMjd_UTC);
 

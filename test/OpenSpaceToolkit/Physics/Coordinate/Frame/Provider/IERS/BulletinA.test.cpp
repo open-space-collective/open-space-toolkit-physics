@@ -15,7 +15,6 @@ using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Size;
 using ostk::core::type::String;
 
@@ -201,7 +200,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
         "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/bulletina-xxx-001.txt"
     )));
 
-    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> Real
+    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> double
     {
         return bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse(aDateTimeString), Scale::UTC)).ut1MinusUtc;
     };
@@ -342,7 +341,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
         "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/bulletina-xxix-052.txt"
     )));
 
-    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> Real
+    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> double
     {
         return bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse(aDateTimeString), Scale::UTC)).ut1MinusUtc;
     };

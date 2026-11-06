@@ -8,7 +8,6 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Index.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
@@ -37,7 +36,6 @@ namespace iers
 using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 using ostk::core::type::Index;
-using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector2d;
 
@@ -109,22 +107,22 @@ class Manager : public BaseManager
     /// @brief Get UT1 - UTC at instant
     ///
     /// @code
-    ///     Real ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
+    ///     double ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return [sec] UT1 - UTC
-    Real getUt1MinusUtcAt(const Instant& anInstant) const;
+    double getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief Get length of day at instant
     ///
     /// @code
-    ///     Real lod = Manager::Get().getLodAt(anInstant);
+    ///     double lod = Manager::Get().getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return [ms] Length of day
-    Real getLodAt(const Instant& anInstant) const;
+    double getLodAt(const Instant& anInstant) const;
 
     /// @brief Load Bulletin A
     ///

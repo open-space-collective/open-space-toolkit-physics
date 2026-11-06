@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
@@ -174,18 +176,17 @@ String Date::toString(const Date::Format& aFormat) const
     return String::Empty();
 }
 
-Date Date::replace(
-    const std::optional<Integer>& aYear, const std::optional<Integer>& aMonth, const std::optional<Integer>& aDay
-) const
+Date Date::replace(const std::optional<int>& aYear, const std::optional<int>& aMonth, const std::optional<int>& aDay)
+    const
 {
     if (!this->isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Date");
     }
 
-    const Integer year = aYear.value_or(Integer::Uint16(year_));
-    const Integer month = aMonth.value_or(Integer::Uint8(month_));
-    const Integer day = aDay.value_or(Integer::Uint8(day_));
+    const int year = aYear.value_or(static_cast<int>(year_));
+    const int month = aMonth.value_or(static_cast<int>(month_));
+    const int day = aDay.value_or(static_cast<int>(day_));
 
     Date::ValidateDate(year, month, day);
 
@@ -403,22 +404,21 @@ Date::Date()
 {
 }
 
-void Date::ValidateDate(const Integer& aYear, const Integer& aMonth, const Integer& aDay)
+void Date::ValidateDate(int aYear, int aMonth, int aDay)
 {
-    if (!aYear.isDefined() || (aYear < 1400) || (aYear > 9999))
+    if ((aYear < 1400) || (aYear > 9999))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear.toString())
-        );
+        throw ostk::core::error::RuntimeError(String::Format("Year [{}] out of range [1400 - 9999].", aYear));
     }
 
-    if (!aMonth.isDefined() || (aMonth < 1) || (aMonth > 12))
+    if ((aMonth < 1) || (aMonth > 12))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth.toString()));
+        throw ostk::core::error::RuntimeError(String::Format("Month [{}] out of range [1 - 12].", aMonth));
     }
 
-    if (!aDay.isDefined() || (aDay < 1) || (aDay > 31))
+    if ((aDay < 1) || (aDay > 31))
     {
-        throw ostk::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay.toString()));
+        throw ostk::core::error::RuntimeError(String::Format("Day [{}] out of range [1 - 31].", aDay));
     }
 
     // [TBM] This is a quick and dirty implementation using boost::gregorian::date, it should be replaced by something

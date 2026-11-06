@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Position__
 #define __OpenSpaceToolkit_Physics_Coordinate_Position__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -28,9 +27,6 @@ class Celestial;
 namespace coordinate
 {
 
-#define DEFAULT_PRECISION Integer::Undefined()
-
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -222,7 +218,7 @@ class Position
     ///
     /// @param [in] aPrecision A precision
     /// @return String representation of the position
-    String toString(const Integer& aPrecision = DEFAULT_PRECISION) const;
+    String toString(int aPrecision = -1) const;
 
     /// @brief Constructs an undefined position
     ///

@@ -6,9 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
-
     using ostk::physics::unit::Time;
 
     class_<Time> time(
@@ -22,12 +19,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
     );
 
     time.def(
-            init<Real, Time::Unit>(),
+            init<double, Time::Unit>(),
             R"doc(
             Constructor.
 
             Args:
-                aReal (Real): A real number.
+                aReal (float): A real number.
                 aUnit (Time.Unit): A time unit.
         )doc"
     )
@@ -43,14 +40,14 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         // .def(self + self)
         // .def(self - self)
 
-        // // .def(self * other<Real>())
-        // .def(self / other<Real>())
-        // .def(self *= other<Real>())
-        // .def(self /= other<Real>())
-        // .def("__mul__", [](const Time &aTime, Real aReal) {return aTime * aReal;}, is_operator())
-        // .def("__truediv__", [](const Time &aTime, Real aReal) {return aTime / aReal;}, is_operator())
-        // .def("__imul__", [](const Time &aTime, Real aReal) {return aTime * aReal;}, is_operator())
-        // .def("__itruediv__", [](const Time &aTime, Real aReal) {return aTime / aReal;}, is_operator())
+        // // .def(self * other<double>())
+        // .def(self / other<double>())
+        // .def(self *= other<double>())
+        // .def(self /= other<double>())
+        // .def("__mul__", [](const Time &aTime, double aReal) {return aTime * aReal;}, is_operator())
+        // .def("__truediv__", [](const Time &aTime, double aReal) {return aTime / aReal;}, is_operator())
+        // .def("__imul__", [](const Time &aTime, double aReal) {return aTime * aReal;}, is_operator())
+        // .def("__itruediv__", [](const Time &aTime, double aReal) {return aTime / aReal;}, is_operator())
 
         // .def(self += self)
         // .def(self -= self)
@@ -78,7 +75,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         .def(
             "to_string",
             &Time::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Convert time to string.
 

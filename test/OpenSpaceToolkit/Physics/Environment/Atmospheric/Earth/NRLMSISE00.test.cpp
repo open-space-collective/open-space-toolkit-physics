@@ -1,11 +1,13 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
 #include <OpenSpaceToolkit/Core/Type/Index.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
@@ -23,6 +25,7 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -31,8 +34,6 @@ using ostk::core::container::Table;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
 using ostk::core::type::Index;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::Size;
 using ostk::core::type::String;
@@ -54,6 +55,7 @@ using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth
 
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
 using ostk::physics::environment::atmospheric::earth::Manager;
+using ostk::physics::utility::DoubleToString;
 
 // Expose protected members for testing
 class NRLMSISE00Public : public NRLMSISE00
@@ -61,12 +63,12 @@ class NRLMSISE00Public : public NRLMSISE00
    public:
     NRLMSISE00Public(
         const NRLMSISE00::InputDataType& anInputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-        const Real& aF107ConstantValue = Real::Undefined(),
-        const Real& aF107AConstantValue = Real::Undefined(),
-        const Real& aKpConstantValue = Real::Undefined(),
+        double aF107ConstantValue = std::numeric_limits<double>::quiet_NaN(),
+        double aF107AConstantValue = std::numeric_limits<double>::quiet_NaN(),
+        double aKpConstantValue = std::numeric_limits<double>::quiet_NaN(),
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        double anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     )
         : NRLMSISE00(
@@ -143,9 +145,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getter
 {
     {
         const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
-        const Real f107ConstantValue = 200.0;
-        const Real f107AConstantValue = 205.0;
-        const Real kpConstantValue = 3.0;
+        const double f107ConstantValue = 200.0;
+        const double f107AConstantValue = 205.0;
+        const double kpConstantValue = 3.0;
 
         const NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
@@ -157,9 +159,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Getter
 
     {
         const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile;
-        const Real f107ConstantValue = 200.0;
-        const Real f107AConstantValue = 205.0;
-        const Real kpConstantValue = 3.0;
+        const double f107ConstantValue = 200.0;
+        const double f107AConstantValue = 205.0;
+        const double kpConstantValue = 3.0;
 
         const NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
@@ -199,9 +201,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
 
     {
         const NRLMSISE00Public::InputDataType inputDataType = NRLMSISE00Public::InputDataType::ConstantFluxAndGeoMag;
-        const Real f107ConstantValue = 200.0;
-        const Real f107AConstantValue = 205.0;
-        const Real kpConstantValue = -1.6;
+        const double f107ConstantValue = 200.0;
+        const double f107AConstantValue = 205.0;
+        const double kpConstantValue = -1.6;
 
         const NRLMSISE00Public nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
@@ -296,7 +298,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Comput
 //             double apArray[7];
 //             nrlmsise.computeApArray(apArray, instant);
 
-//             Array<Real> apArrayReal = Array<Real>(apArray, apArray+7);
+//             Array<double> apArrayReal = Array<double>(apArray, apArray+7);
 
 //             std::cout << "calc <> Orekit" << std::endl;
 //             std::cout << apArrayReal[0] << " <> " << referenceData(i, "AP_0").accessReal() << std::endl;
@@ -382,10 +384,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
 
@@ -401,18 +403,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
-            const Real percentTolerance = 43.0;
-            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
+            const double percentTolerance = 43.0;
+            const double percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
-            const Real absoluteTolerate = 1.0e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1.0e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
-                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+                "{} ≈ {} Δ {} [{}%] [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                absoluteError,
+                percentError
             );
         }
     }
@@ -440,9 +446,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -451,10 +457,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
 
@@ -470,13 +476,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
 
-            const Real absoluteTolerate = 1.0e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1.0e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
-            EXPECT_TRUE(absoluteError < absoluteTolerate)
-                << String::Format("{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), absoluteError);
+            EXPECT_TRUE(absoluteError < absoluteTolerate) << String::Format(
+                "{} ≈ {} Δ {} [T]", DoubleToString(density), DoubleToString(referenceDensity), absoluteError
+            );
         }
     }
 }
@@ -502,9 +509,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
     {
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_
@@ -512,10 +519,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
 
@@ -531,18 +538,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
-            const Real percentTolerance = 3.62;
-            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
+            const double percentTolerance = 3.62;
+            const double percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
-            const Real absoluteTolerate = 1.0e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1.0e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
-                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+                "{} ≈ {} Δ {} [{}%] [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                absoluteError,
+                percentError
             );
         }
     }
@@ -571,9 +582,9 @@ TEST_F(
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -582,10 +593,10 @@ TEST_F(
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::Standard);
 
@@ -601,14 +612,15 @@ TEST_F(
 
             Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
-            const Real absoluteTolerate = 1e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
-            EXPECT_TRUE(absoluteError < absoluteTolerate)
-                << String::Format("{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), absoluteError);
+            EXPECT_TRUE(absoluteError < absoluteTolerate) << String::Format(
+                "{} ≈ {} Δ {} [T]", DoubleToString(density), DoubleToString(referenceDensity), absoluteError
+            );
         }
     }
 }
@@ -642,9 +654,9 @@ TEST_F(
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -653,10 +665,10 @@ TEST_F(
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
 
@@ -664,18 +676,22 @@ TEST_F(
 
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
-            const Real percentTolerance = 0.0131;
-            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
+            const double percentTolerance = 0.0131;
+            const double percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
-            const Real absoluteTolerate = 1e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
-                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+                "{} ≈ {} Δ {} [{}%] [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                absoluteError,
+                percentError
             );
         }
     }
@@ -697,22 +713,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
     {
         for (Index i = 0; i < rowCount; i++)
         {
-            const Integer doy = referenceData(i, "DOY").accessInteger();
-            const Real sec = referenceData(i, "SEC").accessReal();
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real lst = referenceData(i, "LST").accessReal();
-            const Real avgFlux = referenceData(i, "AVG_FLUX").accessReal();
-            const Real dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
-            const Real ap1 = referenceData(i, "AP1").accessReal();
-            const Real ap2 = referenceData(i, "AP2").accessReal();
-            const Real ap3 = referenceData(i, "AP3").accessReal();
-            const Real ap4 = referenceData(i, "AP4").accessReal();
-            const Real ap5 = referenceData(i, "AP5").accessReal();
-            const Real ap6 = referenceData(i, "AP6").accessReal();
-            const Real ap7 = referenceData(i, "AP7").accessReal();
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const int doy = referenceData(i, "DOY").accessInteger();
+            const double sec = referenceData(i, "SEC").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double lst = referenceData(i, "LST").accessReal();
+            const double avgFlux = referenceData(i, "AVG_FLUX").accessReal();
+            const double dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
+            const double ap1 = referenceData(i, "AP1").accessReal();
+            const double ap2 = referenceData(i, "AP2").accessReal();
+            const double ap3 = referenceData(i, "AP3").accessReal();
+            const double ap4 = referenceData(i, "AP4").accessReal();
+            const double ap5 = referenceData(i, "AP5").accessReal();
+            const double ap6 = referenceData(i, "AP6").accessReal();
+            const double ap7 = referenceData(i, "AP7").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
 
             NRLMSISE00Public::ap_array apArray;
             apArray.a[0] = ap1;
@@ -727,18 +743,22 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
                 2022, doy, sec, altitude, latitude, longitude, lst, avgFlux, dailyFlux, ap1, &apArray
             };
 
-            const Real density = NRLMSISE00Public::GetDensityAt(input);
+            const double density = NRLMSISE00Public::GetDensityAt(input);
 
             // Check percent tolerance here for low altitudes
-            const Real percentTolerance = 0.0131;
-            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
+            const double percentTolerance = 0.0131;
+            const double percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
-            const Real absoluteTolerate = 1e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
-                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+                "{} ≈ {} Δ {} [{}%] [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                absoluteError,
+                percentError
             );
         }
     }
@@ -763,9 +783,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -774,21 +794,21 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Integer doy = referenceData(i, "DOY").accessInteger();
-            const Real sec = referenceData(i, "SEC").accessReal();
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real lst = referenceData(i, "LST").accessReal();
-            const Real avgFlux = referenceData(i, "AVG_FLUX").accessReal();
-            const Real dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
-            const Real ap1 = referenceData(i, "AP1").accessReal();
-            const Real ap2 = referenceData(i, "AP2").accessReal();
-            const Real ap3 = referenceData(i, "AP3").accessReal();
-            const Real ap4 = referenceData(i, "AP4").accessReal();
-            const Real ap5 = referenceData(i, "AP5").accessReal();
-            const Real ap6 = referenceData(i, "AP6").accessReal();
-            const Real ap7 = referenceData(i, "AP7").accessReal();
+            const int doy = referenceData(i, "DOY").accessInteger();
+            const double sec = referenceData(i, "SEC").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double lst = referenceData(i, "LST").accessReal();
+            const double avgFlux = referenceData(i, "AVG_FLUX").accessReal();
+            const double dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
+            const double ap1 = referenceData(i, "AP1").accessReal();
+            const double ap2 = referenceData(i, "AP2").accessReal();
+            const double ap3 = referenceData(i, "AP3").accessReal();
+            const double ap4 = referenceData(i, "AP4").accessReal();
+            const double ap5 = referenceData(i, "AP5").accessReal();
+            const double ap6 = referenceData(i, "AP6").accessReal();
+            const double ap7 = referenceData(i, "AP7").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
 
@@ -799,13 +819,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
             const Unique<NRLMSISE00Public::nrlmsise_input> input =
                 nrlmsise.computeNRLMSISE00Input(apValues, lla, instant);
 
-            const Real secTolerance = 0.02;  // does not match well
-            const Real altTolerance = 1e-15;
-            const Real lstTolerance = 4e-5;  // does not match well
+            const double secTolerance = 0.02;  // does not match well
+            const double altTolerance = 1e-15;
+            const double lstTolerance = 4e-5;  // does not match well
 
-            const Real secError = std::abs(sec - input->sec);
-            const Real altError = std::abs(altitude - input->alt);
-            const Real lstError = std::abs(lst - input->lst);
+            const double secError = std::abs(sec - input->sec);
+            const double altError = std::abs(altitude - input->alt);
+            const double lstError = std::abs(lst - input->lst);
 
             EXPECT_EQ(doy, input->doy);
             EXPECT_TRUE(secError < secTolerance) << String::Format("{} ≈ {} Δ {} [T]", sec, input->sec, secError);
@@ -847,9 +867,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -858,21 +878,21 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
 
         for (Index i = 0; i < rowCount; i++)
         {
-            const Integer doy = referenceData(i, "DOY").accessInteger();
-            const Real sec = referenceData(i, "SEC").accessReal();
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
-            const Real lst = referenceData(i, "LST").accessReal();
-            const Real avgFlux = referenceData(i, "AVG_FLUX").accessReal();
-            const Real dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
-            const Real ap1 = referenceData(i, "AP1").accessReal();
-            const Real ap2 = referenceData(i, "AP2").accessReal();
-            const Real ap3 = referenceData(i, "AP3").accessReal();
-            const Real ap4 = referenceData(i, "AP4").accessReal();
-            const Real ap5 = referenceData(i, "AP5").accessReal();
-            const Real ap6 = referenceData(i, "AP6").accessReal();
-            const Real ap7 = referenceData(i, "AP7").accessReal();
+            const int doy = referenceData(i, "DOY").accessInteger();
+            const double sec = referenceData(i, "SEC").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
+            const double lst = referenceData(i, "LST").accessReal();
+            const double avgFlux = referenceData(i, "AVG_FLUX").accessReal();
+            const double dailyFlux = referenceData(i, "DAILY_FLUX").accessReal();
+            const double ap1 = referenceData(i, "AP1").accessReal();
+            const double ap2 = referenceData(i, "AP2").accessReal();
+            const double ap3 = referenceData(i, "AP3").accessReal();
+            const double ap4 = referenceData(i, "AP4").accessReal();
+            const double ap5 = referenceData(i, "AP5").accessReal();
+            const double ap6 = referenceData(i, "AP6").accessReal();
+            const double ap7 = referenceData(i, "AP7").accessReal();
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
 
@@ -883,13 +903,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
             const Unique<NRLMSISE00Public::nrlmsise_input> input =
                 nrlmsise.computeNRLMSISE00Input(apValues, lla, instant);
 
-            const Real secTolerance = 1e-15;  // matches much better when accounting for UT1/UTC difference!
-            const Real altTolerance = 1e-15;
-            const Real lstTolerance = 1.3e-8;  // matches much better when accounting for UT1/UTC difference!
+            const double secTolerance = 1e-15;  // matches much better when accounting for UT1/UTC difference!
+            const double altTolerance = 1e-15;
+            const double lstTolerance = 1.3e-8;  // matches much better when accounting for UT1/UTC difference!
 
-            const Real secError = std::abs(sec - input->sec);
-            const Real altError = std::abs(altitude - input->alt);
-            const Real lstError = std::abs(lst - input->lst);
+            const double secError = std::abs(sec - input->sec);
+            const double altError = std::abs(altitude - input->alt);
+            const double lstError = std::abs(lst - input->lst);
 
             EXPECT_EQ(doy, input->doy);
             EXPECT_TRUE(secError < secTolerance) << String::Format("{} ≈ {} Δ {} [T]", sec, input->sec, secError);
@@ -928,9 +948,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
+            std::numeric_limits<double>::quiet_NaN(),
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -941,27 +961,31 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         {
             const DateTime datetime =
                 DateTime::Parse(referenceData(i, "DATE").accessString(), DateTime::Format::ISO8601);
-            const Real latitude = referenceData(i, "LAT").accessReal();
-            const Real longitude = referenceData(i, "LON").accessReal();
-            const Real altitude = referenceData(i, "ALT").accessReal();
+            const double latitude = referenceData(i, "LAT").accessReal();
+            const double longitude = referenceData(i, "LON").accessReal();
+            const double altitude = referenceData(i, "ALT").accessReal();
 
-            const Real referenceDensity = referenceData(i, "DENSITY").accessReal();
+            const double referenceDensity = referenceData(i, "DENSITY").accessReal();
 
             const LLA lla = LLA(Angle::Degrees(latitude), Angle::Degrees(longitude), Length::Kilometers(altitude));
             const Instant instant = Instant::DateTime(datetime, Scale::UTC);
 
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
 
             // Check percent tolerance here for low altitudes
-            const Real percentTolerance = 0.014;
-            const Real percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
+            const double percentTolerance = 0.014;
+            const double percentError = 100.0 * (std::abs(density - referenceDensity) / referenceDensity);
 
             // But still allow a pass if the absolute error is small (because we're close to machine precision)
-            const Real absoluteTolerate = 1e-15;
-            const Real absoluteError = std::abs(density - referenceDensity);
+            const double absoluteTolerate = 1e-15;
+            const double absoluteError = std::abs(density - referenceDensity);
 
             EXPECT_TRUE(absoluteError < absoluteTolerate || percentError < percentTolerance) << String::Format(
-                "{} ≈ {} Δ {} [{}%] [T]", density.toString(), referenceDensity.toString(), absoluteError, percentError
+                "{} ≈ {} Δ {} [{}%] [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                absoluteError,
+                percentError
             );
         }
     }
@@ -975,9 +999,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
      */
     {
         const NRLMSISE00::InputDataType inputDataType = NRLMSISE00::InputDataType::ConstantFluxAndGeoMag;
-        const Real f107ConstantValue = 200.0;
-        const Real f107AConstantValue = 205.0;
-        const Real kpConstantValue = -1.6;
+        const double f107ConstantValue = 200.0;
+        const double f107AConstantValue = 205.0;
+        const double kpConstantValue = -1.6;
 
         const NRLMSISE00 nrlmsise = {inputDataType, f107ConstantValue, f107AConstantValue, kpConstantValue};
 
@@ -991,7 +1015,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         for (const auto& instant : instants)
         {
-            const Real density = nrlmsise.getDensityAt(lla, instant);
+            const double density = nrlmsise.getDensityAt(lla, instant);
             EXPECT_TRUE(1.16099e-08 - density <= 1e-12);  // Always the same value
         }
     }

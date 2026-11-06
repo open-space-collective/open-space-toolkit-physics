@@ -6,7 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
 {
     using namespace pybind11;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
 
     using ostk::physics::environment::gravitational::Model;
@@ -49,7 +48,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
         )
 
             .def(
-                init<const Derived&, const Length&, const Real&, const Real&, const Real&>(),
+                init<const Derived&, const Length&, double, double, double>(),
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
@@ -61,14 +60,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                     Args:
                         gravitational_parameter (Derived): Gravitational parameter [m^3/s^2].
                         equatorial_radius (Length): Equatorial radius [m].
-                        flattening (Real): Flattening.
-                        C20 (Real): C20.
-                        C40 (Real): C40.
+                        flattening (float): Flattening.
+                        C20 (float): C20.
+                        C40 (float): C40.
                 )doc"
             )
 
             .def(
-                init<const Derived&, const Length&, const Real&, const Real&, const Real&, const Real&>(),
+                init<const Derived&, const Length&, double, double, double, double>(),
                 arg("gravitational_parameter"),
                 arg("equatorial_radius"),
                 arg("flattening"),
@@ -81,10 +80,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Model(pybind11::
                     Args:
                         gravitational_parameter (Derived): Gravitational parameter [m^3/s^2].
                         equatorial_radius (Length): Equatorial radius [m].
-                        flattening (Real): Flattening.
-                        C20 (Real): C20.
-                        C30 (Real): C30.
-                        C40 (Real): C40.
+                        flattening (float): Flattening.
+                        C20 (float): C20.
+                        C30 (float): C30.
+                        C40 (float): C40.
                 )doc"
             )
 

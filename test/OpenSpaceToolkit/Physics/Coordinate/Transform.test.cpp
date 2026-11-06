@@ -10,8 +10,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
-
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 using ostk::mathematics::object::Vector3d;

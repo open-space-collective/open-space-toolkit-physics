@@ -6,7 +6,6 @@
 #include <memory>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -28,7 +27,6 @@ namespace coordinate
 
 namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 using ostk::core::type::Uint8;

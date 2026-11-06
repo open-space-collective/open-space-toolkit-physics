@@ -4,8 +4,6 @@
 #define __OpenSpaceToolkit_Physics_Unit_Unit__
 
 #include <OpenSpaceToolkit/Core/Container/Pair.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 namespace ostk
@@ -16,8 +14,6 @@ namespace unit
 {
 
 using ostk::core::container::Pair;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 /// @brief Unit
@@ -53,7 +49,7 @@ class Unit
     ///
     /// @param [in] aType A unit type
     /// @param [in] aValue A value
-    Unit(const Unit::Type& aType, const Real& aValue);
+    Unit(const Unit::Type& aType, double aValue);
 
     /// @brief Pure virtual destructor.
     virtual ~Unit() = 0;
@@ -104,11 +100,11 @@ class Unit
     /// @brief Access the value by const reference.
     ///
     /// @code
-    ///     const Real& value = Unit(Unit::Type::Length, 1.0).accessValue();
+    ///     const double& value = Unit(Unit::Type::Length, 1.0).accessValue();
     /// @endcode
     ///
     /// @return A const reference to the value
-    const Real& accessValue() const;
+    const double& accessValue() const;
 
     /// @brief Get the unit type.
     ///
@@ -126,13 +122,13 @@ class Unit
     /// @endcode
     ///
     /// @return The value
-    Real getValue() const;
+    double getValue() const;
 
     /// @brief Convert to string representation.
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const = 0;
+    virtual String toString(int aPrecision = -1) const = 0;
 
     /// @brief Access the value by mutable reference.
     ///
@@ -142,7 +138,7 @@ class Unit
     /// @endcode
     ///
     /// @return A mutable reference to the value
-    Real& accessValue();
+    double& accessValue();
 
     /// @brief Set the value.
     ///
@@ -153,22 +149,22 @@ class Unit
     ///
     /// @param [in] aValue A value
 
-    void setValue(const Real& aValue);
+    void setValue(double aValue);
 
    protected:
     /// @brief Parse a string into a value and unit symbol pair.
     ///
     /// @code
-    ///     Pair<Real, String> pair = Unit::ParseString("1.0 [m]");
+    ///     Pair<double, String> pair = Unit::ParseString("1.0 [m]");
     /// @endcode
     ///
     /// @param [in] aString A string to parse
     /// @return A pair of (value, unit symbol)
-    static Pair<Real, String> ParseString(const String& aString);
+    static Pair<double, String> ParseString(const String& aString);
 
    private:
     Unit::Type type_;
-    Real value_;
+    double value_;
 };
 
 }  // namespace unit

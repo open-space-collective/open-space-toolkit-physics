@@ -18,7 +18,6 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -139,7 +138,7 @@ class Vector
     ///
     /// @param [in] aPrecision A precision for the values (default: 6)
     /// @return A string representation
-    String toString(const Integer& aPrecision = 6) const;
+    String toString(int aPrecision = 6) const;
 
     /// @brief Construct an undefined vector.
     ///

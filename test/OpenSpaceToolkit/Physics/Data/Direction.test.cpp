@@ -4,7 +4,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 
 using ostk::mathematics::object::Vector3d;

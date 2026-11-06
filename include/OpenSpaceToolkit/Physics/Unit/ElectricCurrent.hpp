@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit_ElectricCurrent__
 #define __OpenSpaceToolkit_Physics_Unit_ElectricCurrent__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Unit.hpp>
@@ -16,8 +14,6 @@ namespace physics
 namespace unit
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 /// @brief Electric current
@@ -44,7 +40,7 @@ class ElectricCurrent : public Unit
     /// @param [in] aValue A value
     /// @param [in] aUnit An electric current unit
 
-    ElectricCurrent(const Real& aValue, const ElectricCurrent::Unit& aUnit);
+    ElectricCurrent(double aValue, const ElectricCurrent::Unit& aUnit);
 
     /// @brief Clone the electric current.
     ///
@@ -86,7 +82,7 @@ class ElectricCurrent : public Unit
     /// @param [in] aUnit An electric current unit
     /// @return The value in the specified unit
 
-    Real in(const ElectricCurrent::Unit& aUnit) const;
+    double in(const ElectricCurrent::Unit& aUnit) const;
 
     /// @brief Get the value in amperes.
     ///
@@ -96,7 +92,7 @@ class ElectricCurrent : public Unit
     ///
     /// @return The value in amperes
 
-    Real inAmperes() const;
+    double inAmperes() const;
 
     /// @brief Convert to string representation.
     ///
@@ -107,7 +103,7 @@ class ElectricCurrent : public Unit
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
 
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
+    virtual String toString(int aPrecision = -1) const override;
 
     /// @brief Construct an undefined electric current.
     ///
@@ -128,7 +124,7 @@ class ElectricCurrent : public Unit
     /// @param [in] aValue A value in amperes
     /// @return An electric current
 
-    static ElectricCurrent Amperes(const Real& aValue);
+    static ElectricCurrent Amperes(double aValue);
 
     /// @brief Parse an electric current from a string.
     ///
@@ -166,7 +162,7 @@ class ElectricCurrent : public Unit
    private:
     ElectricCurrent::Unit unit_;
 
-    static Real SIRatio(const ElectricCurrent::Unit& aUnit);
+    static double SIRatio(const ElectricCurrent::Unit& aUnit);
 };
 
 }  // namespace unit

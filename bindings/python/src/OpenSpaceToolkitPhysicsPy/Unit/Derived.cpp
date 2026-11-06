@@ -6,9 +6,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
 {
     using namespace pybind11;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
-
     using ostk::physics::unit::Angle;
     using ostk::physics::unit::Derived;
     using ostk::physics::unit::ElectricCurrent;
@@ -28,12 +25,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
 
     derived_class
         .def(
-            init<Real, Derived::Unit>(),
+            init<double, Derived::Unit>(),
             R"doc(
                 Constructor.
 
                 Args:
-                    aValue (Real): Value
+                    aValue (float): Value
                     aUnit (Unit): Unit
             )doc"
         )
@@ -84,7 +81,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         .def(
             "to_string",
             &Derived::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Convert to string.
 

@@ -4,7 +4,6 @@
 #define __OpenSpaceToolkit_Physics_Unit_Derived__
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
@@ -22,8 +21,6 @@ namespace unit
 {
 
 using ostk::core::type::Int16;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 /// @brief Derived unit
@@ -129,7 +126,7 @@ class Derived : public Unit
         ///
         /// @return The value
 
-        Real getValue() const;
+        double getValue() const;
 
         /// @brief Convert to string representation.
         ///
@@ -632,7 +629,7 @@ class Derived : public Unit
     /// @param [in] aValue A value
     /// @param [in] aUnit A derived unit
 
-    Derived(const Real& aValue, const Derived::Unit& aUnit);
+    Derived(double aValue, const Derived::Unit& aUnit);
 
     /// @brief Clone the derived unit.
     ///
@@ -708,7 +705,7 @@ class Derived : public Unit
     /// @param [in] aUnit A derived unit
     /// @return The value in the specified unit
 
-    Real in(const Derived::Unit& aUnit) const;
+    double in(const Derived::Unit& aUnit) const;
 
     /// @brief Convert to string representation.
     ///
@@ -719,7 +716,7 @@ class Derived : public Unit
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
 
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
+    virtual String toString(int aPrecision = -1) const override;
 
     /// @brief Construct an undefined derived unit.
     ///
@@ -767,7 +764,7 @@ class Derived : public Unit
    private:
     Derived::Unit unit_;
 
-    static Real SIRatio(const Derived::Unit& aUnit);
+    static double SIRatio(const Derived::Unit& aUnit);
 };
 
 }  // namespace unit
