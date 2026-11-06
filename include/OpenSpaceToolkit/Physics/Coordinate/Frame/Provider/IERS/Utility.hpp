@@ -40,7 +40,7 @@ using ostk::physics::time::Instant;
 /// @param [in] aNextMjd_UTC Next tabulated date (UTC modified Julian date)
 /// @param [in] aRatio Interpolation ratio
 /// @param [in] anInstant Instant at which UT1 - UTC is interpolated
-/// @return UT1 - UTC at the instant [s], or NaN if either tabulated value is NaN
+/// @return UT1 - UTC at the instant [s]
 double interpolateUt1MinusUtc(
     const double& aPreviousUt1MinusUtc,
     const double& aPreviousMjd_UTC,

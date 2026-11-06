@@ -19,21 +19,6 @@ Direction Nadir(const Position& aPosition, const Celestial& aCelestialObject, co
 {
     using ostk::physics::coordinate::spherical::LLA;
 
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!aCelestialObject.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial object");
-    }
-
-    if (!anEnvironment.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     const LLA lla = LLA::Cartesian(
         aPosition.inFrame(aCelestialObject.accessFrame(), anEnvironment.getInstant()).getCoordinates(),
         aCelestialObject.getEquatorialRadius(),

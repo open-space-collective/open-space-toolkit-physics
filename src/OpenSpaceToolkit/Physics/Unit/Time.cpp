@@ -14,7 +14,6 @@ namespace physics
 {
 namespace unit
 {
-
 using ostk::physics::utility::DoubleToString;
 
 Time::Time(double aValue, const Time::Unit& aUnit)
@@ -28,11 +27,6 @@ Time* Time::clone() const
     return new Time(*this);
 }
 
-bool Time::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != Time::Unit::Undefined);
-}
-
 Time::Unit Time::getUnit() const
 {
     return unit_;
@@ -40,11 +34,6 @@ Time::Unit Time::getUnit() const
 
 double Time::in(const Time::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return std::numeric_limits<double>::quiet_NaN();
-    }
-
     if (unit_ == aUnit)
     {
         return this->accessValue();
@@ -60,17 +49,7 @@ double Time::inSeconds() const
 
 String Time::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return DoubleToString(this->accessValue(), aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
-}
-
-Time Time::Undefined()
-{
-    return {std::numeric_limits<double>::quiet_NaN(), Time::Unit::Undefined};
 }
 
 Time Time::Seconds(double aValue)
@@ -80,16 +59,12 @@ Time Time::Seconds(double aValue)
 
 // Time                            Time::Parse                                 (   const   String& aString )
 // {
-
 // }
 
 String Time::StringFromUnit(const Time::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case Time::Unit::Undefined:
-            return "Undefined";
-
         case Time::Unit::Nanosecond:
             return "Nanosecond";
 
@@ -193,7 +168,6 @@ double Time::SIRatio(const Time::Unit& aUnit)
 
     return std::numeric_limits<double>::quiet_NaN();
 }
-
 }  // namespace unit
 }  // namespace physics
 }  // namespace ostk

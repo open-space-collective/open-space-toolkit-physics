@@ -103,16 +103,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def("__repr__", &(shiftToString<Transform>))
 
         .def(
-            "is_defined",
-            &Transform::isDefined,
-            R"doc(
-                Check if the transform is defined.
-
-                Returns:
-                    bool: True if the transform is defined.
-            )doc"
-        )
-        .def(
             "is_identity",
             &Transform::isIdentity,
             R"doc(
@@ -285,16 +275,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def_static(
-            "undefined",
-            &Transform::Undefined,
-            R"doc(
-                Get undefined transform.
-
-                Returns:
-                    Transform: Undefined transform.
-            )doc"
-        )
-        .def_static(
             "identity",
             &Transform::Identity,
             R"doc(
@@ -361,13 +341,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )doc"
     )
 
-        .value(
-            "Undefined",
-            Transform::Type::Undefined,
-            R"doc(
-                Undefined type.
-            )doc"
-        )
         .value(
             "Active",
             Transform::Type::Active,

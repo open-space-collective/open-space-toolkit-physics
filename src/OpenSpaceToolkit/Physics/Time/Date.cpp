@@ -19,8 +19,7 @@ namespace time
 {
 
 Date::Date(Uint16 aYear, Uint8 aMonth, Uint8 aDay)
-    : defined_(true),
-      year_(aYear),
+    : year_(aYear),
       month_(aMonth),
       day_(aDay)
 {
@@ -29,21 +28,11 @@ Date::Date(Uint16 aYear, Uint8 aMonth, Uint8 aDay)
 
 bool Date::operator==(const Date& aDate) const
 {
-    if ((!this->isDefined()) || (!aDate.isDefined()))
-    {
-        return false;
-    }
-
     return (year_ == aDate.year_) && (month_ == aDate.month_) && (day_ == aDate.day_);
 }
 
 bool Date::operator!=(const Date& aDate) const
 {
-    if ((!this->isDefined()) || (!aDate.isDefined()))
-    {
-        return true;
-    }
-
     return (year_ != aDate.year_) || (month_ != aDate.month_) || (day_ != aDate.day_);
 }
 
@@ -51,60 +40,32 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Date& aDate)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Date");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Year:" << (aDate.isDefined() ? String::Format("{:d}", aDate.year_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Month:" << (aDate.isDefined() ? String::Format("{:d}", aDate.month_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Day:" << (aDate.isDefined() ? String::Format("{:d}", aDate.day_) : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Year:" << String::Format("{:d}", aDate.year_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Month:" << String::Format("{:d}", aDate.month_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Day:" << String::Format("{:d}", aDate.day_);
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Date::isDefined() const
-{
-    return defined_;
-}
-
 Uint16 Date::getYear() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     return year_;
 }
 
 Uint8 Date::getMonth() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     return month_;
 }
 
 Uint8 Date::getDay() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     return day_;
 }
 
 String Date::toString(const Date::Format& aFormat) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     switch (aFormat)
     {
         case Date::Format::Standard:
@@ -179,11 +140,6 @@ String Date::toString(const Date::Format& aFormat) const
 Date Date::replace(const std::optional<int>& aYear, const std::optional<int>& aMonth, const std::optional<int>& aDay)
     const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     const int year = aYear.value_or(static_cast<int>(year_));
     const int month = aMonth.value_or(static_cast<int>(month_));
     const int day = aDay.value_or(static_cast<int>(day_));
@@ -195,11 +151,6 @@ Date Date::replace(const std::optional<int>& aYear, const std::optional<int>& aM
 
 void Date::setYear(Uint16 aYear)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     Date::ValidateDate(aYear, month_, day_);
 
     year_ = aYear;
@@ -207,11 +158,6 @@ void Date::setYear(Uint16 aYear)
 
 void Date::setMonth(Uint8 aMonth)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     Date::ValidateDate(year_, aMonth, day_);
 
     month_ = aMonth;
@@ -219,19 +165,9 @@ void Date::setMonth(Uint8 aMonth)
 
 void Date::setDay(Uint8 aDay)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Date");
-    }
-
     Date::ValidateDate(year_, month_, aDay);
 
     day_ = aDay;
-}
-
-Date Date::Undefined()
-{
-    return Date();
 }
 
 Date Date::J2000()
@@ -254,25 +190,27 @@ Date Date::ModifiedJulianDateEpoch()
     return Date(1858, 11, 17);
 }
 
-Date Date::Parse(const String& aString, const Date::Format& aFormat)
+Date Date::Parse(const String& aString, const std::optional<Date::Format>& aFormat)
 {
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
     }
 
-    switch (aFormat)
+    if (!aFormat.has_value())
     {
-        case Date::Format::Undefined:  // Automatic format detection
-        {
-            if (aString.match(boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
-            {
-                return Date::Parse(aString, Date::Format::STK);
-            }
+        // Automatic format detection
 
-            return Date::Parse(aString, Date::Format::Standard);
+        if (aString.match(boost::regex("^([\\d]{1,2}) ([\\w]{3}) ([\\d]{4})$")))
+        {
+            return Date::Parse(aString, Date::Format::STK);
         }
 
+        return Date::Parse(aString, Date::Format::Standard);
+    }
+
+    switch (aFormat.value())
+    {
         case Date::Format::Standard:
         {
             boost::smatch match;
@@ -393,15 +331,7 @@ Date Date::Parse(const String& aString, const Date::Format& aFormat)
             break;
     }
 
-    return Date::Undefined();
-}
-
-Date::Date()
-    : defined_(false),
-      year_(0),
-      month_(0),
-      day_(0)
-{
+    throw ostk::core::error::runtime::Wrong("Format");
 }
 
 void Date::ValidateDate(int aYear, int aMonth, int aDay)

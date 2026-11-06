@@ -41,12 +41,12 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
     ostk::core::utils::Print::Header(anOutputStream, "Bulletin A");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Release date:" << (aBulletinA.releaseDate_.isDefined() ? aBulletinA.releaseDate_.toString() : "Undefined");
+        << "Release date:" << (aBulletinA.releaseDate_.has_value() ? aBulletinA.releaseDate_->toString() : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
         << "TAI - UTC:"
-        << (aBulletinA.taiMinusUtc_.isDefined()
+        << (aBulletinA.taiMinusUtc_.has_value()
                 ? String::Format(
-                      "{} @ {}", aBulletinA.taiMinusUtc_.toString(), aBulletinA.taiMinusUtcEpoch_.toString(Scale::UTC)
+                      "{} @ {}", aBulletinA.taiMinusUtc_->toString(), aBulletinA.taiMinusUtcEpoch_.toString(Scale::UTC)
                   )
                 : "Undefined");
     ostk::core::utils::Print::Line(anOutputStream)
@@ -102,70 +102,38 @@ std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulleti
     return anOutputStream;
 }
 
-bool BulletinA::isDefined() const
-{
-    return releaseDate_.isDefined() && taiMinusUtc_.isDefined() && taiMinusUtcEpoch_.isDefined() &&
-           observationInterval_.isDefined() && (!observations_.empty()) && predictionInterval_.isDefined() &&
-           (!predictions_.empty());
-}
-
 const Date& BulletinA::accessReleaseDate() const
 {
-    if (!this->isDefined())
+    if (!releaseDate_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
+        throw ostk::core::error::runtime::Undefined("Release date");
     }
 
-    return releaseDate_;
+    return releaseDate_.value();
 }
 
 const Instant& BulletinA::accessLastModifiedTimestamp() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     return lastModifiedTimestamp_;
 }
 
-const Duration& BulletinA::accessTAIMinusUTC() const
+const std::optional<Duration>& BulletinA::accessTAIMinusUTC() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     return taiMinusUtc_;
 }
 
 const Instant& BulletinA::accessTAIMinusUTCEpoch() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     return taiMinusUtcEpoch_;
 }
 
 const Interval& BulletinA::accessObservationInterval() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     return observationInterval_;
 }
 
 const Interval& BulletinA::accessPredictionInterval() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     return predictionInterval_;
 }
 
@@ -174,7 +142,7 @@ Date BulletinA::getReleaseDate() const
     return this->accessReleaseDate();
 }
 
-Duration BulletinA::getTAIMinusUTC() const
+std::optional<Duration> BulletinA::getTAIMinusUTC() const
 {
     return this->accessTAIMinusUTC();
 }
@@ -196,11 +164,6 @@ BulletinA::Observation BulletinA::getObservationAt(const Instant& anInstant) con
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
     }
 
     if (!observationInterval_.contains(anInstant))
@@ -293,11 +256,6 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Bulletin A");
-    }
-
     if (!predictionInterval_.contains(anInstant))
     {
         throw ostk::core::error::RuntimeError(
@@ -365,11 +323,6 @@ BulletinA::Prediction BulletinA::getPredictionAt(const Instant& anInstant) const
     {
         throw ostk::core::error::RuntimeError("Cannot find prediction at [{}].", anInstant.toString(Scale::UTC));
     }
-}
-
-BulletinA BulletinA::Undefined()
-{
-    return BulletinA();
 }
 
 BulletinA BulletinA::Load(const filesystem::File& aFile)
@@ -493,7 +446,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
 
     while (std::getline(fileStream, line))
     {
-        if ((lineIndex < 10) && (!bulletin.releaseDate_.isDefined()) &&
+        if ((lineIndex < 10) && (!bulletin.releaseDate_.has_value()) &&
             boost::regex_match(line, match, releaseDateRegex))
         {
             const Uint8 day = static_cast<Uint8>(boost::lexical_cast<Uint16>(match[1]));
@@ -514,7 +467,7 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
                 Instant::DateTime(DateTime(Date(year, month, day), Time::Midnight()), Scale::UTC);  // [TBC] UTC?
         }
 
-        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.isDefined()) &&
+        if ((lineIndex < 30) && (!bulletin.taiMinusUtc_.has_value()) &&
             boost::regex_match(line, match, taiMinusUtcRegex))
         {
             const double seconds = boost::lexical_cast<double>(match[1]) + boost::lexical_cast<double>(match[2]) / 1e6;
@@ -598,9 +551,9 @@ BulletinA BulletinA::Load(const filesystem::File& aFile)
 }
 
 BulletinA::BulletinA()
-    : releaseDate_(Date::Undefined()),
+    : releaseDate_(std::nullopt),
       lastModifiedTimestamp_(Instant::Undefined()),
-      taiMinusUtc_(Duration::Undefined()),
+      taiMinusUtc_(std::nullopt),
       taiMinusUtcEpoch_(Instant::Undefined()),
       observationInterval_(Interval::Undefined()),
       observations_(Map<int, BulletinA::Observation>()),

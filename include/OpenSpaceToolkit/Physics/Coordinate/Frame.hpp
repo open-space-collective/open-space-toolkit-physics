@@ -82,15 +82,6 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Frame& aFrame);
 
-    /// @brief Check if the frame is defined
-    ///
-    /// @code
-    ///     Frame::GCRF()->isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the frame is defined
-    bool isDefined() const;
-
     /// @brief Check if the frame is quasi-inertial
     ///
     /// @code
@@ -189,15 +180,6 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @param [in] anInstant An instant
     /// @return Transform from this frame to the target frame
     Transform getTransformTo(const Shared<const Frame>& aFrame, const Instant& anInstant) const;
-
-    /// @brief Construct an undefined frame
-    ///
-    /// @code
-    ///     Shared<const Frame> frame = Frame::Undefined();
-    /// @endcode
-    ///
-    /// @return Shared pointer to an undefined frame
-    static Shared<const Frame> Undefined();
 
     /// @brief Get the Geocentric Celestial Reference Frame (GCRF)
     ///

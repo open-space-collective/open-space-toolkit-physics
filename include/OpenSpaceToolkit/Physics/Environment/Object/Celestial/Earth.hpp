@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth__
 #define __OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Ellipsoid.hpp>
@@ -29,7 +31,6 @@ namespace celestial
 {
 
 using ostk::core::filesystem::Directory;
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -169,8 +170,8 @@ class Earth : public Celestial
     ///
     /// @return Earth
     static Earth EGM2008(
-        const Integer& aGravityModelDegree = Integer::Undefined(),
-        const Integer& aGravityModelOrder = Integer::Undefined()
+        const std::optional<int>& aGravityModelDegree = std::nullopt,
+        const std::optional<int>& aGravityModelOrder = std::nullopt
     );
 
     /// @brief World Geodetic System 1984 (WGS84) + Earth Gravity Model 1996 (EGM96)
@@ -186,8 +187,8 @@ class Earth : public Celestial
     ///
     /// @return Earth
     static Earth WGS84_EGM96(
-        const Integer& aGravityModelDegree = Integer::Undefined(),
-        const Integer& aGravityModelOrder = Integer::Undefined()
+        const std::optional<int>& aGravityModelDegree = std::nullopt,
+        const std::optional<int>& aGravityModelOrder = std::nullopt
     );
 
     /// @brief Earth Gravity Model 1996 (EGM96)
@@ -198,8 +199,8 @@ class Earth : public Celestial
     ///
     /// @return Earth
     static Earth EGM96(
-        const Integer& aGravityModelDegree = Integer::Undefined(),
-        const Integer& aGravityModelOrder = Integer::Undefined()
+        const std::optional<int>& aGravityModelDegree = std::nullopt,
+        const std::optional<int>& aGravityModelOrder = std::nullopt
     );
 
     /// @brief Earth Gravity Model 1984 (EGM84)
@@ -210,8 +211,8 @@ class Earth : public Celestial
     ///
     /// @return Earth
     static Earth EGM84(
-        const Integer& aGravityModelDegree = Integer::Undefined(),
-        const Integer& aGravityModelOrder = Integer::Undefined()
+        const std::optional<int>& aGravityModelDegree = std::nullopt,
+        const std::optional<int>& aGravityModelOrder = std::nullopt
     );
 
     /// @brief World Geodetic System 1984 (WGS84)
@@ -222,8 +223,8 @@ class Earth : public Celestial
     ///
     /// @return Earth
     static Earth WGS84(
-        const Integer& aGravityModelDegree = Integer::Undefined(),
-        const Integer& aGravityModelOrder = Integer::Undefined()
+        const std::optional<int>& aGravityModelDegree = std::nullopt,
+        const std::optional<int>& aGravityModelOrder = std::nullopt
     );
 
     /// @brief Spherical model

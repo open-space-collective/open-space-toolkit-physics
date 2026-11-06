@@ -112,16 +112,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
 
         .def(
-            "is_defined",
-            &Angle::isDefined,
-            R"doc(
-                Check if the angle is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "is_zero",
             &Angle::isZero,
             R"doc(
@@ -286,16 +276,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
         )
 
         // Define static methods
-        .def_static(
-            "undefined",
-            &Angle::Undefined,
-            R"doc(
-                Create an undefined angle.
-
-                Returns:
-                    Angle: An undefined angle.
-            )doc"
-        )
         .def_static(
             "zero",
             &Angle::Zero,
@@ -503,13 +483,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived_Angle(pybind11::module& aModu
 
     // Define emuneration unit for "angle"
     enum_<Angle::Unit>(angle, "Unit")
-        .value(
-            "Undefined",
-            Angle::Unit::Undefined,
-            R"doc(
-                Undefined unit.
-            )doc"
-        )
         .value(
             "Radian",
             Angle::Unit::Radian,

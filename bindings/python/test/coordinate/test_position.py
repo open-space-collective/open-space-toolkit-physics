@@ -36,7 +36,6 @@ def lla() -> LLA:
 
 
 class TestPosition:
-
     def test_constructors(self, unit: Length.Unit, frame: Frame):
         # Construction with python lists
         vector = [1000.0, 0.0, 0.0]
@@ -45,7 +44,6 @@ class TestPosition:
 
         assert position is not None
         assert isinstance(position, Position)
-        assert position.is_defined()
 
         # Construction with python tuples
         vector = (1000.0, 0.0, 0.0)
@@ -54,7 +52,6 @@ class TestPosition:
 
         assert position is not None
         assert isinstance(position, Position)
-        assert position.is_defined()
 
         # Construction with python numpy arrays
         vector = np.array((1000.0, 0.0, 0.0))
@@ -63,21 +60,12 @@ class TestPosition:
 
         assert position is not None
         assert isinstance(position, Position)
-        assert position.is_defined()
 
         # Construction with meters static constructor
         position: Position = Position.meters(vector, frame)
 
         assert position is not None
         assert isinstance(position, Position)
-        assert position.is_defined()
-
-        # Construction with undefined static constructor
-        position: Position = Position.undefined()
-
-        assert position is not None
-        assert isinstance(position, Position)
-        assert position.is_defined() is False
 
     def test_comparators(self, unit: Length.Unit, frame: Frame):
         vector_1 = [1000.0, 0.0, 0.0]
@@ -90,16 +78,8 @@ class TestPosition:
         assert position_2 == position_2
         assert position_1 != position_2
 
-    def test_is_defined(self, unit: Length.Unit, frame: Frame):
-        vector = [1000.0, 0.0, 0.0]
-        position: Position = Position(vector, unit, frame)
-
-        assert position.is_defined()
-        assert Position.undefined().is_defined() is False
-
     @pytest.mark.skip
     def test_is_near(self, unit: Length.Unit, frame: Frame):
-
         vector_1 = [1000.0, 0.0, 0.0]
         vector_2 = [1000.00001, 0.0001, 0.0]
 
@@ -138,9 +118,6 @@ class TestPosition:
 
         assert isinstance(norm, Length)
         assert norm == Length.meters(13.0)
-
-        with pytest.raises(RuntimeError):
-            Position.undefined().get_norm()
 
     def test_get_unit(self, unit: Length.Unit, frame: Frame):
         vector = [1000.0, 0.0, 0.0]

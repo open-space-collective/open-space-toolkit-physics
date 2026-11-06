@@ -51,6 +51,9 @@ def test_instant_parse():
         Instant.parse("2024-01-01T00:01:02.000", Scale.UTC, DateTime.Format.ISO8601)
         is not None
     )
+    assert Instant.parse("2024-01-01T00:01:02.000", Scale.UTC, None) == Instant.parse(
+        "2024-01-01T00:01:02.000", Scale.UTC, DateTime.Format.ISO8601
+    )
 
 
 def test_instant_operators():

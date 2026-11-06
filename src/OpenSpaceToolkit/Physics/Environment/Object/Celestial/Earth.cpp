@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Real.hpp>
@@ -21,6 +22,47 @@ namespace celestial
 {
 
 using ostk::physics::coordinate::Frame;
+
+namespace
+{
+
+// An Earth without a gravitational model has no gravitational parameters (NaN) but keeps a shape: it falls back to the
+// WGS84 equatorial radius and flattening, so that geometries and LLA conversions on it are not NaN.
+EarthGravitationalModel::Parameters ParametersFromModel(const Shared<EarthGravitationalModel>& aGravitationalModel)
+{
+    using ostk::physics::unit::Derived;
+    using ostk::physics::unit::Length;
+    using ostk::physics::unit::Time;
+
+    if (aGravitationalModel != nullptr)
+    {
+        return aGravitationalModel->getParameters();
+    }
+
+    const double nan = std::numeric_limits<double>::quiet_NaN();
+
+    return {
+        Derived(nan, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)),
+        EarthGravitationalModel::WGS84.equatorialRadius_,
+        EarthGravitationalModel::WGS84.flattening_,
+        nan,
+        nan,
+        nan,
+    };
+}
+
+// The Celestial constructor rejects a null ephemeris, but the Earth geometry dereferences it first.
+Shared<const Frame> EphemerisFrame(const Shared<Ephemeris>& anEphemeris)
+{
+    if (anEphemeris == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Ephemeris");
+    }
+
+    return anEphemeris->accessFrame();
+}
+
+}  // namespace
 
 Earth::Earth(
     const Derived& aGravitationalParameter,
@@ -45,7 +87,7 @@ Earth::Earth(
           aGravitationalModel,
           aMagneticModel,
           anAtmosphericModel,
-          Earth::Geometry(anEquatorialRadius, aFlattening, anEphemeris->accessFrame())
+          Earth::Geometry(anEquatorialRadius, aFlattening, EphemerisFrame(anEphemeris))
       )
 {
 }
@@ -59,19 +101,19 @@ Earth::Earth(
     : Celestial(
           "Earth",
           Celestial::Type::Earth,
-          aGravitationalModel->getParameters().gravitationalParameter_,
-          aGravitationalModel->getParameters().equatorialRadius_,
-          aGravitationalModel->getParameters().flattening_,
-          aGravitationalModel->getParameters().J2_,
-          aGravitationalModel->getParameters().J4_,
+          ParametersFromModel(aGravitationalModel).gravitationalParameter_,
+          ParametersFromModel(aGravitationalModel).equatorialRadius_,
+          ParametersFromModel(aGravitationalModel).flattening_,
+          ParametersFromModel(aGravitationalModel).J2_,
+          ParametersFromModel(aGravitationalModel).J4_,
           anEphemeris,
           aGravitationalModel,
           aMagneticModel,
           anAtmosphericModel,
           Earth::Geometry(
-              aGravitationalModel->getParameters().equatorialRadius_,
-              aGravitationalModel->getParameters().flattening_,
-              anEphemeris->accessFrame()
+              ParametersFromModel(aGravitationalModel).equatorialRadius_,
+              ParametersFromModel(aGravitationalModel).flattening_,
+              EphemerisFrame(anEphemeris)
           )
       )
 {
@@ -91,29 +133,17 @@ Earth Earth::Default()
 
 Earth Earth::GravitationalOnly(const Shared<EarthGravitationalModel>& aGravitatationalModel)
 {
-    return Earth::FromModels(
-        aGravitatationalModel,
-        std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined),
-        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
-    );
+    return Earth::FromModels(aGravitatationalModel, nullptr, nullptr);
 }
 
 Earth Earth::AtmosphericOnly(const Shared<EarthAtmosphericModel>& anAtmosphericModel)
 {
-    return Earth::FromModels(
-        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
-        std::make_shared<EarthMagneticModel>(EarthMagneticModel::Type::Undefined),
-        anAtmosphericModel
-    );
+    return Earth::FromModels(nullptr, nullptr, anAtmosphericModel);
 }
 
 Earth Earth::MagneticOnly(const Shared<EarthMagneticModel>& aMagneticModel)
 {
-    return Earth::FromModels(
-        std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Undefined),
-        aMagneticModel,
-        std::make_shared<EarthAtmosphericModel>(EarthAtmosphericModel::Type::Undefined)
-    );
+    return Earth::FromModels(nullptr, aMagneticModel, nullptr);
 }
 
 Earth Earth::FromModels(
@@ -132,35 +162,35 @@ Earth Earth::FromModels(
     };
 }
 
-Earth Earth::EGM2008(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
+Earth Earth::EGM2008(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
         EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
     ));
 }
 
-Earth Earth::WGS84_EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
+Earth Earth::WGS84_EGM96(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
         EarthGravitationalModel::Type::WGS84_EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
     ));
 }
 
-Earth Earth::EGM96(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
+Earth Earth::EGM96(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
         EarthGravitationalModel::Type::EGM96, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
     ));
 }
 
-Earth Earth::EGM84(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
+Earth Earth::EGM84(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
         EarthGravitationalModel::Type::EGM84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder
     ));
 }
 
-Earth Earth::WGS84(const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
+Earth Earth::WGS84(const std::optional<int>& aGravityModelDegree, const std::optional<int>& aGravityModelOrder)
 {
     return Earth::GravitationalOnly(std::make_shared<EarthGravitationalModel>(
         EarthGravitationalModel::Type::WGS84, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder

@@ -26,7 +26,6 @@ class Time : public Unit
     enum class Unit
     {
 
-        Undefined,    ///< Undefined
         Nanosecond,   ///< Nanosecond
         Microsecond,  ///< Microsecond
         Millisecond,  ///< Millisecond
@@ -58,16 +57,6 @@ class Time : public Unit
     /// @return A pointer to a dynamically allocated clone of this time unit
 
     virtual Time* clone() const override;
-
-    /// @brief Check if the time unit is defined.
-    ///
-    /// @code
-    ///     Time::Seconds(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    virtual bool isDefined() const override;
 
     /// @brief Get the time unit.
     ///
@@ -110,16 +99,6 @@ class Time : public Unit
     /// @return A string representation
 
     virtual String toString(int aPrecision = -1) const override;
-
-    /// @brief Construct an undefined time unit.
-    ///
-    /// @code
-    ///     Time time = Time::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined time unit
-
-    static Time Undefined();
 
     /// @brief Construct a time unit from a value in seconds.
     ///

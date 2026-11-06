@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -77,15 +78,16 @@ class Manager
     /// @brief Access a cached transform between two frames at a given instant.
     ///
     /// @code
-    ///     Transform transform = Manager::Get().accessCachedTransform(fromFrameSPtr, toFrameSPtr, instant);
+    ///     std::optional<Transform> transform = Manager::Get().accessCachedTransform(fromFrameSPtr, toFrameSPtr,
+    ///     instant);
     /// @endcode
     ///
     /// @param [in] aFromFrameSPtr A shared pointer to the source frame
     /// @param [in] aToFrameSPtr A shared pointer to the destination frame
     /// @param [in] anInstant An instant
-    /// @return The cached transform
+    /// @return The cached transform, or std::nullopt if there is none
 
-    const Transform accessCachedTransform(
+    const std::optional<Transform> accessCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
     ) const;
 

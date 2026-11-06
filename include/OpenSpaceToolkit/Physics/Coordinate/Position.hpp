@@ -115,15 +115,6 @@ class Position
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition);
 
-    /// @brief Check if position is defined
-    ///
-    /// @code
-    ///     Position::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if position is defined
-    bool isDefined() const;
-
     /// @brief Check if position is near another position within a tolerance
     ///
     /// @code
@@ -219,15 +210,6 @@ class Position
     /// @param [in] aPrecision A precision
     /// @return String representation of the position
     String toString(int aPrecision = -1) const;
-
-    /// @brief Constructs an undefined position
-    ///
-    /// @code
-    ///     Position position = Position::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined position
-    static Position Undefined();
 
     /// @brief Constructs a position in meters
     ///

@@ -2,6 +2,8 @@
 
 #include <datetime.h>
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
@@ -81,16 +83,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             }
         )
 
-        .def(
-            "is_defined",
-            &Duration::isDefined,
-            R"doc(
-                Check if the duration is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "is_zero",
             &Duration::isZero,
@@ -343,16 +335,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
         )
 
         .def_static(
-            "undefined",
-            &Duration::Undefined,
-            R"doc(
-                Create an undefined duration.
-
-                Returns:
-                    Duration: Undefined duration.
-            )doc"
-        )
-        .def_static(
             "zero",
             &Duration::Zero,
             R"doc(
@@ -460,13 +442,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
     enum_<Duration::Format>(duration_class, "Format")
 
         .value(
-            "Undefined",
-            Duration::Format::Undefined,
-            R"doc(
-                Undefined format.
-            )doc"
-        )
-        .value(
             "Standard",
             Duration::Format::Standard,
             R"doc(
@@ -483,5 +458,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
         ;
 
-    duration_class.def_static("parse", &Duration::Parse, arg("string"), arg("format") = Duration::Format::Undefined);
+    duration_class.def_static("parse", &Duration::Parse, arg("string"), arg("format") = none());
 }

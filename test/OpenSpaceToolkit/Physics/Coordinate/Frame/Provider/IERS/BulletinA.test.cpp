@@ -29,15 +29,11 @@ using ostk::physics::time::Scale;
 class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
+    const File file_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
         );
-        this->bulletinA_ = BulletinA::Load(file);
-    }
 
-    BulletinA bulletinA_ = BulletinA::Undefined();
+    BulletinA bulletinA_ = BulletinA::Load(file_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, StreamOperator)
@@ -48,17 +44,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Stream
         EXPECT_NO_THROW(std::cout << bulletinA_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, IsDefined)
-{
-    {
-        EXPECT_TRUE(bulletinA_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(BulletinA::Undefined().isDefined());
     }
 }
 
@@ -92,20 +77,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetRel
     {
         EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
     }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getReleaseDate());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAIMinusUTC)
 {
     {
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getTAIMinusUTC());
     }
 }
 
@@ -115,10 +92,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAI
         EXPECT_EQ(
             Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA_.getTAIMinusUTCEpoch()
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getTAIMinusUTCEpoch());
     }
 }
 
@@ -133,10 +106,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
             ),
             bulletinA_.getObservationInterval()
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getObservationInterval());
     }
 }
 
@@ -181,12 +150,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
             bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC))
         );
     }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getObservationAt(
-            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObservationAt_LeapSecond)
@@ -223,10 +186,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
             bulletinA_.getPredictionInterval()
         );
     }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getPredictionInterval());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionAt)
@@ -242,12 +201,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
         EXPECT_NEAR(0.1580, firstPrediction.x, 1e-5);
         EXPECT_NEAR(0.4308, firstPrediction.y, 1e-5);
         EXPECT_NEAR(0.06934, firstPrediction.ut1MinusUtc, 1e-6);
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getPredictionAt(
-            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
     }
 }
 
@@ -356,8 +309,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
 {
     {
-        EXPECT_TRUE(bulletinA_.isDefined());
-
         EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
 
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());

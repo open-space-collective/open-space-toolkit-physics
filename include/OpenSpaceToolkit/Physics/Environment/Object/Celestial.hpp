@@ -62,7 +62,6 @@ class Celestial : public Object
     enum class Type
     {
 
-        Undefined,
         Sun,
         Mercury,
         Venus,
@@ -75,8 +74,7 @@ class Celestial : public Object
     enum class FrameType
     {
 
-        Undefined,  ///< Undefined frame
-        NED,        ///< North-East-Down (NED) frame
+        NED,  ///< North-East-Down (NED) frame
 
     };
 
@@ -124,8 +122,6 @@ class Celestial : public Object
 
     virtual Celestial* clone() const override;
 
-    virtual bool isDefined() const override;
-
     bool gravitationalModelIsDefined() const;
 
     bool magneticModelIsDefined() const;
@@ -171,8 +167,6 @@ class Celestial : public Object
     Shared<const Frame> getFrameAt(const LLA& aLla, const Celestial::FrameType& aFrameType) const;
 
     Object::Geometry getTerminatorGeometry() const;
-
-    static Celestial Undefined();
 
     static String StringFromFrameType(const Celestial::FrameType& aFrameType);
 

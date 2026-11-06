@@ -23,7 +23,6 @@ namespace coordinate
 {
 namespace spherical
 {
-
 using ostk::physics::Environment;
 
 LLA::LLA(const Angle& aLatitude, const Angle& aLongitude, const Length& anAltitude)
@@ -31,12 +30,12 @@ LLA::LLA(const Angle& aLatitude, const Angle& aLongitude, const Length& anAltitu
       longitude_(aLongitude),
       altitude_(anAltitude)
 {
-    if (latitude_.isDefined() && ((latitude_.inDegrees() < -90.0) || (latitude_.inDegrees() > 90.0)))
+    if (((latitude_.inDegrees() < -90.0) || (latitude_.inDegrees() > 90.0)))
     {
         throw ostk::core::error::runtime::Wrong("Latitude");
     }
 
-    if (longitude_.isDefined() && ((longitude_.inDegrees() < -180.0) || (longitude_.inDegrees() > 180.0)))
+    if (((longitude_.inDegrees() < -180.0) || (longitude_.inDegrees() > 180.0)))
     {
         throw ostk::core::error::runtime::Wrong("Longitude");
     }
@@ -44,11 +43,6 @@ LLA::LLA(const Angle& aLatitude, const Angle& aLongitude, const Length& anAltitu
 
 bool LLA::operator==(const LLA& aLLA) const
 {
-    if ((!this->isDefined()) || (!aLLA.isDefined()))
-    {
-        return false;
-    }
-
     return (latitude_ == aLLA.latitude_) && (longitude_ == aLLA.longitude_) && (altitude_ == aLLA.altitude_);
 }
 
@@ -61,10 +55,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const LLA& aLLA)
 {
     ostk::core::utils::Print::Header(anOutputStream, "LLA");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Latitude:" << (aLLA.latitude_.isDefined() ? aLLA.latitude_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Longitude:" << (aLLA.longitude_.isDefined() ? aLLA.longitude_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Latitude:" << aLLA.latitude_.toString();
+    ostk::core::utils::Print::Line(anOutputStream) << "Longitude:" << aLLA.longitude_.toString();
     ostk::core::utils::Print::Line(anOutputStream)
         << "Altitude:" << (aLLA.altitude_.isDefined() ? aLLA.altitude_.toString() : "Undefined");
 
@@ -73,97 +65,79 @@ std::ostream& operator<<(std::ostream& anOutputStream, const LLA& aLLA)
     return anOutputStream;
 }
 
-bool LLA::isDefined() const
-{
-    return latitude_.isDefined() && longitude_.isDefined() && altitude_.isDefined();
-}
-
 Angle LLA::getLatitude() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return latitude_;
 }
 
 Angle LLA::getLongitude() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return longitude_;
 }
 
 Length LLA::getAltitude() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return altitude_;
 }
 
 LLA LLA::onSurface() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return {latitude_, longitude_, Length::Meters(0.0)};
 }
 
 Length LLA::calculateDistanceTo(
-    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
+    const LLA& aLLA,
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 ) const
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     return LLA::DistanceBetween(*this, aLLA, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 Pair<Angle, Angle> LLA::calculateAzimuthTo(
-    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
+    const LLA& aLLA,
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 ) const
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     return LLA::AzimuthBetween(*this, aLLA, ellipsoidEquatorialRadius, ellipsoidFlattening);
 }
 
 LLA LLA::calculateIntermediateTo(
-    const LLA& aLLA, double aRatio, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
+    const LLA& aLLA,
+    double aRatio,
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 ) const
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     return LLA::IntermediateBetween(*this, aLLA, aRatio, ellipsoidEquatorialRadius, ellipsoidFlattening);
@@ -172,18 +146,18 @@ LLA LLA::calculateIntermediateTo(
 LLA LLA::calculateForward(
     const Angle& aDirection,
     const Length& aDistance,
-    const Length& anEllipsoidEquatorialRadius,
-    double anEllipsoidFlattening
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 ) const
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     return LLA::Forward(*this, aDirection, aDistance, ellipsoidEquatorialRadius, ellipsoidFlattening);
@@ -192,18 +166,18 @@ LLA LLA::calculateForward(
 Array<LLA> LLA::calculateLinspaceTo(
     const LLA& aLLA,
     const Size& aNumberOfPoints,
-    const Length& anEllipsoidEquatorialRadius,
-    double anEllipsoidFlattening
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 ) const
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     return LLA::Linspace(*this, aLLA, aNumberOfPoints, ellipsoidEquatorialRadius, ellipsoidFlattening);
@@ -211,49 +185,31 @@ Array<LLA> LLA::calculateLinspaceTo(
 
 Vector3d LLA::toVector() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return {latitude_.inDegrees(), longitude_.inDegrees(), altitude_.inMeters()};
 }
 
 Point2d LLA::toPoint2d() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return {longitude_.inDegrees(), latitude_.inDegrees()};
 }
 
 Point3d LLA::toPoint3d() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return {longitude_.inDegrees(), latitude_.inDegrees(), altitude_.inMeters()};
 }
 
-Vector3d LLA::toCartesian(const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening) const
+Vector3d LLA::toCartesian(
+    const std::optional<Length>& anEllipsoidEquatorialRadius, const std::optional<double>& anEllipsoidFlattening
+) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     const double latitude_rad = latitude_.inRadians();
@@ -281,17 +237,7 @@ Vector3d LLA::toCartesian(const Length& anEllipsoidEquatorialRadius, double anEl
 
 String LLA::toString() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     return String::Format("[{}, {}, {}]", latitude_.toString(), longitude_.toString(), altitude_.toString());
-}
-
-LLA LLA::Undefined()
-{
-    return {Angle::Undefined(), Angle::Undefined(), Length::Undefined()};
 }
 
 LLA LLA::Vector(const Vector3d& aVector)
@@ -305,7 +251,9 @@ LLA LLA::Vector(const Vector3d& aVector)
 }
 
 LLA LLA::Cartesian(
-    const Vector3d& aCartesianCoordinateSet, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
+    const Vector3d& aCartesianCoordinateSet,
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 )
 {
     if (!aCartesianCoordinateSet.isDefined())
@@ -314,13 +262,13 @@ LLA LLA::Cartesian(
     }
 
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     double latitude_rad;
@@ -349,17 +297,20 @@ LLA LLA::Cartesian(
 }
 
 Length LLA::DistanceBetween(
-    const LLA& aFirstLLA, const LLA& aSecondLLA, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
+    const LLA& aFirstLLA,
+    const LLA& aSecondLLA,
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 )
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     const GeographicLib::Geodesic& geodesic =
@@ -378,17 +329,20 @@ Length LLA::DistanceBetween(
 }
 
 Pair<Angle, Angle> LLA::AzimuthBetween(
-    const LLA& aFirstLLA, const LLA& aSecondLLA, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
+    const LLA& aFirstLLA,
+    const LLA& aSecondLLA,
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 )
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     const GeographicLib::Geodesic& geodesic =
@@ -412,18 +366,18 @@ LLA LLA::IntermediateBetween(
     const LLA& aFirstLLA,
     const LLA& aSecondLLA,
     double aRatio,
-    const Length& anEllipsoidEquatorialRadius,
-    double anEllipsoidFlattening
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 )
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     const GeographicLib::Geodesic& geodesic =
@@ -453,18 +407,18 @@ LLA LLA::Forward(
     const LLA& aLLA,
     const Angle& aDirection,
     const Length& aDistance,
-    const Length& anEllipsoidEquatorialRadius,
-    double anEllipsoidFlattening
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 )
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     const GeographicLib::Geodesic& geodesic =
@@ -490,18 +444,18 @@ Array<LLA> LLA::Linspace(
     const LLA& aFirstLLA,
     const LLA& aSecondLLA,
     const Size& aNumberOfPoints,
-    const Length& anEllipsoidEquatorialRadius,
-    double anEllipsoidFlattening
+    const std::optional<Length>& anEllipsoidEquatorialRadius,
+    const std::optional<double>& anEllipsoidFlattening
 )
 {
     const Length ellipsoidEquatorialRadius =
-        anEllipsoidEquatorialRadius.isDefined()
-            ? anEllipsoidEquatorialRadius
+        anEllipsoidEquatorialRadius.has_value()
+            ? anEllipsoidEquatorialRadius.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getEquatorialRadius();
 
     const double ellipsoidFlattening =
-        !std::isnan(anEllipsoidFlattening)
-            ? anEllipsoidFlattening
+        anEllipsoidFlattening.has_value()
+            ? anEllipsoidFlattening.value()
             : Environment::AccessGlobalInstance()->accessCentralCelestialObject()->getFlattening();
 
     Array<LLA> intermediateLLAs = Array<LLA>::Empty();
@@ -540,11 +494,6 @@ Array<LLA> LLA::Linspace(
 
 LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment::object::Celestial>& aCelestialSPtr)
 {
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     const auto celestialSPtr = aCelestialSPtr != nullptr
                                  ? aCelestialSPtr
                                  : Environment::AccessGlobalInstance()->accessCentralCelestialObject();
@@ -568,7 +517,6 @@ LLA LLA::FromPosition(const Position& aPosition, const Shared<const environment:
 
     return LLA::Cartesian(aPosition.inMeters().getCoordinates(), equatorialRadius, flattening);
 }
-
 }  // namespace spherical
 }  // namespace coordinate
 }  // namespace physics

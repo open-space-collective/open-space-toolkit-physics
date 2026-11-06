@@ -41,17 +41,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, IsDefined)
-{
-    {
-        EXPECT_FALSE(Scalar::Undefined().isDefined());
-    }
-
-    {
-        EXPECT_TRUE(scalar_.isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, GetValue)
 {
     {
@@ -69,8 +58,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, GetUnit)
 TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, InUnit)
 {
     {
-        EXPECT_TRUE(scalar_.inUnit(Unit::Length(Length::Unit::Foot)).isDefined());
-
         EXPECT_DOUBLE_EQ(value_, scalar_.inUnit(Unit::Length(Length::Unit::Meter)).getValue());
     }
 }
@@ -79,12 +66,5 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, ToString)
 {
     {
         EXPECT_EQ(scalar_.toString(), "5.0 [m]");
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Data_Scalar, Undefined)
-{
-    {
-        EXPECT_FALSE(Scalar::Undefined().isDefined());
     }
 }

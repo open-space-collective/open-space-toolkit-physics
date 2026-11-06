@@ -67,16 +67,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
         .def("__repr__", &(shiftToString<Vector>))
 
         .def(
-            "is_defined",
-            &Vector::isDefined,
-            R"doc(
-                Check if the vector is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-        .def(
             "get_value",
             &Vector::getValue,
             R"doc(
@@ -148,17 +138,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
 
                 Returns:
                     str: String representation.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Vector::Undefined,
-            R"doc(
-                Create an undefined vector.
-
-                Returns:
-                    Vector: Undefined vector.
             )doc"
         )
 

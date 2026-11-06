@@ -1,7 +1,5 @@
 /// Apache License 2.0
 
-#include <cmath>
-
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>
 
@@ -27,32 +25,17 @@ Unit::~Unit() {}
 
 bool Unit::operator==(const Unit& aUnit) const
 {
-    if ((!this->isDefined()) || (!aUnit.isDefined()))
-    {
-        return false;
-    }
-
     return (type_ == aUnit.type_) && (value_ == aUnit.value_);
 }
 
 bool Unit::operator!=(const Unit& aUnit) const
 {
-    if ((!this->isDefined()) || (!aUnit.isDefined()))
-    {
-        return true;
-    }
-
     return (type_ != aUnit.type_) || (value_ != aUnit.value_);
-}
-
-bool Unit::isDefined() const
-{
-    return (type_ != Unit::Type::Undefined) && !std::isnan(value_);
 }
 
 bool Unit::isZero() const
 {
-    return (type_ != Unit::Type::Undefined) && (value_ == 0.0);
+    return value_ == 0.0;
 }
 
 const double& Unit::accessValue() const

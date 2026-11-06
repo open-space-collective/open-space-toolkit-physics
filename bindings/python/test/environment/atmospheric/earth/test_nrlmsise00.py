@@ -15,9 +15,6 @@ class TestNRLMSISE00:
     def test_constructor_success(self, nrlmsise00_model):
         assert isinstance(nrlmsise00_model, NRLMSISE00)
 
-    def test_is_defined_success(self, nrlmsise00_model):
-        assert nrlmsise00_model.is_defined() is True
-
     def test_get_density_at_lla_no_sun_success(
         self, nrlmsise00_model: NRLMSISE00, manager_with_cssi_space_weather: Manager
     ):

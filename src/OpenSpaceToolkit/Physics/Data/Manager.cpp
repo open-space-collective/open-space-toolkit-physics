@@ -45,7 +45,7 @@ const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 
     this->checkManifestAgeAndUpdate_();
 
-    return manifest_.getLastUpdateTimestampFor(aDataName);
+    return manifest_->getLastUpdateTimestampFor(aDataName);
 }
 
 const URL Manager::getRemoteUrl() const
@@ -68,7 +68,7 @@ Array<URL> Manager::getRemoteDataUrls(const String& aDataName) const
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->checkManifestAgeAndUpdate_();
-    return manifest_.getRemoteDataUrls(remoteUrl_, aDataName);
+    return manifest_->getRemoteDataUrls(remoteUrl_, aDataName);
 }
 
 Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
@@ -76,21 +76,16 @@ Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->checkManifestAgeAndUpdate_();
-    return manifest_.findRemoteDataUrls(remoteUrl_, aDataNameRegex);
+    return manifest_->findRemoteDataUrls(remoteUrl_, aDataNameRegex);
 }
 
-const Manifest Manager::getManifest() const
+const std::optional<Manifest> Manager::getManifest() const
 {
     return manifest_;
 }
 
 void Manager::loadManifest(const Manifest& aManifest)
 {
-    if (!aManifest.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Manifest");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     loadManifest_(aManifest);
@@ -100,7 +95,7 @@ void Manager::reset()
 {
     BaseManager::reset();
 
-    manifest_ = Manifest::Undefined();
+    manifest_ = std::nullopt;
 
     remoteUrl_ = DefaultRemoteUrl();
 }
@@ -114,7 +109,7 @@ Manager::Manager()
           "OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT"
       ),
       remoteUrl_(DefaultRemoteUrl()),
-      manifest_(Manifest::Undefined())
+      manifest_(std::nullopt)
 {
 }
 
@@ -130,7 +125,7 @@ bool Manager::manifestFileExists() const
 
 void Manager::checkManifestAgeAndUpdate_() const
 {
-    if (!manifest_.isDefined() && !manifestFileExists())
+    if (!manifest_.has_value() && !manifestFileExists())
     {
         if (mode_ == Manager::Mode::Manual)
         {
@@ -147,7 +142,7 @@ void Manager::checkManifestAgeAndUpdate_() const
         }
     }
 
-    if (!manifest_.isDefined() && manifestFileExists())
+    if (!manifest_.has_value() && manifestFileExists())
     {
         // A manifest file exists but we haven't loaded it yet. Load it.
         this->loadManifest_(Manifest::Load(File::Path(localRepository_.getPath() + Path::Parse(dataManifestFileName))));
@@ -158,7 +153,7 @@ void Manager::checkManifestAgeAndUpdate_() const
     Instant nextUpdateCheckTimestamp = Instant::Undefined();
     try
     {
-        nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
+        nextUpdateCheckTimestamp = manifest_->getNextUpdateCheckTimestampFor("manifest");
     }
     catch (ostk::core::error::RuntimeError& e)
     {
@@ -174,11 +169,11 @@ void Manager::checkManifestAgeAndUpdate_() const
             const File manifestFile = this->fetchLatestManifestFile_();
             this->loadManifest_(Manifest::Load(manifestFile));
 
-            nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
+            nextUpdateCheckTimestamp = manifest_->getNextUpdateCheckTimestampFor("manifest");
         }
     }
 
-    const Duration manifestAge = Instant::Now() - manifest_.getLastUpdateTimestampFor("manifest");
+    const Duration manifestAge = Instant::Now() - manifest_->getLastUpdateTimestampFor("manifest");
 
     // If current time is past next update check time or manifest is old enough, fetch a new one and load it.
     if (Instant::Now() > nextUpdateCheckTimestamp && manifestAge > DataRefreshRate_())

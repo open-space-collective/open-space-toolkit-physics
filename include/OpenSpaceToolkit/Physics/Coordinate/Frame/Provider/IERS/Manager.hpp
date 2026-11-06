@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
@@ -107,22 +108,22 @@ class Manager : public BaseManager
     /// @brief Get UT1 - UTC at instant
     ///
     /// @code
-    ///     double ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
+    ///     std::optional<double> ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return [sec] UT1 - UTC
-    double getUt1MinusUtcAt(const Instant& anInstant) const;
+    /// @return [sec] UT1 - UTC, or std::nullopt if it is not tabulated at the instant
+    std::optional<double> getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief Get length of day at instant
     ///
     /// @code
-    ///     double lod = Manager::Get().getLodAt(anInstant);
+    ///     std::optional<double> lod = Manager::Get().getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return [ms] Length of day
-    double getLodAt(const Instant& anInstant) const;
+    /// @return [ms] Length of day, or std::nullopt if it is not tabulated at the instant
+    std::optional<double> getLodAt(const Instant& anInstant) const;
 
     /// @brief Load Bulletin A
     ///
@@ -188,8 +189,8 @@ class Manager : public BaseManager
     static Manager& Get();
 
    private:
-    mutable BulletinA bulletinA_;
-    mutable Finals2000A finals2000A_;
+    mutable std::optional<BulletinA> bulletinA_;
+    mutable std::optional<Finals2000A> finals2000A_;
 
     Manager();
 

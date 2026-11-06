@@ -38,11 +38,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest
     return anOutputStream;
 }
 
-bool Manifest::isDefined() const
-{
-    return !dictionary_.isEmpty();
-}
-
 Instant Manifest::getLastModifiedTimestamp() const
 {
     return this->lastModifiedTimestamp_;
@@ -118,11 +113,6 @@ Array<URL> Manifest::findRemoteDataUrls(const URL& aBaseUrl, const String& aData
     }
 
     return urls;
-}
-
-Manifest Manifest::Undefined()
-{
-    return {};
 }
 
 Manifest Manifest::Load(const File& aFile)

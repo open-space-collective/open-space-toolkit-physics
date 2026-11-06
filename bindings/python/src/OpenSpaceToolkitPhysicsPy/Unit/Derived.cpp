@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
@@ -48,17 +50,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Derived::isDefined,
-            R"doc(
-                Check if the derived unit is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_unit",
             &Derived::getUnit,
             R"doc(
@@ -93,16 +84,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Derived::Undefined,
-            R"doc(
-                Create an undefined derived unit.
-
-                Returns:
-                    Derived: Derived unit.
-            )doc"
-        )
         // .def_static("parse", &Derived::Parse)
         .def_static(
             "string_from_unit",
@@ -269,22 +250,50 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
         )doc"
     )
 
-        .def(init<
-             const Length::Unit&,
-             const Derived::Order&,
-             const Mass::Unit&,
-             const Derived::Order&,
-             const Time::Unit&,
-             const Derived::Order&,
-             const ElectricCurrent::Unit&,
-             const Derived::Order&,
-             const Angle::Unit&,
-             const Derived::Order&>())
+        .def(
+            init<
+                const std::optional<Length::Unit>&,
+                const Derived::Order&,
+                const std::optional<Mass::Unit>&,
+                const Derived::Order&,
+                const std::optional<Time::Unit>&,
+                const Derived::Order&,
+                const std::optional<ElectricCurrent::Unit>&,
+                const Derived::Order&,
+                const std::optional<Angle::Unit>&,
+                const Derived::Order&>(),
+            arg("length_unit"),
+            arg("length_order"),
+            arg("mass_unit"),
+            arg("mass_order"),
+            arg("time_unit"),
+            arg("time_order"),
+            arg("electric_current_unit"),
+            arg("electric_current_order"),
+            arg("angle_unit"),
+            arg("angle_order"),
+            R"doc(
+                Constructor.
+
+                A dimension that is absent from the unit has a unit of None and an order of zero.
+
+                Args:
+                    length_unit (Length.Unit | None): Length unit.
+                    length_order (Derived.Order): Length order.
+                    mass_unit (Mass.Unit | None): Mass unit.
+                    mass_order (Derived.Order): Mass order.
+                    time_unit (Time.Unit | None): Time unit.
+                    time_order (Derived.Order): Time order.
+                    electric_current_unit (ElectricCurrent.Unit | None): Electric current unit.
+                    electric_current_order (Derived.Order): Electric current order.
+                    angle_unit (Angle.Unit | None): Angle unit.
+                    angle_order (Derived.Order): Angle order.
+            )doc"
+        )
 
         .def(self == self)
         .def(self != self)
 
-        .def("is_defined", &Derived::Unit::isDefined)
         .def("is_compatible_with", &Derived::Unit::isCompatibleWith)
 
         // .def("access_length_unit", &Derived::Unit::accessLengthUnit, return_value_policy::reference)
@@ -548,17 +557,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Derived(pybind11::module& aModule)
                 Args:
                     mass (Mass::Unit): Mass unit.
                     length (Length::Unit): Length unit.
-
-                Returns:
-                    Unit: Unit.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Derived::Unit::Undefined,
-            R"doc(
-                Create an undefined unit.
 
                 Returns:
                     Unit: Unit.

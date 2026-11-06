@@ -73,15 +73,6 @@ class Vector
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector);
 
-    /// @brief Check if the vector is defined.
-    ///
-    /// @code
-    ///     Boolean isDefined = vector.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the vector is defined
-    bool isDefined() const;
-
     /// @brief Get the 3D vector value.
     ///
     /// @code
@@ -139,15 +130,6 @@ class Vector
     /// @param [in] aPrecision A precision for the values (default: 6)
     /// @return A string representation
     String toString(int aPrecision = 6) const;
-
-    /// @brief Construct an undefined vector.
-    ///
-    /// @code
-    ///     Vector vector = Vector::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined vector
-    static Vector Undefined();
 
    private:
     Vector3d value_;

@@ -38,7 +38,6 @@ class Velocity
     enum class Unit
     {
 
-        Undefined,
         MeterPerSecond
 
     };
@@ -84,15 +83,6 @@ class Velocity
     /// @param [in] aVelocity A velocity
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Velocity& aVelocity);
-
-    /// @brief Check if the velocity is defined
-    ///
-    /// @code
-    ///     Velocity::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the velocity is defined
-    bool isDefined() const;
 
     /// @brief Access coordinates
     ///
@@ -161,15 +151,6 @@ class Velocity
     /// @param [in] aPrecision A precision
     /// @return String representation of the velocity
     String toString(int aPrecision = -1) const;
-
-    /// @brief Construct an undefined velocity
-    ///
-    /// @code
-    ///     Velocity velocity = Velocity::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined velocity
-    static Velocity Undefined();
 
     /// @brief Construct a velocity in meters per second
     ///

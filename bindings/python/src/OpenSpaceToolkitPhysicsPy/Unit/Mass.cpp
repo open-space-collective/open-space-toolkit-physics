@@ -44,17 +44,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Mass::isDefined,
-            R"doc(
-                Check if the mass is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_unit",
             &Mass::getUnit,
             R"doc(
@@ -100,16 +89,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
         )
 
         .def_static(
-            "undefined",
-            &Mass::Undefined,
-            R"doc(
-                Get an undefined mass.
-
-                Returns:
-                    Mass: An undefined mass.
-            )doc"
-        )
-        .def_static(
             "kilograms",
             &Mass::Kilograms,
             R"doc(
@@ -154,13 +133,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
 
     enum_<Mass::Unit>(mass, "Unit")
 
-        .value(
-            "Undefined",
-            Mass::Unit::Undefined,
-            R"doc(
-                Undefined.
-            )doc"
-        )
         .value(
             "Kilogram",
             Mass::Unit::Kilogram,

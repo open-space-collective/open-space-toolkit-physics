@@ -2,6 +2,8 @@
 
 #include <datetime.h>
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
@@ -77,17 +79,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &DateTime::isDefined,
-            R"doc(
-                Check if the date-time is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_date",
             &DateTime::getDate,
             R"doc(
@@ -140,17 +131,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
             {
                 return aDateTime.toString(aFormat);
             }
-        )
-
-        .def_static(
-            "undefined",
-            &DateTime::Undefined,
-            R"doc(
-                Create an undefined date-time.
-
-                Returns:
-                    DateTime: Undefined date-time.
-            )doc"
         )
         .def_static(
             "J2000",
@@ -229,13 +209,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
     enum_<DateTime::Format>(datetime_class, "Format")
 
         .value(
-            "Undefined",
-            DateTime::Format::Undefined,
-            R"doc(
-                Undefined format.
-            )doc"
-        )
-        .value(
             "Standard",
             DateTime::Format::Standard,
             R"doc(
@@ -262,5 +235,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_DateTime(pybind11::module& aModule)
     // https://pybind11.readthedocs.io/en/stable/advanced/functions.html#default-arguments-revisited
     // "default arguments are converted to Python objects right at declaration time"
     // The following parsing function requires DateTime::Format to be binded for proper declaration
-    datetime_class.def_static("parse", &DateTime::Parse, arg("string"), arg("format") = DateTime::Format::Undefined);
+    datetime_class.def_static("parse", &DateTime::Parse, arg("string"), arg("format") = none());
 }

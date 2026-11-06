@@ -82,16 +82,6 @@ class NRLMSISE00
 
     virtual NRLMSISE00* clone() const;
 
-    /// @brief Check if the NRLMSISE00 atmospheric model is defined
-    ///
-    /// @code
-    ///     model.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the NRLMSISE00 atmospheric model is defined
-
-    bool isDefined() const;
-
     /// @brief Get the input data source type used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code

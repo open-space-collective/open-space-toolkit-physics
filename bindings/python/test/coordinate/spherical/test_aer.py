@@ -76,19 +76,6 @@ def test_coordinate_spherical_aer_comparators():
     assert aer_1 != aer_2
 
 
-def test_coordinate_spherical_aer_is_defined():
-    # Main Constructor
-    azimuth: Angle = Angle(30.0, Angle.Unit.Degree)
-    elevation: Angle = Angle(30.0, Angle.Unit.Degree)
-    aer_range: Length = Length(1000.0, Length.Unit.Meter)
-
-    # Construction
-    aer: AER = AER(azimuth, elevation, aer_range)
-
-    assert aer.is_defined()
-    assert AER.undefined().is_defined() is False
-
-
 def test_coordinate_spherical_aer_getters():
     # Main Constructor
     azimuth: Angle = Angle(30.0, Angle.Unit.Degree)

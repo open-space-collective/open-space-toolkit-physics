@@ -23,17 +23,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manifest(pybind11::module& aModule)
         .def("__repr__", &(shiftToString<Manifest>))
 
         .def(
-            "is_defined",
-            &Manifest::isDefined,
-            R"doc(
-                Check if the manifest is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_last_modified_timestamp",
             &Manifest::getLastModifiedTimestamp,
             R"doc(
@@ -105,16 +94,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Manifest(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Manifest::Undefined,
-            R"doc(
-                Create an undefined manifest.
-
-                Returns:
-                    Manifest: Undefined manifest.
-            )doc"
-        )
         .def_static(
             "load",
             &Manifest::Load,

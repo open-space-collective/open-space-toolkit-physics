@@ -47,15 +47,6 @@ class Dipole : public Model
     /// @return Pointer to dipole magnetic model
     virtual Dipole* clone() const override;
 
-    /// @brief Check if the dipole magnetic model is defined
-    ///
-    /// @code
-    ///     bool isDefined = model.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the dipole magnetic model is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the magnetic field value at a given position and instant
     ///
     /// @code

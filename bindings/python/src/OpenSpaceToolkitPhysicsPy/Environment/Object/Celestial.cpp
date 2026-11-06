@@ -129,17 +129,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         .def("__repr__", &(shiftToString<Celestial>))
 
         .def(
-            "is_defined",
-            &Celestial::isDefined,
-            R"doc(
-                Check if the celestial object is defined.
-
-                Returns:
-                    bool: True if the celestial object is defined, false otherwise.
-            )doc"
-        )
-
-        .def(
             "access_ephemeris",
             &Celestial::accessEphemeris,
             R"doc(
@@ -156,27 +145,39 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 Access the gravitational model.
 
                 Returns:
-                    Gravitational: Gravitational model.
+                    Gravitational | None: Gravitational model, or None if the object has none.
             )doc"
         )
         .def(
             "access_magnetic_model",
-            &Celestial::accessMagneticModel,
+            +[](const Celestial& aCelestial) -> pybind11::object
+            {
+                // The magnetic model base class is not bound: return None explicitly when the object has no model
+                const auto modelSPtr = aCelestial.accessMagneticModel();
+
+                return modelSPtr != nullptr ? pybind11::cast(modelSPtr) : pybind11::none();
+            },
             R"doc(
                 Access the magnetic model.
 
                 Returns:
-                    Magnetic: Magnetic model.
+                    Magnetic | None: Magnetic model, or None if the object has none.
             )doc"
         )
         .def(
             "access_atmospheric_model",
-            &Celestial::accessAtmosphericModel,
+            +[](const Celestial& aCelestial) -> pybind11::object
+            {
+                // The atmospheric model base class is not bound: return None explicitly when the object has no model
+                const auto modelSPtr = aCelestial.accessAtmosphericModel();
+
+                return modelSPtr != nullptr ? pybind11::cast(modelSPtr) : pybind11::none();
+            },
             R"doc(
                 Access the atmospheric model.
 
                 Returns:
-                    Atmospheric: Atmospheric model.
+                    Atmospheric | None: Atmospheric model, or None if the object has none.
             )doc"
         )
 
@@ -387,17 +388,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         )
 
         .def_static(
-            "undefined",
-            &Celestial::Undefined,
-            R"doc(
-                Create an undefined celestial object.
-
-                Returns:
-                    Celestial: Undefined celestial object.
-            )doc"
-        )
-
-        .def_static(
             "string_from_frame_type",
             &Celestial::StringFromFrameType,
             arg("frame_type"),
@@ -416,13 +406,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
     enum_<Celestial::Type>(celestial_class, "CelestialType")
 
-        .value(
-            "Undefined",
-            Celestial::Type::Undefined,
-            R"doc(
-                Undefined celestial object.
-            )doc"
-        )
         .value(
             "Sun",
             Celestial::Type::Sun,
@@ -470,13 +453,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
     enum_<Celestial::FrameType>(celestial_class, "FrameType")
 
-        .value(
-            "Undefined",
-            Celestial::FrameType::Undefined,
-            R"doc(
-                Undefined frame.
-            )doc"
-        )
         .value(
             "NED",
             Celestial::FrameType::NED,

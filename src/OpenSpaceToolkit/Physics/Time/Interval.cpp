@@ -162,7 +162,64 @@ String Interval::toString(const Scale& aTimeScale) const
 
 Array<Instant> Interval::generateGrid(const Duration& aTimeStep) const
 {
-    return this->generateArrayWithStep(aTimeStep);
+    if (!this->isDefined())
+    {
+        throw ostk::core::error::runtime::Undefined("Interval");
+    }
+
+    if (aTimeStep.isZero())
+    {
+        throw ostk::core::error::RuntimeError("Step is zero.");
+    }
+
+    const Interval::Type type = this->getType();
+
+    Array<Instant> grid = Array<Instant>::Empty();
+
+    if (aTimeStep.isPositive())
+    {
+        Instant instant = this->accessLowerBound();
+
+        if ((type == Interval::Type::Open) || (type == Interval::Type::HalfOpenLeft))
+        {
+            instant += aTimeStep;
+        }
+
+        while (instant < this->accessUpperBound())
+        {
+            grid.add(instant);
+
+            instant += aTimeStep;
+        }
+
+        if ((type == Interval::Type::Closed) || (type == Interval::Type::HalfOpenLeft))
+        {
+            grid.add(this->accessUpperBound());
+        }
+    }
+    else
+    {
+        Instant instant = this->accessUpperBound();
+
+        if ((type == Interval::Type::Open) || (type == Interval::Type::HalfOpenRight))
+        {
+            instant += aTimeStep;
+        }
+
+        while (instant > this->accessLowerBound())
+        {
+            grid.add(instant);
+
+            instant += aTimeStep;
+        }
+
+        if ((type == Interval::Type::Closed) || (type == Interval::Type::HalfOpenRight))
+        {
+            grid.add(this->accessLowerBound());
+        }
+    }
+
+    return grid;
 }
 
 Interval Interval::Undefined()
@@ -237,11 +294,6 @@ Interval Interval::Centered(
     if (!aCentralInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Central instant");
-    }
-
-    if (!aDuration.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Duration");
     }
 
     if (!aDuration.isPositive())
@@ -328,10 +380,8 @@ Interval Interval::Parse(const String& aString)
 
         const Scale timeScale = ScaleFromString(timeScaleString);
 
-        const Instant startInstant =
-            Instant::DateTime(DateTime::Parse(startInstantString, DateTime::Format::Undefined), timeScale);
-        const Instant endInstant =
-            Instant::DateTime(DateTime::Parse(endInstantString, DateTime::Format::Undefined), timeScale);
+        const Instant startInstant = Instant::DateTime(DateTime::Parse(startInstantString, std::nullopt), timeScale);
+        const Instant endInstant = Instant::DateTime(DateTime::Parse(endInstantString, std::nullopt), timeScale);
 
         Interval::Type type = Interval::Type::Undefined;
 

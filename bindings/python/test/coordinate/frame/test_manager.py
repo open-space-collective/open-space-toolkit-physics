@@ -156,8 +156,8 @@ class TestManager:
 
         transform = manager.access_cached_transform(gcrf, itrf, instant)
 
-        # Should return undefined transform when not cached
-        assert transform.is_defined() is False
+        # Should return None when not cached
+        assert transform is None
 
     def test_add_and_access_cached_transform_success(
         self,
@@ -179,11 +179,11 @@ class TestManager:
         manager.add_cached_transform(frame1, frame2, instant, transform)
 
         cached_forward = manager.access_cached_transform(frame1, frame2, instant)
-        assert cached_forward.is_defined() is True
+        assert cached_forward is not None
 
         # Reverse transform should also be cached (eager caching)
         cached_reverse = manager.access_cached_transform(frame2, frame1, instant)
-        assert cached_reverse.is_defined() is True
+        assert cached_reverse is not None
 
     def test_max_transform_cache_size(self, manager: Manager):
         original_size: int = manager.get_max_transform_cache_size()

@@ -69,16 +69,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
         .def("__repr__", &(shiftToString<Environment>))
 
         .def(
-            "is_defined",
-            &Environment::isDefined,
-            R"doc(
-                Check if the environment is defined,
-
-                Returns:
-                    bool: True if the environment is defined, False otherwise,
-            )doc"
-        )
-        .def(
             "has_object_with_name",
             &Environment::hasObjectWithName,
             arg("name"),
@@ -222,16 +212,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Environment::Undefined,
-            R"doc(
-                Get an undefined Environment object.
-
-                Returns:
-                    Environment: An undefined Environment object.
-            )doc"
-        )
         .def_static(
             "default",
             &Environment::Default,

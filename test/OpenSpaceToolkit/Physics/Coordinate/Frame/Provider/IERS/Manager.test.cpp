@@ -13,6 +13,8 @@
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp>
 
 #include <Global.test.hpp>
 
@@ -66,9 +68,6 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         copyFileToDirectory(bulletinAFile_, manager_.getBulletinADirectory());
         copyFileToDirectory(finals2000AFile_, manager_.getFinals2000ADirectory());
 
-        this->bulletinA_ = BulletinA::Load(bulletinAFile_);
-        this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
-
         // cache current directory environment variables
         localRepositoryPath = std::getenv(localRepositoryVarName_);
         fullDataPath_ = std::getenv(fullDataVarName_);
@@ -120,8 +119,8 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/finals2000A.data")
     );
 
-    BulletinA bulletinA_ = BulletinA::Undefined();
-    Finals2000A finals2000A_ = Finals2000A::Undefined();
+    BulletinA bulletinA_ = BulletinA::Load(bulletinAFile_);
+    Finals2000A finals2000A_ = Finals2000A::Load(finals2000AFile_);
 
     Manager& manager_ = Manager::Get();
 
@@ -378,7 +377,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
                 const double referenceDUT1 = {referenceRow[3].accessReal()};
 
-                const double dUT1 = manager_.getUt1MinusUtcAt(instant);
+                const double dUT1 = manager_.getUt1MinusUtcAt(instant).value();
 
                 EXPECT_NEAR(referenceDUT1, dUT1, tolerance)
                     << String::Format("{} - {} ~ {}", instant.toString(Scale::TAI), referenceDUT1, dUT1);
@@ -390,6 +389,35 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
         const Instant instant = Instant::DateTime(DateTime(2018, 10, 10, 0, 0, 0), Scale::UTC);
 
         EXPECT_NO_THROW(manager_.getUt1MinusUtcAt(instant));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Finals2000A_MissingValues)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // LOD and the Bulletin B columns are not tabulated for the latest predictions: they are std::nullopt
+
+    {
+        const Instant instant = Instant::DateTime(DateTime(2025, 3, 1, 0, 0, 0), Scale::UTC);
+
+        EXPECT_TRUE(finals2000A_.getUt1MinusUtcAt(instant).has_value());
+        EXPECT_FALSE(finals2000A_.getLodAt(instant).has_value());
+
+        const Finals2000A::Data data = finals2000A_.getDataAt(instant);
+
+        EXPECT_TRUE(data.ut1MinusUtc_A.has_value());
+        EXPECT_FALSE(data.lod_A.has_value());
+        EXPECT_FALSE(data.lodError_A.has_value());
+        EXPECT_FALSE(data.x_B.has_value());
+    }
+
+    {
+        const Instant instant = Instant::DateTime(DateTime(2015, 10, 31, 0, 0, 0), Scale::UTC);
+
+        EXPECT_TRUE(finals2000A_.getLodAt(instant).has_value());
     }
 }
 
@@ -421,9 +449,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
         const Instant instant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceValue)), Scale::UTC);
         const double referenceUt1MinusUtc = std::get<1>(referenceValue);
 
-        EXPECT_NEAR(referenceUt1MinusUtc, manager_.getUt1MinusUtcAt(instant), 1e-7) << std::get<0>(referenceValue);
-        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getUt1MinusUtcAt(instant), 1e-7) << std::get<0>(referenceValue);
-        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getDataAt(instant).ut1MinusUtc_A, 1e-7)
+        EXPECT_NEAR(referenceUt1MinusUtc, manager_.getUt1MinusUtcAt(instant).value(), 1e-7)
+            << std::get<0>(referenceValue);
+        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getUt1MinusUtcAt(instant).value(), 1e-7)
+            << std::get<0>(referenceValue);
+        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getDataAt(instant).ut1MinusUtc_A.value(), 1e-7)
             << std::get<0>(referenceValue);
     }
 
@@ -432,7 +462,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
         const Instant instant = Instant::DateTime(DateTime::Parse("2016-12-31 12:00:00"), Scale::UTC);
 
-        EXPECT_NEAR(-0.40823125, finals2000A_.getDataAt(instant).ut1MinusUtc_B, 1e-7);
+        EXPECT_NEAR(-0.40823125, finals2000A_.getDataAt(instant).ut1MinusUtc_B.value(), 1e-7);
     }
 
     {
@@ -452,7 +482,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
             const double ut1MinusTai =
                 (instant.getModifiedJulianDate(Scale::UTC) - instant.getModifiedJulianDate(Scale::TAI)) * 86400.0 +
-                manager_.getUt1MinusUtcAt(instant);
+                manager_.getUt1MinusUtcAt(instant).value();
 
             EXPECT_NEAR(-36.4087179, ut1MinusTai, 1e-5) << dateTimeString_TAI;
         }
@@ -510,7 +540,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadBull
         manager_.reset();
 
         EXPECT_NO_THROW(manager_.loadBulletinA(bulletinA_));
-        EXPECT_ANY_THROW(manager_.loadBulletinA(BulletinA::Undefined()));
     }
 }
 
@@ -527,7 +556,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadFina
         manager_.loadFinals2000A(finals2000a);
 
         EXPECT_NO_THROW(manager_.loadFinals2000A(finals2000a));
-        EXPECT_ANY_THROW(manager_.loadFinals2000A(Finals2000A::Undefined()));
     }
 }
 
@@ -575,9 +603,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
     {
         manager_.loadBulletinA(bulletinA_);
 
-        EXPECT_TRUE(manager_.getBulletinA().isDefined());
-        EXPECT_TRUE(manager_.getFinals2000A().isDefined());
-
         EXPECT_NO_THROW(manager_.reset());
     }
 }
@@ -599,4 +624,30 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Get)
     {
         EXPECT_NO_THROW(Manager::Get());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt_NotTabulated)
+{
+    using ostk::physics::coordinate::frame::provider::TEME;
+    using ostk::physics::coordinate::frame::provider::TIRF;
+
+    manager_.loadFinals2000A(finals2000A_);
+
+    // The test file tabulates UT1 - UTC until 2025-10-04, and then has predictions rows without any value until
+    // 2025-11-23: the instant is in the span of the file, but not tabulated
+
+    const Instant instantInBlankTail = Instant::DateTime(DateTime(2025, 10, 15, 0, 0, 0), Scale::UTC);
+
+    EXPECT_FALSE(manager_.getUt1MinusUtcAt(instantInBlankTail).has_value());
+
+    EXPECT_THROW(TIRF().getTransformAt(instantInBlankTail), ostk::core::error::RuntimeError);
+    EXPECT_THROW(TEME().getTransformAt(instantInBlankTail), ostk::core::error::RuntimeError);
+
+    // LOD is not tabulated for the latest predictions: TIRF falls back to a LOD of 0
+
+    const Instant instantWithoutLod = Instant::DateTime(DateTime(2025, 3, 1, 0, 0, 0), Scale::UTC);
+
+    EXPECT_TRUE(manager_.getUt1MinusUtcAt(instantWithoutLod).has_value());
+    EXPECT_FALSE(manager_.getLodAt(instantWithoutLod).has_value());
+    EXPECT_NO_THROW(TIRF().getTransformAt(instantWithoutLod));
 }

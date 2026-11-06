@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Environment/Object.hpp>
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial.cpp>
@@ -36,17 +38,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
             Returns:
                 str: a string representation of the Object. Similar to __str__.
         )doc")
-
-        .def(
-            "is_defined",
-            &Object::isDefined,
-            R"doc(
-                Checks if the Object is defined.
-
-                Returns:
-                    bool: True if the Object is defined, False otherwise.
-            )doc"
-        )
 
         .def(
             "access_name",
@@ -89,7 +80,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
                 Gets the geometry of the Object.
 
                 Returns:
-                    Geometry: The geometry of the Object.
+                    Geometry | None: The geometry of the Object, or None if it has none.
             )doc"
         )
 
@@ -155,7 +146,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
                     instant (Instant): The instant at which the geometry is computed.
 
                 Returns:
-                    Geometry: the geometry of the Object.
+                    Geometry | None: The geometry of the Object, or None if it has none.
             )doc",
             arg("frame"),
             arg("instant")

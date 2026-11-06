@@ -43,7 +43,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(pybind11::modu
 
     enum_<SPICE::Object>(spice_class, "Object")
 
-        .value("Undefined", SPICE::Object::Undefined, "Undefined")
         .value("Sun", SPICE::Object::Sun, "Sun")
         .value("Mercury", SPICE::Object::Mercury, "Mercury")
         .value("Venus", SPICE::Object::Venus, "Venus")

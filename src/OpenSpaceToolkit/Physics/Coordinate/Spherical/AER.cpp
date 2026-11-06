@@ -16,18 +16,17 @@ namespace coordinate
 {
 namespace spherical
 {
-
 AER::AER(const Angle& anAzimuth, const Angle& anElevation, const Length& aRange)
     : azimuth_(anAzimuth),
       elevation_(anElevation),
       range_(aRange)
 {
-    if (azimuth_.isDefined() && ((azimuth_.inDegrees() < 0.0) || (azimuth_.inDegrees() > 360.0)))
+    if (((azimuth_.inDegrees() < 0.0) || (azimuth_.inDegrees() > 360.0)))
     {
         throw ostk::core::error::runtime::Wrong("Azimuth");
     }
 
-    if (elevation_.isDefined() && ((elevation_.inDegrees() < -90.0) || (elevation_.inDegrees() > 90.0)))
+    if (((elevation_.inDegrees() < -90.0) || (elevation_.inDegrees() > 90.0)))
     {
         throw ostk::core::error::runtime::Wrong("Elevation");
     }
@@ -40,11 +39,6 @@ AER::AER(const Angle& anAzimuth, const Angle& anElevation, const Length& aRange)
 
 bool AER::operator==(const AER& anAER) const
 {
-    if ((!this->isDefined()) || (!anAER.isDefined()))
-    {
-        return false;
-    }
-
     return (azimuth_ == anAER.azimuth_) && (elevation_ == anAER.elevation_) && (range_ == anAER.range_);
 }
 
@@ -57,10 +51,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const AER& anAER)
 {
     ostk::core::utils::Print::Header(anOutputStream, "AER");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Azimuth:" << (anAER.azimuth_.isDefined() ? anAER.azimuth_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Elevation:" << (anAER.elevation_.isDefined() ? anAER.elevation_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Azimuth:" << anAER.azimuth_.toString();
+    ostk::core::utils::Print::Line(anOutputStream) << "Elevation:" << anAER.elevation_.toString();
     ostk::core::utils::Print::Line(anOutputStream)
         << "Range:" << (anAER.range_.isDefined() ? anAER.range_.toString() : "Undefined");
 
@@ -69,74 +61,29 @@ std::ostream& operator<<(std::ostream& anOutputStream, const AER& anAER)
     return anOutputStream;
 }
 
-bool AER::isDefined() const
-{
-    return azimuth_.isDefined() && elevation_.isDefined() && range_.isDefined();
-}
-
 Angle AER::getAzimuth() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("AER");
-    }
-
     return azimuth_;
 }
 
 Angle AER::getElevation() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("AER");
-    }
-
     return elevation_;
 }
 
 Length AER::getRange() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("AER");
-    }
-
     return range_;
 }
 
 Vector3d AER::toVector() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("AER");
-    }
-
     return {azimuth_.inDegrees(), elevation_.inDegrees(), range_.inMeters()};
 }
 
-// Vector3d                        AER::toCartesian                            ( ) const
-// {
-
-//     if (!this->isDefined())
-//     {
-//         throw ostk::core::error::runtime::Undefined("AER") ;
-//     }
-
-// }
-
 String AER::toString() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("AER");
-    }
-
     return String::Format("[{}, {}, {}]", azimuth_.toString(), elevation_.toString(), range_.toString());
-}
-
-AER AER::Undefined()
-{
-    return {Angle::Undefined(), Angle::Undefined(), Length::Undefined()};
 }
 
 AER AER::Vector(const Vector3d& aVector)
@@ -151,16 +98,6 @@ AER AER::Vector(const Vector3d& aVector)
 
 AER AER::FromPositionToPosition(const Position& aFromPosition, const Position& aToPosition, const bool isZNegative)
 {
-    if (!aFromPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("From position");
-    }
-
-    if (!aToPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("To position");
-    }
-
     if ((*aFromPosition.accessFrame()) != (*aToPosition.accessFrame()))
     {
         throw ostk::core::error::RuntimeError("Positions should be given in the same frame.");
@@ -185,7 +122,6 @@ AER AER::FromPositionToPosition(const Position& aFromPosition, const Position& a
 
     return {Angle::Radians(azimuth_rad), Angle::Radians(elevation_rad), Length::Meters(range_m)};
 }
-
 }  // namespace spherical
 }  // namespace coordinate
 }  // namespace physics

@@ -25,17 +25,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_Exponential(
         .def(init<>())
 
         .def(
-            "is_defined",
-            &Exponential::isDefined,
-            R"doc(
-                Check if the exponential atmospheric model is defined.
-
-                Returns:
-                    bool: True if the exponential atmospheric model is defined.
-            )doc"
-        )
-
-        .def(
             "get_density_at",
             pybind11::overload_cast<const LLA&, const Instant&>(&Exponential::getDensityAt, pybind11::const_),
             arg("lla"),

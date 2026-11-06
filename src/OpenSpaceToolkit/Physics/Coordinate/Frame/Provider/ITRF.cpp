@@ -39,11 +39,6 @@ ITRF* ITRF::clone() const
     return new ITRF(*this);
 }
 
-bool ITRF::isDefined() const
-{
-    return true;
-}
-
 Transform ITRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -55,11 +50,6 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("ITRF");
     }
 
     // Time (TT)

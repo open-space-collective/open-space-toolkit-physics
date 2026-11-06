@@ -69,15 +69,6 @@ class Scalar
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar);
 
-    /// @brief Check if the scalar is defined.
-    ///
-    /// @code
-    ///     Boolean isDefined = scalar.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the scalar is defined
-    bool isDefined() const;
-
     /// @brief Get the scalar value.
     ///
     /// @code
@@ -115,15 +106,6 @@ class Scalar
     /// @param [in] aPrecision A precision for the value (optional)
     /// @return A string representation
     String toString(int aPrecision = -1) const;
-
-    /// @brief Construct an undefined scalar.
-    ///
-    /// @code
-    ///     Scalar scalar = Scalar::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined scalar
-    static Scalar Undefined();
 
    private:
     double value_;

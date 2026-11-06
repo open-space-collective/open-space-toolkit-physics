@@ -19,20 +19,46 @@ namespace object
 namespace celestial
 {
 
+namespace
+{
+
+// The Celestial constructor rejects a null ephemeris, but the arguments below dereference both pointers first.
+SunGravitationalModel::Parameters ParametersOf(const Shared<SunGravitationalModel>& aGravitationalModel)
+{
+    if (aGravitationalModel == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Gravitational model");
+    }
+
+    return aGravitationalModel->getParameters();
+}
+
+Shared<const Frame> EphemerisFrame(const Shared<Ephemeris>& anEphemeris)
+{
+    if (anEphemeris == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Ephemeris");
+    }
+
+    return anEphemeris->accessFrame();
+}
+
+}  // namespace
+
 Sun::Sun(const Shared<Ephemeris>& anEphemeris, const Shared<SunGravitationalModel>& aGravitationalModel)
     : Celestial(
           "Sun",
           Celestial::Type::Sun,
-          aGravitationalModel->getParameters().gravitationalParameter_,
-          aGravitationalModel->getParameters().equatorialRadius_,
-          aGravitationalModel->getParameters().flattening_,
-          aGravitationalModel->getParameters().J2_,
-          aGravitationalModel->getParameters().J4_,
+          ParametersOf(aGravitationalModel).gravitationalParameter_,
+          ParametersOf(aGravitationalModel).equatorialRadius_,
+          ParametersOf(aGravitationalModel).flattening_,
+          ParametersOf(aGravitationalModel).J2_,
+          ParametersOf(aGravitationalModel).J4_,
           anEphemeris,
           aGravitationalModel,
           nullptr,  // [TBI] Add Sun magnetic model
           nullptr,
-          Sun::Geometry(anEphemeris->accessFrame())
+          Sun::Geometry(EphemerisFrame(anEphemeris))
       )
 {
 }

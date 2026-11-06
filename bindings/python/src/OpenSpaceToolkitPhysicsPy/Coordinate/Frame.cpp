@@ -57,16 +57,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
         .def("__repr__", &(shiftToString<Frame>))
 
         .def(
-            "is_defined",
-            &Frame::isDefined,
-            R"doc(
-                Check if the instance is defined.
-
-                Returns:
-                    bool: True if the instance is defined.
-            )doc"
-        )
-        .def(
             "is_quasi_inertial",
             &Frame::isQuasiInertial,
             R"doc(
@@ -196,16 +186,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Frame::Undefined,
-            R"doc(
-                Get undefined frame.
-
-                Returns:
-                    Frame: Undefined frame.
-            )doc"
-        )
         .def_static(
             "GCRF",
             &Frame::GCRF,

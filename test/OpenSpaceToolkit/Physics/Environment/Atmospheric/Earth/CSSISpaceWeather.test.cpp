@@ -1,6 +1,9 @@
 /// Apache License 2.0
 
-#include <cmath>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
@@ -20,15 +23,11 @@ using ostk::physics::time::Scale;
 class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        const File file =
-            File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
-                                   "CSSISpaceWeather/SW-Last5Years.test.csv"));
-        this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
-    }
+    const File file_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
+                               "CSSISpaceWeather/SW-Last5Years.test.csv"));
 
-    CSSISpaceWeather CSSISpaceWeather_ = CSSISpaceWeather::Undefined();
+    CSSISpaceWeather CSSISpaceWeather_ = CSSISpaceWeather::Load(file_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, StreamOperator)
@@ -42,25 +41,87 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, IsDefined)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, StreamOperator_EmptyCells)
 {
-    {
-        EXPECT_TRUE(CSSISpaceWeather_.isDefined());
-    }
+    // Empty integer cells print as "-" (they used to throw): blank the Kp1 and Kp2 cells of the first observation of a
+    // copy of the regression file
+
+    const std::string sourcePath =
+        "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
+        "SW-Last5Years-Regression-PR366.csv";
+    const std::string modifiedPath = "/tmp/ostk-physics-test-cssi-empty-cells.csv";
 
     {
-        EXPECT_FALSE(CSSISpaceWeather::Undefined().isDefined());
+        std::ifstream input(sourcePath);
+        std::ofstream output(modifiedPath);
+
+        std::string line;
+        bool isHeader = true;
+        bool isFirstReading = true;
+
+        while (std::getline(input, line))
+        {
+            if (!isHeader && isFirstReading)
+            {
+                // DATE,BSRN,ND,KP1,KP2,...: blank KP1 and KP2
+                std::vector<std::string> cells;
+                std::istringstream lineStream(line);
+                std::string cell;
+
+                while (std::getline(lineStream, cell, ','))
+                {
+                    cells.push_back(cell);
+                }
+
+                cells[3] = "";
+                cells[4] = "";
+
+                line.clear();
+
+                for (size_t index = 0; index < cells.size(); ++index)
+                {
+                    line += (index == 0 ? "" : ",") + cells[index];
+                }
+
+                isFirstReading = false;
+            }
+
+            isHeader = false;
+
+            output << line << "\n";
+        }
     }
+
+    const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(File::Path(Path::Parse(modifiedPath)));
+
+    std::ostringstream stream;
+
+    EXPECT_NO_THROW(stream << spaceWeather);
+
+    // Check the row of the reading, not the whole output: the header and footer are made of dashes
+    std::istringstream lines(stream.str());
+    std::string line;
+    bool foundReadingRow = false;
+
+    while (std::getline(lines, line))
+    {
+        if (line.find("2021-01-01  2556") != std::string::npos)
+        {
+            foundReadingRow = true;
+
+            EXPECT_NE(std::string::npos, line.find("  -   -  ")) << line;
+        }
+    }
+
+    EXPECT_TRUE(foundReadingRow);
+
+    std::remove(modifiedPath.c_str());
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessLastObservationDate)
 {
     {
         EXPECT_EQ(Date::Parse("2023-06-19", Date::Format::Standard), CSSISpaceWeather_.accessLastObservationDate());
-    }
-
-    {
-        EXPECT_THROW(CSSISpaceWeather::Undefined().accessLastObservationDate(), ostk::core::error::runtime::Undefined);
     }
 }
 
@@ -75,10 +136,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             ),
             CSSISpaceWeather_.accessObservationInterval()
         );
-    }
-
-    {
-        EXPECT_THROW(CSSISpaceWeather::Undefined().accessObservationInterval(), ostk::core::error::runtime::Undefined);
     }
 }
 
@@ -96,8 +153,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(10, firstObservation.ApAvg);
         EXPECT_EQ("OBS", firstObservation.F107DataType);
 
-        EXPECT_NEAR(69.1, firstObservation.F107Obs, 1e-15);
-        EXPECT_NEAR(71.4, firstObservation.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(69.1, firstObservation.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(71.4, firstObservation.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -109,24 +166,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading& observation = CSSISpaceWeather_.accessObservationAt(instantNearEnd);
 
         EXPECT_EQ(CSSISpaceWeather_.accessLastObservationDate(), observation.date);
-    }
-
-    {
-        // calling Undefined Space Weather
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessObservationAt(
-                Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-            ),
-            ostk::core::error::runtime::Undefined
-        );
-    }
-
-    {
-        // calling Space Weather with Undefined Instant
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessObservationAt(Instant::Undefined()),
-            ostk::core::error::runtime::Undefined
-        );
     }
 
     {
@@ -160,10 +199,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             CSSISpaceWeather_.accessDailyPredictionInterval()
         );
     }
-
-    {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().accessDailyPredictionInterval());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessDailyPredictionAt)
@@ -180,8 +215,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(9, firstDailyPrediction.ApAvg);
         EXPECT_EQ("PRD", firstDailyPrediction.F107DataType);
 
-        EXPECT_NEAR(164.6, firstDailyPrediction.F107Obs, 1e-15);
-        EXPECT_NEAR(160.2, firstDailyPrediction.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(164.6, firstDailyPrediction.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(160.2, firstDailyPrediction.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -193,24 +228,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading& prediction = CSSISpaceWeather_.accessDailyPredictionAt(instantNearEnd);
 
         EXPECT_EQ(Date::Parse("2023-08-03", Date::Format::Standard), prediction.date);
-    }
-
-    {
-        // calling Undefined Space Weather
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessDailyPredictionAt(
-                Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
-            ),
-            ostk::core::error::runtime::Undefined
-        );
-    }
-
-    {
-        // calling Space Weather with Undefined Instant
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessDailyPredictionAt(Instant::Undefined()),
-            ostk::core::error::runtime::Undefined
-        );
     }
 
     {
@@ -245,10 +262,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             CSSISpaceWeather_.accessMonthlyPredictionInterval()
         );
     }
-
-    {
-        EXPECT_ANY_THROW(CSSISpaceWeather::Undefined().accessMonthlyPredictionInterval());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, AccessMonthlyPredictionAt)
@@ -263,26 +276,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(11, firstMonthlyPrediction.ND);
         EXPECT_EQ("PRM", firstMonthlyPrediction.F107DataType);
 
-        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107Obs, 1e-15);
-        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107ObsCenter81, 1e-15);
-    }
-
-    {
-        // calling Undefined Space Weather
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(
-                Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
-            ),
-            ostk::core::error::runtime::Undefined
-        );
-    }
-
-    {
-        // calling Space Weather with Undefined Instant
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessMonthlyPredictionAt(Instant::Undefined()),
-            ostk::core::error::runtime::Undefined
-        );
+        EXPECT_NEAR(151.3, firstMonthlyPrediction.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(154.2, firstMonthlyPrediction.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -319,8 +314,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(10, reading.ApAvg);
         EXPECT_EQ("OBS", reading.F107DataType);
 
-        EXPECT_NEAR(69.1, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(71.4, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(69.1, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(71.4, reading.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -334,8 +329,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(9, reading.ApAvg);
         EXPECT_EQ("PRD", reading.F107DataType);
 
-        EXPECT_NEAR(164.6, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(160.2, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(164.6, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(160.2, reading.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -347,8 +342,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(11, reading.ND);
         EXPECT_EQ("PRM", reading.F107DataType);
 
-        EXPECT_NEAR(151.3, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(154.2, reading.F107ObsCenter81, 1e-15);
+        EXPECT_NEAR(151.3, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(154.2, reading.F107ObsCenter81.value(), 1e-15);
     }
 
     {
@@ -367,26 +362,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
     this->CSSISpaceWeather_ = CSSISpaceWeather::Load(file);
 
     {
-        // calling Undefined Space Weather
-        EXPECT_THROW(
-            CSSISpaceWeather::Undefined().accessLastReadingWhere(
-                [](const CSSISpaceWeather::Reading& reading) -> bool
-                {
-                    return reading.date.isDefined();
-                },
-                Instant::DateTime(DateTime::Parse("2023-06-29 00:00:00"), Scale::UTC)
-            ),
-            ostk::core::error::runtime::Undefined
-        );
-    }
-
-    {
         // calling Space Weather with Undefined Instant
         EXPECT_THROW(
             CSSISpaceWeather_.accessLastReadingWhere(
-                [](const CSSISpaceWeather::Reading& reading) -> bool
+                []([[maybe_unused]] const CSSISpaceWeather::Reading& reading) -> bool
                 {
-                    return reading.date.isDefined();
+                    return true;
                 },
                 Instant::Undefined()
             ),
@@ -398,9 +379,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         // calling with Instant that starts before observations
         EXPECT_THROW(
             CSSISpaceWeather_.accessLastReadingWhere(
-                [](const CSSISpaceWeather::Reading& reading) -> bool
+                []([[maybe_unused]] const CSSISpaceWeather::Reading& reading) -> bool
                 {
-                    return reading.date.isDefined();
+                    return true;
                 },
                 Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
             ),
@@ -412,7 +393,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return reading.Ap1.isDefined();
+                return reading.Ap1.has_value();
             },
             Instant::DateTime(DateTime::Parse("2023-12-01 00:00:00"), Scale::UTC)
         );
@@ -425,7 +406,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return reading.Kp1.isDefined();
+                return reading.Kp1.has_value();
             },
             Instant::DateTime(DateTime::Parse("2023-06-20 00:00:00"), Scale::UTC)
         );
@@ -438,7 +419,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         const CSSISpaceWeather::Reading lastGoodReading = CSSISpaceWeather_.accessLastReadingWhere(
             [](const CSSISpaceWeather::Reading& reading) -> bool
             {
-                return !std::isnan(reading.F107Obs);
+                return reading.F107Obs.has_value();
             },
             Instant::DateTime(DateTime::Parse("2018-01-03 00:00:00"), Scale::UTC)
         );
@@ -490,10 +471,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, Load)
 {
     {
-        EXPECT_TRUE(CSSISpaceWeather_.isDefined());
-    }
-
-    {
         EXPECT_ANY_THROW(CSSISpaceWeather::Load(File::Undefined()));
         EXPECT_ANY_THROW(CSSISpaceWeather::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
@@ -535,16 +512,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(4, reading.Ap7);
         EXPECT_EQ(4, reading.Ap8);
         EXPECT_EQ(4, reading.ApAvg);
-        EXPECT_NEAR(0.1, reading.Cp, 1e-15);
+        EXPECT_NEAR(0.1, reading.Cp.value(), 1e-15);
         EXPECT_EQ(0, reading.C9);
         EXPECT_EQ(102, reading.ISN);
-        EXPECT_NEAR(114.2, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(115.0, reading.F107Adj, 1e-15);
+        EXPECT_NEAR(114.2, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(115.0, reading.F107Adj.value(), 1e-15);
         EXPECT_EQ("PRD", reading.F107DataType);
-        EXPECT_NEAR(121.6, reading.F107ObsCenter81, 1e-15);
-        EXPECT_NEAR(128.2, reading.F107ObsLast81, 1e-15);
-        EXPECT_NEAR(122.4, reading.F107AdjCenter81, 1e-15);
-        EXPECT_NEAR(126.3, reading.F107AdjLast81, 1e-15);
+        EXPECT_NEAR(121.6, reading.F107ObsCenter81.value(), 1e-15);
+        EXPECT_NEAR(128.2, reading.F107ObsLast81.value(), 1e-15);
+        EXPECT_NEAR(122.4, reading.F107AdjCenter81.value(), 1e-15);
+        EXPECT_NEAR(126.3, reading.F107AdjLast81.value(), 1e-15);
     }
 
     {
@@ -555,34 +532,34 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         EXPECT_EQ(Date::Parse("2026-06-01", Date::Format::Standard), reading.date);
         EXPECT_EQ(2629, reading.BSRN);
         EXPECT_EQ(16, reading.ND);
-        EXPECT_FALSE(reading.Kp1.isDefined());
-        EXPECT_FALSE(reading.Kp2.isDefined());
-        EXPECT_FALSE(reading.Kp3.isDefined());
-        EXPECT_FALSE(reading.Kp4.isDefined());
-        EXPECT_FALSE(reading.Kp5.isDefined());
-        EXPECT_FALSE(reading.Kp6.isDefined());
-        EXPECT_FALSE(reading.Kp7.isDefined());
-        EXPECT_FALSE(reading.Kp8.isDefined());
-        EXPECT_FALSE(reading.KpSum.isDefined());
-        EXPECT_FALSE(reading.Ap1.isDefined());
-        EXPECT_FALSE(reading.Ap2.isDefined());
-        EXPECT_FALSE(reading.Ap3.isDefined());
-        EXPECT_FALSE(reading.Ap4.isDefined());
-        EXPECT_FALSE(reading.Ap5.isDefined());
-        EXPECT_FALSE(reading.Ap6.isDefined());
-        EXPECT_FALSE(reading.Ap7.isDefined());
-        EXPECT_FALSE(reading.Ap8.isDefined());
-        EXPECT_FALSE(reading.ApAvg.isDefined());
-        EXPECT_TRUE(std::isnan(reading.Cp));
-        EXPECT_FALSE(reading.C9.isDefined());
+        EXPECT_FALSE(reading.Kp1.has_value());
+        EXPECT_FALSE(reading.Kp2.has_value());
+        EXPECT_FALSE(reading.Kp3.has_value());
+        EXPECT_FALSE(reading.Kp4.has_value());
+        EXPECT_FALSE(reading.Kp5.has_value());
+        EXPECT_FALSE(reading.Kp6.has_value());
+        EXPECT_FALSE(reading.Kp7.has_value());
+        EXPECT_FALSE(reading.Kp8.has_value());
+        EXPECT_FALSE(reading.KpSum.has_value());
+        EXPECT_FALSE(reading.Ap1.has_value());
+        EXPECT_FALSE(reading.Ap2.has_value());
+        EXPECT_FALSE(reading.Ap3.has_value());
+        EXPECT_FALSE(reading.Ap4.has_value());
+        EXPECT_FALSE(reading.Ap5.has_value());
+        EXPECT_FALSE(reading.Ap6.has_value());
+        EXPECT_FALSE(reading.Ap7.has_value());
+        EXPECT_FALSE(reading.Ap8.has_value());
+        EXPECT_FALSE(reading.ApAvg.has_value());
+        EXPECT_FALSE(reading.Cp.has_value());
+        EXPECT_FALSE(reading.C9.has_value());
         EXPECT_EQ(98, reading.ISN);
-        EXPECT_NEAR(125.8, reading.F107Obs, 1e-15);
-        EXPECT_NEAR(129.3, reading.F107Adj, 1e-15);
+        EXPECT_NEAR(125.8, reading.F107Obs.value(), 1e-15);
+        EXPECT_NEAR(129.3, reading.F107Adj.value(), 1e-15);
         EXPECT_EQ("PRM", reading.F107DataType);
-        EXPECT_NEAR(125.1, reading.F107ObsCenter81, 1e-15);
-        EXPECT_NEAR(121.6, reading.F107ObsLast81, 1e-15);
-        EXPECT_NEAR(128.3, reading.F107AdjCenter81, 1e-15);
-        EXPECT_NEAR(122.8, reading.F107AdjLast81, 1e-15);
+        EXPECT_NEAR(125.1, reading.F107ObsCenter81.value(), 1e-15);
+        EXPECT_NEAR(121.6, reading.F107ObsLast81.value(), 1e-15);
+        EXPECT_NEAR(128.3, reading.F107AdjCenter81.value(), 1e-15);
+        EXPECT_NEAR(122.8, reading.F107AdjLast81.value(), 1e-15);
     }
 }
 
@@ -600,8 +577,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
     const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
-    EXPECT_TRUE(spaceWeather.isDefined());
-
     {
         // The 2026-05-09 row is tagged PRM in the CSV but is not the 1st of the month;
         // it should be re-classified as a daily prediction.
@@ -613,7 +588,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_EQ(Date::Parse("2026-05-09", Date::Format::Standard), reading.date);
         EXPECT_EQ("PRM", reading.F107DataType);  // tag is preserved on the row
-        EXPECT_NEAR(127.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(127.8, reading.F107Obs.value(), 1e-15);
     }
 
     {
@@ -622,7 +597,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             spaceWeather.accessDailyPredictionAt(Instant::DateTime(DateTime::Parse("2026-05-09 12:50:01"), Scale::UTC));
 
         EXPECT_EQ(Date::Parse("2026-05-09", Date::Format::Standard), reading.date);
-        EXPECT_NEAR(127.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(127.8, reading.F107Obs.value(), 1e-15);
     }
 
     {
@@ -633,16 +608,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         EXPECT_EQ(Date::Parse("2026-07-01", Date::Format::Standard), reading.date);
         EXPECT_EQ("PRM", reading.F107DataType);
-        EXPECT_NEAR(121.8, reading.F107Obs, 1e-15);
+        EXPECT_NEAR(121.8, reading.F107Obs.value(), 1e-15);
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, LoadLegacy)
 {
-    {
-        EXPECT_TRUE(CSSISpaceWeather_.isDefined());
-    }
-
     {
         EXPECT_ANY_THROW(CSSISpaceWeather::LoadLegacy(File::Undefined()));
         EXPECT_ANY_THROW(CSSISpaceWeather::LoadLegacy(File::Path(Path::Parse("/does/not/exist"))));
@@ -653,8 +624,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/"
                                    "NRLMSISE00/SpaceWeather-All-v1.2.txt"))
         );
-
-        EXPECT_TRUE(legacySpaceWeather.isDefined());
 
         EXPECT_EQ(
             Interval(
@@ -694,18 +663,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
-        EXPECT_TRUE(spaceWeather.isDefined());
-
         const Instant timestamp = spaceWeather.accessLastModifiedTimestamp();
 
         EXPECT_TRUE(timestamp.isDefined());
         EXPECT_NO_THROW(timestamp.toString());
-    }
-
-    {
-        // Test with undefined CSSISpaceWeather
-        const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Undefined();
-
-        EXPECT_THROW({ spaceWeather.accessLastModifiedTimestamp(); }, ostk::core::error::runtime::Undefined);
     }
 }

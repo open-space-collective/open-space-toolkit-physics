@@ -1,7 +1,6 @@
 /// Apache License 2.0
 
 #include <cmath>
-#include <limits>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Iterator/Zip.hpp>
@@ -50,11 +49,6 @@ using ostk::physics::utility::DoubleToString;
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        this->lla_ = LLA(latitude_, longitude_, altitude_);
-    }
-
     void TearDown() override
     {
         Environment::ResetGlobalInstance();
@@ -64,7 +58,7 @@ class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
     const Angle longitude_ = Angle::Degrees(20.0);
     const Length altitude_ = Length::Meters(30.0);
 
-    LLA lla_ = LLA::Undefined();
+    LLA lla_ = LLA(latitude_, longitude_, altitude_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Constructor)
@@ -90,14 +84,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, EqualToOperator)
             LLA(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        const LLA lla = {latitude_, longitude_, altitude_};
-
-        EXPECT_FALSE(LLA::Undefined() == LLA::Undefined());
-        EXPECT_FALSE(lla_ == LLA::Undefined());
-        EXPECT_FALSE(LLA::Undefined() == lla_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
@@ -112,12 +98,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
             LLA(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        EXPECT_TRUE(LLA::Undefined() != LLA::Undefined());
-        EXPECT_TRUE(lla_ != LLA::Undefined());
-        EXPECT_TRUE(LLA::Undefined() != lla_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
@@ -131,25 +111,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IsDefined)
-{
-    {
-        EXPECT_TRUE(lla_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(LLA::Undefined().isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLatitude)
 {
     {
         EXPECT_EQ(latitude_, lla_.getLatitude());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().getLatitude());
     }
 }
 
@@ -158,20 +123,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLongitude)
     {
         EXPECT_EQ(longitude_, lla_.getLongitude());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().getLongitude());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
 {
     {
         EXPECT_EQ(altitude_, lla_.getAltitude());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().getAltitude());
     }
 }
 
@@ -182,10 +139,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, OnSurface)
         EXPECT_EQ(lla.getLatitude(), lla_.getLatitude());
         EXPECT_EQ(lla.getLongitude(), lla_.getLongitude());
         EXPECT_EQ(lla.getAltitude(), Length::Meters(0.0));
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().onSurface());
     }
 }
 
@@ -535,10 +488,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
     {
         EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), lla_.toVector());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toVector());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint2d)
@@ -546,20 +495,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint2d)
     {
         EXPECT_EQ(Point2d(longitude_.inDegrees(), latitude_.inDegrees()), lla_.toPoint2d());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toPoint2d());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint3d)
 {
     {
         EXPECT_EQ(Point3d(longitude_.inDegrees(), latitude_.inDegrees(), altitude_.inMeters()), lla_.toPoint3d());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toPoint3d());
     }
 }
 
@@ -620,10 +561,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
     }
 
     {
-        EXPECT_ANY_THROW(LLA::Undefined().toCartesian(Length::Undefined(), std::numeric_limits<double>::quiet_NaN()));
-    }
-
-    {
         const LLA llaNorthPole = LLA(Angle::Degrees(90.0), Angle::Degrees(15.0), Length::Meters(1.0));
         EXPECT_THROW(llaNorthPole.toCartesian(), ostk::core::error::RuntimeError);
 
@@ -637,17 +574,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToString)
 {
     {
         EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", lla_.toString());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toString());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Undefined)
-{
-    {
-        EXPECT_NO_THROW(LLA::Undefined());
     }
 }
 
@@ -757,9 +683,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
     }
 
     {
-        EXPECT_ANY_THROW(
-            LLA::Cartesian(Vector3d::Undefined(), Length::Undefined(), std::numeric_limits<double>::quiet_NaN())
-        );
+        EXPECT_ANY_THROW(LLA::Cartesian(Vector3d::Undefined(), std::nullopt, std::nullopt));
     }
 
     {
@@ -1206,11 +1130,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, FromPosition)
         EXPECT_NEAR(convertedLLA.getLatitude().inDegrees(), originalLLA.getLatitude().inDegrees(), 1e-10);
         EXPECT_NEAR(convertedLLA.getLongitude().inDegrees(), originalLLA.getLongitude().inDegrees(), 1e-10);
         EXPECT_NEAR(convertedLLA.getAltitude().inMeters(), originalLLA.getAltitude().inMeters(), 1e-6);
-    }
-
-    {
-        // Test with undefined Position
-        EXPECT_THROW(LLA::FromPosition(Position::Undefined()), ostk::core::error::runtime::Undefined);
     }
 
     {

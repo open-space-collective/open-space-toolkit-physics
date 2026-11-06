@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <pybind11/functional.h>
+#include <pybind11/stl.h>
 
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp>
 
@@ -31,17 +32,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
 
         .def("__str__", &(shiftToString<CSSISpaceWeather>))
         .def("__repr__", &(shiftToString<CSSISpaceWeather>))
-
-        .def(
-            "is_defined",
-            &CSSISpaceWeather::isDefined,
-            R"doc(
-                Check if the CSSI Space Weather data is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
 
         .def(
             "access_last_observation_date",
@@ -157,16 +147,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         )
 
         .def_static(
-            "undefined",
-            &CSSISpaceWeather::Undefined,
-            R"doc(
-                Create an undefined CSSI Space Weather object.
-
-                Returns:
-                    CSSISpaceWeather: Undefined CSSI Space Weather object.
-            )doc"
-        )
-        .def_static(
             "load",
             &CSSISpaceWeather::Load,
             arg("file"),
@@ -202,6 +182,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         "Reading",
         R"doc(
             CSSI Space Weather reading.
+
+            Integer-valued fields are None, and float-valued fields are NaN, when the value is missing from the file.
 
         )doc"
     )

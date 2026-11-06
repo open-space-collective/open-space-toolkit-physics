@@ -39,13 +39,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
         enum_<Earth::Type>(earth_class, "Type")
 
             .value(
-                "Undefined",
-                Earth::Type::Undefined,
-                R"doc(
-                    Undefined.
-                )doc"
-            )
-            .value(
                 "Exponential",
                 Earth::Type::Exponential,
                 R"doc(
@@ -62,13 +55,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
         enum_<Earth::InputDataType>(earth_class, "InputDataType")
 
-            .value(
-                "Undefined",
-                Earth::InputDataType::Undefined,
-                R"doc(
-                    Undefined.
-                )doc"
-            )
             .value(
                 "ConstantFluxAndGeoMag",
                 Earth::InputDataType::ConstantFluxAndGeoMag,
@@ -98,7 +84,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
                     double,
                     const Shared<Celestial>&>(),
                 arg("type"),
-                arg("input_data_type") = Earth::InputDataType::Undefined,
+                arg("input_data_type") = Earth::InputDataType::CSSISpaceWeatherFile,
                 arg("f107_constant_value") = Earth::defaultF107ConstantValue,
                 arg("f107_average_constant_value") = Earth::defaultF107AConstantValue,
                 arg("kp_constant_value") = Earth::defaultKpConstantValue,
@@ -111,7 +97,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
                 Args:
                     type (Earth.Type): Earth atmospheric model type.
-                    input_data_type (Earth.InputDataType, optional): Earth atmospheric model input data type. Defaults to Earth.InputDataType.Undefined.
+                    input_data_type (Earth.InputDataType, optional): Earth atmospheric model input data type. Defaults to Earth.InputDataType.CSSISpaceWeatherFile.
                     f107_constant_value (float, optional): F10.7 constant value. Defaults to 150.0.
                     f107_average_constant_value (float, optional): F10.7a constant value. Defaults to 150.0.
                     kp_constant_value (float, optional): Kp constant value. Defaults to 3.0.
@@ -183,17 +169,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth(pybind11::mo
 
                     Returns:
                         Earth.InputDataType: Earth atmospheric model input data type.
-                )doc"
-            )
-
-            .def(
-                "is_defined",
-                &Earth::isDefined,
-                R"doc(
-                    Check if the Earth atmospheric model is defined.
-
-                    Returns:
-                        bool: True if defined.
                 )doc"
             )
 

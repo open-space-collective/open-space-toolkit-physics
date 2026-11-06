@@ -52,8 +52,6 @@ class Earth::Impl
     Earth::Type getType() const;
     Directory getDataDirectory() const;
 
-    bool isDefined() const;
-
     Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const;
 
    private:
@@ -89,11 +87,6 @@ Earth::Type Earth::Impl::getType() const
 Directory Earth::Impl::getDataDirectory() const
 {
     return dataDirectory_;
-}
-
-bool Earth::Impl::isDefined() const
-{
-    return magneticModelUPtr_ != nullptr;
 }
 
 Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
@@ -168,7 +161,7 @@ Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aTyp
     using ostk::physics::environment::magnetic::earth::Manager;
 
     // TBI: move dipole to an implementation class to align with other models
-    if (aType == Earth::Type::Undefined || aType == Earth::Type::Dipole)
+    if (aType == Earth::Type::Dipole)
     {
         return nullptr;
     }
@@ -279,16 +272,6 @@ Earth::~Earth() {}
 Earth* Earth::clone() const
 {
     return new Earth(*this);
-}
-
-bool Earth::isDefined() const
-{
-    if (implUPtr_ == nullptr)
-    {
-        return false;
-    }
-
-    return implUPtr_->isDefined();
 }
 
 Earth::Type Earth::getType() const

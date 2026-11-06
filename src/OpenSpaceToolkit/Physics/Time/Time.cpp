@@ -18,8 +18,7 @@ namespace time
 {
 
 Time::Time(Uint8 anHour, Uint8 aMinute, Uint8 aSecond, Uint16 aMillisecond, Uint16 aMicrosecond, Uint16 aNanosecond)
-    : defined_(true),
-      hour_(anHour),
+    : hour_(anHour),
       minute_(aMinute),
       second_(aSecond),
       millisecond_(aMillisecond),
@@ -36,11 +35,6 @@ Time::Time(Uint8 anHour, Uint8 aMinute, Uint8 aSecond, Uint16 aMillisecond, Uint
 
 bool Time::operator==(const Time& aTime) const
 {
-    if ((!this->isDefined()) || (!aTime.isDefined()))
-    {
-        return false;
-    }
-
     return (hour_ == aTime.hour_) && (minute_ == aTime.minute_) && (second_ == aTime.second_) &&
            (millisecond_ == aTime.millisecond_) && (microsecond_ == aTime.microsecond_) &&
            (nanosecond_ == aTime.nanosecond_);
@@ -48,11 +42,6 @@ bool Time::operator==(const Time& aTime) const
 
 bool Time::operator!=(const Time& aTime) const
 {
-    if ((!this->isDefined()) || (!aTime.isDefined()))
-    {
-        return true;
-    }
-
     return (hour_ != aTime.hour_) || (minute_ != aTime.minute_) || (second_ != aTime.second_) ||
            (millisecond_ != aTime.millisecond_) || (microsecond_ != aTime.microsecond_) ||
            (nanosecond_ != aTime.nanosecond_);
@@ -62,127 +51,66 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Time& aTime)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Time");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Hour:" << (aTime.isDefined() ? String::Format("{:d}", aTime.hour_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Minute:" << (aTime.isDefined() ? String::Format("{:d}", aTime.minute_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Second:" << (aTime.isDefined() ? String::Format("{:d}", aTime.second_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Millisecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.millisecond_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Microsecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.microsecond_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Nanosecond:" << (aTime.isDefined() ? String::Format("{:d}", aTime.nanosecond_) : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Hour:" << String::Format("{:d}", aTime.hour_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Minute:" << String::Format("{:d}", aTime.minute_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Second:" << String::Format("{:d}", aTime.second_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Millisecond:" << String::Format("{:d}", aTime.millisecond_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Microsecond:" << String::Format("{:d}", aTime.microsecond_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Nanosecond:" << String::Format("{:d}", aTime.nanosecond_);
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Time::isDefined() const
-{
-    return defined_;
-}
-
 Uint8 Time::getHour() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return hour_;
 }
 
 Uint8 Time::getMinute() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return minute_;
 }
 
 Uint8 Time::getSecond() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return second_;
 }
 
 Uint16 Time::getMillisecond() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return millisecond_;
 }
 
 Uint16 Time::getMicrosecond() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return microsecond_;
 }
 
 Uint16 Time::getNanosecond() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return nanosecond_;
 }
 
 double Time::getFloatingSeconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return static_cast<double>(second_) + (static_cast<double>(millisecond_) / 1e3) +
            (static_cast<double>(microsecond_) / 1e6) + (static_cast<double>(nanosecond_) / 1e9);
 }
 
 double Time::getTotalFloatingSeconds() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return static_cast<double>(hour_) * 3600.0 + static_cast<double>(minute_) * 60.0 + this->getFloatingSeconds();
 }
 
 double Time::getTotalFloatingHours() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     return this->getTotalFloatingSeconds() / 3600.0;
 }
 
 String Time::toString(const Time::Format& aFormat) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     switch (aFormat)
     {
         case Time::Format::Standard:
@@ -262,11 +190,6 @@ Time Time::replace(
     const std::optional<int>& aNanosecond
 ) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     const int hour = anHour.value_or(static_cast<int>(hour_));
     const int minute = aMinute.value_or(static_cast<int>(minute_));
     const int second = aSecond.value_or(static_cast<int>(second_));
@@ -293,11 +216,6 @@ Time Time::replace(
 
 void Time::setHour(Uint8 anHour)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     Time::ValidateHour(anHour);
 
     hour_ = anHour;
@@ -305,11 +223,6 @@ void Time::setHour(Uint8 anHour)
 
 void Time::setMinute(Uint8 aMinute)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     Time::ValidateMinute(aMinute);
 
     minute_ = aMinute;
@@ -317,11 +230,6 @@ void Time::setMinute(Uint8 aMinute)
 
 void Time::setSecond(Uint8 aSecond)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     Time::ValidateSecond(aSecond);
 
     second_ = aSecond;
@@ -329,11 +237,6 @@ void Time::setSecond(Uint8 aSecond)
 
 void Time::setMillisecond(Uint16 aMillisecond)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     Time::ValidateMillisecond(aMillisecond);
 
     millisecond_ = aMillisecond;
@@ -341,11 +244,6 @@ void Time::setMillisecond(Uint16 aMillisecond)
 
 void Time::setMicrosecond(Uint16 aMicrosecond)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     Time::ValidateMicrosecond(aMicrosecond);
 
     microsecond_ = aMicrosecond;
@@ -353,19 +251,9 @@ void Time::setMicrosecond(Uint16 aMicrosecond)
 
 void Time::setNanosecond(Uint16 aNanosecond)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
     Time::ValidateNanosecond(aNanosecond);
 
     nanosecond_ = aNanosecond;
-}
-
-Time Time::Undefined()
-{
-    return Time();
 }
 
 Time Time::Midnight()
@@ -378,25 +266,27 @@ Time Time::Noon()
     return Time(12, 0, 0, 0, 0, 0);
 }
 
-Time Time::Parse(const String& aString, const Time::Format& aFormat)
+Time Time::Parse(const String& aString, const std::optional<Time::Format>& aFormat)
 {
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
     }
 
-    switch (aFormat)
+    if (!aFormat.has_value())
     {
-        case Time::Format::Undefined:  // Automatic format detection
-        {
-            if (aString.match(boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,9}))?$")))
-            {
-                return Time::Parse(aString, Time::Format::ISO8601);
-            }
+        // Automatic format detection
 
-            return Time::Parse(aString, Time::Format::Standard);
+        if (aString.match(boost::regex("^([0-9]{2}).([0-9]{2}).([0-9]{2})(?:.([0-9]{1,9}))?$")))
+        {
+            return Time::Parse(aString, Time::Format::ISO8601);
         }
 
+        return Time::Parse(aString, Time::Format::Standard);
+    }
+
+    switch (aFormat.value())
+    {
         case Time::Format::Standard:
         {
             boost::smatch match;
@@ -553,7 +443,7 @@ Time Time::Parse(const String& aString, const Time::Format& aFormat)
             break;
     }
 
-    return Time::Undefined();
+    throw ostk::core::error::runtime::Wrong("Format");
 }
 
 Time Time::Hours(double aReal)
@@ -586,17 +476,6 @@ Time Time::Seconds(double aReal)
     const Uint16 nanosecond_Int = static_cast<Uint16>(nanosecond);
 
     return Time(hour_Int, minute_Int, second_Int, millisecond_Int, microsecond_Int, nanosecond_Int);
-}
-
-Time::Time()
-    : defined_(false),
-      hour_(0),
-      minute_(0),
-      second_(0),
-      millisecond_(0),
-      microsecond_(0),
-      nanosecond_(0)
-{
 }
 
 void Time::ValidateHour(int anHour)

@@ -76,11 +76,6 @@ NRLMSISE00* NRLMSISE00::clone() const
     return new NRLMSISE00(*this);
 }
 
-bool NRLMSISE00::isDefined() const
-{
-    return true;
-}
-
 Unique<NRLMSISE00::ap_array> NRLMSISE00::computeApArray(const Instant& anInstant) const
 {
     Unique<NRLMSISE00::ap_array> outputStruct = std::make_unique<NRLMSISE00::ap_array>();

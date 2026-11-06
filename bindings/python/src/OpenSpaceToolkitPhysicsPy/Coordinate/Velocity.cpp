@@ -67,17 +67,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def("__repr__", &(shiftToString<Velocity>))
 
         .def(
-            "is_defined",
-            &Velocity::isDefined,
-            R"doc(
-                Check if the instance is defined.
-
-                Returns:
-                    bool: True if the instance is defined.
-            )doc"
-        )
-
-        .def(
             "access_frame",
             &Velocity::accessFrame,
             R"doc(
@@ -156,16 +145,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         )
 
         .def_static(
-            "undefined",
-            &Velocity::Undefined,
-            R"doc(
-                Get undefined velocity.
-
-                Returns:
-                    Velocity: Undefined velocity.
-            )doc"
-        )
-        .def_static(
             "meters_per_second",
             &Velocity::MetersPerSecond,
             arg("coordinates"),
@@ -206,13 +185,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         )doc"
     )
 
-        .value(
-            "Undefined",
-            Velocity::Unit::Undefined,
-            R"doc(
-                Undefined.
-            )doc"
-        )
         .value(
             "MeterPerSecond",
             Velocity::Unit::MeterPerSecond,

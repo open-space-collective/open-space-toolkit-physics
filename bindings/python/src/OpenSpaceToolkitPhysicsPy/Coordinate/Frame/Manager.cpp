@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module& aModule)
@@ -86,7 +88,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
                     instant (Instant): Instant at which the transform is requested.
 
                 Returns:
-                    Transform: Cached transform if found, undefined transform otherwise.
+                    Transform | None: Cached transform if found, None otherwise.
             )doc"
         )
         .def(

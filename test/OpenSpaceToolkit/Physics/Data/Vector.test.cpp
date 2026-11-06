@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
 
 #include <Global.test.hpp>
@@ -52,17 +54,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Vector, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Vector, IsDefined)
-{
-    {
-        EXPECT_FALSE(Vector::Undefined().isDefined());
-    }
-
-    {
-        EXPECT_TRUE(vector_.isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Data_Vector, GetValue)
 {
     {
@@ -87,8 +78,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Vector, GetFrame)
 TEST_F(OpenSpaceToolkit_Physics_Data_Vector, InUnit)
 {
     {
-        EXPECT_TRUE(vector_.inUnit(Unit::Length(Length::Unit::Foot)).isDefined());
-
         EXPECT_DOUBLE_EQ(value_.norm(), vector_.inUnit(Unit::Length(Length::Unit::Meter)).getValue().norm());
     }
 }
@@ -108,9 +97,7 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Vector, ToString)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Data_Vector, Undefined)
+TEST_F(OpenSpaceToolkit_Physics_Data_Vector, Constructor_NullFrame)
 {
-    {
-        EXPECT_FALSE(Vector::Undefined().isDefined());
-    }
+    EXPECT_THROW(Vector(value_, unit_, nullptr), ostk::core::error::runtime::Undefined);
 }

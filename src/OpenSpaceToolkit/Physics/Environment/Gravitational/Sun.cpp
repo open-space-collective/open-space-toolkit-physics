@@ -119,14 +119,9 @@ Sun* Sun::clone() const
     return new Sun(*this);
 }
 
-bool Sun::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 bool Sun::isPointMass() const
 {
-    return this->isDefined() && (this->getType() == Sun::Type::Spherical);
+    return this->getType() == Sun::Type::Spherical;
 }
 
 Sun::Type Sun::getType() const
@@ -146,9 +141,6 @@ Model::Parameters Sun::ParametersFromType(const Sun::Type& aType)
         case (Sun::Type::Spherical):
             return Sun::Spherical;
 
-        case (Sun::Type::Undefined):
-            return Sun::Parameters::Undefined();
-
         default:
             throw ostk::core::error::runtime::Wrong("Type");
     }
@@ -158,10 +150,6 @@ Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const Directory& aDa
 {
     (void)aDataDirectory;  // Temporary
 
-    if (aType == Sun::Type::Undefined)
-    {
-        return nullptr;
-    }
     if (aType == Sun::Type::Spherical)
     {
         return std::make_unique<Sun::SphericalImpl>(aType);

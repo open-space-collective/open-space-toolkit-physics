@@ -305,16 +305,6 @@ Array<Interval> eclipseIntervalsAtPosition(
         throw ostk::core::error::runtime::Undefined("Analysis interval");
     }
 
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!anEnvironment.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     Environment environment = anEnvironment;
 
     Array<Interval> eclipseIntervals = Array<Interval>::Empty();

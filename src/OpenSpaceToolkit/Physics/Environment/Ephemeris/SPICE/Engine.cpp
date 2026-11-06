@@ -120,11 +120,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Engine& anEngine)
 
 bool Engine::isKernelLoaded(const Kernel& aKernel) const
 {
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     return this->isKernelLoaded_(aKernel);
@@ -171,11 +166,6 @@ Array<Kernel> Engine::getKernels() const
 
 void Engine::loadKernel(const Kernel& aKernel)
 {
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     this->loadKernel_(aKernel);
@@ -183,11 +173,6 @@ void Engine::loadKernel(const Kernel& aKernel)
 
 void Engine::unloadKernel(const Kernel& aKernel)
 {
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     this->unloadKernel_(aKernel);

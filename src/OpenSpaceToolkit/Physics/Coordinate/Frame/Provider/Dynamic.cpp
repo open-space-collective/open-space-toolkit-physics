@@ -19,6 +19,10 @@ namespace provider
 Dynamic::Dynamic(const Dynamic::Generator& aGenerator)
     : generator_(aGenerator)
 {
+    if (!generator_)
+    {
+        throw ostk::core::error::runtime::Undefined("Generator");
+    }
 }
 
 Dynamic::~Dynamic() {}
@@ -28,24 +32,9 @@ Dynamic* Dynamic::clone() const
     return new Dynamic(*this);
 }
 
-bool Dynamic::isDefined() const
-{
-    return !!generator_;
-}
-
 Transform Dynamic::getTransformAt(const Instant& anInstant) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Dynamic provider");
-    }
-
     return generator_(anInstant);
-}
-
-Dynamic Dynamic::Undefined()
-{
-    return {{}};
 }
 
 }  // namespace provider

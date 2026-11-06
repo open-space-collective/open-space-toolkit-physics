@@ -63,17 +63,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         )
 
         .def(
-            "is_defined",
-            &ElectricCurrent::isDefined,
-            R"doc(
-                Check if the electric current is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_unit",
             &ElectricCurrent::getUnit,
             R"doc(
@@ -119,16 +108,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         )
 
         .def_static(
-            "undefined",
-            &ElectricCurrent::Undefined,
-            R"doc(
-                Get an undefined electric current.
-
-                Returns:
-                    ElectricCurrent: An undefined electric current.
-            )doc"
-        )
-        .def_static(
             "amperes",
             &ElectricCurrent::Amperes,
             R"doc(
@@ -164,13 +143,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
 
     enum_<ElectricCurrent::Unit>(elec_current, "Unit")
 
-        .value(
-            "Undefined",
-            ElectricCurrent::Unit::Undefined,
-            R"doc(
-                Undefined.
-            )doc"
-        )
         .value(
             "Ampere",
             ElectricCurrent::Unit::Ampere,

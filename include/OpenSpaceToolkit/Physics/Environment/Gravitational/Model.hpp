@@ -109,24 +109,6 @@ class Model
         /// @return A reference to output stream
         friend std::ostream& operator<<(std::ostream& anOutputStream, const Parameters& aParameterSet);
 
-        /// @brief Check if the parameter set is defined.
-        ///
-        /// @code
-        ///     bool isDefined = params.isDefined();
-        /// @endcode
-        ///
-        /// @return True if the parameter set is defined
-        bool isDefined() const;
-
-        /// @brief Construct an undefined parameter set.
-        ///
-        /// @code
-        ///     Parameters params = Parameters::Undefined();
-        /// @endcode
-        ///
-        /// @return An undefined parameter set
-        static Parameters Undefined();
-
         /// @brief Compute geocentric radius of ellipsoid at a given latitude.
         ///
         /// @code
@@ -162,11 +144,6 @@ class Model
     ///
     /// @return Pointer to gravitational model
     virtual Model* clone() const = 0;
-
-    /// @brief Check if the gravitational model is defined (pure virtual)
-    ///
-    /// @return True if the gravitational model is defined
-    virtual bool isDefined() const = 0;
 
     /// @brief Returns true if the gravitational model is a point mass model
     ///

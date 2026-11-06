@@ -240,11 +240,6 @@ CIRF* CIRF::clone() const
     return new CIRF(*this);
 }
 
-bool CIRF::isDefined() const
-{
-    return true;
-}
-
 Transform CIRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -255,11 +250,6 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CIRF");
     }
 
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf

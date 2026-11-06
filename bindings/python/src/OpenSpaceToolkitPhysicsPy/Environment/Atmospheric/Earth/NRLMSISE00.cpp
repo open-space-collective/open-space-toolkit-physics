@@ -81,17 +81,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_NRLMSISE00(p
         )
 
         .def(
-            "is_defined",
-            &NRLMSISE00::isDefined,
-            R"doc(
-                Check if the NRLMSISE00 atmospheric model is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_input_data_type",
             &NRLMSISE00::getInputDataType,
             R"doc(

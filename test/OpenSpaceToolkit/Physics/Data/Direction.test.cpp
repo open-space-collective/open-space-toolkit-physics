@@ -32,10 +32,3 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Direction, StreamOperator)
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
     }
 }
-
-TEST_F(OpenSpaceToolkit_Physics_Data_Direction, Undefined)
-{
-    {
-        EXPECT_FALSE(Direction::Undefined().isDefined());
-    }
-}

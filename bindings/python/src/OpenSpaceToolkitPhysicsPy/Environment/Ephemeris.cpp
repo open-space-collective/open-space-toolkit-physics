@@ -24,11 +24,6 @@ class PyEphemeris : public Ephemeris
         PYBIND11_OVERRIDE_PURE_NAME(Ephemeris*, Ephemeris, "clone", clone);
     }
 
-    bool isDefined() const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(bool, Ephemeris, "is_defined", isDefined);
-    }
-
     Shared<const Frame> accessFrame() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(Shared<const Frame>, Ephemeris, "access_frame", accessFrame);
@@ -53,16 +48,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(pybind11::module& aM
         )doc"
     )
 
-        .def(
-            "is_defined",
-            &Ephemeris::isDefined,
-            R"doc(
-                Check if the ephemeris is defined.
-
-                Returns:
-                    bool: True if the ephemeris is defined, False otherwise.
-            )doc"
-        )
         .def(
             "access_frame",
             &Ephemeris::accessFrame,

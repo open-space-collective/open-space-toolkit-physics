@@ -33,7 +33,6 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager : public ::
     void SetUp() override
     {
         // Default all tests to use local testing file to avoid accidental remote requests
-        spaceWeather_ = CSSISpaceWeather::Load(spaceWeatherFile_);
         manager_.loadCSSISpaceWeather(spaceWeather_);
 
         // cache current directory environment variables
@@ -80,7 +79,7 @@ class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager : public ::
         "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather/SW-Last5Years.test.csv"
     ));
 
-    CSSISpaceWeather spaceWeather_ = CSSISpaceWeather::Undefined();
+    CSSISpaceWeather spaceWeather_ = CSSISpaceWeather::Load(spaceWeatherFile_);
 
     Manager& manager_ = Manager::Get();
 
@@ -399,7 +398,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, LoadCSSIS
 
         const CSSISpaceWeather spaceWeather = CSSISpaceWeather::Load(file);
 
-        EXPECT_ANY_THROW(manager_.loadCSSISpaceWeather(CSSISpaceWeather::Undefined()));
+        manager_.loadCSSISpaceWeather(spaceWeather);
+
+        EXPECT_TRUE(manager_.getLoadedCSSISpaceWeather().has_value());
     }
 }
 
@@ -425,7 +426,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, Reset)
     {
         manager_.reset();
 
-        EXPECT_FALSE(manager_.getLoadedCSSISpaceWeather().isDefined());
+        EXPECT_FALSE(manager_.getLoadedCSSISpaceWeather().has_value());
     }
 }
 

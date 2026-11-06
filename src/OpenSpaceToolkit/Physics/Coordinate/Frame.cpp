@@ -43,11 +43,6 @@ Frame::~Frame() {}
 
 bool Frame::operator==(const Frame& aFrame) const
 {
-    if ((!this->isDefined()) || (!aFrame.isDefined()))
-    {
-        return false;
-    }
-
     return (name_ == aFrame.name_) && (quasiInertial_ == aFrame.quasiInertial_) &&
            (((parentFrameSPtr_ == nullptr) && (aFrame.parentFrameSPtr_ == nullptr)) ||
             ((parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_ != nullptr) &&
@@ -65,52 +60,29 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Frame& aFrame)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Frame");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Name:" << (aFrame.isDefined() ? aFrame.getName() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Name:" << aFrame.getName();
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Quasi-inertial:" << (aFrame.isDefined() ? String::Format("{}", aFrame.isQuasiInertial()) : "Undefined");
+        << "Quasi-inertial:" << String::Format("{}", aFrame.isQuasiInertial());
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Parent frame:"
-        << (((aFrame.parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_->isDefined()))
-                ? aFrame.parentFrameSPtr_->getName()
-                : "None");
+        << "Parent frame:" << ((aFrame.parentFrameSPtr_ != nullptr) ? aFrame.parentFrameSPtr_->getName() : "None");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Frame::isDefined() const
-{
-    return (!name_.isEmpty()) && (providerSPtr_ != nullptr);
-}
-
 bool Frame::isQuasiInertial() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return quasiInertial_;
 }
 
 bool Frame::hasParent() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return parentFrameSPtr_ != nullptr;
 }
 
 Shared<const Frame> Frame::accessParent() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     if (parentFrameSPtr_ == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Parent");
@@ -121,11 +93,6 @@ Shared<const Frame> Frame::accessParent() const
 
 Shared<const Frame> Frame::accessAncestor(const Uint8 anAncestorDegree) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     if (anAncestorDegree == 0)
     {
         return this->shared_from_this();
@@ -150,21 +117,11 @@ Shared<const Frame> Frame::accessAncestor(const Uint8 anAncestorDegree) const
 
 Shared<const Provider> Frame::accessProvider() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return providerSPtr_;
 }
 
 String Frame::getName() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return name_;
 }
 
@@ -175,7 +132,7 @@ Position Frame::getOriginIn(const Shared<const Frame>& aFrameSPtr, const Instant
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -192,7 +149,7 @@ Velocity Frame::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Insta
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -211,7 +168,7 @@ Axes Frame::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -232,7 +189,7 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -244,18 +201,19 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     const Shared<const Frame> thisSPtr = this->shared_from_this();
 
-    const Transform transform = FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant);
+    const std::optional<Transform> cachedTransform =
+        FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant);
 
-    if (transform.isDefined())
+    if (cachedTransform.has_value())
     {
-        return transform;
+        return cachedTransform.value();
     }
 
     // Find common ancestor
 
     const Shared<const Frame> commonAncestorSPtr = Frame::FindCommonAncestor(thisSPtr, aFrameSPtr);
 
-    if ((commonAncestorSPtr == nullptr) || (!commonAncestorSPtr->isDefined()))
+    if ((commonAncestorSPtr == nullptr))
     {
         throw ostk::core::error::RuntimeError(
             "No common ancestor between [{}] and [{}].", this->getName(), aFrameSPtr->getName()
@@ -288,11 +246,6 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
     FrameManager::Get().addCachedTransform(thisSPtr, aFrameSPtr, anInstant, transform_destination_origin);
 
     return transform_destination_origin;
-}
-
-Shared<const Frame> Frame::Undefined()
-{
-    return std::make_shared<const SharedFrameEnabler>(String::Empty(), false, nullptr, nullptr);
 }
 
 Shared<const Frame> Frame::GCRF()
@@ -463,6 +416,15 @@ Frame::Frame(
       parentFrameSPtr_(aParentFrame),
       providerSPtr_(aProvider)
 {
+    if (name_.isEmpty())
+    {
+        throw ostk::core::error::runtime::Undefined("Name");
+    }
+
+    if (providerSPtr_ == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Provider");
+    }
 }
 
 Uint8 Frame::getDepth() const

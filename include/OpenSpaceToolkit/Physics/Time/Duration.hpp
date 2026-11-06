@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Time_Duration__
 
 #include <functional>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
@@ -32,9 +33,8 @@ class Duration
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
-        ISO8601     ///< ISO 8601 format (PnDTnHnMnS)
+        Standard,  ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
+        ISO8601    ///< ISO 8601 format (PnDTnHnMnS)
 
     };
 
@@ -229,15 +229,6 @@ class Duration
     /// @param [in] aDuration A duration
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Duration& aDuration);
-
-    /// @brief Check if duration is defined
-    ///
-    /// @code
-    ///     Duration(123).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if duration is defined
-    bool isDefined() const;
 
     /// @brief Check if duration is zero
     ///
@@ -455,16 +446,6 @@ class Duration
     /// @return Serialized duration
     String toString(const Duration::Format& aFormat = Duration::Format::Standard) const;
 
-    /// @brief Constructs an undefined duration
-    ///
-    /// @code
-    ///     Duration duration = Duration::Undefined();
-    ///     duration.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined duration
-    static Duration Undefined();
-
     /// @brief Constructs a zero duration
     ///
     /// @code
@@ -577,15 +558,12 @@ class Duration
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A duration format (automatic detection if Undefined)
+    /// @param [in] aFormat A duration format (default: std::nullopt, which detects the format)
     /// @return Duration
-    static Duration Parse(const String& aString, const Duration::Format& aFormat = Duration::Format::Undefined);
+    static Duration Parse(const String& aString, const std::optional<Duration::Format>& aFormat = std::nullopt);
 
    private:
-    bool defined_;
     Int64 count_;
-
-    Duration();
 
     friend struct std::hash<Duration>;
 };
@@ -602,11 +580,6 @@ struct hash<ostk::physics::time::Duration>
 {
     size_t operator()(const ostk::physics::time::Duration& aDuration) const
     {
-        if (!aDuration.defined_)
-        {
-            return 0;
-        }
-
         return std::hash<ostk::core::type::Int64> {}(aDuration.count_);
     }
 };

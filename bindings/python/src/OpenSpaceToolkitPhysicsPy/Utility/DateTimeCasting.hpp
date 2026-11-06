@@ -77,11 +77,6 @@ class type_caster<DateTime> : public type_caster_base<DateTime>
             PyDateTime_IMPORT;
         }
 
-        if (!aDateTime.isDefined())
-        {
-            return pybind11::none();
-        }
-
         const int year = static_cast<int>(aDateTime.accessDate().getYear());
         const int month = static_cast<int>(aDateTime.accessDate().getMonth());
         const int day = static_cast<int>(aDateTime.accessDate().getDay());

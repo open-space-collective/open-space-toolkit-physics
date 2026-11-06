@@ -1,6 +1,6 @@
 /// Apache License 2.0
 
-#include <limits>
+#include <pybind11/stl.h>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 
@@ -67,17 +67,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
         .def("__repr__", &(shiftToString<LLA>))
 
         .def(
-            "is_defined",
-            &LLA::isDefined,
-            R"doc(
-                Check if defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_latitude",
             &LLA::getLatitude,
             R"doc(
@@ -128,15 +117,15 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 
                 Args:
                     lla (LLA): Another LLA coordinate.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     Length: Distance.
             )doc",
             arg("lla"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def(
             "calculate_azimuth_to",
@@ -147,16 +136,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 
                 Args:
                     lla (LLA): Another LLA coordinate.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     Angle: Azimuth.
 
                 )doc",
             arg("lla"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def(
             "calculate_intermediate_to",
@@ -169,16 +158,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Args:
                     lla (LLA): Another LLA coordinate.
                     ratio (float): Ratio.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     LLA: A point between the two LLA coordinates, with altitude linearly interpolated between the two coordinates' altitudes.
             )doc",
             arg("lla"),
             arg("ratio"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def(
             "calculate_forward",
@@ -191,16 +180,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Args:
                     azimuth (Angle): Azimuth.
                     distance (Length): Distance.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     LLA: Propagated LLA coordinate, preserving this coordinate's altitude.
             )doc",
             arg("azimuth"),
             arg("distance"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def(
             "calculate_linspace_to",
@@ -213,16 +202,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Args:
                     lla (LLA): Another LLA coordinate.
                     number_of_points (Size): Number of points.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     list[LLA]: List of LLA coordinates, with altitudes linearly interpolated between the two coordinates' altitudes.
             )doc",
             arg("lla"),
             arg("number_of_points"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
 
         .def(
@@ -243,14 +232,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 If ellipsoid parameters are not provided, values from the global Environment central celestial are used. 
 
                 Args:
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     np.ndarray: Cartesian.
             )doc",
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def(
             "to_string",
@@ -263,16 +252,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &LLA::Undefined,
-            R"doc(
-                Undefined LLA.
-
-                Returns:
-                    LLA: Undefined LLA.
-            )doc"
-        )
         .def_static(
             "vector",
             &LLA::Vector,
@@ -296,15 +275,15 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
 
                 Args:
                     cartesian_coordinates (np.ndarray): Cartesian coordinates.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     LLA: LLA.
             )doc",
             arg("cartesian_coordinates"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def_static(
             "distance_between",
@@ -316,16 +295,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Args:
                     lla_1 (LLA): First LLA coordinate.
                     lla_2 (LLA): Second LLA coordinate.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     Length: Distance.
             )doc",
             arg("lla_1"),
             arg("lla_2"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def_static(
             "azimuth_between",
@@ -337,16 +316,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                 Args:
                     lla_1 (LLA): First LLA coordinate.
                     lla_2 (LLA): Second LLA coordinate.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     Angle: Azimuth.
             )doc",
             arg("lla_1"),
             arg("lla_2"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def_static(
             "intermediate_between",
@@ -360,8 +339,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     lla_1 (LLA): First LLA coordinate.
                     lla_2 (LLA): Second LLA coordinate.
                     ratio (float): Ratio.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     LLA: A point between the two LLA coordinates, with altitude linearly interpolated between the two coordinates' altitudes.
@@ -369,8 +348,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg("ratio"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def_static(
             "forward",
@@ -384,8 +363,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     lla (LLA): LLA coordinate.
                     azimuth (Angle): Azimuth.
                     distance (Length): Distance.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     LLA: Propagated LLA coordinate, preserving the provided coordinate's altitude.
@@ -393,8 +372,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla"),
             arg("azimuth"),
             arg("distance"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def_static(
             "linspace",
@@ -408,8 +387,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
                     lla_1 (LLA): First LLA coordinate.
                     lla_2 (LLA): Second LLA coordinate.
                     number_of_points (Size): Number of points.
-                    ellipsoid_equatorial_radius (Length): Equatorial radius of the ellipsoid.
-                    ellipsoid_flattening (float): Flattening of the ellipsoid.
+                    ellipsoid_equatorial_radius (Length | None): Equatorial radius of the ellipsoid. If None, the equatorial radius of the central celestial object is used.
+                    ellipsoid_flattening (float | None): Flattening of the ellipsoid. If None, the flattening of the central celestial object is used.
 
                 Returns:
                     list[LLA]: List of LLA coordinates, with altitudes linearly interpolated between the two coordinates' altitudes.
@@ -417,8 +396,8 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical_LLA(pybind11::module&
             arg("lla_1"),
             arg("lla_2"),
             arg("number_of_points"),
-            arg_v("ellipsoid_equatorial_radius", Length::Undefined(), "Length.Undefined()"),
-            arg_v("ellipsoid_flattening", std::numeric_limits<double>::quiet_NaN(), "float('nan')")
+            arg("ellipsoid_equatorial_radius") = none(),
+            arg("ellipsoid_flattening") = none()
         )
         .def_static(
             "from_position",

@@ -38,7 +38,6 @@ class SPICE : public Ephemeris
     enum class Object
     {
 
-        Undefined,
         Sun,
         Mercury,
         Venus,
@@ -71,17 +70,6 @@ class SPICE : public Ephemeris
     /// @return Pointer to SPICE
 
     virtual SPICE* clone() const override;
-
-    /// @brief Returns true if SPICE is defined
-    ///
-    /// @code
-    ///     SPICE spice = SPICE(SPICE::Object::Earth);
-    ///     spice.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if SPICE is defined
-
-    virtual bool isDefined() const override;
 
     /// @brief Access frame of SPICE object
     ///

@@ -17,7 +17,6 @@ namespace environment
 {
 namespace gravitational
 {
-
 using ostk::physics::utility::DoubleToString;
 
 // TBM: make C30 term mandatory
@@ -60,34 +59,8 @@ Model::Parameters::Parameters(
 {
 }
 
-Model::Parameters Model::Parameters::Undefined()
-{
-    return {
-        Derived::Undefined(),
-        Length::Undefined(),
-        std::numeric_limits<double>::quiet_NaN(),
-        std::numeric_limits<double>::quiet_NaN(),
-        std::numeric_limits<double>::quiet_NaN(),
-        std::numeric_limits<double>::quiet_NaN(),
-    };
-}
-
-bool Model::Parameters::isDefined() const
-{
-    return (
-        gravitationalParameter_.isDefined() && equatorialRadius_.isDefined() && !std::isnan(flattening_) &&
-        !std::isnan(J2_) && !std::isnan(J3_) && !std::isnan(J4_) && !std::isnan(C20_) && !std::isnan(C30_) &&
-        !std::isnan(C40_)
-    );
-}
-
 bool Model::Parameters::operator==(const Model::Parameters& aParameterSet) const
 {
-    if ((!this->isDefined()) || (!aParameterSet.isDefined()))
-    {
-        return false;
-    }
-
     return (
         (gravitationalParameter_ == aParameterSet.gravitationalParameter_) &&
         (equatorialRadius_ == aParameterSet.equatorialRadius_) && (flattening_ == aParameterSet.flattening_) &&
@@ -106,9 +79,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Header(anOutputStream, "Gravitational Model Parameters");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Gravitational Parameter:"
-        << (aParameterSet.gravitationalParameter_.isDefined() ? aParameterSet.gravitationalParameter_.toString()
-                                                              : "Undefined");
+        << "Gravitational Parameter:" << aParameterSet.gravitationalParameter_.toString();
     ostk::core::utils::Print::Line(anOutputStream)
         << "Equatorial Radius:"
         << (aParameterSet.equatorialRadius_.isDefined() ? aParameterSet.equatorialRadius_.toString() : "Undefined");
@@ -127,11 +98,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
 
 Length Model::Parameters::computeGeocentricRadiusAt(const Angle& aLatitude) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Parameters");
-    }
-
     const double equatorialRadius_Meters = equatorialRadius_.inMeters();
     const double polarRadius_Meters = equatorialRadius_Meters * (1.0 - flattening_);
 
@@ -166,7 +132,6 @@ Model::Parameters Model::getParameters() const
 {
     return parameters_;
 }
-
 }  // namespace gravitational
 }  // namespace environment
 }  // namespace physics

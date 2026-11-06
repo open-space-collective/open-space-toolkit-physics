@@ -29,17 +29,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
         )
 
         .def(
-            "is_defined",
-            &CIRF::isDefined,
-            R"doc(
-                Check if the CIRF provider is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_transform_at",
             &CIRF::getTransformAt,
             arg("instant"),

@@ -168,8 +168,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Engine, DefaultKerne
 {
     const Array<Kernel> kernels = Engine::DefaultKernels();
 
+    EXPECT_FALSE(kernels.isEmpty());
+
     for (const auto& kernel : kernels)
     {
-        EXPECT_TRUE(kernel.isDefined());
+        EXPECT_TRUE(kernel.getFile().isDefined());
+        EXPECT_FALSE(kernel.getName().isEmpty());
     }
 }

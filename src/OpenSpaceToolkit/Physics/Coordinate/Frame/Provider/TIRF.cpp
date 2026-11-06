@@ -39,11 +39,6 @@ TIRF* TIRF::clone() const
     return new TIRF(*this);
 }
 
-bool TIRF::isDefined() const
-{
-    return true;
-}
-
 Transform TIRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -54,11 +49,6 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TIRF");
     }
 
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf
@@ -73,9 +63,14 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
 
     // UT1 - UTC (s)
 
-    const double dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+    const std::optional<double> dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
 
-    const double tut = time + dut1 / DAYSEC;
+    if (!dut1.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
+    }
+
+    const double tut = time + *dut1 / DAYSEC;
 
     // Earth rotation angle, IAU 2000 [rad]
 
@@ -91,13 +86,8 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
 
     // Angular velocity
 
-    double lod_ms = IersManager::Get().getLodAt(anInstant);  // [ms]
-
-    if (std::isnan(lod_ms))
-    {
-        // throw ostk::core::error::runtime::Undefined("LOD") ; // [TBI] Fail in strict mode
-        lod_ms = 0.0;
-    }
+    // [TBI] Fail in strict mode if LOD is not available
+    const double lod_ms = IersManager::Get().getLodAt(anInstant).value_or(0.0);  // [ms]
 
     const double w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) *
                                1e-12;  // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html

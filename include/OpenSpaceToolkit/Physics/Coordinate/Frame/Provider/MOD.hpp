@@ -59,15 +59,6 @@ class MOD : public Provider
     /// @return A pointer to the cloned MOD provider
     virtual MOD* clone() const override;
 
-    /// @brief Check if the MOD provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the MOD provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the epoch.
     ///
     /// @code

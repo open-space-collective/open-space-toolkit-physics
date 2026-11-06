@@ -101,7 +101,7 @@ Manager::Manager(
       localRepositoryLockTimeoutEnvironmentVariableName_(aLocalRepositoryLockTimeoutEnvironmentVariableName),
       mode_(Manager::Mode::Automatic),
       localRepository_(Directory::Undefined()),
-      localRepositoryLockTimeout_(Duration::Undefined())
+      localRepositoryLockTimeout_(Duration::Zero())
 {
     reset();
     setup_();

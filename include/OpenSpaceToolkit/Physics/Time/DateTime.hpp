@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_DateTime__
 #define __OpenSpaceToolkit_Physics_Time_DateTime__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -35,10 +37,9 @@ class DateTime
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss)
-        ISO8601,    ///< ISO 8601 format (YYYY-MM-DDThh:mm:ss.sssssssss)
-        STK         ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
+        Standard,  ///< Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss)
+        ISO8601,   ///< ISO 8601 format (YYYY-MM-DDThh:mm:ss.sssssssss)
+        STK        ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
 
     };
 
@@ -116,15 +117,6 @@ class DateTime
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime);
 
-    /// @brief Check if date-time is defined
-    ///
-    /// @code
-    ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if date-time is defined
-    bool isDefined() const;
-
     /// @brief Get reference to date
     ///
     /// @code
@@ -190,16 +182,6 @@ class DateTime
     ///
     /// @return Serialized date-time
     String toString(const DateTime::Format& aFormat = DateTime::Format::Standard) const;
-
-    /// @brief Constructs an undefined date-time
-    ///
-    /// @code
-    ///     DateTime dateTime = DateTime::Undefined();
-    ///     dateTime.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined date-time
-    static DateTime Undefined();
 
     /// @brief J2000 epoch (2000-01-01 12:00:00.000.000.00)
     ///
@@ -276,9 +258,9 @@ class DateTime
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @param [in] aFormat A date-time format (default: std::nullopt, which detects the format)
     /// @return Date-time
-    static DateTime Parse(const String& aString, const DateTime::Format& aFormat = DateTime::Format::Undefined);
+    static DateTime Parse(const String& aString, const std::optional<DateTime::Format>& aFormat = std::nullopt);
 
    private:
     Date date_;

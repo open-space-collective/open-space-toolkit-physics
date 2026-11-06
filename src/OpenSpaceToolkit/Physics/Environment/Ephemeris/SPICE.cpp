@@ -28,11 +28,6 @@ SPICE* SPICE::clone() const
     return new SPICE(*this);
 }
 
-bool SPICE::isDefined() const
-{
-    return object_ != SPICE::Object::Undefined;
-}
-
 Shared<const Frame> SPICE::accessFrame() const
 {
     using ostk::physics::environment::ephemeris::spice::Engine;
@@ -45,7 +40,6 @@ String SPICE::StringFromObject(const SPICE::Object& anObject)
     using ostk::core::container::Map;
 
     static const Map<SPICE::Object, String> objectStringMap = {
-        {SPICE::Object::Undefined, "Undefined"},
         {SPICE::Object::Sun, "Sun"},
         {SPICE::Object::Mercury, "Mercury"},
         {SPICE::Object::Venus, "Venus"},

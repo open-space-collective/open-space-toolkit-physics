@@ -40,11 +40,6 @@ TEME* TEME::clone() const
     return new TEME(*this);
 }
 
-bool TEME::isDefined() const
-{
-    return true;
-}
-
 Transform TEME::getTransformAt(const Instant& anInstant) const
 {
     // Seago, J., & Vallado, D. A. (2000, August). Coordinate frames of the U.S. Space Object Catalogs (AIAA Paper
@@ -67,11 +62,6 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
         throw ostk::core::error::runtime::Undefined("Instant");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TEME");
-    }
-
     // Time (UTC)
 
     static const double djmjd0 = 2400000.5;
@@ -82,8 +72,14 @@ Transform TEME::getTransformAt(const Instant& anInstant) const
 
     // UT1 - UTC (s)
 
-    const double dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
-    const double tut = time + dut1 / DAYSEC;
+    const std::optional<double> dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+
+    if (!dut1.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
+    }
+
+    const double tut = time + *dut1 / DAYSEC;
 
     // UT1 as a 2-part Julian Date
 

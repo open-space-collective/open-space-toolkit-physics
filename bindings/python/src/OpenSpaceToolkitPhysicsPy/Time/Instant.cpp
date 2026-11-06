@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <pybind11/stl.h>
+
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
@@ -265,7 +267,7 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Instant(pybind11::module &aModule)
                 Args:
                     string (str): String representation.
                     scale (Time.Scale): Time scale.
-                    date_time_format (DateTime.Format): Date-time format.
+                    date_time_format (DateTime.Format | None): Date-time format. If None, the format is detected.
 
 
                 Returns:

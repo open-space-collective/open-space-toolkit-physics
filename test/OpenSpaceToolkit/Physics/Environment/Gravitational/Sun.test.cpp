@@ -33,20 +33,9 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, IsDefined)
-{
-    {
-        EXPECT_FALSE(SunGravitationalModel(SunGravitationalModel::Type::Undefined).isDefined());
-
-        EXPECT_TRUE(SunGravitationalModel(SunGravitationalModel::Type::Spherical).isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Sun, IsPointMass)
 {
     {
-        EXPECT_FALSE(SunGravitationalModel(SunGravitationalModel::Type::Undefined).isPointMass());
-
         EXPECT_TRUE(SunGravitationalModel(SunGravitationalModel::Type::Spherical).isPointMass());
     }
 }

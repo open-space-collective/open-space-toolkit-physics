@@ -46,15 +46,6 @@ class Manifest
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest);
 
-    /// @brief Return true if manifest is defined.
-    ///
-    /// @code
-    ///     Boolean isDefined = manifest.isDefined();
-    /// @endcode
-    ///
-    /// @return True if manifest is defined.
-    bool isDefined() const;
-
     /// @brief Get last update timestamp
     ///
     /// @code
@@ -105,15 +96,6 @@ class Manifest
     /// @param [in] aDataNameRegexString A data name regex string
     /// @return Array of remote data URLs
     Array<URL> findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const;
-
-    /// @brief Construct an undefined manifest
-    ///
-    /// @code
-    ///     Manifest manifest = Manifest::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined manifest
-    static Manifest Undefined();
 
     /// @brief Load manifest from file
     ///

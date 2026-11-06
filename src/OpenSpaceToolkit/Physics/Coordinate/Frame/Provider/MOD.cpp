@@ -63,11 +63,6 @@ MOD* MOD::clone() const
     return new MOD(*this);
 }
 
-bool MOD::isDefined() const
-{
-    return true;
-}
-
 Instant MOD::getEpoch() const
 {
     return epoch_;
@@ -85,11 +80,6 @@ Transform MOD::getTransformAt(const Instant& anInstant) const
     if (!anInstant.isDefined())
     {
         throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("MOD");
     }
 
     const auto& [zeta, theta, z] = computeFK5Precession(epoch_);

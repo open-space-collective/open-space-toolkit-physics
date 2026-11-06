@@ -48,15 +48,6 @@ class GCRF : public Provider
     /// @return A pointer to the cloned GCRF provider
     virtual GCRF* clone() const override;
 
-    /// @brief Check if the GCRF provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the GCRF provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the transform at a given instant.
     ///
     /// @code
