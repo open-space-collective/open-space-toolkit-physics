@@ -328,9 +328,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Default)
     }
 
     {
-        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::GetGlobalInstance(), ostk::core::error::RuntimeError);
         EXPECT_NO_THROW(Environment::Default(true));
-        EXPECT_NO_THROW(Environment::AccessGlobalInstance());
+        EXPECT_NO_THROW(Environment::GetGlobalInstance());
     }
 }
 
@@ -341,14 +341,14 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, ResetGlobalInstance)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessGlobalInstance)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetGlobalInstance)
 {
     {
-        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::GetGlobalInstance(), ostk::core::error::RuntimeError);
     }
 
     {
-        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::GetGlobalInstance(), ostk::core::error::RuntimeError);
 
         const Environment environment = Environment::Default(true);
     }

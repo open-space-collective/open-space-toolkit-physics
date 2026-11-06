@@ -285,7 +285,7 @@ void Environment::ResetGlobalInstance()
     instance = nullptr;
 }
 
-Shared<Environment> Environment::AccessGlobalInstance()
+Shared<Environment> Environment::GetGlobalInstance()
 {
     std::shared_lock<std::shared_mutex> lock(mutex);
 

@@ -236,11 +236,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(nanobind::module_& aModule)
             )doc"
         )
         .def_static(
-            "access_global_instance",
-            &Environment::AccessGlobalInstance,
+            "get_global_instance",
+            &Environment::GetGlobalInstance,
             rv_policy::reference,
             R"doc(
-                Access the global environment instance.
+                Get the global environment instance.
 
                 Returns:
                     Environment: The global environment instance.

@@ -160,7 +160,7 @@ Position Position::FromLLA(
 )
 {
     Shared<const environment::object::Celestial> celestialSPtr =
-        aCelestialSPtr == nullptr ? ostk::physics::Environment::AccessGlobalInstance()->getCentralCelestialObject()
+        aCelestialSPtr == nullptr ? ostk::physics::Environment::GetGlobalInstance()->getCentralCelestialObject()
                                   : aCelestialSPtr;
 
     if (celestialSPtr == nullptr)
