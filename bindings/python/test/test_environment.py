@@ -74,13 +74,13 @@ class TestEnvironment:
             environment.is_position_in_eclipse(position, include_penumbra=False) is False
         )
 
-    def test_access_global_instance(self):
+    def test_get_global_instance(self):
         with pytest.raises(RuntimeError):
-            Environment.access_global_instance()
+            Environment.get_global_instance()
 
         Environment.default(set_global_instance=True)
 
-        assert Environment.access_global_instance() is not None
+        assert Environment.get_global_instance() is not None
 
     def test_has_global_instance(self):
         assert Environment.has_global_instance() is False

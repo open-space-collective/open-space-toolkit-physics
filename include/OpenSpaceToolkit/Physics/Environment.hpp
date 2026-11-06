@@ -224,11 +224,11 @@ class Environment
     /// @brief Get the singleton instance of the environment
     ///
     /// @code
-    ///     Shared<Environment> env = Environment::AccessGlobalInstance();
+    ///     Shared<Environment> env = Environment::GetGlobalInstance();
     /// @endcode
     ///
     /// @return Shared pointer to the singleton instance
-    static Shared<Environment> AccessGlobalInstance();
+    static Shared<Environment> GetGlobalInstance();
 
     /// @brief Checks if the global instance is set
     ///
