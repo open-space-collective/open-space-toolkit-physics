@@ -132,9 +132,9 @@ Real Mass::SIRatio(const Mass::Unit& aUnit)
         case Mass::Unit::Kilogram:
             return 1.0;
         case Mass::Unit::Pound:
-            return 2.20462;
+            return 0.45359237;  // International avoirdupois pound (exact)
         case Mass::Unit::Tonne:
-            return 1016.047;
+            return 1000.0;  // Metric tonne
 
         default:
             throw ostk::core::error::runtime::Wrong("Unit");

@@ -62,8 +62,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, In)
 
     {
         EXPECT_EQ(1.0, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Kilogram));
-        EXPECT_EQ(1 / 2.20462, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Pound));
-        EXPECT_EQ(1 / 1016.047, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Tonne));
+        EXPECT_EQ(1 / 0.45359237, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Pound));
+        EXPECT_EQ(1 / 1000.0, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Tonne));
+    }
+
+    {
+        EXPECT_NEAR(2.20462262, Mass(1.0, Mass::Unit::Kilogram).in(Mass::Unit::Pound), 1e-8);
+        EXPECT_NEAR(1.0, Mass(1000.0, Mass::Unit::Kilogram).in(Mass::Unit::Tonne), 1e-15);
+        EXPECT_NEAR(2204.62262185, Mass(1.0, Mass::Unit::Tonne).in(Mass::Unit::Pound), 1e-8);
+        EXPECT_NEAR(1.0, Mass(2204.62262185, Mass::Unit::Pound).in(Mass::Unit::Tonne), 1e-10);
     }
 
     {
@@ -77,6 +84,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, InKilograms)
 
     {
         EXPECT_EQ(123.456, Mass(123.456, Mass::Unit::Kilogram).inKilograms());
+        EXPECT_EQ(0.45359237, Mass(1.0, Mass::Unit::Pound).inKilograms());
+        EXPECT_EQ(1000.0, Mass(1.0, Mass::Unit::Tonne).inKilograms());
     }
 
     {
