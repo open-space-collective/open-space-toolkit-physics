@@ -63,9 +63,9 @@ class NRLMSISE00Public : public NRLMSISE00
    public:
     NRLMSISE00Public(
         const NRLMSISE00::InputDataType& anInputDataType = NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-        double aF107ConstantValue = std::numeric_limits<double>::quiet_NaN(),
-        double aF107AConstantValue = std::numeric_limits<double>::quiet_NaN(),
-        double aKpConstantValue = std::numeric_limits<double>::quiet_NaN(),
+        double aF107ConstantValue = EarthAtmosphericModel::defaultF107ConstantValue,
+        double aF107AConstantValue = EarthAtmosphericModel::defaultF107AConstantValue,
+        double aKpConstantValue = EarthAtmosphericModel::defaultKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
         double anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
@@ -434,9 +434,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -496,9 +496,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, GetDen
     {
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_
@@ -568,9 +568,9 @@ TEST_F(
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -639,9 +639,9 @@ TEST_F(
 
         const NRLMSISE00 nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -767,9 +767,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -850,9 +850,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,
@@ -930,9 +930,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_NRLMSISE00, Orekit
         const Shared<Celestial> sun = std::make_shared<Celestial>(Sun::Default());
         const NRLMSISE00Public nrlmsise = {
             NRLMSISE00::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             Frame::ITRF(),
             EarthGravitationalModel::WGS84.equatorialRadius_,
             EarthGravitationalModel::WGS84.flattening_,

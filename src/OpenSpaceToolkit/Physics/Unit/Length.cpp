@@ -345,8 +345,6 @@ double Length::SIRatio(const Length::Unit& aUnit)
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 
 }  // namespace unit

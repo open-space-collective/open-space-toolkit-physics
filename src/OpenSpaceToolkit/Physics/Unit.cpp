@@ -129,8 +129,6 @@ double Unit::ratioTo(const Unit& aUnit) const
             throw ostk::core::error::runtime::Wrong("Type");
             break;
     }
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 
 String Unit::toString() const

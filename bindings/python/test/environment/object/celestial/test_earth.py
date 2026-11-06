@@ -254,6 +254,20 @@ class TestEarthWithoutModels:
         assert earth.get_equatorial_radius().in_meters() == pytest.approx(6378137.0)
         assert earth.get_flattening() == pytest.approx(1.0 / 298.257223563)
 
+    def test_atmospheric_only_has_no_gravitational_constants(
+        self, earth_atmospheric_model: EarthAtmosphericModel
+    ):
+        earth = Earth.atmospheric_only(earth_atmospheric_model)
+
+        with pytest.raises(RuntimeError):
+            earth.get_gravitational_parameter()
+
+        with pytest.raises(RuntimeError):
+            earth.get_j2()
+
+        with pytest.raises(RuntimeError):
+            earth.get_j4()
+
     def test_constructor_accepts_none_models(self):
         earth = Earth(Analytical(Frame.ITRF()), None, None, None)
 

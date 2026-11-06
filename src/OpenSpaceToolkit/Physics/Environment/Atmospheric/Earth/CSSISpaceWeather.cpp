@@ -57,10 +57,10 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         return anInteger.has_value() ? std::to_string(anInteger.value()) : std::string("-");
     };
 
-    // Empty cells are printed as NaN
-    const auto realValue = [](const std::optional<double>& aReal) -> double
+    // Empty real cells are printed as "-" too
+    const auto realValue = [](const std::optional<double>& aReal) -> std::string
     {
-        return aReal.value_or(std::numeric_limits<double>::quiet_NaN());
+        return aReal.has_value() ? std::string(String::Format("{:.2f}", aReal.value())) : std::string("-");
     };
 
     // Missing sections have no interval
@@ -91,8 +91,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
         Print::Line(anOutputStream) << String::Format(
             "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>4} "
-            " {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:.2f}  {:>2}  {:>4}  {:6.2f}  "
-            "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            " {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>4}  {:>2}  {:>4}  {:>6}  "
+            "{:>6}  {:s}  {:>6}  {:>6}  {:>6}  {:>6}",
             observation.date.getYear(),
             observation.date.getMonth(),
             observation.date.getDay(),
@@ -138,8 +138,8 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
 
         Print::Line(anOutputStream) << String::Format(
             "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>4} "
-            " {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:.2f}  {:>2}  {:>4}  {:6.2f}  "
-            "{:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            " {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>2}  {:>4}  {:>2}  {:>4}  {:>6}  "
+            "{:>6}  {:s}  {:>6}  {:>6}  {:>6}  {:>6}",
             dailyPrediction.date.getYear(),
             dailyPrediction.date.getMonth(),
             dailyPrediction.date.getDay(),
@@ -187,7 +187,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& a
         const CSSISpaceWeather::Reading& monthlyPrediction = monthlyPredictionIt.second;
 
         Print::Line(anOutputStream) << String::Format(
-            "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>4}  {:6.2f}  {:6.2f}  {:s}  {:6.2f}  {:6.2f}  {:6.2f}  {:6.2f}",
+            "{:04}-{:02}-{:02}  {:>4}  {:>2}  {:>4}  {:>6}  {:>6}  {:s}  {:>6}  {:>6}  {:>6}  {:>6}",
             monthlyPrediction.date.getYear(),
             monthlyPrediction.date.getMonth(),
             monthlyPrediction.date.getDay(),
