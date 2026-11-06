@@ -28,6 +28,9 @@ class TestKernel:
         assert Kernel.type_from_file_extension("tls") == Kernel.Type.LSK
         assert Kernel.type_from_file_extension("tpc") == Kernel.Type.PCK
 
+    def test_type_from_file_extension_unknown_extension_returns_none(self):
+        assert Kernel.type_from_file_extension("unknown") is None
+
     def test_constructor_success(self):
         assert Kernel(Kernel.Type.SPK, File.path(Path.parse("de430.bsp"))) is not None
 

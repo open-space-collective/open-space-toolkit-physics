@@ -19,11 +19,11 @@ namespace object
 Celestial::Celestial(
     const String& aName,
     const Celestial::Type& aType,
-    const Derived& aGravitationalParameter,
+    const std::optional<Derived>& aGravitationalParameter,
     const Length& anEquatorialRadius,
     double aFlattening,
-    double aJ2,
-    double aJ4,
+    const std::optional<double>& aJ2,
+    const std::optional<double>& aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<GravitationalModel>& aGravitationalModel,
     const Shared<MagneticModel>& aMagneticModel,
@@ -50,11 +50,11 @@ Celestial::Celestial(
 Celestial::Celestial(
     const String& aName,
     const Celestial::Type& aType,
-    const Derived& aGravitationalParameter,
+    const std::optional<Derived>& aGravitationalParameter,
     const Length& anEquatorialRadius,
     double aFlattening,
-    double aJ2,
-    double aJ4,
+    const std::optional<double>& aJ2,
+    const std::optional<double>& aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<GravitationalModel>& aGravitationalModel,
     const Shared<MagneticModel>& aMagneticModel,
@@ -133,7 +133,12 @@ Celestial::Type Celestial::getType() const
 
 const Derived& Celestial::getGravitationalParameter() const
 {
-    return gravitationalParameter_;
+    if (!gravitationalParameter_.has_value())
+    {
+        throw ostk::core::error::runtime::Undefined("Gravitational parameter");
+    }
+
+    return gravitationalParameter_.value();
 }
 
 const Length& Celestial::getEquatorialRadius() const
@@ -148,12 +153,22 @@ double Celestial::getFlattening() const
 
 double Celestial::getJ2() const
 {
-    return j2_;
+    if (!j2_.has_value())
+    {
+        throw ostk::core::error::runtime::Undefined("J2");
+    }
+
+    return j2_.value();
 }
 
 double Celestial::getJ4() const
 {
-    return j4_;
+    if (!j4_.has_value())
+    {
+        throw ostk::core::error::runtime::Undefined("J4");
+    }
+
+    return j4_.value();
 }
 
 Position Celestial::getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const

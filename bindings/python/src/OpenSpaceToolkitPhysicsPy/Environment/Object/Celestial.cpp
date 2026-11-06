@@ -36,22 +36,22 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
             init<
                 const String&,
                 const Celestial::Type&,
-                const Derived&,
+                const std::optional<Derived>&,
                 const Length&,
                 double,
-                double,
-                double,
+                const std::optional<double>&,
+                const std::optional<double>&,
                 const Shared<Ephemeris>&,
                 const Shared<GravitationalModel>&,
                 const Shared<MagneticModel>&,
                 const Shared<AtmosphericModel>&>(),
             arg("name"),
             arg("type"),
-            arg("gravitational_parameter"),
+            arg("gravitational_parameter").none(),
             arg("equatorial_radius"),
             arg("flattening"),
-            arg("J2_parameter_value"),
-            arg("J4_parameter_value"),
+            arg("J2_parameter_value").none(),
+            arg("J4_parameter_value").none(),
             arg("ephemeris"),
             arg("gravitational_model").none(),
             arg("magnetic_model").none(),
@@ -62,11 +62,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
                 Args:
                     name (str): Name.
                     type (CelestialType): Type.
-                    gravitational_parameter (Derived): Gravitational parameter [m³/s²].
+                    gravitational_parameter (Derived | None): Gravitational parameter [m³/s²], or None if absent.
                     equatorial_radius (Length): Equatorial radius [m].
                     flattening (float): Flattening.
-                    J2_parameter_value (float): J2 parameter value.
-                    J4_parameter_value (float): J4 parameter value.
+                    J2_parameter_value (float | None): J2 parameter value, or None if absent.
+                    J4_parameter_value (float | None): J4 parameter value, or None if absent.
                     ephemeris (Ephemeris): Ephemeris.
                     gravitational_model (GravitationalModel | None): Gravitational model, or None if absent.
                     magnetic_model (MagneticModel | None): Magnetic model, or None if absent.
@@ -78,11 +78,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
             init<
                 const String&,
                 const Celestial::Type&,
-                const Derived&,
+                const std::optional<Derived>&,
                 const Length&,
                 double,
-                double,
-                double,
+                const std::optional<double>&,
+                const std::optional<double>&,
                 const Shared<Ephemeris>&,
                 const Shared<GravitationalModel>&,
                 const Shared<MagneticModel>&,
@@ -90,11 +90,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
                 const Object::Geometry&>(),
             arg("name"),
             arg("type"),
-            arg("gravitational_parameter"),
+            arg("gravitational_parameter").none(),
             arg("equatorial_radius"),
             arg("flattening"),
-            arg("J2_parameter_value"),
-            arg("J4_parameter_value"),
+            arg("J2_parameter_value").none(),
+            arg("J4_parameter_value").none(),
             arg("ephemeris"),
             arg("gravitational_model").none(),
             arg("magnetic_model").none(),
@@ -106,11 +106,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
                 Args:
                     name (str): Name.
                     type (CelestialType): Type.
-                    gravitational_parameter (Derived): Gravitational parameter [m³/s²].
+                    gravitational_parameter (Derived | None): Gravitational parameter [m³/s²], or None if absent.
                     equatorial_radius (Length): Equatorial radius [m].
                     flattening (float): Flattening.
-                    J2_parameter_value (float): J2 parameter value.
-                    J4_parameter_value (float): J4 parameter value.
+                    J2_parameter_value (float | None): J2 parameter value, or None if absent.
+                    J4_parameter_value (float | None): J4 parameter value, or None if absent.
                     ephemeris (Ephemeris): Ephemeris
                     gravitational_model (GravitationalModel | None): Gravitational model, or None if absent.
                     magnetic_model (MagneticModel | None): Magnetic model, or None if absent.
@@ -187,6 +187,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
 
                 Returns:
                     Derived: Gravitational parameter [m³/s²].
+
+                Raises:
+                    RuntimeError: If the celestial object has none (an Earth built without a gravitational model).
             )doc"
         )
         .def(
@@ -217,6 +220,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
 
                 Returns:
                     float: J2 parameter value.
+
+                Raises:
+                    RuntimeError: If the celestial object has none (an Earth built without a gravitational model).
             )doc"
         )
         .def(
@@ -227,6 +233,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::mod
 
                 Returns:
                     float: J4 parameter value.
+
+                Raises:
+                    RuntimeError: If the celestial object has none (an Earth built without a gravitational model).
             )doc"
         )
         // .def("get_frame", &Celestial::getFrame)

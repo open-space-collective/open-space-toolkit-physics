@@ -25,10 +25,10 @@ using ostk::core::type::String;
 
 /// @brief Convert a double to a string
 ///
-/// Internal helper. The output matches the former ostk::core::type::Real::toString(precision) output: NaN prints as
-/// "Undefined", infinities print as "+Inf" / "-Inf". With a negative precision, integral values keep a trailing ".0",
-/// and other values use the round-trip representation without trailing zeros. With a non-negative precision, fixed
-/// notation with that many decimals is used.
+/// Internal helper. The output matches the former ostk::core::type::Real::toString(precision) output, except that NaN
+/// prints as "NaN" (there is no undefined double): infinities print as "+Inf" / "-Inf". With a negative precision,
+/// integral values keep a trailing ".0", and other values use the round-trip representation without trailing zeros.
+/// With a non-negative precision, fixed notation with that many decimals is used.
 ///
 /// @code{.cpp}
 ///     DoubleToString(1.0) ; // "1.0"
@@ -43,7 +43,7 @@ inline String DoubleToString(double aValue, int aPrecision = -1)
 {
     if (std::isnan(aValue))
     {
-        return "Undefined";
+        return "NaN";
     }
 
     if (std::isinf(aValue))
@@ -83,8 +83,8 @@ inline String DoubleToString(double aValue, int aPrecision = -1)
 
 /// @brief Parse a string into a double
 ///
-/// Internal helper. Accepts the same inputs as the former ostk::core::type::Real::Parse: "Undefined" / "NaN" give NaN,
-/// "Inf" / "+Inf" / "-Inf" give infinities, and other strings are parsed as numbers.
+/// Internal helper. Accepts the same numeric inputs as the former ostk::core::type::Real::Parse: "Inf" / "+Inf" /
+/// "-Inf" give infinities, and other strings are parsed as numbers. NaN is rejected: a parsed value is never undefined.
 ///
 /// @param [in] aString A string
 /// @return Parsed value
@@ -93,11 +93,6 @@ inline double ParseDouble(const String& aString)
     if (aString.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("String");
-    }
-
-    if ((aString == "Undefined") || (aString == "NaN"))
-    {
-        return std::numeric_limits<double>::quiet_NaN();
     }
 
     if ((aString == "Inf") || (aString == "+Inf"))

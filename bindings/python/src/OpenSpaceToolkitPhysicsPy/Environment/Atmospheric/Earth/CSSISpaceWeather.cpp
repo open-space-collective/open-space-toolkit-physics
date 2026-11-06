@@ -180,7 +180,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric_Earth_CSSISpaceWea
         R"doc(
             CSSI Space Weather reading.
 
-            Integer-valued fields are None, and float-valued fields are NaN, when the value is missing from the file.
+            Numeric fields are None when the value is missing from the file.
 
         )doc"
     )

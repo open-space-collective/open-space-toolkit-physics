@@ -97,8 +97,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetCSSISp
     {
         manager_.setMode(Manager::Mode::Manual);
 
-        EXPECT_THROW(manager_.getCSSISpaceWeatherAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
-
         EXPECT_THROW(
             manager_.getCSSISpaceWeatherAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
@@ -138,7 +136,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetKp3Hou
         }
 
         manager_.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager_.getKp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
             manager_.getKp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
@@ -192,7 +189,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetAp3Hou
         }
 
         manager_.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager_.getAp3HourSolarIndicesAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
             manager_.getAp3HourSolarIndicesAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
@@ -246,7 +242,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetApDail
         }
 
         manager_.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager_.getApDailyIndexAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
             manager_.getApDailyIndexAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
@@ -302,7 +297,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
         }
 
         manager_.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager_.getF107SolarFluxAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
             manager_.getF107SolarFluxAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError
@@ -358,7 +352,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager, GetF107So
         }
 
         manager_.setMode(Manager::Mode::Manual);
-        EXPECT_THROW(manager_.getF107SolarFlux81DayAvgAt(Instant::Undefined()), ostk::core::error::runtime::Undefined);
         EXPECT_THROW(
             manager_.getF107SolarFlux81DayAvgAt(Instant::DateTime(DateTime::Parse("2010-01-01 00:00:00"), Scale::UTC)),
             ostk::core::error::RuntimeError

@@ -45,8 +45,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, StreamOperator_EmptyCells)
 {
-    // Empty integer cells print as "-" (they used to throw): blank the Kp1 and Kp2 cells of the first observation of a
-    // copy of the regression file
+    // Empty cells print as "-" (integer cells used to throw, real cells used to print NaN): blank the Kp1, Kp2 and
+    // F10.7 adjusted last-81-day average cells of the first observation of a copy of the regression file
 
     const std::string sourcePath =
         "/app/test/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00/"
@@ -65,7 +65,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
         {
             if (!isHeader && isFirstReading)
             {
-                // DATE,BSRN,ND,KP1,KP2,...: blank KP1 and KP2
+                // DATE,BSRN,ND,KP1,KP2,...,F10.7_ADJ_LAST81: blank KP1, KP2 and F10.7_ADJ_LAST81
                 std::vector<std::string> cells;
                 std::istringstream lineStream(line);
                 std::string cell;
@@ -77,6 +77,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
 
                 cells[3] = "";
                 cells[4] = "";
+                cells[30] = "";
 
                 line.clear();
 
@@ -112,6 +113,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather, 
             foundReadingRow = true;
 
             EXPECT_NE(std::string::npos, line.find("  -   -  ")) << line;
+            EXPECT_NE(std::string::npos, line.find("   80.40       -")) << line;
+            EXPECT_EQ(std::string::npos, line.find("nan")) << line;
         }
     }
 

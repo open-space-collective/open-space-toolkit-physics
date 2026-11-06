@@ -177,15 +177,6 @@ class Instant
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Instant& anInstant);
 
-    /// @brief Check if instant is defined
-    ///
-    /// @code
-    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if instant is defined
-    bool isDefined() const;
-
     /// @brief Check if instant is post-epoch (J2000)
     ///
     /// @code
@@ -258,16 +249,6 @@ class Instant
     String toString(
         const Scale& aTimeScale = DEFAULT_TIME_SCALE, const DateTime::Format& aDateTimeFormat = DEFAULT_DATE_TIME_FORMAT
     ) const;
-
-    /// @brief Constructs an undefined instant
-    ///
-    /// @code
-    ///     Instant instant = Instant::Undefined();
-    ///     instant.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined instant
-    static Instant Undefined();
 
     /// @brief Constructs an instant at current time
     ///
@@ -440,11 +421,6 @@ struct hash<ostk::physics::time::Instant>
 {
     size_t operator()(const ostk::physics::time::Instant& anInstant) const
     {
-        if (!anInstant.isDefined())
-        {
-            return 0;
-        }
-
         // Normalize to TAI scale so that equal instants in different scales produce the same hash
         const auto normalizedCount = (anInstant.scale_ == ostk::physics::time::Scale::TAI)
                                        ? anInstant.count_

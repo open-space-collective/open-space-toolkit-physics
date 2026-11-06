@@ -165,8 +165,6 @@ double Time::SIRatio(const Time::Unit& aUnit)
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 }  // namespace unit
 }  // namespace physics

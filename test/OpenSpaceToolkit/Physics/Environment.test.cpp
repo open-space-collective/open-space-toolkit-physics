@@ -270,8 +270,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, SetInstant)
         environment_.setInstant(secondInstant);
 
         EXPECT_EQ(secondInstant, environment_.getInstant());
-
-        EXPECT_ANY_THROW(environment_.setInstant(Instant::Undefined()));
     }
 }
 

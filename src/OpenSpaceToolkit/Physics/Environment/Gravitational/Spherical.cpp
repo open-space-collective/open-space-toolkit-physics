@@ -25,10 +25,6 @@ Spherical::Spherical(const Model::Parameters& aParameterSet)
     : Model(aParameterSet),
       gravitationalParameter_SI_(aParameterSet.gravitationalParameter_.in(GravitationalParameterSIUnit))
 {
-    if (std::isnan(gravitationalParameter_SI_))
-    {
-        throw ostk::core::error::runtime::Undefined("Gravitational parameter");
-    }
 }
 
 Spherical* Spherical::clone() const

@@ -300,8 +300,6 @@ double Duration::in(const unit::Time::Unit& aTimeUnit) const
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 
 String Duration::toString(const Duration::Format& aFormat) const

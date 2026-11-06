@@ -50,11 +50,6 @@ Transform TOD::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     const double date1 = 2400000.5;
     const double date2 = this->epoch_.getModifiedJulianDate(Scale::TT);
 

@@ -146,28 +146,28 @@ void Manager::checkManifestAgeAndUpdate_() const
 
     // Determine if we need to fetch a new manifest based on the loaded one.
     // The next timestamp at which we expect the remote to update its data.
-    Instant nextUpdateCheckTimestamp = Instant::Undefined();
-    try
+    const Instant nextUpdateCheckTimestamp = [&]() -> Instant
     {
-        nextUpdateCheckTimestamp = manifest_->getNextUpdateCheckTimestampFor("manifest");
-    }
-    catch (ostk::core::error::RuntimeError& e)
-    {
-        // If there is no "manifest" entry, the file may be old or corrupted. Fetch a new one.
-        if (mode_ == Manager::Mode::Manual)
+        try
         {
-            throw ostk::core::error::RuntimeError(
-                "Manifest file is old or corrupted. Cannot fetch as manager mode is Manual."
-            );
+            return manifest_->getNextUpdateCheckTimestampFor("manifest");
         }
-        else if (mode_ == Manager::Mode::Automatic)
+        catch (const ostk::core::error::RuntimeError&)
         {
+            // If there is no "manifest" entry, the file may be old or corrupted. Fetch a new one.
+            if (mode_ == Manager::Mode::Manual)
+            {
+                throw ostk::core::error::RuntimeError(
+                    "Manifest file is old or corrupted. Cannot fetch as manager mode is Manual."
+                );
+            }
+
             const File manifestFile = this->fetchLatestManifestFile_();
             this->loadManifest_(Manifest::Load(manifestFile));
 
-            nextUpdateCheckTimestamp = manifest_->getNextUpdateCheckTimestampFor("manifest");
+            return manifest_->getNextUpdateCheckTimestampFor("manifest");
         }
-    }
+    }();
 
     const Duration manifestAge = Instant::Now() - manifest_->getLastUpdateTimestampFor("manifest");
 

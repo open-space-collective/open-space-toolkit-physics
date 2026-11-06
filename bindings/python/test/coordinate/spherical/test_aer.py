@@ -18,8 +18,6 @@ def test_coordinate_spherical_aer_constructors():
     elevation: Angle = Angle(30.0, Angle.Unit.Degree)
     aer_range: Length = Length(1000.0, Length.Unit.Meter)
 
-    # Construction with undefined static method
-
     aer: AER = AER(azimuth, elevation, aer_range)
 
     assert aer is not None

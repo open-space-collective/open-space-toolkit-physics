@@ -15,9 +15,6 @@ String StringFromScale(const Scale& aScale)
 {
     switch (aScale)
     {
-        case Scale::Undefined:
-            return "Undefined";
-
         case Scale::UTC:
             return "UTC";
 
@@ -70,11 +67,6 @@ String StringFromScale(const Scale& aScale)
 
 Scale ScaleFromString(const String& aString)
 {
-    if (aString == "Undefined")
-    {
-        return Scale::Undefined;
-    }
-
     if (aString == "UTC")
     {
         return Scale::UTC;
@@ -146,8 +138,6 @@ Scale ScaleFromString(const String& aString)
     }
 
     throw ostk::core::error::runtime::Wrong("Scale", aString);
-
-    return Scale::Undefined;
 }
 
 }  // namespace time

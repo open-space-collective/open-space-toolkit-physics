@@ -1,7 +1,7 @@
 /// Apache License 2.0
 
 #include <cmath>
-#include <limits>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -25,29 +25,41 @@ using ostk::physics::coordinate::Frame;
 namespace
 {
 
-// An Earth without a gravitational model has no gravitational parameters (NaN) but keeps a shape: it falls back to the
-// WGS84 equatorial radius and flattening, so that geometries and LLA conversions on it are not NaN.
-EarthGravitationalModel::Parameters ParametersFromModel(const Shared<EarthGravitationalModel>& aGravitationalModel)
+// An Earth without a gravitational model has no gravitational parameter, J2 or J4 (std::nullopt), but keeps a shape:
+// it falls back to the WGS84 equatorial radius and flattening, so that geometries and LLA conversions on it are valid.
+const EarthGravitationalModel::Parameters& ShapeParametersOf(const Shared<EarthGravitationalModel>& aGravitationalModel)
 {
-    using ostk::physics::unit::Derived;
-    using ostk::physics::unit::Length;
-    using ostk::physics::unit::Time;
+    return (aGravitationalModel != nullptr) ? aGravitationalModel->getParameters() : EarthGravitationalModel::WGS84;
+}
 
-    if (aGravitationalModel != nullptr)
+std::optional<Derived> GravitationalParameterOf(const Shared<EarthGravitationalModel>& aGravitationalModel)
+{
+    if (aGravitationalModel == nullptr)
     {
-        return aGravitationalModel->getParameters();
+        return std::nullopt;
     }
 
-    const double nan = std::numeric_limits<double>::quiet_NaN();
+    return aGravitationalModel->getParameters().gravitationalParameter_;
+}
 
-    return {
-        Derived(nan, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)),
-        EarthGravitationalModel::WGS84.equatorialRadius_,
-        EarthGravitationalModel::WGS84.flattening_,
-        nan,
-        nan,
-        nan,
-    };
+std::optional<double> J2Of(const Shared<EarthGravitationalModel>& aGravitationalModel)
+{
+    if (aGravitationalModel == nullptr)
+    {
+        return std::nullopt;
+    }
+
+    return aGravitationalModel->getParameters().J2_;
+}
+
+std::optional<double> J4Of(const Shared<EarthGravitationalModel>& aGravitationalModel)
+{
+    if (aGravitationalModel == nullptr)
+    {
+        return std::nullopt;
+    }
+
+    return aGravitationalModel->getParameters().J4_;
 }
 
 // The Celestial constructor rejects a null ephemeris, but the Earth geometry dereferences it first.
@@ -100,18 +112,18 @@ Earth::Earth(
     : Celestial(
           "Earth",
           Celestial::Type::Earth,
-          ParametersFromModel(aGravitationalModel).gravitationalParameter_,
-          ParametersFromModel(aGravitationalModel).equatorialRadius_,
-          ParametersFromModel(aGravitationalModel).flattening_,
-          ParametersFromModel(aGravitationalModel).J2_,
-          ParametersFromModel(aGravitationalModel).J4_,
+          GravitationalParameterOf(aGravitationalModel),
+          ShapeParametersOf(aGravitationalModel).equatorialRadius_,
+          ShapeParametersOf(aGravitationalModel).flattening_,
+          J2Of(aGravitationalModel),
+          J4Of(aGravitationalModel),
           anEphemeris,
           aGravitationalModel,
           aMagneticModel,
           anAtmosphericModel,
           Earth::Geometry(
-              ParametersFromModel(aGravitationalModel).equatorialRadius_,
-              ParametersFromModel(aGravitationalModel).flattening_,
+              ShapeParametersOf(aGravitationalModel).equatorialRadius_,
+              ShapeParametersOf(aGravitationalModel).flattening_,
               EphemerisFrame(anEphemeris)
           )
       )

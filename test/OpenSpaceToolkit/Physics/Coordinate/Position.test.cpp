@@ -87,10 +87,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, IsNear)
         EXPECT_TRUE(firstPosition.isNear(secondPosition, Length::Meters(1.0)));
         EXPECT_FALSE(firstPosition.isNear(secondPosition, Length::Meters(0.9)));
     }
-
-    {
-        EXPECT_ANY_THROW(positionGCRF_.isNear(positionGCRF_, Length::Undefined()));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetFrame)
@@ -152,10 +148,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InUnit)
         EXPECT_EQ(Position::Unit::Foot, position.inUnit(Position::Unit::Foot).getUnit());
         EXPECT_EQ(Frame::GCRF(), position.inUnit(Position::Unit::Foot).getFrame());
     }
-
-    {
-        EXPECT_ANY_THROW(positionGCRF_.inUnit(Position::Unit::Undefined));
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
@@ -184,10 +176,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
         ) << position_ITRF;
         EXPECT_EQ(Position::Unit::Meter, position_ITRF.getUnit()) << position_ITRF;
         EXPECT_EQ(Frame::ITRF(), position_ITRF.getFrame()) << position_ITRF;
-    }
-
-    {
-        EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::ITRF(), Instant::Undefined()));
     }
 
     {

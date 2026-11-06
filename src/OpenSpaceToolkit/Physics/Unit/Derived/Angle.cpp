@@ -628,8 +628,6 @@ double Angle::SIRatio(const Angle::Unit& aUnit)
     }
 
     throw ostk::core::error::runtime::Wrong("Unit");
-
-    return std::numeric_limits<double>::quiet_NaN();
 }
 
 double Angle::ReduceRange(double aValue, double aRangeLowerBound, double aRangeUpperBound)

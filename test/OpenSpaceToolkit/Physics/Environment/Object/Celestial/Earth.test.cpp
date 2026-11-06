@@ -338,10 +338,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial_Earth, AtmosphericOnl
     EXPECT_EQ(nullptr, earth.getMagneticModel());
     EXPECT_NE(nullptr, earth.getAtmosphericModel());
 
-    // Without a gravitational model the gravitational constants are NaN, but the shape falls back to WGS84.
-    EXPECT_TRUE(std::isnan(earth.getGravitationalParameter().in(
-        Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
-    )));
+    // Without a gravitational model there are no gravitational constants, but the shape falls back to WGS84.
+    EXPECT_THROW(earth.getGravitationalParameter(), ostk::core::error::runtime::Undefined);
+    EXPECT_THROW(earth.getJ2(), ostk::core::error::runtime::Undefined);
+    EXPECT_THROW(earth.getJ4(), ostk::core::error::runtime::Undefined);
     EXPECT_DOUBLE_EQ(
         EarthGravitationalModel::WGS84.equatorialRadius_.inMeters(), earth.getEquatorialRadius().inMeters()
     );

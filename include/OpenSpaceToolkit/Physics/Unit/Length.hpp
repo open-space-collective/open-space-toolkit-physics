@@ -26,7 +26,6 @@ class Length : public Unit
     enum class Unit
     {
 
-        Undefined,        ///< Undefined
         Meter,            ///< Meter (SI)
         Foot,             ///< Foot
         TerrestrialMile,  ///< Terrestrial mile
@@ -239,15 +238,6 @@ class Length : public Unit
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Length& aLength);
 
-    /// @brief Check if the length is defined.
-    ///
-    /// @code
-    ///     Length::Meters(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-    bool isDefined() const;
-
     /// @brief Check if the length value is zero.
     ///
     /// @code
@@ -303,15 +293,6 @@ class Length : public Unit
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
     virtual String toString(int aPrecision = -1) const override;
-
-    /// @brief Construct an undefined length.
-    ///
-    /// @code
-    ///     Length length = Length::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined length
-    static Length Undefined();
 
     /// @brief Construct a length from a value in millimeters.
     ///

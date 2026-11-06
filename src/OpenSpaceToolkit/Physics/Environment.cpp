@@ -230,11 +230,6 @@ Array<String> Environment::getObjectNames() const
 
 void Environment::setInstant(const Instant& anInstant)
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     instant_ = anInstant;
 }
 

@@ -189,37 +189,17 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const Unique<NRLMSISE00::ap_array>& apValues, const LLA& aLLA, const Instant& anInstant
 ) const
 {
-    double f107Previous = std::numeric_limits<double>::quiet_NaN();
-    double f107Average = std::numeric_limits<double>::quiet_NaN();
+    // Use constant values, or historical and predicted values, for the F10.7 and F10.7a NRLMSISE00 input parameters.
+    // Input reference is in the NRLMSISE header file
+    // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
 
-    switch (this->inputDataType_)
-    {
-        case InputDataType::ConstantFluxAndGeoMag:
-        {
-            // Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
+    const bool useConstantValues = (this->inputDataType_ == InputDataType::ConstantFluxAndGeoMag);
 
-            f107Previous = this->f107ConstantValue_;
-            f107Average = this->f107AConstantValue_;
-
-            break;
-        }
-
-        case InputDataType::CSSISpaceWeatherFile:
-        {
-            // Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
-
-            // Input reference is in the NRLMSISE header file
-            // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h
-
-            const Manager& spaceWeatherManager = Manager::Get();
-
-            // Solar flux values
-            f107Previous = spaceWeatherManager.getF107SolarFluxAt(anInstant - Duration::Days(1));
-            f107Average = spaceWeatherManager.getF107SolarFlux81DayAvgAt(anInstant);
-
-            break;
-        }
-    }
+    // Solar flux values
+    const double f107Previous =
+        useConstantValues ? this->f107ConstantValue_ : Manager::Get().getF107SolarFluxAt(anInstant - Duration::Days(1));
+    const double f107Average =
+        useConstantValues ? this->f107AConstantValue_ : Manager::Get().getF107SolarFlux81DayAvgAt(anInstant);
 
     const DateTime currentDateTime = anInstant.getDateTime(Scale::UTC);
 
@@ -232,31 +212,30 @@ Unique<NRLMSISE00::nrlmsise_input> NRLMSISE00::computeNRLMSISE00Input(
     const Time timeOfDay = currentDateTime.getTime();
     const int secondsInDay = timeOfDay.getHour() * 3600 + timeOfDay.getMinute() * 60 + timeOfDay.getSecond();
 
-    double lst = std::numeric_limits<double>::quiet_NaN();
-
-    // Use actual sun position to compute local solar time if provided
-    if (sunCelestialSPtr_)
+    const double lst = [&]() -> double
     {
-        const Position position = {
-            aLLA.toCartesian(earthRadius_, earthFlattening_), Position::Unit::Meter, earthFrameSPtr_
-        };
+        // Use actual sun position to compute local solar time if provided
+        if (sunCelestialSPtr_)
+        {
+            const Position position = {
+                aLLA.toCartesian(earthRadius_, earthFlattening_), Position::Unit::Meter, earthFrameSPtr_
+            };
 
-        const Position sunPositionInFrame = sunCelestialSPtr_->getPositionIn(earthFrameSPtr_, anInstant);
+            const Position sunPositionInFrame = sunCelestialSPtr_->getPositionIn(earthFrameSPtr_, anInstant);
 
-        lst = (M_PI + std::atan2(
-                          sunPositionInFrame.getCoordinates()[0] * position.getCoordinates()[1] -
-                              sunPositionInFrame.getCoordinates()[1] * position.getCoordinates()[0],
-                          sunPositionInFrame.getCoordinates()[0] * position.getCoordinates()[0] +
-                              sunPositionInFrame.getCoordinates()[1] * position.getCoordinates()[1]
-                      )) *
-              12.0 / M_PI;
-    }
-    else
-    {
+            return (M_PI + std::atan2(
+                               sunPositionInFrame.getCoordinates()[0] * position.getCoordinates()[1] -
+                                   sunPositionInFrame.getCoordinates()[1] * position.getCoordinates()[0],
+                               sunPositionInFrame.getCoordinates()[0] * position.getCoordinates()[0] +
+                                   sunPositionInFrame.getCoordinates()[1] * position.getCoordinates()[1]
+                           )) *
+                   12.0 / M_PI;
+        }
+
         // This is the preferred method per the NRLMSISE documentation
         // https://github.com/magnific0/nrlmsise-00/blob/master/nrlmsise-00.h#L103
-        lst = static_cast<double>(secondsInDay) / 3600.0 + aLLA.getLongitude().inDegrees() / 15.0;
-    }
+        return static_cast<double>(secondsInDay) / 3600.0 + aLLA.getLongitude().inDegrees() / 15.0;
+    }();
 
     Unique<NRLMSISE00::nrlmsise_input> input = std::make_unique<NRLMSISE00::nrlmsise_input>();
 

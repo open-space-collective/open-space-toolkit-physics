@@ -33,9 +33,9 @@ Model::Parameters::Parameters(
       C20_(aC20),
       C30_(0.0),
       C40_(aC40),
-      J2_(!std::isnan(aC20) ? -aC20 * std::sqrt(5.0) : std::numeric_limits<double>::quiet_NaN()),
+      J2_(-aC20 * std::sqrt(5.0)),
       J3_(0.0),
-      J4_(!std::isnan(aC40) ? -aC40 * std::sqrt(9.0) : std::numeric_limits<double>::quiet_NaN())
+      J4_(-aC40 * std::sqrt(9.0))
 {
 }
 
@@ -53,9 +53,9 @@ Model::Parameters::Parameters(
       C20_(aC20),
       C30_(aC30),
       C40_(aC40),
-      J2_(!std::isnan(aC20) ? -aC20 * std::sqrt(5.0) : std::numeric_limits<double>::quiet_NaN()),
-      J3_(!std::isnan(aC30) ? -aC30 * std::sqrt(7.0) : std::numeric_limits<double>::quiet_NaN()),
-      J4_(!std::isnan(aC40) ? -aC40 * std::sqrt(9.0) : std::numeric_limits<double>::quiet_NaN())
+      J2_(-aC20 * std::sqrt(5.0)),
+      J3_(-aC30 * std::sqrt(7.0)),
+      J4_(-aC40 * std::sqrt(9.0))
 {
 }
 
@@ -81,8 +81,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Model::Parameters& 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Gravitational Parameter:" << aParameterSet.gravitationalParameter_.toString();
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Equatorial Radius:"
-        << (aParameterSet.equatorialRadius_.isDefined() ? aParameterSet.equatorialRadius_.toString() : "Undefined");
+        << "Equatorial Radius:" << (aParameterSet.equatorialRadius_.toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Flattening:" << DoubleToString(aParameterSet.flattening_);
     ostk::core::utils::Print::Line(anOutputStream) << "C20:" << DoubleToString(aParameterSet.C20_);
     ostk::core::utils::Print::Line(anOutputStream) << "C30:" << DoubleToString(aParameterSet.C30_);

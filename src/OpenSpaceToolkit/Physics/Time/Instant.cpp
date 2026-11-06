@@ -62,91 +62,46 @@ namespace time
 
 bool Instant::operator==(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        return false;
-    }
-
     return count_ == ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
 }
 
 bool Instant::operator!=(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        return true;
-    }
-
     return count_ != ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
 }
 
 bool Instant::operator<(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return count_ < ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
 }
 
 bool Instant::operator<=(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return count_ <= ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
 }
 
 bool Instant::operator>(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return count_ > ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
 }
 
 bool Instant::operator>=(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return count_ >= ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
 }
 
 Instant Instant::operator+(const Duration& aDuration) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return Instant(count_ + aDuration.count_, scale_);
 }
 
 Instant Instant::operator-(const Duration& aDuration) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return Instant(count_ - aDuration.count_, scale_);
 }
 
 Duration Instant::operator-(const Instant& anInstant) const
 {
-    if ((!this->isDefined()) || (!anInstant.isDefined()))
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     const Instant::Count startCount =
         ((scale_ == anInstant.scale_) ? anInstant.count_ : anInstant.inScale(scale_).count_);
     const Instant::Count endCount = count_;
@@ -172,11 +127,6 @@ Duration Instant::operator-(const Instant& anInstant) const
 
 Instant& Instant::operator+=(const Duration& aDuration)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     count_ = count_ + aDuration.count_;
 
     return *this;
@@ -184,11 +134,6 @@ Instant& Instant::operator+=(const Duration& aDuration)
 
 Instant& Instant::operator-=(const Duration& aDuration)
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     count_ = count_ - aDuration.count_;
 
     return *this;
@@ -199,7 +144,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Instant& anInstant)
     ostk::core::utils::Print::Header(anOutputStream, "Instant");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Date-Time:" << (anInstant.isDefined() ? anInstant.getDateTime(anInstant.scale_).toString() : "Undefined");
+        << "Date-Time:" << (anInstant.getDateTime(anInstant.scale_).toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Scale:" << StringFromScale(anInstant.scale_);
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -207,36 +152,16 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Instant& anInstant)
     return anOutputStream;
 }
 
-bool Instant::isDefined() const
-{
-    return scale_ != Scale::Undefined;
-}
-
 bool Instant::isPostEpoch() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     return (*this) >= Instant::J2000();
 }
 
 bool Instant::isNear(const Instant& anInstant, const Duration& aTolerance) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     if (!aTolerance.isPositive())
     {
         throw ostk::core::error::RuntimeError("Tolerance is not positive.");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
     }
 
     return Duration::Between(*this, anInstant).getAbsolute() <= aTolerance;
@@ -245,16 +170,6 @@ bool Instant::isNear(const Instant& anInstant, const Duration& aTolerance) const
 time::DateTime Instant::getDateTime(const Scale& aTimeScale) const
 {
     using ostk::core::type::Uint8;
-
-    if (aTimeScale == Scale::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Scale");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
 
     const Instant::Count count = this->inScale(aTimeScale).count_;
 
@@ -303,16 +218,6 @@ double Instant::getModifiedJulianDate(const Scale& aTimeScale) const
 {
     using ostk::core::type::Uint64;
 
-    if (aTimeScale == Scale::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Scale");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     // J2000 epoch (2000-01-01 12:00:00 in the target scale) is MJD 51544.5.
     // The whole-day / remainder split keeps the conversion exact to the double
     // resolution of the resulting MJD.
@@ -337,22 +242,12 @@ Int64 Instant::getLeapSecondCount() const
 
 String Instant::toString(const Scale& aTimeScale, const DateTime::Format& aDateTimeFormat) const
 {
-    if (!this->isDefined())
-    {
-        return String("Undefined");
-    }
-
     if ((aDateTimeFormat == DateTime::Format::ISO8601) && (aTimeScale == Scale::UTC))
     {
         return this->getDateTime(aTimeScale).toString(aDateTimeFormat) + "Z";
     }
 
     return this->getDateTime(aTimeScale).toString(aDateTimeFormat) + " [" + StringFromScale(aTimeScale) + "]";
-}
-
-Instant Instant::Undefined()
-{
-    return Instant({0, true}, Scale::Undefined);
 }
 
 Instant Instant::Now()
@@ -417,11 +312,6 @@ Instant Instant::GPSEpoch()
 
 Instant Instant::DateTime(const time::DateTime& aDateTime, const Scale& aTimeScale)
 {
-    if (aTimeScale == Scale::Undefined)
-    {
-        throw ostk::core::error::runtime::Wrong("Scale");
-    }
-
     // Limit the year based on the max number of nanoseconds we can store with a UInt64
     if ((aDateTime.getDate().getYear() < 1970) || (aDateTime.getDate().getYear() > 2554))
     {
@@ -462,11 +352,6 @@ Instant Instant::JulianDate(double aJulianDate, const Scale& aTimeScale)
         throw ostk::core::error::runtime::Wrong("Julian Date");
     }
 
-    if (aTimeScale == Scale::Undefined)
-    {
-        throw ostk::core::error::runtime::Wrong("Scale");
-    }
-
     return Instant::DateTime(DateTime::JulianDate(aJulianDate), aTimeScale);
 }
 
@@ -475,11 +360,6 @@ Instant Instant::ModifiedJulianDate(double aModifiedJulianDate, const Scale& aTi
     if (std::isnan(aModifiedJulianDate))
     {
         throw ostk::core::error::runtime::Wrong("Modified Julian Date");
-    }
-
-    if (aTimeScale == Scale::Undefined)
-    {
-        throw ostk::core::error::runtime::Wrong("Scale");
     }
 
     return Instant::DateTime(DateTime::ModifiedJulianDate(aModifiedJulianDate), aTimeScale);

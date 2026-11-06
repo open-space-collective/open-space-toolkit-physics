@@ -80,11 +80,6 @@ Axes Axes::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInsta
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant);
 
     return {

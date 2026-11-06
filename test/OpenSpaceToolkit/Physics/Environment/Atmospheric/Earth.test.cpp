@@ -241,9 +241,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
             EarthAtmosphericModel::Type::NRLMSISE00,
             Frame::ITRF(),
             EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             EarthGravitationalModel::EGM2008.equatorialRadius_,
             EarthGravitationalModel::EGM2008.flattening_,
             std::make_shared<Sun>(Sun::Default())
@@ -253,9 +253,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
             EarthAtmosphericModel::Type::NRLMSISE00,
             Frame::ITRF(),
             EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
-            std::numeric_limits<double>::quiet_NaN(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             EarthGravitationalModel::EGM2008.equatorialRadius_,
             EarthGravitationalModel::EGM2008.flattening_
         };
@@ -581,9 +581,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Sola
             const EarthAtmosphericModel earthAtmosphericModelSun = {
                 std::get<0>(testCase),
                 std::get<1>(testCase),
-                std::numeric_limits<double>::quiet_NaN(),
-                std::numeric_limits<double>::quiet_NaN(),
-                std::numeric_limits<double>::quiet_NaN(),
+                EarthAtmosphericModel::defaultF107ConstantValue,
+                EarthAtmosphericModel::defaultF107AConstantValue,
+                EarthAtmosphericModel::defaultKpConstantValue,
                 Frame::ITRF(),
                 EarthGravitationalModel::EGM2008.equatorialRadius_,
                 EarthGravitationalModel::EGM2008.flattening_,
@@ -593,9 +593,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Sola
             const EarthAtmosphericModel earthAtmosphericModelNoSun = {
                 std::get<0>(testCase),
                 std::get<1>(testCase),
-                std::numeric_limits<double>::quiet_NaN(),
-                std::numeric_limits<double>::quiet_NaN(),
-                std::numeric_limits<double>::quiet_NaN(),
+                EarthAtmosphericModel::defaultF107ConstantValue,
+                EarthAtmosphericModel::defaultF107AConstantValue,
+                EarthAtmosphericModel::defaultKpConstantValue,
                 Frame::ITRF(),
                 EarthGravitationalModel::EGM2008.equatorialRadius_,
                 EarthGravitationalModel::EGM2008.flattening_

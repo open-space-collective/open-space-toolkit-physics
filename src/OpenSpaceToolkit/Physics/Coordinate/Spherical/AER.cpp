@@ -31,7 +31,7 @@ AER::AER(const Angle& anAzimuth, const Angle& anElevation, const Length& aRange)
         throw ostk::core::error::runtime::Wrong("Elevation");
     }
 
-    if (range_.isDefined() && (range_.inMeters() < 0.0))
+    if ((range_.inMeters() < 0.0))
     {
         throw ostk::core::error::runtime::Wrong("Range");
     }
@@ -53,8 +53,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const AER& anAER)
 
     ostk::core::utils::Print::Line(anOutputStream) << "Azimuth:" << anAER.azimuth_.toString();
     ostk::core::utils::Print::Line(anOutputStream) << "Elevation:" << anAER.elevation_.toString();
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Range:" << (anAER.range_.isDefined() ? anAER.range_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Range:" << (anAER.range_.toString());
 
     ostk::core::utils::Print::Footer(anOutputStream);
 

@@ -24,13 +24,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Scale(nanobind::module_& aModule)
     )
 
         .value(
-            "Undefined",
-            Scale::Undefined,
-            R"doc(
-                Undefined time.
-            )doc"
-        )
-        .value(
             "UTC",
             Scale::UTC,
             R"doc(

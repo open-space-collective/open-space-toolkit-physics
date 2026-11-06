@@ -167,11 +167,6 @@ Finals2000A::Data Finals2000A::getDataAt(const Instant& anInstant) const
                               const std::optional<double>& aNextValue,
                               double aRatio) -> std::optional<double>
         {
-            if (std::isnan(aRatio))
-            {
-                throw ostk::core::error::runtime::Undefined("Ratio");
-            }
-
             if (aPreviousValue.has_value() && aNextValue.has_value())
             {
                 return *aPreviousValue + aRatio * (*aNextValue - *aPreviousValue);

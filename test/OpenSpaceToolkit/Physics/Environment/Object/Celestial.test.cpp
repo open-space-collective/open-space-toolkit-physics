@@ -253,6 +253,67 @@ TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, modelIsDefined)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GravitationalConstants)
+{
+    const String name = "Some Planet";
+    const Celestial::Type type = Celestial::Type::Earth;
+    const Derived gravitationalParameter = {
+        1.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+    };
+    const Length equatorialRadius = Length::Kilometers(1000.0);
+    const double flattening = 0.1;
+    const double j2 = 0.2;
+    const double j4 = 0.3;
+
+    const Shared<Ephemeris> ephemeris = std::make_shared<Analytical>(Frame::ITRF());
+
+    {
+        const Celestial celestial = {
+            name,
+            type,
+            gravitationalParameter,
+            equatorialRadius,
+            flattening,
+            j2,
+            j4,
+            ephemeris,
+            nullptr,
+            nullptr,
+            nullptr
+        };
+
+        EXPECT_EQ(gravitationalParameter, celestial.getGravitationalParameter());
+        EXPECT_EQ(equatorialRadius, celestial.getEquatorialRadius());
+        EXPECT_EQ(flattening, celestial.getFlattening());
+        EXPECT_EQ(j2, celestial.getJ2());
+        EXPECT_EQ(j4, celestial.getJ4());
+    }
+
+    {
+        // Without gravitational constants the getters throw instead of returning a placeholder value
+
+        const Celestial celestial = {
+            name,
+            type,
+            std::nullopt,
+            equatorialRadius,
+            flattening,
+            std::nullopt,
+            std::nullopt,
+            ephemeris,
+            nullptr,
+            nullptr,
+            nullptr
+        };
+
+        EXPECT_THROW(celestial.getGravitationalParameter(), ostk::core::error::runtime::Undefined);
+        EXPECT_EQ(equatorialRadius, celestial.getEquatorialRadius());
+        EXPECT_EQ(flattening, celestial.getFlattening());
+        EXPECT_THROW(celestial.getJ2(), ostk::core::error::runtime::Undefined);
+        EXPECT_THROW(celestial.getJ4(), ostk::core::error::runtime::Undefined);
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Environment_Object_Celestial, GetGravitationalFieldAt)
 {
     {

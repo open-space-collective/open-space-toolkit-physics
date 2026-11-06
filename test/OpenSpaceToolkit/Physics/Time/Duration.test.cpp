@@ -1690,16 +1690,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Duration, Between)
             }
         }
     }
-
-    {
-        EXPECT_ANY_THROW(Duration::Between(Instant::Undefined(), Instant::Undefined()));
-        EXPECT_ANY_THROW(
-            Duration::Between(Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC), Instant::Undefined())
-        );
-        EXPECT_ANY_THROW(
-            Duration::Between(Instant::Undefined(), Instant::DateTime(DateTime(2000, 1, 1, 0, 0, 0), Scale::UTC))
-        );
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Duration, Parse)
