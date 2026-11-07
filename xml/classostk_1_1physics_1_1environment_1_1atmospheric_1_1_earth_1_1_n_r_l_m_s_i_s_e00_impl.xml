@@ -15,14 +15,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="166" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="166" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="168" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1afbf19ba818a5d222d33d3bd4a2d650f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1ada93d11c8f33c137e1362896af223eb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl::NRLMSISE00Impl</definition>
-        <argsstring>(const Earth::Type &amp;aType, const Earth::InputDataType &amp;anEarthInputDataType, const NRLMSISE00::InputDataType &amp;anInputDataType, const Real &amp;aF107ConstantValue, const Real &amp;aF107AConstantValue, const Real &amp;aKpConstantValue, const Shared&lt; const Frame &gt; &amp;anEarthFrameSPtr, const Length &amp;anEarthRadius, const Real &amp;anEarthFlattening, const Shared&lt; Celestial &gt; &amp;aSunCelestialSPtr)</argsstring>
+        <argsstring>(const Earth::Type &amp;aType, const Earth::InputDataType &amp;anEarthInputDataType, const NRLMSISE00::InputDataType &amp;anInputDataType, double aF107ConstantValue, double aF107AConstantValue, double aKpConstantValue, const Shared&lt; const Frame &gt; &amp;anEarthFrameSPtr, const Length &amp;anEarthRadius, double anEarthFlattening, const Shared&lt; Celestial &gt; &amp;aSunCelestialSPtr)</argsstring>
         <name>NRLMSISE00Impl</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1a1df841508cb5d989c11b033f49365c2f" kindref="member">Earth::Type</ref> &amp;</type>
@@ -37,15 +37,15 @@
           <declname>anInputDataType</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aF107ConstantValue</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aF107AConstantValue</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aKpConstantValue</declname>
         </param>
         <param>
@@ -57,7 +57,7 @@
           <declname>anEarthRadius</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>anEarthFlattening</declname>
         </param>
         <param>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="144" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="169" bodyend="193"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="146" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="171" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1ac68f978d9175ae85e756ed5881d24691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="157" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="195" bodyend="195"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="159" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="197" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1aab0e79f9a64ae514550844c0adf4ddd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>NRLMSISE00Impl *</type>
@@ -96,11 +96,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="159" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="197" bodyend="200"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="161" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="199" bodyend="202"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1a1dc8766a19bcbff0bf750ffb3c7a19d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl::getDensityAt</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1a600ecf224ed6bbdfba7cda78e182d23f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl::getDensityAt</definition>
         <argsstring>(const LLA &amp;aLLA, const Instant &amp;anInstant) const override</argsstring>
         <name>getDensityAt</name>
         <param>
@@ -117,11 +117,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="161" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="202" bodyend="205"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="163" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="204" bodyend="207"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1ab852af113b9592f1cad661606e29a251" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl::getDensityAt</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1a598dea4e5ed47a22529d7fbd458dc983" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl::getDensityAt</definition>
         <argsstring>(const Position &amp;aPosition, const Instant &amp;anInstant) const override</argsstring>
         <name>getDensityAt</name>
         <param>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="163" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="207" bodyend="213"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="165" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="209" bodyend="215"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -157,12 +157,9 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="3">
-        <label>Real</label>
-      </node>
-      <node id="4">
         <label>ostk::physics::unit::Length</label>
         <link refid="classostk_1_1physics_1_1unit_1_1_length"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
@@ -170,38 +167,35 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="5">
         <label>Shared&lt; const ostk::physics::coordinate::Frame &gt;</label>
       </node>
-      <node id="5">
+      <node id="4">
         <label>ostk::physics::unit::Unit</label>
         <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
       </node>
       <node id="2">
         <label>ostk::physics::environment::atmospheric::Earth::Impl</label>
         <childnode refid="3" relation="usage">
-          <edgelabel>earthFlattening_</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
           <edgelabel>earthRadius_</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>earthFrameSPtr_</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="142" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="141" bodyend="167"/>
+    <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="144" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="143" bodyend="169"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1aab0e79f9a64ae514550844c0adf4ddd8" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a02b2ceed63db6029735efdf1b2936c37" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>earthFlattening_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a92f9601b6b1108a7ad2fbdd197eaf129" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>earthFlattening_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a9eaf51318f5a3964ba0603bc4d4e9b3e" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>earthFrameSPtr_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a47389db0b74336542d12327e51ba60ca" prot="protected" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>earthRadius_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1a1dc8766a19bcbff0bf750ffb3c7a19d7" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>getDensityAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1ab852af113b9592f1cad661606e29a251" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>getDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1a600ecf224ed6bbdfba7cda78e182d23f" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>getDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1a598dea4e5ed47a22529d7fbd458dc983" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>getDensityAt</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1ac75ff2f75a4649246d57b1c1df013410" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>getInputDataType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a3da8dd6a784672b71258c2a47bb9db88" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>getType</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1acb7309990aba2074cb00d6be72d1df46" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>Impl</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1afbf19ba818a5d222d33d3bd4a2d650f6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>NRLMSISE00Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1a0e29d0be91f4d996705a66ddb591b15e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>Impl</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1ada93d11c8f33c137e1362896af223eb1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>NRLMSISE00Impl</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1af9257fbe2978167f3380964017802f73" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>NRLMSISE00Model_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_impl_1ac5956fa195313dc9d62f8af4eaf07c90" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>~Impl</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth_1_1_n_r_l_m_s_i_s_e00_impl_1ac68f978d9175ae85e756ed5881d24691" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::Earth::NRLMSISE00Impl</scope><name>~NRLMSISE00Impl</name></member>

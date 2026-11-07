@@ -3,8 +3,6 @@
   <compounddef id="_unit_2_unit_8hpp" kind="file" language="C++">
     <compoundname>Unit.hpp</compoundname>
     <includes local="no">OpenSpaceToolkit/Core/Container/Pair.hpp</includes>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Integer.hpp</includes>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Real.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
     <includedby refid="_angle_8hpp" local="no">include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</includedby>
     <includedby refid="_derived_8hpp" local="no">include/OpenSpaceToolkit/Physics/Unit/Derived.hpp</includedby>
@@ -15,9 +13,6 @@
     <includedby refid="_unit_8hpp" local="no">include/OpenSpaceToolkit/Physics/Unit.hpp</includedby>
     <includedby refid="_unit_2_unit_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/Unit.cpp</includedby>
     <incdepgraph>
-      <node id="4">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
       <node id="1">
         <label>include/OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
         <link refid="_unit_2_unit_8hpp"/>
@@ -25,19 +20,12 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
       <node id="2">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
-      <node id="5">
-        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
-      </node>
       <node id="3">
-        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -57,7 +45,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.cpp</label>
         <link refid="_spherical_8cpp"/>
       </node>
-      <node id="137">
+      <node id="139">
         <label>src/OpenSpaceToolkit/Physics/Data/Utility.cpp</label>
         <link refid="_data_2_utility_8cpp"/>
       </node>
@@ -65,7 +53,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Object.cpp</label>
         <link refid="_object_8cpp"/>
       </node>
-      <node id="120">
+      <node id="122">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp</label>
         <link refid="_i_t_r_f_8hpp"/>
         <childnode refid="97" relation="include">
@@ -97,7 +85,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</label>
         <link refid="_c_s_s_i_space_weather_8cpp"/>
       </node>
-      <node id="130">
+      <node id="132">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp</label>
         <link refid="_provider_8hpp"/>
         <childnode refid="113" relation="include">
@@ -108,23 +96,23 @@
         </childnode>
         <childnode refid="118" relation="include">
         </childnode>
-        <childnode refid="120" relation="include">
-        </childnode>
-        <childnode refid="121" relation="include">
+        <childnode refid="122" relation="include">
         </childnode>
         <childnode refid="123" relation="include">
         </childnode>
-        <childnode refid="124" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
         <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
+        <childnode refid="130" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="131" relation="include">
+        <childnode refid="133" relation="include">
         </childnode>
       </node>
       <node id="60">
@@ -145,16 +133,16 @@
         <childnode refid="61" relation="include">
         </childnode>
       </node>
-      <node id="138">
+      <node id="140">
         <label>include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</label>
         <link refid="_kernel_8hpp"/>
-        <childnode refid="134" relation="include">
+        <childnode refid="136" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="139" relation="include">
+        <childnode refid="141" relation="include">
         </childnode>
       </node>
       <node id="101">
@@ -259,7 +247,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment.cpp</label>
         <link refid="_environment_8cpp"/>
       </node>
-      <node id="132">
+      <node id="134">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp</label>
         <link refid="_transform_8hpp"/>
         <childnode refid="45" relation="include">
@@ -272,21 +260,21 @@
         </childnode>
         <childnode refid="118" relation="include">
         </childnode>
-        <childnode refid="120" relation="include">
-        </childnode>
-        <childnode refid="121" relation="include">
+        <childnode refid="122" relation="include">
         </childnode>
         <childnode refid="123" relation="include">
         </childnode>
-        <childnode refid="124" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
         <childnode refid="128" relation="include">
         </childnode>
+        <childnode refid="129" relation="include">
+        </childnode>
         <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -300,7 +288,7 @@
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="133" relation="include">
+        <childnode refid="135" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
@@ -380,9 +368,9 @@
         </childnode>
         <childnode refid="111" relation="include">
         </childnode>
-        <childnode refid="143" relation="include">
-        </childnode>
         <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
         </childnode>
       </node>
       <node id="105">
@@ -397,7 +385,7 @@
         <childnode refid="70" relation="include">
         </childnode>
       </node>
-      <node id="142">
+      <node id="144">
         <label>include/OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
         <link refid="_interval_8hpp"/>
         <childnode refid="94" relation="include">
@@ -412,9 +400,9 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="143" relation="include">
+        <childnode refid="145" relation="include">
         </childnode>
-        <childnode refid="144" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
       </node>
       <node id="74">
@@ -470,7 +458,7 @@
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="147" relation="include">
+        <childnode refid="149" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -483,11 +471,11 @@
         <label>src/OpenSpaceToolkit/Physics/Unit/Mass.cpp</label>
         <link refid="_mass_8cpp"/>
       </node>
-      <node id="122">
+      <node id="124">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.cpp</label>
         <link refid="_j2000_8cpp"/>
       </node>
-      <node id="133">
+      <node id="135">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp</label>
         <link refid="_transform_8cpp"/>
       </node>
@@ -529,6 +517,16 @@
         <childnode refid="53" relation="include">
         </childnode>
       </node>
+      <node id="120">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8hpp"/>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
       <node id="31">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp</label>
         <link refid="_position_8cpp"/>
@@ -565,7 +563,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp</label>
         <link refid="_environment_2_ephemeris_2_s_p_i_c_e_2_manager_8cpp"/>
       </node>
-      <node id="143">
+      <node id="145">
         <label>include/OpenSpaceToolkit/Physics/Time.hpp</label>
         <link refid="_time_8hpp"/>
       </node>
@@ -612,33 +610,35 @@
         </childnode>
         <childnode refid="120" relation="include">
         </childnode>
-        <childnode refid="121" relation="include">
+        <childnode refid="122" relation="include">
         </childnode>
         <childnode refid="123" relation="include">
         </childnode>
-        <childnode refid="124" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
         <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="129" relation="include">
         </childnode>
         <childnode refid="130" relation="include">
         </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
         <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="132" relation="include">
+        <childnode refid="134" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="103" relation="include">
         </childnode>
-        <childnode refid="134" relation="include">
+        <childnode refid="136" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="136" relation="include">
+        <childnode refid="138" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
@@ -658,7 +658,7 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="140" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -680,7 +680,7 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="140" relation="include">
+        <childnode refid="142" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -694,9 +694,9 @@
         </childnode>
         <childnode refid="109" relation="include">
         </childnode>
-        <childnode refid="142" relation="include">
+        <childnode refid="144" relation="include">
         </childnode>
-        <childnode refid="143" relation="include">
+        <childnode refid="145" relation="include">
         </childnode>
         <childnode refid="96" relation="include">
         </childnode>
@@ -706,9 +706,9 @@
         </childnode>
         <childnode refid="110" relation="include">
         </childnode>
-        <childnode refid="145" relation="include">
+        <childnode refid="147" relation="include">
         </childnode>
-        <childnode refid="146" relation="include">
+        <childnode refid="148" relation="include">
         </childnode>
       </node>
       <node id="118">
@@ -752,7 +752,7 @@
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="148" relation="include">
+        <childnode refid="150" relation="include">
         </childnode>
       </node>
       <node id="70">
@@ -813,7 +813,7 @@
         <childnode refid="78" relation="include">
         </childnode>
       </node>
-      <node id="127">
+      <node id="129">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp</label>
         <link refid="_t_i_r_f_8hpp"/>
         <childnode refid="98" relation="include">
@@ -847,10 +847,10 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.cpp</label>
         <link refid="_dipole_8cpp"/>
       </node>
-      <node id="121">
+      <node id="123">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/J2000.hpp</label>
         <link refid="_j2000_8hpp"/>
-        <childnode refid="122" relation="include">
+        <childnode refid="124" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -891,7 +891,7 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="135">
+      <node id="137">
         <label>src/OpenSpaceToolkit/Physics/Data/Manifest.cpp</label>
         <link refid="_manifest_8cpp"/>
       </node>
@@ -927,15 +927,15 @@
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp</label>
         <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_manager_8cpp"/>
       </node>
-      <node id="131">
+      <node id="133">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp</label>
         <link refid="_provider_8cpp"/>
       </node>
-      <node id="139">
+      <node id="141">
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.cpp</label>
         <link refid="_kernel_8cpp"/>
       </node>
-      <node id="141">
+      <node id="143">
         <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.cpp</label>
         <link refid="_magnetic_2_model_8cpp"/>
       </node>
@@ -947,7 +947,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="146">
+      <node id="148">
         <label>src/OpenSpaceToolkit/Physics/Time/Instant.cpp</label>
         <link refid="_instant_8cpp"/>
       </node>
@@ -961,16 +961,16 @@
         <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="136">
+      <node id="138">
         <label>include/OpenSpaceToolkit/Physics/Data/Utility.hpp</label>
         <link refid="_data_2_utility_8hpp"/>
         <childnode refid="99" relation="include">
         </childnode>
         <childnode refid="102" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
         <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
         </childnode>
         <childnode refid="108" relation="include">
         </childnode>
@@ -997,11 +997,11 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp</label>
         <link refid="_environment_2_magnetic_2_earth_2_manager_8cpp"/>
       </node>
-      <node id="148">
+      <node id="150">
         <label>src/OpenSpaceToolkit/Physics/Unit/Unit.cpp</label>
         <link refid="_unit_2_unit_8cpp"/>
       </node>
-      <node id="140">
+      <node id="142">
         <label>include/OpenSpaceToolkit/Physics/Environment/Magnetic/Model.hpp</label>
         <link refid="_magnetic_2_model_8hpp"/>
         <childnode refid="68" relation="include">
@@ -1010,7 +1010,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="141" relation="include">
+        <childnode refid="143" relation="include">
         </childnode>
       </node>
       <node id="109">
@@ -1031,7 +1031,7 @@
         <childnode refid="110" relation="include">
         </childnode>
       </node>
-      <node id="144">
+      <node id="146">
         <label>src/OpenSpaceToolkit/Physics/Time/Interval.cpp</label>
         <link refid="_interval_8cpp"/>
       </node>
@@ -1115,7 +1115,7 @@
         <childnode refid="88" relation="include">
         </childnode>
       </node>
-      <node id="145">
+      <node id="147">
         <label>src/OpenSpaceToolkit/Physics/Time/Duration.cpp</label>
         <link refid="_duration_8cpp"/>
       </node>
@@ -1177,14 +1177,14 @@
         <childnode refid="76" relation="include">
         </childnode>
       </node>
-      <node id="147">
+      <node id="149">
         <label>src/OpenSpaceToolkit/Physics/Unit/Time.cpp</label>
         <link refid="_unit_2_time_8cpp"/>
       </node>
-      <node id="128">
+      <node id="130">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp</label>
         <link refid="_t_o_d_8hpp"/>
-        <childnode refid="129" relation="include">
+        <childnode refid="131" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -1201,7 +1201,7 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="134">
+      <node id="136">
         <label>include/OpenSpaceToolkit/Physics/Data/Manifest.hpp</label>
         <link refid="_manifest_8hpp"/>
         <childnode refid="103" relation="include">
@@ -1210,13 +1210,13 @@
         </childnode>
         <childnode refid="104" relation="include">
         </childnode>
-        <childnode refid="135" relation="include">
+        <childnode refid="137" relation="include">
         </childnode>
       </node>
-      <node id="124">
+      <node id="126">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.hpp</label>
         <link refid="_static_8hpp"/>
-        <childnode refid="125" relation="include">
+        <childnode refid="127" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -1227,7 +1227,7 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="125">
+      <node id="127">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Static.cpp</label>
         <link refid="_static_8cpp"/>
       </node>
@@ -1323,7 +1323,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp</label>
         <link refid="_eclipse_8cpp"/>
       </node>
-      <node id="126">
+      <node id="128">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp</label>
         <link refid="_t_e_m_e_8hpp"/>
         <childnode refid="81" relation="include">
@@ -1359,6 +1359,10 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
+      <node id="121">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.cpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8cpp"/>
+      </node>
       <node id="23">
         <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Moon.cpp</label>
         <link refid="_gravitational_2_moon_8cpp"/>
@@ -1379,7 +1383,7 @@
         <label>src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Engine.cpp</label>
         <link refid="_engine_8cpp"/>
       </node>
-      <node id="123">
+      <node id="125">
         <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp</label>
         <link refid="_m_o_d_8hpp"/>
         <childnode refid="80" relation="include">
@@ -1417,7 +1421,7 @@
         <label>src/OpenSpaceToolkit/Physics/Data/Vector.cpp</label>
         <link refid="_vector_8cpp"/>
       </node>
-      <node id="129">
+      <node id="131">
         <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp</label>
         <link refid="_t_o_d_8cpp"/>
       </node>
@@ -1454,79 +1458,70 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Unit_Unit__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Pair.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
 <codeline lineno="12"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">unit</highlight></codeline>
 <codeline lineno="14"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">unit</highlight></codeline>
-<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Pair;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Integer;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="classostk_1_1physics_1_1unit_1_1_unit" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref></highlight></codeline>
-<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="34" refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Type</ref></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>,</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aba2a9c6c8c77e03f83ef8bf543612275" kindref="member">Length</ref>,</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aff2864d6f652ee0ac254814f1ae4f4a8" kindref="member">Mass</ref>,</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aa76d4ef5f3f6a672bbfab2865563e530" kindref="member">Time</ref>,</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aee7a8e262285ed49ea1b4e4ae11525bd" kindref="member">Temperature</ref>,</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8a9a60fd92ac6161bffa549ef2cd17f05e" kindref="member">ElectricCurrent</ref>,</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8ae91a9eb4f5dcc51ea18e180ea981d6ae" kindref="member">LuminousIntensity</ref>,</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" kindref="member">Unit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref>&amp;<sp/>aType,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aValue);</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" kindref="member">~Unit</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Pair;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classostk_1_1physics_1_1unit_1_1_unit" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30" refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Type</ref></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aba2a9c6c8c77e03f83ef8bf543612275" kindref="member">Length</ref>,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aff2864d6f652ee0ac254814f1ae4f4a8" kindref="member">Mass</ref>,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aa76d4ef5f3f6a672bbfab2865563e530" kindref="member">Time</ref>,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8aee7a8e262285ed49ea1b4e4ae11525bd" kindref="member">Temperature</ref>,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8a9a60fd92ac6161bffa549ef2cd17f05e" kindref="member">ElectricCurrent</ref>,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8ae91a9eb4f5dcc51ea18e180ea981d6ae" kindref="member">LuminousIntensity</ref>,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a326efb7de2cbb9cb6e03e03a072b013a" kindref="member">Unit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref>&amp;<sp/>aType,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>aValue);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" kindref="member">~Unit</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref>*<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref>*<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a02b9cf0fcc60580bb4135ce06e6a019a" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" kindref="member">isZero</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" kindref="member">accessValue</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" kindref="member">getValue</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46" kindref="member">toString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aPrecision<sp/>=<sp/>Integer::Undefined())<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>Real&amp;<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" kindref="member">accessValue</ref>();</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" kindref="member">setValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aValue);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Pair&lt;Real,<sp/>String&gt;<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" kindref="member">ParseString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref><sp/>type_;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/>value_;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>unit</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" kindref="member">isZero</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a5eda60e389025e425d62d75d91ba8f6b" kindref="member">getValue</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a23a75660da6cd78f34df973831d2fbcc" kindref="member">toString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>aPrecision<sp/>=<sp/>-1)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a4480ddaef512c37776fec72c333bc8d9" kindref="member">accessValue</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a328e291ff458d72b330fe696baa4b4ec" kindref="member">setValue</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>aValue);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Pair&lt;double,<sp/>String&gt;<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a886469262a9beb0df6296781a0f1ec98" kindref="member">ParseString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" kindref="member">Unit::Type</ref><sp/>type_;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value_;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>unit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Unit/Unit.hpp"/>
   </compounddef>

@@ -7,14 +7,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141" prot="public" static="no" strong="yes">
         <type></type>
         <name>Format</name>
-        <enumvalue id="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-<para>Undefined format. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141aeb6d8ae6f20283755b339c0dc273988b" prot="public">
           <name>Standard</name>
           <briefdescription>
@@ -38,23 +30,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="29" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="28" bodyend="35"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="27" bodyend="33"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_date_1a85c1347cb0a49f462b8f23c510a590f0" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool ostk::physics::time::Date::defined_</definition>
-        <argsstring></argsstring>
-        <name>defined_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="248" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="248" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_date_1a75c6bce583eaf92e31a51b1b53517e77" prot="private" static="no" mutable="no">
         <type>Uint16</type>
         <definition>Uint16 ostk::physics::time::Date::year_</definition>
@@ -66,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="250" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="250" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="227" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_date_1a84a6eef59628969e834157506edddefe" prot="private" static="no" mutable="no">
         <type>Uint8</type>
@@ -79,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="251" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="251" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="228" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="228" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_date_1a1b98940028e2b5e037d2c951c3f88844" prot="private" static="no" mutable="no">
         <type>Uint8</type>
@@ -92,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="252" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="252" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="229" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="229" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -148,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="46" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="19" bodyend="26"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="44" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="21" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1aeb81c9a588fb376cff125b5c7a6c102b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -180,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="56" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="28" bodyend="36"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="54" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="29" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a556e99ee4d580ef765e67e150193872e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -212,26 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="66" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="38" bodyend="46"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1af73384bd32110f0b66214afd79b60b60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::time::Date::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if date is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Date(2018,<sp/>1,<sp/>2).isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if date is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="86" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="64" bodyend="67"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="64" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1ac22f785a79d49e0ffd96e38e73fe94cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Uint16</type>
@@ -250,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="95" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="69" bodyend="77"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="84" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a82987dc8c6a37826cb4810781eb4cff6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Uint8</type>
@@ -269,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="104" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="79" bodyend="87"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="93" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="57" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a8c8303a3934138bf18cebe4dd2430f83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Uint8</type>
@@ -288,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="113" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="89" bodyend="97"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="102" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a633d86cf7c5baf4726b08a78fbc6dd47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -321,25 +281,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="123" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="99" bodyend="175"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="112" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="67" bodyend="138"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1ad8621da8e34b23dd54c4930e6f203693" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a10f0b8952eb46a9688901e446da59a5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date ostk::physics::time::Date::replace</definition>
-        <argsstring>(const std::optional&lt; Integer &gt; &amp;aYear=std::nullopt, const std::optional&lt; Integer &gt; &amp;aMonth=std::nullopt, const std::optional&lt; Integer &gt; &amp;aDay=std::nullopt) const</argsstring>
+        <argsstring>(const std::optional&lt; int &gt; &amp;aYear=std::nullopt, const std::optional&lt; int &gt; &amp;aMonth=std::nullopt, const std::optional&lt; int &gt; &amp;aDay=std::nullopt) const</argsstring>
         <name>replace</name>
         <param>
-          <type>const std::optional&lt; Integer &gt; &amp;</type>
+          <type>const std::optional&lt; int &gt; &amp;</type>
           <declname>aYear</declname>
           <defval>std::nullopt</defval>
         </param>
         <param>
-          <type>const std::optional&lt; Integer &gt; &amp;</type>
+          <type>const std::optional&lt; int &gt; &amp;</type>
           <declname>aMonth</declname>
           <defval>std::nullopt</defval>
         </param>
         <param>
-          <type>const std::optional&lt; Integer &gt; &amp;</type>
+          <type>const std::optional&lt; int &gt; &amp;</type>
           <declname>aDay</declname>
           <defval>std::nullopt</defval>
         </param>
@@ -381,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="137" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="177" bodyend="193"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="126" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="140" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a86b990462a6e3a79211b7a3c888ade04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -413,7 +373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="154" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="195" bodyend="205"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="143" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="152" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a40a08deb839e23115ef4ca822497dd9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -445,7 +405,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="167" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="207" bodyend="217"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="156" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="159" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1aa4e71082fc602b1a1e5740e9db04b071" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -477,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="219" bodyend="229"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="169" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="166" bodyend="171"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -523,30 +483,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="77" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="48" bodyend="62"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="75" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="39" bodyend="50"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1adbffa0c4847013c5a562acccda582f4e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date ostk::physics::time::Date::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Constructs an undefined date. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Date<sp/>date<sp/>=<sp/>Date::Undefined();</highlight></codeline>
-<codeline><highlight class="normal">date.isDefined();<sp/>//<sp/>False</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined date </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="190" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="231" bodyend="234"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a0291e75d2537f1df98246a811eb24811" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date ostk::physics::time::Date::J2000</definition>
@@ -565,7 +505,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="201" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="236" bodyend="239"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="180" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="173" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1afd90b35a6ca9b2a55a69a3de34b09623" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
@@ -585,7 +525,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="212" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="241" bodyend="244"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="191" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="178" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1acc3389d494f95b539f600997d1ec7d85" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
@@ -605,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="223" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="246" bodyend="249"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="202" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="183" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a1745f88cba99bde5a17c30170b80b1b4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
@@ -625,21 +565,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="234" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="251" bodyend="254"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="213" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="188" bodyend="191"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a385deed9349a7b4fc20f5502c4919600" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1a8a64e3aea5f4b4ecd831cefe97a961ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
         <definition>Date ostk::physics::time::Date::Parse</definition>
-        <argsstring>(const String &amp;aString, const Date::Format &amp;aFormat=Date::Format::Undefined)</argsstring>
+        <argsstring>(const String &amp;aString, const std::optional&lt; Date::Format &gt; &amp;aFormat=std::nullopt)</argsstring>
         <name>Parse</name>
         <param>
           <type>const String &amp;</type>
           <declname>aString</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141" kindref="member">Date::Format</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141" kindref="member">Date::Format</ref> &gt; &amp;</type>
           <declname>aFormat</declname>
-          <defval><ref refid="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Date::Format::Undefined</ref></defval>
+          <defval>std::nullopt</defval>
         </param>
         <briefdescription>
 <para>Constructs a date from a string representation. </para>
@@ -657,10 +597,10 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">(optional)</parametername>
+<parametername direction="in">aFormat</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>aFormat A date format </para>
+<para>A date format (default: std::nullopt, which detects the format) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -670,40 +610,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="245" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="256" bodyend="396"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1aa78d28d816db92f5c5e1ffc10ea5635f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>ostk::physics::time::Date::Date</definition>
-        <argsstring>()</argsstring>
-        <name>Date</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="254" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="398" bodyend="404"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="224" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="193" bodyend="335"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1ad1a34423be79e4983653f3c0f447613a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_date_1acff377a153c1e877ce969f46faa5799b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void ostk::physics::time::Date::ValidateDate</definition>
-        <argsstring>(const Integer &amp;aYear, const Integer &amp;aMonth, const Integer &amp;aDay)</argsstring>
+        <argsstring>(int aYear, int aMonth, int aDay)</argsstring>
         <name>ValidateDate</name>
         <param>
-          <type>const Integer &amp;</type>
+          <type>int</type>
           <declname>aYear</declname>
         </param>
         <param>
-          <type>const Integer &amp;</type>
+          <type>int</type>
           <declname>aMonth</declname>
         </param>
         <param>
-          <type>const Integer &amp;</type>
+          <type>int</type>
           <declname>aDay</declname>
         </param>
         <briefdescription>
@@ -712,7 +637,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="256" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="406" bodyend="441"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="231" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="337" bodyend="371"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -720,33 +645,29 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="24" bodyend="257"/>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Date.hpp" line="24" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Date.hpp" bodystart="23" bodyend="232"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a3ff43a5f7a8ce8350e894b51befeb50d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>Date</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1aa78d28d816db92f5c5e1ffc10ea5635f" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>Date</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a1b98940028e2b5e037d2c951c3f88844" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>day_</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1a85c1347cb0a49f462b8f23c510a590f0" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>defined_</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a77a2e52ee3bcfd7c93139d2fe2c9a141" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>Format</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a8c8303a3934138bf18cebe4dd2430f83" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>getDay</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a82987dc8c6a37826cb4810781eb4cff6" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>getMonth</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1ac22f785a79d49e0ffd96e38e73fe94cc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>getYear</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1afd90b35a6ca9b2a55a69a3de34b09623" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>GPSEpoch</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1af73384bd32110f0b66214afd79b60b60" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a0291e75d2537f1df98246a811eb24811" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>J2000</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a1745f88cba99bde5a17c30170b80b1b4" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>ModifiedJulianDateEpoch</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a84a6eef59628969e834157506edddefe" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>month_</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a556e99ee4d580ef765e67e150193872e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a70ae98f5f6c575ec0c9bd948d12dea41" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1aeb81c9a588fb376cff125b5c7a6c102b" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>operator==</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1a385deed9349a7b4fc20f5502c4919600" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>Parse</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1ad8621da8e34b23dd54c4930e6f203693" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>replace</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_date_1a8a64e3aea5f4b4ecd831cefe97a961ba" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>Parse</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_date_1a10f0b8952eb46a9688901e446da59a5c" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>replace</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1aa4e71082fc602b1a1e5740e9db04b071" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>setDay</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a40a08deb839e23115ef4ca822497dd9b" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>setMonth</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a86b990462a6e3a79211b7a3c888ade04" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>setYear</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a633d86cf7c5baf4726b08a78fbc6dd47" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>toString</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1adbffa0c4847013c5a562acccda582f4e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1acc3389d494f95b539f600997d1ec7d85" prot="public" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>UnixEpoch</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_date_1ad1a34423be79e4983653f3c0f447613a" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>ValidateDate</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_date_1acff377a153c1e877ce969f46faa5799b" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>ValidateDate</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_date_1a75c6bce583eaf92e31a51b1b53517e77" prot="private" virt="non-virtual"><scope>ostk::physics::time::Date</scope><name>year_</name></member>
     </listofallmembers>
   </compounddef>

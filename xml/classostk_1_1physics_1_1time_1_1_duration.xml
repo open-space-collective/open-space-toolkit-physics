@@ -7,14 +7,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368" prot="public" static="no" strong="yes">
         <type></type>
         <name>Format</name>
-        <enumvalue id="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-<para>Undefined format. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368aeb6d8ae6f20283755b339c0dc273988b" prot="public">
           <name>Standard</name>
           <briefdescription>
@@ -38,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="35" bodyend="42"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="33" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -53,23 +45,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="32" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="32" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="30" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_duration_1a4314dfcf1ec2d87541b4dec598d59759" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool ostk::physics::time::Duration::defined_</definition>
-        <argsstring></argsstring>
-        <name>defined_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="588" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="588" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1time_1_1_duration_1a00ab9551503fa77ba826481a707e55d9" prot="private" static="no" mutable="no">
         <type>Int64</type>
         <definition>Int64 ostk::physics::time::Duration::count_</definition>
@@ -81,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="589" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="589" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="566" column="11" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="566" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -112,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="50" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="21" bodyend="25"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="47" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="22" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a92649b4f3f332daf372bb78ac1db6740" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -144,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="60" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="27" bodyend="35"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="57" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="27" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a5e99b046bbf8aa1de0f8e212b7794e38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -176,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="37" bodyend="45"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="67" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="32" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a76fbb444ae7db2e6e61c237bf96b9032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -208,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="80" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="47" bodyend="55"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="77" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="37" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a31b9328d64a66fd3f46ca8100b8dd91c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -240,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="90" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="57" bodyend="65"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="87" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="42" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a9daebcdc2a5ab12306630d85e44dcb7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -272,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="67" bodyend="75"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="97" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a3c742aac8e660effd3575fe0ca570d75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -304,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="110" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="77" bodyend="85"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="107" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a26a68103c9ee563c99257590fbc60079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -336,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="120" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="87" bodyend="95"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="117" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="57" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a211f0f909d453c61aad6677409507698" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -368,15 +347,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="130" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="97" bodyend="105"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="127" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="62" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1afca79b9de1ea487b00abdb8be8c5608d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a1cb44d296684c4318f985de3a1a50194" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::operator*</definition>
-        <argsstring>(const Real &amp;aMultiplier) const</argsstring>
+        <argsstring>(double aMultiplier) const</argsstring>
         <name>operator*</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aMultiplier</declname>
         </param>
         <briefdescription>
@@ -400,15 +379,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="140" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="107" bodyend="120"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="137" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="67" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a2400f4ac59f56e2a73090cff9404c67c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad8f100d22b2c3e8dc206058a34b0c41c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::operator/</definition>
-        <argsstring>(const Real &amp;aDivider) const</argsstring>
+        <argsstring>(double aDivider) const</argsstring>
         <name>operator/</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aDivider</declname>
         </param>
         <briefdescription>
@@ -432,7 +411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="150" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="122" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="147" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="77" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a172bf36df42a169ecf5893daa3f7d7b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -451,7 +430,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="159" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="142" bodyend="150"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="156" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad6311a658bac277c9739cf938106a274" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -470,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="168" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="152" bodyend="160"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="165" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="97" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1af0bd86fc4ec2d7a59219b3c72f699892" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
@@ -503,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="179" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="162" bodyend="172"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="176" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="102" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a81655d5bcb4ed4b13d2858a4c01917bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
@@ -536,15 +515,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="190" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="174" bodyend="184"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="187" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="109" bodyend="114"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ae26dc624227d7c6d8cb4a7436c34a4ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a61c8c48dfadb5e640d68cf27189fe799" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
         <definition>Duration &amp; ostk::physics::time::Duration::operator*=</definition>
-        <argsstring>(const Real &amp;aMultiplier)</argsstring>
+        <argsstring>(double aMultiplier)</argsstring>
         <name>operator*=</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aMultiplier</declname>
         </param>
         <briefdescription>
@@ -569,15 +548,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="201" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="186" bodyend="201"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="198" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="116" bodyend="126"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ac1e48e49d1dfeb3890a6944f13c513b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a3970f5e4d2ced8d582c0096df1de34c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
         <definition>Duration &amp; ostk::physics::time::Duration::operator/=</definition>
-        <argsstring>(const Real &amp;aDivider)</argsstring>
+        <argsstring>(double aDivider)</argsstring>
         <name>operator/=</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aDivider</declname>
         </param>
         <briefdescription>
@@ -602,26 +581,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="212" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="203" bodyend="223"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a4676fb2c4107f121bd197d4475507d40" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::time::Duration::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if duration is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration(123).isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if duration is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="243" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="246" bodyend="249"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="209" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="128" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a41b6aa4c574b3b98c32d5fafaa0a1fc2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -640,7 +600,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="252" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="251" bodyend="259"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="240" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="161" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a98211c27882beea4d5eadb6e825b85cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -661,7 +621,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="263" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="261" bodyend="269"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="251" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="166" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad72312f690761a3b5bfbe8ed0204d87e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -682,7 +642,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="274" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="271" bodyend="279"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="262" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="171" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a89fe2dee0dec4b81040ecc7a31bb3f87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -726,11 +686,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="285" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="281" bodyend="304"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="273" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="176" bodyend="184"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6b5818c374c3535f7827f6970c563206" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getNanoseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a786e0b012c60afe8042ef8fd37f10a5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getNanoseconds</definition>
         <argsstring>() const</argsstring>
         <name>getNanoseconds</name>
         <briefdescription>
@@ -745,11 +705,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="294" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="306" bodyend="314"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="282" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="186" bodyend="189"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a022d05824638f8288e84131d6b5e07be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getMicroseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a06085f422c31ecfc545cf6c74d6996ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getMicroseconds</definition>
         <argsstring>() const</argsstring>
         <name>getMicroseconds</name>
         <briefdescription>
@@ -764,11 +724,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="303" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="316" bodyend="324"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="291" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="191" bodyend="194"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a4ff289a3d0fb16c73899adcfe381a111" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getMilliseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aef3d0ae0e4f64a97796f61ec6c3b8925" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getMilliseconds</definition>
         <argsstring>() const</argsstring>
         <name>getMilliseconds</name>
         <briefdescription>
@@ -783,11 +743,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="312" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="326" bodyend="334"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="300" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="196" bodyend="199"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aff2319bf58b7c3da9e87ccd88867ffe7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getSeconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ac2050df468edaec5f35e1aab3fca8620" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getSeconds</definition>
         <argsstring>() const</argsstring>
         <name>getSeconds</name>
         <briefdescription>
@@ -802,11 +762,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="321" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="336" bodyend="344"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="309" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="201" bodyend="204"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a59eb18f0275a8683e73b9b86194bf9da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getMinutes</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a2f72130e210b5ca45bf549efa030c174" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getMinutes</definition>
         <argsstring>() const</argsstring>
         <name>getMinutes</name>
         <briefdescription>
@@ -821,11 +781,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="330" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="346" bodyend="354"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="318" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="206" bodyend="209"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ac33d36a6a043ad71b0203b02b9ff961b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getHours</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8dcf842f023c028accb5161b2fb1928e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getHours</definition>
         <argsstring>() const</argsstring>
         <name>getHours</name>
         <briefdescription>
@@ -840,11 +800,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="339" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="356" bodyend="364"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="327" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="211" bodyend="214"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8902625ed4b1d8d2a23bf7c5e9f886c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getDays</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a251438fd87c1bab0a1b364b51bcd8a88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getDays</definition>
         <argsstring>() const</argsstring>
         <name>getDays</name>
         <briefdescription>
@@ -859,11 +819,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="348" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="366" bodyend="374"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="336" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="216" bodyend="219"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1af42d2314c9d99b87ff09cf8470a460cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::time::Duration::getWeeks</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a803e0600afc51c7de816c0914e3fb3d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::time::Duration::getWeeks</definition>
         <argsstring>() const</argsstring>
         <name>getWeeks</name>
         <briefdescription>
@@ -878,7 +838,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="357" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="376" bodyend="384"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="345" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="221" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a99649d50bb22e54f1ba4bd901fe3a7e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -897,11 +857,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="366" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="386" bodyend="394"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="354" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="226" bodyend="229"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a00148c707cda4dc7b93aab5280200cd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inNanoseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a66a0ee1f84d995ba90c96fc61cf6fe2e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inNanoseconds</definition>
         <argsstring>() const</argsstring>
         <name>inNanoseconds</name>
         <briefdescription>
@@ -916,11 +876,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="375" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="396" bodyend="404"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="363" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="231" bodyend="234"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a67a7723ff079f5a4404a5fa1b0fd2128" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inMicroseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a90119ce6500d74c95dfd2428abf0c28e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inMicroseconds</definition>
         <argsstring>() const</argsstring>
         <name>inMicroseconds</name>
         <briefdescription>
@@ -935,11 +895,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="384" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="406" bodyend="414"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="372" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="236" bodyend="239"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8a754e57d49d857d7fbcd62be81b858d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inMilliseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a91f4437a93ae3ebaed2aa0d2842d7466" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inMilliseconds</definition>
         <argsstring>() const</argsstring>
         <name>inMilliseconds</name>
         <briefdescription>
@@ -954,11 +914,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="393" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="416" bodyend="424"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="381" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="241" bodyend="244"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ab2062045cd441c3eba4d58773a7bb01b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inSeconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6ed37308bb490d22116d0c138bfbdf7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inSeconds</definition>
         <argsstring>() const</argsstring>
         <name>inSeconds</name>
         <briefdescription>
@@ -973,11 +933,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="402" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="426" bodyend="434"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="390" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="246" bodyend="249"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a8ad5153d6f3ee225d9e4c32a2e19febc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inMinutes</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a03f6cf7ac86de48dfbf88cd885f915a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inMinutes</definition>
         <argsstring>() const</argsstring>
         <name>inMinutes</name>
         <briefdescription>
@@ -992,11 +952,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="411" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="436" bodyend="444"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="399" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="251" bodyend="254"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a24026d219798a960db5482f4cda808c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inHours</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ae59ef87741e7e00539256bab7e6634fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inHours</definition>
         <argsstring>() const</argsstring>
         <name>inHours</name>
         <briefdescription>
@@ -1011,11 +971,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="420" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="446" bodyend="454"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="408" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="256" bodyend="259"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a2c8f2e97717d02ba4f8dc044fe4f0b1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inDays</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a464e87635db5523d025d2d9b0c80d991" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inDays</definition>
         <argsstring>() const</argsstring>
         <name>inDays</name>
         <briefdescription>
@@ -1030,11 +990,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="429" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="456" bodyend="464"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="417" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="261" bodyend="264"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a99c5afa0b16e2239cd2cae12454d228d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::inWeeks</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1affdbda2c16fa3238abd60c8925b4e9aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::inWeeks</definition>
         <argsstring>() const</argsstring>
         <name>inWeeks</name>
         <briefdescription>
@@ -1049,11 +1009,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="438" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="466" bodyend="474"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="426" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="266" bodyend="269"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aa89099508db5e3bc895790f665101360" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::time::Duration::in</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ae749d7b98064c4936eb55c2e4440039f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::time::Duration::in</definition>
         <argsstring>(const unit::Time::Unit &amp;aTimeUnit) const</argsstring>
         <name>in</name>
         <param>
@@ -1081,7 +1041,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="448" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="476" bodyend="515"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="436" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="271" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a20ef00f7f5889c3e815800bb72920482" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -1115,7 +1075,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="459" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="517" bodyend="673"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="447" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="305" bodyend="456"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -1161,7 +1121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="223" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="225" bodyend="233"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="220" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="145" bodyend="148"/>
       </memberdef>
       <memberdef kind="friend" id="classostk_1_1physics_1_1time_1_1_duration_1a82573aea35c8642b571f78c85ca70fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
@@ -1205,30 +1165,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="234" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="235" bodyend="244"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="231" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="150" bodyend="159"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a568046182c0bc460b7e93de8b4084768" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
-        <definition>Duration ostk::physics::time::Duration::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Constructs an undefined duration. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>duration<sp/>=<sp/>Duration::Undefined();</highlight></codeline>
-<codeline><highlight class="normal">duration.isDefined();<sp/>//<sp/>False</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined duration </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="469" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="675" bodyend="678"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1acacd92afc598a3a48289307337fce217" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Zero</definition>
@@ -1247,15 +1187,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="479" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="680" bodyend="683"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="457" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="458" bodyend="461"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a81e8036be5cf9ee2f0108ac955642c96" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a9e9da026acba5c312c69732147770e8a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Nanoseconds</definition>
-        <argsstring>(const Real &amp;aNanosecondCount)</argsstring>
+        <argsstring>(double aNanosecondCount)</argsstring>
         <name>Nanoseconds</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aNanosecondCount</declname>
         </param>
         <briefdescription>
@@ -1279,15 +1219,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="489" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="685" bodyend="688"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="467" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="463" bodyend="471"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ab63d75db1524c35849385e07c0dc261a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ab8b266ad7626de8323523379cc041a81" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Microseconds</definition>
-        <argsstring>(const Real &amp;aMicrosecondCount)</argsstring>
+        <argsstring>(double aMicrosecondCount)</argsstring>
         <name>Microseconds</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aMicrosecondCount</declname>
         </param>
         <briefdescription>
@@ -1311,15 +1251,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="499" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="690" bodyend="693"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="477" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="473" bodyend="481"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a0712e9c93f9be6ca4d837998fda90e7a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ae0939d09648d3b59441782f31396a217" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Milliseconds</definition>
-        <argsstring>(const Real &amp;aMillisecondCount)</argsstring>
+        <argsstring>(double aMillisecondCount)</argsstring>
         <name>Milliseconds</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aMillisecondCount</declname>
         </param>
         <briefdescription>
@@ -1343,15 +1283,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="509" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="695" bodyend="698"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="487" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="483" bodyend="491"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad973fa34fcc308fdcc8d50c3ee694764" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a2ce5f2383dd617c3e58830bf507040c2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Seconds</definition>
-        <argsstring>(const Real &amp;aSecondCount)</argsstring>
+        <argsstring>(double aSecondCount)</argsstring>
         <name>Seconds</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aSecondCount</declname>
         </param>
         <briefdescription>
@@ -1375,15 +1315,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="519" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="700" bodyend="703"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="497" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="493" bodyend="501"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a1cd2884c6bb89071780c7dffcba9b49f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1ad6803d75c28306f8a1844b5dbf5e7a73" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Minutes</definition>
-        <argsstring>(const Real &amp;aMinuteCount)</argsstring>
+        <argsstring>(double aMinuteCount)</argsstring>
         <name>Minutes</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aMinuteCount</declname>
         </param>
         <briefdescription>
@@ -1407,15 +1347,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="529" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="705" bodyend="708"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="507" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="503" bodyend="511"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a950723133d46c93a06907543d15e4dc0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1af238a66125146ede5875e56acdcfea1e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Hours</definition>
-        <argsstring>(const Real &amp;anHourCount)</argsstring>
+        <argsstring>(double anHourCount)</argsstring>
         <name>Hours</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>anHourCount</declname>
         </param>
         <briefdescription>
@@ -1439,15 +1379,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="539" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="710" bodyend="713"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="517" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="513" bodyend="521"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aefb4abc87c6957d00650228d069fa1e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aa8b6c3afad05f94672a60827b47fc398" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Days</definition>
-        <argsstring>(const Real &amp;aDayCount)</argsstring>
+        <argsstring>(double aDayCount)</argsstring>
         <name>Days</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aDayCount</declname>
         </param>
         <briefdescription>
@@ -1471,15 +1411,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="549" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="715" bodyend="718"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="527" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="523" bodyend="531"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6186e3350364f407e390f520b93dbf83" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a4a0a3c108806d80d7789fc0c4ca7f794" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Weeks</definition>
-        <argsstring>(const Real &amp;aWeekCount)</argsstring>
+        <argsstring>(double aWeekCount)</argsstring>
         <name>Weeks</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aWeekCount</declname>
         </param>
         <briefdescription>
@@ -1503,7 +1443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="559" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="720" bodyend="723"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="537" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="533" bodyend="541"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a6e3ed5971283cccf4cbc591dd7919efa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -1548,21 +1488,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="572" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="725" bodyend="728"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="550" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="543" bodyend="546"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1afe4136976a7c4e5c2ec00c0aa5583b18" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1aa9fb8b3799eebc98a7fef20bfbfd4449" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
         <definition>Duration ostk::physics::time::Duration::Parse</definition>
-        <argsstring>(const String &amp;aString, const Duration::Format &amp;aFormat=Duration::Format::Undefined)</argsstring>
+        <argsstring>(const String &amp;aString, const std::optional&lt; Duration::Format &gt; &amp;aFormat=std::nullopt)</argsstring>
         <name>Parse</name>
         <param>
           <type>const String &amp;</type>
           <declname>aString</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368" kindref="member">Duration::Format</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368" kindref="member">Duration::Format</ref> &gt; &amp;</type>
           <declname>aFormat</declname>
-          <defval><ref refid="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Duration::Format::Undefined</ref></defval>
+          <defval>std::nullopt</defval>
         </param>
         <briefdescription>
 <para>Constructs a duration from a string representation. </para>
@@ -1582,10 +1522,10 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">(optional)</parametername>
+<parametername direction="in">aFormat</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>aFormat A duration format (automatic detection if Undefined) </para>
+<para>A duration format (default: std::nullopt, which detects the format) </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1595,22 +1535,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="585" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="730" bodyend="906"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1time_1_1_duration_1a7e2c5cf57d98551e05045e9d5070b9d4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>ostk::physics::time::Duration::Duration</definition>
-        <argsstring>()</argsstring>
-        <name>Duration</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="591" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="908" bodyend="912"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="563" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="548" bodyend="724"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1618,67 +1543,63 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="29" bodyend="594"/>
+    <location file="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Duration.hpp" bodystart="27" bodyend="569"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a6e3ed5971283cccf4cbc591dd7919efa" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Between</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a00ab9551503fa77ba826481a707e55d9" prot="private" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>count_</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1aefb4abc87c6957d00650228d069fa1e1" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Days</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a4314dfcf1ec2d87541b4dec598d59759" prot="private" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>defined_</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1aa8b6c3afad05f94672a60827b47fc398" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Days</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a6ba3a020742ca6e3bf0b1970dd039c07" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Duration</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a7e2c5cf57d98551e05045e9d5070b9d4" prot="private" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Duration</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a4bf616b67d15e0fbc4beb4fcc306c368" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Format</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a99649d50bb22e54f1ba4bd901fe3a7e3" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getAbsolute</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a8902625ed4b1d8d2a23bf7c5e9f886c4" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getDays</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ac33d36a6a043ad71b0203b02b9ff961b" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getHours</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a022d05824638f8288e84131d6b5e07be" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getMicroseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a4ff289a3d0fb16c73899adcfe381a111" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getMilliseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a59eb18f0275a8683e73b9b86194bf9da" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getMinutes</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a6b5818c374c3535f7827f6970c563206" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getNanoseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1aff2319bf58b7c3da9e87ccd88867ffe7" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getSeconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1af42d2314c9d99b87ff09cf8470a460cd" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getWeeks</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a950723133d46c93a06907543d15e4dc0" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Hours</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1aa89099508db5e3bc895790f665101360" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>in</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a2c8f2e97717d02ba4f8dc044fe4f0b1e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inDays</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a24026d219798a960db5482f4cda808c3" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inHours</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a67a7723ff079f5a4404a5fa1b0fd2128" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inMicroseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a8a754e57d49d857d7fbcd62be81b858d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inMilliseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a8ad5153d6f3ee225d9e4c32a2e19febc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inMinutes</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a00148c707cda4dc7b93aab5280200cd5" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inNanoseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ab2062045cd441c3eba4d58773a7bb01b" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inSeconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a251438fd87c1bab0a1b364b51bcd8a88" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getDays</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a8dcf842f023c028accb5161b2fb1928e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getHours</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a06085f422c31ecfc545cf6c74d6996ae" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getMicroseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1aef3d0ae0e4f64a97796f61ec6c3b8925" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getMilliseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a2f72130e210b5ca45bf549efa030c174" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getMinutes</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a786e0b012c60afe8042ef8fd37f10a5f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getNanoseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ac2050df468edaec5f35e1aab3fca8620" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getSeconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a803e0600afc51c7de816c0914e3fb3d7" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>getWeeks</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1af238a66125146ede5875e56acdcfea1e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Hours</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ae749d7b98064c4936eb55c2e4440039f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>in</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a464e87635db5523d025d2d9b0c80d991" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inDays</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ae59ef87741e7e00539256bab7e6634fc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inHours</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a90119ce6500d74c95dfd2428abf0c28e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inMicroseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a91f4437a93ae3ebaed2aa0d2842d7466" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inMilliseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a03f6cf7ac86de48dfbf88cd885f915a0" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inMinutes</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a66a0ee1f84d995ba90c96fc61cf6fe2e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inNanoseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a6ed37308bb490d22116d0c138bfbdf7e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inSeconds</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a262e3e2ea8f8c82f81028ef055114add" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Instant</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a99c5afa0b16e2239cd2cae12454d228d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inWeeks</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a4676fb2c4107f121bd197d4475507d40" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1affdbda2c16fa3238abd60c8925b4e9aa" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>inWeeks</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a89fe2dee0dec4b81040ecc7a31bb3f87" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>isNear</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a98211c27882beea4d5eadb6e825b85cb" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>isPositive</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1ad72312f690761a3b5bfbe8ed0204d87e" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>isStrictlyPositive</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a41b6aa4c574b3b98c32d5fafaa0a1fc2" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>isZero</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ab63d75db1524c35849385e07c0dc261a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Microseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a0712e9c93f9be6ca4d837998fda90e7a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Milliseconds</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a1cd2884c6bb89071780c7dffcba9b49f" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Minutes</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a81e8036be5cf9ee2f0108ac955642c96" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Nanoseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ab8b266ad7626de8323523379cc041a81" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Microseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ae0939d09648d3b59441782f31396a217" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Milliseconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ad6803d75c28306f8a1844b5dbf5e7a73" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Minutes</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a9e9da026acba5c312c69732147770e8a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Nanoseconds</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a5e99b046bbf8aa1de0f8e212b7794e38" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator!=</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1afca79b9de1ea487b00abdb8be8c5608d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator*</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a1cb44d296684c4318f985de3a1a50194" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator*</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a30be5772f32cb400f8d8a8e2975abf6d" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator*</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ae26dc624227d7c6d8cb4a7436c34a4ae" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator*=</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a61c8c48dfadb5e640d68cf27189fe799" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator*=</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a26a68103c9ee563c99257590fbc60079" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator+</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a172bf36df42a169ecf5893daa3f7d7b2" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator+</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1af0bd86fc4ec2d7a59219b3c72f699892" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator+=</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a211f0f909d453c61aad6677409507698" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator-</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1ad6311a658bac277c9739cf938106a274" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator-</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a81655d5bcb4ed4b13d2858a4c01917bd" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator-=</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a2400f4ac59f56e2a73090cff9404c67c" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator/</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ac1e48e49d1dfeb3890a6944f13c513b7" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator/=</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ad8f100d22b2c3e8dc206058a34b0c41c" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator/</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a3970f5e4d2ced8d582c0096df1de34c5" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator/=</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a76fbb444ae7db2e6e61c237bf96b9032" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator&lt;</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a82573aea35c8642b571f78c85ca70fbc" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a31b9328d64a66fd3f46ca8100b8dd91c" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator&lt;=</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a92649b4f3f332daf372bb78ac1db6740" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a9daebcdc2a5ab12306630d85e44dcb7a" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator&gt;</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a3c742aac8e660effd3575fe0ca570d75" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>operator&gt;=</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1afe4136976a7c4e5c2ec00c0aa5583b18" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Parse</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1ad973fa34fcc308fdcc8d50c3ee694764" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Seconds</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1aa9fb8b3799eebc98a7fef20bfbfd4449" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Parse</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a2ce5f2383dd617c3e58830bf507040c2" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Seconds</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1a20ef00f7f5889c3e815800bb72920482" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>toString</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a568046182c0bc460b7e93de8b4084768" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Undefined</name></member>
-      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a6186e3350364f407e390f520b93dbf83" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Weeks</name></member>
+      <member refid="classostk_1_1physics_1_1time_1_1_duration_1a4a0a3c108806d80d7789fc0c4ca7f794" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Weeks</name></member>
       <member refid="classostk_1_1physics_1_1time_1_1_duration_1acacd92afc598a3a48289307337fce217" prot="public" virt="non-virtual"><scope>ostk::physics::time::Duration</scope><name>Zero</name></member>
     </listofallmembers>
   </compounddef>

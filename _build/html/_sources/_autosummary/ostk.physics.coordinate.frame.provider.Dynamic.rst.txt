@@ -11,17 +11,14 @@ ostk.physics.coordinate.frame.provider.Dynamic
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Dynamic.get_transform_at
-      ~Dynamic.is_defined
-      ~Dynamic.undefined
-   
-   
-
-   
    
    

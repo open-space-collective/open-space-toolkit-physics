@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="73" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="45" bodyend="102"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="73" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="45" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a56c03a11cc81b97eac8240e4f8d62c31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; <ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref> &gt;</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="84" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="104" bodyend="156"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="84" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="99" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a48ae90a9855188c30b99fc1c5e898233" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; Path &gt;</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="95" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="158" bodyend="180"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="95" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="151" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_manager_1a9fab9486dd93da35692471d63c541d4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1spice_1_1_kernel" kindref="compound">Kernel</ref></type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="107" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="182" bodyend="200"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="107" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="175" bodyend="193"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="120" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="202" bodyend="212"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.hpp" line="120" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Manager.cpp" bodystart="195" bodyend="205"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

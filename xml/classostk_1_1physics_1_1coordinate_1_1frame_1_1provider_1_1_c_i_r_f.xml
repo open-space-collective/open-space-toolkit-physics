@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="105" column="5" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" bodystart="105" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="92" column="5" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="44" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="234" bodyend="234"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="234" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a8083ccded88a09e80ea3478a1eae0074" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="47" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="236" bodyend="236"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="43" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="236" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> *</type>
@@ -69,27 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="56" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="238" bodyend="241"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::CIRF::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> provider is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f" kindref="compound">CIRF</ref> provider is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="65" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="243" bodyend="246"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="52" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="238" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a47bb2b66b7f6af8c0d0c4c750ff7b2a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -122,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="75" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="248" bodyend="310"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="62" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="243" bodyend="295"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -142,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="84" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="312" bodyend="315"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="71" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="297" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1ad6d8df253a3d0975ef4b201a1068d4ab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -171,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="91" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="317" bodyend="320"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="78" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="302" bodyend="305"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1aab7fe8cc2ebbcada6ba505c5352e6adf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -188,17 +168,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="101" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="322" bodyend="325"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="88" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="307" bodyend="310"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a967826d4136d4609f0301cf6e6e93160" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a1516e063f1a42556a9c94a770a01ac6f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void ostk::physics::coordinate::frame::provider::CIRF::ComputeCIPCoordinates</definition>
-        <argsstring>(const Real &amp;aModifiedJulianDate_TT, double &amp;x, double &amp;y, double &amp;s, const bool interpolate)</argsstring>
+        <argsstring>(double aModifiedJulianDate_TT, double &amp;x, double &amp;y, double &amp;s, const bool interpolate)</argsstring>
         <name>ComputeCIPCoordinates</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aModifiedJulianDate_TT</declname>
         </param>
         <param>
@@ -267,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="119" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="327" bodyend="341"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="106" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp" bodystart="312" bodyend="324"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -301,15 +281,14 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" bodystart="36" bodyend="122"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp" bodystart="32" bodyend="109"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a07b839b310ac49eb05d72b9192824b51" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>CIRF</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a0481a3649648beb10ab93264e1a709f5" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>CIRFTestAccessor</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1aab7fe8cc2ebbcada6ba505c5352e6adf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>ClearXysCache</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1af8ac6c41060afab097dfc38bf1df1e27" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a967826d4136d4609f0301cf6e6e93160" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>ComputeCIPCoordinates</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a1516e063f1a42556a9c94a770a01ac6f" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>ComputeCIPCoordinates</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a47bb2b66b7f6af8c0d0c4c750ff7b2a5" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>getTransformAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a03ec16a222ce78b0f2d53529da0af149" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>IsXysInterpolationEnabled</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>Provider</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1ad6d8df253a3d0975ef4b201a1068d4ab" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::CIRF</scope><name>SetXysInterpolationEnabled</name></member>

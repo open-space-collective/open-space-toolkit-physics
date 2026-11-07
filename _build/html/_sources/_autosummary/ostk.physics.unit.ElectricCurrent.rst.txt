@@ -11,23 +11,20 @@ ostk.physics.unit.ElectricCurrent
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~ElectricCurrent.amperes
       ~ElectricCurrent.get_unit
       ~ElectricCurrent.in_amperes
       ~ElectricCurrent.in_unit
-      ~ElectricCurrent.is_defined
       ~ElectricCurrent.string_from_unit
       ~ElectricCurrent.symbol_from_unit
       ~ElectricCurrent.to_string
-      ~ElectricCurrent.undefined
-   
-   
-
-   
    
    

@@ -16,18 +16,21 @@ ostk.physics.environment.Object
    .. autosummary::
       :nosignatures:
    
-      ~Object.access_frame
-      ~Object.access_name
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Object.get_axes_in
+      ~Object.get_frame
       ~Object.get_geometry
       ~Object.get_geometry_in
       ~Object.get_name
       ~Object.get_position_in
       ~Object.get_transform_to
-      ~Object.is_defined
-   
-   
-
-   
    
    

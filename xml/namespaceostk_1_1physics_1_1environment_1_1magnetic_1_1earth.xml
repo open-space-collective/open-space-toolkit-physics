@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" line="32" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="32" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" line="33" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

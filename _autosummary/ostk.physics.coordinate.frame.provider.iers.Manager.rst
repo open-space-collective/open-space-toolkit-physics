@@ -16,6 +16,15 @@ ostk.physics.coordinate.frame.provider.iers.Manager
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Manager.clear_local_repository
       ~Manager.fetch_latest_bulletin_a
       ~Manager.fetch_latest_finals_2000a
@@ -35,9 +44,5 @@ ostk.physics.coordinate.frame.provider.iers.Manager
       ~Manager.reset
       ~Manager.set_local_repository
       ~Manager.set_mode
-   
-   
-
-   
    
    

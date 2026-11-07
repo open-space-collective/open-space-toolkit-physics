@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="129" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="129" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="111" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1data_1_1_manifest_1a3c010f1e95a3f9fa8e672f29de28894b" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="130" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="130" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="112" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -78,28 +78,9 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a9e67111d3340dc709dafaad52fdae8d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::data::Manifest::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Return true if manifest is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Boolean<sp/>isDefined<sp/>=<sp/>manifest.isDefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if manifest is defined. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="56" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="41" bodyend="44"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1ae48a7367e7c0af23b626726a60b9ba03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
-        <definition>Instant ostk::physics::data::Manifest::getLastModifiedTimestamp</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a837386d66587da5b9152cb3cefe1b596" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+        <definition>const Instant &amp; ostk::physics::data::Manifest::getLastModifiedTimestamp</definition>
         <argsstring>() const</argsstring>
         <name>getLastModifiedTimestamp</name>
         <briefdescription>
@@ -114,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="65" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="46" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="56" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -146,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="75" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="51" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="66" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="46" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1ad0cb18f62d58be9e11b3b03947dd85a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -178,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="85" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="58" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="76" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="53" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -222,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="96" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="66" bodyend="89"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="87" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="60" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -266,29 +247,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="107" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="91" bodyend="121"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="85" bodyend="115"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a5e36e090d78431bbd50a9284d7d25c73" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref></type>
-        <definition>Manifest ostk::physics::data::Manifest::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined manifest. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Manifest<sp/>manifest<sp/>=<sp/>Manifest::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined manifest </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="116" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="123" bodyend="126"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a478db942042993efd3dccbb36fd811a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref></type>
         <definition>Manifest ostk::physics::data::Manifest::Load</definition>
@@ -319,22 +281,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="126" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="128" bodyend="141"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="108" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="117" bodyend="129"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a18deb77e7938c9d897607448509a8aaf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1data_1_1_manifest_1a6b3a025fbc660746ae56f98b7d32e0d8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::data::Manifest::Manifest</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(const Instant &amp;aLastModifiedTimestamp)</argsstring>
         <name>Manifest</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>aLastModifiedTimestamp</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="132" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="143" bodyend="147"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="114" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manifest.cpp" bodystart="131" bodyend="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -342,20 +308,18 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="35" bodyend="133"/>
+    <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp" bodystart="35" bodyend="115"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1acb9f322babd113e4f8118f4005d4ced7" prot="private" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>dictionary_</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>findRemoteDataUrls</name></member>
-      <member refid="classostk_1_1physics_1_1data_1_1_manifest_1ae48a7367e7c0af23b626726a60b9ba03" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>getLastModifiedTimestamp</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a837386d66587da5b9152cb3cefe1b596" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>getLastModifiedTimestamp</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>getLastUpdateTimestampFor</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1ad0cb18f62d58be9e11b3b03947dd85a7" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>getNextUpdateCheckTimestampFor</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>getRemoteDataUrls</name></member>
-      <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a9e67111d3340dc709dafaad52fdae8d0" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a3c010f1e95a3f9fa8e672f29de28894b" prot="private" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>lastModifiedTimestamp_</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a478db942042993efd3dccbb36fd811a0" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>Load</name></member>
-      <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a18deb77e7938c9d897607448509a8aaf" prot="private" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>Manifest</name></member>
+      <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a6b3a025fbc660746ae56f98b7d32e0d8" prot="private" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>Manifest</name></member>
       <member refid="classostk_1_1physics_1_1data_1_1_manifest_1ad645f3ce7c70893222feb318f66cb8fa" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classostk_1_1physics_1_1data_1_1_manifest_1a5e36e090d78431bbd50a9284d7d25c73" prot="public" virt="non-virtual"><scope>ostk::physics::data::Manifest</scope><name>Undefined</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

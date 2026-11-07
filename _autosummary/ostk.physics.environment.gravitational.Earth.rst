@@ -11,19 +11,6 @@ ostk.physics.environment.gravitational.Earth
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-      ~Earth.get_degree
-      ~Earth.get_field_value_at
-      ~Earth.get_order
-      ~Earth.get_parameters
-      ~Earth.get_type
-      ~Earth.is_defined
-      ~Earth.is_point_mass
-   
    
 
    
@@ -37,7 +24,13 @@ ostk.physics.environment.gravitational.Earth
       ~Earth.EGM96
       ~Earth.WGS84
       ~Earth.WGS84_EGM96
+      ~Earth.get_degree
+      ~Earth.get_field_value_at
+      ~Earth.get_order
+      ~Earth.get_parameters
+      ~Earth.get_type
       ~Earth.gravity_constant
+      ~Earth.is_point_mass
       ~Earth.spherical
    
    

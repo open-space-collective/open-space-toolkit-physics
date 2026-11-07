@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="_gravitational_2_earth_8hpp" kind="file" language="C++">
     <compoundname>Earth.hpp</compoundname>
+    <includes local="no">optional</includes>
     <includes local="no">OpenSpaceToolkit/Core/FileSystem/Directory.hpp</includes>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Real.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Type/Unique.hpp</includes>
     <includes local="no">OpenSpaceToolkit/IO/URL.hpp</includes>
     <includes refid="_gravitational_2_model_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp</includes>
@@ -14,11 +14,8 @@
     <includedby refid="_object_2_celestial_2_earth_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp</includedby>
     <includedby refid="_gravitational_2_earth_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp</includedby>
     <incdepgraph>
-      <node id="2">
-        <label>OpenSpaceToolkit/Core/FileSystem/Directory.hpp</label>
-      </node>
       <node id="3">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
+        <label>OpenSpaceToolkit/Core/FileSystem/Directory.hpp</label>
       </node>
       <node id="9">
         <label>functional</label>
@@ -26,64 +23,54 @@
       <node id="6">
         <label>OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp</label>
         <link refid="_gravitational_2_model_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>OpenSpaceToolkit/Physics/Unit/Mass.hpp</label>
         <link refid="_mass_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
-        <link refid="_duration_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
-        <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="11" relation="include">
+      <node id="16">
+        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
+        <link refid="_duration_8hpp"/>
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
+        <link refid="_unit_2_time_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -92,15 +79,15 @@
       <node id="13">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -108,64 +95,60 @@
         <link refid="_instant_8hpp"/>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
-      </node>
-      <node id="19">
-        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
-        <link refid="_unit_2_unit_8hpp"/>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+      </node>
+      <node id="23">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
+      </node>
+      <node id="18">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="21">
         <label>OpenSpaceToolkit/Physics/Unit/Derived.hpp</label>
         <link refid="_derived_8hpp"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
-      <node id="15">
+      <node id="2">
         <label>optional</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
       <node id="4">
@@ -180,54 +163,42 @@
       <node id="14">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp</label>
         <link refid="_electric_current_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="22">
         <label>OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</label>
         <link refid="_angle_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="7">
         <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>OpenSpaceToolkit/Physics/Unit/Length.hpp</label>
         <link refid="_length_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -246,14 +217,12 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="15">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -359,110 +328,110 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Environment_Gravitational_Earth__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Unique.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/URL.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_gravitational_2_model_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
-<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
-<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">environment</highlight></codeline>
-<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gravitational</highlight></codeline>
-<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Integer;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Unique;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model" kindref="compound">ostk::physics::environment::gravitational::Model</ref>;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model" kindref="compound">Model</ref></highlight></codeline>
-<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Declare<sp/>static<sp/>gravitational<sp/>model<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a81fadb345bc2801f4a1c8d3f2f7c72b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a81fadb345bc2801f4a1c8d3f2f7c72b1" kindref="member">EGM2008</ref>;</highlight></codeline>
-<codeline lineno="45" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a173b9e634b696714acaaad185479906b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a173b9e634b696714acaaad185479906b" kindref="member">WGS84_EGM96</ref>;</highlight></codeline>
-<codeline lineno="46" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9f8fc9e4d616b6be369a3f7c31019fb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9f8fc9e4d616b6be369a3f7c31019fb9" kindref="member">EGM96</ref>;</highlight></codeline>
-<codeline lineno="47" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a405a3c73b867967297e0c6d3b01e74ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a405a3c73b867967297e0c6d3b01e74ae" kindref="member">EGM84</ref>;</highlight></codeline>
-<codeline lineno="48" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa80e59367da181f3d2e07b41c8644911" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa80e59367da181f3d2e07b41c8644911" kindref="member">WGS84</ref>;</highlight></codeline>
-<codeline lineno="49" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a214ad1690ab596bfff53fc08c75b8d07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a214ad1690ab596bfff53fc08c75b8d07" kindref="member">Spherical</ref>;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Type</ref></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>,<sp/><sp/></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a24e5c24fabd1c081d4c729094df0b947" kindref="member">Spherical</ref>,<sp/><sp/></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b" kindref="member">WGS84</ref>,<sp/><sp/></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196" kindref="member">EGM84</ref>,<sp/><sp/></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05ab9e95fd38c6e9a8c62768d3a97e7382a" kindref="member">WGS84_EGM96</ref>,<sp/><sp/></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a7c7ad846cb98dafc9309087d3ba36013" kindref="member">EGM96</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164" kindref="member">EGM2008</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a65816e63e9212691bb689d01bffb6755" kindref="member">Earth</ref>(</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Unique.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/URL.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_gravitational_2_model_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">environment</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">gravitational</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Unique;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model" kindref="compound">ostk::physics::environment::gravitational::Model</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model" kindref="compound">Model</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Declare<sp/>static<sp/>gravitational<sp/>model<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a81fadb345bc2801f4a1c8d3f2f7c72b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a81fadb345bc2801f4a1c8d3f2f7c72b1" kindref="member">EGM2008</ref>;</highlight></codeline>
+<codeline lineno="44" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a173b9e634b696714acaaad185479906b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a173b9e634b696714acaaad185479906b" kindref="member">WGS84_EGM96</ref>;</highlight></codeline>
+<codeline lineno="45" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9f8fc9e4d616b6be369a3f7c31019fb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9f8fc9e4d616b6be369a3f7c31019fb9" kindref="member">EGM96</ref>;</highlight></codeline>
+<codeline lineno="46" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a405a3c73b867967297e0c6d3b01e74ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a405a3c73b867967297e0c6d3b01e74ae" kindref="member">EGM84</ref>;</highlight></codeline>
+<codeline lineno="47" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa80e59367da181f3d2e07b41c8644911" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa80e59367da181f3d2e07b41c8644911" kindref="member">WGS84</ref>;</highlight></codeline>
+<codeline lineno="48" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a214ad1690ab596bfff53fc08c75b8d07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a214ad1690ab596bfff53fc08c75b8d07" kindref="member">Spherical</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Type</ref></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a24e5c24fabd1c081d4c729094df0b947" kindref="member">Spherical</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a5dda43a21474cf33e7088b8247f19c4b" kindref="member">WGS84</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a2ae5659e79a4bb66ae4ee8cb033ef196" kindref="member">EGM84</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05ab9e95fd38c6e9a8c62768d3a97e7382a" kindref="member">WGS84_EGM96</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05a7c7ad846cb98dafc9309087d3ba36013" kindref="member">EGM96</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05af22fbbe07f6feeaa3d6446dabcd8b164" kindref="member">EGM2008</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a33238ca7e77fb96d72b0bdb36a1fc385" kindref="member">Earth</ref>(</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType,</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDataDirectory<sp/>=<sp/>Directory::Undefined(),</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aGravityModelDegree<sp/>=<sp/>Integer::Undefined(),</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aGravityModelOrder<sp/>=<sp/>Integer::Undefined()</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;Directory&gt;&amp;<sp/>aDataDirectory<sp/>=<sp/>std::nullopt,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;&amp;<sp/>aGravityModelDegree<sp/>=<sp/>std::nullopt,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;&amp;<sp/>aGravityModelOrder<sp/>=<sp/>std::nullopt</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a65816e63e9212691bb689d01bffb6755" kindref="member">Earth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aGravityModelDegree,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aGravityModelOrder);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a65816e63e9212691bb689d01bffb6755" kindref="member">Earth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>&amp;<sp/>anEarthGravitationalModel);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1accc913e0c0a5c7c8348c13217c5de4f3" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>&amp;<sp/>anEarthGravitationalModel);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a0bd1037605f6fb37fb6babc7bb8ae745" kindref="member">~Earth</ref>();</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>*<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a987c2df62d8fedb368acf37e71ba7a47" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1abbe5c7a3e6fc2639c902ef9453d1435b" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a8c0a5fccd29e4e5796c3268076c006ac" kindref="member">isPointMass</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa65dd2a5ce980e8a4f7f502387c1ff61" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Integer<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1afc1f91c9235cf7a27a69e731c5461b83" kindref="member">getDegree</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Integer<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa9eb64a765ea67ac70990060220167ef" kindref="member">getOrder</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9e536649566761f4bdd467993abfcedd" kindref="member">getFieldValueAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aPosition,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Model::Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a1f5928d273cbdeaf49ec911124f1def9" kindref="member">ParametersFromType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a33238ca7e77fb96d72b0bdb36a1fc385" kindref="member">Earth</ref>(</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;&amp;<sp/>aGravityModelDegree,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;&amp;<sp/>aGravityModelOrder</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a33238ca7e77fb96d72b0bdb36a1fc385" kindref="member">Earth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>&amp;<sp/>anEarthGravitationalModel);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1accc913e0c0a5c7c8348c13217c5de4f3" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>&amp;<sp/>anEarthGravitationalModel);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a0bd1037605f6fb37fb6babc7bb8ae745" kindref="member">~Earth</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">Earth</ref>*<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a987c2df62d8fedb368acf37e71ba7a47" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a8c0a5fccd29e4e5796c3268076c006ac" kindref="member">isPointMass</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1aa65dd2a5ce980e8a4f7f502387c1ff61" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a43486daef9e8c9887de437df5729d772" kindref="member">getDegree</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1af49d88ef959957b77b1ce4104d4aa5dc" kindref="member">getOrder</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9e536649566761f4bdd467993abfcedd" kindref="member">getFieldValueAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aPosition,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Model::Parameters</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a1f5928d273cbdeaf49ec911124f1def9" kindref="member">ParametersFromType</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a75d21e693bb671527098207bc9e4f3ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a75d21e693bb671527098207bc9e4f3ae" kindref="member">gravityConstant</ref><sp/>=<sp/>9.80665;<sp/><sp/></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189" refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a75d21e693bb671527098207bc9e4f3ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a75d21e693bb671527098207bc9e4f3ae" kindref="member">gravityConstant</ref><sp/>=<sp/>9.80665;<sp/><sp/></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Impl;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SphericalImpl;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ExternalImpl;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Impl;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">SphericalImpl;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ExternalImpl;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>Unique&lt;Impl&gt;<sp/>implUPtr_;</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>Unique&lt;Impl&gt;<sp/>implUPtr_;</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Unique&lt;Impl&gt;<sp/>ImplFromType(</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType,</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Directory&amp;<sp/>aDataDirectory,</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aGravityModelDegree,</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aGravityModelOrder</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="204"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gravitational</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Unique&lt;Impl&gt;<sp/>ImplFromType(</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1a9895df78b5c5aab5e981bf765f8c0f05" kindref="member">Earth::Type</ref>&amp;<sp/>aType,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;Directory&gt;&amp;<sp/>aDataDirectory,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;&amp;<sp/>aGravityModelDegree,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;int&gt;&amp;<sp/>aGravityModelOrder</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gravitational</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.hpp"/>
   </compounddef>

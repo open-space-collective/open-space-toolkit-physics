@@ -11,18 +11,16 @@ ostk.physics.environment.gravitational.Spherical
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Spherical.get_field_value_at
       ~Spherical.get_parameters
-      ~Spherical.is_defined
       ~Spherical.is_point_mass
-   
-   
-
-   
    
    

@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="50" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="25" bodyend="25"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="46" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="30" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a3552f4315a431f9a422a273f6b983098" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential" kindref="compound">Exponential</ref> *</type>
@@ -37,30 +37,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="60" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="27" bodyend="30"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="56" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="32" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1acc039008e0cec1fd79082b300bee205b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::environment::atmospheric::earth::Exponential::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the exponential atmospheric model is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">model.isDefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the exponential atmospheric model is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="32" bodyend="35"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1ab043dea461cc32e724bf4e2b12178ba0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::atmospheric::earth::Exponential::getDensityAt</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a4c243169588bc0f5c16781b4c303c73d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::atmospheric::earth::Exponential::getDensityAt</definition>
         <argsstring>(const LLA &amp;aLLA, const Instant &amp;anInstant) const</argsstring>
         <name>getDensityAt</name>
         <param>
@@ -75,7 +56,7 @@
 <para>Get the atmospheric density value at a given position and instant. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Real<sp/>density<sp/>=<sp/>model.getDensityAt(lla,<sp/>instant);</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">double<sp/>density<sp/>=<sp/>model.getDensityAt(lla,<sp/>instant);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -100,13 +81,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="37" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="68" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="37" bodyend="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a39cdb3d682e4ad5468edb664809161bb" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Tuple&lt; Real, Real, Real &gt;</type>
-        <definition>Tuple&lt; Real, Real, Real &gt; ostk::physics::environment::atmospheric::earth::Exponential::DensityBandValues</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a4e2d0ab8f8943d98c54f8fc5b7a74adf" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Tuple&lt; double, double, double &gt;</type>
+        <definition>Tuple&lt; double, double, double &gt; ostk::physics::environment::atmospheric::earth::Exponential::DensityBandValues</definition>
         <argsstring>(const Length &amp;anAltitude)</argsstring>
         <name>DensityBandValues</name>
         <param>
@@ -119,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="85" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="54" bodyend="116"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="71" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="54" bodyend="116"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -127,13 +108,12 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" bodystart="41" bodyend="86"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" line="38" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp" bodystart="37" bodyend="72"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a3552f4315a431f9a422a273f6b983098" prot="public" virt="virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a39cdb3d682e4ad5468edb664809161bb" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>DensityBandValues</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a4e2d0ab8f8943d98c54f8fc5b7a74adf" prot="private" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>DensityBandValues</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a21b8801dd53ae70c4a20625d547b166e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>Exponential</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1ab043dea461cc32e724bf4e2b12178ba0" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>getDensityAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1acc039008e0cec1fd79082b300bee205b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_exponential_1a4c243169588bc0f5c16781b4c303c73d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::atmospheric::earth::Exponential</scope><name>getDensityAt</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

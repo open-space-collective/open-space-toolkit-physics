@@ -11,10 +11,13 @@ ostk.physics.unit.Interval
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Interval.closed
       ~Interval.contains_interval
@@ -22,12 +25,6 @@ ostk.physics.unit.Interval
       ~Interval.get_lower_bound
       ~Interval.get_upper_bound
       ~Interval.intersects
-      ~Interval.is_defined
       ~Interval.is_degenerate
-      ~Interval.undefined
-   
-   
-
-   
    
    

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="_velocity_8hpp" kind="file" language="C++">
     <compoundname>Velocity.hpp</compoundname>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Integer.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Type/Shared.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Mathematics/Object/Vector.hpp</includes>
@@ -13,166 +12,149 @@
     <includedby refid="_object_8hpp" local="no">include/OpenSpaceToolkit/Physics/Environment/Object.hpp</includedby>
     <includedby refid="_velocity_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp</includedby>
     <incdepgraph>
-      <node id="11">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="9">
+      <node id="8">
         <label>functional</label>
       </node>
       <node id="10">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>OpenSpaceToolkit/Physics/Unit/Mass.hpp</label>
         <link refid="_mass_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
-        <link refid="_duration_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
-        <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="15">
+        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
+        <link refid="_duration_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
+        <link refid="_unit_2_time_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="12">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="7">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
+      </node>
+      <node id="17">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>OpenSpaceToolkit/Core/Type/Shared.hpp</label>
+      </node>
+      <node id="21">
+        <label>OpenSpaceToolkit/Physics/Unit/Derived.hpp</label>
+        <link refid="_derived_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
-      </node>
-      <node id="18">
-        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
-        <link refid="_unit_2_unit_8hpp"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>OpenSpaceToolkit/Core/Type/Shared.hpp</label>
-      </node>
-      <node id="22">
-        <label>OpenSpaceToolkit/Physics/Unit/Derived.hpp</label>
-        <link refid="_derived_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp</label>
-      </node>
-      <node id="14">
-        <label>optional</label>
-      </node>
-      <node id="19">
-        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
       <node id="6">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Object/Point.hpp</label>
+      </node>
+      <node id="9">
+        <label>optional</label>
+      </node>
+      <node id="18">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="5">
         <label>OpenSpaceToolkit/Physics/Coordinate/Position.hpp</label>
         <link refid="_position_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="3">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
-      <node id="2">
+      <node id="11">
         <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
       </node>
       <node id="1">
@@ -186,76 +168,60 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="13">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp</label>
         <link refid="_electric_current_8hpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="22">
         <label>OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</label>
         <link refid="_angle_8hpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="4">
         <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>OpenSpaceToolkit/Physics/Unit/Length.hpp</label>
         <link refid="_length_8hpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="14">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -655,19 +621,6 @@
     <innernamespace refid="namespaceostk">ostk</innernamespace>
     <innernamespace refid="namespaceostk_1_1physics">ostk::physics</innernamespace>
     <innernamespace refid="namespaceostk_1_1physics_1_1coordinate">ostk::physics::coordinate</innernamespace>
-      <sectiondef kind="define">
-      <memberdef kind="define" id="_velocity_8hpp_1a6d81881a7883657dbc659ca545d9085d" prot="public" static="no">
-        <name>DEFAULT_PRECISION</name>
-        <initializer>Integer::Undefined()</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="23" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="23" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -677,92 +630,81 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Coordinate_Velocity__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Coordinate_Velocity__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Shared.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Mathematics/Object/Vector.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_position_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Coordinate/Position.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_derived_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Unit/Derived.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
-<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
-<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">coordinate</highlight></codeline>
-<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="_velocity_8hpp_1a6d81881a7883657dbc659ca545d9085d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEFAULT_PRECISION<sp/>Integer::Undefined()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Shared.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Mathematics/Object/Vector.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_position_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Coordinate/Position.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_derived_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Unit/Derived.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">coordinate</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Shared;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Integer;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Shared;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::object::Vector3d;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::object::Vector3d;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">ostk::physics::coordinate::Position</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">ostk::physics::unit::Derived</ref>;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">ostk::physics::coordinate::Position</ref>;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">ostk::physics::unit::Derived</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Frame;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Frame;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="classostk_1_1physics_1_1coordinate_1_1_velocity" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></highlight></codeline>
-<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="42" refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Unit</ref></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="classostk_1_1physics_1_1coordinate_1_1_velocity" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38" refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Unit</ref></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6a0af408165b5f88fcd7b687312b754ade" kindref="member">MeterPerSecond</ref></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>,</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6a0af408165b5f88fcd7b687312b754ade" kindref="member">MeterPerSecond</ref></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6a26dc0553e726f6d11bfd2154e78698" kindref="member">Velocity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aCoordinateSet,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr);</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a985cc2deff380771c8b07a79f4bec1da" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref>&amp;<sp/>aVelocity)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af43356b678fb27fb9b1e1c74e9c1f2bf" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref>&amp;<sp/>aVelocity)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab3987a176df736aa7fa50aa763ed068b" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref>&amp;<sp/>aVelocity);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af02ff027f2a9ce65f5ca406c6e60fe65" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a75a95bf7f107c88423668bc3cb34a975" kindref="member">accessCoordinates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>Shared&lt;const<sp/>Frame&gt;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a4b17ed16bbf477c26d2a3a585295a75e" kindref="member">accessFrame</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a0f837073e7496024d0f61322c9aec678" kindref="member">getCoordinates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6b3e3347b338ddc3f5ee4569518bcb8f" kindref="member">getUnit</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac3dcba2ce6ffdc2f46bb3080f713e842" kindref="member">inUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af2e2d35e94d7a80e7e927a18fd0b6743" kindref="member">inFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref>&amp;<sp/>aPosition,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a07e9c679e6f1a4602bc69d296291d2b1" kindref="member">toString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aPrecision<sp/>=<sp/><ref refid="_velocity_8hpp_1a6d81881a7883657dbc659ca545d9085d" kindref="member">DEFAULT_PRECISION</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab86bcae72f867df96e25055471fe3a03" kindref="member">Undefined</ref>();</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a175b53534c1c6038dda85be4ffb5b323" kindref="member">MetersPerSecond</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aCoordinateSet,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" kindref="member">StringFromUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"></highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/>coordinates_;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref><sp/>unit_;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>Shared&lt;const<sp/>Frame&gt;<sp/>frameSPtr_;<sp/><sp/></highlight><highlight class="comment">//<sp/>[TBR]<sp/>With<sp/>Transform<sp/>instead,<sp/>as<sp/>Frame<sp/>is<sp/>a<sp/>function<sp/>of<sp/>time...</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref><sp/>DerivedUnitFromVelocityUnit(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6a26dc0553e726f6d11bfd2154e78698" kindref="member">Velocity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aCoordinateSet,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a985cc2deff380771c8b07a79f4bec1da" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref>&amp;<sp/>aVelocity)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af43356b678fb27fb9b1e1c74e9c1f2bf" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref>&amp;<sp/>aVelocity)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab3987a176df736aa7fa50aa763ed068b" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref>&amp;<sp/>aVelocity);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab6e1b0a0e2d53b4f607f7d41452ad246" kindref="member">getCoordinates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a33c7a9f12af35648aeedfe717f5eed3f" kindref="member">getFrame</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6b3e3347b338ddc3f5ee4569518bcb8f" kindref="member">getUnit</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac3dcba2ce6ffdc2f46bb3080f713e842" kindref="member">inUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af2e2d35e94d7a80e7e927a18fd0b6743" kindref="member">inFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref>&amp;<sp/>aPosition,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a8505f2aeb254d0f8ce4cd81d50db2768" kindref="member">toString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>aPrecision<sp/>=<sp/>-1)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a175b53534c1c6038dda85be4ffb5b323" kindref="member">MetersPerSecond</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d&amp;<sp/>aCoordinateSet,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>aFrameSPtr);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" kindref="member">StringFromUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>Vector3d<sp/>coordinates_;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref><sp/>unit_;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>Shared&lt;const<sp/>Frame&gt;<sp/>frameSPtr_;<sp/><sp/></highlight><highlight class="comment">//<sp/>[TBR]<sp/>With<sp/>Transform<sp/>instead,<sp/>as<sp/>Frame<sp/>is<sp/>a<sp/>function<sp/>of<sp/>time...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Derived::Unit</ref><sp/>DerivedUnitFromVelocityUnit(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp"/>
   </compounddef>

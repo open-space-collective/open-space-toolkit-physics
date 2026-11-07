@@ -16,11 +16,16 @@ ostk.physics.environment.gravitational.Model
    .. autosummary::
       :nosignatures:
    
-      ~Model.get_parameters
-      ~Model.is_point_mass
    
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Model.get_parameters
+      ~Model.is_point_mass
    
    

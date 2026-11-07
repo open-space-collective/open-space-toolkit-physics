@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a11b134d6cacf0cd73d99fc8668c58def" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1_earth" kindref="compound">ostk::physics::environment::atmospheric::Earth</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="47" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="47" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="43" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a77c309be4719e60864cfe80dc511d3e1" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth" kindref="compound">ostk::physics::environment::gravitational::Earth</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="48" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" line="44" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a842341ed14cd8a424805de86e30350a1" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">ostk::physics::environment::object::celestial::Earth</ref></type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" line="22" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="22" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" line="27" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.cpp" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a4e603bd4478a36f9ba98e33af0a1c892" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_manager" kindref="compound">ostk::physics::data::Manager</ref></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" line="51" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="51" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" line="49" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" line="47" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="47" bodyend="194"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" line="52" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp" bodystart="52" bodyend="210"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

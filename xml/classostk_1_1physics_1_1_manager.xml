@@ -259,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="64" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="32" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="64" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="31" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a749a7ddaac37a145de0644de53cfefad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Directory</type>
@@ -278,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="73" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="39" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="73" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="38" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a0469c4ea61710d505b78113ea75f2f12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -297,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="82" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="46" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="82" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="45" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1aec2b97acf4a1d22b95b5a978a52c4356" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -327,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="91" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="51" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="91" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="50" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1ac5a18a4272b5d26ff78e32cba7c08baf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -357,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="58" bodyend="70"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="57" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -376,7 +376,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="107" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="72" bodyend="82"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="107" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="66" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a02599a6373856962a1ebee35206d5789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -392,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="114" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="84" bodyend="89"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="114" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="78" bodyend="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -472,15 +472,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="140" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="91" bodyend="109"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="140" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="85" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a3a5042e04ed541e1883bf336a60ae189" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void ostk::physics::Manager::setup_</definition>
         <argsstring>()</argsstring>
         <name>setup_</name>
-        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae776c687cb623a0bfc82fc512298272a">setup_</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a3bed91f86c35375db967991903ed3ea6">setup_</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_manager_1ae776c687cb623a0bfc82fc512298272a">setup_</reimplementedby>
         <briefdescription>
 <para>Set up the manager, initializing configuration from environment variables. </para>
         </briefdescription>
@@ -490,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="153" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="111" bodyend="117"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="153" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="107" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a292574e204c1d15cded3308390448ecd" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -509,7 +509,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="162" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="119" bodyend="122"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="162" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a021e2a3c315f62e4522cdac656c383a3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>File</type>
@@ -528,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="171" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="124" bodyend="127"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="171" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="120" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a22d38ed9801bbc20ebedef0529567664" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -558,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="129" bodyend="167"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="180" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="125" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -574,7 +574,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="187" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="169" bodyend="179"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="187" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="165" bodyend="175"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-static-func">
@@ -632,7 +632,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="199" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="181" bodyend="197"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="199" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="177" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a777da8855f64d5f1ae27329240fcc7cf" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8" kindref="member">Manager::Mode</ref></type>
@@ -664,7 +664,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="213" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="199" bodyend="220"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="213" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="195" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_manager_1a089690a144ffcc2bcfc5989ef028fe17" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -696,7 +696,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="223" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="222" bodyend="233"/>
+        <location file="include/OpenSpaceToolkit/Physics/Manager.hpp" line="223" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Manager.cpp" bodystart="218" bodyend="229"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

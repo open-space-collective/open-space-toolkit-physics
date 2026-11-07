@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="98" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" bodystart="98" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="89" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aa8abae55c5c7c3d88d210fecfc0d4d65" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="99" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" bodystart="99" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="90" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -109,44 +109,24 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="58" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="34" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1af574adfe8d2651c63e542f34dde9caac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::TOD::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d" kindref="compound">TOD</ref> provider is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d" kindref="compound">TOD</ref> provider is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="67" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="39" bodyend="42"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1a9942eb91fed0d31b06f3a139f5016323" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
-        <definition>Instant ostk::physics::coordinate::frame::provider::TOD::getEpoch</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1ae1b947c1c4bb2bfc425cb1fc2fcc926a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+        <definition>const Instant &amp; ostk::physics::coordinate::frame::provider::TOD::getEpoch</definition>
         <argsstring>() const</argsstring>
         <name>getEpoch</name>
         <briefdescription>
 <para>Get the epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>epoch<sp/>=<sp/>provider.getEpoch();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Instant&amp;<sp/>epoch<sp/>=<sp/>provider.getEpoch();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>The epoch instant </para>
+<para><simplesect kind="return"><para>Const reference to the epoch instant </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="76" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="44" bodyend="52"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="67" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1a092c964f9fc5354893edbe18fb92ddd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iau_1a69608c4c076b98223e81c0ff5211a3cf" kindref="member">iau::Theory</ref></type>
@@ -165,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="85" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="54" bodyend="62"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="76" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aa2bf8be89797e81620edac58da4b1f11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -198,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="95" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="64" bodyend="120"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="86" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.cpp" bodystart="49" bodyend="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -232,14 +212,13 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" bodystart="35" bodyend="100"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TOD.hpp" bodystart="35" bodyend="91"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aaf20555c7f95ec18f79c29d6f492ffd4" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1a3b447a8971bed1b80c40d8be95deb2cc" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>epoch_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1a9942eb91fed0d31b06f3a139f5016323" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>getEpoch</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1ae1b947c1c4bb2bfc425cb1fc2fcc926a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>getEpoch</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1a092c964f9fc5354893edbe18fb92ddd9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>getTheory</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aa2bf8be89797e81620edac58da4b1f11" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>getTransformAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1af574adfe8d2651c63e542f34dde9caac" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>Provider</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1aa8abae55c5c7c3d88d210fecfc0d4d65" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>theory_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_o_d_1a1d11326fffc3bb543bcda6e7455c5831" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TOD</scope><name>TOD</name></member>

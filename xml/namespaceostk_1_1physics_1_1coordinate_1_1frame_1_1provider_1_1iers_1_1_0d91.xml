@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_0d91" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::@91</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.cpp" line="40" column="1"/>
+  </compounddef>
+</doxygen>

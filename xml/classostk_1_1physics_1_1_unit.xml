@@ -7,13 +7,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1_unit_1a1c07d36cd02be8541eb972367e2b628f" prot="public" static="no" strong="yes">
         <type></type>
         <name>Type</name>
-        <enumvalue id="classostk_1_1physics_1_1_unit_1a1c07d36cd02be8541eb972367e2b628faec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1_unit_1a1c07d36cd02be8541eb972367e2b628fa6adf97f83acf6453d4a6a4b1070f3754" prot="public">
           <name>None</name>
           <briefdescription>
@@ -76,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="36" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="35" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="34" bodyend="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -91,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="214" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="214" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="191" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="191" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1_unit_1a45fa56c4fca83d61ee9ff63d03bc42c7" prot="private" static="no" mutable="no">
         <type>Unique&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_unit" kindref="compound">unit::Unit</ref> &gt;</type>
@@ -104,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="215" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="215" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="192" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="192" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -120,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="52" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="49" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1aaa79239cad3b8499ce9dc4ebec2b8f05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -150,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="62" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="14" bodyend="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a1ca37a2c58beea2b837504356ac9a312" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref> &amp;</type>
@@ -182,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="73" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="20" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="70" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="21" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a2f402b7601cef9914f8c367e44f9886c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -214,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="31" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="81" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="32" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1ab99c2e4afec3e69ba573528dd9f3f9ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -246,26 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="95" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="75" bodyend="78"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a94e73e5bae82b568280fd3055702dac8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::Unit::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the unit is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Unit::Length(unit::Length::Unit::Meter).isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="117" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="94" bodyend="97"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="92" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a300c6c5aac22fa2badf2b8a480d770f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -284,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="99" bodyend="107"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="114" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1ad7cf872fcf44faaa79b4f59855060f89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_unit_1a1c07d36cd02be8541eb972367e2b628f" kindref="member">Unit::Type</ref></type>
@@ -303,11 +277,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="137" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="109" bodyend="117"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="124" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="94" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a6c88c955a56b590f4623e8a1fa2a9cbb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::Unit::ratioTo</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a574f8fba2f6904f6bdb0405b087c11af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::Unit::ratioTo</definition>
         <argsstring>(const Unit &amp;aUnit) const</argsstring>
         <name>ratioTo</name>
         <param>
@@ -335,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="148" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="119" bodyend="164"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="135" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="99" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a496115fe0905a2a26b6f742382f3b7f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -354,7 +328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="158" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="166" bodyend="203"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="145" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="134" bodyend="166"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -400,29 +374,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="107" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="80" bodyend="92"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="104" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="76" bodyend="87"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a61c8e231a744ece53683ae79deee0850" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
-        <definition>Unit ostk::physics::Unit::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined unit. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Unit<sp/>unit<sp/>=<sp/>Unit::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined unit </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="168" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="205" bodyend="208"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a72a993421e48c8b2d4d4fd89ce0142da" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
         <definition>Unit ostk::physics::Unit::None</definition>
@@ -440,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="178" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="210" bodyend="213"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="155" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="168" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a41fdba2754570a7a1f31fa105b90fbe4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
@@ -472,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="189" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="215" bodyend="218"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="166" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="173" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1ae534e854a47236ec7eb823c2145a3ed2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1_unit" kindref="compound">Unit</ref></type>
@@ -504,7 +459,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="200" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="220" bodyend="223"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="177" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="178" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1_unit_1a2834e4e5fa10d96212016a3cb8a02f02" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -536,7 +491,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="211" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="225" bodyend="242"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="188" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="183" bodyend="199"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -559,7 +514,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="217" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="244" bodyend="248"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="194" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit.cpp" bodystart="201" bodyend="205"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -569,11 +524,10 @@
 <para>A unit of measurement is a definite magnitude of a quantity, defined and adopted by convention or by law, that is used as a standard for measurement of the same kind of quantity. Any other quantity of that kind can be expressed as a multiple of the unit of measurement.</para>
 <para><ulink url="https://en.wikipedia.org/wiki/Unit_of_measurement">https://en.wikipedia.org/wiki/Unit_of_measurement</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="34" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="33" bodyend="218"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit.hpp" line="32" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit.hpp" bodystart="31" bodyend="195"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1_unit_1ae534e854a47236ec7eb823c2145a3ed2" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Derived</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1ad7cf872fcf44faaa79b4f59855060f89" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>getType</name></member>
-      <member refid="classostk_1_1physics_1_1_unit_1a94e73e5bae82b568280fd3055702dac8" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a300c6c5aac22fa2badf2b8a480d770f8" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>isNone</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a41fdba2754570a7a1f31fa105b90fbe4" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Length</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a72a993421e48c8b2d4d4fd89ce0142da" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>None</name></member>
@@ -581,12 +535,11 @@
       <member refid="classostk_1_1physics_1_1_unit_1a70630a82d569152709a999efabdb3e4f" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a1ca37a2c58beea2b837504356ac9a312" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a2f402b7601cef9914f8c367e44f9886c" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>operator==</name></member>
-      <member refid="classostk_1_1physics_1_1_unit_1a6c88c955a56b590f4623e8a1fa2a9cbb" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>ratioTo</name></member>
+      <member refid="classostk_1_1physics_1_1_unit_1a574f8fba2f6904f6bdb0405b087c11af" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>ratioTo</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a2834e4e5fa10d96212016a3cb8a02f02" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>StringFromType</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a496115fe0905a2a26b6f742382f3b7f0" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>toString</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a1c07d36cd02be8541eb972367e2b628f" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Type</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1ae99536e994c1ae4be8d2dc6e564536f9" prot="private" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>type_</name></member>
-      <member refid="classostk_1_1physics_1_1_unit_1a61c8e231a744ece53683ae79deee0850" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1abb6ab5ed9dcc07c65af5bb594e5f87f0" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Unit</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1aaa79239cad3b8499ce9dc4ebec2b8f05" prot="public" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Unit</name></member>
       <member refid="classostk_1_1physics_1_1_unit_1a0ceaf85c29bb4964abc9d463c623353b" prot="private" virt="non-virtual"><scope>ostk::physics::Unit</scope><name>Unit</name></member>

@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="193" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" bodystart="193" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="183" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aacc0c5e8babafb1fc9324b520f285f0a" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="194" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" bodystart="194" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="184" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="34" bodyend="38"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="34" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa91254663cf9f724019142d5063ac059" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="40" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="44" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a9034e3415832480c4e0a645df5f5e5eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="63" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="46" bodyend="50"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="63" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="54" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a360dd235a5ce288f6ad8a4f08dbc0231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry" kindref="compound">Geometry</ref> &amp;</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="69" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="52" bodyend="61"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="69" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="60" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a62aebadfb6eef5f277600ebc4cbbd0d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -202,8 +202,8 @@
 <para>Equal to operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Geometry<sp/>geometryA<sp/>=<sp/>Geometry::Undefined();</highlight></codeline>
-<codeline><highlight class="normal">Geometry<sp/>geometryB<sp/>=<sp/>Geometry::Undefined();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Geometry<sp/>geometryA<sp/>=<sp/>{composite,<sp/>Frame::GCRF()};</highlight></codeline>
+<codeline><highlight class="normal">Geometry<sp/>geometryB<sp/>=<sp/>{composite,<sp/>Frame::GCRF()};</highlight></codeline>
 <codeline><highlight class="normal">geometryA<sp/>==<sp/>geometryB;</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="63" bodyend="71"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="82" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a34d7f1124c04bce81faed05f3fc1bf3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -236,8 +236,8 @@
 <para>Not equal to operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Geometry<sp/>geometryA<sp/>=<sp/>Geometry::Undefined();</highlight></codeline>
-<codeline><highlight class="normal">Geometry<sp/>geometryB<sp/>=<sp/>Geometry::Undefined();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Geometry<sp/>geometryA<sp/>=<sp/>{composite,<sp/>Frame::GCRF()};</highlight></codeline>
+<codeline><highlight class="normal">Geometry<sp/>geometryB<sp/>=<sp/>{composite,<sp/>Frame::ITRF()};</highlight></codeline>
 <codeline><highlight class="normal">geometryA<sp/>!=<sp/>geometryB;</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
@@ -255,27 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="94" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="73" bodyend="76"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1af025cb0f2f977b2a0992757b5010baf2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::environment::object::Geometry::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if geometry is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Geometry<sp/>geometry<sp/>=<sp/>Geometry::Undefined();</highlight></codeline>
-<codeline><highlight class="normal">geometry.isDefined();<sp/>//<sp/>False</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if geometry is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="111" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="99" bodyend="102"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="94" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="76" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ae76624f3044e3fe7de49b23872e9233f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -320,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="122" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="85" bodyend="97"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="112" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="88" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ae3f3a8011bf9307c33aed351dac6e492" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -352,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="132" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="104" bodyend="124"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="122" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="101" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a4ec4b3a8c04f3bcdde6f86eaef66e2a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -384,45 +364,64 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="142" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="126" bodyend="146"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="132" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="113" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a141e163344ff038ccb22974a40d7fe23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aef93868dc758289d8841b21888500e2e" prot="public" static="no" const="yes" explicit="no" inline="no" refqual="lvalue" virt="non-virtual">
         <type>const Composite &amp;</type>
-        <definition>const Composite &amp; ostk::physics::environment::object::Geometry::accessComposite</definition>
-        <argsstring>() const</argsstring>
-        <name>accessComposite</name>
+        <definition>Composite ostk::physics::environment::object::Geometry::getComposite</definition>
+        <argsstring>() const &amp;</argsstring>
+        <name>getComposite</name>
         <briefdescription>
-<para>Access composite. </para>
+<para>Get composite. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Composite&amp;<sp/>composite<sp/>=<sp/>geometry.accessComposite();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Composite&amp;<sp/>composite<sp/>=<sp/>geometry.getComposite();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Reference to composite </para>
+<para><simplesect kind="return"><para>Const reference to composite </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="151" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="148" bodyend="156"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="141" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="125" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ac5c8e14628d96fcf9838973164924ade" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
-        <definition>Shared&lt; const Frame &gt; ostk::physics::environment::object::Geometry::accessFrame</definition>
-        <argsstring>() const</argsstring>
-        <name>accessFrame</name>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa5d6d0ab758236d3a8981a04f109dac7" prot="public" static="no" const="no" explicit="no" inline="no" refqual="rvalue" virt="non-virtual">
+        <type>Composite</type>
+        <definition>Composite ostk::physics::environment::object::Geometry::getComposite</definition>
+        <argsstring>() &amp;&amp;</argsstring>
+        <name>getComposite</name>
         <briefdescription>
-<para>Access frame. </para>
+<para>Get composite of a temporary geometry. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Shared&lt;const<sp/>Frame&gt;<sp/>frame<sp/>=<sp/>geometry.accessFrame();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Composite<sp/>composite<sp/>=<sp/>geometry.in(Frame::ITRF(),<sp/>anInstant).getComposite();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Shared pointer to frame </para>
+<para><simplesect kind="return"><para>Composite (copy, so that it does not dangle) </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="160" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="158" bodyend="166"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="150" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ac1534472f4667cbdf801da0b1ab04804" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+        <definition>const Shared&lt; const Frame &gt; &amp; ostk::physics::environment::object::Geometry::getFrame</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrame</name>
+        <briefdescription>
+<para>Get frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Shared&lt;const<sp/>Frame&gt;&amp;<sp/>frame<sp/>=<sp/>geometry.getFrame();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Const reference to shared pointer to frame </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="159" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1affe5681f9dae582bf13ba10b6b02b346" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry" kindref="compound">Geometry</ref></type>
@@ -466,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="171" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="168" bodyend="215"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="170" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="140" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa2b3badfeb5b7cd491bd96fad8ea0b73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry" kindref="compound">Geometry</ref></type>
@@ -498,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="181" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="217" bodyend="259"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="180" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="179" bodyend="211"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -542,28 +541,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="101" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="78" bodyend="83"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1acfa75737b0aa7d600ef1329b0166fe17" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry" kindref="compound">Geometry</ref></type>
-        <definition>Geometry ostk::physics::environment::object::Geometry::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Constructs an undefined geometry. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Geometry<sp/>geometry<sp/>=<sp/>Geometry::Undefined();<sp/>//<sp/>Undefined</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined geometry </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="190" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="261" bodyend="264"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="101" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Geometry.cpp" bodystart="81" bodyend="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -571,27 +549,26 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" bodystart="35" bodyend="195"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Geometry.hpp" bodystart="35" bodyend="185"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a141e163344ff038ccb22974a40d7fe23" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>accessComposite</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ac5c8e14628d96fcf9838973164924ade" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>accessFrame</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa5fadb05fa52726d95dc3924b40c8a47" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>composite_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a4ec4b3a8c04f3bcdde6f86eaef66e2a2" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>contains</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aacc0c5e8babafb1fc9324b520f285f0a" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>frameSPtr_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a808eae03942a84749dca49b3b8903ca1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>Geometry</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa91254663cf9f724019142d5063ac059" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>Geometry</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a9034e3415832480c4e0a645df5f5e5eb" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>Geometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aef93868dc758289d8841b21888500e2e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>getComposite</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa5d6d0ab758236d3a8981a04f109dac7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>getComposite</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ac1534472f4667cbdf801da0b1ab04804" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>getFrame</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1affe5681f9dae582bf13ba10b6b02b346" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>in</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aa2b3badfeb5b7cd491bd96fad8ea0b73" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>intersectionWith</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ae3f3a8011bf9307c33aed351dac6e492" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>intersects</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1af025cb0f2f977b2a0992757b5010baf2" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a59e006b9ee670e97e2b413f78707488e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>Object</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a34d7f1124c04bce81faed05f3fc1bf3b" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1aebfe5b9b5d8cd3dd8a2cfd140a1df583" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a360dd235a5ce288f6ad8a4f08dbc0231" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1a62aebadfb6eef5f277600ebc4cbbd0d4" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1ae76624f3044e3fe7de49b23872e9233f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>print</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_geometry_1acfa75737b0aa7d600ef1329b0166fe17" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Geometry</scope><name>Undefined</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

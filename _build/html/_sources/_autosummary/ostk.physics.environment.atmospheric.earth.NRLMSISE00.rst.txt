@@ -11,17 +11,15 @@ ostk.physics.environment.atmospheric.earth.NRLMSISE00
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~NRLMSISE00.get_density_at
       ~NRLMSISE00.get_input_data_type
-      ~NRLMSISE00.is_defined
-   
-   
-
-   
    
    

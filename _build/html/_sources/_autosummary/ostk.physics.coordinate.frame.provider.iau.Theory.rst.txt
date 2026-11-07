@@ -11,12 +11,6 @@ ostk.physics.coordinate.frame.provider.iau.Theory
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-   
    
 
    
@@ -28,7 +22,5 @@ ostk.physics.coordinate.frame.provider.iau.Theory
       ~Theory.IAU_2000A
       ~Theory.IAU_2000B
       ~Theory.IAU_2006
-      ~Theory.name
-      ~Theory.value
    
    

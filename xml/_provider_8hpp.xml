@@ -18,10 +18,7 @@
     <includedby refid="_frame_8hpp" local="no">include/OpenSpaceToolkit/Physics/Coordinate/Frame.hpp</includedby>
     <includedby refid="_provider_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.cpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="8">
+      <node id="7">
         <label>functional</label>
       </node>
       <node id="9">
@@ -32,16 +29,16 @@
         <link refid="_provider_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="18">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="4">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</label>
       </node>
       <node id="2">
@@ -55,52 +52,48 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="15">
+      <node id="14">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="15">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -109,36 +102,30 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
       </node>
-      <node id="17">
+      <node id="16">
         <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
         <link refid="_unit_2_unit_8hpp"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
       </node>
-      <node id="13">
+      <node id="8">
         <label>optional</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
-      <node id="4">
+      <node id="3">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
       <node id="10">
@@ -147,26 +134,24 @@
       <node id="12">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
-      </node>
-      <node id="14">
-        <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
-        <link refid="_time_2_time_8hpp"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+      </node>
+      <node id="5">
+        <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
+        <link refid="_time_2_time_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -761,18 +746,16 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider" kindref="compound">Provider</ref>*<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a994ae3119661534733c55c73e23187b6" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e" kindref="member">getTransformAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a85440996c52c5558a8b8fa20c230b21e" kindref="member">getTransformAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp"/>
   </compounddef>

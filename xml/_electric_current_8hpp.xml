@@ -2,36 +2,24 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="_electric_current_8hpp" kind="file" language="C++">
     <compoundname>ElectricCurrent.hpp</compoundname>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Integer.hpp</includes>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Real.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
     <includes refid="_unit_2_unit_8hpp" local="no">OpenSpaceToolkit/Physics/Unit/Unit.hpp</includes>
     <includedby refid="_derived_8hpp" local="no">include/OpenSpaceToolkit/Physics/Unit/Derived.hpp</includedby>
     <includedby refid="_electric_current_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp</includedby>
     <incdepgraph>
       <node id="3">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="5">
         <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
         <link refid="_unit_2_unit_8hpp"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
       <node id="4">
-        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
       <node id="2">
-        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
       <node id="1">
         <label>include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp</label>
@@ -39,10 +27,6 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -643,82 +627,71 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Unit_ElectricCurrent__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Unit_ElectricCurrent__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Integer.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_unit_2_unit_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Unit/Unit.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_unit_2_unit_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Unit/Unit.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
 <codeline lineno="13"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">unit</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">unit</highlight></codeline>
-<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Integer;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27" refid="classostk_1_1physics_1_1unit_1_1_electric_current" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">Unit</ref></highlight></codeline>
-<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="30" refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">Unit</ref></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="classostk_1_1physics_1_1unit_1_1_electric_current" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">Unit</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26" refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">Unit</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393a2ee3b9f6a94ce5398d1386f42f9c87ac" kindref="member">Ampere</ref><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>,<sp/><sp/></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393a2ee3b9f6a94ce5398d1386f42f9c87ac" kindref="member">Ampere</ref><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a612a2c6039f14ab5b8ea144c5ee57754" kindref="member">ElectricCurrent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aValue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref>*<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1afe0e42e4373ac7e053bf80bf96307db3" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a022780771b00926143ea03a5599fea4a" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a66456793da06177132d9086c09a1e72b" kindref="member">getUnit</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ace3efcea29b6327bf47cefa20395888d" kindref="member">in</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad64c82310c329453c248151854e11249" kindref="member">inAmperes</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a7c77014239ba31f0b64bbf8ed7771e75" kindref="member">toString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Integer&amp;<sp/>aPrecision<sp/>=<sp/>Integer::Undefined())<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1af378d9395ea30cfbdc5a74f44ad808ef" kindref="member">Undefined</ref>();</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad07f184596869b31cf94f15e9fbaa687" kindref="member">Amperes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aValue);</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad8dd271000475039b8649357bd615177" kindref="member">Parse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1af8becc3c99cc2aad5c1667bf30605aa3" kindref="member">ElectricCurrent</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>aValue,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref>*<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1afe0e42e4373ac7e053bf80bf96307db3" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a66456793da06177132d9086c09a1e72b" kindref="member">getUnit</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1adccb0113f85dce096c1c42ed7a941f1c" kindref="member">in</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a38d08419ee62d0df2407832ba2245ba9" kindref="member">inAmperes</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a26110ea04a9ef8ae34e446671c0e024a" kindref="member">toString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>aPrecision<sp/>=<sp/>-1)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1af06db96a3053ca9ef969f904f53aee7f" kindref="member">Amperes</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>aValue);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current" kindref="compound">ElectricCurrent</ref><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1ad8dd271000475039b8649357bd615177" kindref="member">Parse</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a6b0f8a5a5d2e472beaa8f21b62ec3843" kindref="member">StringFromUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a7e7c3c8ad78e291694f298a11ebe2056" kindref="member">SymbolFromUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref><sp/>unit_;</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a6b0f8a5a5d2e472beaa8f21b62ec3843" kindref="member">StringFromUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>String<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a7e7c3c8ad78e291694f298a11ebe2056" kindref="member">SymbolFromUnit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref><sp/>unit_;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Real<sp/>SIRatio(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
-<codeline lineno="170"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>unit</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>SIRatio(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref>&amp;<sp/>aUnit);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>unit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp"/>
   </compounddef>

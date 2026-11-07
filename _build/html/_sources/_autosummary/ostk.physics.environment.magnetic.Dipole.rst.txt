@@ -11,15 +11,14 @@ ostk.physics.environment.magnetic.Dipole
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Dipole.get_field_value_at
-   
-   
-
-   
    
    

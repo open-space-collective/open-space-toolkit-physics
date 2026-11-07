@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="34" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="35" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1abf7bf9409ec239388cd358cec62096c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; File &gt;</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="46" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="47" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1a1ba624fd3d27f791f18975826242cca7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="58" bodyend="149"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="59" bodyend="146"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="93" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="151" bodyend="156"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="93" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="148" bodyend="153"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="96" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="158" bodyend="167"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="96" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="155" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1earth_1_1_manager_1ae39aa55ee654c5095e1b6dcb71f48f52" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="169" bodyend="181"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="166" bodyend="178"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="100" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="183" bodyend="213"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.hpp" line="100" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth/Manager.cpp" bodystart="180" bodyend="210"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

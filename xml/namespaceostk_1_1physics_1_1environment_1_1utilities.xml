@@ -30,7 +30,7 @@
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
           <declname>timeStep</declname>
-          <defval><ref refid="classostk_1_1physics_1_1time_1_1_duration_1a1cd2884c6bb89071780c7dffcba9b49f" kindref="member">Duration::Minutes</ref>(1.0)</defval>
+          <defval><ref refid="classostk_1_1physics_1_1time_1_1_duration_1ad6803d75c28306f8a1844b5dbf5e7a73" kindref="member">Duration::Minutes</ref>(1.0)</defval>
         </param>
         <briefdescription>
 <para>Calculate eclipse intervals for a given position. </para>
@@ -85,11 +85,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="295" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="295" bodyend="352" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="221" declcolumn="7"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="291" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="291" bodyend="335" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="221" declcolumn="7"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a0c6f49417c8e75a8c8fca9600d3de05f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::utilities::montenbruckGillShadowFunction</definition>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a68445905d1f017ab4d33a6d47d8905f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::utilities::montenbruckGillShadowFunction</definition>
         <argsstring>(const Instant &amp;anInstant, const Position &amp;aPosition, const Celestial &amp;anOccultedCelestialObject, const Celestial &amp;anOccultingCelestialObject)</argsstring>
         <name>montenbruckGillShadowFunction</name>
         <param>
@@ -113,7 +113,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Reference: Montenbruck and Gill, Satellite Orbits: Models, Methods, and Applications, 4th edition, Springer.</para>
-<para><programlisting><codeline><highlight class="normal">Real<sp/>shadowValue<sp/>=<sp/>montenbruckGillShadowFunction(anInstant,<sp/>aPosition,<sp/>sun,<sp/>earth);</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">double<sp/>shadowValue<sp/>=<sp/>montenbruckGillShadowFunction(anInstant,<sp/>aPosition,<sp/>sun,<sp/>earth);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="213" column="6" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="213" bodyend="293" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="244" declcolumn="6"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="209" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="209" bodyend="289" declfile="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" declline="244" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a68d27cee80121e47c4d49d4d09978242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="59" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="73"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="59" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1environment_1_1utilities_1a71db0650e019c200eea9c7511c7f8118" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -236,13 +236,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="188" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="188" bodyend="211"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" line="184" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="184" bodyend="207"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="26" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="27" column="1"/>
   </compounddef>
 </doxygen>

@@ -8,14 +8,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" prot="public" static="no" strong="yes">
         <type></type>
         <name>Unit</name>
-        <enumvalue id="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-<para>Undefined. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9a50c62e3ca8d8ec8732a7f968a3bf2c7c" prot="public">
           <name>Radian</name>
           <briefdescription>
@@ -62,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" bodystart="39" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" bodystart="35" bodyend="44"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -77,17 +69,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="540" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" bodystart="540" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="517" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" bodystart="517" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a44a6eda09f8fa36e4b092f42761f17d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a66eb3f078f4a501a9b0649371fb0b110" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::unit::Angle::Angle</definition>
-        <argsstring>(const Real &amp;aValue, const Angle::Unit &amp;aUnit)</argsstring>
+        <argsstring>(double aValue, const Angle::Unit &amp;aUnit)</argsstring>
         <name>Angle</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <param>
@@ -121,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="15" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="54" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="20" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aa999173a32dcbb63e337bc4c1eba7c7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -151,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="68" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="21" bodyend="51"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="63" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="26" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a39c7a0b125c2c78d6e9394f0c97dce01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> *</type>
@@ -172,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="78" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="53" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="73" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="58" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a9e645ced8c42b89d92fb5753fd9af0b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -204,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="88" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="58" bodyend="118"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="83" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="63" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1af2f3809f70cfda7b3856b4f03f8f1d7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -236,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="98" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="120" bodyend="123"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="93" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="118" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a1f9d39f8d45b085ef2fde91153821a64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -268,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="108" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="125" bodyend="133"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="103" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="123" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ae2bf0602e42339c1b058c120bbef946f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -300,15 +292,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="118" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="135" bodyend="143"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="113" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="128" bodyend="131"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aa1e0d00c96599006cb431ed778e3ccf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a74fc2f97f0a507305830f1405ec43dad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::operator*</definition>
-        <argsstring>(const Real &amp;aReal) const</argsstring>
+        <argsstring>(double aReal) const</argsstring>
         <name>operator*</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <briefdescription>
@@ -332,15 +324,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="128" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="145" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="123" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="133" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a1e1edeea029caaf950cdca6fbe21d21a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a3c7f76aae6ec3d457e0a790df2b968aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::operator/</definition>
-        <argsstring>(const Real &amp;aReal) const</argsstring>
+        <argsstring>(double aReal) const</argsstring>
         <name>operator/</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <briefdescription>
@@ -364,7 +356,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="138" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="160" bodyend="178"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="133" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="143" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ad3caf466f062064c8faa8bf161945829" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
@@ -397,7 +389,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="149" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="180" bodyend="190"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="144" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="158" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a3d059edfe60e9a9d8dbc1fe8a6bd2ba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
@@ -430,15 +422,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="160" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="192" bodyend="202"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="155" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="165" bodyend="170"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a314eef80bd514e31c0f868c132cecaba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1af8f4b444dbadbb65b1142ce6e0474836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
         <definition>Angle &amp; ostk::physics::unit::Angle::operator*=</definition>
-        <argsstring>(const Real &amp;aReal)</argsstring>
+        <argsstring>(double aReal)</argsstring>
         <name>operator*=</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <briefdescription>
@@ -463,15 +455,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="171" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="204" bodyend="219"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="166" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="172" bodyend="182"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a6740a1198d36379ac69c502ac5163ec3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ab656911883347b61442decddda01a82c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref> &amp;</type>
         <definition>Angle &amp; ostk::physics::unit::Angle::operator/=</definition>
-        <argsstring>(const Real &amp;aReal)</argsstring>
+        <argsstring>(double aReal)</argsstring>
         <name>operator/=</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <briefdescription>
@@ -496,7 +488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="182" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="221" bodyend="241"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="177" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="184" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ad5969b41cda2dda3abaf7950c2d8fffc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -515,7 +507,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="202" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="258" bodyend="266"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="197" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ae5dd5d6e389c5f21d029716e6fdfb0eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -534,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="211" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="268" bodyend="276"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="206" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="216" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a724438b0e5377983a850d6458f8d6d50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -553,27 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="220" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="278" bodyend="318"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aab59a73aa91bfc0ac889f7e8cf7fac4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::unit::Angle::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the angle is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Angle::Degrees(90.0).isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="240" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="332" bodyend="335"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="215" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="221" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ad1dde080461c6d4bd991c646e4ae7abe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -592,7 +564,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="249" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="337" bodyend="345"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="235" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="268" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a8005f366ede053dff5cbc8631a2bc75b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref></type>
@@ -611,11 +583,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="258" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="347" bodyend="355"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="244" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="273" bodyend="276"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a6432e97ca00935017e8127a4716b39cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::in</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a86d835e017fe419ac1dc3392739e4c04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::in</definition>
         <argsstring>(const Angle::Unit &amp;aUnit) const</argsstring>
         <name>in</name>
         <param>
@@ -643,11 +615,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="268" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="357" bodyend="370"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="254" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="278" bodyend="286"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a547400dc9e58a48ac0a71e156c265c3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inRadians</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1acfc404f2a37ca92d94f503f28da665b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inRadians</definition>
         <argsstring>() const</argsstring>
         <name>inRadians</name>
         <briefdescription>
@@ -662,26 +634,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="277" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="372" bodyend="375"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="263" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="288" bodyend="291"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ab184b733a34101c8615a97b4a30abfe7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inRadians</definition>
-        <argsstring>(const Real &amp;aLowerBound, const Real &amp;anUpperBound) const</argsstring>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a4d35cfda159a9ae8fd83fae1773ea19d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inRadians</definition>
+        <argsstring>(double aLowerBound, double anUpperBound) const</argsstring>
         <name>inRadians</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aLowerBound</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>anUpperBound</declname>
         </param>
         <briefdescription>
 <para>Get the value in radians within the specified range. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Angle::Degrees(270.0).inRadians(0.0,<sp/>Real::TwoPi());</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Angle::Degrees(270.0).inRadians(0.0,<sp/>2.0<sp/>*<sp/>M_PI);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -706,18 +678,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="288" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="377" bodyend="395"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="274" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="293" bodyend="311"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aa01975884359da48ef1b0175487913d2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inDegrees</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a7675f0b92d29196bc9e9b7d95a148662" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inDegrees</definition>
         <argsstring>() const</argsstring>
         <name>inDegrees</name>
         <briefdescription>
 <para>Get the value in degrees. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Angle::Radians(Real::Pi()).inDegrees();<sp/>//<sp/>180.0</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Angle::Radians(M_PI).inDegrees();<sp/>//<sp/>180.0</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>The value in degrees </para>
 </simplesect>
@@ -725,19 +697,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="297" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="397" bodyend="400"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="283" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="313" bodyend="316"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a0c0753cf9b703a1ec396becb42e170c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inDegrees</definition>
-        <argsstring>(const Real &amp;aLowerBound, const Real &amp;anUpperBound) const</argsstring>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a7d0bebf082972f2cee225578954f12b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inDegrees</definition>
+        <argsstring>(double aLowerBound, double anUpperBound) const</argsstring>
         <name>inDegrees</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aLowerBound</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>anUpperBound</declname>
         </param>
         <briefdescription>
@@ -769,11 +741,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="308" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="402" bodyend="420"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="294" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="318" bodyend="336"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a55ffa00a2de7030c8b0237fa89930d0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inArcminutes</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aaa8a0143a7d0aa7a4644b2f8cc2458f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inArcminutes</definition>
         <argsstring>() const</argsstring>
         <name>inArcminutes</name>
         <briefdescription>
@@ -788,19 +760,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="317" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="422" bodyend="425"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="303" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="338" bodyend="341"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a777db7b25e8ceb066e750688c99b91f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inArcminutes</definition>
-        <argsstring>(const Real &amp;aLowerBound, const Real &amp;anUpperBound) const</argsstring>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ae0ca1b40752e47b08173395be1115e25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inArcminutes</definition>
+        <argsstring>(double aLowerBound, double anUpperBound) const</argsstring>
         <name>inArcminutes</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aLowerBound</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>anUpperBound</declname>
         </param>
         <briefdescription>
@@ -832,11 +804,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="328" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="427" bodyend="445"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="314" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="343" bodyend="361"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a0af292b7498fe4eafdcbe330538aa702" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inArcseconds</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a9698737a70162bdc45fc4dbc2a531445" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inArcseconds</definition>
         <argsstring>() const</argsstring>
         <name>inArcseconds</name>
         <briefdescription>
@@ -851,19 +823,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="337" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="447" bodyend="450"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="323" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="363" bodyend="366"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a633b7047575ec6bb07ce4b43c22cbd7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inArcseconds</definition>
-        <argsstring>(const Real &amp;aLowerBound, const Real &amp;anUpperBound) const</argsstring>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a1d119b9ac209b96e6e083d1f63cef4ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inArcseconds</definition>
+        <argsstring>(double aLowerBound, double anUpperBound) const</argsstring>
         <name>inArcseconds</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aLowerBound</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>anUpperBound</declname>
         </param>
         <briefdescription>
@@ -895,11 +867,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="348" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="452" bodyend="470"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="334" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="368" bodyend="386"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a699f3d2a1a51bb9c0161e1b21eb3ab71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::inRevolutions</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a79624a59e967bb2162e9037f6e712a96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::inRevolutions</definition>
         <argsstring>() const</argsstring>
         <name>inRevolutions</name>
         <briefdescription>
@@ -914,18 +886,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="357" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="472" bodyend="475"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="343" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="388" bodyend="391"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a19f99124634c1d5a38f1a58393f41c4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ae4dceb6b7ae0f29f6a4f3518275e33fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>String</type>
         <definition>String ostk::physics::unit::Angle::toString</definition>
-        <argsstring>(const Integer &amp;aPrecision=Integer::Undefined()) const override</argsstring>
+        <argsstring>(int aPrecision=-1) const override</argsstring>
         <name>toString</name>
-        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46">toString</reimplements>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a23a75660da6cd78f34df973831d2fbcc">toString</reimplements>
         <param>
-          <type>const Integer &amp;</type>
+          <type>int</type>
           <declname>aPrecision</declname>
-          <defval>Integer::Undefined()</defval>
+          <defval>-1</defval>
         </param>
         <briefdescription>
 <para>Convert to string representation. </para>
@@ -948,17 +920,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="367" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="477" bodyend="485"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="353" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="393" bodyend="396"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
-      <memberdef kind="friend" id="classostk_1_1physics_1_1unit_1_1_angle_1af699984b24759466957ecddaa7e61fc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="friend" id="classostk_1_1physics_1_1unit_1_1_angle_1ac9a1eaeb9d6f5e9a6a2779ee2bb635c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend <ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle operator*</definition>
-        <argsstring>(const Real &amp;aReal, const Angle &amp;anAngle)</argsstring>
+        <argsstring>(double aReal, const Angle &amp;anAngle)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <param>
@@ -994,7 +966,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="193" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="243" bodyend="256"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="188" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="201" bodyend="209"/>
       </memberdef>
       <memberdef kind="friend" id="classostk_1_1physics_1_1unit_1_1_angle_1a0846b77ee3281e8a559197c3c3208eed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
@@ -1038,29 +1010,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="231" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="320" bodyend="330"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="226" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="256" bodyend="266"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1accecd0781d7ece70eaf7afe84d5329c6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
-        <definition>Angle ostk::physics::unit::Angle::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined angle. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Angle<sp/>angle<sp/>=<sp/>Angle::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined angle </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="376" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="487" bodyend="490"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a848ec0b3f7cc268778c5e9d87b689783" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::Zero</definition>
@@ -1078,7 +1031,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="385" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="492" bodyend="495"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="362" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="398" bodyend="401"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a04a8aa202eaaeba51d5b097ee023100d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1097,7 +1050,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="394" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="497" bodyend="500"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="371" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="403" bodyend="406"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a8762b9af7c300d7daa9e7f1228311999" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1116,7 +1069,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="403" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="502" bodyend="505"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="380" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="408" bodyend="411"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a7182cf4480d96dee97a6422a46e0df9c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1135,15 +1088,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="412" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="507" bodyend="510"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="389" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="413" bodyend="416"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ae66e9661157bbe1dff4eb39823d152ae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a52222a1314504b36bda381bc2703f33b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::Radians</definition>
-        <argsstring>(const Real &amp;aValue)</argsstring>
+        <argsstring>(double aValue)</argsstring>
         <name>Radians</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <briefdescription>
@@ -1167,15 +1120,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="422" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="512" bodyend="515"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="399" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="418" bodyend="421"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a903c043289c42a25c157250f0e9c638c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a9de998358d34d62e8cfa9950efb0ac65" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::Degrees</definition>
-        <argsstring>(const Real &amp;aValue)</argsstring>
+        <argsstring>(double aValue)</argsstring>
         <name>Degrees</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <briefdescription>
@@ -1199,15 +1152,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="432" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="517" bodyend="520"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="409" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="423" bodyend="426"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a43880484d51c9650ffab54a6c2e3030b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1afca53e9cafb059af0ebae86f009172cc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::Arcminutes</definition>
-        <argsstring>(const Real &amp;aValue)</argsstring>
+        <argsstring>(double aValue)</argsstring>
         <name>Arcminutes</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <briefdescription>
@@ -1231,15 +1184,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="442" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="522" bodyend="525"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="419" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="428" bodyend="431"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aeaa7d17e2bc04ea49016371ac701b9f5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aa1d27743c9fa2d4168ed26f231dcfdfe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::Arcseconds</definition>
-        <argsstring>(const Real &amp;aValue)</argsstring>
+        <argsstring>(double aValue)</argsstring>
         <name>Arcseconds</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <briefdescription>
@@ -1263,15 +1216,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="452" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="527" bodyend="530"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="429" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="433" bodyend="436"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a815e6d8b25882f02f26b320b363569d7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a00b263fcd9af2e37bbd7149d60c9a0bb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::Angle::Revolutions</definition>
-        <argsstring>(const Real &amp;aValue)</argsstring>
+        <argsstring>(double aValue)</argsstring>
         <name>Revolutions</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <briefdescription>
@@ -1295,7 +1248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="462" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="532" bodyend="535"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="439" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="438" bodyend="441"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ad06ab197278e12d097e0f022746f5cc7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1339,7 +1292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="475" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="537" bodyend="555"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="452" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="443" bodyend="451"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aeb054f35c1bab78fc92fe1971f32080a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1383,7 +1336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="486" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="557" bodyend="592"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="463" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="453" bodyend="483"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a8fd96139981fdacd71e52065164571b7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1427,7 +1380,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="497" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="594" bodyend="629"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="474" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="485" bodyend="515"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1aa5a42958cad51643d44d667f8586036b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
@@ -1459,7 +1412,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="507" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="631" bodyend="636"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="484" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="517" bodyend="522"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a7b268becfbd429032790b0e22558424a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -1491,7 +1444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="517" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="638" bodyend="667"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="494" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="524" bodyend="550"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a326e982ebe1141825613726eaf42e152" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -1523,7 +1476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="527" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="669" bodyend="692"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="504" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="552" bodyend="575"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ab8f3ea420f5b29fa29eb0aa6e007a5cf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref></type>
@@ -1555,13 +1508,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="537" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="694" bodyend="722"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="514" column="24" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="577" bodyend="605"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a2137180411f02c226a97778f0a10f03d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::SIRatio</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1ae3ce1c23604aec2af6824f338298efe1" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::SIRatio</definition>
         <argsstring>(const Angle::Unit &amp;aUnit)</argsstring>
         <name>SIRatio</name>
         <param>
@@ -1574,23 +1527,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="542" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="724" bodyend="750"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="519" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="607" bodyend="631"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1a87e98044b913af34843d4b8d2c4a2d3b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Angle::ReduceRange</definition>
-        <argsstring>(const Real &amp;aValue, const Real &amp;aRangeLowerBound, const Real &amp;aRangeUpperBound)</argsstring>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_angle_1afd900fce3912164e88f621c9f5c08bc4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Angle::ReduceRange</definition>
+        <argsstring>(double aValue, double aRangeLowerBound, double aRangeUpperBound)</argsstring>
         <name>ReduceRange</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aRangeLowerBound</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aRangeUpperBound</declname>
         </param>
         <briefdescription>
@@ -1599,7 +1552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="544" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="752" bodyend="783"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="521" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="633" bodyend="664"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1633,68 +1586,65 @@
         <link refid="classostk_1_1physics_1_1unit_1_1_unit"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" bodystart="36" bodyend="545"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="33" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" bodystart="32" bodyend="522"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>accessValue</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>accessValue</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a44a6eda09f8fa36e4b092f42761f17d1" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Angle</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4480ddaef512c37776fec72c333bc8d9" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>accessValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a66eb3f078f4a501a9b0649371fb0b110" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Angle</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aa999173a32dcbb63e337bc4c1eba7c7b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Angle</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a43880484d51c9650ffab54a6c2e3030b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Arcminutes</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aeaa7d17e2bc04ea49016371ac701b9f5" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Arcseconds</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1afca53e9cafb059af0ebae86f009172cc" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Arcminutes</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aa1d27743c9fa2d4168ed26f231dcfdfe" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Arcseconds</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ad06ab197278e12d097e0f022746f5cc7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Between</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aeb054f35c1bab78fc92fe1971f32080a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Between</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a8fd96139981fdacd71e52065164571b7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Between</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a39c7a0b125c2c78d6e9394f0c97dce01" prot="public" virt="virtual"><scope>ostk::physics::unit::Angle</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a903c043289c42a25c157250f0e9c638c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Degrees</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a9de998358d34d62e8cfa9950efb0ac65" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Degrees</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>getType</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a8005f366ede053dff5cbc8631a2bc75b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>getUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a5eda60e389025e425d62d75d91ba8f6b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>getValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a04a8aa202eaaeba51d5b097ee023100d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>HalfPi</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a6432e97ca00935017e8127a4716b39cc" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>in</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a55ffa00a2de7030c8b0237fa89930d0d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcminutes</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a777db7b25e8ceb066e750688c99b91f3" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcminutes</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a0af292b7498fe4eafdcbe330538aa702" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcseconds</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a633b7047575ec6bb07ce4b43c22cbd7c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcseconds</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aa01975884359da48ef1b0175487913d2" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inDegrees</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a0c0753cf9b703a1ec396becb42e170c7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inDegrees</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a547400dc9e58a48ac0a71e156c265c3f" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inRadians</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ab184b733a34101c8615a97b4a30abfe7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inRadians</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a699f3d2a1a51bb9c0161e1b21eb3ab71" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inRevolutions</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aab59a73aa91bfc0ac889f7e8cf7fac4c" prot="public" virt="virtual"><scope>ostk::physics::unit::Angle</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a86d835e017fe419ac1dc3392739e4c04" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>in</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aaa8a0143a7d0aa7a4644b2f8cc2458f2" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcminutes</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ae0ca1b40752e47b08173395be1115e25" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcminutes</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a9698737a70162bdc45fc4dbc2a531445" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcseconds</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a1d119b9ac209b96e6e083d1f63cef4ea" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inArcseconds</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a7675f0b92d29196bc9e9b7d95a148662" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inDegrees</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a7d0bebf082972f2cee225578954f12b9" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inDegrees</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1acfc404f2a37ca92d94f503f28da665b5" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inRadians</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a4d35cfda159a9ae8fd83fae1773ea19d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inRadians</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a79624a59e967bb2162e9037f6e712a96" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>inRevolutions</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ad1dde080461c6d4bd991c646e4ae7abe" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>isZero</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a724438b0e5377983a850d6458f8d6d50" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator ostk::mathematics::geometry::Angle</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1af2f3809f70cfda7b3856b4f03f8f1d7a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Angle</scope><name>operator!=</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aa1e0d00c96599006cb431ed778e3ccf5" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator*</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1af699984b24759466957ecddaa7e61fc9" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator*</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a314eef80bd514e31c0f868c132cecaba" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator*=</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a74fc2f97f0a507305830f1405ec43dad" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator*</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ac9a1eaeb9d6f5e9a6a2779ee2bb635c0" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator*</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1af8f4b444dbadbb65b1142ce6e0474836" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator*=</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a1f9d39f8d45b085ef2fde91153821a64" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator+</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ad5969b41cda2dda3abaf7950c2d8fffc" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator+</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ad3caf466f062064c8faa8bf161945829" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator+=</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ae2bf0602e42339c1b058c120bbef946f" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator-</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ae5dd5d6e389c5f21d029716e6fdfb0eb" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator-</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a3d059edfe60e9a9d8dbc1fe8a6bd2ba0" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator-=</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a1e1edeea029caaf950cdca6fbe21d21a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator/</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a6740a1198d36379ac69c502ac5163ec3" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator/=</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a3c7f76aae6ec3d457e0a790df2b968aa" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator/</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ab656911883347b61442decddda01a82c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator/=</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a0846b77ee3281e8a559197c3c3208eed" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a9e645ced8c42b89d92fb5753fd9af0b7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Angle</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aa5a42958cad51643d44d667f8586036b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Parse</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" prot="protected" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>ParseString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a886469262a9beb0df6296781a0f1ec98" prot="protected" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>ParseString</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a8762b9af7c300d7daa9e7f1228311999" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Pi</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ae66e9661157bbe1dff4eb39823d152ae" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Radians</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a87e98044b913af34843d4b8d2c4a2d3b" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>ReduceRange</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a815e6d8b25882f02f26b320b363569d7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Revolutions</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>setValue</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a2137180411f02c226a97778f0a10f03d" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>SIRatio</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a52222a1314504b36bda381bc2703f33b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Radians</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1afd900fce3912164e88f621c9f5c08bc4" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>ReduceRange</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a00b263fcd9af2e37bbd7149d60c9a0bb" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Revolutions</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a328e291ff458d72b330fe696baa4b4ec" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>setValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ae3ce1c23604aec2af6824f338298efe1" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>SIRatio</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a7b268becfbd429032790b0e22558424a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>StringFromUnit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a326e982ebe1141825613726eaf42e152" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>SymbolFromUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a19f99124634c1d5a38f1a58393f41c4c" prot="public" virt="virtual"><scope>ostk::physics::unit::Angle</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ae4dceb6b7ae0f29f6a4f3518275e33fa" prot="public" virt="virtual"><scope>ostk::physics::unit::Angle</scope><name>toString</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a7182cf4480d96dee97a6422a46e0df9c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>TwoPi</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Type</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_angle_1accecd0781d7ece70eaf7afe84d5329c6" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Unit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Angle</scope><name>Unit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a326efb7de2cbb9cb6e03e03a072b013a" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Angle</scope><name>Unit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1aca93b679a3141948e75d6b46507355d4" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>unit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1ab8f3ea420f5b29fa29eb0aa6e007a5cf" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>UnitFromSymbol</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_angle_1a848ec0b3f7cc268778c5e9d87b689783" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Angle</scope><name>Zero</name></member>

@@ -11,22 +11,19 @@ ostk.physics.environment.object.Geometry
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
-      ~Geometry.access_composite
-      ~Geometry.access_frame
       ~Geometry.contains
+      ~Geometry.get_composite
+      ~Geometry.get_frame
       ~Geometry.in_frame
       ~Geometry.intersection_with
       ~Geometry.intersects
-      ~Geometry.is_defined
-      ~Geometry.undefined
-   
-   
-
-   
    
    

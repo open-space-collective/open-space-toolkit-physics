@@ -11,31 +11,28 @@ ostk.physics.Environment
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
-      ~Environment.access_celestial_object_with_name
-      ~Environment.access_central_celestial_object
-      ~Environment.access_global_instance
-      ~Environment.access_object_with_name
-      ~Environment.access_objects
       ~Environment.default
+      ~Environment.get_celestial_object_with_name
+      ~Environment.get_central_celestial_object
+      ~Environment.get_global_instance
       ~Environment.get_instant
       ~Environment.get_object_names
+      ~Environment.get_object_with_name
+      ~Environment.get_objects
       ~Environment.has_central_celestial_object
       ~Environment.has_global_instance
       ~Environment.has_object_with_name
       ~Environment.intersects
-      ~Environment.is_defined
       ~Environment.is_position_in_eclipse
       ~Environment.reset_global_instance
       ~Environment.set_instant
-      ~Environment.undefined
-   
-   
-
-   
    
    

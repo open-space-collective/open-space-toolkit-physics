@@ -11,15 +11,6 @@ ostk.physics.environment.gravitational.GravitationalParameters
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-      ~GravitationalParameters.compute_geocentric_radius_at
-      ~GravitationalParameters.is_defined
-      ~GravitationalParameters.undefined
-   
    
 
    
@@ -34,6 +25,7 @@ ostk.physics.environment.gravitational.GravitationalParameters
       ~GravitationalParameters.J2
       ~GravitationalParameters.J3
       ~GravitationalParameters.J4
+      ~GravitationalParameters.compute_geocentric_radius_at
       ~GravitationalParameters.equatorial_radius
       ~GravitationalParameters.flattening
       ~GravitationalParameters.gravitational_parameter

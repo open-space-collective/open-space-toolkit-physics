@@ -6,9 +6,9 @@
     <innerclass refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" prot="public">ostk::physics::coordinate::frame::provider::iers::BulletinA::Observation</innerclass>
     <innerclass refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" prot="public">ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</innerclass>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aa2e5a911f361174ff5001c196d491865" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date ostk::physics::coordinate::frame::provider::iers::BulletinA::releaseDate_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a986b1c30c2fcf987578e47c4d99dfaf8" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::optional&lt;Date&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::releaseDate_</definition>
         <argsstring></argsstring>
         <name>releaseDate_</name>
         <briefdescription>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="256" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="256" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="191" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="191" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a2a3f1c079e42626653504497f8332004" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
@@ -30,11 +30,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="257" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="257" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="192" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="192" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aa5544baf208e41aa844612830137575d" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
-        <definition>Duration ostk::physics::coordinate::frame::provider::iers::BulletinA::taiMinusUtc_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1acde25434d52d4464408b0cc95fd53b2a" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &gt;</type>
+        <definition>std::optional&lt;Duration&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::taiMinusUtc_</definition>
         <argsstring></argsstring>
         <name>taiMinusUtc_</name>
         <briefdescription>
@@ -43,11 +43,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="259" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="259" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="194" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="194" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4543a647b2f5bfc4c01843e6b5a5411f" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
-        <definition>Instant ostk::physics::coordinate::frame::provider::iers::BulletinA::taiMinusUtcEpoch_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a1c3d2ad48d3e82b8ba5880be341190e2" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt;</type>
+        <definition>std::optional&lt;Instant&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::taiMinusUtcEpoch_</definition>
         <argsstring></argsstring>
         <name>taiMinusUtcEpoch_</name>
         <briefdescription>
@@ -56,11 +56,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="260" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="260" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="195" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="195" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1acfd94482355c212c2229563dd5acd7e9" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
-        <definition>Interval ostk::physics::coordinate::frame::provider::iers::BulletinA::observationInterval_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ab1f1c0dbf314b877bfb9536159051453" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>std::optional&lt;Interval&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::observationInterval_</definition>
         <argsstring></argsstring>
         <name>observationInterval_</name>
         <briefdescription>
@@ -69,11 +69,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="262" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="262" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="197" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="197" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a0d4e3983cc7ef52bc7dabf44707be98b" prot="private" static="no" mutable="no">
-        <type>Map&lt; Integer, <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" kindref="compound">BulletinA::Observation</ref> &gt;</type>
-        <definition>Map&lt;Integer, BulletinA::Observation&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::observations_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a69602831ab64878851b6e6573a6c7a11" prot="private" static="no" mutable="no">
+        <type>Map&lt; int, <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" kindref="compound">BulletinA::Observation</ref> &gt;</type>
+        <definition>Map&lt;int, BulletinA::Observation&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::observations_</definition>
         <argsstring></argsstring>
         <name>observations_</name>
         <briefdescription>
@@ -82,11 +82,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="263" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="263" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="198" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="198" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a293ce625b4048451e363322cfa3217e1" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
-        <definition>Interval ostk::physics::coordinate::frame::provider::iers::BulletinA::predictionInterval_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4ff2e80ecf77aaf4c2b810199099d66a" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt;</type>
+        <definition>std::optional&lt;Interval&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::predictionInterval_</definition>
         <argsstring></argsstring>
         <name>predictionInterval_</name>
         <briefdescription>
@@ -95,11 +95,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="265" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="265" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="200" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="200" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a6fd5427ee3303f6cff7d59e1aa9459a1" prot="private" static="no" mutable="no">
-        <type>Map&lt; Integer, <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" kindref="compound">BulletinA::Prediction</ref> &gt;</type>
-        <definition>Map&lt;Integer, BulletinA::Prediction&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::predictions_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a874c47a1212b978fe73942802b31345f" prot="private" static="no" mutable="no">
+        <type>Map&lt; int, <ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" kindref="compound">BulletinA::Prediction</ref> &gt;</type>
+        <definition>Map&lt;int, BulletinA::Prediction&gt; ostk::physics::coordinate::frame::provider::iers::BulletinA::predictions_</definition>
         <argsstring></argsstring>
         <name>predictions_</name>
         <briefdescription>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="266" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="266" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="201" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="201" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -154,39 +154,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="106" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="32" bodyend="100"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="104" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="35" bodyend="103"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a20e424cf0200fa320a7420ee4d218d9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::iers::BulletinA::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>true if defined </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">bulletinA.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>true if defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="115" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="102" bodyend="107"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a0e4a9726028d43b3e07e115a067f3496" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1adba8c90b99d2877d3a2c1a1be8c5e04a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref> &amp;</type>
-        <definition>const Date &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::accessReleaseDate</definition>
+        <definition>const Date &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::getReleaseDate</definition>
         <argsstring>() const</argsstring>
-        <name>accessReleaseDate</name>
+        <name>getReleaseDate</name>
         <briefdescription>
-<para>Access release Date. </para>
+<para>Get release Date. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Date&amp;<sp/>date<sp/>=<sp/>bulletinA.accessReleaseDate();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Date&amp;<sp/>date<sp/>=<sp/>bulletinA.getReleaseDate();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Release Date </para>
 </simplesect>
@@ -194,18 +175,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="124" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="109" bodyend="117"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="113" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="105" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ae5b1849a1d0dd0487c7c21781a9e76df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a08167edad242a2b6334a4ddf776244f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
-        <definition>const Instant &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::accessLastModifiedTimestamp</definition>
+        <definition>const Instant &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::getLastModifiedTimestamp</definition>
         <argsstring>() const</argsstring>
-        <name>accessLastModifiedTimestamp</name>
+        <name>getLastModifiedTimestamp</name>
         <briefdescription>
-<para>Access timestamp at which the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> file was last modified. </para>
+<para>Get timestamp at which the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref> file was last modified. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Instant&amp;<sp/>timestamp<sp/>=<sp/>bulletinA.accessLastModifiedTimestamp();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Instant&amp;<sp/>timestamp<sp/>=<sp/>bulletinA.getLastModifiedTimestamp();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>Instant indicating when the file was last updated based on file modification time </para>
 </simplesect>
@@ -213,18 +194,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="133" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="119" bodyend="127"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="122" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="115" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1adcb8116f162f74cb44bbab79af63be00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &amp;</type>
-        <definition>const Duration &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::accessTAIMinusUTC</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a3cff071b1ba0e6f5430d6401bfc44820" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Duration &gt; &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::getTAIMinusUTC</definition>
         <argsstring>() const</argsstring>
-        <name>accessTAIMinusUTC</name>
+        <name>getTAIMinusUTC</name>
         <briefdescription>
-<para>Access TAI-UTC. </para>
+<para>Get TAI-UTC. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Duration&amp;<sp/>taiMinusUtc<sp/>=<sp/>bulletinA.accessTAIMinusUTC();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>std::optional&lt;Duration&gt;&amp;<sp/>taiMinusUtc<sp/>=<sp/>bulletinA.getTAIMinusUTC();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>TAI-UTC </para>
 </simplesect>
@@ -232,18 +213,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="142" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="129" bodyend="137"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="131" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="120" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aaaa01ddc3290456fa1c77c2a56ee0c6f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
-        <definition>const Instant &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::accessTAIMinusUTCEpoch</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a66ed7bafeaf5e7190e6c7e59c3041089" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Instant &gt; &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::getTAIMinusUTCEpoch</definition>
         <argsstring>() const</argsstring>
-        <name>accessTAIMinusUTCEpoch</name>
+        <name>getTAIMinusUTCEpoch</name>
         <briefdescription>
-<para>Access TAI-UTC epoch. </para>
+<para>Get TAI-UTC epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Instant&amp;<sp/>epoch<sp/>=<sp/>bulletinA.accessTAIMinusUTCEpoch();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>std::optional&lt;Instant&gt;&amp;<sp/>epoch<sp/>=<sp/>bulletinA.getTAIMinusUTCEpoch();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>TAI-UTC epoch </para>
 </simplesect>
@@ -251,18 +232,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="151" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="139" bodyend="147"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="140" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="125" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aa0bebf69428e9d26c90f4e0db104a460" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
-        <definition>const Interval &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::accessObservationInterval</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1abebeb3ac1ceda3be00b1e04072db0c66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Interval &gt; &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::getObservationInterval</definition>
         <argsstring>() const</argsstring>
-        <name>accessObservationInterval</name>
+        <name>getObservationInterval</name>
         <briefdescription>
-<para>Access observation Interval. </para>
+<para>Get observation Interval. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Interval&amp;<sp/>interval<sp/>=<sp/>bulletinA.accessObservationInterval();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>std::optional&lt;Interval&gt;&amp;<sp/>interval<sp/>=<sp/>bulletinA.getObservationInterval();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" kindref="compound">Observation</ref> Interval of Instants </para>
 </simplesect>
@@ -270,18 +251,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="160" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="149" bodyend="157"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="149" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="130" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1af9b758cc90601cc4e1f9aec2b204145e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &amp;</type>
-        <definition>const Interval &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::accessPredictionInterval</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4866d14ab04c6a0649481090f7cb2b15" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Interval &gt; &amp; ostk::physics::coordinate::frame::provider::iers::BulletinA::getPredictionInterval</definition>
         <argsstring>() const</argsstring>
-        <name>accessPredictionInterval</name>
+        <name>getPredictionInterval</name>
         <briefdescription>
-<para>Access prediction Interval. </para>
+<para>Get prediction Interval. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">const<sp/>Interval&amp;<sp/>interval<sp/>=<sp/>bulletinA.accessPredictionInterval();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>std::optional&lt;Interval&gt;&amp;<sp/>interval<sp/>=<sp/>bulletinA.getPredictionInterval();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" kindref="compound">Prediction</ref> Interval of Instants </para>
 </simplesect>
@@ -289,83 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="169" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="159" bodyend="167"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a1b21612c83be80aa7e9b74b1a6d8ae4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date ostk::physics::coordinate::frame::provider::iers::BulletinA::getReleaseDate</definition>
-        <argsstring>() const</argsstring>
-        <name>getReleaseDate</name>
-        <briefdescription>
-<para>Get release Date of Bulletin A. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Date<sp/>date<sp/>=<sp/>bulletinA.getReleaseDate();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Release Date of Bulletin A </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="178" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="169" bodyend="172"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a2d9ceded3ac93ce24286a69a096ac9f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
-        <definition>Duration ostk::physics::coordinate::frame::provider::iers::BulletinA::getTAIMinusUTC</definition>
-        <argsstring>() const</argsstring>
-        <name>getTAIMinusUTC</name>
-        <briefdescription>
-<para>Get TAI-UTC. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Duration<sp/>taiMinusUtc<sp/>=<sp/>bulletinA.getTAIMinusUTC();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>TAI-UTC </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="187" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="174" bodyend="177"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1af0f6a0149cf89b60e6043bdfb14acf05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
-        <definition>Instant ostk::physics::coordinate::frame::provider::iers::BulletinA::getTAIMinusUTCEpoch</definition>
-        <argsstring>() const</argsstring>
-        <name>getTAIMinusUTCEpoch</name>
-        <briefdescription>
-<para>Get TAI-UTC epoch. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>epoch<sp/>=<sp/>bulletinA.getTAIMinusUTCEpoch();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>TAI-UTC epoch Instant </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="196" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="179" bodyend="182"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a79c4bfc1752b549806efad17db1551ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
-        <definition>Interval ostk::physics::coordinate::frame::provider::iers::BulletinA::getObservationInterval</definition>
-        <argsstring>() const</argsstring>
-        <name>getObservationInterval</name>
-        <briefdescription>
-<para>Get observation Interval. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>bulletinA.getObservationInterval();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" kindref="compound">Observation</ref> Interval of Instants </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="205" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="184" bodyend="187"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="158" column="25" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aad0b6526622452791d6ceeeb18e3698a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_observation" kindref="compound">BulletinA::Observation</ref></type>
@@ -397,26 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="215" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="189" bodyend="276"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ad1814148ac2e00132f65aa1e8b5aca61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_interval" kindref="compound">Interval</ref></type>
-        <definition>Interval ostk::physics::coordinate::frame::provider::iers::BulletinA::getPredictionInterval</definition>
-        <argsstring>() const</argsstring>
-        <name>getPredictionInterval</name>
-        <briefdescription>
-<para>Get prediction Interval. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Interval<sp/>interval<sp/>=<sp/>bulletinA.getPredictionInterval();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" kindref="compound">Prediction</ref> Interval of Instants </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="224" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="278" bodyend="281"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="168" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="140" bodyend="223"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a05e4c6875bcfc0f5aa4e9a1294ed2ca3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction" kindref="compound">BulletinA::Prediction</ref></type>
@@ -448,29 +334,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="234" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="283" bodyend="360"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="178" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="225" bodyend="301"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1af209509fe8b81780eaccaacb8fae22f2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref></type>
-        <definition>BulletinA ostk::physics::coordinate::frame::provider::iers::BulletinA::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Undefined factory function. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">BulletinA<sp/>bulletinA<sp/>=<sp/>BulletinA::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined Bulletin A object </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="243" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="362" bodyend="365"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ae83d0a1920b09b20f359e3640f43d0fc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a" kindref="compound">BulletinA</ref></type>
         <definition>BulletinA ostk::physics::coordinate::frame::provider::iers::BulletinA::Load</definition>
@@ -501,22 +368,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="253" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="367" bodyend="588"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="188" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="303" bodyend="519"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4b8171189190391afe98464d53cea709" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a3d8d174488abf09bd44d80b9841fae60" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::coordinate::frame::provider::iers::BulletinA::BulletinA</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(const Instant &amp;aLastModifiedTimestamp)</argsstring>
         <name>BulletinA</name>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>aLastModifiedTimestamp</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="268" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="590" bodyend="600"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="203" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp" bodystart="521" bodyend="531"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -534,34 +405,27 @@
 </para>
 <para><ulink url="https://datacenter.iers.org/productMetadata.php">https://datacenter.iers.org/productMetadata.php</ulink>?id=6 </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="64" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="63" bodyend="269"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="62" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="61" bodyend="204"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ae5b1849a1d0dd0487c7c21781a9e76df" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>accessLastModifiedTimestamp</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aa0bebf69428e9d26c90f4e0db104a460" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>accessObservationInterval</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1af9b758cc90601cc4e1f9aec2b204145e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>accessPredictionInterval</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a0e4a9726028d43b3e07e115a067f3496" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>accessReleaseDate</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1adcb8116f162f74cb44bbab79af63be00" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>accessTAIMinusUTC</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aaaa01ddc3290456fa1c77c2a56ee0c6f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>accessTAIMinusUTCEpoch</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4b8171189190391afe98464d53cea709" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>BulletinA</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a3d8d174488abf09bd44d80b9841fae60" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>BulletinA</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a08167edad242a2b6334a4ddf776244f9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getLastModifiedTimestamp</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aad0b6526622452791d6ceeeb18e3698a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getObservationAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a79c4bfc1752b549806efad17db1551ea" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getObservationInterval</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1abebeb3ac1ceda3be00b1e04072db0c66" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getObservationInterval</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a05e4c6875bcfc0f5aa4e9a1294ed2ca3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getPredictionAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ad1814148ac2e00132f65aa1e8b5aca61" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getPredictionInterval</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a1b21612c83be80aa7e9b74b1a6d8ae4f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getReleaseDate</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a2d9ceded3ac93ce24286a69a096ac9f3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getTAIMinusUTC</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1af0f6a0149cf89b60e6043bdfb14acf05" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getTAIMinusUTCEpoch</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a20e424cf0200fa320a7420ee4d218d9a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4866d14ab04c6a0649481090f7cb2b15" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getPredictionInterval</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1adba8c90b99d2877d3a2c1a1be8c5e04a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getReleaseDate</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a3cff071b1ba0e6f5430d6401bfc44820" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getTAIMinusUTC</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a66ed7bafeaf5e7190e6c7e59c3041089" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>getTAIMinusUTCEpoch</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a2a3f1c079e42626653504497f8332004" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>lastModifiedTimestamp_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ae83d0a1920b09b20f359e3640f43d0fc" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>Load</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1acfd94482355c212c2229563dd5acd7e9" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>observationInterval_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a0d4e3983cc7ef52bc7dabf44707be98b" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>observations_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ab1f1c0dbf314b877bfb9536159051453" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>observationInterval_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a69602831ab64878851b6e6573a6c7a11" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>observations_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1ad02d4bd47c889c76484ba4056cee01a4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>operator&lt;&lt;</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a293ce625b4048451e363322cfa3217e1" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>predictionInterval_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a6fd5427ee3303f6cff7d59e1aa9459a1" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>predictions_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aa2e5a911f361174ff5001c196d491865" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>releaseDate_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1aa5544baf208e41aa844612830137575d" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>taiMinusUtc_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4543a647b2f5bfc4c01843e6b5a5411f" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>taiMinusUtcEpoch_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1af209509fe8b81780eaccaacb8fae22f2" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a4ff2e80ecf77aaf4c2b810199099d66a" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>predictionInterval_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a874c47a1212b978fe73942802b31345f" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>predictions_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a986b1c30c2fcf987578e47c4d99dfaf8" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>releaseDate_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1acde25434d52d4464408b0cc95fd53b2a" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>taiMinusUtc_</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1a1c3d2ad48d3e82b8ba5880be341190e2" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA</scope><name>taiMinusUtcEpoch_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

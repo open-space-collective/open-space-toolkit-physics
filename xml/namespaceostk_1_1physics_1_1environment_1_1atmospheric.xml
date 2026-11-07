@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="40" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" line="38" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1a7a31e05c8688c69d84be45b666590d05" prot="public" static="no">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1celestial_1_1_earth" kindref="compound">ostk::physics::environment::object::celestial::Earth</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="24" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="24" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" line="26" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth.cpp" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

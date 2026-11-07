@@ -10,13 +10,13 @@
     <innerclass refid="classostk_1_1physics_1_1unit_1_1_time" prot="public">ostk::physics::unit::Time</innerclass>
     <innerclass refid="classostk_1_1physics_1_1unit_1_1_unit" prot="public">ostk::physics::unit::Unit</innerclass>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1a25eedbb3c04cba9ba508ca9789309480" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1af02eb650b043f8d44b33dd20c8562f5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">Angle</ref></type>
         <definition>Angle ostk::physics::unit::operator*</definition>
-        <argsstring>(const Real &amp;aReal, const Angle &amp;anAngle)</argsstring>
+        <argsstring>(double aReal, const Angle &amp;anAngle)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <param>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" line="243" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="243" bodyend="256"/>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" line="201" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="201" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1ae5e8961decf597dc788a8cbee7298e85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" line="320" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="320" bodyend="330"/>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" line="256" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp" bodystart="256" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1a650087cf6c492c0fb65afd908950a2ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -137,15 +137,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" line="659" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="659" bodyend="669"/>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" line="503" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="503" bodyend="513"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1aa46427c9881272f66d3eebf3d54176a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1aab5569d44957723cd374f9db3081afdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
         <definition>Length ostk::physics::unit::operator*</definition>
-        <argsstring>(const Real &amp;aReal, const Length &amp;aLength)</argsstring>
+        <argsstring>(double aReal, const Length &amp;aLength)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aReal</declname>
         </param>
         <param>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" line="199" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="199" bodyend="212"/>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" line="140" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="140" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1unit_1a33d11f86c7134e7fbe6227368b2da2bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -223,13 +223,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" line="234" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="234" bodyend="244"/>
+        <location file="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" line="160" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Length.cpp" bodystart="160" bodyend="170"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="20" column="1"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp" line="18" column="1"/>
   </compounddef>
 </doxygen>

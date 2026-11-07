@@ -8,14 +8,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" prot="public" static="no" strong="yes">
         <type></type>
         <name>Unit</name>
-        <enumvalue id="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-<para>Undefined. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30a9d71f8d145c74f11bf9b02047645bcf4" prot="public">
           <name>Kilogram</name>
           <briefdescription>
@@ -46,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="31" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" bodystart="30" bodyend="38"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="27" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" bodystart="26" bodyend="33"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -61,17 +53,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="168" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" bodystart="168" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="143" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a2fd54da547a684fcfa6742125e984349" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a48e781cc1928adcf6e80c61077eaee16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::unit::Mass::Mass</definition>
-        <argsstring>(const Real &amp;aValue, const Mass::Unit &amp;aUnit)</argsstring>
+        <argsstring>(double aValue, const Mass::Unit &amp;aUnit)</argsstring>
         <name>Mass</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <param>
@@ -105,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="48" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="15" bodyend="19"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="43" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="19" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a09cec302a316a1dc5f7381a0ffdd30af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_mass" kindref="compound">Mass</ref> *</type>
@@ -126,27 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="59" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="21" bodyend="24"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a7119d821ddc2dff61ed68572fe4e95f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::unit::Mass::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a83db79674de71afa2e6dd3a54c5a5e07">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the mass is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Mass::Kilograms(1.0).isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="69" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="26" bodyend="29"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="54" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="25" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a4b16a86c8b14c992b36206c31cf5512c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref></type>
@@ -165,11 +137,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="79" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="31" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="64" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="30" bodyend="33"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a4def4f0867399b857fc8e11175b357bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Mass::in</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1ae32247c4fd5d6cb64da9281879b0f42f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Mass::in</definition>
         <argsstring>(const Mass::Unit &amp;aUnit) const</argsstring>
         <name>in</name>
         <param>
@@ -197,11 +169,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="90" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="36" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="75" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="35" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a306ab7c6097a44de94afcde3435e0852" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Mass::inKilograms</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a1411a0e73af4ef0af86c88f5d8c363fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Mass::inKilograms</definition>
         <argsstring>() const</argsstring>
         <name>inKilograms</name>
         <briefdescription>
@@ -216,18 +188,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="51" bodyend="54"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="85" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="45" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a4fa10f28cf38ce980a197909c0977663" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1aa8bfca283644495d4279b8fe34633c62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>String</type>
         <definition>String ostk::physics::unit::Mass::toString</definition>
-        <argsstring>(const Integer &amp;aPrecision=Integer::Undefined()) const override</argsstring>
+        <argsstring>(int aPrecision=-1) const override</argsstring>
         <name>toString</name>
-        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a6f8328b16fb04f11a2e24e59daba0a46">toString</reimplements>
+        <reimplements refid="classostk_1_1physics_1_1unit_1_1_unit_1a23a75660da6cd78f34df973831d2fbcc">toString</reimplements>
         <param>
-          <type>const Integer &amp;</type>
+          <type>int</type>
           <declname>aPrecision</declname>
-          <defval>Integer::Undefined()</defval>
+          <defval>-1</defval>
         </param>
         <briefdescription>
 <para>Convert to string representation. </para>
@@ -250,36 +222,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="111" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="56" bodyend="64"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="96" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="50" bodyend="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1acd94608911f765bf83b3cd53180bcf71" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_mass" kindref="compound">Mass</ref></type>
-        <definition>Mass ostk::physics::unit::Mass::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined mass. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Mass<sp/>mass<sp/>=<sp/>Mass::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined mass </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="121" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="66" bodyend="69"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a66b3f06f41b23189ceb0a7769b2213c2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1adb41d9ae7944a3f25cc93c4d8b2d4530" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_mass" kindref="compound">Mass</ref></type>
         <definition>Mass ostk::physics::unit::Mass::Kilograms</definition>
-        <argsstring>(const Real &amp;aValue)</argsstring>
+        <argsstring>(double aValue)</argsstring>
         <name>Kilograms</name>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aValue</declname>
         </param>
         <briefdescription>
@@ -303,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="132" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="71" bodyend="74"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="107" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a46f473c7e1a0d85388bef09f88563415" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_mass" kindref="compound">Mass</ref></type>
@@ -335,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="143" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="76" bodyend="81"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="118" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="60" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a55f7cb1c0e86cd834b63c7dc1ef872d3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -367,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="154" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="83" bodyend="105"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="129" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="67" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a51c648cd08ebdadbcf193497919e92fe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -399,13 +352,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="165" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="107" bodyend="126"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="140" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="88" bodyend="107"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a7566c12b71149b54190f3c27f50dba37" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::unit::Mass::SIRatio</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_mass_1a5b3237ca3fb16be323e1e75b12abf11c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::unit::Mass::SIRatio</definition>
         <argsstring>(const Mass::Unit &amp;aUnit)</argsstring>
         <name>SIRatio</name>
         <param>
@@ -418,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="170" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="128" bodyend="145"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="145" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Mass.cpp" bodystart="109" bodyend="124"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -451,33 +404,30 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" bodystart="27" bodyend="171"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" line="24" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Mass.hpp" bodystart="23" bodyend="146"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7cc8bcfad0e0259b67096dc225701880" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>accessValue</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a6c70143f89bce02ce32b6ce161cbd665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>accessValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4480ddaef512c37776fec72c333bc8d9" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>accessValue</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a09cec302a316a1dc5f7381a0ffdd30af" prot="public" virt="virtual"><scope>ostk::physics::unit::Mass</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a644607c4d0a8114d15100ef3635be526" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>getType</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a4b16a86c8b14c992b36206c31cf5512c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>getUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a2a0ef69fb84f37a198a2ca44a20cdc0d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>getValue</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a4def4f0867399b857fc8e11175b357bf" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>in</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a306ab7c6097a44de94afcde3435e0852" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>inKilograms</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a7119d821ddc2dff61ed68572fe4e95f8" prot="public" virt="virtual"><scope>ostk::physics::unit::Mass</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a5eda60e389025e425d62d75d91ba8f6b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>getValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1ae32247c4fd5d6cb64da9281879b0f42f" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>in</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a1411a0e73af4ef0af86c88f5d8c363fa" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>inKilograms</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aed72fd9a4e5adcc401dcb54c0cde0f4e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>isZero</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a66b3f06f41b23189ceb0a7769b2213c2" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Kilograms</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a2fd54da547a684fcfa6742125e984349" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Mass</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1adb41d9ae7944a3f25cc93c4d8b2d4530" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Kilograms</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a48e781cc1928adcf6e80c61077eaee16" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Mass</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ad52ec296a29d66268a46f560f8e92e05" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a1402cf6a009d8d9b5cb6ee3ed5a0bc5b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a46f473c7e1a0d85388bef09f88563415" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Parse</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1aa046279168e72b251c1d90c7430f1005" prot="protected" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>ParseString</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac43eb59844756cfa349a6ca28416abc6" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>setValue</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a7566c12b71149b54190f3c27f50dba37" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>SIRatio</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a886469262a9beb0df6296781a0f1ec98" prot="protected" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>ParseString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a328e291ff458d72b330fe696baa4b4ec" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>setValue</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a5b3237ca3fb16be323e1e75b12abf11c" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>SIRatio</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a55f7cb1c0e86cd834b63c7dc1ef872d3" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>StringFromUnit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a51c648cd08ebdadbcf193497919e92fe" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>SymbolFromUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a4fa10f28cf38ce980a197909c0977663" prot="public" virt="virtual"><scope>ostk::physics::unit::Mass</scope><name>toString</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1aa8bfca283644495d4279b8fe34633c62" prot="public" virt="virtual"><scope>ostk::physics::unit::Mass</scope><name>toString</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a7031a6ae89200e7d3e93807b61e112b8" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Type</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_mass_1acd94608911f765bf83b3cd53180bcf71" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>Unit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1ac5306b4862e447e68eee426e6491c65c" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Mass</scope><name>Unit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a326efb7de2cbb9cb6e03e03a072b013a" prot="public" virt="non-virtual" ambiguityscope="ostk::physics::unit::Unit::"><scope>ostk::physics::unit::Mass</scope><name>Unit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a65e4395d3730ce5c96705c28a57e1bb3" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Mass</scope><name>unit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_unit_1a4a7d1bb1a8853747f181b33670a22f9e" prot="public" virt="pure-virtual"><scope>ostk::physics::unit::Mass</scope><name>~Unit</name></member>
     </listofallmembers>

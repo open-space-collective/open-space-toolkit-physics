@@ -16,11 +16,15 @@ ostk.physics.coordinate.frame.Provider
    .. autosummary::
       :nosignatures:
    
-      ~Provider.get_transform_at
-      ~Provider.is_defined
    
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Provider.get_transform_at
    
    

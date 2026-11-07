@@ -16,6 +16,15 @@ ostk.physics.environment.magnetic.earth.Manager
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Manager.clear_local_repository
       ~Manager.fetch_data_files_for_type
       ~Manager.get
@@ -27,9 +36,5 @@ ostk.physics.environment.magnetic.earth.Manager
       ~Manager.reset
       ~Manager.set_local_repository
       ~Manager.set_mode
-   
-   
-
-   
    
    

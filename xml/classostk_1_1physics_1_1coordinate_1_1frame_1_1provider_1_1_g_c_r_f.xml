@@ -55,26 +55,6 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" line="49" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.cpp" bodystart="20" bodyend="23"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1aeb30dd3d275e6f7b560406fa60fa4c2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::GCRF::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref> provider is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f" kindref="compound">GCRF</ref> provider is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" line="58" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.cpp" bodystart="25" bodyend="28"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1ac38fd258d2d673715d007722f94e980f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
         <definition>Transform ostk::physics::coordinate::frame::provider::GCRF::getTransformAt</definition>
@@ -106,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" line="68" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.cpp" bodystart="30" bodyend="33"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" line="59" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.cpp" bodystart="25" bodyend="28"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -139,12 +119,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" bodystart="29" bodyend="69"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" line="30" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/GCRF.hpp" bodystart="29" bodyend="60"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1afa65465d2ea24dc80b2fab244a7b047b" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1a89378e28cd6c10c0d58ce8567aac9612" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>GCRF</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1ac38fd258d2d673715d007722f94e980f" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>getTransformAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1aeb30dd3d275e6f7b560406fa60fa4c2c" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>Provider</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_g_c_r_f_1a015bebf1fa34e83e55e0d59264357e88" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>~GCRF</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::GCRF</scope><name>~Provider</name></member>

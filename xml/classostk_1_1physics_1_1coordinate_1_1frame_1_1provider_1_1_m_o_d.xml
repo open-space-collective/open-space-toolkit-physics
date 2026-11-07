@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="91" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="91" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="82" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -84,44 +84,24 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="60" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="61" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abbe9c5a824770b315ab8b94a4a95734f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::MOD::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> provider is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d" kindref="compound">MOD</ref> provider is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="69" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="66" bodyend="69"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a6fb9c4e332856a561586ffaf94b995ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
-        <definition>Instant ostk::physics::coordinate::frame::provider::MOD::getEpoch</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a83b7782e9db087eb8324534b50cdc8d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+        <definition>const Instant &amp; ostk::physics::coordinate::frame::provider::MOD::getEpoch</definition>
         <argsstring>() const</argsstring>
         <name>getEpoch</name>
         <briefdescription>
 <para>Get the epoch. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Instant<sp/>epoch<sp/>=<sp/>provider.getEpoch();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">const<sp/>Instant&amp;<sp/>epoch<sp/>=<sp/>provider.getEpoch();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>The epoch instant </para>
+<para><simplesect kind="return"><para>Const reference to the epoch instant </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="78" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="71" bodyend="74"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="69" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a65ef7c999f1ab6faa1aff7498abc457d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -154,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="88" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="76" bodyend="106"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="79" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp" bodystart="71" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -189,13 +169,12 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="38" bodyend="92"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.hpp" bodystart="38" bodyend="83"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a1fe8106f5e8d7f21da3e289972cac24e" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1aa9463ec066f6194e932f5975bee687ab" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>epoch_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a6fb9c4e332856a561586ffaf94b995ef" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>getEpoch</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a83b7782e9db087eb8324534b50cdc8d5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>getEpoch</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1a65ef7c999f1ab6faa1aff7498abc457d" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>getTransformAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abbe9c5a824770b315ab8b94a4a95734f" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abdcd0e358a4f9acbaae2a4d2df347aee" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>MOD</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>Provider</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1aed25865ea188d361ceb039880b176905" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::MOD</scope><name>~MOD</name></member>

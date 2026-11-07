@@ -7,13 +7,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a12bd6cf1c29efbdc2557b854feced66b" prot="public" static="no" strong="yes">
         <type></type>
         <name>Type</name>
-        <enumvalue id="classostk_1_1physics_1_1coordinate_1_1_transform_1a12bd6cf1c29efbdc2557b854feced66baec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1coordinate_1_1_transform_1a12bd6cf1c29efbdc2557b854feced66ba4d3d769b812b6faa6b76e1a8abaece2d" prot="public">
           <name>Active</name>
           <briefdescription>
@@ -34,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="39" bodyend="46"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="38" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="37" bodyend="43"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -49,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="331" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="331" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="265" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="265" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a51a64c917169c85526516d7c0a09ba53" prot="private" static="no" mutable="no">
         <type>Vector3d</type>
@@ -62,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="333" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="333" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="267" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a6621c3ba5089d8e8db828dfb34c91c79" prot="private" static="no" mutable="no">
         <type>Vector3d</type>
@@ -75,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="334" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="334" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="268" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aa1412a9f08dea3fec29d6ae1ec6e9398" prot="private" static="no" mutable="no">
         <type>Quaternion</type>
@@ -88,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="336" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="336" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="270" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="270" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a76cffc7f6ef309cfaffa35b6370b6600" prot="private" static="no" mutable="no">
         <type>Vector3d</type>
@@ -101,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="337" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="337" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="271" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="271" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -194,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="61" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="17" bodyend="45"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="58" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="17" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a4fa9139f944d60391900b7258b7526ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -226,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="78" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="47" bodyend="57"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="75" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="46" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a9f4ead65b6b8e0bab2a54ce48332009e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -258,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="88" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="59" bodyend="62"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="85" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a5d637b19dc7ad9e75f52b9b74a34fd6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -290,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="98" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="64" bodyend="81"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="95" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="58" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a97f0af3881d4896cc0c87a6013fd1554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &amp;</type>
@@ -322,26 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="108" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="83" bodyend="120"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1acd550f6613a91a8c40175ca30faa5c1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::Transform::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the transform is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Transform::Undefined().isDefined();<sp/>//<sp/>False</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the transform is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="128" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="156" bodyend="160"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="105" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="72" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a2c347eb19eb9ad7aa291a0f5e565f65f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -360,106 +334,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="137" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="162" bodyend="171"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="125" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="135" bodyend="139"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aec2f5e2fb7e2c98645f4b7c8ec9c5457" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ad8478c34435c6bbceced40a9ed41080d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
-        <definition>const Instant &amp; ostk::physics::coordinate::Transform::accessInstant</definition>
-        <argsstring>() const</argsstring>
-        <name>accessInstant</name>
-        <briefdescription>
-<para>Access the instant. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">transform.accessInstant();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Reference to the instant </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="146" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="173" bodyend="181"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a6f42ee0057271fe2d64fb411d1afc61e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const Vector3d &amp;</type>
-        <definition>const Vector3d &amp; ostk::physics::coordinate::Transform::accessTranslation</definition>
-        <argsstring>() const</argsstring>
-        <name>accessTranslation</name>
-        <briefdescription>
-<para>Access the translation vector. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">transform.accessTranslation();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Reference to the translation vector </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="155" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="183" bodyend="191"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a09656bdcb67171dd16a435712eca8459" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const Vector3d &amp;</type>
-        <definition>const Vector3d &amp; ostk::physics::coordinate::Transform::accessVelocity</definition>
-        <argsstring>() const</argsstring>
-        <name>accessVelocity</name>
-        <briefdescription>
-<para>Access the velocity vector. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">transform.accessVelocity();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Reference to the velocity vector </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="164" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="193" bodyend="201"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aabc5ceb71e69344efc674be321bb809d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const Quaternion &amp;</type>
-        <definition>const Quaternion &amp; ostk::physics::coordinate::Transform::accessOrientation</definition>
-        <argsstring>() const</argsstring>
-        <name>accessOrientation</name>
-        <briefdescription>
-<para>Access the orientation quaternion. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">transform.accessOrientation();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Reference to the orientation quaternion </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="173" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="203" bodyend="211"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a53d981aeb1c5a7b7ab7d943eb2a303dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const Vector3d &amp;</type>
-        <definition>const Vector3d &amp; ostk::physics::coordinate::Transform::accessAngularVelocity</definition>
-        <argsstring>() const</argsstring>
-        <name>accessAngularVelocity</name>
-        <briefdescription>
-<para>Access the angular velocity vector. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">transform.accessAngularVelocity();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Reference to the angular velocity vector </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="182" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="213" bodyend="221"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a680129cce0bdcff59d66f9966728043a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref></type>
-        <definition>Instant ostk::physics::coordinate::Transform::getInstant</definition>
+        <definition>const Instant &amp; ostk::physics::coordinate::Transform::getInstant</definition>
         <argsstring>() const</argsstring>
         <name>getInstant</name>
         <briefdescription>
@@ -468,17 +347,17 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">transform.getInstant();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Instant </para>
+<para><simplesect kind="return"><para>Const reference to the instant </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="191" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="223" bodyend="231"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="134" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="141" bodyend="144"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a0f0b3985ff49115f4fb027a19595fd67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Vector3d</type>
-        <definition>Vector3d ostk::physics::coordinate::Transform::getTranslation</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a3fd6184c2dd5f105d94aa409b75b87bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Vector3d &amp;</type>
+        <definition>const Vector3d &amp; ostk::physics::coordinate::Transform::getTranslation</definition>
         <argsstring>() const</argsstring>
         <name>getTranslation</name>
         <briefdescription>
@@ -487,17 +366,17 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">transform.getTranslation();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Translation vector </para>
+<para><simplesect kind="return"><para>Const reference to the translation vector </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="200" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="233" bodyend="241"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="143" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="146" bodyend="149"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ad12d8c7fc48da17e76282c50720a8653" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Vector3d</type>
-        <definition>Vector3d ostk::physics::coordinate::Transform::getVelocity</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a20ecad152cf4999dd31391be28555723" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Vector3d &amp;</type>
+        <definition>const Vector3d &amp; ostk::physics::coordinate::Transform::getVelocity</definition>
         <argsstring>() const</argsstring>
         <name>getVelocity</name>
         <briefdescription>
@@ -506,17 +385,17 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">transform.getVelocity();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref> vector </para>
+<para><simplesect kind="return"><para>Const reference to the velocity vector </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="209" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="243" bodyend="251"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="152" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="151" bodyend="154"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a6d5afe930270f3f12c801f243f7d60f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Quaternion</type>
-        <definition>Quaternion ostk::physics::coordinate::Transform::getOrientation</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ac65b3c07eb9a35722dcebf238b17f2bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Quaternion &amp;</type>
+        <definition>const Quaternion &amp; ostk::physics::coordinate::Transform::getOrientation</definition>
         <argsstring>() const</argsstring>
         <name>getOrientation</name>
         <briefdescription>
@@ -525,17 +404,17 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">transform.getOrientation();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Orientation quaternion </para>
+<para><simplesect kind="return"><para>Const reference to the orientation quaternion </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="218" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="253" bodyend="261"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="161" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="156" bodyend="159"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1add46a00b8a23b54378c3af1d168dee2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Vector3d</type>
-        <definition>Vector3d ostk::physics::coordinate::Transform::getAngularVelocity</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aca4bce9762676d9aa1077ae53f0a3e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Vector3d &amp;</type>
+        <definition>const Vector3d &amp; ostk::physics::coordinate::Transform::getAngularVelocity</definition>
         <argsstring>() const</argsstring>
         <name>getAngularVelocity</name>
         <briefdescription>
@@ -544,13 +423,13 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">transform.getAngularVelocity();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Angular velocity vector </para>
+<para><simplesect kind="return"><para>Const reference to the angular velocity vector </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="227" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="263" bodyend="271"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="170" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="161" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ad623a128c51dd1be5887a06b51366da0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -569,7 +448,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="236" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="273" bodyend="297"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="179" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="166" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a1896f14c87b66846d8e115352562f0ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -601,7 +480,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="246" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="299" bodyend="314"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="189" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="187" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a80aea2654d54910bd999b8e93c8e4699" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -645,7 +524,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="257" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="316" bodyend="336"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="200" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="194" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a39560065fe0293c76d32d7a868543954" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -677,7 +556,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="267" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="338" bodyend="351"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="210" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="201" bodyend="204"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -723,29 +602,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="119" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="122" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="116" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="106" bodyend="133"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ac9701c1cf3e9aaa10b2d56b8d6fd3664" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
-        <definition>Transform ostk::physics::coordinate::Transform::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined transform. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>Transform::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined transform </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="276" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="353" bodyend="363"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a53e7052d7108a71685f5c7c6fd8f2b14" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
         <definition>Transform ostk::physics::coordinate::Transform::Identity</definition>
@@ -776,7 +636,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="286" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="365" bodyend="370"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="220" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="206" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aea0502ad1d24b5a7ea8a749bffb70771" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -857,7 +717,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="301" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="372" bodyend="381"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="235" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="213" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a8e387cfe3c21cf12b8447854d0ca3548" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -938,7 +798,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="322" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="383" bodyend="392"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="256" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="224" bodyend="233"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -948,27 +808,21 @@
 <para>Passive transformation</para>
 <para><ulink url="https://en.wikipedia.org/wiki/Active_and_passive_transformation">https://en.wikipedia.org/wiki/Active_and_passive_transformation</ulink> <ulink url="https://core.ac.uk/download/pdf/77055186.pdf">https://core.ac.uk/download/pdf/77055186.pdf</ulink> </para>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="37" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="36" bodyend="338"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="35" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" bodystart="34" bodyend="272"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a53d981aeb1c5a7b7ab7d943eb2a303dc" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>accessAngularVelocity</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1aec2f5e2fb7e2c98645f4b7c8ec9c5457" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>accessInstant</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1aabc5ceb71e69344efc674be321bb809d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>accessOrientation</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a6f42ee0057271fe2d64fb411d1afc61e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>accessTranslation</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a09656bdcb67171dd16a435712eca8459" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>accessVelocity</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1aea0502ad1d24b5a7ea8a749bffb70771" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>Active</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a76cffc7f6ef309cfaffa35b6370b6600" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>angularVelocity_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a1896f14c87b66846d8e115352562f0ea" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>applyToPosition</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a39560065fe0293c76d32d7a868543954" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>applyToVector</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a80aea2654d54910bd999b8e93c8e4699" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>applyToVelocity</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1add46a00b8a23b54378c3af1d168dee2d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getAngularVelocity</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a680129cce0bdcff59d66f9966728043a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getInstant</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1aca4bce9762676d9aa1077ae53f0a3e8f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getAngularVelocity</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1ad8478c34435c6bbceced40a9ed41080d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getInstant</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1ad623a128c51dd1be5887a06b51366da0" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getInverse</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a6d5afe930270f3f12c801f243f7d60f4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getOrientation</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a0f0b3985ff49115f4fb027a19595fd67" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getTranslation</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1ad12d8c7fc48da17e76282c50720a8653" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getVelocity</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1ac65b3c07eb9a35722dcebf238b17f2bd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getOrientation</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a3fd6184c2dd5f105d94aa409b75b87bb" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getTranslation</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a20ecad152cf4999dd31391be28555723" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>getVelocity</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a53e7052d7108a71685f5c7c6fd8f2b14" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>Identity</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a5e9b633807d78e70b3d61c1afd1af965" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>instant_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1acd550f6613a91a8c40175ca30faa5c1c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a2c347eb19eb9ad7aa291a0f5e565f65f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>isIdentity</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a9f4ead65b6b8e0bab2a54ce48332009e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a5d637b19dc7ad9e75f52b9b74a34fd6c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>operator*</name></member>
@@ -980,7 +834,6 @@
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a1e8a297a988db69a91ca716489cfe1e9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>Transform</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a51a64c917169c85526516d7c0a09ba53" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>translation_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a12bd6cf1c29efbdc2557b854feced66b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>Type</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1ac9701c1cf3e9aaa10b2d56b8d6fd3664" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a6621c3ba5089d8e8db828dfb34c91c79" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Transform</scope><name>velocity_</name></member>
     </listofallmembers>
   </compounddef>

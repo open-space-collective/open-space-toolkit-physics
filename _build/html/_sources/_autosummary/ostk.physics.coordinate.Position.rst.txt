@@ -11,27 +11,24 @@ ostk.physics.coordinate.Position
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
-      ~Position.access_frame
       ~Position.from_lla
       ~Position.get_coordinates
+      ~Position.get_frame
       ~Position.get_norm
       ~Position.get_unit
       ~Position.in_frame
       ~Position.in_meters
       ~Position.in_unit
-      ~Position.is_defined
       ~Position.is_near
       ~Position.meters
       ~Position.to_string
-      ~Position.undefined
-   
-   
-
-   
    
    

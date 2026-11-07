@@ -11,16 +11,14 @@ ostk.physics.coordinate.frame.provider.Static
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Static.get_transform_at
-      ~Static.is_defined
-   
-   
-
-   
    
    

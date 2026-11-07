@@ -4,9 +4,9 @@
     <compoundname>ostk::physics::unit::Derived::Unit</compoundname>
     <includes refid="_derived_8hpp" local="no">Derived.hpp</includes>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afd7b7c5e5f3bd3bc55cd9bfa5f1d7361" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref></type>
-        <definition>Length::Unit ostk::physics::unit::Derived::Unit::lengthUnit_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a354bbd258c13757dd0a76fff3a751910" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref> &gt;</type>
+        <definition>std::optional&lt;Length::Unit&gt; ostk::physics::unit::Derived::Unit::lengthUnit_</definition>
         <argsstring></argsstring>
         <name>lengthUnit_</name>
         <briefdescription>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="602" column="22" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="602" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="581" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="581" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abb8d92f732a12274e8da22cf65b96357" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -28,11 +28,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="603" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="603" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="582" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="582" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a341713bc058995f60c2f59bc8cf87da7" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref></type>
-        <definition>Mass::Unit ostk::physics::unit::Derived::Unit::massUnit_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afb03cd0ddae2429da8f3d67d74cded8b" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref> &gt;</type>
+        <definition>std::optional&lt;Mass::Unit&gt; ostk::physics::unit::Derived::Unit::massUnit_</definition>
         <argsstring></argsstring>
         <name>massUnit_</name>
         <briefdescription>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="605" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="605" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="584" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="584" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a75702fd43bbca0e22d25343580aca457" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -54,11 +54,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="606" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="606" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="585" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="585" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a05ba981034f9bfabd1df6b517ce21695" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref></type>
-        <definition>Time::Unit ostk::physics::unit::Derived::Unit::timeUnit_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a3015a3bf5463c5092126bdc6ab84e996" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref> &gt;</type>
+        <definition>std::optional&lt;Time::Unit&gt; ostk::physics::unit::Derived::Unit::timeUnit_</definition>
         <argsstring></argsstring>
         <name>timeUnit_</name>
         <briefdescription>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="608" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="608" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="587" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="587" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1af9a162451c799963b09df2428c9d5922" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -80,11 +80,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="609" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="609" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="588" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="588" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a49455d9a082e55003cbb2a980095fd06" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref></type>
-        <definition>ElectricCurrent::Unit ostk::physics::unit::Derived::Unit::electricCurrentUnit_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a88ab25f40e6ebd003be85b28dc3ce3a0" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &gt;</type>
+        <definition>std::optional&lt;ElectricCurrent::Unit&gt; ostk::physics::unit::Derived::Unit::electricCurrentUnit_</definition>
         <argsstring></argsstring>
         <name>electricCurrentUnit_</name>
         <briefdescription>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="614" column="31" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="614" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="593" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="593" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a13b736ad274d29ca4bce8aa927a6974b" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -106,11 +106,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="615" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="615" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="594" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="594" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a835fa9a8893e81aa9d49cde7dba696f5" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref></type>
-        <definition>Angle::Unit ostk::physics::unit::Derived::Unit::angleUnit_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ae84f6081221a84fbe70003cbda1cf189" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref> &gt;</type>
+        <definition>std::optional&lt;Angle::Unit&gt; ostk::physics::unit::Derived::Unit::angleUnit_</definition>
         <argsstring></argsstring>
         <name>angleUnit_</name>
         <briefdescription>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="622" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="622" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="601" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="601" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1affefea59832a9b125b41f9627e4be818" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref></type>
@@ -132,17 +132,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="623" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="623" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="602" column="15" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="602" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0f0c25dada8d5618afd08e524bf4b4ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a85cac43fb231521a374723e2bda9b589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::unit::Derived::Unit::Unit</definition>
-        <argsstring>(const Length::Unit &amp;aLengthUnit, const Order &amp;aLengthOrder, const Mass::Unit &amp;aMassUnit, const Order &amp;aMassOrder, const Time::Unit &amp;aTimeUnit, const Order &amp;aTimeOrder, const ElectricCurrent::Unit &amp;anElectricCurrentUnit, const Order &amp;anElectricCurrentOrder, const Angle::Unit &amp;anAngleUnit, const Order &amp;anAngleOrder)</argsstring>
+        <argsstring>(const std::optional&lt; Length::Unit &gt; &amp;aLengthUnit, const Order &amp;aLengthOrder, const std::optional&lt; Mass::Unit &gt; &amp;aMassUnit, const Order &amp;aMassOrder, const std::optional&lt; Time::Unit &gt; &amp;aTimeUnit, const Order &amp;aTimeOrder, const std::optional&lt; ElectricCurrent::Unit &gt; &amp;anElectricCurrentUnit, const Order &amp;anElectricCurrentOrder, const std::optional&lt; Angle::Unit &gt; &amp;anAngleUnit, const Order &amp;anAngleOrder)</argsstring>
         <name>Unit</name>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref> &gt; &amp;</type>
           <declname>aLengthUnit</declname>
         </param>
         <param>
@@ -150,7 +150,7 @@
           <declname>aLengthOrder</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref> &gt; &amp;</type>
           <declname>aMassUnit</declname>
         </param>
         <param>
@@ -158,7 +158,7 @@
           <declname>aMassOrder</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref> &gt; &amp;</type>
           <declname>aTimeUnit</declname>
         </param>
         <param>
@@ -166,7 +166,7 @@
           <declname>aTimeOrder</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &gt; &amp;</type>
           <declname>anElectricCurrentUnit</declname>
         </param>
         <param>
@@ -174,7 +174,7 @@
           <declname>anElectricCurrentOrder</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref> &gt; &amp;</type>
           <declname>anAngleUnit</declname>
         </param>
         <param>
@@ -272,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="201" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="102" bodyend="125"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="200" column="9" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="101" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aa03b46e277a05d3446583ab6ec4848da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -304,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="223" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="127" bodyend="139"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="222" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="152" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a3e5160697f0aa609118e3e1501817834" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -336,26 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="234" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="141" bodyend="144"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a010f28712d300e00ca45413976690005" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::unit::Derived::Unit::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the unit is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="244" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="146" bodyend="151"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="233" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="161" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1e331c8bc2aeed91aeab16d79ab24738" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -387,37 +368,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="255" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="153" bodyend="163"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="244" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="166" bodyend="171"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9b19a7dbb7c5526f122d7dfafecf93ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref> &amp;</type>
-        <definition>const Length::Unit &amp; ostk::physics::unit::Derived::Unit::accessLengthUnit</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ab1f6520d9971a673fb20c7249c6af259" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_length_1a137ec463f822f4d73ba73c5ce934b48e" kindref="member">Length::Unit</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Length::Unit &gt; &amp; ostk::physics::unit::Derived::Unit::getLengthUnit</definition>
         <argsstring>() const</argsstring>
-        <name>accessLengthUnit</name>
+        <name>getLengthUnit</name>
         <briefdescription>
-<para>Access the length unit. </para>
+<para>Get the length unit. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().accessLengthUnit();<sp/>//<sp/>Length::Unit::Meter</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().getLengthUnit();<sp/>//<sp/>Length::Unit::Meter</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A const reference to the length unit </para>
+<para><simplesect kind="return"><para>The length unit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="265" column="28" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="165" bodyend="168"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="254" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="173" bodyend="176"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ab9eda53fc451a64b29de7bdbd4d1f47c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Order</ref> &amp;</type>
-        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::accessLengthOrder</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a043928675ace4af3463f4130db7ddb9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Derived::Order</ref> &amp;</type>
+        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::getLengthOrder</definition>
         <argsstring>() const</argsstring>
-        <name>accessLengthOrder</name>
+        <name>getLengthOrder</name>
         <briefdescription>
-<para>Access the length order. </para>
+<para>Get the length order. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().accessLengthOrder();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().getLengthOrder();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>A const reference to the length order </para>
 </simplesect>
@@ -425,37 +406,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="275" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="170" bodyend="173"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="264" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="178" bodyend="181"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a67278579f41193e0d4ab9ed7f2ee9284" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref> &amp;</type>
-        <definition>const Mass::Unit &amp; ostk::physics::unit::Derived::Unit::accessMassUnit</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abbc5a117b42baa7e0df8593d4853c665" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_mass_1addc7afac9fdf26705ef85e076aa02a30" kindref="member">Mass::Unit</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Mass::Unit &gt; &amp; ostk::physics::unit::Derived::Unit::getMassUnit</definition>
         <argsstring>() const</argsstring>
-        <name>accessMassUnit</name>
+        <name>getMassUnit</name>
         <briefdescription>
-<para>Access the mass unit. </para>
+<para>Get the mass unit. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::Newton().accessMassUnit();<sp/>//<sp/>Mass::Unit::Kilogram</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::Newton().getMassUnit();<sp/>//<sp/>Mass::Unit::Kilogram</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A const reference to the mass unit </para>
+<para><simplesect kind="return"><para>The mass unit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="285" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="175" bodyend="178"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="274" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="183" bodyend="186"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a3aac6e1ae79c1dc3a2eb21f358246e39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0e2d02bb17b7fbe37e6fa02f704bfb1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Derived::Order</ref> &amp;</type>
-        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::accessMassOrder</definition>
+        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::getMassOrder</definition>
         <argsstring>() const</argsstring>
-        <name>accessMassOrder</name>
+        <name>getMassOrder</name>
         <briefdescription>
-<para>Access the mass order. </para>
+<para>Get the mass order. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::Newton().accessMassOrder();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::Newton().getMassOrder();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>A const reference to the mass order </para>
 </simplesect>
@@ -463,37 +444,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="295" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="180" bodyend="183"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="284" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="188" bodyend="191"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9545fa9001420d21589f5c4a3d2ce860" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref> &amp;</type>
-        <definition>const Time::Unit &amp; ostk::physics::unit::Derived::Unit::accessTimeUnit</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ad508cec01b2ecee783d6e6f86663cc8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_time_1a10b9dab555bd29c1f30a20099cbe779a" kindref="member">Time::Unit</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Time::Unit &gt; &amp; ostk::physics::unit::Derived::Unit::getTimeUnit</definition>
         <argsstring>() const</argsstring>
-        <name>accessTimeUnit</name>
+        <name>getTimeUnit</name>
         <briefdescription>
-<para>Access the time unit. </para>
+<para>Get the time unit. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().accessTimeUnit();<sp/>//<sp/>Time::Unit::Second</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().getTimeUnit();<sp/>//<sp/>Time::Unit::Second</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A const reference to the time unit </para>
+<para><simplesect kind="return"><para>The time unit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="305" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="185" bodyend="188"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="294" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="193" bodyend="196"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a178b3c5a903b51a0761dc2a4c6606abf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a6210822fc60b30be9cc71dbc47fd23f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Derived::Order</ref> &amp;</type>
-        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::accessTimeOrder</definition>
+        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::getTimeOrder</definition>
         <argsstring>() const</argsstring>
-        <name>accessTimeOrder</name>
+        <name>getTimeOrder</name>
         <briefdescription>
-<para>Access the time order. </para>
+<para>Get the time order. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().accessTimeOrder();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::MeterPerSecond().getTimeOrder();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>A const reference to the time order </para>
 </simplesect>
@@ -501,37 +482,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="315" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="190" bodyend="193"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="304" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="198" bodyend="201"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a665ac53a5c18301f7fae16c46ea8454b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &amp;</type>
-        <definition>const ElectricCurrent::Unit &amp; ostk::physics::unit::Derived::Unit::accessElectricCurrentUnit</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a85bda3e6726ae4e2cb6cd2c9e8ad65ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a2f6201911eb91455aa097b95fa1dd393" kindref="member">ElectricCurrent::Unit</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; ElectricCurrent::Unit &gt; &amp; ostk::physics::unit::Derived::Unit::getElectricCurrentUnit</definition>
         <argsstring>() const</argsstring>
-        <name>accessElectricCurrentUnit</name>
+        <name>getElectricCurrentUnit</name>
         <briefdescription>
-<para>Access the electric current unit. </para>
+<para>Get the electric current unit. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::Tesla().accessElectricCurrentUnit();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::Tesla().getElectricCurrentUnit();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A const reference to the electric current unit </para>
+<para><simplesect kind="return"><para>The electric current unit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="325" column="37" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="195" bodyend="198"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="314" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="203" bodyend="206"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ac4914f92fd71d4fb632c0aa2af113181" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a7374bcfd90ff13234b6a38501e30aac0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Derived::Order</ref> &amp;</type>
-        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::accessElectricCurrentOrder</definition>
+        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::getElectricCurrentOrder</definition>
         <argsstring>() const</argsstring>
-        <name>accessElectricCurrentOrder</name>
+        <name>getElectricCurrentOrder</name>
         <briefdescription>
-<para>Access the electric current order. </para>
+<para>Get the electric current order. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::Tesla().accessElectricCurrentOrder();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::Tesla().getElectricCurrentOrder();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>A const reference to the electric current order </para>
 </simplesect>
@@ -539,37 +520,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="335" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="200" bodyend="203"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="324" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="208" bodyend="211"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abcc0d56e0ec0c338d37ede1dc80a5eaa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref> &amp;</type>
-        <definition>const Angle::Unit &amp; ostk::physics::unit::Derived::Unit::accessAngleUnit</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1af5bff183c188f359898eafc6099a8374" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_angle_1af7f538afa07069b09819064bea7df5d9" kindref="member">Angle::Unit</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt; Angle::Unit &gt; &amp; ostk::physics::unit::Derived::Unit::getAngleUnit</definition>
         <argsstring>() const</argsstring>
-        <name>accessAngleUnit</name>
+        <name>getAngleUnit</name>
         <briefdescription>
-<para>Access the angle unit. </para>
+<para>Get the angle unit. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::RadianPerSecond().accessAngleUnit();<sp/>//<sp/>Angle::Unit::Radian</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::RadianPerSecond().getAngleUnit();<sp/>//<sp/>Angle::Unit::Radian</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>A const reference to the angle unit </para>
+<para><simplesect kind="return"><para>The angle unit </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="345" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="205" bodyend="208"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="334" column="29" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="213" bodyend="216"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a16b27fac1245d1a5961520222f9bfa9c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a83c4bb35e893265a143942f4bd46d06f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_order" kindref="compound">Derived::Order</ref> &amp;</type>
-        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::accessAngleOrder</definition>
+        <definition>const Derived::Order &amp; ostk::physics::unit::Derived::Unit::getAngleOrder</definition>
         <argsstring>() const</argsstring>
-        <name>accessAngleOrder</name>
+        <name>getAngleOrder</name>
         <briefdescription>
-<para>Access the angle order. </para>
+<para>Get the angle order. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit::RadianPerSecond().accessAngleOrder();</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Derived::Unit::RadianPerSecond().getAngleOrder();</highlight></codeline>
 </programlisting></para>
 <para><simplesect kind="return"><para>A const reference to the angle order </para>
 </simplesect>
@@ -577,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="355" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="210" bodyend="213"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="344" column="30" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="218" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9480583a36fb0639593e5e5ad78537c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -596,7 +577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="365" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="215" bodyend="255"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="354" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="223" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aeeb83366aaca9c08ab2db6e977e3a98d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -615,7 +596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="375" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="257" bodyend="304"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="364" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="260" bodyend="302"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -636,7 +617,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="387" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="306" bodyend="320"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="376" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="304" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afea4fb6c30d1c397bd289175f26d9c5a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -655,7 +636,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="397" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="322" bodyend="336"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="386" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="309" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1adf6a7372c53ef916704a74e6d7d5788b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -674,7 +655,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="407" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="338" bodyend="352"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="396" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="314" bodyend="317"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a49272da537103784b0063a97bb22d30e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -693,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="417" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="354" bodyend="368"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="406" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="319" bodyend="333"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a655586dbfcb105a8da7dc0e998652a9d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -712,7 +693,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="427" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="370" bodyend="384"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="416" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="335" bodyend="349"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a155761ac780f2698579da020855d70e2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -731,7 +712,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="437" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="386" bodyend="400"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="426" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="351" bodyend="365"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a2ed355b790b72d0f6ce3b907bfdc8e95" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -750,7 +731,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="447" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="402" bodyend="416"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="436" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="367" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1eab513944968d24232df8ebd47a54f4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -769,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="457" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="418" bodyend="432"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="446" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="383" bodyend="388"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aa9eaba6fb3c13fc1d7cad629153e9a66" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -788,7 +769,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="467" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="434" bodyend="448"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="456" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="390" bodyend="395"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0758901dd940bca805f34667e1c8bc1e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -807,7 +788,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="477" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="450" bodyend="464"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="466" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="397" bodyend="402"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aee7b955dfe7cee445e2e9438e2f89ebf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -826,7 +807,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="487" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="466" bodyend="480"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="476" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="404" bodyend="409"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a47eb1693534335d3e4bcfc844dc5a020" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -845,7 +826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="497" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="482" bodyend="496"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="486" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="411" bodyend="416"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1acd0d55df21a3519bd18fb3ea6c0013f7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -889,7 +870,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="511" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="498" bodyend="512"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="500" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="418" bodyend="421"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9b811d943ab76c063351e3f172b154dc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -933,7 +914,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="523" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="514" bodyend="528"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="512" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="423" bodyend="426"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a14c51a8d1a728fc93d32b5092b9dd79e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -977,7 +958,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="535" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="546" bodyend="560"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="524" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="433" bodyend="436"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afd8a156ef8c2759a647c906a2dac45e4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -1021,7 +1002,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="547" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="530" bodyend="544"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="536" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="428" bodyend="431"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ade8b515c8a455d1ff270995e5adfe341" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -1078,7 +1059,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="561" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="562" bodyend="578"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="550" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="438" bodyend="454"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a043ae264e51e9882c07e0376d9d6a742" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -1122,7 +1103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="573" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="580" bodyend="594"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="562" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="456" bodyend="470"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1a8e7aa56a56d5e7333f190093878dbd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
@@ -1166,26 +1147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="585" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="596" bodyend="610"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a6662545e0b59b790d4beb58325229890" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit" kindref="compound">Unit</ref></type>
-        <definition>Derived::Unit ostk::physics::unit::Derived::Unit::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined derived unit. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Derived::Unit<sp/>unit<sp/>=<sp/>Derived::Unit::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined derived unit </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="595" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="612" bodyend="626"/>
+        <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="574" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Unit/Derived.cpp" bodystart="472" bodyend="475"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1193,38 +1155,37 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="182" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="181" bodyend="624"/>
+    <location file="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" line="181" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Unit/Derived.hpp" bodystart="180" bodyend="603"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9b811d943ab76c063351e3f172b154dc" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Acceleration</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a16b27fac1245d1a5961520222f9bfa9c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessAngleOrder</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abcc0d56e0ec0c338d37ede1dc80a5eaa" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessAngleUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ac4914f92fd71d4fb632c0aa2af113181" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessElectricCurrentOrder</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a665ac53a5c18301f7fae16c46ea8454b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessElectricCurrentUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ab9eda53fc451a64b29de7bdbd4d1f47c" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessLengthOrder</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9b19a7dbb7c5526f122d7dfafecf93ce" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessLengthUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a3aac6e1ae79c1dc3a2eb21f358246e39" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessMassOrder</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a67278579f41193e0d4ab9ed7f2ee9284" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessMassUnit</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a178b3c5a903b51a0761dc2a4c6606abf" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessTimeOrder</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9545fa9001420d21589f5c4a3d2ce860" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>accessTimeUnit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1affefea59832a9b125b41f9627e4be818" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>angleOrder_</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a835fa9a8893e81aa9d49cde7dba696f5" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>angleUnit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ae84f6081221a84fbe70003cbda1cf189" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>angleUnit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a14c51a8d1a728fc93d32b5092b9dd79e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>AngularVelocity</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afea4fb6c30d1c397bd289175f26d9c5a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>CubicMeter</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a13b736ad274d29ca4bce8aa927a6974b" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>electricCurrentOrder_</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a49455d9a082e55003cbb2a980095fd06" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>electricCurrentUnit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a88ab25f40e6ebd003be85b28dc3ce3a0" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>electricCurrentUnit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ade8b515c8a455d1ff270995e5adfe341" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Force</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a83c4bb35e893265a143942f4bd46d06f" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getAngleOrder</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1af5bff183c188f359898eafc6099a8374" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getAngleUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a7374bcfd90ff13234b6a38501e30aac0" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getElectricCurrentOrder</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a85bda3e6726ae4e2cb6cd2c9e8ad65ee" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getElectricCurrentUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a043928675ace4af3463f4130db7ddb9b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getLengthOrder</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ab1f6520d9971a673fb20c7249c6af259" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getLengthUnit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0e2d02bb17b7fbe37e6fa02f704bfb1d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getMassOrder</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abbc5a117b42baa7e0df8593d4853c665" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getMassUnit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aeeb83366aaca9c08ab2db6e977e3a98d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getSymbol</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a6210822fc60b30be9cc71dbc47fd23f8" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getTimeOrder</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1ad508cec01b2ecee783d6e6f86663cc8a" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>getTimeUnit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afd8a156ef8c2759a647c906a2dac45e4" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>GravitationalParameter</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1adf6a7372c53ef916704a74e6d7d5788b" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Hertz</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1e331c8bc2aeed91aeab16d79ab24738" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>isCompatibleWith</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a010f28712d300e00ca45413976690005" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a2ed355b790b72d0f6ce3b907bfdc8e95" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>KilogramPerSecond</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1abb8d92f732a12274e8da22cf65b96357" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>lengthOrder_</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afd7b7c5e5f3bd3bc55cd9bfa5f1d7361" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>lengthUnit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a354bbd258c13757dd0a76fff3a751910" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>lengthUnit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1a8e7aa56a56d5e7333f190093878dbd" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>MassDensity</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a043ae264e51e9882c07e0376d9d6a742" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>MassFlowRate</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a75702fd43bbca0e22d25343580aca457" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>massOrder_</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a341713bc058995f60c2f59bc8cf87da7" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>massUnit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1afb03cd0ddae2429da8f3d67d74cded8b" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>massUnit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0758901dd940bca805f34667e1c8bc1e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>MeterCubedPerSecondSquared</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1eab513944968d24232df8ebd47a54f4" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>MeterPerSecond</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1aa9eaba6fb3c13fc1d7cad629153e9a66" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>MeterPerSecondSquared</name></member>
@@ -1236,10 +1197,9 @@
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a1d32ef240303314cd0e1a4328fbb0947" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>SquareMeter</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a655586dbfcb105a8da7dc0e998652a9d" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Tesla</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1af9a162451c799963b09df2428c9d5922" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>timeOrder_</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a05ba981034f9bfabd1df6b517ce21695" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>timeUnit_</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a3015a3bf5463c5092126bdc6ab84e996" prot="private" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>timeUnit_</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a9480583a36fb0639593e5e5ad78537c4" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>toString</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a6662545e0b59b790d4beb58325229890" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Undefined</name></member>
-      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a0f0c25dada8d5618afd08e524bf4b4ec" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Unit</name></member>
+      <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a85cac43fb231521a374723e2bda9b589" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Unit</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1acd0d55df21a3519bd18fb3ea6c0013f7" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Velocity</name></member>
       <member refid="classostk_1_1physics_1_1unit_1_1_derived_1_1_unit_1a49272da537103784b0063a97bb22d30e" prot="public" virt="non-virtual"><scope>ostk::physics::unit::Derived::Unit</scope><name>Watt</name></member>
     </listofallmembers>

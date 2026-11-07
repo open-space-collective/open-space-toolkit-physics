@@ -62,9 +62,9 @@
         </inbodydescription>
         <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="136" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="158" bodyend="161"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1ac4f1854c8cea764fe4d76e6332627df7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::environment::gravitational::Earth::SphericalImpl::getDegree</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1a5a088fec24dfdf7c19325010a7ceb069" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::optional&lt; int &gt;</type>
+        <definition>std::optional&lt; int &gt; ostk::physics::environment::gravitational::Earth::SphericalImpl::getDegree</definition>
         <argsstring>() const override</argsstring>
         <name>getDegree</name>
         <briefdescription>
@@ -73,11 +73,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="138" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="163" bodyend="166"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="138" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="163" bodyend="166"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1a7e85fc58ec027aa3bf1e433e958d7134" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::environment::gravitational::Earth::SphericalImpl::getOrder</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1acbb14a9cd314ba0c052c62f542ed99bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::optional&lt; int &gt;</type>
+        <definition>std::optional&lt; int &gt; ostk::physics::environment::gravitational::Earth::SphericalImpl::getOrder</definition>
         <argsstring>() const override</argsstring>
         <name>getOrder</name>
         <briefdescription>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="140" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="168" bodyend="171"/>
+        <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="140" column="27" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="168" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1a67327dcf2160332570d1c137f63990f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -137,9 +137,9 @@
     <location file="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" line="130" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth.cpp" bodystart="129" bodyend="146"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1aa852933ce11f4770e3ccb9afce7ea685" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1ac4f1854c8cea764fe4d76e6332627df7" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>getDegree</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1a5a088fec24dfdf7c19325010a7ceb069" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>getDegree</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1a67327dcf2160332570d1c137f63990f7" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>getFieldValueAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1a7e85fc58ec027aa3bf1e433e958d7134" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>getOrder</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1acbb14a9cd314ba0c052c62f542ed99bc" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>getOrder</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_impl_1a813cdcd5f518ed4d1d41695534857297" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>getType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_impl_1a10f5d174bda04fd9ce1f85dd2f2dffbb" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>Impl</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1_1_spherical_impl_1ab76fbb1d2369143c5fa5cebe9e80c55a" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Earth::SphericalImpl</scope><name>SphericalImpl</name></member>

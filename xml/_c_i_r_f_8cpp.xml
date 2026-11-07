@@ -48,20 +48,17 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="3">
         <label>atomic</label>
       </node>
-      <node id="14">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="21">
+      <node id="20">
         <label>functional</label>
       </node>
       <node id="7">
@@ -73,27 +70,27 @@
       <node id="22">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp</label>
         <link refid="_provider_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="31">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>OpenSpaceToolkit/Physics/Coordinate/Transform.hpp</label>
         <link refid="_transform_8hpp"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -101,87 +98,77 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
       <node id="4">
         <label>cmath</label>
       </node>
-      <node id="28">
+      <node id="27">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="24">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="19">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
-      </node>
-      <node id="30">
-        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
-        <link refid="_unit_2_unit_8hpp"/>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+      </node>
+      <node id="33">
+        <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
+      </node>
+      <node id="29">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -191,21 +178,19 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>OpenSpaceToolkit/Core/Utility.hpp</label>
       </node>
-      <node id="26">
+      <node id="21">
         <label>optional</label>
       </node>
-      <node id="31">
+      <node id="30">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
-      <node id="35">
+      <node id="34">
         <label>sofa/sofa.h</label>
       </node>
       <node id="2">
@@ -214,7 +199,7 @@
       <node id="10">
         <label>OpenSpaceToolkit/Core/Error.hpp</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
       <node id="23">
@@ -226,27 +211,23 @@
       <node id="25">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="32">
         <label>OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</label>
         <link refid="_angle_8hpp"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -255,19 +236,17 @@
       <node id="8">
         <label>mutex</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
       </node>
-      <node id="27">
+      <node id="26">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -532,111 +511,94 @@
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a07b839b310ac49eb05d72b9192824b51" kindref="member">CIRF</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="241"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05" kindref="member">CIRF::isDefined</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">Transform<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a47bb2b66b7f6af8c0d0c4c750ff7b2a5" kindref="member">CIRF::getTransformAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant&amp;<sp/>anInstant)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="244"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal">Transform<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a47bb2b66b7f6af8c0d0c4c750ff7b2a5" kindref="member">CIRF::getTransformAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant&amp;<sp/>anInstant)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="249"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!anInstant.isDefined())</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;Instant&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a2e225768e49de23fcf7af29bc27e8f05" kindref="member">isDefined</ref>())</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;CIRF&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>(TT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Time<sp/>(TT)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>tt<sp/>=<sp/>anInstant.getModifiedJulianDate(Scale::TT);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CIP<sp/>and<sp/>CIO,<sp/>IAU<sp/>2006/2000A</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>CIRF::ComputeCIPCoordinates(tt,<sp/>x,<sp/>y,<sp/>s,<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a03ec16a222ce78b0f2d53529da0af149" kindref="member">CIRF::IsXysInterpolationEnabled</ref>());</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CIP<sp/>offsets<sp/>wrt<sp/>IAU<sp/>2006/2000A<sp/>(mas-&gt;radians)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dx06<sp/>=<sp/>+0.1750<sp/>*<sp/><ref refid="_c_i_r_f_8cpp_1aaf2d6ce49301fb872ab8cca3bc003a2a" kindref="member">DMAS2R</ref>;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dy06<sp/>=<sp/>-0.2259<sp/>*<sp/><ref refid="_c_i_r_f_8cpp_1aaf2d6ce49301fb872ab8cca3bc003a2a" kindref="member">DMAS2R</ref>;</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>tt<sp/>=<sp/>anInstant.getModifiedJulianDate(Scale::TT);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>CIP<sp/>corrections</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="270"><highlight class="normal"></highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CIP<sp/>and<sp/>CIO,<sp/>IAU<sp/>2006/2000A</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y;</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>CIRF::ComputeCIPCoordinates(tt,<sp/>x,<sp/>y,<sp/>s,<sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a03ec16a222ce78b0f2d53529da0af149" kindref="member">CIRF::IsXysInterpolationEnabled</ref>());</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CIP<sp/>offsets<sp/>wrt<sp/>IAU<sp/>2006/2000A<sp/>(mas-&gt;radians)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"></highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>dx06<sp/>=<sp/>+0.1750<sp/>*<sp/><ref refid="_c_i_r_f_8cpp_1aaf2d6ce49301fb872ab8cca3bc003a2a" kindref="member">DMAS2R</ref>;</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>dy06<sp/>=<sp/>-0.2259<sp/>*<sp/><ref refid="_c_i_r_f_8cpp_1aaf2d6ce49301fb872ab8cca3bc003a2a" kindref="member">DMAS2R</ref>;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>+=<sp/>dx06;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>+=<sp/>dy06;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GCRS<sp/>to<sp/>CIRS<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rc2i[3][3];<sp/><sp/></highlight><highlight class="comment">//<sp/>dcm_CIRS_GCRS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>iauC2ixys(x,<sp/>y,<sp/>s,<sp/>rc2i);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>GCRF_x_CIRF<sp/>=<sp/>Vector3d(rc2i[0][0],<sp/>rc2i[1][0],<sp/>rc2i[2][0]).normalized();</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>GCRF_y_CIRF<sp/>=<sp/>Vector3d(rc2i[0][1],<sp/>rc2i[1][1],<sp/>rc2i[2][1]).normalized();</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>GCRF_z_CIRF<sp/>=<sp/>Vector3d(rc2i[0][2],<sp/>rc2i[1][2],<sp/>rc2i[2][2]).normalized();</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"></highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>CIP<sp/>corrections</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RotationMatrix<sp/>dcm_CIRF_GCRF<sp/>=<sp/>RotationMatrix::Columns(GCRF_x_CIRF,<sp/>GCRF_y_CIRF,<sp/>GCRF_z_CIRF);</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>+=<sp/>dx06;</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>+=<sp/>dy06;</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GCRS<sp/>to<sp/>CIRS<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>x_CIRF_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>v_CIRF_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
 <codeline lineno="290"><highlight class="normal"></highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>rc2i[3][3];<sp/><sp/></highlight><highlight class="comment">//<sp/>dcm_CIRS_GCRS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>iauC2ixys(x,<sp/>y,<sp/>s,<sp/>rc2i);</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>GCRF_x_CIRF<sp/>=<sp/>Vector3d(rc2i[0][0],<sp/>rc2i[1][0],<sp/>rc2i[2][0]).normalized();</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>GCRF_y_CIRF<sp/>=<sp/>Vector3d(rc2i[0][1],<sp/>rc2i[1][1],<sp/>rc2i[2][1]).normalized();</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>GCRF_z_CIRF<sp/>=<sp/>Vector3d(rc2i[0][2],<sp/>rc2i[1][2],<sp/>rc2i[2][2]).normalized();</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RotationMatrix<sp/>dcm_CIRF_GCRF<sp/>=<sp/>RotationMatrix::Columns(GCRF_x_CIRF,<sp/>GCRF_y_CIRF,<sp/>GCRF_z_CIRF);</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Output</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>x_CIRF_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>v_CIRF_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quaternion<sp/>q_CIRF_GCRF<sp/>=<sp/>Quaternion::RotationMatrix(dcm_CIRF_GCRF).rectify();</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>w_CIRF_GCRF_in_CIRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a8e387cfe3c21cf12b8447854d0ca3548" kindref="member">Transform::Passive</ref>(anInstant,<sp/>x_CIRF_GCRF,<sp/>v_CIRF_GCRF,<sp/>q_CIRF_GCRF,<sp/>w_CIRF_GCRF_in_CIRF);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quaternion<sp/>q_CIRF_GCRF<sp/>=<sp/>Quaternion::RotationMatrix(dcm_CIRF_GCRF).rectify();</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>w_CIRF_GCRF_in_CIRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform_1a8e387cfe3c21cf12b8447854d0ca3548" kindref="member">Transform::Passive</ref>(anInstant,<sp/>x_CIRF_GCRF,<sp/>v_CIRF_GCRF,<sp/>q_CIRF_GCRF,<sp/>w_CIRF_GCRF_in_CIRF);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a03ec16a222ce78b0f2d53529da0af149" kindref="member">CIRF::IsXysInterpolationEnabled</ref>()</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>xysInterpolationEnabledFlag().load();</highlight></codeline>
+<codeline lineno="300"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1ad6d8df253a3d0975ef4b201a1068d4ab" kindref="member">CIRF::SetXysInterpolationEnabled</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>anInterpolationEnabledFlag)</highlight></codeline>
+<codeline lineno="303"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>xysInterpolationEnabledFlag().store(anInterpolationEnabledFlag);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1aab7fe8cc2ebbcada6ba505c5352e6adf" kindref="member">CIRF::ClearXysCache</ref>()</highlight></codeline>
+<codeline lineno="308"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>XysGrid::Clear();</highlight></codeline>
 <codeline lineno="310"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1a03ec16a222ce78b0f2d53529da0af149" kindref="member">CIRF::IsXysInterpolationEnabled</ref>()</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CIRF::ComputeCIPCoordinates(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>aModifiedJulianDate_TT,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>s,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>interpolate)</highlight></codeline>
 <codeline lineno="313"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>xysInterpolationEnabledFlag().load();</highlight></codeline>
-<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"></highlight></codeline>
-<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1ad6d8df253a3d0975ef4b201a1068d4ab" kindref="member">CIRF::SetXysInterpolationEnabled</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>anInterpolationEnabledFlag)</highlight></codeline>
-<codeline lineno="318"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>xysInterpolationEnabledFlag().store(anInterpolationEnabledFlag);</highlight></codeline>
-<codeline lineno="320"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"></highlight></codeline>
-<codeline lineno="322"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_c_i_r_f_1aab7fe8cc2ebbcada6ba505c5352e6adf" kindref="member">CIRF::ClearXysCache</ref>()</highlight></codeline>
-<codeline lineno="323"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>XysGrid::Clear();</highlight></codeline>
-<codeline lineno="325"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"></highlight></codeline>
-<codeline lineno="327"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CIRF::ComputeCIPCoordinates(</highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real&amp;<sp/>aModifiedJulianDate_TT,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>y,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>s,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>interpolate</highlight></codeline>
-<codeline lineno="329"><highlight class="normal">)</highlight></codeline>
-<codeline lineno="330"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>djmjd0<sp/>=<sp/>2400000.5;</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"></highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(interpolate)</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>XysGrid::Evaluate(aModifiedJulianDate_TT,<sp/>x,<sp/>y,<sp/>s);</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iauXys06a(djmjd0,<sp/>aModifiedJulianDate_TT,<sp/>&amp;x,<sp/>&amp;y,<sp/>&amp;s);</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="341"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"></highlight></codeline>
-<codeline lineno="343"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>provider</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="344"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="345"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="346"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="347"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>djmjd0<sp/>=<sp/>2400000.5;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(interpolate)</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>XysGrid::Evaluate(aModifiedJulianDate_TT,<sp/>x,<sp/>y,<sp/>s);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iauXys06a(djmjd0,<sp/>aModifiedJulianDate_TT,<sp/>&amp;x,<sp/>&amp;y,<sp/>&amp;s);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>provider</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.cpp"/>
   </compounddef>

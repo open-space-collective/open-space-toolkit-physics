@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="201" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="201" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="174" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="160" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="155" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="138" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="118" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1ab44f53d6e046fb5d436b90128aff0850" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="163" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="160" bodyend="160"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="141" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="123" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a399257ac86e7f0112a702141e0e2e4a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model" kindref="compound">Model</ref> *</type>
@@ -77,28 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="168" column="19"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1ae3db912ed98ddebf5baee717ef75197c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool ostk::physics::environment::gravitational::Model::isDefined</definition>
-        <argsstring>() const =0</argsstring>
-        <name>isDefined</name>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_spherical_1a2cae24e92b19dbba581cfd53c80996a2">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_sun_1ac45193bd4e61dbf93d38319f4d7842dc">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_moon_1a5de9cc287bc744b58b0070415523c9f2">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_earth_1abbe5c7a3e6fc2639c902ef9453d1435b">isDefined</reimplementedby>
-        <briefdescription>
-<para>Check if the gravitational model is defined (pure virtual) </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>True if the gravitational model is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="173" column="18"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="146" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1abffbe823d0a3f7a7318f6c3be9049a23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -121,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="182" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="162" bodyend="165"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="155" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="125" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a5ef3b4ddf4240e8a26553294fe392581" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Vector3d</type>
@@ -167,11 +146,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="189" column="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="162" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a8427bc33c74fec9fb5f2e8e8d90951ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref></type>
-        <definition>Model::Parameters ostk::physics::environment::gravitational::Model::getParameters</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1aa989c12c1e9240b3af452deb7d653d08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="structostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1_1_parameters" kindref="compound">Parameters</ref> &amp;</type>
+        <definition>const Model::Parameters &amp; ostk::physics::environment::gravitational::Model::getParameters</definition>
         <argsstring>() const</argsstring>
         <name>getParameters</name>
         <briefdescription>
@@ -186,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="198" column="16" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="167" bodyend="170"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="171" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp" bodystart="130" bodyend="133"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -223,12 +202,11 @@
         <link refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model"/>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="39" bodyend="202"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.hpp" bodystart="35" bodyend="175"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a399257ac86e7f0112a702141e0e2e4a7" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a5ef3b4ddf4240e8a26553294fe392581" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>getFieldValueAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a8427bc33c74fec9fb5f2e8e8d90951ae" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>getParameters</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1ae3db912ed98ddebf5baee717ef75197c" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1aa989c12c1e9240b3af452deb7d653d08" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>getParameters</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1abffbe823d0a3f7a7318f6c3be9049a23" prot="public" virt="virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>isPointMass</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1a9d98958336517d512355d7d02b03a731" prot="public" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>Model</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1gravitational_1_1_model_1ae546c57311c3ec184261fb9dd52c853a" prot="private" virt="non-virtual"><scope>ostk::physics::environment::gravitational::Model</scope><name>parameters_</name></member>

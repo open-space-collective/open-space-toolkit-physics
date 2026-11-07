@@ -9,13 +9,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" prot="public" static="no" strong="yes">
         <type></type>
         <name>Type</name>
-        <enumvalue id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6a7627ce84eadbc3098e818fa89b368c2c" prot="public">
           <name>Dipole</name>
           <briefdescription>
@@ -86,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" bodystart="41" bodyend="59"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="42" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" bodystart="41" bodyend="58"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -101,23 +94,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="134" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" bodystart="132" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="124" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ade6f1fc6f3a69543e2bb1921aa8168c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a86bd62bb2cb168993d47d4643a445f53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::environment::magnetic::Earth::Earth</definition>
-        <argsstring>(const Earth::Type &amp;aType, const Directory &amp;aDataDirectory=Directory::Undefined())</argsstring>
+        <argsstring>(const Earth::Type &amp;aType, const std::optional&lt; Directory &gt; &amp;aDataDirectory=std::nullopt)</argsstring>
         <name>Earth</name>
         <param>
           <type>const <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref> &amp;</type>
           <declname>aType</declname>
         </param>
         <param>
-          <type>const Directory &amp;</type>
+          <type>const std::optional&lt; Directory &gt; &amp;</type>
           <declname>aDataDirectory</declname>
-          <defval>Directory::Undefined()</defval>
+          <defval>std::nullopt</defval>
         </param>
         <briefdescription>
 <para>Constructor. </para>
@@ -146,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="69" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="248" bodyend="252"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="68" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="245" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a0d12c37ce2e12e778a01d5c79dcfd355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -176,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="78" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="254" bodyend="261"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="77" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="251" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ad7ce781762b59980fb255b3b2a3f6aca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> &amp;</type>
@@ -208,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="88" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="263" bodyend="275"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="87" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="260" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a980e325b00a1dc56103d18c3199d0e33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -222,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="91" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="277" bodyend="277"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="90" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="274" bodyend="274"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ac4b57f94304595595fc3eebb0dd0d050" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> *</type>
@@ -242,27 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="100" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="279" bodyend="282"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a319888830792f1153dd77bc37bf89492" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::environment::magnetic::Earth::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1ad272cd7b1f326266c03f996a239a1c6e">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> magnetic model is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">bool<sp/>isDefined<sp/>=<sp/>earthMag.isDefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth" kindref="compound">Earth</ref> magnetic model is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="109" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="284" bodyend="292"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="99" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="276" bodyend="279"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a20952c06c726e4f89f2f8184653ea74e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" kindref="member">Earth::Type</ref></type>
@@ -281,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="118" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="294" bodyend="297"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="108" column="17" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="281" bodyend="284"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a2f39ff75c4a674b6720b27c2c6a0b930" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Vector3d</type>
@@ -326,7 +299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="129" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="299" bodyend="302"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="119" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.cpp" bodystart="286" bodyend="289"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -359,15 +332,14 @@
         <link refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" bodystart="38" bodyend="135"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth.hpp" bodystart="38" bodyend="125"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ac4b57f94304595595fc3eebb0dd0d050" prot="public" virt="virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ade6f1fc6f3a69543e2bb1921aa8168c5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>Earth</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a86bd62bb2cb168993d47d4643a445f53" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>Earth</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a0d12c37ce2e12e778a01d5c79dcfd355" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>Earth</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a2f39ff75c4a674b6720b27c2c6a0b930" prot="public" virt="virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>getFieldValueAt</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a20952c06c726e4f89f2f8184653ea74e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>getType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a591adb40ac460b63103152606270d930" prot="private" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>implUPtr_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a319888830792f1153dd77bc37bf89492" prot="public" virt="virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_model_1a50d6421402d4f67aa9c45e9be5f27d30" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>Model</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1ad7ce781762b59980fb255b3b2a3f6aca" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>operator=</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1magnetic_1_1_earth_1a30a064d87b6fce338e76aebd3043b6b6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::magnetic::Earth</scope><name>Type</name></member>

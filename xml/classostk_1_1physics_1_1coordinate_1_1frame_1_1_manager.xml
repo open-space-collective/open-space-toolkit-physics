@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="179" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="179" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="181" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" prot="private" static="no" mutable="no">
         <type>Map&lt; String, Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="180" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="180" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="182" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a8a72adc24738214445c553a78295ca3d" prot="private" static="no" mutable="no">
         <type>Map&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> *, Map&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> *, Map&lt; <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>, <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &gt; &gt; &gt;</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="182" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="182" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="184" column="9" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a33ddf1a08b6a8a2d85d752c0ba7ae754" prot="private" static="no" mutable="yes">
         <type>std::mutex</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="184" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="184" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="186" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="186" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="41" column="5"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="42" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ad1bf0d565112eac93b3fce6639629341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager" kindref="compound">Manager</ref> &amp;</type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="43" column="13"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="44" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7963c97f063b5cdd276f3ffd375ef8e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -122,22 +122,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="54" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="17" bodyend="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="55" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="17" bodyend="22"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aac7fb7d84fa6cb1d41019c4e5d0d617f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ae36518cb66fddafa02daaee62f1fc035" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
-        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::frame::Manager::accessFrameWithName</definition>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::frame::Manager::getFrameWithName</definition>
         <argsstring>(const String &amp;aFrameName) const</argsstring>
-        <name>accessFrameWithName</name>
+        <name>getFrameWithName</name>
         <param>
           <type>const String &amp;</type>
           <declname>aFrameName</declname>
         </param>
         <briefdescription>
-<para>Access frame with the given name. </para>
+<para>Get frame with the given name. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Shared&lt;const<sp/>Frame&gt;<sp/>frameSPtr<sp/>=<sp/>Manager::Get().accessFrameWithName(&quot;GCRF&quot;);</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">Shared&lt;const<sp/>Frame&gt;<sp/>frameSPtr<sp/>=<sp/>Manager::Get().getFrameWithName(&quot;GCRF&quot;);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="65" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="24" bodyend="38"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="66" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="24" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac1cce20258b585f4c70ca4fae3048c6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; String &gt;</type>
@@ -173,13 +173,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="40" bodyend="51"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="76" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="40" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a0f5bd33bc74842d47f58cfcd675860ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
-        <definition>const Transform ostk::physics::coordinate::frame::Manager::accessCachedTransform</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a892c8737ea35707328ea80c6b27f73d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref> &gt;</type>
+        <definition>std::optional&lt; Transform &gt; ostk::physics::coordinate::frame::Manager::getCachedTransform</definition>
         <argsstring>(const Shared&lt; const Frame &gt; &amp;aFromFrameSPtr, const Shared&lt; const Frame &gt; &amp;aToFrameSPtr, const Instant &amp;anInstant) const</argsstring>
-        <name>accessCachedTransform</name>
+        <name>getCachedTransform</name>
         <param>
           <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
           <declname>aFromFrameSPtr</declname>
@@ -193,10 +193,11 @@
           <declname>anInstant</declname>
         </param>
         <briefdescription>
-<para>Access a cached transform between two frames at a given instant. </para>
+<para>Get a cached transform between two frames at a given instant. </para>
         </briefdescription>
         <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Transform<sp/>transform<sp/>=<sp/>Manager::Get().accessCachedTransform(fromFrameSPtr,<sp/>toFrameSPtr,<sp/>instant);</highlight></codeline>
+<para><programlisting><codeline><highlight class="normal">std::optional&lt;Transform&gt;<sp/>transform<sp/>=<sp/>Manager::Get().getCachedTransform(fromFrameSPtr,<sp/>toFrameSPtr,</highlight></codeline>
+<codeline><highlight class="normal">instant);</highlight></codeline>
 </programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -223,13 +224,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The cached transform </para>
+<simplesect kind="return"><para>The cached transform, or std::nullopt if there is none </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="88" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="53" bodyend="77"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="90" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="53" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a402814124348fc9217912a83dd29dda6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -259,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="100" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="79" bodyend="92"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="102" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="79" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1b87264403a57572eb08f590bc6a85e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -289,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="110" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="94" bodyend="131"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="112" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="94" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7fb97e9337d1df702d4e92c45655fd3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -305,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="118" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="133" bodyend="139"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="120" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="133" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aad244181e43540dcb967652f92f99d62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -371,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="141" bodyend="179"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="133" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="141" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac4c770bc1d88122128e9bee40bc2c961" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Size</type>
@@ -390,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="146" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="181" bodyend="186"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="148" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="181" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a1cc9f57ac5406f7d25447ff2cb73958e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -423,7 +424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="166" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="188" bodyend="211"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="168" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="188" bodyend="211"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -444,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="176" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="213" bodyend="240"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="178" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="213" bodyend="240"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -463,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="186" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="242" bodyend="245"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="188" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.cpp" bodystart="242" bodyend="245"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -471,16 +472,16 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="38" bodyend="187"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp" bodystart="39" bodyend="189"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a0f5bd33bc74842d47f58cfcd675860ee" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>accessCachedTransform</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aac7fb7d84fa6cb1d41019c4e5d0d617f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>accessFrameWithName</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1aad244181e43540dcb967652f92f99d62" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>addCachedTransform</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a402814124348fc9217912a83dd29dda6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>addFrame</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7fb97e9337d1df702d4e92c45655fd3a" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>clearAllFrames</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a73ebd2868ab445889c31cb4864d7ba3c" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>frameMap_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a96bac91e86c805cbab50135642b010cf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Get</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac1cce20258b585f4c70ca4fae3048c6c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getAllFrameNames</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a892c8737ea35707328ea80c6b27f73d9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getCachedTransform</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ae36518cb66fddafa02daaee62f1fc035" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getFrameWithName</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ac4c770bc1d88122128e9bee40bc2c961" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>getMaxTransformCacheSize</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1a7963c97f063b5cdd276f3ffd375ef8e4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>hasFrameWithName</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_manager_1ab05b65e241c0caa4c90518b1722a9522" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::Manager</scope><name>Manager</name></member>

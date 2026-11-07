@@ -11,10 +11,13 @@ ostk.physics.time.Duration
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Duration.between
       ~Duration.days
@@ -37,7 +40,6 @@ ostk.physics.time.Duration
       ~Duration.in_seconds
       ~Duration.in_unit
       ~Duration.in_weeks
-      ~Duration.is_defined
       ~Duration.is_near
       ~Duration.is_positive
       ~Duration.is_strictly_positive
@@ -50,12 +52,7 @@ ostk.physics.time.Duration
       ~Duration.seconds
       ~Duration.to_string
       ~Duration.to_timedelta
-      ~Duration.undefined
       ~Duration.weeks
       ~Duration.zero
-   
-   
-
-   
    
    

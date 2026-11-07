@@ -11,20 +11,17 @@ ostk.physics.data.Scalar
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Scalar.get_unit
       ~Scalar.get_value
       ~Scalar.in_unit
-      ~Scalar.is_defined
       ~Scalar.to_string
-      ~Scalar.undefined
-   
-   
-
-   
    
    

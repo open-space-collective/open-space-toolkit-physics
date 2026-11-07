@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="83" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="83" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="65" column="24" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="19" bodyend="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="40" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="19" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abef48108a6ec9b766ee7efb0e2ae8983" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="43" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="24" bodyend="24"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="43" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="28" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> *</type>
@@ -98,27 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="52" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="26" bodyend="29"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abf6833cfa8b876455d4d4fdb9eaeab7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::Dynamic::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="61" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="31" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="52" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="30" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a844779f3cac6a69327616a2979f91230" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -151,28 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="71" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="36" bodyend="44"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a005d71aa18b817a3285bf9514b742aae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref></type>
-        <definition>Dynamic ostk::physics::coordinate::frame::provider::Dynamic::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Create an undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Dynamic<sp/>provider<sp/>=<sp/>Dynamic::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>An undefined <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic" kindref="compound">Dynamic</ref> provider </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="80" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="46" bodyend="49"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="62" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.cpp" bodystart="35" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -204,16 +163,14 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="27" bodyend="84"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" line="28" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp" bodystart="27" bodyend="66"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1afd7b850c8a34742f9771f9dad5c374aa" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a62e97f92fe5d66a227640502afbeb173" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>Dynamic</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a0f35a059e87a62b45a8db95047e82a6e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>Generator</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1af0b1d7152cc3ef973cc461a860a09bf7" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>generator_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a844779f3cac6a69327616a2979f91230" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>getTransformAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abf6833cfa8b876455d4d4fdb9eaeab7a" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>Provider</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1a005d71aa18b817a3285bf9514b742aae" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_dynamic_1abef48108a6ec9b766ee7efb0e2ae8983" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>~Dynamic</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::Dynamic</scope><name>~Provider</name></member>
     </listofallmembers>

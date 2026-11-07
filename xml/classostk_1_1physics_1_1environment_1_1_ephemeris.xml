@@ -53,34 +53,15 @@
         </inbodydescription>
         <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="38" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1a1b1722954d5794996c1c3de88c27a90d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool ostk::physics::environment::Ephemeris::isDefined</definition>
-        <argsstring>() const =0</argsstring>
-        <name>isDefined</name>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical_1ad77bc0d850afe8a97842b64debb882c6">isDefined</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a4b3e2fbd554ed026c092a4350c984380">isDefined</reimplementedby>
-        <briefdescription>
-<para>Check if the ephemeris is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>True if the ephemeris is defined. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="43" column="18"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1aba61e3f69e9c699881b7660d20748078" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1_ephemeris_1a5c931c2d29d1177a5245edf940b3ef6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
-        <definition>virtual Shared&lt;const Frame&gt; ostk::physics::environment::Ephemeris::accessFrame</definition>
+        <definition>virtual Shared&lt;const Frame&gt; ostk::physics::environment::Ephemeris::getFrame</definition>
         <argsstring>() const =0</argsstring>
-        <name>accessFrame</name>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical_1aba34347b58af9844c5194b2c4ff2b600">accessFrame</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1a20ac67ae6289a4678663e3313a494bff">accessFrame</reimplementedby>
+        <name>getFrame</name>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_analytical_1a87bdf152282d7ca1f04620a81a6c5c6b">getFrame</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1environment_1_1ephemeris_1_1_s_p_i_c_e_1ad417dbc47c741ae5fbfb47c0e5bf0ce8">getFrame</reimplementedby>
         <briefdescription>
-<para>Access the reference frame of the ephemeris. </para>
+<para>Get the reference frame of the ephemeris. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>Shared pointer to the reference frame. </para>
@@ -89,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="48" column="20"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="43" column="20"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -116,12 +97,11 @@
         <link refid="classostk_1_1physics_1_1environment_1_1_ephemeris"/>
       </node>
     </inheritancegraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="27" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" bodystart="26" bodyend="49"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" line="27" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Ephemeris.hpp" bodystart="26" bodyend="44"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aba61e3f69e9c699881b7660d20748078" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>accessFrame</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1abe95fecc4079240c1acf319afc1d4c54" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1adca036598a400a752ad05a574b6ce515" prot="public" virt="non-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>Ephemeris</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1a1b1722954d5794996c1c3de88c27a90d" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>isDefined</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1a5c931c2d29d1177a5245edf940b3ef6a" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>getFrame</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_ephemeris_1aca1678bb452dcd9d989ab9d326d2d430" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::Ephemeris</scope><name>~Ephemeris</name></member>
     </listofallmembers>
   </compounddef>

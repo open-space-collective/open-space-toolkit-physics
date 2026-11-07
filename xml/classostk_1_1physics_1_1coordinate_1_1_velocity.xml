@@ -7,13 +7,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" prot="public" static="no" strong="yes">
         <type></type>
         <name>Unit</name>
-        <enumvalue id="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6a0af408165b5f88fcd7b687312b754ade" prot="public">
           <name>MeterPerSecond</name>
           <briefdescription>
@@ -27,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="43" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="42" bodyend="48"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="39" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="38" bodyend="43"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -42,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="200" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="200" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="168" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a10d08a1d98b44e1448de2870fcc3c665" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref></type>
@@ -55,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="201" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="201" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="169" column="20" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a02c1f443297be4852631126957e3366b" prot="private" static="no" mutable="no">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -68,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="202" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="202" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="170" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -124,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="59" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="16" bodyend="21"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="54" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="15" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a985cc2deff380771c8b07a79f4bec1da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -156,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="69" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="23" bodyend="32"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="64" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="26" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1af43356b678fb27fb9b1e1c74e9c1f2bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -188,68 +181,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="79" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="34" bodyend="37"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="74" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="32" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1af02ff027f2a9ce65f5ca406c6e60fe65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::Velocity::isDefined</definition>
-        <argsstring>() const</argsstring>
-        <name>isDefined</name>
-        <briefdescription>
-<para>Check if the velocity is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Velocity::Undefined().isDefined();<sp/>//<sp/>False</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the velocity is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="99" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="57" bodyend="61"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a75a95bf7f107c88423668bc3cb34a975" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab6e1b0a0e2d53b4f607f7d41452ad246" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
-        <definition>const Vector3d &amp; ostk::physics::coordinate::Velocity::accessCoordinates</definition>
-        <argsstring>() const</argsstring>
-        <name>accessCoordinates</name>
-        <briefdescription>
-<para>Access coordinates. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">velocity.accessCoordinates();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Reference to coordinates </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="108" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="63" bodyend="71"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a4b17ed16bbf477c26d2a3a585295a75e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
-        <definition>Shared&lt; const Frame &gt; ostk::physics::coordinate::Velocity::accessFrame</definition>
-        <argsstring>() const</argsstring>
-        <name>accessFrame</name>
-        <briefdescription>
-<para>Access frame. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">velocity.accessFrame();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Shared pointer to the frame </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="117" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="73" bodyend="81"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a0f837073e7496024d0f61322c9aec678" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Vector3d</type>
-        <definition>Vector3d ostk::physics::coordinate::Velocity::getCoordinates</definition>
+        <definition>const Vector3d &amp; ostk::physics::coordinate::Velocity::getCoordinates</definition>
         <argsstring>() const</argsstring>
         <name>getCoordinates</name>
         <briefdescription>
@@ -258,13 +194,32 @@
         <detaileddescription>
 <para><programlisting><codeline><highlight class="normal">velocity.getCoordinates();</highlight></codeline>
 </programlisting></para>
-<para><simplesect kind="return"><para>Coordinates </para>
+<para><simplesect kind="return"><para>Const reference to coordinates </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="126" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="83" bodyend="91"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="94" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a33c7a9f12af35648aeedfe717f5eed3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt; &amp;</type>
+        <definition>const Shared&lt; const Frame &gt; &amp; ostk::physics::coordinate::Velocity::getFrame</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrame</name>
+        <briefdescription>
+<para>Get frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><programlisting><codeline><highlight class="normal">velocity.getFrame();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="return"><para>Const reference to the shared pointer to the frame </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="103" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6b3e3347b338ddc3f5ee4569518bcb8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" kindref="member">Velocity::Unit</ref></type>
@@ -283,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="135" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="93" bodyend="101"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="112" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac3dcba2ce6ffdc2f46bb3080f713e842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
@@ -315,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="145" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="103" bodyend="119"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="122" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="65" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1af2e2d35e94d7a80e7e927a18fd0b6743" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
@@ -371,17 +326,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="157" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="121" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="134" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="73" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a07e9c679e6f1a4602bc69d296291d2b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a8505f2aeb254d0f8ce4cd81d50db2768" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
         <definition>String ostk::physics::coordinate::Velocity::toString</definition>
-        <argsstring>(const Integer &amp;aPrecision=DEFAULT_PRECISION) const</argsstring>
+        <argsstring>(int aPrecision=-1) const</argsstring>
         <name>toString</name>
         <param>
-          <type>const Integer &amp;</type>
+          <type>int</type>
           <declname>aPrecision</declname>
-          <defval><ref refid="_velocity_8hpp_1a6d81881a7883657dbc659ca545d9085d" kindref="member">DEFAULT_PRECISION</ref></defval>
+          <defval>-1</defval>
         </param>
         <briefdescription>
 <para>Convert velocity to string. </para>
@@ -404,7 +359,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="167" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="142" bodyend="155"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="144" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="89" bodyend="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -450,29 +405,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="90" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="39" bodyend="55"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="85" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="37" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab86bcae72f867df96e25055471fe3a03" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
-        <definition>Velocity ostk::physics::coordinate::Velocity::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-<para>Construct an undefined velocity. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">Velocity<sp/>velocity<sp/>=<sp/>Velocity::Undefined();</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>Undefined velocity </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="176" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="157" bodyend="160"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1a175b53534c1c6038dda85be4ffb5b323" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
         <definition>Velocity ostk::physics::coordinate::Velocity::MetersPerSecond</definition>
@@ -515,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="187" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="162" bodyend="165"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="155" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="99" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
@@ -547,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="197" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="167" bodyend="183"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="165" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="104" bodyend="117"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -566,7 +502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="204" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="185" bodyend="204"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="172" column="26" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="119" bodyend="133"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -574,25 +510,22 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="39" bodyend="205"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" line="36" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp" bodystart="35" bodyend="173"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a75a95bf7f107c88423668bc3cb34a975" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>accessCoordinates</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a4b17ed16bbf477c26d2a3a585295a75e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>accessFrame</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ae66af1df68590bfc69c5ea388ef61bdb" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>coordinates_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a227acaa975d6292b80076c028abc7732" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>DerivedUnitFromVelocityUnit</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a02c1f443297be4852631126957e3366b" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>frameSPtr_</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a0f837073e7496024d0f61322c9aec678" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>getCoordinates</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab6e1b0a0e2d53b4f607f7d41452ad246" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>getCoordinates</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a33c7a9f12af35648aeedfe717f5eed3f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>getFrame</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6b3e3347b338ddc3f5ee4569518bcb8f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>getUnit</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af2e2d35e94d7a80e7e927a18fd0b6743" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>inFrame</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac3dcba2ce6ffdc2f46bb3080f713e842" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>inUnit</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af02ff027f2a9ce65f5ca406c6e60fe65" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a175b53534c1c6038dda85be4ffb5b323" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>MetersPerSecond</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af43356b678fb27fb9b1e1c74e9c1f2bf" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>operator!=</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab3987a176df736aa7fa50aa763ed068b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>operator&lt;&lt;</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a985cc2deff380771c8b07a79f4bec1da" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>operator==</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ac92dddf5e0fdbc8d8e3fed51b82c138d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>StringFromUnit</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a07e9c679e6f1a4602bc69d296291d2b1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>toString</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1ab86bcae72f867df96e25055471fe3a03" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>Undefined</name></member>
+      <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a8505f2aeb254d0f8ce4cd81d50db2768" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>toString</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1af1de817b803b9037f50883cd82ea5be6" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>Unit</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a10d08a1d98b44e1448de2870fcc3c665" prot="private" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>unit_</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1_velocity_1a6a26dc0553e726f6d11bfd2154e78698" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::Velocity</scope><name>Velocity</name></member>

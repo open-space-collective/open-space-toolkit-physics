@@ -11,16 +11,14 @@ ostk.physics.coordinate.Transform
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
-      ~Transform.access_angular_velocity
-      ~Transform.access_instant
-      ~Transform.access_orientation
-      ~Transform.access_translation
-      ~Transform.access_velocity
       ~Transform.active
       ~Transform.apply_to_position
       ~Transform.apply_to_vector
@@ -32,13 +30,7 @@ ostk.physics.coordinate.Transform
       ~Transform.get_translation
       ~Transform.get_velocity
       ~Transform.identity
-      ~Transform.is_defined
       ~Transform.is_identity
       ~Transform.passive
-      ~Transform.undefined
-   
-   
-
-   
    
    

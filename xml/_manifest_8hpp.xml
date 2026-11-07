@@ -18,58 +18,53 @@
       <node id="3">
         <label>OpenSpaceToolkit/Core/Container/Dictionary.hpp</label>
       </node>
-      <node id="13">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="10">
+      <node id="11">
         <label>functional</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>boost/functional/hash.hpp</label>
       </node>
       <node id="8">
         <label>OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</label>
         <link refid="_kernel_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="21">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -78,7 +73,7 @@
       <node id="14">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -86,18 +81,18 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="5">
         <label>OpenSpaceToolkit/Core/FileSystem/File.hpp</label>
       </node>
-      <node id="9">
+      <node id="10">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -107,43 +102,39 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
-        <link refid="_unit_2_unit_8hpp"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+      </node>
+      <node id="19">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="9">
         <label>optional</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
       <node id="6">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
       </node>
       <node id="15">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -168,15 +159,13 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="16">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -300,34 +289,30 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1ad645f3ce7c70893222feb318f66cb8fa" kindref="member">operator&lt;&lt;</ref>(std::ostream&amp;<sp/>anOutputStream,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>&amp;<sp/>aManifest);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a9e67111d3340dc709dafaad52fdae8d0" kindref="member">isDefined</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a837386d66587da5b9152cb3cefe1b596" kindref="member">getLastModifiedTimestamp</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1ae48a7367e7c0af23b626726a60b9ba03" kindref="member">getLastModifiedTimestamp</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" kindref="member">getLastUpdateTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1ad0cb18f62d58be9e11b3b03947dd85a7" kindref="member">getNextUpdateCheckTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" kindref="member">getRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aBaseUrl,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" kindref="member">findRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aBaseUrl,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataNameRegexString)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a5e36e090d78431bbd50a9284d7d25c73" kindref="member">Undefined</ref>();</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a478db942042993efd3dccbb36fd811a0" kindref="member">Load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File&amp;<sp/>aFile);</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>Dictionary<sp/>dictionary_;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/>lastModifiedTimestamp_;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>();</highlight></codeline>
-<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>data</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" kindref="member">getLastUpdateTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1ad0cb18f62d58be9e11b3b03947dd85a7" kindref="member">getNextUpdateCheckTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" kindref="member">getRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aBaseUrl,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" kindref="member">findRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aBaseUrl,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataNameRegexString)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a478db942042993efd3dccbb36fd811a0" kindref="member">Load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File&amp;<sp/>aFile);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>Dictionary<sp/>dictionary_;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref><sp/>lastModifiedTimestamp_;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest" kindref="compound">Manifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>aLastModifiedTimestamp);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Data/Manifest.hpp"/>
   </compounddef>

@@ -11,17 +11,6 @@ ostk.physics.environment.gravitational.Moon
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-      ~Moon.get_field_value_at
-      ~Moon.get_parameters
-      ~Moon.get_type
-      ~Moon.is_defined
-      ~Moon.is_point_mass
-   
    
 
    
@@ -30,6 +19,10 @@ ostk.physics.environment.gravitational.Moon
 
    .. autosummary::
    
+      ~Moon.get_field_value_at
+      ~Moon.get_parameters
+      ~Moon.get_type
+      ~Moon.is_point_mass
       ~Moon.spherical
    
    

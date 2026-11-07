@@ -16,19 +16,22 @@ ostk.physics.Unit
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Unit.derived
       ~Unit.get_type
-      ~Unit.is_defined
       ~Unit.is_none
       ~Unit.length
       ~Unit.none
       ~Unit.ratio_to
       ~Unit.string_from_type
       ~Unit.to_string
-      ~Unit.undefined
-   
-   
-
-   
    
    

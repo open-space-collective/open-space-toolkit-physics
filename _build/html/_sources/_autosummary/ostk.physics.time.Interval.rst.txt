@@ -11,10 +11,13 @@ ostk.physics.time.Interval
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Interval.centered
       ~Interval.clip
@@ -35,7 +38,6 @@ ostk.physics.time.Interval
       ~Interval.half_open_left
       ~Interval.half_open_right
       ~Interval.intersects
-      ~Interval.is_defined
       ~Interval.is_degenerate
       ~Interval.logical_and
       ~Interval.logical_or
@@ -45,10 +47,5 @@ ostk.physics.time.Interval
       ~Interval.sort
       ~Interval.to_datetime_span
       ~Interval.to_string
-      ~Interval.undefined
-   
-   
-
-   
    
    

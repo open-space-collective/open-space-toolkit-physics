@@ -11,10 +11,13 @@ ostk.physics.time.Time
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Time.get_floating_seconds
       ~Time.get_hour
@@ -26,7 +29,6 @@ ostk.physics.time.Time
       ~Time.get_total_floating_hours
       ~Time.get_total_floating_seconds
       ~Time.hours
-      ~Time.is_defined
       ~Time.midnight
       ~Time.noon
       ~Time.parse
@@ -39,10 +41,5 @@ ostk.physics.time.Time
       ~Time.set_nanosecond
       ~Time.set_second
       ~Time.to_string
-      ~Time.undefined
-   
-   
-
-   
    
    

@@ -3,10 +3,10 @@
   <compounddef id="_environment_2_atmospheric_2_earth_2_manager_8hpp" kind="file" language="C++">
     <compoundname>Manager.hpp</compoundname>
     <includes local="no">mutex</includes>
+    <includes local="no">optional</includes>
     <includes local="no">OpenSpaceToolkit/Core/Container/Array.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/FileSystem/Directory.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Core/Type/Index.hpp</includes>
-    <includes local="no">OpenSpaceToolkit/Core/Type/Real.hpp</includes>
     <includes local="no">OpenSpaceToolkit/IO/URL.hpp</includes>
     <includes local="no">OpenSpaceToolkit/Mathematics/Object/Vector.hpp</includes>
     <includes refid="_c_s_s_i_space_weather_8hpp" local="no">OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.hpp</includes>
@@ -16,93 +16,84 @@
     <includedby refid="_environment_2_atmospheric_2_earth_2_manager_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.cpp</includedby>
     <includedby refid="_n_r_l_m_s_i_s_e00_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/NRLMSISE00.cpp</includedby>
     <incdepgraph>
-      <node id="4">
+      <node id="5">
         <label>OpenSpaceToolkit/Core/FileSystem/Directory.hpp</label>
       </node>
-      <node id="6">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="17">
+      <node id="16">
         <label>functional</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>filesystem</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="15">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
-        <link refid="_interval_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+      </node>
+      <node id="25">
+        <label>OpenSpaceToolkit/Physics/Time/Interval.hpp</label>
+        <link refid="_interval_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="7">
         <label>OpenSpaceToolkit/IO/URL.hpp</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -124,48 +115,44 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>OpenSpaceToolkit/Core/FileSystem/File.hpp</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="18">
         <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
         <link refid="_unit_2_unit_8hpp"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -173,65 +160,63 @@
         <link refid="_c_s_s_i_space_weather_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>OpenSpaceToolkit/Mathematics/Object/Interval.hpp</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="19">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="14">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+      </node>
+      <node id="12">
+        <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
+        <link refid="_date_8hpp"/>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="27">
-        <label>OpenSpaceToolkit/Mathematics/Object/Interval.hpp</label>
-      </node>
-      <node id="14">
-        <label>optional</label>
-      </node>
-      <node id="20">
-        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
-      </node>
-      <node id="15">
-        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
-      </node>
-      <node id="12">
-        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
-      </node>
-      <node id="13">
-        <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
-        <link refid="_date_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
         <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
         <link refid="_manager_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>OpenSpaceToolkit/Core/Type/Index.hpp</label>
       </node>
       <node id="2">
@@ -240,19 +225,17 @@
       <node id="8">
         <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
       </node>
-      <node id="3">
+      <node id="4">
         <label>OpenSpaceToolkit/Core/Container/Array.hpp</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -304,11 +287,11 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Array.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Index.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Real.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Container/Array.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Directory.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/Index.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/URL.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
@@ -336,80 +319,79 @@
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::container::Array;</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Directory;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Index;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::Real;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::object::Vector2d;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</ref>;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
-<codeline lineno="48" refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1aba8bd835dfc1472a9fdd9622f0ef4c00" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref>;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kindref="compound">Manager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref></highlight></codeline>
-<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a041cc6df9f5bb2dff5a675a4245d295e" kindref="member">getCSSISpaceWeatherDirectory</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a628552500a1cff9a13e5a28f13c9d4d7" kindref="member">getLoadedCSSISpaceWeather</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1af9322b786b15b85e9b9d31ffbee006a3" kindref="member">getCSSISpaceWeatherAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;Integer&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1abdc9fe89857a527509bb8ffd735f21fb" kindref="member">getKp3HourSolarIndicesAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;Integer&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a8f0775ae5fc4ee0a532c60d9964f149b" kindref="member">getAp3HourSolarIndicesAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>Integer<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a333ddc63ea4a6f2b6d070472702527c6" kindref="member">getApDailyIndexAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1ab5c96b5549c11d9e9526e8d133c3d771" kindref="member">getF107SolarFluxAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>Real<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a1479f97fa51cec5b805f9fb92487cf17" kindref="member">getF107SolarFlux81DayAvgAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1addd98227dfc221b1442a65f5130655f6" kindref="member">loadCSSISpaceWeather</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref>&amp;<sp/>aCSSISpaceWeather);</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a7d95b96aa8425eb30868611fd1d33e2c" kindref="member">fetchLatestCSSISpaceWeather</ref>();</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a272b446a93b9bc1408c0c8b8fe4adae7" kindref="member">reset</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a7191d76b36870885e52e4084d81a9239" kindref="member">Get</ref>();</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref><sp/>CSSISpaceWeather_;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kindref="compound">Manager</ref>();</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref>*<sp/>accessCSSISpaceWeatherAt_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>getLatestCSSISpaceWeatherFile_()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"></highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup_()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loadCSSISpaceWeather_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref>&amp;<sp/>aCSSISpaceWeather);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>fetchLatestCSSISpaceWeather_();</highlight></codeline>
-<codeline lineno="204"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>earth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>atmospheric</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::URL;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::object::Vector2d;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">ostk::physics::environment::atmospheric::earth::CSSISpaceWeather</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">ostk::physics::time::Duration</ref>;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="47" refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1aba8bd835dfc1472a9fdd9622f0ef4c00" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">ostk::physics::Manager</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kindref="compound">Manager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager" kindref="compound">BaseManager</ref></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a041cc6df9f5bb2dff5a675a4245d295e" kindref="member">getCSSISpaceWeatherDirectory</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;CSSISpaceWeather&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a074282f6fcc20236a33cac49ebb05945" kindref="member">getLoadedCSSISpaceWeather</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1af9322b786b15b85e9b9d31ffbee006a3" kindref="member">getCSSISpaceWeatherAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;int&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a588b8c8f0d2182802021d5c4d90c5e49" kindref="member">getKp3HourSolarIndicesAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>Array&lt;int&gt;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a3412689d4bd0e176b18486e4bd633f3f" kindref="member">getAp3HourSolarIndicesAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a8ac1494a1e54320a5cf67a0c94b6b080" kindref="member">getApDailyIndexAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a37765d79a2ba5abb022fec41d91892c2" kindref="member">getF107SolarFluxAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1af37cd6a6a25587f7614532b3a566753a" kindref="member">getF107SolarFlux81DayAvgAt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1addd98227dfc221b1442a65f5130655f6" kindref="member">loadCSSISpaceWeather</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref>&amp;<sp/>aCSSISpaceWeather);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a7d95b96aa8425eb30868611fd1d33e2c" kindref="member">fetchLatestCSSISpaceWeather</ref>();</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a272b446a93b9bc1408c0c8b8fe4adae7" kindref="member">reset</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kindref="compound">Manager</ref>&amp;<sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager_1a7191d76b36870885e52e4084d81a9239" kindref="member">Get</ref>();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;CSSISpaceWeather&gt;<sp/>CSSISpaceWeather_;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_manager" kindref="compound">Manager</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref>*<sp/>accessCSSISpaceWeatherAt_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>getLatestCSSISpaceWeatherFile_()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setup_()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>loadCSSISpaceWeather_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1_1_c_s_s_i_space_weather" kindref="compound">CSSISpaceWeather</ref>&amp;<sp/>aCSSISpaceWeather);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>fetchLatestCSSISpaceWeather_();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>earth</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>atmospheric</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Manager.hpp"/>
   </compounddef>

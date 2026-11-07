@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="32" bodyend="32"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="38" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a23d2c9b2c7dced3eb3cda051fb26b743" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="41" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="34" bodyend="34"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="41" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1ad0b1cfe2241d1e02d85f35a97542ea48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> *</type>
@@ -53,27 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="50" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="36" bodyend="39"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a911f2844ceaef26996437f327ba4e2b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::coordinate::frame::provider::TEME::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a3a9db43cad133c381657397f39c8cafd">isDefined</reimplements>
-        <briefdescription>
-<para>Check if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> provider is defined. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><programlisting><codeline><highlight class="normal">provider.isDefined();<sp/>//<sp/>True</highlight></codeline>
-</programlisting></para>
-<para><simplesect kind="return"><para>True if the <ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e" kindref="compound">TEME</ref> provider is defined </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="59" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="41" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="50" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a0d80a8d9519ab227b2205700e0dd9b1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -106,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="69" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="46" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="60" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.cpp" bodystart="43" bodyend="138"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -141,11 +121,10 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="31" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" bodystart="30" bodyend="70"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" line="31" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp" bodystart="30" bodyend="61"/>
     <listofallmembers>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1ad0b1cfe2241d1e02d85f35a97542ea48" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>clone</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a0d80a8d9519ab227b2205700e0dd9b1f" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>getTransformAt</name></member>
-      <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a911f2844ceaef26996437f327ba4e2b5" prot="public" virt="virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>isDefined</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a82bc97cd6ccef7712bbd6aa3e9ed70f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>Provider</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_t_e_m_e_1a8cd9bd93550cf46d841abe35576f1d8f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>TEME</name></member>
       <member refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1_provider_1a1fb001b7184d24238d8de6f68ce9ca62" prot="public" virt="pure-virtual"><scope>ostk::physics::coordinate::frame::provider::TEME</scope><name>~Provider</name></member>

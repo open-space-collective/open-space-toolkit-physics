@@ -11,18 +11,16 @@ ostk.physics.environment.atmospheric.Earth
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Earth.get_density_at
       ~Earth.get_input_data_type
       ~Earth.get_type
-      ~Earth.is_defined
-   
-   
-
-   
    
    

@@ -11,16 +11,18 @@ ostk.physics.unit.Length
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Length.get_unit
       ~Length.in_kilometers
       ~Length.in_meters
       ~Length.in_unit
-      ~Length.is_defined
       ~Length.is_zero
       ~Length.kilometers
       ~Length.meters
@@ -29,10 +31,5 @@ ostk.physics.unit.Length
       ~Length.string_from_unit
       ~Length.symbol_from_unit
       ~Length.to_string
-      ~Length.undefined
-   
-   
-
-   
    
    

@@ -11,22 +11,19 @@ ostk.physics.data.Direction
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Direction.get_frame
       ~Direction.get_unit
       ~Direction.get_value
       ~Direction.in_frame
       ~Direction.in_unit
-      ~Direction.is_defined
       ~Direction.to_string
-      ~Direction.undefined
-   
-   
-
-   
    
    

@@ -11,23 +11,20 @@ ostk.physics.coordinate.spherical.AER
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~AER.from_position_to_position
       ~AER.get_azimuth
       ~AER.get_elevation
       ~AER.get_range
-      ~AER.is_defined
       ~AER.to_string
       ~AER.to_vector
-      ~AER.undefined
       ~AER.vector
-   
-   
-
-   
    
    

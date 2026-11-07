@@ -11,17 +11,15 @@ ostk.physics.environment.magnetic.Earth
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Earth.get_field_value_at
       ~Earth.get_type
-      ~Earth.is_defined
-   
-   
-
-   
    
    

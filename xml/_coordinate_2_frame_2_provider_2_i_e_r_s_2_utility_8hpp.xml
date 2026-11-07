@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8hpp" kind="file" language="C++">
+    <compoundname>Utility.hpp</compoundname>
+    <includes refid="_instant_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Instant.hpp</includes>
+    <includedby refid="_bulletin_a_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp</includedby>
+    <includedby refid="_finals2000_a_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</includedby>
+    <includedby refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>boost/functional/hash.hpp</label>
+      </node>
+      <node id="15">
+        <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
+        <link refid="_scale_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
+        <link refid="_duration_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
+        <link refid="_unit_2_time_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
+        <link refid="_date_time_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
+        <link refid="_instant_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="14">
+        <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
+      </node>
+      <node id="7">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+      <node id="6">
+        <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
+      </node>
+      <node id="9">
+        <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
+        <link refid="_date_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
+        <link refid="_time_2_time_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.cpp</label>
+        <link refid="_bulletin_a_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</label>
+        <link refid="_finals2000_a_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.cpp</label>
+        <link refid="_coordinate_2_frame_2_provider_2_i_e_r_s_2_utility_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics">ostk::physics</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate">ostk::physics::coordinate</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame">ostk::physics::coordinate::frame</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider">ostk::physics::coordinate::frame::provider</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers">ostk::physics::coordinate::frame::provider::iers</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1utilities">ostk::physics::coordinate::frame::provider::iers::utilities</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Utility__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Utility__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">coordinate</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">frame</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">provider</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">iers</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20" refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1utilities" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utilities</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1utilities_1ab8833c9d7e981525d67e42d2a7c84cce" kindref="member">interpolateUt1MinusUtc</ref>(</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>aPreviousUt1MinusUtc,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>aPreviousMjd_UTC,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>aNextUt1MinusUtc,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>aNextMjd_UTC,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>aRatio,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref>&amp;<sp/>anInstant</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>utilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>iers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>provider</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp"/>
+  </compounddef>
+</doxygen>

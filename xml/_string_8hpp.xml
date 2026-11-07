@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_string_8hpp" kind="file" language="C++">
+    <compoundname>String.hpp</compoundname>
+    <includes local="no">cmath</includes>
+    <includes local="no">ios</includes>
+    <includes local="no">limits</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">string</includes>
+    <includes local="no">boost/lexical_cast.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Error.hpp</includes>
+    <includes local="no">OpenSpaceToolkit/Core/Type/String.hpp</includes>
+    <includedby refid="_finals2000_a_8cpp" local="no">src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</includedby>
+    <includedby refid="_scalar_8cpp" local="no">src/OpenSpaceToolkit/Physics/Data/Scalar.cpp</includedby>
+    <includedby refid="_c_s_s_i_space_weather_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</includedby>
+    <includedby refid="_gravitational_2_model_8cpp" local="no">src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp</includedby>
+    <includedby refid="_angle_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp</includedby>
+    <includedby refid="_derived_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/Derived.cpp</includedby>
+    <includedby refid="_electric_current_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp</includedby>
+    <includedby refid="_length_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/Length.cpp</includedby>
+    <includedby refid="_mass_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/Mass.cpp</includedby>
+    <includedby refid="_unit_2_time_8cpp" local="no">src/OpenSpaceToolkit/Physics/Unit/Time.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="2">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>ios</label>
+      </node>
+      <node id="1">
+        <label>src/OpenSpaceToolkit/Physics/Utility/String.hpp</label>
+        <link refid="_string_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>sstream</label>
+      </node>
+      <node id="8">
+        <label>OpenSpaceToolkit/Core/Error.hpp</label>
+      </node>
+      <node id="9">
+        <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9">
+        <label>src/OpenSpaceToolkit/Physics/Unit/Length.cpp</label>
+        <link refid="_length_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/CSSISpaceWeather.cpp</label>
+        <link refid="_c_s_s_i_space_weather_8cpp"/>
+      </node>
+      <node id="8">
+        <label>src/OpenSpaceToolkit/Physics/Unit/ElectricCurrent.cpp</label>
+        <link refid="_electric_current_8cpp"/>
+      </node>
+      <node id="10">
+        <label>src/OpenSpaceToolkit/Physics/Unit/Mass.cpp</label>
+        <link refid="_mass_8cpp"/>
+      </node>
+      <node id="7">
+        <label>src/OpenSpaceToolkit/Physics/Unit/Derived.cpp</label>
+        <link refid="_derived_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/OpenSpaceToolkit/Physics/Unit/Derived/Angle.cpp</label>
+        <link refid="_angle_8cpp"/>
+      </node>
+      <node id="1">
+        <label>src/OpenSpaceToolkit/Physics/Utility/String.hpp</label>
+        <link refid="_string_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/OpenSpaceToolkit/Physics/Environment/Gravitational/Model.cpp</label>
+        <link refid="_gravitational_2_model_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/OpenSpaceToolkit/Physics/Unit/Time.cpp</label>
+        <link refid="_unit_2_time_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/OpenSpaceToolkit/Physics/Data/Scalar.cpp</label>
+        <link refid="_scalar_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.cpp</label>
+        <link refid="_finals2000_a_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceostk">ostk</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics">ostk::physics</innernamespace>
+    <innernamespace refid="namespaceostk_1_1physics_1_1utility">ostk::physics::utility</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__OpenSpaceToolkit_Physics_Utility_String__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__OpenSpaceToolkit_Physics_Utility_String__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ios&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/lexical_cast.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Error.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21" refid="namespaceostk_1_1physics_1_1utility" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utility</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>String<sp/><ref refid="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" kindref="member">DoubleToString</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>aValue,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>aPrecision<sp/>=<sp/>-1)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::isnan(aValue))</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;NaN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::isinf(aValue))</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(aValue<sp/>&gt;<sp/>0.0)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;+Inf&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;-Inf&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aPrecision<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>=<sp/>boost::lexical_cast&lt;std::string&gt;(aValue);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.find(</highlight><highlight class="charliteral">&apos;e&apos;</highlight><highlight class="normal">)<sp/>==<sp/>std::string::npos)</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>integralPart;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::modf(aValue,<sp/>&amp;integralPart)<sp/>==<sp/>0.0)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;.0&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.erase(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.find_last_not_of(</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)<sp/>+<sp/>1,<sp/>std::string::npos);<sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>trailing<sp/>zeros<sp/>if<sp/>any</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>string;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::ostringstream<sp/>stringStream;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>stringStream.precision(aPrecision);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>stringStream<sp/>&lt;&lt;<sp/>std::fixed<sp/>&lt;&lt;<sp/>aValue;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stringStream.str();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="namespaceostk_1_1physics_1_1utility_1a709839949029584f7ece00e737e3b224" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1utility_1a709839949029584f7ece00e737e3b224" kindref="member">ParseDouble</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aString.isEmpty())</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;String&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((aString<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Inf&quot;</highlight><highlight class="normal">)<sp/>||<sp/>(aString<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;+Inf&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::numeric_limits&lt;double&gt;::infinity();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aString<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;-Inf&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-std::numeric_limits&lt;double&gt;::infinity();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>value<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!boost::conversion::try_lexical_convert&lt;double&gt;(aString,<sp/>value))<sp/>||<sp/>std::isnan(value))</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>cast<sp/>string<sp/>[&quot;</highlight><highlight class="normal"><sp/>+<sp/>aString<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>to<sp/>Real.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="namespaceostk_1_1physics_1_1utility_1ab250640552da24474a9ea9ac105a9028" refkind="member"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1utility_1ab250640552da24474a9ea9ac105a9028" kindref="member">ParseInt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aString)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aString.isEmpty())</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;String&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!boost::conversion::try_lexical_convert&lt;int&gt;(aString,<sp/>value))</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight><highlight class="stringliteral">&quot;Cannot<sp/>cast<sp/>string<sp/>[&quot;</highlight><highlight class="normal"><sp/>+<sp/>aString<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>to<sp/>Integer.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>utility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/OpenSpaceToolkit/Physics/Utility/String.hpp"/>
+  </compounddef>
+</doxygen>

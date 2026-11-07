@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="34" bodyend="44"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="65" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="35" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a5858796db9f601ec05e42e2e91508df7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; File &gt;</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="46" bodyend="56"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="75" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="47" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1ac52e42436593b14c37f92c453bd2af54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="58" bodyend="151"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="84" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="59" bodyend="148"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="93" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="153" bodyend="158"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="93" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="150" bodyend="155"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="96" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="160" bodyend="169"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="96" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="157" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1gravitational_1_1earth_1_1_manager_1a89bc29551f91e63439ff988eeb4dcb13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Array&lt; URL &gt;</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="171" bodyend="183"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="98" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="168" bodyend="180"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="100" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="185" bodyend="207"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp" line="100" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.cpp" bodystart="182" bodyend="204"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

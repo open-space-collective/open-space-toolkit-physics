@@ -16,11 +16,15 @@ ostk.physics.environment.Ephemeris
    .. autosummary::
       :nosignatures:
    
-      ~Ephemeris.access_frame
-      ~Ephemeris.is_defined
    
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Ephemeris.get_frame
    
    

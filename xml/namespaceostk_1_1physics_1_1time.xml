@@ -12,14 +12,6 @@
       <memberdef kind="enum" id="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" prot="public" static="no" strong="yes">
         <type></type>
         <name>Scale</name>
-        <enumvalue id="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-<para>Undefined time. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7a9234324ddf6b4176b57d803a925b7961" prot="public">
           <name>UTC</name>
           <briefdescription>
@@ -140,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" bodystart="24" bodyend="46"/>
+        <location file="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" line="25" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" bodystart="24" bodyend="44"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -174,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="14" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="14" bodyend="69" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="56" declcolumn="8"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="14" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="14" bodyend="66" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="54" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a2c5cdf23bd0ca664bc0c033e4d005d6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">Scale</ref></type>
@@ -206,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="71" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="71" bodyend="151" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="66" declcolumn="7"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" line="68" column="7" bodyfile="src/OpenSpaceToolkit/Physics/Time/Scale.cpp" bodystart="68" bodyend="141" declfile="include/OpenSpaceToolkit/Physics/Time/Scale.hpp" declline="64" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a0019f95c3d716a096edccf30a9edfc19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -249,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Date.cpp" line="48" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="48" bodyend="62"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Date.cpp" line="39" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Date.cpp" bodystart="39" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1aecb61cd602a54c13d020a454ff89260c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -292,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" line="61" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="61" bodyend="91"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" line="51" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/DateTime.cpp" bodystart="51" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a8622f39865ce8d6d88d9628bae351198" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1time_1_1_duration" kindref="compound">Duration</ref></type>
@@ -335,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" line="225" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="225" bodyend="233"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" line="145" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="145" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1af077846f664aa623cdb845097c2dc46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -378,7 +370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" line="235" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="235" bodyend="244"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" line="150" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Duration.cpp" bodystart="150" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a66eb1ababfa76de94e5b5843203e739c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -421,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" line="216" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="216" bodyend="227"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" line="142" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Instant.cpp" bodystart="142" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1ac8796248a54fa7099f8fc12f3e64d4da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -464,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" line="22" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="22" bodyend="34"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" line="22" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Interval.cpp" bodystart="22" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1time_1a20dddd4e5f369552505a3c20e1fbda68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -507,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Time/Time.cpp" line="59" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="59" bodyend="79"/>
+        <location file="src/OpenSpaceToolkit/Physics/Time/Time.cpp" line="50" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Time/Time.cpp" bodystart="50" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

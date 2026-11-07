@@ -6,6 +6,7 @@
     <includes local="no">cstdlib</includes>
     <includes local="no">fstream</includes>
     <includes local="no">numeric</includes>
+    <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">thread</includes>
     <includes local="no">OpenSpaceToolkit/Core/Error.hpp</includes>
@@ -18,79 +19,74 @@
     <includes refid="_date_time_8hpp" local="no">OpenSpaceToolkit/Physics/Time/DateTime.hpp</includes>
     <includes refid="_instant_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Instant.hpp</includes>
     <incdepgraph>
-      <node id="19">
+      <node id="20">
         <label>OpenSpaceToolkit/Core/Container/Dictionary.hpp</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>OpenSpaceToolkit/Core/FileSystem/Directory.hpp</label>
       </node>
-      <node id="27">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="24">
+      <node id="25">
         <label>functional</label>
       </node>
-      <node id="25">
+      <node id="26">
         <label>boost/functional/hash.hpp</label>
       </node>
-      <node id="38">
+      <node id="37">
         <label>filesystem</label>
       </node>
-      <node id="22">
+      <node id="23">
         <label>OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/Kernel.hpp</label>
         <link refid="_kernel_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="35">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="13">
         <label>OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp</label>
       </node>
       <node id="5">
         <label>numeric</label>
       </node>
-      <node id="32">
+      <node id="31">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="32">
+        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
+        <link refid="_unit_2_time_8hpp"/>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="20">
-        <label>OpenSpaceToolkit/Core/Container/Map.hpp</label>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
-      <node id="33">
-        <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
-        <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
+      <node id="17">
         <label>OpenSpaceToolkit/IO/URL.hpp</label>
       </node>
       <node id="4">
@@ -99,73 +95,69 @@
       <node id="28">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>OpenSpaceToolkit/Core/FileSystem/File.hpp</label>
       </node>
-      <node id="23">
+      <node id="24">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
-        <link refid="_unit_2_unit_8hpp"/>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="33">
+        <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
+        <link refid="_unit_2_unit_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
         <label>OpenSpaceToolkit/Core/Utility.hpp</label>
       </node>
-      <node id="30">
+      <node id="6">
         <label>optional</label>
       </node>
-      <node id="35">
+      <node id="34">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
-      <node id="9">
+      <node id="10">
         <label>OpenSpaceToolkit/Core/FileSystem/Path.hpp</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>OpenSpaceToolkit/Core/Error.hpp</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
-      <node id="26">
+      <node id="27">
         <label>OpenSpaceToolkit/Core/Type/Integer.hpp</label>
       </node>
       <node id="3">
@@ -174,39 +166,39 @@
       <node id="29">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="36">
         <label>OpenSpaceToolkit/Physics/Manager.hpp</label>
         <link refid="_manager_8hpp"/>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="15">
         <label>mutex</label>
       </node>
       <node id="2">
         <label>chrono</label>
       </node>
-      <node id="18">
+      <node id="19">
         <label>OpenSpaceToolkit/Core/Container/Array.hpp</label>
       </node>
-      <node id="7">
+      <node id="8">
         <label>thread</label>
       </node>
       <node id="1">
@@ -236,61 +228,63 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="18">
         <label>OpenSpaceToolkit/Physics/Data/Manifest.hpp</label>
         <link refid="_manifest_8hpp"/>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>OpenSpaceToolkit/Physics/Data/Manager.hpp</label>
         <link refid="_data_2_manager_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
         <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -307,345 +301,334 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;numeric&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Error.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Utility.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_data_2_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Data/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manifest_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Data/Manifest.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_date_time_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/DateTime.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
-<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
-<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">data</highlight></codeline>
-<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::ip::tcp::http::Client;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;manifest.json&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a65d22827513124fc4e2dd80f5e30beea" kindref="member">temporaryDirectoryName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;tmp&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a83ab8533b086420ea0e1c4f074150d9c" kindref="member">Manager::getLastUpdateTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)</highlight></codeline>
-<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>();</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref>.<ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a7c6bde6de73febc329b22e5c598911d8" kindref="member">getLastUpdateTimestampFor</ref>(aDataName);</highlight></codeline>
-<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ab1b10729b3001f9ff6a54b5286e975f2" kindref="member">Manager::getRemoteUrl</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="52"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a9bac185cf88d061e72c4ccb9f788584e" kindref="member">Manager::setRemoteUrl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aRemoteUrl)</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!aRemoteUrl.isDefined())</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;URL&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref><sp/>=<sp/>aRemoteUrl;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Error.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/FileSystem/Path.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Type/String.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/Core/Utility.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;OpenSpaceToolkit/IO/IP/TCP/HTTP/Client.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_data_2_manager_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Data/Manager.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_manifest_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Data/Manifest.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_date_time_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/DateTime.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_instant_8hpp" kindref="compound">OpenSpaceToolkit/Physics/Time/Instant.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceostk" kindref="compound">ostk</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">physics</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">data</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::filesystem::Path;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::core::type::String;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::io::ip::tcp::http::Client;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">ostk::physics::time::Instant</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;manifest.json&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a65d22827513124fc4e2dd80f5e30beea" kindref="member">temporaryDirectoryName</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;tmp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">Instant<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ae4fad82ad9012f885a0af8825a939af2" kindref="member">Manager::getLastUpdateTimestampFor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4a47b81b693c44479f28a7c1385e0b0a" kindref="member">manifest_</ref>-&gt;getLastUpdateTimestampFor(aDataName);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">URL<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a8e444e5f02f60133c097bcb9f797640e" kindref="member">Manager::getRemoteUrl</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="53"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a9bac185cf88d061e72c4ccb9f788584e" kindref="member">Manager::setRemoteUrl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL&amp;<sp/>aRemoteUrl)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref><sp/>=<sp/>aRemoteUrl;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a5906207482cf7feb7582e95495cee76a" kindref="member">Manager::getRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="63"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal">Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a5906207482cf7feb7582e95495cee76a" kindref="member">Manager::getRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataName)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="67"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4a47b81b693c44479f28a7c1385e0b0a" kindref="member">manifest_</ref>-&gt;getRemoteDataUrls(<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>,<sp/>aDataName);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>();</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref>.<ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a4d5bf1c7b5ad8ad0c42214fe0e621d7b" kindref="member">getRemoteDataUrls</ref>(<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>,<sp/>aDataName);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a2810947fb2c42ebd8096dd5ac8a1971f" kindref="member">Manager::findRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataNameRegex)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="71"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal">Array&lt;URL&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a2810947fb2c42ebd8096dd5ac8a1971f" kindref="member">Manager::findRemoteDataUrls</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String&amp;<sp/>aDataNameRegex)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="75"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4a47b81b693c44479f28a7c1385e0b0a" kindref="member">manifest_</ref>-&gt;findRemoteDataUrls(<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>,<sp/>aDataNameRegex);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a09e3ba01c300997c05a6984ed595608d" kindref="member">checkManifestAgeAndUpdate_</ref>();</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref>.<ref refid="classostk_1_1physics_1_1data_1_1_manifest_1adf9efd880e6d49ad71f1a3ff1450a4e0" kindref="member">findRemoteDataUrls</ref>(<ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref>,<sp/>aDataNameRegex);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Manifest<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a7eede6a7696007449e80ef935e3535fc" kindref="member">Manager::getManifest</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="83"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref>;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">std::optional&lt;Manifest&gt;<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1aac1c529a0c9d3fab859fe31f9ba8b27d" kindref="member">Manager::getManifest</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="79"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4a47b81b693c44479f28a7c1385e0b0a" kindref="member">manifest_</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ad0b4a0867fd62d83a026b0a7318c3585" kindref="member">Manager::loadManifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Manifest&amp;<sp/>aManifest)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1ad0b4a0867fd62d83a026b0a7318c3585" kindref="member">Manager::loadManifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Manifest&amp;<sp/>aManifest)</highlight></codeline>
-<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!aManifest.isDefined())</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;Manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4f78aff80d2037f4de16eea4a5d46f36" kindref="member">loadManifest_</ref>(aManifest);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a8540b257af3c0a64d09d6dd91a259b78" kindref="member">Manager::reset</ref>()</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" kindref="member">BaseManager::reset</ref>();</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::lock_guard&lt;std::mutex&gt;<sp/>lock<sp/>{<ref refid="classostk_1_1physics_1_1_manager_1a355a05b5a002468681dde1d3f23388d2" kindref="member">mutex_</ref>};</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4a47b81b693c44479f28a7c1385e0b0a" kindref="member">manifest_</ref><sp/>=<sp/>std::nullopt;</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a4f78aff80d2037f4de16eea4a5d46f36" kindref="member">loadManifest_</ref>(aManifest);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" kindref="member">DefaultRemoteUrl</ref>();</highlight></codeline>
 <codeline lineno="97"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a8540b257af3c0a64d09d6dd91a259b78" kindref="member">Manager::reset</ref>()</highlight></codeline>
-<codeline lineno="100"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1_manager_1acc1b78237242899ad954e5e01a234606" kindref="member">BaseManager::reset</ref>();</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a867d317f04fed27362131c1a731f0cc4" kindref="member">manifest_</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manifest_1a5e36e090d78431bbd50a9284d7d25c73" kindref="member">Manifest::Undefined</ref>();</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a0a7c8b2954a7be15301424a3fb49f493" kindref="member">remoteUrl_</ref><sp/>=<sp/><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a618894aa7be96805d67d5a73f1c0e9c8" kindref="member">DefaultRemoteUrl</ref>();</highlight></codeline>
-<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a907c7c11c7cf2610aedbb581b5a0246e" kindref="member">Manager::Manager</ref>()</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a72bb86bc8df8938c96720477e82b012b" kindref="member">BaseManager</ref>(</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_MANIFEST_MANAGER_MODE&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Directory::Path(Path::Parse(<ref refid="_data_2_manager_8hpp_1ad273d3073788fa11cab095fe9bfc2d7b" kindref="member">OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY</ref>)),</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Path::Parse(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">),</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>),</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remoteUrl_(DefaultRemoteUrl()),</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>manifest_(Manifest::<ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7aec0fc0100c4fc1ce4eea230c3dc10360" kindref="member">Undefined</ref>())</highlight></codeline>
-<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Manager::manifestFileExists()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="122"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.exists())</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>File::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(<ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>)).exists();</highlight></codeline>
-<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Manager::checkManifestAgeAndUpdate_()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="132"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!manifest_.isDefined()<sp/>&amp;&amp;<sp/>!manifestFileExists())</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>)</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;No<sp/>manifest<sp/>file<sp/>loaded<sp/>and<sp/>no<sp/>manifest<sp/>file<sp/>found<sp/>in<sp/>local<sp/>repository.<sp/>Manager<sp/>mode<sp/>is<sp/>Manual.&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Manager::Mode::Automatic</ref>)</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>no<sp/>file<sp/>loaded<sp/>in<sp/>memory<sp/>or<sp/>on<sp/>the<sp/>local<sp/>filesystem.<sp/>Fetch<sp/>and<sp/>load.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File<sp/>manifestFile<sp/>=<sp/>this-&gt;fetchLatestManifestFile_();</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(manifestFile));</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!manifest_.isDefined()<sp/>&amp;&amp;<sp/>manifestFileExists())</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>manifest<sp/>file<sp/>exists<sp/>but<sp/>we<sp/>haven&apos;t<sp/>loaded<sp/>it<sp/>yet.<sp/>Load<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(File::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(<ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>))));</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Determine<sp/>if<sp/>we<sp/>need<sp/>to<sp/>fetch<sp/>a<sp/>new<sp/>manifest<sp/>based<sp/>on<sp/>the<sp/>loaded<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>next<sp/>timestamp<sp/>at<sp/>which<sp/>we<sp/>expect<sp/>the<sp/>remote<sp/>to<sp/>update<sp/>its<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>Instant<sp/>nextUpdateCheckTimestamp<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant_1a0c95c97e9aa17863aecf8c9ebc821c0b" kindref="member">Instant::Undefined</ref>();</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextUpdateCheckTimestamp<sp/>=<sp/>manifest_.getNextUpdateCheckTimestampFor(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(ostk::core::error::RuntimeError&amp;<sp/>e)</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>there<sp/>is<sp/>no<sp/>&quot;manifest&quot;<sp/>entry,<sp/>the<sp/>file<sp/>may<sp/>be<sp/>old<sp/>or<sp/>corrupted.<sp/>Fetch<sp/>a<sp/>new<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>)</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Manifest<sp/>file<sp/>is<sp/>old<sp/>or<sp/>corrupted.<sp/>Cannot<sp/>fetch<sp/>as<sp/>manager<sp/>mode<sp/>is<sp/>Manual.&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Manager::Mode::Automatic</ref>)</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File<sp/>manifestFile<sp/>=<sp/>this-&gt;fetchLatestManifestFile_();</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(manifestFile));</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nextUpdateCheckTimestamp<sp/>=<sp/>manifest_.getNextUpdateCheckTimestampFor(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Duration<sp/>manifestAge<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kindref="member">Instant::Now</ref>()<sp/>-<sp/>manifest_.getLastUpdateTimestampFor(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>current<sp/>time<sp/>is<sp/>past<sp/>next<sp/>update<sp/>check<sp/>time<sp/>or<sp/>manifest<sp/>is<sp/>old<sp/>enough,<sp/>fetch<sp/>a<sp/>new<sp/>one<sp/>and<sp/>load<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kindref="member">Instant::Now</ref>()<sp/>&gt;<sp/>nextUpdateCheckTimestamp<sp/>&amp;&amp;<sp/>manifestAge<sp/>&gt;<sp/>DataRefreshRate_())</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>)</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight><highlight class="stringliteral">&quot;Manifest<sp/>file<sp/>is<sp/>old.<sp/>Cannot<sp/>fetch<sp/>as<sp/>manager<sp/>mode<sp/>is<sp/>Manual.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Manager::Mode::Automatic</ref>)</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File<sp/>manifestFile<sp/>=<sp/>this-&gt;fetchLatestManifestFile_();</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(manifestFile));</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><ref refid="classostk_1_1physics_1_1data_1_1_manager_1a907c7c11c7cf2610aedbb581b5a0246e" kindref="member">Manager::Manager</ref>()</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a72bb86bc8df8938c96720477e82b012b" kindref="member">BaseManager</ref>(</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_MANIFEST_MANAGER_MODE&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Directory::Path(Path::Parse(<ref refid="_data_2_manager_8hpp_1ad273d3073788fa11cab095fe9bfc2d7b" kindref="member">OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY</ref>)),</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Path::Parse(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>),</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>remoteUrl_(DefaultRemoteUrl()),</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>manifest_(std::nullopt)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Manager::manifestFileExists()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="113"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.exists())</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>File::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(<ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>)).exists();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Manager::checkManifestAgeAndUpdate_()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="123"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!manifest_.has_value()<sp/>&amp;&amp;<sp/>!manifestFileExists())</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;No<sp/>manifest<sp/>file<sp/>loaded<sp/>and<sp/>no<sp/>manifest<sp/>file<sp/>found<sp/>in<sp/>local<sp/>repository.<sp/>Manager<sp/>mode<sp/>is<sp/>Manual.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Manager::Mode::Automatic</ref>)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>no<sp/>file<sp/>loaded<sp/>in<sp/>memory<sp/>or<sp/>on<sp/>the<sp/>local<sp/>filesystem.<sp/>Fetch<sp/>and<sp/>load.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File<sp/>manifestFile<sp/>=<sp/>this-&gt;fetchLatestManifestFile_();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(manifestFile));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!manifest_.has_value()<sp/>&amp;&amp;<sp/>manifestFileExists())</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>manifest<sp/>file<sp/>exists<sp/>but<sp/>we<sp/>haven&apos;t<sp/>loaded<sp/>it<sp/>yet.<sp/>Load<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(File::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(<ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>))));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Determine<sp/>if<sp/>we<sp/>need<sp/>to<sp/>fetch<sp/>a<sp/>new<sp/>manifest<sp/>based<sp/>on<sp/>the<sp/>loaded<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>next<sp/>timestamp<sp/>at<sp/>which<sp/>we<sp/>expect<sp/>the<sp/>remote<sp/>to<sp/>update<sp/>its<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant<sp/>nextUpdateCheckTimestamp<sp/>=<sp/>[&amp;]()<sp/>-&gt;<sp/>Instant</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>manifest_-&gt;getNextUpdateCheckTimestampFor(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError&amp;)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>there<sp/>is<sp/>no<sp/>&quot;manifest&quot;<sp/>entry,<sp/>the<sp/>file<sp/>may<sp/>be<sp/>old<sp/>or<sp/>corrupted.<sp/>Fetch<sp/>a<sp/>new<sp/>one.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Manifest<sp/>file<sp/>is<sp/>old<sp/>or<sp/>corrupted.<sp/>Cannot<sp/>fetch<sp/>as<sp/>manager<sp/>mode<sp/>is<sp/>Manual.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File<sp/>manifestFile<sp/>=<sp/>this-&gt;fetchLatestManifestFile_();</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(manifestFile));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>manifest_-&gt;getNextUpdateCheckTimestampFor(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Duration<sp/>manifestAge<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kindref="member">Instant::Now</ref>()<sp/>-<sp/>manifest_-&gt;getLastUpdateTimestampFor(</highlight><highlight class="stringliteral">&quot;manifest&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>current<sp/>time<sp/>is<sp/>past<sp/>next<sp/>update<sp/>check<sp/>time<sp/>or<sp/>manifest<sp/>is<sp/>old<sp/>enough,<sp/>fetch<sp/>a<sp/>new<sp/>one<sp/>and<sp/>load<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1time_1_1_instant_1afbc9a9219aa94e8a828f5876ee68f42c" kindref="member">Instant::Now</ref>()<sp/>&gt;<sp/>nextUpdateCheckTimestamp<sp/>&amp;&amp;<sp/>manifestAge<sp/>&gt;<sp/>DataRefreshRate_())</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8ae1ba155a9f2e8c3be94020eef32a0301" kindref="member">Manager::Mode::Manual</ref>)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight><highlight class="stringliteral">&quot;Manifest<sp/>file<sp/>is<sp/>old.<sp/>Cannot<sp/>fetch<sp/>as<sp/>manager<sp/>mode<sp/>is<sp/>Manual.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classostk_1_1physics_1_1_manager_1aaf1a280bcda03c3e9c8ff37aa7207fb7" kindref="member">mode_</ref><sp/>==<sp/><ref refid="classostk_1_1physics_1_1_manager_1ae5e7c489f0261c2e3ee2237c810560e8a086247a9b57fde6eefee2a0c4752242d" kindref="member">Manager::Mode::Automatic</ref>)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>File<sp/>manifestFile<sp/>=<sp/>this-&gt;fetchLatestManifestFile_();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;loadManifest_(Manifest::Load(manifestFile));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Manager::loadManifest_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Manifest&amp;<sp/>aManifest)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="190"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>manifest_<sp/>=<sp/>aManifest;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal">File<sp/>Manager::fetchLatestManifestFile_()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="195"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/>temporaryDirectory<sp/>=<sp/>Directory::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(<ref refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a6278334fad443af51f946c823cb579ee" kindref="member">temporaryDirectoryName</ref>));</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight></codeline>
-<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Manager::loadManifest_(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Manifest&amp;<sp/>aManifest)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="199"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>manifest_<sp/>=<sp/>aManifest;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal">File<sp/>Manager::fetchLatestManifestFile_()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="204"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/>temporaryDirectory<sp/>=<sp/>Directory::Path(<ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>.getPath()<sp/>+<sp/>Path::Parse(<ref refid="namespaceostk_1_1physics_1_1environment_1_1atmospheric_1_1earth_1a6278334fad443af51f946c823cb579ee" kindref="member">temporaryDirectoryName</ref>));</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1_manager_1a22d38ed9801bbc20ebedef0529567664" kindref="member">lockLocalRepository_</ref>(<ref refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" kindref="member">localRepositoryLockTimeout_</ref>);</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>remoteUrlString<sp/>=<sp/>Manager::DefaultRemoteUrl().toString();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1_manager_1a22d38ed9801bbc20ebedef0529567664" kindref="member">lockLocalRepository_</ref>(<ref refid="classostk_1_1physics_1_1_manager_1a4d6ba720dc489f1677367269ab0650bf" kindref="member">localRepositoryLockTimeout_</ref>);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>remoteUrlString<sp/>=<sp/>remoteUrl_.toString();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(remoteUrlString.getLast()<sp/>==<sp/></highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteUrlString<sp/>=<sp/>remoteUrlString<sp/>+<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteUrlString<sp/>=<sp/>remoteUrlString<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(remoteUrlString.getLast()<sp/>==<sp/></highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">)</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteUrlString<sp/>=<sp/>remoteUrlString<sp/>+<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>;</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/>latestDataManifestUrl<sp/>=<sp/>URL::Parse(remoteUrlString);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;File&gt;<sp/>latestDataManifestFile;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>remoteUrlString<sp/>=<sp/>remoteUrlString<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespaceostk_1_1physics_1_1data_1a0355e8f1c1c169ddc5bf8157845f7485" kindref="member">dataManifestFileName</ref>;</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/>latestDataManifestUrl<sp/>=<sp/>URL::Parse(remoteUrlString);</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"></highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>File<sp/>latestDataManifestFile<sp/>=<sp/>File::Undefined();</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>Directory<sp/>destinationDirectory<sp/>=<sp/>Directory::Undefined();</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"></highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>destinationDirectory<sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>;</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!destinationDirectory.exists())</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>destinationDirectory.create();</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temporaryDirectory.exists())</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Temporary<sp/>directory<sp/>[{}]<sp/>already<sp/>exists.&quot;</highlight><highlight class="normal">,<sp/>temporaryDirectory.toString()</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporaryDirectory.create();</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>String::Format(</highlight><highlight class="stringliteral">&quot;Fetching<sp/>Data<sp/>Manifest<sp/>from<sp/>[{}]...&quot;</highlight><highlight class="normal">,<sp/>latestDataManifestUrl.toString())</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile<sp/>=<sp/>Client::Fetch(latestDataManifestUrl,<sp/>temporaryDirectory,<sp/>2);</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!latestDataManifestFile.exists())</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>fetch<sp/>Data<sp/>Manifest<sp/>[{}]<sp/>from<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile.toString(),</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestUrl.toString()</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>file<sp/>size<sp/>is<sp/>not<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uintmax_t<sp/>latestDataManifestFileSize<sp/>=</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Directory<sp/>destinationDirectory<sp/>=<sp/><ref refid="classostk_1_1physics_1_1_manager_1a1257e323bed91cb1bfc60b3678d3f5f6" kindref="member">localRepository_</ref>;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!destinationDirectory.exists())</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>destinationDirectory.create();</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temporaryDirectory.exists())</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Temporary<sp/>directory<sp/>[{}]<sp/>already<sp/>exists.&quot;</highlight><highlight class="normal">,<sp/>temporaryDirectory.toString()</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporaryDirectory.create();</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>String::Format(</highlight><highlight class="stringliteral">&quot;Fetching<sp/>Data<sp/>Manifest<sp/>from<sp/>[{}]...&quot;</highlight><highlight class="normal">,<sp/>latestDataManifestUrl.toString())</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile<sp/>=<sp/>Client::Fetch(latestDataManifestUrl,<sp/>temporaryDirectory,<sp/>2);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!latestDataManifestFile-&gt;exists())</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>fetch<sp/>Data<sp/>Manifest<sp/>[{}]<sp/>from<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile-&gt;toString(),</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestUrl.toString()</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>that<sp/>file<sp/>size<sp/>is<sp/>not<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uintmax_t<sp/>latestDataManifestFileSize<sp/>=</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::file_size(std::string(latestDataManifestFile-&gt;getPath().toString()));</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(latestDataManifestFileSize<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>fetch<sp/>Data<sp/>Manifest<sp/>from<sp/>[{}]:<sp/>file<sp/>is<sp/>empty.&quot;</highlight><highlight class="normal">,<sp/>latestDataManifestUrl.toString()</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile-&gt;moveToDirectory(destinationDirectory);</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(latestDataManifestFileSize<sp/>==<sp/>0)</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::RuntimeError(</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>fetch<sp/>Data<sp/>Manifest<sp/>from<sp/>[{}]:<sp/>file<sp/>is<sp/>empty.&quot;</highlight><highlight class="normal">,<sp/>latestDataManifestUrl.toString()</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"></highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile.moveToDirectory(destinationDirectory);</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporaryDirectory.remove();</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" kindref="member">unlockLocalRepository_</ref>();</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>String::Format(</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Data<sp/>Manifest<sp/>[{}]<sp/>has<sp/>been<sp/>successfully<sp/>fetched<sp/>from<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile.toString(),</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestUrl.toString()</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ostk::core::error::Exception&amp;<sp/>anException)</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>String::Format(</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>caught<sp/>while<sp/>fetching<sp/>latest<sp/>Data<sp/>Manifest<sp/>from<sp/>[{}]:<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestUrl.toString(),</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anException.what()</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporaryDirectory.remove();</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" kindref="member">unlockLocalRepository_</ref>();</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>String::Format(</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Data<sp/>Manifest<sp/>[{}]<sp/>has<sp/>been<sp/>successfully<sp/>fetched<sp/>from<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile-&gt;toString(),</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestUrl.toString()</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ostk::core::error::Exception&amp;<sp/>anException)</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>String::Format(</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>caught<sp/>while<sp/>fetching<sp/>latest<sp/>Data<sp/>Manifest<sp/>from<sp/>[{}]:<sp/>[{}].&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestUrl.toString(),</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anException.what()</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(latestDataManifestFile.has_value()<sp/>&amp;&amp;<sp/>latestDataManifestFile-&gt;exists())</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile-&gt;remove();</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temporaryDirectory.exists())</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporaryDirectory.remove();</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(latestDataManifestFile.isDefined()<sp/>&amp;&amp;<sp/>latestDataManifestFile.exists())</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile.remove();</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>latestDataManifestFile<sp/>=<sp/>File::Undefined();</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(temporaryDirectory.isDefined()<sp/>&amp;&amp;<sp/>temporaryDirectory.exists())</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temporaryDirectory.remove();</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" kindref="member">unlockLocalRepository_</ref>();</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>latestDataManifestFile;</highlight></codeline>
-<codeline lineno="310"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal">Duration<sp/>Manager::DataRefreshRate_()</highlight></codeline>
-<codeline lineno="313"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Duration<sp/>defaultRefreshRate<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration_1a950723133d46c93a06907543d15e4dc0" kindref="member">Duration::Hours</ref>(<ref refid="_data_2_manager_8hpp_1a6d48dfffd34597e0fa3a4db30041f190" kindref="member">OSTK_PHYSICS_DATA_REFRESH_RATE_H</ref>);</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"></highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>defaultRefreshRateString<sp/>=<sp/>std::getenv(</highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_REFRESH_RATE_H&quot;</highlight><highlight class="normal">))</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration_1a950723133d46c93a06907543d15e4dc0" kindref="member">Duration::Hours</ref>(std::stod(std::string(defaultRefreshRateString)));</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"></highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultRefreshRate;</highlight></codeline>
-<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classostk_1_1physics_1_1_manager_1a612e33ae221b32b250798105f5863956" kindref="member">unlockLocalRepository_</ref>();</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>latestDataManifestFile.value();</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal">Duration<sp/>Manager::DataRefreshRate_()</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Duration<sp/>defaultRefreshRate<sp/>=<sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration_1af238a66125146ede5875e56acdcfea1e" kindref="member">Duration::Hours</ref>(<ref refid="_data_2_manager_8hpp_1a6d48dfffd34597e0fa3a4db30041f190" kindref="member">OSTK_PHYSICS_DATA_REFRESH_RATE_H</ref>);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>defaultRefreshRateString<sp/>=<sp/>std::getenv(</highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_REFRESH_RATE_H&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_duration_1af238a66125146ede5875e56acdcfea1e" kindref="member">Duration::Hours</ref>(std::stod(std::string(defaultRefreshRateString)));</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultRefreshRate;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal">Manager&amp;<sp/>Manager::Get()</highlight></codeline>
+<codeline lineno="314"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" kindref="member">Manager</ref><sp/>manager;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>manager;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal">URL<sp/>Manager::DefaultRemoteUrl()</highlight></codeline>
+<codeline lineno="321"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/>defaultRemoteUrl<sp/>=<sp/>URL::Parse(<ref refid="_data_2_manager_8hpp_1a7ea7ed9b9bcd4678a315244af96578c7" kindref="member">OSTK_PHYSICS_DATA_REMOTE_URL</ref>);</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"></highlight></codeline>
-<codeline lineno="324"><highlight class="normal">Manager&amp;<sp/>Manager::Get()</highlight></codeline>
-<codeline lineno="325"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1_manager_1a9e2307068db4b7235b5e6b676e02e6b6" kindref="member">Manager</ref><sp/>manager;</highlight></codeline>
-<codeline lineno="327"><highlight class="normal"></highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>manager;</highlight></codeline>
-<codeline lineno="329"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"></highlight></codeline>
-<codeline lineno="331"><highlight class="normal">URL<sp/>Manager::DefaultRemoteUrl()</highlight></codeline>
-<codeline lineno="332"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>URL<sp/>defaultRemoteUrl<sp/>=<sp/>URL::Parse(<ref refid="_data_2_manager_8hpp_1a7ea7ed9b9bcd4678a315244af96578c7" kindref="member">OSTK_PHYSICS_DATA_REMOTE_URL</ref>);</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"></highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>remoteUrlString<sp/>=<sp/>std::getenv(</highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_REMOTE_URL&quot;</highlight><highlight class="normal">))</highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>URL::Parse(remoteUrlString);</highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="339"><highlight class="normal"></highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultRemoteUrl;</highlight></codeline>
-<codeline lineno="341"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="342"><highlight class="normal"></highlight></codeline>
-<codeline lineno="343"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>data</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="344"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="345"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>remoteUrlString<sp/>=<sp/>std::getenv(</highlight><highlight class="stringliteral">&quot;OSTK_PHYSICS_DATA_REMOTE_URL&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>URL::Parse(remoteUrlString);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>defaultRemoteUrl;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp"/>
   </compounddef>

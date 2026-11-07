@@ -16,6 +16,15 @@ ostk.physics.time.Instant
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Instant.GPS_epoch
       ~Instant.J2000
       ~Instant.date_time
@@ -23,7 +32,6 @@ ostk.physics.time.Instant
       ~Instant.get_julian_date
       ~Instant.get_leap_second_count
       ~Instant.get_modified_julian_date
-      ~Instant.is_defined
       ~Instant.is_near
       ~Instant.is_post_epoch
       ~Instant.julian_date
@@ -31,10 +39,5 @@ ostk.physics.time.Instant
       ~Instant.now
       ~Instant.parse
       ~Instant.to_string
-      ~Instant.undefined
-   
-   
-
-   
    
    

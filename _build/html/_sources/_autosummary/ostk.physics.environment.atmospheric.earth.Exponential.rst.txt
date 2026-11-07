@@ -11,16 +11,14 @@ ostk.physics.environment.atmospheric.earth.Exponential
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Exponential.get_density_at
-      ~Exponential.is_defined
-   
-   
-
-   
    
    

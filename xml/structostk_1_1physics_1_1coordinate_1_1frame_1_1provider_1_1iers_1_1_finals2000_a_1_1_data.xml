@@ -4,9 +4,9 @@
     <compoundname>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</compoundname>
     <includes refid="_finals2000_a_8hpp" local="no">Finals2000A.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a22d559d9d72388440986abc1ac0e5080" prot="public" static="no" mutable="no">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::year</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa68278137ffe70e1455085024427797c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::year</definition>
         <argsstring></argsstring>
         <name>year</name>
         <briefdescription>
@@ -16,11 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="58" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="58" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="57" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac59271a60aeb102db6fc6374bcecdfe7" prot="public" static="no" mutable="no">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::month</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad6d6d8a6b4d7e4488acad611db15c66e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::month</definition>
         <argsstring></argsstring>
         <name>month</name>
         <briefdescription>
@@ -30,11 +30,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="59" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="59" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="58" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa76272eccc5ef74456ae13c3c9751db5" prot="public" static="no" mutable="no">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::day</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a834fe8e382a6ab57245abc51ddfd719b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::day</definition>
         <argsstring></argsstring>
         <name>day</name>
         <briefdescription>
@@ -44,11 +44,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="60" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="60" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="59" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a93461a4e25a9ac3cc705bfeec0117262" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::mjd</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a2b077801e1a1757340168fbeee87d2fb" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::mjd</definition>
         <argsstring></argsstring>
         <name>mjd</name>
         <briefdescription>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="62" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="62" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="61" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a5bc6c3a7e447bffe2913cd21b9b2dbd4" prot="public" static="no" mutable="no">
         <type>char</type>
@@ -72,11 +72,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="64" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="64" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="63" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a2319dbe36cb212fc5c5e86842b15442f" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::x_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a93a4d1085dba0d4fe72d1661d684daad" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::x_A</definition>
         <argsstring></argsstring>
         <name>x_A</name>
         <briefdescription>
@@ -86,11 +86,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="66" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="66" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="65" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a7af60116aeddd0ed5982d4703393e56d" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::xError_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ab7c69efe5d29201ef81306a1813d487b" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::xError_A</definition>
         <argsstring></argsstring>
         <name>xError_A</name>
         <briefdescription>
@@ -100,11 +100,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="67" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="67" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="66" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa294eae7dc917491e733d0801787585c" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::y_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a9123f21ad38a9c39262f686a811d1dad" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::y_A</definition>
         <argsstring></argsstring>
         <name>y_A</name>
         <briefdescription>
@@ -114,11 +114,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="68" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="68" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="67" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac8a3ddc36cdb60438bf4443758ec13f1" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::yError_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8947efb8bf567791eae5e88b772fdc8f" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::yError_A</definition>
         <argsstring></argsstring>
         <name>yError_A</name>
         <briefdescription>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="69" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="69" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="68" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae887003195fdbc85a546fea6cfd45fe4" prot="public" static="no" mutable="no">
         <type>char</type>
@@ -142,11 +142,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="71" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="71" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="70" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aeff5244fe5305a407fd1fa36ccd06ee9" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtc_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad7eb1b8217a945b6d382942806cf7512" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtc_A</definition>
         <argsstring></argsstring>
         <name>ut1MinusUtc_A</name>
         <briefdescription>
@@ -156,11 +156,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="73" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="73" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="72" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a60de8c3f15f23b3f1c0d723f97e2bc4f" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtcError_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a3b868a859f3e311df7254920d22cc7d5" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtcError_A</definition>
         <argsstring></argsstring>
         <name>ut1MinusUtcError_A</name>
         <briefdescription>
@@ -170,11 +170,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="74" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="74" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="73" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8999a1e47f77878246cab56570f7d762" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::lod_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad2329d7318381cd6f4a2e09e1d4fe5e7" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::lod_A</definition>
         <argsstring></argsstring>
         <name>lod_A</name>
         <briefdescription>
@@ -184,11 +184,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="75" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="75" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="74" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a02d540ebfeba42c461d6341abb7555a8" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::lodError_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae29ed612598481cf2e5efb0a1ca30381" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::lodError_A</definition>
         <argsstring></argsstring>
         <name>lodError_A</name>
         <briefdescription>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="76" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="76" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="75" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af70e495d778f5ab4b4e69c8600d93043" prot="public" static="no" mutable="no">
         <type>char</type>
@@ -212,11 +212,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="78" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="78" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="77" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af3e1cdf46a6916e717f46eeef20c295c" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dx_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a94508a0ee5ebe9319db4f9ed94d64a7e" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dx_A</definition>
         <argsstring></argsstring>
         <name>dx_A</name>
         <briefdescription>
@@ -226,11 +226,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="80" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="80" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="79" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a1ea6efa4bc583d7451957f7b1c38919b" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dxError_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8d31e729a12887507edba990d836620c" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dxError_A</definition>
         <argsstring></argsstring>
         <name>dxError_A</name>
         <briefdescription>
@@ -240,11 +240,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="81" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="81" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="80" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ab392cbc6f42a5c4391405ae1c1c801cd" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dy_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa62c9812a895036954430f6341c2311f" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dy_A</definition>
         <argsstring></argsstring>
         <name>dy_A</name>
         <briefdescription>
@@ -254,11 +254,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="82" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="82" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="81" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae881cac4e0554ae76b702a05435f9790" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dyError_A</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a63aada383de24427668027e659503c52" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dyError_A</definition>
         <argsstring></argsstring>
         <name>dyError_A</name>
         <briefdescription>
@@ -268,11 +268,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="83" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="83" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="82" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a802bdac499c62d5d3400d62ea0c1e25b" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::x_B</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a4e455083b6e7baaacf34388808f5a1fd" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::x_B</definition>
         <argsstring></argsstring>
         <name>x_B</name>
         <briefdescription>
@@ -282,11 +282,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="84" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="84" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="83" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad00110850f1857f6760915feb4ec389b" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::y_B</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac92bd06344e19a0294ef90ad247fba0c" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::y_B</definition>
         <argsstring></argsstring>
         <name>y_B</name>
         <briefdescription>
@@ -296,11 +296,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="85" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="85" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="84" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad9ae9053f0cb6779903803c56ff02e9c" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtc_B</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a80ccf088c823a32e1c2f8d35c06f28c4" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::ut1MinusUtc_B</definition>
         <argsstring></argsstring>
         <name>ut1MinusUtc_B</name>
         <briefdescription>
@@ -310,11 +310,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="86" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="86" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="85" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8e0baddfb93fceea21f081ed404dbe28" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dx_B</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac2cd521cd24b7e93191480255cca64b9" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dx_B</definition>
         <argsstring></argsstring>
         <name>dx_B</name>
         <briefdescription>
@@ -324,11 +324,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="87" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="87" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="86" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af40385af6c6eb70a078f4bb67d08a2f3" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dy_B</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a437428c9efa4ea67b60c770e8daf3ceb" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data::dy_B</definition>
         <argsstring></argsstring>
         <name>dy_B</name>
         <briefdescription>
@@ -338,69 +338,40 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="88" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="88" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="87" column="23" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>One line of the file. Real-valued fields that are empty in the file are std::nullopt. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="2">
-        <label>Real</label>
-      </node>
-      <node id="1">
-        <label>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</label>
-        <link refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>mjd</edgelabel>
-          <edgelabel>x_A</edgelabel>
-          <edgelabel>x_B</edgelabel>
-          <edgelabel>y_A</edgelabel>
-          <edgelabel>y_B</edgelabel>
-          <edgelabel>dx_A</edgelabel>
-          <edgelabel>lodError_A</edgelabel>
-          <edgelabel>ut1MinusUtc_A</edgelabel>
-          <edgelabel>dx_B</edgelabel>
-          <edgelabel>ut1MinusUtc_B</edgelabel>
-          <edgelabel>...</edgelabel>
-        </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>day</edgelabel>
-          <edgelabel>month</edgelabel>
-          <edgelabel>year</edgelabel>
-        </childnode>
-      </node>
-      <node id="3">
-        <label>Integer</label>
-      </node>
-    </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="57" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="56" bodyend="89"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" line="56" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp" bodystart="55" bodyend="88"/>
     <listofallmembers>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa76272eccc5ef74456ae13c3c9751db5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>day</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af3e1cdf46a6916e717f46eeef20c295c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dx_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8e0baddfb93fceea21f081ed404dbe28" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dx_B</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a1ea6efa4bc583d7451957f7b1c38919b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dxError_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ab392cbc6f42a5c4391405ae1c1c801cd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dy_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af40385af6c6eb70a078f4bb67d08a2f3" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dy_B</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae881cac4e0554ae76b702a05435f9790" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dyError_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8999a1e47f77878246cab56570f7d762" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>lod_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a02d540ebfeba42c461d6341abb7555a8" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>lodError_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a93461a4e25a9ac3cc705bfeec0117262" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>mjd</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac59271a60aeb102db6fc6374bcecdfe7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>month</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a834fe8e382a6ab57245abc51ddfd719b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>day</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a94508a0ee5ebe9319db4f9ed94d64a7e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dx_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac2cd521cd24b7e93191480255cca64b9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dx_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8d31e729a12887507edba990d836620c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dxError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa62c9812a895036954430f6341c2311f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dy_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a437428c9efa4ea67b60c770e8daf3ceb" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dy_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a63aada383de24427668027e659503c52" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>dyError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad2329d7318381cd6f4a2e09e1d4fe5e7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>lod_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae29ed612598481cf2e5efb0a1ca30381" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>lodError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a2b077801e1a1757340168fbeee87d2fb" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>mjd</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad6d6d8a6b4d7e4488acad611db15c66e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>month</name></member>
       <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1af70e495d778f5ab4b4e69c8600d93043" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>nutationFlag</name></member>
       <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a5bc6c3a7e447bffe2913cd21b9b2dbd4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>polarMotionflag</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aeff5244fe5305a407fd1fa36ccd06ee9" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtc_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad9ae9053f0cb6779903803c56ff02e9c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtc_B</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a60de8c3f15f23b3f1c0d723f97e2bc4f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtcError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad7eb1b8217a945b6d382942806cf7512" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtc_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a80ccf088c823a32e1c2f8d35c06f28c4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtc_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a3b868a859f3e311df7254920d22cc7d5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtcError_A</name></member>
       <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ae887003195fdbc85a546fea6cfd45fe4" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>ut1MinusUtcFlag</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a2319dbe36cb212fc5c5e86842b15442f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>x_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a802bdac499c62d5d3400d62ea0c1e25b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>x_B</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a7af60116aeddd0ed5982d4703393e56d" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>xError_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa294eae7dc917491e733d0801787585c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>y_A</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ad00110850f1857f6760915feb4ec389b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>y_B</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a22d559d9d72388440986abc1ac0e5080" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>year</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac8a3ddc36cdb60438bf4443758ec13f1" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>yError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a93a4d1085dba0d4fe72d1661d684daad" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>x_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a4e455083b6e7baaacf34388808f5a1fd" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>x_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ab7c69efe5d29201ef81306a1813d487b" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>xError_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a9123f21ad38a9c39262f686a811d1dad" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>y_A</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1ac92bd06344e19a0294ef90ad247fba0c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>y_B</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1aa68278137ffe70e1455085024427797c" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>year</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_finals2000_a_1_1_data_1a8947efb8bf567791eae5e88b772fdc8f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::Finals2000A::Data</scope><name>yError_A</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

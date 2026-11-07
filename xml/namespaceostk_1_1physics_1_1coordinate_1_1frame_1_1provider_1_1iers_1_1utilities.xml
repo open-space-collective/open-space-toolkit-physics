@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1utilities" kind="namespace" language="C++">
+    <compoundname>ostk::physics::coordinate::frame::provider::iers::utilities</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1utilities_1ab8833c9d7e981525d67e42d2a7c84cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::coordinate::frame::provider::iers::utilities::interpolateUt1MinusUtc</definition>
+        <argsstring>(const double &amp;aPreviousUt1MinusUtc, const double &amp;aPreviousMjd_UTC, const double &amp;aNextUt1MinusUtc, const double &amp;aNextMjd_UTC, const double &amp;aRatio, const Instant &amp;anInstant)</argsstring>
+        <name>interpolateUt1MinusUtc</name>
+        <param>
+          <type>const double &amp;</type>
+          <declname>aPreviousUt1MinusUtc</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>aPreviousMjd_UTC</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>aNextUt1MinusUtc</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>aNextMjd_UTC</declname>
+        </param>
+        <param>
+          <type>const double &amp;</type>
+          <declname>aRatio</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
+          <declname>anInstant</declname>
+        </param>
+        <briefdescription>
+<para>Linearly interpolate UT1 - UTC between two tabulated values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>UT1 - UTC jumps by +1 s across a leap second, while UT1 - TAI is continuous. Interpolating UT1 - UTC directly spreads that jump over the whole day that ends with the leap second. Across a leap second, UT1 - TAI is interpolated instead and converted back to UT1 - UTC with TAI - UTC at the requested instant.</para>
+<para><programlisting><codeline><highlight class="normal">double<sp/>ut1MinusUtc<sp/>=<sp/>utilities::interpolateUt1MinusUtc(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>previousUt1MinusUtc,<sp/>previousMjd_UTC,<sp/>nextUt1MinusUtc,<sp/>nextMjd_UTC,<sp/>ratio,<sp/>instant</highlight></codeline>
+<codeline><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aPreviousUt1MinusUtc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UT1 - UTC at the previous tabulated date [s] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aPreviousMjd_UTC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Previous tabulated date (UTC modified Julian date) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aNextUt1MinusUtc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UT1 - UTC at the next tabulated date [s] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aNextMjd_UTC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Next tabulated date (UTC modified Julian date) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aRatio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interpolation ratio </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">anInstant</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instant at which UT1 - UTC is interpolated </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>UT1 - UTC at the instant [s] </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.cpp" line="45" column="8" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.cpp" bodystart="45" bodyend="69" declfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp" declline="44" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

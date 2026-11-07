@@ -11,21 +11,18 @@ ostk.physics.coordinate.Axes
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Axes.get_frame
       ~Axes.in_frame
-      ~Axes.is_defined
-      ~Axes.undefined
       ~Axes.x
       ~Axes.y
       ~Axes.z
-   
-   
-
-   
    
    

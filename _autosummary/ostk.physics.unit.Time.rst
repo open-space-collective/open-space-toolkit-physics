@@ -11,19 +11,16 @@ ostk.physics.unit.Time
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
-      ~Time.is_defined
       ~Time.string_from_unit
       ~Time.symbol_from_unit
       ~Time.to_string
-      ~Time.undefined
-   
-   
-
-   
    
    

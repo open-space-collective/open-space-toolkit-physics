@@ -16,6 +16,15 @@ ostk.physics.Manager
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Manager.clear_local_repository
       ~Manager.get_local_repository
       ~Manager.get_local_repository_lock_timeout
@@ -23,9 +32,5 @@ ostk.physics.Manager
       ~Manager.reset
       ~Manager.set_local_repository
       ~Manager.set_mode
-   
-   
-
-   
    
    

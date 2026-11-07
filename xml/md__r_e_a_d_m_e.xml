@@ -43,7 +43,7 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">environment<sp/>=<sp/>Environment.default(set_global=</highlight><highlight class="keyword">True</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">#<sp/>Bootstrap<sp/>a<sp/>default<sp/>environment,<sp/>and<sp/>set<sp/>it<sp/>as<sp/>the<sp/>global<sp/>environment</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal">moon<sp/>=<sp/>environment.access_object_with_name(</highlight><highlight class="stringliteral">&apos;Moon&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">#<sp/>Access<sp/>Moon</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">moon<sp/>=<sp/>environment.get_object_with_name(</highlight><highlight class="stringliteral">&apos;Moon&apos;</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">#<sp/>Get<sp/>Moon</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">instant<sp/>=<sp/>Instant.now()</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -340,10 +340,10 @@
 </entry><entry thead="yes"><para>Link  </para>
 </entry></row>
 <row>
-<entry thead="no"><para>Pybind11 </para>
-</entry><entry thead="no"><para><computeroutput>2.10.1</computeroutput> </para>
+<entry thead="no"><para>nanobind </para>
+</entry><entry thead="no"><para><computeroutput>3.1.0</computeroutput> </para>
 </entry><entry thead="no"><para>BSD-3-Clause </para>
-</entry><entry thead="no"><para><ulink url="https://github.com/pybind/pybind11">github.com/pybind/pybind11</ulink>  </para>
+</entry><entry thead="no"><para><ulink url="https://github.com/wjakob/nanobind">github.com/wjakob/nanobind</ulink>  </para>
 </entry></row>
 <row>
 <entry thead="no"><para>{fmt} </para>

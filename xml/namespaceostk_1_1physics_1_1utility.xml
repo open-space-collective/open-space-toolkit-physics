@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespaceostk_1_1physics_1_1utility" kind="namespace" language="C++">
+    <compoundname>ostk::physics::utility</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String ostk::physics::utility::DoubleToString</definition>
+        <argsstring>(double aValue, int aPrecision=-1)</argsstring>
+        <name>DoubleToString</name>
+        <param>
+          <type>double</type>
+          <declname>aValue</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>aPrecision</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Convert a double to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal helper. The output matches the former ostk::core::type::Real::toString(precision) output, except that NaN prints as &quot;NaN&quot; (there is no undefined double): infinities print as &quot;+Inf&quot; / &quot;-Inf&quot;. With a negative precision, integral values keep a trailing &quot;.0&quot;, and other values use the round-trip representation without trailing zeros. With a non-negative precision, fixed notation with that many decimals is used.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal"><ref refid="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" kindref="member">DoubleToString</ref>(1.0)<sp/>;<sp/></highlight><highlight class="comment">//<sp/>&quot;1.0&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" kindref="member">DoubleToString</ref>(0.5)<sp/>;<sp/></highlight><highlight class="comment">//<sp/>&quot;0.5&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" kindref="member">DoubleToString</ref>(0.5,<sp/>3)<sp/>;<sp/></highlight><highlight class="comment">//<sp/>&quot;0.500&quot;</highlight></codeline>
+</programlisting></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aPrecision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A precision (number of decimal places, or -1 for automatic) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String representation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Utility/String.hpp" line="42" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Utility/String.hpp" bodystart="42" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1utility_1a709839949029584f7ece00e737e3b224" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::utility::ParseDouble</definition>
+        <argsstring>(const String &amp;aString)</argsstring>
+        <name>ParseDouble</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aString</declname>
+        </param>
+        <briefdescription>
+<para>Parse a string into a double. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal helper. Accepts the same numeric inputs as the former ostk::core::type::Real::Parse: &quot;Inf&quot; / &quot;+Inf&quot; / &quot;-Inf&quot; give infinities, and other strings are parsed as numbers. NaN is rejected: a parsed value is never undefined.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Parsed value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Utility/String.hpp" line="91" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Utility/String.hpp" bodystart="91" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceostk_1_1physics_1_1utility_1ab250640552da24474a9ea9ac105a9028" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int ostk::physics::utility::ParseInt</definition>
+        <argsstring>(const String &amp;aString)</argsstring>
+        <name>ParseInt</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>aString</declname>
+        </param>
+        <briefdescription>
+<para>Parse a string into an int. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Internal helper. Accepts the same numeric inputs as the former ostk::core::type::Integer::Parse.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Parsed value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/OpenSpaceToolkit/Physics/Utility/String.hpp" line="124" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Utility/String.hpp" bodystart="124" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/OpenSpaceToolkit/Physics/Utility/String.hpp" line="22" column="1"/>
+  </compounddef>
+</doxygen>

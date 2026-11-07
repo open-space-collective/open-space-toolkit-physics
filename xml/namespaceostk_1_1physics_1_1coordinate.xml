@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" line="41" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="41" bodyend="57"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" line="40" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Axes.cpp" bodystart="40" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1ae98601d62ea8ae83d32d791914e06b3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" line="64" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="64" bodyend="80"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" line="59" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Frame.cpp" bodystart="59" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1a9e9ba5f545437d45495edec82c0389b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" line="63" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="63" bodyend="80"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" line="62" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Position.cpp" bodystart="62" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1adab6f7d60b93b2a9055ba57c6a2445b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" line="122" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="122" bodyend="154"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" line="106" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="106" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1coordinate_1a25a7512229ebbaafe671d0e4576c75fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" line="39" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="39" bodyend="55"/>
+        <location file="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" line="37" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Velocity.cpp" bodystart="37" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

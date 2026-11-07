@@ -12,13 +12,6 @@
       <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a22adef48147472c56a7ab3b5d8140661" prot="public" static="no" strong="yes">
         <type></type>
         <name>Type</name>
-        <enumvalue id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a22adef48147472c56a7ab3b5d8140661aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a22adef48147472c56a7ab3b5d8140661aef6572e4cd58bb39a3f4e82fc64fe9f0" prot="public">
           <name>Sun</name>
           <briefdescription>
@@ -67,19 +60,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="65" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="64" bodyend="75"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="65" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="64" bodyend="74"/>
       </memberdef>
       <memberdef kind="enum" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad46f3313eced8098e74365e77a7d16" prot="public" static="no" strong="yes">
         <type></type>
         <name>FrameType</name>
-        <enumvalue id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad46f3313eced8098e74365e77a7d16aec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
-          <name>Undefined</name>
-          <briefdescription>
-<para>Undefined frame. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
         <enumvalue id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad46f3313eced8098e74365e77a7d16acd3459b28418fa8fa75ffaba4f3e7c74" prot="public">
           <name>NED</name>
           <briefdescription>
@@ -94,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="78" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="77" bodyend="83"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="77" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="76" bodyend="81"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -109,11 +94,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="182" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="182" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="191" column="21" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="191" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ae8afebd23a8cfa47650adf71e2d8a052" prot="private" static="no" mutable="no">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
-        <definition>Derived ostk::physics::environment::object::Celestial::gravitationalParameter_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a596f038fa7c665e96a36752b219bc112" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &gt;</type>
+        <definition>std::optional&lt;Derived&gt; ostk::physics::environment::object::Celestial::gravitationalParameter_</definition>
         <argsstring></argsstring>
         <name>gravitationalParameter_</name>
         <briefdescription>
@@ -122,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="183" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="183" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="192" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="192" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0d740c9a97b7b45ff4eeebaa036871ee" prot="private" static="no" mutable="no">
         <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
@@ -135,11 +120,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="184" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="184" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="193" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="193" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a2f88cb1b064c4f8f10c20ea8e030f15a" prot="private" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::object::Celestial::flattening_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a4ff6b8ef228f1a40c8f69f056f1c59d0" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::environment::object::Celestial::flattening_</definition>
         <argsstring></argsstring>
         <name>flattening_</name>
         <briefdescription>
@@ -148,11 +133,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="185" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="185" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="194" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="194" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9f4b8aaca86d01ff965dbdd32190e50b" prot="private" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::object::Celestial::j2_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a718de284a079eabe79150c0e57669ce6" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::environment::object::Celestial::j2_</definition>
         <argsstring></argsstring>
         <name>j2_</name>
         <briefdescription>
@@ -161,11 +146,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="186" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="186" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="195" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="195" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a371549668b030d75782133368b42509d" prot="private" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::object::Celestial::j4_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a92fd8a218a48f942f9b09f917c086076" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt;double&gt; ostk::physics::environment::object::Celestial::j4_</definition>
         <argsstring></argsstring>
         <name>j4_</name>
         <briefdescription>
@@ -174,11 +159,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="187" column="10" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="187" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="196" column="19" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="196" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1accf972134d09ca520f34de4ba3ca6ade" prot="private" static="no" mutable="no">
-        <type>Shared&lt; <ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> &gt;</type>
-        <definition>Shared&lt;Ephemeris&gt; ostk::physics::environment::object::Celestial::ephemeris_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a6eabb09ffd52ee65eda3acc94aafe406" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> &gt;</type>
+        <definition>Shared&lt;const Ephemeris&gt; ostk::physics::environment::object::Celestial::ephemeris_</definition>
         <argsstring></argsstring>
         <name>ephemeris_</name>
         <briefdescription>
@@ -187,11 +172,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="188" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="188" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="197" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="197" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a52c03cd7b49b93795c26ae7b9a785afd" prot="private" static="no" mutable="no">
-        <type>Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1ac06894f4b93290f4caf18760a770323f" kindref="member">GravitationalModel</ref> &gt;</type>
-        <definition>Shared&lt;GravitationalModel&gt; ostk::physics::environment::object::Celestial::gravitationalModelSPtr_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a19d9173a5676f4c406c288490ceef8c1" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1ac06894f4b93290f4caf18760a770323f" kindref="member">GravitationalModel</ref> &gt;</type>
+        <definition>Shared&lt;const GravitationalModel&gt; ostk::physics::environment::object::Celestial::gravitationalModelSPtr_</definition>
         <argsstring></argsstring>
         <name>gravitationalModelSPtr_</name>
         <briefdescription>
@@ -200,11 +185,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="189" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="189" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="198" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="198" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac3a38cb1adbf49555062eea0960836a6" prot="private" static="no" mutable="no">
-        <type>Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a1d67b80ef0221d026628123f2cdf14d8" kindref="member">MagneticModel</ref> &gt;</type>
-        <definition>Shared&lt;MagneticModel&gt; ostk::physics::environment::object::Celestial::magneticModelSPtr_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aa554a23a1286e8da14be66f0e7d18323" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a1d67b80ef0221d026628123f2cdf14d8" kindref="member">MagneticModel</ref> &gt;</type>
+        <definition>Shared&lt;const MagneticModel&gt; ostk::physics::environment::object::Celestial::magneticModelSPtr_</definition>
         <argsstring></argsstring>
         <name>magneticModelSPtr_</name>
         <briefdescription>
@@ -213,11 +198,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="190" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="190" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="199" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="199" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ad8f4899c964442945aaada77d737991e" prot="private" static="no" mutable="no">
-        <type>Shared&lt; <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a401a65695b0175405ca6cf49eda40b36" kindref="member">AtmosphericModel</ref> &gt;</type>
-        <definition>Shared&lt;AtmosphericModel&gt; ostk::physics::environment::object::Celestial::atmosphericModelSPtr_</definition>
+      <memberdef kind="variable" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad0a0a06a9379cffb1a9e873634de0e" prot="private" static="no" mutable="no">
+        <type>Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a401a65695b0175405ca6cf49eda40b36" kindref="member">AtmosphericModel</ref> &gt;</type>
+        <definition>Shared&lt;const AtmosphericModel&gt; ostk::physics::environment::object::Celestial::atmosphericModelSPtr_</definition>
         <argsstring></argsstring>
         <name>atmosphericModelSPtr_</name>
         <briefdescription>
@@ -226,14 +211,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="191" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="191" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="200" column="12" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="200" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abc307b5e79ebf68672c4fb34357d37c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac2770c0e0aeb86a8f62ac19ff9c22c7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::environment::object::Celestial::Celestial</definition>
-        <argsstring>(const String &amp;aName, const Celestial::Type &amp;aType, const Derived &amp;aGravitationalParameter, const Length &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aJ2, const Real &amp;aJ4, const Shared&lt; Ephemeris &gt; &amp;anEphemeris, const Shared&lt; GravitationalModel &gt; &amp;aGravitationalModel, const Shared&lt; MagneticModel &gt; &amp;aMagneticModel, const Shared&lt; AtmosphericModel &gt; &amp;anAtmosphericModel)</argsstring>
+        <argsstring>(const String &amp;aName, const Celestial::Type &amp;aType, const std::optional&lt; Derived &gt; &amp;aGravitationalParameter, const Length &amp;anEquatorialRadius, double aFlattening, const std::optional&lt; double &gt; &amp;aJ2, const std::optional&lt; double &gt; &amp;aJ4, const Shared&lt; Ephemeris &gt; &amp;anEphemeris, const Shared&lt; GravitationalModel &gt; &amp;aGravitationalModel, const Shared&lt; MagneticModel &gt; &amp;aMagneticModel, const Shared&lt; AtmosphericModel &gt; &amp;anAtmosphericModel)</argsstring>
         <name>Celestial</name>
         <param>
           <type>const String &amp;</type>
@@ -244,7 +229,7 @@
           <declname>aType</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &gt; &amp;</type>
           <declname>aGravitationalParameter</declname>
         </param>
         <param>
@@ -252,15 +237,15 @@
           <declname>anEquatorialRadius</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aFlattening</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>const std::optional&lt; double &gt; &amp;</type>
           <declname>aJ2</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>const std::optional&lt; double &gt; &amp;</type>
           <declname>aJ4</declname>
         </param>
         <param>
@@ -285,12 +270,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="96" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="20" bodyend="45"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="94" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="19" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9acfc43094d2af339144f5e09fec33f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a705e3bd74c48548a697fe3890603342d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ostk::physics::environment::object::Celestial::Celestial</definition>
-        <argsstring>(const String &amp;aName, const Celestial::Type &amp;aType, const Derived &amp;aGravitationalParameter, const Length &amp;anEquatorialRadius, const Real &amp;aFlattening, const Real &amp;aJ2, const Real &amp;aJ4, const Shared&lt; Ephemeris &gt; &amp;anEphemeris, const Shared&lt; GravitationalModel &gt; &amp;aGravitationalModel, const Shared&lt; MagneticModel &gt; &amp;aMagneticModel, const Shared&lt; AtmosphericModel &gt; &amp;anAtmosphericModel, const Object::Geometry &amp;aGeometry)</argsstring>
+        <argsstring>(const String &amp;aName, const Celestial::Type &amp;aType, const std::optional&lt; Derived &gt; &amp;aGravitationalParameter, const Length &amp;anEquatorialRadius, double aFlattening, const std::optional&lt; double &gt; &amp;aJ2, const std::optional&lt; double &gt; &amp;aJ4, const Shared&lt; Ephemeris &gt; &amp;anEphemeris, const Shared&lt; GravitationalModel &gt; &amp;aGravitationalModel, const Shared&lt; MagneticModel &gt; &amp;aMagneticModel, const Shared&lt; AtmosphericModel &gt; &amp;anAtmosphericModel, const Object::Geometry &amp;aGeometry)</argsstring>
         <name>Celestial</name>
         <param>
           <type>const String &amp;</type>
@@ -301,7 +286,7 @@
           <declname>aType</declname>
         </param>
         <param>
-          <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+          <type>const std::optional&lt; <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &gt; &amp;</type>
           <declname>aGravitationalParameter</declname>
         </param>
         <param>
@@ -309,15 +294,15 @@
           <declname>anEquatorialRadius</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>double</type>
           <declname>aFlattening</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>const std::optional&lt; double &gt; &amp;</type>
           <declname>aJ2</declname>
         </param>
         <param>
-          <type>const Real &amp;</type>
+          <type>const std::optional&lt; double &gt; &amp;</type>
           <declname>aJ4</declname>
         </param>
         <param>
@@ -346,7 +331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="110" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="47" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="108" column="5" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="50" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aed7b26bf9949f4737987f768f23a1f65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -359,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="125" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="75" bodyend="75"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="123" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1adbbbc6c86fdec5f6d24e7b64419b885c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref> *</type>
@@ -376,21 +361,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="127" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="77" bodyend="80"/>
-      </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a25746b47ed8da42de7fd256a72e59f56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool ostk::physics::environment::object::Celestial::isDefined</definition>
-        <argsstring>() const override</argsstring>
-        <name>isDefined</name>
-        <reimplements refid="classostk_1_1physics_1_1environment_1_1_object_1a67fbafdb148a3679c0b0adba35faa306">isDefined</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="129" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="82" bodyend="85"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="125" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="84" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aacdd5f213ee4a373a5c8e2b98bef21f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -403,7 +374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="87" bodyend="100"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="127" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a1d204aa21bc1115aa56252ca8bb064ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -416,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="133" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="102" bodyend="115"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="129" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="94" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a948c09f0933c1029adb19b416cc16936" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -429,73 +400,73 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="135" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="117" bodyend="130"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="131" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="99" bodyend="102"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0e365cdf7cddbe4aa38e68e8c10665d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> &gt;</type>
-        <definition>Shared&lt; const Ephemeris &gt; ostk::physics::environment::object::Celestial::accessEphemeris</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a2e7db4013da8e7dc0b717258f15a35f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const <ref refid="classostk_1_1physics_1_1environment_1_1_ephemeris" kindref="compound">Ephemeris</ref> &gt; &amp;</type>
+        <definition>const Shared&lt; const Ephemeris &gt; &amp; ostk::physics::environment::object::Celestial::getEphemeris</definition>
         <argsstring>() const</argsstring>
-        <name>accessEphemeris</name>
+        <name>getEphemeris</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="137" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="132" bodyend="140"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="133" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="104" bodyend="107"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a976be059fe64457c0aefe555e4fba427" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1ac06894f4b93290f4caf18760a770323f" kindref="member">GravitationalModel</ref> &gt;</type>
-        <definition>Shared&lt; const GravitationalModel &gt; ostk::physics::environment::object::Celestial::accessGravitationalModel</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a052b9199eb0177781f4fd7676447979f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1ac06894f4b93290f4caf18760a770323f" kindref="member">GravitationalModel</ref> &gt; &amp;</type>
+        <definition>const Shared&lt; const GravitationalModel &gt; &amp; ostk::physics::environment::object::Celestial::getGravitationalModel</definition>
         <argsstring>() const</argsstring>
-        <name>accessGravitationalModel</name>
+        <name>getGravitationalModel</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="139" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="142" bodyend="150"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="135" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="109" bodyend="112"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a98a5fe28212b33f5b3185185afa251a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a1d67b80ef0221d026628123f2cdf14d8" kindref="member">MagneticModel</ref> &gt;</type>
-        <definition>Shared&lt; const MagneticModel &gt; ostk::physics::environment::object::Celestial::accessMagneticModel</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aa1fdfd636493adc4e4221a0aebf9a692" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a1d67b80ef0221d026628123f2cdf14d8" kindref="member">MagneticModel</ref> &gt; &amp;</type>
+        <definition>const Shared&lt; const MagneticModel &gt; &amp; ostk::physics::environment::object::Celestial::getMagneticModel</definition>
         <argsstring>() const</argsstring>
-        <name>accessMagneticModel</name>
+        <name>getMagneticModel</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="141" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="152" bodyend="160"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="137" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="114" bodyend="117"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a60d182194f5b3925d40878616fd12ec1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a401a65695b0175405ca6cf49eda40b36" kindref="member">AtmosphericModel</ref> &gt;</type>
-        <definition>Shared&lt; const AtmosphericModel &gt; ostk::physics::environment::object::Celestial::accessAtmosphericModel</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ad768217ce44fea1090783031fe7e5750" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const Shared&lt; const <ref refid="namespaceostk_1_1physics_1_1environment_1_1object_1a401a65695b0175405ca6cf49eda40b36" kindref="member">AtmosphericModel</ref> &gt; &amp;</type>
+        <definition>const Shared&lt; const AtmosphericModel &gt; &amp; ostk::physics::environment::object::Celestial::getAtmosphericModel</definition>
         <argsstring>() const</argsstring>
-        <name>accessAtmosphericModel</name>
+        <name>getAtmosphericModel</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="143" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="162" bodyend="170"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="139" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="119" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a581cf2edc06dd50e3da2020af63223f1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1adc72b4dcc782a8b1fe38ac5f84612e1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
-        <definition>Shared&lt; const Frame &gt; ostk::physics::environment::object::Celestial::accessFrame</definition>
+        <definition>Shared&lt; const Frame &gt; ostk::physics::environment::object::Celestial::getFrame</definition>
         <argsstring>() const override</argsstring>
-        <name>accessFrame</name>
-        <reimplements refid="classostk_1_1physics_1_1environment_1_1_object_1a23a879fa650480088529c440e1298306">accessFrame</reimplements>
+        <name>getFrame</name>
+        <reimplements refid="classostk_1_1physics_1_1environment_1_1_object_1ad2ee47c705a53e3c5d04d4d3f9892b72">getFrame</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="145" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="172" bodyend="180"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="141" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="124" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac422b7aad84424cf6918ce08b3d9c917" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a22adef48147472c56a7ab3b5d8140661" kindref="member">Celestial::Type</ref></type>
@@ -508,24 +479,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="147" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="182" bodyend="190"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="143" column="21" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="129" bodyend="132"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a3fe5abc4c6a24cfef67eb2bc76977523" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref></type>
-        <definition>Derived ostk::physics::environment::object::Celestial::getGravitationalParameter</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ad81d2b04f9aadb8649800b297479977c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_derived" kindref="compound">Derived</ref> &amp;</type>
+        <definition>const Derived &amp; ostk::physics::environment::object::Celestial::getGravitationalParameter</definition>
         <argsstring>() const</argsstring>
         <name>getGravitationalParameter</name>
         <briefdescription>
+<para>Get the gravitational parameter. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>Gravitational parameter </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ostk::core::error::runtime::Undefined</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the celestial object has no gravitational parameter (an Earth built without a gravitational model) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="149" column="13" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="192" bodyend="200"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="150" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="134" bodyend="142"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0394a773909b012b3bf51ccc93cf2957" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref></type>
-        <definition>Length ostk::physics::environment::object::Celestial::getEquatorialRadius</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aeb7a50d497384bd557232f70aa847bcb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classostk_1_1physics_1_1unit_1_1_length" kindref="compound">Length</ref> &amp;</type>
+        <definition>const Length &amp; ostk::physics::environment::object::Celestial::getEquatorialRadius</definition>
         <argsstring>() const</argsstring>
         <name>getEquatorialRadius</name>
         <briefdescription>
@@ -534,11 +518,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="151" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="202" bodyend="210"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="152" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="144" bodyend="147"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0ff89bef090afc044885e22ab114ec16" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::object::Celestial::getFlattening</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac7282b0e877d56061c73995ff9f1378f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::object::Celestial::getFlattening</definition>
         <argsstring>() const</argsstring>
         <name>getFlattening</name>
         <briefdescription>
@@ -547,33 +531,59 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="153" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="212" bodyend="220"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="154" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="149" bodyend="152"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a13dc27c6947635f52767f650b4f31620" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::object::Celestial::getJ2</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ab0f2938de0a2496a3b14b59158b64adf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::object::Celestial::getJ2</definition>
         <argsstring>() const</argsstring>
         <name>getJ2</name>
         <briefdescription>
+<para>Get the J2 parameter value. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>J2 parameter value </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ostk::core::error::runtime::Undefined</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the celestial object has no J2 (an Earth built without a gravitational model) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="155" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="222" bodyend="230"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="161" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="154" bodyend="162"/>
       </memberdef>
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a3e0c4b3240fa1ccdf4b3e2c233992638" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>Real</type>
-        <definition>Real ostk::physics::environment::object::Celestial::getJ4</definition>
+      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abe6bb8657f17edda425e17498b2f84c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double ostk::physics::environment::object::Celestial::getJ4</definition>
         <argsstring>() const</argsstring>
         <name>getJ4</name>
         <briefdescription>
+<para>Get the J4 parameter value. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>J4 parameter value </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>ostk::core::error::runtime::Undefined</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the celestial object has no J4 (an Earth built without a gravitational model) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="157" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="232" bodyend="240"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="168" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="164" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac10d3092a427a05f79b90caec84847bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_position" kindref="compound">Position</ref></type>
@@ -595,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="159" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="242" bodyend="255"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="170" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="174" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a23f4564311c6c70dc78070723c3fbab2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_velocity" kindref="compound">Velocity</ref></type>
@@ -617,7 +627,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="161" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="257" bodyend="262"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="172" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="184" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac4ac447f2c9960ab25e024bb688d9505" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -639,7 +649,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="163" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="264" bodyend="277"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="174" column="23" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="191" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abe3a06f0125fc000299e2acabafc328b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_axes" kindref="compound">Axes</ref></type>
@@ -661,7 +671,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="165" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="279" bodyend="292"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="176" column="18" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="201" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1af9bb0adb04d3276f56f0adba393e82c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref></type>
@@ -682,7 +692,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="167" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="294" bodyend="322"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="178" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="211" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a4c2818f6f577f53512d8837b16c3dc32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_vector" kindref="compound">Vector</ref></type>
@@ -703,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="169" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="324" bodyend="351"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="180" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="231" bodyend="248"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a6a054ba2ae57b50fa33c00ecb2c19fdc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1data_1_1_scalar" kindref="compound">Scalar</ref></type>
@@ -724,7 +734,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="171" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="353" bodyend="379"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="182" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="250" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a5923fbf3b9d4ebb85f233cb39051471e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Shared&lt; const <ref refid="classostk_1_1physics_1_1coordinate_1_1_frame" kindref="compound">Frame</ref> &gt;</type>
@@ -745,7 +755,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="173" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="381" bodyend="423"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="184" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="268" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1acbfbeceb563694586693e8c41cb931be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1environment_1_1_object_1aa7e729b9f9530a07e119ec75ab9506e5" kindref="member">Object::Geometry</ref></type>
@@ -758,23 +768,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="175" column="22"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="186" column="22"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ade773ad5a77a1a8e35f646b1e9bc1989" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial" kindref="compound">Celestial</ref></type>
-        <definition>Celestial ostk::physics::environment::object::Celestial::Undefined</definition>
-        <argsstring>()</argsstring>
-        <name>Undefined</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="177" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="437" bodyend="452"/>
-      </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9ca8ec080e46d3b5a439d3522daa5e08" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>String</type>
         <definition>String ostk::physics::environment::object::Celestial::StringFromFrameType</definition>
@@ -790,7 +787,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="179" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="454" bodyend="470"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="188" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Object/Celestial.cpp" bodystart="302" bodyend="315"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -839,51 +836,48 @@
         <link refid="classostk_1_1physics_1_1environment_1_1_object"/>
       </node>
     </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="62" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="61" bodyend="192"/>
+    <location file="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" line="62" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Environment/Object/Celestial.hpp" bodystart="61" bodyend="201"/>
     <listofallmembers>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a60d182194f5b3925d40878616fd12ec1" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessAtmosphericModel</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0e365cdf7cddbe4aa38e68e8c10665d6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessEphemeris</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a581cf2edc06dd50e3da2020af63223f1" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessFrame</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1_object_1ab306747a9a25bce149ac38e90ccf5996" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessGeometry</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a976be059fe64457c0aefe555e4fba427" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessGravitationalModel</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a98a5fe28212b33f5b3185185afa251a6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessMagneticModel</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a482a363b20f3111919b57d8b6ae4b626" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>accessName</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a948c09f0933c1029adb19b416cc16936" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>atmosphericModelIsDefined</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ad8f4899c964442945aaada77d737991e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>atmosphericModelSPtr_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abc307b5e79ebf68672c4fb34357d37c5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Celestial</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9acfc43094d2af339144f5e09fec33f0" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Celestial</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad0a0a06a9379cffb1a9e873634de0e" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>atmosphericModelSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac2770c0e0aeb86a8f62ac19ff9c22c7f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Celestial</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a705e3bd74c48548a697fe3890603342d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Celestial</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1adbbbc6c86fdec5f6d24e7b64419b885c" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>clone</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1accf972134d09ca520f34de4ba3ca6ade" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>ephemeris_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a6eabb09ffd52ee65eda3acc94aafe406" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>ephemeris_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0d740c9a97b7b45ff4eeebaa036871ee" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>equatorialRadius_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a2f88cb1b064c4f8f10c20ea8e030f15a" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>flattening_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a4ff6b8ef228f1a40c8f69f056f1c59d0" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>flattening_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abad46f3313eced8098e74365e77a7d16" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>FrameType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_object_1aa7e729b9f9530a07e119ec75ab9506e5" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Geometry</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a6a054ba2ae57b50fa33c00ecb2c19fdc" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getAtmosphericDensityAt</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ad768217ce44fea1090783031fe7e5750" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getAtmosphericModel</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abe3a06f0125fc000299e2acabafc328b" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getAxesIn</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0394a773909b012b3bf51ccc93cf2957" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getEquatorialRadius</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a0ff89bef090afc044885e22ab114ec16" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getFlattening</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a2e7db4013da8e7dc0b717258f15a35f6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getEphemeris</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aeb7a50d497384bd557232f70aa847bcb" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getEquatorialRadius</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac7282b0e877d56061c73995ff9f1378f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getFlattening</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1adc72b4dcc782a8b1fe38ac5f84612e1e" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getFrame</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a5923fbf3b9d4ebb85f233cb39051471e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getFrameAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a2fbf19c615439f945094330513a15d8e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGeometry</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a7e71cbc82cacb97028dfec30b4d22615" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGeometryIn</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a230cce8f57728248df444284d046b6bf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGeometry</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1ad4307a63e9776c25a8b8a631ad18cd09" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGeometryIn</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1af9bb0adb04d3276f56f0adba393e82c8" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGravitationalFieldAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a3fe5abc4c6a24cfef67eb2bc76977523" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGravitationalParameter</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a13dc27c6947635f52767f650b4f31620" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getJ2</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a3e0c4b3240fa1ccdf4b3e2c233992638" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getJ4</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a052b9199eb0177781f4fd7676447979f" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGravitationalModel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ad81d2b04f9aadb8649800b297479977c" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getGravitationalParameter</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ab0f2938de0a2496a3b14b59158b64adf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getJ2</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1abe6bb8657f17edda425e17498b2f84c6" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getJ4</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a4c2818f6f577f53512d8837b16c3dc32" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getMagneticFieldAt</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1_object_1a6b5ae91472cae78ec3a1f71f92d012cf" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getName</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aa1fdfd636493adc4e4221a0aebf9a692" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getMagneticModel</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1_object_1af0acd100c50433b2377c0e77a1631f31" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getName</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac10d3092a427a05f79b90caec84847bb" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getPositionIn</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1acbfbeceb563694586693e8c41cb931be" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getTerminatorGeometry</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac4ac447f2c9960ab25e024bb688d9505" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getTransformTo</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac422b7aad84424cf6918ce08b3d9c917" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a23f4564311c6c70dc78070723c3fbab2" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>getVelocityIn</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aacdd5f213ee4a373a5c8e2b98bef21f7" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>gravitationalModelIsDefined</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a52c03cd7b49b93795c26ae7b9a785afd" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>gravitationalModelSPtr_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ae8afebd23a8cfa47650adf71e2d8a052" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>gravitationalParameter_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a25746b47ed8da42de7fd256a72e59f56" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>isDefined</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9f4b8aaca86d01ff965dbdd32190e50b" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>j2_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a371549668b030d75782133368b42509d" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>j4_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a19d9173a5676f4c406c288490ceef8c1" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>gravitationalModelSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a596f038fa7c665e96a36752b219bc112" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>gravitationalParameter_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a718de284a079eabe79150c0e57669ce6" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>j2_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a92fd8a218a48f942f9b09f917c086076" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>j4_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a1d204aa21bc1115aa56252ca8bb064ed" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>magneticModelIsDefined</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ac3a38cb1adbf49555062eea0960836a6" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>magneticModelSPtr_</name></member>
+      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aa554a23a1286e8da14be66f0e7d18323" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>magneticModelSPtr_</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_object_1ad0bd314e8ecd4c649dec47c734e7b837" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Object</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_object_1acfb94e72017a6f1d2a12771a6bcf1a3d" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Object</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_object_1abf6aec0a61fb175f13f1eb0e7d43f93e" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Object</name></member>
@@ -891,7 +885,6 @@
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a9ca8ec080e46d3b5a439d3522daa5e08" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>StringFromFrameType</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a22adef48147472c56a7ab3b5d8140661" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Type</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1a8c770aca44b064fdb658cf3f876903dd" prot="private" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>type_</name></member>
-      <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1ade773ad5a77a1a8e35f646b1e9bc1989" prot="public" virt="non-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>Undefined</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1object_1_1_celestial_1aed7b26bf9949f4737987f768f23a1f65" prot="public" virt="virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>~Celestial</name></member>
       <member refid="classostk_1_1physics_1_1environment_1_1_object_1ab45ec0e1e0dfcadb6166079377ec3e37" prot="public" virt="pure-virtual"><scope>ostk::physics::environment::object::Celestial</scope><name>~Object</name></member>
     </listofallmembers>

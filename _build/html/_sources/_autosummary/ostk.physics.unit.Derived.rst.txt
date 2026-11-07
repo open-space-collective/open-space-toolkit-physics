@@ -11,21 +11,18 @@ ostk.physics.unit.Derived
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Derived.get_unit
       ~Derived.in_unit
-      ~Derived.is_defined
       ~Derived.string_from_unit
       ~Derived.symbol_from_unit
       ~Derived.to_string
-      ~Derived.undefined
-   
-   
-
-   
    
    

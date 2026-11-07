@@ -11,10 +11,13 @@ ostk.physics.coordinate.spherical.LLA
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~LLA.azimuth_between
       ~LLA.calculate_azimuth_to
@@ -30,17 +33,11 @@ ostk.physics.coordinate.spherical.LLA
       ~LLA.get_latitude
       ~LLA.get_longitude
       ~LLA.intermediate_between
-      ~LLA.is_defined
       ~LLA.linspace
       ~LLA.on_surface
       ~LLA.to_cartesian
       ~LLA.to_string
       ~LLA.to_vector
-      ~LLA.undefined
       ~LLA.vector
-   
-   
-
-   
    
    

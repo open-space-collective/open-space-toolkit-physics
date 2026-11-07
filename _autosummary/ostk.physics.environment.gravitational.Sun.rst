@@ -11,17 +11,6 @@ ostk.physics.environment.gravitational.Sun
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-      ~Sun.get_field_value_at
-      ~Sun.get_parameters
-      ~Sun.get_type
-      ~Sun.is_defined
-      ~Sun.is_point_mass
-   
    
 
    
@@ -30,6 +19,10 @@ ostk.physics.environment.gravitational.Sun
 
    .. autosummary::
    
+      ~Sun.get_field_value_at
+      ~Sun.get_parameters
+      ~Sun.get_type
+      ~Sun.is_point_mass
       ~Sun.spherical
    
    

@@ -16,17 +16,20 @@ ostk.physics.data.Manifest
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Manifest.find_remote_data_urls
       ~Manifest.get_last_modified_timestamp
       ~Manifest.get_last_update_timestamp_for
       ~Manifest.get_next_update_check_timestamp_for
       ~Manifest.get_remote_data_urls
-      ~Manifest.is_defined
       ~Manifest.load
-      ~Manifest.undefined
-   
-   
-
-   
    
    

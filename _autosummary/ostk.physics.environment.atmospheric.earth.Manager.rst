@@ -16,6 +16,15 @@ ostk.physics.environment.atmospheric.earth.Manager
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Manager.clear_local_repository
       ~Manager.fetch_latest_cssi_space_weather
       ~Manager.get
@@ -34,9 +43,5 @@ ostk.physics.environment.atmospheric.earth.Manager
       ~Manager.reset
       ~Manager.set_local_repository
       ~Manager.set_mode
-   
-   
-
-   
    
    

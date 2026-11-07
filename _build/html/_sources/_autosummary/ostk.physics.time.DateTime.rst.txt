@@ -11,10 +11,13 @@ ostk.physics.time.DateTime
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~DateTime.GPS_epoch
       ~DateTime.J2000
@@ -22,17 +25,11 @@ ostk.physics.time.DateTime
       ~DateTime.get_julian_date
       ~DateTime.get_modified_julian_date
       ~DateTime.get_time
-      ~DateTime.is_defined
       ~DateTime.julian_date
       ~DateTime.modified_julian_date
       ~DateTime.modified_julian_date_epoch
       ~DateTime.parse
       ~DateTime.to_string
-      ~DateTime.undefined
       ~DateTime.unix_epoch
-   
-   
-
-   
    
    

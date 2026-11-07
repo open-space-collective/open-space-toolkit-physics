@@ -11,10 +11,13 @@ ostk.physics.unit.Angle
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Angle.arcminutes
       ~Angle.arcseconds
@@ -28,7 +31,6 @@ ostk.physics.unit.Angle
       ~Angle.in_radians
       ~Angle.in_revolutions
       ~Angle.in_unit
-      ~Angle.is_defined
       ~Angle.is_zero
       ~Angle.parse
       ~Angle.pi
@@ -38,11 +40,6 @@ ostk.physics.unit.Angle
       ~Angle.symbol_from_unit
       ~Angle.to_string
       ~Angle.two_pi
-      ~Angle.undefined
       ~Angle.zero
-   
-   
-
-   
    
    

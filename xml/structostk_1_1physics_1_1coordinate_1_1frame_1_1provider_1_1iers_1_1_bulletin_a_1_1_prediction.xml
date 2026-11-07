@@ -4,9 +4,9 @@
     <compoundname>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</compoundname>
     <includes refid="_bulletin_a_8hpp" local="no">BulletinA.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1afea5b9d24af56ac64e2327b64fd4ac09" prot="public" static="no" mutable="no">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::year</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a1deb010174109d63eef5dc63ab04a7f7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::year</definition>
         <argsstring></argsstring>
         <name>year</name>
         <briefdescription>
@@ -16,11 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="85" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="85" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="83" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a43d8dfb8659d498aee1010bc92108fc7" prot="public" static="no" mutable="no">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::month</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1aacda154e8250ec2051230d3c6726fa9f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::month</definition>
         <argsstring></argsstring>
         <name>month</name>
         <briefdescription>
@@ -30,11 +30,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="86" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="86" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="84" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1ae3432432f6332528206a8f5fc1fd3147" prot="public" static="no" mutable="no">
-        <type>Integer</type>
-        <definition>Integer ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::day</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a4433038f8a058324cbf72f960e5977cc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::day</definition>
         <argsstring></argsstring>
         <name>day</name>
         <briefdescription>
@@ -44,11 +44,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="87" column="17" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="87" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="85" column="13" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1ab328400e49e1522ad51eddad7df44f72" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::mjd</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a01b5d61482cde8b312b7b5ed34a83d7e" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::mjd</definition>
         <argsstring></argsstring>
         <name>mjd</name>
         <briefdescription>
@@ -58,11 +58,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="89" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="89" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="87" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1adce87f82102a4bb6fee1f2c4b9ba7ec5" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::x</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a61595260b31537cc088ffad2cd14c1fc" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::x</definition>
         <argsstring></argsstring>
         <name>x</name>
         <briefdescription>
@@ -72,11 +72,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="91" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="91" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="89" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a560eaf0f39636c5438f638b2db70a597" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::y</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a643ac4217b6e2a0e5e259e64f1dbd5b0" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::y</definition>
         <argsstring></argsstring>
         <name>y</name>
         <briefdescription>
@@ -86,11 +86,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="92" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="92" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="90" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1acd4f055e26dec7d7367b094db03a7541" prot="public" static="no" mutable="no">
-        <type>Real</type>
-        <definition>Real ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::ut1MinusUtc</definition>
+      <memberdef kind="variable" id="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1aa075196d9e872878f8810bf60b05bb85" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction::ut1MinusUtc</definition>
         <argsstring></argsstring>
         <name>ut1MinusUtc</name>
         <briefdescription>
@@ -100,45 +100,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="94" column="14" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="94" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="92" column="16" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="2">
-        <label>Real</label>
-      </node>
-      <node id="3">
-        <label>Integer</label>
-      </node>
-      <node id="1">
-        <label>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</label>
-        <link refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>x</edgelabel>
-          <edgelabel>mjd</edgelabel>
-          <edgelabel>y</edgelabel>
-          <edgelabel>ut1MinusUtc</edgelabel>
-        </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>day</edgelabel>
-          <edgelabel>month</edgelabel>
-          <edgelabel>year</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
-    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="84" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="83" bodyend="95"/>
+    <location file="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" line="82" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp" bodystart="81" bodyend="93"/>
     <listofallmembers>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1ae3432432f6332528206a8f5fc1fd3147" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>day</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1ab328400e49e1522ad51eddad7df44f72" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>mjd</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a43d8dfb8659d498aee1010bc92108fc7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>month</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1acd4f055e26dec7d7367b094db03a7541" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>ut1MinusUtc</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1adce87f82102a4bb6fee1f2c4b9ba7ec5" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>x</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a560eaf0f39636c5438f638b2db70a597" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>y</name></member>
-      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1afea5b9d24af56ac64e2327b64fd4ac09" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>year</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a4433038f8a058324cbf72f960e5977cc" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>day</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a01b5d61482cde8b312b7b5ed34a83d7e" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>mjd</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1aacda154e8250ec2051230d3c6726fa9f" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>month</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1aa075196d9e872878f8810bf60b05bb85" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>ut1MinusUtc</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a61595260b31537cc088ffad2cd14c1fc" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>x</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a643ac4217b6e2a0e5e259e64f1dbd5b0" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>y</name></member>
+      <member refid="structostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1iers_1_1_bulletin_a_1_1_prediction_1a1deb010174109d63eef5dc63ab04a7f7" prot="public" virt="non-virtual"><scope>ostk::physics::coordinate::frame::provider::iers::BulletinA::Prediction</scope><name>year</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

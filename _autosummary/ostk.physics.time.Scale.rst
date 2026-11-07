@@ -11,12 +11,6 @@ ostk.physics.time.Scale
 
    
    
-   .. rubric:: Methods
-
-   .. autosummary::
-      :nosignatures:
-   
-   
    
 
    
@@ -25,22 +19,19 @@ ostk.physics.time.Scale
 
    .. autosummary::
    
-      ~Scale.BDT
-      ~Scale.GLST
+      ~Scale.UTC
+      ~Scale.TT
+      ~Scale.TAI
+      ~Scale.UT1
+      ~Scale.TCG
+      ~Scale.TCB
+      ~Scale.TDB
       ~Scale.GMST
       ~Scale.GPST
       ~Scale.GST
-      ~Scale.IRNSST
+      ~Scale.GLST
+      ~Scale.BDT
       ~Scale.QZSST
-      ~Scale.TAI
-      ~Scale.TCB
-      ~Scale.TCG
-      ~Scale.TDB
-      ~Scale.TT
-      ~Scale.UT1
-      ~Scale.UTC
-      ~Scale.Undefined
-      ~Scale.name
-      ~Scale.value
+      ~Scale.IRNSST
    
    

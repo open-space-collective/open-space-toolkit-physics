@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="75" bodyend="79"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="105" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="73" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1environment_1_1utilities_1_1_eclipse_phase_1af2404d09c7df70390441ff5807488442" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -251,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="115" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="81" bodyend="84"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="115" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="79" bodyend="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -295,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="95" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="73"/>
+        <location file="include/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.hpp" line="95" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Environment/Utility/Eclipse.cpp" bodystart="59" bodyend="71"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

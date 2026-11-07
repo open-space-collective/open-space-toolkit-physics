@@ -16,6 +16,15 @@ ostk.physics.data.Manager
    .. autosummary::
       :nosignatures:
    
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
       ~Manager.clear_local_repository
       ~Manager.default_remote_url
       ~Manager.find_remote_data_urls
@@ -33,9 +42,5 @@ ostk.physics.data.Manager
       ~Manager.set_local_repository
       ~Manager.set_mode
       ~Manager.set_remote_url
-   
-   
-
-   
    
    

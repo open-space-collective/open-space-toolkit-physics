@@ -11,22 +11,19 @@ ostk.physics.data.Vector
 
    
    
-   .. rubric:: Methods
+   
+
+   
+   
+   .. rubric:: Attributes
 
    .. autosummary::
-      :nosignatures:
    
       ~Vector.get_frame
       ~Vector.get_unit
       ~Vector.get_value
       ~Vector.in_frame
       ~Vector.in_unit
-      ~Vector.is_defined
       ~Vector.to_string
-      ~Vector.undefined
-   
-   
-
-   
    
    

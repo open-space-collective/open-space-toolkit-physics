@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="40" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="40" bodyend="-1"/>
+        <location file="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" line="41" column="1" bodyfile="include/OpenSpaceToolkit/Physics/Data/Manager.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="38" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="38" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="39" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceostk_1_1physics_1_1data_1a65d22827513124fc4e2dd80f5e30beea" prot="public" static="no" mutable="no">
         <type>const String</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="40" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="40" bodyend="-1"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" line="41" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Data/Manager.cpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" line="30" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="30" bodyend="45"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" line="29" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Direction.cpp" bodystart="29" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1ab268f37c7b20729ba6fd4d2c8b2cd1b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" line="36" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="36" bodyend="48"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" line="34" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Scalar.cpp" bodystart="34" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="namespaceostk_1_1physics_1_1data_1a117b206d735caf86f42a8e3491342e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" line="37" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="37" bodyend="53"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" line="36" column="1" bodyfile="src/OpenSpaceToolkit/Physics/Data/Vector.cpp" bodystart="36" bodyend="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

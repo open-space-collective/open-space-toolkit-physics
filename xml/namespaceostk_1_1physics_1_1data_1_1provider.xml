@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" line="18" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" bodystart="18" bodyend="49" declfile="include/OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp" declline="30" declcolumn="11"/>
+        <location file="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" line="18" column="11" bodyfile="src/OpenSpaceToolkit/Physics/Data/Provider/Nadir.cpp" bodystart="18" bodyend="33" declfile="include/OpenSpaceToolkit/Physics/Data/Provider/Nadir.hpp" declline="30" declcolumn="11"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

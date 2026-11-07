@@ -11,10 +11,7 @@
     <includes refid="_scale_8hpp" local="no">OpenSpaceToolkit/Physics/Time/Scale.hpp</includes>
     <includes refid="_angle_8hpp" local="no">OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</includes>
     <incdepgraph>
-      <node id="9">
-        <label>OpenSpaceToolkit/Core/Type/Real.hpp</label>
-      </node>
-      <node id="14">
+      <node id="13">
         <label>functional</label>
       </node>
       <node id="5">
@@ -28,16 +25,16 @@
         <link refid="_provider_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>OpenSpaceToolkit/Physics/Time/Scale.hpp</label>
         <link refid="_scale_8hpp"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="10">
         <label>OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp</label>
       </node>
       <node id="8">
@@ -50,8 +47,6 @@
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -72,54 +67,52 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
       </node>
-      <node id="21">
+      <node id="20">
         <label>OpenSpaceToolkit/Physics/Time/Duration.hpp</label>
         <link refid="_duration_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="21">
         <label>OpenSpaceToolkit/Physics/Unit/Time.hpp</label>
         <link refid="_unit_2_time_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="17">
         <label>OpenSpaceToolkit/Physics/Time/DateTime.hpp</label>
         <link refid="_date_time_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="12">
         <label>OpenSpaceToolkit/Physics/Time/Instant.hpp</label>
         <link refid="_instant_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
@@ -128,45 +121,39 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>OpenSpaceToolkit/Mathematics/Geometry/Angle.hpp</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>OpenSpaceToolkit/Physics/Unit/Unit.hpp</label>
         <link refid="_unit_2_unit_8hpp"/>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>OpenSpaceToolkit/Core/Utility.hpp</label>
       </node>
-      <node id="19">
+      <node id="14">
         <label>optional</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>OpenSpaceToolkit/Core/Container/Pair.hpp</label>
       </node>
       <node id="3">
         <label>OpenSpaceToolkit/Core/Error.hpp</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>OpenSpaceToolkit/Core/Type/String.hpp</label>
       </node>
       <node id="16">
@@ -175,42 +162,36 @@
       <node id="18">
         <label>OpenSpaceToolkit/Physics/Time/Date.hpp</label>
         <link refid="_date_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp</label>
         <link refid="_angle_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="11">
         <label>OpenSpaceToolkit/Mathematics/Object/Vector.hpp</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>OpenSpaceToolkit/Physics/Time/Time.hpp</label>
         <link refid="_time_2_time_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -220,7 +201,7 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -283,7 +264,7 @@
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>s2r<sp/>=<sp/>M_PI<sp/>/<sp/>648000.0;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="classostk_1_1physics_1_1unit_1_1_angle_1ae66e9661157bbe1dff4eb39823d152ae" kindref="member">Angle::Radians</ref>(zeta<sp/>*<sp/>s2r),<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1ae66e9661157bbe1dff4eb39823d152ae" kindref="member">Angle::Radians</ref>(theta<sp/>*<sp/>s2r),<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1ae66e9661157bbe1dff4eb39823d152ae" kindref="member">Angle::Radians</ref>(z<sp/>*<sp/>s2r)};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="classostk_1_1physics_1_1unit_1_1_angle_1a52222a1314504b36bda381bc2703f33b" kindref="member">Angle::Radians</ref>(zeta<sp/>*<sp/>s2r),<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1a52222a1314504b36bda381bc2703f33b" kindref="member">Angle::Radians</ref>(theta<sp/>*<sp/>s2r),<sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle_1a52222a1314504b36bda381bc2703f33b" kindref="member">Angle::Radians</ref>(z<sp/>*<sp/>s2r)};</highlight></codeline>
 <codeline lineno="52"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><ref refid="classostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1_1_m_o_d_1abdcd0e358a4f9acbaae2a4d2df347aee" kindref="member">MOD::MOD</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant&amp;<sp/>anEpoch)</highlight></codeline>
@@ -298,53 +279,38 @@
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>MOD(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>MOD::isDefined()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant&amp;<sp/>MOD::getEpoch()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="67"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>epoch_;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal">Instant<sp/>MOD::getEpoch()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">Transform<sp/>MOD::getTransformAt(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant&amp;<sp/>anInstant)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="72"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>epoch_;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::object::Vector2d;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal">Transform<sp/>MOD::getTransformAt(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Instant&amp;<sp/>anInstant)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="77"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>ostk::mathematics::object::Vector2d;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">ostk::physics::unit::Angle</ref>;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!anInstant.isDefined())</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;Instant&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1time_1_1_date_time" kindref="compound">ostk::physics::time::DateTime</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceostk_1_1physics_1_1time_1adf23d37bd8641fb76a0e98ab46a70df7" kindref="member">ostk::physics::time::Scale</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classostk_1_1physics_1_1unit_1_1_angle" kindref="compound">ostk::physics::unit::Angle</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>[zeta,<sp/>theta,<sp/>z]<sp/>=<sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1afe11c00477d6b31d488a2f45f901194a" kindref="member">computeFK5Precession</ref>(epoch_);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RotationMatrix<sp/>dcm_GCRF_MOD<sp/>=<sp/>RotationMatrix::RZ(zeta)<sp/>*<sp/>RotationMatrix::RY(-theta)<sp/>*<sp/>RotationMatrix::RZ(z);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>x_MOD_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>v_MOD_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quaternion<sp/>q_MOD_GCRF<sp/>=<sp/>Quaternion::RotationMatrix(dcm_GCRF_MOD).conjugate().normalize().rectify();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>w_MOD_GCRF_in_MOD<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;isDefined())</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>ostk::core::error::runtime::Undefined(</highlight><highlight class="stringliteral">&quot;MOD&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>[zeta,<sp/>theta,<sp/>z]<sp/>=<sp/><ref refid="namespaceostk_1_1physics_1_1coordinate_1_1frame_1_1provider_1afe11c00477d6b31d488a2f45f901194a" kindref="member">computeFK5Precession</ref>(epoch_);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RotationMatrix<sp/>dcm_GCRF_MOD<sp/>=<sp/>RotationMatrix::RZ(zeta)<sp/>*<sp/>RotationMatrix::RY(-theta)<sp/>*<sp/>RotationMatrix::RZ(z);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>x_MOD_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>v_MOD_GCRF<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Quaternion<sp/>q_MOD_GCRF<sp/>=<sp/>Quaternion::RotationMatrix(dcm_GCRF_MOD).conjugate().normalize().rectify();</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Vector3d<sp/>w_MOD_GCRF_in_MOD<sp/>=<sp/>{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Transform::Passive(anInstant,<sp/>x_MOD_GCRF,<sp/>v_MOD_GCRF,<sp/>q_MOD_GCRF,<sp/>w_MOD_GCRF_in_MOD);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>provider</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Transform::Passive(anInstant,<sp/>x_MOD_GCRF,<sp/>v_MOD_GCRF,<sp/>q_MOD_GCRF,<sp/>w_MOD_GCRF_in_MOD);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>provider</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>coordinate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>physics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>ostk</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/MOD.cpp"/>
   </compounddef>
