@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Duration(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
 
@@ -23,12 +23,11 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
     duration_class
 
         .def(
-            init(
-                [](const std::chrono::microseconds& aCount)
-                {
-                    return new Duration(aCount.count() * 1000);
-                }
-            ),
+            "__init__",
+            [](Duration* self, const std::chrono::microseconds& aCount)
+            {
+                new (self) Duration(aCount.count() * 1000);
+            },
             R"doc(
                 Constructor.
                 Args:
@@ -46,24 +45,137 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
-        .def(self < self)
-        .def(self <= self)
-        .def(self > self)
-        .def(self >= self)
+        .def(
+            "__lt__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self < other;
+            },
+            is_operator()
+        )
+        .def(
+            "__le__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self <= other;
+            },
+            is_operator()
+        )
+        .def(
+            "__gt__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self > other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ge__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self >= other;
+            },
+            is_operator()
+        )
 
-        .def(self + self)
-        .def(self - self)
-        .def(self * double())
-        .def(self / double())
-        .def(double() * self)
+        .def(
+            "__add__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self + other;
+            },
+            is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Duration& self, const Duration& other)
+            {
+                return self - other;
+            },
+            is_operator()
+        )
+        .def(
+            "__mul__",
+            [](const Duration& self, double other)
+            {
+                return self * other;
+            },
+            is_operator()
+        )
+        .def(
+            "__truediv__",
+            [](const Duration& self, double other)
+            {
+                return self / other;
+            },
+            is_operator()
+        )
+        .def(
+            "__rmul__",
+            [](const Duration& self, double other)
+            {
+                return other * self;
+            },
+            is_operator()
+        )
 
-        .def(self += self)
-        .def(self -= self)
-        .def(self *= double())
-        .def(self /= double())
+        .def(
+            "__iadd__",
+            [](Duration& self, const Duration& other) -> Duration&
+            {
+                self += other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Duration& self, const Duration& other) -> Duration&
+            {
+                self -= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__imul__",
+            [](Duration& self, double other) -> Duration&
+            {
+                self *= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__itruediv__",
+            [](Duration& self, double other) -> Duration&
+            {
+                self /= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Duration>))
         .def(
@@ -81,16 +193,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             }
         )
 
-        .def(
-            "is_defined",
-            &Duration::isDefined,
-            R"doc(
-                Check if the duration is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "is_zero",
             &Duration::isZero,
@@ -336,20 +438,12 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
             "to_timedelta",
             +[](const Duration& aDuration) -> std::chrono::microseconds
             {
-                return std::chrono::microseconds(aDuration.inMicroseconds());
+                const auto microsecondCount = static_cast<std::chrono::microseconds::rep>(aDuration.inMicroseconds());
+
+                return std::chrono::microseconds(microsecondCount);
             }
         )
 
-        .def_static(
-            "undefined",
-            &Duration::Undefined,
-            R"doc(
-                Create an undefined duration.
-
-                Returns:
-                    Duration: Undefined duration.
-            )doc"
-        )
         .def_static(
             "zero",
             &Duration::Zero,
@@ -458,13 +552,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
     enum_<Duration::Format>(duration_class, "Format")
 
         .value(
-            "Undefined",
-            Duration::Format::Undefined,
-            R"doc(
-                Undefined format.
-            )doc"
-        )
-        .value(
             "Standard",
             Duration::Format::Standard,
             R"doc(
@@ -481,5 +568,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Duration(pybind11::module& aModule)
 
         ;
 
-    duration_class.def_static("parse", &Duration::Parse, arg("string"), arg("format") = Duration::Format::Undefined);
+    duration_class.def_static("parse", &Duration::Parse, arg("string"), arg("format") = none());
 }

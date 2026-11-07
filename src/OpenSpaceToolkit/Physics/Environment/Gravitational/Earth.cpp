@@ -102,9 +102,9 @@ class Earth::Impl
 
     Earth::Type getType() const;
 
-    virtual Integer getDegree() const = 0;
+    virtual std::optional<int> getDegree() const = 0;
 
-    virtual Integer getOrder() const = 0;
+    virtual std::optional<int> getOrder() const = 0;
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const = 0;
 
@@ -135,9 +135,9 @@ class Earth::SphericalImpl : public Earth::Impl
 
     virtual SphericalImpl* clone() const override;
 
-    virtual Integer getDegree() const override;
+    virtual std::optional<int> getDegree() const override;
 
-    virtual Integer getOrder() const override;
+    virtual std::optional<int> getOrder() const override;
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
@@ -160,14 +160,14 @@ Earth::SphericalImpl* Earth::SphericalImpl::clone() const
     return new Earth::SphericalImpl(*this);
 }
 
-Integer Earth::SphericalImpl::getDegree() const
+std::optional<int> Earth::SphericalImpl::getDegree() const
 {
-    return Integer::Undefined();
+    return std::nullopt;
 }
 
-Integer Earth::SphericalImpl::getOrder() const
+std::optional<int> Earth::SphericalImpl::getOrder() const
 {
-    return Integer::Undefined();
+    return std::nullopt;
 }
 
 Vector3d Earth::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
@@ -180,9 +180,9 @@ class Earth::ExternalImpl : public Earth::Impl
    public:
     ExternalImpl(
         const Earth::Type& aType,
-        const Directory& aDataDirectory,
-        const Integer& aGravityModelDegree,
-        const Integer& aGravityModelOrder
+        const std::optional<Directory>& aDataDirectory,
+        const std::optional<int>& aGravityModelDegree,
+        const std::optional<int>& aGravityModelOrder
     );
 
     ExternalImpl(const ExternalImpl& anExternalImpl);
@@ -191,33 +191,33 @@ class Earth::ExternalImpl : public Earth::Impl
 
     virtual ExternalImpl* clone() const override;
 
-    virtual Integer getDegree() const override;
+    virtual std::optional<int> getDegree() const override;
 
-    virtual Integer getOrder() const override;
+    virtual std::optional<int> getOrder() const override;
 
-    virtual Directory getDataDirectory() const;
+    virtual std::optional<Directory> getDataDirectory() const;
 
     virtual Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const override;
 
    private:
-    Integer gravityModelDegree_;
-    Integer gravityModelOrder_;
-    Directory dataDirectory_;
+    std::optional<int> gravityModelDegree_;
+    std::optional<int> gravityModelOrder_;
+    std::optional<Directory> dataDirectory_;
     Unique<GravityModel> gravityModelUPtr_;
 
     static Unique<GravityModel> GravityModelFromType(
         const Earth::Type& aType,
-        const Directory& aDataDirectory,
-        const Integer& aGravityModelDegree,
-        const Integer& aGravityModelOrder
+        const std::optional<Directory>& aDataDirectory,
+        const std::optional<int>& aGravityModelDegree,
+        const std::optional<int>& aGravityModelOrder
     );
 };
 
 Earth::ExternalImpl::ExternalImpl(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
-    const Integer& aGravityModelDegree,
-    const Integer& aGravityModelOrder
+    const std::optional<Directory>& aDataDirectory,
+    const std::optional<int>& aGravityModelDegree,
+    const std::optional<int>& aGravityModelOrder
 )
 
     : Earth::Impl(aType),
@@ -252,17 +252,17 @@ Earth::ExternalImpl* Earth::ExternalImpl::clone() const
     return new Earth::ExternalImpl(*this);
 }
 
-Integer Earth::ExternalImpl::getDegree() const
+std::optional<int> Earth::ExternalImpl::getDegree() const
 {
     return gravityModelDegree_;
 }
 
-Integer Earth::ExternalImpl::getOrder() const
+std::optional<int> Earth::ExternalImpl::getOrder() const
 {
     return gravityModelOrder_;
 }
 
-Directory Earth::ExternalImpl::getDataDirectory() const
+std::optional<Directory> Earth::ExternalImpl::getDataDirectory() const
 {
     return dataDirectory_;
 }
@@ -282,9 +282,9 @@ Vector3d Earth::ExternalImpl::getFieldValueAt(const Vector3d& aPosition, const I
 
 Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
-    const Integer& aGravityModelDegree,
-    const Integer& aGravityModelOrder
+    const std::optional<Directory>& aDataDirectory,
+    const std::optional<int>& aGravityModelDegree,
+    const std::optional<int>& aGravityModelOrder
 )
 {
     using ostk::core::type::String;
@@ -298,14 +298,14 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
 
     String dataPath = "";
 
-    if (aDataDirectory.isDefined())
+    if (aDataDirectory.has_value())
     {
-        if (!aDataDirectory.exists())
+        if (!aDataDirectory->exists())
         {
-            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString());
+            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory->toString());
         }
 
-        dataPath = aDataDirectory.getPath().toString();
+        dataPath = aDataDirectory->getPath().toString();
     }
     else
     {
@@ -340,8 +340,8 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
         dataPath = Manager::Get().getLocalRepository().getPath().toString();
     }
 
-    const Integer gravityModelDegree = aGravityModelDegree.isDefined() ? aGravityModelDegree : Integer(-1);
-    const Integer gravityModelOrder = aGravityModelOrder.isDefined() ? aGravityModelOrder : Integer(-1);
+    const int gravityModelDegree = aGravityModelDegree.value_or(-1);
+    const int gravityModelOrder = aGravityModelOrder.value_or(-1);
 
     switch (aType)
     {
@@ -423,17 +423,21 @@ Unique<GravityModel> Earth::ExternalImpl::GravityModelFromType(
 
 Earth::Earth(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
-    const Integer& aGravityModelDegree,
-    const Integer& aGravityModelOrder
+    const std::optional<Directory>& aDataDirectory,
+    const std::optional<int>& aGravityModelDegree,
+    const std::optional<int>& aGravityModelOrder
 )
     : Model(Earth::ParametersFromType(aType)),
       implUPtr_(Earth::ImplFromType(aType, aDataDirectory, aGravityModelDegree, aGravityModelOrder))
 {
 }
 
-Earth::Earth(const Earth::Type& aType, const Integer& aGravityModelDegree, const Integer& aGravityModelOrder)
-    : Earth(aType, Directory::Undefined(), aGravityModelDegree, aGravityModelOrder)
+Earth::Earth(
+    const Earth::Type& aType,
+    const std::optional<int>& aGravityModelDegree,
+    const std::optional<int>& aGravityModelOrder
+)
+    : Earth(aType, std::nullopt, aGravityModelDegree, aGravityModelOrder)
 {
 }
 
@@ -466,14 +470,9 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
-bool Earth::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 bool Earth::isPointMass() const
 {
-    return this->isDefined() && (this->getType() == Earth::Type::Spherical);
+    return this->getType() == Earth::Type::Spherical;
 }
 
 Earth::Type Earth::getType() const
@@ -481,12 +480,12 @@ Earth::Type Earth::getType() const
     return implUPtr_->getType();
 }
 
-Integer Earth::getDegree() const
+std::optional<int> Earth::getDegree() const
 {
     return implUPtr_->getDegree();
 }
 
-Integer Earth::getOrder() const
+std::optional<int> Earth::getOrder() const
 {
     return implUPtr_->getOrder();
 }
@@ -498,15 +497,11 @@ Vector3d Earth::getFieldValueAt(const Vector3d& aPosition, const Instant& anInst
 
 Unique<Earth::Impl> Earth::ImplFromType(
     const Earth::Type& aType,
-    const Directory& aDataDirectory,
-    const Integer& aGravityModelDegree,
-    const Integer& aGravityModelOrder
+    const std::optional<Directory>& aDataDirectory,
+    const std::optional<int>& aGravityModelDegree,
+    const std::optional<int>& aGravityModelOrder
 )
 {
-    if (aType == Earth::Type::Undefined)
-    {
-        return nullptr;
-    }
     if (aType == Earth::Type::Spherical)
     {
         return std::make_unique<Earth::SphericalImpl>(aType);
@@ -536,9 +531,6 @@ Model::Parameters Earth::ParametersFromType(const Earth::Type& aType)
 
         case Earth::Type::EGM2008:
             return Earth::EGM2008;
-
-        case Earth::Type::Undefined:
-            return Earth::Parameters::Undefined();
 
         default:
             throw ostk::core::error::runtime::Wrong("Type");

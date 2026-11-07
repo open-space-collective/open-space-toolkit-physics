@@ -18,7 +18,6 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -74,15 +73,6 @@ class Vector
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Vector& aVector);
 
-    /// @brief Check if the vector is defined.
-    ///
-    /// @code
-    ///     Boolean isDefined = vector.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the vector is defined
-    bool isDefined() const;
-
     /// @brief Get the 3D vector value.
     ///
     /// @code
@@ -90,7 +80,7 @@ class Vector
     /// @endcode
     ///
     /// @return The 3D vector value
-    Vector3d getValue() const;
+    const Vector3d& getValue() const;
 
     /// @brief Get the vector unit.
     ///
@@ -99,7 +89,7 @@ class Vector
     /// @endcode
     ///
     /// @return The physical unit
-    Unit getUnit() const;
+    const Unit& getUnit() const;
 
     /// @brief Get the reference frame.
     ///
@@ -107,8 +97,8 @@ class Vector
     ///     Shared<const Frame> frameSPtr = vector.getFrame();
     /// @endcode
     ///
-    /// @return A shared pointer to the reference frame
-    Shared<const Frame> getFrame() const;
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Convert the vector to a different unit.
     ///
@@ -139,16 +129,7 @@ class Vector
     ///
     /// @param [in] aPrecision A precision for the values (default: 6)
     /// @return A string representation
-    String toString(const Integer& aPrecision = 6) const;
-
-    /// @brief Construct an undefined vector.
-    ///
-    /// @code
-    ///     Vector vector = Vector::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined vector
-    static Vector Undefined();
+    String toString(int aPrecision = 6) const;
 
    private:
     Vector3d value_;

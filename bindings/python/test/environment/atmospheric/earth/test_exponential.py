@@ -20,9 +20,6 @@ class TestExponential:
     def test_constructor_success(self, exponential_model):
         assert isinstance(exponential_model, Exponential)
 
-    def test_is_defined_success(self, exponential_model):
-        assert exponential_model.is_defined() is True
-
     def test_get_density_at_lla_success(self, exponential_model):
         lla = LLA(Angle.degrees(0.0), Angle.degrees(0.0), Length.meters(500e3))
 

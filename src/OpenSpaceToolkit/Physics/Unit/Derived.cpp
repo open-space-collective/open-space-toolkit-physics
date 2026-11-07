@@ -6,6 +6,7 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -13,6 +14,8 @@ namespace physics
 {
 namespace unit
 {
+
+using ostk::physics::utility::DoubleToString;
 
 Derived::Order::Order(Int16 aNumerator)
     : numerator_(aNumerator),
@@ -60,28 +63,24 @@ Int16 Derived::Order::getDenominator() const
     return denominator_;
 }
 
-Real Derived::Order::getValue() const
+double Derived::Order::getValue() const
 {
-    using ostk::core::type::Integer;
-
-    return Real::Integer(Integer::Int16(numerator_)) / Real::Integer(Integer::Int16(denominator_));
+    return static_cast<double>(numerator_) / static_cast<double>(denominator_);
 }
 
 String Derived::Order::toString() const
 {
-    using ostk::core::type::Integer;
-
     if (denominator_ == 1)
     {
-        return Integer::Int16(numerator_).toString();
+        return std::to_string(numerator_);
     }
 
     if (numerator_ == 1)
     {
-        return "-" + Integer::Int16(denominator_).toString();
+        return "-" + std::to_string(denominator_);
     }
 
-    return Integer::Int16(numerator_).toString() + "/" + Integer::Int16(denominator_).toString();
+    return std::to_string(numerator_) + "/" + std::to_string(denominator_);
 }
 
 Derived::Order Derived::Order::Zero()
@@ -100,15 +99,15 @@ Derived::Order Derived::Order::Two()
 }
 
 Derived::Unit::Unit(
-    const Length::Unit& aLengthUnit,
+    const std::optional<Length::Unit>& aLengthUnit,
     const Order& aLengthOrder,
-    const Mass::Unit& aMassUnit,
+    const std::optional<Mass::Unit>& aMassUnit,
     const Order& aMassOrder,
-    const Time::Unit& aTimeUnit,
+    const std::optional<Time::Unit>& aTimeUnit,
     const Order& aTimeOrder,
-    const ElectricCurrent::Unit& anElectricCurrentUnit,
+    const std::optional<ElectricCurrent::Unit>& anElectricCurrentUnit,
     const Order& anElectricCurrentOrder,
-    const Angle::Unit& anAngleUnit,
+    const std::optional<Angle::Unit>& anAngleUnit,
     const Order& anAngleOrder
 )
     : lengthUnit_(aLengthUnit),
@@ -122,15 +121,36 @@ Derived::Unit::Unit(
       angleUnit_(anAngleUnit),
       angleOrder_(anAngleOrder)
 {
+    // A dimension that is present in the unit (non-zero order) needs a unit
+
+    if ((!lengthUnit_.has_value()) && (!lengthOrder_.isZero()))
+    {
+        throw ostk::core::error::runtime::Wrong("Length unit");
+    }
+
+    if ((!massUnit_.has_value()) && (!massOrder_.isZero()))
+    {
+        throw ostk::core::error::runtime::Wrong("Mass unit");
+    }
+
+    if ((!timeUnit_.has_value()) && (!timeOrder_.isZero()))
+    {
+        throw ostk::core::error::runtime::Wrong("Time unit");
+    }
+
+    if ((!electricCurrentUnit_.has_value()) && (!electricCurrentOrder_.isZero()))
+    {
+        throw ostk::core::error::runtime::Wrong("Electric current unit");
+    }
+
+    if ((!angleUnit_.has_value()) && (!angleOrder_.isZero()))
+    {
+        throw ostk::core::error::runtime::Wrong("Angle unit");
+    }
 }
 
 bool Derived::Unit::operator==(const Derived::Unit& aUnit) const
 {
-    if ((!this->isDefined()) || (!aUnit.isDefined()))
-    {
-        return false;
-    }
-
     return (lengthUnit_ == aUnit.lengthUnit_) && (lengthOrder_ == aUnit.lengthOrder_) &&
            (massUnit_ == aUnit.massUnit_) && (massOrder_ == aUnit.massOrder_) && (timeUnit_ == aUnit.timeUnit_) &&
            (timeOrder_ == aUnit.timeOrder_) && (electricCurrentUnit_ == aUnit.electricCurrentUnit_) &&
@@ -143,111 +163,94 @@ bool Derived::Unit::operator!=(const Derived::Unit& aUnit) const
     return !((*this) == aUnit);
 }
 
-bool Derived::Unit::isDefined() const
-{
-    return (lengthUnit_ != Length::Unit::Undefined) || (massUnit_ != Mass::Unit::Undefined) ||
-           (timeUnit_ != Time::Unit::Undefined) || (electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) ||
-           (angleUnit_ != Angle::Unit::Undefined);
-}
-
 bool Derived::Unit::isCompatibleWith(const Unit& aUnit) const
 {
-    if ((!this->isDefined()) || (!aUnit.isDefined()))
-    {
-        return false;
-    }
-
     return (lengthOrder_ == aUnit.lengthOrder_) && (massOrder_ == aUnit.massOrder_) &&
            (timeOrder_ == aUnit.timeOrder_) && (electricCurrentOrder_ == aUnit.electricCurrentOrder_) &&
            (angleOrder_ == aUnit.angleOrder_);
 }
 
-const Length::Unit& Derived::Unit::accessLengthUnit() const
+const std::optional<Length::Unit>& Derived::Unit::getLengthUnit() const
 {
     return lengthUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessLengthOrder() const
+const Derived::Order& Derived::Unit::getLengthOrder() const
 {
     return lengthOrder_;
 }
 
-const Mass::Unit& Derived::Unit::accessMassUnit() const
+const std::optional<Mass::Unit>& Derived::Unit::getMassUnit() const
 {
     return massUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessMassOrder() const
+const Derived::Order& Derived::Unit::getMassOrder() const
 {
     return massOrder_;
 }
 
-const Time::Unit& Derived::Unit::accessTimeUnit() const
+const std::optional<Time::Unit>& Derived::Unit::getTimeUnit() const
 {
     return timeUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessTimeOrder() const
+const Derived::Order& Derived::Unit::getTimeOrder() const
 {
     return timeOrder_;
 }
 
-const ElectricCurrent::Unit& Derived::Unit::accessElectricCurrentUnit() const
+const std::optional<ElectricCurrent::Unit>& Derived::Unit::getElectricCurrentUnit() const
 {
     return electricCurrentUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessElectricCurrentOrder() const
+const Derived::Order& Derived::Unit::getElectricCurrentOrder() const
 {
     return electricCurrentOrder_;
 }
 
-const Angle::Unit& Derived::Unit::accessAngleUnit() const
+const std::optional<Angle::Unit>& Derived::Unit::getAngleUnit() const
 {
     return angleUnit_;
 }
 
-const Derived::Order& Derived::Unit::accessAngleOrder() const
+const Derived::Order& Derived::Unit::getAngleOrder() const
 {
     return angleOrder_;
 }
 
 String Derived::Unit::toString() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     String symbol = "";
 
-    if ((lengthUnit_ != Length::Unit::Undefined) && (!lengthOrder_.isZero()))
+    if (lengthUnit_.has_value() && (!lengthOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(lengthUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::StringFromUnit(*lengthUnit_) +
                   ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "");
     }
 
-    if ((massUnit_ != Mass::Unit::Undefined) && (!massOrder_.isZero()))
+    if (massUnit_.has_value() && (!massOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(massUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::StringFromUnit(*massUnit_) +
                   ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "");
     }
 
-    if ((electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) && (!electricCurrentOrder_.isZero()))
+    if (electricCurrentUnit_.has_value() && (!electricCurrentOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::StringFromUnit(electricCurrentUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::StringFromUnit(*electricCurrentUnit_) +
                   ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "");
     }
 
-    if ((angleUnit_ != Angle::Unit::Undefined) && (!angleOrder_.isZero()))
+    if (angleUnit_.has_value() && (!angleOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(angleUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::StringFromUnit(*angleUnit_) +
                   ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "");
     }
 
-    if ((timeUnit_ != Time::Unit::Undefined) && (!timeOrder_.isZero()))
+    if (timeUnit_.has_value() && (!timeOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(timeUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Time::StringFromUnit(*timeUnit_) +
                   ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "");
     }
 
@@ -256,46 +259,41 @@ String Derived::Unit::toString() const
 
 String Derived::Unit::getSymbol() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     String symbol = "";
 
-    if ((lengthUnit_ != Length::Unit::Undefined) && (!lengthOrder_.isZero()))
+    if (lengthUnit_.has_value() && (!lengthOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(lengthUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Length::SymbolFromUnit(*lengthUnit_) +
                   ((!lengthOrder_.isUnity()) ? ("^" + lengthOrder_.toString()) : "");
     }
 
-    if ((massUnit_ != Mass::Unit::Undefined) && (!massOrder_.isZero()))
+    if (massUnit_.has_value() && (!massOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(massUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Mass::SymbolFromUnit(*massUnit_) +
                   ((!massOrder_.isUnity()) ? ("^" + massOrder_.toString()) : "");
     }
 
-    if ((electricCurrentUnit_ != ElectricCurrent::Unit::Undefined) && (!electricCurrentOrder_.isZero()))
+    if (electricCurrentUnit_.has_value() && (!electricCurrentOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::SymbolFromUnit(electricCurrentUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + ElectricCurrent::SymbolFromUnit(*electricCurrentUnit_) +
                   ((!electricCurrentOrder_.isUnity()) ? ("^" + electricCurrentOrder_.toString()) : "");
     }
 
-    if ((angleUnit_ != Angle::Unit::Undefined) && (!angleOrder_.isZero()))
+    if (angleUnit_.has_value() && (!angleOrder_.isZero()))
     {
-        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(angleUnit_) +
+        symbol += ((!symbol.isEmpty()) ? "." : "") + Angle::SymbolFromUnit(*angleUnit_) +
                   ((!angleOrder_.isUnity()) ? ("^" + angleOrder_.toString()) : "");
     }
 
-    if ((timeUnit_ != Time::Unit::Undefined) && (!timeOrder_.isZero()))
+    if (timeUnit_.has_value() && (!timeOrder_.isZero()))
     {
         if (timeOrder_.getValue() == -1.0)  // Special case to support / time format
         {
-            symbol += ((!symbol.isEmpty()) ? "/" : "") + Time::SymbolFromUnit(timeUnit_);
+            symbol += ((!symbol.isEmpty()) ? "/" : "") + Time::SymbolFromUnit(*timeUnit_);
         }
         else
         {
-            symbol += ((!symbol.isEmpty()) ? "." : "") + Time::SymbolFromUnit(timeUnit_) +
+            symbol += ((!symbol.isEmpty()) ? "." : "") + Time::SymbolFromUnit(*timeUnit_) +
                       ((!timeOrder_.isUnity()) ? ("^" + timeOrder_.toString()) : "");
         }
     }
@@ -305,50 +303,17 @@ String Derived::Unit::getSymbol() const
 
 Derived::Unit Derived::Unit::SquareMeter()
 {
-    return {
-        Length::Unit::Meter,
-        {2},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Undefined,
-        {0},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {Length::Unit::Meter, {2}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 Derived::Unit Derived::Unit::CubicMeter()
 {
-    return {
-        Length::Unit::Meter,
-        {3},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Undefined,
-        {0},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {Length::Unit::Meter, {3}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 Derived::Unit Derived::Unit::Hertz()
 {
-    return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Second,
-        {-1},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 Derived::Unit Derived::Unit::Watt()
@@ -360,9 +325,9 @@ Derived::Unit Derived::Unit::Watt()
         {1},
         Time::Unit::Second,
         {-3},
-        ElectricCurrent::Unit::Undefined,
+        std::nullopt,
         {0},
-        Angle::Unit::Undefined,
+        std::nullopt,
         {0}
     };
 }
@@ -370,7 +335,7 @@ Derived::Unit Derived::Unit::Watt()
 Derived::Unit Derived::Unit::Tesla()
 {
     return {
-        Length::Unit::Undefined,
+        std::nullopt,
         {0},
         Mass::Unit::Kilogram,
         {1},
@@ -378,7 +343,7 @@ Derived::Unit Derived::Unit::Tesla()
         {-2},
         ElectricCurrent::Unit::Ampere,
         {-1},
-        Angle::Unit::Undefined,
+        std::nullopt,
         {0}
     };
 }
@@ -392,9 +357,9 @@ Derived::Unit Derived::Unit::Newton()
         {1},
         Time::Unit::Second,
         {-2},
-        ElectricCurrent::Unit::Undefined,
+        std::nullopt,
         {0},
-        Angle::Unit::Undefined,
+        std::nullopt,
         {0},
     };
 }
@@ -402,15 +367,15 @@ Derived::Unit Derived::Unit::Newton()
 Derived::Unit Derived::Unit::KilogramPerSecond()
 {
     return {
-        Length::Unit::Undefined,
+        std::nullopt,
         {0},
         Mass::Unit::Kilogram,
         {1},
         Time::Unit::Second,
         {-1},
-        ElectricCurrent::Unit::Undefined,
+        std::nullopt,
         {0},
-        Angle::Unit::Undefined,
+        std::nullopt,
         {0},
     };
 }
@@ -418,145 +383,56 @@ Derived::Unit Derived::Unit::KilogramPerSecond()
 Derived::Unit Derived::Unit::MeterPerSecond()
 {
     return {
-        Length::Unit::Meter,
-        {1},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Second,
-        {-1},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
+        Length::Unit::Meter, {1}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, std::nullopt, {0}
     };
 }
 
 Derived::Unit Derived::Unit::MeterPerSecondSquared()
 {
     return {
-        Length::Unit::Meter,
-        {1},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Second,
-        {-2},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
+        Length::Unit::Meter, {1}, std::nullopt, {0}, Time::Unit::Second, {-2}, std::nullopt, {0}, std::nullopt, {0}
     };
 }
 
 Derived::Unit Derived::Unit::MeterCubedPerSecondSquared()
 {
     return {
-        Length::Unit::Meter,
-        {3},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Second,
-        {-2},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
+        Length::Unit::Meter, {3}, std::nullopt, {0}, Time::Unit::Second, {-2}, std::nullopt, {0}, std::nullopt, {0}
     };
 }
 
 Derived::Unit Derived::Unit::RadianPerSecond()
 {
     return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Second,
-        {-1},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Radian,
-        {1}
+        std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, Angle::Unit::Radian, {1}
     };
 }
 
 Derived::Unit Derived::Unit::RevolutionPerDay()
 {
     return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Day,
-        {-1},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Revolution,
-        {1}
+        std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Day, {-1}, std::nullopt, {0}, Angle::Unit::Revolution, {1}
     };
 }
 
 Derived::Unit Derived::Unit::Velocity(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
-    return {
-        aLengthUnit,
-        {1},
-        Mass::Unit::Undefined,
-        {0},
-        aTimeUnit,
-        {-1},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {aLengthUnit, {1}, std::nullopt, {0}, aTimeUnit, {-1}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 Derived::Unit Derived::Unit::Acceleration(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
-    return {
-        aLengthUnit,
-        {1},
-        Mass::Unit::Undefined,
-        {0},
-        aTimeUnit,
-        {-2},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {aLengthUnit, {1}, std::nullopt, {0}, aTimeUnit, {-2}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 Derived::Unit Derived::Unit::GravitationalParameter(const Length::Unit& aLengthUnit, const Time::Unit& aTimeUnit)
 {
-    return {
-        aLengthUnit,
-        {3},
-        Mass::Unit::Undefined,
-        {0},
-        aTimeUnit,
-        {-2},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {aLengthUnit, {3}, std::nullopt, {0}, aTimeUnit, {-2}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 Derived::Unit Derived::Unit::AngularVelocity(const Angle::Unit& anAngleUnit, const Time::Unit& aTimeUnit)
 {
-    return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        aTimeUnit,
-        {-1},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        anAngleUnit,
-        {1}
-    };
+    return {std::nullopt, {0}, std::nullopt, {0}, aTimeUnit, {-1}, std::nullopt, {0}, anAngleUnit, {1}};
 }
 
 Derived::Unit Derived::Unit::Force(
@@ -570,9 +446,9 @@ Derived::Unit Derived::Unit::Force(
         {1},
         aTimeUnit,
         {-2},
-        ElectricCurrent::Unit::Undefined,
+        std::nullopt,
         {0},
-        Angle::Unit::Undefined,
+        std::nullopt,
         {0},
     };
 }
@@ -580,49 +456,22 @@ Derived::Unit Derived::Unit::Force(
 Derived::Unit Derived::Unit::MassFlowRate(const Mass::Unit& aMassUnit, const Time::Unit& aTimeUnit)
 {
     return {
-        Length::Unit::Undefined,
+        std::nullopt,
         {0},
         aMassUnit,
         {1},
         aTimeUnit,
         {-1},
-        ElectricCurrent::Unit::Undefined,
+        std::nullopt,
         {0},
-        Angle::Unit::Undefined,
+        std::nullopt,
         {0},
     };
 }
 
 Derived::Unit Derived::Unit::MassDensity(const Mass::Unit& aMassUnit, const Length::Unit& aLengthUnit)
 {
-    return {
-        aLengthUnit,
-        {-3},
-        aMassUnit,
-        {1},
-        Time::Unit::Undefined,
-        {0},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
-}
-
-Derived::Unit Derived::Unit::Undefined()
-{
-    return {
-        Length::Unit::Undefined,
-        {0},
-        Mass::Unit::Undefined,
-        {0},
-        Time::Unit::Undefined,
-        {0},
-        ElectricCurrent::Unit::Undefined,
-        {0},
-        Angle::Unit::Undefined,
-        {0}
-    };
+    return {aLengthUnit, {-3}, aMassUnit, {1}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}};
 }
 
 // Derived::Unit                   Derived::Unit::Parse                        (   const   String& aString )
@@ -630,7 +479,7 @@ Derived::Unit Derived::Unit::Undefined()
 
 // }
 
-Derived::Derived(const Real& aValue, const Derived::Unit& aUnit)
+Derived::Derived(double aValue, const Derived::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Derived, aValue),
       unit_(aUnit)
 {
@@ -643,12 +492,7 @@ Derived* Derived::clone() const
 
 bool Derived::operator==(const Derived& aDerivedUnit) const
 {
-    if ((!unit_.isDefined()) || (!aDerivedUnit.unit_.isDefined()))
-    {
-        return false;
-    }
-
-    return this->accessValue() == ((unit_ == aDerivedUnit.unit_) ? aDerivedUnit.accessValue() : aDerivedUnit.in(unit_));
+    return this->getValue() == ((unit_ == aDerivedUnit.unit_) ? aDerivedUnit.getValue() : aDerivedUnit.in(unit_));
 }
 
 bool Derived::operator!=(const Derived& aDerivedUnit) const
@@ -660,7 +504,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUn
 {
     ostk::core::utils::Print::Header(anOutputStream, "Derived");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.accessValue();
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aDerivedUnit.getValue();
     ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aDerivedUnit.unit_.toString();
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -668,26 +512,16 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Derived& aDerivedUn
     return anOutputStream;
 }
 
-bool Derived::isDefined() const
-{
-    return unit::Unit::isDefined() && unit_.isDefined();
-}
-
-Derived::Unit Derived::getUnit() const
+const Derived::Unit& Derived::getUnit() const
 {
     return unit_;
 }
 
-Real Derived::in(const Derived::Unit& aUnit) const
+double Derived::in(const Derived::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return Real::Undefined();
-    }
-
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
     if (!unit_.isCompatibleWith(aUnit))
@@ -697,22 +531,12 @@ Real Derived::in(const Derived::Unit& aUnit) const
         );
     }
 
-    return this->accessValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit);
+    return this->getValue() * Derived::SIRatio(unit_) / Derived::SIRatio(aUnit);
 }
 
-String Derived::toString(const Integer& aPrecision) const
+String Derived::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Derived");
-    }
-
-    return this->accessValue().toString(aPrecision) + " [" + unit_.getSymbol() + "]";
-}
-
-Derived Derived::Undefined()
-{
-    return {Real::Undefined(), Derived::Unit::Undefined()};
+    return DoubleToString(this->getValue(), aPrecision) + " [" + unit_.getSymbol() + "]";
 }
 
 // Derived                         Derived::Parse                               (   const   String& aString )
@@ -730,40 +554,42 @@ String Derived::SymbolFromUnit(const Derived::Unit& aUnit)
     return aUnit.getSymbol();
 }
 
-Real Derived::SIRatio(const Derived::Unit& aUnit)
+double Derived::SIRatio(const Derived::Unit& aUnit)
 {
-    Real ratio = 1.0;
+    double ratio = 1.0;
 
-    if (!aUnit.accessLengthOrder().isZero())
+    if (!aUnit.getLengthOrder().isZero())
     {
         ratio *= std::pow(
-            Length(1.0, aUnit.accessLengthUnit()).in(Length::Unit::Meter), aUnit.accessLengthOrder().getValue()
+            Length(1.0, aUnit.getLengthUnit().value()).in(Length::Unit::Meter), aUnit.getLengthOrder().getValue()
         );
     }
 
-    if (!aUnit.accessMassOrder().isZero())
+    if (!aUnit.getMassOrder().isZero())
     {
         ratio *=
-            std::pow(Mass(1.0, aUnit.accessMassUnit()).in(Mass::Unit::Kilogram), aUnit.accessMassOrder().getValue());
+            std::pow(Mass(1.0, aUnit.getMassUnit().value()).in(Mass::Unit::Kilogram), aUnit.getMassOrder().getValue());
     }
 
-    if (!aUnit.accessTimeOrder().isZero())
+    if (!aUnit.getTimeOrder().isZero())
     {
-        ratio *= std::pow(Time(1.0, aUnit.accessTimeUnit()).in(Time::Unit::Second), aUnit.accessTimeOrder().getValue());
+        ratio *=
+            std::pow(Time(1.0, aUnit.getTimeUnit().value()).in(Time::Unit::Second), aUnit.getTimeOrder().getValue());
     }
 
-    if (!aUnit.accessElectricCurrentOrder().isZero())
+    if (!aUnit.getElectricCurrentOrder().isZero())
     {
         ratio *= std::pow(
-            ElectricCurrent(1.0, aUnit.accessElectricCurrentUnit()).in(ElectricCurrent::Unit::Ampere),
-            aUnit.accessElectricCurrentOrder().getValue()
+            ElectricCurrent(1.0, aUnit.getElectricCurrentUnit().value()).in(ElectricCurrent::Unit::Ampere),
+            aUnit.getElectricCurrentOrder().getValue()
         );
     }
 
-    if (!aUnit.accessAngleOrder().isZero())
+    if (!aUnit.getAngleOrder().isZero())
     {
-        ratio *=
-            std::pow(Angle(1.0, aUnit.accessAngleUnit()).in(Angle::Unit::Radian), aUnit.accessAngleOrder().getValue());
+        ratio *= std::pow(
+            Angle(1.0, aUnit.getAngleUnit().value()).in(Angle::Unit::Radian), aUnit.getAngleOrder().getValue()
+        );
     }
 
     return ratio;

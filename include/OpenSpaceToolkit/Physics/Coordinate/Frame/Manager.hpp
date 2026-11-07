@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -53,16 +54,16 @@ class Manager
 
     bool hasFrameWithName(const String& aFrameName) const;
 
-    /// @brief Access frame with the given name.
+    /// @brief Get frame with the given name.
     ///
     /// @code
-    ///     Shared<const Frame> frameSPtr = Manager::Get().accessFrameWithName("GCRF");
+    ///     Shared<const Frame> frameSPtr = Manager::Get().getFrameWithName("GCRF");
     /// @endcode
     ///
     /// @param [in] aFrameName A frame name
     /// @return Shared pointer to the frame
 
-    Shared<const Frame> accessFrameWithName(const String& aFrameName) const;
+    Shared<const Frame> getFrameWithName(const String& aFrameName) const;
 
     /// @brief Get names of all registered frames.
     ///
@@ -74,18 +75,19 @@ class Manager
 
     Array<String> getAllFrameNames() const;
 
-    /// @brief Access a cached transform between two frames at a given instant.
+    /// @brief Get a cached transform between two frames at a given instant.
     ///
     /// @code
-    ///     Transform transform = Manager::Get().accessCachedTransform(fromFrameSPtr, toFrameSPtr, instant);
+    ///     std::optional<Transform> transform = Manager::Get().getCachedTransform(fromFrameSPtr, toFrameSPtr,
+    ///     instant);
     /// @endcode
     ///
     /// @param [in] aFromFrameSPtr A shared pointer to the source frame
     /// @param [in] aToFrameSPtr A shared pointer to the destination frame
     /// @param [in] anInstant An instant
-    /// @return The cached transform
+    /// @return The cached transform, or std::nullopt if there is none
 
-    const Transform accessCachedTransform(
+    std::optional<Transform> getCachedTransform(
         const Shared<const Frame>& aFromFrameSPtr, const Shared<const Frame>& aToFrameSPtr, const Instant& anInstant
     ) const;
 

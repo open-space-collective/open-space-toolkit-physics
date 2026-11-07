@@ -3,8 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Utility_Eclipse__
 #define __OpenSpaceToolkit_Physics_Environment_Utility_Eclipse__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
@@ -26,7 +27,6 @@ namespace utilities
 {
 
 using ostk::core::container::Array;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
@@ -141,23 +141,23 @@ class Eclipse
         const Array<EclipsePhase>& somePhases
     );
 
-    /// @brief Access the occulted celestial object
+    /// @brief Get the occulted celestial object
     ///
     /// @code
-    ///     const Celestial& occulted = eclipse.accessOccultedCelestialObject();
+    ///     const Celestial& occulted = eclipse.getOccultedCelestialObject();
     /// @endcode
     ///
     /// @return The occulted celestial object
-    const Celestial& accessOccultedCelestialObject() const;
+    const Celestial& getOccultedCelestialObject() const;
 
-    /// @brief Access the occulting celestial object
+    /// @brief Get the occulting celestial object
     ///
     /// @code
-    ///     const Celestial& occulting = eclipse.accessOccultingCelestialObject();
+    ///     const Celestial& occulting = eclipse.getOccultingCelestialObject();
     /// @endcode
     ///
     /// @return The occulting celestial object
-    const Celestial& accessOccultingCelestialObject() const;
+    const Celestial& getOccultingCelestialObject() const;
 
     /// @brief Get the phases of the eclipse
     ///
@@ -185,11 +185,11 @@ class Eclipse
     /// @endcode
     ///
     /// @param [in] includePenumbra Whether to include the penumbra phases. Defaults to true
-    /// @return The interval of the eclipse. Returns Interval::Undefined() if there are no umbra phases
+    /// @return The interval of the eclipse. Returns std::nullopt if there are no umbra phases
     /// and penumbras are not included
     ///
     /// @throw ostk::core::error::RuntimeError If there are multiple umbra phases and penumbras are not included
-    Interval getInterval(const bool& includePenumbra = true) const;
+    std::optional<Interval> getInterval(const bool& includePenumbra = true) const;
 
     /// @brief Output stream operator
     ///
@@ -231,7 +231,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 /// Reference: Montenbruck and Gill, Satellite Orbits: Models, Methods, and Applications, 4th edition, Springer.
 ///
 /// @code
-///     Real shadowValue = montenbruckGillShadowFunction(anInstant, aPosition, sun, earth);
+///     double shadowValue = montenbruckGillShadowFunction(anInstant, aPosition, sun, earth);
 /// @endcode
 ///
 /// @param [in] anInstant The instant at which the shadow function is evaluated
@@ -241,7 +241,7 @@ Array<Interval> eclipseIntervalsAtPosition(
 /// @return The value of the shadow function (0.0 for umbra, 1.0 for fully illuminated, and between
 /// 0.0 and 1.0 for penumbra)
 
-Real montenbruckGillShadowFunction(
+double montenbruckGillShadowFunction(
     const Instant& anInstant,
     const Position& aPosition,
     const Celestial& anOccultedCelestialObject,

@@ -68,8 +68,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvi
 {
     ostk::core::utils::Print::Header(anOutputStream, "Environment");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Instant:" << (anEnvironment.isDefined() ? anEnvironment.instant_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Instant:" << anEnvironment.instant_.toString();
 
     ostk::core::utils::Print::Line(anOutputStream) << "Objects:";
 
@@ -90,11 +89,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvi
     return anOutputStream;
 }
 
-bool Environment::isDefined() const
-{
-    return instant_.isDefined();
-}
-
 bool Environment::hasObjectWithName(const String& aName) const
 {
     if (aName.isEmpty())
@@ -102,14 +96,9 @@ bool Environment::hasObjectWithName(const String& aName) const
         throw ostk::core::error::runtime::Undefined("Name");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     for (const auto& objectSPtr : objects_)
     {
-        if (objectSPtr->accessName() == aName)
+        if (objectSPtr->getName() == aName)
         {
             return true;
         }
@@ -129,19 +118,9 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
     using ostk::physics::environment::object::Celestial;
     using ostk::physics::environment::utilities::montenbruckGillShadowFunction;
 
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     const Instant instant = this->getInstant();
 
-    const Shared<const Celestial> sunSPtr = this->accessCelestialObjectWithName("Sun");
+    const Shared<const Celestial> sunSPtr = this->getCelestialObjectWithName("Sun");
 
     for (const auto& objectSPtr : objects_)
     {
@@ -150,7 +129,7 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
             const auto celestialSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr);
             if (celestialSPtr != nullptr)
             {
-                const Real shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
+                const double shadowValue = montenbruckGillShadowFunction(instant, aPosition, *sunSPtr, *celestialSPtr);
 
                 if (includePenumbra)
                 {
@@ -173,31 +152,26 @@ bool Environment::isPositionInEclipse(const Position& aPosition, const bool& inc
     return false;
 }
 
-Array<Shared<const Object>> Environment::accessObjects() const
+const Array<Shared<const Object>>& Environment::getObjects() const&
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     return objects_;
 }
 
-Shared<const Object> Environment::accessObjectWithName(const String& aName) const
+Array<Shared<const Object>> Environment::getObjects() &&
+{
+    return this->getObjects();
+}
+
+Shared<const Object> Environment::getObjectWithName(const String& aName) const
 {
     if (aName.isEmpty())
     {
         throw ostk::core::error::runtime::Undefined("Name");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     for (const auto& objectSPtr : objects_)
     {
-        if (objectSPtr->accessName() == aName)
+        if (objectSPtr->getName() == aName)
         {
             return objectSPtr;
         }
@@ -208,9 +182,9 @@ Shared<const Object> Environment::accessObjectWithName(const String& aName) cons
     return nullptr;
 }
 
-Shared<const Celestial> Environment::accessCelestialObjectWithName(const String& aName) const
+Shared<const Celestial> Environment::getCelestialObjectWithName(const String& aName) const
 {
-    if (const auto objectSPtr = this->accessObjectWithName(aName))
+    if (const auto objectSPtr = this->getObjectWithName(aName))
     {
         if (const auto celestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(objectSPtr))
         {
@@ -223,13 +197,8 @@ Shared<const Celestial> Environment::accessCelestialObjectWithName(const String&
     return nullptr;
 }
 
-Shared<const Celestial> Environment::accessCentralCelestialObject() const
+Shared<const Celestial> Environment::getCentralCelestialObject() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     if (const auto centralCelestialObjectSPtr = std::dynamic_pointer_cast<const Celestial>(centralCelestialObject_))
     {
         return centralCelestialObjectSPtr;
@@ -240,23 +209,13 @@ Shared<const Celestial> Environment::accessCentralCelestialObject() const
     return nullptr;
 }
 
-Instant Environment::getInstant() const
+const Instant& Environment::getInstant() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     return instant_;
 }
 
 Array<String> Environment::getObjectNames() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     Array<String> objectNames = Array<String>::Empty();
 
     objectNames.reserve(objects_.getSize());
@@ -271,16 +230,6 @@ Array<String> Environment::getObjectNames() const
 
 void Environment::setInstant(const Instant& anInstant)
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     instant_ = anInstant;
 }
 
@@ -288,21 +237,14 @@ bool Environment::intersects(
     const Object::Geometry& aGeometry, const Array<Shared<const Object>>& anObjectToIgnoreArray
 ) const
 {
-    if (!aGeometry.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     for (const auto& objectSPtr : objects_)
     {
         if (!anObjectToIgnoreArray.contains(objectSPtr))
         {
-            if (objectSPtr->getGeometryIn(aGeometry.accessFrame(), instant_).intersects(aGeometry))
+            const std::optional<Object::Geometry> objectGeometry =
+                objectSPtr->getGeometryIn(aGeometry.getFrame(), instant_);
+
+            if (objectGeometry.has_value() && objectGeometry->intersects(aGeometry))
             {
                 return true;
             }
@@ -310,11 +252,6 @@ bool Environment::intersects(
     }
 
     return false;
-}
-
-Environment Environment::Undefined()
-{
-    return {Instant::Undefined(), Array<Shared<const Object>>::Empty()};
 }
 
 Environment Environment::Default(const bool& setGlobalInstance)
@@ -348,7 +285,7 @@ void Environment::ResetGlobalInstance()
     instance = nullptr;
 }
 
-Shared<Environment> Environment::AccessGlobalInstance()
+Shared<Environment> Environment::GetGlobalInstance()
 {
     std::shared_lock<std::shared_mutex> lock(mutex);
 
@@ -383,7 +320,7 @@ void Environment::validateCelestialObjects()
         // Only check for duplicates amongst Celestial Objects. Non-Celestial Objects aren't checked.
         if (celestialSPtr != nullptr)
         {
-            const String& name = celestialSPtr->accessName();
+            const String& name = celestialSPtr->getName();
 
             if (celestialNames.contains(name))
             {

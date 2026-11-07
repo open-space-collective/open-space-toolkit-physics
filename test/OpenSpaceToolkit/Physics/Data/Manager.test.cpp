@@ -42,7 +42,6 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
    protected:
     void SetUp() override
     {
-        manifest_ = Manifest::Load(manifestFile_);
         manager_.loadManifest(manifest_);
         managerNoIO_.loadManifest(manifest_);
 
@@ -83,7 +82,7 @@ class OpenSpaceToolkit_Physics_Data_Manager : public ::testing::Test
     const File manifestFile_ =
         File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
 
-    Manifest manifest_ = Manifest::Undefined();
+    Manifest manifest_ = Manifest::Load(manifestFile_);
 
     Manager& manager_ = Manager::Get();
     TestManager managerNoIO_ = TestManager();
@@ -120,7 +119,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor)
         {
             managerNoIO_.reset();
             managerNoIO_.setMode(Manager::Mode::Manual);
-            EXPECT_FALSE(managerNoIO_.getManifest().isDefined());
 
             Directory tempDirectory =
                 Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/Test"));
@@ -162,7 +160,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, GetLastUpdateTimestampFor_Skipped)
     {
         managerNoIO_.loadManifest(manifest_);
         managerNoIO_.setMode(Manager::Mode::Manual);
-        EXPECT_TRUE(managerNoIO_.getManifest().isDefined());
 
         Directory tempDirectory = Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/Test"));
         managerNoIO_.setLocalRepository(tempDirectory);
@@ -348,8 +345,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, SetRemoteUrl)
         manager_.setRemoteUrl(URL::Parse("http://fake.com"));
 
         EXPECT_EQ("http://fake.com", manager_.getRemoteUrl().toString());
-
-        EXPECT_ANY_THROW(manager_.setRemoteUrl(URL::Undefined()));
     }
 }
 
@@ -415,12 +410,10 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manager, LoadManifest)
     {
         manager_.reset();
 
-        EXPECT_FALSE(manager_.getManifest().isDefined());
+        EXPECT_FALSE(manager_.getManifest().has_value());
 
         manager_.loadManifest(manifest_);
 
-        EXPECT_TRUE(manager_.getManifest().isDefined());
-
-        EXPECT_ANY_THROW(manager_.loadManifest(Manifest::Undefined()));
+        EXPECT_TRUE(manager_.getManifest().has_value());
     }
 }

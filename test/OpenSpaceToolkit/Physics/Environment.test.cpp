@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -32,7 +33,6 @@
 
 using ostk::core::container::Array;
 using ostk::core::container::Map;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -77,11 +77,6 @@ using ostk::core::type::String;
 class OpenSpaceToolkit_Physics_Environment : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        environment_ = {instant_, objects_};
-    }
-
     void TearDown() override
     {
         Environment::ResetGlobalInstance();
@@ -89,7 +84,8 @@ class OpenSpaceToolkit_Physics_Environment : public ::testing::Test
 
     const Instant instant_ = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC);
     const Array<Shared<const Object>> objects_ = {std::make_shared<Earth>(Earth::Default())};
-    Environment environment_ = Environment::Undefined();
+
+    Environment environment_ = {instant_, objects_};
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Environment, Constructor)
@@ -137,22 +133,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, StreamOperator)
 
         EXPECT_NO_THROW(std::cout << environment_ << std::endl);
 
-        EXPECT_NO_THROW(std::cout << Environment::Undefined() << std::endl);
-
         EXPECT_NO_THROW(std::cout << Environment::Default() << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment, IsDefined)
-{
-    {
-        EXPECT_TRUE(environment_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Environment::Undefined().isDefined());
     }
 }
 
@@ -164,7 +147,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, HasObjectWithName)
     }
 
     {
-        EXPECT_ANY_THROW(Environment::Undefined().hasObjectWithName("Earth"));
         EXPECT_ANY_THROW(Environment::Default().hasObjectWithName(""));
     }
 }
@@ -187,15 +169,15 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, HasCentralCelestial)
 TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
 {
     {
-        // for (const auto& y_ECI : Interval<Real>::Closed(-Earth::EquatorialRadius.inMeters(),
-        // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(Real(1000.0)))
+        // for (const auto& y_ECI : Interval<double>::Closed(-Earth::EquatorialRadius.inMeters(),
+        // +Earth::EquatorialRadius.inMeters()).generateArrayWithStep(1000.0))
         for (const auto& y_ECI :
-             Interval<Real>::Closed(
+             Interval<double>::Closed(
                  -EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters() + 1.0,
                  +EarthGravitationalModel::EGM2008.equatorialRadius_.inMeters() - 1.0
              )
-                 .generateArrayWithStep(Real(1000.0)))  // [TBI] Precision issues are preventing the tangential rays to
-                                                        // be recognised as intersecting, hence the 1.0 [m] offset
+                 .generateArrayWithStep(1000.0))  // [TBI] Precision issues are preventing the tangential rays to
+                                                  // be recognised as intersecting, hence the 1.0 [m] offset
         {
             const Segment segment = {{-10000e3, y_ECI, 0.0}, {+10000e3, y_ECI, 0.0}};
 
@@ -204,36 +186,24 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects)
             ASSERT_TRUE(environment_.intersects(segmentGeometry)) << segmentGeometry;
         }
     }
+}
 
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetObjects)
+{
     {
-        const Segment segment = {{-7000e3, 0.0, 0.0}, {+7000e3, 0.0, 0.0}};
-        const Object::Geometry geometry = {segment, Frame::GCRF()};
+        ASSERT_EQ(1, environment_.getObjects().getSize());
 
-        EXPECT_ANY_THROW(Environment::Undefined().intersects(Object::Geometry::Undefined()));
-        EXPECT_ANY_THROW(Environment::Undefined().intersects(geometry));
-        EXPECT_ANY_THROW(environment_.intersects(Object::Geometry::Undefined()));
+        EXPECT_EQ("Earth", environment_.getObjects()[0]->getName());
+        EXPECT_EQ(&environment_.getObjects(), &environment_.getObjects());
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjects)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetObjectWithName)
 {
     {
-        ASSERT_EQ(1, environment_.accessObjects().getSize());
+        EXPECT_NO_THROW(environment_.getObjectWithName("Earth"));
 
-        EXPECT_EQ("Earth", environment_.accessObjects()[0]->getName());
-    }
-
-    {
-        EXPECT_ANY_THROW(Environment::Undefined().accessObjects());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
-{
-    {
-        EXPECT_NO_THROW(environment_.accessObjectWithName("Earth"));
-
-        const Shared<const Object> objectSPtr = environment_.accessObjectWithName("Earth");
+        const Shared<const Object> objectSPtr = environment_.getObjectWithName("Earth");
 
         EXPECT_TRUE(objectSPtr);
 
@@ -241,17 +211,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessObjectWithName)
     }
 
     {
-        EXPECT_ANY_THROW(Environment::Undefined().accessObjectWithName("Earth"));
-        EXPECT_ANY_THROW(Environment::Default().accessObjectWithName(""));
+        EXPECT_ANY_THROW(Environment::Default().getObjectWithName(""));
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetCelestialObjectWithName)
 {
     {
-        EXPECT_NO_THROW(environment_.accessCelestialObjectWithName("Earth"));
+        EXPECT_NO_THROW(environment_.getCelestialObjectWithName("Earth"));
 
-        const Shared<const Object> objectSPtr = environment_.accessCelestialObjectWithName("Earth");
+        const Shared<const Object> objectSPtr = environment_.getCelestialObjectWithName("Earth");
 
         EXPECT_TRUE(objectSPtr);
 
@@ -259,26 +228,21 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCelestialObjectWithName)
     }
 
     {
-        EXPECT_ANY_THROW(Environment::Undefined().accessCelestialObjectWithName("Earth"));
-        EXPECT_ANY_THROW(Environment::Default().accessCelestialObjectWithName(""));
+        EXPECT_ANY_THROW(Environment::Default().getCelestialObjectWithName(""));
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessCentralCelestial)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetCentralCelestial)
 {
     {
-        EXPECT_THROW(Environment::Undefined().accessCentralCelestialObject(), ostk::core::error::runtime::Undefined);
-    }
-
-    {
-        EXPECT_THROW(environment_.accessCentralCelestialObject(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(environment_.getCentralCelestialObject(), ostk::core::error::RuntimeError);
     }
 
     {
         const Shared<Earth> earthSPtr = std::make_shared<Earth>(Earth::Default());
 
         const Environment environment = {earthSPtr, {}};
-        EXPECT_NO_THROW(environment.accessCentralCelestialObject());
+        EXPECT_NO_THROW(environment.getCentralCelestialObject());
     }
 }
 
@@ -287,20 +251,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, GetInstant)
     {
         EXPECT_EQ(instant_, environment_.getInstant());
     }
-
-    {
-        EXPECT_ANY_THROW(Environment::Undefined().getInstant());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment, GetObjectNames)
 {
     {
         EXPECT_EQ(Array<String>({"Earth"}), environment_.getObjectNames());
-    }
-
-    {
-        EXPECT_ANY_THROW(Environment::Undefined().getObjectNames());
     }
 }
 
@@ -314,12 +270,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, SetInstant)
         environment_.setInstant(secondInstant);
 
         EXPECT_EQ(secondInstant, environment_.getInstant());
-
-        EXPECT_ANY_THROW(environment_.setInstant(Instant::Undefined()));
-    }
-
-    {
-        EXPECT_ANY_THROW(Environment::Undefined().setInstant(Instant::Undefined()));
     }
 }
 
@@ -367,21 +317,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, IsPositionInEclipse)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Environment::Undefined());
-
-        EXPECT_FALSE(Environment::Undefined().isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment, Default)
 {
     {
         EXPECT_NO_THROW(Environment::Default());
-
-        EXPECT_TRUE(Environment::Default().isDefined());
 
         EXPECT_TRUE(Environment::Default().hasObjectWithName("Earth"));
         EXPECT_TRUE(Environment::Default().hasObjectWithName("Sun"));
@@ -389,9 +328,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Default)
     }
 
     {
-        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::GetGlobalInstance(), ostk::core::error::RuntimeError);
         EXPECT_NO_THROW(Environment::Default(true));
-        EXPECT_NO_THROW(Environment::AccessGlobalInstance());
+        EXPECT_NO_THROW(Environment::GetGlobalInstance());
     }
 }
 
@@ -402,18 +341,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, ResetGlobalInstance)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment, AccessGlobalInstance)
+TEST_F(OpenSpaceToolkit_Physics_Environment, GetGlobalInstance)
 {
     {
-        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::GetGlobalInstance(), ostk::core::error::RuntimeError);
     }
 
     {
-        EXPECT_THROW(Environment::AccessGlobalInstance(), ostk::core::error::RuntimeError);
+        EXPECT_THROW(Environment::GetGlobalInstance(), ostk::core::error::RuntimeError);
 
         const Environment environment = Environment::Default(true);
-
-        EXPECT_TRUE(Environment::AccessGlobalInstance()->isDefined());
     }
 }
 
@@ -443,8 +380,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
     Environment environment = {startInstant, objects};
 
     const Shared<const Earth> earthSPtr =
-        std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
-    const Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.accessObjectWithName("Moon"));
+        std::dynamic_pointer_cast<const Earth>(environment.getObjectWithName("Earth"));
+    const Shared<const Moon> moonSPtr = std::dynamic_pointer_cast<const Moon>(environment.getObjectWithName("Moon"));
 
     for (const auto& instant : TimeInterval::Closed(startInstant, endInstant).generateGrid(step))
     {
@@ -454,41 +391,45 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_1)
 
         const Transform earthFrameTransform = earthSPtr->getTransformTo(Frame::GCRF(), instant);
 
-        EXPECT_TRUE(earthFrameTransform.isDefined());
+        EXPECT_EQ(instant, earthFrameTransform.getInstant());
 
         const Position earthPosition = earthSPtr->getPositionIn(Frame::GCRF(), instant);
         const Velocity earthVelocity = earthSPtr->getVelocityIn(Frame::GCRF(), instant);
 
-        EXPECT_TRUE(earthPosition.isDefined());
-        EXPECT_TRUE(earthVelocity.isDefined());
-
         const Quaternion earthOrientation = earthSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
-
-        EXPECT_TRUE(earthOrientation.isDefined());
 
         const Axes earthAxes = earthSPtr->getAxesIn(Frame::GCRF(), instant);
 
-        EXPECT_TRUE(earthAxes.isDefined());
+        EXPECT_EQ(Frame::GCRF(), earthPosition.getFrame());
+        EXPECT_EQ(Frame::GCRF(), earthVelocity.getFrame());
+        EXPECT_FALSE(earthPosition.getCoordinates().hasNaN());
+        EXPECT_FALSE(earthVelocity.getCoordinates().hasNaN());
+        EXPECT_FALSE(earthOrientation.toVector().hasNaN());
+        EXPECT_FALSE(earthAxes.x().hasNaN());
+        EXPECT_FALSE(earthAxes.y().hasNaN());
+        EXPECT_FALSE(earthAxes.z().hasNaN());
 
         // Moon
 
         const Transform moonFrameTransform = moonSPtr->getTransformTo(Frame::GCRF(), instant);
 
-        EXPECT_TRUE(moonFrameTransform.isDefined());
+        EXPECT_EQ(instant, moonFrameTransform.getInstant());
 
         const Position moonPosition = moonSPtr->getPositionIn(Frame::GCRF(), instant);
         const Velocity moonVelocity = moonSPtr->getVelocityIn(Frame::GCRF(), instant);
 
-        EXPECT_TRUE(moonPosition.isDefined());
-        EXPECT_TRUE(moonVelocity.isDefined());
-
         const Quaternion moonOrientation = moonSPtr->getTransformTo(Frame::GCRF(), instant).getOrientation();
-
-        EXPECT_TRUE(moonOrientation.isDefined());
 
         const Axes moonAxes = moonSPtr->getAxesIn(Frame::GCRF(), instant);
 
-        EXPECT_TRUE(moonAxes.isDefined());
+        EXPECT_EQ(Frame::GCRF(), moonPosition.getFrame());
+        EXPECT_EQ(Frame::GCRF(), moonVelocity.getFrame());
+        EXPECT_FALSE(moonPosition.getCoordinates().hasNaN());
+        EXPECT_FALSE(moonVelocity.getCoordinates().hasNaN());
+        EXPECT_FALSE(moonOrientation.toVector().hasNaN());
+        EXPECT_FALSE(moonAxes.x().hasNaN());
+        EXPECT_FALSE(moonAxes.y().hasNaN());
+        EXPECT_FALSE(moonAxes.z().hasNaN());
     }
 }
 
@@ -503,11 +444,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
     Environment environment = {startInstant, objects};
 
     const Shared<const Earth> earthSPtr =
-        std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
+        std::dynamic_pointer_cast<const Earth>(environment.getObjectWithName("Earth"));
 
-    const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF(), startInstant);
+    const Object::Geometry earthGeometry = earthSPtr->getGeometryIn(Frame::ITRF(), startInstant).value();
 
-    const Ellipsoid& ellipsoid = earthGeometry.accessComposite().as<Ellipsoid>();
+    const Ellipsoid& ellipsoid = earthGeometry.getComposite().as<Ellipsoid>();
 
     // Setup observer
 
@@ -525,12 +466,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
 
     const Intersection intersection = pyramid.intersectionWith(ellipsoid, true, 32);
 
-    EXPECT_TRUE(intersection.isDefined()) << intersection;
     EXPECT_FALSE(intersection.isEmpty()) << intersection;
 
     // Project intersection
 
-    const LineString intersectionLineString = intersection.accessComposite().as<LineString>();
+    const LineString intersectionLineString = intersection.getComposite().as<LineString>();
 
     Array<Point2d> intersectionPoints2d = Array<Point2d>::Empty();
 
@@ -549,9 +489,11 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_2)
         intersectionPoints2d.add(intersectionPoint2d);
     }
 
+    EXPECT_GT(intersectionPoints2d.getSize(), 2u);
+
     const Polygon2d intersectionPolygon2d = {intersectionPoints2d};
 
-    EXPECT_TRUE(intersectionPolygon2d.isDefined()) << intersectionPolygon2d;
+    EXPECT_GT(intersectionPolygon2d.getVertexCount(), 2u);
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
@@ -612,14 +554,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
 
         Environment environment = Environment::Default();
 
-        EXPECT_TRUE(environment.isDefined());
-
         const Instant startInstant = Instant::DateTime(DateTime::Parse("2018-06-25 00:00:00"), Scale::UTC);
         const Instant endInstant = Instant::DateTime(DateTime::Parse("2018-06-26 00:00:00"), Scale::UTC);
         const Duration stepDuration = Duration::Hours(1.0);
 
         const Shared<const Earth> earthSPtr =
-            std::dynamic_pointer_cast<const Earth>(environment.accessObjectWithName("Earth"));
+            std::dynamic_pointer_cast<const Earth>(environment.getObjectWithName("Earth"));
 
         const Length earthEquatorialRadius = earthSPtr->getEquatorialRadius();
 
@@ -632,7 +572,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
             const Quaternion referenceOrientation = referenceData.at(instant).toConjugate();
 
             const Quaternion orientation =
-                earthSPtr->accessFrame()->getTransformTo(Frame::GCRF(), instant).getOrientation();
+                earthSPtr->getFrame()->getTransformTo(Frame::GCRF(), instant).getOrientation();
 
             const Length errorAtSurface =
                 earthEquatorialRadius *
@@ -643,4 +583,69 @@ TEST_F(OpenSpaceToolkit_Physics_Environment, Test_3)
             EXPECT_GE(Length::Millimeters(1.0), errorAtSurface) << errorAtSurface;
         }
     }
+}
+
+namespace
+{
+
+class ObjectWithoutGeometry : public Object
+{
+   public:
+    ObjectWithoutGeometry()
+        : Object("Without geometry")
+    {
+    }
+
+    ObjectWithoutGeometry* clone() const override
+    {
+        return new ObjectWithoutGeometry(*this);
+    }
+
+    Shared<const Frame> getFrame() const override
+    {
+        return Frame::GCRF();
+    }
+
+    ostk::physics::coordinate::Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant&)
+        const override
+    {
+        return ostk::physics::coordinate::Position::Meters({0.0, 0.0, 0.0}, aFrameSPtr);
+    }
+
+    Velocity getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant&) const override
+    {
+        return {{0.0, 0.0, 0.0}, Velocity::Unit::MeterPerSecond, aFrameSPtr};
+    }
+
+    Transform getTransformTo(const Shared<const Frame>&, const Instant& anInstant) const override
+    {
+        return Transform::Identity(anInstant);
+    }
+
+    Axes getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant&) const override
+    {
+        return {Vector3d::X(), Vector3d::Y(), Vector3d::Z(), aFrameSPtr};
+    }
+};
+
+}  // namespace
+
+TEST_F(OpenSpaceToolkit_Physics_Environment, Intersects_ObjectWithoutGeometry)
+{
+    const Shared<const Object> objectSPtr = std::make_shared<ObjectWithoutGeometry>();
+
+    EXPECT_FALSE(objectSPtr->getGeometry().has_value());
+    EXPECT_FALSE(objectSPtr->getGeometryIn(Frame::GCRF(), instant_).has_value());
+
+    const Environment environment = {instant_, {std::make_shared<Earth>(Earth::Default()), objectSPtr}};
+
+    const Object::Geometry farAwayGeometry = {
+        Segment({1.0e12, 1.0e12, 1.0e12}, {1.0e12, 2.0e12, 1.0e12}), Frame::GCRF()
+    };
+    const Object::Geometry throughEarthGeometry = {Segment({-10000e3, 0.0, 0.0}, {+10000e3, 0.0, 0.0}), Frame::GCRF()};
+
+    // An object without a geometry never intersects (and no longer throws)
+    EXPECT_NO_THROW(environment.intersects(farAwayGeometry));
+    EXPECT_FALSE(environment.intersects(farAwayGeometry));
+    EXPECT_TRUE(environment.intersects(throughEarthGeometry));
 }

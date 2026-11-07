@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_CIRF__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
-
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -19,8 +17,6 @@ namespace frame
 {
 namespace provider
 {
-
-using ostk::core::type::Real;
 
 using ostk::physics::coordinate::frame::Provider;
 using ostk::physics::coordinate::Transform;
@@ -54,15 +50,6 @@ class CIRF : public Provider
     ///
     /// @return A pointer to the cloned CIRF provider
     virtual CIRF* clone() const override;
-
-    /// @brief Check if the CIRF provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the CIRF provider is defined
-    virtual bool isDefined() const override;
 
     /// @brief Get the transform at a given instant.
     ///
@@ -117,7 +104,7 @@ class CIRF : public Provider
     /// @param [out] s The CIO locator s [rad]
     /// @param [in] interpolate If true, interpolate a cached grid of the series; otherwise evaluate it directly
     static void ComputeCIPCoordinates(
-        const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
+        double aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
     );
 };
 

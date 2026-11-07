@@ -16,7 +16,6 @@ using ostk::core::container::Array;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
@@ -28,26 +27,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, Constructor)
 {
     {
         EXPECT_NO_THROW(MoonGravitationalModel moonGravitationalModel(MoonGravitationalModel::Type::Spherical));
-        EXPECT_NO_THROW(
-            std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical, Directory::Undefined())
+        EXPECT_NO_THROW(std::make_shared<MoonGravitationalModel>(MoonGravitationalModel::Type::Spherical, std::nullopt)
         );
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsDefined)
-{
-    {
-        EXPECT_FALSE(MoonGravitationalModel(MoonGravitationalModel::Type::Undefined).isDefined());
-
-        EXPECT_TRUE(MoonGravitationalModel(MoonGravitationalModel::Type::Spherical).isDefined());
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, IsPointMass)
 {
     {
-        EXPECT_FALSE(MoonGravitationalModel(MoonGravitationalModel::Type::Undefined).isPointMass());
-
         EXPECT_TRUE(MoonGravitationalModel(MoonGravitationalModel::Type::Spherical).isPointMass());
     }
 }
@@ -65,7 +52,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetType)
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetFieldValueAt)
 {
     {
-        static const Array<Tuple<MoonGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
+        static const Array<Tuple<MoonGravitationalModel::Type, Vector3d, Instant, Vector3d, double>> testCases = {
 
             {MoonGravitationalModel::Type::Spherical,
              {1600e3, 0.0, 0.0},
@@ -93,7 +80,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Moon, GetFieldValueAt)
             const Instant instant = std::get<2>(testCase);
 
             const Vector3d referenceFieldValue = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
             const Vector3d fieldValue = moonGravitationalModel.getFieldValueAt(position, instant);
 

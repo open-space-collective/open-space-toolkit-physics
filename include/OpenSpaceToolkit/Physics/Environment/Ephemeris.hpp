@@ -37,15 +37,10 @@ class Ephemeris
     /// @return Pointer to cloned ephemeris.
     virtual Ephemeris* clone() const = 0;
 
-    /// @brief Check if the ephemeris is defined.
-    ///
-    /// @return True if the ephemeris is defined.
-    virtual bool isDefined() const = 0;
-
-    /// @brief Access the reference frame of the ephemeris.
+    /// @brief Get the reference frame of the ephemeris.
     ///
     /// @return Shared pointer to the reference frame.
-    virtual Shared<const Frame> accessFrame() const = 0;
+    virtual Shared<const Frame> getFrame() const = 0;
 };
 
 }  // namespace environment

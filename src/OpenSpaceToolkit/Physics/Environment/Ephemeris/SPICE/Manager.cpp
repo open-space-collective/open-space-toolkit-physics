@@ -46,11 +46,6 @@ void Manager::fetchKernel(const Kernel& aKernel) const
 {
     const std::lock_guard<std::mutex> lock {mutex_};
 
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const File kernelFile = aKernel.getFile();
 
     if (kernelFile.exists())
@@ -63,7 +58,7 @@ void Manager::fetchKernel(const Kernel& aKernel) const
     const Array<URL> kernelFileUrls = manifestManager.getRemoteDataUrls(aKernel.getName());
 
     // Only one remote file for each kernel
-    const URL kernelFileUrl = kernelFileUrls.accessFirst();
+    const URL kernelFileUrl = kernelFileUrls.getFirst();
 
     std::cout << String::Format(
                      "Fetching SPICE Kernel [{}] from [{}]...", kernelFile.toString(), kernelFileUrl.toString()
@@ -145,9 +140,7 @@ Array<Kernel> Manager::fetchMatchingKernels(const String& aRegexString) const
                      )
                   << std::endl;
 
-        const Kernel fetchedKernel = {
-            Kernel::TypeFromFileExtension(fetchedKernelFile.getExtension()), fetchedKernelFile
-        };
+        const Kernel fetchedKernel = Kernel::File(fetchedKernelFile);
 
         matchingKernels.add(fetchedKernel);
     }
@@ -193,10 +186,10 @@ Kernel Manager::findKernel(const String& aRegexString) const
             throw ostk::core::error::RuntimeError("Failed to find or fetch SPICE Kernel matching [{}].", aRegexString);
         }
 
-        return fetchedKernels.accessFirst();
+        return fetchedKernels.getFirst();
     }
 
-    return Kernel::File(File::Path(kernelPaths.accessFirst()));
+    return Kernel::File(File::Path(kernelPaths.getFirst()));
 }
 
 Manager::Manager()

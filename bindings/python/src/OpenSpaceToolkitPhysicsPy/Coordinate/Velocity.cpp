@@ -2,11 +2,10 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Velocity.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
-    using ostk::core::type::Integer;
     using ostk::core::type::Shared;
 
     using ostk::mathematics::object::Vector3d;
@@ -40,7 +39,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Velocity& self, const Velocity& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -52,7 +56,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Velocity& self, const Velocity& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -68,21 +77,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def("__repr__", &(shiftToString<Velocity>))
 
         .def(
-            "is_defined",
-            &Velocity::isDefined,
+            "get_frame",
+            &Velocity::getFrame,
             R"doc(
-                Check if the instance is defined.
-
-                Returns:
-                    bool: True if the instance is defined.
-            )doc"
-        )
-
-        .def(
-            "access_frame",
-            &Velocity::accessFrame,
-            R"doc(
-                Access the frame of reference.
+                Get the frame of reference.
 
                 Returns:
                     Frame: Frame of reference.
@@ -144,7 +142,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         .def(
             "to_string",
             &Velocity::toString,
-            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
+            arg("precision").sig("-1") = -1,
             R"doc(
                 Convert to string.
 
@@ -156,16 +154,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Velocity::Undefined,
-            R"doc(
-                Get undefined velocity.
-
-                Returns:
-                    Velocity: Undefined velocity.
-            )doc"
-        )
         .def_static(
             "meters_per_second",
             &Velocity::MetersPerSecond,
@@ -207,13 +195,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Velocity(pybind11::module& aMod
         )doc"
     )
 
-        .value(
-            "Undefined",
-            Velocity::Unit::Undefined,
-            R"doc(
-                Undefined.
-            )doc"
-        )
         .value(
             "MeterPerSecond",
             Velocity::Unit::MeterPerSecond,

@@ -61,20 +61,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Constructor)
     }
 
     {
-        EXPECT_NO_THROW(Interval(
-            Instant::Undefined(), Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT), Interval::Type::Closed
-        ));
-        EXPECT_NO_THROW(Interval(
-            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT), Instant::Undefined(), Interval::Type::Closed
-        ));
-        EXPECT_NO_THROW(Interval(
-            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-            Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-            Interval::Type::Undefined
-        ));
-    }
-
-    {
         EXPECT_ANY_THROW(Interval(
             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
@@ -101,93 +87,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_Interval, IsDefined)
-{
-    {
-        EXPECT_TRUE(Interval(
-                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                        Interval::Type::Closed
-        )
-                        .isDefined());
-        EXPECT_TRUE(Interval(
-                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-                        Interval::Type::Open
-        )
-                        .isDefined());
-        EXPECT_TRUE(Interval(
-                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-                        Interval::Type::HalfOpenLeft
-        )
-                        .isDefined());
-        EXPECT_TRUE(Interval(
-                        Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                        Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-                        Interval::Type::HalfOpenRight
-        )
-                        .isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Interval::Undefined().isDefined());
-
-        EXPECT_FALSE(Interval(
-                         Instant::Undefined(),
-                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                         Interval::Type::Closed
-        )
-                         .isDefined());
-        EXPECT_FALSE(Interval(
-                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                         Instant::Undefined(),
-                         Interval::Type::Closed
-        )
-                         .isDefined());
-        EXPECT_FALSE(Interval(
-                         Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                         Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-                         Interval::Type::Undefined
-        )
-                         .isDefined());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessStart)
-{
-    {
-        const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
-        const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT);
-
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::Closed).accessStart());
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::Open).accessStart());
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).accessStart());
-        EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).accessStart());
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().accessStart());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Interval, AccessEnd)
-{
-    {
-        const Instant startInstant = Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT);
-        const Instant endInstant = Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT);
-
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::Closed).accessEnd());
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::Open).accessEnd());
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).accessEnd());
-        EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).accessEnd());
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().accessEnd());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
 {
     {
@@ -198,10 +97,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetStart)
         EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::Open).getStart());
         EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getStart());
         EXPECT_EQ(startInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getStart());
-    }
 
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().getStart());
+        const Interval interval = Interval(startInstant, endInstant, Interval::Type::Closed);
+
+        EXPECT_EQ(&interval.getStart(), &interval.getStart());
     }
 }
 
@@ -215,10 +114,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetEnd)
         EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::Open).getEnd());
         EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getEnd());
         EXPECT_EQ(endInstant, Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getEnd());
-    }
 
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().getEnd());
+        const Interval interval = Interval(startInstant, endInstant, Interval::Type::Closed);
+
+        EXPECT_EQ(&interval.getEnd(), &interval.getEnd());
     }
 }
 
@@ -238,10 +137,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetDuration)
         EXPECT_EQ(Duration::Days(1.0), Interval(startInstant, endInstant, Interval::Type::Open).getDuration());
         EXPECT_EQ(Duration::Days(1.0), Interval(startInstant, endInstant, Interval::Type::HalfOpenLeft).getDuration());
         EXPECT_EQ(Duration::Days(1.0), Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getDuration());
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().getDuration());
     }
 }
 
@@ -268,10 +163,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetCenter)
             Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).getCenter()
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Interval::Undefined().getCenter());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetIntersectionWith)
@@ -294,6 +185,22 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetIntersectionWith)
 
         EXPECT_EQ(intersectionInterval, interval1.getIntersectionWith(interval2));
     }
+
+    {
+        // Disjoint intervals have no intersection
+
+        const Interval interval1 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT)
+        );
+
+        const Interval interval2 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT)
+        );
+
+        EXPECT_FALSE(interval1.getIntersectionWith(interval2).has_value());
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, GetUnionWith)
@@ -315,6 +222,22 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetUnionWith)
         );
 
         EXPECT_EQ(unionInterval, interval1.getUnionWith(interval2));
+    }
+
+    {
+        // Disjoint intervals have no single-interval union
+
+        const Interval interval1 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT)
+        );
+
+        const Interval interval2 = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT)
+        );
+
+        EXPECT_FALSE(interval1.getUnionWith(interval2).has_value());
     }
 }
 
@@ -340,10 +263,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, ToString)
             "[2018-01-01 00:00:00 - 2018-01-02 00:00:00[ [TT]",
             Interval(startInstant, endInstant, Interval::Type::HalfOpenRight).toString(Scale::TT)
         );
-    }
-
-    {
-        EXPECT_EQ("Undefined", Interval::Undefined().toString(Scale::TT));
     }
 }
 
@@ -538,16 +457,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
     // Errors
 
     {
-        EXPECT_ANY_THROW(Interval::Undefined().generateGrid(Duration::Seconds(1.0)));
-        EXPECT_ANY_THROW(Interval(
-                             Instant::DateTime(DateTime(2018, 1, 2, 0, 0, 0), Scale::TT),
-                             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
-                             Interval::Type::Closed
-        )
-                             .generateGrid(Duration::Undefined()));
-    }
-
-    {
         const Interval interval = {
             Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
             Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT),
@@ -556,15 +465,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GenerateGrid)
         const Duration step = Duration::Minutes(0.0);
 
         EXPECT_ANY_THROW(interval.generateGrid(step));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Interval, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Interval::Undefined());
-
-        EXPECT_FALSE(Interval::Undefined().isDefined());
     }
 }
 
@@ -587,12 +487,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Closed)
             )
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Interval::Closed(Instant::Undefined(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::Closed(Instant::J2000(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::Closed(Instant::Undefined(), Instant::J2000()));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, Open)
@@ -613,12 +507,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Open)
                 Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
             )
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Open(Instant::Undefined(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::Open(Instant::J2000(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::Open(Instant::Undefined(), Instant::J2000()));
     }
 }
 
@@ -641,12 +529,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenLeft)
             )
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Interval::HalfOpenLeft(Instant::Undefined(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::HalfOpenLeft(Instant::J2000(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::HalfOpenLeft(Instant::Undefined(), Instant::J2000()));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenRight)
@@ -667,12 +549,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, HalfOpenRight)
                 Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 1), Scale::TT)
             )
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::HalfOpenRight(Instant::Undefined(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::HalfOpenRight(Instant::J2000(), Instant::Undefined()));
-        EXPECT_ANY_THROW(Interval::HalfOpenRight(Instant::Undefined(), Instant::J2000()));
     }
 }
 
@@ -744,12 +620,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Centered)
                 Interval::Type::HalfOpenRight
             )
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Interval::Centered(Instant::Undefined(), Duration::Minutes(1.0), Interval::Type::Closed));
-        EXPECT_ANY_THROW(Interval::Centered(Instant::J2000(), Duration::Undefined(), Interval::Type::Closed));
-        EXPECT_ANY_THROW(Interval::Centered(Instant::J2000(), Duration::Minutes(1.0), Interval::Type::Undefined));
     }
 }
 
@@ -952,6 +822,32 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, GetGaps)
 
         EXPECT_EQ(expectedArray, Interval::GetGaps(array));
     }
+
+    {
+        // With an analysis interval, the gaps before the first and after the last interval are included
+
+        const Array<Interval> array = {
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 10), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 20), Scale::TT)
+            ),
+            Interval::Closed(
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 30), Scale::TT),
+                Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 40), Scale::TT)
+            )
+        };
+
+        const Interval analysisInterval = Interval::Closed(
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::TT),
+            Instant::DateTime(DateTime(2018, 1, 1, 0, 1, 0), Scale::TT)
+        );
+
+        const Array<Interval> gaps = Interval::GetGaps(array, analysisInterval);
+
+        EXPECT_EQ(3, gaps.getSize());
+        EXPECT_EQ(analysisInterval.getStart(), gaps[0].getStart());
+        EXPECT_EQ(analysisInterval.getEnd(), gaps[2].getEnd());
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Interval, LogicalOr)
@@ -1057,10 +953,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Interval, Hash)
             std::hash<Interval> {}(Interval::Closed(startInstant, endInstant)),
             std::hash<Interval> {}(Interval(startInstant, endInstant, Interval::Type::Open))
         );
-    }
-
-    {
-        EXPECT_EQ(std::hash<Interval> {}(Interval::Undefined()), 0u);
     }
 
     {

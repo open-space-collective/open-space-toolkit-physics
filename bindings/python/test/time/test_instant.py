@@ -9,10 +9,6 @@ from ostk.physics.time import Duration
 from ostk.physics.time import DateTime
 
 
-def test_instant_undefined():
-    assert Instant.undefined() is not None
-
-
 def test_instant_now():
     assert Instant.now() is not None
 
@@ -33,6 +29,19 @@ def test_instant_datetime():
     assert Instant.date_time(datetime.datetime.now(), Scale.UTC)
 
 
+def test_instant_date_time_round_trip():
+    # DateTime arguments accept DateTime and datetime.datetime; DateTime return values are datetime.datetime
+    date_time = Instant.date_time(
+        datetime.datetime(2018, 1, 2, 3, 4, 5, 6007), Scale.UTC
+    ).get_date_time(Scale.UTC)
+
+    assert type(date_time) is datetime.datetime
+    assert date_time == datetime.datetime(2018, 1, 2, 3, 4, 5, 6007)
+    assert Instant.date_time(
+        DateTime(2018, 1, 2, 3, 4, 5, 6, 7, 0), Scale.UTC
+    ) == Instant.date_time(date_time, Scale.UTC)
+
+
 def test_instant_julian_date():
     assert Instant.julian_date(2458119.5, Scale.UTC) is not None
 
@@ -50,6 +59,9 @@ def test_instant_parse():
     assert (
         Instant.parse("2024-01-01T00:01:02.000", Scale.UTC, DateTime.Format.ISO8601)
         is not None
+    )
+    assert Instant.parse("2024-01-01T00:01:02.000", Scale.UTC, None) == Instant.parse(
+        "2024-01-01T00:01:02.000", Scale.UTC, DateTime.Format.ISO8601
     )
 
 
@@ -71,10 +83,6 @@ def test_instant_operators():
 
     instant += Duration.seconds(1.0)
     instant -= Duration.seconds(1.0)
-
-
-def test_instant_is_defined():
-    assert Instant.J2000().is_defined() is not None
 
 
 def test_instant_is_post_epoch():

@@ -4,6 +4,7 @@
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +13,9 @@ namespace physics
 namespace data
 {
 
-Scalar::Scalar(const Real& aValue, const Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+Scalar::Scalar(double aValue, const Unit& aUnit)
     : value_(aValue),
       unit_(aUnit)
 {
@@ -20,11 +23,6 @@ Scalar::Scalar(const Real& aValue, const Unit& aUnit)
 
 bool Scalar::operator==(const Scalar& aScalar) const
 {
-    if ((!this->isDefined()) || (!aScalar.isDefined()))
-    {
-        return false;
-    }
-
     return (value_ == aScalar.value_) && (unit_ == aScalar.unit_);
 }
 
@@ -37,54 +35,32 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Scalar");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Value:" << (aScalar.value_.isDefined() ? aScalar.value_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Unit:" << (aScalar.unit_.isDefined() ? aScalar.unit_.toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << DoubleToString(aScalar.value_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << aScalar.unit_.toString();
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Scalar::isDefined() const
-{
-    return value_.isDefined() && unit_.isDefined();
-}
-
-Real Scalar::getValue() const
+double Scalar::getValue() const
 {
     return value_;
 }
 
-Unit Scalar::getUnit() const
+const Unit& Scalar::getUnit() const
 {
     return unit_;
 }
 
 Scalar Scalar::inUnit(const Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Scalar");
-    }
-
     return {value_ * unit_.ratioTo(aUnit), aUnit};
 }
 
-String Scalar::toString(const Integer& aPrecision) const
+String Scalar::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Scalar");
-    }
-
-    return String::Format("{} [{}]", value_.toString(aPrecision), unit_.toString());
-}
-
-Scalar Scalar::Undefined()
-{
-    return {Real::Undefined(), Unit::Undefined()};
+    return String::Format("{} [{}]", DoubleToString(value_, aPrecision), unit_.toString());
 }
 
 }  // namespace data

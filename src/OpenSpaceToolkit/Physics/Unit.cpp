@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
@@ -10,7 +12,6 @@ namespace ostk
 {
 namespace physics
 {
-
 Unit::Unit(const Unit& aUnit)
     : type_(aUnit.type_),
       unitUPtr_((aUnit.unitUPtr_ != nullptr) ? aUnit.unitUPtr_->clone() : nullptr)
@@ -30,11 +31,6 @@ Unit& Unit::operator=(const Unit& aUnit)
 
 bool Unit::operator==(const Unit& aUnit) const
 {
-    if ((!this->isDefined()) || (!aUnit.isDefined()))
-    {
-        return false;
-    }
-
     if (type_ == aUnit.type_)
     {
         switch (type_)
@@ -83,51 +79,25 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Unit& aUnit)
 
     ostk::core::utils::Print::Line(anOutputStream) << "Type:" << Unit::StringFromType(aUnit.type_);
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Value:"
-        << (((aUnit.unitUPtr_ != nullptr) && aUnit.unitUPtr_->isDefined()) ? aUnit.unitUPtr_->toString() : "Undefined");
+        << "Value:" << ((aUnit.unitUPtr_ != nullptr) ? aUnit.unitUPtr_->toString() : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Unit::isDefined() const
-{
-    return type_ != Unit::Type::Undefined;
-}
-
 bool Unit::isNone() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     return type_ == Unit::Type::None;
 }
 
 Unit::Type Unit::getType() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     return type_;
 }
 
-Real Unit::ratioTo(const Unit& aUnit) const
+double Unit::ratioTo(const Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
-    if (!aUnit.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     if (type_ != aUnit.type_)
     {
         throw ostk::core::error::RuntimeError(
@@ -159,17 +129,10 @@ Real Unit::ratioTo(const Unit& aUnit) const
             throw ostk::core::error::runtime::Wrong("Type");
             break;
     }
-
-    return Real::Undefined();
 }
 
 String Unit::toString() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
     switch (type_)
     {
         case Unit::Type::None:
@@ -202,11 +165,6 @@ String Unit::toString() const
     return String::Empty();
 }
 
-Unit Unit::Undefined()
-{
-    return {Unit::Type::Undefined, nullptr};
-}
-
 Unit Unit::None()
 {
     return {Unit::Type::None, nullptr};
@@ -227,7 +185,6 @@ String Unit::StringFromType(const Unit::Type& aType)
     using ostk::core::container::Map;
 
     static const Map<Unit::Type, String> typeStringMap = {
-        {Unit::Type::Undefined, "Undefined"},
         {Unit::Type::None, "None"},
         {Unit::Type::Length, "Length"},
         {Unit::Type::Mass, "Mass"},
@@ -246,6 +203,5 @@ Unit::Unit(const Unit::Type& aType, const Unique<unit::Unit>& aUnitUPtr)
       unitUPtr_((aUnitUPtr != nullptr) ? aUnitUPtr->clone() : nullptr)
 {
 }
-
 }  // namespace physics
 }  // namespace ostk

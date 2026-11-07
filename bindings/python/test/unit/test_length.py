@@ -2,7 +2,7 @@
 
 import pytest
 
-from ostk.core.type import Real, String
+from ostk.core.type import String
 
 import ostk.physics as physics
 
@@ -15,7 +15,6 @@ def test_unit_length_unit():
     enum_members = Unit.__members__
 
     list_keys = [
-        "Undefined",
         "Meter",
         "Foot",
         "TerrestrialMile",
@@ -24,7 +23,6 @@ def test_unit_length_unit():
     ]
 
     list_values = [
-        Unit.Undefined,
         Unit.Meter,
         Unit.Foot,
         Unit.TerrestrialMile,
@@ -42,43 +40,31 @@ def test_unit_length_constructors():
 
     assert length is not None
     assert isinstance(length, Length)
-    assert length.is_defined()
 
     length: Length = Length(4.0, Unit.Foot)
 
     assert length is not None
     assert isinstance(length, Length)
-    assert length.is_defined()
 
     length: Length = Length(4.0, Unit.TerrestrialMile)
 
     assert length is not None
     assert isinstance(length, Length)
-    assert length.is_defined()
 
     length: Length = Length(4.0, Unit.NauticalMile)
 
     assert length is not None
     assert isinstance(length, Length)
-    assert length.is_defined()
 
     length: Length = Length(4.0, Unit.AstronomicalUnit)
 
     assert length is not None
     assert isinstance(length, Length)
-    assert length.is_defined()
-
-    length: Length = Length(4.0, Unit.Undefined)
-
-    assert length is not None
-    assert isinstance(length, Length)
-    assert length.is_defined() is False
 
     length: Length = Length(-1.0, Unit.Meter)
 
     assert length is not None
     assert isinstance(length, Length)
-    assert length.is_defined() is True
 
 
 def test_unit_length_comparators():
@@ -112,63 +98,47 @@ def test_unit_length_operators():
 
     assert sum_length is not None
     assert isinstance(sum_length, Length)
-    assert sum_length.is_defined()
     assert sum_length == Length(7.5, Unit.Meter)
 
     assert diff_length is not None
     assert isinstance(diff_length, Length)
-    assert diff_length.is_defined()
     assert diff_length == Length(0.5, Unit.Meter)
 
     assert mul_length is not None
     assert isinstance(mul_length, Length)
-    assert mul_length.is_defined()
     assert mul_length == Length(8.0, Unit.Meter)
 
     assert mul_length_2 is not None
     assert isinstance(mul_length_2, Length)
-    assert mul_length_2.is_defined()
     assert mul_length_2 == Length(8.0, Unit.Meter)
 
     assert div_length is not None
     assert isinstance(div_length, Length)
-    assert div_length.is_defined()
     assert div_length == Length(2.0, Unit.Meter)
 
     length_1 += length_2
 
     assert length_1 is not None
     assert isinstance(length_1, Length)
-    assert length_1.is_defined()
     assert length_1 == Length(7.5, Unit.Meter)
 
     length_1 -= length_2
 
     assert length_1 is not None
     assert isinstance(length_1, Length)
-    assert length_1.is_defined()
     assert length_1 == Length(4.0, Unit.Meter)
 
     length_1 *= 2.0
 
     assert length_1 is not None
     assert isinstance(length_1, Length)
-    assert length_1.is_defined()
     assert length_1 == Length(8.0, Unit.Meter)
 
     length_1 /= 2.0
 
     assert length_1 is not None
     assert isinstance(length_1, Length)
-    assert length_1.is_defined()
     assert length_1 == Length(4.0, Unit.Meter)
-
-
-def test_unit_length_is_defined():
-    length: Length = Length(4.0, Unit.Meter)
-
-    assert length.is_defined() is True
-    assert length.undefined().is_defined() is False
 
 
 def test_unit_length_get_unit():
@@ -231,7 +201,7 @@ def test_unit_length_in_meters():
     length: Length = Length(4000.0, Unit.Meter)
 
     assert length.in_meters() is not None
-    assert isinstance(length.in_meters(), Real)
+    assert isinstance(length.in_meters(), float)
     assert length.in_meters() == 4000.0
 
 
@@ -240,7 +210,7 @@ def test_unit_length_in_meters():
 #     length: Length = Length(4000.0, Unit.Meter)
 
 #     assert length.in_millimeters() is not None
-#     assert isinstance(length.in_millimeters(), Real)
+#     assert isinstance(length.in_millimeters(), float)
 #     assert length.in_millimeters() == 4000000.0
 
 
@@ -248,7 +218,7 @@ def test_unit_length_kilometers():
     length: Length = Length(4000.0, Unit.Meter)
 
     assert length.in_kilometers() is not None
-    assert isinstance(length.in_kilometers(), Real)
+    assert isinstance(length.in_kilometers(), float)
     assert length.in_kilometers() == 4.0
 
 

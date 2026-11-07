@@ -11,7 +11,6 @@
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -57,11 +56,6 @@ void Manager::setMode(const Manager::Mode& aMode)
 
 void Manager::setLocalRepository(const Directory& aDirectory)
 {
-    if (!aDirectory.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Directory");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     localRepository_ = aDirectory;
@@ -101,8 +95,10 @@ Manager::Manager(
       localRepositoryPath_(aLocalRepositoryPath),
       localRepositoryLockTimeoutEnvironmentVariableName_(aLocalRepositoryLockTimeoutEnvironmentVariableName),
       mode_(Manager::Mode::Automatic),
-      localRepository_(Directory::Undefined()),
-      localRepositoryLockTimeout_(Duration::Undefined())
+      localRepository_(Manager::DefaultLocalRepository_(
+          aDefaultLocalRepositoryDirectory, aLocalRepositoryEnvironmentVariableName, aLocalRepositoryPath
+      )),
+      localRepositoryLockTimeout_(Duration::Zero())
 {
     reset();
     setup_();

@@ -29,7 +29,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
 using ostk::core::type::Index;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -140,8 +139,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<Interval> intervals = {
@@ -160,17 +159,17 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
 
         const Eclipse eclipse(*sun, *earth, phases);
 
-        EXPECT_EQ(eclipse.accessOccultedCelestialObject().getName(), "Sun");
-        EXPECT_EQ(eclipse.accessOccultingCelestialObject().getName(), "Earth");
+        EXPECT_EQ(eclipse.getOccultedCelestialObject().getName(), "Sun");
+        EXPECT_EQ(eclipse.getOccultingCelestialObject().getName(), "Earth");
         EXPECT_EQ(eclipse.getPhases().getSize(), 3);
 
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(3.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[2].getEnd()));
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[1]);
     }
 
@@ -186,10 +185,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(2.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[1].getEnd()));
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[0]);
     }
 
@@ -205,10 +204,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(2.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[1].getEnd()));
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[1]);
     }
 
@@ -221,10 +220,10 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(1.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(1.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, intervals[0]);
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
         EXPECT_EQ(intervalWithoutPenumbra, intervals[0]);
     }
 
@@ -237,11 +236,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorAnd
         EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(1.0));
         EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(0.0));
 
-        const Interval intervalWithPenumbra = eclipse.getInterval(true);
+        const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
         EXPECT_EQ(intervalWithPenumbra, intervals[0]);
 
-        const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
-        EXPECT_FALSE(intervalWithoutPenumbra.isDefined());
+        const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
+        EXPECT_FALSE(intervalWithoutPenumbra.has_value());
     }
 }
 
@@ -251,8 +250,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseStreamOperator
 
     {
         const Environment environment = Environment::Default();
-        const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-        const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+        const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+        const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
         const Instant referenceEpoch = Instant::J2000();
         const Array<EclipsePhase> phases = {
             EclipsePhase(
@@ -280,8 +279,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseStreamOperator
 TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorFailureNoPhases)
 {
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Array<EclipsePhase> emptyPhases = {};
 
@@ -293,8 +292,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorFai
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<EclipsePhase> overlappingPhases = {
@@ -318,8 +317,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseConstructorFai
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<EclipsePhase> gappedPhases = {
@@ -343,8 +342,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseMultipleUmbas)
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
     const Array<Interval> intervals = {
@@ -364,7 +363,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseMultipleUmbas)
     EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(3.0));
     EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(2.0));
 
-    const Interval intervalWithPenumbra = eclipse.getInterval(true);
+    const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
     EXPECT_EQ(intervalWithPenumbra, Interval::Closed(intervals[0].getStart(), intervals[2].getEnd()));
 
     EXPECT_THROW({ eclipse.getInterval(false); }, ostk::core::error::RuntimeError);
@@ -375,8 +374,8 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseNoUmbras)
     using ostk::physics::time::Interval;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
     const Instant referenceEpoch = Instant::J2000();
 
@@ -389,11 +388,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseNoUmbras)
     EXPECT_EQ(eclipse.getDuration(true), Duration::Minutes(1.0));
     EXPECT_EQ(eclipse.getDuration(false), Duration::Minutes(0.0));
 
-    const Interval intervalWithPenumbra = eclipse.getInterval(true);
+    const std::optional<Interval> intervalWithPenumbra = eclipse.getInterval(true);
     EXPECT_EQ(intervalWithPenumbra, Interval::Closed(referenceEpoch, referenceEpoch + Duration::Minutes(1.0)));
 
-    const Interval intervalWithoutPenumbra = eclipse.getInterval(false);
-    EXPECT_FALSE(intervalWithoutPenumbra.isDefined());
+    const std::optional<Interval> intervalWithoutPenumbra = eclipse.getInterval(false);
+    EXPECT_FALSE(intervalWithoutPenumbra.has_value());
 }
 
 TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, EclipseIntervalsAtPosition)
@@ -606,89 +605,89 @@ TEST(OpenSpaceToolkit_Physics_Environment_Utility_Eclipse, MontenbruckGillShadow
     using ostk::mathematics::object::Vector3d;
 
     const Environment environment = Environment::Default();
-    const Shared<const Celestial> sun = environment.accessCelestialObjectWithName("Sun");
-    const Shared<const Celestial> earth = environment.accessCelestialObjectWithName("Earth");
+    const Shared<const Celestial> sun = environment.getCelestialObjectWithName("Sun");
+    const Shared<const Celestial> earth = environment.getCelestialObjectWithName("Earth");
 
-    const Real tolerance = 1e-3;
+    const double tolerance = 1e-3;
 
     // Test cases with timestamps obtained using Orekit v12.2.1 EclipseDetector
-    const Array<Tuple<Instant, Vector3d, Interval<Real>>> testCases = {
+    const Array<Tuple<Instant, Vector3d, Interval<double>>> testCases = {
 
         // Before penumbra
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:30:58.893704395"), Scale::UTC),
          Vector3d(3868261.294497, 9221526.693422, 0.0),
-         Interval<Real>::Closed(1.0, 1.0)},
+         Interval<double>::Closed(1.0, 1.0)},
 
         // Penumbra start
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:31:08.893704395"), Scale::UTC),
          Vector3d(3809964.652101, 9245764.941298, 0.0),
-         Interval<Real>::Closed(1.0 - tolerance, 1.0)},
+         Interval<double>::Closed(1.0 - tolerance, 1.0)},
 
         // Mid point between penumbra start and umbra start
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:31:18.381233978"), Scale::UTC),
          Vector3d(3754515.113065, 9268420.375974, 0.0),
-         Interval<Real>::Closed(0.5 - tolerance, 0.5 + tolerance)},
+         Interval<double>::Closed(0.5 - tolerance, 0.5 + tolerance)},
 
         // Umbra start
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:31:27.868763562"), Scale::UTC),
          Vector3d(3698930.865026, 9290743.267132, 0.0),
-         Interval<Real>::Closed(0.0, tolerance)},
+         Interval<double>::Closed(0.0, tolerance)},
 
         // Mid point between umbra start and umbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:46:36.017335289"), Scale::UTC),
          Vector3d(-1932406.121736, 9811513.980048, 0.0),
-         Interval<Real>::Closed(0.0, 0.0)},
+         Interval<double>::Closed(0.0, 0.0)},
 
         // Umbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:01:44.165907016"), Scale::UTC),
          Vector3d(-6945698.597771, 7194252.635884, 0.0),
-         Interval<Real>::Closed(0.0, tolerance)},
+         Interval<double>::Closed(0.0, tolerance)},
 
         // Mid point between umbra end and penumbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:01:53.653358409"), Scale::UTC),
          Vector3d(-6988666.481775, 7152519.892074, 0.0),
-         Interval<Real>::Closed(0.5 - tolerance, 0.5 + tolerance)},
+         Interval<double>::Closed(0.5 - tolerance, 0.5 + tolerance)},
 
         // Penumbra end
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:02:03.140809803"), Scale::UTC),
          Vector3d(-7031383.622142, 7110530.525795, 0.0),
-         Interval<Real>::Closed(1.0 - tolerance, 1.0)},
+         Interval<double>::Closed(1.0 - tolerance, 1.0)},
 
         // After penumbra
         {Instant::DateTime(DateTime::Parse("2026-01-01T01:02:13.140809803"), Scale::UTC),
          Vector3d(-7076135.389139, 7065996.600238, 0.0),
-         Interval<Real>::Closed(1.0, 1.0)},
+         Interval<double>::Closed(1.0, 1.0)},
 
         // Inside the Earth
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:30:58.893704395"), Scale::UTC),
          Vector3d(3868261.294497e-6, 9221526.693422e-6, 0.0),
-         Interval<Real>::Closed(0.0, 0.0)},
+         Interval<double>::Closed(0.0, 0.0)},
 
         // At the Earth's center
         {Instant::DateTime(DateTime::Parse("2026-01-01T00:00:00.000000000"), Scale::UTC),
          Vector3d(0.0, 0.0, 0.0),
-         Interval<Real>::Closed(0.0, 0.0)},
+         Interval<double>::Closed(0.0, 0.0)},
 
         // Inside the Sun
         {Instant::J2000(),
          sun->getPositionIn(Frame::GCRF(), Instant::J2000()).inMeters().getCoordinates() + Vector3d(1.0, 1.0, 1.0),
-         Interval<Real>::Closed(1.0, 1.0)},
+         Interval<double>::Closed(1.0, 1.0)},
 
         // At the Sun's Center
         {Instant::J2000(),
          sun->getPositionIn(Frame::GCRF(), Instant::J2000()).inMeters().getCoordinates(),
-         Interval<Real>::Closed(1.0, 1.0)}
+         Interval<double>::Closed(1.0, 1.0)}
     };
 
     for (const auto& testCase : testCases)
     {
         const Instant instant = std::get<0>(testCase);
         const Vector3d coordinates = std::get<1>(testCase);
-        const Interval<Real> expectedShadowValueBoundaries = std::get<2>(testCase);
+        const Interval<double> expectedShadowValueBoundaries = std::get<2>(testCase);
 
         const Position position = Position::Meters(coordinates, Frame::GCRF());
 
-        const Real shadowValue = montenbruckGillShadowFunction(instant, position, *sun, *earth);
+        const double shadowValue = montenbruckGillShadowFunction(instant, position, *sun, *earth);
 
         EXPECT_TRUE(expectedShadowValueBoundaries.contains(shadowValue)) << String::Format(
             "Shadow value {} for coordinates {} is not within expected boundaries [{}, {}]",

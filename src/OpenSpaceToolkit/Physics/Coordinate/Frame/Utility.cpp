@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -19,7 +21,7 @@ namespace utilities
 {
 
 Transform NorthEastDownTransformAt(
-    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
 )
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
@@ -29,41 +31,42 @@ Transform NorthEastDownTransformAt(
     const Vector3d x_NED_ECEF = aLLA.toCartesian(anEllipsoidEquatorialRadius, anEllipsoidFlattening);
     const Vector3d v_NED_ECEF = {0.0, 0.0, 0.0};
 
-    const Real latitude_rad = aLLA.getLatitude().inRadians();
-    const Real longitude_rad = aLLA.getLongitude().inRadians();
+    const double latitude_rad = aLLA.getLatitude().inRadians();
+    const double longitude_rad = aLLA.getLongitude().inRadians();
 
-    Quaternion q_NED_ECEF = Quaternion::Undefined();
-
-    if (latitude_rad == Real::HalfPi())
+    const Quaternion q_NED_ECEF = [&]() -> Quaternion
     {
-        q_NED_ECEF = Quaternion::XYZS(0.0, 1.0, 0.0, 0.0);
-    }
-    else if (latitude_rad == -Real::HalfPi())
-    {
-        q_NED_ECEF = Quaternion::XYZS(0.0, 0.0, 0.0, 1.0);
-    }
-    else
-    {
-        const Real cos_lat = std::cos(latitude_rad);
-        const Real sin_lat = std::sin(latitude_rad);
+        if (latitude_rad == M_PI / 2.0)
+        {
+            return Quaternion::XYZS(0.0, 1.0, 0.0, 0.0);
+        }
+        else if (latitude_rad == -M_PI / 2.0)
+        {
+            return Quaternion::XYZS(0.0, 0.0, 0.0, 1.0);
+        }
+        else
+        {
+            const double cos_lat = std::cos(latitude_rad);
+            const double sin_lat = std::sin(latitude_rad);
 
-        const Real cos_lon = std::cos(longitude_rad);
-        const Real sin_lon = std::sin(longitude_rad);
+            const double cos_lon = std::cos(longitude_rad);
+            const double sin_lon = std::sin(longitude_rad);
 
-        const RotationMatrix dcm_NED_ECEF = {
-            -sin_lat * cos_lon,
-            -sin_lat * sin_lon,
-            +cos_lat,
-            -sin_lon,
-            +cos_lon,
-            0.0,
-            -cos_lat * cos_lon,
-            -cos_lat * sin_lon,
-            -sin_lat
-        };
+            const RotationMatrix dcm_NED_ECEF = {
+                -sin_lat * cos_lon,
+                -sin_lat * sin_lon,
+                +cos_lat,
+                -sin_lon,
+                +cos_lon,
+                0.0,
+                -cos_lat * cos_lon,
+                -cos_lat * sin_lon,
+                -sin_lat
+            };
 
-        q_NED_ECEF = Quaternion::RotationMatrix(dcm_NED_ECEF).rectify();
-    }
+            return Quaternion::RotationMatrix(dcm_NED_ECEF).rectify();
+        }
+    }();
 
     const Vector3d w_NED_ECEF_in_NED = {0.0, 0.0, 0.0};
 

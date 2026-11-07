@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
 #include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Utility.hpp>
 
@@ -32,7 +33,7 @@ namespace
 ///
 /// @param anInstant An instant
 /// @return TAI - UTC [s]
-Real getTaiMinusUtcAt(const Instant& anInstant)
+double getTaiMinusUtcAt(const Instant& anInstant)
 {
     return std::round(
         (anInstant.getModifiedJulianDate(Scale::TAI) - anInstant.getModifiedJulianDate(Scale::UTC)) * 86400.0
@@ -41,33 +42,28 @@ Real getTaiMinusUtcAt(const Instant& anInstant)
 
 }  // namespace
 
-Real interpolateUt1MinusUtc(
-    const Real& aPreviousUt1MinusUtc,
-    const Real& aPreviousMjd_UTC,
-    const Real& aNextUt1MinusUtc,
-    const Real& aNextMjd_UTC,
-    const Real& aRatio,
+double interpolateUt1MinusUtc(
+    const double& aPreviousUt1MinusUtc,
+    const double& aPreviousMjd_UTC,
+    const double& aNextUt1MinusUtc,
+    const double& aNextMjd_UTC,
+    const double& aRatio,
     const Instant& anInstant
 )
 {
-    if (!aPreviousUt1MinusUtc.isDefined() || !aNextUt1MinusUtc.isDefined())
-    {
-        return Real::Undefined();
-    }
-
     // UT1 - UTC changes by a few milliseconds per day: a step larger than half a second can only be a leap second
 
-    if ((aNextUt1MinusUtc - aPreviousUt1MinusUtc).abs() < 0.5)
+    if (std::abs(aNextUt1MinusUtc - aPreviousUt1MinusUtc) < 0.5)
     {
         return aPreviousUt1MinusUtc + aRatio * (aNextUt1MinusUtc - aPreviousUt1MinusUtc);
     }
 
-    const Real previousUt1MinusTai =
+    const double previousUt1MinusTai =
         aPreviousUt1MinusUtc - getTaiMinusUtcAt(Instant::ModifiedJulianDate(aPreviousMjd_UTC, Scale::UTC));
-    const Real nextUt1MinusTai =
+    const double nextUt1MinusTai =
         aNextUt1MinusUtc - getTaiMinusUtcAt(Instant::ModifiedJulianDate(aNextMjd_UTC, Scale::UTC));
 
-    const Real ut1MinusTai = previousUt1MinusTai + aRatio * (nextUt1MinusTai - previousUt1MinusTai);
+    const double ut1MinusTai = previousUt1MinusTai + aRatio * (nextUt1MinusTai - previousUt1MinusTai);
 
     return ut1MinusTai + getTaiMinusUtcAt(anInstant);
 }

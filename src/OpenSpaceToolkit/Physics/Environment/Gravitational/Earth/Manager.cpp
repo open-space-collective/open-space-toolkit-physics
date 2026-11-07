@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cstring>
+#include <optional>
 #include <thread>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
@@ -86,8 +87,8 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
 
     const Array<URL> remoteUrls = this->getDataFileUrlsForType_(aModelType);
 
-    URL remoteDataUrl = URL::Undefined();
-    File gravityDataFile = File::Undefined();
+    std::optional<URL> remoteDataUrl;
+    std::optional<File> gravityDataFile;
 
     try
     {
@@ -95,34 +96,31 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
         {
             remoteDataUrl = url;
 
-            std::cout << String::Format("Fetching gravitational data file from [{}]...", remoteDataUrl.toString())
-                      << std::endl;
+            std::cout << String::Format("Fetching gravitational data file from [{}]...", url.toString()) << std::endl;
 
-            gravityDataFile = Client::Fetch(remoteDataUrl, localRepository_, 2);
+            gravityDataFile = Client::Fetch(url, localRepository_, 2);
 
-            if (!gravityDataFile.exists())
+            if (!gravityDataFile->exists())
             {
-                throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Gravity Data File from [{}].", remoteDataUrl.toString()
-                );
+                throw ostk::core::error::RuntimeError("Cannot fetch Gravity Data File from [{}].", url.toString());
             }
 
             // Check that Gravity Data File size is not zero
 
             std::uintmax_t gravityDataFileSize =
-                std::filesystem::file_size(std::string(gravityDataFile.getPath().toString()));
+                std::filesystem::file_size(std::string(gravityDataFile->getPath().toString()));
 
             if (gravityDataFileSize == 0)
             {
                 throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Gravity Data from [{}]: file is empty.", remoteDataUrl.toString()
+                    "Cannot fetch Gravity Data from [{}]: file is empty.", url.toString()
                 );
             }
 
             std::cout << String::Format(
                              "Gravity Data [{}] has been successfully fetched from [{}].",
-                             gravityDataFile.toString(),
-                             remoteDataUrl.toString()
+                             gravityDataFile->toString(),
+                             url.toString()
                          )
                       << std::endl;
         }
@@ -133,15 +131,14 @@ void Manager::fetchDataFilesForType(const EarthGravitationalModel::Type& aModelT
     {
         std::cerr << String::Format(
                          "Error caught while fetching Gravity Data from [{}]: [{}].",
-                         remoteDataUrl.toString(),
+                         remoteDataUrl.has_value() ? remoteDataUrl->toString() : String("Undefined"),
                          anException.what()
                      )
                   << std::endl;
 
-        if (gravityDataFile.isDefined() && gravityDataFile.exists())
+        if (gravityDataFile.has_value() && gravityDataFile->exists())
         {
-            gravityDataFile.remove();
-            gravityDataFile = File::Undefined();
+            gravityDataFile->remove();
         }
 
         const_cast<Manager*>(this)->unlockLocalRepository_();

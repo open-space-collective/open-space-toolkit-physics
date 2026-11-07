@@ -3,7 +3,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Spherical/AER.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Spherical/LLA.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Spherical(nanobind::module_& aModule)
 {
     // Create "spherical" python submodule
     auto spherical = aModule.def_submodule("spherical");

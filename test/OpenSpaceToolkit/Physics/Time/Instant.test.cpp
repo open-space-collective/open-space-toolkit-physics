@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 #include <optional>
 #include <string>
 #include <unordered_map>
@@ -142,8 +143,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
 
                                                 if (scale != Scale::UTC)
                                                 {
-                                                    if ((scale == Scale::GPST) && (dateTime.accessDate().getYear() ==
-                                                                                   1981))  // Because GPST == UTC @ 1981
+                                                    if ((scale == Scale::GPST) && (dateTime.getDate().getYear() == 1981
+                                                                                  ))  // Because GPST == UTC @ 1981
                                                     {
                                                         continue;
                                                     }
@@ -166,8 +167,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
     }
 
     {
-        EXPECT_FALSE(Instant::Undefined() == Instant::Undefined());
-
         for (const auto year : years)
         {
             for (const auto month : months)
@@ -199,13 +198,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, EqualToOperator)
                                                     microsecond,
                                                     nanosecond
                                                 };
-
-                                                EXPECT_FALSE(
-                                                    Instant::DateTime(dateTime, scale) == Instant::Undefined()
-                                                );
-                                                EXPECT_FALSE(
-                                                    Instant::Undefined() == Instant::DateTime(dateTime, scale)
-                                                );
                                             }
                                         }
                                     }
@@ -280,8 +272,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
 
                                                 if (scale != Scale::UTC)
                                                 {
-                                                    if ((scale == Scale::GPST) && (dateTime.accessDate().getYear() ==
-                                                                                   1981))  // Because GPST == UTC @ 1981
+                                                    if ((scale == Scale::GPST) && (dateTime.getDate().getYear() == 1981
+                                                                                  ))  // Because GPST == UTC @ 1981
                                                     {
                                                         continue;
                                                     }
@@ -304,8 +296,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
     }
 
     {
-        EXPECT_TRUE(Instant::Undefined() != Instant::Undefined());
-
         for (const auto year : years)
         {
             for (const auto month : months)
@@ -337,9 +327,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, NotEqualToOperator)
                                                     microsecond,
                                                     nanosecond
                                                 };
-
-                                                EXPECT_TRUE(Instant::DateTime(dateTime, scale) != Instant::Undefined());
-                                                EXPECT_TRUE(Instant::Undefined() != Instant::DateTime(dateTime, scale));
                                             }
                                         }
                                     }
@@ -1048,26 +1035,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_Instant, IsDefined)
-{
-    using ostk::physics::time::DateTime;
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Scale;
-
-    {
-        for (auto const& scale : scales)
-        {
-            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), scale).isDefined());
-            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0, 0, 0, 1), scale).isDefined());
-            EXPECT_TRUE(Instant::DateTime(DateTime(2000, 1, 1, 11, 59, 59, 999, 999, 999), scale).isDefined());
-        }
-    }
-
-    {
-        EXPECT_FALSE(Instant::Undefined().isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_Instant, IsPostEpoch)
 {
     using ostk::physics::time::DateTime;
@@ -1084,10 +1051,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsPostEpoch)
 
     {
         EXPECT_TRUE(Instant::J2000().isPostEpoch());
-    }
-
-    {
-        EXPECT_ANY_THROW(Instant::Undefined().isPostEpoch());
     }
 }
 
@@ -1117,13 +1080,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, IsNear)
                          .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT), Duration::Seconds(1.0)));
         EXPECT_FALSE(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 0), Scale::TT)
                          .isNear(Instant::DateTime(DateTime(2000, 1, 1, 12, 0, 2), Scale::TT), Duration::Seconds(1.0)));
-    }
-
-    {
-        EXPECT_ANY_THROW(Instant::Undefined().isNear(Instant::Undefined(), Duration::Undefined()));
-        EXPECT_ANY_THROW(Instant::Undefined().isNear(Instant::J2000(), Duration::Zero()));
-        EXPECT_ANY_THROW(Instant::J2000().isNear(Instant::Undefined(), Duration::Zero()));
-        EXPECT_ANY_THROW(Instant::J2000().isNear(Instant::J2000(), Duration::Undefined()));
     }
 }
 
@@ -1166,12 +1122,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetDateTime)
     }
 
     {
-        for (auto const& scale : scales)
-        {
-            EXPECT_ANY_THROW(Instant::Undefined().getDateTime(scale));
-        }
-
-        EXPECT_ANY_THROW(Instant::J2000().getDateTime(Scale::Undefined));
     }
 }
 
@@ -1193,12 +1143,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetJulianDate)
     }
 
     {
-        for (auto const& scale : scales)
-        {
-            EXPECT_ANY_THROW(Instant::Undefined().getJulianDate(scale));
-        }
-
-        EXPECT_ANY_THROW(Instant::J2000().getJulianDate(Scale::Undefined));
     }
 }
 
@@ -1217,12 +1161,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GetModifiedJulianDate)
     }
 
     {
-        for (auto const& scale : scales)
-        {
-            EXPECT_ANY_THROW(Instant::Undefined().getModifiedJulianDate(scale));
-        }
-
-        EXPECT_ANY_THROW(Instant::J2000().getModifiedJulianDate(Scale::Undefined));
     }
 }
 
@@ -1693,25 +1631,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ToString)
     }
 
     {
-        for (auto const& scale : scales)
-        {
-            EXPECT_EQ("Undefined", Instant::Undefined().toString(scale));
-        }
-    }
-
-    {
-        EXPECT_ANY_THROW(Instant::J2000().toString(Scale::Undefined));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Instant, Undefined)
-{
-    using ostk::physics::time::Instant;
-    using ostk::physics::time::Scale;
-
-    {
-        EXPECT_NO_THROW(Instant::Undefined());
-        EXPECT_FALSE(Instant::Undefined().isDefined());
     }
 }
 
@@ -1726,9 +1645,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Now)
 
         Instant now_A = Instant::Now();
         Instant now_B = Instant::Now();
-
-        EXPECT_TRUE(now_A.isDefined());
-        EXPECT_TRUE(now_B.isDefined());
 
         EXPECT_NE(now_A, now_B);
         EXPECT_TRUE(now_A < now_B);
@@ -1815,7 +1731,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, J2000)
 
     {
         EXPECT_NO_THROW(Instant::J2000());
-        EXPECT_TRUE(Instant::J2000().isDefined());
 
         EXPECT_EQ(DateTime(2000, 1, 1, 12, 0, 0), Instant::J2000().getDateTime(Scale::TT));
         EXPECT_EQ(DateTime(2000, 1, 1, 11, 59, 27, 816), Instant::J2000().getDateTime(Scale::TAI));
@@ -1831,7 +1746,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, GPSEpoch)
 
     {
         EXPECT_NO_THROW(Instant::GPSEpoch());
-        EXPECT_TRUE(Instant::GPSEpoch().isDefined());
 
         EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), Instant::GPSEpoch().getDateTime(Scale::GPST));
         EXPECT_EQ(DateTime(1980, 1, 6, 0, 0, 0), Instant::GPSEpoch().getDateTime(Scale::UTC));
@@ -1878,7 +1792,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
                                                 };
 
                                                 EXPECT_NO_THROW(Instant::DateTime(dateTime, scale));
-                                                EXPECT_TRUE(Instant::DateTime(dateTime, scale).isDefined());
                                                 EXPECT_EQ(
                                                     dateTime, Instant::DateTime(dateTime, scale).getDateTime(scale)
                                                 );
@@ -1895,8 +1808,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
     }
 
     {
-        EXPECT_ANY_THROW(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::Undefined));
-
         for (const auto scale : scales)
         {
             EXPECT_ANY_THROW(Instant::DateTime(DateTime(1969, 1, 1, 0, 0, 0), scale));
@@ -1907,7 +1818,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, DateTime)
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
 {
-    using ostk::core::type::Real;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
@@ -1926,16 +1836,13 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, JulianDate)
     {
         for (auto const& scale : scales)
         {
-            EXPECT_ANY_THROW(Instant::JulianDate(Real::Undefined(), scale));
+            EXPECT_ANY_THROW(Instant::JulianDate(std::numeric_limits<double>::quiet_NaN(), scale));
         }
-
-        EXPECT_ANY_THROW(Instant::JulianDate(0.0, Scale::Undefined));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
 {
-    using ostk::core::type::Real;
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
@@ -1951,10 +1858,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, ModifiedJulianDate)
     {
         for (auto const& scale : scales)
         {
-            EXPECT_ANY_THROW(Instant::ModifiedJulianDate(Real::Undefined(), scale));
+            EXPECT_ANY_THROW(Instant::ModifiedJulianDate(std::numeric_limits<double>::quiet_NaN(), scale));
         }
-
-        EXPECT_ANY_THROW(Instant::ModifiedJulianDate(0.0, Scale::Undefined));
     }
 }
 
@@ -1964,7 +1869,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
     using ostk::physics::time::Instant;
     using ostk::physics::time::Scale;
 
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         // Standard
@@ -2257,6 +2162,28 @@ TEST(OpenSpaceToolkit_Physics_Time_Instant, Parse)
         EXPECT_ANY_THROW(Instant::Parse("10000-01-01T00:00:00", Scale::UTC).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:56.123.456", Scale::UTC).getDateTime(Scale::UTC));
         EXPECT_ANY_THROW(Instant::Parse("2018-01-02T12:34:56.123.456.789", Scale::UTC).getDateTime(Scale::UTC));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Instant, ParseWithoutFormat)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    {
+        EXPECT_EQ(
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, DateTime::Format::ISO8601),
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC)
+        );
+        EXPECT_EQ(
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, DateTime::Format::ISO8601),
+            Instant::Parse("2018-01-02T12:34:56.123456789", Scale::UTC, std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Instant::Parse("abc", Scale::UTC, std::nullopt));
     }
 }
 

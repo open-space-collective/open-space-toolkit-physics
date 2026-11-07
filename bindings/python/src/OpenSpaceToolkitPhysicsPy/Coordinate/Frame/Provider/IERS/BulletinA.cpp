@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -47,67 +47,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
         .def("__repr__", &(shiftToString<BulletinA>))
 
         .def(
-            "is_defined",
-            &BulletinA::isDefined,
-            R"doc(
-                Returns true if the bulletin is defined.
-
-                Returns:
-                    bool: True if the bulletin is defined.
-            )doc"
-        )
-        .def(
-            "access_release_date",
-            &BulletinA::accessReleaseDate,
-            R"doc(
-                Access the release date.
-
-                Returns:
-                    Date: The release date.
-            )doc"
-        )
-        .def(
-            "access_tai_minus_utc",
-            &BulletinA::accessTAIMinusUTC,
-            R"doc(
-                Access the TAI-UTC.
-
-                Returns:
-                    Duration: The TAI-UTC.
-            )doc"
-        )
-        .def(
-            "access_tai_minus_utc_epoch",
-            &BulletinA::accessTAIMinusUTCEpoch,
-            R"doc(
-                Access the TAI-UTC epoch.
-
-                Returns:
-                    Instant: The TAI-UTC epoch.
-            )doc"
-        )
-        .def(
-            "access_observation_interval",
-            &BulletinA::accessObservationInterval,
-            R"doc(
-                Access the observation interval.
-
-                Returns:
-                    Interval: The observation Interval of Instants.
-            )doc"
-        )
-        .def(
-            "access_prediction_interval",
-            &BulletinA::accessPredictionInterval,
-            R"doc(
-                Access the prediction interval.
-
-                Returns:
-                    Interval: The prediction Interval of Instants.
-            )doc"
-        )
-
-        .def(
             "get_release_date",
             &BulletinA::getReleaseDate,
             R"doc(
@@ -124,7 +63,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
                 Get TAI-UTC.
 
                 Returns:
-                    Duration: TAI-UTC.
+                    Duration | None: TAI-UTC, or None if the bulletin does not hold it.
             )doc"
         )
         .def(
@@ -134,7 +73,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
                 Get TAI-UTC epoch.
 
                 Returns:
-                    Instant: TAI-UTC epoch.
+                    Instant | None: TAI-UTC epoch, or None if the bulletin does not hold it.
             )doc"
         )
         .def(
@@ -144,7 +83,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
                 Get observation interval.
 
                 Returns:
-                    Interval: Observation Interval of Instants.
+                    Interval | None: Observation Interval of Instants, or None if there are no observations.
             )doc"
         )
         .def(
@@ -168,7 +107,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
                 Get prediction interval.
 
                 Returns:
-                    Interval: Prediction Interval of Instants.
+                    Interval | None: Prediction Interval of Instants, or None if there are no predictions.
             )doc"
         )
         .def(
@@ -186,16 +125,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &BulletinA::Undefined,
-            R"doc(
-                Undefined factory function.
-
-                Returns:
-                    BulletinA: An undefined Bulletin A object.
-            )doc"
-        )
         .def_static(
             "load",
             &BulletinA::Load,
@@ -215,70 +144,70 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
 
     class_<BulletinA::Observation>(bulletinA, "Observation")
 
-        .def_readonly(
+        .def_ro(
             "year",
             &BulletinA::Observation::year,
             R"doc(
                 Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "month",
             &BulletinA::Observation::month,
             R"doc(
                 Month number.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "day",
             &BulletinA::Observation::day,
             R"doc(
                 Day of month.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "mjd",
             &BulletinA::Observation::mjd,
             R"doc(
                 Modified Julian Day.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x",
             &BulletinA::Observation::x,
             R"doc(
                 PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x_error",
             &BulletinA::Observation::xError,
             R"doc(
                 PM-x error [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y",
             &BulletinA::Observation::y,
             R"doc(
                 PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y_error",
             &BulletinA::Observation::yError,
             R"doc(
                 PM-y error [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc",
             &BulletinA::Observation::ut1MinusUtc,
             R"doc(
                 UT1-UTC [s].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc_error",
             &BulletinA::Observation::ut1MinusUtcError,
             R"doc(
@@ -290,49 +219,49 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_BulletinA(p
 
     class_<BulletinA::Prediction>(bulletinA, "Prediction")
 
-        .def_readonly(
+        .def_ro(
             "year",
             &BulletinA::Prediction::year,
             R"doc(
                 Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "month",
             &BulletinA::Prediction::month,
             R"doc(
                 Month number.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "day",
             &BulletinA::Prediction::day,
             R"doc(
                 Day of month.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "mjd",
             &BulletinA::Prediction::mjd,
             R"doc(
                 Modified Julian Day.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x",
             &BulletinA::Prediction::x,
             R"doc(
                 PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y",
             &BulletinA::Prediction::y,
             R"doc(
                 PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc",
             &BulletinA::Prediction::ut1MinusUtc,
             R"doc(

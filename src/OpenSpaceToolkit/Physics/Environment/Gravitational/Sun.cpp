@@ -86,7 +86,7 @@ Vector3d Sun::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const In
     return sphericalModel_.getFieldValueAt(aPosition, anInstant);
 }
 
-Sun::Sun(const Sun::Type& aType, const Directory& aDataDirectory)
+Sun::Sun(const Sun::Type& aType, const std::optional<Directory>& aDataDirectory)
     : Model(Sun::ParametersFromType(aType)),
       implUPtr_(Sun::ImplFromType(aType, aDataDirectory))
 {
@@ -119,14 +119,9 @@ Sun* Sun::clone() const
     return new Sun(*this);
 }
 
-bool Sun::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 bool Sun::isPointMass() const
 {
-    return this->isDefined() && (this->getType() == Sun::Type::Spherical);
+    return this->getType() == Sun::Type::Spherical;
 }
 
 Sun::Type Sun::getType() const
@@ -146,22 +141,15 @@ Model::Parameters Sun::ParametersFromType(const Sun::Type& aType)
         case (Sun::Type::Spherical):
             return Sun::Spherical;
 
-        case (Sun::Type::Undefined):
-            return Sun::Parameters::Undefined();
-
         default:
             throw ostk::core::error::runtime::Wrong("Type");
     }
 }
 
-Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const Directory& aDataDirectory)
+Unique<Sun::Impl> Sun::ImplFromType(const Sun::Type& aType, const std::optional<Directory>& aDataDirectory)
 {
     (void)aDataDirectory;  // Temporary
 
-    if (aType == Sun::Type::Undefined)
-    {
-        return nullptr;
-    }
     if (aType == Sun::Type::Spherical)
     {
         return std::make_unique<Sun::SphericalImpl>(aType);

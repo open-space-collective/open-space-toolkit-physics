@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Sun.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::Directory;
     using ostk::core::type::Shared;
@@ -13,7 +13,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
     using ostk::physics::environment::gravitational::Sun;
 
     {
-        class_<Sun, Model, Shared<Sun>> sun_class(
+        class_<Sun, Model> sun_class(
             aModule,
             "Sun",
             R"doc(
@@ -26,7 +26,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
         sun_class
 
             .def(
-                init<const Sun::Type&, const Directory&>(),
+                init<const Sun::Type&, const std::optional<Directory>&>(),
                 arg("type"),
                 arg("directory"),
                 R"doc(
@@ -34,7 +34,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
                     Args:
                         type (Sun.Type): Sun model type.
-                        directory (Directory): Directory containing the gravity model data files.
+                        directory (Directory | None): Directory containing the gravity model data files.
                 )doc"
             )
 
@@ -46,17 +46,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
                     Args:
                         type (Sun.Type): Sun model type.
-                )doc"
-            )
-
-            .def(
-                "is_defined",
-                &Sun::isDefined,
-                R"doc(
-                    Check if the Sun model is defined.
-
-                    Returns:
-                        bool: True if defined.
                 )doc"
             )
 
@@ -92,7 +81,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
                 )doc"
             )
 
-            .def_readonly_static(
+            .def_ro_static(
                 "spherical",
                 &Sun::Spherical,
                 R"doc(
@@ -104,13 +93,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Sun(pybind11::mo
 
         enum_<Sun::Type>(sun_class, "Type")
 
-            .value(
-                "Undefined",
-                Sun::Type::Undefined,
-                R"doc(
-                    Undefined.
-                )doc"
-            )
             .value(
                 "Spherical",
                 Sun::Type::Spherical,

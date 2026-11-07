@@ -1,10 +1,10 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Physics/Time/Time.hpp>
 
 #include <Global.test.hpp>
-
-using ostk::core::type::Integer;
 
 using ostk::physics::time::Time;
 
@@ -50,10 +50,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, EqualToOperator)
         EXPECT_FALSE(Time(0, 0, 0, 0, 0, 0) == Time(0, 0, 0, 0, 1, 0));
         EXPECT_FALSE(Time(0, 0, 0, 0, 0, 0) == Time(0, 0, 0, 0, 0, 1));
     }
-
-    {
-        EXPECT_FALSE(Time::Undefined() == Time::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, NotEqualToOperator)
@@ -71,10 +67,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, NotEqualToOperator)
         EXPECT_FALSE(Time(0, 0, 0, 0, 0, 0) != Time(0, 0, 0, 0, 0, 0));
         EXPECT_FALSE(Time(23, 59, 60, 999, 999, 999) != Time(23, 59, 60, 999, 999, 999));
     }
-
-    {
-        EXPECT_TRUE(Time::Undefined() != Time::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, StreamOperator)
@@ -88,27 +80,10 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_Time, IsDefined)
-{
-    {
-        EXPECT_TRUE(Time(0, 0, 0, 0, 0, 0).isDefined());
-        EXPECT_TRUE(Time(1, 2, 3, 4, 5, 6).isDefined());
-        EXPECT_TRUE(Time(23, 59, 60, 999, 999, 999).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Time::Undefined().isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_Time, GetHour)
 {
     {
         EXPECT_EQ(1, Time(1, 2, 3, 4, 5, 6).getHour());
-    }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getHour());
     }
 }
 
@@ -117,20 +92,12 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetMinute)
     {
         EXPECT_EQ(2, Time(1, 2, 3, 4, 5, 6).getMinute());
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getMinute());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, GetSecond)
 {
     {
         EXPECT_EQ(3, Time(1, 2, 3, 4, 5, 6).getSecond());
-    }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getSecond());
     }
 }
 
@@ -139,10 +106,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetMillisecond)
     {
         EXPECT_EQ(4, Time(1, 2, 3, 4, 5, 6).getMillisecond());
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getMillisecond());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, GetMicrosecond)
@@ -150,20 +113,12 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetMicrosecond)
     {
         EXPECT_EQ(5, Time(1, 2, 3, 4, 5, 6).getMicrosecond());
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getMicrosecond());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, GetNanosecond)
 {
     {
         EXPECT_EQ(6, Time(1, 2, 3, 4, 5, 6).getNanosecond());
-    }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getNanosecond());
     }
 }
 
@@ -177,10 +132,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetFloatingSeconds)
         EXPECT_NEAR(6.100200300, Time(4, 5, 6, 100, 200, 300).getFloatingSeconds(), 1e-15);
         EXPECT_NEAR(6.999999999, Time(4, 5, 6, 999, 999, 999).getFloatingSeconds(), 1e-15);
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getFloatingSeconds());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, GetTotalFloatingSeconds)
@@ -193,10 +144,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetTotalFloatingSeconds)
         EXPECT_NEAR(14706.100200300, Time(4, 5, 6, 100, 200, 300).getTotalFloatingSeconds(), 1e-15);
         EXPECT_NEAR(14706.999999999, Time(4, 5, 6, 999, 999, 999).getTotalFloatingSeconds(), 1e-15);
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getTotalFloatingSeconds());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, GetTotalFloatingHours)
@@ -208,10 +155,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, GetTotalFloatingHours)
         EXPECT_NEAR(4.085000278334166, Time(4, 5, 6, 1, 2, 3).getTotalFloatingHours(), 1e-15);
         EXPECT_NEAR(4.0850278334166665, Time(4, 5, 6, 100, 200, 300).getTotalFloatingHours(), 1e-15);
         EXPECT_NEAR(4.0852777777775, Time(4, 5, 6, 999, 999, 999).getTotalFloatingHours(), 1e-15);
-    }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().getTotalFloatingHours());
     }
 }
 
@@ -239,10 +182,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, ToString)
         EXPECT_EQ("01:02:03.004005006", Time(1, 2, 3, 4, 5, 6).toString(Time::Format::ISO8601));
         EXPECT_EQ("23:59:60.999999999", Time(23, 59, 60, 999, 999, 999).toString(Time::Format::ISO8601));
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().toString());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, Replace)
@@ -267,12 +206,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Replace)
     }
 
     {
-        EXPECT_ANY_THROW(Time::Undefined().replace(12));
-
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(24));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(-1));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(256));
-        EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(Integer::Undefined()));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, 60));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, 61));
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).replace(std::nullopt, std::nullopt, std::nullopt, 1000));
@@ -294,10 +230,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, SetHour)
 
         EXPECT_EQ(2, time.getHour());
     }
-
-    {
-        EXPECT_ANY_THROW(Time::Undefined().setHour(24));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, SetMinute)
@@ -313,8 +245,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, SetMinute)
     }
 
     {
-        EXPECT_ANY_THROW(Time::Undefined().setMinute(1));
-
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setMinute(60));
     }
 }
@@ -332,8 +262,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, SetSecond)
     }
 
     {
-        EXPECT_ANY_THROW(Time::Undefined().setSecond(1));
-
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setSecond(61));
     }
 }
@@ -351,8 +279,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, SetMillisecond)
     }
 
     {
-        EXPECT_ANY_THROW(Time::Undefined().setMillisecond(1));
-
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setMillisecond(1000));
     }
 }
@@ -370,8 +296,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, SetMicrosecond)
     }
 
     {
-        EXPECT_ANY_THROW(Time::Undefined().setMicrosecond(1));
-
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setMicrosecond(1000));
     }
 }
@@ -389,18 +313,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, SetNanosecond)
     }
 
     {
-        EXPECT_ANY_THROW(Time::Undefined().setNanosecond(1));
-
         EXPECT_ANY_THROW(Time(1, 2, 3, 4, 5, 6).setNanosecond(1000));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Time, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Time::Undefined());
-
-        EXPECT_FALSE(Time::Undefined().isDefined());
     }
 }
 
@@ -420,7 +333,7 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Noon)
 
 TEST(OpenSpaceToolkit_Physics_Time_Time, Parse)
 {
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), Time::Parse("12:34:56.123.456.789"));
@@ -490,10 +403,36 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Parse)
     }
 }
 
+TEST(OpenSpaceToolkit_Physics_Time_Time, ParseWithoutFormat)
+{
+    using ostk::physics::time::Time;
+
+    {
+        EXPECT_EQ(Time::Parse("12:34:56.123.456", Time::Format::Standard), Time::Parse("12:34:56.123.456"));
+        EXPECT_EQ(
+            Time::Parse("12:34:56.123.456", Time::Format::Standard), Time::Parse("12:34:56.123.456", std::nullopt)
+        );
+
+        EXPECT_EQ(Time::Parse("12:34:56.123456789", Time::Format::ISO8601), Time::Parse("12:34:56.123456789"));
+        EXPECT_EQ(
+            Time::Parse("12:34:56.123456789", Time::Format::ISO8601), Time::Parse("12:34:56.123456789", std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(Time::Parse("", std::nullopt));
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Time_Time, Seconds)
 {
     {
         EXPECT_EQ(Time(12, 30, 15, 234, 456, 678), Time::Seconds(45015.234456678001));
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Seconds(std::numeric_limits<double>::quiet_NaN()));
     }
 }
 
@@ -501,5 +440,9 @@ TEST(OpenSpaceToolkit_Physics_Time_Time, Hours)
 {
     {
         EXPECT_EQ(Time(12, 30, 15, 234, 456, 678), Time::Hours(12.504231793521667));
+    }
+
+    {
+        EXPECT_ANY_THROW(Time::Hours(std::numeric_limits<double>::quiet_NaN()));
     }
 }

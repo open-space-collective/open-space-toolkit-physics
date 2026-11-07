@@ -17,7 +17,6 @@ using ostk::core::container::Array;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
@@ -180,28 +179,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetType)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, IsDefined)
-{
-    {
-        EarthMagneticModelManager::Get().setLocalRepository(
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Magnetic/Earth"))
-        );
-
-        EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
-
-        EXPECT_FALSE(EarthMagneticModel(EarthMagneticModel::Type::Undefined).isDefined());
-        EXPECT_FALSE(EarthMagneticModel(EarthMagneticModel::Type::Dipole).isDefined());
-
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::EMM2010).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::EMM2015).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::EMM2017).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::IGRF11).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::IGRF12).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2010).isDefined());
-        EXPECT_TRUE(EarthMagneticModel(EarthMagneticModel::Type::WMM2015).isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 {
     {
@@ -211,7 +188,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
 
         EarthMagneticModelManager::Get().setMode(EarthMagneticModelManager::Mode::Automatic);
 
-        static const Array<Tuple<EarthMagneticModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
+        static const Array<Tuple<EarthMagneticModel::Type, Vector3d, Instant, Vector3d, double>> testCases = {
 
             {EarthMagneticModel::Type::Dipole,
              {6378137.0, 0.0, 0.0},
@@ -387,7 +364,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Magnetic_Earth, GetFieldValueAt)
             const Instant instant = std::get<2>(testCase);
 
             const Vector3d referenceFieldValue = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
             const Vector3d fieldValue = earthMagneticModel.getFieldValueAt(position, instant);
 

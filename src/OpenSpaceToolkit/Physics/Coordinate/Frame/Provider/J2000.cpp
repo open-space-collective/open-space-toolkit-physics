@@ -39,11 +39,6 @@ J2000* J2000::clone() const
     return new J2000(*this);
 }
 
-bool J2000::isDefined() const
-{
-    return true;
-}
-
 iau::Theory J2000::getTheory() const
 {
     return this->theory_;
@@ -52,16 +47,6 @@ iau::Theory J2000::getTheory() const
 Transform J2000::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
-
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("J2000");
-    }
 
     double rb[3][3];
 

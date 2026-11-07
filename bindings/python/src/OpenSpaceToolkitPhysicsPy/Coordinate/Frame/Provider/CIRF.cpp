@@ -2,17 +2,16 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/CIRF.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
 
     using ostk::physics::coordinate::frame::Provider;
     using ostk::physics::coordinate::frame::provider::CIRF;
 
-    class_<CIRF, Shared<CIRF>, Provider>(
+    class_<CIRF, Provider>(
         aModule,
         "CIRF",
         R"doc(
@@ -26,17 +25,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_CIRF(pybind11::m
             init<>(),
             R"doc(
                 Constructor.
-            )doc"
-        )
-
-        .def(
-            "is_defined",
-            &CIRF::isDefined,
-            R"doc(
-                Check if the CIRF provider is defined.
-
-                Returns:
-                    bool: True if defined.
             )doc"
         )
 

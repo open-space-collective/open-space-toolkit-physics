@@ -25,15 +25,9 @@ using ostk::physics::data::Manifest;
 class OpenSpaceToolkit_Physics_Data_Manifest : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        file_ = File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
+    const File file_ = File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Data/Manifest/manifest.json"));
 
-        this->manifest_ = Manifest::Load(file_);
-    }
-
-    File file_ = File::Undefined();
-    Manifest manifest_ = Manifest::Undefined();
+    Manifest manifest_ = Manifest::Load(file_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, StreamOperator)
@@ -44,13 +38,6 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, StreamOperator)
         EXPECT_NO_THROW(std::cout << manifest_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Data_Manifest, IsDefined)
-{
-    {
-        EXPECT_FALSE(Manifest::Undefined().isDefined());
     }
 }
 

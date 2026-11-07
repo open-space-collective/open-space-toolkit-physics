@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Utility/Eclipse.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Utility(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Utility(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     // Create "utility" python submodule
     auto utility = aModule.def_submodule("utility");

@@ -30,8 +30,9 @@ class TestManager:
         assert len(str(manager.get_cssi_space_weather_directory().to_string())) > 0
 
     def test_get_loaded_cssi_space_weather_success(self, manager: Manager):
-        assert isinstance(manager.get_loaded_cssi_space_weather(), CSSISpaceWeather)
-        assert not manager.get_loaded_cssi_space_weather().is_defined()
+        assert manager.get_loaded_cssi_space_weather() is None or isinstance(
+            manager.get_loaded_cssi_space_weather(), CSSISpaceWeather
+        )
 
     def test_get_cssi_space_weather_at_success(self, manager: Manager):
         try:
@@ -132,11 +133,11 @@ class TestManager:
     def test_load_cssi_space_weather_success(
         self, manager: Manager, cssi_space_weather: CSSISpaceWeather
     ):
-        assert not manager.get_loaded_cssi_space_weather().is_defined()
+        assert manager.get_loaded_cssi_space_weather() is None
 
         manager.load_cssi_space_weather(cssi_space_weather)
 
-        assert manager.get_loaded_cssi_space_weather().is_defined()
+        assert manager.get_loaded_cssi_space_weather() is not None
 
     def test_fetch_latest_cssi_space_weather_success(self, manager: Manager):
         file: File = manager.fetch_latest_cssi_space_weather()
@@ -149,11 +150,11 @@ class TestManager:
     def test_reset_success(self, manager: Manager, cssi_space_weather: CSSISpaceWeather):
         manager.load_cssi_space_weather(cssi_space_weather)
 
-        assert manager.get_loaded_cssi_space_weather().is_defined()
+        assert manager.get_loaded_cssi_space_weather() is not None
 
         manager.reset()
 
-        assert not manager.get_loaded_cssi_space_weather().is_defined()
+        assert manager.get_loaded_cssi_space_weather() is None
 
     def test_clear_local_repository_success(self, manager: Manager):
         assert manager.get_local_repository().exists()

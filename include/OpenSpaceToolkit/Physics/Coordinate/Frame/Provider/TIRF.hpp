@@ -50,15 +50,6 @@ class TIRF : public Provider
     /// @return A pointer to the cloned TIRF provider
     virtual TIRF* clone() const override;
 
-    /// @brief Check if the TIRF provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the TIRF provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the transform at a given instant.
     ///
     /// @code

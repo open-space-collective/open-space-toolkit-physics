@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather__
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_CSSISpaceWeather__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -28,8 +28,6 @@ namespace earth
 using ostk::core::container::Array;
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::time::Date;
@@ -50,47 +48,50 @@ using ostk::physics::time::Scale;
 class CSSISpaceWeather
 {
    public:
+    /// @brief A daily reading
+    ///
+    /// Numeric fields are std::nullopt when the cell is empty in the file.
     struct Reading
     {
-        Date date;      /// UTC day of reading.
-        Integer BSRN;   /// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously from 1832
-                        /// Feb 8.
-        Integer ND;     /// Number of Day within the Bartels 27-day cycle (01-27).
-        Integer Kp1;    /// Planetary 3-hour Range Index (Kp) for 0000-0300 UT.
-        Integer Kp2;    /// Planetary 3-hour Range Index (Kp) for 0300-0600 UT.
-        Integer Kp3;    /// Planetary 3-hour Range Index (Kp) for 0600-0900 UT.
-        Integer Kp4;    /// Planetary 3-hour Range Index (Kp) for 0900-1200 UT.
-        Integer Kp5;    /// Planetary 3-hour Range Index (Kp) for 1200-1500 UT.
-        Integer Kp6;    /// Planetary 3-hour Range Index (Kp) for 1500-1800 UT.
-        Integer Kp7;    /// Planetary 3-hour Range Index (Kp) for 1800-2100 UT.
-        Integer Kp8;    /// Planetary 3-hour Range Index (Kp) for 2100-0000 UT.
-        Integer KpSum;  /// Sum of the 8 Kp indices for the day.
-        Integer Ap1;    /// Planetary Equivalent Amplitude (Ap) for 0000-0300 UT.
-        Integer Ap2;    /// Planetary Equivalent Amplitude (Ap) for 0300-0600 UT.
-        Integer Ap3;    /// Planetary Equivalent Amplitude (Ap) for 0600-0900 UT.
-        Integer Ap4;    /// Planetary Equivalent Amplitude (Ap) for 0900-1200 UT.
-        Integer Ap5;    /// Planetary Equivalent Amplitude (Ap) for 1200-1500 UT.
-        Integer Ap6;    /// Planetary Equivalent Amplitude (Ap) for 1500-1800 UT.
-        Integer Ap7;    /// Planetary Equivalent Amplitude (Ap) for 1800-2100 UT.
-        Integer Ap8;    /// Planetary Equivalent Amplitude (Ap) for 2100-0000 UT.
-        Integer ApAvg;  /// Arithmetic average of the 8 Ap indices for the day.
-        Real Cp;        /// Cp or Planetary Daily Character Figure. A qualitative estimate of overall level of magnetic
-                        /// activity for the day determined from the sum of the 8 Ap indices. Cp ranges, in steps of
-                        /// one-tenth, from 0 (quiet) to 2.5 (highly disturbed).
-        Integer C9;     /// C9. A conversion of the 0-to-2.5 range of the Cp index to one digit between 0 and 9.
-        Integer ISN;    /// International Sunspot Number. Records contain the Zurich number through 1980 Dec 31 and the
-                        /// International Brussels number thereafter.
-        Real F107Obs;   /// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT daily from 1947 Feb
-                        /// 14 until 1991 May 31 and measured at Penticton at 2000 UT from 1991 Jun 01 on. Expressed in
-                        /// units of 10-22 W/m2/Hz.
-        Real F107Adj;   /// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
-        String F107DataType;   /// Flux Qualifier.
-                               /// OBS: Observed flux measurement INT: CelesTrak linear interpolation of missing data
-                               /// PRD: 45-Day predicted flux PRM: Monthly predicted flux
-        Real F107ObsCenter81;  /// Centered 81-day arithmetic average of F107 (observed).
-        Real F107ObsLast81;    /// Last 81-day arithmetic average of F107 (observed).
-        Real F107AdjCenter81;  /// Centered 81-day arithmetic average of F10.7 (adjusted).
-        Real F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
+        Date date;                /// UTC day of reading.
+        std::optional<int> BSRN;  /// Bartels Solar Rotation Number. A sequence of 27-day intervals counted continuously
+                                  /// from 1832 Feb 8.
+        std::optional<int> ND;    /// Number of Day within the Bartels 27-day cycle (01-27).
+        std::optional<int> Kp1;   /// Planetary 3-hour Range Index (Kp) for 0000-0300 UT.
+        std::optional<int> Kp2;   /// Planetary 3-hour Range Index (Kp) for 0300-0600 UT.
+        std::optional<int> Kp3;   /// Planetary 3-hour Range Index (Kp) for 0600-0900 UT.
+        std::optional<int> Kp4;   /// Planetary 3-hour Range Index (Kp) for 0900-1200 UT.
+        std::optional<int> Kp5;   /// Planetary 3-hour Range Index (Kp) for 1200-1500 UT.
+        std::optional<int> Kp6;   /// Planetary 3-hour Range Index (Kp) for 1500-1800 UT.
+        std::optional<int> Kp7;   /// Planetary 3-hour Range Index (Kp) for 1800-2100 UT.
+        std::optional<int> Kp8;   /// Planetary 3-hour Range Index (Kp) for 2100-0000 UT.
+        std::optional<int> KpSum;  /// Sum of the 8 Kp indices for the day.
+        std::optional<int> Ap1;    /// Planetary Equivalent Amplitude (Ap) for 0000-0300 UT.
+        std::optional<int> Ap2;    /// Planetary Equivalent Amplitude (Ap) for 0300-0600 UT.
+        std::optional<int> Ap3;    /// Planetary Equivalent Amplitude (Ap) for 0600-0900 UT.
+        std::optional<int> Ap4;    /// Planetary Equivalent Amplitude (Ap) for 0900-1200 UT.
+        std::optional<int> Ap5;    /// Planetary Equivalent Amplitude (Ap) for 1200-1500 UT.
+        std::optional<int> Ap6;    /// Planetary Equivalent Amplitude (Ap) for 1500-1800 UT.
+        std::optional<int> Ap7;    /// Planetary Equivalent Amplitude (Ap) for 1800-2100 UT.
+        std::optional<int> Ap8;    /// Planetary Equivalent Amplitude (Ap) for 2100-0000 UT.
+        std::optional<int> ApAvg;  /// Arithmetic average of the 8 Ap indices for the day.
+        std::optional<double> Cp;  /// Cp or Planetary Daily Character Figure. A qualitative estimate of overall level
+                                   /// of magnetic activity for the day determined from the sum of the 8 Ap indices. Cp
+                                   /// ranges, in steps of one-tenth, from 0 (quiet) to 2.5 (highly disturbed).
+        std::optional<int> C9;  /// C9. A conversion of the 0-to-2.5 range of the Cp index to one digit between 0 and 9.
+        std::optional<int> ISN;  /// International Sunspot Number. Records contain the Zurich number through 1980 Dec 31
+                                 /// and the International Brussels number thereafter.
+        std::optional<double> F107Obs;  /// Observed 10.7-cm Solar Radio Flux (F10.7). Measured at Ottawa at 1700 UT
+                                        /// daily from 1947 Feb 14 until 1991 May 31 and measured at Penticton at 2000
+                                        /// UT from 1991 Jun 01 on. Expressed in units of 10-22 W/m2/Hz.
+        std::optional<double> F107Adj;  /// 10.7-cm Solar Radio Flux (F10.7) adjusted to 1 AU.
+        String F107DataType;            /// Flux Qualifier.
+                              /// OBS: Observed flux measurement INT: CelesTrak linear interpolation of missing data
+                              /// PRD: 45-Day predicted flux PRM: Monthly predicted flux
+        std::optional<double> F107ObsCenter81;  /// Centered 81-day arithmetic average of F107 (observed).
+        std::optional<double> F107ObsLast81;    /// Last 81-day arithmetic average of F107 (observed).
+        std::optional<double> F107AdjCenter81;  /// Centered 81-day arithmetic average of F10.7 (adjusted).
+        std::optional<double> F107AdjLast81;    /// Last 81-day arithmetic average of F10.7 (adjusted)
     };
 
     /// @brief Output stream operator.
@@ -105,130 +106,109 @@ class CSSISpaceWeather
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const CSSISpaceWeather& aCSSISpaceWeather);
 
-    /// @brief true if defined
+    /// @brief Get last observation Date. File publication date is the day following the last observation.
     ///
     /// @code
-    ///     cssiSpaceWeather.isDefined();
-    /// @endcode
-    ///
-    /// @return True if defined.
-
-    bool isDefined() const;
-
-    /// @brief Access last observation Date. File publication date is the day following the last observation.
-    ///
-    /// @code
-    ///     const Date& date = cssiSpaceWeather.accessLastObservationDate();
+    ///     const Date& date = cssiSpaceWeather.getLastObservationDate();
     /// @endcode
     ///
     /// @return Last observation Date.
 
-    const Date& accessLastObservationDate() const;
+    const Date& getLastObservationDate() const;
 
-    /// @brief Access timestamp at which the CSSISpaceWeather file was last modified
+    /// @brief Get timestamp at which the CSSISpaceWeather file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = cssiSpaceWeather.accessLastModifiedTimestamp();
+    ///     const Instant& timestamp = cssiSpaceWeather.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
 
-    const Instant& accessLastModifiedTimestamp() const;
+    const Instant& getLastModifiedTimestamp() const;
 
-    /// @brief Access observation Interval.
+    /// @brief Get observation Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessObservationInterval();
+    ///     const std::optional<Interval>& interval = cssiSpaceWeather.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants.
 
-    const Interval& accessObservationInterval() const;
+    const std::optional<Interval>& getObservationInterval() const;
 
-    /// @brief Access daily prediction Interval.
+    /// @brief Get daily prediction Interval.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessObservationAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getObservationAt(instant);
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
 
-    const Reading& accessObservationAt(const Instant& anInstant) const;
+    const Reading& getObservationAt(const Instant& anInstant) const;
 
-    /// @brief Access daily prediction Interval.
+    /// @brief Get daily prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessDailyPredictionInterval();
+    ///     const std::optional<Interval>& interval = cssiSpaceWeather.getDailyPredictionInterval();
     /// @endcode
     ///
     /// @return Daily prediction Interval of Instants.
 
-    const Interval& accessDailyPredictionInterval() const;
+    const std::optional<Interval>& getDailyPredictionInterval() const;
 
-    /// @brief Access daily prediction at Instant.
+    /// @brief Get daily prediction at Instant.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessDailyPredictionAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getDailyPredictionAt(instant);
     /// @endcode
     ///
     /// @return Daily prediction at Instant.
 
-    const Reading& accessDailyPredictionAt(const Instant& anInstant) const;
+    const Reading& getDailyPredictionAt(const Instant& anInstant) const;
 
-    /// @brief Access monthly prediction Interval.
+    /// @brief Get monthly prediction Interval.
     ///
     /// @code
-    ///     const Interval& interval = cssiSpaceWeather.accessMonthlyPredictionInterval();
+    ///     const std::optional<Interval>& interval = cssiSpaceWeather.getMonthlyPredictionInterval();
     /// @endcode
     ///
     /// @return Monthly prediction Interval of Instants.
 
-    const Interval& accessMonthlyPredictionInterval() const;
+    const std::optional<Interval>& getMonthlyPredictionInterval() const;
 
-    /// @brief Access monthly prediction at Instant.
+    /// @brief Get monthly prediction at Instant.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessMonthlyPredictionAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getMonthlyPredictionAt(instant);
     /// @endcode
     ///
     /// @return Monthly prediction at Instant.
 
-    const Reading& accessMonthlyPredictionAt(const Instant& anInstant) const;
+    const Reading& getMonthlyPredictionAt(const Instant& anInstant) const;
 
-    /// @brief Access reading at Instant.
+    /// @brief Get reading at Instant.
     /// Look first in observations, then in daily predictions, then monthly predictions.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessReadingAt(instant);
+    ///     const Reading& reading = cssiSpaceWeather.getReadingAt(instant);
     /// @endcode
     ///
     /// @return Reading prediction at Instant.
 
-    const Reading& accessReadingAt(const Instant& anInstant) const;
+    const Reading& getReadingAt(const Instant& anInstant) const;
 
-    /// @brief Access last reading before anInstant where aPredicate is true.
+    /// @brief Get last reading before anInstant where aPredicate is true.
     ///
     /// @code
-    ///     const Reading& reading = cssiSpaceWeather.accessLastReadingWhere(predicate, instant);
+    ///     const Reading& reading = cssiSpaceWeather.getLastReadingWhere(predicate, instant);
     /// @endcode
     ///
     /// @param [in] aPredicate A predicate.
     /// @param [in] anInstant An Instant.
     /// @return Last Reading satisfying predicate.
 
-    const Reading& accessLastReadingWhere(
-        const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant
-    ) const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     CSSISpaceWeather cssiSpaceWeather = CSSISpaceWeather::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined CSSI Space Weather object.
-
-    static CSSISpaceWeather Undefined();
+    const Reading& getLastReadingWhere(const std::function<bool(const Reading&)>& aPredicate, const Instant& anInstant)
+        const;
 
     /// @brief Load CSSI Space Weather file in csv format.
     ///
@@ -253,19 +233,19 @@ class CSSISpaceWeather
     static CSSISpaceWeather LoadLegacy(const File& aFile);
 
    private:
-    Date lastObservationDate_;
+    std::optional<Date> lastObservationDate_;
     Instant lastModifiedTimestamp_;
 
-    Interval observationInterval_;
-    Map<Integer, CSSISpaceWeather::Reading> observations_;
+    std::optional<Interval> observationInterval_;
+    Map<int, CSSISpaceWeather::Reading> observations_;
 
-    Interval dailyPredictionInterval_;
-    Map<Integer, CSSISpaceWeather::Reading> dailyPredictions_;
+    std::optional<Interval> dailyPredictionInterval_;
+    Map<int, CSSISpaceWeather::Reading> dailyPredictions_;
 
-    Interval monthlyPredictionInterval_;
-    Map<Integer, CSSISpaceWeather::Reading> monthlyPredictions_;
+    std::optional<Interval> monthlyPredictionInterval_;
+    Map<int, CSSISpaceWeather::Reading> monthlyPredictions_;
 
-    CSSISpaceWeather();
+    CSSISpaceWeather(const Instant& aLastModifiedTimestamp);
 };
 
 }  // namespace earth

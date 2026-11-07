@@ -5,7 +5,6 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
@@ -14,6 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -22,7 +22,6 @@ using ostk::core::container::Table;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -40,11 +39,12 @@ using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using ostk::physics::utility::DoubleToString;
 
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 {
     {
-        const Array<Tuple<File, Angle, Length, Length, Real>> referenceScenarios = {
+        const Array<Tuple<File, Angle, Length, Length, double>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frames/ITRF/Test/ITRF_GCRF 1.csv")),
              Angle::Arcseconds(1.0),
              Length::Meters(0.1),
@@ -73,7 +73,7 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
             const Angle toleranceAngle = std::get<1>(referenceScenario);
             const Length positionalToleranceAtSurface = std::get<2>(referenceScenario);
             const Length positionalToleranceAt1000km = std::get<3>(referenceScenario);
-            const Real toleranceAngularVelocity = std::get<4>(referenceScenario);
+            const double toleranceAngularVelocity = std::get<4>(referenceScenario);
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -81,17 +81,17 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
                 const Quaternion reference_q_ITRF_GCRF = Quaternion::XYZS(
-                                                             referenceRow[1].accessReal(),
-                                                             referenceRow[2].accessReal(),
-                                                             referenceRow[3].accessReal(),
-                                                             referenceRow[4].accessReal()
+                                                             referenceRow[1].getReal(),
+                                                             referenceRow[2].getReal(),
+                                                             referenceRow[3].getReal(),
+                                                             referenceRow[4].getReal()
                 )
                                                              .normalize();
                 const Vector3d reference_w_ITRF_GCRF_in_ITRF = {
-                    referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal()
+                    referenceRow[5].getReal(), referenceRow[6].getReal(), referenceRow[7].getReal()
                 };
 
                 // ITRF -> GCRF
@@ -139,8 +139,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
                     ASSERT_GT(toleranceAngle.inDegrees(), delta.inDegrees()) << String::Format(
                         "{} - {} [deg] > {} [deg]",
                         instant.toString(Scale::TAI),
-                        toleranceAngle.inDegrees().toString(),
-                        delta.inDegrees().toString()
+                        DoubleToString(toleranceAngle.inDegrees()),
+                        DoubleToString(delta.inDegrees())
                     );
                 }
 
@@ -152,8 +152,8 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
                     ASSERT_GT(toleranceAngle.inDegrees(), delta.inDegrees()) << String::Format(
                         "{} - {} [deg] > {} [deg]",
                         instant.toString(Scale::TAI),
-                        toleranceAngle.inDegrees().toString(),
-                        delta.inDegrees().toString()
+                        DoubleToString(toleranceAngle.inDegrees()),
+                        DoubleToString(delta.inDegrees())
                     );
                 }
 
@@ -198,13 +198,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frames_ITRF, Test)
                 }
 
                 {
-                    const Real deltaAngularVelocity = (w_ITRF_GCRF_in_ITRF - reference_w_ITRF_GCRF_in_ITRF).norm();
+                    const double deltaAngularVelocity = (w_ITRF_GCRF_in_ITRF - reference_w_ITRF_GCRF_in_ITRF).norm();
 
                     ASSERT_GT(toleranceAngularVelocity, deltaAngularVelocity) << String::Format(
                         "{} - {} [rad/s] > {} [rad/s]",
                         instant.toString(Scale::TAI),
-                        toleranceAngularVelocity.toString(),
-                        deltaAngularVelocity.toString()
+                        DoubleToString(toleranceAngularVelocity),
+                        DoubleToString(deltaAngularVelocity)
                     );
                 }
             }

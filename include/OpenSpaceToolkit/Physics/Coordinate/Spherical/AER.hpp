@@ -75,15 +75,6 @@ class AER
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const AER& anAER);
 
-    /// @brief Check if the AER object is defined
-    ///
-    /// @code
-    ///     AER::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the AER object is defined
-    bool isDefined() const;
-
     /// @brief Get the azimuth angle
     ///
     /// @code
@@ -91,7 +82,7 @@ class AER
     /// @endcode
     ///
     /// @return Azimuth angle
-    Angle getAzimuth() const;
+    const Angle& getAzimuth() const;
 
     /// @brief Get the elevation angle
     ///
@@ -100,7 +91,7 @@ class AER
     /// @endcode
     ///
     /// @return Elevation angle
-    Angle getElevation() const;
+    const Angle& getElevation() const;
 
     /// @brief Get the range
     ///
@@ -109,7 +100,7 @@ class AER
     /// @endcode
     ///
     /// @return Range
-    Length getRange() const;
+    const Length& getRange() const;
 
     /// @brief Convert AER to a 3D vector (azimuth, elevation, range)
     ///
@@ -137,15 +128,6 @@ class AER
     ///
     /// @return String representation of the AER object
     String toString() const;
-
-    /// @brief Construct an undefined AER object
-    ///
-    /// @code
-    ///     AER aer = AER::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined AER
-    static AER Undefined();
 
     /// @brief Construct an AER object from a 3D vector
     ///

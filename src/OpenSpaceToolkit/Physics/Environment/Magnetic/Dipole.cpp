@@ -23,10 +23,6 @@ Dipole::Dipole(const Vector3d& aMagneticMoment)
     : Model(),
       magneticMoment_SI_(aMagneticMoment)
 {
-    if (!magneticMoment_SI_.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Magnetic moment");
-    }
 }
 
 Dipole* Dipole::clone() const
@@ -34,16 +30,11 @@ Dipole* Dipole::clone() const
     return new Dipole(*this);
 }
 
-bool Dipole::isDefined() const
-{
-    return true;
-}
-
 Vector3d Dipole::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     (void)anInstant;  // Temporal invariance
 
-    const Real r = aPosition.norm();  // [m]
+    const double r = aPosition.norm();  // [m]
 
     const Vector3d magneticField =
         1e-7 * (3.0 * (magneticMoment_SI_.dot(aPosition)) * aPosition - std::pow(r, 2.0) * magneticMoment_SI_) /

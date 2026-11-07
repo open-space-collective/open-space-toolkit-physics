@@ -4,7 +4,6 @@
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth__
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -26,7 +25,6 @@ namespace atmospheric
 {
 
 using ostk::core::filesystem::Directory;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::Unique;
 
@@ -45,14 +43,12 @@ class Earth : public Model
    public:
     enum class Type
     {
-        Undefined,    ///< Undefined
         Exponential,  ///< Exponential atmospheric density model, valid up to 1000 km
         NRLMSISE00,   ///< Navy Research Lab Mass Spectrometer and Incoherent Scatter Radar Exosphere 2000
     };
 
     enum class InputDataType
     {
-        Undefined,              ///< Undefined
         ConstantFluxAndGeoMag,  ///< Use constant values for F10.7, F10.7a and Kp NRLMSISE00 input parameters
         CSSISpaceWeatherFile,   ///< Use historical and predicted values for F10.7, F10.7a and Kp NRLMSISE00 input
                                 ///< parameters from CSSI
@@ -76,12 +72,12 @@ class Earth : public Model
     Earth(
         const Earth::Type& aType,
         const Earth::InputDataType& anInputDataType = Earth::InputDataType::CSSISpaceWeatherFile,
-        const Real& aF107ConstantValue = defaultF107ConstantValue,
-        const Real& aF107AConstantValue = defaultF107AConstantValue,
-        const Real& aKpConstantValue = defaultKpConstantValue,
+        double aF107ConstantValue = defaultF107ConstantValue,
+        double aF107AConstantValue = defaultF107AConstantValue,
+        double aKpConstantValue = defaultKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        double anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
@@ -107,11 +103,11 @@ class Earth : public Model
         const Earth::Type& aType,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Earth::InputDataType& anInputDataType = Earth::InputDataType::CSSISpaceWeatherFile,
-        const Real& aF107ConstantValue = defaultF107ConstantValue,
-        const Real& aF107AConstantValue = defaultF107AConstantValue,
-        const Real& aKpConstantValue = defaultKpConstantValue,
+        double aF107ConstantValue = defaultF107ConstantValue,
+        double aF107AConstantValue = defaultF107AConstantValue,
+        double aKpConstantValue = defaultKpConstantValue,
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        double anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
@@ -146,15 +142,6 @@ class Earth : public Model
     /// @return Pointer to Earth atmospheric model
     virtual Earth* clone() const override;
 
-    /// @brief Check if the Earth atmospheric model is defined
-    ///
-    /// @code
-    ///     earthAtmo.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the Earth atmospheric model is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get atmospheric model type
     ///
     /// @code
@@ -176,24 +163,24 @@ class Earth : public Model
     /// @brief Get the atmospheric density value at a given position and instant
     ///
     /// @code
-    ///     Real density = earthAtmo.getDensityAt(position, instant);
+    ///     double density = earthAtmo.getDensityAt(position, instant);
     /// @endcode
     ///
     /// @param [in] aPosition A Position
     /// @param [in] anInstant An Instant
     /// @return Atmospheric density value [kg.m^-3]
-    Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+    double getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
     /// @brief Get the atmospheric density value at a given position and instant
     ///
     /// @code
-    ///     Real density = earthAtmo.getDensityAt(lla, instant);
+    ///     double density = earthAtmo.getDensityAt(lla, instant);
     /// @endcode
     ///
     /// @param [in] aLLA A LLA
     /// @param [in] anInstant An Instant
     /// @return Atmospheric density value [kg.m^-3]
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
+    double getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
     static constexpr double defaultF107ConstantValue = 150.0;   // 10⁻²² W⋅m⁻²⋅Hz⁻¹
     static constexpr double defaultF107AConstantValue = 150.0;  // 10⁻²² W⋅m⁻²⋅Hz⁻¹
@@ -211,12 +198,12 @@ class Earth : public Model
     static Unique<Impl> ImplFromType(
         const Type& aType,
         const InputDataType& anInputDataType,
-        const Real& aF107ConstantValue,
-        const Real& aF107AConstantValue,
-        const Real& aKpConstantValue,
+        double aF107ConstantValue,
+        double aF107AConstantValue,
+        double aKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
-        const Real& anEarthFlattening,
+        double anEarthFlattening,
         const Shared<Celestial>& aSunCelestialSPtr
     );
 };

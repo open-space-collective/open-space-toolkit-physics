@@ -86,7 +86,7 @@ Vector3d Moon::SphericalImpl::getFieldValueAt(const Vector3d& aPosition, const I
     return sphericalModel_.getFieldValueAt(aPosition, anInstant);
 }
 
-Moon::Moon(const Moon::Type& aType, const Directory& aDataDirectory)
+Moon::Moon(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory)
     : Model(Moon::ParametersFromType(aType)),
       implUPtr_(Moon::ImplFromType(aType, aDataDirectory))
 {
@@ -119,14 +119,9 @@ Moon* Moon::clone() const
     return new Moon(*this);
 }
 
-bool Moon::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 bool Moon::isPointMass() const
 {
-    return this->isDefined() && (this->getType() == Moon::Type::Spherical);
+    return this->getType() == Moon::Type::Spherical;
 }
 
 Moon::Type Moon::getType() const
@@ -146,22 +141,15 @@ Model::Parameters Moon::ParametersFromType(const Moon::Type& aType)
         case (Moon::Type::Spherical):
             return Moon::Spherical;
 
-        case (Moon::Type::Undefined):
-            return Moon::Parameters::Undefined();
-
         default:
             throw ostk::core::error::runtime::Wrong("Type");
     }
 }
 
-Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const Directory& aDataDirectory)
+Unique<Moon::Impl> Moon::ImplFromType(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory)
 {
     (void)aDataDirectory;  // Temporary
 
-    if (aType == Moon::Type::Undefined)
-    {
-        return nullptr;
-    }
     if (aType == Moon::Type::Spherical)
     {
         return std::make_unique<Moon::SphericalImpl>(aType);

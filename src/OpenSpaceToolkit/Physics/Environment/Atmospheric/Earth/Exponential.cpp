@@ -1,6 +1,9 @@
 /// Apache License 2.0
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
+#include <OpenSpaceToolkit/Core/Type/Size.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
@@ -18,6 +21,8 @@ namespace atmospheric
 namespace earth
 {
 
+using ostk::core::type::Size;
+
 using ostk::physics::coordinate::Frame;
 using EarthCelestialBody = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
@@ -29,36 +34,31 @@ Exponential* Exponential::clone() const
     return new Exponential(*this);
 }
 
-bool Exponential::isDefined() const
-{
-    return true;
-}
-
-Real Exponential::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+double Exponential::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     (void)anInstant;  // temporal invariance
 
     const Length h = aLLA.getAltitude();
 
-    const Tuple<Real, Real, Real> densityBand = Exponential::DensityBandValues(h);
+    const Tuple<double, double, double> densityBand = Exponential::DensityBandValues(h);
 
-    const Real h_0 = std::get<0>(densityBand);
-    const Real rho_0 = std::get<1>(densityBand);
-    const Real H_0 = std::get<2>(densityBand);
+    const double h_0 = std::get<0>(densityBand);
+    const double rho_0 = std::get<1>(densityBand);
+    const double H_0 = std::get<2>(densityBand);
 
-    const Real rho = rho_0 * std::exp(-(h.inKilometers() - h_0) / H_0);
+    const double rho = rho_0 * std::exp(-(h.inKilometers() - h_0) / H_0);
 
     return rho;
 }
 
-Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
+Tuple<double, double, double> Exponential::DensityBandValues(const Length& anAltitude)
 {
     // Reference values defined in Fundamentals of Astrodynamics and Applications by Vallado p. 534
-    static const Array<Real> refHeights = {0.0,   25.0,  30.0,  40.0,  50.0,  60.0,  70.0,  80.0,  90.0,  100.0,
-                                           110.0, 120.0, 130.0, 140.0, 150.0, 180.0, 200.0, 250.0, 300.0, 350.0,
-                                           400.0, 450.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0};
+    static const Array<double> refHeights = {0.0,   25.0,  30.0,  40.0,  50.0,  60.0,  70.0,  80.0,  90.0,  100.0,
+                                             110.0, 120.0, 130.0, 140.0, 150.0, 180.0, 200.0, 250.0, 300.0, 350.0,
+                                             400.0, 450.0, 500.0, 600.0, 700.0, 800.0, 900.0, 1000.0};
 
-    static const Array<Tuple<Real, Real>> densityBands = {
+    static const Array<Tuple<double, double>> densityBands = {
         // ref density [kg/m^3], scale height [km], ref height [km]
         {1.225, 7.249},       // 0.0
         {3.899e-2, 6.349},    // 25.0
@@ -90,9 +90,9 @@ Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
         {3.019e-15, 268.00}   // 1000.0
     };
 
-    const Real altitude_km = anAltitude.inKilometers();
+    const double altitude_km = anAltitude.inKilometers();
 
-    Integer bandIndex = Integer::Undefined();
+    std::optional<Size> bandIndex = std::nullopt;
 
     for (uint i = 0; i < refHeights.getSize() - 1; ++i)
     {
@@ -103,7 +103,7 @@ Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
         }
     }
 
-    if (!bandIndex.isDefined())
+    if (!bandIndex.has_value())
     {
         throw ostk::core::error::RuntimeError(String::Format(
             "Exponential density model is not valid for altitudes above 1000 km. Altitude = {}", anAltitude.toString()
@@ -112,7 +112,7 @@ Tuple<Real, Real, Real> Exponential::DensityBandValues(const Length& anAltitude)
 
     // TBI: can cache the index bandIndex to avoid searching from the top of the list every time.
 
-    return {refHeights[bandIndex], std::get<0>(densityBands[bandIndex]), std::get<1>(densityBands[bandIndex])};
+    return {refHeights[*bandIndex], std::get<0>(densityBands[*bandIndex]), std::get<1>(densityBands[*bandIndex])};
 }
 
 }  // namespace earth

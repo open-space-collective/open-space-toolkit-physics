@@ -4,11 +4,11 @@
 #define __OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Index.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
@@ -36,7 +36,6 @@ namespace earth
 using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 using ostk::core::type::Index;
-using ostk::core::type::Real;
 
 using ostk::io::URL;
 
@@ -74,12 +73,12 @@ class Manager : public BaseManager
     /// @brief Get currently loaded CSSI Space Weather file
     ///
     /// @code
-    ///     CSSISpaceWeather sw = Manager::Get().getLoadedCSSISpaceWeather();
+    ///     std::optional<CSSISpaceWeather> sw = Manager::Get().getLoadedCSSISpaceWeather();
     /// @endcode
     ///
     /// @return Currently loaded CSSI Space Weather file
 
-    CSSISpaceWeather getLoadedCSSISpaceWeather() const;
+    std::optional<CSSISpaceWeather> getLoadedCSSISpaceWeather() const;
 
     /// @brief Get CSSI Space Weather at instant
     ///
@@ -95,57 +94,57 @@ class Manager : public BaseManager
     /// @brief Get an Array of 8 3-hourly Kp solar indices for the day containing instant.
     ///
     /// @code
-    ///     Array<Integer> kpIndices = Manager::Get().getKp3HourSolarIndicesAt(instant);
+    ///     Array<int> kpIndices = Manager::Get().getKp3HourSolarIndicesAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return Array of 3-hourly Kp solar indices
 
-    Array<Integer> getKp3HourSolarIndicesAt(const Instant& anInstant) const;
+    Array<int> getKp3HourSolarIndicesAt(const Instant& anInstant) const;
 
     /// @brief Get an Array of 8 3-hourly Ap solar indices for the day containing instant.
     ///
     /// @code
-    ///     Array<Integer> apIndices = Manager::Get().getAp3HourSolarIndicesAt(instant);
+    ///     Array<int> apIndices = Manager::Get().getAp3HourSolarIndicesAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return Array of 3-hourly Ap solar indices
 
-    Array<Integer> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
+    Array<int> getAp3HourSolarIndicesAt(const Instant& anInstant) const;
 
     /// @brief Get daily Ap index for the day containing instant.
     ///
     /// @code
-    ///     Integer apDaily = Manager::Get().getApDailyIndexAt(instant);
+    ///     int apDaily = Manager::Get().getApDailyIndexAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return daily Ap index
 
-    Integer getApDailyIndexAt(const Instant& anInstant) const;
+    int getApDailyIndexAt(const Instant& anInstant) const;
 
     /// @brief Get the daily value for F10.7 solar flux at instant.
     ///
     /// @code
-    ///     Real f107 = Manager::Get().getF107SolarFluxAt(instant);
+    ///     double f107 = Manager::Get().getF107SolarFluxAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return Daily value for F10.7 solar flux
 
-    Real getF107SolarFluxAt(const Instant& anInstant) const;
+    double getF107SolarFluxAt(const Instant& anInstant) const;
 
     /// @brief Get the 81-day average value for F10.7 solar flux centered on instant.
     ///
     /// @code
-    ///     Real f107Avg = Manager::Get().getF107SolarFlux81DayAvgAt(instant);
+    ///     double f107Avg = Manager::Get().getF107SolarFlux81DayAvgAt(instant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
     /// @return Centered 81-day average value for F10.7 solar flux
 
-    Real getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
+    double getF107SolarFlux81DayAvgAt(const Instant& anInstant) const;
 
     /// @brief Load CSSI Space Weather
     ///
@@ -188,7 +187,7 @@ class Manager : public BaseManager
     static Manager& Get();
 
    private:
-    CSSISpaceWeather CSSISpaceWeather_;
+    std::optional<CSSISpaceWeather> CSSISpaceWeather_;
 
     Manager();
 

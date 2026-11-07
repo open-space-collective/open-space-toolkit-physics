@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
@@ -12,7 +14,6 @@
 
 namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -147,12 +148,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, EqualToOperator)
             Frame::TEMEOfEpoch(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 1), Scale::UTC))
         );
     }
-
-    {
-        EXPECT_FALSE(Frame::Undefined() == Frame::Undefined());
-        EXPECT_FALSE(Frame::GCRF() == Frame::Undefined());
-        EXPECT_FALSE(Frame::Undefined() == Frame::GCRF());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
@@ -241,12 +236,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, NotEqualToOperator)
             Frame::TEMEOfEpoch(Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 1), Scale::UTC))
         );
     }
-
-    {
-        EXPECT_TRUE(Frame::Undefined() != Frame::Undefined());
-        EXPECT_TRUE(Frame::GCRF() != Frame::Undefined());
-        EXPECT_TRUE(Frame::Undefined() != Frame::GCRF());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
@@ -257,29 +246,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, StreamOperator)
         EXPECT_NO_THROW(std::cout << (*customFrameSPtr_) << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsDefined)
-{
-    {
-        EXPECT_TRUE(customFrameSPtr_->isDefined());
-    }
-
-    {
-        EXPECT_TRUE(Frame::GCRF()->isDefined());
-        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isDefined());
-        EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined());
-        EXPECT_TRUE(Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006)->isDefined());
-        EXPECT_TRUE(Frame::TEME()->isDefined());
-        EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined());
-        EXPECT_TRUE(Frame::CIRF()->isDefined());
-        EXPECT_TRUE(Frame::TIRF()->isDefined());
-        EXPECT_TRUE(Frame::ITRF()->isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Frame::Undefined()->isDefined());
     }
 }
 
@@ -300,10 +266,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, IsQuasiInertial)
         EXPECT_FALSE(Frame::TIRF()->isQuasiInertial());
         EXPECT_FALSE(Frame::ITRF()->isQuasiInertial());
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->isQuasiInertial());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
@@ -323,32 +285,25 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, HasParent)
         EXPECT_TRUE(Frame::TIRF()->hasParent());
         EXPECT_TRUE(Frame::ITRF()->hasParent());
     }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->hasParent());
-    }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, AccessParent)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetParent)
 {
     {
-        EXPECT_EQ(Frame::GCRF(), customFrameSPtr_->accessParent());
+        EXPECT_EQ(Frame::GCRF(), customFrameSPtr_->getParent());
+        EXPECT_EQ(&customFrameSPtr_->getParent(), &customFrameSPtr_->getParent());
     }
 
     {
-        EXPECT_ANY_THROW(Frame::GCRF()->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::J2000(iau::Theory::IAU_2006)->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::MOD(Instant::J2000())->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006)->accessParent());
-        EXPECT_EQ(Frame::ITRF(), Frame::TEME()->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::TEMEOfEpoch(Instant::J2000())->accessParent());
-        EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->accessParent());
-        EXPECT_EQ(Frame::CIRF(), Frame::TIRF()->accessParent());
-        EXPECT_EQ(Frame::TIRF(), Frame::ITRF()->accessParent());
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->accessParent());
+        EXPECT_ANY_THROW(Frame::GCRF()->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::J2000(iau::Theory::IAU_2006)->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::MOD(Instant::J2000())->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::TOD(Instant::J2000(), iau::Theory::IAU_2006)->getParent());
+        EXPECT_EQ(Frame::ITRF(), Frame::TEME()->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::TEMEOfEpoch(Instant::J2000())->getParent());
+        EXPECT_EQ(Frame::GCRF(), Frame::CIRF()->getParent());
+        EXPECT_EQ(Frame::CIRF(), Frame::TIRF()->getParent());
+        EXPECT_EQ(Frame::TIRF(), Frame::ITRF()->getParent());
     }
 }
 
@@ -370,10 +325,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetName)
         EXPECT_EQ("CIRF", Frame::CIRF()->getName());
         EXPECT_EQ("TIRF", Frame::TIRF()->getName());
         EXPECT_EQ("ITRF", Frame::ITRF()->getName());
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getName());
     }
 }
 
@@ -411,7 +362,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
             const Position referenceOrigin = Position::Meters({0.0, +1.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(Real::Epsilon()))) << origin;
+            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(1e-15))) << origin;
         }
 
         {
@@ -430,21 +381,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn)
 
             const Position referenceOrigin = Position::Meters({+1.0, 0.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(Real::Epsilon()))) << origin;
+            EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(1e-15))) << origin;
         }
 
         const Position origin = Frame::WithName("Custom B")->getOriginIn(Frame::WithName("Custom A"), epoch);
 
         const Position referenceOrigin = Position::Meters({-1.0, -1.0, 0.0}, Frame::WithName("Custom A"));
 
-        EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(Real::Epsilon()))) << origin;
+        EXPECT_TRUE(origin.isNear(referenceOrigin, Length::Meters(1e-15))) << origin;
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getOriginIn(Frame::Undefined(), Instant::J2000()));
     }
 }
 
@@ -482,8 +429,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 
             const Velocity referenceVelocity = Velocity::MetersPerSecond({+1.0, 0.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon()))
-                << velocity;
+            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), 1e-15)) << velocity;
         }
 
         {
@@ -503,22 +449,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetVelocityIn)
 
             const Velocity referenceVelocity = Velocity::MetersPerSecond({0.0, +1.0, 0.0}, Frame::GCRF());
 
-            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon()))
-                << velocity;
+            EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), 1e-15)) << velocity;
         }
 
         const Velocity velocity = Frame::WithName("Custom B")->getVelocityIn(Frame::WithName("Custom A"), epoch);
 
         const Velocity referenceVelocity = Velocity::MetersPerSecond({+1.0, +1.0, 0.0}, Frame::WithName("Custom A"));
 
-        EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), Real::Epsilon())) << velocity;
+        EXPECT_TRUE(velocity.getCoordinates().isNear(referenceVelocity.getCoordinates(), 1e-15)) << velocity;
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getVelocityIn(Frame::Undefined(), Instant::J2000()));
     }
 }
 
@@ -544,9 +485,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 
             const Axes referenceAxes = Axes({0.0, +1.0, 0.0}, {-1.0, 0.0, 0.0}, {0.0, 0.0, +1.0}, Frame::GCRF());
 
-            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), Real::Epsilon())) << axes;
+            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), 1e-15)) << axes;
         }
 
         {
@@ -566,25 +507,21 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetAxesIn)
 
             const Axes referenceAxes = Axes({0.0, -1.0, 0.0}, {+1.0, 0.0, 0.0}, {0.0, 0.0, +1.0}, Frame::GCRF());
 
-            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), Real::Epsilon())) << axes;
-            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), Real::Epsilon())) << axes;
+            EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), 1e-15)) << axes;
+            EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), 1e-15)) << axes;
         }
 
         const Axes axes = Frame::WithName("Custom B")->getAxesIn(Frame::WithName("Custom A"), epoch);
 
         const Axes referenceAxes = Axes({-1.0, 0.0, 0.0}, {0.0, -1.0, 0.0}, {0.0, 0.0, +1.0}, Frame::GCRF());
 
-        EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), Real::Epsilon())) << axes;
-        EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), Real::Epsilon())) << axes;
-        EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), Real::Epsilon())) << axes;
+        EXPECT_TRUE(axes.x().isNear(referenceAxes.x(), 1e-15)) << axes;
+        EXPECT_TRUE(axes.y().isNear(referenceAxes.y(), 1e-15)) << axes;
+        EXPECT_TRUE(axes.z().isNear(referenceAxes.z(), 1e-15)) << axes;
 
         Frame::Destruct("Custom A");
         Frame::Destruct("Custom B");
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getAxesIn(Frame::Undefined(), Instant::J2000()));
     }
 }
 
@@ -606,92 +543,81 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetTransformTo)
 
         EXPECT_EQ(instant, transform.getInstant());
 
-        EXPECT_TRUE(transform.getTranslation().isNear(Vector3d(+0.0, +0.0, +0.0), Real::Epsilon()));
-        EXPECT_TRUE(transform.getVelocity().isNear(Vector3d(+0.0, +0.0, +0.0), Real::Epsilon()));
+        EXPECT_TRUE(transform.getTranslation().isNear(Vector3d(+0.0, +0.0, +0.0), 1e-15));
+        EXPECT_TRUE(transform.getVelocity().isNear(Vector3d(+0.0, +0.0, +0.0), 1e-15));
         EXPECT_TRUE(transform.getOrientation().isNear(
             Quaternion::XYZS(-1.86147346436534e-05, 8.45983422546411e-07, 0.641490222201766, 0.767131210727542),
-            Angle::Degrees(Real::Epsilon())
+            Angle::Degrees(1e-15)
         ));
         EXPECT_TRUE(transform.getAngularVelocity().isNear(
-            Vector3d(1.96489918038813e-09, 2.04221635598212e-09, -7.29211506735101e-05), Real::Epsilon()
+            Vector3d(1.96489918038813e-09, 2.04221635598212e-09, -7.29211506735101e-05), 1e-15
         ));
-    }
-
-    {
-        EXPECT_ANY_THROW(Frame::Undefined()->getTransformTo(Frame::GCRF(), Instant::J2000()));
-        EXPECT_ANY_THROW(Frame::GCRF()->getTransformTo(Frame::Undefined(), Instant::J2000()));
-        EXPECT_ANY_THROW(Frame::GCRF()->getTransformTo(Frame::GCRF(), Instant::Undefined()));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Undefined)
-{
-    {
-        EXPECT_FALSE(Frame::Undefined()->isDefined());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GCRF)
 {
     {
-        EXPECT_TRUE(Frame::GCRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::GCRF());
+        EXPECT_EQ("GCRF", Frame::GCRF()->getName());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, J2000)
 {
     {
-        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2000A)->isDefined());
-        EXPECT_TRUE(Frame::J2000(iau::Theory::IAU_2006)->isDefined());
+        EXPECT_NE(nullptr, Frame::J2000(iau::Theory::IAU_2000A));
+        EXPECT_NE(nullptr, Frame::J2000(iau::Theory::IAU_2006));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, MOD)
 {
     {
-        EXPECT_TRUE(Frame::MOD(Instant::J2000())->isDefined());
+        EXPECT_NE(nullptr, Frame::MOD(Instant::J2000()));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TOD)
 {
     {
-        EXPECT_TRUE(Frame::TOD(Instant::J2000(), iau::Theory::IAU_2000A)->isDefined());
+        EXPECT_NE(nullptr, Frame::TOD(Instant::J2000(), iau::Theory::IAU_2000A));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TEME)
 {
     {
-        EXPECT_TRUE(Frame::TEME()->isDefined());
+        EXPECT_NE(nullptr, Frame::TEME());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TEMEOfEpoch)
 {
     {
-        EXPECT_TRUE(Frame::TEMEOfEpoch(Instant::J2000())->isDefined());
+        EXPECT_NE(nullptr, Frame::TEMEOfEpoch(Instant::J2000()));
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, CIRF)
 {
     {
-        EXPECT_TRUE(Frame::CIRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::CIRF());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, TIRF)
 {
     {
-        EXPECT_TRUE(Frame::TIRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::TIRF());
     }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, ITRF)
 {
     {
-        EXPECT_TRUE(Frame::ITRF()->isDefined());
+        EXPECT_NE(nullptr, Frame::ITRF());
+        EXPECT_EQ("ITRF", Frame::ITRF()->getName());
     }
 }
 
@@ -703,7 +629,8 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, WithName)
             Frame::ITRF();
         }
 
-        EXPECT_TRUE(Frame::WithName("ITRF")->isDefined());
+        EXPECT_NE(nullptr, Frame::WithName("ITRF"));
+        EXPECT_EQ("ITRF", Frame::WithName("ITRF")->getName());
     }
 }
 
@@ -752,7 +679,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
         // Create first frame
         const Shared<const Frame> firstFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr_);
-        EXPECT_TRUE(firstFrameSPtr->isDefined());
 
         // Attempt to create another frame with same name without overwrite - should throw
         EXPECT_ANY_THROW(Frame::Construct(name, isQuasiInertial_, Frame::ITRF(), providerSPtr_, false));
@@ -760,7 +686,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Construct)
         // Create another frame with same name with overwrite - should succeed
         const Shared<const Frame> secondFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::ITRF(), providerSPtr_, true);
-        EXPECT_TRUE(secondFrameSPtr->isDefined());
 
         // Verify the new frame has the expected parent (ITRF instead of GCRF)
         EXPECT_TRUE(Manager::Get().hasFrameWithName(name));
@@ -800,8 +725,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -810,7 +733,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -822,7 +745,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -833,7 +756,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -853,8 +776,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -863,7 +784,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -875,7 +796,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+2.0, +1.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -886,7 +807,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -906,8 +827,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -916,7 +835,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -928,7 +847,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -939,7 +858,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -955,8 +874,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -965,7 +882,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -977,7 +894,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, -1.0, +0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, -1.0, +0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -988,7 +905,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d u_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(u_CUSTOM);
 
-            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), Real::Epsilon())) << u_GCRF.toString();
+            EXPECT_TRUE(u_GCRF.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-15)) << u_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -1002,8 +919,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr->isDefined());
-
         // Position
 
         {
@@ -1012,7 +927,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -1024,7 +939,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(-4.0, +1.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(-4.0, +1.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -1035,7 +950,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(0.0, +1.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         Frame::Destruct(name);
@@ -1053,8 +968,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
         const Shared<const Frame> customFrameSPtr =
             Frame::Construct(name, isQuasiInertial_, Frame::GCRF(), providerSPtr);
 
-        EXPECT_TRUE(customFrameSPtr_->isDefined());
-
         // Position
 
         {
@@ -1063,7 +976,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d x_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToPosition(x_CUSTOM);
 
-            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) << x_GCRF.toString();
+            EXPECT_TRUE(x_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), 1e-15)) << x_GCRF.toString();
         }
 
         // Velocity
@@ -1075,7 +988,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVelocity(x_CUSTOM, v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +4.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, +4.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         // Vector
@@ -1086,9 +999,36 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Test_1)
             const Vector3d v_GCRF =
                 customFrameSPtr->getTransformTo(Frame::GCRF(), Instant::J2000()).applyToVector(v_CUSTOM);
 
-            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), Real::Epsilon())) << v_GCRF.toString();
+            EXPECT_TRUE(v_GCRF.isNear(Vector3d(+1.0, 0.0, 0.0), 1e-15)) << v_GCRF.toString();
         }
 
         Frame::Destruct(name);
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, Constructor_InvalidArguments)
+{
+    {
+        EXPECT_THROW(
+            Frame::Construct("", isQuasiInertial_, Frame::GCRF(), providerSPtr_), ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        EXPECT_THROW(
+            Frame::Construct("Frame Without Provider", isQuasiInertial_, Frame::GCRF(), nullptr),
+            ostk::core::error::runtime::Undefined
+        );
+    }
+
+    {
+        EXPECT_THROW(Frame::Destruct(""), ostk::core::error::RuntimeError);
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame, GetOriginIn_NullFrame)
+{
+    EXPECT_THROW(Frame::GCRF()->getOriginIn(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
+    EXPECT_THROW(Frame::GCRF()->getVelocityIn(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
+    EXPECT_THROW(Frame::GCRF()->getAxesIn(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
 }

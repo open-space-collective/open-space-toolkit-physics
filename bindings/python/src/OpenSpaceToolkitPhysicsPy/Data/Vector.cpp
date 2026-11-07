@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Vector.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Vector(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -39,7 +39,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Vector& self, const Vector& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -51,7 +56,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Vector& self, const Vector& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -66,16 +76,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Vector>))
         .def("__repr__", &(shiftToString<Vector>))
 
-        .def(
-            "is_defined",
-            &Vector::isDefined,
-            R"doc(
-                Check if the vector is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "get_value",
             &Vector::getValue,
@@ -144,21 +144,10 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Vector(pybind11::module& aModule)
                 Convert to (formatted) string.
 
                 Args:
-                    precision (Integer): Precision.
+                    precision (int): Precision.
 
                 Returns:
                     str: String representation.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Vector::Undefined,
-            R"doc(
-                Create an undefined vector.
-
-                Returns:
-                    Vector: Undefined vector.
             )doc"
         )
 

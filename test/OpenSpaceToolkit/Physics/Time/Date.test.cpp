@@ -4,8 +4,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Integer;
-
 using ostk::physics::time::Date;
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, Constructor)
@@ -46,10 +44,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, EqualToOperator)
         EXPECT_FALSE(Date(2018, 2, 3) == Date(2018, 3, 3));
         EXPECT_FALSE(Date(2018, 2, 3) == Date(2018, 2, 4));
     }
-
-    {
-        EXPECT_FALSE(Date::Undefined() == Date::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, NotEqualToOperator)
@@ -65,10 +59,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, NotEqualToOperator)
         EXPECT_FALSE(Date(1400, 1, 1) != Date(1400, 1, 1));
         EXPECT_FALSE(Date(2018, 2, 3) != Date(2018, 2, 3));
     }
-
-    {
-        EXPECT_TRUE(Date::Undefined() != Date::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, StreamOperator)
@@ -82,20 +72,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_Date, IsDefined)
-{
-    {
-        EXPECT_TRUE(Date(2018, 2, 3).isDefined());
-
-        EXPECT_TRUE(Date(1400, 1, 1).isDefined());
-        EXPECT_TRUE(Date(9999, 1, 1).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Date::Undefined().isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_Date, GetYear)
 {
     {
@@ -103,10 +79,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, GetYear)
 
         EXPECT_EQ(1400, Date(1400, 1, 1).getYear());
         EXPECT_EQ(9999, Date(9999, 1, 1).getYear());
-    }
-
-    {
-        EXPECT_ANY_THROW(Date::Undefined().getYear());
     }
 }
 
@@ -116,10 +88,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, GetMonth)
         EXPECT_EQ(1, Date(2018, 1, 1).getMonth());
         EXPECT_EQ(12, Date(2018, 12, 1).getMonth());
     }
-
-    {
-        EXPECT_ANY_THROW(Date::Undefined().getMonth());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, GetDay)
@@ -127,10 +95,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, GetDay)
     {
         EXPECT_EQ(1, Date(2018, 1, 1).getDay());
         EXPECT_EQ(31, Date(2018, 1, 31).getDay());
-    }
-
-    {
-        EXPECT_ANY_THROW(Date::Undefined().getDay());
     }
 }
 
@@ -159,11 +123,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, ToString)
         EXPECT_EQ("1 Jan 1400", Date(1400, 1, 1).toString(Date::Format::STK));
         EXPECT_EQ("31 Dec 9999", Date(9999, 12, 31).toString(Date::Format::STK));
     }
-
-    {
-        EXPECT_ANY_THROW(Date::Undefined().toString());
-        EXPECT_ANY_THROW(Date(2000, 1, 1).toString(Date::Format::Undefined));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, Replace)
@@ -182,11 +141,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Replace)
     }
 
     {
-        EXPECT_ANY_THROW(Date::Undefined().replace(2018));
-
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(1399));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(-1));
-        EXPECT_ANY_THROW(Date(2018, 1, 1).replace(Integer::Undefined()));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, 13));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, std::nullopt, 32));
         EXPECT_ANY_THROW(Date(2018, 1, 1).replace(std::nullopt, std::nullopt, 257));
@@ -204,10 +160,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, SetYear)
 
         EXPECT_EQ(2019, date.getYear());
     }
-
-    {
-        EXPECT_ANY_THROW(Date::Undefined().setYear(2018));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_Date, SetMonth)
@@ -223,8 +175,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, SetMonth)
     }
 
     {
-        EXPECT_ANY_THROW(Date::Undefined().setMonth(1));
-
         EXPECT_ANY_THROW(Date(2018, 1, 1).setMonth(0));
         EXPECT_ANY_THROW(Date(2018, 1, 1).setMonth(13));
     }
@@ -243,19 +193,8 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, SetDay)
     }
 
     {
-        EXPECT_ANY_THROW(Date::Undefined().setDay(1));
-
         EXPECT_ANY_THROW(Date(2018, 1, 1).setDay(0));
         EXPECT_ANY_THROW(Date(2018, 1, 1).setDay(32));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_Date, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Date::Undefined());
-
-        EXPECT_FALSE(Date::Undefined().isDefined());
     }
 }
 
@@ -340,5 +279,23 @@ TEST(OpenSpaceToolkit_Physics_Time_Date, Parse)
         EXPECT_ANY_THROW(Date::Parse("-2000-01-01"));
         EXPECT_ANY_THROW(Date::Parse("-32769-01-01"));
         EXPECT_ANY_THROW(Date::Parse("32768-01-01"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_Date, ParseWithoutFormat)
+{
+    using ostk::physics::time::Date;
+
+    {
+        EXPECT_EQ(Date::Parse("2018-01-02", Date::Format::Standard), Date::Parse("2018-01-02"));
+        EXPECT_EQ(Date::Parse("2018-01-02", Date::Format::Standard), Date::Parse("2018-01-02", std::nullopt));
+
+        EXPECT_EQ(Date::Parse("2 Jan 2018", Date::Format::STK), Date::Parse("2 Jan 2018"));
+        EXPECT_EQ(Date::Parse("2 Jan 2018", Date::Format::STK), Date::Parse("2 Jan 2018", std::nullopt));
+    }
+
+    {
+        EXPECT_ANY_THROW(Date::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(Date::Parse("", std::nullopt));
     }
 }

@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit_Time__
 #define __OpenSpaceToolkit_Physics_Unit_Time__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Unit.hpp>
@@ -16,8 +14,6 @@ namespace physics
 namespace unit
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 /// @brief Time
@@ -30,7 +26,6 @@ class Time : public Unit
     enum class Unit
     {
 
-        Undefined,    ///< Undefined
         Nanosecond,   ///< Nanosecond
         Microsecond,  ///< Microsecond
         Millisecond,  ///< Millisecond
@@ -50,7 +45,7 @@ class Time : public Unit
     ///
     /// @param [in] aValue A value
     /// @param [in] aUnit A time unit
-    Time(const Real& aValue, const Time::Unit& aUnit);
+    Time(double aValue, const Time::Unit& aUnit);
 
     /// @brief Clone the time unit.
     ///
@@ -62,16 +57,6 @@ class Time : public Unit
     /// @return A pointer to a dynamically allocated clone of this time unit
 
     virtual Time* clone() const override;
-
-    /// @brief Check if the time unit is defined.
-    ///
-    /// @code
-    ///     Time::Seconds(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    virtual bool isDefined() const override;
 
     /// @brief Get the time unit.
     ///
@@ -92,7 +77,7 @@ class Time : public Unit
     /// @param [in] aUnit A time unit
     /// @return The value in the specified unit
 
-    Real in(const Time::Unit& aUnit) const;
+    double in(const Time::Unit& aUnit) const;
 
     /// @brief Get the value in seconds.
     ///
@@ -102,7 +87,7 @@ class Time : public Unit
     ///
     /// @return The value in seconds
 
-    Real inSeconds() const;
+    double inSeconds() const;
 
     /// @brief Convert to string representation.
     ///
@@ -113,17 +98,7 @@ class Time : public Unit
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
 
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
-
-    /// @brief Construct an undefined time unit.
-    ///
-    /// @code
-    ///     Time time = Time::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined time unit
-
-    static Time Undefined();
+    virtual String toString(int aPrecision = -1) const override;
 
     /// @brief Construct a time unit from a value in seconds.
     ///
@@ -134,7 +109,7 @@ class Time : public Unit
     /// @param [in] aValue A value in seconds
     /// @return A time unit
 
-    static Time Seconds(const Real& aValue);
+    static Time Seconds(double aValue);
 
     /// @brief Get the string representation of a time unit.
     ///
@@ -161,7 +136,7 @@ class Time : public Unit
    private:
     Time::Unit unit_;
 
-    static Real SIRatio(const Time::Unit& aUnit);
+    static double SIRatio(const Time::Unit& aUnit);
 };
 
 }  // namespace unit

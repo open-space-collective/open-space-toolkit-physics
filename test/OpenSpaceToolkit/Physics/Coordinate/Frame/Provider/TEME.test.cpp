@@ -3,7 +3,6 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Triple.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
@@ -21,7 +20,6 @@ using ostk::core::container::Table;
 using ostk::core::container::Triple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
@@ -38,7 +36,7 @@ using ostk::physics::unit::Angle;
 TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
 {
     {
-        const Array<Triple<File, Angle, Real>> referenceScenarios = {
+        const Array<Triple<File, Angle, double>> referenceScenarios = {
             {File::Path(
                  Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME/Scenario_A/Scenario "
                              "ITRF_TEME.csv")
@@ -67,21 +65,21 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Quaternion referenceOrientation_ITRF_TEME = Quaternion::XYZS(
-                                                                      referenceRow[1].accessReal(),
-                                                                      referenceRow[2].accessReal(),
-                                                                      referenceRow[3].accessReal(),
-                                                                      referenceRow[4].accessReal()
+                                                                      referenceRow[1].getReal(),
+                                                                      referenceRow[2].getReal(),
+                                                                      referenceRow[3].getReal(),
+                                                                      referenceRow[4].getReal()
                 )
                                                                       .normalize()
                                                                       .conjugate();
                 const Quaternion referenceOrientation_GCRF_TEME = Quaternion::XYZS(
-                                                                      referenceRow[9].accessReal(),
-                                                                      referenceRow[10].accessReal(),
-                                                                      referenceRow[11].accessReal(),
-                                                                      referenceRow[12].accessReal()
+                                                                      referenceRow[9].getReal(),
+                                                                      referenceRow[10].getReal(),
+                                                                      referenceRow[11].getReal(),
+                                                                      referenceRow[12].getReal()
                 )
                                                                       .normalize();
 
@@ -104,13 +102,13 @@ TEST(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_TEME, GetTransformAt)
                 // Angular velocity test
 
                 const Vector3d referenceAngularVelocity_ITRF_TEME_in_TEME = {
-                    referenceRow[5].accessReal(), referenceRow[6].accessReal(), referenceRow[7].accessReal()
+                    referenceRow[5].getReal(), referenceRow[6].getReal(), referenceRow[7].getReal()
                 };
                 const Vector3d referenceAngularVelocity_TEME_ITRF_in_TEME = -referenceAngularVelocity_ITRF_TEME_in_TEME;
 
-                const Vector3d w_TEME_ITRF_in_TEME = transform_TEME_ITRF.accessAngularVelocity();
+                const Vector3d w_TEME_ITRF_in_TEME = transform_TEME_ITRF.getAngularVelocity();
 
-                const Real dw = referenceScenario.third;
+                const double dw = referenceScenario.third;
 
                 EXPECT_GT(dw, (w_TEME_ITRF_in_TEME - referenceAngularVelocity_TEME_ITRF_in_TEME).norm());
             }

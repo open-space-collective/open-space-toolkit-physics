@@ -72,15 +72,6 @@ class Axes
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Axes& anAxes);
 
-    /// @brief Check if the axes are defined
-    ///
-    /// @code
-    ///     Axes::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the axes are defined
-    bool isDefined() const;
-
     /// @brief Get the X-axis vector
     ///
     /// @code
@@ -114,8 +105,8 @@ class Axes
     ///     axes.getFrame();
     /// @endcode
     ///
-    /// @return Shared pointer to the reference frame
-    Shared<const Frame> getFrame() const;
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Convert axes to a different reference frame at a given instant
     ///
@@ -127,15 +118,6 @@ class Axes
     /// @param [in] anInstant An instant
     /// @return Axes expressed in the specified frame
     Axes inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
-
-    /// @brief Construct an undefined axes object
-    ///
-    /// @code
-    ///     Axes axes = Axes::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined axes
-    static Axes Undefined();
 
    private:
     Vector3d x_;

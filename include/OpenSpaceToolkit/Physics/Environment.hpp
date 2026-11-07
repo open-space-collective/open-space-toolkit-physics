@@ -73,16 +73,6 @@ class Environment
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Environment& anEnvironment);
 
-    /// @brief Check if environment is defined
-    ///
-    /// @code
-    ///     Environment env = Environment::Default();
-    ///     env.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if environment is defined
-    bool isDefined() const;
-
     /// @brief Returns true if environment contains objects with a given name
     ///
     /// @code
@@ -116,57 +106,66 @@ class Environment
     /// @return True if the position is in eclipse
     bool isPositionInEclipse(const Position& aPosition, const bool& includePenumbra = true) const;
 
-    /// @brief Access objects
+    /// @brief Get objects
     ///
     /// @code
     ///     Environment env = Environment::Default();
-    ///     Array<Shared<const Object>> objects = env.accessObjects();
+    ///     const Array<Shared<const Object>>& objects = env.getObjects();
     /// @endcode
     ///
-    /// @return Reference to array of shared pointers to objects
-    Array<Shared<const Object>> accessObjects() const;
+    /// @return Const reference to array of shared pointers to objects
+    const Array<Shared<const Object>>& getObjects() const&;
 
-    /// @brief Access object with a given name
+    /// @brief Get objects of a temporary environment
+    ///
+    /// @code
+    ///     for (const auto& objectSPtr : Environment::Default().getObjects()) { ... }
+    /// @endcode
+    ///
+    /// @return Array of shared pointers to objects (copy, so that it does not dangle)
+    Array<Shared<const Object>> getObjects() &&;
+
+    /// @brief Get object with a given name
     ///
     /// @code
     ///     Environment env = Environment::Default();
-    ///     Shared<const Object> earth = env.accessObjectWithName("Earth");
+    ///     Shared<const Object> earth = env.getObjectWithName("Earth");
     /// @endcode
     ///
     /// @param [in] aName An object name
-    /// @return Reference to shared pointer to object
-    Shared<const Object> accessObjectWithName(const String& aName) const;
+    /// @return Shared pointer to object
+    Shared<const Object> getObjectWithName(const String& aName) const;
 
-    /// @brief Access celestial object with a given name
+    /// @brief Get celestial object with a given name
     ///
     /// @code
     ///     Environment env = Environment::Default();
-    ///     Shared<const Celestial> earth = env.accessCelestialObjectWithName("Earth");
+    ///     Shared<const Celestial> earth = env.getCelestialObjectWithName("Earth");
     /// @endcode
     ///
     /// @param [in] aName A celestial object name
-    /// @return Reference to shared pointer to celestial object
-    Shared<const Celestial> accessCelestialObjectWithName(const String& aName) const;
+    /// @return Shared pointer to celestial object
+    Shared<const Celestial> getCelestialObjectWithName(const String& aName) const;
 
-    /// @brief Access central celestial
+    /// @brief Get central celestial
     ///
     /// @code
     ///     Environment env = Environment::Default();
-    ///     Shared<const Celestial> central = env.accessCentralCelestialObject();
+    ///     Shared<const Celestial> central = env.getCentralCelestialObject();
     /// @endcode
     ///
     /// @return Shared pointer to central celestial
-    Shared<const Celestial> accessCentralCelestialObject() const;
+    Shared<const Celestial> getCentralCelestialObject() const;
 
     /// @brief Get instant
     ///
     /// @code
     ///     Environment env = Environment::Default();
-    ///     Instant instant = env.getInstant();
+    ///     const Instant& instant = env.getInstant();
     /// @endcode
     ///
-    /// @return Instant
-    Instant getInstant() const;
+    /// @return Const reference to instant
+    const Instant& getInstant() const;
 
     /// @brief Get names of objects
     ///
@@ -203,16 +202,6 @@ class Environment
         const Array<Shared<const Object>>& anObjectToIgnoreArray = Array<Shared<const Object>>::Empty()
     ) const;
 
-    /// @brief Constructs an undefined environment
-    ///
-    /// @code
-    ///     Environment environment = Environment::Undefined();
-    ///     environment.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined environment
-    static Environment Undefined();
-
     /// @brief Constructs a default environment
     ///
     /// Contains Earth, Sun and Moon, with SPICE-based ephemeris.
@@ -222,7 +211,7 @@ class Environment
     /// @endcode
     /// @param [in] setGlobalInstance True if the global environment instance should be set with the default
     ///
-    /// @return Undefined environment
+    /// @return Default environment
     static Environment Default(const bool& setGlobalInstance = false);
 
     /// @brief Reset the singleton instance of the environment to null
@@ -235,11 +224,11 @@ class Environment
     /// @brief Get the singleton instance of the environment
     ///
     /// @code
-    ///     Shared<Environment> env = Environment::AccessGlobalInstance();
+    ///     Shared<Environment> env = Environment::GetGlobalInstance();
     /// @endcode
     ///
     /// @return Shared pointer to the singleton instance
-    static Shared<Environment> AccessGlobalInstance();
+    static Shared<Environment> GetGlobalInstance();
 
     /// @brief Checks if the global instance is set
     ///

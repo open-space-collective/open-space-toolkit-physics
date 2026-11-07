@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Kernel__
 #define __OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE_Kernel__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -35,18 +37,17 @@ class Kernel
     enum class Type
     {
 
-        Undefined,  ///< Undefined kernel
-        SCLK,       ///< Spacecraft clock kernels (text)
-        LSK,        ///< Leapseconds kernels (text)
-        PCK,        ///< Physical constants kernels (text)
-        IK,         ///< Instrument parameter kernels (text)
-        FK,         ///< Frame definition kernels (text)
-        EK,         ///< E-kernels (text)
-        MK,         ///< Meta-kernels (text)
-        SPK,        ///< SP-kernels (binary)
-        BPCK,       ///< Physical constants kernels (binary)
-        CK,         ///< C-kernels (binary)
-        BEK         ///< Events kernels (binary)
+        SCLK,  ///< Spacecraft clock kernels (text)
+        LSK,   ///< Leapseconds kernels (text)
+        PCK,   ///< Physical constants kernels (text)
+        IK,    ///< Instrument parameter kernels (text)
+        FK,    ///< Frame definition kernels (text)
+        EK,    ///< E-kernels (text)
+        MK,    ///< Meta-kernels (text)
+        SPK,   ///< SP-kernels (binary)
+        BPCK,  ///< Physical constants kernels (binary)
+        CK,    ///< C-kernels (binary)
+        BEK    ///< Events kernels (binary)
 
     };
 
@@ -64,8 +65,8 @@ class Kernel
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Kernel kernelA = Kernel::Undefined();
-    ///     Kernel kernelB = Kernel::Undefined();
+    ///     Kernel kernelA = Kernel::File(file);
+    ///     Kernel kernelB = Kernel::File(file);
     ///     kernelA == kernelB;
     /// @endcode
     ///
@@ -77,8 +78,8 @@ class Kernel
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Kernel kernelA = Kernel::Undefined();
-    ///     Kernel kernelB = Kernel::Undefined();
+    ///     Kernel kernelA = Kernel::File(fileA);
+    ///     Kernel kernelB = Kernel::File(fileB);
     ///     kernelA != kernelB;
     /// @endcode
     ///
@@ -86,17 +87,6 @@ class Kernel
     /// @return True if kernels are not equal
 
     bool operator!=(const Kernel& aKernel) const;
-
-    /// @brief Returns true if kernel is defined
-    ///
-    /// @code
-    ///     Kernel kernel = Kernel::Undefined();
-    ///     kernel.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if kernel is defined
-
-    bool isDefined() const;
 
     /// @brief Get kernel type
     ///
@@ -124,23 +114,12 @@ class Kernel
     ///
     /// @code
     ///     Kernel kernel = Kernel::File(aFile);
-    ///     filesystem::File file = kernel.getFile();
+    ///     const filesystem::File& file = kernel.getFile();
     /// @endcode
     ///
-    /// @return Kernel file
+    /// @return Const reference to kernel file
 
-    filesystem::File getFile() const;
-
-    /// @brief Constructs an undefined kernel
-    ///
-    /// @code
-    ///     Kernel kernel = Kernel::Undefined();
-    ///     kernel.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined kernel
-
-    static Kernel Undefined();
+    const filesystem::File& getFile() const;
 
     /// @brief Constructs a kernel from a file
     ///
@@ -178,13 +157,13 @@ class Kernel
     /// @brief Converts file extension to kernel type
     ///
     /// @code
-    ///     Kernel::Type type = Kernel::TypeFromFileExtension("bsp"); // Kernel::Type::SPK
+    ///     std::optional<Kernel::Type> type = Kernel::TypeFromFileExtension("bsp"); // Kernel::Type::SPK
     /// @endcode
     ///
     /// @param [in] aFileExtension A file extension
-    /// @return Kernel type
+    /// @return Kernel type, or std::nullopt if the extension is not a known kernel extension
 
-    static Kernel::Type TypeFromFileExtension(const String& aFileExtension);
+    static std::optional<Kernel::Type> TypeFromFileExtension(const String& aFileExtension);
 
    private:
     Kernel::Type type_;

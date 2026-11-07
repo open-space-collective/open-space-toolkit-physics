@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
+#include <optional>
 #include <string>
 #include <thread>
 
@@ -39,27 +40,22 @@ const String dataManifestFileName = "manifest.json";
 
 const String temporaryDirectoryName = "tmp";
 
-const Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
+Instant Manager::getLastUpdateTimestampFor(const String& aDataName)
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->checkManifestAgeAndUpdate_();
 
-    return manifest_.getLastUpdateTimestampFor(aDataName);
+    return manifest_->getLastUpdateTimestampFor(aDataName);
 }
 
-const URL Manager::getRemoteUrl() const
+URL Manager::getRemoteUrl() const
 {
     return remoteUrl_;
 }
 
 void Manager::setRemoteUrl(const URL& aRemoteUrl)
 {
-    if (!aRemoteUrl.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("URL");
-    }
-
     remoteUrl_ = aRemoteUrl;
 }
 
@@ -68,7 +64,7 @@ Array<URL> Manager::getRemoteDataUrls(const String& aDataName) const
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->checkManifestAgeAndUpdate_();
-    return manifest_.getRemoteDataUrls(remoteUrl_, aDataName);
+    return manifest_->getRemoteDataUrls(remoteUrl_, aDataName);
 }
 
 Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
@@ -76,21 +72,16 @@ Array<URL> Manager::findRemoteDataUrls(const String& aDataNameRegex) const
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->checkManifestAgeAndUpdate_();
-    return manifest_.findRemoteDataUrls(remoteUrl_, aDataNameRegex);
+    return manifest_->findRemoteDataUrls(remoteUrl_, aDataNameRegex);
 }
 
-const Manifest Manager::getManifest() const
+std::optional<Manifest> Manager::getManifest() const
 {
     return manifest_;
 }
 
 void Manager::loadManifest(const Manifest& aManifest)
 {
-    if (!aManifest.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Manifest");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     loadManifest_(aManifest);
@@ -100,7 +91,7 @@ void Manager::reset()
 {
     BaseManager::reset();
 
-    manifest_ = Manifest::Undefined();
+    manifest_ = std::nullopt;
 
     remoteUrl_ = DefaultRemoteUrl();
 }
@@ -114,7 +105,7 @@ Manager::Manager()
           "OSTK_PHYSICS_DATA_MANIFEST_LOCAL_REPOSITORY_LOCK_TIMEOUT"
       ),
       remoteUrl_(DefaultRemoteUrl()),
-      manifest_(Manifest::Undefined())
+      manifest_(std::nullopt)
 {
 }
 
@@ -130,7 +121,7 @@ bool Manager::manifestFileExists() const
 
 void Manager::checkManifestAgeAndUpdate_() const
 {
-    if (!manifest_.isDefined() && !manifestFileExists())
+    if (!manifest_.has_value() && !manifestFileExists())
     {
         if (mode_ == Manager::Mode::Manual)
         {
@@ -147,7 +138,7 @@ void Manager::checkManifestAgeAndUpdate_() const
         }
     }
 
-    if (!manifest_.isDefined() && manifestFileExists())
+    if (!manifest_.has_value() && manifestFileExists())
     {
         // A manifest file exists but we haven't loaded it yet. Load it.
         this->loadManifest_(Manifest::Load(File::Path(localRepository_.getPath() + Path::Parse(dataManifestFileName))));
@@ -155,30 +146,30 @@ void Manager::checkManifestAgeAndUpdate_() const
 
     // Determine if we need to fetch a new manifest based on the loaded one.
     // The next timestamp at which we expect the remote to update its data.
-    Instant nextUpdateCheckTimestamp = Instant::Undefined();
-    try
+    const Instant nextUpdateCheckTimestamp = [&]() -> Instant
     {
-        nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
-    }
-    catch (ostk::core::error::RuntimeError& e)
-    {
-        // If there is no "manifest" entry, the file may be old or corrupted. Fetch a new one.
-        if (mode_ == Manager::Mode::Manual)
+        try
         {
-            throw ostk::core::error::RuntimeError(
-                "Manifest file is old or corrupted. Cannot fetch as manager mode is Manual."
-            );
+            return manifest_->getNextUpdateCheckTimestampFor("manifest");
         }
-        else if (mode_ == Manager::Mode::Automatic)
+        catch (const ostk::core::error::RuntimeError&)
         {
+            // If there is no "manifest" entry, the file may be old or corrupted. Fetch a new one.
+            if (mode_ == Manager::Mode::Manual)
+            {
+                throw ostk::core::error::RuntimeError(
+                    "Manifest file is old or corrupted. Cannot fetch as manager mode is Manual."
+                );
+            }
+
             const File manifestFile = this->fetchLatestManifestFile_();
             this->loadManifest_(Manifest::Load(manifestFile));
 
-            nextUpdateCheckTimestamp = manifest_.getNextUpdateCheckTimestampFor("manifest");
+            return manifest_->getNextUpdateCheckTimestampFor("manifest");
         }
-    }
+    }();
 
-    const Duration manifestAge = Instant::Now() - manifest_.getLastUpdateTimestampFor("manifest");
+    const Duration manifestAge = Instant::Now() - manifest_->getLastUpdateTimestampFor("manifest");
 
     // If current time is past next update check time or manifest is old enough, fetch a new one and load it.
     if (Instant::Now() > nextUpdateCheckTimestamp && manifestAge > DataRefreshRate_())
@@ -219,12 +210,11 @@ File Manager::fetchLatestManifestFile_() const
 
     const URL latestDataManifestUrl = URL::Parse(remoteUrlString);
 
-    File latestDataManifestFile = File::Undefined();
-    Directory destinationDirectory = Directory::Undefined();
+    std::optional<File> latestDataManifestFile;
 
     try
     {
-        destinationDirectory = localRepository_;
+        Directory destinationDirectory = localRepository_;
 
         if (!destinationDirectory.exists())
         {
@@ -245,11 +235,11 @@ File Manager::fetchLatestManifestFile_() const
 
         latestDataManifestFile = Client::Fetch(latestDataManifestUrl, temporaryDirectory, 2);
 
-        if (!latestDataManifestFile.exists())
+        if (!latestDataManifestFile->exists())
         {
             throw ostk::core::error::RuntimeError(
                 "Cannot fetch Data Manifest [{}] from [{}].",
-                latestDataManifestFile.toString(),
+                latestDataManifestFile->toString(),
                 latestDataManifestUrl.toString()
             );
         }
@@ -258,7 +248,7 @@ File Manager::fetchLatestManifestFile_() const
             // Check that file size is not zero
 
             std::uintmax_t latestDataManifestFileSize =
-                std::filesystem::file_size(std::string(latestDataManifestFile.getPath().toString()));
+                std::filesystem::file_size(std::string(latestDataManifestFile->getPath().toString()));
 
             if (latestDataManifestFileSize == 0)
             {
@@ -268,7 +258,7 @@ File Manager::fetchLatestManifestFile_() const
             }
         }
 
-        latestDataManifestFile.moveToDirectory(destinationDirectory);
+        latestDataManifestFile->moveToDirectory(destinationDirectory);
 
         temporaryDirectory.remove();
 
@@ -276,7 +266,7 @@ File Manager::fetchLatestManifestFile_() const
 
         std::cout << String::Format(
                          "Data Manifest [{}] has been successfully fetched from [{}].",
-                         latestDataManifestFile.toString(),
+                         latestDataManifestFile->toString(),
                          latestDataManifestUrl.toString()
                      )
                   << std::endl;
@@ -290,13 +280,12 @@ File Manager::fetchLatestManifestFile_() const
                      )
                   << std::endl;
 
-        if (latestDataManifestFile.isDefined() && latestDataManifestFile.exists())
+        if (latestDataManifestFile.has_value() && latestDataManifestFile->exists())
         {
-            latestDataManifestFile.remove();
-            latestDataManifestFile = File::Undefined();
+            latestDataManifestFile->remove();
         }
 
-        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
+        if (temporaryDirectory.exists())
         {
             temporaryDirectory.remove();
         }
@@ -306,7 +295,7 @@ File Manager::fetchLatestManifestFile_() const
         throw;
     }
 
-    return latestDataManifestFile;
+    return latestDataManifestFile.value();
 }
 
 Duration Manager::DataRefreshRate_()

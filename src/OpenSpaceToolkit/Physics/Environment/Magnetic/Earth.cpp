@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <GeographicLib/Constants.hpp>
 #include <GeographicLib/Geocentric.hpp>
 #include <GeographicLib/MagneticModel.hpp>
@@ -29,10 +31,10 @@ using GeographicLib::MagneticModel;
 ///
 /// @ref                        Markley F. L., Fundamentals of Spacecraft Attitude Determination and Control, p. 404
 
-static const Real a = 6371.2 * 1e3;        // [m]
-static const Real g_01 = -29554.63 / 1e9;  // [T]
-static const Real g_11 = -1669.05 / 1e9;   // [T]
-static const Real h_11 = 5077.99 / 1e9;    // [T]
+static const double a = 6371.2 * 1e3;        // [m]
+static const double g_01 = -29554.63 / 1e9;  // [T]
+static const double g_11 = -1669.05 / 1e9;   // [T]
+static const double h_11 = 5077.99 / 1e9;    // [T]
 
 static const Vector3d EarthMagneticMoment = Vector3d {g_11, h_11, g_01} * (a * a * a) * 1e7;  // [A⋅m2]
 
@@ -41,29 +43,29 @@ static const Dipole EarthDipole = {EarthMagneticMoment};
 class Earth::Impl
 {
    public:
-    Impl(const Earth::Type& aType, const Directory& aDataDirectory);
+    Impl(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory);
 
     Impl(const Impl& anImpl);
 
     ~Impl();
 
     Earth::Type getType() const;
-    Directory getDataDirectory() const;
-
-    bool isDefined() const;
+    std::optional<Directory> getDataDirectory() const;
 
     Vector3d getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const;
 
    private:
     Earth::Type type_;
-    Directory dataDirectory_;
+    std::optional<Directory> dataDirectory_;
 
     Unique<MagneticModel> magneticModelUPtr_;
 
-    static Unique<MagneticModel> MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory);
+    static Unique<MagneticModel> MagneticModelFromType(
+        const Earth::Type& aType, const std::optional<Directory>& aDataDirectory
+    );
 };
 
-Earth::Impl::Impl(const Earth::Type& aType, const Directory& aDataDirectory)
+Earth::Impl::Impl(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory)
     : type_(aType),
       dataDirectory_(aDataDirectory),
       magneticModelUPtr_(Earth::Impl::MagneticModelFromType(aType, aDataDirectory))
@@ -84,21 +86,14 @@ Earth::Type Earth::Impl::getType() const
     return type_;
 }
 
-Directory Earth::Impl::getDataDirectory() const
+std::optional<Directory> Earth::Impl::getDataDirectory() const
 {
     return dataDirectory_;
-}
-
-bool Earth::Impl::isDefined() const
-{
-    return magneticModelUPtr_ != nullptr;
 }
 
 Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& anInstant) const
 {
     using GeographicLib::Geocentric;
-
-    using ostk::core::type::Integer;
 
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
 
@@ -109,7 +104,7 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
         return EarthDipole.getFieldValueAt(aPosition, anInstant);
     }
 
-    const Integer year = anInstant.getDateTime(Scale::UTC).accessDate().getYear();
+    const int year = anInstant.getDateTime(Scale::UTC).getDate().getYear();
 
     if (((year < static_cast<int>(magneticModelUPtr_->MinTime())) ||
          (year > static_cast<int>(magneticModelUPtr_->MaxTime()))))
@@ -138,11 +133,11 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
     const double latitude_rad = latitude_deg * M_PI / 180.0;    // [rad]
     const double longitude_rad = longitude_deg * M_PI / 180.0;  // [rad]
 
-    const Real cos_lat = std::cos(latitude_rad);
-    const Real sin_lat = std::sin(latitude_rad);
+    const double cos_lat = std::cos(latitude_rad);
+    const double sin_lat = std::sin(latitude_rad);
 
-    const Real cos_lon = std::cos(longitude_rad);
-    const Real sin_lon = std::sin(longitude_rad);
+    const double cos_lon = std::cos(longitude_rad);
+    const double sin_lon = std::sin(longitude_rad);
 
     const RotationMatrix dcm_ECEF_NED = {
         -sin_lat * cos_lon,
@@ -161,28 +156,30 @@ Vector3d Earth::Impl::getFieldValueAt(const Vector3d& aPosition, const Instant& 
     return magneticField;
 }
 
-Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aType, const Directory& aDataDirectory)
+Unique<MagneticModel> Earth::Impl::MagneticModelFromType(
+    const Earth::Type& aType, const std::optional<Directory>& aDataDirectory
+)
 {
     using ostk::core::type::String;
 
     using ostk::physics::environment::magnetic::earth::Manager;
 
     // TBI: move dipole to an implementation class to align with other models
-    if (aType == Earth::Type::Undefined || aType == Earth::Type::Dipole)
+    if (aType == Earth::Type::Dipole)
     {
         return nullptr;
     }
 
     String dataPath = "";
 
-    if (aDataDirectory.isDefined())
+    if (aDataDirectory.has_value())
     {
-        if (!aDataDirectory.exists())
+        if (!aDataDirectory->exists())
         {
-            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory.toString());
+            throw ostk::core::error::RuntimeError("Data directory [{}] does not exist.", aDataDirectory->toString());
         }
 
-        dataPath = aDataDirectory.getPath().toString();
+        dataPath = aDataDirectory->getPath().toString();
     }
     else
     {
@@ -245,7 +242,7 @@ Unique<MagneticModel> Earth::Impl::MagneticModelFromType(const Earth::Type& aTyp
     return nullptr;
 }
 
-Earth::Earth(const Earth::Type& aType, const Directory& aDataDirectory)
+Earth::Earth(const Earth::Type& aType, const std::optional<Directory>& aDataDirectory)
     : Model(),
       implUPtr_(std::make_unique<Earth::Impl>(aType, aDataDirectory))
 {
@@ -279,16 +276,6 @@ Earth::~Earth() {}
 Earth* Earth::clone() const
 {
     return new Earth(*this);
-}
-
-bool Earth::isDefined() const
-{
-    if (implUPtr_ == nullptr)
-    {
-        return false;
-    }
-
-    return implUPtr_->isDefined();
 }
 
 Earth::Type Earth::getType() const

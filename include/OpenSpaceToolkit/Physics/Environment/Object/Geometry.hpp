@@ -71,8 +71,8 @@ class Geometry
     /// @brief Equal to operator
     ///
     /// @code
-    ///     Geometry geometryA = Geometry::Undefined();
-    ///     Geometry geometryB = Geometry::Undefined();
+    ///     Geometry geometryA = {composite, Frame::GCRF()};
+    ///     Geometry geometryB = {composite, Frame::GCRF()};
     ///     geometryA == geometryB;
     /// @endcode
     ///
@@ -84,8 +84,8 @@ class Geometry
     /// @brief Not equal to operator
     ///
     /// @code
-    ///     Geometry geometryA = Geometry::Undefined();
-    ///     Geometry geometryB = Geometry::Undefined();
+    ///     Geometry geometryA = {composite, Frame::GCRF()};
+    ///     Geometry geometryB = {composite, Frame::ITRF()};
     ///     geometryA != geometryB;
     /// @endcode
     ///
@@ -99,16 +99,6 @@ class Geometry
     /// @param [in] aGeometry A geometry
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Geometry& aGeometry);
-
-    /// @brief Check if geometry is defined
-    ///
-    /// @code
-    ///     Geometry geometry = Geometry::Undefined();
-    ///     geometry.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if geometry is defined
-    bool isDefined() const;
 
     /// @brief Print geometry to output stream
     ///
@@ -141,23 +131,32 @@ class Geometry
     /// @return True if geometry contains another geometry
     bool contains(const Geometry& aGeometry) const;
 
-    /// @brief Access composite
+    /// @brief Get composite
     ///
     /// @code
-    ///     const Composite& composite = geometry.accessComposite();
+    ///     const Composite& composite = geometry.getComposite();
     /// @endcode
     ///
-    /// @return Reference to composite
-    const Composite& accessComposite() const;
+    /// @return Const reference to composite
+    const Composite& getComposite() const&;
 
-    /// @brief Access frame
+    /// @brief Get composite of a temporary geometry
     ///
     /// @code
-    ///     Shared<const Frame> frame = geometry.accessFrame();
+    ///     const Composite composite = geometry.in(Frame::ITRF(), anInstant).getComposite();
     /// @endcode
     ///
-    /// @return Shared pointer to frame
-    Shared<const Frame> accessFrame() const;
+    /// @return Composite (copy, so that it does not dangle)
+    Composite getComposite() &&;
+
+    /// @brief Get frame
+    ///
+    /// @code
+    ///     const Shared<const Frame>& frame = geometry.getFrame();
+    /// @endcode
+    ///
+    /// @return Const reference to shared pointer to frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Get geometry expressed in a given frame
     ///
@@ -179,15 +178,6 @@ class Geometry
     /// @param [in] aGeometry A geometry
     /// @return Intersection of geometry with another geometry
     Geometry intersectionWith(const Geometry& aGeometry) const;
-
-    /// @brief Constructs an undefined geometry
-    ///
-    /// @code
-    ///     Geometry geometry = Geometry::Undefined(); // Undefined
-    /// @endcode
-    ///
-    /// @return Undefined geometry
-    static Geometry Undefined();
 
    private:
     Composite composite_;

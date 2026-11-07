@@ -5,7 +5,6 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Earth/Manager.hpp>
 
@@ -16,8 +15,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::io::URL;
@@ -95,9 +92,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, HasData
 {
     {
         EXPECT_TRUE(manager_.hasDataFilesForType(EarthGravitationalModel::Type::EGM2008));
-        EXPECT_THROW(
-            manager_.hasDataFilesForType(EarthGravitationalModel::Type::Undefined), ostk::core::error::runtime::Wrong
-        );
     }
 }
 
@@ -128,9 +122,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth_Manager, FetchDa
         );
 
         // No files for this exist remotely
-        EXPECT_THROW(
-            manager_.fetchDataFilesForType(EarthGravitationalModel::Type::Undefined), ostk::core::error::RuntimeError
-        );
     }
 
     {

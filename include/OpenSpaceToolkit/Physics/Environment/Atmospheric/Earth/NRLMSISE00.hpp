@@ -5,8 +5,6 @@
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
@@ -32,8 +30,6 @@ namespace earth
 
 using ostk::core::container::Array;
 using ostk::core::container::Tuple;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 using ostk::core::type::Unique;
@@ -67,12 +63,12 @@ class NRLMSISE00
 
     NRLMSISE00(
         const InputDataType& anInputDataType = InputDataType::CSSISpaceWeatherFile,
-        const Real& aF107ConstantValue = EarthAtmosphericModel::defaultF107ConstantValue,
-        const Real& af107aConstantValue = EarthAtmosphericModel::defaultF107AConstantValue,
-        const Real& aKpConstantValue = EarthAtmosphericModel::defaultKpConstantValue,
+        double aF107ConstantValue = EarthAtmosphericModel::defaultF107ConstantValue,
+        double af107aConstantValue = EarthAtmosphericModel::defaultF107AConstantValue,
+        double aKpConstantValue = EarthAtmosphericModel::defaultKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr = Frame::ITRF(),
         const Length& anEarthRadius = EarthGravitationalModel::WGS84.equatorialRadius_,
-        const Real& anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
+        double anEarthFlattening = EarthGravitationalModel::WGS84.flattening_,
         const Shared<Celestial>& aSunCelestialSPtr = nullptr
     );
 
@@ -85,16 +81,6 @@ class NRLMSISE00
     /// @return Pointer to NRLMSISE00 atmospheric model
 
     virtual NRLMSISE00* clone() const;
-
-    /// @brief Check if the NRLMSISE00 atmospheric model is defined
-    ///
-    /// @code
-    ///     model.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the NRLMSISE00 atmospheric model is defined
-
-    bool isDefined() const;
 
     /// @brief Get the input data source type used to construct the NRLMSISE00 atmospheric model
     ///
@@ -109,44 +95,44 @@ class NRLMSISE00
     /// @brief Get the constant value for F10.7 input parameter used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     Real f107 = model.getF107ConstantValue();
+    ///     double f107 = model.getF107ConstantValue();
     /// @endcode
     ///
     /// @return Constant value for F10.7 input parameter
 
-    Real getF107ConstantValue() const;
+    double getF107ConstantValue() const;
 
     /// @brief Get the constant value for F10.7a input parameter used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     Real f107a = model.getF107AConstantValue();
+    ///     double f107a = model.getF107AConstantValue();
     /// @endcode
     ///
     /// @return Constant value for F10.7a input parameter
 
-    Real getF107AConstantValue() const;
+    double getF107AConstantValue() const;
 
     /// @brief Get the constant value for Kp input parameter used to construct the NRLMSISE00 atmospheric model
     ///
     /// @code
-    ///     Real kp = model.getKpConstantValue();
+    ///     double kp = model.getKpConstantValue();
     /// @endcode
     ///
     /// @return Constant value for Kp input parameter
 
-    Real getKpConstantValue() const;
+    double getKpConstantValue() const;
 
     /// @brief Get the atmospheric density value at a given position and instant.
     ///
     /// @code
-    ///     Real density = model.getDensityAt(lla, instant);
+    ///     double density = model.getDensityAt(lla, instant);
     /// @endcode
     ///
     /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param [in] anInstant An instant
     /// @return Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
+    double getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
    protected:
     // redefine input structs from NRLMSISE-00.h to avoid including it in this header
@@ -174,13 +160,13 @@ class NRLMSISE00
     /// @brief Get the atmospheric density value by directly provided NRLMSISE input values.
     ///
     /// @code
-    ///     Real density = NRLMSISE00::GetDensityAt(input);
+    ///     double density = NRLMSISE00::GetDensityAt(input);
     /// @endcode
     ///
     /// @param [in] NRLMSISE input struct
     /// @return Atmospheric density value [kg.m^-3]
 
-    static Real GetDensityAt(nrlmsise_input& input);
+    static double GetDensityAt(nrlmsise_input& input);
 
     /// @brief Fill the provided array with AP values needed for the NRLMSISE model. The output array is filled like so:
     ///
@@ -216,22 +202,22 @@ class NRLMSISE00
     /// @brief Convert Kp index to Ap index
     ///
     /// @code
-    ///     Real ap = NRLMSISE00::convertKpToAp(kp);
+    ///     double ap = NRLMSISE00::convertKpToAp(kp);
     /// @endcode
     ///
     /// @param [in] aKp Kp index
     /// @return Ap index
 
-    static Real convertKpToAp(const Real& aKp);
+    static double convertKpToAp(double aKp);
 
    private:
     InputDataType inputDataType_;
-    Real f107ConstantValue_;
-    Real f107AConstantValue_;
-    Real kpConstantValue_;
+    double f107ConstantValue_;
+    double f107AConstantValue_;
+    double kpConstantValue_;
     Shared<const Frame> earthFrameSPtr_;
     Length earthRadius_;
-    Real earthFlattening_;
+    double earthFlattening_;
     Shared<Celestial> sunCelestialSPtr_;
 };
 

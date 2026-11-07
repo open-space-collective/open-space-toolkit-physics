@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Transform__
 #define __OpenSpaceToolkit_Physics_Coordinate_Transform__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/Quaternion.hpp>
@@ -18,7 +17,6 @@ namespace physics
 namespace coordinate
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
@@ -39,7 +37,6 @@ class Transform
     enum class Type
     {
 
-        Undefined,
         Active,
         Passive
 
@@ -118,15 +115,6 @@ class Transform
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Transform& aTransform);
 
-    /// @brief Check if the transform is defined
-    ///
-    /// @code
-    ///     Transform::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the transform is defined
-    bool isDefined() const;
-
     /// @brief Check if the transform is the identity transform
     ///
     /// @code
@@ -136,59 +124,14 @@ class Transform
     /// @return True if the transform is identity
     bool isIdentity() const;
 
-    /// @brief Access the instant
-    ///
-    /// @code
-    ///     transform.accessInstant();
-    /// @endcode
-    ///
-    /// @return Reference to the instant
-    const Instant& accessInstant() const;
-
-    /// @brief Access the translation vector
-    ///
-    /// @code
-    ///     transform.accessTranslation();
-    /// @endcode
-    ///
-    /// @return Reference to the translation vector
-    const Vector3d& accessTranslation() const;
-
-    /// @brief Access the velocity vector
-    ///
-    /// @code
-    ///     transform.accessVelocity();
-    /// @endcode
-    ///
-    /// @return Reference to the velocity vector
-    const Vector3d& accessVelocity() const;
-
-    /// @brief Access the orientation quaternion
-    ///
-    /// @code
-    ///     transform.accessOrientation();
-    /// @endcode
-    ///
-    /// @return Reference to the orientation quaternion
-    const Quaternion& accessOrientation() const;
-
-    /// @brief Access the angular velocity vector
-    ///
-    /// @code
-    ///     transform.accessAngularVelocity();
-    /// @endcode
-    ///
-    /// @return Reference to the angular velocity vector
-    const Vector3d& accessAngularVelocity() const;
-
     /// @brief Get the instant
     ///
     /// @code
     ///     transform.getInstant();
     /// @endcode
     ///
-    /// @return Instant
-    Instant getInstant() const;
+    /// @return Const reference to the instant
+    const Instant& getInstant() const;
 
     /// @brief Get the translation vector
     ///
@@ -196,8 +139,8 @@ class Transform
     ///     transform.getTranslation();
     /// @endcode
     ///
-    /// @return Translation vector
-    Vector3d getTranslation() const;
+    /// @return Const reference to the translation vector
+    const Vector3d& getTranslation() const;
 
     /// @brief Get the velocity vector
     ///
@@ -205,8 +148,8 @@ class Transform
     ///     transform.getVelocity();
     /// @endcode
     ///
-    /// @return Velocity vector
-    Vector3d getVelocity() const;
+    /// @return Const reference to the velocity vector
+    const Vector3d& getVelocity() const;
 
     /// @brief Get the orientation quaternion
     ///
@@ -214,8 +157,8 @@ class Transform
     ///     transform.getOrientation();
     /// @endcode
     ///
-    /// @return Orientation quaternion
-    Quaternion getOrientation() const;
+    /// @return Const reference to the orientation quaternion
+    const Quaternion& getOrientation() const;
 
     /// @brief Get the angular velocity vector
     ///
@@ -223,8 +166,8 @@ class Transform
     ///     transform.getAngularVelocity();
     /// @endcode
     ///
-    /// @return Angular velocity vector
-    Vector3d getAngularVelocity() const;
+    /// @return Const reference to the angular velocity vector
+    const Vector3d& getAngularVelocity() const;
 
     /// @brief Get the inverse of the transform
     ///
@@ -265,15 +208,6 @@ class Transform
     /// @param [in] aVector A vector
     /// @return Rotated vector
     Vector3d applyToVector(const Vector3d& aVector) const;
-
-    /// @brief Construct an undefined transform
-    ///
-    /// @code
-    ///     Transform transform = Transform::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined transform
-    static Transform Undefined();
 
     /// @brief Construct an identity transform at a given instant
     ///

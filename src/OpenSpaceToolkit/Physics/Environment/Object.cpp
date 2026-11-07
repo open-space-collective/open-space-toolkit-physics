@@ -14,7 +14,7 @@ namespace environment
 
 Object::Object(const String& aName)
     : name_(aName),
-      geometry_(Geometry::Undefined())
+      geometry_(std::nullopt)
 {
 }
 
@@ -55,44 +55,25 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Object& anObject)
     return anOutputStream;
 }
 
-bool Object::isDefined() const
+const String& Object::getName() const
 {
-    return !name_.isEmpty();
-}
-
-const String& Object::accessName() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Object");
-    }
-
     return name_;
 }
 
-const Object::Geometry& Object::accessGeometry() const
+const std::optional<Object::Geometry>& Object::getGeometry() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Object");
-    }
-
     return geometry_;
 }
 
-String Object::getName() const
+std::optional<Object::Geometry> Object::getGeometryIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant)
+    const
 {
-    return this->accessName();
-}
+    if (!geometry_.has_value())
+    {
+        return std::nullopt;
+    }
 
-Object::Geometry Object::getGeometry() const
-{
-    return this->accessGeometry();
-}
-
-Object::Geometry Object::getGeometryIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
-{
-    return this->accessGeometry().in(aFrameSPtr, anInstant);
+    return geometry_->in(aFrameSPtr, anInstant);
 }
 
 }  // namespace environment

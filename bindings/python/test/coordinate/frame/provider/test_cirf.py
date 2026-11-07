@@ -24,9 +24,6 @@ class TestCIRF:
     def test_constructor_success(self):
         assert isinstance(CIRF(), CIRF)
 
-    def test_is_defined_success(self, cirf: CIRF):
-        assert cirf.is_defined() is True
-
     def test_get_transform_at_success(self, cirf: CIRF, instant: Instant):
         assert isinstance(cirf.get_transform_at(instant), Transform)
 

@@ -2,12 +2,10 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Mass.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
 
     using ostk::physics::unit::Mass;
@@ -23,18 +21,32 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
     );
 
     mass.def(
-            init<Real, Mass::Unit>(),
+            init<double, Mass::Unit>(),
             R"doc(
             Constructor.
 
             Args:
-                aReal (Real): A real number.
+                aReal (float): A real number.
                 aUnit (Mass.Unit): A mass unit.
         )doc"
     )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         // .def("__str__", &(shiftToString<Mass>))
         .def(
@@ -43,17 +55,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
             {
                 return aMass.toString();
             }
-        )
-
-        .def(
-            "is_defined",
-            &Mass::isDefined,
-            R"doc(
-                Check if the mass is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
         )
 
         .def(
@@ -89,7 +90,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
         .def(
             "to_string",
             &Mass::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Convert mass to string.
 
@@ -101,16 +102,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Mass::Undefined,
-            R"doc(
-                Get an undefined mass.
-
-                Returns:
-                    Mass: An undefined mass.
-            )doc"
-        )
         .def_static(
             "kilograms",
             &Mass::Kilograms,
@@ -156,13 +147,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(pybind11::module& aModule)
 
     enum_<Mass::Unit>(mass, "Unit")
 
-        .value(
-            "Undefined",
-            Mass::Unit::Undefined,
-            R"doc(
-                Undefined.
-            )doc"
-        )
         .value(
             "Kilogram",
             Mass::Unit::Kilogram,

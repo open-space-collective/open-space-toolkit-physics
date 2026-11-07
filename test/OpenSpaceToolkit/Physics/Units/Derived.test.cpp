@@ -1,12 +1,12 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <limits>
+
+#include <OpenSpaceToolkit/Core/Error.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Derived.hpp>
 
 #include <Global.test.hpp>
-
-using ostk::core::type::Real;
 
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Derived;
@@ -18,7 +18,7 @@ using ostk::physics::unit::Time;
 TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
 {
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Derived::Unit unit = {
             Length::Unit::Meter,
             Derived::Order::One(),
@@ -36,7 +36,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
     }
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Derived::Unit unit = {
             Length::Unit::Meter,
             Derived::Order::Two(),
@@ -46,7 +46,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
             {3, 2},
             ElectricCurrent::Unit::Ampere,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0}
         };
 
@@ -54,7 +54,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
     }
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Derived::Unit unit = {
             Length::Unit::Meter,
             {1, 2},
@@ -62,9 +62,9 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
             {1},
             Time::Unit::Second,
             {3, 2},
-            ElectricCurrent::Unit::Undefined,
+            std::nullopt,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0}
         };
 
@@ -72,10 +72,61 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, Constructor)
     }
 
     {
-        const Real value = Real::Undefined();
-        const Derived::Unit unit = Derived::Unit::Undefined();
+        const double value = std::numeric_limits<double>::quiet_NaN();
+        const Derived::Unit unit = Derived::Unit::SquareMeter();
 
         EXPECT_NO_THROW(Derived(value, unit));
+    }
+
+    {
+        // A dimension with a non-zero order needs a unit
+
+        EXPECT_THROW(
+            Derived::Unit(
+                std::nullopt,
+                Derived::Order::One(),
+                std::nullopt,
+                Derived::Order::Zero(),
+                std::nullopt,
+                Derived::Order::Zero(),
+                std::nullopt,
+                Derived::Order::Zero(),
+                std::nullopt,
+                Derived::Order::Zero()
+            ),
+            ostk::core::error::runtime::Wrong
+        );
+
+        EXPECT_THROW(
+            Derived::Unit(
+                Length::Unit::Meter,
+                Derived::Order::One(),
+                std::nullopt,
+                Derived::Order::Zero(),
+                std::nullopt,
+                Derived::Order::Zero(),
+                std::nullopt,
+                Derived::Order::Zero(),
+                std::nullopt,
+                {-1}
+            ),
+            ostk::core::error::runtime::Wrong
+        );
+
+        // An absent dimension has no unit
+
+        EXPECT_NO_THROW(Derived::Unit(
+            Length::Unit::Meter,
+            Derived::Order::One(),
+            std::nullopt,
+            Derived::Order::Zero(),
+            std::nullopt,
+            Derived::Order::Zero(),
+            std::nullopt,
+            Derived::Order::Zero(),
+            std::nullopt,
+            Derived::Order::Zero()
+        ));
     }
 }
 
@@ -184,7 +235,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //         EXPECT_TRUE(Derived(+1.0, Derived::Unit::Meter) != Derived(-1.0, Derived::Unit::Meter)) ;
 //         EXPECT_TRUE(Derived(1.0, Derived::Unit::Meter) != Derived(2.0, Derived::Unit::Meter)) ;
-//         EXPECT_TRUE(Derived::Undefined() != Derived::Undefined()) ;
 
 //     }
 
@@ -227,10 +277,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived::Undefined() < Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) < Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() < Derived::Undefined()) ;
-
 //     }
 
 // }
@@ -255,10 +301,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 //     }
 
 //     {
-
-//         EXPECT_ANY_THROW(Derived::Undefined() <= Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) <= Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() <= Derived::Undefined()) ;
 
 //     }
 
@@ -286,10 +328,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived::Undefined() > Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) > Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() > Derived::Undefined()) ;
-
 //     }
 
 // }
@@ -314,10 +352,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 //     }
 
 //     {
-
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) >= Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() >= Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() >= Derived::Undefined()) ;
 
 //     }
 
@@ -347,10 +381,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) + Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() + Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() + Derived::Undefined()) ;
-
 //     }
 
 // }
@@ -379,10 +409,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) - Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() - Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() - Derived::Undefined()) ;
-
 //     }
 
 // }
@@ -390,7 +416,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, MultiplicationOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -438,8 +464,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) * Real::Undefined()) ;
-//         EXPECT_ANY_THROW(Real::Undefined() * Derived(1.0, Derived::Unit::Meter)) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) * std::numeric_limits<double>::quiet_NaN()) ;
+//         EXPECT_ANY_THROW(std::numeric_limits<double>::quiet_NaN() * Derived(1.0, Derived::Unit::Meter)) ;
 
 //     }
 
@@ -448,7 +474,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, DivisionOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -478,8 +504,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / Real::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / Real::Zero()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / std::numeric_limits<double>::quiet_NaN()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) / 0.0) ;
 
 //     }
 
@@ -509,10 +535,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) += Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() += Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() += Derived::Undefined()) ;
-
 //     }
 
 // }
@@ -541,10 +563,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) -= Derived::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() -= Derived(1.0, Derived::Unit::Meter)) ;
-//         EXPECT_ANY_THROW(Derived::Undefined() -= Derived::Undefined()) ;
-
 //     }
 
 // }
@@ -552,7 +570,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, MultiplicationAssignmentOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -582,7 +600,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) *= Real::Undefined()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) *= std::numeric_limits<double>::quiet_NaN()) ;
 
 //     }
 
@@ -591,7 +609,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 // TEST (OpenSpaceToolkit_Physics_Unit_Derived, DivisionAssignmentOperator)
 // {
 
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
 
@@ -621,8 +639,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= Real::Undefined()) ;
-//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= Real::Zero()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= std::numeric_limits<double>::quiet_NaN()) ;
+//         EXPECT_ANY_THROW(Derived(1.0, Derived::Unit::Meter) /= 0.0) ;
 
 //     }
 
@@ -643,28 +661,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Unit_Derived, IsDefined)
-// {
-
-//     using ostk::core::type::Real ;
+//     using double ;
 
 //     {
-
-//         EXPECT_TRUE(Derived(0.0, Derived::Unit::Meter).isDefined()) ;
-
-//         EXPECT_TRUE(Derived(1.0, Derived::Unit::Meter).isDefined()) ;
-//         EXPECT_TRUE(Derived(1.0, Derived::Unit::Foot).isDefined()) ;
-//         EXPECT_TRUE(Derived(1.0, Derived::Unit::TerrestrialMile).isDefined()) ;
-//         EXPECT_TRUE(Derived(1.0, Derived::Unit::NauticalMile).isDefined()) ;
-//         EXPECT_TRUE(Derived(1.0, Derived::Unit::AstronomicalUnit).isDefined()) ;
 
 //     }
 
 //     {
-
-//         EXPECT_FALSE(Derived::Undefined().isDefined()) ;
-//         EXPECT_FALSE(Derived(Real::Undefined(), Derived::Unit::Meter).isDefined()) ;
-//         EXPECT_FALSE(Derived(1.0, Derived::Unit::Undefined).isDefined()) ;
 
 //     }
 
@@ -675,7 +678,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_EQ(Derived::Unit::Undefined, Derived(1.0, Derived::Unit::Undefined).getUnit()) ;
 //         EXPECT_EQ(Derived::Unit::Meter, Derived(1.0, Derived::Unit::Meter).getUnit()) ;
 //         EXPECT_EQ(Derived::Unit::Foot, Derived(1.0, Derived::Unit::Foot).getUnit()) ;
 //         EXPECT_EQ(Derived::Unit::TerrestrialMile, Derived(1.0, Derived::Unit::TerrestrialMile).getUnit()) ;
@@ -701,8 +703,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_FALSE(Derived::Undefined().in(Derived::Unit::Meter).isDefined()) ;
-
 //     }
 
 // }
@@ -718,8 +718,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_FALSE(Derived::Undefined().inMeters().isDefined()) ;
-
 //     }
 
 // }
@@ -734,8 +732,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 //     }
 
 //     {
-
-//         EXPECT_FALSE(Derived::Undefined().inKilometers().isDefined()) ;
 
 //     }
 
@@ -768,21 +764,11 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_ANY_THROW(Derived::Undefined().toString()) ;
-
 //     }
 
 // }
 
-// TEST (OpenSpaceToolkit_Physics_Unit_Derived, Undefined)
-// {
-
 //     {
-
-//         EXPECT_NO_THROW(Derived::Undefined()) ;
-//         EXPECT_FALSE(Derived::Undefined().isDefined()) ;
-
-//         EXPECT_NO_THROW(Derived::Undefined().in(Derived::Unit::Meter)) ;
 
 //     }
 
@@ -794,7 +780,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 //     {
 
 //         EXPECT_NO_THROW(Derived::Meters(123.456)) ;
-//         EXPECT_TRUE(Derived::Meters(123.456).isDefined()) ;
 
 //         EXPECT_EQ(123.456, Derived::Meters(123.456).in(Derived::Unit::Meter)) ;
 
@@ -808,7 +793,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 //     {
 
 //         EXPECT_NO_THROW(Derived::Kilometers(123.456)) ;
-//         EXPECT_TRUE(Derived::Kilometers(123.456).isDefined()) ;
 
 //         EXPECT_EQ(123456.0, Derived::Kilometers(123.456).in(Derived::Unit::Meter)) ;
 
@@ -834,7 +818,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 //     {
 
-//         EXPECT_EQ("Undefined", Derived::StringFromUnit(Derived::Unit::Undefined)) ;
 //         EXPECT_EQ("Meter", Derived::StringFromUnit(Derived::Unit::Meter)) ;
 //         EXPECT_EQ("Foot", Derived::StringFromUnit(Derived::Unit::Foot)) ;
 //         EXPECT_EQ("Terrestrial Mile", Derived::StringFromUnit(Derived::Unit::TerrestrialMile)) ;
@@ -845,24 +828,49 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived, EqualToOperator)
 
 // }
 
+TEST(OpenSpaceToolkit_Physics_Unit_Derived, In)
+{
+    {
+        // Same unit
+        const Derived::Unit squareMeter = Derived::Unit::SquareMeter();
+
+        EXPECT_DOUBLE_EQ(2.0, Derived(2.0, squareMeter).in(squareMeter));
+    }
+
+    {
+        // Compatible units are converted
+        EXPECT_NEAR(
+            2.0 / (0.3048 * 0.3048 * 0.3048),
+            Derived(2.0, Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second))
+                .in(Derived::Unit::GravitationalParameter(Length::Unit::Foot, Time::Unit::Second)),
+            1e-9
+        );
+    }
+
+    {
+        // NaN values convert to NaN
+        EXPECT_TRUE(std::isnan(Derived(
+                                   std::numeric_limits<double>::quiet_NaN(),
+                                   Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second)
+        )
+                                   .in(Derived::Unit::GravitationalParameter(Length::Unit::Foot, Time::Unit::Second))));
+    }
+
+    {
+        // Incompatible units throw
+        EXPECT_THROW(
+            Derived(2.0, Derived::Unit::SquareMeter()).in(Derived::Unit::CubicMeter()), ostk::core::error::RuntimeError
+        );
+    }
+}
+
 TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, SquareMeter)
 {
     {
         const Derived::Unit derivedUnit = Derived::Unit::SquareMeter();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {2},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Undefined,
-            {0},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {2}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -874,19 +882,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, CubicMeter)
     {
         const Derived::Unit derivedUnit = Derived::Unit::CubicMeter();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {3},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Undefined,
-            {0},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {3}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -898,19 +895,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Hertz)
     {
         const Derived::Unit derivedUnit = Derived::Unit::Hertz();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
-            {0},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -922,8 +908,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Watt)
     {
         const Derived::Unit derivedUnit = Derived::Unit::Watt();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
             Length::Unit::Meter,
             {2},
@@ -931,9 +915,9 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Watt)
             {1},
             Time::Unit::Second,
             {-3},
-            ElectricCurrent::Unit::Undefined,
+            std::nullopt,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0}
         };
 
@@ -946,10 +930,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Tesla)
     {
         const Derived::Unit derivedUnit = Derived::Unit::Tesla();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
+            std::nullopt,
             {0},
             Mass::Unit::Kilogram,
             {1},
@@ -957,7 +939,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Tesla)
             {-2},
             ElectricCurrent::Unit::Ampere,
             {-1},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0}
         };
 
@@ -970,8 +952,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Newton)
     {
         const Derived::Unit derivedUnit = Derived::Unit::Newton();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
             Length::Unit::Meter,
             {1},
@@ -979,9 +959,9 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Newton)
             {1},
             Time::Unit::Second,
             {-2},
-            ElectricCurrent::Unit::Undefined,
+            std::nullopt,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0}
         };
 
@@ -994,19 +974,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, KilogramPerSecond)
     {
         const Derived::Unit derivedUnit = Derived::Unit::KilogramPerSecond();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
-            {0},
-            Mass::Unit::Kilogram,
-            {1},
-            Time::Unit::Second,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            std::nullopt, {0}, Mass::Unit::Kilogram, {1}, Time::Unit::Second, {-1}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1018,19 +987,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MeterPerSecond)
     {
         const Derived::Unit derivedUnit = Derived::Unit::MeterPerSecond();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {1},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {1}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1042,19 +1000,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MeterPerSecondSquared)
     {
         const Derived::Unit derivedUnit = Derived::Unit::MeterPerSecondSquared();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {1},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-2},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {1}, std::nullopt, {0}, Time::Unit::Second, {-2}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1066,19 +1013,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MeterCubedPerSecondSquared)
     {
         const Derived::Unit derivedUnit = Derived::Unit::MeterCubedPerSecondSquared();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {3},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-2},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {3}, std::nullopt, {0}, Time::Unit::Second, {-2}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1090,19 +1026,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, RadianPerSecond)
     {
         const Derived::Unit derivedUnit = Derived::Unit::RadianPerSecond();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
-            {0},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Radian,
-            {1}
+            std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, Angle::Unit::Radian, {1}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1114,19 +1039,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, RevolutionPerDay)
     {
         const Derived::Unit derivedUnit = Derived::Unit::RevolutionPerDay();
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
-            {0},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Day,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Revolution,
-            {1}
+            std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Day, {-1}, std::nullopt, {0}, Angle::Unit::Revolution, {1}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1138,19 +1052,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Velocity)
     {
         const Derived::Unit derivedUnit = Derived::Unit::Velocity(Length::Unit::Meter, Time::Unit::Second);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {1},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {1}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1162,19 +1065,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Acceleration)
     {
         const Derived::Unit derivedUnit = Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {1},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-2},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {1}, std::nullopt, {0}, Time::Unit::Second, {-2}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1187,19 +1079,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, GravitationalParameter)
         const Derived::Unit derivedUnit =
             Derived::Unit::GravitationalParameter(Length::Unit::Meter, Time::Unit::Second);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Meter,
-            {3},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-2},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
+            Length::Unit::Meter, {3}, std::nullopt, {0}, Time::Unit::Second, {-2}, std::nullopt, {0}, std::nullopt, {0}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1211,19 +1092,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, AngularVelocity)
     {
         const Derived::Unit derivedUnit = Derived::Unit::AngularVelocity(Angle::Unit::Radian, Time::Unit::Second);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
-            {0},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Second,
-            {-1},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Radian,
-            {1}
+            std::nullopt, {0}, std::nullopt, {0}, Time::Unit::Second, {-1}, std::nullopt, {0}, Angle::Unit::Radian, {1}
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
@@ -1236,8 +1106,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Force)
         const Derived::Unit derivedUnit =
             Derived::Unit::Force(Mass::Unit::Kilogram, Length::Unit::Meter, Time::Unit::Second);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
             Length::Unit::Meter,
             {1},
@@ -1245,9 +1113,9 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Force)
             {1},
             Time::Unit::Second,
             {-2},
-            ElectricCurrent::Unit::Undefined,
+            std::nullopt,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0},
         };
 
@@ -1260,18 +1128,16 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MassFlowRate)
     {
         const Derived::Unit derivedUnit = Derived::Unit::MassFlowRate(Mass::Unit::Kilogram, Time::Unit::Second);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
+            std::nullopt,
             {0},
             Mass::Unit::Kilogram,
             {1},
             Time::Unit::Second,
             {-1},
-            ElectricCurrent::Unit::Undefined,
+            std::nullopt,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0},
         };
 
@@ -1284,46 +1150,19 @@ TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, MassDensity)
     {
         const Derived::Unit derivedUnit = Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter);
 
-        EXPECT_TRUE(derivedUnit.isDefined());
-
         const Derived::Unit expectedDerivedUnit = {
             Length::Unit::Meter,
             {-3},
             Mass::Unit::Kilogram,
             {1},
-            Time::Unit::Undefined,
+            std::nullopt,
             {0},
-            ElectricCurrent::Unit::Undefined,
+            std::nullopt,
             {0},
-            Angle::Unit::Undefined,
+            std::nullopt,
             {0},
         };
 
         EXPECT_EQ(expectedDerivedUnit, derivedUnit);
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Unit_Derived_Unit, Undefined)
-{
-    {
-        const Derived::Unit derivedUnit = Derived::Unit::Undefined();
-
-        EXPECT_FALSE(derivedUnit.isDefined());
-
-        const Derived::Unit expectedDerivedUnit = {
-            Length::Unit::Undefined,
-            {0},
-            Mass::Unit::Undefined,
-            {0},
-            Time::Unit::Undefined,
-            {0},
-            ElectricCurrent::Unit::Undefined,
-            {0},
-            Angle::Unit::Undefined,
-            {0}
-        };
-
-        // Undefined objects are returned as false when == is used
-        EXPECT_FALSE(expectedDerivedUnit == derivedUnit);
     }
 }

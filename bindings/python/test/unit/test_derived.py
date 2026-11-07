@@ -1,5 +1,7 @@
 # Apache License 2.0
 
+import pytest
+
 from ostk.physics.unit import Length
 from ostk.physics.unit import Time
 from ostk.physics.unit import Angle
@@ -128,12 +130,39 @@ class TestDerived:
         assert derived_unit is not None
         assert isinstance(derived_unit, Derived.Unit)
 
-    def test_unit_derived_unit_undefined(self):
-        derived_unit: Derived.Unit = Derived.Unit.undefined()
+    def test_unit_derived_unit_constructor_absent_dimensions(self):
+        # A dimension that is absent from the unit has a unit of None and an order of zero
+        derived_unit: Derived.Unit = Derived.Unit(
+            Length.Unit.Meter,
+            Derived.Order(1),
+            None,
+            Derived.Order(0),
+            Time.Unit.Second,
+            Derived.Order(-1),
+            None,
+            Derived.Order(0),
+            None,
+            Derived.Order(0),
+        )
 
-        assert derived_unit is not None
         assert isinstance(derived_unit, Derived.Unit)
-        assert derived_unit.is_defined() is False
+        assert derived_unit == Derived.Unit.meter_per_second()
+
+    def test_unit_derived_unit_constructor_missing_unit(self):
+        # A dimension with a non-zero order needs a unit
+        with pytest.raises(RuntimeError):
+            Derived.Unit(
+                None,
+                Derived.Order(1),
+                None,
+                Derived.Order(0),
+                None,
+                Derived.Order(0),
+                None,
+                Derived.Order(0),
+                None,
+                Derived.Order(0),
+            )
 
     def test_unit_derived_unit_comparators(self):
         derived_unit: Derived.Unit = Derived.Unit.square_meter()

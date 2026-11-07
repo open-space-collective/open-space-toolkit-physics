@@ -43,11 +43,6 @@ Frame::~Frame() {}
 
 bool Frame::operator==(const Frame& aFrame) const
 {
-    if ((!this->isDefined()) || (!aFrame.isDefined()))
-    {
-        return false;
-    }
-
     return (name_ == aFrame.name_) && (quasiInertial_ == aFrame.quasiInertial_) &&
            (((parentFrameSPtr_ == nullptr) && (aFrame.parentFrameSPtr_ == nullptr)) ||
             ((parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_ != nullptr) &&
@@ -65,52 +60,29 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Frame& aFrame)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Frame");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Name:" << (aFrame.isDefined() ? aFrame.getName() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Name:" << aFrame.getName();
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Quasi-inertial:" << (aFrame.isDefined() ? String::Format("{}", aFrame.isQuasiInertial()) : "Undefined");
+        << "Quasi-inertial:" << String::Format("{}", aFrame.isQuasiInertial());
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Parent frame:"
-        << (((aFrame.parentFrameSPtr_ != nullptr) && (aFrame.parentFrameSPtr_->isDefined()))
-                ? aFrame.parentFrameSPtr_->getName()
-                : "None");
+        << "Parent frame:" << ((aFrame.parentFrameSPtr_ != nullptr) ? aFrame.parentFrameSPtr_->getName() : "None");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Frame::isDefined() const
-{
-    return (!name_.isEmpty()) && (providerSPtr_ != nullptr);
-}
-
 bool Frame::isQuasiInertial() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return quasiInertial_;
 }
 
 bool Frame::hasParent() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return parentFrameSPtr_ != nullptr;
 }
 
-Shared<const Frame> Frame::accessParent() const
+const Shared<const Frame>& Frame::getParent() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     if (parentFrameSPtr_ == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Parent");
@@ -119,13 +91,8 @@ Shared<const Frame> Frame::accessParent() const
     return parentFrameSPtr_;
 }
 
-Shared<const Frame> Frame::accessAncestor(const Uint8 anAncestorDegree) const
+Shared<const Frame> Frame::getAncestor(const Uint8 anAncestorDegree) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     if (anAncestorDegree == 0)
     {
         return this->shared_from_this();
@@ -142,40 +109,25 @@ Shared<const Frame> Frame::accessAncestor(const Uint8 anAncestorDegree) const
 
     for (Uint8 degree = 0; degree < anAncestorDegree; ++degree)
     {
-        frameSPtr = frameSPtr->accessParent();
+        frameSPtr = frameSPtr->getParent();
     }
 
     return frameSPtr;
 }
 
-Shared<const Provider> Frame::accessProvider() const
+const Shared<const Provider>& Frame::getProvider() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return providerSPtr_;
 }
 
-String Frame::getName() const
+const String& Frame::getName() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
     return name_;
 }
 
 Position Frame::getOriginIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -187,12 +139,7 @@ Position Frame::getOriginIn(const Shared<const Frame>& aFrameSPtr, const Instant
 
 Velocity Frame::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -206,12 +153,7 @@ Velocity Frame::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Insta
 
 Axes Frame::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -227,12 +169,7 @@ Axes Frame::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
 
 Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if ((!this->isDefined()) || (aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
@@ -244,18 +181,19 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     const Shared<const Frame> thisSPtr = this->shared_from_this();
 
-    const Transform transform = FrameManager::Get().accessCachedTransform(thisSPtr, aFrameSPtr, anInstant);
+    const std::optional<Transform> cachedTransform =
+        FrameManager::Get().getCachedTransform(thisSPtr, aFrameSPtr, anInstant);
 
-    if (transform.isDefined())
+    if (cachedTransform.has_value())
     {
-        return transform;
+        return cachedTransform.value();
     }
 
     // Find common ancestor
 
     const Shared<const Frame> commonAncestorSPtr = Frame::FindCommonAncestor(thisSPtr, aFrameSPtr);
 
-    if ((commonAncestorSPtr == nullptr) || (!commonAncestorSPtr->isDefined()))
+    if ((commonAncestorSPtr == nullptr))
     {
         throw ostk::core::error::RuntimeError(
             "No common ancestor between [{}] and [{}].", this->getName(), aFrameSPtr->getName()
@@ -266,19 +204,18 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
 
     Transform transform_origin_common = Transform::Identity(anInstant);
 
-    for (auto framePtr = this; (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->accessParent().get())
+    for (auto framePtr = this; (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->getParent().get())
     {
-        transform_origin_common *= framePtr->accessProvider()->getTransformAt(anInstant);
+        transform_origin_common *= framePtr->getProvider()->getTransformAt(anInstant);
     }
 
     // Compute transform from destination to common ancestor
 
     Transform transform_destination_common = Transform::Identity(anInstant);
 
-    for (auto framePtr = aFrameSPtr.get(); (*framePtr) != (*commonAncestorSPtr);
-         framePtr = framePtr->accessParent().get())
+    for (auto framePtr = aFrameSPtr.get(); (*framePtr) != (*commonAncestorSPtr); framePtr = framePtr->getParent().get())
     {
-        transform_destination_common *= framePtr->accessProvider()->getTransformAt(anInstant);
+        transform_destination_common *= framePtr->getProvider()->getTransformAt(anInstant);
     }
 
     // Compute transform from origin to destination
@@ -288,11 +225,6 @@ Transform Frame::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Ins
     FrameManager::Get().addCachedTransform(thisSPtr, aFrameSPtr, anInstant, transform_destination_origin);
 
     return transform_destination_origin;
-}
-
-Shared<const Frame> Frame::Undefined()
-{
-    return std::make_shared<const SharedFrameEnabler>(String::Empty(), false, nullptr, nullptr);
 }
 
 Shared<const Frame> Frame::GCRF()
@@ -398,7 +330,7 @@ Shared<const Frame> Frame::WithName(const String& aName)
         throw ostk::core::error::runtime::Undefined("Name");
     }
 
-    if (const auto frameSPtr = FrameManager::Get().accessFrameWithName(aName))
+    if (const auto frameSPtr = FrameManager::Get().getFrameWithName(aName))
     {
         return frameSPtr;
     }
@@ -463,6 +395,15 @@ Frame::Frame(
       parentFrameSPtr_(aParentFrame),
       providerSPtr_(aProvider)
 {
+    if (name_.isEmpty())
+    {
+        throw ostk::core::error::runtime::Undefined("Name");
+    }
+
+    if (providerSPtr_ == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Provider");
+    }
 }
 
 Uint8 Frame::getDepth() const
@@ -480,7 +421,7 @@ Uint8 Frame::getDepth() const
 
         depth++;
 
-        frameSPtr = frameSPtr->accessParent();
+        frameSPtr = frameSPtr->getParent();
     }
 
     return depth;
@@ -493,7 +434,7 @@ Shared<const Frame> Frame::Emplace(
     const Shared<const Provider>& aProvider
 )
 {
-    if (const auto frameSPtr = FrameManager::Get().accessFrameWithName(aName))
+    if (const auto frameSPtr = FrameManager::Get().getFrameWithName(aName))
     {
         return frameSPtr;
     }
@@ -514,16 +455,16 @@ Shared<const Frame> Frame::FindCommonAncestor(
     const Uint8 secondFrameDepth = aSecondFrameSPtr->getDepth();
 
     Shared<const Frame> currentFSPtr = (firstFrameDepth > secondFrameDepth)
-                                         ? aFirstFrameSPtr->accessAncestor(firstFrameDepth - secondFrameDepth)
+                                         ? aFirstFrameSPtr->getAncestor(firstFrameDepth - secondFrameDepth)
                                          : aFirstFrameSPtr;
     Shared<const Frame> currentTSPtr = (firstFrameDepth > secondFrameDepth)
                                          ? aSecondFrameSPtr
-                                         : aSecondFrameSPtr->accessAncestor(secondFrameDepth - firstFrameDepth);
+                                         : aSecondFrameSPtr->getAncestor(secondFrameDepth - firstFrameDepth);
 
     while ((*currentFSPtr) != (*currentTSPtr))
     {
-        currentFSPtr = currentFSPtr->accessParent();
-        currentTSPtr = currentTSPtr->accessParent();
+        currentFSPtr = currentFSPtr->getParent();
+        currentTSPtr = currentTSPtr->getParent();
     }
 
     return currentFSPtr;

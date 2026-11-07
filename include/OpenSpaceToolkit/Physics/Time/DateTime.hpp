@@ -3,8 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Time_DateTime__
 #define __OpenSpaceToolkit_Physics_Time_DateTime__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
@@ -17,7 +18,6 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::physics::time::Date;
 using ostk::physics::time::Time;
@@ -37,10 +37,9 @@ class DateTime
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss)
-        ISO8601,    ///< ISO 8601 format (YYYY-MM-DDThh:mm:ss.sssssssss)
-        STK         ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
+        Standard,  ///< Standard format (YYYY-MM-DD hh:mm:ss.sss.sss.sss)
+        ISO8601,   ///< ISO 8601 format (YYYY-MM-DDThh:mm:ss.sssssssss)
+        STK        ///< STK format (d Mon YYYY hh:mm:ss.sssssssss)
 
     };
 
@@ -118,50 +117,23 @@ class DateTime
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const DateTime& aDateTime);
 
-    /// @brief Check if date-time is defined
-    ///
-    /// @code
-    ///     DateTime(Date(2018, 1, 2), Time(12, 34, 56, 123, 456, 789)).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if date-time is defined
-    bool isDefined() const;
-
-    /// @brief Get reference to date
-    ///
-    /// @code
-    ///     const Date& date = DateTime(2018, 1, 2, 12, 34, 56).accessDate();
-    /// @endcode
-    ///
-    /// @return Reference to date
-    const Date& accessDate() const;
-
-    /// @brief Get reference to time
-    ///
-    /// @code
-    ///     const Time& time = DateTime(2018, 1, 2, 12, 34, 56).accessTime();
-    /// @endcode
-    ///
-    /// @return Reference to time
-    const Time& accessTime() const;
-
     /// @brief Get date
     ///
     /// @code
-    ///     Date date = DateTime(2018, 1, 2, 12, 34, 56).getDate(); // 2018-01-02
+    ///     Date date = DateTime(2018, 1, 2, 12, 34, 56).getDate();
     /// @endcode
     ///
-    /// @return Date
-    Date getDate() const;
+    /// @return Const reference to date
+    const Date& getDate() const;
 
     /// @brief Get time
     ///
     /// @code
-    ///     Time time = DateTime(2018, 1, 2, 12, 34, 56).getTime(); // 12:34:56
+    ///     Time time = DateTime(2018, 1, 2, 12, 34, 56).getTime();
     /// @endcode
     ///
-    /// @return Time
-    Time getTime() const;
+    /// @return Const reference to time
+    const Time& getTime() const;
 
     /// @brief Get Julian Date
     ///
@@ -170,7 +142,7 @@ class DateTime
     /// @endcode
     ///
     /// @return Julian Date
-    Real getJulianDate() const;
+    double getJulianDate() const;
 
     /// @brief Get Modified Julian Date
     ///
@@ -179,7 +151,7 @@ class DateTime
     /// @endcode
     ///
     /// @return Modified Julian Date
-    Real getModifiedJulianDate() const;
+    double getModifiedJulianDate() const;
 
     /// @brief Get string representation of date-time
     ///
@@ -192,16 +164,6 @@ class DateTime
     ///
     /// @return Serialized date-time
     String toString(const DateTime::Format& aFormat = DateTime::Format::Standard) const;
-
-    /// @brief Constructs an undefined date-time
-    ///
-    /// @code
-    ///     DateTime dateTime = DateTime::Undefined();
-    ///     dateTime.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined date-time
-    static DateTime Undefined();
 
     /// @brief J2000 epoch (2000-01-01 12:00:00.000.000.00)
     ///
@@ -257,7 +219,7 @@ class DateTime
     ///
     /// @input [in] aJulianDate A Julian Date
     /// @return Date-time
-    static DateTime JulianDate(const Real& aJulianDate);
+    static DateTime JulianDate(double aJulianDate);
 
     /// @brief Date-time from Modified Julian Date
     ///
@@ -269,7 +231,7 @@ class DateTime
     ///
     /// @input [in] aModifiedJulianDate A Modified Julian Date
     /// @return Date-time
-    static DateTime ModifiedJulianDate(const Real& aModifiedJulianDate);
+    static DateTime ModifiedJulianDate(double aModifiedJulianDate);
 
     /// @brief Constructs a date-time from a string representation
     ///
@@ -278,17 +240,17 @@ class DateTime
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @param [in] aFormat A date-time format (default: std::nullopt, which detects the format)
     /// @return Date-time
-    static DateTime Parse(const String& aString, const DateTime::Format& aFormat = DateTime::Format::Undefined);
+    static DateTime Parse(const String& aString, const std::optional<DateTime::Format>& aFormat = std::nullopt);
 
    private:
     Date date_;
     Time time_;
 
-    static Real ModifiedJulianDateFromJulianDate(const Real& aJulianDate);
+    static double ModifiedJulianDateFromJulianDate(double aJulianDate);
 
-    static Real JulianDateFromModifiedJulianDate(const Real& aModifiedJulianDate);
+    static double JulianDateFromModifiedJulianDate(double aModifiedJulianDate);
 };
 
 }  // namespace time

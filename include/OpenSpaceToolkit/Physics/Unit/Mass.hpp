@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit_Mass__
 #define __OpenSpaceToolkit_Physics_Unit_Mass__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Unit.hpp>
@@ -16,8 +14,6 @@ namespace physics
 namespace unit
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 /// @brief Mass
@@ -30,10 +26,9 @@ class Mass : public Unit
     enum class Unit
     {
 
-        Undefined,  ///< Undefined
-        Kilogram,   ///< Kilogram (SI)
-        Tonne,      ///< Tonne
-        Pound       ///< Pound
+        Kilogram,  ///< Kilogram (SI)
+        Tonne,     ///< Tonne
+        Pound      ///< Pound
 
     };
 
@@ -45,7 +40,7 @@ class Mass : public Unit
     ///
     /// @param [in] aValue A value
     /// @param [in] aUnit A mass unit
-    Mass(const Real& aValue, const Mass::Unit& aUnit);
+    Mass(double aValue, const Mass::Unit& aUnit);
 
     /// @brief Clone the mass.
     ///
@@ -57,16 +52,6 @@ class Mass : public Unit
     /// @return A pointer to a dynamically allocated clone of this mass
 
     virtual Mass* clone() const override;
-
-    /// @brief Check if the mass is defined.
-    ///
-    /// @code
-    ///     Mass::Kilograms(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    virtual bool isDefined() const override;
 
     /// @brief Get the mass unit.
     ///
@@ -87,7 +72,7 @@ class Mass : public Unit
     /// @param [in] aUnit A mass unit
     /// @return The value in the specified unit
 
-    Real in(const Mass::Unit& aUnit) const;
+    double in(const Mass::Unit& aUnit) const;
 
     /// @brief Get the value in kilograms.
     ///
@@ -97,7 +82,7 @@ class Mass : public Unit
     ///
     /// @return The value in kilograms
 
-    Real inKilograms() const;
+    double inKilograms() const;
 
     /// @brief Convert to string representation.
     ///
@@ -108,17 +93,7 @@ class Mass : public Unit
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
 
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
-
-    /// @brief Construct an undefined mass.
-    ///
-    /// @code
-    ///     Mass mass = Mass::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined mass
-
-    static Mass Undefined();
+    virtual String toString(int aPrecision = -1) const override;
 
     /// @brief Construct a mass from a value in kilograms.
     ///
@@ -129,7 +104,7 @@ class Mass : public Unit
     /// @param [in] aValue A value in kilograms
     /// @return A mass
 
-    static Mass Kilograms(const Real& aValue);
+    static Mass Kilograms(double aValue);
 
     /// @brief Parse a mass from a string.
     ///
@@ -167,7 +142,7 @@ class Mass : public Unit
    private:
     Mass::Unit unit_;
 
-    static Real SIRatio(const Mass::Unit& aUnit);
+    static double SIRatio(const Mass::Unit& aUnit);
 };
 
 }  // namespace unit

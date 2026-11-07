@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Finals2000A.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -31,24 +31,13 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
         .def("__repr__", &(shiftToString<Finals2000A>))
 
         .def(
-            "is_defined",
-            &Finals2000A::isDefined,
-            R"doc(
-                Returns true if defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_interval",
             &Finals2000A::getInterval,
             R"doc(
                 Get data interval.
 
                 Returns:
-                    Interval: Data Interval of Instants.
+                    Interval | None: Data Interval of Instants, or None if there is no data.
             )doc"
         )
         .def(
@@ -62,7 +51,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
                     instant (Instant): Instant.
 
                 Returns:
-                    np.ndarray: Polar motion.
+                    np.ndarray | None: Polar motion, or None if it is not tabulated at the instant.
+
+                Raises:
+                    RuntimeError: If the instant is outside the span of the data.
             )doc"
         )
         .def(
@@ -76,7 +68,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
                     instant (Instant): Instant.
 
                 Returns:
-                    float: UT1-UTC.
+                    float | None: UT1-UTC [s], or None if it is not tabulated at the instant.
             )doc"
         )
         .def(
@@ -90,7 +82,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
                     instant (Instant): Instant.
 
                 Returns:
-                    float: LOD.
+                    float | None: LOD [ms], or None if it is not tabulated at the instant.
             )doc"
         )
         .def(
@@ -108,16 +100,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Finals2000A::Undefined,
-            R"doc(
-                Undefined factory function.
-
-                Returns:
-                    Finals2000A: Undefined Finals2000A object.
-            )doc"
-        )
         .def_static(
             "load",
             &Finals2000A::Load,
@@ -137,168 +119,168 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Finals2000A
 
     class_<Finals2000A::Data>(finals2000A, "Data")
 
-        .def_readonly(
+        .def_ro(
             "year",
             &Finals2000A::Data::year,
             R"doc(
                 Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544).
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "month",
             &Finals2000A::Data::month,
             R"doc(
                 Month number.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "day",
             &Finals2000A::Data::day,
             R"doc(
                 Day of month.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "mjd",
             &Finals2000A::Data::mjd,
             R"doc(
                 Modified Julian Date.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "polar_motionflag",
             &Finals2000A::Data::polarMotionflag,
             R"doc(
                 IERS (I) or Prediction (P) flag for Bulletin A polar motion values.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x_a",
             &Finals2000A::Data::x_A,
             R"doc(
                 Bulletin A PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x_error_a",
             &Finals2000A::Data::xError_A,
             R"doc(
                 Error in PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y_a",
             &Finals2000A::Data::y_A,
             R"doc(
                 Bulletin A PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y_error_a",
             &Finals2000A::Data::yError_A,
             R"doc(
                 Error in PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc_flag",
             &Finals2000A::Data::ut1MinusUtcFlag,
             R"doc(
                 IERS (I) or Prediction (P) flag for Bulletin A UT1-UTC values.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc_a",
             &Finals2000A::Data::ut1MinusUtc_A,
             R"doc(
                 Bulletin A UT1-UTC [s].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc_error_a",
             &Finals2000A::Data::ut1MinusUtcError_A,
             R"doc(
                 Error in UT1-UTC [s].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "lod_a",
             &Finals2000A::Data::lod_A,
             R"doc(
                 Bulletin A LOD (not always filled) [ms].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "lod_error_a",
             &Finals2000A::Data::lodError_A,
             R"doc(
                 Error in LOD (not always filled) [ms].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "nutation_flag",
             &Finals2000A::Data::nutationFlag,
             R"doc(
                 IERS (I) or Prediction (P) flag for Bulletin A nutation values.
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "dx_a",
             &Finals2000A::Data::dx_A,
             R"doc(
                 Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed [amsec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "dx_error_a",
             &Finals2000A::Data::dxError_A,
             R"doc(
                 Error in dX [amsec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "dy_a",
             &Finals2000A::Data::dy_A,
             R"doc(
                 Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed [amsec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "dy_error_a",
             &Finals2000A::Data::dyError_A,
             R"doc(
                 Error in dY [amsec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "x_b",
             &Finals2000A::Data::x_B,
             R"doc(
                 Bulletin B PM-x [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "y_b",
             &Finals2000A::Data::y_B,
             R"doc(
                 Bulletin B PM-y [asec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "ut1_minus_utc_b",
             &Finals2000A::Data::ut1MinusUtc_B,
             R"doc(
                 Bulletin B UT1-UTC [s].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "dx_b",
             &Finals2000A::Data::dx_B,
             R"doc(
                 Bulletin B dX wrt IAU2000A Nutation [amsec].
             )doc"
         )
-        .def_readonly(
+        .def_ro(
             "dy_b",
             &Finals2000A::Data::dy_B,
             R"doc(

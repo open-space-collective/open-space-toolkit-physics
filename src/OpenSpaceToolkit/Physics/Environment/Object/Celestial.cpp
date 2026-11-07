@@ -16,15 +16,14 @@ namespace environment
 {
 namespace object
 {
-
 Celestial::Celestial(
     const String& aName,
     const Celestial::Type& aType,
-    const Derived& aGravitationalParameter,
+    const std::optional<Derived>& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aJ2,
-    const Real& aJ4,
+    double aFlattening,
+    const std::optional<double>& aJ2,
+    const std::optional<double>& aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<GravitationalModel>& aGravitationalModel,
     const Shared<MagneticModel>& aMagneticModel,
@@ -42,16 +41,20 @@ Celestial::Celestial(
       magneticModelSPtr_(aMagneticModel),
       atmosphericModelSPtr_(anAtmosphericModel)
 {
+    if (ephemeris_ == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Ephemeris");
+    }
 }
 
 Celestial::Celestial(
     const String& aName,
     const Celestial::Type& aType,
-    const Derived& aGravitationalParameter,
+    const std::optional<Derived>& aGravitationalParameter,
     const Length& anEquatorialRadius,
-    const Real& aFlattening,
-    const Real& aJ2,
-    const Real& aJ4,
+    double aFlattening,
+    const std::optional<double>& aJ2,
+    const std::optional<double>& aJ4,
     const Shared<Ephemeris>& anEphemeris,
     const Shared<GravitationalModel>& aGravitationalModel,
     const Shared<MagneticModel>& aMagneticModel,
@@ -70,6 +73,10 @@ Celestial::Celestial(
       magneticModelSPtr_(aMagneticModel),
       atmosphericModelSPtr_(anAtmosphericModel)
 {
+    if (ephemeris_ == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Ephemeris");
+    }
 }
 
 Celestial::~Celestial() {}
@@ -79,179 +86,99 @@ Celestial* Celestial::clone() const
     return new Celestial(*this);
 }
 
-bool Celestial::isDefined() const
-{
-    return Object::isDefined() && (ephemeris_ != nullptr) && ephemeris_->isDefined();
-}
-
 bool Celestial::gravitationalModelIsDefined() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    if (gravitationalModelSPtr_ == nullptr)
-    {
-        return false;
-    }
-
-    return gravitationalModelSPtr_->isDefined();
+    return gravitationalModelSPtr_ != nullptr;
 }
 
 bool Celestial::magneticModelIsDefined() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    if (magneticModelSPtr_ == nullptr)
-    {
-        return false;
-    }
-
-    return magneticModelSPtr_->isDefined();
+    return magneticModelSPtr_ != nullptr;
 }
 
 bool Celestial::atmosphericModelIsDefined() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    if (atmosphericModelSPtr_ == nullptr)
-    {
-        return false;
-    }
-
-    return atmosphericModelSPtr_->isDefined();
+    return atmosphericModelSPtr_ != nullptr;
 }
 
-Shared<const Ephemeris> Celestial::accessEphemeris() const
+const Shared<const Ephemeris>& Celestial::getEphemeris() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return ephemeris_;
 }
 
-Shared<const GravitationalModel> Celestial::accessGravitationalModel() const
+const Shared<const GravitationalModel>& Celestial::getGravitationalModel() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return gravitationalModelSPtr_;
 }
 
-Shared<const MagneticModel> Celestial::accessMagneticModel() const
+const Shared<const MagneticModel>& Celestial::getMagneticModel() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return magneticModelSPtr_;
 }
 
-Shared<const AtmosphericModel> Celestial::accessAtmosphericModel() const
+const Shared<const AtmosphericModel>& Celestial::getAtmosphericModel() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return atmosphericModelSPtr_;
 }
 
-Shared<const Frame> Celestial::accessFrame() const
+Shared<const Frame> Celestial::getFrame() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    return ephemeris_->accessFrame();
+    return ephemeris_->getFrame();
 }
 
 Celestial::Type Celestial::getType() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return type_;
 }
 
-Derived Celestial::getGravitationalParameter() const
+const Derived& Celestial::getGravitationalParameter() const
 {
-    if (!this->isDefined())
+    if (!gravitationalParameter_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Celestial");
+        throw ostk::core::error::runtime::Undefined("Gravitational parameter");
     }
 
-    return gravitationalParameter_;
+    return gravitationalParameter_.value();
 }
 
-Length Celestial::getEquatorialRadius() const
+const Length& Celestial::getEquatorialRadius() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return equatorialRadius_;
 }
 
-Real Celestial::getFlattening() const
+double Celestial::getFlattening() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     return flattening_;
 }
 
-Real Celestial::getJ2() const
+double Celestial::getJ2() const
 {
-    if (!this->isDefined())
+    if (!j2_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Celestial");
+        throw ostk::core::error::runtime::Undefined("J2");
     }
 
-    return j2_;
+    return j2_.value();
 }
 
-Real Celestial::getJ4() const
+double Celestial::getJ4() const
 {
-    if (!this->isDefined())
+    if (!j4_.has_value())
     {
-        throw ostk::core::error::runtime::Undefined("Celestial");
+        throw ostk::core::error::runtime::Undefined("J4");
     }
 
-    return j4_;
+    return j4_.value();
 }
 
 Position Celestial::getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    return ephemeris_->accessFrame()->getOriginIn(aFrameSPtr, anInstant);
+    return ephemeris_->getFrame()->getOriginIn(aFrameSPtr, anInstant);
 }
 
 Velocity Celestial::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
@@ -263,32 +190,22 @@ Velocity Celestial::getVelocityIn(const Shared<const Frame>& aFrameSPtr, const I
 
 Transform Celestial::getTransformTo(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    return ephemeris_->accessFrame()->getTransformTo(aFrameSPtr, anInstant);
+    return ephemeris_->getFrame()->getTransformTo(aFrameSPtr, anInstant);
 }
 
 Axes Celestial::getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
     }
 
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
-    return ephemeris_->accessFrame()->getAxesIn(aFrameSPtr, anInstant);
+    return ephemeris_->getFrame()->getAxesIn(aFrameSPtr, anInstant);
 }
 
 Vector Celestial::getGravitationalFieldAt(const Position& aPosition, const Instant& anInstant) const
@@ -296,29 +213,19 @@ Vector Celestial::getGravitationalFieldAt(const Position& aPosition, const Insta
     using ostk::physics::Unit;
     using ostk::physics::unit::Time;
 
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     if (gravitationalModelSPtr_ == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Gravitational model");
     }
 
-    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->getFrame(), anInstant).getCoordinates();
 
     const Vector3d gravitationalFieldValue = gravitationalModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
 
     const static Unit gravitationalFieldUnit =
         Unit::Derived(Derived::Unit::Acceleration(Length::Unit::Meter, Time::Unit::Second));
 
-    return {gravitationalFieldValue, gravitationalFieldUnit, ephemeris_->accessFrame()};
+    return {gravitationalFieldValue, gravitationalFieldUnit, ephemeris_->getFrame()};
 }
 
 Vector Celestial::getMagneticFieldAt(const Position& aPosition, const Instant& anInstant) const
@@ -326,28 +233,18 @@ Vector Celestial::getMagneticFieldAt(const Position& aPosition, const Instant& a
     using ostk::physics::Unit;
     using ostk::physics::unit::Time;
 
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     if (magneticModelSPtr_ == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Magnetic model");
     }
 
-    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->accessFrame(), anInstant).getCoordinates();
+    const Vector3d positionInBodyFrame = aPosition.inFrame(ephemeris_->getFrame(), anInstant).getCoordinates();
 
     const Vector3d magneticFieldValue = magneticModelSPtr_->getFieldValueAt(positionInBodyFrame, anInstant);
 
     const static Unit magneticFieldUnit = Unit::Derived(Derived::Unit::Tesla());
 
-    return {magneticFieldValue, magneticFieldUnit, ephemeris_->accessFrame()};
+    return {magneticFieldValue, magneticFieldUnit, ephemeris_->getFrame()};
 }
 
 Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Instant& anInstant) const
@@ -355,22 +252,12 @@ Scalar Celestial::getAtmosphericDensityAt(const Position& aPosition, const Insta
     using ostk::physics::Unit;
     using ostk::physics::unit::Time;
 
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     if (atmosphericModelSPtr_ == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Atmospheric model");
     }
 
-    const Real atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
+    const double atmosphericDensityValue = atmosphericModelSPtr_->getDensityAt(aPosition, anInstant);
 
     const static Unit atmosphericDensityUnit =
         Unit::Derived(Derived::Unit::MassDensity(Mass::Unit::Kilogram, Length::Unit::Meter));
@@ -382,21 +269,11 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
 {
     using StaticProvider = ostk::physics::coordinate::frame::provider::Static;
 
-    if (!aLla.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Celestial");
-    }
-
     switch (aFrameType)
     {
         case Celestial::FrameType::NED:
         {
-            const String frameName = String::Format("{} NED @ {}", this->accessName(), aLla.toString());
+            const String frameName = String::Format("{} NED @ {}", this->getName(), aLla.toString());
 
             if (const auto frameSPtr = Frame::WithName(frameName))
             {
@@ -408,7 +285,7 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
             );
 
             const Shared<const Frame> nedSPtr = Frame::Construct(
-                frameName, false, ephemeris_->accessFrame(), std::make_shared<const StaticProvider>(transform)
+                frameName, false, ephemeris_->getFrame(), std::make_shared<const StaticProvider>(transform)
             );
 
             return nedSPtr;
@@ -422,42 +299,10 @@ Shared<const Frame> Celestial::getFrameAt(const LLA& aLla, const Celestial::Fram
     return nullptr;
 }
 
-// Object::Geometry                Celestial::getTerminatorGeometry            ( ) const
-// {
-
-//     if (!this->isDefined())
-//     {
-//         throw ostk::core::error::runtime::Undefined("Celestial") ;
-//     }
-
-//     sss
-
-// }
-
-Celestial Celestial::Undefined()
-{
-    return {
-        String::Empty(),
-        Celestial::Type::Undefined,
-        Derived::Undefined(),
-        Length::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
-        Real::Undefined(),
-        nullptr,
-        nullptr,
-        nullptr,
-        nullptr
-    };
-}
-
 String Celestial::StringFromFrameType(const Celestial::FrameType& aFrameType)
 {
     switch (aFrameType)
     {
-        case Celestial::FrameType::Undefined:
-            return "Undefined";
-
         case Celestial::FrameType::NED:
             return "NED";
 
@@ -468,7 +313,6 @@ String Celestial::StringFromFrameType(const Celestial::FrameType& aFrameType)
 
     return String::Empty();
 }
-
 }  // namespace object
 }  // namespace environment
 }  // namespace physics

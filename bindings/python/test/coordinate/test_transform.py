@@ -19,8 +19,8 @@ Type = Transform.Type
 def test_coordinate_transform_type():
     enum_members = Type.__members__
 
-    list_keys = ["Undefined", "Active", "Passive"]
-    list_values = [Type.Undefined, Type.Active, Type.Passive]
+    list_keys = ["Active", "Passive"]
+    list_values = [Type.Active, Type.Passive]
 
     assert list(enum_members.keys()) == list_keys
     assert list(enum_members.values()) == list_values
@@ -149,36 +149,11 @@ def test_coordinate_transform_operators():
 
     assert mul_transform is not None
     assert isinstance(mul_transform, Transform)
-    assert mul_transform.is_defined()
 
     transform *= transform
 
     assert transform is not None
     assert isinstance(transform, Transform)
-    assert transform.is_defined()
-
-
-def test_coordinate_transform_is_defined():
-    # Construct arbitrary Instant
-    instant: Instant = Instant.date_time(DateTime(2020, 1, 1, 0, 0, 0), Scale.UTC)
-
-    # Construct arbitrary Orientation
-    quaternion: Quaternion = Quaternion([0.0, 0.0, 0.0], 1.0)
-
-    # Construct Transform Type
-    transform_type: Type = Type.Passive
-
-    # Construction using python lists
-    translation = [1.0, 0.0, 0.0]
-    velocity = [0.01, 0.0, 0.0]
-    angular_velocity = [0.01, 0.01, 0.01]
-
-    transform: Transform = Transform(
-        instant, translation, velocity, quaternion, angular_velocity, transform_type
-    )
-
-    assert transform.is_defined()
-    assert transform.undefined().is_defined() is False
 
 
 def test_coordinate_transform_is_identity():
@@ -200,26 +175,8 @@ def test_coordinate_transform_is_identity():
         instant, translation, velocity, quaternion, angular_velocity, transform_type
     )
 
-    assert transform.is_defined()
     assert transform.is_identity()
     assert transform.identity(instant).is_identity()
-
-
-# def test_coordinate_transform_accesses ():
-
-# access_instant
-
-
-# access_translation
-
-
-# access_velocity
-
-
-# access_orientation
-
-
-# access_angular_velocity
 
 
 def test_coordinate_transform_getters():

@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Utility__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Utility__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
-
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
 namespace ostk
@@ -22,8 +20,6 @@ namespace iers
 namespace utilities
 {
 
-using ostk::core::type::Real;
-
 using ostk::physics::time::Instant;
 
 /// @brief Linearly interpolate UT1 - UTC between two tabulated values
@@ -33,7 +29,7 @@ using ostk::physics::time::Instant;
 /// interpolated instead and converted back to UT1 - UTC with TAI - UTC at the requested instant.
 ///
 /// @code
-///     Real ut1MinusUtc = utilities::interpolateUt1MinusUtc(
+///     double ut1MinusUtc = utilities::interpolateUt1MinusUtc(
 ///         previousUt1MinusUtc, previousMjd_UTC, nextUt1MinusUtc, nextMjd_UTC, ratio, instant
 ///     );
 /// @endcode
@@ -45,12 +41,12 @@ using ostk::physics::time::Instant;
 /// @param [in] aRatio Interpolation ratio
 /// @param [in] anInstant Instant at which UT1 - UTC is interpolated
 /// @return UT1 - UTC at the instant [s]
-Real interpolateUt1MinusUtc(
-    const Real& aPreviousUt1MinusUtc,
-    const Real& aPreviousMjd_UTC,
-    const Real& aNextUt1MinusUtc,
-    const Real& aNextMjd_UTC,
-    const Real& aRatio,
+double interpolateUt1MinusUtc(
+    const double& aPreviousUt1MinusUtc,
+    const double& aPreviousMjd_UTC,
+    const double& aNextUt1MinusUtc,
+    const double& aNextMjd_UTC,
+    const double& aRatio,
     const Instant& anInstant
 );
 

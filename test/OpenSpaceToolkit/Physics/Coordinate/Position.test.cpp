@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <OpenSpaceToolkit/Core/Error.hpp>
+
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
@@ -12,7 +14,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 
 using ostk::mathematics::object::Vector3d;
@@ -22,21 +23,16 @@ using ostk::physics::coordinate::Position;
 using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::Environment;
 using ostk::physics::environment::object::celestial::Earth;
+using ostk::physics::time::Instant;
 using ostk::physics::unit::Length;
 
 class OpenSpaceToolkit_Physics_Coordinate_Position : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        positionGCRF_ = {vector_, Position::Unit::Meter, Frame::GCRF()};
-        positionITRF_ = {vector_, Position::Unit::Meter, Frame::ITRF()};
-    }
-
     const Vector3d vector_ = {0.0, 0.0, 0.0};
 
-    Position positionGCRF_ = Position::Undefined();
-    Position positionITRF_ = Position::Undefined();
+    Position positionGCRF_ = {vector_, Position::Unit::Meter, Frame::GCRF()};
+    Position positionITRF_ = {vector_, Position::Unit::Meter, Frame::ITRF()};
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, EqualToOperator)
@@ -50,12 +46,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, EqualToOperator)
         EXPECT_FALSE(positionGCRF_ == Position({1.0, 0.0, 0.0}, Position::Unit::Meter, Frame::GCRF()));
         EXPECT_FALSE(positionGCRF_ == Position({0.0, 0.0, 0.0}, Position::Unit::Foot, Frame::GCRF()));
         EXPECT_FALSE(positionGCRF_ == positionITRF_);
-    }
-
-    {
-        EXPECT_FALSE(Position::Undefined() == Position::Undefined());
-        EXPECT_FALSE(positionGCRF_ == Position::Undefined());
-        EXPECT_FALSE(Position::Undefined() == positionGCRF_);
     }
 }
 
@@ -71,12 +61,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, NotEqualToOperator)
         EXPECT_TRUE(positionGCRF_ != Position({0.0, 0.0, 0.0}, Position::Unit::Foot, Frame::GCRF()));
         EXPECT_TRUE(positionGCRF_ != positionITRF_);
     }
-
-    {
-        EXPECT_TRUE(Position::Undefined() != Position::Undefined());
-        EXPECT_TRUE(positionGCRF_ != Position::Undefined());
-        EXPECT_TRUE(Position::Undefined() != positionGCRF_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, StreamOperator)
@@ -87,17 +71,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, StreamOperator)
         EXPECT_NO_THROW(std::cout << positionGCRF_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, IsDefined)
-{
-    {
-        EXPECT_TRUE(positionGCRF_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Position::Undefined().isDefined());
     }
 }
 
@@ -114,38 +87,17 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, IsNear)
         EXPECT_TRUE(firstPosition.isNear(secondPosition, Length::Meters(1.0)));
         EXPECT_FALSE(firstPosition.isNear(secondPosition, Length::Meters(0.9)));
     }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().isNear(Position::Undefined(), Length::Undefined()));
-        EXPECT_ANY_THROW(positionGCRF_.isNear(Position::Undefined(), Length::Meters(0.0)));
-        EXPECT_ANY_THROW(Position::Undefined().isNear(positionGCRF_, Length::Meters(0.0)));
-        EXPECT_ANY_THROW(positionGCRF_.isNear(positionGCRF_, Length::Undefined()));
-    }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, AccessCoordinates)
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetFrame)
 {
     {
-        EXPECT_EQ(Vector3d(0.0, 0.0, 0.0), positionGCRF_.accessCoordinates());
+        EXPECT_EQ(Frame::GCRF(), positionGCRF_.getFrame());
+        EXPECT_EQ(&positionGCRF_.getFrame(), &positionGCRF_.getFrame());
     }
 
     {
-        EXPECT_ANY_THROW(Position::Undefined().accessCoordinates());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, AccessFrame)
-{
-    {
-        EXPECT_EQ(Frame::GCRF(), positionGCRF_.accessFrame());
-    }
-
-    {
-        EXPECT_EQ(Frame::ITRF(), positionITRF_.accessFrame());
-    }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().accessFrame());
+        EXPECT_EQ(Frame::ITRF(), positionITRF_.getFrame());
     }
 }
 
@@ -153,10 +105,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetCoordinates)
 {
     {
         EXPECT_EQ(vector_, positionGCRF_.getCoordinates());
-    }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().getCoordinates());
+        EXPECT_EQ(&positionGCRF_.getCoordinates(), &positionGCRF_.getCoordinates());
     }
 }
 
@@ -179,20 +128,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetNorm)
 
         EXPECT_EQ(Length(0.0, Length::Unit::Meter), position.getNorm());
     }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().getNorm());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, GetUnit)
 {
     {
         EXPECT_EQ(Position::Unit::Meter, positionGCRF_.getUnit());
-    }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().getUnit());
     }
 }
 
@@ -205,12 +146,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InUnit)
             position.inUnit(Position::Unit::Foot).getCoordinates().isNear(Vector3d(3.28083989501312, 0.0, 0.0), 1e-14)
         );
         EXPECT_EQ(Position::Unit::Foot, position.inUnit(Position::Unit::Foot).getUnit());
-        EXPECT_EQ(Frame::GCRF(), position.inUnit(Position::Unit::Foot).accessFrame());
-    }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().inUnit(Position::Unit::Meter));
-        EXPECT_ANY_THROW(positionGCRF_.inUnit(Position::Unit::Undefined));
+        EXPECT_EQ(Frame::GCRF(), position.inUnit(Position::Unit::Foot).getFrame());
     }
 }
 
@@ -221,11 +157,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InMeters)
 
         EXPECT_EQ(Vector3d(1.0, 0.0, 0.0), position.inMeters().getCoordinates());
         EXPECT_EQ(Position::Unit::Meter, position.inMeters().getUnit());
-        EXPECT_EQ(Frame::GCRF(), position.inMeters().accessFrame());
-    }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().inMeters());
+        EXPECT_EQ(Frame::GCRF(), position.inMeters().getFrame());
     }
 }
 
@@ -243,13 +175,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
             position_ITRF.getCoordinates().isNear(Vector3d(254638.49423473, 7066495.80292154, 499796.263037414), 1e-3)
         ) << position_ITRF;
         EXPECT_EQ(Position::Unit::Meter, position_ITRF.getUnit()) << position_ITRF;
-        EXPECT_EQ(Frame::ITRF(), position_ITRF.accessFrame()) << position_ITRF;
-    }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().inFrame(Frame::ITRF(), Instant::J2000()));
-        EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::Undefined(), Instant::J2000()));
-        EXPECT_ANY_THROW(positionGCRF_.inFrame(Frame::ITRF(), Instant::Undefined()));
+        EXPECT_EQ(Frame::ITRF(), position_ITRF.getFrame()) << position_ITRF;
     }
 
     {
@@ -292,7 +218,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame)
         const Position position_STATION_ft = position_GCRF_ft.inFrame(stationFrameSPtr, Instant::J2000());
 
         EXPECT_EQ(Position::Unit::Foot, position_STATION_ft.getUnit());
-        EXPECT_EQ(stationFrameSPtr, position_STATION_ft.accessFrame());
+        EXPECT_EQ(stationFrameSPtr, position_STATION_ft.getFrame());
         EXPECT_TRUE(position_STATION_ft.inMeters().getCoordinates().isNear(position_STATION.getCoordinates(), 1e-6))
             << position_STATION_ft.inMeters() << " ~ " << position_STATION;
 
@@ -313,19 +239,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, ToString)
 
         EXPECT_EQ("[1.0, 2.0, 3.0] [m] @ GCRF", position.toString()) << position.toString();
     }
-
-    {
-        EXPECT_ANY_THROW(Position::Undefined().toString());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Position::Undefined());
-
-        EXPECT_FALSE(Position::Undefined().isDefined());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Meters)
@@ -335,7 +248,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Meters)
 
         const Position position = Position::Meters({0.0, 0.0, 0.0}, gcrfSPtr);
 
-        EXPECT_TRUE(Position(position).isDefined());
+        EXPECT_EQ(position, Position(position));
     }
 }
 
@@ -346,24 +259,32 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, FromLLA)
     const LLA lla = LLA::Vector({0.0, 0.0, 0.0});
 
     {
-        EXPECT_THROW(Position::FromLLA(LLA::Undefined(), earthSPtr), ostk::core::error::runtime::Undefined);
-    }
-
-    {
         EXPECT_THROW(Position::FromLLA(lla), ostk::core::error::RuntimeError);
     }
 
     {
         const Position position = Position::FromLLA(lla, earthSPtr);
-        EXPECT_VECTORS_ALMOST_EQUAL(position.accessCoordinates(), Vector3d(6378137.0, 0.0, 0.0), 1e-8);
+        EXPECT_VECTORS_ALMOST_EQUAL(position.getCoordinates(), Vector3d(6378137.0, 0.0, 0.0), 1e-8);
     }
 
     {
         Environment::Default(true);
 
         const Position position = Position::FromLLA(lla);
-        EXPECT_VECTORS_ALMOST_EQUAL(position.accessCoordinates(), Vector3d(6378137.0, 0.0, 0.0), 1e-8);
+        EXPECT_VECTORS_ALMOST_EQUAL(position.getCoordinates(), Vector3d(6378137.0, 0.0, 0.0), 1e-8);
 
         Environment::ResetGlobalInstance();
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, Constructor_NullFrame)
+{
+    EXPECT_THROW(Position({0.0, 0.0, 0.0}, Position::Unit::Meter, nullptr), ostk::core::error::runtime::Undefined);
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Position, InFrame_NullFrame)
+{
+    const Position position = Position::Meters({1.0, 2.0, 3.0}, Frame::GCRF());
+
+    EXPECT_THROW(position.inFrame(nullptr, Instant::J2000()), ostk::core::error::runtime::Undefined);
 }

@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
+#include <optional>
 #include <thread>
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
@@ -36,7 +37,6 @@ namespace earth
 
 using ostk::core::container::Map;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -61,7 +61,7 @@ Directory Manager::getCSSISpaceWeatherDirectory() const
     return Directory::Path(localRepository_.getPath() + Path::Parse("CSSISpaceWeather"));
 }
 
-CSSISpaceWeather Manager::getLoadedCSSISpaceWeather() const
+std::optional<CSSISpaceWeather> Manager::getLoadedCSSISpaceWeather() const
 {
     std::lock_guard<std::mutex> lock {mutex_};
 
@@ -82,14 +82,14 @@ CSSISpaceWeather Manager::getCSSISpaceWeatherAt(const Instant& anInstant) const
     throw ostk::core::error::RuntimeError("Cannot obtain CSSI Space Weather File at [{}].", anInstant.toString());
 }
 
-Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
+Array<int> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
+    static auto getKpArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<std::optional<int>>
     {
-        return Array<Integer> {
+        return Array<std::optional<int>> {
             aReading.Kp1,
             aReading.Kp2,
             aReading.Kp3,
@@ -103,37 +103,42 @@ Array<Integer> Manager::getKp3HourSolarIndicesAt(const Instant& anInstant) const
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& reading) -> bool
     {
-        const Array<Integer>& array = getKpArray(reading);
+        const Array<std::optional<int>>& array = getKpArray(reading);
         return std::all_of(
             array.begin(),
             array.end(),
-            [](const Integer& val)
+            [](const std::optional<int>& val)
             {
-                return val.isDefined();
+                return val.has_value();
             }
         );
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
-    if (outputIsDefined(reading))
+    const Array<std::optional<int>> kpArray =
+        outputIsDefined(reading) ? getKpArray(reading)
+                                 : getKpArray(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
+
+    Array<int> kpIndices = Array<int>::Empty();
+    kpIndices.reserve(kpArray.size());
+
+    for (const std::optional<int>& kpIndex : kpArray)
     {
-        return getKpArray(reading);
+        kpIndices.add(kpIndex.value());
     }
-    else
-    {
-        return getKpArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
-    }
+
+    return kpIndices;
 }
 
-Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
+Array<int> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<Integer>
+    static auto getApArray = [](const CSSISpaceWeather::Reading& aReading) -> Array<std::optional<int>>
     {
-        return Array<Integer> {
+        return Array<std::optional<int>> {
             aReading.Ap1,
             aReading.Ap2,
             aReading.Ap3,
@@ -147,45 +152,50 @@ Array<Integer> Manager::getAp3HourSolarIndicesAt(const Instant& anInstant) const
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        const Array<Integer>& array = getApArray(aReading);
+        const Array<std::optional<int>>& array = getApArray(aReading);
         return std::all_of(
             array.begin(),
             array.end(),
-            [](const Integer& val)
+            [](const std::optional<int>& val)
             {
-                return val.isDefined();
+                return val.has_value();
             }
         );
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
-    if (outputIsDefined(reading))
+    const Array<std::optional<int>> apArray =
+        outputIsDefined(reading) ? getApArray(reading)
+                                 : getApArray(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
+
+    Array<int> apIndices = Array<int>::Empty();
+    apIndices.reserve(apArray.size());
+
+    for (const std::optional<int>& apIndex : apArray)
     {
-        return getApArray(reading);
+        apIndices.add(apIndex.value());
     }
-    else
-    {
-        return getApArray(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
-    }
+
+    return apIndices;
 }
 
-Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
+int Manager::getApDailyIndexAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> Integer
+    static auto getApDaily = [](const CSSISpaceWeather::Reading& aReading) -> int
     {
-        return aReading.ApAvg;
+        return aReading.ApAvg.value();
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return aReading.ApAvg.isDefined();
+        return aReading.ApAvg.has_value();
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -193,26 +203,26 @@ Integer Manager::getApDailyIndexAt(const Instant& anInstant) const
     }
     else
     {
-        return getApDaily(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getApDaily(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
-Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
+double Manager::getF107SolarFluxAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> Real
+    static auto getF107Obs = [](const CSSISpaceWeather::Reading& aReading) -> double
     {
-        return aReading.F107Obs;
+        return aReading.F107Obs.value();
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return aReading.F107Obs.isDefined();
+        return aReading.F107Obs.has_value();
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -220,26 +230,26 @@ Real Manager::getF107SolarFluxAt(const Instant& anInstant) const
     }
     else
     {
-        return getF107Obs(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getF107Obs(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
-Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
+double Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
 {
     std::lock_guard<std::mutex> lock {mutex_};
     const CSSISpaceWeather* CSSISpaceWeatherPtr = this->accessCSSISpaceWeatherAt_(anInstant);
 
-    static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> Real
+    static auto getF107ObsCenter81 = [](const CSSISpaceWeather::Reading& aReading) -> double
     {
-        return aReading.F107ObsCenter81;
+        return aReading.F107ObsCenter81.value();
     };
 
     static auto outputIsDefined = [](const CSSISpaceWeather::Reading& aReading) -> bool
     {
-        return aReading.F107ObsCenter81.isDefined();
+        return aReading.F107ObsCenter81.has_value();
     };
 
-    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->accessReadingAt(anInstant);
+    const CSSISpaceWeather::Reading& reading = CSSISpaceWeatherPtr->getReadingAt(anInstant);
 
     if (outputIsDefined(reading))
     {
@@ -247,17 +257,12 @@ Real Manager::getF107SolarFlux81DayAvgAt(const Instant& anInstant) const
     }
     else
     {
-        return getF107ObsCenter81(CSSISpaceWeatherPtr->accessLastReadingWhere(outputIsDefined, anInstant));
+        return getF107ObsCenter81(CSSISpaceWeatherPtr->getLastReadingWhere(outputIsDefined, anInstant));
     }
 }
 
 void Manager::loadCSSISpaceWeather(const CSSISpaceWeather& aCSSISpaceWeather)
 {
-    if (!aCSSISpaceWeather.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CSSI Space Weather");
-    }
-
     std::lock_guard<std::mutex> lock {mutex_};
 
     this->loadCSSISpaceWeather_(aCSSISpaceWeather);
@@ -274,7 +279,7 @@ void Manager::reset()
 {
     BaseManager::reset();
 
-    CSSISpaceWeather_ = CSSISpaceWeather::Undefined();
+    CSSISpaceWeather_ = std::nullopt;
 }
 
 Manager& Manager::Get()
@@ -292,26 +297,26 @@ Manager::Manager()
           Path::Parse("environment/atmospheric/earth"),
           "OSTK_PHYSICS_ENVIRONMENT_ATMOSPHERIC_EARTH_MANAGER_LOCAL_REPOSITORY_LOCK_TIMEOUT"
       ),
-      CSSISpaceWeather_(CSSISpaceWeather::Undefined())
+      CSSISpaceWeather_(std::nullopt)
 {
     this->setup_();
 }
 
 const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInstant) const
 {
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
     // Try currently loaded
-    if (CSSISpaceWeather_.isDefined())
+    if (CSSISpaceWeather_.has_value())
     {
-        if (CSSISpaceWeather_.accessObservationInterval().contains(anInstant) ||
-            CSSISpaceWeather_.accessDailyPredictionInterval().contains(anInstant) ||
-            CSSISpaceWeather_.accessMonthlyPredictionInterval().contains(anInstant))
+        const auto contains = [&anInstant](const std::optional<Interval>& anInterval) -> bool
         {
-            return &CSSISpaceWeather_;
+            return anInterval.has_value() && anInterval->contains(anInstant);
+        };
+
+        if (contains(CSSISpaceWeather_->getObservationInterval()) ||
+            contains(CSSISpaceWeather_->getDailyPredictionInterval()) ||
+            contains(CSSISpaceWeather_->getMonthlyPredictionInterval()))
+        {
+            return &CSSISpaceWeather_.value();
         }
 
         throw ostk::core::error::RuntimeError(
@@ -326,17 +331,9 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
         {
             const File latestCSSISpaceWeatherFile = this->getLatestCSSISpaceWeatherFile_();
 
-            if (!latestCSSISpaceWeatherFile.isDefined())
-            {
-                throw ostk::core::error::RuntimeError(
-                    "Failed to load or fetch latest CSSI Space Weather file at {}.",
-                    latestCSSISpaceWeatherFile.getPath().toString()
-                );
-            }
-
             const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(latestCSSISpaceWeatherFile));
 
-            return &CSSISpaceWeather_;
+            return &CSSISpaceWeather_.value();
         }
 
         case Manager::Mode::Manual:
@@ -351,17 +348,9 @@ const CSSISpaceWeather* Manager::accessCSSISpaceWeatherAt_(const Instant& anInst
             const File localCSSISpaceWeatherFile =
                 File::Path(this->getCSSISpaceWeatherDirectory().getPath() + Path::Parse(CSSISpaceWeatherFileName));
 
-            if (!localCSSISpaceWeatherFile.isDefined())
-            {
-                throw ostk::core::error::RuntimeError(
-                    "Failed to load latest CSSI Space Weather file at {}.",
-                    localCSSISpaceWeatherFile.getPath().toString()
-                );
-            }
-
             const_cast<Manager*>(this)->loadCSSISpaceWeather_(CSSISpaceWeather::Load(localCSSISpaceWeatherFile));
 
-            return &CSSISpaceWeather_;
+            return &CSSISpaceWeather_.value();
         }
 
         default:
@@ -393,7 +382,7 @@ File Manager::getLatestCSSISpaceWeatherFile_() const
     const Instant remoteUpdateTimestamp = manifestManager.getLastUpdateTimestampFor(CSSISpaceWeatherManifestName);
 
     // Get when the local file was last modified
-    const Instant localUpdateTimestamp = localSpaceWeather.accessLastModifiedTimestamp();
+    const Instant localUpdateTimestamp = localSpaceWeather.getLastModifiedTimestamp();
 
     // If remote is newer, fetch it
     if (remoteUpdateTimestamp > localUpdateTimestamp)
@@ -433,10 +422,9 @@ File Manager::fetchLatestCSSISpaceWeather_()
     const Array<URL> CSSISpaceWeatherUrls = manifestManager.getRemoteDataUrls(CSSISpaceWeatherManifestName);
 
     // Only one remote file for CSSI Space Weather
-    const URL CSSISpaceWeatherUrl = CSSISpaceWeatherUrls.accessFirst();
+    const URL CSSISpaceWeatherUrl = CSSISpaceWeatherUrls.getFirst();
 
-    File latestCSSISpaceWeatherFile = File::Undefined();
-    Directory destinationDirectory = Directory::Undefined();
+    std::optional<File> latestCSSISpaceWeatherFile;
 
     try
     {
@@ -461,7 +449,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         latestCSSISpaceWeatherFile = Client::Fetch(CSSISpaceWeatherUrl, temporaryDirectory, 2);
 
-        if (!latestCSSISpaceWeatherFile.exists())
+        if (!latestCSSISpaceWeatherFile->exists())
         {
             throw ostk::core::error::RuntimeError(
                 "Cannot fetch CSSI Space Weather from [{}].", CSSISpaceWeatherUrl.toString()
@@ -471,7 +459,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // Check that CSSI Space Weather File size is not zero
 
         std::uintmax_t latestCSSISpaceWeatherFileSize =
-            std::filesystem::file_size(std::string(latestCSSISpaceWeatherFile.getPath().toString()));
+            std::filesystem::file_size(std::string(latestCSSISpaceWeatherFile->getPath().toString()));
 
         if (latestCSSISpaceWeatherFileSize == 0)
         {
@@ -483,9 +471,9 @@ File Manager::fetchLatestCSSISpaceWeather_()
         // Move CSSI Space Weather File into destination Directory,
         // e.g., `.open-space-toolkit/physics/enviroment/atmospheric/earth/cssi-space-weather/`.
 
-        destinationDirectory = Directory::Path(this->getCSSISpaceWeatherDirectory().getPath());
+        const Directory destinationDirectory = Directory::Path(this->getCSSISpaceWeatherDirectory().getPath());
 
-        latestCSSISpaceWeatherFile.moveToDirectory(destinationDirectory);
+        latestCSSISpaceWeatherFile->moveToDirectory(destinationDirectory);
 
         temporaryDirectory.remove();
 
@@ -493,7 +481,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
 
         std::cout << String::Format(
                          "CSSI Space Weather [{}] has been successfully fetched from [{}].",
-                         latestCSSISpaceWeatherFile.toString(),
+                         latestCSSISpaceWeatherFile->toString(),
                          CSSISpaceWeatherUrl.toString()
                      )
                   << std::endl;
@@ -507,13 +495,12 @@ File Manager::fetchLatestCSSISpaceWeather_()
                      )
                   << std::endl;
 
-        if (latestCSSISpaceWeatherFile.isDefined() && latestCSSISpaceWeatherFile.exists())
+        if (latestCSSISpaceWeatherFile.has_value() && latestCSSISpaceWeatherFile->exists())
         {
-            latestCSSISpaceWeatherFile.remove();
-            latestCSSISpaceWeatherFile = File::Undefined();
+            latestCSSISpaceWeatherFile->remove();
         }
 
-        if (temporaryDirectory.isDefined() && temporaryDirectory.exists())
+        if (temporaryDirectory.exists())
         {
             temporaryDirectory.remove();
         }
@@ -523,7 +510,7 @@ File Manager::fetchLatestCSSISpaceWeather_()
         throw;
     }
 
-    return latestCSSISpaceWeatherFile;
+    return latestCSSISpaceWeatherFile.value();
 }
 
 }  // namespace earth

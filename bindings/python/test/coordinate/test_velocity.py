@@ -26,7 +26,6 @@ def test_coordinate_position_constructors():
 
     assert velocity is not None
     assert isinstance(velocity, Velocity)
-    assert velocity.is_defined()
 
     # Construction with python tuples
     vector = (1000.0, 0.0, 0.0)
@@ -35,7 +34,6 @@ def test_coordinate_position_constructors():
 
     assert velocity is not None
     assert isinstance(velocity, Velocity)
-    assert velocity.is_defined()
 
     # Construction with python numpy arrays
     vector = np.array((1000.0, 0.0, 0.0))
@@ -44,21 +42,12 @@ def test_coordinate_position_constructors():
 
     assert velocity is not None
     assert isinstance(velocity, Velocity)
-    assert velocity.is_defined()
 
     # Construction with meters static constructor
     velocity: Velocity = Velocity.meters_per_second(vector, frame)
 
     assert velocity is not None
     assert isinstance(velocity, Velocity)
-    assert velocity.is_defined()
-
-    # Construction with undefined static constructor
-    velocity: Velocity = Velocity.undefined()
-
-    assert velocity is not None
-    assert isinstance(velocity, Velocity)
-    assert velocity.is_defined() is False
 
 
 def test_coordinate_velocity_comparators():
@@ -75,24 +64,14 @@ def test_coordinate_velocity_comparators():
     assert velocity_1 != velocity_2
 
 
-def test_coordinate_velocity_is_defined():
-    frame: Frame = Frame.GCRF()
-    unit: Unit = Unit.MeterPerSecond
-    vector = [1000.0, 0.0, 0.0]
-    velocity: Velocity = Velocity(vector, unit, frame)
-
-    assert velocity.is_defined()
-    assert Velocity.undefined().is_defined() is False
-
-
-def test_coordinate_velocity_access_frame():
+def test_coordinate_velocity_get_frame():
     frame: Frame = Frame.GCRF()
     unit: Unit = Unit.MeterPerSecond
     vector = [1000.0, 0.0, 0.0]
 
     velocity: Velocity = Velocity(vector, unit, frame)
 
-    ans_frame = velocity.access_frame()
+    ans_frame = velocity.get_frame()
 
     assert ans_frame is not None
     assert isinstance(ans_frame, Frame)

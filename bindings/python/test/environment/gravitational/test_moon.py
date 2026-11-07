@@ -29,7 +29,7 @@ class TestMoon:
 
     def test_constructor_success_with_directory(self):
         moon_gravitational_model = MoonGravitationalModel(
-            MoonGravitationalModel.Type.Spherical, Directory.undefined()
+            MoonGravitationalModel.Type.Spherical, None
         )
 
         assert isinstance(moon_gravitational_model, MoonGravitationalModel)
@@ -39,11 +39,6 @@ class TestMoon:
         self, moon_gravitational_model: MoonGravitationalModel
     ):
         assert moon_gravitational_model.is_point_mass() is True
-
-        assert (
-            MoonGravitationalModel(MoonGravitationalModel.Type.Undefined).is_point_mass()
-            is False
-        )
 
     def test_get_type_success(self, moon_gravitational_model: MoonGravitationalModel):
         assert (

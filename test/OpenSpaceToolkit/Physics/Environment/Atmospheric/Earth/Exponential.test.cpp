@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Atmospheric/Earth/Exponential.hpp>
@@ -7,10 +9,10 @@
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::coordinate::Frame;
@@ -22,6 +24,7 @@ using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using ostk::physics::utility::DoubleToString;
 
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Constructor)
 {
@@ -39,17 +42,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, Clone)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, IsDefined)
-{
-    using ostk::physics::environment::atmospheric::earth::Exponential;
-
-    {
-        const Exponential exponential = {};
-
-        EXPECT_TRUE(exponential.isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDensityAt)
 {
     {
@@ -57,13 +49,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth_Exponential, getDens
 
         const LLA lla = LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0));
 
-        const Real density = exponential.getDensityAt(lla, Instant::J2000());
+        const double density = exponential.getDensityAt(lla, Instant::J2000());
 
-        const Real referenceDensity = 1.77622e-08;
-        const Real tolerance = 1e-13;
+        const double referenceDensity = 1.77622e-08;
+        const double tolerance = 1e-13;
 
-        EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
-            "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
+        EXPECT_TRUE(std::abs(density - referenceDensity) <= tolerance) << String::Format(
+            "{} ≈ {} Δ {} [T]", DoubleToString(density), DoubleToString(referenceDensity), (density - referenceDensity)
         );
     }
 }

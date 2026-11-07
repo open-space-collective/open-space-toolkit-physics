@@ -3,6 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object__
 #define __OpenSpaceToolkit_Physics_Environment_Object__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
@@ -54,17 +56,11 @@ class Object
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Object& anObject);
 
-    virtual bool isDefined() const;
+    const String& getName() const;
 
-    const String& accessName() const;
+    virtual Shared<const Frame> getFrame() const = 0;
 
-    virtual Shared<const Frame> accessFrame() const = 0;
-
-    const Object::Geometry& accessGeometry() const;
-
-    String getName() const;
-
-    Object::Geometry getGeometry() const;
+    const std::optional<Object::Geometry>& getGeometry() const;
 
     virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 
@@ -74,12 +70,13 @@ class Object
 
     virtual Axes getAxesIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const = 0;
 
-    Object::Geometry getGeometryIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const;
+    std::optional<Object::Geometry> getGeometryIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant)
+        const;
 
    private:
     String name_;
 
-    Object::Geometry geometry_;
+    std::optional<Object::Geometry> geometry_;
 };
 
 }  // namespace environment

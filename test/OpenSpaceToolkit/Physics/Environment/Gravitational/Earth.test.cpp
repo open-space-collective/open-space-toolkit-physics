@@ -18,8 +18,6 @@ using ostk::core::container::Array;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::mathematics::object::Vector3d;
@@ -64,20 +62,20 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(
-            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, Directory::Undefined())
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::Spherical, std::nullopt)
         );
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 20, 0
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 180, 180
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 360, 360
-        ));
-        EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 2190, 2160
-        ));
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, std::nullopt, 20, 0)
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM84, std::nullopt, 180, 180)
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, std::nullopt, 360, 360)
+        );
+        EXPECT_NO_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008, std::nullopt, 2190, 2160)
+        );
 
         EarthGravitationalModelManager::Get().reset();
     }
@@ -92,21 +90,21 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         EXPECT_NO_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::Spherical, Directory::Undefined(), 3000, 3000
+            EarthGravitationalModel::Type::Spherical, std::nullopt, 3000, 3000
         ));
 
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::WGS84, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM84, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM96, Directory::Undefined(), 3000, 3000
-        ));
-        EXPECT_ANY_THROW(std::make_shared<EarthGravitationalModel>(
-            EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), 3000, 3000
-        ));
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::WGS84, std::nullopt, 3000, 3000)
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM84, std::nullopt, 3000, 3000)
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM96, std::nullopt, 3000, 3000)
+        );
+        EXPECT_ANY_THROW(
+            std::make_shared<EarthGravitationalModel>(EarthGravitationalModel::Type::EGM2008, std::nullopt, 3000, 3000)
+        );
 
         EarthGravitationalModelManager::Get().reset();
     }
@@ -175,23 +173,12 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Constructor)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsDefined)
-{
-    {
-        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isDefined());
-
-        EXPECT_TRUE(EarthGravitationalModel(EarthGravitationalModel::Type::EGM96).isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, IsPointMass)
 {
     {
         EarthGravitationalModelManager::Get().setLocalRepository(
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Gravitational/Earth"))
         );
-
-        EXPECT_FALSE(EarthGravitationalModel(EarthGravitationalModel::Type::Undefined).isPointMass());
 
         EXPECT_TRUE(EarthGravitationalModel(EarthGravitationalModel::Type::Spherical).isPointMass());
 
@@ -425,41 +412,65 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, Getters)
         EarthGravitationalModel earthGravitationalModel =
             EarthGravitationalModel(EarthGravitationalModel::Type::Spherical);
 
-        EXPECT_FALSE(earthGravitationalModel.getDegree().isDefined());
-        EXPECT_FALSE(earthGravitationalModel.getOrder().isDefined());
+        EXPECT_FALSE(earthGravitationalModel.getDegree().has_value());
+        EXPECT_FALSE(earthGravitationalModel.getOrder().has_value());
     }
 
     {
-        const Integer degree = 52;
-        const Integer order = 51;
+        EarthGravitationalModel earthGravitationalModel = EarthGravitationalModel(EarthGravitationalModel::Type::EGM84);
 
-        EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, Directory::Undefined(), degree, order);
-
-        EXPECT_EQ(earthGravitationalModel.getDegree(), degree);
-        EXPECT_EQ(earthGravitationalModel.getOrder(), order);
+        EXPECT_FALSE(earthGravitationalModel.getDegree().has_value());
+        EXPECT_FALSE(earthGravitationalModel.getOrder().has_value());
     }
 
     {
-        const Integer degree = 52;
-        const Integer order = 51;
+        EarthGravitationalModel earthGravitationalModel = EarthGravitationalModel(
+            EarthGravitationalModel::Type::EGM84, std::optional<int>(std::nullopt), std::optional<int>(std::nullopt)
+        );
 
-        EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, Directory::Undefined(), degree, order);
-
-        EXPECT_EQ(earthGravitationalModel.getDegree(), degree);
-        EXPECT_EQ(earthGravitationalModel.getOrder(), order);
+        EXPECT_FALSE(earthGravitationalModel.getDegree().has_value());
+        EXPECT_FALSE(earthGravitationalModel.getOrder().has_value());
     }
 
     {
-        const Integer degree = 52;
-        const Integer order = 51;
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, 52, std::nullopt);
+
+        EXPECT_EQ(std::optional<int>(52), earthGravitationalModel.getDegree());
+        EXPECT_FALSE(earthGravitationalModel.getOrder().has_value());
+    }
+
+    {
+        const int degree = 52;
+        const int order = 51;
 
         EarthGravitationalModel earthGravitationalModel =
-            EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008, Directory::Undefined(), degree, order);
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM84, std::nullopt, degree, order);
 
-        EXPECT_EQ(earthGravitationalModel.getDegree(), degree);
-        EXPECT_EQ(earthGravitationalModel.getOrder(), order);
+        EXPECT_EQ(std::optional<int>(degree), earthGravitationalModel.getDegree());
+        EXPECT_EQ(std::optional<int>(order), earthGravitationalModel.getOrder());
+    }
+
+    {
+        const int degree = 52;
+        const int order = 51;
+
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM96, std::nullopt, degree, order);
+
+        EXPECT_EQ(std::optional<int>(degree), earthGravitationalModel.getDegree());
+        EXPECT_EQ(std::optional<int>(order), earthGravitationalModel.getOrder());
+    }
+
+    {
+        const int degree = 52;
+        const int order = 51;
+
+        EarthGravitationalModel earthGravitationalModel =
+            EarthGravitationalModel(EarthGravitationalModel::Type::EGM2008, std::nullopt, degree, order);
+
+        EXPECT_EQ(std::optional<int>(degree), earthGravitationalModel.getDegree());
+        EXPECT_EQ(std::optional<int>(order), earthGravitationalModel.getOrder());
     }
 
     EarthGravitationalModelManager::Get().reset();
@@ -474,7 +485,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
 
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
-        static const Array<Tuple<EarthGravitationalModel::Type, Vector3d, Instant, Vector3d, Real>> testCases = {
+        static const Array<Tuple<EarthGravitationalModel::Type, Vector3d, Instant, Vector3d, double>> testCases = {
 
             {EarthGravitationalModel::Type::Spherical,
              {6378137.0, 0.0, 0.0},
@@ -590,7 +601,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtNo
             const Instant instant = std::get<2>(testCase);
 
             const Vector3d referenceFieldValue = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
             const Vector3d fieldValue = earthGravitationalModel.getFieldValueAt(position, instant);
 
@@ -615,7 +626,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
 
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
-        static const Array<Tuple<EarthGravitationalModel::Type, Integer, Integer, Vector3d, Instant, Vector3d, Real>>
+        static const Array<Tuple<EarthGravitationalModel::Type, int, int, Vector3d, Instant, Vector3d, double>>
             testCases = {
 
                 {EarthGravitationalModel::Type::WGS84,
@@ -710,14 +721,14 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtWi
         for (const auto& testCase : testCases)
         {
             const EarthGravitationalModel earthGravitationalModel = {
-                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)
+                std::get<0>(testCase), std::nullopt, std::get<1>(testCase), std::get<2>(testCase)
             };
 
             const Vector3d position = std::get<3>(testCase);
             const Instant instant = std::get<4>(testCase);
 
             const Vector3d referenceFieldValue = std::get<5>(testCase);
-            const Real tolerance = std::get<6>(testCase);
+            const double tolerance = std::get<6>(testCase);
 
             const Vector3d fieldValue = earthGravitationalModel.getFieldValueAt(position, instant);
 
@@ -743,7 +754,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
         EarthGravitationalModelManager::Get().setMode(EarthGravitationalModelManager::Mode::Automatic);
 
         // These accelerations were computed in STK using HPOP for the respective model, degree and orders
-        static const Array<Tuple<EarthGravitationalModel::Type, Integer, Integer, String, Vector3d, Vector3d, Real>>
+        static const Array<Tuple<EarthGravitationalModel::Type, int, int, String, Vector3d, Vector3d, double>>
             testCases = {
 
                 {EarthGravitationalModel::Type::EGM96,
@@ -780,13 +791,13 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, GetFieldValueAtST
         for (const auto& testCase : testCases)
         {
             const EarthGravitationalModel earthGravitationalModel = {
-                std::get<0>(testCase), Directory::Undefined(), std::get<1>(testCase), std::get<2>(testCase)
+                std::get<0>(testCase), std::nullopt, std::get<1>(testCase), std::get<2>(testCase)
             };
 
             const Instant instant = Instant::DateTime(DateTime::Parse(std::get<3>(testCase)), Scale::UTC);
             const Vector3d position = std::get<4>(testCase);
             const Vector3d referenceFieldValue = std::get<5>(testCase);
-            const Real tolerance = std::get<6>(testCase);
+            const double tolerance = std::get<6>(testCase);
 
             const Vector3d fieldValue = earthGravitationalModel.getFieldValueAt(position, instant);
             const static Unit gravitationalFieldUnit =
@@ -850,7 +861,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ComputeGeocentric
             // At poles, for non-spherical models, radius should be less than equatorial radius
             if (modelType != EarthGravitationalModel::Type::Spherical)
             {
-                const Real polarRadius = parameters.equatorialRadius_.inMeters() * (1.0 - parameters.flattening_);
+                const double polarRadius = parameters.equatorialRadius_.inMeters() * (1.0 - parameters.flattening_);
                 EXPECT_NEAR(radius.inMeters(), polarRadius, 1e-10);
             }
         }
@@ -863,20 +874,11 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ComputeGeocentric
             // At 45 degrees, radius should be between equatorial and polar radius
             if (modelType != EarthGravitationalModel::Type::Spherical)
             {
-                const Real polarRadius = parameters.equatorialRadius_.inMeters() * (1.0 - parameters.flattening_);
+                const double polarRadius = parameters.equatorialRadius_.inMeters() * (1.0 - parameters.flattening_);
                 EXPECT_GT(radius.inMeters(), polarRadius);
                 EXPECT_LT(radius.inMeters(), parameters.equatorialRadius_.inMeters());
             }
         }
-    }
-
-    // Test undefined parameters
-    {
-        const EarthGravitationalModel::Parameters undefinedParameters =
-            EarthGravitationalModel::Parameters::Undefined();
-        const Angle latitude = Angle::Degrees(45.0);
-
-        EXPECT_THROW(undefinedParameters.computeGeocentricRadiusAt(latitude), ostk::core::error::runtime::Undefined);
     }
 
     // Test specific values for WGS84
@@ -885,7 +887,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ComputeGeocentric
 
         // Test values at specific latitudes - computed using reference implementation
         // Reference values from https://planetcalc.com/7721/
-        const Array<Tuple<Real, Real>> testCases = {
+        const Array<Tuple<double, double>> testCases = {
             {0.0, 6378137.0},   // Equator
             {45.0, 6367489.5},  // 45 degrees (approximate value)
             {90.0, 6356752.3},  // North pole (approximate value)
@@ -894,7 +896,7 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Earth, ComputeGeocentric
         for (const auto& testCase : testCases)
         {
             const Angle latitude = Angle::Degrees(std::get<0>(testCase));
-            const Real expectedRadius = std::get<1>(testCase);
+            const double expectedRadius = std::get<1>(testCase);
             const Length radius = wgs84Parameters.computeGeocentricRadiusAt(latitude);
 
             // Using larger tolerance due to approximation in test values
