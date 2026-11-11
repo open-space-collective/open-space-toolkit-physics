@@ -27,6 +27,12 @@ namespace detail
 ///
 ///                             It derives from `type_caster_base_tag`, so that nanobind still treats DateTime as a
 ///                             bound class (`class_<DateTime>` requires it), like `type_caster_base<DateTime>`.
+///
+///                             Its name must stay `const_name<DateTime>()`, even though parameters also accept a
+///                             `datetime.datetime` and return values are one: nanobind recognises the constructors of
+///                             DateTime (`__init__`, `__setstate__`) only when their `self` argument has this name. A
+///                             name such as `io_name(...)` makes every `DateTime(...)` call fail. The stubs declare
+///                             `datetime.datetime` through `tools/stubgen/declare_conversions.py` instead.
 
 template <>
 struct type_caster<DateTime> : type_caster_base_tag
