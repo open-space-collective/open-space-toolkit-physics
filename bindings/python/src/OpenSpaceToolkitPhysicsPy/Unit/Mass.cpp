@@ -48,7 +48,139 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Mass(nanobind::module_& aModule)
             is_operator()
         )
 
-        // .def("__str__", &(shiftToString<Mass>))
+        .def(
+            "__lt__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self < other;
+            },
+            is_operator()
+        )
+        .def(
+            "__le__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self <= other;
+            },
+            is_operator()
+        )
+        .def(
+            "__gt__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self > other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ge__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self >= other;
+            },
+            is_operator()
+        )
+
+        .def(
+            "__add__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self + other;
+            },
+            is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Mass& self, const Mass& other)
+            {
+                return self - other;
+            },
+            is_operator()
+        )
+        .def(
+            "__mul__",
+            [](const Mass& self, double other)
+            {
+                return self * other;
+            },
+            is_operator()
+        )
+        .def(
+            "__truediv__",
+            [](const Mass& self, double other)
+            {
+                return self / other;
+            },
+            is_operator()
+        )
+        .def(
+            "__rmul__",
+            [](const Mass& self, double other)
+            {
+                return other * self;
+            },
+            is_operator()
+        )
+
+        .def(
+            "__iadd__",
+            [](Mass& self, const Mass& other) -> Mass&
+            {
+                self += other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Mass& self, const Mass& other) -> Mass&
+            {
+                self -= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__imul__",
+            [](Mass& self, double other) -> Mass&
+            {
+                self *= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__itruediv__",
+            [](Mass& self, double other) -> Mass&
+            {
+                self /= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+
+        .def(
+            "__pos__",
+            [](const Mass& self)
+            {
+                return +self;
+            },
+            is_operator()
+        )
+        .def(
+            "__neg__",
+            [](const Mass& self)
+            {
+                return -self;
+            },
+            is_operator()
+        )
+
+        .def("__str__", &(shiftToString<Mass>))
         .def(
             "__repr__",
             +[](const Mass& aMass) -> std::string
