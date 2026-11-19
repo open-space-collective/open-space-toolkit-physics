@@ -28,24 +28,14 @@ Static* Static::clone() const
     return new Static(*this);
 }
 
-bool Static::isDefined() const
-{
-    return transform_.isDefined();
-}
-
 Transform Static::getTransformAt(const Instant& anInstant) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Static provider");
-    }
-
     return {
         anInstant,
-        transform_.accessTranslation(),
-        transform_.accessVelocity(),
-        transform_.accessOrientation(),
-        transform_.accessAngularVelocity(),
+        transform_.getTranslation(),
+        transform_.getVelocity(),
+        transform_.getOrientation(),
+        transform_.getAngularVelocity(),
         Transform::Type::Passive
     };
 }

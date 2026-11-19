@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Magnetic/Dipole.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Dipole(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::mathematics::object::Vector3d;
 

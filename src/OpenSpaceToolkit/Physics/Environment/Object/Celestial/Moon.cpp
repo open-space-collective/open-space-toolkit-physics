@@ -19,20 +19,46 @@ namespace object
 namespace celestial
 {
 
+namespace
+{
+
+// The Celestial constructor rejects a null ephemeris, but the arguments below dereference both pointers first.
+MoonGravitationalModel::Parameters ParametersOf(const Shared<MoonGravitationalModel>& aGravitationalModel)
+{
+    if (aGravitationalModel == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Gravitational model");
+    }
+
+    return aGravitationalModel->getParameters();
+}
+
+Shared<const Frame> EphemerisFrame(const Shared<Ephemeris>& anEphemeris)
+{
+    if (anEphemeris == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Ephemeris");
+    }
+
+    return anEphemeris->getFrame();
+}
+
+}  // namespace
+
 Moon::Moon(const Shared<Ephemeris>& anEphemeris, const Shared<MoonGravitationalModel>& aGravitationalModel)
     : Celestial(
           "Moon",
           Celestial::Type::Moon,
-          aGravitationalModel->getParameters().gravitationalParameter_,
-          aGravitationalModel->getParameters().equatorialRadius_,
-          aGravitationalModel->getParameters().flattening_,
-          aGravitationalModel->getParameters().J2_,
-          aGravitationalModel->getParameters().J4_,
+          ParametersOf(aGravitationalModel).gravitationalParameter_,
+          ParametersOf(aGravitationalModel).equatorialRadius_,
+          ParametersOf(aGravitationalModel).flattening_,
+          ParametersOf(aGravitationalModel).J2_,
+          ParametersOf(aGravitationalModel).J4_,
           anEphemeris,
           aGravitationalModel,
           nullptr,
           nullptr,
-          Moon::Geometry(anEphemeris->accessFrame())
+          Moon::Geometry(EphemerisFrame(anEphemeris))
       )
 {
 }
@@ -64,8 +90,8 @@ Object::Geometry Moon::Geometry(const Shared<const Frame>& aFrame)
     using ostk::mathematics::geometry::d3::object::Point;
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 
-    const Real equatorialRadius_m = MoonGravitationalModel::Spherical.equatorialRadius_.inMeters();
-    const Real polarRadius_m = equatorialRadius_m * (1.0 - MoonGravitationalModel::Spherical.flattening_);
+    const double equatorialRadius_m = MoonGravitationalModel::Spherical.equatorialRadius_.inMeters();
+    const double polarRadius_m = equatorialRadius_m * (1.0 - MoonGravitationalModel::Spherical.flattening_);
 
     const Ellipsoid ellipsoid = {
         Point::Origin(),

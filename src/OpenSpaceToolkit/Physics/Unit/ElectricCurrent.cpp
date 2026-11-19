@@ -1,9 +1,12 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -11,8 +14,9 @@ namespace physics
 {
 namespace unit
 {
+using ostk::physics::utility::DoubleToString;
 
-ElectricCurrent::ElectricCurrent(const Real& aValue, const ElectricCurrent::Unit& aUnit)
+ElectricCurrent::ElectricCurrent(double aValue, const ElectricCurrent::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::ElectricCurrent, aValue),
       unit_(aUnit)
 {
@@ -23,68 +27,44 @@ ElectricCurrent* ElectricCurrent::clone() const
     return new ElectricCurrent(*this);
 }
 
-bool ElectricCurrent::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != ElectricCurrent::Unit::Undefined);
-}
-
 ElectricCurrent::Unit ElectricCurrent::getUnit() const
 {
     return unit_;
 }
 
-Real ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
+double ElectricCurrent::in(const ElectricCurrent::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return Real::Undefined();
-    }
-
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * ElectricCurrent::SIRatio(unit_) / ElectricCurrent::SIRatio(aUnit);
+    return this->getValue() * ElectricCurrent::SIRatio(unit_) / ElectricCurrent::SIRatio(aUnit);
 }
 
-Real ElectricCurrent::inAmperes() const
+double ElectricCurrent::inAmperes() const
 {
     return this->in(ElectricCurrent::Unit::Ampere);
 }
 
-String ElectricCurrent::toString(const Integer& aPrecision) const
+String ElectricCurrent::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Electric current");
-    }
-
-    return this->accessValue().toString(aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + ElectricCurrent::SymbolFromUnit(unit_) + "]";
 }
 
-ElectricCurrent ElectricCurrent::Undefined()
-{
-    return {Real::Undefined(), ElectricCurrent::Unit::Undefined};
-}
-
-ElectricCurrent ElectricCurrent::Amperes(const Real& aValue)
+ElectricCurrent ElectricCurrent::Amperes(double aValue)
 {
     return {aValue, ElectricCurrent::Unit::Ampere};
 }
 
 // ElectricCurrent                 ElectricCurrent::Parse                      (   const   String& aString )
 // {
-
 // }
 
 String ElectricCurrent::StringFromUnit(const ElectricCurrent::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case ElectricCurrent::Unit::Undefined:
-            return "Undefined";
-
         case ElectricCurrent::Unit::Ampere:
             return "Ampere";
 
@@ -111,7 +91,7 @@ String ElectricCurrent::SymbolFromUnit(const ElectricCurrent::Unit& aUnit)
     return String::Empty();
 }
 
-Real ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
+double ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -122,10 +102,7 @@ Real ElectricCurrent::SIRatio(const ElectricCurrent::Unit& aUnit)
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return Real::Undefined();
 }
-
 }  // namespace unit
 }  // namespace physics
 }  // namespace ostk

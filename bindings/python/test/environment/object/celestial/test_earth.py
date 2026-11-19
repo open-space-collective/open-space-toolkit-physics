@@ -32,7 +32,7 @@ def earth_atmospheric_model() -> EarthAtmosphericModel:
 
 @pytest.fixture
 def earth_magnetic_model() -> EarthMagneticModel:
-    return EarthMagneticModel(EarthMagneticModel.Type.Undefined)
+    return EarthMagneticModel(EarthMagneticModel.Type.Dipole)
 
 
 class TestEarth:
@@ -111,6 +111,11 @@ class TestEarth:
         assert earth_custom is not None
         assert isinstance(earth_custom, Earth)
 
+        earth_none: Earth = Earth.EGM84(None, None)
+
+        assert earth_none is not None
+        assert isinstance(earth_none, Earth)
+
     def test_WGS84_success(self):
         earth = Earth.WGS84()
 
@@ -134,7 +139,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM2008,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -144,7 +149,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM96,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -154,7 +159,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.EGM84,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -164,7 +169,7 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.WGS84_EGM96,
-                    Directory.undefined(),
+                    None,
                     20,
                     20,
                 ),
@@ -174,13 +179,13 @@ class TestEarth:
             (
                 (
                     EarthGravitationalModel.Type.WGS84,
-                    Directory.undefined(),
+                    None,
                 ),
                 (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
             (
-                (EarthGravitationalModel.Type.Spherical, Directory.undefined()),
+                (EarthGravitationalModel.Type.Spherical, None),
                 (EarthAtmosphericModel.Type.Exponential,),
                 (EarthMagneticModel.Type.Dipole,),
             ),
@@ -197,17 +202,75 @@ class TestEarth:
             EarthMagneticModel(*mag_model_parameters),
             EarthAtmosphericModel(*atmos_model_parameters),
         )
-        assert earth.is_defined()
+
+        assert earth is not None
+        assert isinstance(earth, Earth)
 
     def test_singular_model_static_constructors(self):
-        assert Earth.gravitational_only(
-            EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
-        ).is_defined()
-        assert Earth.atmospheric_only(
-            EarthAtmosphericModel(
-                EarthAtmosphericModel.Type.Exponential,
-            )
-        ).is_defined()
-        assert Earth.magnetic_only(
-            EarthMagneticModel(EarthMagneticModel.Type.WMM2010)
-        ).is_defined()
+        assert isinstance(
+            Earth.gravitational_only(
+                EarthGravitationalModel(EarthGravitationalModel.Type.EGM2008)
+            ),
+            Earth,
+        )
+        assert isinstance(
+            Earth.atmospheric_only(
+                EarthAtmosphericModel(
+                    EarthAtmosphericModel.Type.Exponential,
+                )
+            ),
+            Earth,
+        )
+        assert isinstance(
+            Earth.magnetic_only(EarthMagneticModel(EarthMagneticModel.Type.WMM2010)),
+            Earth,
+        )
+
+
+class TestEarthWithoutModels:
+    def test_from_models_accepts_none(
+        self, earth_gravitational_model: EarthGravitationalModel
+    ):
+        earth = Earth.from_models(earth_gravitational_model, None, None)
+
+        assert earth.get_gravitational_model() is not None
+        assert earth.get_magnetic_model() is None
+        assert earth.get_atmospheric_model() is None
+
+    def test_from_models_without_gravitational_model(
+        self, earth_atmospheric_model: EarthAtmosphericModel
+    ):
+        earth = Earth.from_models(None, None, earth_atmospheric_model)
+
+        assert earth.get_gravitational_model() is None
+        assert earth.get_atmospheric_model() is not None
+
+    def test_atmospheric_only_keeps_a_shape(
+        self, earth_atmospheric_model: EarthAtmosphericModel
+    ):
+        earth = Earth.atmospheric_only(earth_atmospheric_model)
+
+        assert earth.get_gravitational_model() is None
+        assert earth.get_equatorial_radius().in_meters() == pytest.approx(6378137.0)
+        assert earth.get_flattening() == pytest.approx(1.0 / 298.257223563)
+
+    def test_atmospheric_only_has_no_gravitational_constants(
+        self, earth_atmospheric_model: EarthAtmosphericModel
+    ):
+        earth = Earth.atmospheric_only(earth_atmospheric_model)
+
+        with pytest.raises(RuntimeError):
+            earth.get_gravitational_parameter()
+
+        with pytest.raises(RuntimeError):
+            earth.get_j2()
+
+        with pytest.raises(RuntimeError):
+            earth.get_j4()
+
+    def test_constructor_accepts_none_models(self):
+        earth = Earth(Analytical(Frame.ITRF()), None, None, None)
+
+        assert earth.get_gravitational_model() is None
+        assert earth.get_magnetic_model() is None
+        assert earth.get_atmospheric_model() is None

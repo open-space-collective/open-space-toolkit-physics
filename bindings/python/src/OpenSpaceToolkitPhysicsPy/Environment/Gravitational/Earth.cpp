@@ -4,12 +4,11 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Gravitational/Earth/Manager.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::Directory;
-    using ostk::core::type::Integer;
     using ostk::core::type::Shared;
 
     using ostk::physics::environment::gravitational::Earth;
@@ -17,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
     using ostk::physics::environment::gravitational::Model;
 
     {
-        class_<Earth, Model, Shared<Earth>> earth_class(
+        class_<Earth, Model> earth_class(
             aModule,
             "Earth",
             R"doc(
@@ -33,7 +32,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
         earth_class
 
             .def(
-                init<const Earth::Type&, const Directory&>(),
+                init<const Earth::Type&, const std::optional<Directory>&>(),
                 arg("type"),
                 arg("directory"),
                 R"doc(
@@ -41,7 +40,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
                     Args:
                         type (Earth.Type): Earth model type.
-                        directory (Directory): Directory containing the gravity model data files.
+                        directory (Directory | None): Directory containing the gravity model data files.
                 )doc"
             )
 
@@ -57,7 +56,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
             )
 
             .def(
-                init<const Earth::Type&, const Directory&, const Integer&, const Integer&>(),
+                init<
+                    const Earth::Type&,
+                    const std::optional<Directory>&,
+                    const std::optional<int>&,
+                    const std::optional<int>&>(),
                 arg("type"),
                 arg("directory"),
                 arg("gravitational_model_degree"),
@@ -67,14 +70,14 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
                     Args:
                         type (Earth.Type): Earth model type.
-                        directory (Directory): Directory containing the gravity model data files.
-                        gravitational_model_degree (int): Degree of the gravitational model.
-                        gravitational_model_order (int): Order of the gravitational model.
+                        directory (Directory | None): Directory containing the gravity model data files.
+                        gravitational_model_degree (int | None): Degree of the gravitational model. If None, the maximum degree of the model is used.
+                        gravitational_model_order (int | None): Order of the gravitational model. If None, the maximum order of the model is used.
                 )doc"
             )
 
             .def(
-                init<const Earth::Type&, const Integer&, const Integer&>(),
+                init<const Earth::Type&, const std::optional<int>&, const std::optional<int>&>(),
                 arg("type"),
                 arg("gravitational_model_degree"),
                 arg("gravitational_model_order"),
@@ -83,19 +86,8 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
                     Args:
                         type (Earth.Type): Earth model type.
-                        gravitational_model_degree (int): Degree of the gravitational model.
-                        gravitational_model_order (int): Order of the gravitational model.
-                )doc"
-            )
-
-            .def(
-                "is_defined",
-                &Earth::isDefined,
-                R"doc(
-                    Check if the Earth model is defined.
-
-                    Returns:
-                        bool: True if the model is defined.
+                        gravitational_model_degree (int | None): Degree of the gravitational model. If None, the maximum degree of the model is used.
+                        gravitational_model_order (int | None): Order of the gravitational model. If None, the maximum order of the model is used.
                 )doc"
             )
 
@@ -128,7 +120,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                     Get the Earth model degree.
 
                     Returns:
-                        int: Earth model degree.
+                        int | None: Earth model degree, or None if it was not specified or does not apply (spherical model).
                 )doc"
             )
             .def(
@@ -138,7 +130,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                     Get the Earth model order.
 
                     Returns:
-                        int: Earth model order.
+                        int | None: Earth model order, or None if it was not specified or does not apply (spherical model).
                 )doc"
             )
 
@@ -159,28 +151,28 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                 )doc"
             )
 
-            .def_readonly_static(
+            .def_ro_static(
                 "EGM2008",
                 &Earth::EGM2008,
                 R"doc(
                     The Earth Gravity Model 2008, which includes terms up to degree 2190.
                 )doc"
             )
-            .def_readonly_static(
+            .def_ro_static(
                 "EGM96",
                 &Earth::EGM96,
                 R"doc(
                     The Earth Gravity Model 1996, which includes terms up to degree 360.
                 )doc"
             )
-            .def_readonly_static(
+            .def_ro_static(
                 "EGM84",
                 &Earth::EGM84,
                 R"doc(
                     The Earth Gravity Model 1984, which includes terms up to degree 180.
                 )doc"
             )
-            .def_readonly_static(
+            .def_ro_static(
                 "WGS84_EGM96",
                 &Earth::WGS84_EGM96,
                 R"doc(
@@ -188,21 +180,21 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
                     which includes terms up to degree 360.
                 )doc"
             )
-            .def_readonly_static(
+            .def_ro_static(
                 "WGS84",
                 &Earth::WGS84,
                 R"doc(
                     The normal gravitational field for the reference ellipsoid. This includes the zonal coefficients up to order 20.
                 )doc"
             )
-            .def_readonly_static(
+            .def_ro_static(
                 "spherical",
                 &Earth::Spherical,
                 R"doc(
                     The spherical gravity originating from a point source at the center of the Earth.
                 )doc"
             )
-            .def_readonly_static(
+            .def_ro_static(
                 "gravity_constant",
                 &Earth::gravityConstant,
                 R"doc(
@@ -214,13 +206,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Earth(pybind11::
 
         enum_<Earth::Type>(earth_class, "Type")
 
-            .value(
-                "Undefined",
-                Earth::Type::Undefined,
-                R"doc(
-                    Undefined.
-                )doc"
-            )
             .value(
                 "Spherical",
                 Earth::Type::Spherical,

@@ -2,12 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Time(nanobind::module_& aModule)
 {
-    using namespace pybind11;
-
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
+    using namespace nanobind;
 
     using ostk::physics::unit::Time;
 
@@ -22,18 +19,32 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
     );
 
     time.def(
-            init<Real, Time::Unit>(),
+            init<double, Time::Unit>(),
             R"doc(
             Constructor.
 
             Args:
-                aReal (Real): A real number.
+                aReal (float): A real number.
                 aUnit (Time.Unit): A time unit.
         )doc"
     )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Time& self, const Time& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Time& self, const Time& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         // .def(self < self)
         // .def(self <= self)
@@ -43,14 +54,14 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         // .def(self + self)
         // .def(self - self)
 
-        // // .def(self * other<Real>())
-        // .def(self / other<Real>())
-        // .def(self *= other<Real>())
-        // .def(self /= other<Real>())
-        // .def("__mul__", [](const Time &aTime, Real aReal) {return aTime * aReal;}, is_operator())
-        // .def("__truediv__", [](const Time &aTime, Real aReal) {return aTime / aReal;}, is_operator())
-        // .def("__imul__", [](const Time &aTime, Real aReal) {return aTime * aReal;}, is_operator())
-        // .def("__itruediv__", [](const Time &aTime, Real aReal) {return aTime / aReal;}, is_operator())
+        // // .def(self * other<double>())
+        // .def(self / other<double>())
+        // .def(self *= other<double>())
+        // .def(self /= other<double>())
+        // .def("__mul__", [](const Time &aTime, double aReal) {return aTime * aReal;}, is_operator())
+        // .def("__truediv__", [](const Time &aTime, double aReal) {return aTime / aReal;}, is_operator())
+        // .def("__imul__", [](const Time &aTime, double aReal) {return aTime * aReal;}, is_operator())
+        // .def("__itruediv__", [](const Time &aTime, double aReal) {return aTime / aReal;}, is_operator())
 
         // .def(self += self)
         // .def(self -= self)
@@ -65,20 +76,9 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
         )
 
         .def(
-            "is_defined",
-            &Time::isDefined,
-            R"doc(
-                Check if the time is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "to_string",
             &Time::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Convert time to string.
 
@@ -90,16 +90,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Time::Undefined,
-            R"doc(
-                Create an undefined time.
-
-                Returns:
-                    Time: An undefined time.
-            )doc"
-        )
         .def_static(
             "string_from_unit",
             &Time::StringFromUnit,
@@ -131,13 +121,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Time(pybind11::module& aModule)
 
     enum_<Time::Unit>(time, "Unit")
 
-        .value(
-            "Undefined",
-            Time::Unit::Undefined,
-            R"doc(
-                Undefined time unit.
-            )doc"
-        )
         .value(
             "Nanosecond",
             Time::Unit::Nanosecond,

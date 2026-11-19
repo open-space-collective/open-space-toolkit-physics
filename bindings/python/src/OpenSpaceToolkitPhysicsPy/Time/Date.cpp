@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Date(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::String;
     using ostk::core::type::Uint16;
@@ -23,8 +23,22 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
     date_class
         .def(init<int, int, int>())
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Date& self, const Date& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Date& self, const Date& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Date>))
         .def(
@@ -33,17 +47,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             {
                 return aDate.toString();
             }
-        )
-
-        .def(
-            "is_defined",
-            &Date::isDefined,
-            R"doc(
-                Check if the date is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
         )
 
         .def(
@@ -167,17 +170,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
             )doc",
             arg("day")
         )
-
-        .def_static(
-            "undefined",
-            &Date::Undefined,
-            R"doc(
-                Create an undefined date.
-
-                Returns:
-                    Date: Undefined date.
-            )doc"
-        )
         .def_static(
             "J2000",
             &Date::J2000,
@@ -228,15 +220,8 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
 
         );
 
-    enum_<Date::Format>(date_class, "Format", pybind11::module_local())
+    enum_<Date::Format>(date_class, "Format")
 
-        .value(
-            "Undefined",
-            Date::Format::Undefined,
-            R"doc(
-                Undefined date format.
-            )doc"
-        )
         .value(
             "Standard",
             Date::Format::Standard,
@@ -254,5 +239,5 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Date(pybind11::module& aModule)
 
         ;
 
-    date_class.def_static("parse", &Date::Parse, "aString"_a, "aFormat"_a = Date::Format::Undefined);
+    date_class.def_static("parse", &Date::Parse, "aString"_a, "aFormat"_a = none());
 }

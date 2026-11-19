@@ -29,7 +29,7 @@ class TestSun:
 
     def test_constructor_success_with_directory(self):
         sun_gravitational_model = SunGravitationalModel(
-            SunGravitationalModel.Type.Spherical, Directory.undefined()
+            SunGravitationalModel.Type.Spherical, None
         )
 
         assert isinstance(sun_gravitational_model, SunGravitationalModel)
@@ -37,11 +37,6 @@ class TestSun:
 
     def test_is_point_mass_success(self, sun_gravitational_model: SunGravitationalModel):
         assert sun_gravitational_model.is_point_mass() is True
-
-        assert (
-            SunGravitationalModel(SunGravitationalModel.Type.Undefined).is_point_mass()
-            is False
-        )
 
     def test_get_type_success(self, sun_gravitational_model: SunGravitationalModel):
         assert sun_gravitational_model.get_type() == SunGravitationalModel.Type.Spherical

@@ -10,8 +10,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
-
 using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
 using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
 using ostk::mathematics::object::Vector3d;
@@ -25,12 +23,6 @@ using ostk::physics::unit::Angle;
 class OpenSpaceToolkit_Physics_Coordinate_Transform : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        transformActive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active};
-        transformPassive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive};
-    }
-
     const Vector3d t_B_A_ = {+0.0, +0.0, +0.0};
     const Vector3d v_B_A_ = {+0.0, +0.0, +0.0};
 
@@ -39,8 +31,8 @@ class OpenSpaceToolkit_Physics_Coordinate_Transform : public ::testing::Test
 
     const Instant instant_ = Instant::J2000();
 
-    Transform transformActive_ = Transform::Undefined();
-    Transform transformPassive_ = Transform::Undefined();
+    Transform transformActive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Active};
+    Transform transformPassive_ = {instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive};
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Constructor)
@@ -51,10 +43,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Constructor)
 
     {
         EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Passive));
-    }
-
-    {
-        EXPECT_NO_THROW(Transform(instant_, t_B_A_, v_B_A_, q_B_A_, w_B_A_in_B_, Transform::Type::Undefined));
     }
 }
 
@@ -113,13 +101,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, EqualToOperator)
                 Transform::Type::Passive
             )
         );
-
-        EXPECT_FALSE(transformActive_ == Transform::Undefined());
-        EXPECT_FALSE(Transform::Undefined() == transformActive_);
-    }
-
-    {
-        EXPECT_FALSE(Transform::Undefined() == Transform::Undefined());
     }
 }
 
@@ -178,13 +159,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, NotEqualToOperator)
                 Transform::Type::Passive
             )
         );
-
-        EXPECT_TRUE(transformActive_ != Transform::Undefined());
-        EXPECT_TRUE(Transform::Undefined() != transformActive_);
-    }
-
-    {
-        EXPECT_TRUE(Transform::Undefined() != Transform::Undefined());
     }
 }
 
@@ -225,16 +199,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
 
         // Comparison
 
-        EXPECT_GT(
-            1e-14, ((transform_C_B * transform_B_A).accessTranslation() - transform_C_A.accessTranslation()).norm()
-        );
+        EXPECT_GT(1e-14, ((transform_C_B * transform_B_A).getTranslation() - transform_C_A.getTranslation()).norm());
         EXPECT_GT(1e-14, ((transform_C_B * transform_B_A).getVelocity() - transform_C_A.getVelocity()).norm());
         EXPECT_TRUE((transform_C_B * transform_B_A)
-                        .accessOrientation()
-                        .isNear(transform_C_A.accessOrientation(), Angle::Degrees(1e-7)));
+                        .getOrientation()
+                        .isNear(transform_C_A.getOrientation(), Angle::Degrees(1e-7)));
         EXPECT_GT(
-            1e-14,
-            ((transform_C_B * transform_B_A).accessAngularVelocity() - transform_C_A.accessAngularVelocity()).norm()
+            1e-14, ((transform_C_B * transform_B_A).getAngularVelocity() - transform_C_A.getAngularVelocity()).norm()
         );
     }
 }
@@ -247,17 +218,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, StreamOperator)
         EXPECT_NO_THROW(std::cout << transformActive_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsDefined)
-{
-    {
-        EXPECT_TRUE(transformActive_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Transform::Undefined().isDefined());
     }
 }
 
@@ -284,75 +244,13 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, IsIdentity)
         EXPECT_FALSE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
         EXPECT_FALSE(Transform(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B, Transform::Type::Passive).isIdentity());
     }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().isIdentity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessInstant)
-{
-    {
-        EXPECT_EQ(instant_, transformPassive_.accessInstant());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessInstant());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessTranslation)
-{
-    {
-        EXPECT_EQ(t_B_A_, transformPassive_.accessTranslation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessTranslation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessVelocity)
-{
-    {
-        EXPECT_EQ(v_B_A_, transformPassive_.accessVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessVelocity());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessOrientation)
-{
-    {
-        EXPECT_EQ(q_B_A_, transformPassive_.accessOrientation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessOrientation());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, AccessAngularVelocity)
-{
-    {
-        EXPECT_EQ(w_B_A_in_B_, transformPassive_.accessAngularVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().accessAngularVelocity());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInstant)
 {
     {
         EXPECT_EQ(instant_, transformPassive_.getInstant());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getInstant());
+        EXPECT_EQ(&transformPassive_.getInstant(), &transformPassive_.getInstant());
     }
 }
 
@@ -360,10 +258,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetTranslation)
 {
     {
         EXPECT_EQ(t_B_A_, transformPassive_.getTranslation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getTranslation());
+        EXPECT_EQ(&transformPassive_.getTranslation(), &transformPassive_.getTranslation());
     }
 }
 
@@ -371,10 +266,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetVelocity)
 {
     {
         EXPECT_EQ(v_B_A_, transformPassive_.getVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getVelocity());
+        EXPECT_EQ(&transformPassive_.getVelocity(), &transformPassive_.getVelocity());
     }
 }
 
@@ -382,10 +274,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetOrientation)
 {
     {
         EXPECT_EQ(q_B_A_, transformPassive_.getOrientation());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getOrientation());
+        EXPECT_EQ(&transformPassive_.getOrientation(), &transformPassive_.getOrientation());
     }
 }
 
@@ -393,10 +282,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetAngularVelocity)
 {
     {
         EXPECT_EQ(w_B_A_in_B_, transformPassive_.getAngularVelocity());
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getAngularVelocity());
+        EXPECT_EQ(&transformPassive_.getAngularVelocity(), &transformPassive_.getAngularVelocity());
     }
 }
 
@@ -421,21 +307,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, GetInverse)
 
             const Transform transform = Transform::Passive(Instant::J2000(), t_A_B, v_A_B, q_B_A, w_B_A_in_B);
 
+            EXPECT_TRUE(transform.getInverse().getInverse().getTranslation().isNear(transform.getTranslation(), 1e-14));
+            EXPECT_TRUE(transform.getInverse().getInverse().getVelocity().isNear(transform.getVelocity(), 1e-14));
+            EXPECT_TRUE(transform.getInverse().getInverse().getOrientation().isNear(
+                transform.getOrientation(), Angle::Radians(1e-7)
+            ));
             EXPECT_TRUE(
-                transform.getInverse().getInverse().accessTranslation().isNear(transform.accessTranslation(), 1e-14)
+                transform.getInverse().getInverse().getAngularVelocity().isNear(transform.getAngularVelocity(), 1e-14)
             );
-            EXPECT_TRUE(transform.getInverse().getInverse().accessVelocity().isNear(transform.accessVelocity(), 1e-14));
-            EXPECT_TRUE(transform.getInverse().getInverse().accessOrientation().isNear(
-                transform.accessOrientation(), Angle::Radians(1e-7)
-            ));
-            EXPECT_TRUE(transform.getInverse().getInverse().accessAngularVelocity().isNear(
-                transform.accessAngularVelocity(), 1e-14
-            ));
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(Transform::Undefined().getInverse());
     }
 }
 
@@ -812,15 +692,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, ApplyToVector)
         const Vector3d v_B = transform_B_A.applyToVector(v_A);
 
         EXPECT_TRUE(v_B.isNear(Vector3d(+2.0, +0.0, +0.0), 1e-14));
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, Undefined)
-{
-    {
-        EXPECT_NO_THROW(Transform::Undefined());
-
-        EXPECT_FALSE(Transform::Undefined().isDefined());
     }
 }
 

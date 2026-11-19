@@ -16,32 +16,6 @@ class TestBulletinA:
     def test_repr_success(self, bulletin_a: BulletinA):
         assert repr(bulletin_a).startswith("-- Bulletin A --")
 
-    def test_is_defined_success(self, bulletin_a: BulletinA):
-        assert bulletin_a.is_defined() is True
-
-    def test_access_release_date_success(self, bulletin_a: BulletinA):
-        assert bulletin_a.access_release_date().to_string() == "2020-10-29"
-
-    def test_access_tai_minus_utc_success(self, bulletin_a: BulletinA):
-        assert bulletin_a.access_tai_minus_utc().to_string() == "37.000.000.000"
-
-    def test_access_tai_minus_utc_epoch_success(self, bulletin_a: BulletinA):
-        assert bulletin_a.access_tai_minus_utc_epoch() == Instant.date_time(
-            datetime(2017, 1, 1, 0, 0, 0), Scale.UTC
-        )
-
-    def test_access_observation_interval_success(self, bulletin_a: BulletinA):
-        assert (
-            bulletin_a.access_observation_interval().to_string()
-            == "[2020-10-23 00:00:00 - 2020-10-30 00:00:00[ [UTC]"
-        )
-
-    def test_access_prediction_interval_success(self, bulletin_a: BulletinA):
-        assert (
-            bulletin_a.access_prediction_interval().to_string()
-            == "[2020-10-30 00:00:00 - 2021-10-29 00:00:00] [UTC]"
-        )
-
     def test_get_release_date_success(self, bulletin_a: BulletinA):
         assert bulletin_a.get_release_date().to_string() == "2020-10-29"
 
@@ -97,9 +71,6 @@ class TestBulletinA:
         assert prediction.x == 0.16059999999999999
         assert prediction.y == 0.29709999999999998
         assert prediction.ut1_minus_utc == -0.17524000000000001
-
-    def test_undefined_success(self):
-        assert BulletinA.undefined() is not None
 
     def test_load_success(self, bulletin_a_file: File):
         assert BulletinA.load(bulletin_a_file) is not None

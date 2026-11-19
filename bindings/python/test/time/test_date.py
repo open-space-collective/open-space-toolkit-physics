@@ -9,10 +9,6 @@ def test_date_constructors():
     assert Date(2018, 1, 1) is not None
 
 
-def test_date_undefined():
-    assert Date.undefined() is not None
-
-
 def test_date_J2000():
     assert Date.J2000() is not None
 
@@ -32,49 +28,58 @@ def test_date_modified_julian_date_epoch():
 def test_date_parse():
     ## Using python strings
 
-    # Testing with default format argument (Date::Format::Undefined)
+    # Testing with default format argument (None, which detects the format)
     date: Date = Date.parse("2018-01-01")
 
     assert date is not None
     assert isinstance(date, Date)
-    assert date.is_defined()
 
     # Testing with Date.Format.Standard
     date: Date = Date.parse("2018-01-01", Date.Format.Standard)
 
     assert date is not None
     assert isinstance(date, Date)
-    assert date.is_defined()
 
     # Testing with Date.Format.STK
     date: Date = Date.parse("2 Jan 2019", Date.Format.STK)
 
     assert date is not None
     assert isinstance(date, Date)
-    assert date.is_defined()
 
     ## Using String class
 
-    # Testing with default format argument (Date::Format::Undefined)
+    # Testing with default format argument (None, which detects the format)
     date: Date = Date.parse(String("2018-01-01"))
 
     assert date is not None
     assert isinstance(date, Date)
-    assert date.is_defined()
 
     # Testing with Date.Format.Standard
     date: Date = Date.parse(String("2018-01-01"), Date.Format.Standard)
 
     assert date is not None
     assert isinstance(date, Date)
-    assert date.is_defined()
 
     # Testing with Date.Format.STK
     date: Date = Date.parse(String("2 Jan 2019"), Date.Format.STK)
 
     assert date is not None
     assert isinstance(date, Date)
-    assert date.is_defined()
+
+
+def test_date_parse_without_format():
+    assert Date.parse("2018-01-02") == Date.parse("2018-01-02", Date.Format.Standard)
+    assert Date.parse("2018-01-02", None) == Date.parse(
+        "2018-01-02", Date.Format.Standard
+    )
+    assert Date.parse("2 Jan 2018", None) == Date.parse("2 Jan 2018", Date.Format.STK)
+
+    with pytest.raises(RuntimeError):
+        Date.parse("abc", None)
+
+
+def test_date_format_has_no_undefined():
+    assert not hasattr(Date.Format, "Undefined")
 
 
 def test_date_operators():
@@ -84,10 +89,9 @@ def test_date_operators():
     assert (date != date) is not None
 
 
-def test_date_is_defined():
-    date = Date(2018, 1, 1)
-
-    assert date.is_defined() is not None
+def test_date_has_no_undefined():
+    assert not hasattr(Date, "undefined")
+    assert not hasattr(Date, "is_defined")
 
 
 def test_date_get_year():

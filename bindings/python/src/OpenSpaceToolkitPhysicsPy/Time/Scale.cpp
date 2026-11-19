@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time_Scale(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time_Scale(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::time::Scale;
 
@@ -23,13 +23,6 @@ inline void OpenSpaceToolkitPhysicsPy_Time_Scale(pybind11::module& aModule)
         )doc"
     )
 
-        .value(
-            "Undefined",
-            Scale::Undefined,
-            R"doc(
-                Undefined time.
-            )doc"
-        )
         .value(
             "UTC",
             Scale::UTC,

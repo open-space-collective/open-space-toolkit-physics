@@ -15,13 +15,12 @@ class TestSPICE:
         spice = SPICE(SPICE.Object.Earth)
 
         assert spice is not None
-        assert spice.is_defined() is True
 
-    def test_is_defined_success(self, spice: SPICE):
-        assert spice.is_defined() is True
+    def test_object_has_no_undefined(self):
+        assert not hasattr(SPICE.Object, "Undefined")
 
-    def test_access_frame_success(self, spice: SPICE):
-        frame = spice.access_frame()
+    def test_get_frame_success(self, spice: SPICE):
+        frame = spice.get_frame()
 
         assert frame is not None
 

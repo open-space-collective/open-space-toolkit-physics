@@ -10,7 +10,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Scale, StringFromScale)
     using ostk::physics::time::StringFromScale;
 
     {
-        EXPECT_EQ("Undefined", StringFromScale(Scale::Undefined));
         EXPECT_EQ("UTC", StringFromScale(Scale::UTC));
         EXPECT_EQ("TT", StringFromScale(Scale::TT));
         EXPECT_EQ("TAI", StringFromScale(Scale::TAI));
@@ -34,7 +33,6 @@ TEST(OpenSpaceToolkit_Physics_Time_Scale, ScaleFromString)
     using ostk::physics::time::ScaleFromString;
 
     {
-        EXPECT_EQ(Scale::Undefined, ScaleFromString("Undefined"));
         EXPECT_EQ(Scale::UTC, ScaleFromString("UTC"));
         EXPECT_EQ(Scale::TT, ScaleFromString("TT"));
         EXPECT_EQ(Scale::TAI, ScaleFromString("TAI"));

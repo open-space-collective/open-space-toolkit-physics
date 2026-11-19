@@ -3,8 +3,9 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Moon__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
@@ -23,8 +24,6 @@ namespace gravitational
 {
 
 using ostk::core::filesystem::Directory;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::Unique;
 
 using ostk::io::URL;
@@ -44,8 +43,7 @@ class Moon : public Model
 
     enum class Type
     {
-        Undefined,  /// Undefined
-        Spherical   /// The spherical gravity originating from a point source at the center of the Moon
+        Spherical  /// The spherical gravity originating from a point source at the center of the Moon
     };
 
     /// @brief Constructor
@@ -56,7 +54,7 @@ class Moon : public Model
     ///
     /// @param [in] aType A gravitational model type
     /// @param [in] (optional) aDataDirectory A gravitational model data directory
-    Moon(const Moon::Type& aType, const Directory& aDataDirectory = Directory::Undefined());
+    Moon(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory = std::nullopt);
 
     /// @brief Copy constructor
     ///
@@ -88,15 +86,6 @@ class Moon : public Model
     ///
     /// @return Pointer to Moon gravitational model
     virtual Moon* clone() const override;
-
-    /// @brief Check if the Moon gravitational model is defined
-    ///
-    /// @code
-    ///     bool isDefined = moonGrav.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the Moon gravitational model is defined
-    virtual bool isDefined() const override;
 
     /// @brief Returns true if the gravitational model is a point mass model
     ///
@@ -143,7 +132,7 @@ class Moon : public Model
 
     Unique<Impl> implUPtr_;
 
-    static Unique<Impl> ImplFromType(const Moon::Type& aType, const Directory& aDataDirectory);
+    static Unique<Impl> ImplFromType(const Moon::Type& aType, const std::optional<Directory>& aDataDirectory);
 };
 
 }  // namespace gravitational

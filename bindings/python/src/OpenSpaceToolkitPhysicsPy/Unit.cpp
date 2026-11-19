@@ -7,9 +7,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Unit/Mass.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Unit/Time.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::Unit;
 
@@ -30,13 +30,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
     );
 
     enum_<Unit::Type>(unit_class, "Type")
-        .value(
-            "Undefined",
-            Unit::Type::Undefined,
-            R"doc(
-                Undefined unit type.
-            )doc"
-        )
         .value(
             "None_",
             Unit::Type::None,
@@ -98,21 +91,25 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
 
     unit_class
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Unit& self, const Unit& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Unit& self, const Unit& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Unit>))
         .def("__repr__", &(shiftToString<Unit>))
-        .def(
-            "is_defined",
-            &Unit::isDefined,
-            R"doc(
-                Check if the unit is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "is_none",
             &Unit::isNone,
@@ -155,16 +152,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit(pybind11::module& aModule)
 
                 Returns:
                     str: String representation.
-            )doc"
-        )
-        .def_static(
-            "undefined",
-            &Unit::Undefined,
-            R"doc(
-                Create an undefined unit.
-
-                Returns:
-                    Unit: Undefined unit.
             )doc"
         )
         .def_static(

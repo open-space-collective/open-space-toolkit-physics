@@ -45,14 +45,11 @@ class TestVector:
     def test_not_equals(self, vector: Vector):
         assert (vector != vector) is False
 
-    def test_is_defined(self, vector: Vector):
-        assert vector.is_defined()
-
     def test_get_value(self, vector: Vector, value: float):
         assert np.all(vector.get_value() == value)
 
     def test_get_unit(self, vector: Vector):
-        assert vector.get_unit().is_defined()
+        assert vector.get_unit() is not None
 
     def test_get_frame(self, vector: Vector, frame: Frame):
         assert vector.get_frame() == frame
@@ -65,6 +62,3 @@ class TestVector:
 
     def test_to_string(self, vector: Vector):
         assert vector.to_string() is not None
-
-    def test_undefined(self):
-        assert Vector.undefined() is not None

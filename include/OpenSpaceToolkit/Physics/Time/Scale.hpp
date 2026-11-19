@@ -24,8 +24,6 @@ using ostk::core::type::String;
 enum class Scale
 {
 
-    Undefined,  ///< Undefined time
-
     UTC,  ///< Coordinated Universal Time
     TT,   ///< Terrestial Time (a.k.a. TDT)
     TAI,  ///< International Atomic Time

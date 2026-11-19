@@ -1,18 +1,20 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Iterator/Zip.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -23,7 +25,6 @@ using ostk::core::container::Table;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::Size;
 using ostk::core::type::String;
@@ -43,15 +44,11 @@ using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using ostk::physics::utility::DoubleToString;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        this->lla_ = LLA(latitude_, longitude_, altitude_);
-    }
-
     void TearDown() override
     {
         Environment::ResetGlobalInstance();
@@ -61,7 +58,7 @@ class OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA : public ::testing::Test
     const Angle longitude_ = Angle::Degrees(20.0);
     const Length altitude_ = Length::Meters(30.0);
 
-    LLA lla_ = LLA::Undefined();
+    LLA lla_ = LLA(latitude_, longitude_, altitude_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Constructor)
@@ -87,14 +84,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, EqualToOperator)
             LLA(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        const LLA lla = {latitude_, longitude_, altitude_};
-
-        EXPECT_FALSE(LLA::Undefined() == LLA::Undefined());
-        EXPECT_FALSE(lla_ == LLA::Undefined());
-        EXPECT_FALSE(LLA::Undefined() == lla_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
@@ -109,12 +98,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, NotEqualToOperator)
             LLA(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        EXPECT_TRUE(LLA::Undefined() != LLA::Undefined());
-        EXPECT_TRUE(lla_ != LLA::Undefined());
-        EXPECT_TRUE(LLA::Undefined() != lla_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
@@ -128,25 +111,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IsDefined)
-{
-    {
-        EXPECT_TRUE(lla_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(LLA::Undefined().isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLatitude)
 {
     {
         EXPECT_EQ(latitude_, lla_.getLatitude());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().getLatitude());
     }
 }
 
@@ -155,20 +123,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetLongitude)
     {
         EXPECT_EQ(longitude_, lla_.getLongitude());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().getLongitude());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, GetAltitude)
 {
     {
         EXPECT_EQ(altitude_, lla_.getAltitude());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().getAltitude());
     }
 }
 
@@ -180,10 +140,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, OnSurface)
         EXPECT_EQ(lla.getLongitude(), lla_.getLongitude());
         EXPECT_EQ(lla.getAltitude(), Length::Meters(0.0));
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().onSurface());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Spherical)
@@ -192,7 +148,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, CalculateDistanceTo_Sp
         const Earth sphericalEarth = Earth::Spherical();
 
         const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
-        const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
+        const double sphericalEarthFlattening = sphericalEarth.getFlattening();
 
         const double pi = 3.14159265358979323846;
 
@@ -268,7 +224,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calcluateAzimuthTo_WGS
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     // from pole to pole
     {
@@ -327,7 +283,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateIntermediateT
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     // from pole to pole
     {
@@ -394,7 +350,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateForward_WGS84
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     // self validated
     {
@@ -473,7 +429,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WG
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     {
         const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
@@ -506,7 +462,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, calculateLinspaceTo_WG
         const Array<LLA> llas = lla1.calculateLinspaceTo(lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         // 4 points at ratios 1/5, 2/5, 3/5, 4/5 along the geodesic
-        const Array<Real> expectedAltitudes_m = {200.0, 400.0, 600.0, 800.0};
+        const Array<double> expectedAltitudes_m = {200.0, 400.0, 600.0, 800.0};
 
         EXPECT_EQ(llas.getSize(), 4);
         for (Size i = 0; i < llas.getSize(); ++i)
@@ -532,10 +488,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToVector)
     {
         EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), lla_.toVector());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toVector());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint2d)
@@ -543,20 +495,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint2d)
     {
         EXPECT_EQ(Point2d(longitude_.inDegrees(), latitude_.inDegrees()), lla_.toPoint2d());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toPoint2d());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToPoint3d)
 {
     {
         EXPECT_EQ(Point3d(longitude_.inDegrees(), latitude_.inDegrees(), altitude_.inMeters()), lla_.toPoint3d());
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toPoint3d());
     }
 }
 
@@ -584,15 +528,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Vector3d reference_position_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                    referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
                 };
 
-                const Angle reference_latitude = Angle::Degrees(referenceRow[4].accessReal());
-                const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());
-                const Length reference_altitude = Length::Meters(referenceRow[6].accessReal());
+                const Angle reference_latitude = Angle::Degrees(referenceRow[4].getReal());
+                const Angle reference_longitude = Angle::Degrees(referenceRow[5].getReal());
+                const Length reference_altitude = Length::Meters(referenceRow[6].getReal());
 
                 const LLA lla = {reference_latitude, reference_longitude, reference_altitude};
 
@@ -601,7 +545,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
                 );
 
                 {
-                    const Real error_m = (position_ITRF - reference_position_ITRF).norm();
+                    const double error_m = (position_ITRF - reference_position_ITRF).norm();
 
                     ASSERT_TRUE(position_ITRF.isNear(reference_position_ITRF, toleranceLength.inMeters()))
                         << String::Format(
@@ -609,15 +553,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToCartesian)
                                instant.toString(),
                                reference_position_ITRF.toString(),
                                position_ITRF.toString(),
-                               error_m.toString()
+                               DoubleToString(error_m)
                            );
                 }
             }
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toCartesian(Length::Undefined(), Real::Undefined()));
     }
 
     {
@@ -635,17 +575,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, ToString)
     {
         EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", lla_.toString());
     }
-
-    {
-        EXPECT_ANY_THROW(LLA::Undefined().toString());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Undefined)
-{
-    {
-        EXPECT_NO_THROW(LLA::Undefined());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
@@ -654,10 +583,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Vector)
         const Vector3d vector = {10.0, 20.0, 30.0};
 
         EXPECT_EQ(lla_, LLA::Vector(vector));
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Vector(Vector3d::Undefined()));
     }
 }
 
@@ -686,15 +611,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Vector3d reference_position_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                    referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
                 };
 
-                const Angle reference_latitude = Angle::Degrees(referenceRow[4].accessReal());
-                const Angle reference_longitude = Angle::Degrees(referenceRow[5].accessReal());
-                const Length reference_altitude = Length::Meters(referenceRow[6].accessReal());
+                const Angle reference_latitude = Angle::Degrees(referenceRow[4].getReal());
+                const Angle reference_longitude = Angle::Degrees(referenceRow[5].getReal());
+                const Length reference_altitude = Length::Meters(referenceRow[6].getReal());
 
                 const LLA lla = LLA::Cartesian(
                     reference_position_ITRF,
@@ -703,58 +628,54 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Cartesian)
                 );
 
                 {
-                    const Real reference_latitude_deg = reference_latitude.inDegrees();
-                    const Real latitude_deg = lla.getLatitude().inDegrees();
-                    const Real tolerance_deg = toleranceAngle.inDegrees();
+                    const double reference_latitude_deg = reference_latitude.inDegrees();
+                    const double latitude_deg = lla.getLatitude().inDegrees();
+                    const double tolerance_deg = toleranceAngle.inDegrees();
 
-                    const Real error_deg = (latitude_deg - reference_latitude_deg).abs();
+                    const double error_deg = std::abs(latitude_deg - reference_latitude_deg);
 
-                    ASSERT_TRUE(latitude_deg.isNear(reference_latitude_deg, tolerance_deg)) << String::Format(
+                    ASSERT_TRUE(std::abs(latitude_deg - reference_latitude_deg) <= tolerance_deg) << String::Format(
                         "{} - {} [deg] ~ {} [deg] ? {} [deg]",
                         instant.toString(),
-                        reference_latitude_deg.toString(),
-                        latitude_deg.toString(),
-                        error_deg.toString()
+                        DoubleToString(reference_latitude_deg),
+                        DoubleToString(latitude_deg),
+                        DoubleToString(error_deg)
                     );
                 }
 
                 {
-                    const Real reference_longitude_deg = reference_longitude.inDegrees();
-                    const Real longitude_deg = lla.getLongitude().inDegrees();
-                    const Real tolerance_deg = toleranceAngle.inDegrees();
+                    const double reference_longitude_deg = reference_longitude.inDegrees();
+                    const double longitude_deg = lla.getLongitude().inDegrees();
+                    const double tolerance_deg = toleranceAngle.inDegrees();
 
-                    const Real error_deg = (longitude_deg - reference_longitude_deg).abs();
+                    const double error_deg = std::abs(longitude_deg - reference_longitude_deg);
 
-                    ASSERT_TRUE(longitude_deg.isNear(reference_longitude_deg, tolerance_deg)) << String::Format(
+                    ASSERT_TRUE(std::abs(longitude_deg - reference_longitude_deg) <= tolerance_deg) << String::Format(
                         "{} - {} [deg] ~ {} [deg] ? {} [deg]",
                         instant.toString(),
-                        reference_longitude_deg.toString(),
-                        longitude_deg.toString(),
-                        error_deg.toString()
+                        DoubleToString(reference_longitude_deg),
+                        DoubleToString(longitude_deg),
+                        DoubleToString(error_deg)
                     );
                 }
 
                 {
-                    const Real reference_altitude_m = reference_altitude.inMeters();
-                    const Real altitude_m = lla.getAltitude().inMeters();
-                    const Real tolerance_m = toleranceLength.inMeters();
+                    const double reference_altitude_m = reference_altitude.inMeters();
+                    const double altitude_m = lla.getAltitude().inMeters();
+                    const double tolerance_m = toleranceLength.inMeters();
 
-                    const Real error_m = (altitude_m - reference_altitude_m).abs();
+                    const double error_m = std::abs(altitude_m - reference_altitude_m);
 
-                    ASSERT_TRUE(altitude_m.isNear(reference_altitude_m, tolerance_m)) << String::Format(
+                    ASSERT_TRUE(std::abs(altitude_m - reference_altitude_m) <= tolerance_m) << String::Format(
                         "{} - {} [m] ~ {} [m] ? {} [m]",
                         instant.toString(),
-                        reference_altitude_m.toString(),
-                        altitude_m.toString(),
-                        error_m.toString()
+                        DoubleToString(reference_altitude_m),
+                        DoubleToString(altitude_m),
+                        DoubleToString(error_m)
                     );
                 }
             }
         }
-    }
-
-    {
-        EXPECT_ANY_THROW(LLA::Cartesian(Vector3d::Undefined(), Length::Undefined(), Real::Undefined()));
     }
 
     {
@@ -773,7 +694,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_Spheri
     const Earth sphericalEarth = Earth::Spherical();
 
     const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
-    const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
+    const double sphericalEarthFlattening = sphericalEarth.getFlattening();
 
     const double pi = 3.14159265358979323846;
 
@@ -847,10 +768,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, DistanceBetween_WGS84)
     const Earth sphericalEarth = Earth::Spherical();
 
     const Length sphericalEarthEquatorialRadius = sphericalEarth.getEquatorialRadius();
-    const Real sphericalEarthFlattening = sphericalEarth.getFlattening();
+    const double sphericalEarthFlattening = sphericalEarth.getFlattening();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     const double pi = 3.14159265358979323846;
 
@@ -924,7 +845,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, AzimuthBetween_WGS84)
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     // from pole to pole
     {
@@ -984,7 +905,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, IntermediateBetween_WG
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     // from pole to pole
     {
@@ -1052,7 +973,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Forward_WGS84)
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     // self validated
     {
@@ -1132,7 +1053,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Linspace_WGS84)
     const Earth WGS84Earth = Earth::WGS84();
 
     const Length WGS84EarthEquatorialRadius = WGS84Earth.getEquatorialRadius();
-    const Real WGS84EarthFlattening = WGS84Earth.getFlattening();
+    const double WGS84EarthFlattening = WGS84Earth.getFlattening();
 
     {
         const LLA lla1 = LLA(Angle::Degrees(30.0), Angle::Degrees(15.0), Length::Meters(0.0));
@@ -1165,7 +1086,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, Linspace_WGS84)
         const Array<LLA> llas = LLA::Linspace(lla1, lla2, 4, WGS84EarthEquatorialRadius, WGS84EarthFlattening);
 
         // 4 points at ratios 1/5, 2/5, 3/5, 4/5 along the geodesic
-        const Array<Real> expectedAltitudes_m = {200.0, 400.0, 600.0, 800.0};
+        const Array<double> expectedAltitudes_m = {200.0, 400.0, 600.0, 800.0};
 
         EXPECT_EQ(llas.getSize(), 4);
         for (Size i = 0; i < llas.getSize(); ++i)
@@ -1201,11 +1122,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_LLA, FromPosition)
         EXPECT_NEAR(convertedLLA.getLatitude().inDegrees(), originalLLA.getLatitude().inDegrees(), 1e-10);
         EXPECT_NEAR(convertedLLA.getLongitude().inDegrees(), originalLLA.getLongitude().inDegrees(), 1e-10);
         EXPECT_NEAR(convertedLLA.getAltitude().inMeters(), originalLLA.getAltitude().inMeters(), 1e-6);
-    }
-
-    {
-        // Test with undefined Position
-        EXPECT_THROW(LLA::FromPosition(Position::Undefined()), ostk::core::error::runtime::Undefined);
     }
 
     {

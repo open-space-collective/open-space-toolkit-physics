@@ -3,7 +3,7 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -27,7 +27,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -81,7 +80,7 @@ class OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE : public ::testing::T
         engine_.reset();
     }
 
-    Directory localRepository_ = Directory::Undefined();
+    Directory localRepository_ = Manager::Get().getLocalRepository();
     Manager::Mode mode_ = Manager::Mode::Automatic;
 };
 
@@ -92,22 +91,13 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Constructor)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, IsDefined)
-{
-    {
-        const SPICE spice = {SPICE::Object::Earth};
-
-        EXPECT_TRUE(spice.isDefined());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame)
 {
     {
         const Directory spiceLocalRepository =
             Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE"));
 
-        const Array<Tuple<SPICE::Object, File, Real, Real, Real, Real, Array<Kernel>>> referenceScenarios = {
+        const Array<Tuple<SPICE::Object, File, double, double, double, double, Array<Kernel>>> referenceScenarios = {
             {SPICE::Object::Earth,
              File::Path(Path::Parse(
                  "/app/test/OpenSpaceToolkit/Physics/Environment/Ephemeris/SPICE/AccessFrame/Scenario_1 Earth.csv"
@@ -159,10 +149,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
         {
             const SPICE::Object object = std::get<0>(referenceScenario);
             const File referenceDataFile = std::get<1>(referenceScenario);
-            const Real positionTolerance_m = std::get<2>(referenceScenario);
-            const Real velocityTolerance_meterPerSec = std::get<3>(referenceScenario);
-            const Real orientation_asec = std::get<4>(referenceScenario);
-            const Real angularVelocityTolerance_radPerSec = std::get<5>(referenceScenario);
+            const double positionTolerance_m = std::get<2>(referenceScenario);
+            const double velocityTolerance_meterPerSec = std::get<3>(referenceScenario);
+            const double orientation_asec = std::get<4>(referenceScenario);
+            const double angularVelocityTolerance_radPerSec = std::get<5>(referenceScenario);
             const Array<Kernel> kernels = std::get<6>(referenceScenario);
 
             manager_.setMode(Manager::Mode::Manual);
@@ -176,31 +166,29 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
 
             const SPICE spice = {object};
 
-            const Shared<const Frame> frameSPtr = spice.accessFrame();
+            const Shared<const Frame> frameSPtr = spice.getFrame();
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
             for (const auto& referenceDataRow : referenceData)
             {
                 const Instant instant_reference =
-                    Instant::DateTime(DateTime::Parse(referenceDataRow[0].accessString()), Scale::UTC);
+                    Instant::DateTime(DateTime::Parse(referenceDataRow[0].getString()), Scale::UTC);
                 const Vector3d x_GCRF_reference = {
-                    referenceDataRow[1].accessReal(), referenceDataRow[2].accessReal(), referenceDataRow[3].accessReal()
+                    referenceDataRow[1].getReal(), referenceDataRow[2].getReal(), referenceDataRow[3].getReal()
                 };
                 const Vector3d v_GCRF_reference = {
-                    referenceDataRow[4].accessReal(), referenceDataRow[5].accessReal(), referenceDataRow[6].accessReal()
+                    referenceDataRow[4].getReal(), referenceDataRow[5].getReal(), referenceDataRow[6].getReal()
                 };
                 const Quaternion q_OBJECT_GCRF_reference = Quaternion::XYZS(
-                                                               referenceDataRow[7].accessReal(),
-                                                               referenceDataRow[8].accessReal(),
-                                                               referenceDataRow[9].accessReal(),
-                                                               referenceDataRow[10].accessReal()
+                                                               referenceDataRow[7].getReal(),
+                                                               referenceDataRow[8].getReal(),
+                                                               referenceDataRow[9].getReal(),
+                                                               referenceDataRow[10].getReal()
                 )
                                                                .toNormalized();
                 const Vector3d w_OBJECT_GCRF_in_OBJECT_reference = {
-                    referenceDataRow[11].accessReal(),
-                    referenceDataRow[12].accessReal(),
-                    referenceDataRow[13].accessReal()
+                    referenceDataRow[11].getReal(), referenceDataRow[12].getReal(), referenceDataRow[13].getReal()
                 };
 
                 const Vector3d x_GCRF = frameSPtr->getOriginIn(Frame::GCRF(), instant_reference).getCoordinates();
@@ -230,7 +218,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
                            instant_reference.toString(),
                            q_OBJECT_GCRF.toString(),
                            q_OBJECT_GCRF_reference.toString(),
-                           q_OBJECT_GCRF.angularDifferenceWith(q_OBJECT_GCRF_reference).inArcseconds().toString()
+                           q_OBJECT_GCRF.angularDifferenceWith(q_OBJECT_GCRF_reference).inArcseconds()
                        );
                 ASSERT_TRUE(w_OBJECT_GCRF_in_OBJECT.isNear(
                     w_OBJECT_GCRF_in_OBJECT_reference, angularVelocityTolerance_radPerSec
@@ -247,7 +235,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame_FarFromJ2000)
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, GetFrame_FarFromJ2000)
 {
     // A duration from J2000 only spans about 292 years: the ephemeris time must stay continuous across
     // 2292-04-11 11:47:16.854 TT, which is still covered by DE430
@@ -264,7 +252,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AccessFrame_FarFrom
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("de430.bsp"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("pck00010.tpc"))));
 
-        const Shared<const Frame> frameSPtr = SPICE(SPICE::Object::Sun).accessFrame();
+        const Shared<const Frame> frameSPtr = SPICE(SPICE::Object::Sun).getFrame();
 
         const Instant instantBefore = Instant::DateTime(DateTime(2292, 4, 11, 11, 47, 15), Scale::TT);
         const Instant instantAfter = Instant::DateTime(DateTime(2292, 4, 11, 11, 47, 18), Scale::TT);
@@ -306,25 +294,19 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, ManualMode)
 
         const SPICE spice = {SPICE::Object::Sun};
 
-        const Shared<const Frame> sunFrameSPtr = spice.accessFrame();
+        const Shared<const Frame> sunFrameSPtr = spice.getFrame();
 
         const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC);
 
-        Position sunPosition = Position::Undefined();
-
-        EXPECT_NO_THROW({ sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); });
+        EXPECT_NO_THROW(sunFrameSPtr->getOriginIn(Frame::GCRF(), instant));
 
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./naif0012.tls"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./de430.bsp"))));
         engine_.loadKernel(Kernel::File(File::Path(spiceLocalRepository.getPath() + Path::Parse("./pck00010.tpc"))));
 
-        EXPECT_NO_THROW(
+        const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant);
 
-            { sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); }
-
-        );
-
-        EXPECT_TRUE(sunPosition.isDefined());
+        EXPECT_EQ(Frame::GCRF(), sunPosition.getFrame());
     }
 }
 
@@ -337,18 +319,25 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, AutomaticMode)
 
         const SPICE spice = {SPICE::Object::Sun};
 
-        const Shared<const Frame> sunFrameSPtr = spice.accessFrame();
+        const Shared<const Frame> sunFrameSPtr = spice.getFrame();
 
         const Instant instant = Instant::DateTime(DateTime(2016, 1, 1, 0, 0, 0), Scale::UTC);
 
-        Position sunPosition = Position::Undefined();
+        const Position sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant);
 
-        EXPECT_NO_THROW(
-
-            { sunPosition = sunFrameSPtr->getOriginIn(Frame::GCRF(), instant); }
-
-        );
-
-        EXPECT_TRUE(sunPosition.isDefined());
+        EXPECT_EQ(Frame::GCRF(), sunPosition.getFrame());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Environment_Ephemeris_SPICE, Kernel_UnknownFileExtension)
+{
+    using ostk::core::filesystem::File;
+    using ostk::core::filesystem::Path;
+
+    using ostk::physics::environment::ephemeris::spice::Kernel;
+
+    EXPECT_FALSE(Kernel::TypeFromFileExtension("unknown").has_value());
+    EXPECT_TRUE(Kernel::TypeFromFileExtension("bsp").has_value());
+
+    EXPECT_THROW(Kernel::File(File::Path(Path::Parse("/tmp/kernel.unknown"))), ostk::core::error::RuntimeError);
 }

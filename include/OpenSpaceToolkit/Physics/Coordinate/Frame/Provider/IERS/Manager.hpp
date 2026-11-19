@@ -4,11 +4,11 @@
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 #include <OpenSpaceToolkit/Core/Type/Index.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
@@ -37,7 +37,6 @@ namespace iers
 using ostk::core::container::Array;
 using ostk::core::filesystem::Directory;
 using ostk::core::type::Index;
-using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector2d;
 
@@ -99,32 +98,33 @@ class Manager : public BaseManager
     /// @brief Get polar motion at instant
     ///
     /// @code
-    ///     Vector2d polarMotion = Manager::Get().getPolarMotionAt(anInstant);
+    ///     std::optional<Vector2d> polarMotion = Manager::Get().getPolarMotionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return [asec] Polar motion
-    Vector2d getPolarMotionAt(const Instant& anInstant) const;
+    /// @return [asec] Polar motion, or std::nullopt if it is not tabulated at the instant (it throws if the instant
+    ///         is outside the span of the data)
+    std::optional<Vector2d> getPolarMotionAt(const Instant& anInstant) const;
 
     /// @brief Get UT1 - UTC at instant
     ///
     /// @code
-    ///     Real ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
+    ///     std::optional<double> ut1MinusUtc = Manager::Get().getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return [sec] UT1 - UTC
-    Real getUt1MinusUtcAt(const Instant& anInstant) const;
+    /// @return [sec] UT1 - UTC, or std::nullopt if it is not tabulated at the instant
+    std::optional<double> getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief Get length of day at instant
     ///
     /// @code
-    ///     Real lod = Manager::Get().getLodAt(anInstant);
+    ///     std::optional<double> lod = Manager::Get().getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An instant
-    /// @return [ms] Length of day
-    Real getLodAt(const Instant& anInstant) const;
+    /// @return [ms] Length of day, or std::nullopt if it is not tabulated at the instant
+    std::optional<double> getLodAt(const Instant& anInstant) const;
 
     /// @brief Load Bulletin A
     ///
@@ -190,8 +190,8 @@ class Manager : public BaseManager
     static Manager& Get();
 
    private:
-    mutable BulletinA bulletinA_;
-    mutable Finals2000A finals2000A_;
+    mutable std::optional<BulletinA> bulletinA_;
+    mutable std::optional<Finals2000A> finals2000A_;
 
     Manager();
 

@@ -5,8 +5,6 @@
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
@@ -27,8 +25,6 @@ namespace earth
 
 using ostk::core::container::Array;
 using ostk::core::container::Tuple;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::coordinate::spherical::LLA;
@@ -59,30 +55,20 @@ class Exponential
 
     virtual Exponential* clone() const;
 
-    /// @brief Check if the exponential atmospheric model is defined
-    ///
-    /// @code
-    ///     model.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the exponential atmospheric model is defined
-
-    bool isDefined() const;
-
     /// @brief Get the atmospheric density value at a given position and instant
     ///
     /// @code
-    ///     Real density = model.getDensityAt(lla, instant);
+    ///     double density = model.getDensityAt(lla, instant);
     /// @endcode
     ///
     /// @param [in] aLLA A position, expressed as latitude, longitude, altitude [deg, deg, m]
     /// @param [in] anInstant An instant
     /// @return Atmospheric density value [kg.m^-3]
 
-    Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
+    double getDensityAt(const LLA& aLLA, const Instant& anInstant) const;
 
    private:
-    static Tuple<Real, Real, Real> DensityBandValues(const Length& anAltitude);
+    static Tuple<double, double, double> DensityBandValues(const Length& anAltitude);
 };
 
 }  // namespace earth

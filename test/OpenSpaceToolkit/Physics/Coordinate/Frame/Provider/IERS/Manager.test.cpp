@@ -1,15 +1,21 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <filesystem>
+#include <string>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/IO/URL.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/ITRF.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TEME.hpp>
+#include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/TIRF.hpp>
 
 #include <Global.test.hpp>
 
@@ -19,7 +25,6 @@ using ostk::core::container::Tuple;
 using ostk::core::filesystem::Directory;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::io::URL;
@@ -39,10 +44,30 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
    protected:
     void SetUp() override
     {
-        manager_.setLocalRepository(localRepositoryDirectory);
+        // Work on a copy of the test data: in Automatic mode, the Manager replaces local files that are older than the
+        // remote ones, which would overwrite the committed test data. The fresh copies are newer than the remote
+        // files, so the tests run against the test data.
 
-        this->bulletinA_ = BulletinA::Load(bulletinAFile_);
-        this->finals2000A_ = Finals2000A::Load(finals2000AFile_);
+        if (temporaryDirectory_.exists())
+        {
+            temporaryDirectory_.remove();
+        }
+
+        temporaryDirectory_.create();
+
+        manager_.setLocalRepository(localRepositoryDirectory);
+        manager_.setMode(Manager::Mode::Automatic);
+
+        const auto copyFileToDirectory = [](const File& aFile, const Directory& aDirectory) -> void
+        {
+            std::filesystem::copy_file(
+                std::string(aFile.getPath().toString()),
+                std::string((aDirectory.getPath() + Path::Parse(aFile.getName())).toString())
+            );
+        };
+
+        copyFileToDirectory(bulletinAFile_, manager_.getBulletinADirectory());
+        copyFileToDirectory(finals2000AFile_, manager_.getFinals2000ADirectory());
 
         // cache current directory environment variables
         localRepositoryPath = std::getenv(localRepositoryVarName_);
@@ -83,6 +108,8 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         manager_.setLocalRepository(localRepositoryDirectory);
         manager_.setMode(Manager::Mode::Automatic);
         manager_.reset();
+
+        temporaryDirectory_.remove();
     }
 
     const File bulletinAFile_ =
@@ -93,13 +120,14 @@ class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager : public :
         Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/finals2000A.data")
     );
 
-    BulletinA bulletinA_ = BulletinA::Undefined();
-    Finals2000A finals2000A_ = Finals2000A::Undefined();
+    BulletinA bulletinA_ = BulletinA::Load(bulletinAFile_);
+    Finals2000A finals2000A_ = Finals2000A::Load(finals2000AFile_);
 
     Manager& manager_ = Manager::Get();
 
-    const Directory localRepositoryDirectory =
-        Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/"));
+    Directory temporaryDirectory_ = Directory::Path(Path::Parse("/tmp/ostk-physics-test-iers-manager"));
+
+    const Directory localRepositoryDirectory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("IERS"));
 
     const char* localRepositoryVarName_ = "OSTK_PHYSICS_COORDINATE_FRAME_PROVIDER_IERS_MANAGER_LOCAL_REPOSITORY";
     const char* fullDataVarName_ = "OSTK_PHYSICS_DATA_LOCAL_REPOSITORY";
@@ -151,9 +179,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
     {
         manager_.reset();
         manager_.setMode(Manager::Mode::Manual);
-        Directory newDirectory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/Temp")
-        );
+        Directory newDirectory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/Temp"));
         manager_.setLocalRepository(newDirectory);
 
         EXPECT_THROW(manager_.getBulletinA(), ostk::core::error::RuntimeError);
@@ -176,17 +202,15 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetBulle
     // This test is not deterministic, as it depends on the remote server
     {
         manager_.reset();
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/New"));
         manager_.setLocalRepository(directory);
 
-        File bulletinAFile = File::Undefined();
+        std::optional<File> bulletinAFile;
         EXPECT_NO_THROW(bulletinAFile = manager_.fetchLatestBulletinA());
 
-        BulletinA bulletinA = BulletinA::Load(bulletinAFile);
+        BulletinA bulletinA = BulletinA::Load(bulletinAFile.value());
 
-        bulletinAFile.remove();
+        bulletinAFile->remove();
 
         EXPECT_NO_THROW(manager_.getBulletinA());
 
@@ -208,9 +232,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinal
     // This test is not deterministic, as it depends on the remote server
     {
         manager_.reset();
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/New"));
         manager_.setLocalRepository(directory);
 
         EXPECT_NO_THROW(manager_.getFinals2000A());
@@ -227,9 +249,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinal
     {
         manager_.reset();
         manager_.setMode(Manager::Mode::Manual);
-        Directory newDirectory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/Temp")
-        );
+        Directory newDirectory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/Temp"));
         manager_.setLocalRepository(newDirectory);
 
         EXPECT_THROW(manager_.getFinals2000A(), ostk::core::error::RuntimeError);
@@ -250,7 +270,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetFinal
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Past)
 {
     {
-        const Array<Tuple<File, Real>> referenceScenarios = {
+        const Array<Tuple<File, double>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetPolarMotionAt/Pole Wander 1.csv")),
              1e-8},
@@ -267,7 +287,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
             // Reference data setup
 
             const File referenceDataFile = std::get<0>(referenceScenario);
-            const Real tolerance = std::get<1>(referenceScenario);
+            const double tolerance = std::get<1>(referenceScenario);
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -275,11 +295,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
-                const Vector2d referencePolarMotion_rad = {referenceRow[1].accessReal(), referenceRow[2].accessReal()};
+                const Vector2d referencePolarMotion_rad = {referenceRow[1].getReal(), referenceRow[2].getReal()};
 
-                const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant) * (Real::Pi() / 180.0 / 3600.0);
+                const Vector2d polarMotion_rad = manager_.getPolarMotionAt(instant).value() * (M_PI / 180.0 / 3600.0);
 
                 EXPECT_TRUE(polarMotion_rad.isNear(referencePolarMotion_rad, tolerance)) << String::Format(
                     "{} - {} ~ {}",
@@ -294,22 +314,25 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_Future)
 {
-    Directory directory = Directory::Path(
-        Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/Temp")
-    );
+    // Needs the live Finals 2000A file. See GetPolarMotionAt_NotTabulated for the deterministic coverage of the
+    // instants that are not tabulated.
+
+    Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/Temp"));
     manager_.setLocalRepository(directory);
     const File latestFinals2000A = manager_.fetchLatestFinals2000A();
     const Finals2000A finals2000A = Finals2000A::Load(latestFinals2000A);
     manager_.loadFinals2000A(finals2000A);
 
     {
+        // The file has predictions about a year ahead
         const Instant instant = Instant::Now() + Duration::Weeks(12.0);
 
-        manager_.getPolarMotionAt(instant);
+        EXPECT_TRUE(manager_.getPolarMotionAt(instant).has_value());
     }
 
     {
-        const Instant instant = Instant::Now() + Duration::Weeks(55.0);
+        // Far beyond the end of the file
+        const Instant instant = Instant::Now() + Duration::Weeks(200.0);
 
         EXPECT_THROW(manager_.getPolarMotionAt(instant), ostk::core::error::RuntimeError);
     }
@@ -317,12 +340,44 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolar
     directory.remove();
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetPolarMotionAt_NotTabulated)
+{
+    // The test file tabulates the polar motion until 2025-10-04, and then has rows without any value until
+    // 2025-11-23: such an instant is in the span of the file, but not tabulated
+
+    manager_.loadFinals2000A(finals2000A_);
+
+    const Instant tabulatedInstant = Instant::DateTime(DateTime(2025, 9, 15, 0, 0, 0), Scale::UTC);
+    const Instant instantInBlankTail = Instant::DateTime(DateTime(2025, 10, 15, 0, 0, 0), Scale::UTC);
+    const Instant instantAfterTheFile = Instant::DateTime(DateTime(2025, 12, 15, 0, 0, 0), Scale::UTC);
+
+    EXPECT_TRUE(finals2000A_.getPolarMotionAt(tabulatedInstant).has_value());
+    EXPECT_FALSE(finals2000A_.getPolarMotionAt(instantInBlankTail).has_value());
+    EXPECT_THROW(finals2000A_.getPolarMotionAt(instantAfterTheFile), ostk::core::error::RuntimeError);
+
+    EXPECT_TRUE(manager_.getPolarMotionAt(tabulatedInstant).has_value());
+    EXPECT_FALSE(manager_.getPolarMotionAt(instantInBlankTail).has_value());
+    EXPECT_THROW(manager_.getPolarMotionAt(instantAfterTheFile), ostk::core::error::RuntimeError);
+
+    // The ITRF provider refuses to build a transform without polar motion
+
+    try
+    {
+        ostk::physics::coordinate::frame::provider::ITRF().getTransformAt(instantInBlankTail);
+
+        FAIL() << "Expected a RuntimeError";
+    }
+    catch (const ostk::core::error::RuntimeError& error)
+    {
+        EXPECT_NE(std::string::npos, std::string(error.what()).find("Cannot obtain polar motion"));
+    }
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt)
 {
     using ostk::core::container::Array;
     using ostk::core::container::Table;
     using ostk::core::container::Tuple;
-    using ostk::core::type::Real;
     using ostk::core::type::String;
 
     using ostk::physics::time::DateTime;
@@ -330,7 +385,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
     using ostk::physics::time::Scale;
 
     {
-        const Array<Tuple<File, Real>> referenceScenarios = {
+        const Array<Tuple<File, double>> referenceScenarios = {
             {File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/"
                                     "GetUt1MinusUtcAt/DUT1 1.csv")),
              1e-4},
@@ -339,7 +394,9 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
              1e-4},
             // {
             // File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/GetUt1MinusUtcAt/DUT1
-            // 3.csv")), 1e-4 } // [TBI] Discrepancy with STK at leap second crossing
+            // 3.csv")), 1e-4 } // At 2017-01-01 00:00:37 TAI (00:00:00 UTC, right after the leap second), STK still
+            // returns the value before the leap second (-0.4087 s), while IERS tabulates +0.5913 s for that date. See
+            // GetUt1MinusUtcAt_LeapSecond for the leap second crossing.
         };
 
         for (const auto& referenceScenario : referenceScenarios)
@@ -347,7 +404,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
             // Reference data setup
 
             const File referenceDataFile = std::get<0>(referenceScenario);
-            const Real tolerance = std::get<1>(referenceScenario);
+            const double tolerance = std::get<1>(referenceScenario);
 
             const Table referenceData = Table::Load(referenceDataFile, Table::Format::CSV, true);
 
@@ -355,11 +412,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
-                const Real referenceDUT1 = {referenceRow[3].accessReal()};
+                const double referenceDUT1 = {referenceRow[3].getReal()};
 
-                const Real dUT1 = manager_.getUt1MinusUtcAt(instant);
+                const double dUT1 = manager_.getUt1MinusUtcAt(instant).value();
 
                 EXPECT_NEAR(referenceDUT1, dUT1, tolerance)
                     << String::Format("{} - {} ~ {}", instant.toString(Scale::TAI), referenceDUT1, dUT1);
@@ -371,6 +428,103 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1Mi
         const Instant instant = Instant::DateTime(DateTime(2018, 10, 10, 0, 0, 0), Scale::UTC);
 
         EXPECT_NO_THROW(manager_.getUt1MinusUtcAt(instant));
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Finals2000A_MissingValues)
+{
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // LOD and the Bulletin B columns are not tabulated for the latest predictions: they are std::nullopt
+
+    {
+        const Instant instant = Instant::DateTime(DateTime(2025, 3, 1, 0, 0, 0), Scale::UTC);
+
+        EXPECT_TRUE(finals2000A_.getUt1MinusUtcAt(instant).has_value());
+        EXPECT_FALSE(finals2000A_.getLodAt(instant).has_value());
+
+        const Finals2000A::Data data = finals2000A_.getDataAt(instant);
+
+        EXPECT_TRUE(data.ut1MinusUtc_A.has_value());
+        EXPECT_FALSE(data.lod_A.has_value());
+        EXPECT_FALSE(data.lodError_A.has_value());
+        EXPECT_FALSE(data.x_B.has_value());
+    }
+
+    {
+        const Instant instant = Instant::DateTime(DateTime(2015, 10, 31, 0, 0, 0), Scale::UTC);
+
+        EXPECT_TRUE(finals2000A_.getLodAt(instant).has_value());
+    }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt_LeapSecond)
+{
+    using ostk::core::container::Array;
+    using ostk::core::container::Tuple;
+    using ostk::core::type::String;
+
+    using ostk::physics::time::DateTime;
+    using ostk::physics::time::Instant;
+    using ostk::physics::time::Scale;
+
+    // UT1 - UTC jumps by +1 s at the leap second ending 2016-12-31, while UT1 - TAI is continuous.
+    // Finals 2000A: UT1 - UTC = -0.4077601 s on 2016-12-31 and +0.5912821 s on 2017-01-01,
+    // i.e. UT1 - TAI = -36.4077601 s and -36.4087179 s.
+    // The Bulletin A loaded by the fixture (June 2018) does not cover these dates: Finals 2000A is used.
+
+    const Array<Tuple<String, double>> referenceValues = {
+        {"2016-12-31 00:00:00", -0.4077601},
+        {"2016-12-31 12:00:00", -0.4082390},
+        {"2016-12-31 23:59:59", -0.4087179},
+        {"2017-01-01 00:00:00", +0.5912821},
+        {"2017-01-01 12:00:00", +0.5907287},
+    };
+
+    for (const auto& referenceValue : referenceValues)
+    {
+        const Instant instant = Instant::DateTime(DateTime::Parse(std::get<0>(referenceValue)), Scale::UTC);
+        const double referenceUt1MinusUtc = std::get<1>(referenceValue);
+
+        EXPECT_NEAR(referenceUt1MinusUtc, manager_.getUt1MinusUtcAt(instant).value(), 1e-7)
+            << std::get<0>(referenceValue);
+        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getUt1MinusUtcAt(instant).value(), 1e-7)
+            << std::get<0>(referenceValue);
+        EXPECT_NEAR(referenceUt1MinusUtc, finals2000A_.getDataAt(instant).ut1MinusUtc_A.value(), 1e-7)
+            << std::get<0>(referenceValue);
+    }
+
+    {
+        // Bulletin B values: UT1 - UTC = -0.4077600 s on 2016-12-31 and +0.5912975 s on 2017-01-01
+
+        const Instant instant = Instant::DateTime(DateTime::Parse("2016-12-31 12:00:00"), Scale::UTC);
+
+        EXPECT_NEAR(-0.40823125, finals2000A_.getDataAt(instant).ut1MinusUtc_B.value(), 1e-7);
+    }
+
+    {
+        // UT1 - UTC applies to the UTC representation of the instant, including during the leap second itself
+        // (2016-12-31 23:59:60 UTC, from 2017-01-01 00:00:36 TAI): UT1 - TAI must stay continuous across it
+
+        const Array<String> dateTimeStrings_TAI = {
+            "2017-01-01 00:00:35",
+            "2017-01-01 00:00:36",
+            "2017-01-01 00:00:36.5",
+            "2017-01-01 00:00:37",
+        };
+
+        for (const auto& dateTimeString_TAI : dateTimeStrings_TAI)
+        {
+            const Instant instant = Instant::DateTime(DateTime::Parse(dateTimeString_TAI), Scale::TAI);
+
+            const double ut1MinusTai =
+                (instant.getModifiedJulianDate(Scale::UTC) - instant.getModifiedJulianDate(Scale::TAI)) * 86400.0 +
+                manager_.getUt1MinusUtcAt(instant).value();
+
+            EXPECT_NEAR(-36.4087179, ut1MinusTai, 1e-5) << dateTimeString_TAI;
+        }
     }
 }
 
@@ -425,7 +579,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadBull
         manager_.reset();
 
         EXPECT_NO_THROW(manager_.loadBulletinA(bulletinA_));
-        EXPECT_ANY_THROW(manager_.loadBulletinA(BulletinA::Undefined()));
     }
 }
 
@@ -442,7 +595,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, LoadFina
         manager_.loadFinals2000A(finals2000a);
 
         EXPECT_NO_THROW(manager_.loadFinals2000A(finals2000a));
-        EXPECT_ANY_THROW(manager_.loadFinals2000A(Finals2000A::Undefined()));
     }
 }
 
@@ -451,9 +603,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, FetchLat
     {
         manager_.reset();
 
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("bulletin-A/New"));
         manager_.setLocalRepository(directory);
         const File latestBulletinA = manager_.fetchLatestBulletinA();
 
@@ -471,9 +621,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, FetchLat
 {
     {
         manager_.reset();
-        Directory directory = Directory::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/finals-2000A/New")
-        );
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("finals-2000A/New"));
         manager_.setLocalRepository(directory);
 
         const File latestFinals2000A = manager_.fetchLatestFinals2000A();
@@ -494,9 +642,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
     {
         manager_.loadBulletinA(bulletinA_);
 
-        EXPECT_TRUE(manager_.getBulletinA().isDefined());
-        EXPECT_TRUE(manager_.getFinals2000A().isDefined());
-
         EXPECT_NO_THROW(manager_.reset());
     }
 }
@@ -504,9 +649,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Reset)
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, ClearLocalRepository)
 {
     {
-        Directory directory =
-            Directory::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/Manager/Temp"
-            ));
+        Directory directory = Directory::Path(temporaryDirectory_.getPath() + Path::Parse("Manager/Temp"));
         manager_.setLocalRepository(directory);
         manager_.clearLocalRepository();
 
@@ -520,4 +663,30 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, Get)
     {
         EXPECT_NO_THROW(Manager::Get());
     }
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Manager, GetUt1MinusUtcAt_NotTabulated)
+{
+    using ostk::physics::coordinate::frame::provider::TEME;
+    using ostk::physics::coordinate::frame::provider::TIRF;
+
+    manager_.loadFinals2000A(finals2000A_);
+
+    // The test file tabulates UT1 - UTC until 2025-10-04, and then has predictions rows without any value until
+    // 2025-11-23: the instant is in the span of the file, but not tabulated
+
+    const Instant instantInBlankTail = Instant::DateTime(DateTime(2025, 10, 15, 0, 0, 0), Scale::UTC);
+
+    EXPECT_FALSE(manager_.getUt1MinusUtcAt(instantInBlankTail).has_value());
+
+    EXPECT_THROW(TIRF().getTransformAt(instantInBlankTail), ostk::core::error::RuntimeError);
+    EXPECT_THROW(TEME().getTransformAt(instantInBlankTail), ostk::core::error::RuntimeError);
+
+    // LOD is not tabulated for the latest predictions: TIRF falls back to a LOD of 0
+
+    const Instant instantWithoutLod = Instant::DateTime(DateTime(2025, 3, 1, 0, 0, 0), Scale::UTC);
+
+    EXPECT_TRUE(manager_.getUt1MinusUtcAt(instantWithoutLod).has_value());
+    EXPECT_FALSE(manager_.getLodAt(instantWithoutLod).has_value());
+    EXPECT_NO_THROW(TIRF().getTransformAt(instantWithoutLod));
 }

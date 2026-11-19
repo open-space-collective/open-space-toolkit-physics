@@ -2,7 +2,7 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/IAU/Theory.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IAU(nanobind::module_& aModule)
 {
     // Create "IAU" python submodule
     auto IAU = aModule.def_submodule("iau");

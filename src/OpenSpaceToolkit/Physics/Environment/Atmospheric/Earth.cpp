@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -32,7 +34,7 @@ class Earth::Impl
         const Earth::InputDataType& anInputDataType,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
-        const Real& anEarthFlattening
+        double anEarthFlattening
     );
 
     virtual ~Impl() = 0;
@@ -43,14 +45,14 @@ class Earth::Impl
 
     Earth::InputDataType getInputDataType() const;
 
-    virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const = 0;
+    virtual double getDensityAt(const LLA& aLLA, const Instant& anInstant) const = 0;
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
+    virtual double getDensityAt(const Position& aPosition, const Instant& anInstant) const = 0;
 
    protected:
     Shared<const Frame> earthFrameSPtr_;
     Length earthRadius_;
-    Real earthFlattening_;
+    double earthFlattening_;
 
    private:
     Earth::Type type_;
@@ -62,7 +64,7 @@ Earth::Impl::Impl(
     const Earth::InputDataType& anInputDataType,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening
+    double anEarthFlattening
 )
     : earthFrameSPtr_(anEarthFrameSPtr),
       earthRadius_(anEarthRadius),
@@ -92,16 +94,16 @@ class Earth::ExponentialImpl : public Earth::Impl
         const Earth::InputDataType& anInputDataType,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
-        const Real& anEarthFlattening
+        double anEarthFlattening
     );
 
     ~ExponentialImpl();
 
     virtual ExponentialImpl* clone() const override;
 
-    virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
+    virtual double getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+    virtual double getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
    private:
     Exponential exponentialModel_;
@@ -112,7 +114,7 @@ Earth::ExponentialImpl::ExponentialImpl(
     const Earth::InputDataType& anInputDataType,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening
+    double anEarthFlattening
 )
     : Earth::Impl(aType, anInputDataType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening)
 {
@@ -125,12 +127,12 @@ Earth::ExponentialImpl* Earth::ExponentialImpl::clone() const
     return new Earth::ExponentialImpl(*this);
 }
 
-Real Earth::ExponentialImpl::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+double Earth::ExponentialImpl::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     return this->exponentialModel_.getDensityAt(aLLA, anInstant);
 }
 
-Real Earth::ExponentialImpl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
+double Earth::ExponentialImpl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
     return this->exponentialModel_.getDensityAt(
         LLA::Cartesian(aPosition.inFrame(earthFrameSPtr_, anInstant).getCoordinates(), earthRadius_, earthFlattening_),
@@ -145,12 +147,12 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
         const Earth::Type& aType,
         const Earth::InputDataType& anEarthInputDataType,
         const NRLMSISE00::InputDataType& anInputDataType,
-        const Real& aF107ConstantValue,
-        const Real& aF107AConstantValue,
-        const Real& aKpConstantValue,
+        double aF107ConstantValue,
+        double aF107AConstantValue,
+        double aKpConstantValue,
         const Shared<const Frame>& anEarthFrameSPtr,
         const Length& anEarthRadius,
-        const Real& anEarthFlattening,
+        double anEarthFlattening,
         const Shared<Celestial>& aSunCelestialSPtr
     );
 
@@ -158,9 +160,9 @@ class Earth::NRLMSISE00Impl : public Earth::Impl
 
     virtual NRLMSISE00Impl* clone() const override;
 
-    virtual Real getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
+    virtual double getDensityAt(const LLA& aLLA, const Instant& anInstant) const override;
 
-    virtual Real getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
+    virtual double getDensityAt(const Position& aPosition, const Instant& anInstant) const override;
 
    private:
     NRLMSISE00 NRLMSISE00Model_;
@@ -170,12 +172,12 @@ Earth::NRLMSISE00Impl::NRLMSISE00Impl(
     const Earth::Type& aType,
     const Earth::InputDataType& anEarthInputDataType,
     const NRLMSISE00::InputDataType& anInputDataType,
-    const Real& aF107ConstantValue,
-    const Real& aF107AConstantValue,
-    const Real& aKpConstantValue,
+    double aF107ConstantValue,
+    double aF107AConstantValue,
+    double aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening,
+    double anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : Earth::Impl(aType, anEarthInputDataType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening),
@@ -199,12 +201,12 @@ Earth::NRLMSISE00Impl* Earth::NRLMSISE00Impl::clone() const
     return new Earth::NRLMSISE00Impl(*this);
 }
 
-Real Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+double Earth::NRLMSISE00Impl::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     return this->NRLMSISE00Model_.getDensityAt(aLLA, anInstant);
 }
 
-Real Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
+double Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
     return this->NRLMSISE00Model_.getDensityAt(
         LLA::Cartesian(aPosition.inFrame(earthFrameSPtr_, anInstant).getCoordinates(), earthRadius_, earthFlattening_),
@@ -215,12 +217,12 @@ Real Earth::NRLMSISE00Impl::getDensityAt(const Position& aPosition, const Instan
 Earth::Earth(
     const Earth::Type& aType,
     const Earth::InputDataType& anInputDataType,
-    const Real& aF107ConstantValue,
-    const Real& aF107AConstantValue,
-    const Real& aKpConstantValue,
+    double aF107ConstantValue,
+    double aF107AConstantValue,
+    double aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening,
+    double anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : Model(),
@@ -242,11 +244,11 @@ Earth::Earth(
     const Earth::Type& aType,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Earth::InputDataType& anInputDataType,
-    const Real& aF107ConstantValue,
-    const Real& aF107AConstantValue,
-    const Real& aKpConstantValue,
+    double aF107ConstantValue,
+    double aF107AConstantValue,
+    double aKpConstantValue,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening,
+    double anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
     : Model(),
@@ -291,11 +293,6 @@ Earth* Earth::clone() const
     return new Earth(*this);
 }
 
-bool Earth::isDefined() const
-{
-    return implUPtr_ != nullptr;
-}
-
 Earth::Type Earth::getType() const
 {
     return implUPtr_->getType();
@@ -306,12 +303,12 @@ Earth::InputDataType Earth::getInputDataType() const
     return implUPtr_->getInputDataType();
 }
 
-Real Earth::getDensityAt(const Position& aPosition, const Instant& anInstant) const
+double Earth::getDensityAt(const Position& aPosition, const Instant& anInstant) const
 {
     return implUPtr_->getDensityAt(aPosition, anInstant);
 }
 
-Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
+double Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 {
     return implUPtr_->getDensityAt(aLLA, anInstant);
 }
@@ -319,20 +316,16 @@ Real Earth::getDensityAt(const LLA& aLLA, const Instant& anInstant) const
 Unique<Earth::Impl> Earth::ImplFromType(
     const Earth::Type& aType,
     const Earth::InputDataType& anInputDataType,
-    const Real& aF107ConstantValue,
-    const Real& aF107AConstantValue,
-    const Real& aKpConstantValue,
+    double aF107ConstantValue,
+    double aF107AConstantValue,
+    double aKpConstantValue,
     const Shared<const Frame>& anEarthFrameSPtr,
     const Length& anEarthRadius,
-    const Real& anEarthFlattening,
+    double anEarthFlattening,
     const Shared<Celestial>& aSunCelestialSPtr
 )
 {
-    if (aType == Earth::Type::Undefined)
-    {
-        return nullptr;
-    }
-    else if (aType == Earth::Type::Exponential)
+    if (aType == Earth::Type::Exponential)
     {
         return std::make_unique<ExponentialImpl>(
             aType, anInputDataType, anEarthFrameSPtr, anEarthRadius, anEarthFlattening
@@ -340,8 +333,7 @@ Unique<Earth::Impl> Earth::ImplFromType(
     }
     else if (aType == Earth::Type::NRLMSISE00)
     {
-        if (anInputDataType == Earth::InputDataType::Undefined ||
-            anInputDataType == Earth::InputDataType::CSSISpaceWeatherFile)
+        if (anInputDataType == Earth::InputDataType::CSSISpaceWeatherFile)
         {
             return std::make_unique<NRLMSISE00Impl>(
                 aType,
@@ -358,15 +350,15 @@ Unique<Earth::Impl> Earth::ImplFromType(
         }
         else if (anInputDataType == Earth::InputDataType::ConstantFluxAndGeoMag)
         {
-            if (!aF107ConstantValue.isDefined())
+            if (std::isnan(aF107ConstantValue))
             {
                 throw ostk::core::error::runtime::Undefined("F10.7 constant value");
             }
-            else if (!aF107AConstantValue.isDefined())
+            else if (std::isnan(aF107AConstantValue))
             {
                 throw ostk::core::error::runtime::Undefined("F10.7a constant value");
             }
-            else if (!aKpConstantValue.isDefined())
+            else if (std::isnan(aKpConstantValue))
             {
                 throw ostk::core::error::runtime::Undefined("Kp constant value");
             }

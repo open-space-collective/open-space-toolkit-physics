@@ -2,6 +2,8 @@
 
 from datetime import timedelta
 
+import pytest
+
 from ostk.core.type import String
 
 from ostk.physics.unit import Time
@@ -52,9 +54,6 @@ class TestDuration:
 
         duration_A *= 2.0
         duration_A /= 2.0
-
-    def test_is_defined_success(self):
-        assert Duration.seconds(123.0).is_defined() is not None
 
     def test_is_zero_success(self):
         assert Duration.seconds(123.0).is_zero() is not None
@@ -142,9 +141,6 @@ class TestDuration:
         assert Duration.hours(1.0).to_timedelta() == timedelta(hours=1.0)
         assert Duration.days(1.0).to_timedelta() == timedelta(days=1.0)
 
-    def test_undefined_success(self):
-        assert Duration.undefined() is not None
-
     def test_zero_success(self):
         assert Duration.zero() is not None
 
@@ -176,48 +172,59 @@ class TestDuration:
         assert Duration.between(Instant.now(), Instant.now()) is not None
 
     def test_parse_success_python_str(self):
-        # Testing with default format argument (Duration::Format::Undefined)
+        # Testing with default format argument (None, which detects the format)
         duration = Duration.parse("02:03.456.000.000")
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.Standard
         duration = Duration.parse("02:03.456.000.000", Duration.Format.Standard)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.ISO8601
         duration = Duration.parse("PT2M3.456S", Duration.Format.ISO8601)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
+
+    def test_parse_without_format(self):
+        assert Duration.parse("02:03.456.000.000") == Duration.parse(
+            "02:03.456.000.000", Duration.Format.Standard
+        )
+        assert Duration.parse("02:03.456.000.000", format=None) == Duration.parse(
+            "02:03.456.000.000", Duration.Format.Standard
+        )
+        assert Duration.parse("PT2M3.456S", format=None) == Duration.parse(
+            "PT2M3.456S", Duration.Format.ISO8601
+        )
+
+        with pytest.raises(RuntimeError):
+            Duration.parse("abc", format=None)
+
+    def test_format_has_no_undefined(self):
+        assert not hasattr(Duration.Format, "Undefined")
 
     def test_parse_success_string(self):
-        # Testing with default format argument (Duration::Format::Undefined)
+        # Testing with default format argument (None, which detects the format)
         duration = Duration.parse(String("02:03.456.000.000"))
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.Standard
         duration = Duration.parse(String("02:03.456.000.000"), Duration.Format.Standard)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
         # Testing with Duration.Format.ISO8601
         duration = Duration.parse(String("PT2M3.456S"), Duration.Format.ISO8601)
 
         assert duration is not None
         assert isinstance(duration, Duration)
-        assert duration.is_defined() is True
 
     def test_hash(self):
         duration_a = Duration.seconds(1.0)

@@ -4,9 +4,9 @@
 #define __OpenSpaceToolkit_Physics_Time_Duration__
 
 #include <functional>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
@@ -19,8 +19,6 @@ namespace time
 {
 
 using ostk::core::type::Int64;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 class Instant;
@@ -35,9 +33,8 @@ class Duration
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
-        ISO8601     ///< ISO 8601 format (PnDTnHnMnS)
+        Standard,  ///< Standard format (d hh:mm:ss.mmm.uuu.nnn)
+        ISO8601    ///< ISO 8601 format (PnDTnHnMnS)
 
     };
 
@@ -137,7 +134,7 @@ class Duration
     ///
     /// @param [in] aMultiplier A multiplier
     /// @return Duration
-    Duration operator*(const Real& aMultiplier) const;
+    Duration operator*(double aMultiplier) const;
 
     /// @brief Division operator
     ///
@@ -147,7 +144,7 @@ class Duration
     ///
     /// @param [in] aDivider A divider
     /// @return Duration
-    Duration operator/(const Real& aDivider) const;
+    Duration operator/(double aDivider) const;
 
     /// @brief Unary plus operator
     ///
@@ -198,7 +195,7 @@ class Duration
     ///
     /// @param [in] aMultiplier A multiplier
     /// @return Reference to duration
-    Duration& operator*=(const Real& aMultiplier);
+    Duration& operator*=(double aMultiplier);
 
     /// @brief Division assignement operator
     ///
@@ -209,7 +206,7 @@ class Duration
     ///
     /// @param [in] aDivider A divider
     /// @return Reference to duration
-    Duration& operator/=(const Real& aDivider);
+    Duration& operator/=(double aDivider);
 
     /// @brief Multiplication operator
     ///
@@ -232,15 +229,6 @@ class Duration
     /// @param [in] aDuration A duration
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Duration& aDuration);
-
-    /// @brief Check if duration is defined
-    ///
-    /// @code
-    ///     Duration(123).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if duration is defined
-    bool isDefined() const;
 
     /// @brief Check if duration is zero
     ///
@@ -291,7 +279,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of nanoseconds in duration
-    Integer getNanoseconds() const;
+    int getNanoseconds() const;
 
     /// @brief Get the number of microseconds in duration
     ///
@@ -300,7 +288,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of microseconds in duration
-    Integer getMicroseconds() const;
+    int getMicroseconds() const;
 
     /// @brief Get the number of milliseconds in duration
     ///
@@ -309,7 +297,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of milliseconds in duration
-    Integer getMilliseconds() const;
+    int getMilliseconds() const;
 
     /// @brief Get the number of seconds in duration
     ///
@@ -318,7 +306,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of seconds in duration
-    Integer getSeconds() const;
+    int getSeconds() const;
 
     /// @brief Get the number of minutes in duration
     ///
@@ -327,7 +315,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of minutes in duration
-    Integer getMinutes() const;
+    int getMinutes() const;
 
     /// @brief Get the number of hours in duration
     ///
@@ -336,7 +324,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of hours in duration
-    Integer getHours() const;
+    int getHours() const;
 
     /// @brief Get the number of days in duration
     ///
@@ -345,7 +333,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of days in duration
-    Integer getDays() const;
+    int getDays() const;
 
     /// @brief Get the number of weeks in duration
     ///
@@ -354,7 +342,7 @@ class Duration
     /// @endcode
     ///
     /// @return Number of weeks in duration
-    Integer getWeeks() const;
+    int getWeeks() const;
 
     /// @brief Get absolute duration
     ///
@@ -372,7 +360,7 @@ class Duration
     /// @endcode
     ///
     /// @return Nanosecond count
-    Real inNanoseconds() const;
+    double inNanoseconds() const;
 
     /// @brief Get microsecond count
     ///
@@ -381,7 +369,7 @@ class Duration
     /// @endcode
     ///
     /// @return Microsecond count
-    Real inMicroseconds() const;
+    double inMicroseconds() const;
 
     /// @brief Get millisecond count
     ///
@@ -390,7 +378,7 @@ class Duration
     /// @endcode
     ///
     /// @return Millisecond count
-    Real inMilliseconds() const;
+    double inMilliseconds() const;
 
     /// @brief Get second count
     ///
@@ -399,7 +387,7 @@ class Duration
     /// @endcode
     ///
     /// @return Second count
-    Real inSeconds() const;
+    double inSeconds() const;
 
     /// @brief Get minute count
     ///
@@ -408,7 +396,7 @@ class Duration
     /// @endcode
     ///
     /// @return Minute count
-    Real inMinutes() const;
+    double inMinutes() const;
 
     /// @brief Get hour count
     ///
@@ -417,7 +405,7 @@ class Duration
     /// @endcode
     ///
     /// @return Hour count
-    Real inHours() const;
+    double inHours() const;
 
     /// @brief Get day count
     ///
@@ -426,7 +414,7 @@ class Duration
     /// @endcode
     ///
     /// @return Day count
-    Real inDays() const;
+    double inDays() const;
 
     /// @brief Get week count
     ///
@@ -435,7 +423,7 @@ class Duration
     /// @endcode
     ///
     /// @return Week count
-    Real inWeeks() const;
+    double inWeeks() const;
 
     /// @brief Get count in given time unit
     ///
@@ -445,7 +433,7 @@ class Duration
     ///
     /// @param [in] aTimeUnit A time unit
     /// @return Count in given time unit
-    Real in(const unit::Time::Unit& aTimeUnit) const;
+    double in(const unit::Time::Unit& aTimeUnit) const;
 
     /// @brief Get string representation of duration
     ///
@@ -457,16 +445,6 @@ class Duration
     /// @param [in] aFormat A representation format
     /// @return Serialized duration
     String toString(const Duration::Format& aFormat = Duration::Format::Standard) const;
-
-    /// @brief Constructs an undefined duration
-    ///
-    /// @code
-    ///     Duration duration = Duration::Undefined();
-    ///     duration.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined duration
-    static Duration Undefined();
 
     /// @brief Constructs a zero duration
     ///
@@ -486,7 +464,7 @@ class Duration
     ///
     /// @param [in] aNanosecondCount A nanosecond count
     /// @return Duration
-    static Duration Nanoseconds(const Real& aNanosecondCount);
+    static Duration Nanoseconds(double aNanosecondCount);
 
     /// @brief Constructs a duration from a microsecond count
     ///
@@ -496,7 +474,7 @@ class Duration
     ///
     /// @param [in] aMicrosecondCount A microsecond count
     /// @return Duration
-    static Duration Microseconds(const Real& aMicrosecondCount);
+    static Duration Microseconds(double aMicrosecondCount);
 
     /// @brief Constructs a duration from a millisecond count
     ///
@@ -506,7 +484,7 @@ class Duration
     ///
     /// @param [in] aMillisecondCount A millisecond count
     /// @return Duration
-    static Duration Milliseconds(const Real& aMillisecondCount);
+    static Duration Milliseconds(double aMillisecondCount);
 
     /// @brief Constructs a duration from a second count
     ///
@@ -516,7 +494,7 @@ class Duration
     ///
     /// @param [in] aSecondCount A second count
     /// @return Duration
-    static Duration Seconds(const Real& aSecondCount);
+    static Duration Seconds(double aSecondCount);
 
     /// @brief Constructs a duration from a minute count
     ///
@@ -526,7 +504,7 @@ class Duration
     ///
     /// @param [in] aMinuteCount A minute count
     /// @return Duration
-    static Duration Minutes(const Real& aMinuteCount);
+    static Duration Minutes(double aMinuteCount);
 
     /// @brief Constructs a duration from a hour count
     ///
@@ -536,7 +514,7 @@ class Duration
     ///
     /// @param [in] anHourCount A hour count
     /// @return Duration
-    static Duration Hours(const Real& anHourCount);
+    static Duration Hours(double anHourCount);
 
     /// @brief Constructs a duration from a day count
     ///
@@ -546,7 +524,7 @@ class Duration
     ///
     /// @param [in] aDayCount A day count
     /// @return Duration
-    static Duration Days(const Real& aDayCount);
+    static Duration Days(double aDayCount);
 
     /// @brief Constructs a duration from a week count
     ///
@@ -556,7 +534,7 @@ class Duration
     ///
     /// @param [in] aWeekCount A week count
     /// @return Duration
-    static Duration Weeks(const Real& aWeekCount);
+    static Duration Weeks(double aWeekCount);
 
     /// @brief Constructs a duration between two instants
     ///
@@ -580,15 +558,12 @@ class Duration
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A duration format (automatic detection if Undefined)
+    /// @param [in] aFormat A duration format (default: std::nullopt, which detects the format)
     /// @return Duration
-    static Duration Parse(const String& aString, const Duration::Format& aFormat = Duration::Format::Undefined);
+    static Duration Parse(const String& aString, const std::optional<Duration::Format>& aFormat = std::nullopt);
 
    private:
-    bool defined_;
     Int64 count_;
-
-    Duration();
 
     friend struct std::hash<Duration>;
 };
@@ -605,11 +580,6 @@ struct hash<ostk::physics::time::Duration>
 {
     size_t operator()(const ostk::physics::time::Duration& aDuration) const
     {
-        if (!aDuration.defined_)
-        {
-            return 0;
-        }
-
         return std::hash<ostk::core::type::Int64> {}(aDuration.count_);
     }
 };

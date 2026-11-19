@@ -12,7 +12,6 @@ def test_unit_time_unit():
     enum_members = Unit.__members__
 
     list_keys = [
-        "Undefined",
         "Nanosecond",
         "Microsecond",
         "Millisecond",
@@ -24,7 +23,6 @@ def test_unit_time_unit():
     ]
 
     list_values = [
-        Unit.Undefined,
         Unit.Nanosecond,
         Unit.Microsecond,
         Unit.Millisecond,
@@ -45,57 +43,38 @@ def test_unit_time_constructors():
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Microsecond)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Millisecond)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Second)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Minute)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Hour)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Day)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
 
     time: Time = Time(3.2, Unit.Week)
 
     assert time is not None
     assert isinstance(time, Time)
-    assert time.is_defined()
-
-    time: Time = Time(3.2, Unit.Undefined)
-
-    assert time is not None
-    assert isinstance(time, Time)
-    assert time.is_defined() is False
-
-
-def test_unit_time_is_defined():
-    assert Time(2.0, Unit.Second).is_defined()
-    assert Time.undefined().is_defined() is False

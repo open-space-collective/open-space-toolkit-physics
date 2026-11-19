@@ -3,10 +3,10 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -30,8 +30,6 @@ namespace filesystem = ostk::core::filesystem;
 
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::Duration;
@@ -65,33 +63,33 @@ class BulletinA
    public:
     struct Observation
     {
-        Integer year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
-        Integer month;  ///< Month number
-        Integer day;    ///< Day of month
+        int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+        int month;  ///< Month number
+        int day;    ///< Day of month
 
-        Real mjd;  ///< Modified Julian Day
+        double mjd;  ///< Modified Julian Day
 
-        Real x;       ///< [asec] PM-x
-        Real xError;  ///< [asec] Error in PM-x
-        Real y;       ///< [asec] PM-y
-        Real yError;  ///< [asec] Error in PM-y
+        double x;       ///< [asec] PM-x
+        double xError;  ///< [asec] Error in PM-x
+        double y;       ///< [asec] PM-y
+        double yError;  ///< [asec] Error in PM-y
 
-        Real ut1MinusUtc;       ///< [s] UT1-UTC
-        Real ut1MinusUtcError;  ///< [s] Error in UT1-UTC
+        double ut1MinusUtc;       ///< [s] UT1-UTC
+        double ut1MinusUtcError;  ///< [s] Error in UT1-UTC
     };
 
     struct Prediction
     {
-        Integer year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
-        Integer month;  ///< Month number
-        Integer day;    ///< Day of month
+        int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+        int month;  ///< Month number
+        int day;    ///< Day of month
 
-        Real mjd;  ///< Modified Julian Day
+        double mjd;  ///< Modified Julian Day
 
-        Real x;  ///< [asec] PM-x
-        Real y;  ///< [asec] PM-y
+        double x;  ///< [asec] PM-x
+        double y;  ///< [asec] PM-y
 
-        Real ut1MinusUtc;  ///< [s] UT1-UTC
+        double ut1MinusUtc;  ///< [s] UT1-UTC
     };
 
     /// @brief Output stream operator.
@@ -105,104 +103,59 @@ class BulletinA
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinA& aBulletinA);
 
-    /// @brief true if defined
+    /// @brief Get release Date
     ///
     /// @code
-    ///     bulletinA.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return true if defined
-    bool isDefined() const;
-
-    /// @brief Access release Date
-    ///
-    /// @code
-    ///     const Date& date = bulletinA.accessReleaseDate();
+    ///     const Date& date = bulletinA.getReleaseDate();
     /// @endcode
     ///
     /// @return Release Date
-    const Date& accessReleaseDate() const;
+    const Date& getReleaseDate() const;
 
-    /// @brief Access timestamp at which the BulletinA file was last modified
+    /// @brief Get timestamp at which the BulletinA file was last modified
     ///
     /// @code
-    ///     const Instant& timestamp = bulletinA.accessLastModifiedTimestamp();
+    ///     const Instant& timestamp = bulletinA.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
-    const Instant& accessLastModifiedTimestamp() const;
-
-    /// @brief Access TAI-UTC
-    ///
-    /// @code
-    ///     const Duration& taiMinusUtc = bulletinA.accessTAIMinusUTC();
-    /// @endcode
-    ///
-    /// @return TAI-UTC
-    const Duration& accessTAIMinusUTC() const;
-
-    /// @brief Access TAI-UTC epoch
-    ///
-    /// @code
-    ///     const Instant& epoch = bulletinA.accessTAIMinusUTCEpoch();
-    /// @endcode
-    ///
-    /// @return TAI-UTC epoch
-    const Instant& accessTAIMinusUTCEpoch() const;
-
-    /// @brief Access observation Interval
-    ///
-    /// @code
-    ///     const Interval& interval = bulletinA.accessObservationInterval();
-    /// @endcode
-    ///
-    /// @return Observation Interval of Instants
-    const Interval& accessObservationInterval() const;
-
-    /// @brief Access prediction Interval
-    ///
-    /// @code
-    ///     const Interval& interval = bulletinA.accessPredictionInterval();
-    /// @endcode
-    ///
-    /// @return Prediction Interval of Instants
-    const Interval& accessPredictionInterval() const;
-
-    /// @brief Get release Date of Bulletin A
-    ///
-    /// @code
-    ///     Date date = bulletinA.getReleaseDate();
-    /// @endcode
-    ///
-    /// @return Release Date of Bulletin A
-    Date getReleaseDate() const;
+    const Instant& getLastModifiedTimestamp() const;
 
     /// @brief Get TAI-UTC
     ///
     /// @code
-    ///     Duration taiMinusUtc = bulletinA.getTAIMinusUTC();
+    ///     const std::optional<Duration>& taiMinusUtc = bulletinA.getTAIMinusUTC();
     /// @endcode
     ///
     /// @return TAI-UTC
-    Duration getTAIMinusUTC() const;
+    const std::optional<Duration>& getTAIMinusUTC() const;
 
     /// @brief Get TAI-UTC epoch
     ///
     /// @code
-    ///     Instant epoch = bulletinA.getTAIMinusUTCEpoch();
+    ///     const std::optional<Instant>& epoch = bulletinA.getTAIMinusUTCEpoch();
     /// @endcode
     ///
-    /// @return TAI-UTC epoch Instant
-    Instant getTAIMinusUTCEpoch() const;
+    /// @return TAI-UTC epoch
+    const std::optional<Instant>& getTAIMinusUTCEpoch() const;
 
     /// @brief Get observation Interval
     ///
     /// @code
-    ///     Interval interval = bulletinA.getObservationInterval();
+    ///     const std::optional<Interval>& interval = bulletinA.getObservationInterval();
     /// @endcode
     ///
     /// @return Observation Interval of Instants
-    Interval getObservationInterval() const;
+    const std::optional<Interval>& getObservationInterval() const;
+
+    /// @brief Get prediction Interval
+    ///
+    /// @code
+    ///     const std::optional<Interval>& interval = bulletinA.getPredictionInterval();
+    /// @endcode
+    ///
+    /// @return Prediction Interval of Instants
+    const std::optional<Interval>& getPredictionInterval() const;
 
     /// @brief Get observation at Instant
     ///
@@ -214,15 +167,6 @@ class BulletinA
     /// @return Observation at Instant
     BulletinA::Observation getObservationAt(const Instant& anInstant) const;
 
-    /// @brief Get prediction Interval
-    ///
-    /// @code
-    ///     Interval interval = bulletinA.getPredictionInterval();
-    /// @endcode
-    ///
-    /// @return Prediction Interval of Instants
-    Interval getPredictionInterval() const;
-
     /// @brief Get prediction at Instant
     ///
     /// @code
@@ -232,15 +176,6 @@ class BulletinA
     /// @param [in] anInstant An Instant
     /// @return Prediction at Instant
     BulletinA::Prediction getPredictionAt(const Instant& anInstant) const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     BulletinA bulletinA = BulletinA::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined Bulletin A object
-    static BulletinA Undefined();
 
     /// @brief Load Bulletin A from file
     ///
@@ -253,19 +188,19 @@ class BulletinA
     static BulletinA Load(const filesystem::File& aFile);
 
    private:
-    Date releaseDate_;
+    std::optional<Date> releaseDate_;
     Instant lastModifiedTimestamp_;
 
-    Duration taiMinusUtc_;
-    Instant taiMinusUtcEpoch_;
+    std::optional<Duration> taiMinusUtc_;
+    std::optional<Instant> taiMinusUtcEpoch_;
 
-    Interval observationInterval_;
-    Map<Integer, BulletinA::Observation> observations_;
+    std::optional<Interval> observationInterval_;
+    Map<int, BulletinA::Observation> observations_;
 
-    Interval predictionInterval_;
-    Map<Integer, BulletinA::Prediction> predictions_;
+    std::optional<Interval> predictionInterval_;
+    Map<int, BulletinA::Prediction> predictions_;
 
-    BulletinA();
+    BulletinA(const Instant& aLastModifiedTimestamp);
 };
 
 }  // namespace iers

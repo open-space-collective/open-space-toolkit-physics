@@ -7,7 +7,6 @@
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/Dynamic.hpp>
@@ -121,11 +120,6 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Engine& anEngine)
 
 bool Engine::isKernelLoaded(const Kernel& aKernel) const
 {
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     return this->isKernelLoaded_(aKernel);
@@ -172,11 +166,6 @@ Array<Kernel> Engine::getKernels() const
 
 void Engine::loadKernel(const Kernel& aKernel)
 {
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     this->loadKernel_(aKernel);
@@ -184,11 +173,6 @@ void Engine::loadKernel(const Kernel& aKernel)
 
 void Engine::unloadKernel(const Kernel& aKernel)
 {
-    if (!aKernel.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Kernel");
-    }
-
     const std::lock_guard<std::mutex> lock {mutex_};
 
     this->unloadKernel_(aKernel);
@@ -379,7 +363,7 @@ void Engine::manageKernels(const String& aSpiceIdentifier) const
                 const Array<Kernel> earthKernels = Manager::Get().fetchMatchingKernels(earthLatestHighPrecisionKernel);
                 if (!earthKernels.isEmpty())
                 {
-                    const_cast<Engine*>(this)->loadKernel(earthKernels.accessFirst());  // Should only be one
+                    const_cast<Engine*>(this)->loadKernel(earthKernels.getFirst());  // Should only be one
                 }
                 else
                 {

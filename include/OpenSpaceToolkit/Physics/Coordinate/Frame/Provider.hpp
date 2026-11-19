@@ -34,11 +34,6 @@ class Provider
     /// @return A pointer to the cloned provider
     virtual Provider* clone() const = 0;
 
-    /// @brief Check if the provider is defined.
-    ///
-    /// @return True if the provider is defined
-    virtual bool isDefined() const = 0;
-
     /// @brief Get the transform at a given instant.
     ///
     /// @param [in] anInstant An instant

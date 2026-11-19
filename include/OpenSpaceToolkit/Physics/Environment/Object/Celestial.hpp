@@ -3,7 +3,8 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Object_Celestial__
 #define __OpenSpaceToolkit_Physics_Environment_Object_Celestial__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -35,7 +36,6 @@ namespace environment
 namespace object
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -64,7 +64,6 @@ class Celestial : public Object
     enum class Type
     {
 
-        Undefined,
         Sun,
         Mercury,
         Venus,
@@ -77,8 +76,7 @@ class Celestial : public Object
     enum class FrameType
     {
 
-        Undefined,  ///< Undefined frame
-        NED,        ///< North-East-Down (NED) frame
+        NED,  ///< North-East-Down (NED) frame
 
     };
 
@@ -86,21 +84,21 @@ class Celestial : public Object
     {
         static Derived GravitationalParameter;
         static Length EquatorialRadius;
-        static Real Flattening;
-        static Real C20;
-        static Real C40;
-        static Real J2;
-        static Real J4;
+        static double Flattening;
+        static double C20;
+        static double C40;
+        static double J2;
+        static double J4;
     };
 
     Celestial(
         const String& aName,
         const Celestial::Type& aType,
-        const Derived& aGravitationalParameter,
+        const std::optional<Derived>& aGravitationalParameter,
         const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
+        double aFlattening,
+        const std::optional<double>& aJ2,
+        const std::optional<double>& aJ4,
         const Shared<Ephemeris>& anEphemeris,
         const Shared<GravitationalModel>& aGravitationalModel,
         const Shared<MagneticModel>& aMagneticModel,
@@ -110,11 +108,11 @@ class Celestial : public Object
     Celestial(
         const String& aName,
         const Celestial::Type& aType,
-        const Derived& aGravitationalParameter,
+        const std::optional<Derived>& aGravitationalParameter,
         const Length& anEquatorialRadius,
-        const Real& aFlattening,
-        const Real& aJ2,
-        const Real& aJ4,
+        double aFlattening,
+        const std::optional<double>& aJ2,
+        const std::optional<double>& aJ4,
         const Shared<Ephemeris>& anEphemeris,
         const Shared<GravitationalModel>& aGravitationalModel,
         const Shared<MagneticModel>& aMagneticModel,
@@ -126,35 +124,48 @@ class Celestial : public Object
 
     virtual Celestial* clone() const override;
 
-    virtual bool isDefined() const override;
-
     bool gravitationalModelIsDefined() const;
 
     bool magneticModelIsDefined() const;
 
     bool atmosphericModelIsDefined() const;
 
-    Shared<const Ephemeris> accessEphemeris() const;
+    const Shared<const Ephemeris>& getEphemeris() const;
 
-    Shared<const GravitationalModel> accessGravitationalModel() const;
+    const Shared<const GravitationalModel>& getGravitationalModel() const;
 
-    Shared<const MagneticModel> accessMagneticModel() const;
+    const Shared<const MagneticModel>& getMagneticModel() const;
 
-    Shared<const AtmosphericModel> accessAtmosphericModel() const;
+    const Shared<const AtmosphericModel>& getAtmosphericModel() const;
 
-    virtual Shared<const Frame> accessFrame() const override;
+    virtual Shared<const Frame> getFrame() const override;
 
     Celestial::Type getType() const;
 
-    Derived getGravitationalParameter() const;
+    /// @brief Get the gravitational parameter
+    ///
+    /// @return Gravitational parameter
+    /// @throw ostk::core::error::runtime::Undefined if the celestial object has no gravitational parameter (an Earth
+    /// built without a gravitational model)
+    const Derived& getGravitationalParameter() const;
 
-    Length getEquatorialRadius() const;
+    const Length& getEquatorialRadius() const;
 
-    Real getFlattening() const;
+    double getFlattening() const;
 
-    Real getJ2() const;
+    /// @brief Get the J2 parameter value
+    ///
+    /// @return J2 parameter value
+    /// @throw ostk::core::error::runtime::Undefined if the celestial object has no J2 (an Earth built without a
+    /// gravitational model)
+    double getJ2() const;
 
-    Real getJ4() const;
+    /// @brief Get the J4 parameter value
+    ///
+    /// @return J4 parameter value
+    /// @throw ostk::core::error::runtime::Undefined if the celestial object has no J4 (an Earth built without a
+    /// gravitational model)
+    double getJ4() const;
 
     virtual Position getPositionIn(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const override;
 
@@ -174,21 +185,19 @@ class Celestial : public Object
 
     Object::Geometry getTerminatorGeometry() const;
 
-    static Celestial Undefined();
-
     static String StringFromFrameType(const Celestial::FrameType& aFrameType);
 
    private:
     Celestial::Type type_;
-    Derived gravitationalParameter_;
+    std::optional<Derived> gravitationalParameter_;
     Length equatorialRadius_;
-    Real flattening_;
-    Real j2_;
-    Real j4_;
-    Shared<Ephemeris> ephemeris_;
-    Shared<GravitationalModel> gravitationalModelSPtr_;
-    Shared<MagneticModel> magneticModelSPtr_;
-    Shared<AtmosphericModel> atmosphericModelSPtr_;
+    double flattening_;
+    std::optional<double> j2_;
+    std::optional<double> j4_;
+    Shared<const Ephemeris> ephemeris_;
+    Shared<const GravitationalModel> gravitationalModelSPtr_;
+    Shared<const MagneticModel> magneticModelSPtr_;
+    Shared<const AtmosphericModel> atmosphericModelSPtr_;
 };
 
 }  // namespace object

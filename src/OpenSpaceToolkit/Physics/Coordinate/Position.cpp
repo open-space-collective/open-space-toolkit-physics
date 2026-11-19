@@ -23,6 +23,10 @@ Position::Position(const Vector3d& aCoordinateSet, const Position::Unit& aUnit, 
       unit_(aUnit),
       frameSPtr_(aFrameSPtr)
 {
+    if (aFrameSPtr == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Frame");
+    }
 }
 
 Position::Position(const Position& aPosition)
@@ -46,11 +50,6 @@ Position& Position::operator=(const Position& aPosition)
 
 bool Position::operator==(const Position& aPosition) const
 {
-    if ((!this->isDefined()) || (!aPosition.isDefined()))
-    {
-        return false;
-    }
-
     return (coordinates_ == aPosition.coordinates_) && (unit_ == aPosition.unit_) &&
            ((*frameSPtr_) == (*aPosition.frameSPtr_));
 }
@@ -64,44 +63,17 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition
 {
     ostk::core::utils::Print::Header(anOutputStream, "Position");
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Coordinates:" << (aPosition.coordinates_.isDefined() ? aPosition.coordinates_.toString() : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Unit:"
-        << ((aPosition.unit_ != Position::Unit::Undefined) ? Length::StringFromUnit(aPosition.unit_) : "Undefined");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Frame:"
-        << (((aPosition.frameSPtr_ != nullptr) && aPosition.frameSPtr_->isDefined()) ? aPosition.frameSPtr_->getName()
-                                                                                     : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Coordinates:" << (aPosition.coordinates_.toString());
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Length::StringFromUnit(aPosition.unit_);
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << aPosition.frameSPtr_->getName();
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-bool Position::isDefined() const
-{
-    return coordinates_.isDefined() && (unit_ != Position::Unit::Undefined) && (frameSPtr_ != nullptr) &&
-           frameSPtr_->isDefined();
-}
-
 bool Position::isNear(const Position& aPosition, const Length& aTolerance) const
 {
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!aTolerance.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     if ((*frameSPtr_) != (*aPosition.frameSPtr_))
     {
         throw ostk::core::error::RuntimeError("Position are expressed in different frames.");
@@ -119,68 +91,28 @@ bool Position::isNear(const Position& aPosition, const Length& aTolerance) const
     return false;
 }
 
-const Vector3d& Position::accessCoordinates() const
+const Vector3d& Position::getCoordinates() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     return coordinates_;
 }
 
-Shared<const Frame> Position::accessFrame() const
+const Shared<const Frame>& Position::getFrame() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     return frameSPtr_;
-}
-
-Vector3d Position::getCoordinates() const
-{
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    return coordinates_;
 }
 
 Length Position::getNorm() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     return {coordinates_.norm(), unit_};
 }
 
 Position::Unit Position::getUnit() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     return unit_;
 }
 
 Position Position::inUnit(const Position::Unit& aUnit) const
 {
-    if (aUnit == Position::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Unit");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     return {coordinates_ * Length(1.0, unit_).in(aUnit), aUnit, frameSPtr_};
 }
 
@@ -191,14 +123,9 @@ Position Position::inMeters() const
 
 Position Position::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant& anInstant) const
 {
-    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
     }
 
     const Transform transform = frameSPtr_->getTransformTo(aFrameSPtr, anInstant);
@@ -210,27 +137,17 @@ Position Position::inFrame(const Shared<const Frame>& aFrameSPtr, const Instant&
         return {transform.applyToPosition(coordinates_), unit_, aFrameSPtr};
     }
 
-    return Position::Meters(transform.applyToPosition(this->inMeters().accessCoordinates()), aFrameSPtr).inUnit(unit_);
+    return Position::Meters(transform.applyToPosition(this->inMeters().getCoordinates()), aFrameSPtr).inUnit(unit_);
 }
 
-String Position::toString(const Integer& aPrecision) const
+String Position::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
     return String::Format(
         "{} [{}] @ {}",
-        (aPrecision.isDefined() ? coordinates_.toString(aPrecision) : coordinates_.toString()),
+        ((aPrecision >= 0) ? coordinates_.toString(aPrecision) : coordinates_.toString()),
         Length::SymbolFromUnit(unit_),
         frameSPtr_->getName()
     );
-}
-
-Position Position::Undefined()
-{
-    return {Vector3d::Undefined(), Position::Unit::Undefined, nullptr};
 }
 
 Position Position::Meters(const Vector3d& aCoordinateSet, const Shared<const Frame>& aFrameSPtr)
@@ -242,23 +159,18 @@ Position Position::FromLLA(
     const spherical::LLA& aLLA, const Shared<const environment::object::Celestial>& aCelestialSPtr
 )
 {
-    if (!aLLA.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("LLA");
-    }
-
     Shared<const environment::object::Celestial> celestialSPtr =
-        aCelestialSPtr == nullptr ? ostk::physics::Environment::AccessGlobalInstance()->accessCentralCelestialObject()
+        aCelestialSPtr == nullptr ? ostk::physics::Environment::GetGlobalInstance()->getCentralCelestialObject()
                                   : aCelestialSPtr;
 
-    if (celestialSPtr == nullptr || !celestialSPtr->isDefined())
+    if (celestialSPtr == nullptr)
     {
         throw ostk::core::error::runtime::Undefined("Celestial");
     }
 
     return Position::Meters(
         aLLA.toCartesian(celestialSPtr->getEquatorialRadius(), celestialSPtr->getFlattening()),
-        celestialSPtr->accessFrame()
+        celestialSPtr->getFrame()
     );
 }
 

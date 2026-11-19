@@ -51,15 +51,6 @@ class Dynamic : public Provider
     /// @return A pointer to the cloned Dynamic provider
     virtual Dynamic* clone() const override;
 
-    /// @brief Check if the Dynamic provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the Dynamic provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the transform at a given instant.
     ///
     /// @code
@@ -69,15 +60,6 @@ class Dynamic : public Provider
     /// @param [in] anInstant An instant
     /// @return The transform at the given instant
     virtual Transform getTransformAt(const Instant& anInstant) const override;
-
-    /// @brief Create an undefined Dynamic provider.
-    ///
-    /// @code
-    ///     Dynamic provider = Dynamic::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined Dynamic provider
-    static Dynamic Undefined();
 
    private:
     Dynamic::Generator generator_;

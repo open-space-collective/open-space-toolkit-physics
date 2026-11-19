@@ -5,7 +5,6 @@
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationVector.hpp>
@@ -14,6 +13,7 @@
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -24,7 +24,6 @@ using ostk::core::container::Table;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -41,13 +40,14 @@ using ostk::physics::time::Instant;
 using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
+using ostk::physics::utility::DoubleToString;
 
 // This will test transformation translation, relative velocity, oreintation and
 // angular velocity against 3rd party generated files. The files can be found in
 // the folder 'Transforms', together with a README.md containing context.
 
 class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform
-    : public ::testing::TestWithParam<Tuple<String, String, String, Real, Real, Real, Real>>
+    : public ::testing::TestWithParam<Tuple<String, String, String, double, double, double, double>>
 {
 };
 
@@ -267,10 +267,10 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
     const File referenceDataFile = File::Path(Path::Parse(std::get<0>(parameters)));
     const String frame2Str = std::get<1>(parameters);
     const String otherStr = std::get<2>(parameters);
-    const Real translationTolerance = std::get<3>(parameters);
-    const Real velocityTolerance = std::get<4>(parameters);
-    const Real orientationToleranceAtEarthSurface = std::get<5>(parameters);
-    const Real angularVelocityTolerance = std::get<6>(parameters);
+    const double translationTolerance = std::get<3>(parameters);
+    const double velocityTolerance = std::get<4>(parameters);
+    const double orientationToleranceAtEarthSurface = std::get<5>(parameters);
+    const double angularVelocityTolerance = std::get<6>(parameters);
 
     const double earthRadius = 6370000;
     const Vector3d earthSurfaceX = earthRadius * Vector3d::X();
@@ -285,7 +285,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
     for (const auto& referenceRow : referenceData)
     {
-        const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::TAI);
+        const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::TAI);
 
         Shared<const Frame> frame1 = Frame::GCRF();
         Shared<const Frame> frame2 = Frame::GCRF();
@@ -333,7 +333,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
             };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
@@ -346,7 +346,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame2.toString(),
                 toFrame2.toString(),
-                translationTolerance.toString()
+                DoubleToString(translationTolerance)
             );
 
             ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, translationTolerance)) << String::Format(
@@ -355,7 +355,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame1.toString(),
                 toFrame1.toString(),
-                translationTolerance.toString()
+                DoubleToString(translationTolerance)
             );
         }
 
@@ -363,7 +363,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+                referenceRow[4].getReal(), referenceRow[5].getReal(), referenceRow[6].getReal()
             };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
@@ -376,7 +376,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame2.toString(),
                 toFrame2.toString(),
-                velocityTolerance.toString()
+                DoubleToString(velocityTolerance)
             );
 
             ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, velocityTolerance)) << String::Format(
@@ -385,7 +385,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame1.toString(),
                 toFrame1.toString(),
-                velocityTolerance.toString()
+                DoubleToString(velocityTolerance)
             );
         }
 
@@ -393,10 +393,10 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Quaternion referenceOrientationToFrame2 = Quaternion::XYZS(
-                                                                referenceRow[7].accessReal(),
-                                                                referenceRow[8].accessReal(),
-                                                                referenceRow[9].accessReal(),
-                                                                referenceRow[10].accessReal()
+                                                                referenceRow[7].getReal(),
+                                                                referenceRow[8].getReal(),
+                                                                referenceRow[9].getReal(),
+                                                                referenceRow[10].getReal()
             )
                                                                 .normalize();
 
@@ -414,7 +414,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame2X.toString(),
                 toFrame2X.toString(),
-                orientationToleranceAtEarthSurface.toString()
+                DoubleToString(orientationToleranceAtEarthSurface)
             );
 
             ASSERT_TRUE(referenceToFrame2Y.isNear(toFrame2Y, orientationToleranceAtEarthSurface)) << String::Format(
@@ -423,7 +423,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame2Y.toString(),
                 toFrame2Y.toString(),
-                orientationToleranceAtEarthSurface.toString()
+                DoubleToString(orientationToleranceAtEarthSurface)
             );
 
             ASSERT_TRUE(referenceToFrame2Z.isNear(toFrame2Z, orientationToleranceAtEarthSurface)) << String::Format(
@@ -432,7 +432,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame2Z.toString(),
                 toFrame2Z.toString(),
-                orientationToleranceAtEarthSurface.toString()
+                DoubleToString(orientationToleranceAtEarthSurface)
             );
 
             // Orientation to Frame 1
@@ -451,7 +451,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame1X.toString(),
                 toFrame1X.toString(),
-                orientationToleranceAtEarthSurface.toString()
+                DoubleToString(orientationToleranceAtEarthSurface)
             );
 
             ASSERT_TRUE(referenceToFrame1Y.isNear(toFrame1Y, orientationToleranceAtEarthSurface)) << String::Format(
@@ -460,7 +460,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame1Y.toString(),
                 toFrame1Y.toString(),
-                orientationToleranceAtEarthSurface.toString()
+                DoubleToString(orientationToleranceAtEarthSurface)
             );
 
             ASSERT_TRUE(referenceToFrame1Z.isNear(toFrame1Z, orientationToleranceAtEarthSurface)) << String::Format(
@@ -469,7 +469,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame1Z.toString(),
                 toFrame1Z.toString(),
-                orientationToleranceAtEarthSurface.toString()
+                DoubleToString(orientationToleranceAtEarthSurface)
             );
         }
 
@@ -477,7 +477,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
 
         {
             const Vector3d referenceToFrame2 = {
-                referenceRow[11].accessReal(), referenceRow[12].accessReal(), referenceRow[13].accessReal()
+                referenceRow[11].getReal(), referenceRow[12].getReal(), referenceRow[13].getReal()
             };
             const Vector3d referenceToFrame1 = -1 * referenceToFrame2;
 
@@ -490,7 +490,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame2.toString(),
                 toFrame2.toString(),
-                angularVelocityTolerance.toString()
+                DoubleToString(angularVelocityTolerance)
             );
 
             ASSERT_TRUE(referenceToFrame1.isNear(toFrame1, angularVelocityTolerance)) << String::Format(
@@ -499,7 +499,7 @@ TEST_P(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_Transform, Validation)
                 instant.toString(Scale::TAI),
                 referenceToFrame1.toString(),
                 toFrame1.toString(),
-                angularVelocityTolerance.toString()
+                DoubleToString(angularVelocityTolerance)
             );
         }
     }

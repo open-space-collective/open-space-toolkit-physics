@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Axes.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -41,7 +41,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Axes& self, const Axes& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -53,7 +58,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Axes& self, const Axes& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -67,17 +77,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
 
         .def("__str__", &(shiftToString<Axes>))
         .def("__repr__", &(shiftToString<Axes>))
-
-        .def(
-            "is_defined",
-            &Axes::isDefined,
-            R"doc(
-                Check if defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
 
         .def(
             "x",
@@ -144,17 +143,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Axes(pybind11::module& aModule)
 
                 Returns:
                     Axes: Axes in the other frame of reference.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Axes::Undefined,
-            R"doc(
-                Get undefined axes.
-
-                Returns:
-                    Axes: Undefined axes.
             )doc"
         )
 

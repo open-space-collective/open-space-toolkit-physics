@@ -4,9 +4,9 @@
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
     using ostk::physics::coordinate::Transform;
     using ostk::physics::time::Instant;
 
-    class_<Dynamic, Shared<Dynamic>, Provider>(
+    class_<Dynamic, Provider>(
         aModule,
         "Dynamic",
         R"doc(
@@ -27,11 +27,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
         // Custom Constructor for Dynamic
         .def(
             "__init__",
-            (+[](Dynamic& aDynamicFrameProvider, const pybind11::object& aGeneratorObject)
+            (+[](Dynamic* aDynamicFrameProvider, const nanobind::object& aGeneratorObject)
              {
                  const auto generatorProxy = [aGeneratorObject](const Instant& anInstant) -> Transform
                  {
-                     return pybind11::cast<Transform>(aGeneratorObject(anInstant));
+                     return nanobind::cast<Transform>(aGeneratorObject(anInstant));
                  };
 
                  // might need to add return type to the function (Shared<Dynamic>)
@@ -39,7 +39,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
                  // aDynamicFrameProviderPtr =  std::make_shared<Dynamic>(generatorProxy) ; "RuntimeError: Unable to
                  // cast from non-held to held instance (T& to Holder<T>)" Will need to check resources with that
                  // formulation
-                 new (&aDynamicFrameProvider) Dynamic(generatorProxy);
+                 new (aDynamicFrameProvider) Dynamic(generatorProxy);
              }),
             arg("generator"),
             R"doc(
@@ -48,17 +48,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
                 Args:
                     generator: Generator function.
 
-            )doc"
-        )
-
-        .def(
-            "is_defined",
-            &Dynamic::isDefined,
-            R"doc(
-                Check if the Dynamic provider is defined
-
-                Returns:
-                    bool: True if defined
             )doc"
         )
 
@@ -74,14 +63,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_Dynamic(pybind11
 
                 Returns:
                     Transform: Transform
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Dynamic::Undefined,
-            R"doc(
-                Get an undefined dynamic provider. 
             )doc"
         )
 

@@ -57,23 +57,14 @@ class TOD : public Provider
     /// @return A pointer to the cloned TOD provider
     virtual TOD* clone() const override;
 
-    /// @brief Check if the TOD provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the TOD provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the epoch.
     ///
     /// @code
-    ///     Instant epoch = provider.getEpoch();
+    ///     const Instant& epoch = provider.getEpoch();
     /// @endcode
     ///
-    /// @return The epoch instant
-    Instant getEpoch() const;
+    /// @return Const reference to the epoch instant
+    const Instant& getEpoch() const;
 
     /// @brief Get the IAU theory.
     ///

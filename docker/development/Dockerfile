@@ -129,7 +129,7 @@ RUN git clone https://github.com/geographiclib/geographiclib /tmp/geographiclib 
 ## Open Space Toolkit ▸ Core
 
 ARG TARGETPLATFORM
-ARG OSTK_CORE_MAJOR="5"
+ARG OSTK_CORE_MAJOR="6"
 
 ## Force an image rebuild when new Core minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-core/git/matching-refs/tags/${OSTK_CORE_MAJOR} /tmp/open-space-toolkit-core/versions.json
@@ -146,7 +146,7 @@ RUN mkdir -p /tmp/open-space-toolkit-core \
 ## Open Space Toolkit ▸ I/O
 
 ARG TARGETPLATFORM
-ARG OSTK_IO_MAJOR="4"
+ARG OSTK_IO_MAJOR="5"
 
 ## Force an image rebuild when new IO minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-io/git/matching-refs/tags/${OSTK_IO_MAJOR} /tmp/open-space-toolkit-io/versions.json
@@ -163,7 +163,7 @@ RUN mkdir -p /tmp/open-space-toolkit-io \
 ## Open Space Toolkit ▸ Mathematics
 
 ARG TARGETPLATFORM
-ARG OSTK_MATHEMATICS_MAJOR="4"
+ARG OSTK_MATHEMATICS_MAJOR="5"
 
 ## Force an image rebuild when new Math minor or patch versions are detected
 ADD https://api.github.com/repos/open-space-collective/open-space-toolkit-mathematics/git/matching-refs/tags/${OSTK_MATHEMATICS_MAJOR} /tmp/open-space-toolkit-mathematics/versions.json

@@ -9,7 +9,11 @@ from ostk.physics.time import DateTime
 from ostk.physics.time import Scale
 from ostk.physics.coordinate import Frame
 from ostk.physics.coordinate.frame.provider import iau
+from ostk.physics.coordinate import Transform
 from ostk.physics.coordinate.frame.provider import Dynamic
+from ostk.physics.coordinate.frame.provider import Static
+
+from ostk.mathematics.geometry.d3.transformation.rotation import Quaternion
 
 
 @pytest.fixture
@@ -23,23 +27,20 @@ def frame() -> Frame:
 
 
 class TestFrame:
-    def test_is_defined(self, frame: Frame):
-        assert frame.is_defined() is True
-
     def test_is_quasi_inertial(self, frame: Frame):
         assert frame.is_quasi_inertial() is False
 
     def test_has_parent(self, frame: Frame):
         assert frame.has_parent() is True
 
-    def test_access_parent(self, frame: Frame):
-        assert frame.access_parent() is not None
+    def test_get_parent(self, frame: Frame):
+        assert frame.get_parent() is not None
 
-    def test_access_ancestor(self, frame: Frame):
-        assert frame.access_ancestor(ancestor_degree=1) is not None
+    def test_get_ancestor(self, frame: Frame):
+        assert frame.get_ancestor(ancestor_degree=1) is not None
 
-    def test_access_provider(self, frame: Frame):
-        assert frame.access_provider()
+    def test_get_provider(self, frame: Frame):
+        assert frame.get_provider()
 
     def test_get_name(self, frame: Frame):
         assert frame.get_name() == "ITRF"
@@ -55,9 +56,6 @@ class TestFrame:
 
     def test_get_transform_to(self, epoch: Instant, frame: Frame):
         assert frame.get_transform_to(frame=frame, instant=epoch) is not None
-
-    def test_undefined(self):
-        assert Frame.undefined() is not None
 
     def test_GCRF(self):
         assert Frame.GCRF() is not None
@@ -105,3 +103,23 @@ class TestFrame:
         Frame.destruct(custom_frame.get_name())
 
         assert Frame.exists(name="Custom Frame") is False
+
+
+class TestFrameWithoutParent:
+    def test_construct_root_frame_without_parent(self):
+        provider = Static(
+            Transform.passive(
+                Instant.J2000(),
+                [1.0, 0.0, 0.0],
+                [0.0, 0.0, 0.0],
+                Quaternion.unit(),
+                [0.0, 0.0, 0.0],
+            )
+        )
+
+        root = Frame.construct("TestRootFrame", True, None, provider)
+
+        try:
+            assert root.has_parent() is False
+        finally:
+            Frame.destruct("TestRootFrame")

@@ -13,12 +13,6 @@ def kernel() -> Kernel:
 
 
 class TestKernel:
-    def test_undefined_success(self):
-        kernel = Kernel.undefined()
-
-        assert kernel is not None
-        assert kernel.is_defined() is False
-
     def test_string_from_type_success(self):
         assert Kernel.string_from_type(Kernel.Type.SPK) == "SPK"
         assert Kernel.string_from_type(Kernel.Type.LSK) == "LSK"
@@ -33,6 +27,9 @@ class TestKernel:
         assert Kernel.type_from_file_extension("bsp") == Kernel.Type.SPK
         assert Kernel.type_from_file_extension("tls") == Kernel.Type.LSK
         assert Kernel.type_from_file_extension("tpc") == Kernel.Type.PCK
+
+    def test_type_from_file_extension_unknown_extension_returns_none(self):
+        assert Kernel.type_from_file_extension("unknown") is None
 
     def test_constructor_success(self):
         assert Kernel(Kernel.Type.SPK, File.path(Path.parse("de430.bsp"))) is not None

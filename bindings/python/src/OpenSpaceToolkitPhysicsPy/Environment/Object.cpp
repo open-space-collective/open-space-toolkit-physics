@@ -5,9 +5,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Geometry.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::String;
@@ -16,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
     using ostk::physics::time::Instant;
 
     // Binding class "Object"
-    class_<Object, Shared<Object>>(
+    class_<Object>(
         aModule,
         "Object",
         R"doc(
@@ -38,33 +38,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
         )doc")
 
         .def(
-            "is_defined",
-            &Object::isDefined,
+            "get_frame",
+            &Object::getFrame,
             R"doc(
-                Checks if the Object is defined.
-
-                Returns:
-                    bool: True if the Object is defined, False otherwise.
-            )doc"
-        )
-
-        .def(
-            "access_name",
-            &Object::accessName,
-            return_value_policy::reference,
-            R"doc(
-                Accesses the name of the Object.
-
-                Returns:
-                    str: The name of the Object.
-            )doc"
-        )
-
-        .def(
-            "access_frame",
-            &Object::accessFrame,
-            R"doc(
-                Accesses the frame of the Object.
+                Gets the frame of the Object.
 
                 Returns:
                     Frame: The frame of the Object.
@@ -89,7 +66,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
                 Gets the geometry of the Object.
 
                 Returns:
-                    Geometry: The geometry of the Object.
+                    Geometry | None: The geometry of the Object, or None if it has none.
             )doc"
         )
 
@@ -155,7 +132,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object(pybind11::module& aModu
                     instant (Instant): The instant at which the geometry is computed.
 
                 Returns:
-                    Geometry: the geometry of the Object.
+                    Geometry | None: The geometry of the Object, or None if it has none.
             )doc",
             arg("frame"),
             arg("instant")

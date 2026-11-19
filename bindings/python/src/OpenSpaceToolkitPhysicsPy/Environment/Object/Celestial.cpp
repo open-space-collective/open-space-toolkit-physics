@@ -6,11 +6,10 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial/Moon.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object/Celestial/Sun.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
-    using ostk::core::type::Real;
     using ostk::core::type::Shared;
     using ostk::core::type::String;
 
@@ -24,7 +23,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
     using MagneticModel = ostk::physics::environment::magnetic::Model;
     using AtmosphericModel = ostk::physics::environment::atmospheric::Model;
 
-    class_<Celestial, Shared<Celestial>, Object> celestial_class(
+    class_<Celestial, Object> celestial_class(
         aModule,
         "Celestial",
         R"doc(
@@ -37,41 +36,41 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
             init<
                 const String&,
                 const Celestial::Type&,
-                const Derived&,
+                const std::optional<Derived>&,
                 const Length&,
-                const Real&,
-                const Real&,
-                const Real&,
+                double,
+                const std::optional<double>&,
+                const std::optional<double>&,
                 const Shared<Ephemeris>&,
                 const Shared<GravitationalModel>&,
                 const Shared<MagneticModel>&,
                 const Shared<AtmosphericModel>&>(),
             arg("name"),
             arg("type"),
-            arg("gravitational_parameter"),
+            arg("gravitational_parameter").none(),
             arg("equatorial_radius"),
             arg("flattening"),
-            arg("J2_parameter_value"),
-            arg("J4_parameter_value"),
+            arg("J2_parameter_value").none(),
+            arg("J4_parameter_value").none(),
             arg("ephemeris"),
-            arg("gravitational_model"),
-            arg("magnetic_model"),
-            arg("atmospheric_model"),
+            arg("gravitational_model").none(),
+            arg("magnetic_model").none(),
+            arg("atmospheric_model").none(),
             R"doc(
                 Constructor
 
                 Args:
                     name (str): Name.
                     type (CelestialType): Type.
-                    gravitational_parameter (Derived): Gravitational parameter [m³/s²].
+                    gravitational_parameter (Derived | None): Gravitational parameter [m³/s²], or None if absent.
                     equatorial_radius (Length): Equatorial radius [m].
-                    flattening (Real): Flattening.
-                    J2_parameter_value (Real): J2 parameter value.
-                    J4_parameter_value (Real): J4 parameter value.
+                    flattening (float): Flattening.
+                    J2_parameter_value (float | None): J2 parameter value, or None if absent.
+                    J4_parameter_value (float | None): J4 parameter value, or None if absent.
                     ephemeris (Ephemeris): Ephemeris.
-                    gravitational_model (GravitationalModel): Gravitational model.
-                    magnetic_model (MagneticModel): Magnetic model.
-                    atmospheric_model (AtmosphericModel): Atmospheric model.
+                    gravitational_model (GravitationalModel | None): Gravitational model, or None if absent.
+                    magnetic_model (MagneticModel | None): Magnetic model, or None if absent.
+                    atmospheric_model (AtmosphericModel | None): Atmospheric model, or None if absent.
             )doc"
         )
 
@@ -79,11 +78,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
             init<
                 const String&,
                 const Celestial::Type&,
-                const Derived&,
+                const std::optional<Derived>&,
                 const Length&,
-                const Real&,
-                const Real&,
-                const Real&,
+                double,
+                const std::optional<double>&,
+                const std::optional<double>&,
                 const Shared<Ephemeris>&,
                 const Shared<GravitationalModel>&,
                 const Shared<MagneticModel>&,
@@ -91,15 +90,15 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 const Object::Geometry&>(),
             arg("name"),
             arg("type"),
-            arg("gravitational_parameter"),
+            arg("gravitational_parameter").none(),
             arg("equatorial_radius"),
             arg("flattening"),
-            arg("J2_parameter_value"),
-            arg("J4_parameter_value"),
+            arg("J2_parameter_value").none(),
+            arg("J4_parameter_value").none(),
             arg("ephemeris"),
-            arg("gravitational_model"),
-            arg("magnetic_model"),
-            arg("atmospheric_model"),
+            arg("gravitational_model").none(),
+            arg("magnetic_model").none(),
+            arg("atmospheric_model").none(),
             arg("geometry"),
             R"doc(
                 Constructor
@@ -107,15 +106,15 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
                 Args:
                     name (str): Name.
                     type (CelestialType): Type.
-                    gravitational_parameter (Derived): Gravitational parameter [m³/s²].
+                    gravitational_parameter (Derived | None): Gravitational parameter [m³/s²], or None if absent.
                     equatorial_radius (Length): Equatorial radius [m].
-                    flattening (Real): Flattening.
-                    J2_parameter_value (Real): J2 parameter value.
-                    J4_parameter_value (Real): J4 parameter value.
+                    flattening (float): Flattening.
+                    J2_parameter_value (float | None): J2 parameter value, or None if absent.
+                    J4_parameter_value (float | None): J4 parameter value, or None if absent.
                     ephemeris (Ephemeris): Ephemeris
-                    gravitational_model (GravitationalModel): Gravitational model.
-                    magnetic_model (MagneticModel): Magnetic model.
-                    atmospheric_model (AtmosphericModel): Atmospheric model.
+                    gravitational_model (GravitationalModel | None): Gravitational model, or None if absent.
+                    magnetic_model (MagneticModel | None): Magnetic model, or None if absent.
+                    atmospheric_model (AtmosphericModel | None): Atmospheric model, or None if absent.
                     geometry (Object.Geometry): Geometry.
             )doc"
         )
@@ -130,54 +129,43 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         .def("__repr__", &(shiftToString<Celestial>))
 
         .def(
-            "is_defined",
-            &Celestial::isDefined,
+            "get_ephemeris",
+            &Celestial::getEphemeris,
             R"doc(
-                Check if the celestial object is defined.
-
-                Returns:
-                    bool: True if the celestial object is defined, false otherwise.
-            )doc"
-        )
-
-        .def(
-            "access_ephemeris",
-            &Celestial::accessEphemeris,
-            R"doc(
-                Access the ephemeris.
+                Get the ephemeris.
 
                 Returns:
                     Ephemeris: Ephemeris.
             )doc"
         )
         .def(
-            "access_gravitational_model",
-            &Celestial::accessGravitationalModel,
+            "get_gravitational_model",
+            &Celestial::getGravitationalModel,
             R"doc(
-                Access the gravitational model.
+                Get the gravitational model.
 
                 Returns:
-                    Gravitational: Gravitational model.
+                    Gravitational | None: Gravitational model, or None if the object has none.
             )doc"
         )
         .def(
-            "access_magnetic_model",
-            &Celestial::accessMagneticModel,
+            "get_magnetic_model",
+            &Celestial::getMagneticModel,
             R"doc(
-                Access the magnetic model.
+                Get the magnetic model.
 
                 Returns:
-                    Magnetic: Magnetic model.
+                    Magnetic | None: Magnetic model, or None if the object has none.
             )doc"
         )
         .def(
-            "access_atmospheric_model",
-            &Celestial::accessAtmosphericModel,
+            "get_atmospheric_model",
+            &Celestial::getAtmosphericModel,
             R"doc(
-                Access the atmospheric model.
+                Get the atmospheric model.
 
                 Returns:
-                    Atmospheric: Atmospheric model.
+                    Atmospheric | None: Atmospheric model, or None if the object has none.
             )doc"
         )
 
@@ -199,6 +187,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
                 Returns:
                     Derived: Gravitational parameter [m³/s²].
+
+                Raises:
+                    RuntimeError: If the celestial object has none (an Earth built without a gravitational model).
             )doc"
         )
         .def(
@@ -229,6 +220,9 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
                 Returns:
                     float: J2 parameter value.
+
+                Raises:
+                    RuntimeError: If the celestial object has none (an Earth built without a gravitational model).
             )doc"
         )
         .def(
@@ -239,9 +233,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
                 Returns:
                     float: J4 parameter value.
+
+                Raises:
+                    RuntimeError: If the celestial object has none (an Earth built without a gravitational model).
             )doc"
         )
-        // .def("access_frame", &Celestial::accessFrame)
+        // .def("get_frame", &Celestial::getFrame)
         .def(
             "get_position_in",
             &Celestial::getPositionIn,
@@ -388,17 +385,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
         )
 
         .def_static(
-            "undefined",
-            &Celestial::Undefined,
-            R"doc(
-                Create an undefined celestial object.
-
-                Returns:
-                    Celestial: Undefined celestial object.
-            )doc"
-        )
-
-        .def_static(
             "string_from_frame_type",
             &Celestial::StringFromFrameType,
             arg("frame_type"),
@@ -417,13 +403,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
     enum_<Celestial::Type>(celestial_class, "CelestialType")
 
-        .value(
-            "Undefined",
-            Celestial::Type::Undefined,
-            R"doc(
-                Undefined celestial object.
-            )doc"
-        )
         .value(
             "Sun",
             Celestial::Type::Sun,
@@ -471,13 +450,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Object_Celestial(pybind11::mod
 
     enum_<Celestial::FrameType>(celestial_class, "FrameType")
 
-        .value(
-            "Undefined",
-            Celestial::FrameType::Undefined,
-            R"doc(
-                Undefined frame.
-            )doc"
-        )
         .value(
             "NED",
             Celestial::FrameType::NED,

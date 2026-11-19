@@ -4,7 +4,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 
 using ostk::mathematics::object::Vector3d;
@@ -31,12 +30,5 @@ TEST_F(OpenSpaceToolkit_Physics_Data_Direction, StreamOperator)
         EXPECT_NO_THROW(std::cout << direction_ << std::endl);
 
         EXPECT_FALSE(testing::internal::GetCapturedStdout().empty());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Data_Direction, Undefined)
-{
-    {
-        EXPECT_FALSE(Direction::Undefined().isDefined());
     }
 }

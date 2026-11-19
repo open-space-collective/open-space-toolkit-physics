@@ -35,12 +35,20 @@ Geometry::Geometry(const Geometry::Object& anObject, const Shared<const Frame>& 
     : composite_(anObject),
       frameSPtr_(aFrameSPtr)
 {
+    if (aFrameSPtr == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Frame");
+    }
 }
 
 Geometry::Geometry(const Composite& aComposite, const Shared<const Frame>& aFrameSPtr)
     : composite_(aComposite),
       frameSPtr_(aFrameSPtr)
 {
+    if (aFrameSPtr == nullptr)
+    {
+        throw ostk::core::error::runtime::Undefined("Frame");
+    }
 }
 
 Geometry::Geometry(const Geometry& aGeometry)
@@ -62,11 +70,6 @@ Geometry& Geometry::operator=(const Geometry& aGeometry)
 
 bool Geometry::operator==(const Geometry& aGeometry) const
 {
-    if ((!this->isDefined()) || (!aGeometry.isDefined()))
-    {
-        return false;
-    }
-
     return (composite_ == aGeometry.composite_) && ((*frameSPtr_) == (*aGeometry.frameSPtr_));
 }
 
@@ -90,29 +93,13 @@ void Geometry::print(std::ostream& anOutputStream, bool displayDecorators) const
 
     composite_.print(anOutputStream, false);
 
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Frame:" << (((frameSPtr_ != nullptr) && frameSPtr_->isDefined()) ? frameSPtr_->getName() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Frame:" << frameSPtr_->getName();
 
     displayDecorators ? ostk::core::utils::Print::Footer(anOutputStream) : void();
 }
 
-bool Geometry::isDefined() const
-{
-    return composite_.isDefined() && (frameSPtr_ != nullptr) && frameSPtr_->isDefined();
-}
-
 bool Geometry::intersects(const Geometry& aGeometry) const
 {
-    if (!aGeometry.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
     {
         return composite_.intersects(aGeometry.composite_);
@@ -125,16 +112,6 @@ bool Geometry::intersects(const Geometry& aGeometry) const
 
 bool Geometry::contains(const Geometry& aGeometry) const
 {
-    if (!aGeometry.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
     {
         return composite_.contains(aGeometry.composite_);
@@ -145,23 +122,18 @@ bool Geometry::contains(const Geometry& aGeometry) const
     return false;
 }
 
-const Composite& Geometry::accessComposite() const
+const Composite& Geometry::getComposite() const&
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
     return composite_;
 }
 
-Shared<const Frame> Geometry::accessFrame() const
+Composite Geometry::getComposite() &&
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
+    return this->getComposite();
+}
 
+const Shared<const Frame>& Geometry::getFrame() const
+{
     return frameSPtr_;
 }
 
@@ -178,19 +150,9 @@ Geometry Geometry::in(const Shared<const Frame>& aFrameSPtr, const Instant& anIn
 
     using ostk::physics::coordinate::Transform;
 
-    if ((aFrameSPtr == nullptr) || (!aFrameSPtr->isDefined()))
+    if ((aFrameSPtr == nullptr))
     {
         throw ostk::core::error::runtime::Undefined("Frame");
-    }
-
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
     }
 
     if ((*frameSPtr_) == (*aFrameSPtr))
@@ -229,16 +191,6 @@ Geometry Geometry::intersectionWith(const Geometry& aGeometry) const
     using ostk::mathematics::geometry::d3::object::Segment;
     using ostk::mathematics::geometry::d3::object::Sphere;
 
-    if (!aGeometry.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Geometry");
-    }
-
     Intersection intersection = Intersection::Empty();
 
     if ((*frameSPtr_) == (*aGeometry.frameSPtr_))
@@ -255,12 +207,7 @@ Geometry Geometry::intersectionWith(const Geometry& aGeometry) const
         return {Composite::Empty(), frameSPtr_};
     }
 
-    return {intersection.accessComposite(), frameSPtr_};
-}
-
-Geometry Geometry::Undefined()
-{
-    return {Composite::Undefined(), nullptr};
+    return {intersection.getComposite(), frameSPtr_};
 }
 
 }  // namespace object

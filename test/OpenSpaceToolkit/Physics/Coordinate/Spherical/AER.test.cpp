@@ -1,17 +1,19 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Table.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Path.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/AER.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Environment/Object/Celestial/Earth.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -20,7 +22,6 @@ using ostk::core::container::Table;
 using ostk::core::container::Tuple;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -37,20 +38,16 @@ using ostk::physics::time::Scale;
 using ostk::physics::unit::Angle;
 using ostk::physics::unit::Length;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
+using ostk::physics::utility::DoubleToString;
 
 class OpenSpaceToolkit_Physics_Coordinate_Spherical_AER : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        aer_ = AER(azimuth_, elevation_, range_);
-    }
-
     const Angle azimuth_ = Angle::Degrees(10.0);
     const Angle elevation_ = Angle::Degrees(20.0);
     const Length range_ = Length::Meters(30.0);
 
-    AER aer_ = AER::Undefined();
+    AER aer_ = AER(azimuth_, elevation_, range_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Constructor)
@@ -78,12 +75,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, EqualToOperator)
             AER(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        EXPECT_FALSE(AER::Undefined() == AER::Undefined());
-        EXPECT_FALSE(aer_ == AER::Undefined());
-        EXPECT_FALSE(AER::Undefined() == aer_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
@@ -98,12 +89,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, NotEqualToOperator)
             AER(Angle::Degrees(20.0), Angle::Degrees(20.0), Length::Meters(30.0))
         );
     }
-
-    {
-        EXPECT_TRUE(AER::Undefined() != AER::Undefined());
-        EXPECT_TRUE(aer_ != AER::Undefined());
-        EXPECT_TRUE(AER::Undefined() != aer_);
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
@@ -117,25 +102,10 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, StreamOperator)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, IsDefined)
-{
-    {
-        EXPECT_TRUE(aer_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(AER::Undefined().isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetAzimuth)
 {
     {
         EXPECT_EQ(azimuth_, aer_.getAzimuth());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().getAzimuth());
     }
 }
 
@@ -144,20 +114,12 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetElevation)
     {
         EXPECT_EQ(elevation_, aer_.getElevation());
     }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().getElevation());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, GetRange)
 {
     {
         EXPECT_EQ(range_, aer_.getRange());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().getRange());
     }
 }
 
@@ -167,10 +129,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 
     {
         EXPECT_EQ(Vector3d(10.0, 20.0, 30.0), aer_.toVector());
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().toVector());
     }
 }
 
@@ -196,8 +154,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToVector)
 
 //     {
 
-//         EXPECT_ANY_THROW(AER::Undefined().toCartesian()) ;
-
 //     }
 
 // }
@@ -207,17 +163,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, ToString)
     {
         EXPECT_EQ("[10.0 [deg], 20.0 [deg], 30.0 [m]]", aer_.toString());
     }
-
-    {
-        EXPECT_ANY_THROW(AER::Undefined().toString());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Undefined)
-{
-    {
-        EXPECT_NO_THROW(AER::Undefined());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
@@ -226,10 +171,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, Vector)
         const Vector3d vector = {10.0, 20.0, 30.0};
 
         EXPECT_EQ(aer_, AER::Vector(vector));
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::Vector(Vector3d::Undefined()));
     }
 }
 
@@ -263,27 +204,27 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
 
             for (const auto& referenceRow : referenceData)
             {
-                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].accessString()), Scale::UTC);
+                const Instant instant = Instant::DateTime(DateTime::Parse(referenceRow[0].getString()), Scale::UTC);
 
                 const Vector3d reference_fromPosition_ITRF = {
-                    referenceRow[1].accessReal(), referenceRow[2].accessReal(), referenceRow[3].accessReal()
+                    referenceRow[1].getReal(), referenceRow[2].getReal(), referenceRow[3].getReal()
                 };
                 const Vector3d reference_fromPosition_LLA = {
-                    referenceRow[4].accessReal(), referenceRow[5].accessReal(), referenceRow[6].accessReal()
+                    referenceRow[4].getReal(), referenceRow[5].getReal(), referenceRow[6].getReal()
                 };
                 const Vector3d reference_toPosition_ITRF = {
-                    referenceRow[7].accessReal(), referenceRow[8].accessReal(), referenceRow[9].accessReal()
+                    referenceRow[7].getReal(), referenceRow[8].getReal(), referenceRow[9].getReal()
                 };
                 const Vector3d reference_toPosition_LLA = {
-                    referenceRow[10].accessReal(), referenceRow[11].accessReal(), referenceRow[12].accessReal()
+                    referenceRow[10].getReal(), referenceRow[11].getReal(), referenceRow[12].getReal()
                 };
 
                 (void)reference_fromPosition_LLA;
                 (void)reference_toPosition_LLA;
 
-                const Angle reference_azimuth = Angle::Degrees(referenceRow[13].accessReal());
-                const Angle reference_elevation = Angle::Degrees(referenceRow[14].accessReal());
-                const Length reference_range = Length::Meters(referenceRow[15].accessReal());
+                const Angle reference_azimuth = Angle::Degrees(referenceRow[13].getReal());
+                const Angle reference_elevation = Angle::Degrees(referenceRow[14].getReal());
+                const Length reference_range = Length::Meters(referenceRow[15].getReal());
 
                 const Position fromPosition_ITRF = Position::Meters(reference_fromPosition_ITRF, Frame::ITRF());
                 const Position toPosition_ITRF = Position::Meters(reference_toPosition_ITRF, Frame::ITRF());
@@ -302,50 +243,50 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
                 const AER aer = AER::FromPositionToPosition(fromPosition_NED, toPosition_NED);
 
                 {
-                    const Real reference_azimuth_deg = reference_azimuth.inDegrees();
-                    const Real azimuth_deg = aer.getAzimuth().inDegrees();
-                    const Real tolerance_deg = toleranceAngle.inDegrees();
+                    const double reference_azimuth_deg = reference_azimuth.inDegrees();
+                    const double azimuth_deg = aer.getAzimuth().inDegrees();
+                    const double tolerance_deg = toleranceAngle.inDegrees();
 
-                    const Real error_deg = (azimuth_deg - reference_azimuth_deg).abs();
+                    const double error_deg = std::abs(azimuth_deg - reference_azimuth_deg);
 
-                    ASSERT_TRUE(azimuth_deg.isNear(reference_azimuth_deg, tolerance_deg)) << String::Format(
+                    ASSERT_TRUE(std::abs(azimuth_deg - reference_azimuth_deg) <= tolerance_deg) << String::Format(
                         "{} - {} [deg] ~ {} [deg] ? {} [deg]",
                         instant.toString(),
-                        reference_azimuth_deg.toString(),
-                        azimuth_deg.toString(),
-                        error_deg.toString()
+                        DoubleToString(reference_azimuth_deg),
+                        DoubleToString(azimuth_deg),
+                        DoubleToString(error_deg)
                     );
                 }
 
                 {
-                    const Real reference_elevation_deg = reference_elevation.inDegrees();
-                    const Real elevation_deg = aer.getElevation().inDegrees();
-                    const Real tolerance_deg = toleranceAngle.inDegrees();
+                    const double reference_elevation_deg = reference_elevation.inDegrees();
+                    const double elevation_deg = aer.getElevation().inDegrees();
+                    const double tolerance_deg = toleranceAngle.inDegrees();
 
-                    const Real error_deg = (elevation_deg - reference_elevation_deg).abs();
+                    const double error_deg = std::abs(elevation_deg - reference_elevation_deg);
 
-                    ASSERT_TRUE(elevation_deg.isNear(reference_elevation_deg, tolerance_deg)) << String::Format(
+                    ASSERT_TRUE(std::abs(elevation_deg - reference_elevation_deg) <= tolerance_deg) << String::Format(
                         "{} - {} [deg] ~ {} [deg] ? {} [deg]",
                         instant.toString(),
-                        reference_elevation_deg.toString(),
-                        elevation_deg.toString(),
-                        error_deg.toString()
+                        DoubleToString(reference_elevation_deg),
+                        DoubleToString(elevation_deg),
+                        DoubleToString(error_deg)
                     );
                 }
 
                 {
-                    const Real reference_range_m = reference_range.inMeters();
-                    const Real range_m = aer.getRange().inMeters();
-                    const Real tolerance_m = toleranceLength.inMeters();
+                    const double reference_range_m = reference_range.inMeters();
+                    const double range_m = aer.getRange().inMeters();
+                    const double tolerance_m = toleranceLength.inMeters();
 
-                    const Real error_m = (range_m - reference_range_m).abs();
+                    const double error_m = std::abs(range_m - reference_range_m);
 
-                    ASSERT_TRUE(range_m.isNear(reference_range_m, tolerance_m)) << String::Format(
+                    ASSERT_TRUE(std::abs(range_m - reference_range_m) <= tolerance_m) << String::Format(
                         "{} - {} [m] ~ {} [m] ? {} [m]",
                         instant.toString(),
-                        reference_range_m.toString(),
-                        range_m.toString(),
-                        error_m.toString()
+                        DoubleToString(reference_range_m),
+                        DoubleToString(range_m),
+                        DoubleToString(error_m)
                     );
                 }
             }
@@ -383,9 +324,5 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Spherical_AER, FromPositionToPosition
         const AER referenceAer = {Angle::Degrees(0.0), Angle::Degrees(0.0), Length::Meters(0.0)};
 
         EXPECT_EQ(referenceAer, aer);
-    }
-
-    {
-        EXPECT_ANY_THROW(AER::FromPositionToPosition(Position::Undefined(), Position::Undefined()));
     }
 }

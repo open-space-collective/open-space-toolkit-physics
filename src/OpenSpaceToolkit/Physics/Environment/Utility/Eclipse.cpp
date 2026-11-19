@@ -62,9 +62,7 @@ std::ostream& operator<<(std::ostream& anOutputStream, const EclipsePhase& anEcl
 
     ostk::core::utils::Print::Line(anOutputStream)
         << "Region:" << (anEclipsePhase.getRegion() == EclipsePhase::Region::Umbra ? "Umbra" : "Penumbra");
-    ostk::core::utils::Print::Line(anOutputStream)
-        << "Interval:"
-        << (anEclipsePhase.getInterval().isDefined() ? anEclipsePhase.getInterval().toString() : "Undefined");
+    ostk::core::utils::Print::Line(anOutputStream) << "Interval:" << (anEclipsePhase.getInterval().toString());
     ostk::core::utils::Print::Line(anOutputStream) << "Complete:" << (anEclipsePhase.isComplete() ? "True" : "False");
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -117,12 +115,12 @@ Eclipse::Eclipse(
     }
 }
 
-const Celestial& Eclipse::accessOccultedCelestialObject() const
+const Celestial& Eclipse::getOccultedCelestialObject() const
 {
     return occultedCelestialObject_;
 }
 
-const Celestial& Eclipse::accessOccultingCelestialObject() const
+const Celestial& Eclipse::getOccultingCelestialObject() const
 {
     return occultingCelestialObject_;
 }
@@ -154,13 +152,11 @@ Duration Eclipse::getDuration(const bool& includePenumbra) const
     return duration;
 }
 
-Interval Eclipse::getInterval(const bool& includePenumbra) const
+std::optional<Interval> Eclipse::getInterval(const bool& includePenumbra) const
 {
     if (includePenumbra)
     {
-        return Interval::Closed(
-            phases_.accessFirst().getInterval().getStart(), phases_.accessLast().getInterval().getEnd()
-        );
+        return Interval::Closed(phases_.getFirst().getInterval().getStart(), phases_.getLast().getInterval().getEnd());
     }
 
     Array<Interval> umbras = Array<Interval>::Empty();
@@ -174,7 +170,7 @@ Interval Eclipse::getInterval(const bool& includePenumbra) const
 
     if (umbras.isEmpty())
     {
-        return Interval::Undefined();
+        return std::nullopt;
     }
 
     if (umbras.getSize() == 1)
@@ -190,34 +186,34 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Eclipse& anEclipse)
     ostk::core::utils::Print::Header(anOutputStream, "Eclipse");
 
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Occulted Object:" << anEclipse.accessOccultedCelestialObject().getName();
+        << "Occulted Object:" << anEclipse.getOccultedCelestialObject().getName();
     ostk::core::utils::Print::Line(anOutputStream)
-        << "Occulting Object:" << anEclipse.accessOccultingCelestialObject().getName();
+        << "Occulting Object:" << anEclipse.getOccultingCelestialObject().getName();
     ostk::core::utils::Print::Line(anOutputStream) << "Number of Phases:" << anEclipse.getPhases().getSize();
 
-    const Interval intervalWithPenumbra = anEclipse.getInterval(true);
+    const std::optional<Interval> intervalWithPenumbra = anEclipse.getInterval(true);
     ostk::core::utils::Print::Line(anOutputStream)
         << "Interval (with penumbra):"
-        << (intervalWithPenumbra.isDefined() ? intervalWithPenumbra.toString() : "Undefined");
+        << (intervalWithPenumbra.has_value() ? intervalWithPenumbra->toString() : "Undefined");
 
-    const Interval intervalWithoutPenumbra = anEclipse.getInterval(false);
+    const std::optional<Interval> intervalWithoutPenumbra = anEclipse.getInterval(false);
     ostk::core::utils::Print::Line(anOutputStream)
         << "Interval (umbra only):"
-        << (intervalWithoutPenumbra.isDefined() ? intervalWithoutPenumbra.toString() : "Undefined");
+        << (intervalWithoutPenumbra.has_value() ? intervalWithoutPenumbra->toString() : "Undefined");
 
     ostk::core::utils::Print::Footer(anOutputStream);
 
     return anOutputStream;
 }
 
-Real montenbruckGillShadowFunction(
+double montenbruckGillShadowFunction(
     const Instant& anInstant,
     const Position& aPosition,
     const Celestial& anOccultedCelestialObject,
     const Celestial& anOccultingCelestialObject
 )
 {
-    const Shared<const Frame> frame = anOccultingCelestialObject.accessFrame();
+    const Shared<const Frame> frame = anOccultingCelestialObject.getFrame();
 
     // Get object position coordinates in the occulting object's frame
     const Position objectPositionInFrame = aPosition.inFrame(frame, anInstant);
@@ -251,10 +247,10 @@ Real montenbruckGillShadowFunction(
 
     // Helper function to compute apparent angular radius
     auto computeApparentAngularRadius = [](const Celestial& celestialObject,
-                                           const Vector3d& objectToCelestialObjectPositionCoordinates) -> Real
+                                           const Vector3d& objectToCelestialObjectPositionCoordinates) -> double
     {
-        const Real equatorialRadius = celestialObject.getEquatorialRadius().inMeters();
-        const Real distance = objectToCelestialObjectPositionCoordinates.norm();
+        const double equatorialRadius = celestialObject.getEquatorialRadius().inMeters();
+        const double distance = objectToCelestialObjectPositionCoordinates.norm();
 
         if (distance <= equatorialRadius)
         {
@@ -265,13 +261,13 @@ Real montenbruckGillShadowFunction(
     };
 
     // Apparent angular radius of the occulted celestial object
-    const Real a = computeApparentAngularRadius(anOccultedCelestialObject, objectToOccultedPositionCoordinates);
+    const double a = computeApparentAngularRadius(anOccultedCelestialObject, objectToOccultedPositionCoordinates);
 
     // Apparent angular radius of the occulting celestial object
-    const Real b = computeApparentAngularRadius(anOccultingCelestialObject, objectToOccultingPositionCoordinates);
+    const double b = computeApparentAngularRadius(anOccultingCelestialObject, objectToOccultingPositionCoordinates);
 
     // Apparent angular separation between the occulted and occulting celestial objects
-    const Real c =
+    const double c =
         Angle::Between(objectToOccultedPositionCoordinates, objectToOccultingPositionCoordinates).inRadians();
 
     if (c >= a + b)
@@ -285,11 +281,11 @@ Real montenbruckGillShadowFunction(
     }
 
     // Penumbra calculation
-    const Real x = (c * c + a * a - b * b) / (2.0 * c);
-    const Real y = std::sqrt(a * a - x * x);
-    const Real A = a * a * std::acos(x / a) + b * b * std::acos((c - x) / b) - c * y;
+    const double x = (c * c + a * a - b * b) / (2.0 * c);
+    const double y = std::sqrt(a * a - x * x);
+    const double A = a * a * std::acos(x / a) + b * b * std::acos((c - x) / b) - c * y;
 
-    return std::clamp(1.0 - A / (M_PI * a * a), Real(0.0), Real(1.0));  // Penumbra
+    return std::clamp(1.0 - A / (M_PI * a * a), 0.0, 1.0);  // Penumbra
 }
 
 Array<Interval> eclipseIntervalsAtPosition(
@@ -300,27 +296,15 @@ Array<Interval> eclipseIntervalsAtPosition(
     const Duration& timeStep
 )
 {
-    if (!anAnalysisInterval.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Analysis interval");
-    }
-
-    if (!aPosition.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Position");
-    }
-
-    if (!anEnvironment.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Environment");
-    }
-
     Environment environment = anEnvironment;
 
     Array<Interval> eclipseIntervals = Array<Interval>::Empty();
 
-    Instant eclipseStartInstant = Instant::Undefined();
-    Instant eclipseEndInstant = Instant::Undefined();
+    std::optional<Instant> eclipseStartInstant = std::nullopt;
+
+    // The previous grid instant: the last instant of an eclipse that has just ended. It is only read once an eclipse
+    // has started, i.e. after at least one iteration has set it.
+    Instant previousInstant = anAnalysisInterval.getStart();
 
     for (const auto& instant : anAnalysisInterval.generateGrid(timeStep))
     {
@@ -328,24 +312,23 @@ Array<Interval> eclipseIntervalsAtPosition(
 
         const bool inEclipse = environment.isPositionInEclipse(aPosition, includePenumbra);
 
-        if (inEclipse && (!eclipseStartInstant.isDefined()))
+        if (inEclipse && (!eclipseStartInstant.has_value()))
         {
             eclipseStartInstant = instant;
         }
-        else if ((!inEclipse) && eclipseStartInstant.isDefined())
+        else if ((!inEclipse) && eclipseStartInstant.has_value())
         {
-            eclipseIntervals.add(Interval::Closed(eclipseStartInstant, eclipseEndInstant));
+            eclipseIntervals.add(Interval::Closed(eclipseStartInstant.value(), previousInstant));
 
-            eclipseStartInstant = Instant::Undefined();
-            eclipseEndInstant = Instant::Undefined();
+            eclipseStartInstant = std::nullopt;
         }
 
-        eclipseEndInstant = instant;
+        previousInstant = instant;
     }
 
-    if (eclipseStartInstant.isDefined())
+    if (eclipseStartInstant.has_value())
     {
-        eclipseIntervals.add(Interval::Closed(eclipseStartInstant, eclipseEndInstant));
+        eclipseIntervals.add(Interval::Closed(eclipseStartInstant.value(), previousInstant));
     }
 
     return eclipseIntervals;

@@ -4,11 +4,11 @@
 #define __OpenSpaceToolkit_Physics_Time_Instant__
 
 #include <functional>
+#include <optional>
 
 #include <boost/functional/hash.hpp>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
@@ -24,7 +24,6 @@ namespace time
 {
 
 using ostk::core::type::Int64;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::type::Uint64;
 using ostk::physics::time::Duration;
@@ -178,15 +177,6 @@ class Instant
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Instant& anInstant);
 
-    /// @brief Check if instant is defined
-    ///
-    /// @code
-    ///     Instant::DateTime(DateTime(2018, 1, 1, 0, 0, 0), Scale::UTC).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if instant is defined
-    bool isDefined() const;
-
     /// @brief Check if instant is post-epoch (J2000)
     ///
     /// @code
@@ -225,7 +215,7 @@ class Instant
     ///
     /// @param [in] aTimeScale A time scale
     /// @return Julian Date
-    Real getJulianDate(const Scale& aTimeScale) const;
+    double getJulianDate(const Scale& aTimeScale) const;
 
     /// @brief Get Modified Julian Date expressed in given time scale
     ///
@@ -235,7 +225,7 @@ class Instant
     ///
     /// @param [in] aTimeScale A time scale
     /// @return Modified Julian Date
-    Real getModifiedJulianDate(const Scale& aTimeScale) const;
+    double getModifiedJulianDate(const Scale& aTimeScale) const;
 
     /// @brief Get Leap Second count
     ///
@@ -259,16 +249,6 @@ class Instant
     String toString(
         const Scale& aTimeScale = DEFAULT_TIME_SCALE, const DateTime::Format& aDateTimeFormat = DEFAULT_DATE_TIME_FORMAT
     ) const;
-
-    /// @brief Constructs an undefined instant
-    ///
-    /// @code
-    ///     Instant instant = Instant::Undefined();
-    ///     instant.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined instant
-    static Instant Undefined();
 
     /// @brief Constructs an instant at current time
     ///
@@ -330,7 +310,7 @@ class Instant
     /// @input [in] aJulianDate A Julian Date
     /// @input [in] aTimeScale A time scale
     /// @return Instant
-    static Instant JulianDate(const Real& aJulianDate, const Scale& aTimeScale);
+    static Instant JulianDate(double aJulianDate, const Scale& aTimeScale);
 
     /// @brief Constructs instant from Modified Julian Date
     ///
@@ -344,7 +324,7 @@ class Instant
     /// @input [in] aJulianDate A Modified Julian Date
     /// @input [in] aTimeScale A time scale
     /// @return Instant
-    static Instant ModifiedJulianDate(const Real& aModifiedJulianDate, const Scale& aTimeScale);
+    static Instant ModifiedJulianDate(double aModifiedJulianDate, const Scale& aTimeScale);
 
     /// @brief Constructs an Instant from a string representation and Scale.
     ///
@@ -355,10 +335,10 @@ class Instant
     ///
     /// @param [in] aString A string
     /// @param [in] aTimeScale A time scale
-    /// @param [in] (optional) aFormat A date-time format (automatic detection if Undefined)
+    /// @param [in] aFormat A date-time format (default: std::nullopt, which detects the format)
     /// @return Instant
     static Instant Parse(
-        const String& aString, const Scale& aTimeScale, const DateTime::Format& aFormat = DateTime::Format::Undefined
+        const String& aString, const Scale& aTimeScale, const std::optional<DateTime::Format>& aFormat = std::nullopt
     );
 
    private:
@@ -441,11 +421,6 @@ struct hash<ostk::physics::time::Instant>
 {
     size_t operator()(const ostk::physics::time::Instant& anInstant) const
     {
-        if (!anInstant.isDefined())
-        {
-            return 0;
-        }
-
         // Normalize to TAI scale so that equal instants in different scales produce the same hash
         const auto normalizedCount = (anInstant.scale_ == ostk::physics::time::Scale::TAI)
                                        ? anInstant.count_

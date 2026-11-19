@@ -8,7 +8,7 @@
 #include <OpenSpaceToolkitPhysicsPy/Time/Scale.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Time/Time.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Time(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Time(nanobind::module_& aModule)
 {
     // Create "time" python submodule
     auto time = aModule.def_submodule("time");

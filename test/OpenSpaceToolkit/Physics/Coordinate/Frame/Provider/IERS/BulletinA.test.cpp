@@ -5,6 +5,7 @@
 #include <string>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
+#include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/BulletinA.hpp>
@@ -29,15 +30,11 @@ using ostk::physics::time::Scale;
 class OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA : public ::testing::Test
 {
    protected:
-    void SetUp() override
-    {
-        const File file = File::Path(
-            Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
+    const File file_ =
+        File::Path(Path::Parse("/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat")
         );
-        this->bulletinA_ = BulletinA::Load(file);
-    }
 
-    BulletinA bulletinA_ = BulletinA::Undefined();
+    BulletinA bulletinA_ = BulletinA::Load(file_);
 };
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, StreamOperator)
@@ -51,50 +48,11 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Stream
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, IsDefined)
-{
-    {
-        EXPECT_TRUE(bulletinA_.isDefined());
-    }
-
-    {
-        EXPECT_FALSE(BulletinA::Undefined().isDefined());
-    }
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessReleaseDate)
-{
-    SUCCEED();  // See: GetReleaseDate
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTC)
-{
-    SUCCEED();  // See: GetTAIMinusUTC
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessTAIMinusUTCEpoch)
-{
-    SUCCEED();  // See: GetTAIMinusUTCEpoch
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessObservationInterval)
-{
-    SUCCEED();  // See: GetObservationInterval
-}
-
-TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, AccessPredictionInterval)
-{
-    SUCCEED();  // See: GetPredictionInterval
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetReleaseDate)
 {
     {
         EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getReleaseDate());
+        EXPECT_EQ(&bulletinA_.getReleaseDate(), &bulletinA_.getReleaseDate());
     }
 }
 
@@ -102,10 +60,7 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAI
 {
     {
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getTAIMinusUTC());
+        EXPECT_EQ(&bulletinA_.getTAIMinusUTC(), &bulletinA_.getTAIMinusUTC());
     }
 }
 
@@ -115,10 +70,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetTAI
         EXPECT_EQ(
             Instant::DateTime(DateTime::Parse("2017-01-01 00:00:00"), Scale::UTC), bulletinA_.getTAIMinusUTCEpoch()
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getTAIMinusUTCEpoch());
     }
 }
 
@@ -134,27 +85,23 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
             bulletinA_.getObservationInterval()
         );
     }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getObservationInterval());
-    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, IntervalOverlap)
 {
-    const Interval observationInterval = bulletinA_.getObservationInterval();
-    const Interval predictionInterval = bulletinA_.getPredictionInterval();
+    const Interval observationInterval = bulletinA_.getObservationInterval().value();
+    const Interval predictionInterval = bulletinA_.getPredictionInterval().value();
 
     {
-        EXPECT_EQ(observationInterval.accessEnd(), predictionInterval.accessStart());
+        EXPECT_EQ(observationInterval.getEnd(), predictionInterval.getStart());
     }
 
     {
-        EXPECT_FALSE(observationInterval.contains(predictionInterval.accessStart()));
+        EXPECT_FALSE(observationInterval.contains(predictionInterval.getStart()));
     }
 
     {
-        EXPECT_TRUE(predictionInterval.contains(observationInterval.accessEnd()));
+        EXPECT_TRUE(predictionInterval.contains(observationInterval.getEnd()));
     }
 }
 
@@ -181,12 +128,29 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObs
             bulletinA_.getObservationAt(Instant::DateTime(DateTime::Parse("2018-06-28 12:00:00"), Scale::UTC))
         );
     }
+}
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetObservationAt_LeapSecond)
+{
+    // IERS Bulletin A Vol. XXX No. 001 (5 January 2017), whose observations span the leap second ending 2016-12-31.
+    // UT1 - UTC jumps by +1 s at the leap second, while UT1 - TAI is continuous: UT1 - UTC = -0.407858 s on
+    // 2016-12-31 and +0.591162 s on 2017-01-01, i.e. UT1 - TAI = -36.407858 s and -36.408838 s.
+    // The bulletin spells its TAI - UTC epoch "1 Jan 2017": the fixture spells the month in full for the parser.
+
+    const BulletinA bulletinA = BulletinA::Load(File::Path(Path::Parse(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/bulletina-xxx-001.txt"
+    )));
+
+    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> double
     {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getObservationAt(
-            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
-    }
+        return bulletinA.getObservationAt(Instant::DateTime(DateTime::Parse(aDateTimeString), Scale::UTC)).ut1MinusUtc;
+    };
+
+    EXPECT_NEAR(-0.407858, ut1MinusUtcAt("2016-12-31 00:00:00"), 1e-9);
+    EXPECT_NEAR(-0.408348, ut1MinusUtcAt("2016-12-31 12:00:00"), 1e-7);
+    EXPECT_NEAR(-0.408838, ut1MinusUtcAt("2016-12-31 23:59:59"), 1e-7);
+    EXPECT_NEAR(+0.591162, ut1MinusUtcAt("2017-01-01 00:00:00"), 1e-9);
+    EXPECT_NEAR(+0.5906095, ut1MinusUtcAt("2017-01-01 12:00:00"), 1e-7);
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionInterval)
@@ -199,10 +163,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
             ),
             bulletinA_.getPredictionInterval()
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getPredictionInterval());
     }
 }
 
@@ -219,12 +179,6 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPre
         EXPECT_NEAR(0.1580, firstPrediction.x, 1e-5);
         EXPECT_NEAR(0.4308, firstPrediction.y, 1e-5);
         EXPECT_NEAR(0.06934, firstPrediction.ut1MinusUtc, 1e-6);
-    }
-
-    {
-        EXPECT_ANY_THROW(BulletinA::Undefined().getPredictionAt(
-            Instant::DateTime(DateTime::Parse("2018-06-29 00:00:00"), Scale::UTC)
-        ));
     }
 }
 
@@ -308,11 +262,31 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load_A
     temporaryDirectory.remove();
 }
 
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, GetPredictionAt_LeapSecond)
+{
+    // IERS Bulletin A Vol. XXIX No. 052 (29 December 2016), whose predictions span the leap second ending 2016-12-31.
+    // UT1 - UTC jumps by +1 s at the leap second, while UT1 - TAI is continuous: UT1 - UTC = -0.40780 s on
+    // 2016-12-31 and +0.59127 s on 2017-01-01, i.e. UT1 - TAI = -36.40780 s and -36.40873 s.
+
+    const BulletinA bulletinA = BulletinA::Load(File::Path(Path::Parse(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/bulletina-xxix-052.txt"
+    )));
+
+    const auto ut1MinusUtcAt = [&bulletinA](const String& aDateTimeString) -> double
+    {
+        return bulletinA.getPredictionAt(Instant::DateTime(DateTime::Parse(aDateTimeString), Scale::UTC)).ut1MinusUtc;
+    };
+
+    EXPECT_NEAR(-0.40780, ut1MinusUtcAt("2016-12-31 00:00:00"), 1e-9);
+    EXPECT_NEAR(-0.408265, ut1MinusUtcAt("2016-12-31 12:00:00"), 1e-7);
+    EXPECT_NEAR(-0.408730, ut1MinusUtcAt("2016-12-31 23:59:59"), 1e-7);
+    EXPECT_NEAR(+0.59127, ut1MinusUtcAt("2017-01-01 00:00:00"), 1e-9);
+    EXPECT_NEAR(+0.590745, ut1MinusUtcAt("2017-01-01 12:00:00"), 1e-7);
+}
+
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
 {
     {
-        EXPECT_TRUE(bulletinA_.isDefined());
-
         EXPECT_EQ(Date(2018, 6, 28), bulletinA_.getReleaseDate());
 
         EXPECT_EQ(Duration::Seconds(37.0), bulletinA_.getTAIMinusUTC());
@@ -442,7 +416,73 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load)
     }
 
     {
-        EXPECT_ANY_THROW(BulletinA::Load(File::Undefined()));
         EXPECT_ANY_THROW(BulletinA::Load(File::Path(Path::Parse("/does/not/exist"))));
     }
+}
+
+namespace
+{
+
+// Writes the first aLineCount lines of the Bulletin A test file to a temporary file
+File WriteTruncatedBulletinA(
+    const std::string& aSourcePath, const std::string& aDestinationPath, const size_t aLineCount
+)
+{
+    std::ifstream input(aSourcePath);
+    std::ofstream output(aDestinationPath);
+
+    std::string line;
+    size_t lineIndex = 0;
+
+    while ((lineIndex < aLineCount) && std::getline(input, line))
+    {
+        output << line << "\n";
+        ++lineIndex;
+    }
+
+    return File::Path(Path::Parse(aDestinationPath));
+}
+
+}  // namespace
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load_WithoutPredictions)
+{
+    // The "PREDICTIONS:" section starts at line 78 of the test file
+
+    const std::string destinationPath = "/tmp/ostk-physics-test-bulletin-a-without-predictions.dat";
+
+    const BulletinA bulletinA = BulletinA::Load(WriteTruncatedBulletinA(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat", destinationPath, 77
+    ));
+
+    EXPECT_TRUE(bulletinA.getObservationInterval().has_value());
+    EXPECT_FALSE(bulletinA.getPredictionInterval().has_value());
+
+    const Instant instant = bulletinA.getObservationInterval()->getStart();
+
+    EXPECT_NO_THROW(bulletinA.getObservationAt(instant));
+    EXPECT_THROW(bulletinA.getPredictionAt(instant), ostk::core::error::RuntimeError);
+
+    std::remove(destinationPath.c_str());
+}
+
+TEST_F(OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_BulletinA, Load_WithoutObservations)
+{
+    // The "COMBINED EARTH ORIENTATION PARAMETERS:" section starts at line 63 of the test file
+
+    const std::string destinationPath = "/tmp/ostk-physics-test-bulletin-a-without-observations.dat";
+
+    const BulletinA bulletinA = BulletinA::Load(WriteTruncatedBulletinA(
+        "/app/test/OpenSpaceToolkit/Physics/Coordinate/Frame/Provider/IERS/bulletin-A/ser7.dat", destinationPath, 62
+    ));
+
+    EXPECT_FALSE(bulletinA.getObservationInterval().has_value());
+    EXPECT_FALSE(bulletinA.getPredictionInterval().has_value());
+
+    const Instant instant = Instant::DateTime(DateTime(2018, 6, 20, 0, 0, 0), Scale::UTC);
+
+    EXPECT_THROW(bulletinA.getObservationAt(instant), ostk::core::error::RuntimeError);
+    EXPECT_THROW(bulletinA.getPredictionAt(instant), ostk::core::error::RuntimeError);
+
+    std::remove(destinationPath.c_str());
 }

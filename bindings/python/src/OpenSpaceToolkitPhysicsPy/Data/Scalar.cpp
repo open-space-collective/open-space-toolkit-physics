@@ -2,12 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Data/Scalar.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(nanobind::module_& aModule)
 {
-    using namespace pybind11;
-
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
+    using namespace nanobind;
 
     using ostk::physics::data::Scalar;
     using ostk::physics::Unit;
@@ -27,20 +24,25 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
     )
 
         .def(
-            init<const Real&, const Unit&>(),
+            init<double, const Unit&>(),
             arg("value"),
             arg("unit"),
             R"doc(
                 Construct a Scalar.
 
                 Args:
-                    value (Real): Value.
+                    value (float): Value.
                     unit (Unit): Unit.
             )doc"
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Scalar& self, const Scalar& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -52,7 +54,12 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Scalar& self, const Scalar& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -67,16 +74,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def("__str__", &(shiftToString<Scalar>))
         .def("__repr__", &(shiftToString<Scalar>))
 
-        .def(
-            "is_defined",
-            &Scalar::isDefined,
-            R"doc(
-                Check if the scalar is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "get_value",
             &Scalar::getValue,
@@ -114,7 +111,7 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
         .def(
             "to_string",
             &Scalar::toString,
-            arg_v("precision", Integer::Undefined(), "Integer.Undefined()"),
+            arg("precision").sig("-1") = -1,
             R"doc(
                 Convert to string.
 
@@ -123,17 +120,6 @@ inline void OpenSpaceToolkitPhysicsPy_Data_Scalar(pybind11::module& aModule)
 
                 Returns:
                     str: String representation.
-            )doc"
-        )
-
-        .def_static(
-            "undefined",
-            &Scalar::Undefined,
-            R"doc(
-                Create an undefined scalar.
-
-                Returns:
-                    Scalar: Undefined scalar.
             )doc"
         )
 

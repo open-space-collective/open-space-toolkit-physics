@@ -67,7 +67,7 @@ class TestEarth:
     def test_constructor_success_with_type(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
-            input_data_type=EarthAtmosphericModel.InputDataType.Undefined,
+            input_data_type=EarthAtmosphericModel.InputDataType.CSSISpaceWeatherFile,
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
@@ -75,7 +75,7 @@ class TestEarth:
     def test_constructor_success_exponential_with_params(self):
         earth_atmospheric_model = EarthAtmosphericModel(
             type=EarthAtmosphericModel.Type.Exponential,
-            input_data_type=EarthAtmosphericModel.InputDataType.Undefined,
+            input_data_type=EarthAtmosphericModel.InputDataType.CSSISpaceWeatherFile,
             f107_constant_value=160.0,
             f107_average_constant_value=160.0,
             kp_constant_value=4.0,
@@ -135,7 +135,6 @@ class TestEarth:
         )
 
         assert isinstance(earth_atmospheric_model, EarthAtmosphericModel)
-        assert earth_atmospheric_model.is_defined()
         assert earth_atmospheric_model.get_type() == EarthAtmosphericModel.Type.NRLMSISE00
         assert (
             earth_atmospheric_model.get_input_data_type()
@@ -179,14 +178,8 @@ class TestEarth:
     ):
         assert (
             earth_atmospheric_model_exponential.get_input_data_type()
-            == EarthAtmosphericModel.InputDataType.Undefined
+            == EarthAtmosphericModel.InputDataType.CSSISpaceWeatherFile
         )
-
-    def test_is_defined_success(
-        self,
-        earth_atmospheric_model_exponential: EarthAtmosphericModel,
-    ):
-        assert earth_atmospheric_model_exponential.is_defined()
 
     def test_get_density_at_exponential_success(
         self, earth_atmospheric_model_exponential: EarthAtmosphericModel

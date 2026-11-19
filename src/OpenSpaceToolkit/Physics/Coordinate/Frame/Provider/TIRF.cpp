@@ -1,5 +1,7 @@
 /// Apache License 2.0
 
+#include <cmath>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
@@ -37,11 +39,6 @@ TIRF* TIRF::clone() const
     return new TIRF(*this);
 }
 
-bool TIRF::isDefined() const
-{
-    return true;
-}
-
 Transform TIRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -49,56 +46,46 @@ Transform TIRF::getTransformAt(const Instant& anInstant) const
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("TIRF");
-    }
-
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf
 
     // Time (UTC)
 
-    static const Real djmjd0 = 2400000.5;
-    const Real utc = anInstant.getModifiedJulianDate(Scale::UTC);
+    static const double djmjd0 = 2400000.5;
+    const double utc = anInstant.getModifiedJulianDate(Scale::UTC);
 
-    const Real date = std::floor(utc);
-    const Real time = utc - date;
+    const double date = std::floor(utc);
+    const double time = utc - date;
 
     // UT1 - UTC (s)
 
-    const Real dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
+    const std::optional<double> dut1 = IersManager::Get().getUt1MinusUtcAt(anInstant);  // [s]
 
-    const Real tut = time + dut1 / DAYSEC;
+    if (!dut1.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain UT1 - UTC at [{}].", anInstant.toString());
+    }
+
+    const double tut = time + *dut1 / DAYSEC;
 
     // Earth rotation angle, IAU 2000 [rad]
 
-    const Real era = iauEra00(djmjd0 + date, tut);
+    const double era = iauEra00(djmjd0 + date, tut);
 
     // CIRS to TIRF matrix
 
-    const Real cosEra = std::cos(era);
-    const Real sinEra = std::sin(era);
+    const double cosEra = std::cos(era);
+    const double sinEra = std::sin(era);
 
     const RotationMatrix dcm_TIRF_CIRF =
         RotationMatrix::Rows({+cosEra, +sinEra, 0.0}, {-sinEra, +cosEra, 0.0}, {0.0, 0.0, 1.0});
 
     // Angular velocity
 
-    Real lod_ms = IersManager::Get().getLodAt(anInstant);  // [ms]
+    // [TBI] Fail in strict mode if LOD is not available
+    const double lod_ms = IersManager::Get().getLodAt(anInstant).value_or(0.0);  // [ms]
 
-    if (!lod_ms.isDefined())
-    {
-        // throw ostk::core::error::runtime::Undefined("LOD") ; // [TBI] Fail in strict mode
-        lod_ms = 0.0;
-    }
-
-    const Real w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) *
-                             1e-12;  // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
+    const double w_TIRF_CIRF = (72921151.467064 - 0.843994809 * lod_ms) *
+                               1e-12;  // [rad/s] https://www.iers.org/IERS/EN/Science/EarthRotation/UT1LOD.html
 
     // Output
 

@@ -147,12 +147,12 @@ class TestManager:
     def test_load_bulletin_a_success(self, manager: Manager, bulletin_a: BulletinA):
         manager.load_bulletin_a(bulletin_a)
 
-        assert manager.get_bulletin_a().is_defined()
+        assert isinstance(manager.get_bulletin_a(), BulletinA)
 
     def test_load_finals_2000a_success(self, manager: Manager, finals_2000a: Finals2000A):
         manager.load_finals_2000a(finals_2000a)
 
-        assert manager.get_finals_2000a().is_defined()
+        assert isinstance(manager.get_finals_2000a(), Finals2000A)
 
     def test_fetch_latest_bulletin_a_success(self, manager: Manager):
         file: File = manager.fetch_latest_bulletin_a()
@@ -171,7 +171,7 @@ class TestManager:
         file.remove()
 
     def test_reset_success(self, manager: Manager, bulletin_a: BulletinA):
-        assert manager.get_bulletin_a().is_defined()
+        assert isinstance(manager.get_bulletin_a(), BulletinA)
 
         manager.reset()
 

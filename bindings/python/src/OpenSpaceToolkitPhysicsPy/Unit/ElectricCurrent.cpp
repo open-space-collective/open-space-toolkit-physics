@@ -4,12 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/ElectricCurrent.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(nanobind::module_& aModule)
 {
-    using namespace pybind11;
-
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
+    using namespace nanobind;
 
     using ostk::physics::unit::ElectricCurrent;
 
@@ -25,18 +22,32 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
 
     elec_current
         .def(
-            init<Real, ElectricCurrent::Unit>(),
+            init<double, ElectricCurrent::Unit>(),
             R"doc(
                 Constructor.
 
                 Args:
-                    aReal (Real): A real number.
+                    aReal (float): A real number.
                     aUnit (ElectricCurrent.Unit): An electric current unit.
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const ElectricCurrent& self, const ElectricCurrent& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const ElectricCurrent& self, const ElectricCurrent& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
         // .def(self < self)
         // .def(self <= self)
@@ -49,11 +60,12 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         // .def(self += self)
         // .def(self -= self)
 
-        // .def("__mul__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return anElectricCurrent * aReal;},
-        // is_operator()) .def("__truediv__", [](const ElectricCurrent &anElectricCurrent, Real aReal) {return
-        // anElectricCurrent / aReal;}, is_operator()) .def("__imul__", [](const ElectricCurrent &anElectricCurrent,
-        // Real aReal) {return anElectricCurrent * aReal;}, is_operator()) .def("__itruediv__", [](const ElectricCurrent
-        // &anElectricCurrent, Real aReal) {return anElectricCurrent / aReal;}, is_operator())
+        // .def("__mul__", [](const ElectricCurrent &anElectricCurrent, double aReal) {return anElectricCurrent *
+        // aReal;}, is_operator()) .def("__truediv__", [](const ElectricCurrent &anElectricCurrent, double aReal)
+        // {return anElectricCurrent / aReal;}, is_operator()) .def("__imul__", [](const ElectricCurrent
+        // &anElectricCurrent, double aReal) {return anElectricCurrent * aReal;}, is_operator()) .def("__itruediv__",
+        // [](const ElectricCurrent &anElectricCurrent, double aReal) {return anElectricCurrent / aReal;},
+        // is_operator())
 
         // .def("__str__", &(shiftToString<ElectricCurrent>))
         .def(
@@ -62,17 +74,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
             {
                 return aElectricCurrent.toString();
             }
-        )
-
-        .def(
-            "is_defined",
-            &ElectricCurrent::isDefined,
-            R"doc(
-                Check if the electric current is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
         )
 
         .def(
@@ -108,7 +109,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
         .def(
             "to_string",
             &ElectricCurrent::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Get the string representation of the electric current.
 
@@ -120,16 +121,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &ElectricCurrent::Undefined,
-            R"doc(
-                Get an undefined electric current.
-
-                Returns:
-                    ElectricCurrent: An undefined electric current.
-            )doc"
-        )
         .def_static(
             "amperes",
             &ElectricCurrent::Amperes,
@@ -166,13 +157,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_ElectricCurrent(pybind11::module& aMo
 
     enum_<ElectricCurrent::Unit>(elec_current, "Unit")
 
-        .value(
-            "Undefined",
-            ElectricCurrent::Unit::Undefined,
-            R"doc(
-                Undefined.
-            )doc"
-        )
         .value(
             "Ampere",
             ElectricCurrent::Unit::Ampere,

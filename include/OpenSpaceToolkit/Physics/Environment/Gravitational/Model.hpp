@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Environment_Gravitational_Model__
 #define __OpenSpaceToolkit_Physics_Environment_Gravitational_Model__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
-
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -20,8 +18,6 @@ namespace environment
 {
 namespace gravitational
 {
-
-using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector3d;
 
@@ -56,9 +52,9 @@ class Model
         Parameters(
             const Derived& aGravitationalParameter,
             const Length& anEquatorialRadius,
-            const Real& aFlattening,
-            const Real& aC20,
-            const Real& aC40
+            double aFlattening,
+            double aC20,
+            double aC40
         );
 
         /// @brief Constructor.
@@ -76,10 +72,10 @@ class Model
         Parameters(
             const Derived& aGravitationalParameter,
             const Length& anEquatorialRadius,
-            const Real& aFlattening,
-            const Real& aC20,
-            const Real& aC30,
-            const Real& aC40
+            double aFlattening,
+            double aC20,
+            double aC30,
+            double aC40
         );
 
         /// @brief Equal to operator.
@@ -113,24 +109,6 @@ class Model
         /// @return A reference to output stream
         friend std::ostream& operator<<(std::ostream& anOutputStream, const Parameters& aParameterSet);
 
-        /// @brief Check if the parameter set is defined.
-        ///
-        /// @code
-        ///     bool isDefined = params.isDefined();
-        /// @endcode
-        ///
-        /// @return True if the parameter set is defined
-        bool isDefined() const;
-
-        /// @brief Construct an undefined parameter set.
-        ///
-        /// @code
-        ///     Parameters params = Parameters::Undefined();
-        /// @endcode
-        ///
-        /// @return An undefined parameter set
-        static Parameters Undefined();
-
         /// @brief Compute geocentric radius of ellipsoid at a given latitude.
         ///
         /// @code
@@ -143,13 +121,13 @@ class Model
 
         Derived gravitationalParameter_;
         Length equatorialRadius_;
-        Real flattening_;
-        Real C20_;
-        Real C30_;
-        Real C40_;
-        Real J2_;
-        Real J3_;
-        Real J4_;
+        double flattening_;
+        double C20_;
+        double C30_;
+        double C40_;
+        double J2_;
+        double J3_;
+        double J4_;
     };
 
     /// @brief Constructor (default)
@@ -166,11 +144,6 @@ class Model
     ///
     /// @return Pointer to gravitational model
     virtual Model* clone() const = 0;
-
-    /// @brief Check if the gravitational model is defined (pure virtual)
-    ///
-    /// @return True if the gravitational model is defined
-    virtual bool isDefined() const = 0;
 
     /// @brief Returns true if the gravitational model is a point mass model
     ///
@@ -195,7 +168,7 @@ class Model
     /// @endcode
     ///
     /// @return Gravitational model parameters
-    Parameters getParameters() const;
+    const Parameters& getParameters() const;
 
    private:
     Model::Parameters parameters_;

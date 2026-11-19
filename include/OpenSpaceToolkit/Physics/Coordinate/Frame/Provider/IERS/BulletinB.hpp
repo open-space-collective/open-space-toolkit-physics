@@ -5,8 +5,6 @@
 
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Date.hpp>
 #include <OpenSpaceToolkit/Physics/Time/Duration.hpp>
@@ -30,8 +28,6 @@ namespace filesystem = ostk::core::filesystem;
 
 using ostk::core::container::Map;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::Duration;
@@ -71,24 +67,6 @@ class BulletinB
     /// @param [in] aBulletinB A Bulletin B
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const BulletinB& aBulletinB);
-
-    /// @brief true if defined
-    ///
-    /// @code
-    ///     bulletinB.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined.
-    bool isDefined() const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     BulletinB bulletinB = BulletinB::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined Bulletin B object.
-    static BulletinB Undefined();
 
     /// @brief Load Bulletin B from file
     ///

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cstring>
+#include <optional>
 #include <thread>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
@@ -84,8 +85,8 @@ void Manager::fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) 
 
     const Array<URL> remoteUrls = this->getDataFileUrlsForType_(aModelType);
 
-    URL remoteDataUrl = URL::Undefined();
-    File magneticDataFile = File::Undefined();
+    std::optional<URL> remoteDataUrl;
+    std::optional<File> magneticDataFile;
 
     try
     {
@@ -93,34 +94,31 @@ void Manager::fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) 
         {
             remoteDataUrl = url;
 
-            std::cout << String::Format("Fetching magnetic data file from [{}]...", remoteDataUrl.toString())
-                      << std::endl;
+            std::cout << String::Format("Fetching magnetic data file from [{}]...", url.toString()) << std::endl;
 
-            magneticDataFile = Client::Fetch(remoteDataUrl, localRepository_, 2);
+            magneticDataFile = Client::Fetch(url, localRepository_, 2);
 
-            if (!magneticDataFile.exists())
+            if (!magneticDataFile->exists())
             {
-                throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Magnetic Data File from [{}].", remoteDataUrl.toString()
-                );
+                throw ostk::core::error::RuntimeError("Cannot fetch Magnetic Data File from [{}].", url.toString());
             }
 
             // Check that Magnetic Data File size is not zero
 
             std::uintmax_t magneticDataFileSize =
-                std::filesystem::file_size(std::string(magneticDataFile.getPath().toString()));
+                std::filesystem::file_size(std::string(magneticDataFile->getPath().toString()));
 
             if (magneticDataFileSize == 0)
             {
                 throw ostk::core::error::RuntimeError(
-                    "Cannot fetch Magnetic Data from [{}]: file is empty.", remoteDataUrl.toString()
+                    "Cannot fetch Magnetic Data from [{}]: file is empty.", url.toString()
                 );
             }
 
             std::cout << String::Format(
                              "Magnetic Data [{}] has been successfully fetched from [{}].",
-                             magneticDataFile.toString(),
-                             remoteDataUrl.toString()
+                             magneticDataFile->toString(),
+                             url.toString()
                          )
                       << std::endl;
         }
@@ -131,15 +129,14 @@ void Manager::fetchDataFilesForType(const EarthMagneticModel::Type& aModelType) 
     {
         std::cerr << String::Format(
                          "Error caught while fetching Magnetic Data from [{}]: [{}].",
-                         remoteDataUrl.toString(),
+                         remoteDataUrl.has_value() ? remoteDataUrl->toString() : String("Undefined"),
                          anException.what()
                      )
                   << std::endl;
 
-        if (magneticDataFile.isDefined() && magneticDataFile.exists())
+        if (magneticDataFile.has_value() && magneticDataFile->exists())
         {
-            magneticDataFile.remove();
-            magneticDataFile = File::Undefined();
+            magneticDataFile->remove();
         }
 
         const_cast<Manager*>(this)->unlockLocalRepository_();

@@ -41,7 +41,7 @@ class TestEarth:
 
     def test_constructor_success_with_directory(self):
         earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.Type.EGM2008, Directory.undefined()
+            EarthGravitationalModel.Type.EGM2008, None
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
@@ -49,7 +49,7 @@ class TestEarth:
 
     def test_constructor_success_with_degree_and_order(self):
         earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.Type.EGM2008, Directory.undefined(), 2, 2
+            EarthGravitationalModel.Type.EGM2008, None, 2, 2
         )
 
         assert isinstance(earth_gravitational_model, EarthGravitationalModel)
@@ -75,13 +75,6 @@ class TestEarth:
             is True
         )
 
-        assert (
-            EarthGravitationalModel(
-                EarthGravitationalModel.Type.Undefined
-            ).is_point_mass()
-            is False
-        )
-
     def test_get_type_success(self, earth_gravitational_model: EarthGravitationalModel):
         assert (
             earth_gravitational_model.get_type() == EarthGravitationalModel.Type.EGM2008
@@ -89,7 +82,7 @@ class TestEarth:
 
     def test_get_degree_order_success(self):
         egm_earth_gravitational_model = EarthGravitationalModel(
-            EarthGravitationalModel.Type.EGM2008, Directory.undefined(), 51, 50
+            EarthGravitationalModel.Type.EGM2008, None, 51, 50
         )
 
         assert egm_earth_gravitational_model.get_degree() == 51
@@ -99,8 +92,22 @@ class TestEarth:
             EarthGravitationalModel.Type.Spherical
         )
 
-        assert spherical_earth_gravitational_model.get_degree().is_defined() is False
-        assert spherical_earth_gravitational_model.get_order().is_defined() is False
+        assert spherical_earth_gravitational_model.get_degree() is None
+        assert spherical_earth_gravitational_model.get_order() is None
+
+        default_earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.EGM84
+        )
+
+        assert default_earth_gravitational_model.get_degree() is None
+        assert default_earth_gravitational_model.get_order() is None
+
+        partial_earth_gravitational_model = EarthGravitationalModel(
+            EarthGravitationalModel.Type.EGM84, 52, None
+        )
+
+        assert partial_earth_gravitational_model.get_degree() == 52
+        assert partial_earth_gravitational_model.get_order() is None
 
     def test_get_field_value_at_success(
         self, earth_gravitational_model: EarthGravitationalModel

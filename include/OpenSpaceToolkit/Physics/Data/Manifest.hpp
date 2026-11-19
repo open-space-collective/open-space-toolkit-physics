@@ -46,15 +46,6 @@ class Manifest
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Manifest& aManifest);
 
-    /// @brief Return true if manifest is defined.
-    ///
-    /// @code
-    ///     Boolean isDefined = manifest.isDefined();
-    /// @endcode
-    ///
-    /// @return True if manifest is defined.
-    bool isDefined() const;
-
     /// @brief Get last update timestamp
     ///
     /// @code
@@ -62,7 +53,7 @@ class Manifest
     /// @endcode
     ///
     /// @return Instant indicating when the manifest was last updated based on file modification time
-    Instant getLastModifiedTimestamp() const;
+    const Instant& getLastModifiedTimestamp() const;
 
     /// @brief Get last update timestamp for data
     ///
@@ -106,15 +97,6 @@ class Manifest
     /// @return Array of remote data URLs
     Array<URL> findRemoteDataUrls(const URL& aBaseUrl, const String& aDataNameRegexString) const;
 
-    /// @brief Construct an undefined manifest
-    ///
-    /// @code
-    ///     Manifest manifest = Manifest::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined manifest
-    static Manifest Undefined();
-
     /// @brief Load manifest from file
     ///
     /// @code
@@ -129,7 +111,7 @@ class Manifest
     Dictionary dictionary_;
     Instant lastModifiedTimestamp_;
 
-    Manifest();
+    Manifest(const Instant& aLastModifiedTimestamp);
 };
 
 }  // namespace data

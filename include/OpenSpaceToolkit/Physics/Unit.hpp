@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit__
 #define __OpenSpaceToolkit_Physics_Unit__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 #include <OpenSpaceToolkit/Core/Type/Unique.hpp>
 
@@ -19,7 +18,6 @@ namespace ostk
 namespace physics
 {
 
-using ostk::core::type::Real;
 using ostk::core::type::String;
 using ostk::core::type::Unique;
 
@@ -36,7 +34,6 @@ class Unit
     enum class Type
     {
 
-        Undefined,
         None,
         Length,
         Mass,
@@ -106,16 +103,6 @@ class Unit
 
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Unit& aUnit);
 
-    /// @brief Check if the unit is defined.
-    ///
-    /// @code
-    ///     Unit::Length(unit::Length::Unit::Meter).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-
-    bool isDefined() const;
-
     /// @brief Check if the unit is none.
     ///
     /// @code
@@ -145,7 +132,7 @@ class Unit
     /// @param [in] aUnit A unit to convert to
     /// @return The conversion ratio
 
-    Real ratioTo(const Unit& aUnit) const;
+    double ratioTo(const Unit& aUnit) const;
 
     /// @brief Convert to string representation.
     ///
@@ -156,16 +143,6 @@ class Unit
     /// @return A string representation
 
     String toString() const;
-
-    /// @brief Construct an undefined unit.
-    ///
-    /// @code
-    ///     Unit unit = Unit::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined unit
-
-    static Unit Undefined();
 
     /// @brief Construct a dimensionless (none) unit.
     ///

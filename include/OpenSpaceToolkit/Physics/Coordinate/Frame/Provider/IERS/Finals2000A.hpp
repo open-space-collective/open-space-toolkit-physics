@@ -3,11 +3,11 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Finals2000A__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Provider_IERS_Finals2000A__
 
+#include <optional>
+
 #include <OpenSpaceToolkit/Core/Container/Map.hpp>
 #include <OpenSpaceToolkit/Core/Container/Pair.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Vector.hpp>
 
@@ -34,8 +34,6 @@ namespace filesystem = ostk::core::filesystem;
 using ostk::core::container::Map;
 using ostk::core::container::Pair;
 using ostk::core::filesystem::File;
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 
 using ostk::mathematics::object::Vector2d;
 
@@ -53,39 +51,40 @@ using ostk::physics::time::Interval;
 class Finals2000A
 {
    public:
+    /// @brief One line of the file. Real-valued fields that are empty in the file are std::nullopt.
     struct Data
     {
-        Integer year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
-        Integer month;  ///< Month number
-        Integer day;    ///< Day of month
+        int year;   ///< Year (to get true calendar year, add 1900 for MJD <= 51543 or add 2000 for MJD >= 51544)
+        int month;  ///< Month number
+        int day;    ///< Day of month
 
-        Real mjd;  ///< Fractional Modified Julian Date (MJD UTC)
+        double mjd;  ///< Fractional Modified Julian Date (MJD UTC)
 
         char polarMotionflag;  ///< IERS (I) or Prediction (P) flag for Bulletin A polar motion values
 
-        Real x_A;       ///< [asec] Bulletin A PM-x
-        Real xError_A;  ///< [asec] Error in PM-x
-        Real y_A;       ///< [asec] Bulletin A PM-y
-        Real yError_A;  ///< [asec] Error in PM-y
+        std::optional<double> x_A;       ///< [asec] Bulletin A PM-x
+        std::optional<double> xError_A;  ///< [asec] Error in PM-x
+        std::optional<double> y_A;       ///< [asec] Bulletin A PM-y
+        std::optional<double> yError_A;  ///< [asec] Error in PM-y
 
         char ut1MinusUtcFlag;  ///< IERS (I) or Prediction (P) flag for Bulletin A UT1-UTC values
 
-        Real ut1MinusUtc_A;       ///< [s] Bulletin A UT1-UTC
-        Real ut1MinusUtcError_A;  ///< [s] Error in UT1-UTC
-        Real lod_A;               ///< [ms] Bulletin A LOD (not always filled)
-        Real lodError_A;          ///< [ms] Error in LOD (not always filled)
+        std::optional<double> ut1MinusUtc_A;       ///< [s] Bulletin A UT1-UTC
+        std::optional<double> ut1MinusUtcError_A;  ///< [s] Error in UT1-UTC
+        std::optional<double> lod_A;               ///< [ms] Bulletin A LOD (not always filled)
+        std::optional<double> lodError_A;          ///< [ms] Error in LOD (not always filled)
 
         char nutationFlag;  ///< IERS (I) or Prediction (P) flag for Bulletin A nutation values
 
-        Real dx_A;           ///< [amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed
-        Real dxError_A;      ///< [amsec] Error in dX
-        Real dy_A;           ///< [amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed
-        Real dyError_A;      ///< [amsec] Error in dY
-        Real x_B;            ///< [asec] Bulletin B PM-x
-        Real y_B;            ///< [asec] Bulletin B PM-y
-        Real ut1MinusUtc_B;  ///< [s] Bulletin B UT1-UTC
-        Real dx_B;           ///< [amsec] Bulletin B dX wrt IAU2000A Nutation
-        Real dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
+        std::optional<double> dx_A;  ///< [amsec] Bulletin A dX wrt IAU2000A Nutation, Free Core Nutation NOT Removed
+        std::optional<double> dxError_A;  ///< [amsec] Error in dX
+        std::optional<double> dy_A;  ///< [amsec] Bulletin A dY wrt IAU2000A Nutation, Free Core Nutation NOT Removed
+        std::optional<double> dyError_A;      ///< [amsec] Error in dY
+        std::optional<double> x_B;            ///< [asec] Bulletin B PM-x
+        std::optional<double> y_B;            ///< [asec] Bulletin B PM-y
+        std::optional<double> ut1MinusUtc_B;  ///< [s] Bulletin B UT1-UTC
+        std::optional<double> dx_B;           ///< [amsec] Bulletin B dX wrt IAU2000A Nutation
+        std::optional<double> dy_B;           ///< [amsec] Bulletin B dY wrt IAU2000A Nutation
     };
 
     /// @brief Output stream operator.
@@ -99,62 +98,54 @@ class Finals2000A
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Finals2000A& aFinals2000A);
 
-    /// @brief true if defined
+    /// @brief Get timestamp at which the BulletinA file was last modified
     ///
     /// @code
-    ///     finals2000A.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-    bool isDefined() const;
-
-    /// @brief Access timestamp at which the BulletinA file was last modified
-    ///
-    /// @code
-    ///     const Instant& timestamp = finals2000A.accessLastModifiedTimestamp();
+    ///     const Instant& timestamp = finals2000A.getLastModifiedTimestamp();
     /// @endcode
     ///
     /// @return Instant indicating when the file was last updated based on file modification time
-    const Instant& accessLastModifiedTimestamp() const;
+    const Instant& getLastModifiedTimestamp() const;
 
     /// @brief Get data interval
     ///
     /// @code
-    ///     Interval interval = finals2000A.getInterval();
+    ///     const std::optional<Interval>& interval = finals2000A.getInterval();
     /// @endcode
     ///
-    /// @return Data Intervalt of Instants
-    Interval getInterval() const;
+    /// @return Const reference to data Interval of Instants
+    const std::optional<Interval>& getInterval() const;
 
     /// @brief Get polar motion at Instant
     ///
     /// @code
-    ///     Vector2d polarMotion = finals2000A.getPolarMotionAt(anInstant);
+    ///     std::optional<Vector2d> polarMotion = finals2000A.getPolarMotionAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
-    /// @return Polar motion
-    Vector2d getPolarMotionAt(const Instant& anInstant) const;
+    /// @return Polar motion, or std::nullopt if it is not tabulated at the Instant (it throws if the Instant is
+    ///         outside the span of the data)
+    std::optional<Vector2d> getPolarMotionAt(const Instant& anInstant) const;
 
     /// @brief Get UT1-UTC at Instant
     ///
     /// @code
-    ///     Real ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
+    ///     std::optional<double> ut1MinusUtc = finals2000A.getUt1MinusUtcAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
-    /// @return UT1-UTC
-    Real getUt1MinusUtcAt(const Instant& anInstant) const;
+    /// @return UT1-UTC [s], or std::nullopt if it is not tabulated at the Instant
+    std::optional<double> getUt1MinusUtcAt(const Instant& anInstant) const;
 
     /// @brief Get LOD (Length Of Day) at Instant
     ///
     /// @code
-    ///     Real lod = finals2000A.getLodAt(anInstant);
+    ///     std::optional<double> lod = finals2000A.getLodAt(anInstant);
     /// @endcode
     ///
     /// @param [in] anInstant An Instant
-    /// @return LOD
-    Real getLodAt(const Instant& anInstant) const;
+    /// @return LOD [ms], or std::nullopt if it is not tabulated at the Instant
+    std::optional<double> getLodAt(const Instant& anInstant) const;
 
     /// @brief Get Data reading at instant
     ///
@@ -165,15 +156,6 @@ class Finals2000A
     /// @param [in] anInstant An Instant
     /// @return Data reading
     Finals2000A::Data getDataAt(const Instant& anInstant) const;
-
-    /// @brief Undefined factory function
-    ///
-    /// @code
-    ///     Finals2000A finals2000A = Finals2000A::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined Finals2000A object
-    static Finals2000A Undefined();
 
     /// @brief Load Finals2000A from file
     ///
@@ -187,10 +169,10 @@ class Finals2000A
 
    private:
     Instant lastModifiedTimestamp_;
-    Interval span_;
-    Map<Real, Finals2000A::Data> data_;
+    std::optional<Interval> span_;
+    Map<double, Finals2000A::Data> data_;
 
-    Finals2000A();
+    Finals2000A(const Instant& aLastModifiedTimestamp);
 
     Pair<const Finals2000A::Data*, const Finals2000A::Data*> accessDataRange(const Instant& anInstant) const;
 };

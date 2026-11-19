@@ -2,11 +2,10 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Position.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
-    using ostk::core::type::Integer;
     using ostk::core::type::Shared;
 
     using ostk::mathematics::object::Vector3d;
@@ -38,7 +37,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Position& self, const Position& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -50,7 +54,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Position& self, const Position& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -65,16 +74,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def("__str__", &(shiftToString<Position>))
         .def("__repr__", &(shiftToString<Position>))
 
-        .def(
-            "is_defined",
-            &Position::isDefined,
-            R"doc(
-                Check if the Position is defined.
-
-                Returns:
-                    bool: True if the Position is defined.
-            )doc"
-        )
         .def(
             "is_near",
             &Position::isNear,
@@ -93,10 +92,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         )
 
         .def(
-            "access_frame",
-            &Position::accessFrame,
+            "get_frame",
+            &Position::getFrame,
             R"doc(
-                Access the frame of reference.
+                Get the frame of reference.
 
                 Returns:
                     Frame: Frame of reference.
@@ -171,28 +170,18 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Position(pybind11::module& aMod
         .def(
             "to_string",
             &Position::toString,
-            arg_v("precision", DEFAULT_PRECISION, "Integer.Undefined()"),
+            arg("precision").sig("-1") = -1,
             R"doc(
                 Create a string representation.
 
                 Args:
-                    precision (Integer): Precision.
+                    precision (int): Precision.
 
                 Returns:
                     String: String representation.
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Position::Undefined,
-            R"doc(
-                Get undefined Position.
-
-                Returns:
-                    Position: Undefined Position.
-            )doc"
-        )
         .def_static(
             "meters",
             &Position::Meters,

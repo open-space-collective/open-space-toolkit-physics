@@ -1,5 +1,8 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
 #include <OpenSpaceToolkit/Core/Container/Tuple.hpp>
 #include <OpenSpaceToolkit/Core/FileSystem/File.hpp>
@@ -16,6 +19,7 @@
 #include <OpenSpaceToolkit/Physics/Time/Scale.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Derived/Angle.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 #include <Global.test.hpp>
 
@@ -24,7 +28,6 @@ using ostk::core::container::Tuple;
 using ostk::core::error::RuntimeError;
 using ostk::core::filesystem::File;
 using ostk::core::filesystem::Path;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::coordinate::Frame;
@@ -42,6 +45,7 @@ using EarthCelestial = ostk::physics::environment::object::celestial::Earth;
 using ostk::physics::environment::object::celestial::Sun;
 using EarthGravitationalModel = ostk::physics::environment::gravitational::Earth;
 using EarthAtmosphericModel = ostk::physics::environment::atmospheric::Earth;
+using ostk::physics::utility::DoubleToString;
 
 class OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth : public ::testing::Test
 {
@@ -63,12 +67,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
 {
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(EarthAtmosphericModel::Type::Exponential));
-    }
-
-    {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
-        ));
     }
 
     {
@@ -105,13 +103,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor)
     {
         EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
             EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag
-        ));
-    }
-
-    {
-        EXPECT_NO_THROW(EarthAtmosphericModel earthAtmosphericModel(
-            EarthAtmosphericModel::Type::NRLMSISE00,
-            EarthAtmosphericModel::InputDataType::Undefined  // Using default InputDataType
         ));
     }
 }
@@ -158,28 +149,12 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
                 EarthAtmosphericModel::Type::NRLMSISE00,
                 Frame::ITRF(),
                 EarthAtmosphericModel::InputDataType::ConstantFluxAndGeoMag,
-                Real::Undefined(),
+                std::numeric_limits<double>::quiet_NaN(),
                 150.0,
                 3.0
             ),
             ostk::core::error::runtime::Undefined
         );
-    }
-
-    {
-        const EarthAtmosphericModel earthAtmosphericModel = {EarthAtmosphericModel::Type::Undefined, Frame::ITRF()};
-
-        EXPECT_FALSE(earthAtmosphericModel.isDefined());
-    }
-
-    {
-        const EarthAtmosphericModel earthAtmosphericModel = {
-            EarthAtmosphericModel::Type::NRLMSISE00, Frame::ITRF(), EarthAtmosphericModel::InputDataType::Undefined
-        };
-
-        EXPECT_TRUE(earthAtmosphericModel.isDefined());
-        EXPECT_EQ(EarthAtmosphericModel::Type::NRLMSISE00, earthAtmosphericModel.getType());
-        EXPECT_EQ(EarthAtmosphericModel::InputDataType::Undefined, earthAtmosphericModel.getInputDataType());
     }
 
     // The Earth frame defaults to CSSISpaceWeatherFile as input data type
@@ -197,7 +172,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
         static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant>>
             testCases = {
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(500.0)),
                  Instant::J2000()},
                 {EarthAtmosphericModel::Type::NRLMSISE00,
@@ -266,9 +241,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
             EarthAtmosphericModel::Type::NRLMSISE00,
             Frame::ITRF(),
             EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             EarthGravitationalModel::EGM2008.equatorialRadius_,
             EarthGravitationalModel::EGM2008.flattening_,
             std::make_shared<Sun>(Sun::Default())
@@ -278,18 +253,18 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, Constructor_Earth
             EarthAtmosphericModel::Type::NRLMSISE00,
             Frame::ITRF(),
             EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
-            Real::Undefined(),
-            Real::Undefined(),
-            Real::Undefined(),
+            EarthAtmosphericModel::defaultF107ConstantValue,
+            EarthAtmosphericModel::defaultF107AConstantValue,
+            EarthAtmosphericModel::defaultKpConstantValue,
             EarthGravitationalModel::EGM2008.equatorialRadius_,
             EarthGravitationalModel::EGM2008.flattening_
         };
 
-        const Real densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
-        const Real densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);
+        const double densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
+        const double densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);
 
-        EXPECT_FALSE(densitySun.isNear(densityNoSun, 1e-15)) << String::Format(
-            "{} ≈ {} Δ {} [T]", densitySun.toString(), densityNoSun.toString(), (densitySun - densityNoSun)
+        EXPECT_FALSE(std::abs(densitySun - densityNoSun) <= 1e-15) << String::Format(
+            "{} ≈ {} Δ {} [T]", DoubleToString(densitySun), DoubleToString(densityNoSun), (densitySun - densityNoSun)
         );
     }
 }
@@ -348,16 +323,6 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
 {
     {
         EXPECT_EQ(
-            EarthAtmosphericModel::InputDataType::Undefined,
-            EarthAtmosphericModel(
-                EarthAtmosphericModel::Type::Exponential, EarthAtmosphericModel::InputDataType::Undefined
-            )
-                .getInputDataType()
-        );
-    }
-
-    {
-        EXPECT_EQ(
             EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
             EarthAtmosphericModel(
                 EarthAtmosphericModel::Type::NRLMSISE00, EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile
@@ -377,21 +342,10 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetInputDataType)
     }
 }
 
-TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, IsDefined)
-{
-    {
-        EXPECT_FALSE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Undefined).isDefined());
-
-        EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::Exponential).isDefined());
-
-        EXPECT_TRUE(EarthAtmosphericModel(EarthAtmosphericModel::Type::NRLMSISE00).isDefined());
-    }
-}
-
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Position)
 {
     {
-        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases = {
+        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, double, double>> testCases = {
             {EarthAtmosphericModel::Type::Exponential,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
              Instant::J2000(),
@@ -433,13 +387,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Posi
             };
 
             const Instant instant = std::get<2>(testCase);
-            const Real referenceDensity = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double referenceDensity = std::get<3>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
-            const Real density = earthAtmosphericModel.getDensityAt(position, instant);
+            const double density = earthAtmosphericModel.getDensityAt(position, instant);
 
-            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
+            EXPECT_TRUE(std::abs(density - referenceDensity) <= tolerance) << String::Format(
+                "{} ≈ {} Δ {} [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                (density - referenceDensity)
             );
         }
     }
@@ -449,7 +406,7 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 {
     {
         // Hand calculated values to validate
-        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, Real, Real>> testCases = {
+        static const Array<Tuple<EarthAtmosphericModel::Type, LLA, Instant, double, double>> testCases = {
             {EarthAtmosphericModel::Type::Exponential,
              LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
              Instant::J2000(),
@@ -482,13 +439,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
             const EarthAtmosphericModel earthAtmosphericModel = {std::get<0>(testCase)};
             const LLA lla = std::get<1>(testCase);
             const Instant instant = std::get<2>(testCase);
-            const Real referenceDensity = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double referenceDensity = std::get<3>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
-            const Real density = earthAtmosphericModel.getDensityAt(lla, instant);
+            const double density = earthAtmosphericModel.getDensityAt(lla, instant);
 
-            EXPECT_TRUE(density.isNear(referenceDensity, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", density.toString(), referenceDensity.toString(), (density - referenceDensity)
+            EXPECT_TRUE(std::abs(density - referenceDensity) <= tolerance) << String::Format(
+                "{} ≈ {} Δ {} [T]",
+                DoubleToString(density),
+                DoubleToString(referenceDensity),
+                (density - referenceDensity)
             );
         }
     }
@@ -523,25 +483,26 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_LLA)
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Frames)
 {
     {
-        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
+        static const Array<
+            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, double>>
             testCases = {
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(123.0)),
                  Instant::J2000(),
                  1e-13},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(499.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(501.0)),
                  Instant::J2000(),
                  1e-15},
                 {EarthAtmosphericModel::Type::Exponential,
-                 EarthAtmosphericModel::InputDataType::Undefined,
+                 EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
                  LLA(Angle::Degrees(35.076832), Angle::Degrees(-92.546296), Length::Kilometers(550.0)),
                  Instant::J2000(),
                  1e-15},
@@ -572,13 +533,16 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Fram
             };
 
             const Instant instant = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
-            const Real densityITRF = earthAtmosphericModelITRF.getDensityAt(positionITRF, instant);
-            const Real densityTEME = earthAtmosphericModelTEME.getDensityAt(positionITRF, instant);
+            const double densityITRF = earthAtmosphericModelITRF.getDensityAt(positionITRF, instant);
+            const double densityTEME = earthAtmosphericModelTEME.getDensityAt(positionITRF, instant);
 
-            EXPECT_TRUE(densityITRF.isNear(densityTEME, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", densityITRF.toString(), densityTEME.toString(), (densityITRF - densityTEME)
+            EXPECT_TRUE(std::abs(densityITRF - densityTEME) <= tolerance) << String::Format(
+                "{} ≈ {} Δ {} [T]",
+                DoubleToString(densityITRF),
+                DoubleToString(densityTEME),
+                (densityITRF - densityTEME)
             );
         }
     }
@@ -587,7 +551,8 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Fram
 TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Solar)
 {
     {
-        static const Array<Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, Real>>
+        static const Array<
+            Tuple<EarthAtmosphericModel::Type, EarthAtmosphericModel::InputDataType, LLA, Instant, double>>
             testCases = {
                 {EarthAtmosphericModel::Type::NRLMSISE00,
                  EarthAtmosphericModel::InputDataType::CSSISpaceWeatherFile,
@@ -616,9 +581,9 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Sola
             const EarthAtmosphericModel earthAtmosphericModelSun = {
                 std::get<0>(testCase),
                 std::get<1>(testCase),
-                Real::Undefined(),
-                Real::Undefined(),
-                Real::Undefined(),
+                EarthAtmosphericModel::defaultF107ConstantValue,
+                EarthAtmosphericModel::defaultF107AConstantValue,
+                EarthAtmosphericModel::defaultKpConstantValue,
                 Frame::ITRF(),
                 EarthGravitationalModel::EGM2008.equatorialRadius_,
                 EarthGravitationalModel::EGM2008.flattening_,
@@ -628,22 +593,25 @@ TEST_F(OpenSpaceToolkit_Physics_Environment_Atmospheric_Earth, GetDensityAt_Sola
             const EarthAtmosphericModel earthAtmosphericModelNoSun = {
                 std::get<0>(testCase),
                 std::get<1>(testCase),
-                Real::Undefined(),
-                Real::Undefined(),
-                Real::Undefined(),
+                EarthAtmosphericModel::defaultF107ConstantValue,
+                EarthAtmosphericModel::defaultF107AConstantValue,
+                EarthAtmosphericModel::defaultKpConstantValue,
                 Frame::ITRF(),
                 EarthGravitationalModel::EGM2008.equatorialRadius_,
                 EarthGravitationalModel::EGM2008.flattening_
             };
 
             const Instant instant = std::get<3>(testCase);
-            const Real tolerance = std::get<4>(testCase);
+            const double tolerance = std::get<4>(testCase);
 
-            const Real densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
-            const Real densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);
+            const double densitySun = earthAtmosphericModelSun.getDensityAt(position, instant);
+            const double densityNoSun = earthAtmosphericModelNoSun.getDensityAt(position, instant);
 
-            EXPECT_FALSE(densitySun.isNear(densityNoSun, tolerance)) << String::Format(
-                "{} ≈ {} Δ {} [T]", densitySun.toString(), densityNoSun.toString(), (densitySun - densityNoSun)
+            EXPECT_FALSE(std::abs(densitySun - densityNoSun) <= tolerance) << String::Format(
+                "{} ≈ {} Δ {} [T]",
+                DoubleToString(densitySun),
+                DoubleToString(densityNoSun),
+                (densitySun - densityNoSun)
             );
         }
     }

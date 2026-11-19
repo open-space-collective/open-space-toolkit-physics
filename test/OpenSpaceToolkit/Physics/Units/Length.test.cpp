@@ -1,6 +1,7 @@
 /// Apache License 2.0
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
+#include <cmath>
+#include <limits>
 
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
@@ -8,19 +9,18 @@
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, Constructor)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Length;
 
     {
-        const Real value = 123.456;
+        const double value = 123.456;
         const Length::Unit unit = Length::Unit::Meter;
 
         EXPECT_NO_THROW(Length(value, unit));
     }
 
     {
-        const Real value = Real::Undefined();
-        const Length::Unit unit = Length::Unit::Undefined;
+        const double value = std::numeric_limits<double>::quiet_NaN();
+        const Length::Unit unit = Length::Unit::Meter;
 
         EXPECT_NO_THROW(Length(value, unit));
     }
@@ -45,9 +45,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, EqualToOperator)
     {
         EXPECT_FALSE(Length(1.0, Length::Unit::Meter) == Length(2.0, Length::Unit::Meter));
         EXPECT_FALSE(Length(+1.0, Length::Unit::Meter) == Length(-1.0, Length::Unit::Meter));
-        EXPECT_FALSE(Length::Undefined() == Length(1.0, Length::Unit::Meter));
-        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) == Length::Undefined());
-        EXPECT_FALSE(Length::Undefined() == Length::Undefined());
     }
 }
 
@@ -58,7 +55,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, NotEqualToOperator)
     {
         EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) != Length(-1.0, Length::Unit::Meter));
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(2.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length::Undefined() != Length::Undefined());
     }
 
     {
@@ -89,12 +85,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOperator)
 
         EXPECT_TRUE(Length(1.0, Length::Unit::Foot) < Length(1.0, Length::Unit::Meter));
     }
-
-    {
-        EXPECT_ANY_THROW(Length::Undefined() < Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) < Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() < Length::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOrEqualToOperator)
@@ -111,12 +101,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOrEqualToOperator)
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::TerrestrialMile));
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::NauticalMile));
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::AstronomicalUnit));
-    }
-
-    {
-        EXPECT_ANY_THROW(Length::Undefined() <= Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) <= Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() <= Length::Undefined());
     }
 }
 
@@ -136,12 +120,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOperator)
 
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) > Length(1.0, Length::Unit::Foot));
     }
-
-    {
-        EXPECT_ANY_THROW(Length::Undefined() > Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) > Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() > Length::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOrEqualToOperator)
@@ -158,12 +136,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOrEqualToOperator)
         EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) >= Length(1.0, Length::Unit::Meter));
         EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) >= Length(1.0, Length::Unit::Meter));
         EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) >= Length(1.0, Length::Unit::Meter));
-    }
-
-    {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) >= Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() >= Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length::Undefined() >= Length::Undefined());
     }
 }
 
@@ -196,12 +168,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionOperator)
             Length(149597870701.0, Length::Unit::Meter),
             Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::AstronomicalUnit)
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) + Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() + Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length::Undefined() + Length::Undefined());
     }
 }
 
@@ -236,17 +202,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionOperator)
             Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::AstronomicalUnit)
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) - Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() - Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length::Undefined() - Length::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Length;
 
     {
@@ -288,14 +247,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) * Real::Undefined());
-        EXPECT_ANY_THROW(Real::Undefined() * Length(1.0, Length::Unit::Meter));
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) * std::numeric_limits<double>::quiet_NaN());
+        EXPECT_ANY_THROW(std::numeric_limits<double>::quiet_NaN() * Length(1.0, Length::Unit::Meter));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Length;
 
     {
@@ -320,8 +278,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) / Real::Undefined());
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) / Real::Zero());
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) / std::numeric_limits<double>::quiet_NaN());
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) / 0.0);
     }
 }
 
@@ -354,12 +312,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionAssignmentOperator)
             Length(149597870701.0, Length::Unit::Meter),
             Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::AstronomicalUnit)
         );
-    }
-
-    {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) += Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() += Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length::Undefined() += Length::Undefined());
     }
 }
 
@@ -394,17 +346,10 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionAssignmentOperator)
             Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::AstronomicalUnit)
         );
     }
-
-    {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) -= Length::Undefined());
-        EXPECT_ANY_THROW(Length::Undefined() -= Length(1.0, Length::Unit::Meter));
-        EXPECT_ANY_THROW(Length::Undefined() -= Length::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationAssignmentOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Length;
 
     {
@@ -429,13 +374,12 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationAssignmentOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) *= Real::Undefined());
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) *= std::numeric_limits<double>::quiet_NaN());
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionAssignmentOperator)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Length;
 
     {
@@ -460,8 +404,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionAssignmentOperator)
     }
 
     {
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) /= Real::Undefined());
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) /= Real::Zero());
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) /= std::numeric_limits<double>::quiet_NaN());
+        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) /= 0.0);
     }
 }
 
@@ -478,10 +422,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, UnaryAdditionOperator)
         EXPECT_EQ(Length(-123.456, Length::Unit::Meter), +Length(-123.456, Length::Unit::Meter));
         EXPECT_EQ(Length(-123.456, Length::Unit::Foot), +Length(-123.456, Length::Unit::Foot));
     }
-
-    {
-        EXPECT_ANY_THROW(+Length::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, UnarySubtractionOperator)
@@ -496,10 +436,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, UnarySubtractionOperator)
 
         EXPECT_EQ(Length(123.456, Length::Unit::Meter), -Length(-123.456, Length::Unit::Meter));
         EXPECT_EQ(Length(123.456, Length::Unit::Foot), -Length(-123.456, Length::Unit::Foot));
-    }
-
-    {
-        EXPECT_ANY_THROW(-Length::Undefined());
     }
 }
 
@@ -516,31 +452,8 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Unit_Length, IsDefined)
-{
-    using ostk::core::type::Real;
-    using ostk::physics::unit::Length;
-
-    {
-        EXPECT_TRUE(Length(0.0, Length::Unit::Meter).isDefined());
-
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter).isDefined());
-        EXPECT_TRUE(Length(1.0, Length::Unit::Foot).isDefined());
-        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile).isDefined());
-        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile).isDefined());
-        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(Length::Undefined().isDefined());
-        EXPECT_FALSE(Length(Real::Undefined(), Length::Unit::Meter).isDefined());
-        EXPECT_FALSE(Length(1.0, Length::Unit::Undefined).isDefined());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Unit_Length, IsZero)
 {
-    using ostk::core::type::Real;
     using ostk::physics::unit::Length;
 
     {
@@ -558,9 +471,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, IsZero)
     }
 
     {
-        EXPECT_ANY_THROW(Length::Undefined().isZero());
-        EXPECT_ANY_THROW(Length(Real::Undefined(), Length::Unit::Meter).isZero());
-        EXPECT_ANY_THROW(Length(1.0, Length::Unit::Undefined).isZero());
+        EXPECT_FALSE(Length(std::numeric_limits<double>::quiet_NaN(), Length::Unit::Meter).isZero());
     }
 }
 
@@ -569,7 +480,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, GetUnit)
     using ostk::physics::unit::Length;
 
     {
-        EXPECT_EQ(Length::Unit::Undefined, Length(1.0, Length::Unit::Undefined).getUnit());
         EXPECT_EQ(Length::Unit::Meter, Length(1.0, Length::Unit::Meter).getUnit());
         EXPECT_EQ(Length::Unit::Foot, Length(1.0, Length::Unit::Foot).getUnit());
         EXPECT_EQ(Length::Unit::TerrestrialMile, Length(1.0, Length::Unit::TerrestrialMile).getUnit());
@@ -589,10 +499,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, In)
         EXPECT_EQ(1.0, Length(1.0, Length::Unit::NauticalMile).in(Length::Unit::NauticalMile));
         EXPECT_EQ(1.0, Length(1.0, Length::Unit::AstronomicalUnit).in(Length::Unit::AstronomicalUnit));
     }
-
-    {
-        EXPECT_FALSE(Length::Undefined().in(Length::Unit::Meter).isDefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, InMeters)
@@ -602,10 +508,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, InMeters)
     {
         EXPECT_EQ(123.456, Length(123.456, Length::Unit::Meter).inMeters());
     }
-
-    {
-        EXPECT_FALSE(Length::Undefined().inMeters().isDefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, InKilometers)
@@ -614,10 +516,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, InKilometers)
 
     {
         EXPECT_EQ(123.456, Length(123456.0, Length::Unit::Meter).inKilometers());
-    }
-
-    {
-        EXPECT_FALSE(Length::Undefined().inKilometers().isDefined());
     }
 }
 
@@ -664,22 +562,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, ToString)
         EXPECT_EQ("123.456 [nmi]", Length(123.456123, Length::Unit::NauticalMile).toString(3));
         EXPECT_EQ("123.456 [AU]", Length(123.456123, Length::Unit::AstronomicalUnit).toString(3));
     }
-
-    {
-        EXPECT_ANY_THROW(Length::Undefined().toString());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Unit_Length, Undefined)
-{
-    using ostk::physics::unit::Length;
-
-    {
-        EXPECT_NO_THROW(Length::Undefined());
-        EXPECT_FALSE(Length::Undefined().isDefined());
-
-        EXPECT_NO_THROW(Length::Undefined().in(Length::Unit::Meter));
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Length, Millimeters)
@@ -688,7 +570,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, Millimeters)
 
     {
         EXPECT_NO_THROW(Length::Millimeters(123.456));
-        EXPECT_TRUE(Length::Millimeters(123.456).isDefined());
 
         EXPECT_EQ(0.123456, Length::Millimeters(123.456).in(Length::Unit::Meter));
     }
@@ -700,7 +581,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, Meters)
 
     {
         EXPECT_NO_THROW(Length::Meters(123.456));
-        EXPECT_TRUE(Length::Meters(123.456).isDefined());
 
         EXPECT_EQ(123.456, Length::Meters(123.456).in(Length::Unit::Meter));
     }
@@ -712,7 +592,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, Kilometers)
 
     {
         EXPECT_NO_THROW(Length::Kilometers(123.456));
-        EXPECT_TRUE(Length::Kilometers(123.456).isDefined());
 
         EXPECT_EQ(123456.0, Length::Kilometers(123.456).in(Length::Unit::Meter));
     }
@@ -761,7 +640,6 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, StringFromUnit)
     using ostk::physics::unit::Length;
 
     {
-        EXPECT_EQ("Undefined", Length::StringFromUnit(Length::Unit::Undefined));
         EXPECT_EQ("Meter", Length::StringFromUnit(Length::Unit::Meter));
         EXPECT_EQ("Foot", Length::StringFromUnit(Length::Unit::Foot));
         EXPECT_EQ("Terrestrial Mile", Length::StringFromUnit(Length::Unit::TerrestrialMile));

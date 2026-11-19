@@ -4,9 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Manager.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -86,7 +86,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
                     instant (Instant): Instant.
 
                 Returns:
-                    np.ndarray: Polar motion.
+                    np.ndarray | None: Polar motion, or None if it is not tabulated at the instant.
+
+                Raises:
+                    RuntimeError: If the instant is outside the span of the data.
             )doc"
         )
         .def(
@@ -100,7 +103,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
                     instant (Instant): Instant.
 
                 Returns:
-                    float: UT1 - UTC [sec].
+                    float | None: UT1 - UTC [sec], or None if it is not tabulated at the instant.
             )doc"
         )
         .def(
@@ -114,7 +117,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
                     instant (Instant): Instant.
 
                 Returns:
-                    float: Length of day [ms].
+                    float | None: Length of day [ms], or None if it is not tabulated at the instant.
             )doc"
         )
 
@@ -165,7 +168,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider_IERS_Manager(pyb
         .def_static(
             "get",
             &Manager::Get,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Get manager singleton.
 

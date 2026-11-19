@@ -48,15 +48,6 @@ class ICRF : public Provider
     /// @return A pointer to the cloned ICRF provider
     virtual ICRF* clone() const override;
 
-    /// @brief Check if the ICRF provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the ICRF provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the transform at a given instant.
     ///
     /// @code

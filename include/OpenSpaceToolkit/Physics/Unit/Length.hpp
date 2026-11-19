@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Unit_Length__
 #define __OpenSpaceToolkit_Physics_Unit_Length__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Unit.hpp>
@@ -16,8 +14,6 @@ namespace physics
 namespace unit
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 /// @brief Length
@@ -30,7 +26,6 @@ class Length : public Unit
     enum class Unit
     {
 
-        Undefined,        ///< Undefined
         Meter,            ///< Meter (SI)
         Foot,             ///< Foot
         TerrestrialMile,  ///< Terrestrial mile
@@ -47,7 +42,7 @@ class Length : public Unit
     ///
     /// @param [in] aValue A value
     /// @param [in] aUnit A length unit
-    Length(const Real& aValue, const Length::Unit& aUnit);
+    Length(double aValue, const Length::Unit& aUnit);
 
     /// @brief Clone the length.
     ///
@@ -147,7 +142,7 @@ class Length : public Unit
     ///
     /// @param [in] aReal A scalar multiplier
     /// @return The scaled length
-    Length operator*(const Real& aReal) const;
+    Length operator*(double aReal) const;
 
     /// @brief Division by scalar operator.
     ///
@@ -157,7 +152,7 @@ class Length : public Unit
     ///
     /// @param [in] aReal A scalar divisor
     /// @return The scaled length
-    Length operator/(const Real& aReal) const;
+    Length operator/(double aReal) const;
 
     /// @brief Addition assignment operator.
     ///
@@ -190,7 +185,7 @@ class Length : public Unit
     ///
     /// @param [in] aReal A scalar multiplier
     /// @return A reference to this length after multiplication
-    Length& operator*=(const Real& aReal);
+    Length& operator*=(double aReal);
 
     /// @brief Division assignment operator.
     ///
@@ -201,7 +196,7 @@ class Length : public Unit
     ///
     /// @param [in] aReal A scalar divisor
     /// @return A reference to this length after division
-    Length& operator/=(const Real& aReal);
+    Length& operator/=(double aReal);
 
     /// @brief Scalar multiplication operator (scalar * length).
     ///
@@ -212,7 +207,7 @@ class Length : public Unit
     /// @param [in] aReal A scalar multiplier
     /// @param [in] aLength A length
     /// @return The scaled length
-    friend Length operator*(const Real& aReal, const Length& aLength);
+    friend Length operator*(double aReal, const Length& aLength);
 
     /// @brief Unary plus operator.
     ///
@@ -243,15 +238,6 @@ class Length : public Unit
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Length& aLength);
 
-    /// @brief Check if the length is defined.
-    ///
-    /// @code
-    ///     Length::Meters(1.0).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined
-    virtual bool isDefined() const override;
-
     /// @brief Check if the length value is zero.
     ///
     /// @code
@@ -278,7 +264,7 @@ class Length : public Unit
     ///
     /// @param [in] aUnit A length unit
     /// @return The value in the specified unit
-    Real in(const Length::Unit& aUnit) const;
+    double in(const Length::Unit& aUnit) const;
 
     /// @brief Get the value in meters.
     ///
@@ -287,7 +273,7 @@ class Length : public Unit
     /// @endcode
     ///
     /// @return The value in meters
-    Real inMeters() const;
+    double inMeters() const;
 
     /// @brief Get the value in kilometers.
     ///
@@ -296,7 +282,7 @@ class Length : public Unit
     /// @endcode
     ///
     /// @return The value in kilometers
-    Real inKilometers() const;
+    double inKilometers() const;
 
     /// @brief Convert to string representation.
     ///
@@ -306,16 +292,7 @@ class Length : public Unit
     ///
     /// @param [in] aPrecision A precision (number of decimal places)
     /// @return A string representation
-    virtual String toString(const Integer& aPrecision = Integer::Undefined()) const override;
-
-    /// @brief Construct an undefined length.
-    ///
-    /// @code
-    ///     Length length = Length::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined length
-    static Length Undefined();
+    virtual String toString(int aPrecision = -1) const override;
 
     /// @brief Construct a length from a value in millimeters.
     ///
@@ -325,7 +302,7 @@ class Length : public Unit
     ///
     /// @param [in] aValue A value in millimeters
     /// @return A length
-    static Length Millimeters(const Real& aValue);
+    static Length Millimeters(double aValue);
 
     /// @brief Construct a length from a value in meters.
     ///
@@ -335,7 +312,7 @@ class Length : public Unit
     ///
     /// @param [in] aValue A value in meters
     /// @return A length
-    static Length Meters(const Real& aValue);
+    static Length Meters(double aValue);
 
     /// @brief Construct a length from a value in kilometers.
     ///
@@ -345,7 +322,7 @@ class Length : public Unit
     ///
     /// @param [in] aValue A value in kilometers
     /// @return A length
-    static Length Kilometers(const Real& aValue);
+    static Length Kilometers(double aValue);
 
     /// @brief Parse a length from a string.
     ///
@@ -390,7 +367,7 @@ class Length : public Unit
    private:
     Length::Unit unit_;
 
-    static Real SIRatio(const Length::Unit& aUnit);
+    static double SIRatio(const Length::Unit& aUnit);
 };
 
 }  // namespace unit

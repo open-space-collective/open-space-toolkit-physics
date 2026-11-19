@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Frame/Manager.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::String;
@@ -48,11 +48,11 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
             )doc"
         )
         .def(
-            "access_frame_with_name",
-            &Manager::accessFrameWithName,
+            "get_frame_with_name",
+            &Manager::getFrameWithName,
             arg("frame_name"),
             R"doc(
-                Access a frame by name.
+                Get a frame by name.
 
                 Args:
                     frame_name (str): Name of the frame.
@@ -72,13 +72,13 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
             )doc"
         )
         .def(
-            "access_cached_transform",
-            &Manager::accessCachedTransform,
+            "get_cached_transform",
+            &Manager::getCachedTransform,
             arg("from_frame"),
             arg("to_frame"),
             arg("instant"),
             R"doc(
-                Access a cached transform between two frames at a given instant.
+                Get a cached transform between two frames at a given instant.
 
                 Args:
                     from_frame (Frame): Source frame.
@@ -86,7 +86,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
                     instant (Instant): Instant at which the transform is requested.
 
                 Returns:
-                    Transform: Cached transform if found, undefined transform otherwise.
+                    Transform | None: Cached transform if found, None otherwise.
             )doc"
         )
         .def(
@@ -164,7 +164,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Manager(pybind11::module&
         .def_static(
             "get",
             &Manager::Get,
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
                 Get manager singleton.
 

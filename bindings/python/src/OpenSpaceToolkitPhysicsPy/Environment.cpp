@@ -9,9 +9,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Object.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Utility.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::container::Array;
     using ostk::core::type::Shared;
@@ -20,7 +20,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
     using ostk::physics::environment::Object;
     using ostk::physics::time::Instant;
 
-    class_<Environment, Shared<Environment>>(
+    class_<Environment>(
         aModule,
         "Environment",
         R"doc(
@@ -69,16 +69,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
         .def("__repr__", &(shiftToString<Environment>))
 
         .def(
-            "is_defined",
-            &Environment::isDefined,
-            R"doc(
-                Check if the environment is defined,
-
-                Returns:
-                    bool: True if the environment is defined, False otherwise,
-            )doc"
-        )
-        .def(
             "has_object_with_name",
             &Environment::hasObjectWithName,
             arg("name"),
@@ -106,7 +96,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             "intersects",
             &Environment::intersects,
             arg("geometry"),
-            arg_v("objects_to_ignore", Array<Shared<const Object>>::Empty(), "[]"),
+            arg("objects_to_ignore").sig("[]") = Array<Shared<const Object>>::Empty(),
             R"doc(
                 Returns true if a given geometry intersects any of the environment objects.
 
@@ -120,23 +110,25 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
         )
 
         .def(
-            "access_objects",
-            &Environment::accessObjects,
-            return_value_policy::reference,
+            "get_objects",
+            [](const Environment& self) -> Array<Shared<const Object>>
+            {
+                return self.getObjects();
+            },
             R"doc(
-                Access the objects in the environment.
+                Get the objects in the environment.
 
                 Returns:
                     list(Object): The list of objects.
             )doc"
         )
         .def(
-            "access_object_with_name",
-            &Environment::accessObjectWithName,
+            "get_object_with_name",
+            &Environment::getObjectWithName,
             arg("name"),
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
-                Access an object with a given name.
+                Get an object with a given name.
 
                 Args:
                     name (str): An object name.
@@ -146,12 +138,12 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             )doc"
         )
         .def(
-            "access_celestial_object_with_name",
-            &Environment::accessCelestialObjectWithName,
+            "get_celestial_object_with_name",
+            &Environment::getCelestialObjectWithName,
             arg("name"),
-            return_value_policy::reference,
+            rv_policy::reference,
             R"doc(
-                Access celestial object with a given name.
+                Get celestial object with a given name.
 
                 Args:
                     name (str): The name of the celestial object.
@@ -161,11 +153,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             )doc"
         )
         .def(
-            "access_central_celestial_object",
-            &Environment::accessCentralCelestialObject,
-            return_value_policy::reference,
+            "get_central_celestial_object",
+            &Environment::getCentralCelestialObject,
+            rv_policy::reference,
             R"doc(
-                Access the central celestial object.
+                Get the central celestial object.
 
                 Returns:
                     Celestial: The central celestial object.
@@ -223,16 +215,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
         )
 
         .def_static(
-            "undefined",
-            &Environment::Undefined,
-            R"doc(
-                Get an undefined Environment object.
-
-                Returns:
-                    Environment: An undefined Environment object.
-            )doc"
-        )
-        .def_static(
             "default",
             &Environment::Default,
             R"doc(
@@ -254,11 +236,11 @@ inline void OpenSpaceToolkitPhysicsPy_Environment(pybind11::module& aModule)
             )doc"
         )
         .def_static(
-            "access_global_instance",
-            &Environment::AccessGlobalInstance,
-            return_value_policy::reference,
+            "get_global_instance",
+            &Environment::GetGlobalInstance,
+            rv_policy::reference,
             R"doc(
-                Access the global environment instance.
+                Get the global environment instance.
 
                 Returns:
                     Environment: The global environment instance.

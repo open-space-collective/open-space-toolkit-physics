@@ -7,9 +7,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Data/Scalar.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Data/Vector.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Data(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Data(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     // Create "data" python submodule
     auto data = aModule.def_submodule("data");

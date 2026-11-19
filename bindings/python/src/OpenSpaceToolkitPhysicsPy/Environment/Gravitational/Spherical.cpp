@@ -2,16 +2,16 @@
 
 #include <OpenSpaceToolkit/Physics/Environment/Gravitational/Spherical.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
     using ostk::physics::environment::gravitational::Model;
     using ostk::physics::environment::gravitational::Spherical;
 
-    class_<Spherical, Model, Shared<Spherical>>(
+    class_<Spherical, Model>(
         aModule,
         "Spherical",
         R"doc(
@@ -45,17 +45,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Gravitational_Spherical(pybind
 
                 Returns:
                     np.ndarray: Gravitational field value, expressed in the gravitational object frame [m.s-2].
-            )doc"
-        )
-
-        .def(
-            "is_defined",
-            &Spherical::isDefined,
-            R"doc(
-                Check if the Spherical gravitational model is defined.
-
-                Returns:
-                    bool: True if the Spherical gravitational model is defined.
             )doc"
         )
 

@@ -8,32 +8,21 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/IERS.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider/Static.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame_Provider(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
     using ostk::physics::coordinate::frame::Provider;
 
-    class_<Provider, Shared<Provider>>(
+    class_<Provider>(
         aModule,
         "Provider",
         R"doc(
             Frame provider.
         )doc"
     )
-
-        .def(
-            "is_defined",
-            &Provider::isDefined,
-            R"doc(
-                Check if the Static provider is defined
-
-                Returns:
-                    bool: True if defined
-            )doc"
-        )
 
         .def(
             "get_transform_at",

@@ -118,10 +118,6 @@ class TestInterval:
                 Interval.Type.Closed,
             )
 
-    def test_interval_undefined(self):
-        assert Interval.undefined() is not None
-        assert isinstance(Interval.undefined(), Interval)
-
     def test_interval_constructor_closed(self):
         assert (
             Interval(
@@ -216,10 +212,6 @@ class TestInterval:
 
         assert interval_1 != interval_4
 
-    def test_interval_is_defined(self, interval: Interval):
-        assert interval.is_defined()
-        assert Interval.undefined().is_defined() is False
-
     def test_interval_is_degenerate(self, interval: Interval):
         assert interval.is_degenerate() is False
         assert Interval.closed(Instant.J2000(), Instant.J2000()).is_degenerate()
@@ -312,26 +304,21 @@ class TestInterval:
             build_interval(5.0, 15.0)
         )
         assert isinstance(intersection, Interval)
-        assert intersection.is_defined()
 
-        intersection: Interval = build_interval(0.0, 10.0).get_intersection_with(
-            build_interval(20.0, 30.0)
+        assert (
+            build_interval(0.0, 10.0).get_intersection_with(build_interval(20.0, 30.0))
+            is None
         )
-        assert isinstance(intersection, Interval)
-        assert not intersection.is_defined()
 
     def test_get_union_with(self):
         union: Interval = build_interval(0.0, 10.0).get_union_with(
             build_interval(5.0, 15.0)
         )
         assert isinstance(union, Interval)
-        assert union.is_defined()
 
-        union: Interval = build_interval(0.0, 10.0).get_union_with(
-            build_interval(20.0, 30.0)
+        assert (
+            build_interval(0.0, 10.0).get_union_with(build_interval(20.0, 30.0)) is None
         )
-        assert isinstance(union, Interval)
-        assert not union.is_defined()
 
     def test_clip(self):
         intervals: list[Interval] = [

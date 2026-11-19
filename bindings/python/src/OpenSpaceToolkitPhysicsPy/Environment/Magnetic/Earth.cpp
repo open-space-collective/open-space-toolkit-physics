@@ -5,9 +5,9 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Magnetic/Earth/Manager.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::filesystem::Directory;
     using ostk::core::type::Shared;
@@ -16,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
     using ostk::physics::environment::magnetic::earth::Manager;
     using ostk::physics::unit::Derived;
 
-    class_<Earth, Shared<Earth>> earth_magnetic_class(
+    class_<Earth> earth_magnetic_class(
         aModule,
         "Earth",
         R"doc(
@@ -28,7 +28,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
     earth_magnetic_class
         .def(
-            init<const Earth::Type&, const Directory&>(),
+            init<const Earth::Type&, const std::optional<Directory>&>(),
             arg("type"),
             arg("directory"),
             R"doc(
@@ -36,7 +36,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
                 Args:
                     type (Earth.Type): Earth model type.
-                    directory (Directory): Directory containing the magnetic model data files.
+                    directory (Directory | None): Directory containing the magnetic model data files.
             )doc"
         )
 
@@ -63,17 +63,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
         )
 
         .def(
-            "is_defined",
-            &Earth::isDefined,
-            R"doc(
-                Check if the magnetic model is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
-
-        .def(
             "get_field_value_at",
             &Earth::getFieldValueAt,
             R"doc(
@@ -92,13 +81,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Magnetic_Earth(pybind11::modul
 
     enum_<Earth::Type>(earth_magnetic_class, "Type")
 
-        .value(
-            "Undefined",
-            Earth::Type::Undefined,
-            R"doc(
-                Undefined Earth model type.
-            )doc"
-        )
         .value(
             "Dipole",
             Earth::Type::Dipole,

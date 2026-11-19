@@ -240,11 +240,6 @@ CIRF* CIRF::clone() const
     return new CIRF(*this);
 }
 
-bool CIRF::isDefined() const
-{
-    return true;
-}
-
 Transform CIRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -252,21 +247,11 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("CIRF");
-    }
-
     // http://www.iausofa.org/2018_0130_C/sofa/sofa_pn_c.pdf
 
     // Time (TT)
 
-    const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
+    const double tt = anInstant.getModifiedJulianDate(Scale::TT);
 
     // CIP and CIO, IAU 2006/2000A
 
@@ -278,8 +263,8 @@ Transform CIRF::getTransformAt(const Instant& anInstant) const
 
     // CIP offsets wrt IAU 2006/2000A (mas->radians)
 
-    static const Real dx06 = +0.1750 * DMAS2R;
-    static const Real dy06 = -0.2259 * DMAS2R;
+    static const double dx06 = +0.1750 * DMAS2R;
+    static const double dy06 = -0.2259 * DMAS2R;
 
     // Add CIP corrections
 
@@ -324,9 +309,7 @@ void CIRF::ClearXysCache()
     XysGrid::Clear();
 }
 
-void CIRF::ComputeCIPCoordinates(
-    const Real& aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate
-)
+void CIRF::ComputeCIPCoordinates(double aModifiedJulianDate_TT, double& x, double& y, double& s, const bool interpolate)
 {
     static const double djmjd0 = 2400000.5;
 

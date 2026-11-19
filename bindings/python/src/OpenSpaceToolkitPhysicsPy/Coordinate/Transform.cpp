@@ -2,11 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(nanobind::module_& aModule)
 {
-    using namespace pybind11;
-
-    using ostk::core::type::Real;
+    using namespace nanobind;
 
     using ostk::mathematics::geometry::d3::transformation::rotation::Quaternion;
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationVector;
@@ -51,7 +49,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -63,7 +66,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -76,7 +84,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self * self,
+            "__mul__",
+            [](const Transform& self, const Transform& other)
+            {
+                return self * other;
+            },
+            is_operator(),
             R"doc(
                 Multiplication operator.
 
@@ -89,7 +102,14 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def(
-            self *= self,
+            "__imul__",
+            [](Transform& self, const Transform& other) -> Transform&
+            {
+                self *= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator(),
             R"doc(
                 Multiplication assignment operator.
 
@@ -105,16 +125,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         .def("__repr__", &(shiftToString<Transform>))
 
         .def(
-            "is_defined",
-            &Transform::isDefined,
-            R"doc(
-                Check if the transform is defined.
-
-                Returns:
-                    bool: True if the transform is defined.
-            )doc"
-        )
-        .def(
             "is_identity",
             &Transform::isIdentity,
             R"doc(
@@ -122,62 +132,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
 
                 Returns:
                     bool: True if the transform is the identity.
-            )doc"
-        )
-
-        .def(
-            "access_instant",
-            &Transform::accessInstant,
-            return_value_policy::reference,
-            R"doc(
-                Access the instant.
-
-                Returns:
-                    Instant: Instant.
-            )doc"
-        )
-        .def(
-            "access_translation",
-            &Transform::accessTranslation,
-            return_value_policy::reference,
-            R"doc(
-                Access the translation.
-
-                Returns:
-                    np.ndarray: Translation.
-            )doc"
-        )
-        .def(
-            "access_velocity",
-            &Transform::accessVelocity,
-            return_value_policy::reference,
-            R"doc(
-                Access the velocity.
-
-                Returns:
-                    np.ndarray: Velocity.
-            )doc"
-        )
-        .def(
-            "access_orientation",
-            &Transform::accessOrientation,
-            return_value_policy::reference,
-            R"doc(
-                Access the orientation.
-
-                Returns:
-                    Quaternion: Orientation.
-            )doc"
-        )
-        .def(
-            "access_angular_velocity",
-            &Transform::accessAngularVelocity,
-            return_value_policy::reference,
-            R"doc(
-                Access the angular velocity.
-
-                Returns:
-                    np.ndarray: Angular velocity.
             )doc"
         )
 
@@ -287,16 +241,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )
 
         .def_static(
-            "undefined",
-            &Transform::Undefined,
-            R"doc(
-                Get undefined transform.
-
-                Returns:
-                    Transform: Undefined transform.
-            )doc"
-        )
-        .def_static(
             "identity",
             &Transform::Identity,
             R"doc(
@@ -363,13 +307,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Transform(pybind11::module& aMo
         )doc"
     )
 
-        .value(
-            "Undefined",
-            Transform::Type::Undefined,
-            R"doc(
-                Undefined type.
-            )doc"
-        )
         .value(
             "Active",
             Transform::Type::Active,

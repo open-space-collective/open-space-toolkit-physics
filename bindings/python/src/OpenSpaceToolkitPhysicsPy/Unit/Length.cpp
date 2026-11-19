@@ -4,12 +4,9 @@
 
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Unit_Length(nanobind::module_& aModule)
 {
-    using namespace pybind11;
-
-    using ostk::core::type::Integer;
-    using ostk::core::type::Real;
+    using namespace nanobind;
 
     using ostk::physics::unit::Length;
 
@@ -25,37 +22,164 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
 
     length
         .def(
-            init<Real, Length::Unit>(),
+            init<double, Length::Unit>(),
             R"doc(
                 Constructor.
 
                 Args:
-                    aReal (Real): A real number.
+                    aReal (float): A real number.
                     aUnit (Length.Unit): A length unit.
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
+        .def(
+            "__eq__",
+            [](const Length& self, const Length& other)
+            {
+                return self == other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ne__",
+            [](const Length& self, const Length& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
 
-        .def(self < self)
-        .def(self <= self)
-        .def(self > self)
-        .def(self >= self)
+        .def(
+            "__lt__",
+            [](const Length& self, const Length& other)
+            {
+                return self < other;
+            },
+            is_operator()
+        )
+        .def(
+            "__le__",
+            [](const Length& self, const Length& other)
+            {
+                return self <= other;
+            },
+            is_operator()
+        )
+        .def(
+            "__gt__",
+            [](const Length& self, const Length& other)
+            {
+                return self > other;
+            },
+            is_operator()
+        )
+        .def(
+            "__ge__",
+            [](const Length& self, const Length& other)
+            {
+                return self >= other;
+            },
+            is_operator()
+        )
 
-        .def(self + self)
-        .def(self - self)
-        .def(self * double())
-        .def(self / double())
-        .def(double() * self)
+        .def(
+            "__add__",
+            [](const Length& self, const Length& other)
+            {
+                return self + other;
+            },
+            is_operator()
+        )
+        .def(
+            "__sub__",
+            [](const Length& self, const Length& other)
+            {
+                return self - other;
+            },
+            is_operator()
+        )
+        .def(
+            "__mul__",
+            [](const Length& self, double other)
+            {
+                return self * other;
+            },
+            is_operator()
+        )
+        .def(
+            "__truediv__",
+            [](const Length& self, double other)
+            {
+                return self / other;
+            },
+            is_operator()
+        )
+        .def(
+            "__rmul__",
+            [](const Length& self, double other)
+            {
+                return other * self;
+            },
+            is_operator()
+        )
 
-        .def(self += self)
-        .def(self -= self)
-        .def(self *= double())
-        .def(self /= double())
+        .def(
+            "__iadd__",
+            [](Length& self, const Length& other) -> Length&
+            {
+                self += other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__isub__",
+            [](Length& self, const Length& other) -> Length&
+            {
+                self -= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__imul__",
+            [](Length& self, double other) -> Length&
+            {
+                self *= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
+        .def(
+            "__itruediv__",
+            [](Length& self, double other) -> Length&
+            {
+                self /= other;
+                return self;
+            },
+            rv_policy::none,
+            is_operator()
+        )
 
-        .def(+self)
-        .def(-self)
+        .def(
+            "__pos__",
+            [](const Length& self)
+            {
+                return +self;
+            },
+            is_operator()
+        )
+        .def(
+            "__neg__",
+            [](const Length& self)
+            {
+                return -self;
+            },
+            is_operator()
+        )
 
         .def("__str__", &(shiftToString<Length>))
         .def(
@@ -66,16 +190,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             }
         )
 
-        .def(
-            "is_defined",
-            &Length::isDefined,
-            R"doc(
-                Check if the length is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
-        )
         .def(
             "is_zero",
             &Length::isZero,
@@ -130,7 +244,7 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
         .def(
             "to_string",
             &Length::toString,
-            "aPrecision"_a = Integer::Undefined(),
+            "aPrecision"_a = -1,
             R"doc(
                 Get the string representation of the length.
 
@@ -142,16 +256,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Length::Undefined,
-            R"doc(
-                Get an undefined length.
-
-                Returns:
-                    Length: An undefined length.
-            )doc"
-        )
         .def_static(
             "millimeters",
             &Length::Millimeters,
@@ -221,13 +325,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
     enum_<Length::Unit>(length, "Unit")
 
         .value(
-            "Undefined",
-            Length::Unit::Undefined,
-            R"doc(
-                Undefined length unit.
-            )doc"
-        )
-        .value(
             "Meter",
             Length::Unit::Meter,
             R"doc(
@@ -281,19 +378,23 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def(self == self)
-        .def(self != self)
-
         .def(
-            "is_defined",
-            &Interval<Length>::isDefined,
-            R"doc(
-                Check if the interval is defined.
-
-                Returns:
-                    bool: True if defined.
-            )doc"
+            "__eq__",
+            [](const Interval<Length>& self, const Interval<Length>& other)
+            {
+                return self == other;
+            },
+            is_operator()
         )
+        .def(
+            "__ne__",
+            [](const Interval<Length>& self, const Interval<Length>& other)
+            {
+                return self != other;
+            },
+            is_operator()
+        )
+
         .def(
             "is_degenerate",
             &Interval<Length>::isDegenerate,
@@ -368,16 +469,6 @@ inline void OpenSpaceToolkitPhysicsPy_Unit_Length(pybind11::module& aModule)
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Interval<Length>::Undefined,
-            R"doc(
-                Get an undefined interval.
-
-                Returns:
-                    Interval: An undefined interval.
-            )doc"
-        )
         .def_static(
             "closed",
             &Interval<Length>::Closed,

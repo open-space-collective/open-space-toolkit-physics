@@ -1,9 +1,12 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Time.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -11,8 +14,9 @@ namespace physics
 {
 namespace unit
 {
+using ostk::physics::utility::DoubleToString;
 
-Time::Time(const Real& aValue, const Time::Unit& aUnit)
+Time::Time(double aValue, const Time::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Time, aValue),
       unit_(aUnit)
 {
@@ -23,68 +27,44 @@ Time* Time::clone() const
     return new Time(*this);
 }
 
-bool Time::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != Time::Unit::Undefined);
-}
-
 Time::Unit Time::getUnit() const
 {
     return unit_;
 }
 
-Real Time::in(const Time::Unit& aUnit) const
+double Time::in(const Time::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return Real::Undefined();
-    }
-
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * Time::SIRatio(unit_) / Time::SIRatio(aUnit);
+    return this->getValue() * Time::SIRatio(unit_) / Time::SIRatio(aUnit);
 }
 
-Real Time::inSeconds() const
+double Time::inSeconds() const
 {
     return this->in(Time::Unit::Second);
 }
 
-String Time::toString(const Integer& aPrecision) const
+String Time::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Time");
-    }
-
-    return this->accessValue().toString(aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + Time::SymbolFromUnit(unit_) + "]";
 }
 
-Time Time::Undefined()
-{
-    return {Real::Undefined(), Time::Unit::Undefined};
-}
-
-Time Time::Seconds(const Real& aValue)
+Time Time::Seconds(double aValue)
 {
     return {aValue, Time::Unit::Second};
 }
 
 // Time                            Time::Parse                                 (   const   String& aString )
 // {
-
 // }
 
 String Time::StringFromUnit(const Time::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case Time::Unit::Undefined:
-            return "Undefined";
-
         case Time::Unit::Nanosecond:
             return "Nanosecond";
 
@@ -153,7 +133,7 @@ String Time::SymbolFromUnit(const Time::Unit& aUnit)
     return String::Empty();
 }
 
-Real Time::SIRatio(const Time::Unit& aUnit)
+double Time::SIRatio(const Time::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -185,10 +165,7 @@ Real Time::SIRatio(const Time::Unit& aUnit)
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return Real::Undefined();
 }
-
 }  // namespace unit
 }  // namespace physics
 }  // namespace ostk

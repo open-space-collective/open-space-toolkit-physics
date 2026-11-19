@@ -4,12 +4,11 @@
 #define __OpenSpaceToolkit_Physics_Time_Interval__
 
 #include <functional>
+#include <optional>
 
 #include <boost/functional/hash.hpp>
 
 #include <OpenSpaceToolkit/Core/Container/Array.hpp>
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Object/Interval.hpp>
@@ -25,7 +24,6 @@ namespace time
 {
 
 using ostk::core::container::Array;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::time::Instant;
@@ -60,41 +58,14 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Interval& anInterval);
 
-    /// @brief Check if the interval is defined.
-    ///
-    /// @code
-    ///     Interval::Closed(Instant::J2000(), Instant::Now()).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if defined.
-    bool isDefined() const;
-
-    /// @brief Access the start instant.
-    ///
-    /// @code
-    ///     const Instant& start = Interval::Closed(Instant::J2000(), Instant::Now()).accessStart();
-    /// @endcode
-    ///
-    /// @return Start instant.
-    const Instant& accessStart() const;
-
-    /// @brief Access the end instant.
-    ///
-    /// @code
-    ///     const Instant& end = Interval::Closed(Instant::J2000(), Instant::Now()).accessEnd();
-    /// @endcode
-    ///
-    /// @return End instant.
-    const Instant& accessEnd() const;
-
     /// @brief Get the start instant.
     ///
     /// @code
     ///     Instant start = Interval::Closed(Instant::J2000(), Instant::Now()).getStart();
     /// @endcode
     ///
-    /// @return Start instant.
-    Instant getStart() const;
+    /// @return Const reference to the start instant.
+    const Instant& getStart() const;
 
     /// @brief Get the end instant.
     ///
@@ -102,8 +73,8 @@ class Interval : public mathematics::object::Interval<Instant>
     ///     Instant end = Interval::Closed(Instant::J2000(), Instant::Now()).getEnd();
     /// @endcode
     ///
-    /// @return End instant.
-    Instant getEnd() const;
+    /// @return Const reference to the end instant.
+    const Instant& getEnd() const;
 
     /// @brief Get the duration.
     ///
@@ -127,22 +98,23 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @brief Get the intersection with another interval.
     ///
     /// @code
-    ///     Interval interval = Interval::Closed(startInstant, endInstant).getIntersectionWith(anotherInterval);
+    ///     std::optional<Interval> interval = Interval::Closed(startInstant,
+    ///     endInstant).getIntersectionWith(anotherInterval);
     /// @endcode
     ///
     /// @param [in] anInterval Another interval.
-    /// @return Intersection interval (Undefined if there is no intersection).
-    Interval getIntersectionWith(const Interval& anInterval) const;
+    /// @return Intersection interval (std::nullopt if there is no intersection).
+    std::optional<Interval> getIntersectionWith(const Interval& anInterval) const;
 
     /// @brief Get the union with another interval.
     ///
     /// @code
-    ///     Interval interval = Interval::Closed(startInstant, endInstant).getUnionWith(anotherInterval);
+    ///     std::optional<Interval> interval = Interval::Closed(startInstant, endInstant).getUnionWith(anotherInterval);
     /// @endcode
     ///
     /// @param [in] anInterval Another interval.
-    /// @return Union interval (Undefined if there is no single-interval union).
-    Interval getUnionWith(const Interval& anInterval) const;
+    /// @return Union interval (std::nullopt if there is no single-interval union).
+    std::optional<Interval> getUnionWith(const Interval& anInterval) const;
 
     /// @brief Convert the interval to a string.
     ///
@@ -164,16 +136,6 @@ class Interval : public mathematics::object::Interval<Instant>
     /// @param [in] aTimeStep Time step.
     /// @return Grid of instants.
     Array<Instant> generateGrid(const Duration& aTimeStep) const;
-
-    /// @brief Create an undefined interval.
-    ///
-    /// @code
-    ///     Interval interval = Interval::Undefined();
-    ///     interval.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined interval.
-    static Interval Undefined();
 
     /// @brief Constructs a closed interval
     ///
@@ -289,10 +251,10 @@ class Interval : public mathematics::object::Interval<Instant>
     ///
     /// @param [in] anIntervalArray A list of intervals.
     /// @param [in] anInterval The analysis interval. Used to compute gaps for the first and last interval.
-    /// Defaults to Undefined.
+    /// Defaults to std::nullopt.
     /// @return Intervals gaps.
     static Array<Interval> GetGaps(
-        const Array<Interval>& anIntervalArray, const Interval& anInterval = Interval::Undefined()
+        const Array<Interval>& anIntervalArray, const std::optional<Interval>& anInterval = std::nullopt
     );
 
     /// @brief Creates a list of intervals by a logical-or conjunction.
@@ -363,14 +325,9 @@ struct hash<ostk::physics::time::Interval>
 {
     size_t operator()(const ostk::physics::time::Interval& anInterval) const
     {
-        if (!anInterval.isDefined())
-        {
-            return 0;
-        }
-
         size_t seed = 0;
-        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.accessStart()));
-        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.accessEnd()));
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.getStart()));
+        boost::hash_combine(seed, std::hash<ostk::physics::time::Instant> {}(anInterval.getEnd()));
         boost::hash_combine(seed, static_cast<int>(anInterval.getType()));
         return seed;
     }

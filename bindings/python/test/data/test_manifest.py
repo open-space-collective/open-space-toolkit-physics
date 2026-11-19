@@ -13,9 +13,6 @@ from ostk.physics.time import Instant
 
 
 class TestManifest:
-    def test_is_defined_success(self, manifest: Manifest):
-        assert manifest.is_defined() == True
-
     def test_get_last_modified_timestamp_success(self, manifest: Manifest):
         assert isinstance(manifest.get_last_modified_timestamp(), Instant)
 
@@ -34,9 +31,6 @@ class TestManifest:
     def test_find_remote_data_urls_success(self, manifest: Manifest):
         test_url: URL = URL.parse("http://test.com")
         assert isinstance(manifest.find_remote_data_urls(test_url, ".*"), list)
-
-    def test_undefined_success(self):
-        assert isinstance(Manifest.undefined(), Manifest)
 
     def test_load_success(self, manifest_file: File):
         manifest = Manifest.load(manifest_file)

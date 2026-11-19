@@ -15,7 +15,6 @@ namespace physics
 namespace time
 {
 
-using ostk::core::type::Integer;
 using ostk::core::type::String;
 using ostk::core::type::Uint16;
 using ostk::core::type::Uint8;
@@ -28,9 +27,8 @@ class Date
     enum class Format
     {
 
-        Undefined,  ///< Undefined format
-        Standard,   ///< Standard format (YYYY-MM-DD)
-        STK         ///< STK format (d Mon YYYY)
+        Standard,  ///< Standard format (YYYY-MM-DD)
+        STK        ///< STK format (d Mon YYYY)
 
     };
 
@@ -75,15 +73,6 @@ class Date
     /// @param [in] aDate A date
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Date& aDate);
-
-    /// @brief Check if date is defined
-    ///
-    /// @code
-    ///     Date(2018, 1, 2).isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if date is defined
-    bool isDefined() const;
 
     /// @brief Get year (1400 - 9999)
     ///
@@ -135,9 +124,9 @@ class Date
     /// @param [in] (optional) aDay A day (1 - 31)
     /// @return Date
     Date replace(
-        const std::optional<Integer>& aYear = std::nullopt,
-        const std::optional<Integer>& aMonth = std::nullopt,
-        const std::optional<Integer>& aDay = std::nullopt
+        const std::optional<int>& aYear = std::nullopt,
+        const std::optional<int>& aMonth = std::nullopt,
+        const std::optional<int>& aDay = std::nullopt
     ) const;
 
     /// @brief Set year
@@ -178,16 +167,6 @@ class Date
 
     [[deprecated("Use Date::replace(aYear, aMonth, aDay) instead.")]]
     void setDay(Uint8 aDay);
-
-    /// @brief Constructs an undefined date
-    ///
-    /// @code
-    ///     Date date = Date::Undefined();
-    ///     date.isDefined(); // False
-    /// @endcode
-    ///
-    /// @return Undefined date
-    static Date Undefined();
 
     /// @brief J2000 epoch (2000-01-01)
     ///
@@ -240,20 +219,16 @@ class Date
     /// @endcode
     ///
     /// @param [in] aString A string
-    /// @param [in] (optional) aFormat A date format
+    /// @param [in] aFormat A date format (default: std::nullopt, which detects the format)
     /// @return Date
-    static Date Parse(const String& aString, const Date::Format& aFormat = Date::Format::Undefined);
+    static Date Parse(const String& aString, const std::optional<Date::Format>& aFormat = std::nullopt);
 
    private:
-    bool defined_;
-
     Uint16 year_;
     Uint8 month_;
     Uint8 day_;
 
-    Date();
-
-    static void ValidateDate(const Integer& aYear, const Integer& aMonth, const Integer& aDay);
+    static void ValidateDate(int aYear, int aMonth, int aDay);
 };
 
 }  // namespace time

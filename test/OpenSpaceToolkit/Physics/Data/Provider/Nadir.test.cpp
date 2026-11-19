@@ -17,7 +17,7 @@ TEST(OpenSpaceToolkit_Physics_Data_Provider_Nadir, Nadir)
 {
     {
         const Environment environment = Environment::Default();
-        const Celestial celestialObject = *environment.accessCelestialObjectWithName("Earth");
+        const Celestial celestialObject = *environment.getCelestialObjectWithName("Earth");
         const Position position = Position::Meters({7000e3, 0.0, 0.0}, Frame::ITRF());
 
         const Direction nadir = Nadir(position, celestialObject, environment);

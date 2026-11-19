@@ -2,7 +2,7 @@
 
 #include <OpenSpaceToolkitPhysicsPy/Environment/Atmospheric/Earth.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Atmospheric(nanobind::module_& aModule)
 {
     // Create "atmospheric" python submodule
     auto atmospheric = aModule.def_submodule("atmospheric");

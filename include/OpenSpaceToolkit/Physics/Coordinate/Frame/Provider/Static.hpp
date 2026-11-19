@@ -48,15 +48,6 @@ class Static : public Provider
     /// @return A pointer to the cloned Static provider
     virtual Static* clone() const override;
 
-    /// @brief Check if the Static provider is defined.
-    ///
-    /// @code
-    ///     provider.isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the Static provider is defined
-    virtual bool isDefined() const override;
-
     /// @brief Get the transform at a given instant.
     ///
     /// @code

@@ -1,10 +1,10 @@
 /// Apache License 2.0
 
+#include <limits>
+
 #include <OpenSpaceToolkit/Physics/Time/DateTime.hpp>
 
 #include <Global.test.hpp>
-
-using ostk::core::type::Real;
 
 using ostk::physics::time::Date;
 using ostk::physics::time::DateTime;
@@ -117,10 +117,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, EqualToOperator)
             DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789) == DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 790)
         );
     }
-
-    {
-        EXPECT_FALSE(DateTime::Undefined() == DateTime::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
@@ -149,10 +145,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, NotEqualToOperator)
             DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789) != DateTime(9999, 1, 2, 12, 34, 56, 123, 456, 789)
         );
     }
-
-    {
-        EXPECT_TRUE(DateTime::Undefined() != DateTime::Undefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
@@ -166,40 +158,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, StreamOperator)
     }
 }
 
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, IsDefined)
-{
-    {
-        EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56).isDefined());
-        EXPECT_TRUE(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).isDefined());
-    }
-
-    {
-        EXPECT_FALSE(DateTime::Undefined().isDefined());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessDate)
-{
-    {
-        EXPECT_EQ(Date(2018, 1, 2), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessDate());
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().accessDate());
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, AccessTime)
-{
-    {
-        EXPECT_EQ(Time(12, 34, 56, 123, 456, 789), DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).accessTime());
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().accessTime());
-    }
-}
-
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
 {
     {
@@ -207,7 +165,9 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetDate)
     }
 
     {
-        EXPECT_ANY_THROW(DateTime::Undefined().getDate());
+        const DateTime dateTime = DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789);
+
+        EXPECT_EQ(&dateTime.getDate(), &dateTime.getDate());
     }
 }
 
@@ -218,7 +178,9 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetTime)
     }
 
     {
-        EXPECT_ANY_THROW(DateTime::Undefined().getTime());
+        const DateTime dateTime = DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789);
+
+        EXPECT_EQ(&dateTime.getTime(), &dateTime.getTime());
     }
 }
 
@@ -230,10 +192,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetJulianDate)
         EXPECT_EQ(2451545.50, DateTime(2000, 1, 2, 0, 0, 0).getJulianDate());
         EXPECT_EQ(2451545.75, DateTime(2000, 1, 2, 6, 0, 0).getJulianDate());
         EXPECT_EQ(2451546.0, DateTime(2000, 1, 2, 12, 0, 0).getJulianDate());
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().getJulianDate());
     }
 }
 
@@ -252,10 +210,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, GetModifiedJulianDate)
         EXPECT_EQ(59945.25, DateTime(2023, 1, 1, 6, 0, 0).getModifiedJulianDate());
         EXPECT_NEAR(59945.0 + 1e-6 / 86400.0, DateTime(2023, 1, 1, 0, 0, 0, 0, 1, 0).getModifiedJulianDate(), 1e-12);
         EXPECT_NEAR(59945.5 + 1.0 / 86400.0, DateTime(2023, 1, 1, 12, 0, 1).getModifiedJulianDate(), 1e-11);
-    }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().getModifiedJulianDate());
     }
 }
 
@@ -340,20 +294,6 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ToString)
             DateTime(9999, 12, 31, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::STK)
         );
     }
-
-    {
-        EXPECT_ANY_THROW(DateTime::Undefined().toString());
-        EXPECT_ANY_THROW(DateTime(2018, 1, 2, 12, 34, 56, 123, 456, 789).toString(DateTime::Format::Undefined));
-    }
-}
-
-TEST(OpenSpaceToolkit_Physics_Time_DateTime, Undefined)
-{
-    {
-        EXPECT_NO_THROW(DateTime::Undefined());
-
-        EXPECT_FALSE(DateTime::Undefined().isDefined());
-    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, J2000)
@@ -404,7 +344,7 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, JulianDate)
     }
 
     {
-        EXPECT_ANY_THROW(DateTime::JulianDate(Real::Undefined()));
+        EXPECT_ANY_THROW(DateTime::JulianDate(std::numeric_limits<double>::quiet_NaN()));
         EXPECT_ANY_THROW(DateTime::JulianDate(0.0));
     }
 }
@@ -420,13 +360,13 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, ModifiedJulianDate)
     }
 
     {
-        EXPECT_ANY_THROW(DateTime::ModifiedJulianDate(Real::Undefined()));
+        EXPECT_ANY_THROW(DateTime::ModifiedJulianDate(std::numeric_limits<double>::quiet_NaN()));
     }
 }
 
 TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
 {
-    // Undefined (automatic format detection)
+    // Automatic format detection
 
     {
         // Standard
@@ -651,5 +591,36 @@ TEST(OpenSpaceToolkit_Physics_Time_DateTime, Parse)
         EXPECT_ANY_THROW(DateTime::Parse("10000-01-01T00:00:00"));
         EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456"));
         EXPECT_ANY_THROW(DateTime::Parse("2018-01-02T12:34:56.123.456.789"));
+    }
+}
+
+TEST(OpenSpaceToolkit_Physics_Time_DateTime, ParseWithoutFormat)
+{
+    using ostk::physics::time::DateTime;
+
+    {
+        EXPECT_EQ(
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789", DateTime::Format::Standard),
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789")
+        );
+        EXPECT_EQ(
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789", DateTime::Format::Standard),
+            DateTime::Parse("2018-01-02 12:34:56.123.456.789", std::nullopt)
+        );
+
+        EXPECT_EQ(
+            DateTime::Parse("2018-01-02T12:34:56.123456789", DateTime::Format::ISO8601),
+            DateTime::Parse("2018-01-02T12:34:56.123456789", std::nullopt)
+        );
+
+        EXPECT_EQ(
+            DateTime::Parse("2 Jan 2018 12:34:56.123456789", DateTime::Format::STK),
+            DateTime::Parse("2 Jan 2018 12:34:56.123456789", std::nullopt)
+        );
+    }
+
+    {
+        EXPECT_ANY_THROW(DateTime::Parse("abc", std::nullopt));
+        EXPECT_ANY_THROW(DateTime::Parse("", std::nullopt));
     }
 }

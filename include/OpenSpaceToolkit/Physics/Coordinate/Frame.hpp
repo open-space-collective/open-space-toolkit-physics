@@ -6,7 +6,6 @@
 #include <memory>
 
 #include <OpenSpaceToolkit/Core/Type/Integer.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -28,7 +27,6 @@ namespace coordinate
 
 namespace iau = ostk::physics::coordinate::frame::provider::iau;
 
-using ostk::core::type::Real;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 using ostk::core::type::Uint8;
@@ -84,15 +82,6 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Frame& aFrame);
 
-    /// @brief Check if the frame is defined
-    ///
-    /// @code
-    ///     Frame::GCRF()->isDefined(); // True
-    /// @endcode
-    ///
-    /// @return True if the frame is defined
-    bool isDefined() const;
-
     /// @brief Check if the frame is quasi-inertial
     ///
     /// @code
@@ -111,33 +100,33 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @return True if the frame has a parent
     bool hasParent() const;
 
-    /// @brief Access the parent frame
+    /// @brief Get the parent frame
     ///
     /// @code
-    ///     Frame::ITRF()->accessParent();
+    ///     Frame::ITRF()->getParent();
     /// @endcode
     ///
-    /// @return Shared pointer to the parent frame
-    Shared<const Frame> accessParent() const;
+    /// @return Const reference to the shared pointer to the parent frame
+    const Shared<const Frame>& getParent() const;
 
-    /// @brief Access an ancestor frame at a given degree
+    /// @brief Get an ancestor frame at a given degree
     ///
     /// @code
-    ///     Frame::ITRF()->accessAncestor(2);
+    ///     Frame::ITRF()->getAncestor(2);
     /// @endcode
     ///
     /// @param [in] anAncestorDegree The ancestor degree (1 = parent, 2 = grandparent, etc.)
     /// @return Shared pointer to the ancestor frame
-    Shared<const Frame> accessAncestor(const Uint8 anAncestorDegree) const;
+    Shared<const Frame> getAncestor(const Uint8 anAncestorDegree) const;
 
-    /// @brief Access the transform provider
+    /// @brief Get the transform provider
     ///
     /// @code
-    ///     Frame::GCRF()->accessProvider();
+    ///     Frame::GCRF()->getProvider();
     /// @endcode
     ///
-    /// @return Shared pointer to the transform provider
-    Shared<const Provider> accessProvider() const;
+    /// @return Const reference to the shared pointer to the transform provider
+    const Shared<const Provider>& getProvider() const;
 
     /// @brief Get the name of the frame
     ///
@@ -145,8 +134,8 @@ class Frame : public std::enable_shared_from_this<Frame>
     ///     Frame::GCRF()->getName(); // "GCRF"
     /// @endcode
     ///
-    /// @return Frame name
-    String getName() const;
+    /// @return Const reference to the name of the frame
+    const String& getName() const;
 
     /// @brief Get the origin of this frame expressed in another frame at a given instant
     ///
@@ -191,15 +180,6 @@ class Frame : public std::enable_shared_from_this<Frame>
     /// @param [in] anInstant An instant
     /// @return Transform from this frame to the target frame
     Transform getTransformTo(const Shared<const Frame>& aFrame, const Instant& anInstant) const;
-
-    /// @brief Construct an undefined frame
-    ///
-    /// @code
-    ///     Shared<const Frame> frame = Frame::Undefined();
-    /// @endcode
-    ///
-    /// @return Shared pointer to an undefined frame
-    static Shared<const Frame> Undefined();
 
     /// @brief Get the Geocentric Celestial Reference Frame (GCRF)
     ///

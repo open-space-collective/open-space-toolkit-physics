@@ -1,7 +1,6 @@
 /// Apache License 2.0
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Mathematics/Geometry/3D/Transformation/Rotation/RotationMatrix.hpp>
@@ -40,11 +39,6 @@ ITRF* ITRF::clone() const
     return new ITRF(*this);
 }
 
-bool ITRF::isDefined() const
-{
-    return true;
-}
-
 Transform ITRF::getTransformAt(const Instant& anInstant) const
 {
     using ostk::mathematics::geometry::d3::transformation::rotation::RotationMatrix;
@@ -53,20 +47,10 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
     using ostk::physics::time::DateTime;
     using ostk::physics::time::Scale;
 
-    if (!anInstant.isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Instant");
-    }
-
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("ITRF");
-    }
-
     // Time (TT)
 
-    static const Real djmjd0 = 2400000.5;
-    const Real tt = anInstant.getModifiedJulianDate(Scale::TT);
+    static const double djmjd0 = 2400000.5;
+    const double tt = anInstant.getModifiedJulianDate(Scale::TT);
 
     // The polar motion xp,yp can be obtained from IERS bulletins. The
     // values are the coordinates (in radians) of the Celestial
@@ -77,17 +61,22 @@ Transform ITRF::getTransformAt(const Instant& anInstant) const
 
     // Polar motion
 
-    const Vector2d polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
+    const std::optional<Vector2d> polarMotion = IersManager::Get().getPolarMotionAt(anInstant);  // [asec]
 
-    const Real xp = polarMotion.x() * DAS2R;  // [rad]
-    const Real yp = polarMotion.y() * DAS2R;  // [rad]
+    if (!polarMotion.has_value())
+    {
+        throw ostk::core::error::RuntimeError("Cannot obtain polar motion at [{}].", anInstant.toString());
+    }
+
+    const double xp = polarMotion->x() * DAS2R;  // [rad]
+    const double yp = polarMotion->y() * DAS2R;  // [rad]
 
     // TIO locator s', in radians, which positions the Terrestrial Intermediate Origin on the equator.
     // It is obtained from polar motion observations by numerical integration, and so is in essence unpredictable.
     // However, it is dominated by a secular drift of about 47 microarcseconds per century, and so can be taken into
     // account by using s' = -47*t, where t is centuries since J2000.0.
 
-    const Real sp = iauSp00(djmjd0, tt);
+    const double sp = iauSp00(djmjd0, tt);
 
     // Polar motion matrix (TIRS -> ITRS, IERS 2003)
     // The matrix operates in the sense V(TRS) = rpom * V(CIP), meaning

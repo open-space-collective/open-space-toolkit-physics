@@ -1,9 +1,13 @@
 /// Apache License 2.0
 
+#include <cmath>
+#include <limits>
+
 #include <OpenSpaceToolkit/Core/Error.hpp>
 #include <OpenSpaceToolkit/Core/Utility.hpp>
 
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
+#include <OpenSpaceToolkit/Physics/Utility/String.hpp>
 
 namespace ostk
 {
@@ -12,7 +16,9 @@ namespace physics
 namespace unit
 {
 
-Length::Length(const Real& aValue, const Length::Unit& aUnit)
+using ostk::physics::utility::DoubleToString;
+
+Length::Length(double aValue, const Length::Unit& aUnit)
     : unit::Unit(unit::Unit::Type::Length, aValue),
       unit_(aUnit)
 {
@@ -25,12 +31,7 @@ Length* Length::clone() const
 
 bool Length::operator==(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        return false;
-    }
-
-    return this->accessValue() == ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    return this->getValue() == ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 }
 
 bool Length::operator!=(const Length& aLength) const
@@ -40,131 +41,76 @@ bool Length::operator!=(const Length& aLength) const
 
 bool Length::operator<(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return this->accessValue() < ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    return this->getValue() < ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 }
 
 bool Length::operator<=(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return this->accessValue() <= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    return this->getValue() <= ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 }
 
 bool Length::operator>(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return this->accessValue() > ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    return this->getValue() > ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 }
 
 bool Length::operator>=(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return this->accessValue() >= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    return this->getValue() >= ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 }
 
 Length Length::operator+(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return {(this->accessValue() + ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_};
+    return {(this->getValue() + ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_))), unit_};
 }
 
 Length Length::operator-(const Length& aLength) const
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return {(this->accessValue() - ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_))), unit_};
+    return {(this->getValue() - ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_))), unit_};
 }
 
-Length Length::operator*(const Real& aReal) const
+Length Length::operator*(double aReal) const
 {
-    if (unit_ == Length::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    return {(this->accessValue() * aReal), unit_};
+    return {(this->getValue() * aReal), unit_};
 }
 
-Length Length::operator/(const Real& aReal) const
+Length Length::operator/(double aReal) const
 {
-    if (unit_ == Length::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    if (aReal.isZero())
+    if (aReal == 0.0)
     {
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
 
-    return {(this->accessValue() / aReal), unit_};
+    return {(this->getValue() / aReal), unit_};
 }
 
 Length& Length::operator+=(const Length& aLength)
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    this->accessValue() += ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    this->accessValue() += ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 
     return *this;
 }
 
 Length& Length::operator-=(const Length& aLength)
 {
-    if ((unit_ == Length::Unit::Undefined) || (aLength.unit_ == Length::Unit::Undefined))
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    this->accessValue() -= ((unit_ == aLength.unit_) ? aLength.accessValue() : aLength.in(unit_));
+    this->accessValue() -= ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
 
     return *this;
 }
 
-Length& Length::operator*=(const Real& aReal)
+Length& Length::operator*=(double aReal)
 {
-    if (unit_ == Length::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
@@ -174,19 +120,14 @@ Length& Length::operator*=(const Real& aReal)
     return *this;
 }
 
-Length& Length::operator/=(const Real& aReal)
+Length& Length::operator/=(double aReal)
 {
-    if (unit_ == Length::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    if (aReal.isZero())
+    if (aReal == 0.0)
     {
         throw ostk::core::error::RuntimeError("Cannot divide by zero.");
     }
@@ -196,46 +137,31 @@ Length& Length::operator/=(const Real& aReal)
     return *this;
 }
 
-Length operator*(const Real& aReal, const Length& aLength)
+Length operator*(double aReal, const Length& aLength)
 {
-    if (!aReal.isDefined())
+    if (std::isnan(aReal))
     {
         throw ostk::core::error::runtime::Undefined("Real");
     }
 
-    if (aLength.unit_ == Length::Unit::Undefined)
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return {(aLength.accessValue() * aReal), aLength.unit_};
+    return {(aLength.getValue() * aReal), aLength.unit_};
 }
 
 Length Length::operator+() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return Length(this->accessValue(), unit_);
+    return Length(this->getValue(), unit_);
 }
 
 Length Length::operator-() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return Length(-this->accessValue(), unit_);
+    return Length(-this->getValue(), unit_);
 }
 
 std::ostream& operator<<(std::ostream& anOutputStream, const Length& aLength)
 {
     ostk::core::utils::Print::Header(anOutputStream, "Length");
 
-    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aLength.accessValue();
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aLength.getValue();
     ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Length::StringFromUnit(aLength.unit_);
 
     ostk::core::utils::Print::Footer(anOutputStream);
@@ -243,19 +169,9 @@ std::ostream& operator<<(std::ostream& anOutputStream, const Length& aLength)
     return anOutputStream;
 }
 
-bool Length::isDefined() const
-{
-    return unit::Unit::isDefined() && (unit_ != Length::Unit::Undefined);
-}
-
 bool Length::isZero() const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return this->accessValue() == 0.0;
+    return this->getValue() == 0.0;
 }
 
 Length::Unit Length::getUnit() const
@@ -263,57 +179,42 @@ Length::Unit Length::getUnit() const
     return unit_;
 }
 
-Real Length::in(const Length::Unit& aUnit) const
+double Length::in(const Length::Unit& aUnit) const
 {
-    if (!this->isDefined())
-    {
-        return Real::Undefined();
-    }
-
     if (unit_ == aUnit)
     {
-        return this->accessValue();
+        return this->getValue();
     }
 
-    return this->accessValue() * Length::SIRatio(unit_) / Length::SIRatio(aUnit);
+    return this->getValue() * Length::SIRatio(unit_) / Length::SIRatio(aUnit);
 }
 
-Real Length::inMeters() const
+double Length::inMeters() const
 {
     return this->in(Length::Unit::Meter);
 }
 
-Real Length::inKilometers() const
+double Length::inKilometers() const
 {
     return this->in(Length::Unit::Meter) / 1e3;
 }
 
-String Length::toString(const Integer& aPrecision) const
+String Length::toString(int aPrecision) const
 {
-    if (!this->isDefined())
-    {
-        throw ostk::core::error::runtime::Undefined("Length");
-    }
-
-    return this->accessValue().toString(aPrecision) + " [" + Length::SymbolFromUnit(unit_) + "]";
+    return DoubleToString(this->getValue(), aPrecision) + " [" + Length::SymbolFromUnit(unit_) + "]";
 }
 
-Length Length::Undefined()
-{
-    return {Real::Undefined(), Length::Unit::Undefined};
-}
-
-Length Length::Millimeters(const Real& aValue)
+Length Length::Millimeters(double aValue)
 {
     return {aValue / 1e3, Length::Unit::Meter};
 }
 
-Length Length::Meters(const Real& aValue)
+Length Length::Meters(double aValue)
 {
     return {aValue, Length::Unit::Meter};
 }
 
-Length Length::Kilometers(const Real& aValue)
+Length Length::Kilometers(double aValue)
 {
     return {aValue * 1e3, Length::Unit::Meter};
 }
@@ -341,9 +242,6 @@ String Length::StringFromUnit(const Length::Unit& aUnit)
 {
     switch (aUnit)
     {
-        case Length::Unit::Undefined:
-            return "Undefined";
-
         case Length::Unit::Meter:
             return "Meter";
 
@@ -424,7 +322,7 @@ Length::Unit Length::UnitFromSymbol(const String& aSymbol)
     throw ostk::core::error::runtime::Wrong("Symbol", aSymbol);
 }
 
-Real Length::SIRatio(const Length::Unit& aUnit)
+double Length::SIRatio(const Length::Unit& aUnit)
 {
     switch (aUnit)
     {
@@ -447,8 +345,6 @@ Real Length::SIRatio(const Length::Unit& aUnit)
             throw ostk::core::error::runtime::Wrong("Unit");
             break;
     }
-
-    return Real::Undefined();
 }
 
 }  // namespace unit

@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Position__
 #define __OpenSpaceToolkit_Physics_Coordinate_Position__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -28,9 +27,6 @@ class Celestial;
 namespace coordinate
 {
 
-#define DEFAULT_PRECISION Integer::Undefined()
-
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -119,15 +115,6 @@ class Position
     /// @return A reference to output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Position& aPosition);
 
-    /// @brief Check if position is defined
-    ///
-    /// @code
-    ///     Position::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if position is defined
-    bool isDefined() const;
-
     /// @brief Check if position is near another position within a tolerance
     ///
     /// @code
@@ -139,32 +126,23 @@ class Position
     /// @return True if position is near the other position within the tolerance
     bool isNear(const Position& aPosition, const Length& aTolerance) const;
 
-    /// @brief Access coordinates
-    ///
-    /// @code
-    ///     position.accessCoordinates();
-    /// @endcode
-    ///
-    /// @return Reference to coordinates
-    const Vector3d& accessCoordinates() const;
-
-    /// @brief Access frame
-    ///
-    /// @code
-    ///     position.accessFrame();
-    /// @endcode
-    ///
-    /// @return Shared pointer to frame
-    Shared<const Frame> accessFrame() const;
-
     /// @brief Get coordinates
     ///
     /// @code
     ///     position.getCoordinates();
     /// @endcode
     ///
-    /// @return Coordinates
-    Vector3d getCoordinates() const;
+    /// @return Const reference to coordinates
+    const Vector3d& getCoordinates() const;
+
+    /// @brief Get frame
+    ///
+    /// @code
+    ///     position.getFrame();
+    /// @endcode
+    ///
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Get the distance to the Position Frame origin.
     ///
@@ -222,16 +200,7 @@ class Position
     ///
     /// @param [in] aPrecision A precision
     /// @return String representation of the position
-    String toString(const Integer& aPrecision = DEFAULT_PRECISION) const;
-
-    /// @brief Constructs an undefined position
-    ///
-    /// @code
-    ///     Position position = Position::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined position
-    static Position Undefined();
+    String toString(int aPrecision = -1) const;
 
     /// @brief Constructs a position in meters
     ///

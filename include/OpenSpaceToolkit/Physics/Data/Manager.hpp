@@ -4,6 +4,7 @@
 #define __OpenSpaceToolkit_Physics_Data_Manager__
 
 #include <mutex>
+#include <optional>
 
 #include <OpenSpaceToolkit/Core/FileSystem/Directory.hpp>
 
@@ -54,7 +55,7 @@ class Manager : public BaseManager
     /// @param [in] aDataName name of the data to query. This is the key for the data entry in the manifest file.
     ///
     /// @return Instant indicating when the data was last updated on the remote, according to the manifest record.
-    const Instant getLastUpdateTimestampFor(const String& aDataName);
+    Instant getLastUpdateTimestampFor(const String& aDataName);
 
     /// @brief Get the remote URL. This points to the base URL for the OSTk input data.
     ///
@@ -63,7 +64,7 @@ class Manager : public BaseManager
     /// @endcode
     ///
     /// @return Remote URL
-    const URL getRemoteUrl() const;
+    URL getRemoteUrl() const;
 
     /// @brief Set the remote URL.
     ///
@@ -97,11 +98,11 @@ class Manager : public BaseManager
     /// @brief Get a copy of the current manifest file.
     ///
     /// @code
-    ///     Manifest manifest = Manager::Get().getManifest();
+    ///     std::optional<Manifest> manifest = Manager::Get().getManifest();
     /// @endcode
     ///
-    /// @return Manifest file
-    const Manifest getManifest() const;
+    /// @return Manifest file, or std::nullopt if no manifest is loaded
+    std::optional<Manifest> getManifest() const;
 
     /// @brief Load a new manifest file.
     ///
@@ -151,7 +152,7 @@ class Manager : public BaseManager
    protected:
     URL remoteUrl_;
 
-    mutable Manifest manifest_;
+    mutable std::optional<Manifest> manifest_;
 
     /// @brief Default constructor.
     ///

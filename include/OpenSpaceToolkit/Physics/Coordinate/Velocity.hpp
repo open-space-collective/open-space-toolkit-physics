@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 #define __OpenSpaceToolkit_Physics_Coordinate_Velocity__
 
-#include <OpenSpaceToolkit/Core/Type/Integer.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 #include <OpenSpaceToolkit/Core/Type/String.hpp>
 
@@ -20,9 +19,6 @@ namespace physics
 namespace coordinate
 {
 
-#define DEFAULT_PRECISION Integer::Undefined()
-
-using ostk::core::type::Integer;
 using ostk::core::type::Shared;
 using ostk::core::type::String;
 
@@ -42,7 +38,6 @@ class Velocity
     enum class Unit
     {
 
-        Undefined,
         MeterPerSecond
 
     };
@@ -89,41 +84,23 @@ class Velocity
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Velocity& aVelocity);
 
-    /// @brief Check if the velocity is defined
-    ///
-    /// @code
-    ///     Velocity::Undefined().isDefined(); // False
-    /// @endcode
-    ///
-    /// @return True if the velocity is defined
-    bool isDefined() const;
-
-    /// @brief Access coordinates
-    ///
-    /// @code
-    ///     velocity.accessCoordinates();
-    /// @endcode
-    ///
-    /// @return Reference to coordinates
-    const Vector3d& accessCoordinates() const;
-
-    /// @brief Access frame
-    ///
-    /// @code
-    ///     velocity.accessFrame();
-    /// @endcode
-    ///
-    /// @return Shared pointer to the frame
-    Shared<const Frame> accessFrame() const;
-
     /// @brief Get coordinates
     ///
     /// @code
     ///     velocity.getCoordinates();
     /// @endcode
     ///
-    /// @return Coordinates
-    Vector3d getCoordinates() const;
+    /// @return Const reference to coordinates
+    const Vector3d& getCoordinates() const;
+
+    /// @brief Get frame
+    ///
+    /// @code
+    ///     velocity.getFrame();
+    /// @endcode
+    ///
+    /// @return Const reference to the shared pointer to the frame
+    const Shared<const Frame>& getFrame() const;
 
     /// @brief Get the velocity unit
     ///
@@ -164,16 +141,7 @@ class Velocity
     ///
     /// @param [in] aPrecision A precision
     /// @return String representation of the velocity
-    String toString(const Integer& aPrecision = DEFAULT_PRECISION) const;
-
-    /// @brief Construct an undefined velocity
-    ///
-    /// @code
-    ///     Velocity velocity = Velocity::Undefined();
-    /// @endcode
-    ///
-    /// @return Undefined velocity
-    static Velocity Undefined();
+    String toString(int aPrecision = -1) const;
 
     /// @brief Construct a velocity in meters per second
     ///

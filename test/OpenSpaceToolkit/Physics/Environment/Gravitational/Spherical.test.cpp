@@ -7,8 +7,6 @@
 
 #include <Global.test.hpp>
 
-using ostk::core::type::Real;
-
 using ostk::mathematics::object::Vector3d;
 
 using ostk::physics::environment::gravitational::Model;
@@ -27,10 +25,6 @@ TEST(OpenSpaceToolkit_Physics_Environment_Gravitational_Spherical, Constructor)
 
         const Model::Parameters parameterSet(gravitationalParameter, Length::Meters(1.0), 0.0, 0.0, 0.0);
         EXPECT_NO_THROW(Spherical spherical(parameterSet));
-    }
-
-    {
-        EXPECT_ANY_THROW(Spherical spherical(Model::Parameters::Undefined()));
     }
 }
 

@@ -5,8 +5,6 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/Analytical.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/SPICE.cpp>
 
-using namespace pybind11;
-
 using ostk::core::type::Shared;
 
 using ostk::physics::coordinate::Frame;
@@ -15,29 +13,26 @@ using ostk::physics::environment::Ephemeris;
 class PyEphemeris : public Ephemeris
 {
    public:
-    using Ephemeris::Ephemeris;
+    NB_TRAMPOLINE(Ephemeris);
 
     // Trampoline (need one for each virtual function)
 
     Ephemeris* clone() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(Ephemeris*, Ephemeris, "clone", clone);
+        NB_OVERRIDE_PURE_NAME("clone", clone);
     }
 
-    bool isDefined() const override
+    Shared<const Frame> getFrame() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(bool, Ephemeris, "is_defined", isDefined);
-    }
-
-    Shared<const Frame> accessFrame() const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(Shared<const Frame>, Ephemeris, "access_frame", accessFrame);
+        NB_OVERRIDE_PURE_NAME("get_frame", getFrame);
     }
 };
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(nanobind::module_& aModule)
 {
-    class_<Ephemeris, PyEphemeris, Shared<Ephemeris>>(
+    using namespace nanobind;
+
+    class_<Ephemeris, PyEphemeris>(
         aModule,
         "Ephemeris",
         R"doc(
@@ -54,20 +49,10 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris(pybind11::module& aM
     )
 
         .def(
-            "is_defined",
-            &Ephemeris::isDefined,
+            "get_frame",
+            &Ephemeris::getFrame,
             R"doc(
-                Check if the ephemeris is defined.
-
-                Returns:
-                    bool: True if the ephemeris is defined, False otherwise.
-            )doc"
-        )
-        .def(
-            "access_frame",
-            &Ephemeris::accessFrame,
-            R"doc(
-                Access the reference frame associated with this ephemeris.
+                Get the reference frame associated with this ephemeris.
 
                 Returns:
                     Frame: The reference frame.

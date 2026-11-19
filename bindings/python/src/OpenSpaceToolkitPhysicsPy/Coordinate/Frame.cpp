@@ -5,9 +5,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Manager.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Coordinate/Frame/Provider.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
     using ostk::core::type::String;
@@ -15,7 +15,7 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     using ostk::physics::coordinate::Frame;
     using ostk::physics::coordinate::frame::Provider;
 
-    class_<Frame, Shared<Frame>>(
+    class_<Frame>(
         aModule,
         "Frame",
         R"doc(
@@ -29,7 +29,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
     )
 
         .def(
-            self == self,
+            "__eq__",
+            [](const Frame& self, const Frame& other)
+            {
+                return self == other;
+            },
+            is_operator(),
             R"doc(
                 Equality operator.
 
@@ -41,7 +46,12 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
         .def(
-            self != self,
+            "__ne__",
+            [](const Frame& self, const Frame& other)
+            {
+                return self != other;
+            },
+            is_operator(),
             R"doc(
                 Inequality operator.
 
@@ -56,16 +66,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
         .def("__str__", &(shiftToString<Frame>))
         .def("__repr__", &(shiftToString<Frame>))
 
-        .def(
-            "is_defined",
-            &Frame::isDefined,
-            R"doc(
-                Check if the instance is defined.
-
-                Returns:
-                    bool: True if the instance is defined.
-            )doc"
-        )
         .def(
             "is_quasi_inertial",
             &Frame::isQuasiInertial,
@@ -88,21 +88,21 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
         )
 
         .def(
-            "access_parent",
-            &Frame::accessParent,
+            "get_parent",
+            &Frame::getParent,
             R"doc(
-                Access the parent frame.
+                Get the parent frame.
 
                 Returns:
                     Frame: Parent frame.
             )doc"
         )
         .def(
-            "access_ancestor",
-            &Frame::accessAncestor,
+            "get_ancestor",
+            &Frame::getAncestor,
             arg("ancestor_degree"),
             R"doc(
-                Access the ancestor frame.
+                Get the ancestor frame.
 
                 Args:
                     ancestor_degree (int): Ancestor degree.
@@ -112,10 +112,10 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
         .def(
-            "access_provider",
-            &Frame::accessProvider,
+            "get_provider",
+            &Frame::getProvider,
             R"doc(
-                Access the provider.
+                Get the provider.
 
                 Returns:
                     Provider: Provider.
@@ -196,16 +196,6 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             )doc"
         )
 
-        .def_static(
-            "undefined",
-            &Frame::Undefined,
-            R"doc(
-                Get undefined frame.
-
-                Returns:
-                    Frame: Undefined frame.
-            )doc"
-        )
         .def_static(
             "GCRF",
             &Frame::GCRF,
@@ -347,16 +337,16 @@ inline void OpenSpaceToolkitPhysicsPy_Coordinate_Frame(pybind11::module& aModule
             &Frame::Construct,
             arg("name"),
             arg("is_quasi_inertial"),
-            arg("parent_frame"),
+            arg("parent_frame").none(),
             arg("provider"),
-            arg_v("overwrite", false, "false"),
+            arg("overwrite").sig("false") = false,
             R"doc(
                 Construct a frame.
 
                 Args:
                     name (String): Name.
                     is_quasi_inertial (bool): True if quasi-inertial.
-                    parent_frame (Frame): Parent frame.
+                    parent_frame (Frame | None): Parent frame, or None for a root frame.
                     provider (Provider): Provider.
                     overwrite (bool): True to overwrite existing frame with same name. Defaults to False.
 

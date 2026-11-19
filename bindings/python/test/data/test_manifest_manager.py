@@ -27,7 +27,9 @@ class TestManager:
         assert isinstance(manager.get_remote_data_urls("data_name"), list)
 
     def test_get_manifest_success(self, manager: Manager):
-        assert isinstance(manager.get_manifest(), Manifest)
+        assert manager.get_manifest() is None or isinstance(
+            manager.get_manifest(), Manifest
+        )
 
     def test_set_remote_url_success(self, manager: Manager):
         manager.set_remote_url(URL.parse("http://example.com"))
@@ -43,17 +45,17 @@ class TestManager:
 
     def test_load_manifest_success(self, manager: Manager, manifest: Manifest):
         manager.load_manifest(manifest)
-        assert manager.get_manifest().is_defined()
+        assert manager.get_manifest() is not None
 
     def test_manifest_file_exists_success(self, manager: Manager):
         assert isinstance(manager.manifest_file_exists(), bool)
 
     def test_reset_success(self, manager: Manager, manifest: Manifest):
         manager.load_manifest(manifest)
-        assert manager.get_manifest().is_defined()
+        assert manager.get_manifest() is not None
 
         manager.reset()
-        assert not manager.get_manifest().is_defined()
+        assert manager.get_manifest() is None
 
     def test_get_success(self):
         assert isinstance(Manager.get(), Manager)

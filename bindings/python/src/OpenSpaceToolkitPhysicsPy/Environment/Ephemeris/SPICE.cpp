@@ -6,9 +6,9 @@
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/SPICE/Kernel.cpp>
 #include <OpenSpaceToolkitPhysicsPy/Environment/Ephemeris/SPICE/Manager.cpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::core::type::Shared;
 
@@ -16,7 +16,7 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(pybind11::modu
     using ostk::physics::environment::Ephemeris;
     using ostk::physics::environment::ephemeris::SPICE;
 
-    class_<SPICE, Shared<SPICE>, Ephemeris> spice_class(
+    class_<SPICE, Ephemeris> spice_class(
         aModule,
         "SPICE",
         R"doc(
@@ -43,7 +43,6 @@ inline void OpenSpaceToolkitPhysicsPy_Environment_Ephemeris_SPICE(pybind11::modu
 
     enum_<SPICE::Object>(spice_class, "Object")
 
-        .value("Undefined", SPICE::Object::Undefined, "Undefined")
         .value("Sun", SPICE::Object::Sun, "Sun")
         .value("Mercury", SPICE::Object::Mercury, "Mercury")
         .value("Venus", SPICE::Object::Venus, "Venus")

@@ -2,9 +2,9 @@
 
 #include <OpenSpaceToolkit/Physics/Manager.hpp>
 
-inline void OpenSpaceToolkitPhysicsPy_Manager(pybind11::module& aModule)
+inline void OpenSpaceToolkitPhysicsPy_Manager(nanobind::module_& aModule)
 {
-    using namespace pybind11;
+    using namespace nanobind;
 
     using ostk::physics::Manager;
 

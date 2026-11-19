@@ -3,7 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Data_Scalar__
 #define __OpenSpaceToolkit_Physics_Data_Scalar__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
 #include <OpenSpaceToolkit/Core/Type/Shared.hpp>
 
 #include <OpenSpaceToolkit/Physics/Time/Instant.hpp>
@@ -16,8 +15,6 @@ namespace physics
 namespace data
 {
 
-using ostk::core::type::Integer;
-using ostk::core::type::Real;
 using ostk::core::type::String;
 
 using ostk::physics::Unit;
@@ -39,7 +36,7 @@ class Scalar
     ///
     /// @param [in] aValue A real value
     /// @param [in] aUnit A physical unit
-    Scalar(const Real& aValue, const Unit& aUnit);
+    Scalar(double aValue, const Unit& aUnit);
 
     /// @brief Equality operator.
     ///
@@ -72,23 +69,14 @@ class Scalar
     /// @return A reference to the output stream
     friend std::ostream& operator<<(std::ostream& anOutputStream, const Scalar& aScalar);
 
-    /// @brief Check if the scalar is defined.
-    ///
-    /// @code
-    ///     Boolean isDefined = scalar.isDefined();
-    /// @endcode
-    ///
-    /// @return True if the scalar is defined
-    bool isDefined() const;
-
     /// @brief Get the scalar value.
     ///
     /// @code
-    ///     Real value = scalar.getValue();
+    ///     double value = scalar.getValue();
     /// @endcode
     ///
     /// @return The real value
-    Real getValue() const;
+    double getValue() const;
 
     /// @brief Get the scalar unit.
     ///
@@ -97,7 +85,7 @@ class Scalar
     /// @endcode
     ///
     /// @return The physical unit
-    Unit getUnit() const;
+    const Unit& getUnit() const;
 
     /// @brief Convert the scalar to a different unit.
     ///
@@ -117,19 +105,10 @@ class Scalar
     ///
     /// @param [in] aPrecision A precision for the value (optional)
     /// @return A string representation
-    String toString(const Integer& aPrecision = Integer::Undefined()) const;
-
-    /// @brief Construct an undefined scalar.
-    ///
-    /// @code
-    ///     Scalar scalar = Scalar::Undefined();
-    /// @endcode
-    ///
-    /// @return An undefined scalar
-    static Scalar Undefined();
+    String toString(int aPrecision = -1) const;
 
    private:
-    Real value_;
+    double value_;
     Unit unit_;
 };
 

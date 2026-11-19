@@ -3,8 +3,6 @@
 #ifndef __OpenSpaceToolkit_Physics_Coordinate_Frame_Utility__
 #define __OpenSpaceToolkit_Physics_Coordinate_Frame_Utility__
 
-#include <OpenSpaceToolkit/Core/Type/Real.hpp>
-
 #include <OpenSpaceToolkit/Physics/Coordinate/Spherical/LLA.hpp>
 #include <OpenSpaceToolkit/Physics/Coordinate/Transform.hpp>
 #include <OpenSpaceToolkit/Physics/Unit/Length.hpp>
@@ -20,8 +18,6 @@ namespace frame
 namespace utilities
 {
 
-using ostk::core::type::Real;
-
 using ostk::physics::coordinate::spherical::LLA;
 using ostk::physics::coordinate::Transform;
 using ostk::physics::unit::Length;
@@ -35,7 +31,7 @@ using ostk::physics::unit::Length;
 /// @ref https://en.wikipedia.org/wiki/North_east_down
 
 Transform NorthEastDownTransformAt(
-    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, const Real& anEllipsoidFlattening
+    const LLA& aLLA, const Length& anEllipsoidEquatorialRadius, double anEllipsoidFlattening
 );
 
 }  // namespace utilities
