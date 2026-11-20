@@ -30,7 +30,13 @@ Mass* Mass::clone() const
 
 bool Mass::operator==(const Mass& aMass) const
 {
-    return this->getValue() == ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() == aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() == aMass.inKilograms();
 }
 
 bool Mass::operator!=(const Mass& aMass) const
@@ -40,22 +46,46 @@ bool Mass::operator!=(const Mass& aMass) const
 
 bool Mass::operator<(const Mass& aMass) const
 {
-    return this->getValue() < ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() < aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() < aMass.inKilograms();
 }
 
 bool Mass::operator<=(const Mass& aMass) const
 {
-    return this->getValue() <= ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() <= aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() <= aMass.inKilograms();
 }
 
 bool Mass::operator>(const Mass& aMass) const
 {
-    return this->getValue() > ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() > aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() > aMass.inKilograms();
 }
 
 bool Mass::operator>=(const Mass& aMass) const
 {
-    return this->getValue() >= ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() >= aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() >= aMass.inKilograms();
 }
 
 Mass Mass::operator+(const Mass& aMass) const

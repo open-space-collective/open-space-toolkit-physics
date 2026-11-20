@@ -45,6 +45,19 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, EqualToOperator)
         EXPECT_FALSE(Mass(+1.0, Mass::Unit::Kilogram) == Mass(-1.0, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Tonne));
     }
+
+    // Mixed units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) == Mass(1000.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(1000.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Tonne));
+
+        // Converting either operand into the other's unit gives different rounding for this value
+        EXPECT_TRUE(Mass(10.3, Mass::Unit::Pound) == Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) == Mass(10.3, Mass::Unit::Pound));
+
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Pound));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) == Mass(1.0, Mass::Unit::Kilogram));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Mass, NotEqualToOperator)
@@ -65,6 +78,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, NotEqualToOperator)
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) != Mass(1000.0, Mass::Unit::Kilogram));
     }
+
+    // Mixed units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Pound));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) != Mass(1.0, Mass::Unit::Kilogram));
+
+        EXPECT_FALSE(Mass(10.3, Mass::Unit::Pound) != Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) != Mass(10.3, Mass::Unit::Pound));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Mass, LowerThanOperator)
@@ -83,6 +105,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, LowerThanOperator)
 
     {
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Kilogram));
+    }
+
+    // Mixed units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) < Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Pound));
+
+        EXPECT_FALSE(Mass(10.3, Mass::Unit::Pound) < Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) < Mass(10.3, Mass::Unit::Pound));
     }
 }
 
@@ -105,6 +136,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, LowerThanOrEqualToOperator)
     {
         EXPECT_FALSE(Mass(2.0, Mass::Unit::Kilogram) <= Mass(1.0, Mass::Unit::Kilogram));
     }
+
+    // Mixed units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) <= Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) <= Mass(1.0, Mass::Unit::Pound));
+
+        EXPECT_TRUE(Mass(10.3, Mass::Unit::Pound) <= Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) <= Mass(10.3, Mass::Unit::Pound));
+    }
 }
 
 TEST(OpenSpaceToolkit_Physics_Unit_Mass, GreaterThanOperator)
@@ -123,6 +163,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, GreaterThanOperator)
 
     {
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Kilogram));
+    }
+
+    // Mixed units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Pound));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) > Mass(1.0, Mass::Unit::Kilogram));
+
+        EXPECT_FALSE(Mass(10.3, Mass::Unit::Pound) > Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) > Mass(10.3, Mass::Unit::Pound));
     }
 }
 
@@ -144,6 +193,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, GreaterThanOrEqualToOperator)
 
     {
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(2.0, Mass::Unit::Kilogram));
+    }
+
+    // Mixed units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Pound));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) >= Mass(1.0, Mass::Unit::Kilogram));
+
+        EXPECT_TRUE(Mass(10.3, Mass::Unit::Pound) >= Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) >= Mass(10.3, Mass::Unit::Pound));
     }
 }
 
