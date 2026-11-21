@@ -30,33 +30,24 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, EqualToOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same value, same unit
     {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) == Mass(+1.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) == Mass(1.0, Mass::Unit::Tonne));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) == Mass(1.0, Mass::Unit::Pound));
     }
 
-    {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) == Mass(1000.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) == Mass(0.45359237, Mass::Unit::Kilogram));
-    }
-
+    // Different value or unit
     {
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) == Mass(2.0, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(+1.0, Mass::Unit::Kilogram) == Mass(-1.0, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Tonne));
     }
 
-    // Mixed units: result must not depend on operand order
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) == Mass(1000.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1000.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Tonne));
-
-        // Converting either operand into the other's unit gives different rounding for this value
         EXPECT_TRUE(Mass(10.3, Mass::Unit::Pound) == Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) == Mass(10.3, Mass::Unit::Pound));
-
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) == Mass(1.0, Mass::Unit::Pound));
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) == Mass(1.0, Mass::Unit::Kilogram));
     }
 }
 
@@ -64,26 +55,22 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, NotEqualToOperator)
 {
     using ostk::physics::unit::Mass;
 
-    {
-        EXPECT_TRUE(Mass(+1.0, Mass::Unit::Kilogram) != Mass(-1.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(2.0, Mass::Unit::Kilogram));
-    }
-
-    {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Pound));
-    }
-
+    // Same value, same unit
     {
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) != Mass(1000.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) != Mass(1.0, Mass::Unit::Tonne));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) != Mass(1.0, Mass::Unit::Pound));
     }
 
-    // Mixed units: result must not depend on operand order
+    // Different value or unit
     {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Pound));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) != Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(2.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(+1.0, Mass::Unit::Kilogram) != Mass(-1.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) != Mass(1.0, Mass::Unit::Tonne));
+    }
 
+    // Equivalent value, different units: result must not depend on operand order
+    {
         EXPECT_FALSE(Mass(10.3, Mass::Unit::Pound) != Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) != Mass(10.3, Mass::Unit::Pound));
     }
@@ -93,25 +80,25 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, LowerThanOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same value, same unit
+    {
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) < Mass(1.0, Mass::Unit::Tonne));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) < Mass(1.0, Mass::Unit::Pound));
+    }
+
+    // Different value or unit
     {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) < Mass(2.0, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(-1.0, Mass::Unit::Kilogram) < Mass(+1.0, Mass::Unit::Kilogram));
-    }
-
-    {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) < Mass(1.0, Mass::Unit::Kilogram));
+
+        EXPECT_FALSE(Mass(2.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) < Mass(1.0, Mass::Unit::Kilogram));
     }
 
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Kilogram));
-    }
-
-    // Mixed units: result must not depend on operand order
-    {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) < Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) < Mass(1.0, Mass::Unit::Pound));
-
         EXPECT_FALSE(Mass(10.3, Mass::Unit::Pound) < Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) < Mass(10.3, Mass::Unit::Pound));
     }
@@ -121,27 +108,25 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, LowerThanOrEqualToOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same value, same unit
     {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) <= Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) <= Mass(1.0, Mass::Unit::Tonne));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) <= Mass(1.0, Mass::Unit::Pound));
+    }
+
+    // Different value or unit
+    {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) <= Mass(2.0, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(-1.0, Mass::Unit::Kilogram) <= Mass(+1.0, Mass::Unit::Kilogram));
-    }
-
-    {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) <= Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) <= Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) <= Mass(1000.0, Mass::Unit::Kilogram));
-    }
 
-    {
         EXPECT_FALSE(Mass(2.0, Mass::Unit::Kilogram) <= Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) <= Mass(1.0, Mass::Unit::Kilogram));
     }
 
-    // Mixed units: result must not depend on operand order
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) <= Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) <= Mass(1.0, Mass::Unit::Pound));
-
         EXPECT_TRUE(Mass(10.3, Mass::Unit::Pound) <= Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) <= Mass(10.3, Mass::Unit::Pound));
     }
@@ -151,25 +136,25 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, GreaterThanOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same value, same unit
+    {
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Tonne) > Mass(1.0, Mass::Unit::Tonne));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) > Mass(1.0, Mass::Unit::Pound));
+    }
+
+    // Different value or unit
     {
         EXPECT_TRUE(Mass(2.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(+1.0, Mass::Unit::Kilogram) > Mass(-1.0, Mass::Unit::Kilogram));
-    }
-
-    {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) > Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Pound));
+
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) > Mass(2.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Tonne));
     }
 
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Kilogram));
-    }
-
-    // Mixed units: result must not depend on operand order
-    {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) > Mass(1.0, Mass::Unit::Pound));
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) > Mass(1.0, Mass::Unit::Kilogram));
-
         EXPECT_FALSE(Mass(10.3, Mass::Unit::Pound) > Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
         EXPECT_FALSE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) > Mass(10.3, Mass::Unit::Pound));
     }
@@ -179,27 +164,25 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, GreaterThanOrEqualToOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same value, same unit
     {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Kilogram));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) >= Mass(1.0, Mass::Unit::Tonne));
+        EXPECT_TRUE(Mass(1.0, Mass::Unit::Pound) >= Mass(1.0, Mass::Unit::Pound));
+    }
+
+    // Different value or unit
+    {
         EXPECT_TRUE(Mass(2.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(+1.0, Mass::Unit::Kilogram) >= Mass(-1.0, Mass::Unit::Kilogram));
-    }
-
-    {
         EXPECT_TRUE(Mass(1.0, Mass::Unit::Tonne) >= Mass(1.0, Mass::Unit::Kilogram));
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Pound));
-        EXPECT_TRUE(Mass(1000.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Tonne));
-    }
 
-    {
         EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(2.0, Mass::Unit::Kilogram));
+        EXPECT_FALSE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Tonne));
     }
 
-    // Mixed units: result must not depend on operand order
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_TRUE(Mass(1.0, Mass::Unit::Kilogram) >= Mass(1.0, Mass::Unit::Pound));
-        EXPECT_FALSE(Mass(1.0, Mass::Unit::Pound) >= Mass(1.0, Mass::Unit::Kilogram));
-
         EXPECT_TRUE(Mass(10.3, Mass::Unit::Pound) >= Mass(10.3 * 0.45359237, Mass::Unit::Kilogram));
         EXPECT_TRUE(Mass(10.3 * 0.45359237, Mass::Unit::Kilogram) >= Mass(10.3, Mass::Unit::Pound));
     }
@@ -209,16 +192,15 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, AdditionOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same unit
     {
         EXPECT_EQ(Mass(2.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) + Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_EQ(Mass(0.0, Mass::Unit::Kilogram), Mass(-1.0, Mass::Unit::Kilogram) + Mass(+1.0, Mass::Unit::Kilogram));
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
         EXPECT_EQ(Mass(1001.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) + Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_EQ(
-            Mass(1.45359237, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) + Mass(1.0, Mass::Unit::Pound)
-        );
 
         EXPECT_EQ(Mass::Unit::Kilogram, (Mass(1.0, Mass::Unit::Kilogram) + Mass(1.0, Mass::Unit::Tonne)).getUnit());
         EXPECT_EQ(Mass::Unit::Tonne, (Mass(1.0, Mass::Unit::Tonne) + Mass(1.0, Mass::Unit::Kilogram)).getUnit());
@@ -229,6 +211,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, SubtractionOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same unit
     {
         EXPECT_EQ(Mass(0.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) - Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_EQ(
@@ -236,11 +219,12 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, SubtractionOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
         EXPECT_EQ(Mass(-999.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) - Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_EQ(
-            Mass(1.0 - 0.45359237, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) - Mass(1.0, Mass::Unit::Pound)
-        );
+
+        EXPECT_EQ(Mass::Unit::Kilogram, (Mass(1.0, Mass::Unit::Kilogram) - Mass(1.0, Mass::Unit::Tonne)).getUnit());
+        EXPECT_EQ(Mass::Unit::Tonne, (Mass(1.0, Mass::Unit::Tonne) - Mass(1.0, Mass::Unit::Kilogram)).getUnit());
     }
 }
 
@@ -248,6 +232,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, MultiplicationOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Kilogram
     {
         EXPECT_EQ(Mass(+1.0, Mass::Unit::Kilogram), Mass(+1.0, Mass::Unit::Kilogram) * +1.0);
         EXPECT_EQ(Mass(-1.0, Mass::Unit::Kilogram), Mass(-1.0, Mass::Unit::Kilogram) * +1.0);
@@ -274,6 +259,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, MultiplicationOperator)
         EXPECT_EQ(Mass(0.0, Mass::Unit::Kilogram), 0.0 * Mass(0.0, Mass::Unit::Kilogram));
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Mass(6.0, Mass::Unit::Tonne), Mass(3.0, Mass::Unit::Tonne) * 2.0);
         EXPECT_EQ(Mass(6.0, Mass::Unit::Pound), Mass(3.0, Mass::Unit::Pound) * 2.0);
@@ -282,6 +268,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, MultiplicationOperator)
         EXPECT_EQ(Mass(6.0, Mass::Unit::Pound), 2.0 * Mass(3.0, Mass::Unit::Pound));
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Mass(1.0, Mass::Unit::Kilogram) * std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(std::numeric_limits<double>::quiet_NaN() * Mass(1.0, Mass::Unit::Kilogram));
@@ -292,6 +279,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, DivisionOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Kilogram
     {
         EXPECT_EQ(Mass(+1.0, Mass::Unit::Kilogram), Mass(+1.0, Mass::Unit::Kilogram) / +1.0);
         EXPECT_EQ(Mass(-1.0, Mass::Unit::Kilogram), Mass(-1.0, Mass::Unit::Kilogram) / +1.0);
@@ -302,11 +290,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, DivisionOperator)
         EXPECT_EQ(Mass(-2.0, Mass::Unit::Kilogram), Mass(+4.0, Mass::Unit::Kilogram) / -2.0);
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Mass(0.5, Mass::Unit::Tonne), Mass(1.0, Mass::Unit::Tonne) / 2.0);
         EXPECT_EQ(Mass(0.5, Mass::Unit::Pound), Mass(1.0, Mass::Unit::Pound) / 2.0);
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Mass(1.0, Mass::Unit::Kilogram) / std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(Mass(1.0, Mass::Unit::Kilogram) / 0.0);
@@ -317,6 +307,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, AdditionAssignmentOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same unit
     {
         EXPECT_EQ(Mass(2.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) += Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_EQ(
@@ -324,11 +315,12 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, AdditionAssignmentOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
         EXPECT_EQ(Mass(1001.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) += Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_EQ(
-            Mass(1.45359237, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) += Mass(1.0, Mass::Unit::Pound)
-        );
+
+        EXPECT_EQ(Mass::Unit::Kilogram, (Mass(1.0, Mass::Unit::Kilogram) += Mass(1.0, Mass::Unit::Tonne)).getUnit());
+        EXPECT_EQ(Mass::Unit::Tonne, (Mass(1.0, Mass::Unit::Tonne) += Mass(1.0, Mass::Unit::Kilogram)).getUnit());
     }
 }
 
@@ -336,6 +328,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, SubtractionAssignmentOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Same unit
     {
         EXPECT_EQ(Mass(0.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) -= Mass(1.0, Mass::Unit::Kilogram));
         EXPECT_EQ(
@@ -343,12 +336,12 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, SubtractionAssignmentOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
         EXPECT_EQ(Mass(-999.0, Mass::Unit::Kilogram), Mass(1.0, Mass::Unit::Kilogram) -= Mass(1.0, Mass::Unit::Tonne));
-        EXPECT_EQ(
-            Mass(1.0 - 0.45359237, Mass::Unit::Kilogram),
-            Mass(1.0, Mass::Unit::Kilogram) -= Mass(1.0, Mass::Unit::Pound)
-        );
+
+        EXPECT_EQ(Mass::Unit::Kilogram, (Mass(1.0, Mass::Unit::Kilogram) -= Mass(1.0, Mass::Unit::Tonne)).getUnit());
+        EXPECT_EQ(Mass::Unit::Tonne, (Mass(1.0, Mass::Unit::Tonne) -= Mass(1.0, Mass::Unit::Kilogram)).getUnit());
     }
 }
 
@@ -356,6 +349,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, MultiplicationAssignmentOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Kilogram
     {
         EXPECT_EQ(Mass(+1.0, Mass::Unit::Kilogram), Mass(+1.0, Mass::Unit::Kilogram) *= +1.0);
         EXPECT_EQ(Mass(-1.0, Mass::Unit::Kilogram), Mass(-1.0, Mass::Unit::Kilogram) *= +1.0);
@@ -370,11 +364,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, MultiplicationAssignmentOperator)
         EXPECT_EQ(Mass(0.0, Mass::Unit::Kilogram), Mass(0.0, Mass::Unit::Kilogram) *= 0.0);
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Mass(6.0, Mass::Unit::Tonne), Mass(3.0, Mass::Unit::Tonne) *= 2.0);
         EXPECT_EQ(Mass(6.0, Mass::Unit::Pound), Mass(3.0, Mass::Unit::Pound) *= 2.0);
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Mass(1.0, Mass::Unit::Kilogram) *= std::numeric_limits<double>::quiet_NaN());
     }
@@ -384,6 +380,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, DivisionAssignmentOperator)
 {
     using ostk::physics::unit::Mass;
 
+    // Kilogram
     {
         EXPECT_EQ(Mass(+1.0, Mass::Unit::Kilogram), Mass(+1.0, Mass::Unit::Kilogram) /= +1.0);
         EXPECT_EQ(Mass(-1.0, Mass::Unit::Kilogram), Mass(-1.0, Mass::Unit::Kilogram) /= +1.0);
@@ -394,11 +391,13 @@ TEST(OpenSpaceToolkit_Physics_Unit_Mass, DivisionAssignmentOperator)
         EXPECT_EQ(Mass(-2.0, Mass::Unit::Kilogram), Mass(+4.0, Mass::Unit::Kilogram) /= -2.0);
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Mass(0.5, Mass::Unit::Tonne), Mass(1.0, Mass::Unit::Tonne) /= 2.0);
         EXPECT_EQ(Mass(0.5, Mass::Unit::Pound), Mass(1.0, Mass::Unit::Pound) /= 2.0);
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Mass(1.0, Mass::Unit::Kilogram) /= std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(Mass(1.0, Mass::Unit::Kilogram) /= 0.0);
