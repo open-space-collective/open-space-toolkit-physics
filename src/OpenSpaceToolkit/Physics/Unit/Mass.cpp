@@ -1,5 +1,6 @@
 /// Apache License 2.0
 
+#include <cmath>
 #include <limits>
 
 #include <OpenSpaceToolkit/Core/Error.hpp>
@@ -25,6 +26,176 @@ Mass::Mass(double aValue, const Mass::Unit& aUnit)
 Mass* Mass::clone() const
 {
     return new Mass(*this);
+}
+
+bool Mass::operator==(const Mass& aMass) const
+{
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() == aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() == aMass.inKilograms();
+}
+
+bool Mass::operator!=(const Mass& aMass) const
+{
+    return !((*this) == aMass);
+}
+
+bool Mass::operator<(const Mass& aMass) const
+{
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() < aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() < aMass.inKilograms();
+}
+
+bool Mass::operator<=(const Mass& aMass) const
+{
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() <= aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() <= aMass.inKilograms();
+}
+
+bool Mass::operator>(const Mass& aMass) const
+{
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() > aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() > aMass.inKilograms();
+}
+
+bool Mass::operator>=(const Mass& aMass) const
+{
+    if (unit_ == aMass.unit_)
+    {
+        return this->getValue() >= aMass.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inKilograms() >= aMass.inKilograms();
+}
+
+Mass Mass::operator+(const Mass& aMass) const
+{
+    return {(this->getValue() + ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_))), unit_};
+}
+
+Mass Mass::operator-(const Mass& aMass) const
+{
+    return {(this->getValue() - ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_))), unit_};
+}
+
+Mass Mass::operator*(double aReal) const
+{
+    if (std::isnan(aReal))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
+    return {(this->getValue() * aReal), unit_};
+}
+
+Mass Mass::operator/(double aReal) const
+{
+    if (std::isnan(aReal))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
+    if (aReal == 0.0)
+    {
+        throw ostk::core::error::RuntimeError("Cannot divide by zero.");
+    }
+
+    return {(this->getValue() / aReal), unit_};
+}
+
+Mass& Mass::operator+=(const Mass& aMass)
+{
+    this->accessValue() += ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+
+    return *this;
+}
+
+Mass& Mass::operator-=(const Mass& aMass)
+{
+    this->accessValue() -= ((unit_ == aMass.unit_) ? aMass.getValue() : aMass.in(unit_));
+
+    return *this;
+}
+
+Mass& Mass::operator*=(double aReal)
+{
+    if (std::isnan(aReal))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
+    this->accessValue() *= aReal;
+
+    return *this;
+}
+
+Mass& Mass::operator/=(double aReal)
+{
+    if (std::isnan(aReal))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
+    if (aReal == 0.0)
+    {
+        throw ostk::core::error::RuntimeError("Cannot divide by zero.");
+    }
+
+    this->accessValue() /= aReal;
+
+    return *this;
+}
+
+Mass operator*(double aReal, const Mass& aMass)
+{
+    if (std::isnan(aReal))
+    {
+        throw ostk::core::error::runtime::Undefined("Real");
+    }
+
+    return {(aMass.getValue() * aReal), aMass.unit_};
+}
+
+Mass Mass::operator+() const
+{
+    return Mass(this->getValue(), unit_);
+}
+
+Mass Mass::operator-() const
+{
+    return Mass(-this->getValue(), unit_);
+}
+
+std::ostream& operator<<(std::ostream& anOutputStream, const Mass& aMass)
+{
+    ostk::core::utils::Print::Header(anOutputStream, "Mass");
+
+    ostk::core::utils::Print::Line(anOutputStream) << "Value:" << aMass.getValue();
+    ostk::core::utils::Print::Line(anOutputStream) << "Unit:" << Mass::StringFromUnit(aMass.unit_);
+
+    ostk::core::utils::Print::Footer(anOutputStream);
+
+    return anOutputStream;
 }
 
 Mass::Unit Mass::getUnit() const

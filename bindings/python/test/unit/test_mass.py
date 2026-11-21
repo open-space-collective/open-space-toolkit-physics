@@ -1,10 +1,8 @@
 # Apache License 2.0
 
-import pytest
-
-from ostk.core.type import String
-
 import ostk.physics as physics
+import pytest
+from ostk.core.type import String
 
 Mass = physics.unit.Mass
 Unit = Mass.Unit
@@ -46,6 +44,85 @@ def test_unit_mass_comparators():
     assert mass_1 == mass_1
     assert mass_2 == mass_2
     assert mass_1 != mass_2
+
+    assert mass_1 <= mass_1
+    assert mass_2 <= mass_1
+    assert mass_2 <= mass_2
+    assert mass_2 < mass_1
+
+    assert mass_1 >= mass_1
+    assert mass_1 >= mass_2
+    assert mass_2 >= mass_2
+    assert mass_1 > mass_2
+
+
+def test_unit_mass_operators():
+    mass_1: Mass = Mass(4.0, Unit.Kilogram)
+    mass_2: Mass = Mass(3.5, Unit.Kilogram)
+
+    sum_mass: Mass = mass_1 + mass_2
+    diff_mass: Mass = mass_1 - mass_2
+    mul_mass: Mass = mass_1 * 2.0
+    mul_mass_2: Mass = 2.0 * mass_1
+    div_mass: Mass = mass_1 / 2.0
+    pos_mass: Mass = +mass_1
+    neg_mass: Mass = -mass_1
+
+    assert sum_mass is not None
+    assert isinstance(sum_mass, Mass)
+    assert sum_mass == Mass(7.5, Unit.Kilogram)
+
+    assert diff_mass is not None
+    assert isinstance(diff_mass, Mass)
+    assert diff_mass == Mass(0.5, Unit.Kilogram)
+
+    assert mul_mass is not None
+    assert isinstance(mul_mass, Mass)
+    assert mul_mass == Mass(8.0, Unit.Kilogram)
+
+    assert mul_mass_2 is not None
+    assert isinstance(mul_mass_2, Mass)
+    assert mul_mass_2 == Mass(8.0, Unit.Kilogram)
+
+    assert div_mass is not None
+    assert isinstance(div_mass, Mass)
+    assert div_mass == Mass(2.0, Unit.Kilogram)
+
+    assert pos_mass is not None
+    assert isinstance(pos_mass, Mass)
+    assert pos_mass == Mass(4.0, Unit.Kilogram)
+
+    assert neg_mass is not None
+    assert isinstance(neg_mass, Mass)
+    assert neg_mass == Mass(-4.0, Unit.Kilogram)
+
+    mass_1 += mass_2
+
+    assert mass_1 is not None
+    assert isinstance(mass_1, Mass)
+    assert mass_1 == Mass(7.5, Unit.Kilogram)
+
+    mass_1 -= mass_2
+
+    assert mass_1 is not None
+    assert isinstance(mass_1, Mass)
+    assert mass_1 == Mass(4.0, Unit.Kilogram)
+
+    mass_1 *= 2.0
+
+    assert mass_1 is not None
+    assert isinstance(mass_1, Mass)
+    assert mass_1 == Mass(8.0, Unit.Kilogram)
+
+    mass_1 /= 2.0
+
+    assert mass_1 is not None
+    assert isinstance(mass_1, Mass)
+    assert mass_1 == Mass(4.0, Unit.Kilogram)
+
+
+def test_unit_mass_str():
+    assert isinstance(str(Mass(4.0, Unit.Kilogram)), str)
 
 
 def test_unit_mass_get_unit():
