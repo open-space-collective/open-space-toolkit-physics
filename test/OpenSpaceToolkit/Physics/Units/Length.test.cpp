@@ -30,21 +30,26 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, EqualToOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same value, same unit
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) == Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) == Length(+1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) == Length(1.0, Length::Unit::Foot));
+        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) == Length(1.0, Length::Unit::TerrestrialMile));
+        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) == Length(1.0, Length::Unit::NauticalMile));
+        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) == Length(1.0, Length::Unit::AstronomicalUnit));
     }
 
-    {
-        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) == Length(0.3048, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) == Length(1609.344, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) == Length(1852.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) == Length(149597870700.0, Length::Unit::Meter));
-    }
-
+    // Different value or unit
     {
         EXPECT_FALSE(Length(1.0, Length::Unit::Meter) == Length(2.0, Length::Unit::Meter));
         EXPECT_FALSE(Length(+1.0, Length::Unit::Meter) == Length(-1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) == Length(1.0, Length::Unit::Foot));
+    }
+
+    // Equivalent value, different units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Length(3.3, Length::Unit::Foot) == Length(3.3 * 0.3048, Length::Unit::Meter));
+        EXPECT_TRUE(Length(3.3 * 0.3048, Length::Unit::Meter) == Length(3.3, Length::Unit::Foot));
     }
 }
 
@@ -52,20 +57,26 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, NotEqualToOperator)
 {
     using ostk::physics::unit::Length;
 
-    {
-        EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) != Length(-1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(2.0, Length::Unit::Meter));
-    }
-
-    {
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(1.0, Length::Unit::Foot));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(1.0, Length::Unit::TerrestrialMile));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(1.0, Length::Unit::NauticalMile));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(1.0, Length::Unit::AstronomicalUnit));
-    }
-
+    // Same value, same unit
     {
         EXPECT_FALSE(Length(1.0, Length::Unit::Meter) != Length(1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Foot) != Length(1.0, Length::Unit::Foot));
+        EXPECT_FALSE(Length(1.0, Length::Unit::TerrestrialMile) != Length(1.0, Length::Unit::TerrestrialMile));
+        EXPECT_FALSE(Length(1.0, Length::Unit::NauticalMile) != Length(1.0, Length::Unit::NauticalMile));
+        EXPECT_FALSE(Length(1.0, Length::Unit::AstronomicalUnit) != Length(1.0, Length::Unit::AstronomicalUnit));
+    }
+
+    // Different value or unit
+    {
+        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(2.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) != Length(-1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) != Length(1.0, Length::Unit::Foot));
+    }
+
+    // Equivalent value, different units: result must not depend on operand order
+    {
+        EXPECT_FALSE(Length(3.3, Length::Unit::Foot) != Length(3.3 * 0.3048, Length::Unit::Meter));
+        EXPECT_FALSE(Length(3.3 * 0.3048, Length::Unit::Meter) != Length(3.3, Length::Unit::Foot));
     }
 }
 
@@ -73,17 +84,29 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same value, same unit
+    {
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) < Length(1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Foot) < Length(1.0, Length::Unit::Foot));
+        EXPECT_FALSE(Length(1.0, Length::Unit::TerrestrialMile) < Length(1.0, Length::Unit::TerrestrialMile));
+        EXPECT_FALSE(Length(1.0, Length::Unit::NauticalMile) < Length(1.0, Length::Unit::NauticalMile));
+        EXPECT_FALSE(Length(1.0, Length::Unit::AstronomicalUnit) < Length(1.0, Length::Unit::AstronomicalUnit));
+    }
+
+    // Different value or unit
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) < Length(2.0, Length::Unit::Meter));
         EXPECT_TRUE(Length(-1.0, Length::Unit::Meter) < Length(+1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) < Length(1.0, Length::Unit::Meter));
+
+        EXPECT_FALSE(Length(2.0, Length::Unit::Meter) < Length(1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) < Length(1.0, Length::Unit::Foot));
     }
 
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) < Length(1.0, Length::Unit::TerrestrialMile));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) < Length(1.0, Length::Unit::NauticalMile));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) < Length(1.0, Length::Unit::AstronomicalUnit));
-
-        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) < Length(1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(3.3, Length::Unit::Foot) < Length(3.3 * 0.3048, Length::Unit::Meter));
+        EXPECT_FALSE(Length(3.3 * 0.3048, Length::Unit::Meter) < Length(3.3, Length::Unit::Foot));
     }
 }
 
@@ -91,16 +114,29 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, LowerThanOrEqualToOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same value, same unit
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(2.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(-1.0, Length::Unit::Meter) <= Length(+1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) <= Length(1.0, Length::Unit::Foot));
+        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) <= Length(1.0, Length::Unit::TerrestrialMile));
+        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) <= Length(1.0, Length::Unit::NauticalMile));
+        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) <= Length(1.0, Length::Unit::AstronomicalUnit));
     }
 
+    // Different value or unit
     {
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::TerrestrialMile));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::NauticalMile));
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::AstronomicalUnit));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) <= Length(2.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(-1.0, Length::Unit::Meter) <= Length(+1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) <= Length(1.0, Length::Unit::Meter));
+
+        EXPECT_FALSE(Length(2.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) <= Length(1.0, Length::Unit::Foot));
+    }
+
+    // Equivalent value, different units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Length(3.3, Length::Unit::Foot) <= Length(3.3 * 0.3048, Length::Unit::Meter));
+        EXPECT_TRUE(Length(3.3 * 0.3048, Length::Unit::Meter) <= Length(3.3, Length::Unit::Foot));
     }
 }
 
@@ -108,17 +144,29 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same value, same unit
+    {
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) > Length(1.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Foot) > Length(1.0, Length::Unit::Foot));
+        EXPECT_FALSE(Length(1.0, Length::Unit::TerrestrialMile) > Length(1.0, Length::Unit::TerrestrialMile));
+        EXPECT_FALSE(Length(1.0, Length::Unit::NauticalMile) > Length(1.0, Length::Unit::NauticalMile));
+        EXPECT_FALSE(Length(1.0, Length::Unit::AstronomicalUnit) > Length(1.0, Length::Unit::AstronomicalUnit));
+    }
+
+    // Different value or unit
     {
         EXPECT_TRUE(Length(2.0, Length::Unit::Meter) > Length(1.0, Length::Unit::Meter));
         EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) > Length(-1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) > Length(1.0, Length::Unit::Foot));
+
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) > Length(2.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Foot) > Length(1.0, Length::Unit::Meter));
     }
 
+    // Equivalent value, different units: result must not depend on operand order
     {
-        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) > Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) > Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) > Length(1.0, Length::Unit::Meter));
-
-        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) > Length(1.0, Length::Unit::Foot));
+        EXPECT_FALSE(Length(3.3, Length::Unit::Foot) > Length(3.3 * 0.3048, Length::Unit::Meter));
+        EXPECT_FALSE(Length(3.3 * 0.3048, Length::Unit::Meter) > Length(3.3, Length::Unit::Foot));
     }
 }
 
@@ -126,16 +174,29 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, GreaterThanOrEqualToOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same value, same unit
     {
         EXPECT_TRUE(Length(1.0, Length::Unit::Meter) >= Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(2.0, Length::Unit::Meter) >= Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) >= Length(-1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Foot) >= Length(1.0, Length::Unit::Foot));
+        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) >= Length(1.0, Length::Unit::TerrestrialMile));
+        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) >= Length(1.0, Length::Unit::NauticalMile));
+        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) >= Length(1.0, Length::Unit::AstronomicalUnit));
     }
 
+    // Different value or unit
     {
-        EXPECT_TRUE(Length(1.0, Length::Unit::TerrestrialMile) >= Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::NauticalMile) >= Length(1.0, Length::Unit::Meter));
-        EXPECT_TRUE(Length(1.0, Length::Unit::AstronomicalUnit) >= Length(1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(2.0, Length::Unit::Meter) >= Length(1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(+1.0, Length::Unit::Meter) >= Length(-1.0, Length::Unit::Meter));
+        EXPECT_TRUE(Length(1.0, Length::Unit::Meter) >= Length(1.0, Length::Unit::Foot));
+
+        EXPECT_FALSE(Length(1.0, Length::Unit::Meter) >= Length(2.0, Length::Unit::Meter));
+        EXPECT_FALSE(Length(1.0, Length::Unit::Foot) >= Length(1.0, Length::Unit::Meter));
+    }
+
+    // Equivalent value, different units: result must not depend on operand order
+    {
+        EXPECT_TRUE(Length(3.3, Length::Unit::Foot) >= Length(3.3 * 0.3048, Length::Unit::Meter));
+        EXPECT_TRUE(Length(3.3 * 0.3048, Length::Unit::Meter) >= Length(3.3, Length::Unit::Foot));
     }
 }
 
@@ -143,6 +204,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same unit
     {
         EXPECT_EQ(
             Length(2.0, Length::Unit::Meter), Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::Meter)
@@ -152,21 +214,19 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
-        EXPECT_EQ(
-            Length(1.3048, Length::Unit::Meter), Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::Foot)
-        );
-        EXPECT_EQ(
-            Length(1610.344, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::TerrestrialMile)
-        );
         EXPECT_EQ(
             Length(1853.0, Length::Unit::Meter),
             Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::NauticalMile)
         );
+
         EXPECT_EQ(
-            Length(149597870701.0, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::AstronomicalUnit)
+            Length::Unit::Meter, (Length(1.0, Length::Unit::Meter) + Length(1.0, Length::Unit::NauticalMile)).getUnit()
+        );
+        EXPECT_EQ(
+            Length::Unit::NauticalMile,
+            (Length(1.0, Length::Unit::NauticalMile) + Length(1.0, Length::Unit::Meter)).getUnit()
         );
     }
 }
@@ -175,6 +235,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same unit
     {
         EXPECT_EQ(
             Length(0.0, Length::Unit::Meter), Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::Meter)
@@ -184,22 +245,19 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
-        EXPECT_EQ(
-            Length(1.0 - 0.3048, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::Foot)
-        );
-        EXPECT_EQ(
-            Length(-1608.344, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::TerrestrialMile)
-        );
         EXPECT_EQ(
             Length(-1851.0, Length::Unit::Meter),
             Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::NauticalMile)
         );
+
         EXPECT_EQ(
-            Length(-149597870699.0, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::AstronomicalUnit)
+            Length::Unit::Meter, (Length(1.0, Length::Unit::Meter) - Length(1.0, Length::Unit::NauticalMile)).getUnit()
+        );
+        EXPECT_EQ(
+            Length::Unit::NauticalMile,
+            (Length(1.0, Length::Unit::NauticalMile) - Length(1.0, Length::Unit::Meter)).getUnit()
         );
     }
 }
@@ -208,6 +266,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Meter
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) * +1.0);
         EXPECT_EQ(Length(-1.0, Length::Unit::Meter), Length(-1.0, Length::Unit::Meter) * +1.0);
@@ -234,6 +293,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationOperator)
         EXPECT_EQ(Length(0.0, Length::Unit::Meter), 0.0 * Length(0.0, Length::Unit::Meter));
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Length(6.0, Length::Unit::Foot), Length(3.0, Length::Unit::Foot) * 2.0);
         EXPECT_EQ(Length(6.0, Length::Unit::TerrestrialMile), Length(3.0, Length::Unit::TerrestrialMile) * 2.0);
@@ -246,6 +306,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationOperator)
         EXPECT_EQ(Length(6.0, Length::Unit::AstronomicalUnit), 2.0 * Length(3.0, Length::Unit::AstronomicalUnit));
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) * std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(std::numeric_limits<double>::quiet_NaN() * Length(1.0, Length::Unit::Meter));
@@ -256,6 +317,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Meter
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) / +1.0);
         EXPECT_EQ(Length(-1.0, Length::Unit::Meter), Length(-1.0, Length::Unit::Meter) / +1.0);
@@ -270,6 +332,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionOperator)
         EXPECT_EQ(Length(-2.0, Length::Unit::Meter), Length(+4.0, Length::Unit::Meter) / -2.0);
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Length(0.5, Length::Unit::Foot), Length(1.0, Length::Unit::Foot) / 2.0);
         EXPECT_EQ(Length(0.5, Length::Unit::TerrestrialMile), Length(1.0, Length::Unit::TerrestrialMile) / 2.0);
@@ -277,6 +340,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionOperator)
         EXPECT_EQ(Length(0.5, Length::Unit::AstronomicalUnit), Length(1.0, Length::Unit::AstronomicalUnit) / 2.0);
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) / std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) / 0.0);
@@ -287,6 +351,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionAssignmentOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same unit
     {
         EXPECT_EQ(
             Length(2.0, Length::Unit::Meter), Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::Meter)
@@ -296,21 +361,19 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, AdditionAssignmentOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
-        EXPECT_EQ(
-            Length(1.3048, Length::Unit::Meter), Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::Foot)
-        );
-        EXPECT_EQ(
-            Length(1610.344, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::TerrestrialMile)
-        );
         EXPECT_EQ(
             Length(1853.0, Length::Unit::Meter),
             Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::NauticalMile)
         );
+
         EXPECT_EQ(
-            Length(149597870701.0, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::AstronomicalUnit)
+            Length::Unit::Meter, (Length(1.0, Length::Unit::Meter) += Length(1.0, Length::Unit::NauticalMile)).getUnit()
+        );
+        EXPECT_EQ(
+            Length::Unit::NauticalMile,
+            (Length(1.0, Length::Unit::NauticalMile) += Length(1.0, Length::Unit::Meter)).getUnit()
         );
     }
 }
@@ -319,6 +382,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionAssignmentOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Same unit
     {
         EXPECT_EQ(
             Length(0.0, Length::Unit::Meter), Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::Meter)
@@ -328,22 +392,19 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, SubtractionAssignmentOperator)
         );
     }
 
+    // Different units: result is expressed in the left operand's unit
     {
-        EXPECT_EQ(
-            Length(1.0 - 0.3048, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::Foot)
-        );
-        EXPECT_EQ(
-            Length(-1608.344, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::TerrestrialMile)
-        );
         EXPECT_EQ(
             Length(-1851.0, Length::Unit::Meter),
             Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::NauticalMile)
         );
+
         EXPECT_EQ(
-            Length(-149597870699.0, Length::Unit::Meter),
-            Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::AstronomicalUnit)
+            Length::Unit::Meter, (Length(1.0, Length::Unit::Meter) -= Length(1.0, Length::Unit::NauticalMile)).getUnit()
+        );
+        EXPECT_EQ(
+            Length::Unit::NauticalMile,
+            (Length(1.0, Length::Unit::NauticalMile) -= Length(1.0, Length::Unit::Meter)).getUnit()
         );
     }
 }
@@ -352,6 +413,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationAssignmentOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Meter
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) *= +1.0);
         EXPECT_EQ(Length(-1.0, Length::Unit::Meter), Length(-1.0, Length::Unit::Meter) *= +1.0);
@@ -366,6 +428,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationAssignmentOperator)
         EXPECT_EQ(Length(0.0, Length::Unit::Meter), Length(0.0, Length::Unit::Meter) *= 0.0);
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Length(6.0, Length::Unit::Foot), Length(3.0, Length::Unit::Foot) *= 2.0);
         EXPECT_EQ(Length(6.0, Length::Unit::TerrestrialMile), Length(3.0, Length::Unit::TerrestrialMile) *= 2.0);
@@ -373,6 +436,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, MultiplicationAssignmentOperator)
         EXPECT_EQ(Length(6.0, Length::Unit::AstronomicalUnit), Length(3.0, Length::Unit::AstronomicalUnit) *= 2.0);
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) *= std::numeric_limits<double>::quiet_NaN());
     }
@@ -382,6 +446,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionAssignmentOperator)
 {
     using ostk::physics::unit::Length;
 
+    // Meter
     {
         EXPECT_EQ(Length(+1.0, Length::Unit::Meter), Length(+1.0, Length::Unit::Meter) /= +1.0);
         EXPECT_EQ(Length(-1.0, Length::Unit::Meter), Length(-1.0, Length::Unit::Meter) /= +1.0);
@@ -396,6 +461,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionAssignmentOperator)
         EXPECT_EQ(Length(-2.0, Length::Unit::Meter), Length(+4.0, Length::Unit::Meter) /= -2.0);
     }
 
+    // Other units: unit is preserved
     {
         EXPECT_EQ(Length(0.5, Length::Unit::Foot), Length(1.0, Length::Unit::Foot) /= 2.0);
         EXPECT_EQ(Length(0.5, Length::Unit::TerrestrialMile), Length(1.0, Length::Unit::TerrestrialMile) /= 2.0);
@@ -403,6 +469,7 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, DivisionAssignmentOperator)
         EXPECT_EQ(Length(0.5, Length::Unit::AstronomicalUnit), Length(1.0, Length::Unit::AstronomicalUnit) /= 2.0);
     }
 
+    // Invalid scalar
     {
         EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) /= std::numeric_limits<double>::quiet_NaN());
         EXPECT_ANY_THROW(Length(1.0, Length::Unit::Meter) /= 0.0);
@@ -498,6 +565,20 @@ TEST(OpenSpaceToolkit_Physics_Unit_Length, In)
         EXPECT_EQ(1.0, Length(1.0, Length::Unit::TerrestrialMile).in(Length::Unit::TerrestrialMile));
         EXPECT_EQ(1.0, Length(1.0, Length::Unit::NauticalMile).in(Length::Unit::NauticalMile));
         EXPECT_EQ(1.0, Length(1.0, Length::Unit::AstronomicalUnit).in(Length::Unit::AstronomicalUnit));
+    }
+
+    {
+        EXPECT_EQ(0.3048, Length(1.0, Length::Unit::Foot).in(Length::Unit::Meter));
+        EXPECT_EQ(1609.344, Length(1.0, Length::Unit::TerrestrialMile).in(Length::Unit::Meter));
+        EXPECT_EQ(1852.0, Length(1.0, Length::Unit::NauticalMile).in(Length::Unit::Meter));
+        EXPECT_EQ(149597870700.0, Length(1.0, Length::Unit::AstronomicalUnit).in(Length::Unit::Meter));
+    }
+
+    {
+        EXPECT_EQ(1 / 0.3048, Length(1.0, Length::Unit::Meter).in(Length::Unit::Foot));
+        EXPECT_EQ(1 / 1609.344, Length(1.0, Length::Unit::Meter).in(Length::Unit::TerrestrialMile));
+        EXPECT_EQ(1 / 1852.0, Length(1.0, Length::Unit::Meter).in(Length::Unit::NauticalMile));
+        EXPECT_EQ(1 / 149597870700.0, Length(1.0, Length::Unit::Meter).in(Length::Unit::AstronomicalUnit));
     }
 }
 

@@ -31,7 +31,13 @@ Length* Length::clone() const
 
 bool Length::operator==(const Length& aLength) const
 {
-    return this->getValue() == ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
+    if (unit_ == aLength.unit_)
+    {
+        return this->getValue() == aLength.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inMeters() == aLength.inMeters();
 }
 
 bool Length::operator!=(const Length& aLength) const
@@ -41,22 +47,46 @@ bool Length::operator!=(const Length& aLength) const
 
 bool Length::operator<(const Length& aLength) const
 {
-    return this->getValue() < ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
+    if (unit_ == aLength.unit_)
+    {
+        return this->getValue() < aLength.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inMeters() < aLength.inMeters();
 }
 
 bool Length::operator<=(const Length& aLength) const
 {
-    return this->getValue() <= ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
+    if (unit_ == aLength.unit_)
+    {
+        return this->getValue() <= aLength.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inMeters() <= aLength.inMeters();
 }
 
 bool Length::operator>(const Length& aLength) const
 {
-    return this->getValue() > ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
+    if (unit_ == aLength.unit_)
+    {
+        return this->getValue() > aLength.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inMeters() > aLength.inMeters();
 }
 
 bool Length::operator>=(const Length& aLength) const
 {
-    return this->getValue() >= ((unit_ == aLength.unit_) ? aLength.getValue() : aLength.in(unit_));
+    if (unit_ == aLength.unit_)
+    {
+        return this->getValue() >= aLength.getValue();
+    }
+
+    // Convert both operands to a common unit so the result does not depend on operand order
+    return this->inMeters() >= aLength.inMeters();
 }
 
 Length Length::operator+(const Length& aLength) const
