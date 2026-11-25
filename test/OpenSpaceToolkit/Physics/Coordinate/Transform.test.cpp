@@ -211,14 +211,14 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
 
     // Translation + Velocity + Angular Velocity
     //
-    // This regression test checks a bug fixed in
-    // https://github.com/open-space-collective/open-space-toolkit-physics/issues/431 where the multiplication operator
-    // had a bug in the velocity part. It hardly manifested as it required one of the transforms to rotate, and the
-    // other to translate, which is rather unusual in astrodynamics, since most of the chains (e.g. ITRF -> GCRF) are
-    // pure rotations.
+    // Regression test for https://github.com/open-space-collective/open-space-toolkit-physics/issues/431, where the
+    // multiplication operator dropped a term of the composed velocity. The bug only manifests when one of the composed
+    // transforms spins (non-zero angular velocity) and the other translates, e.g. ITRF -> GCRF (Earth rotation rate)
+    // composed with GCRF -> Local Orbital Frame (centered on the satellite). Most frame chains either do not translate
+    // (e.g. ITRF -> TIRF -> CIRF -> GCRF, which spin about a common origin) or do not spin, so the term vanishes.
     //
-    // It showcases a human-friendly scenario, checking that one achieves the correct result composing A -> B, then
-    // B -> C as well as directly doing A -> C:
+    // With human friendly numbers, it checks that hopping A -> B, then B -> C, and hopping A -> C in a single step with
+    // the composed transform, give the same result:
     {
         // A to B: A rotates at +1 rad/s about Z with respect to B (aligned at this instant, same origin)
 
