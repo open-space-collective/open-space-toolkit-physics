@@ -1118,10 +1118,28 @@
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a65e4395d3730ce5c96705c28a57e1bb3" kind="variable"><name>unit_</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a48e781cc1928adcf6e80c61077eaee16" kind="function"><name>Mass</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a09cec302a316a1dc5f7381a0ffdd30af" kind="function"><name>clone</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a483826a3514ada2a336a40c4d5cb6277" kind="function"><name>operator==</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1ac83bc1cf2d848b50f1b356d7d4c99e0d" kind="function"><name>operator!=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a94512d1bac3db21097e76a8475035d8d" kind="function"><name>operator&lt;</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a45d0bad9c5b6f54ecf352fc112dd1448" kind="function"><name>operator&lt;=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a887363a52a72cf4f06aa6b0467099713" kind="function"><name>operator&gt;</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1ae02a75809449435fe4f3e19671b7cb81" kind="function"><name>operator&gt;=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a82b6b0d40430b4a3ba04a050ba063f4e" kind="function"><name>operator+</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a67519e49507d31c6e024d36ea95701d7" kind="function"><name>operator-</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1ad05ce618dd76c1687a36a257e878e888" kind="function"><name>operator*</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a65553ad86e6e66b0a57bc274be1224d5" kind="function"><name>operator/</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a49055c2bbd8fb7e1008529ad0cb105ae" kind="function"><name>operator+=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a3747e3c78f78ca2e86417e8fa808d317" kind="function"><name>operator-=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a5625a7f0f4a0d6ec9fb19b9bddf2c62e" kind="function"><name>operator*=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a9aa379d87c414ef4a3a6586d36f0836e" kind="function"><name>operator/=</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1ad6841b002037739145b800087e614a6b" kind="function"><name>operator+</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a79a2b194fcb79fb57f3d613c7dd40a07" kind="function"><name>operator-</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a4b16a86c8b14c992b36206c31cf5512c" kind="function"><name>getUnit</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1ae32247c4fd5d6cb64da9281879b0f42f" kind="function"><name>in</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a1411a0e73af4ef0af86c88f5d8c363fa" kind="function"><name>inKilograms</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1aa8bfca283644495d4279b8fe34633c62" kind="function"><name>toString</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a05620aaa0cb474ce58cce3f8f574713b" kind="friend"><name>operator*</name></member>
+    <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a64203873a34b096635c39ae788868397" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1adb41d9ae7944a3f25cc93c4d8b2d4530" kind="function"><name>Kilograms</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a46f473c7e1a0d85388bef09f88563415" kind="function"><name>Parse</name></member>
     <member refid="classostk_1_1physics_1_1unit_1_1_mass_1a55f7cb1c0e86cd834b63c7dc1ef872d3" kind="function"><name>StringFromUnit</name></member>
@@ -1903,6 +1921,8 @@
     <member refid="namespaceostk_1_1physics_1_1unit_1a650087cf6c492c0fb65afd908950a2ca" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="namespaceostk_1_1physics_1_1unit_1aab5569d44957723cd374f9db3081afdf" kind="function"><name>operator*</name></member>
     <member refid="namespaceostk_1_1physics_1_1unit_1a33d11f86c7134e7fbe6227368b2da2bf" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="namespaceostk_1_1physics_1_1unit_1a9199dd58c4827f81a6e31caa5d1cacdc" kind="function"><name>operator*</name></member>
+    <member refid="namespaceostk_1_1physics_1_1unit_1af22f5169b18a7418999bbdbf51e44a88" kind="function"><name>operator&lt;&lt;</name></member>
   </compound>
   <compound refid="namespaceostk_1_1physics_1_1utility" kind="namespace"><name>ostk::physics::utility</name>
     <member refid="namespaceostk_1_1physics_1_1utility_1ac39c8de8825eafee30b07310c43fe237" kind="function"><name>DoubleToString</name></member>

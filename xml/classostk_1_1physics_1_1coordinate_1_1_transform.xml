@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="105" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="72" bodyend="104"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="105" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="72" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a2c347eb19eb9ad7aa291a0f5e565f65f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="125" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="135" bodyend="139"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="125" column="10" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="139" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ad8478c34435c6bbceced40a9ed41080d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="classostk_1_1physics_1_1time_1_1_instant" kindref="compound">Instant</ref> &amp;</type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="134" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="141" bodyend="144"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="134" column="19" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="145" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a3fd6184c2dd5f105d94aa409b75b87bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -372,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="143" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="146" bodyend="149"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="143" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="150" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a20ecad152cf4999dd31391be28555723" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -391,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="152" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="151" bodyend="154"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="152" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="155" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ac65b3c07eb9a35722dcebf238b17f2bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Quaternion &amp;</type>
@@ -410,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="161" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="156" bodyend="159"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="161" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="160" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aca4bce9762676d9aa1077ae53f0a3e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Vector3d &amp;</type>
@@ -429,7 +429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="170" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="161" bodyend="164"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="170" column="20" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="165" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1ad623a128c51dd1be5887a06b51366da0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -448,7 +448,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="179" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="166" bodyend="185"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="179" column="15" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="170" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a1896f14c87b66846d8e115352562f0ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -480,7 +480,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="189" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="187" bodyend="192"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="189" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="191" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a80aea2654d54910bd999b8e93c8e4699" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -524,7 +524,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="200" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="194" bodyend="199"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="200" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="198" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a39560065fe0293c76d32d7a868543954" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Vector3d</type>
@@ -556,7 +556,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="210" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="201" bodyend="204"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="210" column="14" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="205" bodyend="208"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -602,7 +602,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="116" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="106" bodyend="133"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="116" column="12" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="110" bodyend="137"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -636,7 +636,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="220" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="206" bodyend="211"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="220" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="210" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1aea0502ad1d24b5a7ea8a749bffb70771" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -717,7 +717,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="235" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="213" bodyend="222"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="235" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="217" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classostk_1_1physics_1_1coordinate_1_1_transform_1a8e387cfe3c21cf12b8447854d0ca3548" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classostk_1_1physics_1_1coordinate_1_1_transform" kindref="compound">Transform</ref></type>
@@ -798,7 +798,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="256" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="224" bodyend="233"/>
+        <location file="include/OpenSpaceToolkit/Physics/Coordinate/Transform.hpp" line="256" column="22" bodyfile="src/OpenSpaceToolkit/Physics/Coordinate/Transform.cpp" bodystart="228" bodyend="237"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

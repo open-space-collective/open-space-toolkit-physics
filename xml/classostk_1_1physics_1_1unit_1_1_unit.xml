@@ -306,8 +306,8 @@
         <argsstring>(int aPrecision=-1) const =0</argsstring>
         <name>toString</name>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_electric_current_1a26110ea04a9ef8ae34e446671c0e024a">toString</reimplementedby>
-        <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_mass_1aa8bfca283644495d4279b8fe34633c62">toString</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_time_1a0c643f9b977f12a6f6dad92ddbb4ba2a">toString</reimplementedby>
+        <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_mass_1aa8bfca283644495d4279b8fe34633c62">toString</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_length_1ae443d17bec7037bb1193adc065f5c134">toString</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_angle_1ae4dceb6b7ae0f29f6a4f3518275e33fa">toString</reimplementedby>
         <reimplementedby refid="classostk_1_1physics_1_1unit_1_1_derived_1a59700fbf2ce804378ed4479be2adc062">toString</reimplementedby>
