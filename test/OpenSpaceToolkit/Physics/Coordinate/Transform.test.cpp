@@ -208,6 +208,78 @@ TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, MultiplicationOperator)
             1e-14, ((transform_C_B * transform_B_A).getAngularVelocity() - transform_C_A.getAngularVelocity()).norm()
         );
     }
+
+    // Translation + Velocity + Angular Velocity
+    //
+    // This regression test checks a bug fixed in
+    // https://github.com/open-space-collective/open-space-toolkit-physics/issues/431 where the multiplication operator
+    // had a bug in the velocity part. It hardly manifested as it required one of the transforms to rotate, and the
+    // other to translate, which is rather unusual in astrodynamics, since most of the chains (e.g. ITRF -> GCRF) are
+    // pure rotations.
+    //
+    // It showcases a human-friendly scenario, checking that one achieves the correct result composing A -> B, then
+    // B -> C as well as directly doing A -> C:
+    {
+        // A to B: A rotates at +1 rad/s about Z with respect to B (aligned at this instant, same origin)
+
+        const Vector3d t_B_A = Vector3d::Zero();
+        const Vector3d v_B_A = Vector3d::Zero();
+
+        const Quaternion q_B_A = Quaternion::Unit();
+        const Vector3d w_B_A_in_B = {+0.0, +0.0, -1.0};
+
+        const Transform transform_B_A = Transform::Passive(instant_, t_B_A, v_B_A, q_B_A, w_B_A_in_B);
+
+        // A point at rest in A, 1 m away from the rotation axis
+
+        const Vector3d x_A = {+1.0, +0.0, +0.0};
+        const Vector3d v_A = {+0.0, +0.0, +0.0};
+
+        // Seen from B, the point moves at w x r = 1 rad/s x 1 m = 1 m/s along Y
+
+        const Vector3d x_B = transform_B_A.applyToPosition(x_A);
+        const Vector3d v_B = transform_B_A.applyToVelocity(x_A, v_A);
+
+        EXPECT_TRUE(x_B.isNear(Vector3d(+1.0, +0.0, +0.0), 1e-12)) << x_B.toString();
+        EXPECT_TRUE(v_B.isNear(Vector3d(+0.0, +1.0, +0.0), 1e-12)) << v_B.toString();
+
+        // B to C: C is centered on the point and moves with it (no rotation)
+
+        const Vector3d t_C_B = -x_B;
+        const Vector3d v_C_B = -v_B;
+
+        const Quaternion q_C_B = Quaternion::Unit();
+        const Vector3d w_C_B_in_C = Vector3d::Zero();
+
+        const Transform transform_C_B = Transform::Passive(instant_, t_C_B, v_C_B, q_C_B, w_C_B_in_C);
+
+        // Expected: the point is at rest at the origin of C
+
+        const Vector3d x_C_expected = Vector3d::Zero();
+        const Vector3d v_C_expected = Vector3d::Zero();
+
+        // Path 1: hopping by hand, A -> B, then B -> C
+
+        {
+            const Vector3d x_C = transform_C_B.applyToPosition(x_B);
+            const Vector3d v_C = transform_C_B.applyToVelocity(x_B, v_B);
+
+            EXPECT_TRUE(x_C.isNear(x_C_expected, 1e-12)) << x_C.toString();
+            EXPECT_TRUE(v_C.isNear(v_C_expected, 1e-12)) << v_C.toString();
+        }
+
+        // Path 2: hopping directly in a single step, A -> C, with the composed transform
+
+        {
+            const Transform transform_C_A = transform_C_B * transform_B_A;
+
+            const Vector3d x_C = transform_C_A.applyToPosition(x_A);
+            const Vector3d v_C = transform_C_A.applyToVelocity(x_A, v_A);
+
+            EXPECT_TRUE(x_C.isNear(x_C_expected, 1e-12)) << x_C.toString();
+            EXPECT_TRUE(v_C.isNear(v_C_expected, 1e-12)) << v_C.toString();
+        }
+    }
 }
 
 TEST_F(OpenSpaceToolkit_Physics_Coordinate_Transform, StreamOperator)

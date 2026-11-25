@@ -78,14 +78,18 @@ Transform& Transform::operator*=(const Transform& aTransform)
 
     // C_A = C_B * B_A
 
+    // q_A_B = q_B_A'
+
+    const Quaternion q_A_B = aTransform.orientation_.toConjugate();
+
     // t_C_A_in_A = t_B_A_in_A + q_A_B * t_C_B_in_B
 
-    const Vector3d translation = aTransform.translation_ + aTransform.orientation_.toConjugate() * translation_;
+    const Vector3d translation = aTransform.translation_ + q_A_B * translation_;
 
-    // v_C_A_in_A = v_B_A_in_A + q_A_B * v_C_B_in_B + Ω_B_C_in_A x t_B_A_in_A
+    // v_C_A_in_A = v_B_A_in_A + q_A_B * (v_C_B_in_B + Ω_B_A_in_B x t_C_B_in_B)
 
-    const Vector3d velocity = aTransform.velocity_ + aTransform.orientation_.toConjugate() * velocity_ +
-                              angularVelocity_.cross(aTransform.translation_);
+    const Vector3d velocity =
+        aTransform.velocity_ + q_A_B * (velocity_ + aTransform.angularVelocity_.cross(translation_));
 
     // q_C_A = q_C_B * q_B_A
 
