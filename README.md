@@ -16,11 +16,11 @@ Physical units, time, reference frames, environment modeling.
 
 ## Getting Started
 
-Want to get started? This is the simplest and quickest way:
+Want to get started? Browse the [example notebooks](https://github.com/open-space-collective/open-space-toolkit-physics/tree/main/tutorials/python/notebooks), or clone this repository and run them locally in JupyterLab (requires Docker):
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/open-space-collective/open-space-toolkit/main?urlpath=lab/tree/notebooks)
-
-*Nothing to download or install! This will automatically start a [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) environment in your browser with Open Space Toolkit libraries and example notebooks ready to use.*
+```shell
+make start-jupyter  # then open http://localhost:9005/lab
+```
 
 ### Alternatives
 
@@ -243,7 +243,7 @@ The following table shows the availabe data source settings with the different e
 Tutorials are available here:
 
 - [C++](./tutorials/cpp)
-- [Python](./tutorials/python)
+- [Python](./tutorials/python/notebooks)
 
 ## Setup
 
